@@ -161,3 +161,138 @@
   sol: |
     For a capacitor $X_C = 1/\omega C\to\infty$ as $\omega\to0$: DC (zero frequency) cannot flow steadily because the plates charge up; for high frequency $X_C$ is small. For an inductor $X_L = \omega L\to0$ as $\omega\to0$: DC passes freely, but at high frequency the large $X_L$ opposes the current (a choke).
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A coil draws 2.0 A from a 12 V battery. Connected to a 12 V (rms), 50 Hz supply, it draws 1.2 A (rms). Find the inductance of the coil, and the phase angle by which the current lags the voltage on AC. (Original problem.)
+  ask: Inductance
+  unit: mH
+  ans: 25.46
+  tol: 0.05
+  verify: sqrt(100-36)/(2*PI*50)*1000
+  sol: |
+    On DC only the resistance limits the current: $R = 12/2.0 = 6.0\ \Omega$. On AC the coil's impedance is $Z = 12/1.2 = 10\ \Omega$. Since $Z = \sqrt{R^2 + X_L^2}$, $X_L = \sqrt{10^2 - 6^2} = 8.0\ \Omega$, and
+    $$L = \frac{X_L}{2\pi\nu} = \frac{8.0}{2\pi\times50} = 2.546\times10^{-2}\ \text{H} = 25.5\ \text{mH}.$$
+    The current lags by $\varphi = \tan^{-1}(X_L/R) = \tan^{-1}(4/3) = 53.1^\circ$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A 40 Ω resistor and a capacitor are connected in parallel across a 120 V (rms) AC supply. At the supply frequency the capacitive reactance is 30 Ω. Find the rms current drawn from the supply and the phase angle between this current and the supply voltage. (Original problem.)
+  ask: Supply current (rms)
+  unit: A
+  ans: 5
+  tol: 0.01
+  verify: sqrt((120/40)**2+(120/30)**2)
+  sol: |
+    Both branches have the full 120 V across them. $I_R = 120/40 = 3.0$ A, in phase with the voltage; $I_C = 120/30 = 4.0$ A, leading the voltage by $90^\circ$. The currents add as phasors:
+    $$I = \sqrt{3.0^2 + 4.0^2} = 5.0\ \text{A},$$
+    leading the voltage by $\tan^{-1}(4/3) = 53.1^\circ$. (Complex form: $\tilde I = \tilde V(1/40 + j/30) = 120(0.025 + 0.0333j) = 3 + 4j$ A.) An ammeter in the supply line reads 5 A, not 7 A.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A 1.0 kΩ resistor and a 0.10 µF capacitor are connected in series to a sinusoidal signal source, and the output is taken across the capacitor. At what frequency is the output amplitude exactly half the input amplitude? (Original problem.)
+  ask: Frequency
+  unit: Hz
+  ans: 2757
+  tol: 2
+  verify: sqrt(3)/(2*PI*1e3*0.1e-6)
+  sol: |
+    The output across $C$ is a fraction $\dfrac{1}{\sqrt{1 + (\omega RC)^2}}$ of the input. Setting this equal to $\tfrac12$ gives $1 + (\omega RC)^2 = 4$, so $\omega RC = \sqrt3$. With $RC = 10^3\times10^{-7} = 10^{-4}$ s,
+    $$\nu = \frac{\sqrt3}{2\pi RC} = \frac{1.732}{2\pi\times10^{-4}} = 2.76\times10^{3}\ \text{Hz}.$$
+    For comparison, the cutoff (output $1/\sqrt2$) is at $1/(2\pi RC) = 1.59$ kHz; the half-amplitude point lies above it, as it must for a low-pass filter.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: A lamp rated 110 V, 55 W is to be run at its rated power from a 220 V (rms), 50 Hz supply by connecting a pure inductor in series with it. Treat the lamp as a fixed resistance. Find the inductance needed. (Original problem.)
+  ask: Inductance
+  unit: H
+  ans: 1.213
+  tol: 0.005
+  verify: sqrt(220**2-110**2)/0.5/(2*PI*50)
+  sol: |
+    At rated power the lamp carries $I = P/V = 55/110 = 0.50$ A and has $110$ V across it. The lamp voltage (in phase with $I$) and the inductor voltage (leading $I$ by $90^\circ$) add as phasors to the supply voltage:
+    $$V_L = \sqrt{220^2 - 110^2} = 190.5\ \text{V}.$$
+    So $X_L = V_L/I = 381\ \Omega$ and $L = X_L/(2\pi\times50) = 1.21$ H.
+
+    The common slip is $V_L = 220 - 110 = 110$ V, which gives $L = 0.70$ H and too much current. A series resistor would also work but would waste $110\times0.5 = 55$ W, as much as the lamp uses; the inductor wastes none.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A symmetric square-wave voltage, switching between +10 V and −10 V with period 1.0 ms, is applied to a pure 50 mH inductor. In the steady state the current has zero average. Find the rms value of the current. (Original problem.)
+  ask: rms current
+  unit: mA
+  ans: 28.87
+  tol: 0.05
+  verify: 10*1e-3/(4*0.05)/sqrt(3)*1000
+  sol: |
+    During each half-period the voltage is constant, so $di/dt = \pm V_0/L = \pm200$ A/s and the current changes linearly: it is a **triangle wave**. In one half-period $T/2 = 0.5$ ms it changes by $\Delta i = (V_0/L)(T/2) = 200\times0.5\times10^{-3} = 0.10$ A. With zero average, it swings symmetrically between $\pm I_p$ with $I_p = \Delta i/2 = V_0T/(4L) = 50$ mA.
+
+    A triangle wave is linear in time, $i = I_p s$ with $s$ spread uniformly over $[-1, 1]$, so $\overline{i^2} = I_p^2\,\overline{s^2} = I_p^2/3$. Hence
+    $$I_{rms} = \frac{I_p}{\sqrt3} = \frac{50}{1.732} = 28.9\ \text{mA}.$$
+    (Check from the Fourier view: the fundamental of the square wave, amplitude $4V_0/\pi$, alone would give a current of amplitude $4V_0/(\pi\omega L) = 40.5$ mA, rms 28.7 mA. The higher harmonics add only about 1% because the inductor suppresses them as $1/n^2$.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A pure 0.20 H inductor is connected to a 10 V (rms), 50 Hz supply and is in the steady state. Find the greatest rate at which energy flows into the inductor at any instant, and the greatest energy stored in it. (Original problem.)
+  ask: Greatest rate of energy flow
+  unit: W
+  ans: 1.592
+  tol: 0.005
+  verify: 10*10/(0.2*2*PI*50)
+  sol: |
+    $X_L = 2\pi\times50\times0.20 = 62.8\ \Omega$, so $I = 10/62.8 = 0.159$ A rms and $i_m = 0.225$ A.
+
+    The instantaneous power is $p = vi = -\tfrac12 v_m i_m\sin2\omega t$, whose largest value is $\tfrac12 v_m i_m = V_{rms}I_{rms} = 10\times0.159 = 1.59$ W. Energy flows in at up to 1.59 W during one quarter cycle and out at up to 1.59 W during the next; the average is zero.
+
+    The stored energy $U = \tfrac12 Li^2$ is greatest when $|i| = i_m$: $U_{max} = \tfrac12\times0.20\times0.225^2 = 5.07$ mJ. Consistency check: in a quarter cycle (5 ms) the energy rises from 0 to $U_{max}$; the average inflow in that quarter is $5.07/5 = 1.01$ W, which is $2/\pi$ of the peak 1.59 W, as it should be for a $\sin2\omega t$ pulse.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: A coil of resistance R and inductance L is connected in parallel with a series combination of a resistor R and a capacitor C. Prove that if R² = L/C, the combination behaves as a pure resistance R at every frequency, so the current drawn from any sinusoidal source is in phase with its voltage. (Original problem.)
+  hints:
+    - Write the branch impedances as Z₁ = R + jωL and Z₂ = R + 1/(jωC), and use Z = Z₁Z₂/(Z₁ + Z₂).
+    - Expand Z₁Z₂ and note that (jωL)(1/(jωC)) = L/C.
+    - Let X = ωL − 1/(ωC) and compare numerator and denominator.
+  sol: |
+    The branch impedances are $Z_1 = R + j\omega L$ and $Z_2 = R + \dfrac{1}{j\omega C} = R - \dfrac{j}{\omega C}$. Put $X = \omega L - \dfrac{1}{\omega C}$. Then
+    $$Z_1 + Z_2 = 2R + jX,$$
+    $$Z_1Z_2 = R^2 + R\left(j\omega L + \frac{1}{j\omega C}\right) + \frac{j\omega L}{j\omega C} = R^2 + \frac{L}{C} + jRX.$$
+    If $R^2 = L/C$, the numerator becomes $2R^2 + jRX = R(2R + jX)$, so
+    $$Z = \frac{Z_1Z_2}{Z_1+Z_2} = \frac{R(2R + jX)}{2R + jX} = R$$
+    for every $\omega$. A purely real impedance means the total current is in phase with the voltage and has amplitude $v_m/R$, whatever the frequency.
+
+    Physically: at low frequency the coil branch dominates (the capacitor blocks), and it looks like $R$; at high frequency the capacitor branch dominates (the coil blocks), and it looks like $R$; the condition $R^2 = L/C$ makes the lagging and leading branch currents cancel each other's reactive parts exactly at every frequency in between.
+  check: none
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: A sealed box has two terminals and contains two components in series, each either a resistor, a pure inductor or a capacitor. A 10 V battery connected across it drives no steady current. With a 10 V (rms), 50 Hz supply the rms current is 0.100 A; with a 10 V (rms), 100 Hz supply it is 0.139 A. Identify the components and find the resistance. (Original problem.)
+  ask: Resistance
+  unit: Ω
+  ans: 59.7
+  tol: 0.5
+  verify: sqrt(10000 - 4/3*(10000 - (10/0.139)**2))
+  sol: |
+    No steady DC current means a capacitor is present. The current **rises** with frequency, so the other element cannot be an inductor (that would make it fall). Two capacitors in series would be one capacitor, whose current would exactly double from 50 Hz to 100 Hz; here it rises by only 1.39, so the second element is a **resistor**. The box holds $R$ in series with $C$.
+
+    At 50 Hz: $Z_1 = 10/0.100 = 100\ \Omega$, so $R^2 + X^2 = 10\,000$, where $X = X_C(50\ \text{Hz})$.
+    At 100 Hz the reactance halves: $Z_2 = 10/0.139 = 71.9\ \Omega$, so $R^2 + X^2/4 = 5176$.
+
+    Subtracting, $\tfrac34X^2 = 4824$, so $X^2 = 6432$, $X = 80.2\ \Omega$, and $R^2 = 10\,000 - 6432 = 3568$, giving $R = 59.7\ \Omega$ (about 60 Ω). The capacitance is $C = 1/(2\pi\times50\times80.2) = 40\ \mu$F.
+
+    [Inference] The data are rounded to three figures, so $R$ is known only to about ±1 Ω; the intended values are close to $R = 60\ \Omega$, $X_C = 80\ \Omega$ at 50 Hz.
+  check: code
