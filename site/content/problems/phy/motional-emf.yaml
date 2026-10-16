@@ -160,3 +160,156 @@
   sol: |
     $\varepsilon = Blv = 0.5\times0.1\times2 = 0.1$ V, $I = 0.1/4 = 0.025$ A. The power is $\varepsilon I = I^2R = (0.025)^2\times4 = 2.5\times10^{-3}$ W. Then it equals $Fv$ with $F = BIl = 0.5\times0.025\times0.1 = 1.25\times10^{-3}$ N and $v = 2$ m/s: $2.5\times10^{-3}$ W.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A rod of mass 20 g and length 0.50 m slides without friction down two long vertical conducting rails 0.50 m apart, joined at the top through a 2.0 Ω resistor. A uniform horizontal magnetic field of 0.80 T is perpendicular to the plane of the rails. The rod is released from rest. Find (a) its terminal speed and (b) the time constant with which it approaches it. Ignore all other resistance and take g = 9.8 m/s². Give (a). (Original problem.)"
+  ask: Terminal speed
+  unit: m/s
+  ans: 2.45
+  tol: 0.01
+  verify: 0.020*9.8*2.0/(0.80**2*0.50**2)
+  sol: |
+    At speed $v$ the emf is $Blv$, the current $Blv/R$, and the upward magnetic force $BIl = B^2l^2v/R$. Newton's law: $m\,dv/dt = mg - B^2l^2v/R$.
+
+    **(a)** At terminal speed the forces balance:
+    $$v_t = \frac{mgR}{B^2l^2} = \frac{0.020\times9.8\times2.0}{0.64\times0.25} = \frac{0.392}{0.16} = 2.45\ \text{m/s}.$$
+
+    **(b)** Writing the equation as $dv/dt = (v_t - v)/\tau$ gives $v = v_t(1 - e^{-t/\tau})$ with $\tau = mR/(B^2l^2) = v_t/g = 0.25$ s.
+
+    Check: at terminal speed $I = Blv_t/R = 0.4\times2.45/2 = 0.49$ A, $I^2R = 0.48$ W $= mgv_t = 0.196\times2.45 = 0.48$ W.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "A rod of mass 0.10 kg lies across smooth horizontal rails 0.40 m apart in a vertical field of 0.50 T. The rails are joined by a resistor; the total resistance of the circuit is 0.20 Ω. The rod is given a speed of 4.0 m/s along the rails and released. How far does it travel before stopping? Also find the total charge that passes through the resistor and the heat produced. Give the distance. (Original problem.)"
+  ask: Distance travelled
+  unit: m
+  ans: 2
+  tol: 0.001
+  verify: 0.10*4.0*0.20/(0.50**2*0.40**2)
+  sol: |
+    The drag is $B^2l^2v/R$. Write $m\,dv/dt = mv\,dv/dx$:
+    $$mv\frac{dv}{dx} = -\frac{B^2l^2}{R}v \;\Rightarrow\; \frac{dv}{dx} = -\frac{B^2l^2}{mR}.$$
+    The speed falls linearly with distance and reaches zero after
+    $$x = \frac{mv_0R}{B^2l^2} = \frac{0.10\times4.0\times0.20}{0.25\times0.16} = \frac{0.080}{0.040} = 2.0\ \text{m}.$$
+    (In time the approach is exponential, $v = v_0e^{-t/\tau}$ with $\tau = mR/(B^2l^2) = 0.5$ s; the distance is $v_0\tau = 2.0$ m.)
+
+    **Charge.** The impulse of the drag is $Bl\int I\,dt = BlQ = mv_0$, so $Q = 0.40/(0.50\times0.40) = 2.0$ C. Check: $Q = \Delta\Phi/R = Blx/R = 0.5\times0.4\times2/0.2 = 2.0$ C.
+
+    **Heat.** All the kinetic energy: $\tfrac12\times0.10\times16 = 0.80$ J.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: "A square loop of side 10 cm and resistance 0.50 Ω is pulled at a constant 2.0 m/s, with two of its sides perpendicular to the velocity, straight through a region 30 cm wide containing a uniform 0.40 T field perpendicular to the plane of the loop. The loop starts and ends well outside the region. Find the total heat produced in the loop. (Original problem.)"
+  ask: Total heat
+  unit: mJ
+  ans: 1.28
+  tol: 0.005
+  verify: 2*(0.40*0.10*2.0)**2/0.50*(0.10/2.0)*1000
+  sol: |
+    Emf flows only while one leading or trailing side is inside the field and the other outside: during entry and exit, each lasting $a/v = 0.10/2.0 = 0.050$ s. While the loop is wholly inside (the region is wider than the loop) the flux is constant and there is no current.
+
+    During entry and exit, $\varepsilon = Bav = 0.40\times0.10\times2.0 = 0.080$ V, $I = 0.16$ A, and the power is $\varepsilon^2/R = 0.0064/0.50 = 0.0128$ W.
+
+    Heat $= 2\times0.0128\times0.050 = 1.28\times10^{-3}$ J $= 1.28$ mJ. This equals the work done by the puller against the drag $B^2a^2v/R = 6.4$ mN over the two 10 cm stretches: $2\times6.4\times10^{-3}\times0.10 = 1.28$ mJ.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: "A thin metal rod 1.2 m long rotates at 50 rad/s in a horizontal plane about a vertical axis through a point on the rod 0.40 m from one end. A uniform vertical magnetic field of 0.50 T is present. Find the potential difference between the two ends of the rod. (Original problem.)"
+  ask: Potential difference between the ends
+  unit: V
+  ans: 6
+  tol: 0.01
+  verify: 0.5*0.50*50*(0.8**2-0.4**2)
+  sol: |
+    Each part of the rod, measured from the axis, behaves as a rod rotating about one end: between the axis and a point at distance $r$ the emf is $\tfrac12B\omega r^2$, and in both arms it points the same way relative to the axis (both outward, or both inward, since $\mathbf v\times\mathbf B$ is radial).
+
+    So both ends are at the same sign of potential relative to the axis point, with
+    $$V_{\text{long end}} - V_{\text{axis}} = \tfrac12\times0.50\times50\times0.80^2 = 8.0\ \text{V},\qquad V_{\text{short end}} - V_{\text{axis}} = \tfrac12\times0.50\times50\times0.40^2 = 2.0\ \text{V}$$
+    (or both negative, depending on the sense of rotation and field). The difference between the ends is $8.0 - 2.0 = 6.0$ V.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "A rod of mass 50 g slides without friction on horizontal rails 0.50 m apart in a vertical field of 1.0 T. The rails are joined through a resistor R in series with an uncharged 0.10 F capacitor. The rod is given a speed of 6.0 m/s and released. Find its final speed and the total heat produced in the resistor. Show that neither depends on R. Give the heat. (Original problem.)"
+  ask: Heat produced
+  unit: J
+  ans: 0.3
+  tol: 0.001
+  verify: 0.5*0.050*6.0**2-0.5*(0.050+0.10*1.0**2*0.50**2)*(0.050*6.0/(0.050+0.10*1.0**2*0.50**2))**2
+  sol: |
+    **Final state.** Current flows while the emf $Blv$ differs from the capacitor voltage $Q/C$. It stops when $Blv_f = Q/C$; the rod then coasts at $v_f$.
+
+    **Momentum.** The only horizontal force is $BIl$, so $m(v_0 - v_f) = Bl\int I\,dt = BlQ = Bl\cdot CBlv_f$. Hence
+    $$v_f = \frac{mv_0}{m + CB^2l^2} = \frac{0.050\times6.0}{0.050 + 0.10\times1.0\times0.25} = \frac{0.30}{0.075} = 4.0\ \text{m/s}.$$
+    $R$ does not appear: it sets how fast the final state is reached, not what it is.
+
+    **Energy.** Initial kinetic energy $\tfrac12\times0.050\times36 = 0.90$ J. Final: kinetic $\tfrac12\times0.050\times16 = 0.40$ J; capacitor $\tfrac12C(Blv_f)^2 = \tfrac12\times0.10\times(2.0)^2 = 0.20$ J. Heat $= 0.90 - 0.60 = 0.30$ J. In general the heat is $\tfrac12mv_0^2\cdot\dfrac{CB^2l^2}{m + CB^2l^2}$, again free of $R$ (like the energy lost when charging a capacitor through any resistor from a fixed source).
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "A rod of mass 0.20 kg rests across smooth horizontal rails 0.40 m apart in a vertical field of 0.50 T. The rails are joined at one end through an ideal inductor of 0.050 H; all resistance is negligible. The rod is struck so that it starts with speed 1.0 m/s along the rails. Show that it oscillates, and find the amplitude of its motion and the largest current. Give the amplitude. (Original problem.)"
+  ask: Amplitude
+  unit: m
+  ans: 0.5
+  tol: 0.001
+  verify: 1.0*Math.sqrt(0.20*0.050)/(0.50*0.40)
+  sol: |
+    With no resistance, Kirchhoff's loop rule gives $Blv = L\,dI/dt$. Integrate from the start ($x = 0$, $I = 0$): $LI = Blx$. The force on the rod is
+    $$F = -BIl = -\frac{B^2l^2}{L}x,$$
+    a restoring force proportional to displacement: simple harmonic motion with
+    $$\omega = \frac{Bl}{\sqrt{mL}} = \frac{0.20}{\sqrt{0.010}} = 2.0\ \text{rad/s}.$$
+    Starting from the centre with speed $v_0$, the amplitude is $A = v_0/\omega = 0.50$ m.
+
+    Largest current, at $x = A$: $I = BlA/L = 0.20\times0.50/0.050 = 2.0$ A. Energy check: $\tfrac12LI^2 = \tfrac12\times0.050\times4 = 0.10$ J $= \tfrac12mv_0^2 = \tfrac12\times0.20\times1 = 0.10$ J.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: "A copper disc of radius 0.20 m spins about its axis in a uniform 1.0 T field parallel to the axis. Sliding contacts at the axle and the rim connect it to a 1.5 V cell; the total resistance of the circuit is 0.050 Ω. A friction torque of 0.20 N·m acts on the disc. Find the steady angular speed at which the disc runs as a motor. (Original problem.)"
+  ask: Steady angular speed
+  unit: rad/s
+  ans: 50
+  tol: 0.01
+  verify: 2*(1.5-(2*0.20/(1.0*0.20**2))*0.050)/(1.0*0.20**2)
+  sol: |
+    **Torque from the current.** A radial current $I$ crosses the field; the element $dr$ at radius $r$ feels a tangential force $BI\,dr$ with moment $BIr\,dr$. Total torque $\int_0^aBIr\,dr = \tfrac12BIa^2$.
+
+    **Steady state.** The magnetic torque balances friction: $\tfrac12BIa^2 = 0.20$, so $I = \dfrac{2\times0.20}{1.0\times0.040} = 10$ A.
+
+    **Back emf.** The spinning disc has emf $\tfrac12B\omega a^2$ opposing the cell, so $I = (E - \tfrac12B\omega a^2)/R$:
+    $$\tfrac12B\omega a^2 = E - IR = 1.5 - 10\times0.050 = 1.0\ \text{V} \;\Rightarrow\; \omega = \frac{2\times1.0}{1.0\times0.040} = 50\ \text{rad/s}.$$
+
+    Power check: the cell gives $EI = 15$ W; $I^2R = 5$ W; mechanical $\tau\omega = 0.20\times50 = 10$ W $= \varepsilon_{\text{back}}I$.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: "Two smooth parallel conducting rails 1.0 m apart are inclined at 30° to the horizontal and joined at the bottom by a 1.0 Ω resistor. A uniform magnetic field of 0.50 T points vertically upward. A horizontal rod of mass 0.10 kg is laid across the rails and released. Find its terminal speed down the slope (g = 9.8 m/s²). (Original problem.)"
+  ask: Terminal speed
+  unit: m/s
+  ans: 2.613
+  tol: 0.005
+  verify: 0.10*9.8*1.0*Math.sin(rad(30))/(0.50**2*1.0**2*Math.cos(rad(30))**2)
+  sol: |
+    **Emf.** The rod moves along the slope at $v$. Only the component perpendicular to the (vertical) field counts: the horizontal component $v\cos\theta$. So $\varepsilon = Blv\cos\theta$ and $I = Blv\cos\theta/R$.
+
+    **Force.** The force $BIl$ on the rod is perpendicular to the rod and to the vertical field: horizontal, pointing back up-slope horizontally (Lenz). Its component along the slope is $BIl\cos\theta$. (Its component normal to the slope only changes the normal reaction.)
+
+    **Balance along the slope:**
+    $$mg\sin\theta = \frac{B^2l^2v\cos^2\theta}{R} \;\Rightarrow\; v_t = \frac{mgR\sin\theta}{B^2l^2\cos^2\theta} = \frac{0.10\times9.8\times1.0\times0.5}{0.25\times1.0\times0.75} = 2.61\ \text{m/s}.$$
+
+    Energy check: gravity's power $mgv_t\sin\theta = 0.98\times2.613\times0.5 = 1.28$ W; $\varepsilon = 0.5\times1\times2.613\times0.866 = 1.13$ V, $\varepsilon^2/R = 1.28$ W.
+  check: code

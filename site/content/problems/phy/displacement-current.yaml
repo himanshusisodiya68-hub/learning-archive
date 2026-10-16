@@ -112,3 +112,118 @@
   sol: |
     $\oint\mathbf B\cdot d\mathbf l = \mu_0\left(i_c + \varepsilon_0\dfrac{d\Phi_E}{dt}\right)$. A changing electric field now produces a magnetic field, just as a changing magnetic field produces an electric field (Faraday). Each can regenerate the other: an oscillating field in one region makes the other in the next, and the disturbance travels through empty space at $c = 1/\sqrt{\mu_0\varepsilon_0}$.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A parallel-plate capacitor with circular plates of radius 10 cm is charged by a steady current of 2.0 A. Ignoring fringing, find the largest magnetic field anywhere in the plane midway between the plates, and say where it occurs. (Original problem.)
+  ask: Largest magnetic field
+  unit: µT
+  ans: 4
+  tol: 0.01
+  verify: 2e-7*2/0.10*1e6
+  sol: |
+    The displacement current in the gap equals the charging current, $i_d = 2.0$ A, spread uniformly over the plate area. For a circle of radius $r$ about the axis:
+
+    - inside ($r<R$): $B = \dfrac{\mu_0 i_d r}{2\pi R^2}$, rising linearly;
+    - outside ($r>R$): $B = \dfrac{\mu_0 i_d}{2\pi r}$, falling.
+
+    The maximum is at the rim $r = R = 0.10$ m: $B = \dfrac{2\times10^{-7}\times2.0}{0.10} = 4.0\times10^{-6}$ T $= 4.0\ \mu$T. (At $r = 5$ cm and at $r = 20$ cm the field is $2.0\ \mu$T.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A 10 µF parallel-plate capacitor (circular plates of radius 5.0 cm, gap filled with a dielectric) is charged to 100 V and then discharged through a 1.0 kΩ resistor. Ignoring fringing, find the magnitude of the magnetic field at the rim of the plates, midway across the gap, at time t = RC after the discharge starts. (Original problem.)
+  ask: Magnetic field at the rim at t = RC
+  unit: µT
+  ans: 0.1472
+  tol: 0.001
+  verify: 2e-7*(100/1000)*Math.exp(-1)/0.05*1e6
+  sol: |
+    The discharge current is $I = \dfrac{V_0}{R}e^{-t/RC}$; at $t = RC$, $I = 0.1\times e^{-1} = 0.0368$ A. In the gap the total current is the displacement current (in a dielectric, $i_d = d\Phi_D/dt$), and it equals $I$. At the rim the loop encloses all of it:
+
+    $$B = \frac{\mu_0 I}{2\pi a} = \frac{2\times10^{-7}\times0.0368}{0.05} = 1.47\times10^{-7}\ \text{T} = 0.147\ \mu\text{T}.$$
+
+    Its sense is opposite to that during charging, because $d\vec E/dt$ now points from the $-$ plate to the $+$ plate.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Take sea water to have conductivity σ = 4.0 S/m and relative permittivity 81, both independent of frequency. At what frequency f are the amplitudes of the conduction current density and the displacement current density equal for a sinusoidal field? (Original problem.)
+  ask: Crossover frequency
+  unit: GHz
+  ans: 0.8877
+  tol: 0.002
+  verify: 4/(2*Math.PI*81*8.854e-12)/1e9
+  sol: |
+    For $E = E_0\sin\omega t$: $J_c = \sigma E_0\sin\omega t$ and $J_d = \varepsilon\,\partial E/\partial t = \omega\varepsilon E_0\cos\omega t$. The amplitudes are equal when $\sigma = \omega\varepsilon$, i.e.
+
+    $$f = \frac{\sigma}{2\pi\varepsilon_r\varepsilon_0} = \frac{4.0}{2\pi\times81\times8.854\times10^{-12}} = 8.88\times10^{8}\ \text{Hz}\approx0.89\ \text{GHz}.$$
+
+    Below this frequency sea water behaves mainly as a conductor; above it, mainly as a dielectric. (The data are given in the problem; real sea water's permittivity does vary with frequency in the GHz range [Unverified].)
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: mcq
+  q: An ideal capacitor is connected across an ac source, so the field between its plates is E = E₀ sin ωt. The displacement current in the gap (Original problem.)
+  opts: ["is in phase with E", "leads E by π/2", "lags E by π/2", "is zero, because no charge crosses the gap"]
+  ans: 1
+  sol: $i_d = \varepsilon_0A\,dE/dt = \varepsilon_0A\omega E_0\cos\omega t = \varepsilon_0A\omega E_0\sin(\omega t + \pi/2)$. It leads the field (and the capacitor voltage) by a quarter cycle, matching the familiar result that the current in a capacitor leads the voltage by 90°.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A capacitor has circular plates of radius 5.0 cm separated by 2.0 mm in vacuum. At one instant during charging the field between the plates is 1.0 × 10⁶ V/m and is increasing at 1.0 × 10¹² V m⁻¹ s⁻¹. Ignoring fringing, use the Poynting vector at the rim to find the electromagnetic power flowing into the gap region at that instant, and check it against the rate of increase of stored energy. (Original problem.)
+  ask: Power flowing in through the rim
+  unit: W
+  ans: 139.1
+  tol: 0.5
+  verify: 8.854e-12*Math.PI*0.05**2*0.002*1e6*1e12
+  sol: |
+    At the rim, the Ampère–Maxwell law with $i_d = \varepsilon_0\pi a^2\,dE/dt$ gives $B = \dfrac{\mu_0\varepsilon_0a}{2}\dfrac{dE}{dt}$, circling the axis. $\vec E$ is axial, so $\vec S = \vec E\times\vec B/\mu_0$ is radial; for a growing field it points inward. Its size is
+
+    $$S = \frac{EB}{\mu_0} = \frac{\varepsilon_0a}{2}E\frac{dE}{dt}.$$
+
+    Multiply by the side area $2\pi ad$:
+
+    $$P = \varepsilon_0\pi a^2d\,E\frac{dE}{dt} = 8.854\times10^{-12}\times\pi(0.05)^2\times0.002\times10^{6}\times10^{12} = 139\ \text{W}.$$
+
+    Check: $U = \tfrac12\varepsilon_0E^2\pi a^2d$, so $dU/dt = \varepsilon_0\pi a^2d\,E\,dE/dt$, the same expression. The energy enters sideways through the rim.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: An isolated parallel-plate capacitor is charged and its gap is filled with a homogeneous, slightly conducting dielectric of conductivity σ and permittivity ε. It slowly discharges through the dielectric. Show that (a) the field decays as e^(−σt/ε), with a time constant independent of the plate area and gap, and (b) there is no magnetic field anywhere during the discharge, even though a conduction current flows. (Original problem.)
+  hints:
+    - The free surface charge density on the + plate falls at the rate the conduction current density σE carries charge away.
+    - Relate E to the free surface charge density using the permittivity ε.
+    - Add the conduction and displacement current densities. What is the total current through any surface?
+  sol: |
+    (a) Let $\sigma_f$ be the free charge per unit area on the $+$ plate. Charge leaves it through the dielectric with current density $J_c = \sigma E$, so $d\sigma_f/dt = -\sigma E$. Gauss's law in the dielectric gives $E = \sigma_f/\varepsilon$. Hence $\varepsilon\,dE/dt = -\sigma E$ and $E = E_0e^{-\sigma t/\varepsilon}$. Neither $A$ nor $d$ appears: the time constant $\varepsilon/\sigma$ is a property of the material alone. (Equivalently, $RC = \dfrac{d}{\sigma A}\cdot\dfrac{\varepsilon A}{d} = \dfrac{\varepsilon}{\sigma}$.)
+
+    (b) The total current density in the gap is $J_c + J_d = \sigma E + \varepsilon\,\dfrac{dE}{dt} = \sigma E - \sigma E = 0$. Outside the gap there are no currents and no changing electric fields (the field is confined to the gap, ignoring fringing). So the right side of the Ampère–Maxwell law is zero for every loop, $\oint\vec B\cdot d\vec l = 0$ everywhere, and with $\oint\vec B\cdot d\vec A = 0$ and $B\to0$ far away, the only solution is $\vec B = 0$. The conduction current from $+$ to $-$ is exactly cancelled by the displacement current from $-$ to $+$. [Inference: the conclusion holds for any shape of electrodes in a homogeneous ohmic medium, because then the field keeps its shape and every point obeys $\varepsilon\,\partial E/\partial t = -\sigma E$.]
+  check: none
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A small radioactive source at rest emits charged particles isotropically, so that positive charge leaves it at a steady rate of 2.0 µA, flying radially outward. Find the magnitude of the displacement current density at a distance of 0.50 m from the source, at a time when particles are crossing that sphere, and hence show that there is no magnetic field. (Original problem.)
+  ask: Displacement current density at 0.50 m
+  unit: µA/m²
+  ans: 0.6366
+  tol: 0.002
+  verify: 2e-6/(4*Math.PI*0.25)*1e6
+  sol: |
+    By symmetry the field is radial: $E = \dfrac{Q_{in}(r,t)}{4\pi\varepsilon_0r^2}$, where $Q_{in}$ is the charge inside the sphere of radius $r$. Charge crosses that sphere outward at rate $I$, so $dQ_{in}/dt = -I$. The displacement current density is
+
+    $$J_d = \varepsilon_0\frac{\partial E}{\partial t} = \frac{1}{4\pi r^2}\frac{dQ_{in}}{dt} = -\frac{I}{4\pi r^2},$$
+
+    of magnitude $\dfrac{2.0\times10^{-6}}{4\pi(0.50)^2} = 6.37\times10^{-7}$ A/m² $= 0.637\ \mu$A/m², pointing **inward**. The conduction current density is $+I/4\pi r^2$ outward, so the total current density is zero everywhere.
+
+    Independently, symmetry forbids a magnetic field: a spherically symmetric $\vec B$ would have to be radial, and $\oint\vec B\cdot d\vec A = 0$ over a sphere then forces $B = 0$. The displacement current is what makes this consistent with Ampère's law, which without it would demand a field circling the outward current.
+  check: code

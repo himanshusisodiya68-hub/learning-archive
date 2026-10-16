@@ -196,7 +196,7 @@
 
     $$\frac{U}{W_b} = \frac{e}{2}(1 - e^{-1})^2 = 1.3591\times0.3996 = 0.543,$$
 
-    so 54.3% is stored and 45.7% is heat. (Over the whole growth, $t\to\infty$, the battery delivers infinitely more? No: $W_b$ grows without limit because the steady current keeps heating $R$; only the stored part saturates at $\tfrac12LI_0^2$.)
+    so 54.3% is stored and 45.7% is heat. (As $t\to\infty$ the fraction falls to zero: $W_b$ grows without limit because the steady current keeps heating $R$, while the stored energy saturates at $\tfrac12LI_0^2$.)
   check: code
 
 - id: o1
@@ -211,7 +211,7 @@
   sol: |
     **Before opening.** In steady state the coil is a plain wire, so it shorts R₂. The current is $\varepsilon/R_1 = 6$ A, all through the coil; R₂ carries nothing.
 
-    **Just after opening.** The battery branch is broken. The coil's current cannot jump, so 6 A still flows in the coil, and its only path is round through R₂. The voltage across R₂ is $6\times100 = 600$ V, fifty times the battery emf. This is the switch-off spike; the polarity across R₂ is reversed relative to the battery's earlier voltage across the pair (which was zero anyway in the steady state).
+    **Just after opening.** The battery branch is broken. The coil's current cannot jump, so 6 A still flows in the coil, and its only path is round through R₂. The voltage across R₂ is $6\times100 = 600$ V, fifty times the battery emf. This is the switch-off spike. In the steady state the voltage across the pair was zero, so the spike appears from nothing.
 
     **(b)** The current then decays as $6e^{-t/\tau}$ with $\tau = L/R_2 = 5$ ms. All the stored energy becomes heat in R₂: $\tfrac12LI_0^2 = \tfrac12\times0.5\times36 = 9$ J.
 
