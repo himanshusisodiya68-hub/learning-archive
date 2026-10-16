@@ -184,7 +184,7 @@
 - id: m1
   lvl: main
   kind: num
-  q: A wire of length 40 cm in the shape of a "U" bent at right angles has a 40 cm base and two 30 cm legs. It carries 10 A in a uniform 0.5 T field perpendicular to its plane. Find the net force on the whole wire. (Original problem.)
+  q: A wire bent into a "U" has a 40 cm base and two 30 cm legs (100 cm of wire in all). It carries 10 A in a uniform 0.5 T field perpendicular to its plane. Find the net force on the whole wire. (Original problem.)
   ask: Net force
   unit: N
   ans: 2

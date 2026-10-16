@@ -180,3 +180,137 @@
   ans: 0
   sol: By convention the field direction at a point is that in which a north pole (of a compass needle) would be pushed.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A long vertical wire carries a steady current of 10 A upwards. The horizontal component of the Earth's field at the place is 30 µT, pointing north. Find the distance of the neutral point from the wire, and say in which direction from the wire it lies. Ignore the vertical component of the Earth's field. (Original problem.)"
+  ask: Distance of the neutral point from the wire
+  unit: cm
+  ans: 6.67
+  tol: 0.03
+  verify: 2e-7*10/30e-6*100
+  sol: |
+    Seen from above, the upward current makes a field that circles **anticlockwise** (right-hand thumb rule). Due east of the wire this field points north and adds to $B_H$; due west it points south and opposes $B_H$. So the neutral point lies due **west**, where
+    $$\frac{\mu_0 I}{2\pi r} = B_H \;\Rightarrow\; r = \frac{\mu_0 I}{2\pi B_H} = \frac{2\times10^{-7}\times10}{30\times10^{-6}} = 6.67\times10^{-2}\ \text{m} \approx 6.67\ \text{cm}.$$
+    At no other point does the wire's field point exactly south, so this is the only neutral point (in the horizontal plane; the vertical component of the Earth's field, ignored here, would remove it altogether in reality).
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "Two long parallel straight wires are 10 cm apart and carry currents of 2.0 A and 6.0 A in the same direction. Find the distance from the 2.0 A wire of the point on the line joining them where the magnetic field is zero. (Original problem.)"
+  ask: Distance from the 2.0 A wire
+  unit: cm
+  ans: 2.5
+  tol: 0.02
+  verify: 10*2/(2+6)
+  sol: |
+    For currents in the same direction, the right-hand rule gives opposite field directions at points **between** the wires (outside, the fields point the same way and cannot cancel). At distance $x$ from the 2.0 A wire,
+    $$\frac{\mu_0 (2.0)}{2\pi x} = \frac{\mu_0(6.0)}{2\pi(10 - x)} \;\Rightarrow\; 2(10 - x) = 6x \;\Rightarrow\; x = 2.5\ \text{cm}.$$
+    The neutral point is nearer the weaker current, as expected: the weaker field has to be sampled closer to its wire to match the stronger one.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: "The currents in the two wires of the previous problem (2.0 A and 6.0 A, 10 cm apart) now flow in opposite directions. Where on the line through the wires is the field zero? Give its distance from the 2.0 A wire. (Original problem.)"
+  ask: Distance from the 2.0 A wire
+  unit: cm
+  ans: 5
+  tol: 0.02
+  verify: 10*2/(6-2)
+  sol: |
+    With opposite currents the two fields point the **same** way between the wires, so they add there. Outside the pair they oppose. They can cancel only on the side of the weaker (2.0 A) wire, where it is closer than the 6.0 A wire. At distance $x$ beyond the 2.0 A wire:
+    $$\frac{2.0}{x} = \frac{6.0}{10 + x} \;\Rightarrow\; 2(10 + x) = 6x \;\Rightarrow\; x = 5.0\ \text{cm}.$$
+    So the neutral point lies 5.0 cm from the 2.0 A wire, on the side away from the 6.0 A wire (15 cm from the 6.0 A wire). Check: $2/5 = 6/15 = 0.4$.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: "A long horizontal wire runs north–south, 5.0 cm above a compass lying on a table. When a current of 4.0 A flows north through the wire, by what angle is the compass needle deflected from the north, and towards which side? Take the horizontal component of the Earth's field as 35 µT. (Original problem.)"
+  ask: Deflection of the needle from north
+  unit: °
+  ans: 24.57
+  tol: 0.1
+  verify: deg(atan(2e-7*4/0.05/35e-6))
+  sol: |
+    Field of the wire at the compass:
+    $$B_w = \frac{\mu_0 I}{2\pi r} = \frac{2\times10^{-7}\times4.0}{0.050} = 16\ \mu\text{T}.$$
+    Direction: thumb north; below the wire the fingers point **west** (check: $d\vec l\times\hat r$ = north × down = west). This is horizontal and at right angles to $B_H$, so the needle lines up with the resultant, at angle $\theta$ west of north with
+    $$\tan\theta = \frac{B_w}{B_H} = \frac{16}{35} \;\Rightarrow\; \theta \approx 24.6^\circ.$$
+    The needle's north end turns about 24.6° towards the **west**.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "A short bar magnet of magnetic moment 0.40 A m² lies on a horizontal table with its north pole pointing towards the geographic south. The horizontal component of the Earth's field is 36 µT. Using the short-magnet results B = (μ₀/4π)(2m/r³) on the axis and (μ₀/4π)(m/r³) on the perpendicular bisector, find where the neutral points are and their distance from the centre of the magnet. Where would they be, and how far, if the magnet were turned round? (Original problem.)"
+  ask: Distance of the neutral points from the centre (magnet's N pole pointing south)
+  unit: cm
+  ans: 13.05
+  tol: 0.05
+  verify: cbrt(1e-7*2*0.40/36e-6)*100
+  sol: |
+    The moment points from the magnet's S to its N, so here it points **south**. On the axis, the magnet's field is along the moment (south) on both sides, while $B_H$ points north. They cancel on the axis, i.e. due **north and south** of the magnet, at
+    $$\frac{\mu_0}{4\pi}\frac{2m}{r^3} = B_H \;\Rightarrow\; r = \left(\frac{10^{-7}\times2\times0.40}{36\times10^{-6}}\right)^{1/3} = (2.22\times10^{-3})^{1/3}\ \text{m} \approx 13.0\ \text{cm}.$$
+    On the bisector the magnet's field is opposite to the moment, i.e. north, and adds to $B_H$, so there are no neutral points there.
+
+    Turned round, the moment points north. Now the bisector field points south and cancels $B_H$: neutral points lie due **east and west**, at
+    $$r' = \left(\frac{10^{-7}\times0.40}{36\times10^{-6}}\right)^{1/3} = \frac{r}{2^{1/3}} \approx 10.4\ \text{cm}.$$
+    (The short-magnet formulas need $r$ much larger than the magnet's length; the answer assumes this.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "Two long parallel wires, 10 cm apart, carry equal currents in the same direction. Consider the field in a plane perpendicular to the wires. The field lines near each wire are closed loops round that wire alone, and far away they are closed loops round both wires. The two families are separated by a special figure-of-eight field line that passes through the neutral point. How far beyond each wire does this figure-of-eight line cross the line through the two wires? (Original problem.)"
+  ask: Distance beyond each wire
+  unit: cm
+  ans: 2.071
+  tol: 0.01
+  verify: 5*(sqrt(2)-1)
+  sol: |
+    Put the wires at $(\pm d, 0)$ with $d = 5$ cm, currents out of the page. For parallel currents in two dimensions, the field lines are contours of $\psi = -\dfrac{\mu_0 I}{2\pi}\ln r_1 - \dfrac{\mu_0 I}{2\pi}\ln r_2 = -\dfrac{\mu_0 I}{2\pi}\ln(r_1 r_2)$, where $r_1, r_2$ are the distances to the two wires. (Check: $B_x = \partial_y\psi$, $B_y = -\partial_x\psi$ reproduces the anticlockwise field of each wire, and $\psi$ is constant along each line because $\vec B\cdot\nabla\psi = 0$.) So every field line is a curve
+    $$r_1 r_2 = \text{constant}.$$
+    These are the Cassini ovals. The neutral point is the midpoint (equal and opposite fields), where $r_1 r_2 = d^2$. The field line through it is
+    $$r_1 r_2 = d^2,$$
+    the **lemniscate of Bernoulli**, a figure of eight crossing itself at the midpoint. Curves with $r_1 r_2 < d^2$ are two separate ovals, one round each wire; curves with $r_1 r_2 > d^2$ are single ovals round both.
+
+    On the line through the wires, at distance $x > d$ from the midpoint: $(x - d)(x + d) = d^2$, so $x = \sqrt2\,d = 7.07$ cm. Beyond each wire this is
+    $$x - d = (\sqrt2 - 1)d = 0.414\times5\ \text{cm} \approx 2.07\ \text{cm}.$$
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: text
+  q: "A circular loop lies in the horizontal plane z = 0, with current anticlockwise when viewed from above, so that the field at its centre points along +z. (a) The whole apparatus is reflected in the vertical plane x = 0. Find the direction of the field at the centre of the mirror-image loop, and compare it with the mirror image of an ordinary arrow pointing along +z. (b) Repeat for reflection in the horizontal plane z = 0 (the loop lies in this plane). (c) What general rule do (a) and (b) suggest for how B behaves under a reflection? (Original problem.)"
+  sol: |
+    (a) A mirror reverses every sense of rotation that lies across it. The loop's current, anticlockwise seen from above, becomes **clockwise** seen from above in the image. By the right-hand rule the image loop's field at its centre points along **−z**. An ordinary arrow along $+z$ lies parallel to the mirror $x = 0$, so its image still points along $+z$. The field and the arrow disagree.
+
+    (b) Reflection in $z = 0$ leaves the loop exactly where it was, with the same current in the same sense (the loop lies in the mirror). So the field at the centre is still along **+z**. An ordinary arrow along $+z$, perpendicular to this mirror, would reflect into $-z$. Again they disagree, in the opposite way.
+
+    (c) Under reflection, a component of $\vec B$ **parallel** to the mirror reverses and the component **perpendicular** to it is unchanged: exactly the opposite of an ordinary (polar) vector such as a displacement or a force. $\vec B$ is an **axial vector**, because it comes from the cross product $I\,d\vec l\times\vec r$ of two polar vectors. The force $q\vec v\times\vec B$ is a cross product of a polar and an axial vector and so is an ordinary vector, which is why mirror-image experiments give mirror-image motions.
+  check: none
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: "Two long, parallel, narrow beams of electrons travel side by side in the same direction, each with speed 0.60c in the laboratory. Find the ratio of the net force between the beams (electric plus magnetic) to the electrostatic force alone, both measured in the laboratory. Explain how an observer moving with the electrons, who sees no magnetic force, gets a consistent result. (Original problem.)"
+  ask: Net force ÷ electrostatic force
+  unit: ""
+  ans: 0.64
+  tol: 0.005
+  verify: 1-0.6**2
+  sol: |
+    Let each beam have line density $\lambda$ in the lab, a distance $r$ apart. On an electron (charge $q$) in one beam:
+
+    - electric repulsion $F_E = \dfrac{q\lambda}{2\pi\varepsilon_0 r}$;
+    - the other beam is a current $\lambda v$ with field $B = \dfrac{\mu_0\lambda v}{2\pi r}$, giving a magnetic force $qvB = \dfrac{\mu_0 q\lambda v^2}{2\pi r}$, which is **attractive** (parallel currents attract).
+
+    With $\mu_0\varepsilon_0 = 1/c^2$, $F_B/F_E = v^2/c^2 = 0.36$, so
+    $$\frac{F_{\text{net}}}{F_E} = 1 - \frac{v^2}{c^2} = 1 - 0.36 = 0.64.$$
+
+    In the electrons' rest frame there is no current, only an electric force, but the charges are spread out more: the rest-frame density is $\lambda/\gamma$ (lab lengths are contracted). So the rest-frame force is $F_E/\gamma$. A transverse force transforms as $F_{\text{lab}} = F_{\text{rest}}/\gamma$ (the lab sees the same transverse momentum change over a dilated time). So the lab force is $F_E/\gamma^2 = (1 - v^2/c^2)F_E$, the same 0.64. The magnetic force is exactly the relativistic correction that keeps the two frames in agreement.
+  check: code
