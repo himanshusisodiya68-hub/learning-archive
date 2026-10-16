@@ -1,0 +1,1064 @@
+<title>Learning Archive</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: app shell — left rail of 4 destinations on desktop, bottom tab bar on phones; graph-paper ground; lessons read in one ~66ch column */
+:root {
+  --paper: #F4F6F5;
+  --grid: rgba(38, 72, 120, .05);
+  --surface: #FFFFFF;
+  --sunk: #ECEFEE;
+  --ink: #17202B;
+  --muted: #586272;
+  --rule: #D7DCE0;
+  --accent: #2A4A9A;
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(42, 74, 154, .09);
+  --phy: #4350B5; --mat: #0D776D; --chem: #A2650F; --bio: #3D7624; --eng: #AB3A60;
+  --good: #2E7A4D; --warn: #A2650F; --bad: #B03838;
+  --f-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Literata", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10141A; --grid: rgba(150, 180, 225, .04); --surface: #171C24; --sunk: #1F2530;
+    --ink: #E2E6EC; --muted: #9AA3B2; --rule: #2A313C; --accent: #93AAF2; --accent-ink: #10141A; --accent-soft: rgba(147, 170, 242, .13);
+    --phy: #8F99F2; --mat: #4FC4B4; --chem: #E2AA4C; --bio: #88C46C; --eng: #E88DAC; --good: #6CC48F; --warn: #E2AA4C; --bad: #EE8080;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10141A; --grid: rgba(150, 180, 225, .04); --surface: #171C24; --sunk: #1F2530;
+  --ink: #E2E6EC; --muted: #9AA3B2; --rule: #2A313C; --accent: #93AAF2; --accent-ink: #10141A; --accent-soft: rgba(147, 170, 242, .13);
+  --phy: #8F99F2; --mat: #4FC4B4; --chem: #E2AA4C; --bio: #88C46C; --eng: #E88DAC; --good: #6CC48F; --warn: #E2AA4C; --bad: #EE8080;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink); font-family: var(--f-display); font-size: 15px; line-height: 1.5;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+a { color: var(--accent); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+/* ---------- shell ---------- */
+.app { display: grid; grid-template-columns: 216px minmax(0, 1fr); min-height: 100%; }
+.rail { position: sticky; top: env(safe-area-inset-top, 0px); align-self: start; height: 100vh; border-right: 1px solid var(--rule); background: var(--surface); padding: 20px 12px; display: flex; flex-direction: column; gap: 4px; padding-left: max(12px, env(safe-area-inset-left, 0px)); }
+.brand { font-weight: 800; font-size: 17px; letter-spacing: -.01em; padding: 0 10px 18px; }
+.brand small { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 10.5px; color: var(--muted); letter-spacing: .04em; }
+.nav { display: flex; align-items: center; gap: 12px; padding: 9px 10px; border-radius: var(--r); text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14.5px; position: relative; }
+.nav svg { width: 20px; height: 20px; flex: none; }
+.nav:hover { background: var(--sunk); color: var(--ink); }
+.nav[aria-current="page"] { background: var(--accent-soft); color: var(--ink); }
+.nav[aria-current="page"] svg { color: var(--accent); }
+.badge { margin-left: auto; font-family: var(--f-mono); font-size: 11px; background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 0 7px; line-height: 18px; }
+.rail-foot { margin-top: auto; font-size: 11.5px; color: var(--muted); padding: 0 10px; }
+
+main { min-width: 0; padding-block: 32px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: 1040px; margin: 0 auto; }
+section[data-view] { display: none; }
+section[data-view].on { display: block; }
+
+.eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.h1 { font-size: clamp(26px, 4vw, 34px); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; margin-top: 4px; }
+.lede { color: var(--muted); margin-top: 6px; max-width: 60ch; }
+.head { margin-bottom: 24px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 18px; min-width: 0; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 8px 18px; font-weight: 600; font-size: 14px; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn.quiet { background: var(--sunk); border-color: var(--rule); color: var(--ink); }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn:hover:not(:disabled) { filter: brightness(1.08); }
+.note { font-size: 12.5px; color: var(--muted); margin-top: 16px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--muted)); flex: none; display: inline-block; }
+.glyph { --p: 0; width: 14px; height: 14px; border-radius: 50%; flex: none; border: 1.5px solid var(--c, var(--accent)); background: conic-gradient(var(--c, var(--accent)) calc(var(--p) * 1turn), transparent 0); display: inline-block; }
+.s-phy { --c: var(--phy); } .s-mat { --c: var(--mat); } .s-chem { --c: var(--chem); } .s-bio { --c: var(--bio); } .s-eng { --c: var(--eng); }
+.meter { height: 6px; background: var(--sunk); border-radius: 3px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--c, var(--accent)); border-radius: 3px; }
+
+/* ---------- home ---------- */
+.search { position: relative; margin-bottom: 22px; }
+.search input { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px 12px 42px; border: 1px solid var(--rule); border-radius: 999px; background: var(--surface); color: var(--ink); }
+.search svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); }
+.results { position: absolute; left: 0; right: 0; top: calc(100% + 6px); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); z-index: 4; box-shadow: 0 8px 24px rgba(0,0,0,.08); overflow: hidden; }
+.results button { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--rule); padding: 10px 14px; cursor: pointer; font-size: 14px; }
+.results button:first-child { border-top: 0; }
+.results button:hover { background: var(--sunk); }
+.results .path { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; border-left: 4px solid var(--phy); padding: 22px; }
+.hero h2 { font-size: clamp(22px, 3vw, 28px); font-weight: 800; letter-spacing: -.02em; margin: 4px 0 6px; }
+.hero .stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.hero .stats b { color: var(--ink); font-weight: 600; }
+.hero .acts { display: flex; flex-direction: column; gap: 8px; }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.mini-card { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; }
+.mini-card .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.mini-card .ico svg { width: 20px; height: 20px; }
+.mini-card h3 { font-size: 16px; font-weight: 700; }
+.mini-card p { color: var(--muted); font-size: 13.5px; margin: 2px 0 12px; }
+.subj-list { list-style: none; margin: 0; padding: 0; }
+.subj-list li { border-top: 1px solid var(--rule); }
+.subj-list li:first-child { border-top: 0; }
+.subj-list button { width: 100%; background: none; border: 0; cursor: pointer; display: grid; grid-template-columns: 120px minmax(0, 1fr) 140px auto; gap: 14px; align-items: center; padding: 12px 4px; text-align: left; border-radius: 6px; }
+.subj-list button:hover { background: var(--sunk); }
+.subj-list .nm { font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.subj-list .nx { font-size: 13px; color: var(--muted); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.subj-list .pc { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sec-title { font-size: 15px; font-weight: 700; margin: 28px 0 10px; display: flex; justify-content: space-between; align-items: baseline; }
+
+/* ---------- learn ---------- */
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--surface); }
+.seg button { border: 0; background: transparent; padding: 6px 13px; border-radius: 999px; font-weight: 600; font-size: 13.5px; cursor: pointer; color: var(--muted); display: inline-flex; align-items: center; gap: 7px; }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--ink); }
+.crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 13px; margin-bottom: 12px; }
+.crumbs button { background: none; border: 0; padding: 3px 6px; border-radius: 4px; cursor: pointer; color: var(--accent); font-weight: 600; }
+.crumbs button:hover { background: var(--accent-soft); }
+.crumbs span.sep { color: var(--muted); }
+.crumbs span.cur { padding: 3px 6px; font-weight: 600; }
+.cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--rule); border-radius: var(--r); background: var(--surface); overflow: hidden; min-height: 420px; }
+.col { border-left: 1px solid var(--rule); min-width: 0; display: flex; flex-direction: column; }
+.col:first-child { border-left: 0; }
+.col-h { padding: 12px 14px 8px; }
+.col-list { list-style: none; margin: 0; padding: 0 6px 8px; overflow-y: auto; }
+.row { width: 100%; background: none; border: 0; text-align: left; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 6px; }
+.row:hover { background: var(--sunk); }
+.row[aria-selected="true"] { background: var(--accent-soft); }
+.row .t { font-weight: 600; font-size: 14.5px; }
+.row .s { display: block; font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+.row .meter { width: 54px; }
+.row .chev { width: 14px; height: 14px; color: var(--muted); }
+.leafrow { grid-template-columns: 14px minmax(0, 1fr) auto; }
+.leafrow .t { font-weight: 500; }
+.leafrow.has .t { font-weight: 700; }
+.lvl { font-family: var(--f-mono); font-size: 10.5px; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--rule); color: var(--muted); white-space: nowrap; }
+.lvl.jee { color: var(--chem); border-color: currentColor; }
+.lvl.oly { color: var(--eng); border-color: currentColor; }
+.col-empty { padding: 20px 14px; color: var(--muted); font-size: 13.5px; }
+.leaf-preview { margin: 6px 12px 12px; padding: 14px; border-radius: var(--r); background: var(--sunk); display: grid; gap: 8px; }
+.leaf-preview h3 { font-size: 17px; }
+.leaf-preview p { font-size: 13px; color: var(--muted); }
+.class-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.class-pills button { border: 1px solid var(--rule); background: var(--surface); border-radius: var(--r); padding: 7px 14px; cursor: pointer; font-weight: 700; font-size: 14px; }
+.class-pills button small { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 10px; color: var(--muted); }
+.class-pills button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.books { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+.books h3 { font-size: 15px; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.chap { list-style: none; margin: 0; padding: 0; counter-reset: ch; }
+.chap li { counter-increment: ch; display: grid; grid-template-columns: 2.4ch minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--rule); font-size: 14px; }
+.chap li::before { content: counter(ch); font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-align: right; }
+.chap li.restored::before { content: "+"; }
+.chap a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.chap a.live { color: var(--accent); }
+.st { font-family: var(--f-mono); font-size: 10.5px; padding: 1px 7px; border-radius: 999px; white-space: nowrap; color: var(--muted); border: 1px solid var(--rule); }
+.st.restored { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+
+/* ---------- lesson ---------- */
+.lesson-head { margin-bottom: 18px; }
+.back { background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; font-size: 13.5px; cursor: pointer; margin-bottom: 10px; display: inline-flex; gap: 6px; align-items: center; }
+.lesson-head h1 { font-size: clamp(30px, 5vw, 42px); font-weight: 800; letter-spacing: -.025em; line-height: 1.05; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; font-size: 13px; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 600; }
+.ltabs { display: flex; gap: 4px; border-bottom: 1px solid var(--rule); margin-bottom: 26px; overflow-x: auto; scrollbar-width: none; }
+.ltabs button { background: none; border: 0; border-bottom: 2px solid transparent; padding: 10px 14px; font-weight: 600; font-size: 14.5px; color: var(--muted); cursor: pointer; white-space: nowrap; margin-bottom: -1px; }
+.ltabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.ltabs .count { font-family: var(--f-mono); font-size: 11px; background: var(--sunk); border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
+.lpane[hidden] { display: none; }
+.read { display: grid; grid-template-columns: minmax(0, 66ch) minmax(0, 1fr); gap: 40px; }
+.needs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 22px; }
+.chip { font-size: 12.5px; border: 1px solid var(--rule); border-radius: 999px; padding: 2px 10px; background: var(--surface); display: inline-flex; gap: 6px; align-items: center; }
+.prose { font-family: var(--f-body); font-size: 17px; line-height: 1.7; }
+.prose p { margin: 0 0 1em; }
+.prose h2 { font-family: var(--f-display); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 34px 0 14px; display: flex; align-items: center; gap: 10px; }
+.prose h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.law { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 18px; text-align: center; font-size: 24px; margin: 18px 0; overflow-x: auto; }
+.law small { display: block; font-family: var(--f-display); font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+math { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", var(--f-body); }
+.hook { background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--phy); border-radius: var(--r); padding: 18px; }
+.hook .q { font-family: var(--f-body); font-size: 17.5px; margin: 6px 0 14px; }
+.opts { display: grid; gap: 8px; }
+.opts.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.opt { border: 1px solid var(--rule); background: var(--sunk); border-radius: var(--r); padding: 11px 14px; cursor: pointer; font-weight: 600; text-align: left; }
+.opts.three .opt { text-align: center; }
+.opt:hover:not(:disabled) { border-color: var(--accent); }
+.opt.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--surface)); }
+.opt.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 10%, var(--surface)); }
+.opt:disabled { cursor: default; }
+.fb { font-family: var(--f-body); font-size: 15.5px; margin-top: 12px; }
+.sim { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 14px; }
+.sim svg { width: 100%; max-width: min(100%, 460px); height: auto; display: block; margin: 0 auto; }
+.sim .controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px; align-items: center; margin-top: 10px; font-size: 13px; }
+.sim input[type=range] { width: 100%; accent-color: var(--phy); grid-column: 1 / -1; }
+.sim select { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--rule); border-radius: 6px; background: var(--sunk); color: var(--ink); }
+.readout { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--f-mono); font-size: 12.5px; margin-top: 10px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.readout b { color: var(--ink); font-weight: 500; }
+.readout .tir { color: var(--bad); font-weight: 500; }
+.sim .m1 { fill: var(--sunk); } .sim .m2 { fill: color-mix(in srgb, var(--phy) 12%, var(--surface)); }
+.sim .normal { stroke: var(--muted); stroke-dasharray: 4 4; stroke-width: 1; }
+.sim .iface { stroke: var(--rule); stroke-width: 1.5; }
+.sim .ray { stroke: var(--phy); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+.sim .lbl { fill: var(--muted); font-family: var(--f-mono); font-size: 10px; }
+.sim .arc { stroke: var(--muted); fill: none; stroke-width: 1; }
+.worked { background: var(--sunk); border-radius: var(--r); padding: 16px 18px; font-size: 16px; }
+.worked ol { margin: 8px 0 0; padding-left: 1.3em; }
+.next-step { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; background: var(--accent-soft); border-radius: var(--r); padding: 16px 18px; margin-top: 28px; font-family: var(--f-display); }
+.next-step b { display: block; font-size: 16px; }
+.next-step span { font-size: 13px; color: var(--muted); }
+.margin { font-size: 13px; color: var(--muted); display: grid; gap: 22px; align-content: start; padding-top: 6px; }
+.margin .mn { border-left: 2px solid var(--rule); padding-left: 12px; }
+.margin .mn b { display: block; color: var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+.margin .mn.tip { border-color: var(--chem); }
+.margin .mn.oly { border-color: var(--eng); }
+
+/* practice list inside lesson */
+.ladder { display: grid; gap: 14px; }
+.rung { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
+.rung-h { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 14px 16px; }
+.rung-h p { font-size: 13px; color: var(--muted); }
+.rung ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.rung li button { width: 100%; background: none; border: 0; border-top: 1px solid var(--rule); text-align: left; cursor: pointer; display: grid; grid-template-columns: 2.6ch minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 11px 16px; font-size: 14px; }
+.rung li:first-child button { border-top: 0; }
+.rung li button:hover { background: var(--sunk); }
+.rung .num { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.rung .preview { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--f-body); }
+.state { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--rule); display: inline-grid; place-items: center; font-size: 11px; font-weight: 700; vertical-align: middle; }
+.state.got { background: var(--good); border-color: var(--good); color: var(--surface); }
+.state.shaky { background: var(--warn); border-color: var(--warn); color: var(--surface); }
+.state.missed { background: var(--bad); border-color: var(--bad); color: var(--surface); }
+.pending { padding: 14px 16px; border-top: 1px dashed var(--rule); font-size: 13.5px; color: var(--muted); }
+.tier { font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--sunk); white-space: nowrap; font-size: 11.5px; }
+.tier.ncert { color: var(--mat); } .tier.found { color: var(--muted); } .tier.board { color: var(--accent); } .tier.main { color: var(--chem); } .tier.adv { color: var(--bad); } .tier.oly { color: var(--eng); }
+textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size: 16px; padding: 14px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--surface); color: var(--ink); resize: vertical; }
+
+/* ---------- practice hub ---------- */
+.sets { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px; }
+.set { display: grid; gap: 10px; align-content: start; }
+.set h3 { font-size: 16.5px; }
+.set p { font-size: 13.5px; color: var(--muted); }
+.set .tiers { display: flex; flex-wrap: wrap; gap: 5px; }
+.set.off { opacity: .55; }
+.level-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.level-row button { border: 1px solid var(--rule); background: var(--surface); border-radius: var(--r); padding: 10px 14px; cursor: pointer; display: grid; gap: 2px; text-align: left; min-width: 120px; }
+.level-row button:hover { border-color: var(--accent); }
+.level-row button span { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+
+/* ---------- player ---------- */
+.player { max-width: 720px; margin: 0 auto; }
+.play-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.play-top .count { font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.dots { display: flex; gap: 4px; margin-bottom: 18px; }
+.dots button { flex: 1; height: 6px; border-radius: 3px; border: 0; background: var(--sunk); cursor: pointer; padding: 0; }
+.dots button.cur { background: var(--accent); }
+.dots button.got { background: var(--good); } .dots button.shaky { background: var(--warn); } .dots button.missed { background: var(--bad); }
+.pcard { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 22px; }
+.pmeta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+.src { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.ver { margin-left: auto; font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); }
+.ver.ok { color: var(--good); }
+.stmt { font-family: var(--f-body); font-size: 18px; line-height: 1.65; margin-bottom: 18px; }
+.ansrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ansrow input { font: inherit; font-family: var(--f-mono); width: 150px; padding: 9px 12px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--sunk); color: var(--ink); }
+.ansrow .unit { font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+.verdict { margin-top: 12px; font-weight: 600; }
+.verdict.good { color: var(--good); } .verdict.bad { color: var(--bad); }
+.helps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--rule); }
+.hint, .solution { font-family: var(--f-body); font-size: 16px; line-height: 1.6; background: var(--sunk); border-radius: var(--r); padding: 12px 14px; margin-top: 10px; }
+.hint b, .solution b { font-family: var(--f-display); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); display: block; margin-bottom: 2px; }
+.rate-box { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.rate-box p { font-size: 13.5px; color: var(--muted); margin-bottom: 8px; }
+.rate3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rate3 button { border: 1px solid var(--rule); background: var(--surface); border-radius: var(--r); padding: 9px 6px; cursor: pointer; font-weight: 600; display: grid; gap: 1px; }
+.rate3 button span { font-family: var(--f-mono); font-weight: 400; font-size: 10.5px; color: var(--muted); }
+.rate3 button[data-r="missed"]:hover { border-color: var(--bad); }
+.rate3 button[data-r="shaky"]:hover { border-color: var(--warn); }
+.rate3 button[data-r="got"]:hover { border-color: var(--good); }
+.play-nav { display: flex; justify-content: space-between; margin-top: 14px; }
+.summary { text-align: center; padding: 34px 22px; }
+.summary .big { font-size: 46px; font-weight: 800; letter-spacing: -.03em; }
+.summary .split { display: flex; justify-content: center; gap: 20px; margin: 10px 0 20px; font-size: 14px; color: var(--muted); flex-wrap: wrap; }
+
+/* ---------- review ---------- */
+.rev { max-width: 620px; margin: 0 auto; }
+.fcard { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 26px 22px; min-height: 230px; display: flex; flex-direction: column; }
+.fcard .front { font-family: var(--f-body); font-size: 20px; line-height: 1.5; margin: 8px 0 18px; }
+.fcard .back { font-family: var(--f-body); font-size: 17px; line-height: 1.6; border-top: 1px dashed var(--rule); padding-top: 16px; }
+.rate4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 18px; }
+.rate4 button { border: 1px solid var(--rule); background: var(--sunk); border-radius: var(--r); padding: 8px 4px; cursor: pointer; font-weight: 600; font-size: 13.5px; display: grid; }
+.rate4 button span { font-family: var(--f-mono); font-weight: 400; font-size: 10.5px; color: var(--muted); }
+.rate4 button:hover { border-color: var(--accent); }
+.howto { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; font-size: 13px; color: var(--muted); }
+.howto b { display: block; color: var(--ink); font-size: 13.5px; }
+
+/* ---------- phones ---------- */
+@media (max-width: 860px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .rail { position: fixed; top: auto; bottom: 0; left: 0; right: 0; height: auto; z-index: 6; flex-direction: row; justify-content: space-around; border-right: 0; border-top: 1px solid var(--rule); padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px)); gap: 0; }
+  .brand, .rail-foot { display: none; }
+  .nav { flex-direction: column; gap: 2px; font-size: 11px; padding: 6px 10px; flex: 1; }
+  .nav[aria-current="page"] { background: transparent; color: var(--accent); }
+  .badge { position: absolute; top: 2px; left: calc(50% + 6px); margin: 0; font-size: 10px; line-height: 15px; padding: 0 5px; }
+  main { padding-block: 22px calc(96px + env(safe-area-inset-bottom, 0px)); }
+  .read { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .margin { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); padding-top: 26px; }
+  .cols { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .col { display: none; border-left: 0; }
+  .col.active { display: flex; }
+  .subj-list button { grid-template-columns: minmax(0, 1fr) 90px auto; }
+  .subj-list .nx { display: none; }
+}
+@media (max-width: 560px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .hero .acts { flex-direction: row; flex-wrap: wrap; }
+  .duo { grid-template-columns: minmax(0, 1fr); }
+  .opts.three { grid-template-columns: minmax(0, 1fr); }
+  .howto { grid-template-columns: minmax(0, 1fr); }
+  .prose { font-size: 16.5px; }
+  .stmt { font-size: 17px; }
+  .pcard { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<div class="app">
+  <nav class="rail" aria-label="Main">
+    <div class="brand">learning archive<small>mockup v2</small></div>
+    <a class="nav" href="#home" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>Home</a>
+    <a class="nav" href="#learn" data-nav="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="5" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 7v4M6 16v-2.5h12V16M12 11v5"/></svg>Learn</a>
+    <a class="nav" href="#practice" data-nav="practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M15 4l5 5L9 20H4v-5z"/><path d="M13 6l5 5"/></svg>Practice</a>
+    <a class="nav" href="#review" data-nav="review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>Review<span class="badge" id="rev-badge">5</span></a>
+    <div class="rail-foot">Progress shown here is sample data.</div>
+  </nav>
+
+  <main>
+    <div class="inner">
+
+    <!-- ================= HOME ================= -->
+    <section data-view="home">
+      <div class="head">
+        <div class="eyebrow" id="today-date">Today</div>
+        <h1 class="h1">Pick up where you left off</h1>
+      </div>
+
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="q" type="search" placeholder="Find any idea: lens, quadratic, friction…" autocomplete="off" aria-label="Search the archive">
+        <div class="results" id="results" hidden></div>
+      </div>
+
+      <div class="panel hero s-phy">
+        <div>
+          <div class="eyebrow">Physics · Optics · Ray optics</div>
+          <h2>Refraction and Snell's law</h2>
+          <div class="stats"><span><b>Lesson</b> 60% read</span><span><b>Problems</b> <span id="home-solved">0</span> of 15 solved</span><span><b>Next</b> Total internal reflection</span></div>
+          <div class="meter"><i style="width:60%"></i></div>
+        </div>
+        <div class="acts">
+          <a class="btn" href="#lesson" data-tab-open="learn">Continue lesson</a>
+          <a class="btn ghost" href="#lesson" data-tab-open="practice">Practise it</a>
+        </div>
+      </div>
+
+      <div class="duo">
+        <div class="panel mini-card">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span>
+          <div><h3>5 cards due</h3><p>Old ideas, timed to come back just before you forget them. About 4 minutes.</p><a class="btn quiet" href="#review">Start review</a></div>
+        </div>
+        <div class="panel mini-card">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M15 4l5 5L9 20H4v-5z"/></svg></span>
+          <div><h3>Today's problem set</h3><p>6 problems from Foundation up to Olympiad, shuffled so you have to recognise the method yourself.</p><button class="btn quiet" data-start="daily">Start set</button></div>
+        </div>
+      </div>
+
+      <div class="sec-title">Your subjects <span class="eyebrow">tap to open</span></div>
+      <div class="panel" style="padding:6px 14px">
+        <ul class="subj-list" id="subj-list"></ul>
+      </div>
+    </section>
+
+    <!-- ================= LEARN ================= -->
+    <section data-view="learn">
+      <div class="head">
+        <div class="eyebrow">Learn</div>
+        <h1 class="h1">Find an idea and open it</h1>
+        <p class="lede">Each subject is a tree. Pillars split into branches, branches into leaves, and every leaf is one lesson with its own problems.</p>
+      </div>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Browse by" id="mode-seg">
+          <button aria-pressed="true" data-mode="subject">By subject</button>
+          <button aria-pressed="false" data-mode="class">By class (NCERT)</button>
+        </div>
+        <div class="seg" role="group" aria-label="Subject" id="subj-seg"></div>
+      </div>
+      <div id="by-subject">
+        <div class="crumbs" id="crumbs"></div>
+        <div class="cols" id="cols"></div>
+      </div>
+      <div id="by-class" hidden>
+        <div class="class-pills" id="class-pills"></div>
+        <div class="books" id="books"></div>
+        <p class="note">These chapter lists come from memory of the rationalised editions and have not yet been checked against ncert.nic.in. Rows marked + are chapters that were removed and will be written back in.</p>
+      </div>
+    </section>
+
+    <!-- ================= LESSON ================= -->
+    <section data-view="lesson">
+      <div class="lesson-head">
+        <button class="back" id="lesson-back">← Physics · Optics · Ray optics</button>
+        <h1>Refraction and Snell's law</h1>
+        <div class="meta">
+          <span><b>NCERT</b> Class 10 Science · Light &nbsp;·&nbsp; Class 12 Physics · Ray Optics</span>
+          <span><b>Goes up to</b> Olympiad</span>
+          <span class="s-phy" style="display:inline-flex;gap:6px;align-items:center"><i class="glyph" style="--p:.5"></i>practised</span>
+        </div>
+      </div>
+      <div class="ltabs" role="tablist" id="ltabs">
+        <button role="tab" aria-selected="true" data-ltab="learn">Learn</button>
+        <button role="tab" aria-selected="false" data-ltab="practice">Practice <span class="count">15 + NCERT</span></button>
+        <button role="tab" aria-selected="false" data-ltab="books">From books</button>
+        <button role="tab" aria-selected="false" data-ltab="notes">My notes</button>
+      </div>
+
+      <div class="lpane" data-lpane="learn">
+        <div class="read">
+          <div>
+            <div class="needs">
+              <span class="eyebrow" style="margin-right:4px">Builds on</span>
+              <span class="chip"><i class="glyph s-phy" style="--p:1;width:10px;height:10px"></i>Laws of reflection</span>
+              <span class="chip"><i class="glyph s-phy" style="--p:.75;width:10px;height:10px"></i>Speed of light</span>
+              <span class="chip"><i class="glyph s-mat" style="--p:1;width:10px;height:10px"></i>Sine of an angle</span>
+            </div>
+
+            <div class="hook" id="hook">
+              <div class="eyebrow">Try this before reading</div>
+              <div class="q">A coin lies at the bottom of a bucket filled with water to a depth of 40 cm. Looking straight down, how deep does the coin seem to be?</div>
+              <div class="opts three">
+                <button class="opt" data-ok="0">40 cm</button>
+                <button class="opt" data-ok="1">about 30 cm</button>
+                <button class="opt" data-ok="0">about 53 cm</button>
+              </div>
+              <div class="fb" id="hook-fb" hidden></div>
+            </div>
+
+            <div class="prose">
+              <h2>The idea</h2>
+              <p>Light travels at about 3 × 10<sup>8</sup> m/s in vacuum and more slowly inside matter. When a beam crosses into a new material at an angle, one edge of the beam slows down before the other, so the beam swings round. A column of marchers turns the same way when one end steps into mud first.</p>
+              <p>The refractive index compares the two speeds: <i>n</i> = <i>c</i>/<i>v</i>. Water has <i>n</i> ≈ 1.33 and ordinary glass about 1.5. A larger <i>n</i> means slower light and a sharper bend towards the normal.</p>
+              <div class="law">
+                <math display="block"><msub><mi>n</mi><mn>1</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>1</mn></msub><mo>=</mo><msub><mi>n</mi><mn>2</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>2</mn></msub></math>
+                <small>Both angles are measured from the normal, the line perpendicular to the surface.</small>
+              </div>
+              <h2>Move the ray yourself</h2>
+            </div>
+
+            <div class="sim">
+              <svg viewBox="0 0 360 230" role="img" aria-label="Ray diagram: a light ray bending at the boundary between two media">
+                <rect class="m1" id="m1" x="0" y="0" width="360" height="115"/>
+                <rect class="m2" id="m2" x="0" y="115" width="360" height="115"/>
+                <line class="iface" x1="0" y1="115" x2="360" y2="115"/>
+                <line class="normal" x1="180" y1="8" x2="180" y2="222"/>
+                <path class="arc" id="arc1"/><path class="arc" id="arc2"/>
+                <line class="ray" id="rRefl" x1="180" y1="115" style="stroke-width:2"/>
+                <line class="ray" id="rIn" x2="180" y2="115"/>
+                <line class="ray" id="rOut" x1="180" y1="115"/>
+                <text class="lbl" id="lab1" x="10" y="20">Air · n = 1.00</text>
+                <text class="lbl" id="lab2" x="10" y="220">Water · n = 1.33</text>
+                <text class="lbl" x="186" y="18">normal</text>
+              </svg>
+              <div class="controls">
+                <label for="ang">Angle of incidence θ<sub>1</sub>: <b id="angv">40°</b></label>
+                <select id="pair" aria-label="Media">
+                  <option value="0">Air → Water</option><option value="1">Air → Glass</option>
+                  <option value="2">Water → Air</option><option value="3">Glass → Air</option><option value="4">Water → Glass</option>
+                </select>
+                <input id="ang" type="range" min="0" max="89" value="40">
+              </div>
+              <div class="readout" id="readout"></div>
+            </div>
+
+            <div class="prose">
+              <h2>Worked example</h2>
+              <div class="worked">
+                A ray in air strikes a glass slab (<i>n</i> = 1.5) at 60° to the normal. Find the angle of refraction.
+                <ol>
+                  <li>Write the law: 1.00 × sin 60° = 1.5 × sin θ<sub>2</sub>.</li>
+                  <li>sin θ<sub>2</sub> = 0.866 / 1.5 = 0.577.</li>
+                  <li>θ<sub>2</sub> = sin<sup>−1</sup>(0.577) ≈ 35.3°. The ray bends towards the normal, as expected for a slower medium.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="next-step">
+              <div><b>That's the lesson.</b><span>Now test it: 15 problems, from first checks to Olympiad.</span></div>
+              <button class="btn" id="to-practice">Go to practice</button>
+            </div>
+          </div>
+
+          <aside class="margin">
+            <div class="mn"><b>History</b>Ibn Sahl described the law of refraction in Baghdad around 984. Willebrord Snell found it again in 1621, and it carries his name.</div>
+            <div class="mn tip"><b>Board favourite</b>Apparent depth = real depth ÷ <i>n</i>, valid only when viewing nearly straight down.</div>
+            <div class="mn oly"><b>Olympiad link</b>Snell's law follows from the principle of least time. The same reasoning leads to the brachistochrone and to Lagrangian mechanics.</div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="lpane" data-lpane="practice" hidden>
+        <div class="toolbar">
+          <p class="lede" style="margin:0">Work up the ladder. Each level assumes the one below it.</p>
+          <button class="btn" data-start="lesson">Practise all in order</button>
+        </div>
+        <div class="ladder" id="ladder"></div>
+      </div>
+
+      <div class="lpane" data-lpane="books" hidden>
+        <div class="panel" style="max-width:720px">
+          <p class="lede" style="margin:0 0 12px">Where this idea appears in your reference books. Add problems from your own copy and they join the practice ladder.</p>
+          <ul class="chap">
+            <li style="grid-template-columns:minmax(0,1fr) auto"><span><b>H. C. Verma</b>, Concepts of Physics Vol. 1 · Ch. 18 Geometrical Optics</span><button class="btn quiet">Add problems</button></li>
+            <li style="grid-template-columns:minmax(0,1fr) auto"><span><b>I. E. Irodov</b>, Problems in General Physics · Part 5 Optics</span><button class="btn quiet">Add problems</button></li>
+            <li style="grid-template-columns:minmax(0,1fr) auto"><span><b>Feynman Lectures</b> Vol. I · Ch. 26 Optics: The Principle of Least Time</span><button class="btn quiet">Add problems</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="lpane" data-lpane="notes" hidden>
+        <div style="max-width:720px">
+          <label for="notes" class="lede" style="display:block;margin:0 0 10px">Explain refraction as if teaching a Class 8 student. Putting it in your own words is one of the strongest ways to remember it.</label>
+          <textarea id="notes" placeholder="Light slows down when it enters water, so…"></textarea>
+          <p class="note">In the mockup, notes stay in this browser only.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRACTICE HUB ================= -->
+    <section data-view="practice">
+      <div class="head">
+        <div class="eyebrow">Practice</div>
+        <h1 class="h1">Solve problems</h1>
+        <p class="lede">Every NCERT question, then the key problems from each level above it. Your answer is checked, hints come one at a time, and anything you miss comes back for review.</p>
+      </div>
+
+      <div class="sec-title" style="margin-top:0">Start a set</div>
+      <div class="sets">
+        <div class="panel set">
+          <span class="eyebrow">Recommended</span>
+          <h3>Today's mixed set</h3>
+          <p>6 problems across levels, in shuffled order.</p>
+          <div><button class="btn" data-start="daily">Start</button></div>
+        </div>
+        <div class="panel set s-phy">
+          <span class="eyebrow">Physics · Ray optics</span>
+          <h3>Refraction and Snell's law</h3>
+          <p>15 problems in order of difficulty. The NCERT questions join once they are extracted.</p>
+          <div class="tiers"><span class="tier found">Foundation 2</span><span class="tier board">Board 4</span><span class="tier main">JEE Main 4</span><span class="tier adv">JEE Adv. 3</span><span class="tier oly">Olympiad 2</span></div>
+          <div><button class="btn ghost" data-start="lesson">Start</button></div>
+        </div>
+        <div class="panel set off">
+          <span class="eyebrow">Physics · Ray optics</span>
+          <h3>Total internal reflection</h3>
+          <p>Not written yet.</p>
+        </div>
+      </div>
+
+      <div class="sec-title">Or train one level</div>
+      <div class="level-row" id="level-row"></div>
+    </section>
+
+    <!-- ================= PLAYER ================= -->
+    <section data-view="play">
+      <div class="player" id="player"></div>
+    </section>
+
+    <!-- ================= REVIEW ================= -->
+    <section data-view="review">
+      <div class="rev" id="rev"></div>
+    </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const escHTML = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  /* ================= DATA ================= */
+  const LEVELS = {
+    found: ['Foundation', 'Check the idea itself'],
+    board: ['Board', 'CBSE Class 10 and 12 style'],
+    main:  ['JEE Main', 'One or two steps beyond NCERT'],
+    adv:   ['JEE Advanced', 'Several ideas combined'],
+    oly:   ['Olympiad', 'NSEP, INPhO and beyond']
+  };
+
+  // Problems written for this archive. Numeric answers recomputed in Python.
+  const P = [
+    { id: 'f1', lvl: 'found', kind: 'mcq', q: 'A ray of light travels from glass into air, striking the boundary at an angle. Which way does it bend?',
+      opts: ['Towards the normal', 'Away from the normal', 'It does not bend'], ans: 1,
+      hints: ['Compare the refractive indices: glass is about 1.5 and air about 1.0.', 'Light bends towards the normal when it slows down.'],
+      sol: 'Light speeds up as it enters air, which has the smaller refractive index, so it bends away from the normal. Snell\'s law says the same: if <i>n</i><sub>1</sub> &gt; <i>n</i><sub>2</sub> then sin θ<sub>2</sub> &gt; sin θ<sub>1</sub>.' },
+    { id: 'f2', lvl: 'found', kind: 'num', q: 'The speed of light in vacuum is 3.0 × 10<sup>8</sup> m/s. Find its speed in glass of refractive index 1.5.',
+      unit: '× 10⁸ m/s', ans: 2.0, tol: 0.05, hints: ['<i>n</i> = <i>c</i>/<i>v</i>. Rearrange for <i>v</i>.'],
+      sol: '<i>v</i> = <i>c</i>/<i>n</i> = 3.0 × 10<sup>8</sup> / 1.5 = 2.0 × 10<sup>8</sup> m/s.' },
+    { id: 'b1', lvl: 'board', kind: 'num', q: 'Light passes from air into water (<i>n</i> = 1.33) with an angle of incidence of 45°. Find the angle of refraction.',
+      unit: '°', ans: 32.1, tol: 0.5, hints: ['Air has <i>n</i> = 1.00.', 'sin θ<sub>2</sub> = sin 45° / 1.33.'],
+      sol: 'sin θ<sub>2</sub> = 0.7071 / 1.33 = 0.5317, so θ<sub>2</sub> ≈ 32.1°.' },
+    { id: 'b2', lvl: 'board', kind: 'num', q: 'The refractive index of glass is 1.50 and that of water is 1.33. Find the refractive index of glass with respect to water.',
+      unit: '', ans: 1.128, tol: 0.01, hints: ['The relative index is the index of the medium light enters divided by the index of the medium it leaves.'],
+      sol: '<i>n</i><sub>glass, water</sub> = 1.50 / 1.33 ≈ 1.13.' },
+    { id: 'b3', lvl: 'board', kind: 'num', q: 'A coin lies at the bottom of a bucket of water (<i>n</i> = 1.33) 40 cm deep. Seen from directly above, how deep does it appear?',
+      unit: 'cm', ans: 30.1, tol: 0.6, hints: ['For viewing almost straight down, apparent depth = real depth ÷ <i>n</i>.'],
+      sol: '40 / 1.33 ≈ 30.1 cm. The coin appears about 10 cm higher than it really is.' },
+    { id: 'b4', lvl: 'board', kind: 'mcq', q: 'In which case does a ray cross from air into glass without changing direction?',
+      opts: ['When it strikes the surface along the normal', 'When it strikes at 45°', 'Never: refraction always bends light'], ans: 0,
+      hints: ['Put θ<sub>1</sub> = 0 into Snell\'s law.'],
+      sol: 'At normal incidence sin θ<sub>1</sub> = 0, so sin θ<sub>2</sub> = 0 and the ray goes straight through. Its speed still changes.' },
+    { id: 'm1', lvl: 'main', kind: 'num', q: 'A ray strikes a glass slab 6.0 cm thick (<i>n</i> = 1.5) at an angle of incidence of 60°. Find the lateral shift of the emerging ray.',
+      unit: 'cm', ans: 3.07, tol: 0.05, hints: ['The emerging ray is parallel to the incident ray. First find the angle of refraction <i>r</i>.', 'Lateral shift <i>d</i> = <i>t</i> sin(<i>i</i> − <i>r</i>) / cos <i>r</i>.'],
+      sol: 'sin <i>r</i> = sin 60° / 1.5 = 0.577, so <i>r</i> = 35.3°. Then <i>d</i> = 6.0 × sin 24.7° / cos 35.3° = 6.0 × 0.418 / 0.816 ≈ 3.07 cm.' },
+    { id: 'm2', lvl: 'main', kind: 'num', q: 'Find the critical angle for light going from glass (<i>n</i> = 1.5) into air.',
+      unit: '°', ans: 41.8, tol: 0.3, hints: ['At the critical angle the refracted ray grazes the surface, so θ<sub>2</sub> = 90°.'],
+      sol: 'sin θ<sub>c</sub> = 1 / 1.5 = 0.667, so θ<sub>c</sub> ≈ 41.8°.' },
+    { id: 'm3', lvl: 'main', kind: 'num', q: 'A small lamp sits 2.0 m below the surface of a still pond (<i>n</i> = 4/3). Light escapes only through a circular patch of the surface. Find the radius of that patch.',
+      unit: 'm', ans: 2.27, tol: 0.03, hints: ['Beyond the critical angle, light is totally reflected back into the water.', '<i>r</i> = <i>h</i> tan θ<sub>c</sub>, with sin θ<sub>c</sub> = 1/<i>n</i>.'],
+      sol: 'sin θ<sub>c</sub> = 3/4, so tan θ<sub>c</sub> = 3/√7. Then <i>r</i> = 2.0 × 3/√7 ≈ 2.27 m.' },
+    { id: 'm4', lvl: 'main', kind: 'num', q: 'A 6 cm layer of oil (<i>n</i> = 1.5) floats on water 8 cm deep (<i>n</i> = 4/3). Seen from directly above, how far below the oil surface does the bottom of the vessel appear?',
+      unit: 'cm', ans: 10, tol: 0.1, hints: ['Each layer looks shallower by its own refractive index. Add the apparent thicknesses.'],
+      sol: '6/1.5 + 8/(4/3) = 4 + 6 = 10 cm.' },
+    { id: 'a1', lvl: 'adv', kind: 'num', q: 'A prism has a refracting angle of 60° and refractive index √2. Find its angle of minimum deviation.',
+      unit: '°', ans: 30, tol: 0.3, hints: ['At minimum deviation the ray passes through symmetrically, so <i>r</i> = <i>A</i>/2 = 30°.', '<i>n</i> = sin((<i>A</i> + <i>D</i>)/2) / sin(<i>A</i>/2).'],
+      sol: 'sin((60° + <i>D</i>)/2) = √2 × sin 30° = 0.707, so (60° + <i>D</i>)/2 = 45° and <i>D</i> = 30°.' },
+    { id: 'a2', lvl: 'adv', kind: 'num', q: 'A fish 1.2 m below the water surface (<i>n</i> = 4/3) looks straight up at a bird hovering 3.0 m above the surface. How far away does the bird appear to the fish?',
+      unit: 'm', ans: 5.2, tol: 0.05, hints: ['Seen from inside the denser medium, heights above the surface look multiplied by <i>n</i>.', 'Then add the fish\'s own depth.'],
+      sol: 'Apparent height above the surface = 3.0 × 4/3 = 4.0 m. Distance from the fish = 4.0 + 1.2 = 5.2 m.' },
+    { id: 'a3', lvl: 'adv', kind: 'num', q: 'Light enters the top face of a glass cube at every possible angle. What is the smallest refractive index for which none of this light can leave through a vertical side face?',
+      unit: '', ans: 1.414, tol: 0.01, hints: ['If the ray refracts at angle <i>r</i> on top, it meets a side face at 90° − <i>r</i>.', 'The worst case is grazing entry, where sin <i>r</i> = 1/<i>n</i>. Require total internal reflection even then.'],
+      sol: 'Total internal reflection at the side needs cos <i>r</i> ≥ 1/<i>n</i>. Grazing entry gives the smallest cos <i>r</i> = √(1 − 1/<i>n</i>²). Setting √(1 − 1/<i>n</i>²) ≥ 1/<i>n</i> gives <i>n</i>² ≥ 2, so <i>n</i> ≥ √2 ≈ 1.414.' },
+    { id: 'o1', lvl: 'oly', kind: 'num', q: 'A tank holds a sugar solution whose refractive index falls steadily from 1.50 at the bottom to 1.40 at a height of 20 cm. A laser beam enters horizontally at mid-height. Find the radius of curvature of its path where it enters, in metres. Which way does it bend?',
+      unit: 'm', ans: 2.9, tol: 0.1, hints: ['Treat the liquid as many thin layers: <i>n</i> sin θ stays the same from layer to layer.', 'For a ray that is momentarily horizontal, the curvature is 1/<i>R</i> = (1/<i>n</i>)(d<i>n</i>/d<i>y</i>).'],
+      sol: 'd<i>n</i>/d<i>y</i> = 0.10 / 0.20 m = 0.5 m<sup>−1</sup>, and <i>n</i> = 1.45 at mid-height, so <i>R</i> = 1.45 / 0.5 = 2.9 m. The beam curves downwards, towards higher refractive index. A mirage works the same way.' },
+    { id: 'o2', lvl: 'oly', kind: 'proof', q: 'Light goes from point A in medium 1 to point B in medium 2 along the path that takes the least time (Fermat\'s principle). Derive Snell\'s law from this.',
+      hints: ['Let the ray cross the boundary at horizontal position <i>x</i>. Write the total travel time <i>T</i>(<i>x</i>) using speeds <i>c</i>/<i>n</i><sub>1</sub> and <i>c</i>/<i>n</i><sub>2</sub>.', 'Set d<i>T</i>/d<i>x</i> = 0 and read each term as the sine of an angle.'],
+      sol: 'Put A at height <i>a</i> above the boundary and B at depth <i>b</i> below it, a horizontal distance <i>d</i> apart. Then <i>cT</i>(<i>x</i>) = <i>n</i><sub>1</sub>√(<i>a</i>² + <i>x</i>²) + <i>n</i><sub>2</sub>√(<i>b</i>² + (<i>d</i> − <i>x</i>)²). Setting d<i>T</i>/d<i>x</i> = 0 gives <i>n</i><sub>1</sub><i>x</i>/√(<i>a</i>² + <i>x</i>²) = <i>n</i><sub>2</sub>(<i>d</i> − <i>x</i>)/√(<i>b</i>² + (<i>d</i> − <i>x</i>)²), which is <i>n</i><sub>1</sub> sin θ<sub>1</sub> = <i>n</i><sub>2</sub> sin θ<sub>2</sub>.' }
+  ];
+
+  const CARDS = [
+    ['phy', 'Physics · Ray optics', 'State Snell\'s law and say what the refractive index <i>n</i> measures.', '<i>n</i><sub>1</sub> sin θ<sub>1</sub> = <i>n</i><sub>2</sub> sin θ<sub>2</sub>, with both angles measured from the normal. <i>n</i> = <i>c</i>/<i>v</i>: how many times slower light is in the medium than in vacuum.'],
+    ['mat', 'Maths · Quadratic equations', 'For <i>ax</i>² + <i>bx</i> + <i>c</i> = 0, what is the discriminant, and what does a negative value tell you?', '<i>D</i> = <i>b</i>² − 4<i>ac</i>. If <i>D</i> &lt; 0 there are no real roots. <i>D</i> = 0 gives two equal roots and <i>D</i> &gt; 0 two distinct real roots.'],
+    ['phy', 'Physics · Current electricity', 'Three 6 Ω resistors are connected in parallel. What is the equivalent resistance?', '1/<i>R</i> = 1/6 + 1/6 + 1/6 = 1/2, so <i>R</i> = 2 Ω.'],
+    ['mat', 'Maths · Arithmetic progressions', 'Write the <i>n</i>th term and the sum of the first <i>n</i> terms of an AP with first term <i>a</i> and common difference <i>d</i>.', '<i>a<sub>n</sub></i> = <i>a</i> + (<i>n</i> − 1)<i>d</i>, and <i>S<sub>n</sub></i> = (<i>n</i>/2)[2<i>a</i> + (<i>n</i> − 1)<i>d</i>].'],
+    ['chem', 'Chemistry · Chemical reactions', 'What type of reaction is CaO + H<sub>2</sub>O → Ca(OH)<sub>2</sub>, and is it exothermic or endothermic?', 'A combination reaction: two substances form one product. It releases a lot of heat, so it is exothermic.']
+  ];
+
+  // Knowledge trees. leaf: [name, level, mastery 0-4, lessonId?]
+  const TREES = {
+    phy: [
+      ['Mechanics', [
+        ['Kinematics', [['Distance and displacement', 'C9', 4], ['Speed, velocity, acceleration', 'C9', 4], ['Equations of motion', 'C9', 3], ['Motion graphs', 'C9', 3], ['Vectors in motion', 'C11', 2], ['Projectile motion', 'C11', 1], ['Relative motion', 'JEE', 0], ['Circular motion', 'C11', 1]]],
+        ['Newton\'s laws', [['Inertia and the first law', 'C9', 4], ['Momentum and the second law', 'C9', 3], ['Third law', 'C9', 3], ['Free-body diagrams', 'C11', 1], ['Friction', 'C11', 1], ['Constraint relations', 'JEE', 0], ['Pseudo forces', 'JEE', 0]]],
+        ['Work, energy and power', [['Work done by a force', 'C9', 3], ['Kinetic and potential energy', 'C9', 3], ['Work–energy theorem', 'C11', 1], ['Conservative forces', 'C11', 0], ['Power', 'C9', 2]]],
+        ['Rotation', [['Centre of mass', 'C11', 1], ['Collisions', 'C11', 0], ['Torque', 'C11', 0], ['Moment of inertia', 'C11', 0], ['Rolling motion', 'JEE', 0], ['Angular momentum', 'C11', 0]]],
+        ['Gravitation', [['Universal law of gravitation', 'C9', 3], ['Variation of g', 'C11', 1], ['Kepler\'s laws', 'C11', 0], ['Orbits and escape speed', 'C11', 0]]],
+        ['Properties of matter', [['Pressure and buoyancy', 'C9', 3], ['Elasticity', 'C11', 0], ['Bernoulli\'s principle', 'C11', 0], ['Viscosity', 'C11', 0], ['Surface tension', 'C11', 0]]]
+      ]],
+      ['Oscillations and waves', [
+        ['Simple harmonic motion', [['Periodic motion', 'C11', 1], ['SHM equation', 'C11', 0], ['Springs and pendulums', 'C11', 0], ['Damped and forced oscillations', 'JEE', 0]]],
+        ['Waves and sound', [['Sound as a wave', 'C9', 3], ['Speed of sound', 'C9', 2], ['Wave equation', 'C11', 0], ['Standing waves', 'C11', 0], ['Beats', 'C11', 0], ['Doppler effect', 'C11', 0]]]
+      ]],
+      ['Thermal physics', [
+        ['Heat and temperature', [['Temperature and heat', 'C7', 4], ['Calorimetry', 'C11', 1], ['Thermal expansion', 'C11', 0], ['Conduction, convection, radiation', 'C7', 3]]],
+        ['Thermodynamics', [['Kinetic theory of gases', 'C11', 0], ['First law', 'C11', 0], ['Second law and entropy', 'C11', 0], ['Heat engines', 'C11', 0]]]
+      ]],
+      ['Electricity and magnetism', [
+        ['Electrostatics', [['Electric charge', 'C8', 3], ['Coulomb\'s law', 'C12', 1], ['Electric field', 'C12', 0], ['Gauss\'s law', 'C12', 0], ['Potential', 'C12', 0], ['Capacitors', 'C12', 0]]],
+        ['Current electricity', [['Ohm\'s law', 'C10', 3], ['Resistors in series and parallel', 'C10', 3], ['Heating effect and power', 'C10', 2], ['Kirchhoff\'s rules', 'C12', 0], ['Wheatstone bridge', 'C12', 0]]],
+        ['Magnetism', [['Field lines and compasses', 'C10', 3], ['Force on a current', 'C10', 2], ['Biot–Savart law', 'C12', 0], ['Ampère\'s law', 'C12', 0]]],
+        ['Induction and AC', [['Electromagnetic induction', 'C12', 0], ['Lenz\'s law', 'C12', 0], ['Alternating current', 'C12', 0], ['Electromagnetic waves', 'C12', 0]]]
+      ]],
+      ['Optics', [
+        ['Ray optics', [['Rectilinear propagation', 'C6', 4], ['Laws of reflection', 'C7', 4], ['Spherical mirrors', 'C10', 3], ['Refraction and Snell\'s law', 'C10', 2, 'snell'], ['Total internal reflection', 'C10', 1], ['Lenses and the lens formula', 'C10', 1], ['Prism and dispersion', 'C10', 1], ['Optical instruments', 'C12', 0]]],
+        ['Wave optics', [['Huygens\' principle', 'C12', 0], ['Interference and Young\'s experiment', 'C12', 0], ['Diffraction', 'C12', 0], ['Polarisation', 'C12', 0], ['Thin films', 'OLY', 0]]]
+      ]],
+      ['Modern physics', [
+        ['Quanta and atoms', [['Photoelectric effect', 'C12', 0], ['Matter waves', 'C12', 0], ['Bohr model', 'C12', 0]]],
+        ['Nuclei and devices', [['Radioactivity', 'C12', 0], ['Nuclear energy', 'C12', 0], ['Semiconductors and diodes', 'C12', 0]]],
+        ['Beyond the syllabus', [['Special relativity', 'OLY', 0]]]
+      ]],
+      ['Tools of the trade', [
+        ['Mathematical methods', [['Units and dimensions', 'C11', 1], ['Vectors', 'C11', 1], ['Calculus for physics', 'C11', 0], ['Approximations and series', 'OLY', 0], ['Differential equations', 'OLY', 0]]],
+        ['Experiments', [['Errors and significant figures', 'C11', 1], ['Graph plotting', 'C9', 2]]]
+      ]]
+    ],
+    mat: [
+      ['Number', [
+        ['Arithmetic', [['Integers', 'C6', 4], ['Fractions and decimals', 'C6', 4], ['Exponents and powers', 'C7', 4], ['Ratio and percentage', 'C7', 4]]],
+        ['Divisibility', [['Primes and factorisation', 'C6', 4], ['HCF and LCM', 'C6', 4], ['Fundamental theorem of arithmetic', 'C10', 3], ['Irrational numbers', 'C10', 2]]]
+      ]],
+      ['Algebra', [
+        ['Equations', [['Expressions and identities', 'C8', 4], ['Linear equations', 'C8', 4], ['Pair of linear equations', 'C10', 3], ['Quadratic equations', 'C10', 2], ['Polynomials', 'C10', 2]]],
+        ['Sequences and counting', [['Arithmetic progressions', 'C10', 2], ['Geometric progressions', 'C11', 0], ['Permutations and combinations', 'C11', 0], ['Binomial theorem', 'C11', 0]]],
+        ['Structures', [['Complex numbers', 'C11', 0], ['Matrices and determinants', 'C12', 0], ['Inequalities and AM–GM', 'OLY', 0], ['Functional equations', 'OLY', 0]]]
+      ]],
+      ['Geometry', [
+        ['Euclidean', [['Lines and angles', 'C7', 4], ['Congruent triangles', 'C9', 3], ['Similar triangles', 'C10', 2], ['Circles and tangents', 'C10', 1], ['Cyclic quadrilaterals', 'OLY', 0]]],
+        ['Coordinate', [['Distance and section formula', 'C10', 2], ['Straight lines', 'C11', 0], ['Conic sections', 'C11', 0], ['3D geometry and vectors', 'C12', 0]]]
+      ]],
+      ['Trigonometry', [
+        ['Foundations', [['Trigonometric ratios', 'C10', 2], ['Identities', 'C10', 1], ['Heights and distances', 'C10', 1]]],
+        ['Further', [['Compound angles', 'C11', 0], ['Inverse functions', 'C12', 0], ['Trigonometric equations', 'JEE', 0]]]
+      ]],
+      ['Calculus', [
+        ['Differential', [['Limits', 'C11', 0], ['Derivatives', 'C11', 0], ['Applications of derivatives', 'C12', 0]]],
+        ['Integral', [['Indefinite integrals', 'C12', 0], ['Definite integrals and area', 'C12', 0], ['Differential equations', 'C12', 0]]]
+      ]],
+      ['Data and chance', [
+        ['Statistics', [['Mean, median, mode', 'C9', 3], ['Grouped data', 'C10', 1]]],
+        ['Probability', [['Classical probability', 'C10', 1], ['Conditional probability and Bayes', 'C12', 0], ['Random variables', 'C12', 0]]]
+      ]],
+      ['Olympiad toolkit', [
+        ['Number theory', [['Modular arithmetic', 'OLY', 0], ['Fermat and Euler theorems', 'OLY', 0]]],
+        ['Combinatorics', [['Pigeonhole principle', 'OLY', 0], ['Invariants', 'OLY', 0], ['Induction', 'C11', 0], ['Graph theory basics', 'OLY', 0]]]
+      ]]
+    ]
+  };
+  const SUBJECTS = [
+    ['phy', 'Physics', 'Refraction and Snell\'s law'], ['mat', 'Maths', 'Quadratic equations'],
+    ['chem', 'Chemistry', 'Acids, bases and salts'], ['bio', 'Biology', 'Life processes'], ['eng', 'English', '']
+  ];
+  const SUBJ_PROGRESS = { phy: .31, mat: .38, chem: .18, bio: .12, eng: 0 };
+
+  const leaves = n => typeof n[1] === 'string' ? [n] : n[1].flatMap(leaves);
+  const mastery = n => { const L = leaves(n); return L.reduce((s, l) => s + l[2], 0) / (L.length * 4); };
+  const chev = '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+  const lvlTag = l => `<span class="lvl ${l === 'JEE' ? 'jee' : l === 'OLY' ? 'oly' : ''}">${l === 'OLY' ? 'Olympiad' : l === 'JEE' ? 'JEE' : 'Class ' + l.slice(1)}</span>`;
+
+  /* ================= STATE ================= */
+  const S = { subj: 'phy', pillar: 4, branch: 0, leaf: 3, mode: 'subject', cls: 10, ltab: 'learn',
+              set: [], setName: '', from: 'practice', idx: 0, res: {}, hintN: {}, solShown: {}, checked: {}, rev: 0, revShown: false };
+
+  /* ================= ROUTER ================= */
+  const VIEWS = ['home', 'learn', 'lesson', 'practice', 'play', 'review'];
+  const NAV_OF = { lesson: 'learn', play: 'practice' };
+  const RENDER = {};
+  function route() {
+    let v = (location.hash || '#home').slice(1);
+    if (!VIEWS.includes(v)) v = 'home';
+    if (v === 'play' && !S.set.length) v = 'practice';
+    document.querySelectorAll('section[data-view]').forEach(s => s.classList.toggle('on', s.dataset.view === v));
+    const nav = NAV_OF[v] || v;
+    document.querySelectorAll('.nav').forEach(a => a.dataset.nav === nav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+    RENDER[v]();
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+  const go = v => { if (location.hash === '#' + v) route(); else location.hash = v; };
+
+  /* ================= HOME ================= */
+  $('today-date').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' });
+  RENDER.home = () => {
+    $('home-solved').textContent = P.filter(p => S.res[p.id] === 'got').length;
+    $('subj-list').innerHTML = SUBJECTS.map(([k, n, nx]) => `<li><button data-open-subj="${k}" class="s-${k}">
+      <span class="nm"><span class="dot"></span>${n}</span><span class="nx">${nx ? 'Next: ' + nx : 'Starts in phase 3'}</span>
+      <span class="meter"><i style="width:${Math.round(SUBJ_PROGRESS[k] * 100)}%"></i></span><span class="pc">${Math.round(SUBJ_PROGRESS[k] * 100)}%</span></button></li>`).join('');
+  };
+  $('subj-list').addEventListener('click', e => {
+    const b = e.target.closest('[data-open-subj]'); if (!b) return;
+    Object.assign(S, { subj: b.dataset.openSubj, pillar: null, branch: null, leaf: null, mode: 'subject' });
+    go('learn');
+  });
+  document.querySelectorAll('[data-tab-open]').forEach(a => a.addEventListener('click', () => { S.ltab = a.dataset.tabOpen; }));
+
+  // search over every leaf
+  const INDEX = Object.entries(TREES).flatMap(([k, pillars]) => pillars.flatMap((p, pi) => p[1].flatMap((b, bi) => b[1].map((l, li) => ({ k, pi, bi, li, l, path: `${k === 'phy' ? 'Physics' : 'Maths'} › ${p[0]} › ${b[0]}` })))));
+  $('q').addEventListener('input', () => {
+    const q = $('q').value.trim().toLowerCase(), r = $('results');
+    if (q.length < 2) { r.hidden = true; return; }
+    const hits = INDEX.filter(x => (x.l[0] + ' ' + x.path).toLowerCase().includes(q)).slice(0, 7);
+    r.hidden = false;
+    r.innerHTML = hits.length ? hits.map(h => `<button data-hit="${INDEX.indexOf(h)}" class="s-${h.k}"><i class="glyph" style="--p:${h.l[2] / 4}"></i><span>${h.l[0]}<span class="path" style="display:block">${h.path}</span></span>${lvlTag(h.l[1])}</button>`).join('')
+      : `<button disabled><span></span><span>Nothing matches “${escHTML($('q').value)}” yet.</span><span></span></button>`;
+  });
+  $('results').addEventListener('click', e => {
+    const b = e.target.closest('[data-hit]'); if (!b) return;
+    const h = INDEX[+b.dataset.hit];
+    Object.assign(S, { subj: h.k, pillar: h.pi, branch: h.bi, leaf: h.li, mode: 'subject' });
+    $('results').hidden = true; $('q').value = '';
+    if (h.l[3]) { S.ltab = 'learn'; go('lesson'); } else go('learn');
+  });
+
+  /* ================= LEARN ================= */
+  RENDER.learn = () => {
+    document.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === S.mode));
+    $('by-subject').hidden = S.mode !== 'subject';
+    $('by-class').hidden = S.mode !== 'class';
+    $('subj-seg').hidden = S.mode !== 'subject';
+    $('subj-seg').innerHTML = SUBJECTS.map(([k, n]) => `<button aria-pressed="${S.subj === k}" data-subj="${k}"><span class="dot s-${k}"></span>${n}</button>`).join('');
+    if (S.mode === 'subject') renderCols(); else renderClasses();
+  };
+  function renderCols() {
+    const T = TREES[S.subj], name = SUBJECTS.find(s => s[0] === S.subj)[1];
+    const cr = $('crumbs'), cols = $('cols');
+    if (!T) {
+      cr.innerHTML = `<span class="cur">${name}</span>`;
+      cols.innerHTML = `<div class="col active" style="grid-column:1/-1"><div class="col-empty">The ${name} tree is not drawn in this mockup. It follows the same pattern as Physics and Maths.</div></div>`;
+      return;
+    }
+    const PL = S.pillar != null ? T[S.pillar] : null, BR = PL && S.branch != null ? PL[1][S.branch] : null;
+    let c = PL ? `<button data-crumb="root">${name}</button>` : `<span class="cur">${name}</span>`;
+    if (PL) c += `<span class="sep">›</span>` + (BR ? `<button data-crumb="pillar">${PL[0]}</button>` : `<span class="cur">${PL[0]}</span>`);
+    if (BR) c += `<span class="sep">›</span><span class="cur">${BR[0]}</span>`;
+    cr.innerHTML = c;
+    const deepest = BR ? 2 : PL ? 1 : 0;
+    const col1 = `<div class="col ${deepest === 0 ? 'active' : ''}"><div class="col-h eyebrow">Pillars</div><ul class="col-list">${T.map((p, i) => `<li><button class="row s-${S.subj}" data-pillar="${i}" aria-selected="${S.pillar === i}"><span><span class="t">${p[0]}</span><span class="s">${p[1].length} branches · ${leaves(p).length} leaves</span></span><span class="meter"><i style="width:${Math.round(mastery(p) * 100)}%"></i></span>${chev}</button></li>`).join('')}</ul></div>`;
+    const col2 = `<div class="col ${deepest === 1 ? 'active' : ''}"><div class="col-h eyebrow">Branches</div>${PL ? `<ul class="col-list">${PL[1].map((b, i) => `<li><button class="row s-${S.subj}" data-branch="${i}" aria-selected="${S.branch === i}"><span><span class="t">${b[0]}</span><span class="s">${b[1].length} leaves</span></span><span class="meter"><i style="width:${Math.round(mastery(b) * 100)}%"></i></span>${chev}</button></li>`).join('')}</ul>` : '<div class="col-empty">Choose a pillar.</div>'}</div>`;
+    let col3 = '<div class="col-empty">Choose a branch.</div>';
+    if (BR) {
+      const sel = S.leaf != null ? BR[1][S.leaf] : null;
+      col3 = `<ul class="col-list">${BR[1].map((l, i) => `<li><button class="row leafrow s-${S.subj} ${l[3] ? 'has' : ''}" data-leaf="${i}" aria-selected="${S.leaf === i}"><i class="glyph" style="--p:${l[2] / 4}"></i><span class="t">${l[0]}</span>${lvlTag(l[1])}</button></li>`).join('')}</ul>`;
+      if (sel) col3 += `<div class="leaf-preview"><h3>${sel[0]}</h3>${sel[3]
+        ? `<p>Lesson, interactive diagram and 15 problems from Foundation to Olympiad. NCERT questions still to be added.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" data-open-lesson="learn">Open lesson</button><button class="btn ghost" data-open-lesson="practice">Practise</button></div>`
+        : `<p>Not written yet in the mockup. Only “Refraction and Snell's law” has a full page.</p>`}</div>`;
+    }
+    col3 = `<div class="col ${deepest === 2 ? 'active' : ''}"><div class="col-h eyebrow">Leaves · one lesson each</div>${col3}</div>`;
+    cols.innerHTML = col1 + col2 + col3;
+  }
+  $('mode-seg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { S.mode = b.dataset.mode; RENDER.learn(); } });
+  $('subj-seg').addEventListener('click', e => { const b = e.target.closest('[data-subj]'); if (b) { S.subj = b.dataset.subj; S.pillar = S.branch = S.leaf = null; RENDER.learn(); } });
+  $('crumbs').addEventListener('click', e => {
+    const b = e.target.closest('[data-crumb]'); if (!b) return;
+    if (b.dataset.crumb === 'root') S.pillar = S.branch = S.leaf = null; else S.branch = S.leaf = null;
+    renderCols();
+  });
+  $('cols').addEventListener('click', e => {
+    const t = e.target.closest('[data-pillar],[data-branch],[data-leaf],[data-open-lesson]'); if (!t) return;
+    if (t.dataset.openLesson) { S.ltab = t.dataset.openLesson; go('lesson'); return; }
+    if (t.dataset.pillar != null) { S.pillar = +t.dataset.pillar; S.branch = S.leaf = null; }
+    else if (t.dataset.branch != null) { S.branch = +t.dataset.branch; S.leaf = null; }
+    else if (t.dataset.leaf != null) {
+      S.leaf = +t.dataset.leaf;
+      const l = TREES[S.subj][S.pillar][1][S.branch][1][S.leaf];
+      if (l[3] && matchMedia('(max-width: 860px)').matches) { S.ltab = 'learn'; go('lesson'); return; }
+    }
+    renderCols();
+  });
+
+  const BOOKS = {
+    10: [
+      ['Science', 'phy', ['Chemical Reactions and Equations', 'Acids, Bases and Salts', 'Metals and Non-metals', 'Carbon and its Compounds', 'Life Processes', 'Control and Coordination', 'How do Organisms Reproduce?', 'Heredity', 'Light – Reflection and Refraction', 'The Human Eye and the Colourful World', 'Electricity', 'Magnetic Effects of Electric Current', 'Our Environment'], ['Periodic Classification of Elements', 'Sources of Energy']],
+      ['Mathematics', 'mat', ['Real Numbers', 'Polynomials', 'Pair of Linear Equations in Two Variables', 'Quadratic Equations', 'Arithmetic Progressions', 'Triangles', 'Coordinate Geometry', 'Introduction to Trigonometry', 'Some Applications of Trigonometry', 'Circles', 'Areas Related to Circles', 'Surface Areas and Volumes', 'Statistics', 'Probability'], ['Constructions']]
+    ]
+  };
+  function renderClasses() {
+    $('class-pills').innerHTML = [6, 7, 8, 9, 10, 11, 12].map(c => `<button aria-pressed="${c === S.cls}" data-c="${c}">Class ${c}<small>${c >= 10 ? 'phase 1' : 'later'}</small></button>`).join('');
+    const b = BOOKS[S.cls];
+    $('books').innerHTML = b ? b.map(([n, k, ch, rest]) => `<div class="panel s-${k}"><h3><span>${n}</span><span class="eyebrow">${ch.length} chapters</span></h3>
+      <ol class="chap">${ch.map(t => `<li>${t.startsWith('Light') ? `<a class="live" href="#lesson">${t} →</a>` : `<span>${t}</span>`}<span class="st">questions pending</span></li>`).join('')}
+      ${rest.map(t => `<li class="restored"><span>${t}</span><span class="st restored">restored</span></li>`).join('')}</ol></div>`).join('')
+      : `<div class="panel"><p style="color:var(--muted)">Class ${S.cls} is not built in the mockup. It will look the same as Class 10.</p></div>`;
+  }
+  $('class-pills').addEventListener('click', e => { const b = e.target.closest('[data-c]'); if (b) { S.cls = +b.dataset.c; renderClasses(); } });
+  $('books').addEventListener('click', e => { if (e.target.closest('a.live')) S.ltab = 'learn'; });
+
+  /* ================= LESSON ================= */
+  RENDER.lesson = () => {
+    document.querySelectorAll('[data-ltab]').forEach(b => b.setAttribute('aria-selected', b.dataset.ltab === S.ltab));
+    document.querySelectorAll('[data-lpane]').forEach(p => p.hidden = p.dataset.lpane !== S.ltab);
+    if (S.ltab === 'practice') renderLadder();
+  };
+  $('ltabs').addEventListener('click', e => { const b = e.target.closest('[data-ltab]'); if (b) { S.ltab = b.dataset.ltab; RENDER.lesson(); } });
+  $('to-practice').addEventListener('click', () => { S.ltab = 'practice'; RENDER.lesson(); window.scrollTo(0, 0); });
+  $('lesson-back').addEventListener('click', () => { Object.assign(S, { subj: 'phy', pillar: 4, branch: 0, leaf: 3, mode: 'subject' }); go('learn'); });
+
+  const stripTags = s => s.replace(/<[^>]+>/g, '');
+  const stateDot = id => { const r = S.res[id]; return `<span class="state ${r || ''}">${r === 'got' ? '✓' : r === 'missed' ? '✕' : r === 'shaky' ? '~' : ''}</span>`; };
+  function renderLadder() {
+    let html = `<div class="rung"><div class="rung-h"><span class="tier ncert">NCERT</span><div><b>In-text questions and exercises</b><p>Class 10 Science · Light, and Class 12 Physics · Ray Optics</p></div><span></span></div>
+      <div class="pending">Every NCERT question for this idea goes here, word for word from the official PDF, each with a full solution. They are missing from this mockup because ncert.nic.in could not be reached from the build environment.</div></div>`;
+    for (const [k, [name, desc]] of Object.entries(LEVELS)) {
+      const ps = P.filter(p => p.lvl === k);
+      html += `<div class="rung"><div class="rung-h"><span class="tier ${k}">${name}</span><div><p>${desc}</p></div><span class="src">${ps.filter(p => S.res[p.id] === 'got').length}/${ps.length} solved</span></div>
+        <ol>${ps.map(p => `<li><button data-open-p="${p.id}"><span class="num">${P.indexOf(p) + 1}</span><span class="preview">${stripTags(p.q)}</span>${stateDot(p.id)}</button></li>`).join('')}</ol></div>`;
+    }
+    $('ladder').innerHTML = html;
+  }
+  $('ladder').addEventListener('click', e => {
+    const b = e.target.closest('[data-open-p]'); if (!b) return;
+    startSet(P.slice(), 'Refraction and Snell\'s law', P.findIndex(p => p.id === b.dataset.openP));
+  });
+
+  // hook question
+  document.querySelectorAll('#hook .opt').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#hook .opt').forEach(x => x.classList.remove('right', 'wrong'));
+    const ok = b.dataset.ok === '1'; b.classList.add(ok ? 'right' : 'wrong');
+    const fb = $('hook-fb'); fb.hidden = false;
+    fb.innerHTML = ok ? 'Right. Light from the coin bends away from the normal as it leaves the water, so your eye traces it back to a shallower point: 40 ÷ 1.33 ≈ 30 cm. The lesson below explains why.'
+                      : 'Not quite. Water makes things look <i>shallower</i>. Try again, or read on and come back.';
+  }));
+
+  // refraction simulation
+  const PAIRS = [['Air', 'Water', 1.00, 1.33], ['Air', 'Glass', 1.00, 1.50], ['Water', 'Air', 1.33, 1.00], ['Glass', 'Air', 1.50, 1.00], ['Water', 'Glass', 1.33, 1.50]];
+  const O = { x: 180, y: 115 }, L = 125, deg = Math.PI / 180;
+  function sim() {
+    const t1 = +$('ang').value * deg, [m1, m2, n1, n2] = PAIRS[+$('pair').value];
+    $('angv').textContent = $('ang').value + '°';
+    $('lab1').textContent = `${m1} · n = ${n1.toFixed(2)}`; $('lab2').textContent = `${m2} · n = ${n2.toFixed(2)}`;
+    $('m1').style.fill = n1 > n2 ? 'color-mix(in srgb, var(--phy) 12%, var(--surface))' : '';
+    $('m2').style.fill = n2 > n1 ? '' : 'var(--sunk)';
+    $('rIn').setAttribute('x1', O.x - L * Math.sin(t1)); $('rIn').setAttribute('y1', O.y - L * Math.cos(t1));
+    $('rRefl').setAttribute('x2', O.x + L * Math.sin(t1)); $('rRefl').setAttribute('y2', O.y - L * Math.cos(t1));
+    $('arc1').setAttribute('d', `M${O.x},${O.y - 34} A34,34 0 0 0 ${O.x - 34 * Math.sin(t1)},${O.y - 34 * Math.cos(t1)}`);
+    const s2 = n1 * Math.sin(t1) / n2, crit = n1 > n2 ? Math.asin(n2 / n1) / deg : null;
+    let out = `<span>θ<sub>1</sub> = <b>${$('ang').value}°</b></span>`;
+    if (s2 > 1) {
+      $('rOut').style.display = $('arc2').style.display = 'none'; $('rRefl').style.opacity = 1;
+      out += `<span class="tir">total internal reflection</span>`;
+    } else {
+      const t2 = Math.asin(s2);
+      $('rOut').style.display = $('arc2').style.display = '';
+      $('rOut').setAttribute('x2', O.x + L * Math.sin(t2)); $('rOut').setAttribute('y2', O.y + L * Math.cos(t2));
+      $('arc2').setAttribute('d', `M${O.x},${O.y + 34} A34,34 0 0 0 ${O.x + 34 * Math.sin(t2)},${O.y + 34 * Math.cos(t2)}`);
+      $('rRefl').style.opacity = .22;
+      out += `<span>θ<sub>2</sub> = <b>${(t2 / deg).toFixed(1)}°</b></span>`;
+    }
+    out += `<span>n<sub>1</sub> sin θ<sub>1</sub> = <b>${(n1 * Math.sin(t1)).toFixed(3)}</b></span>`;
+    if (crit) out += `<span>critical angle <b>${crit.toFixed(1)}°</b></span>`;
+    $('readout').innerHTML = out;
+  }
+  $('ang').addEventListener('input', sim); $('pair').addEventListener('change', sim); sim();
+
+  // notes draft
+  try { $('notes').value = localStorage.getItem('la2-notes-snell') || ''; } catch (e) {}
+  $('notes').addEventListener('input', () => { try { localStorage.setItem('la2-notes-snell', $('notes').value); } catch (e) {} });
+
+  /* ================= PRACTICE ================= */
+  RENDER.practice = () => {
+    $('level-row').innerHTML = Object.entries(LEVELS).map(([k, [n]]) => `<button data-level="${k}"><span class="tier ${k}" style="padding:0;background:none;font-size:14px">${n}</span><span>${P.filter(p => p.lvl === k).length} problems</span></button>`).join('');
+  };
+  $('level-row').addEventListener('click', e => { const b = e.target.closest('[data-level]'); if (b) startSet(P.filter(p => p.lvl === b.dataset.level), LEVELS[b.dataset.level][0] + ' · Refraction', 0); });
+  document.querySelectorAll('[data-start]').forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.start === 'daily') startSet(['b3', 'm2', 'f1', 'a2', 'b1', 'o1'].map(id => P.find(p => p.id === id)), 'Today\'s mixed set', 0);
+    else startSet(P.slice(), 'Refraction and Snell\'s law', 0);
+  }));
+  function startSet(list, name, idx) {
+    S.set = list; S.setName = name; S.idx = idx; S.from = (location.hash || '#home').slice(1);
+    go('play');
+  }
+
+  RENDER.play = renderPlay;
+  function renderPlay() {
+    const el = $('player');
+    if (S.idx >= S.set.length) { el.innerHTML = summaryHTML(); return; }
+    const p = S.set[S.idx], hn = S.hintN[p.id] || 0, chk = S.checked[p.id], sol = S.solShown[p.id], r = S.res[p.id];
+    let body = '';
+    if (p.kind === 'mcq') {
+      body = `<div class="opts">${p.opts.map((o, i) => {
+        let cls = ''; if (chk) { if (i === p.ans && chk.ok) cls = 'right'; else if (i === chk.pick) cls = 'wrong'; }
+        return `<button class="opt ${cls}" data-pick="${i}" ${chk && chk.ok ? 'disabled' : ''}>${o}</button>`; }).join('')}</div>`;
+    } else if (p.kind === 'num') {
+      body = `<div class="ansrow"><label for="ans" class="src">Your answer</label><input id="ans" inputmode="decimal" autocomplete="off" value="${chk ? escHTML(chk.val) : ''}" ${chk && chk.ok ? 'disabled' : ''}><span class="unit">${p.unit}</span><button class="btn" data-act="check" ${chk && chk.ok ? 'disabled' : ''}>Check</button></div>`;
+    } else {
+      body = `<p class="src">Work it out on paper, then compare with the solution.</p>`;
+    }
+    if (chk) body += `<div class="verdict ${chk.ok ? 'good' : 'bad'}" aria-live="polite">${chk.ok ? 'Correct.' + (p.kind === 'num' ? ` The answer is ${p.ans}${p.unit ? ' ' + p.unit : ''}.` : '') : chk.nan ? 'Enter a number.' : 'Not right yet. Try again or take a hint.'}</div>`;
+    const hints = p.hints.slice(0, hn).map((h, i) => `<div class="hint"><b>Hint ${i + 1}</b>${h}</div>`).join('');
+    const helps = `<div class="helps">
+      <button class="btn quiet" data-act="hint" ${hn >= p.hints.length ? 'disabled' : ''}>${hn >= p.hints.length ? 'No more hints' : `Show hint ${hn + 1} of ${p.hints.length}`}</button>
+      <button class="btn quiet" data-act="sol" ${sol ? 'disabled' : ''}>Show solution</button></div>`;
+    const solution = sol ? `<div class="solution"><b>Solution</b>${p.sol}</div>` : '';
+    const done = (chk && chk.ok) || sol;
+    const rate = done ? `<div class="rate-box"><p>How did that go? Your rating decides when this problem comes back.</p><div class="rate3">
+      <button data-r="missed">Missed it<span>back tomorrow</span></button>
+      <button data-r="shaky">Shaky<span>back in 3 days</span></button>
+      <button data-r="got">Got it<span>back in 2 weeks</span></button></div></div>` : '';
+    el.innerHTML = `
+      <div class="play-top"><button class="back" data-act="exit" style="margin:0">← ${S.setName}</button><span class="count">${S.idx + 1} / ${S.set.length}</span></div>
+      <div class="dots">${S.set.map((q, i) => `<button aria-label="Problem ${i + 1}" data-jump="${i}" class="${i === S.idx ? 'cur' : (S.res[q.id] || '')}"></button>`).join('')}</div>
+      <article class="pcard">
+        <div class="pmeta"><span class="tier ${p.lvl}">${LEVELS[p.lvl][0]}</span><span class="src">Physics · Refraction</span><span class="ver ${p.kind === 'proof' ? '' : 'ok'}">${p.kind === 'proof' ? 'proof · not yet checked' : '✓ answer checked by code'}</span></div>
+        <p class="stmt">${p.q}</p>
+        ${body}${hints}${helps}${solution}${rate}
+      </article>
+      <div class="play-nav"><button class="btn ghost" data-act="prev" ${S.idx === 0 ? 'disabled' : ''}>← Previous</button><button class="btn ghost" data-act="next">${S.idx === S.set.length - 1 ? 'Finish' : 'Skip →'}</button></div>`;
+    const inp = $('ans'); if (inp && !inp.disabled) inp.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+  }
+  function check(pick) {
+    const p = S.set[S.idx];
+    if (p.kind === 'mcq') S.checked[p.id] = { pick, ok: pick === p.ans };
+    else {
+      const raw = $('ans').value.trim(), v = parseFloat(raw.replace(',', '.'));
+      S.checked[p.id] = isNaN(v) ? { val: raw, ok: false, nan: true } : { val: raw, ok: Math.abs(v - p.ans) <= p.tol };
+    }
+    renderPlay();
+    if (p.kind === 'num' && !S.checked[p.id].ok) { const i = $('ans'); if (i) { i.focus(); i.select(); } }
+  }
+  function summaryHTML() {
+    const ids = S.set.map(p => p.id), c = k => ids.filter(i => S.res[i] === k).length;
+    return `<article class="pcard summary"><div class="eyebrow">${S.setName}</div><div class="big">${c('got')} / ${ids.length}</div><div>solved confidently</div>
+      <div class="split"><span><span class="state got">✓</span> Got it ${c('got')}</span><span><span class="state shaky">~</span> Shaky ${c('shaky')}</span><span><span class="state missed">✕</span> Missed ${c('missed')}</span><span>Not rated ${ids.length - c('got') - c('shaky') - c('missed')}</span></div>
+      <p style="color:var(--muted);margin-bottom:18px">Shaky and missed problems join your review queue.</p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn" data-act="restart">Go through again</button><button class="btn ghost" data-act="exit">Done</button></div></article>`;
+  }
+  $('player').addEventListener('click', e => {
+    const t = e.target.closest('button'); if (!t || t.disabled) return;
+    const p = S.set[S.idx];
+    if (t.dataset.pick != null) return check(+t.dataset.pick);
+    if (t.dataset.jump != null) { S.idx = +t.dataset.jump; return renderPlay(); }
+    if (t.dataset.r) { S.res[p.id] = t.dataset.r; S.idx++; window.scrollTo(0, 0); return renderPlay(); }
+    switch (t.dataset.act) {
+      case 'check': return check();
+      case 'hint': S.hintN[p.id] = (S.hintN[p.id] || 0) + 1; return renderPlay();
+      case 'sol': S.solShown[p.id] = true; return renderPlay();
+      case 'prev': S.idx = Math.max(0, S.idx - 1); return renderPlay();
+      case 'next': S.idx++; return renderPlay();
+      case 'restart': S.idx = 0; return renderPlay();
+      case 'exit': if (S.from === 'lesson') S.ltab = 'practice'; return go(['lesson', 'home', 'practice'].includes(S.from) ? S.from : 'practice');
+    }
+  });
+
+  /* ================= REVIEW ================= */
+  RENDER.review = renderReview;
+  function renderReview() {
+    const el = $('rev'), left = CARDS.length - S.rev;
+    $('rev-badge').textContent = left; $('rev-badge').hidden = left === 0;
+    if (S.rev >= CARDS.length) {
+      el.innerHTML = `<div class="head"><div class="eyebrow">Review</div><h1 class="h1">All caught up</h1><p class="lede">Nothing else is due today. The next cards come back tomorrow.</p></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="#practice">Solve some problems</a><button class="btn ghost" data-rv="again">Run the demo again</button></div>`;
+      return;
+    }
+    const [k, where, front, back] = CARDS[S.rev];
+    el.innerHTML = `<div class="head"><div class="eyebrow">Review</div><h1 class="h1">${left} due today</h1><p class="lede">Answer in your head first, then reveal. Rate yourself honestly: the rating sets when the card comes back.</p></div>
+      <div class="dots" style="margin-bottom:14px">${CARDS.map((c, i) => `<button tabindex="-1" aria-hidden="true" class="${i === S.rev ? 'cur' : i < S.rev ? 'got' : ''}" style="cursor:default"></button>`).join('')}</div>
+      <article class="fcard s-${k}">
+        <div class="pmeta" style="margin:0"><span class="dot"></span><span class="src">${where}</span><span class="ver">${S.rev + 1} of ${CARDS.length}</span></div>
+        <div class="front">${front}</div>
+        ${S.revShown ? `<div class="back">${back}</div>
+          <div class="rate4"><button data-rv="1">Again<span>10 min</span></button><button data-rv="2">Hard<span>2 days</span></button><button data-rv="3">Good<span>5 days</span></button><button data-rv="4">Easy<span>12 days</span></button></div>`
+          : `<div style="margin-top:auto"><button class="btn" data-rv="show">Show answer</button></div>`}
+      </article>
+      <div class="howto"><div><b>Cards</b>Facts, laws and definitions.</div><div><b>Problems</b>Ones you rated Shaky or Missed come back here.</div><div><b>Timing</b>Each good answer pushes the next review further away.</div></div>`;
+  }
+  $('rev').addEventListener('click', e => {
+    const b = e.target.closest('[data-rv]'); if (!b) return;
+    const v = b.dataset.rv;
+    if (v === 'show') S.revShown = true;
+    else if (v === 'again') { S.rev = 0; S.revShown = false; }
+    else { S.rev++; S.revShown = false; }
+    renderReview();
+  });
+
+  route();
+})();
+</script>
