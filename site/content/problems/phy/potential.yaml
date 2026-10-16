@@ -1,0 +1,295 @@
+# Electrostatic potential, equipotentials, potential energy, conductors. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 2, §2.1–2.9 and Exercises 2.1–2.4. The symbol µ (micro) is written as µ, as printed. Found, board, main problems are original.
+
+- id: ncert12-eg-2-1
+  lvl: ncert-intext
+  num: "XII Ex 2.1"
+  source: NCERT XII Physics · Ch 2 · Example 2.1
+  kind: num
+  q: (a) Calculate the potential at a point P due to a charge of 4 × 10⁻⁷C located 9 cm away. (b) Hence obtain the work done in bringing a charge of 2 × 10⁻⁹ C from infinity to the point P. Does the answer depend on the path along which the charge is brought?
+  ask: Work done in part (b)
+  unit: J
+  ans: 8e-5
+  tol: 1e-7
+  verify: 2e-9*(9e9*4e-7/0.09)
+  sol: |
+    (a) $V = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q}{r} = 9\times10^{9}\times\dfrac{4\times10^{-7}}{0.09} = 4\times10^{4}$ V.
+
+    (b) $W = q'V = 2\times10^{-9}\times4\times10^{4} = 8\times10^{-5}$ J.
+
+    No, the work is path-independent because the electrostatic force is conservative. Any small step along a path can be split into a displacement along $\mathbf r$ and one perpendicular to $\mathbf r$; the force does no work in the perpendicular part, so only the change in $r$ matters.
+  check: code
+
+- id: ncert12-eg-2-2
+  lvl: ncert-intext
+  num: "XII Ex 2.2"
+  source: NCERT XII Physics · Ch 2 · Example 2.2
+  kind: num
+  q: Two charges 3 × 10⁻⁸ C and –2 × 10⁻⁸ C are located 15 cm apart. At what point on the line joining the two charges is the electric potential zero? Take the potential at infinity to be zero.
+  ask: Distance from the positive charge, between the charges
+  unit: cm
+  ans: 9
+  tol: 0.01
+  verify: 15*3/(3+2)
+  sol: |
+    Put the positive charge at the origin and the negative charge at $x = 15$ cm. Potentials of opposite sign can only cancel for $x > 0$.
+
+    Between them ($0 < x < 15$): $\dfrac{3}{x} - \dfrac{2}{15 - x} = 0$ gives $x = 9$ cm.
+
+    Beyond the negative charge ($x > 15$): $\dfrac{3}{x} - \dfrac{2}{x - 15} = 0$ gives $x = 45$ cm.
+
+    So the potential is zero at 9 cm and 45 cm from the positive charge, on the side of the negative charge. (The statement uses the convention $V(\infty) = 0$.)
+  check: code
+
+- id: ncert12-eg-2-3
+  lvl: ncert-intext
+  num: "XII Ex 2.3"
+  source: NCERT XII Physics · Ch 2 · Example 2.3
+  kind: text
+  q: |-
+    Figures 2.8 (a) and (b) show the field lines of a positive and negative point charge respectively. [Fig. 2.8 as printed: in (a) lines point radially outward from a positive charge, with points P (nearer) and Q (farther) in the upper left; in (b) lines point radially inward to a negative charge, with points A (nearer) and B (farther) in the lower right.]
+    (a) Give the signs of the potential difference V_P – V_Q; V_B – V_A.
+    (b) Give the sign of the potential energy difference of a small negative charge between the points Q and P; A and B.
+    (c) Give the sign of the work done by the field in moving a small positive charge from Q to P.
+    (d) Give the sign of the work done by the external agency in moving a small negative charge from B to A.
+    (e) Does the kinetic energy of a small negative charge increase or decrease in going from B to A?
+  sol: |
+    (a) Near a positive charge $V \propto 1/r$, so $V_P > V_Q$ and $V_P - V_Q$ is **positive**. Near a negative charge $V$ is negative and its magnitude falls with distance, so $V_B$ (farther, less negative) is greater than $V_A$: $V_B - V_A$ is **positive**.
+
+    (b) A small negative charge is attracted to the positive charge, so it has lower potential energy near it: $U_Q > U_P$ (it falls from Q to P). Taking the difference as $U_Q - U_P$ (or $U_A - U_B$ for the second case, since the negative charge has higher energy near the negative source), the sign is **positive** in both cases, as the book states.
+
+    (c) Moving a small positive charge from Q to P (towards the positive source) must be done against the field, so the work done **by the field** is **negative**.
+
+    (d) Moving a small negative charge from B to A (towards the negative source) is against the repulsion, so the external agency must do work: **positive**.
+
+    (e) The repulsion slows the negative charge down on the way from B to A, so its kinetic energy **decreases**.
+  check: none
+
+- id: ncert12-eg-2-4
+  lvl: ncert-intext
+  num: "XII Ex 2.4"
+  source: NCERT XII Physics · Ch 2 · Example 2.4
+  kind: text
+  q: |
+    Four charges are arranged at the corners of a square ABCD of side d, as shown in Fig. 2.15. (a) Find the work required to put together this arrangement. (b) A charge q₀ is brought to the centre E of the square, the four charges being held fixed at its corners. How much extra work is needed to do this? [Fig. 2.15 as printed: charges +q at A, –q at B, +q at C, –q at D; A, B, C, D in order round the square.]
+  sol: |
+    (a) The work depends only on the final arrangement, so assemble in any order: bring $+q$ to A, then $-q$ to B, $+q$ to C, $-q$ to D.
+
+    - A: no work (nothing else present).
+    - B ($-q$ at distance $d$ from A): $-\dfrac{q^2}{4\pi\varepsilon_0 d}$.
+    - C ($+q$; distance $\sqrt2d$ from A, $d$ from B): $q\left(\dfrac{q}{4\pi\varepsilon_0\sqrt2d} - \dfrac{q}{4\pi\varepsilon_0 d}\right) = -\dfrac{q^2}{4\pi\varepsilon_0 d}\left(1 - \dfrac1{\sqrt2}\right)$.
+    - D ($-q$; $d$ from A, $\sqrt2d$ from B, $d$ from C): $-q\left(\dfrac{q}{4\pi\varepsilon_0d} - \dfrac{q}{4\pi\varepsilon_0\sqrt2d} + \dfrac{q}{4\pi\varepsilon_0d}\right) = -\dfrac{q^2}{4\pi\varepsilon_0d}\left(2 - \dfrac1{\sqrt2}\right)$.
+
+    Total:
+
+    $$W = -\frac{q^2}{4\pi\varepsilon_0 d}\left(0 + 1 + 1 - \tfrac1{\sqrt2} + 2 - \tfrac1{\sqrt2}\right) = -\frac{q^2}{4\pi\varepsilon_0 d}\left(4 - \sqrt2\right).$$
+
+    This is the electrostatic energy of the arrangement.
+
+    (b) The potential at the centre E is zero: the contributions of A and C ($+q$ each) are cancelled by those of B and D ($-q$ each), all at the same distance. So **no extra work** is needed to bring any charge $q_0$ to E (although there is a force on it).
+  check: none
+
+- id: ncert12-eg-2-5
+  lvl: ncert-intext
+  num: "XII Ex 2.5"
+  source: NCERT XII Physics · Ch 2 · Example 2.5
+  kind: num
+  q: |-
+    (a) Determine the electrostatic potential energy of a system consisting of two charges 7 µC and –2 µC (and with no external field) placed at (–9 cm, 0, 0) and (9 cm, 0, 0) respectively.
+    (b) How much work is required to separate the two charges infinitely away from each other?
+    (c) Suppose that the same system of charges is now placed in an external electric field E = A (1/r²); A = 9 × 10⁵ NC⁻¹ m². What would the electrostatic energy of the configuration be?
+  ask: Electrostatic energy in the external field, part (c)
+  unit: J
+  ans: 49.3
+  tol: 0.05
+  verify: 9e5*7e-6/0.09+9e5*(-2e-6)/0.09+9e9*7e-6*(-2e-6)/0.18
+  sol: |
+    (a) $U = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q_1q_2}{r} = 9\times10^{9}\times\dfrac{7\times(-2)\times10^{-12}}{0.18} = -0.7$ J.
+
+    (b) $W = U_\infty - U = 0 - (-0.7) = 0.7$ J.
+
+    (c) The mutual energy stays $-0.7$ J. In addition each charge has energy in the external field, whose potential is $V = A/r$ (so that $E = A/r^2$): $q_1V(r_1) + q_2V(r_2) = A\,\dfrac{7\ \mu\text{C}}{0.09\ \text{m}} + A\,\dfrac{-2\ \mu\text{C}}{0.09\ \text{m}} = 70 - 20 = 50$ J. The net energy is $70 - 20 - 0.7 = 49.3$ J.
+  check: code
+
+- id: ncert12-eg-2-6
+  lvl: ncert-intext
+  num: "XII Ex 2.6"
+  source: NCERT XII Physics · Ch 2 · Example 2.6
+  kind: num
+  q: A molecule of a substance has a permanent electric dipole moment of magnitude 10⁻²⁹ C m. A mole of this substance is polarised (at low temperature) by applying a strong electrostatic field of magnitude 10⁶ V m⁻¹. The direction of the field is suddenly changed by an angle of 60º. Estimate the heat released by the substance in aligning its dipoles along the new direction of the field. For simplicity, assume 100% polarisation of the sample.
+  ask: Heat released
+  unit: J
+  ans: 3
+  tol: 0.01
+  verify: 6e23*1e-29*1e6*(Math.cos(0)-Math.cos(Math.PI/3))
+  sol: |
+    The total dipole moment is $p = 6\times10^{23}\times10^{-29} = 6\times10^{-6}$ C m. Just after the field direction changes, the dipoles are at 60° to the new field, so $U = -pE\cos60^\circ = -6\times10^{-6}\times10^{6}\times0.5 = -3$ J. When aligned along the field, $U = -pE = -6$ J. The energy released as heat is $\Delta U = 6 - 3 = 3$ J.
+
+    [Note] The book's worked solution takes the initial and final energies in the order $-6$ J then $-3$ J and states a change of $+3$ J; the heat released is the 3 J that the dipoles lose when turning from 60° to 0° with respect to the new field, as above.
+  check: code
+
+- id: ncert12-eg-2-7
+  lvl: ncert-intext
+  num: "XII Ex 2.7"
+  source: NCERT XII Physics · Ch 2 · Example 2.7
+  kind: text
+  q: |-
+    (a) A comb run through one's dry hair attracts small bits of paper. Why? What happens if the hair is wet or if it is a rainy day? (Remember, a paper does not conduct electricity.)
+    (b) Ordinary rubber is an insulator. But special rubber tyres of aircraft are made slightly conducting. Why is this necessary?
+    (c) Vehicles carrying inflammable materials usually have metallic ropes touching the ground during motion. Why?
+    (d) A bird perches on a bare high power line, and nothing happens to the bird. A man standing on the ground touches the same line and gets a fatal shock. Why?
+  sol: |
+    (a) The comb becomes charged by friction with dry hair. Its field polarises the molecules of the paper, which then feel a net attraction. With wet hair, or on a rainy day, there is less friction, and water gives charge a path away, so the comb does not stay charged and does not attract the paper.
+
+    (b) The slightly conducting tyres let the charge produced by friction (when landing, for example) leak to the ground. Too much accumulated static charge could cause a spark and a fire.
+
+    (c) For the same reason as (b): the rope carries the static charge produced by friction to the ground, avoiding sparks near inflammable material.
+
+    (d) Current flows only if there is a potential difference. The bird's feet are at the same potential as the wire, so nothing happens. The man stands on the ground, at zero potential, while the wire is at a high potential, so a large current flows through him.
+  check: none
+
+- id: ncert12-ex-2-1
+  lvl: ncert-ex
+  num: "XII 2.1"
+  source: NCERT XII Physics · Ch 2 · Exercise 2.1
+  kind: num
+  q: Two charges 5 × 10⁻⁸ C and –3 × 10⁻⁸ C are located 16 cm apart. At what point(s) on the line joining the two charges is the electric potential zero? Take the potential at infinity to be zero.
+  ask: Distance from the positive charge, between the charges
+  unit: cm
+  ans: 10
+  tol: 0.01
+  verify: 16*5/(5+3)
+  sol: |
+    Let the positive charge be at $x = 0$ and the negative charge at $x = 16$ cm.
+
+    Between them: $\dfrac{5}{x} = \dfrac{3}{16 - x}$ gives $5(16 - x) = 3x$ so $x = 10$ cm.
+
+    Beyond the negative charge: $\dfrac{5}{x} = \dfrac{3}{x - 16}$ gives $5x - 80 = 3x$ so $x = 40$ cm.
+
+    On the other side of the positive charge no point works, as the larger charge is nearer there. So the potential is zero at 10 cm and at 40 cm from the positive charge, on the side of the negative charge.
+  answer_key: 10 cm, 40 cm away from the positive charge on the side of the negative charge.
+  check: both
+
+- id: ncert12-ex-2-2
+  lvl: ncert-ex
+  num: "XII 2.2"
+  source: NCERT XII Physics · Ch 2 · Exercise 2.2
+  kind: num
+  q: A regular hexagon of side 10 cm has a charge 5 µC at each of its vertices. Calculate the potential at the centre of the hexagon.
+  ask: Potential at the centre
+  unit: V
+  ans: 2.7e6
+  tol: 1e3
+  verify: 6*9e9*5e-6/0.1
+  sol: |
+    The centre of a regular hexagon is at distance equal to the side, 10 cm, from each vertex. Potential is a scalar, so the six contributions add: $V = 6\times\dfrac{9\times10^{9}\times5\times10^{-6}}{0.1} = 2.7\times10^{6}$ V.
+  answer_key: 2.7 × 10⁶ V
+  check: both
+
+- id: ncert12-ex-2-3
+  lvl: ncert-ex
+  num: "XII 2.3"
+  source: NCERT XII Physics · Ch 2 · Exercise 2.3
+  kind: text
+  q: |-
+    Two charges 2 µC and –2 µC are placed at points A and B 6 cm apart.
+    (a) Identify an equipotential surface of the system.
+    (b) What is the direction of the electric field at every point on this surface?
+  sol: |
+    (a) The plane normal to AB and passing through its midpoint is at zero potential everywhere: any point on it is at equal distances from the two equal and opposite charges, so their potentials cancel. It is an equipotential surface at $V = 0$.
+
+    (b) The field is perpendicular to an equipotential surface, so at every point of this plane it is normal to the plane, along the direction from A to B (from the positive to the negative charge).
+  answer_key: "(a) The plane normal to AB and passing through its mid-point has zero potential everywhere. (b) Normal to the plane in the direction AB."
+  check: ncert-key
+
+- id: ncert12-ex-2-4
+  lvl: ncert-ex
+  num: "XII 2.4"
+  source: NCERT XII Physics · Ch 2 · Exercise 2.4
+  kind: num
+  q: |-
+    A spherical conductor of radius 12 cm has a charge of 1.6 × 10⁻⁷C distributed uniformly on its surface. What is the electric field
+    (a) inside the sphere
+    (b) just outside the sphere
+    (c) at a point 18 cm from the centre of the sphere?
+  ask: Field at 18 cm from the centre, part (c)
+  unit: N/C
+  ans: 4.44e4
+  tol: 100
+  verify: 9e9*1.6e-7/0.18**2
+  sol: |
+    (a) Inside a conductor in electrostatic equilibrium the field is **zero**.
+
+    (b) Just outside, $E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q}{R^2} = 9\times10^{9}\times\dfrac{1.6\times10^{-7}}{(0.12)^2} = 1\times10^{5}$ N/C.
+
+    (c) At $r = 18$ cm the sphere acts as a point charge at the centre: $E = 9\times10^{9}\times\dfrac{1.6\times10^{-7}}{(0.18)^2} = 4.4\times10^{4}$ N/C.
+  answer_key: "(a) Zero (b) 10⁵ N C⁻¹ (c) 4.4 × 10⁴ N C⁻¹"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Electric potential at a point is
+  opts: ["the force on a unit charge", "the work done per unit charge in bringing a positive test charge from infinity to the point", "the charge per unit area", "the electric field times area"]
+  ans: 1
+  sol: Potential is work per unit positive charge to bring a test charge from infinity (zero of potential) to the point, without acceleration.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the potential at a distance of 0.3 m from a point charge of 2 µC in air. (Original problem.)
+  ask: Potential
+  unit: V
+  ans: 60000
+  tol: 10
+  verify: 9e9*2e-6/0.3
+  sol: $V = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q}{r} = 9\times10^{9}\times\dfrac{2\times10^{-6}}{0.3} = 6\times10^{4}$ V.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Two point charges +4 µC and −4 µC are 10 cm apart. What is the potential energy of the pair? (Original problem.)
+  ask: Potential energy
+  unit: J
+  ans: -1.44
+  tol: 0.005
+  verify: 9e9*4e-6*(-4e-6)/0.1
+  sol: $U = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q_1q_2}{r} = 9\times10^{9}\times\dfrac{(4\times10^{-6})(-4\times10^{-6})}{0.1} = -1.44$ J. The negative sign means work $+1.44$ J must be supplied to separate them.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A proton is accelerated from rest through a potential difference of 2000 V. What is its final speed? Take m = 1.67 × 10⁻²⁷ kg. (Original problem.)
+  ask: Speed
+  unit: m/s
+  ans: 6.2e5
+  tol: 5e3
+  verify: Math.sqrt(2*1.6e-19*2000/1.67e-27)
+  sol: $\tfrac12mv^2 = eV$ so $v = \sqrt{2eV/m} = \sqrt{2\times1.6\times10^{-19}\times2000/1.67\times10^{-27}} = 6.2\times10^{5}$ m/s.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Four equal charges of +2 µC each are placed at the corners of a square of side 10 cm. Find the electric potential at the centre and the work needed to bring a +1 µC charge there from infinity. Give the work. (Original problem.)
+  ask: Work
+  unit: J
+  ans: 1.02
+  tol: 0.01
+  verify: 1e-6*4*9e9*2e-6/(0.1/Math.SQRT2*1)
+  sol: Each corner is at distance $d/\sqrt2 = 7.07$ cm from the centre. $V = 4\times9\times10^{9}\times\dfrac{2\times10^{-6}}{0.0707} = 1.02\times10^{6}$ V. Work $= q'V = 10^{-6}\times1.02\times10^{6} = 1.02$ J.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A charge of +3 µC is held fixed at the origin. A small particle of mass 2 g and charge +1 µC is released from rest at 3 cm from it. Find the speed of the particle when it is very far away. (Original problem.)
+  ask: Speed at infinity
+  unit: m/s
+  ans: 30
+  tol: 0.05
+  verify: Math.sqrt(2*9e9*3e-6*1e-6/0.03/2e-3)
+  sol: Energy conservation. $U_i = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q_1q_2}{r} = 9\times10^{9}\times\dfrac{3\times10^{-6}\times10^{-6}}{0.03} = 0.9$ J, and $U_f = 0$ at infinity. So $\tfrac12mv^2 = 0.9$ J and $v = \sqrt{2\times0.9/(2\times10^{-3})} = 30$ m/s.
+  check: code

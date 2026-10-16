@@ -4,8 +4,14 @@ subject: phy
 name: Physics
 code: leph1 / leph2
 chapters:
-  - { n: 1, title: Electric Charges and Fields, pdf: leph101 }
-  - { n: 2, title: Electrostatic Potential and Capacitance, pdf: leph102 }
+  - n: 1
+    title: Electric Charges and Fields
+    pdf: leph101
+    leaves: [phy/electric-charge, phy/coulombs-law, phy/electric-field, phy/gausss-law]
+  - n: 2
+    title: Electrostatic Potential and Capacitance
+    pdf: leph102
+    leaves: [phy/potential, phy/capacitors]
   - n: 3
     title: Current Electricity
     pdf: leph103

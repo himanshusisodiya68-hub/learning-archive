@@ -1,0 +1,147 @@
+# Electric charge. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 1, §1.2–1.4 and Exercises. In the printed book the symbol µ (micro) appears as "m" in the text layer; the values below use µ as in the printed page. Found, board, main problems are original.
+
+- id: ncert12-eg-1-1
+  lvl: ncert-intext
+  num: "XII Ex 1.1"
+  source: NCERT XII Physics · Ch 1 · Example 1.1
+  kind: num
+  q: If 10⁹ electrons move out of a body to another body every second, how much time is required to get a total charge of 1 C on the other body?
+  ask: Time in years
+  unit: years
+  ans: 198
+  tol: 1
+  verify: 1/(1.6e-19*1e9)/(365*24*3600)
+  sol: |
+    In one second $10^{9}$ electrons leave, a charge of $1.6\times10^{-19}\times10^{9} = 1.6\times10^{-10}$ C. To collect 1 C takes
+
+    $$t = \frac{1\ \text{C}}{1.6\times10^{-10}\ \text{C/s}} = 6.25\times10^{9}\ \text{s} = \frac{6.25\times10^{9}}{365\times24\times3600}\ \text{years} \approx 198\ \text{years}.$$
+
+    So one coulomb is a very large unit for most practical purposes. (A 1 cm cube of copper holds about $2.5\times10^{24}$ electrons in total.)
+  check: code
+
+- id: ncert12-eg-1-2
+  lvl: ncert-intext
+  num: "XII Ex 1.2"
+  source: NCERT XII Physics · Ch 1 · Example 1.2
+  kind: num
+  q: How much positive and negative charge is there in a cup of water?
+  ask: Magnitude of the positive (or negative) charge
+  unit: C
+  ans: 1.34e7
+  tol: 1e5
+  verify: (250/18)*6.02e23*10*1.6e-19
+  sol: |
+    Take a cup to be 250 g of water (an assumption, as in the book). The molar mass of water is 18 g, so the number of molecules is $(250/18)\times6.02\times10^{23}$. Each molecule (2 H and 1 O) has 10 protons and 10 electrons. The magnitude of each kind of charge is
+
+    $$\frac{250}{18}\times6.02\times10^{23}\times10\times1.6\times10^{-19}\ \text{C} = 1.34\times10^{7}\ \text{C}.$$
+
+    The positive and negative charges are equal in magnitude, so the water is neutral.
+  check: code
+
+- id: ncert12-ex-1-4
+  lvl: ncert-ex
+  num: "XII 1.4"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.4
+  kind: text
+  q: |-
+    (a) Explain the meaning of the statement 'electric charge of a body is quantised'.
+    (b) Why can one ignore quantisation of electric charge when dealing with macroscopic i.e., large scale charges?
+  sol: |
+    (a) The charge of a body is always an integer multiple of a basic unit, the electron charge $e = 1.6\times10^{-19}$ C: $q = ne$, with $n = 0, \pm1, \pm2,\dots$. A body cannot carry, say, $0.5e$.
+
+    (b) In macroscopic situations the charges involved are of the order of $10^{-6}$ C or more, which corresponds to $10^{13}$ electrons or more. A change of one $e$ is then a change of about one part in $10^{13}$, so the charge looks continuous and quantisation can be ignored.
+  check: none
+
+- id: ncert12-ex-1-5
+  lvl: ncert-ex
+  num: "XII 1.5"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.5
+  kind: text
+  q: When a glass rod is rubbed with a silk cloth, charges appear on both. A similar phenomenon is observed with many other pairs of bodies. Explain how this observation is consistent with the law of conservation of charge.
+  sol: |
+    Before rubbing, both bodies are neutral, so the total charge is zero. Rubbing transfers electrons from one body to the other: the body that loses electrons becomes positive, and the one that gains them becomes negative, by the same amount. The total charge is still zero, so charge is not created or destroyed, only transferred from one body to another.
+  answer_key: Charge is not created or destroyed. It is merely transferred from one body to another.
+  check: ncert-key
+
+- id: ncert12-ex-1-11
+  lvl: ncert-ex
+  num: "XII 1.11"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.11
+  kind: num
+  q: |-
+    A polythene piece rubbed with wool is found to have a negative charge of 3 × 10⁻⁷ C.
+    (a) Estimate the number of electrons transferred (from which to which?)
+    (b) Is there a transfer of mass from wool to polythene?
+  ask: Number of electrons transferred
+  unit: ""
+  ans: 1.875e12
+  tol: 1e9
+  verify: 3e-7/1.6e-19
+  sol: |
+    (a) $n = q/e = \dfrac{3\times10^{-7}}{1.6\times10^{-19}} \approx 1.9\times10^{12}$, which the answer key quotes as $2\times10^{12}$. The polythene is negative, so it has gained electrons: they went **from wool to polythene**.
+
+    (b) Yes, but a negligible amount: $m = n m_e = 1.9\times10^{12}\times9.11\times10^{-31}\ \text{kg} \approx 1.7\times10^{-18}$ kg (the key gives $\approx 2\times10^{-18}$ kg).
+  answer_key: "(a) 2 × 10¹², from wool to polythene. (b) Yes, but of a negligible amount (= 2 × 10⁻¹⁸ kg in the example)."
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A glass rod rubbed with silk becomes positively charged. This is because
+  opts: ["protons move from silk to the rod", "electrons move from the rod to the silk", "electrons move from the silk to the rod", "charge is created on the rod"]
+  ans: 1
+  sol: Only electrons move. The rod loses electrons, so it has a net positive charge, and the silk gains the same amount of negative charge. Total charge is conserved.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A body has 5 × 10¹² more electrons than protons. What is its charge? (Original problem.)
+  ask: Charge
+  unit: µC
+  ans: -0.8
+  tol: 0.005
+  verify: -5e12*1.6e-19*1e6
+  sol: $q = -ne = -5\times10^{12}\times1.6\times10^{-19} = -8\times10^{-7}\ \text{C} = -0.8\ \mu\text{C}$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: text
+  q: Two identical metal spheres carry charges +6 µC and −2 µC. They are touched together and separated. What charge does each carry? (Original problem.)
+  sol: |
+    Charge is conserved and the identical spheres share it equally, so each carries $(6 - 2)/2 = +2\ \mu\text{C}$. (Equivalent to moving $4\ \mu\text{C}$ of net charge onto each, after $2\ \mu\text{C}$ of positive charge is cancelled by the $-2\ \mu\text{C}$.)
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A neutral metal sphere is touched by a negatively charged rod that transfers 2 × 10⁹ electrons to the sphere. What charge does the sphere acquire? (Original problem.)
+  ask: Charge
+  unit: nC
+  ans: -0.32
+  tol: 0.005
+  verify: -2e9*1.6e-19*1e9
+  sol: $q = -ne = -2\times10^{9}\times1.6\times10^{-19} = -3.2\times10^{-10}\ \text{C} = -0.32\ \text{nC}$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A copper cube of side 1 cm contains about 8.5 × 10²² atoms, each with one free electron. If one electron in every 10¹⁰ is removed, what charge does the cube acquire? (Original problem; the atom count is the value implied by the density and atomic mass of copper.)
+  ask: Charge
+  unit: C
+  ans: 1.36e-6
+  tol: 1e-8
+  verify: 8.5e22/1e10*1.6e-19
+  sol: |
+    Number of electrons removed $= 8.5\times10^{22}/10^{10} = 8.5\times10^{12}$. Charge $= 8.5\times10^{12}\times1.6\times10^{-19} = 1.36\times10^{-6}$ C, about $+1.4\ \mu\text{C}$. Even this tiny fraction of the electrons gives a charge of the size seen in rubbing experiments.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A charged rod is brought near, but not touching, an insulated neutral metal sphere. The sphere is briefly earthed with the rod still in place, then the earth connection is removed, then the rod is taken away. What is the sign of the charge on the sphere if the rod was positive? Explain. (Original problem.)
+  sol: |
+    **Negative.** The positive rod attracts free electrons to the near side of the sphere. Earthing lets more electrons flow from the earth onto the sphere (they are drawn in by the rod). After the earth connection is removed, the sphere has an excess of electrons that cannot leave, and when the rod is removed these spread over the sphere. This is charging by induction: the sphere ends up with the sign opposite to the rod's.
+  check: none

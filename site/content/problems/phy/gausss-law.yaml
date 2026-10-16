@@ -1,0 +1,319 @@
+# Gauss's law. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 1, §1.9 and §1.13–1.14 and Exercises. The symbol µ (micro) is written as µ, as printed. Found, board, main problems are original.
+
+- id: ncert12-eg-1-10
+  lvl: ncert-intext
+  num: "XII Ex 1.10"
+  source: NCERT XII Physics · Ch 1 · Example 1.10
+  kind: num
+  q: The electric field components in Fig. 1.24 are E_x = αx^(1/2), E_y = E_z = 0, in which α = 800 N/C m^(1/2). Calculate (a) the flux through the cube, and (b) the charge within the cube. Assume that a = 0.1 m.
+  ask: Flux through the cube
+  unit: N m²/C
+  ans: 1.05
+  tol: 0.005
+  verify: 800*Math.pow(0.1,2.5)*(Math.SQRT2-1)
+  sol: |
+    [Reading of Fig. 1.24, consistent with the solution: a cube of side $a$ with one face at $x = a$ and the opposite face at $x = 2a$, edges along the axes.]
+
+    (a) $E$ has only an $x$ component, so only the two faces perpendicular to the $x$-axis have non-zero flux. At the left face ($x = a$) $E_L = \alpha a^{1/2}$ and the outward normal is $-\hat x$, so $\phi_L = -E_La^2$. At the right face ($x = 2a$) $E_R = \alpha(2a)^{1/2}$ and the outward normal is $+\hat x$, so $\phi_R = +E_Ra^2$. Net flux
+
+    $$\phi = a^2(E_R - E_L) = \alpha a^{5/2}(\sqrt2 - 1) = 800\times(0.1)^{5/2}\times0.414 \approx 1.05\ \text{N m}^2\text{C}^{-1}.$$
+
+    (b) By Gauss's law $q = \varepsilon_0\phi = 1.05\times8.854\times10^{-12} \approx 9.3\times10^{-12}$ C (the book gives $9.27\times10^{-12}$ C, from the unrounded flux).
+  check: code
+
+- id: ncert12-eg-1-11
+  lvl: ncert-intext
+  num: "XII Ex 1.11"
+  source: NCERT XII Physics · Ch 1 · Example 1.11
+  kind: num
+  q: An electric field is uniform, and in the positive x direction for positive x, and uniform with the same magnitude but in the negative x direction for negative x. It is given that E = 200 î N/C for x > 0 and E = –200 î N/C for x < 0. A right circular cylinder of length 20 cm and radius 5 cm has its centre at the origin and its axis along the x-axis so that one face is at x = +10 cm and the other is at x = –10 cm (Fig. 1.25). (a) What is the net outward flux through each flat face? (b) What is the flux through the side of the cylinder? (c) What is the net outward flux through the cylinder? (d) What is the net charge inside the cylinder?
+  ask: Net outward flux through the cylinder
+  unit: N m²/C
+  ans: 3.14
+  tol: 0.01
+  verify: 2*200*Math.PI*0.05**2
+  sol: |
+    (a) On the left face the field is $-200\hat i$ and the outward area vector is $-\hat i\,\Delta S$, so the flux is $+200\Delta S = 200\times\pi(0.05)^2 = +1.57$ N m²/C. The right face is the same: $+1.57$ N m²/C.
+
+    (b) On the curved side $\mathbf E$ is perpendicular to $\Delta\mathbf S$, so the flux is zero.
+
+    (c) Net outward flux $= 1.57 + 1.57 + 0 = 3.14$ N m²/C.
+
+    (d) $q = \varepsilon_0\phi = 3.14\times8.854\times10^{-12} = 2.78\times10^{-11}$ C. (This is the field of a thin sheet of charge in the $x = 0$ plane.)
+  check: code
+
+- id: ncert12-eg-1-12
+  lvl: ncert-intext
+  num: "XII Ex 1.12"
+  source: NCERT XII Physics · Ch 1 · Example 1.12
+  kind: text
+  q: An early model for an atom considered it to have a positively charged point nucleus of charge Ze, surrounded by a uniform density of negative charge up to a radius R. The atom as a whole is neutral. For this model, what is the electric field at a distance r from the nucleus?
+  sol: |
+    The negative charge $-Ze$ is spread uniformly through a sphere of radius $R$, so its density is $\rho = -\dfrac{3Ze}{4\pi R^3}$. By spherical symmetry use a spherical Gaussian surface of radius $r$ centred on the nucleus. The flux through it is $E(r)\,4\pi r^2$.
+
+    **$r < R$:** the enclosed charge is $q = Ze + \dfrac{4\pi r^3}{3}\rho = Ze\left(1 - \dfrac{r^3}{R^3}\right)$. Gauss's law gives
+
+    $$E(r) = \frac{Ze}{4\pi\varepsilon_0}\left(\frac{1}{r^2} - \frac{r}{R^3}\right),$$
+
+    directed radially outward.
+
+    **$r > R$:** the atom is neutral, so the enclosed charge is zero and $E(r) = 0$. At $r = R$ both expressions give $E = 0$.
+  check: none
+
+- id: ncert12-ex-1-14
+  lvl: ncert-ex
+  num: "XII 1.14"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.14
+  kind: num
+  q: Consider a uniform electric field E = 3 × 10³ î N/C. (a) What is the flux of this field through a square of 10 cm on a side whose plane is parallel to the yz plane? (b) What is the flux through the same square if the normal to its plane makes a 60° angle with the x-axis?
+  ask: Flux in part (a)
+  unit: N m²/C
+  ans: 30
+  tol: 0.01
+  verify: 3e3*0.1**2
+  sol: |
+    (a) The plane is parallel to the $yz$ plane, so its normal is along $x$, parallel to $\mathbf E$: $\phi = EA\cos0^\circ = 3\times10^{3}\times(0.1)^2 = 30$ N m²/C.
+
+    (b) With the normal at 60° to the $x$-axis: $\phi = EA\cos60^\circ = 15$ N m²/C.
+  answer_key: "(a) 30 Nm²/C, (b) 15 Nm²/C"
+  check: both
+
+- id: ncert12-ex-1-15
+  lvl: ncert-ex
+  num: "XII 1.15"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.15
+  kind: text
+  q: What is the net flux of the uniform electric field of Exercise 1.14 through a cube of side 20 cm oriented so that its faces are parallel to the coordinate planes?
+  sol: |
+    **Zero.** The field is uniform and along $x$. The flux entering through the face at the lower $x$ ($-EA$) equals the flux leaving through the opposite face ($+EA$), and the four faces parallel to $x$ have zero flux. Equivalently, no charge is enclosed, so by Gauss's law the net flux is zero.
+  answer_key: Zero. The number of lines entering the cube is the same as the number of lines leaving the cube.
+  check: ncert-key
+
+- id: ncert12-ex-1-16
+  lvl: ncert-ex
+  num: "XII 1.16"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.16
+  kind: num
+  q: Careful measurement of the electric field at the surface of a black box indicates that the net outward flux through the surface of the box is 8.0 × 10³ Nm²/C. (a) What is the net charge inside the box? (b) If the net outward flux through the surface of the box were zero, could you conclude that there were no charges inside the box? Why or Why not?
+  ask: Net charge inside the box
+  unit: µC
+  ans: 0.0708
+  tol: 0.0005
+  verify: 8.0e3*8.854e-12*1e6
+  sol: |
+    (a) $q = \varepsilon_0\phi = 8.854\times10^{-12}\times8.0\times10^{3} = 7.1\times10^{-8}$ C $= 0.07\ \mu$C.
+
+    (b) **No.** Zero net flux only tells us that the net (algebraic sum of) charge inside is zero. Equal positive and negative charges could be inside, or no charge at all.
+  answer_key: "(a) 0.07 µC (b) No, only that the net charge inside is zero."
+  check: both
+
+- id: ncert12-ex-1-17
+  lvl: ncert-ex
+  num: "XII 1.17"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.17
+  kind: num
+  q: |
+    A point charge +10 µC is a distance 5 cm directly above the centre of a square of side 10 cm, as shown in Fig. 1.31. What is the magnitude of the electric flux through the square? (Hint: Think of the square as one face of a cube with edge 10 cm.)
+  ask: Flux through the square
+  unit: N m²/C
+  ans: 1.88e5
+  tol: 5e2
+  verify: 10e-6/(6*8.854e-12)
+  sol: |
+    The charge lies at the centre of a cube of edge 10 cm that has the square as one face (the centre is 5 cm from the face). By symmetry each of the six faces receives one sixth of the total flux $q/\varepsilon_0$:
+
+    $$\phi = \frac{q}{6\varepsilon_0} = \frac{10\times10^{-6}}{6\times8.854\times10^{-12}} = 1.9\times10^{5}\ \text{N m}^2/\text{C}.$$
+
+    **Discrepancy with the printed answer key.** The key lists $2.2\times10^{5}$ for 1.17 and $1.9\times10^{5}$ for 1.18. Working the two problems out gives $1.9\times10^{5}$ for 1.17 and $2.3\times10^{5}$ for 1.18 (see 1.18), so the key's values look transposed.
+
+    [Inference] The key's 1.17 and 1.18 entries appear to be swapped (it is also possible that the key rounds one of them differently), but I cannot verify the reason. I use my own calculation.
+  answer_key: 2.2 × 10⁵ N m²/C (as printed; see the note above)
+  check: code
+
+- id: ncert12-ex-1-18
+  lvl: ncert-ex
+  num: "XII 1.18"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.18
+  kind: num
+  q: A point charge of 2.0 µC is at the centre of a cubic Gaussian surface 9.0 cm on edge. What is the net electric flux through the surface?
+  ask: Net flux
+  unit: N m²/C
+  ans: 2.26e5
+  tol: 5e2
+  verify: 2.0e-6/8.854e-12
+  sol: |
+    By Gauss's law the net flux through any closed surface enclosing the charge is $\phi = q/\varepsilon_0 = \dfrac{2.0\times10^{-6}}{8.854\times10^{-12}} = 2.3\times10^{5}$ N m²/C. The size of the cube does not matter.
+
+    **Discrepancy with the printed answer key:** it gives $1.9\times10^{5}$ here. That value is the answer to Exercise 1.17, so the two key entries appear to be transposed ([Inference]; see 1.17).
+  answer_key: 1.9 × 10⁵ N m²/C (as printed; see the note above)
+  check: code
+
+- id: ncert12-ex-1-19
+  lvl: ncert-ex
+  num: "XII 1.19"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.19
+  kind: num
+  q: A point charge causes an electric flux of –1.0 × 10³ Nm²/C to pass through a spherical Gaussian surface of 10.0 cm radius centred on the charge. (a) If the radius of the Gaussian surface were doubled, how much flux would pass through the surface? (b) What is the value of the point charge?
+  ask: Value of the point charge
+  unit: nC
+  ans: -8.854
+  tol: 0.005
+  verify: -1.0e3*8.854e-12*1e9
+  sol: |
+    (a) The flux is the same, $-1.0\times10^{3}$ N m²/C, because the enclosed charge is the same.
+
+    (b) $q = \varepsilon_0\phi = 8.854\times10^{-12}\times(-1.0\times10^{3}) = -8.854\times10^{-9}$ C $\approx -8.8$ nC. The charge is negative, as the flux is inward.
+  answer_key: "(a) –10³ N m²/C; because the charge enclosed is the same in the two cases. (b) –8.8 nC"
+  check: both
+
+- id: ncert12-ex-1-20
+  lvl: ncert-ex
+  num: "XII 1.20"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.20
+  kind: num
+  q: A conducting sphere of radius 10 cm has an unknown charge. If the electric field 20 cm from the centre of the sphere is 1.5 × 10³ N/C and points radially inward, what is the net charge on the sphere?
+  ask: Net charge
+  unit: nC
+  ans: -6.67
+  tol: 0.01
+  verify: -1.5e3*0.2**2/9e9*1e9
+  sol: |
+    Outside a charged sphere the field is that of a point charge at the centre: $E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{|q|}{r^2}$. So $|q| = \dfrac{Er^2}{9\times10^{9}} = \dfrac{1.5\times10^{3}\times(0.2)^2}{9\times10^{9}} = 6.67\times10^{-9}$ C. The field points inward, so the charge is negative: $q = -6.67$ nC.
+  answer_key: –6.67 nC
+  check: both
+
+- id: ncert12-ex-1-21
+  lvl: ncert-ex
+  num: "XII 1.21"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.21
+  kind: num
+  q: A uniformly charged conducting sphere of 2.4 m diameter has a surface charge density of 80.0 µC/m². (a) Find the charge on the sphere. (b) What is the total electric flux leaving the surface of the sphere?
+  ask: Charge on the sphere
+  unit: mC
+  ans: 1.4476
+  tol: 0.005
+  verify: 80e-6*4*Math.PI*1.2**2*1e3
+  sol: |
+    (a) $r = 1.2$ m. $Q = \sigma\times4\pi r^2 = 80.0\times10^{-6}\times4\pi\times(1.2)^2 = 1.45\times10^{-3}$ C.
+
+    (b) $\phi = Q/\varepsilon_0 = \dfrac{1.45\times10^{-3}}{8.854\times10^{-12}} = 1.6\times10^{8}$ N m²/C.
+  answer_key: "(a) 1.45 × 10⁻³ C (b) 1.6 × 10⁸ Nm²/C"
+  check: both
+
+- id: ncert12-ex-1-22
+  lvl: ncert-ex
+  num: "XII 1.22"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.22
+  kind: num
+  q: An infinite line charge produces a field of 9 × 10⁴ N/C at a distance of 2 cm. Calculate the linear charge density.
+  ask: Linear charge density
+  unit: µC/m
+  ans: 0.1
+  tol: 0.001
+  verify: 9e4*0.02/(2*9e9)*1e6
+  sol: |
+    For an infinite line charge, Gauss's law with a coaxial cylinder gives $E = \dfrac{\lambda}{2\pi\varepsilon_0 r}$, so
+
+    $$\lambda = 2\pi\varepsilon_0 rE = \frac{rE}{2\times9\times10^{9}} = \frac{0.02\times9\times10^{4}}{1.8\times10^{10}} = 1\times10^{-7}\ \text{C/m} = 0.1\ \mu\text{C/m}.$$
+
+    **Discrepancy with the printed answer key:** it gives $10\ \mu$C/m, which is 100 times larger than the value this data produces. $10\ \mu$C/m would give $9\times10^{4}$ N/C at 2 m, not 2 cm.
+
+    [Inference] The key looks wrong for the stated data (or the stated distance has changed); I use my own calculation.
+  answer_key: 10 µC/m (as printed; see the note above)
+  check: code
+
+- id: ncert12-ex-1-23
+  lvl: ncert-ex
+  num: "XII 1.23"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.23
+  kind: num
+  q: |
+    Two large, thin metal plates are parallel and close to each other. On their inner faces, the plates have surface charge densities of opposite signs and of magnitude 17.0 × 10⁻²² C/m². What is E: (a) in the outer region of the first plate, (b) in the outer region of the second plate, and (c) between the plates?
+  ask: Field between the plates
+  unit: N/C
+  ans: 1.92e-10
+  tol: 1e-12
+  verify: 17.0e-22/8.854e-12
+  sol: |
+    For two close parallel plates with equal and opposite charge densities, the fields of the two plates cancel outside and add between them.
+
+    (a) and (b): $E = 0$ in both outer regions.
+
+    (c) Between the plates $E = \sigma/\varepsilon_0 = \dfrac{17.0\times10^{-22}}{8.854\times10^{-12}} = 1.9\times10^{-10}$ N/C, directed from the positively charged plate to the negatively charged one.
+
+    **Discrepancy with the printed answer key:** it gives 1.9 N/C. With $\sigma = 17.0\times10^{-22}$ C/m² the field is $1.9\times10^{-10}$ N/C. The key would be right for $\sigma = 17.0\times10^{-12}$ C/m².
+
+    [Inference] The key looks inconsistent with the printed charge density (a power-of-ten difference); I use my own calculation.
+  answer_key: "(a) Zero, (b) Zero, (c) 1.9 N/C (as printed; see the note above)"
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The net electric flux through a closed surface depends on
+  opts: ["the shape of the surface", "the charge enclosed by the surface", "the charges outside the surface", "the area of the surface"]
+  ans: 1
+  sol: Gauss's law, $\phi = q_{enc}/\varepsilon_0$. Charges outside contribute equal amounts of inward and outward flux and the shape and size do not matter.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A charge of 4.43 µC lies inside a closed surface. Find the net outward flux through the surface. (Original problem.)
+  ask: Flux
+  unit: N m²/C
+  ans: 5.0e5
+  tol: 1e3
+  verify: 4.43e-6/8.854e-12
+  sol: $\phi = q/\varepsilon_0 = 4.43\times10^{-6}/8.854\times10^{-12} = 5.0\times10^{5}$ N m²/C.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A thin spherical conducting shell of radius 20 cm carries a charge of +8 nC. Find the electric field at a distance of 40 cm from the centre. (Original problem.)
+  ask: Electric field at 40 cm
+  unit: N/C
+  ans: 450
+  tol: 1
+  verify: 9e9*8e-9/0.4**2
+  sol: Outside the shell it acts like a point charge at the centre, $E = 9\times10^{9}\times8\times10^{-9}/(0.4)^2 = 450$ N/C, radially outward. Inside the shell the field is zero.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A long straight wire carries a uniform charge of 2 nC per metre. Find the field 18 cm from the wire. (Original problem.)
+  ask: Electric field
+  unit: N/C
+  ans: 200
+  tol: 1
+  verify: 2*9e9*2e-9/0.18
+  sol: $E = \dfrac{\lambda}{2\pi\varepsilon_0 r} = \dfrac{2\times9\times10^{9}\times2\times10^{-9}}{0.18} = 200$ N/C, radially outward.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A solid insulating sphere of radius 10 cm carries a uniform volume charge of total charge 6 nC. Find the electric field at 5 cm from the centre. (Original problem.)
+  ask: Electric field at 5 cm
+  unit: N/C
+  ans: 2700
+  tol: 5
+  verify: 9e9*6e-9*0.05/0.1**3
+  sol: |
+    Inside a uniformly charged sphere only the charge within radius $r$ counts: $q_{enc} = Q(r/R)^3$. So $E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{Qr}{R^3} = 9\times10^{9}\times\dfrac{6\times10^{-9}\times0.05}{(0.1)^3} = 2700$ N/C, radially outward.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Two large parallel conducting plates each carry a net charge of +4 µC per square metre. Find the field just outside the pair. (The field between the plates is also asked about in the solution.) (Original problem.)
+  ask: Field just outside the plates
+  unit: N/C
+  ans: 4.52e5
+  tol: 1e3
+  verify: 4e-6/8.854e-12
+  sol: |
+    For two parallel conducting plates with like charges, the charge settles on the two outer faces, $\sigma_{outer} = 4\ \mu$C/m² each, and none stays on the inner faces. Between the plates the fields of the two equal sheets cancel, so $E = 0$ there. Just outside, $E = \sigma_{outer}/\varepsilon_0 = \dfrac{4\times10^{-6}}{8.854\times10^{-12}} = 4.5\times10^{5}$ N/C, directed away from the plates. (Equivalent to two sheets of total $8\ \mu$C/m²: $E = \dfrac{8\times10^{-6}}{2\varepsilon_0}$.)
+  check: code

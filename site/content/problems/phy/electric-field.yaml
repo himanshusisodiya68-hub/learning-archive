@@ -1,0 +1,220 @@
+# Electric field (including the electric dipole). NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 1, §1.7–1.12 and Exercises. The symbol µ (micro) is written as µ, as printed. Found, board, main problems are original.
+
+- id: ncert12-eg-1-7
+  lvl: ncert-intext
+  num: "XII Ex 1.7"
+  source: NCERT XII Physics · Ch 1 · Example 1.7
+  kind: num
+  q: An electron falls through a distance of 1.5 cm in a uniform electric field of magnitude 2.0 × 10⁴ N C⁻¹ [Fig. 1.10(a)]. The direction of the field is reversed keeping its magnitude unchanged and a proton falls through the same distance [Fig. 1.10(b)]. Compute the time of fall in each case. Contrast the situation with that of 'free fall under gravity'.
+  ask: Time of fall of the electron
+  unit: s
+  ans: 2.9e-9
+  tol: 5e-11
+  verify: Math.sqrt(2*1.5e-2*9.11e-31/(1.6e-19*2.0e4))
+  sol: |
+    In Fig. 1.10(a) the field is upward, so the negative electron feels a downward force $eE$ and has acceleration $a_e = eE/m_e$. Starting from rest, $h = \tfrac12 a_et^2$, so
+
+    $$t_e = \sqrt{\frac{2h}{a_e}} = \sqrt{\frac{2hm_e}{eE}} = \sqrt{\frac{2\times1.5\times10^{-2}\times9.11\times10^{-31}}{1.6\times10^{-19}\times2.0\times10^{4}}} = 2.9\times10^{-9}\ \text{s}.$$
+
+    For the proton (field downward), $t_p = \sqrt{2hm_p/(eE)} = 1.3\times10^{-7}$ s. The heavier proton takes longer, in contrast to free fall under gravity where the time is independent of mass. Gravity can be ignored: $a_p = eE/m_p = 1.9\times10^{12}$ m s⁻², enormous compared with $g = 9.8$ m s⁻² (and the electron's acceleration is even larger).
+  check: code
+
+- id: ncert12-eg-1-8
+  lvl: ncert-intext
+  num: "XII Ex 1.8"
+  source: NCERT XII Physics · Ch 1 · Example 1.8
+  kind: num
+  q: Two point charges q₁ and q₂, of magnitude +10⁻⁸ C and –10⁻⁸ C, respectively, are placed 0.1 m apart. Calculate the electric fields at points A, B and C shown in Fig. 1.11.
+  ask: Electric field at A, the midpoint
+  unit: N/C
+  ans: 7.2e4
+  tol: 100
+  verify: 2*9e9*1e-8/0.05**2
+  sol: |
+    [Reading of Fig. 1.11, consistent with the book's numbers: A is the midpoint of the line joining the charges; B is on the line, 0.05 m from $q_1$ on the side away from $q_2$ (so 0.15 m from $q_2$); C is 0.10 m from each charge, forming an equilateral triangle with them.]
+
+    **A.** Both fields point from $q_1$ towards $q_2$: $E_{1A} = \dfrac{9\times10^{9}\times10^{-8}}{(0.05)^2} = 3.6\times10^{4}$ N/C, and $E_{2A}$ is the same, so $E_A = 7.2\times10^{4}$ N/C towards the right (towards the negative charge).
+
+    **B.** $E_{1B} = 3.6\times10^{4}$ N/C (away from $q_1$, to the left) and $E_{2B} = \dfrac{9\times10^{9}\times10^{-8}}{(0.15)^2} = 4\times10^{3}$ N/C (towards $q_2$, to the right). $E_B = 3.6\times10^{4} - 4\times10^{3} = 3.2\times10^{4}$ N/C, directed to the left.
+
+    **C.** $E_{1C} = E_{2C} = \dfrac{9\times10^{9}\times10^{-8}}{(0.10)^2} = 9\times10^{3}$ N/C. Their components perpendicular to the line add to zero and those along it add: $E_C = 2\times9\times10^{3}\cos60^\circ = 9\times10^{3}$ N/C, parallel to the line joining the charges, pointing in the direction from $q_1$ to $q_2$.
+  check: code
+
+- id: ncert12-eg-1-9
+  lvl: ncert-intext
+  num: "XII Ex 1.9"
+  source: NCERT XII Physics · Ch 1 · Example 1.9
+  kind: num
+  q: Two charges ±10 µC are placed 5.0 mm apart. Determine the electric field at (a) a point P on the axis of the dipole 15 cm away from its centre O on the side of the positive charge, as shown in Fig. 1.18(a), and (b) a point Q, 15 cm away from O on a line passing through O and normal to the axis of the dipole, as shown in Fig. 1.18(b).
+  ask: Electric field at P, part (a)
+  unit: N/C
+  ans: 2.7e5
+  tol: 1e4
+  verify: 1e-5/(4*Math.PI*8.854e-12)*(1/0.1475**2-1/0.1525**2)
+  sol: |
+    **(a)** The positive charge is at 14.75 cm from P and the negative at 15.25 cm. $E_+ = \dfrac{10^{-5}}{4\pi(8.854\times10^{-12})(0.1475)^2} = 4.13\times10^{6}$ N/C along BP, $E_- = 3.86\times10^{6}$ N/C along PA. The resultant is $\approx2.7\times10^{5}$ N/C along BP (i.e. along the dipole moment).
+
+    Check with the far-field formula, since $r/a = 60 \gg 1$. With $p = 10^{-5}\times5\times10^{-3} = 5\times10^{-8}$ C m, $E = \dfrac{2p}{4\pi\varepsilon_0 r^3} = 2.6\times10^{5}$ N/C along the dipole moment, close to the exact sum.
+
+    **(b)** Each charge is at distance $\sqrt{15^2 + 0.25^2}$ cm from Q and gives a field $3.99\times10^{6}$ N/C. The components along OQ cancel and the components parallel to the axis add: $E = 2\times\dfrac{0.25}{\sqrt{15^2+0.25^2}}\times3.99\times10^{6} = 1.33\times10^{5}$ N/C, directed opposite to the dipole moment (parallel to BA). The far-field formula $E = \dfrac{p}{4\pi\varepsilon_0r^3} = 1.33\times10^{5}$ N/C agrees.
+  check: code
+
+- id: ncert12-ex-1-7
+  lvl: ncert-ex
+  num: "XII 1.7"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.7
+  kind: text
+  q: |-
+    (a) An electrostatic field line is a continuous curve. That is, a field line cannot have sudden breaks. Why not?
+    (b) Explain why two field lines never cross each other at any point?
+  sol: |
+    (a) A field line shows the direction of the force on a positive test charge. If a line broke suddenly, a charge placed at the break would have to jump from one point to another, with no force on it in the gap: the force on a charge changes smoothly from point to point in an electrostatic field, so the lines must be continuous (they begin on positive charges and end on negative charges, or go to infinity).
+
+    (b) The tangent to a field line at a point gives the direction of the electric field there. If two lines crossed, there would be two different tangents, so the field at the crossing point would have two directions, which is impossible because the field has a single value at each point.
+  check: none
+
+- id: ncert12-ex-1-8
+  lvl: ncert-ex
+  num: "XII 1.8"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.8
+  kind: num
+  q: |-
+    Two point charges q_A = 3 µC and q_B = –3 µC are located 20 cm apart in vacuum.
+    (a) What is the electric field at the midpoint O of the line AB joining the two charges?
+    (b) If a negative test charge of magnitude 1.5 × 10⁻⁹ C is placed at this point, what is the force experienced by the test charge?
+  ask: Electric field at O
+  unit: N/C
+  ans: 5.4e6
+  tol: 1e4
+  verify: 2*9e9*3e-6/0.1**2
+  sol: |
+    (a) O is 10 cm from each charge. Both fields point from A towards B (away from the positive charge and towards the negative one), each of magnitude $\dfrac{9\times10^{9}\times3\times10^{-6}}{(0.1)^2} = 2.7\times10^{6}$ N/C. The total is $5.4\times10^{6}$ N/C along OB.
+
+    (b) $F = qE = 1.5\times10^{-9}\times5.4\times10^{6} = 8.1\times10^{-3}$ N. The test charge is negative, so the force is opposite to the field: along OA.
+  answer_key: "(a) 5.4 × 10⁶ N C⁻¹ along OB (b) 8.1 × 10⁻³ N along OA"
+  check: both
+
+- id: ncert12-ex-1-9
+  lvl: ncert-ex
+  num: "XII 1.9"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.9
+  kind: num
+  q: |
+    A system has two charges q_A = 2.5 × 10⁻⁷ C and q_B = –2.5 × 10⁻⁷ C located at points A: (0, 0, –15 cm) and B: (0,0, +15 cm), respectively. What are the total charge and electric dipole moment of the system?
+  ask: Dipole moment magnitude
+  unit: C m
+  ans: 7.5e-8
+  tol: 1e-10
+  verify: 2.5e-7*0.30
+  sol: |
+    The total charge is $2.5\times10^{-7} - 2.5\times10^{-7} = 0$. The dipole moment points from the negative to the positive charge, i.e. from B (at $z = +15$ cm) to A (at $z = -15$ cm), and has magnitude $p = q\times2a = 2.5\times10^{-7}\times0.30 = 7.5\times10^{-8}$ C m. 
+
+    The answer key gives the direction as "along z-axis". Strictly the positive charge A is at $z = -15$ cm, so the moment points along $-z$.
+
+    [Inference] The key's direction may refer to the axis only, not the sign; the magnitude matches.
+  answer_key: Total charge is zero. Dipole moment = 7.5 × 10⁻⁸ C m along z-axis.
+  check: both
+
+- id: ncert12-ex-1-10
+  lvl: ncert-ex
+  num: "XII 1.10"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.10
+  kind: num
+  q: An electric dipole with dipole moment 4 × 10⁻⁹ C m is aligned at 30° with the direction of a uniform electric field of magnitude 5 × 10⁴ NC⁻¹. Calculate the magnitude of the torque acting on the dipole.
+  ask: Torque
+  unit: N m
+  ans: 1e-4
+  tol: 1e-7
+  verify: 4e-9*5e4*Math.sin(Math.PI/6)
+  sol: $\tau = pE\sin\theta = 4\times10^{-9}\times5\times10^{4}\times\sin30^\circ = 1\times10^{-4}$ N m.
+  answer_key: 10⁻⁴ N m
+  check: both
+
+- id: ncert12-ex-1-13
+  lvl: ncert-ex
+  num: "XII 1.13"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.13
+  kind: text
+  q: |
+    Figure 1.30 shows tracks of three charged particles in a uniform electrostatic field. Give the signs of the three charges. Which particle has the highest charge to mass ratio? [Fig. 1.30 as printed: a horizontal positively charged plate above and a negatively charged plate below; three tracks enter from the left with the same horizontal velocity. Tracks 1 and 2 bend upwards, track 1 more than track 2; track 3 bends downwards, more than either.]
+  sol: |
+    The upper plate is positive and the lower plate is negative, so the field points downward. A positive charge is pushed along the field (downward) and a negative charge against it (upward).
+
+    Tracks 1 and 2 bend upward, so charges 1 and 2 are **negative**. Track 3 bends downward, so charge 3 is **positive**.
+
+    All three enter with similar horizontal speed, so the time to cross a given length is the same, and the sideways deflection is $y = \tfrac12\dfrac{qE}{m}t^2$, proportional to $q/m$. Particle 3 is deflected most, so it has the **highest charge-to-mass ratio**.
+
+    [Inference] The track ordering was read from the printed figure; it agrees with the answer key.
+  answer_key: Charges 1 and 2 are negative, charge 3 is positive. Particle 3 has the highest charge to mass ratio.
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The electric field of a point charge $q$ at distance $r$ is proportional to
+  opts: ["$1/r$", "$1/r^2$", "$r$", "$1/r^3$"]
+  ans: 1
+  sol: $E = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q}{r^2}$, the inverse-square law.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the electric field 30 cm from a point charge of +5 nC in air. (Original problem.)
+  ask: Electric field
+  unit: N/C
+  ans: 500
+  tol: 1
+  verify: 9e9*5e-9/0.3**2
+  sol: $E = 9\times10^{9}\times\dfrac{5\times10^{-9}}{(0.3)^2} = 500$ N/C, directed away from the charge.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: An electron is released from rest in a uniform field of 1.0 × 10⁴ N/C. Find its acceleration and its speed after 1.0 ns. (Original problem.) Give the speed.
+  ask: Speed after 1.0 ns
+  unit: m/s
+  ans: 1.76e6
+  tol: 1e4
+  verify: 1.6e-19*1e4/9.11e-31*1e-9
+  sol: $a = eE/m_e = 1.6\times10^{-19}\times10^{4}/9.11\times10^{-31} = 1.76\times10^{15}$ m s⁻², and $v = at = 1.76\times10^{15}\times10^{-9} = 1.76\times10^{6}$ m/s, opposite to the field.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A dipole made of charges ±2 µC separated by 1 mm is placed in a uniform field of 2 × 10⁵ N/C at 90° to the field. Find the torque. (Original problem.)
+  ask: Torque
+  unit: N m
+  ans: 4e-4
+  tol: 1e-7
+  verify: 2e-6*1e-3*2e5
+  sol: $p = qd = 2\times10^{-6}\times10^{-3} = 2\times10^{-9}$ C m. $\tau = pE\sin90^\circ = 2\times10^{-9}\times2\times10^{5} = 4\times10^{-4}$ N m.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two charges +q and −q are separated by 2a. Find the magnitude of the field at a point on the perpendicular bisector at distance a from the midpoint, in units of $\frac{1}{4\pi\varepsilon_0}\frac{q}{a^2}$. (Original problem.)
+  ask: Field in these units
+  unit: ""
+  ans: 0.7071
+  tol: 0.001
+  verify: 2*(1/(2))*Math.cos(Math.PI/4)
+  sol: |
+    The point is at distance $\sqrt2a$ from each charge, so each charge gives a field of magnitude $\dfrac{1}{4\pi\varepsilon_0}\dfrac{q}{2a^2}$. Their components perpendicular to the bisector cancel and the components parallel to the axis add, each equal to the field times $\cos45^\circ$. So $E = 2\times\dfrac{1}{2}\times\dfrac{1}{\sqrt2}\times\dfrac{1}{4\pi\varepsilon_0}\dfrac{q}{a^2} = 0.71\ \dfrac{1}{4\pi\varepsilon_0}\dfrac{q}{a^2}$, parallel to the axis, from the positive towards the negative charge side.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A charge of +2 µC sits at the origin and a charge of −2 µC at x = 20 cm. How many points on the x-axis, beyond the −2 µC charge (x > 20 cm), have zero electric field? (Original problem.)
+  ask: Number of such points
+  unit: ""
+  ans: 0
+  tol: 0.001
+  verify: 1-1
+  sol: |
+    None. For $x > 20$ cm the field of the negative charge points towards it (in the $-x$ direction) and the field of the positive charge points away from it (in the $+x$ direction), so they do oppose each other. But the negative charge is the nearer one and the charges have equal magnitude, so its field is always the larger and the net field never vanishes: it points in the $-x$ direction. Zero field on the axis needs the nearer charge to be the smaller, which is not the case here.
+  check: code

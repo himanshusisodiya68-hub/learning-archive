@@ -1,0 +1,227 @@
+# Coulomb's law. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 1, §1.5–1.6 and Exercises. The symbol µ (micro) is written as µ, as printed. Found, board, main problems are original.
+
+- id: ncert12-eg-1-3
+  lvl: ncert-intext
+  num: "XII Ex 1.3"
+  source: NCERT XII Physics · Ch 1 · Example 1.3
+  kind: num
+  q: Coulomb's law for electrostatic force between two point charges and Newton's law for gravitational force between two stationary point masses, both have inverse-square dependence on the distance between the charges and masses respectively. (a) Compare the strength of these forces by determining the ratio of their magnitudes (i) for an electron and a proton and (ii) for two protons. (b) Estimate the accelerations of electron and proton due to the electrical force of their mutual attraction when they are 1 Å (= 10⁻¹⁰ m) apart? (m_p = 1.67 × 10⁻²⁷ kg, m_e = 9.11 × 10⁻³¹ kg)
+  ask: Acceleration of the electron, part (b)
+  unit: m/s²
+  ans: 2.5e22
+  tol: 1e21
+  verify: 8.987e9*(1.6e-19)**2/(1e-10)**2/9.11e-31
+  sol: |
+    (a)(i) The ratio is independent of distance: $\dfrac{F_e}{F_G} = \dfrac{e^2}{4\pi\varepsilon_0 G m_p m_e}$. The book gives $2.4\times10^{39}$. (ii) For two protons, $\dfrac{e^2}{4\pi\varepsilon_0 G m_p^2}$, which the book gives as $1.3\times10^{36}$. The Coulomb force is repulsive and the gravitational force is attractive. Between two protons in a nucleus ($\sim10^{-15}$ m) $F_e \sim 230$ N and $F_G\sim1.9\times10^{-34}$ N.
+
+    [Inference] Recomputing with the constants listed here and $G = 6.67\times10^{-11}$ gives about $2.3\times10^{39}$ and $1.2\times10^{36}$, slightly below the book's quoted values (the difference is about 5%, probably from the constants the book used). Either way the electrical force is about $10^{36}$ to $10^{39}$ times stronger than gravity.
+
+    (b) The force on each particle has the same magnitude:
+    $$|F| = \frac{1}{4\pi\varepsilon_0}\frac{e^2}{r^2} = 8.987\times10^{9}\times\frac{(1.6\times10^{-19})^2}{(10^{-10})^2} = 2.3\times10^{-8}\ \text{N}.$$
+    Electron: $a = 2.3\times10^{-8}/9.11\times10^{-31} = 2.5\times10^{22}$ m/s². Proton: $a = 2.3\times10^{-8}/1.67\times10^{-27} = 1.4\times10^{19}$ m/s². Both are enormous compared with $g$, so gravity is negligible here.
+  check: code
+
+- id: ncert12-eg-1-4
+  lvl: ncert-intext
+  num: "XII Ex 1.4"
+  source: NCERT XII Physics · Ch 1 · Example 1.4
+  kind: num
+  q: A charged metallic sphere A is suspended by a nylon thread. Another charged metallic sphere B held by an insulating handle is brought close to A such that the distance between their centres is 10 cm, as shown in Fig. 1.4(a). The resulting repulsion of A is noted (for example, by shining a beam of light and measuring the deflection of its shadow on a screen). Spheres A and B are touched by uncharged spheres C and D respectively, as shown in Fig. 1.4(b). C and D are then removed and B is brought closer to A to a distance of 5.0 cm between their centres, as shown in Fig. 1.4(c). What is the expected repulsion of A on the basis of Coulomb's law? Spheres A and C and spheres B and D have identical sizes. Ignore the sizes of A and B in comparison to the separation between their centres.
+  ask: New force divided by the original force
+  unit: ""
+  ans: 1
+  tol: 0.001
+  verify: (0.5*0.5)/(0.5*0.5)
+  sol: |
+    Let A carry $q$ and B carry $q'$. Originally $F = \dfrac{1}{4\pi\varepsilon_0}\dfrac{qq'}{r^2}$. When an identical uncharged sphere touches A, the charge is shared equally by symmetry, so A keeps $q/2$; similarly B keeps $q'/2$. With the separation halved to $r/2$,
+
+    $$F' = \frac{1}{4\pi\varepsilon_0}\frac{(q/2)(q'/2)}{(r/2)^2} = \frac{1}{4\pi\varepsilon_0}\frac{qq'}{r^2} = F.$$
+
+    The repulsion on A is unchanged: the factor $\tfrac14$ from the charges is cancelled by the factor 4 from the distance.
+  check: code
+
+- id: ncert12-eg-1-5
+  lvl: ncert-intext
+  num: "XII Ex 1.5"
+  source: NCERT XII Physics · Ch 1 · Example 1.5
+  kind: text
+  q: Consider three charges q₁, q₂, q₃ each equal to q at the vertices of an equilateral triangle of side l. What is the force on a charge Q (with the same sign as q) placed at the centroid of the triangle, as shown in Fig. 1.6?
+  sol: |
+    The centroid O is at distance $l/\sqrt3$ from each vertex (the median has length $\tfrac{\sqrt3}{2}l$ and O is $\tfrac23$ of the way along it). Each charge $q$ repels $Q$ with force of the same magnitude
+
+    $$F = \frac{1}{4\pi\varepsilon_0}\frac{Qq}{(l/\sqrt3)^2} = \frac{3Qq}{4\pi\varepsilon_0 l^2},$$
+
+    directed away from its vertex, along AO, BO and CO. The forces from B and C have resultant $F$ along OA (two equal forces at 120° add to a force equal to either, in the bisector direction), which exactly cancels the force from A. The total force on $Q$ is **zero**. The symmetry argument: a non-zero resultant in some direction would have to rotate when the triangle is rotated by 60° about O, but the system looks the same.
+  check: none
+
+- id: ncert12-eg-1-6
+  lvl: ncert-intext
+  num: "XII Ex 1.6"
+  source: NCERT XII Physics · Ch 1 · Example 1.6
+  kind: text
+  q: Consider the charges q, q, and –q placed at the vertices of an equilateral triangle, as shown in Fig. 1.7. What is the force on each charge?
+  sol: |
+    Let the side be $l$ and let $F = \dfrac{q^2}{4\pi\varepsilon_0 l^2}$ be the magnitude of the force between any pair (charges $q, q, -q$ at A, B, C). On the charge $q$ at A, the force from $q$ at B is repulsive along BA and the force from $-q$ at C is attractive along AC. They have equal magnitude and make 120° with each other, so their resultant has magnitude $F$ and is directed along the unit vector parallel to BC: $\mathbf F_1 = F\,\hat r_1$.
+
+    Similarly on $q$ at B the total force is $\mathbf F_2 = F\,\hat r_2$, with $\hat r_2$ parallel to AC. On $-q$ at C, the two attractive forces from A and B make an angle of 60° with each other, so the resultant has magnitude $\sqrt3F$ and lies along the bisector of angle BCA: $\mathbf F_3 = \sqrt3\,F\,\hat n$.
+
+    The sum of the three forces is zero, $\mathbf F_1 + \mathbf F_2 + \mathbf F_3 = 0$, as expected from Newton's third law (internal forces of a system sum to zero).
+  check: none
+
+- id: ncert12-ex-1-1
+  lvl: ncert-ex
+  num: "XII 1.1"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.1
+  kind: num
+  q: What is the force between two small charged spheres having charges of 2 × 10⁻⁷C and 3 × 10⁻⁷C placed 30 cm apart in air?
+  ask: Force
+  unit: N
+  ans: 6e-3
+  tol: 1e-5
+  verify: 9e9*2e-7*3e-7/0.30**2
+  sol: |
+    $F = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q_1q_2}{r^2} = 9\times10^{9}\times\dfrac{(2\times10^{-7})(3\times10^{-7})}{(0.30)^2} = 6\times10^{-3}$ N. The charges have the same sign, so the force is repulsive.
+  answer_key: 6 × 10⁻³ N (repulsive)
+  check: both
+
+- id: ncert12-ex-1-2
+  lvl: ncert-ex
+  num: "XII 1.2"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.2
+  kind: num
+  q: The electrostatic force on a small sphere of charge 0.4 µC due to another small sphere of charge – 0.8 µC in air is 0.2 N. (a) What is the distance between the two spheres? (b) What is the force on the second sphere due to the first?
+  ask: Distance between the spheres
+  unit: cm
+  ans: 12
+  tol: 0.01
+  verify: Math.sqrt(9e9*0.4e-6*0.8e-6/0.2)*100
+  sol: |
+    (a) $r^2 = \dfrac{1}{4\pi\varepsilon_0}\dfrac{|q_1q_2|}{F} = \dfrac{9\times10^{9}\times0.4\times10^{-6}\times0.8\times10^{-6}}{0.2} = 1.44\times10^{-2}\ \text{m}^2$, so $r = 0.12$ m $= 12$ cm.
+
+    (b) By Newton's third law the force on the second sphere has the same magnitude, 0.2 N, and is directed towards the first sphere (attractive, since the charges have opposite signs).
+  answer_key: "(a) 12 cm (b) 0.2 N (attractive)"
+  check: both
+
+- id: ncert12-ex-1-3
+  lvl: ncert-ex
+  num: "XII 1.3"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.3
+  kind: num
+  q: Check that the ratio ke²/Gm_e m_p is dimensionless. Look up a Table of Physical Constants and determine the value of this ratio. What does the ratio signify?
+  ask: The ratio
+  unit: ""
+  ans: 2.27e39
+  tol: 3e37
+  verify: 8.99e9*(1.602e-19)**2/(6.674e-11*9.109e-31*1.673e-27)
+  sol: |
+    Dimensions: $ke^2$ has the dimensions of (force × length²) and $G m_em_p$ also of (force × length²) (since $F = Gm_1m_2/r^2$), so the ratio is dimensionless.
+
+    With $k = 8.99\times10^{9}$ N m² C⁻², $e = 1.602\times10^{-19}$ C, $G = 6.674\times10^{-11}$ N m² kg⁻², $m_e = 9.109\times10^{-31}$ kg and $m_p = 1.673\times10^{-27}$ kg, the ratio is about $2.27\times10^{39}$.
+
+    **It is the ratio of the electric force to the gravitational force** between an electron and a proton (at the same distance): the electric force is about $10^{39}$ times stronger.
+
+    [Inference] The answer key quotes $2.4\times10^{39}$. My recomputation with the standard constants above gives $2.27\times10^{39}$; the 5% difference probably comes from the constants the book used.
+  answer_key: 2.4 × 10³⁹. This is the ratio of electric force to the gravitational force (at the same distance) between an electron and a proton.
+  check: both
+
+- id: ncert12-ex-1-6
+  lvl: ncert-ex
+  num: "XII 1.6"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.6
+  kind: text
+  q: Four point charges q_A = 2 µC, q_B = –5 µC, q_C = 2 µC, and q_D = –5 µC are located at the corners of a square ABCD of side 10 cm. What is the force on a charge of 1 µC placed at the centre of the square?
+  sol: |
+    The centre O is at the same distance $r = 10\sqrt2/2 = 5\sqrt2$ cm from all four corners. A and C are diagonally opposite and carry equal charges ($2\ \mu$C), so their forces on the charge at O are equal and opposite and cancel. B and D are diagonally opposite and carry equal charges ($-5\ \mu$C), so their forces also cancel. The net force on the 1 µC charge is **zero**.
+  answer_key: Zero N
+  check: ncert-key
+
+- id: ncert12-ex-1-12
+  lvl: ncert-ex
+  num: "XII 1.12"
+  source: NCERT XII Physics · Ch 1 · Exercise 1.12
+  kind: num
+  q: (a) Two insulated charged copper spheres A and B have their centres separated by a distance of 50 cm. What is the mutual force of electrostatic repulsion if the charge on each is 6.5 × 10⁻⁷ C? The radii of A and B are negligible compared to the distance of separation. (b) What is the force of repulsion if each sphere is charged double the above amount, and the distance between them is halved?
+  ask: Force in part (a)
+  unit: N
+  ans: 1.52e-2
+  tol: 1e-4
+  verify: 9e9*(6.5e-7)**2/0.5**2
+  sol: |
+    (a) $F = 9\times10^{9}\times\dfrac{(6.5\times10^{-7})^2}{(0.5)^2} = 1.5\times10^{-2}$ N.
+
+    (b) Doubling both charges multiplies $F$ by $2\times2 = 4$, and halving the distance multiplies it by $2^2 = 4$. So $F' = 16F = 0.24$ N.
+  answer_key: "(a) 1.5 × 10⁻² N (b) 0.24 N"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The distance between two point charges is doubled. The force between them becomes
+  opts: ["half", "one-quarter", "double", "four times"]
+  ans: 1
+  sol: $F \propto 1/r^2$, so doubling $r$ divides $F$ by 4.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Two point charges of +4 µC and −3 µC are 6 cm apart in air. Find the magnitude of the force between them. (Original problem.)
+  ask: Force
+  unit: N
+  ans: 30
+  tol: 0.1
+  verify: 9e9*4e-6*3e-6/0.06**2
+  sol: $F = 9\times10^{9}\times\dfrac{(4\times10^{-6})(3\times10^{-6})}{(0.06)^2} = 30$ N, attractive.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Two identical small spheres each of mass 0.1 g hang from the same point by insulating threads 20 cm long and, carrying equal charges, stand 6 cm apart. Treating the angle as small, find the charge on each sphere. Take g = 10 m/s². (Original problem.)
+  ask: Charge on each sphere
+  unit: nC
+  ans: 7.75
+  tol: 0.01
+  verify: Math.sqrt(1e-4*10*0.03/0.2*0.06**2/9e9)*1e9
+  sol: |
+    Each sphere is in equilibrium under tension, weight $mg$ and the Coulomb force $F$. With half-separation $x = 3$ cm and thread length $L = 20$ cm, $\tan\theta \approx x/L$ for small angles, and $F = mg\tan\theta = mg\,x/L = 10^{-4}\times10\times0.03/0.2 = 1.5\times10^{-4}$ N. Then $q^2 = F r^2\cdot4\pi\varepsilon_0 = 1.5\times10^{-4}\times(0.06)^2/(9\times10^{9}) = 6\times10^{-17}$, so $q \approx 7.75\times10^{-9}$ C $= 7.75$ nC.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Three point charges of +2 µC each lie at the vertices of an equilateral triangle of side 10 cm. Find the force on one of them. (Original problem.)
+  ask: Force on one charge
+  unit: N
+  ans: 6.23
+  tol: 0.02
+  verify: Math.sqrt(3)*9e9*(2e-6)**2/0.1**2
+  sol: |
+    Each of the other two charges exerts a force $F = 9\times10^{9}\times(2\times10^{-6})^2/(0.1)^2 = 3.6$ N, repulsive, and the two forces make 60° with each other. The resultant is $2F\cos30^\circ = \sqrt3F = 6.2$ N, directed away from the other two charges along the line from the midpoint of their join.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two identical conducting spheres carry charges +8 µC and −2 µC and are placed 30 cm apart. They are touched together and then returned to the original positions. Find the ratio of the final force to the initial force, in magnitude. (Original problem.)
+  ask: Ratio of final to initial force
+  unit: ""
+  ans: 0.5625
+  tol: 0.001
+  verify: (3*3)/(8*2)
+  sol: |
+    Initially $|F_0| \propto 8\times2 = 16$. After contact the charge $(8-2)/2 = +3\ \mu$C on each, so the force is repulsive and $\propto3\times3 = 9$. The ratio is $9/16 = 0.5625$. Note that the force changes from attraction to repulsion.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Two point charges +q and +4q are 30 cm apart. Where on the line joining them, between them, should a third charge be placed so that it is in equilibrium? Give the distance from +q. (Original problem.)
+  ask: Distance from +q
+  unit: cm
+  ans: 10
+  tol: 0.01
+  verify: 30/(1+Math.sqrt(4))
+  sol: |
+    The forces from the two like charges on a third charge between them are opposite, so they cancel where $\dfrac{q}{x^2} = \dfrac{4q}{(30-x)^2}$. Taking square roots, $30 - x = 2x$, so $x = 10$ cm from $+q$. This equilibrium is stable along the line but unstable sideways, whatever the sign of the third charge.
+  check: code
