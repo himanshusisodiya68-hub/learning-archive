@@ -1,0 +1,133 @@
+# Atmospheric refraction and scattering. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 10.
+
+- id: ncert-ex10-10
+  lvl: ncert-ex
+  num: 10
+  source: NCERT X Science · Ch 10 · Exercise 10 · p. 170
+  kind: text
+  q: Why do stars twinkle?
+  sol: |
+    Starlight travels through the Earth's atmosphere, whose density and refractive index keep changing from moment to moment. The light is refracted by varying amounts, so the apparent position of the star shifts slightly and the amount of light entering the eye fluctuates. Because a star is so far away that it is effectively a point source, these fluctuations are noticeable: the star twinkles.
+  check: none
+
+- id: ncert-ex10-11
+  lvl: ncert-ex
+  num: 11
+  source: NCERT X Science · Ch 10 · Exercise 11 · p. 170
+  kind: text
+  q: Explain why the planets do not twinkle.
+  sol: Planets are much nearer than stars and appear as small discs, so they act as extended sources, a collection of many point sources. The variations in light from the different points are random and cancel out on average, so the total light reaching the eye stays steady and the planet does not twinkle.
+  check: none
+
+- id: ncert-ex10-12
+  lvl: ncert-ex
+  num: 12
+  source: NCERT X Science · Ch 10 · Exercise 12 · p. 170
+  kind: text
+  q: Why does the sky appear dark instead of blue to an astronaut?
+  sol: The blue colour of the sky is sunlight scattered by molecules of the atmosphere. Above the atmosphere there are no particles to scatter light, so no scattered light reaches the astronaut's eyes from directions away from the Sun, and the sky looks dark.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The sky appears blue because
+  opts: ["the oceans reflect blue light upwards", "air molecules scatter blue light more than red", "the Sun emits mostly blue light"]
+  ans: 1
+  sol: Molecules much smaller than the wavelength scatter short wavelengths far more strongly, so the scattered light filling the sky is blue.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Why are danger and stop signals red?
+  opts: ["Red is scattered least, so it is seen from far away", "Red light travels faster", "The eye is most sensitive to red"]
+  ans: 0
+  sol: Red light is scattered least by fog, smoke and dust, so it penetrates them best and is visible from the greatest distance.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: Why does the Sun appear reddish at sunrise?
+  opts: ["It is cooler in the morning", "Its light crosses a long path of air that scatters away most of the blue", "Clouds reflect red light"]
+  ans: 1
+  sol: Near the horizon sunlight travels through much more air. Most short-wavelength light is scattered out on the way, leaving mainly red and orange in the direct beam.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Why do clouds look white?
+  opts: ["Their droplets are large enough to scatter all colours about equally", "They contain white dust", "They absorb blue light"]
+  ans: 0
+  sol: Cloud droplets are larger than the wavelength of light, so they scatter all colours roughly equally and the mixture looks white.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Using Rayleigh's law, how many times more strongly is blue light of wavelength 450 nm scattered than red light of 700 nm?
+  ask: Ratio
+  unit: ""
+  ans: 5.86
+  tol: 0.05
+  verify: (700/450)**4
+  sol: $I \propto 1/\lambda^4$, so the ratio is $(700/450)^4 = 1.556^4 \approx 5.9$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Atmospheric refraction lifts the Sun's image at the horizon by about 0.57°. By how many minutes does this advance sunrise at the equator? (The Earth turns through 360° in 24 hours.)
+  ask: Time
+  unit: min
+  ans: 2.28
+  tol: 0.03
+  verify: 0.57/(360/1440)
+  sol: The sky turns at $360^\circ/1440\text{ min} = 0.25^\circ$ per minute, so $0.57^\circ$ takes $2.3$ minutes.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Light of wavelength 400 nm is scattered by air with intensity $I_0$. What fraction of $I_0$ is scattered at 600 nm under the same conditions?
+  ask: Fraction
+  unit: ""
+  ans: 0.198
+  tol: 0.002
+  verify: (400/600)**4
+  sol: $(400/600)^4 = (2/3)^4 = 16/81 \approx 0.198$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: For a star at zenith angle 45°, estimate the atmospheric refraction using $R \approx (n_0 - 1)\tan z$ with $n_0 - 1 = 2.9 \times 10^{-4}$. Give your answer in minutes of arc.
+  ask: Refraction
+  unit: arcmin
+  ans: 1
+  tol: 0.02
+  verify: 2.9e-4*tan(rad(45))*180/PI*60
+  sol: $R = 2.9 \times 10^{-4} \times \tan 45^\circ = 2.9 \times 10^{-4}$ rad $= 1.0'$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Jupiter (diameter $1.4 \times 10^8$ m) is $6.3 \times 10^{11}$ m from Earth at its closest. What is its angular diameter in seconds of arc? Compare it with typical atmospheric "seeing" of about 1 arcsecond to explain why planets do not twinkle.
+  ask: Angular diameter
+  unit: arcsec
+  ans: 45.8
+  tol: 0.5
+  verify: 1.4e8/6.3e11*180/PI*3600
+  sol: $\theta = 1.4 \times 10^8/6.3 \times 10^{11} = 2.2 \times 10^{-4}$ rad $\approx 46''$. This is about 50 times the size of the atmospheric jitter, so the flickers from different parts of the disc average out. A star's disc is about $0.01''$ or smaller, far below the jitter, so it twinkles.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: text
+  q: Explain why the setting Sun looks flattened (wider than it is tall) and estimate the effect, given that atmospheric refraction is about 34′ at the horizon and about 28′ half a degree above it.
+  hints: ["The lower and upper edges of the Sun are lifted by different amounts."]
+  sol: Refraction lifts the lower edge (at the horizon) by about 34′ but the upper edge (half a degree higher) by only about 28′. The vertical diameter shrinks by about 6′, from 32′ to about 26′, while the horizontal diameter is unchanged. The Sun appears roughly 20% flattened.
+  check: none

@@ -486,6 +486,67 @@
       q('ang').addEventListener('input', draw); q('pair').addEventListener('change', draw); draw();
     },
 
+    // A ray through a triangular prism: vector Snell's law at each face.
+    'prism-sim'(el) {
+      el.innerHTML = `<div class="bench"><svg viewBox="0 0 400 250" role="img" aria-label="A ray refracting through a prism"></svg>
+        <div class="controls">
+          <label>Angle of incidence i: <b data-r="iv"></b><input data-r="i" type="range" min="0" max="89" value="49"></label>
+          <label>Prism angle A: <b data-r="av"></b><input data-r="a" type="range" min="20" max="80" value="60"></label>
+          <label>Refractive index n: <b data-r="nv"></b><input data-r="n" type="range" min="1.30" max="1.90" step="0.01" value="1.50"></label>
+        </div><div class="readout" data-r="out"></div></div>`;
+      const q = n => el.querySelector(`[data-r="${n}"]`), svg = el.querySelector('svg'), D = 180 / Math.PI;
+      const rot = ([x, y], t) => [x * Math.cos(t) - y * Math.sin(t), x * Math.sin(t) + y * Math.cos(t)];
+      const dot = (a, b) => a[0] * b[0] + a[1] * b[1];
+      function refract(d, N, n1, n2) { // N: unit normal pointing back into the incident medium
+        const ci = -dot(d, N), k = n1 / n2, s2 = k * k * (1 - ci * ci);
+        if (s2 > 1) return null;
+        const ct = Math.sqrt(1 - s2); return [k * d[0] + (k * ci - ct) * N[0], k * d[1] + (k * ci - ct) * N[1]];
+      }
+      function hitLine(p, d, a, b) { // ray p + t d against segment a-b
+        const ex = b[0] - a[0], ey = b[1] - a[1], den = d[0] * ey - d[1] * ex;
+        if (Math.abs(den) < 1e-9) return null;
+        const t = ((a[0] - p[0]) * ey - (a[1] - p[1]) * ex) / den, s = ((a[0] - p[0]) * d[1] - (a[1] - p[1]) * d[0]) / den;
+        return t > 0 && s >= 0 && s <= 1 ? [p[0] + t * d[0], p[1] + t * d[1]] : null;
+      }
+      function draw() {
+        const i = +q('i').value / D, A = +q('a').value / D, n = +q('n').value;
+        q('iv').textContent = q('i').value + '°'; q('av').textContent = q('a').value + '°'; q('nv').textContent = n.toFixed(2);
+        const apex = [200, 40], h = 170, w = h * Math.tan(A / 2), B1 = [200 - w, 40 + h], B2 = [200 + w, 40 + h];
+        const len = Math.hypot(w, h), N1 = [-h / len, -w / len], N2 = [h / len, -w / len]; // outward normals of left and right faces
+        const H1 = [apex[0] + (B1[0] - apex[0]) * 0.55, apex[1] + (B1[1] - apex[1]) * 0.55];
+        const d = rot([-N1[0], -N1[1]], -i); // incident ray tilted from the inward normal towards the apex side
+        let g = `<path d="M${apex} L${B1} L${B2}Z" class="optic-fill"/>`;
+        const n1end = [H1[0] - d[0] * 140, H1[1] - d[1] * 140];
+        g += `<line class="axis" x1="${H1[0] - N1[0] * 40}" y1="${H1[1] - N1[1] * 40}" x2="${H1[0] + N1[0] * 40}" y2="${H1[1] + N1[1] * 40}" style="stroke-dasharray:3 3"/>`;
+        g += `<line class="ray r1" x1="${n1end[0]}" y1="${n1end[1]}" x2="${H1[0]}" y2="${H1[1]}"/>`;
+        const t1 = refract(d, N1, 1, n);
+        let out = `<span>i = <b>${(i * D).toFixed(0)}°</b></span>`;
+        const r1 = Math.asin(Math.sin(i) / n), r2 = A - r1;
+        const H2 = t1 && hitLine(H1, t1, apex, B2);
+        if (!H2) { out += `<span class="tir">the ray hits the base; widen A or increase i</span>`; }
+        else {
+          g += `<line class="ray r1" x1="${H1[0]}" y1="${H1[1]}" x2="${H2[0]}" y2="${H2[1]}"/>`;
+          g += `<line class="axis" x1="${H2[0] - N2[0] * 40}" y1="${H2[1] - N2[1] * 40}" x2="${H2[0] + N2[0] * 40}" y2="${H2[1] + N2[1] * 40}" style="stroke-dasharray:3 3"/>`;
+          const t2 = refract(t1, [-N2[0], -N2[1]], n, 1);
+          out += `<span>r₁ = <b>${(r1 * D).toFixed(1)}°</b></span><span>r₂ = <b>${(r2 * D).toFixed(1)}°</b></span>`;
+          if (!t2) {
+            const rf = [t1[0] - 2 * dot(t1, N2) * N2[0], t1[1] - 2 * dot(t1, N2) * N2[1]];
+            g += `<line class="ray r3" x1="${H2[0]}" y1="${H2[1]}" x2="${H2[0] + rf[0] * 60}" y2="${H2[1] + rf[1] * 60}"/>`;
+            out += `<span class="tir">total internal reflection at the second face</span>`;
+          } else {
+            g += `<line class="ray r1" x1="${H2[0]}" y1="${H2[1]}" x2="${H2[0] + t2[0] * 160}" y2="${H2[1] + t2[1] * 160}"/>`;
+            g += `<line class="axis" x1="${H1[0]}" y1="${H1[1]}" x2="${H1[0] + d[0] * 300}" y2="${H1[1] + d[1] * 300}" style="stroke-dasharray:2 5;opacity:.6"/>`;
+            const e = Math.asin(Math.min(1, n * Math.sin(r2))), dev = i + e - A;
+            out += `<span>e = <b>${(e * D).toFixed(1)}°</b></span><span>deviation δ = <b>${(dev * D).toFixed(1)}°</b></span>`;
+          }
+        }
+        const dm = 2 * Math.asin(Math.min(1, n * Math.sin(A / 2))) - A;
+        if (n * Math.sin(A / 2) < 1) out += `<span>minimum deviation δₘ = <b>${(dm * D).toFixed(1)}°</b> at i = <b>${((A + dm) / 2 * D).toFixed(1)}°</b></span>`;
+        svg.innerHTML = g; q('out').innerHTML = out;
+      }
+      ['i', 'a', 'n'].forEach(k => q(k).addEventListener('input', draw)); draw();
+    },
+
     // Mirrors and thin lenses with the New Cartesian sign convention: light travels left to right, distances from the pole/optical centre.
     'optics-bench'(el, o) {
       const types = { 'concave-mirror': 'Concave mirror', 'convex-mirror': 'Convex mirror', 'convex-lens': 'Convex lens', 'concave-lens': 'Concave lens' };

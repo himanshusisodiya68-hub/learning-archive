@@ -433,7 +433,7 @@ subjects:
         from: C10
       - id: total-internal-reflection
         name: Total internal reflection
-        from: C10
+        from: C12
       - id: lenses-and-the-lens-formula
         name: Lenses and the lens formula
         from: C10

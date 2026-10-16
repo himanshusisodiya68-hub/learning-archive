@@ -1,0 +1,281 @@
+# The human eye. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 10.
+
+- id: ncert-it164-1
+  lvl: ncert-intext
+  num: "p164 Q1"
+  source: NCERT X Science · Ch 10 · In-text questions · p. 164 · Q1
+  kind: text
+  q: What is meant by power of accommodation of the eye?
+  sol: It is the ability of the eye lens to adjust its focal length, by the action of the ciliary muscles, so that objects at different distances, from the near point (about 25 cm) to the far point (infinity), are focused sharply on the retina.
+  check: none
+
+- id: ncert-it164-2
+  lvl: ncert-intext
+  num: "p164 Q2"
+  source: NCERT X Science · Ch 10 · In-text questions · p. 164 · Q2
+  kind: text
+  q: A person with a myopic eye cannot see objects beyond 1.2 m distinctly. What should be the type of the corrective lens used to restore proper vision?
+  sol: A **concave (diverging) lens**. It must image distant objects at the far point, 1.2 m, so $f = -1.2$ m and $P = -1/1.2 \approx -0.83$ D.
+  check: none
+
+- id: ncert-it164-3
+  lvl: ncert-intext
+  num: "p164 Q3"
+  source: NCERT X Science · Ch 10 · In-text questions · p. 164 · Q3
+  kind: text
+  q: What is the far point and near point of the human eye with normal vision?
+  sol: Far point — infinity. Near point — about 25 cm from the eye.
+  check: none
+
+- id: ncert-it164-4
+  lvl: ncert-intext
+  num: "p164 Q4"
+  source: NCERT X Science · Ch 10 · In-text questions · p. 164 · Q4
+  kind: text
+  q: A student has difficulty reading the blackboard while sitting in the last row. What could be the defect the child is suffering from? How can it be corrected?
+  sol: The child cannot see distant objects clearly, so they have **myopia (near-sightedness)**. It is corrected with spectacles having a **concave lens** of suitable power.
+  check: none
+
+- id: ncert-ex10-1
+  lvl: ncert-ex
+  num: 1
+  source: NCERT X Science · Ch 10 · Exercise 1 · p. 170
+  kind: mcq
+  q: The human eye can focus on objects at different distances by adjusting the focal length of the eye lens. This is due to
+  opts: ["presbyopia.", "accommodation.", "near-sightedness.", "far-sightedness."]
+  ans: 1
+  sol: Changing the focal length of the eye lens to focus at different distances is accommodation.
+  answer_key: (b)
+  check: ncert-key
+
+- id: ncert-ex10-2
+  lvl: ncert-ex
+  num: 2
+  source: NCERT X Science · Ch 10 · Exercise 2 · p. 170
+  kind: mcq
+  q: The human eye forms the image of an object at its
+  opts: ["cornea.", "iris.", "pupil.", "retina."]
+  ans: 3
+  sol: The cornea and lens focus light onto the retina, where the image forms.
+  answer_key: (d)
+  check: ncert-key
+
+- id: ncert-ex10-3
+  lvl: ncert-ex
+  num: 3
+  source: NCERT X Science · Ch 10 · Exercise 3 · p. 170
+  kind: mcq
+  q: The least distance of distinct vision for a young adult with normal vision is about
+  opts: ["25 m.", "2.5 cm.", "25 cm.", "2.5 m."]
+  ans: 2
+  sol: The near point of a normal young eye is about 25 cm.
+  answer_key: (c)
+  check: ncert-key
+
+- id: ncert-ex10-4
+  lvl: ncert-ex
+  num: 4
+  source: NCERT X Science · Ch 10 · Exercise 4 · p. 170
+  kind: mcq
+  q: The change in focal length of an eye lens is caused by the action of the
+  opts: ["pupil.", "retina.", "ciliary muscles.", "iris."]
+  ans: 2
+  sol: The ciliary muscles change the curvature, and hence the focal length, of the eye lens.
+  answer_key: (c)
+  check: ncert-key
+
+- id: ncert-ex10-5
+  lvl: ncert-ex
+  num: 5
+  source: NCERT X Science · Ch 10 · Exercise 5 · p. 170
+  kind: num
+  q: A person needs a lens of power –5.5 dioptres for correcting his distant vision. For correcting his near vision he needs a lens of power +1.5 dioptre. What is the focal length of the lens required for correcting (i) distant vision, and (ii) near vision?
+  ask: Focal length for distant vision, with sign
+  unit: m
+  ans: -0.18
+  tol: 0.005
+  verify: 1/(-5.5)
+  sol: $f = 1/P$. (i) $f = 1/(-5.5) = -0.18$ m (concave lens). (ii) $f = 1/1.5 = +0.67$ m (convex lens).
+  answer_key: (i) –0.18 m; (ii) +0.67 m
+  check: both
+
+- id: ncert-ex10-6
+  lvl: ncert-ex
+  num: 6
+  source: NCERT X Science · Ch 10 · Exercise 6 · p. 170
+  kind: num
+  q: The far point of a myopic person is 80 cm in front of the eye. What is the nature and power of the lens required to correct the problem?
+  ask: Power, with sign
+  unit: D
+  ans: -1.25
+  tol: 0.01
+  verify: -1/0.8
+  sol: The lens must image infinity at the far point, so $f = -0.80$ m and $P = 1/f = -1.25$ D. It is a concave lens.
+  answer_key: Concave lens; –1.25 D
+  check: both
+
+- id: ncert-ex10-7
+  lvl: ncert-ex
+  num: 7
+  source: NCERT X Science · Ch 10 · Exercise 7 · p. 170
+  kind: num
+  q: Make a diagram to show how hypermetropia is corrected. The near point of a hypermetropic eye is 1 m. What is the power of the lens required to correct this defect? Assume that the near point of the normal eye is 25 cm.
+  ask: Power, with sign
+  unit: D
+  ans: 3
+  tol: 0.01
+  verify: 1/(-1)-1/(-0.25)
+  hints: ["The lens must form a virtual image at 1 m of an object held at 25 cm: u = −0.25 m, v = −1 m."]
+  sol: |
+    $P = \frac1v - \frac1u = \frac{1}{-1} - \frac{1}{-0.25} = -1 + 4 = +3.0$ D, a convex lens.
+    Diagram: without the lens, light from a book at 25 cm focuses behind the retina. A convex lens in front of the eye bends the rays so they appear to come from the near point, 1 m away, and the eye then focuses them on the retina.
+  answer_key: Convex lens; +3.0 D
+  check: both
+
+- id: ncert-ex10-8
+  lvl: ncert-ex
+  num: 8
+  source: NCERT X Science · Ch 10 · Exercise 8 · p. 170
+  kind: text
+  q: Why is a normal eye not able to see clearly the objects placed closer than 25 cm?
+  sol: To focus a nearer object, the eye lens would have to become more curved than it can. At about 25 cm the ciliary muscles have already made the lens as thick as possible, so for closer objects the image forms behind the retina and looks blurred.
+  check: none
+
+- id: ncert-ex10-9
+  lvl: ncert-ex
+  num: 9
+  source: NCERT X Science · Ch 10 · Exercise 9 · p. 170
+  kind: text
+  q: What happens to the image distance in the eye when we increase the distance of an object from the eye?
+  sol: Nothing; it stays the same. The image must always fall on the retina, about 2 cm behind the lens. The eye keeps the image distance fixed by changing the focal length of its lens (accommodation).
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which part of the eye controls how much light enters it?
+  opts: ["Cornea", "Iris (by changing the pupil size)", "Retina"]
+  ans: 1
+  sol: The iris widens or narrows the pupil, letting in more light in the dark and less in bright light.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A myopic person's far point is 2.0 m. What power of lens does she need?
+  ask: Power, with sign
+  unit: D
+  ans: -0.5
+  tol: 0.01
+  verify: -1/2
+  sol: $P = -1/x = -1/2.0 = -0.5$ D.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A person's near point is 50 cm. What lens power lets him read a book held at 25 cm?
+  ask: Power, with sign
+  unit: D
+  ans: 2
+  tol: 0.01
+  verify: 1/(-0.5)-1/(-0.25)
+  sol: $P = \frac1v - \frac1u = -\frac{1}{0.50} + \frac{1}{0.25} = -2 + 4 = +2$ D.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: An elderly person cannot see far objects clearly and also cannot read without glasses. What lenses help?
+  opts: ["Concave lenses", "Convex lenses", "Bifocal lenses"]
+  ans: 2
+  sol: |
+    Bifocals: the upper part is concave for distance (myopia) and the lower part convex for reading (presbyopia).
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A person wears glasses of power −2.5 D and sees distant objects clearly. Where is her far point without glasses?
+  ask: Far point
+  unit: cm
+  ans: 40
+  tol: 0.1
+  verify: 100/2.5
+  sol: $f = 1/P = -0.40$ m, and this equals minus the far point distance, so the far point is 40 cm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A hypermetropic person reads comfortably at 25 cm with glasses of power +2.0 D. Where is his near point without glasses?
+  ask: Near point
+  unit: cm
+  ans: 50
+  tol: 0.1
+  verify: -100/(2+1/(-0.25))
+  sol: |
+    The lens images an object at $u = -0.25$ m at his near point: $\frac1v = P + \frac1u = 2 - 4 = -2$, so $v = -0.50$ m. His near point is 50 cm.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: Model the eye as a single thin lens 2.0 cm in front of the retina. By how many dioptres must its power increase to switch from focusing on a very distant object to an object at 25 cm?
+  ask: Increase in power
+  unit: D
+  ans: 4
+  tol: 0.01
+  verify: (1/0.02+1/0.25)-1/0.02
+  sol: |
+    Distant object: $P = 1/0.02 = 50$ D. Object at 25 cm: $P = \frac{1}{0.02} + \frac{1}{0.25} = 54$ D. The increase is 4 D, the amplitude of accommodation.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Estimate the diffraction-limited angular resolution of an eye with a 3.0 mm pupil, for light of wavelength 550 nm, in minutes of arc.
+  ask: Resolution
+  unit: arcmin
+  ans: 0.77
+  tol: 0.02
+  verify: 1.22*550e-9/3e-3*180/PI*60
+  sol: $\theta = 1.22\lambda/D = 1.22 \times 5.5 \times 10^{-7}/3.0 \times 10^{-3} = 2.24 \times 10^{-4}$ rad $\approx 0.77$ arcmin.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Taking the eye's resolution as 1 minute of arc, how far away can you just tell apart two car headlights 1.5 m apart?
+  ask: Distance
+  unit: km
+  ans: 5.16
+  tol: 0.05
+  verify: 1.5/(PI/180/60)/1000
+  sol: $1' = 2.91 \times 10^{-4}$ rad, so $d = 1.5/2.91 \times 10^{-4} \approx 5.2$ km.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A myopic person's far point is 50 cm from the eye. What power of spectacle lens is needed if the spectacles are worn 2.0 cm in front of the eye?
+  ask: Power, with sign
+  unit: D
+  ans: -2.08
+  tol: 0.01
+  verify: -1/0.48
+  hints: ["The spectacle lens must image infinity at the far point, which is 48 cm from the lens."]
+  sol: The far point is $50 - 2 = 48$ cm from the spectacle lens, so $f = -0.48$ m and $P = -2.08$ D. A contact lens on the eye would need only −2.00 D.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "The cornea is a curved surface of radius 7.8 mm and refractive index 1.376. Using P = (n₂ − n₁)/R for a single surface, by how many dioptres does the cornea's power fall when the eye goes from air (n = 1.00) to water (n = 1.33)?"
+  ask: Loss of power
+  unit: D
+  ans: 42.3
+  tol: 0.3
+  verify: (1.376-1)/0.0078-(1.376-1.33)/0.0078
+  sol: In air $P = 0.376/0.0078 = 48.2$ D; in water $P = 0.046/0.0078 = 5.9$ D. The loss is about 42.3 D, far more than the lens can make up, so underwater vision is badly blurred without goggles.
+  check: code

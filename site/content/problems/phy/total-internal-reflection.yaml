@@ -1,0 +1,174 @@
+# Total internal reflection. NCERT questions copied word for word from NCERT Physics Class XII (reprint 2026-27), Ch 9.
+
+- id: ncert12-ex-9-5
+  lvl: ncert-ex
+  num: "XII 9.5"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.5
+  kind: num
+  q: A small bulb is placed at the bottom of a tank containing water to a depth of 80cm. What is the area of the surface of water through which light from the bulb can emerge out? Refractive index of water is 1.33. (Consider the bulb to be a point source.)
+  ask: Area
+  unit: m²
+  ans: 2.6
+  tol: 0.05
+  verify: PI*(0.8*tan(asin(1/1.33)))**2
+  hints: ["Light reaching the surface beyond the critical angle is totally reflected.", "Radius r = h tan θc."]
+  sol: |
+    $\sin\theta_c = 1/1.33 = 0.752$, so $\theta_c = 48.8^\circ$ and $\tan\theta_c = 1.14$. The radius of the lit circle is $r = 0.80 \times 1.14 = 0.91$ m, so the area is $\pi r^2 \approx 2.6$ m².
+  answer_key: r = 0.8 × tan ic and sin ic = 1/1.33 ≅ 0.75, where r is the radius (in m) of the largest circle from which light comes out; Area = 2.6 m²
+  check: both
+
+- id: ncert12-ex-9-17
+  lvl: ncert-ex
+  num: "XII 9.17"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.17
+  kind: num
+  q: (a) Figure 9.28 shows a cross-section of a 'light pipe' made of a glass fibre of refractive index 1.68. The outer covering of the pipe is made of a material of refractive index 1.44. What is the range of the angles of the incident rays with the axis of the pipe for which total reflections inside the pipe take place, as shown in the figure. (b) What is the answer if there is no outer covering of the pipe?
+  ask: Largest angle of incidence for part (a)
+  unit: "°"
+  ans: 60
+  tol: 0.5
+  verify: deg(asin(sqrt(1.68**2-1.44**2)))
+  hints: ["Critical angle at the core–covering boundary: sin ic′ = 1.44/1.68.", "The refraction angle at the end face must satisfy r ≤ 90° − ic′."]
+  sol: |
+    (a) $\sin i_c' = 1.44/1.68$, so $i_c' = 59^\circ$. TIR at the wall needs the wall angle $> 59^\circ$, i.e. the refraction angle at the end face $r < 31^\circ$. Then $\sin i_{\max} = 1.68\sin 31^\circ$, giving $i_{\max} \approx 60^\circ$ (equivalently $\sin i_{\max} = \sqrt{1.68^2 - 1.44^2}$). All rays with $0 < i < 60^\circ$ are totally reflected.
+    (b) With air outside, $i_c' = \sin^{-1}(1/1.68) = 36.5^\circ$. Even $i = 90^\circ$ gives $r = 36.5^\circ$ and a wall angle of $53.5^\circ > 36.5^\circ$, so every ray entering the end face is totally reflected.
+  answer_key: "(a) ic′ = 59°; total internal reflection when r < rmax = 31°; imax ~ 60°, so all incident rays with 0 < i < 60° suffer total internal reflection. (b) ic′ = 36.5°; all incident rays (in the range 53.5° < i < 90°) suffer total internal reflection."
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Total internal reflection can occur when light travels from
+  opts: ["water into air", "air into water", "air into glass"]
+  ans: 0
+  sol: TIR needs light going from a denser to a rarer medium. Water to air is the only such case.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the critical angle for diamond ($n = 2.42$) in air.
+  ask: Critical angle
+  unit: "°"
+  ans: 24.4
+  tol: 0.2
+  verify: deg(asin(1/2.42))
+  sol: $\sin\theta_c = 1/2.42 = 0.413$, so $\theta_c \approx 24.4^\circ$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Find the critical angle for light going from water ($n = 1.33$) into air.
+  ask: Critical angle
+  unit: "°"
+  ans: 48.8
+  tol: 0.2
+  verify: deg(asin(1/1.33))
+  sol: $\sin\theta_c = 1/1.33 = 0.752$, so $\theta_c \approx 48.8^\circ$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Why does a well-cut diamond sparkle so much more than glass of the same shape?
+  opts: ["It reflects more at its outer surface", "Its small critical angle traps light by repeated total internal reflection", "It emits its own light"]
+  ans: 1
+  sol: Diamond's critical angle (24.4°) is much smaller than glass's (about 42°), so light inside a cut diamond is totally reflected many times and leaves mainly through the top, in bright flashes.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Light enters a 45°–90°–45° prism normally through one of its short faces. What is the minimum refractive index for which it is totally reflected at the long face?
+  ask: Minimum n
+  unit: ""
+  ans: 1.414
+  tol: 0.005
+  verify: 1/sin(rad(45))
+  sol: Inside the prism the light meets the long face at 45°. TIR needs $45^\circ > \theta_c$, i.e. $\sin 45^\circ > 1/n$, so $n > \sqrt2 \approx 1.414$. Ordinary glass ($n \approx 1.5$) qualifies.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: An optical fibre has a core of refractive index 1.50 and a cladding of 1.45. Find the largest angle to the axis at which light in air can enter the end and still be guided.
+  ask: Acceptance angle
+  unit: "°"
+  ans: 22.6
+  tol: 0.2
+  verify: deg(asin(sqrt(1.5**2-1.45**2)))
+  sol: $\sin\theta_{\max} = \sqrt{1.50^2 - 1.45^2} = \sqrt{0.1475} = 0.384$, so $\theta_{\max} \approx 22.6^\circ$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A diver 3.0 m below a calm water surface ($n = 4/3$) looks up. What is the radius of the circle through which she sees the sky?
+  ask: Radius
+  unit: m
+  ans: 3.4
+  tol: 0.03
+  verify: 3*tan(asin(3/4))
+  sol: $\sin\theta_c = 3/4$, $\tan\theta_c = 3/\sqrt7 = 1.134$, so $r = 3.0 \times 1.134 = 3.4$ m.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A point source lies at the bottom of a liquid 1.0 m deep. An observer above sees a bright circle on the surface of radius 1.2 m. Find the refractive index of the liquid.
+  ask: n
+  unit: ""
+  ans: 1.302
+  tol: 0.005
+  verify: 1/sin(atan(1.2))
+  hints: ["tan θc = 1.2/1.0."]
+  sol: $\tan\theta_c = 1.2$, so $\sin\theta_c = 1.2/\sqrt{2.44} = 0.768$ and $n = 1/0.768 = 1.30$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A bare glass fibre ($n = 1.50$) with no cladding is immersed in water ($n = 1.33$). What is the largest angle to the axis, measured in the water, at which light can enter the end and still be guided?
+  ask: Acceptance angle in water
+  unit: "°"
+  ans: 31.4
+  tol: 0.2
+  verify: deg(asin(sqrt(1.5**2-1.33**2)/1.33))
+  hints: ["Now the outside medium for both the end face and the wall is water: n₀ sin θ = √(n₁² − n₂²)."]
+  sol: $1.33\sin\theta_{\max} = \sqrt{1.50^2 - 1.33^2} = 0.694$, so $\sin\theta_{\max} = 0.522$ and $\theta_{\max} \approx 31.4^\circ$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: In a 1.0 km step-index fibre with core index 1.50 and cladding index 1.45, light travelling along the axis and light bouncing at the critical angle arrive at different times. Estimate the difference.
+  ask: Time difference
+  unit: ns
+  ans: 172
+  tol: 1
+  verify: (1000*1.5/3e8)*(1.5/1.45-1)*1e9
+  hints: ["The zigzag path is longer by the factor 1/sin θc = n₁/n₂."]
+  sol: |
+    The axial ray takes $t = Ln_1/c = 5.00\ \mu$s. The critical ray's path is longer by $n_1/n_2$, so the difference is $\Delta t = \frac{Ln_1}{c}\left(\frac{n_1}{n_2} - 1\right) = 5.00\ \mu\text{s} \times 0.0345 \approx 172$ ns. Pulses closer together than this blur into each other, limiting the data rate.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Light of wavelength 600 nm is totally reflected inside glass ($n = 1.50$) at an angle of incidence of 60° on a glass–air surface. Estimate the decay length of the evanescent wave in the air, $\delta = \lambda/(2\pi\sqrt{n^2\sin^2\theta - 1})$.
+  ask: Decay length
+  unit: nm
+  ans: 115
+  tol: 1
+  verify: 600/(2*PI*sqrt(1.5**2*sin(rad(60))**2-1))
+  sol: $n^2\sin^2\theta - 1 = 2.25 \times 0.75 - 1 = 0.6875$, so $\delta = 600/(2\pi \times 0.829) \approx 115$ nm. A second glass surface brought within about this distance lets a significant fraction of the light through.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: Show that light entering the flat end of a fibre (core $n_1$, cladding $n_2$) from a medium of index $n_0$ is guided if and only if $n_0\sin\theta < \sqrt{n_1^2 - n_2^2}$, where $\theta$ is its angle to the axis.
+  hints: ["Refraction at the end face gives n₀ sin θ = n₁ sin r.", "TIR at the wall needs n₁ cos r > n₂."]
+  sol: At the end face $n_0\sin\theta = n_1\sin r$. The ray then meets the wall at angle $90^\circ - r$ to its normal, and TIR requires $n_1\sin(90^\circ - r) > n_2$, i.e. $n_1\cos r > n_2$. Squaring, $n_1^2(1 - \sin^2 r) > n_2^2$, so $n_1^2\sin^2 r < n_1^2 - n_2^2$, which is $n_0^2\sin^2\theta < n_1^2 - n_2^2$. Each step is reversible, so the condition is necessary and sufficient.
+  check: none

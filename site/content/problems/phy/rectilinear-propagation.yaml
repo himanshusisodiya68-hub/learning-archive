@@ -1,0 +1,217 @@
+# Rectilinear propagation. NCERT questions copied word for word from NCERT Curiosity, Grade 7 (reprint 2026-27), Ch 11.
+# Figure-based questions carry a bracketed description of the figure, written from the printed page.
+
+- id: c7-11-1
+  lvl: ncert-ex
+  num: "VII Q1"
+  source: NCERT VII Curiosity · Ch 11 Light Shadows and Reflections · Q1
+  kind: text
+  q: Which of the following are luminous objects? Mars, Moon, Pole Star, Sun, Venus, Mirror
+  sol: The **Pole Star** and the **Sun** are luminous; they are stars and give out their own light. Mars, the Moon and Venus only reflect sunlight, and a mirror only reflects light falling on it, so they are non-luminous.
+  check: none
+
+- id: c7-11-2
+  lvl: ncert-ex
+  num: "VII Q2"
+  source: NCERT VII Curiosity · Ch 11 · Q2
+  kind: text
+  q: |
+    Match the items in Column A with those in Column B.
+    Column A: Pinhole camera; Opaque object; Transparent object; Shadow
+    Column B: Blocks light completely; The dark region formed behind the object; Forms an inverted image; Light passes almost completely through it
+  sol: Pinhole camera — forms an inverted image. Opaque object — blocks light completely. Transparent object — light passes almost completely through it. Shadow — the dark region formed behind the object.
+  check: none
+
+- id: c7-11-3
+  lvl: ncert-ex
+  num: "VII Q3"
+  source: NCERT VII Curiosity · Ch 11 · Q3
+  kind: mcq
+  q: "Sahil, Rekha, Patrick, and Qasima are trying to observe the candle flame through the pipe as shown in Fig. 11.16. Who can see the flame? [Fig. 11.16: a candle at the end of a horizontal pipe; Rekha looks along the straight continuation of that pipe, while the pipes to Sahil, Patrick and Qasima branch off at angles.]"
+  opts: ["Sahil", "Rekha", "Patrick", "Qasima"]
+  ans: 1
+  sol: Light travels in straight lines, so only the child at the end of the straight pipe, **Rekha**, can see the flame.
+  check: none
+
+- id: c7-11-4
+  lvl: ncert-ex
+  num: "VII Q4"
+  source: NCERT VII Curiosity · Ch 11 · Q4
+  kind: mcq
+  q: "Look at the images shown in Fig. 11.17 and select the correct image showing the shadow formation of the boy. [Fig. 11.17: (a) Sun almost directly above and behind the boy, shadow to the lower left; (b) Sun to the upper left, shadow as a round patch at his feet; (c) Sun to the upper right, shadow straight down towards the viewer; (d) Sun to the upper right, shadow stretching to the lower left.]"
+  opts: ["(a)", "(b)", "(c)", "(d)"]
+  ans: 3
+  sol: A shadow points directly away from the light source. Only in (d) does the shadow stretch away from the Sun, from the upper right towards the lower left.
+  check: none
+
+- id: c7-11-5
+  lvl: ncert-ex
+  num: "VII Q5"
+  source: NCERT VII Curiosity · Ch 11 · Q5
+  kind: text
+  q: "The shadow of a ball is formed on a wall by placing the ball in front of a fixed torch as shown in Fig. 11.18. In scenario (i) the ball is closer to the torch, while in scenario (ii) the ball is closer to the wall. Choose the most accurate representation of the shadows formed in both scenarios from the options provided (a and b). [Option (a) is a smaller shadow, option (b) a larger shadow.]"
+  sol: Scenario (i), ball near the torch → (b), the larger shadow. Scenario (ii), ball near the wall → (a), the smaller shadow. Near the torch the ball blocks a wider cone of rays.
+  check: none
+
+- id: c7-11-6
+  lvl: ncert-ex
+  num: "VII Q6"
+  source: NCERT VII Curiosity · Ch 11 · Q6
+  kind: text
+  q: |
+    Based on Fig. 11.18, match the position of the torch in Column A with the characteristics of the ball's shadow in Column B.
+    Column A: If the torch is close to the ball; If the torch is far away; If the ball is removed from the set-up; If two torches are present in the set-up on the left side of the ball
+    Column B: The shadow would be smaller; The shadow would be larger; Two shadows would appear on the screen; A bright spot would appear on the screen
+  sol: Torch close to the ball — the shadow would be larger. Torch far away — the shadow would be smaller. Ball removed — a bright spot would appear on the screen. Two torches — two shadows would appear on the screen.
+  check: none
+
+- id: c7-11-7
+  lvl: ncert-ex
+  num: "VII Q7"
+  source: NCERT VII Curiosity · Ch 11 · Q7
+  kind: text
+  q: Suppose you view the tree shown in Fig. 11.19 through a pinhole camera. Sketch the outline of the image of the tree formed in the pinhole camera.
+  sol: The image is the same outline turned upside down (and left–right swapped), with the crown at the bottom and the trunk at the top. Rays from the top of the tree pass straight through the hole to the bottom of the screen.
+  check: none
+
+- id: c7-11-9
+  lvl: ncert-ex
+  num: "VII Q9"
+  source: NCERT VII Curiosity · Ch 11 · Q9
+  kind: text
+  q: |
+    Measure the length of your shadow at 9 AM, 12 PM, and 4 PM with the help of your friend. Write down your observations:
+    (i) At which of the given times is your shadow the shortest?
+    (ii) Why do you think this happens?
+  sol: (i) At **12 PM**. (ii) Around noon the Sun is highest in the sky, so its rays come down most steeply and the shadow is shortest. In the morning and late afternoon the Sun is low, rays arrive at a shallow angle, and shadows are long.
+  check: none
+
+- id: c7-11-12
+  lvl: ncert-ex
+  num: "VII Q12"
+  source: NCERT VII Curiosity · Ch 11 · Q12
+  kind: text
+  q: We do not see the shadow on the ground of a bird flying high in the sky. However, the shadow is seen on the ground when the bird swoops near the ground. Think and explain why it is so.
+  sol: The Sun is not a point source; it is a large disc. A bird blocks the whole Sun only within a short cone behind it (the umbra), roughly 100 times the bird's size, a few tens of metres for a bird. Higher up, the ground sees most of the Sun around the bird, so there is only a faint, spread-out partial shadow (penumbra) that we do not notice. Near the ground the full, dark shadow reaches the ground.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of these is a luminous object?
+  opts: ["The Moon", "A glowing bulb", "A mirror", "Venus"]
+  ans: 1
+  sol: A glowing bulb produces its own light. The Moon, Venus and a mirror only reflect light.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Light from the Moon takes 1.28 s to reach the Earth. Taking $c = 3 \times 10^8$ m/s, how far is the Moon?
+  ask: Distance, in units of 10⁸ m
+  unit: × 10⁸ m
+  ans: 3.84
+  tol: 0.01
+  verify: 3*1.28
+  sol: $d = ct = 3 \times 10^8 \times 1.28 = 3.84 \times 10^8$ m.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A pinhole camera 20 cm long is pointed at a tree 15 m tall standing 30 m away. How tall is the image?
+  ask: Image height
+  unit: cm
+  ans: 10
+  tol: 0.05
+  verify: 1500*20/3000
+  sol: Image height $= 15\text{ m} \times \frac{0.20}{30} = 0.10$ m $= 10$ cm, inverted.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A boy 1.5 m tall casts a shadow 2.0 m long. At the same time a tower casts a shadow 40 m long. How tall is the tower?
+  ask: Height
+  unit: m
+  ans: 30
+  tol: 0.1
+  verify: 1.5*40/2
+  sol: |
+    The Sun's rays are parallel, so the triangles are similar: $h = 1.5 \times 40/2.0 = 30$ m.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A small bulb is 1.0 m from a ball 10 cm in diameter. A wall is 3.0 m from the bulb. What is the diameter of the ball's shadow on the wall?
+  ask: Shadow diameter
+  unit: cm
+  ans: 30
+  tol: 0.1
+  verify: 10*3/1
+  sol: Rays from a point source spread out in proportion to distance, so the shadow is $10 \times 3.0/1.0 = 30$ cm across.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: How long does sunlight take to reach the Earth? (Distance $1.5 \times 10^{11}$ m.)
+  ask: Time
+  unit: s
+  ans: 500
+  tol: 1
+  verify: 1.5e11/3e8
+  sol: $t = d/c = 1.5 \times 10^{11}/3 \times 10^8 = 500$ s, about 8 min 20 s.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A bird 0.30 m across flies between you and the Sun. The Sun's diameter is $1.39 \times 10^9$ m and its distance $1.50 \times 10^{11}$ m. How long is the bird's umbra?
+  ask: Umbra length
+  unit: m
+  ans: 32.4
+  tol: 0.2
+  verify: 0.3*1.5e11/1.39e9
+  hints: ["The umbra is a cone with the bird as its base, tapering away from the Sun.", "Its half-angle equals the Sun's angular radius."]
+  sol: $\ell = d\,L/D = 0.30 \times 1.50 \times 10^{11}/1.39 \times 10^9 \approx 32$ m. Above about 30 m, the bird casts no full shadow on the ground.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A lamp of luminous intensity 100 cd hangs 2.0 m above the floor. Find the illuminance on the floor at a point 2.0 m to the side of the point directly below the lamp.
+  ask: Illuminance
+  unit: lux
+  ans: 8.84
+  tol: 0.05
+  verify: 100*cos(rad(45))/8
+  hints: ["E = I cos θ / r², with r measured from the lamp to the point.", "Here r = 2√2 m and θ = 45°."]
+  sol: $r^2 = 2^2 + 2^2 = 8$ m², $\theta = 45^\circ$, so $E = 100 \times 0.707/8 = 8.8$ lux.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A pinhole camera has its screen 10 cm behind the hole and is used with green light of wavelength 550 nm. Estimate the pinhole diameter that gives the sharpest image, by balancing geometric blur ($\approx d$) against diffraction blur ($\approx 2.44\lambda L/d$).
+  ask: Optimum diameter
+  unit: mm
+  ans: 0.37
+  tol: 0.03
+  verify: sqrt(2.44*550e-9*0.10)*1000
+  hints: ["Set d = 2.44 λ L / d."]
+  sol: $d \approx \sqrt{2.44\lambda L} = \sqrt{2.44 \times 5.5 \times 10^{-7} \times 0.10} \approx 3.7 \times 10^{-4}$ m $\approx 0.4$ mm. This is an estimate; a more careful treatment by Rayleigh gives a similar fraction of a millimetre.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Eclipses of Jupiter's moon Io are seen about 1000 s later when the Earth is on the far side of its orbit from Jupiter than when it is on the near side. The diameter of the Earth's orbit is $3.0 \times 10^{11}$ m. Estimate the speed of light.
+  ask: Speed, in units of 10⁸ m/s
+  unit: × 10⁸ m/s
+  ans: 3
+  tol: 0.01
+  verify: 3.0e11/1000/1e8
+  sol: The extra light path is about the orbit's diameter, so $c \approx 3.0 \times 10^{11}/1000 = 3.0 \times 10^8$ m/s. Rømer's 1676 timing (about 22 minutes) gave a value about a quarter too low, but proved that light has a finite speed.
+  check: code
