@@ -1,0 +1,138 @@
+# Lenz's law and conservation of energy. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 6, §6.5 and Exercises 6.1–6.2. The directions of induced currents in the figure-based items are the book's own answers; the figures were read from the page images and the geometry described in [brackets] was added by the archive. Found, board and main problems are original.
+
+- id: ncert12-eg-6-4
+  lvl: ncert-intext
+  num: "XII Ex 6.4"
+  source: NCERT XII Physics · Ch 6 · Example 6.4
+  kind: text
+  q: |
+    Figure 6.7 shows planar loops of different shapes moving out of or into a region of a magnetic field which is directed normal to the plane of the loop away from the reader. Determine the direction of induced current in each loop using Lenz's law. [Fig. 6.7 as printed: the field region is marked with crosses (into the page). (i) a rectangular loop abcd with an arrow showing it moving into the field; (ii) a triangular loop abc moving out of the field to the right; (iii) an irregular loop abcd moving out of the field.]
+  sol: |
+    (i) The flux through the rectangular loop abcd **increases** as it moves into the field. The induced current must oppose the increase, so it produces a field out of the page: the current flows along **bcdab**.
+
+    (ii) The flux through the triangular loop abc **decreases** as it moves out. The induced current must oppose the decrease, producing a field into the page: the current flows along **bacb**.
+
+    (iii) The flux through the irregular loop abcd **decreases** as it moves out, so again the induced current produces a field into the page: it flows along **cdabc**.
+
+    There is no induced current while a loop is completely inside or completely outside the field region, since the flux does not change then.
+
+    [Inference] The letter sequences are the book's. Lenz's law requires the sense in (i) (increasing flux) to be opposite to that in (ii) and (iii) (decreasing flux), which is consistent with the book's answers; I could not verify each letter sequence against the printed arrows.
+  check: none
+
+- id: ncert12-eg-6-5
+  lvl: ncert-intext
+  num: "XII Ex 6.5"
+  source: NCERT XII Physics · Ch 6 · Example 6.5
+  kind: text
+  q: |-
+    (a) A closed loop is held stationary in the magnetic field between the north and south poles of two permanent magnets held fixed. Can we hope to generate current in the loop by using very strong magnets?
+    (b) A closed loop moves normal to the constant electric field between the plates of a large capacitor. Is a current induced in the loop (i) when it is wholly inside the region between the capacitor plates (ii) when it is partially outside the plates of the capacitor? The electric field is normal to the plane of the loop.
+    (c) A rectangular loop and a circular loop are moving out of a uniform magnetic field region (Fig. 6.8) to a field-free region with a constant velocity v. In which loop do you expect the induced emf to be constant during the passage out of the field region? The field is normal to the loops.
+    (d) Predict the polarity of the capacitor in the situation described by Fig. 6.9. [Fig. 6.9 as printed: a ring whose two plates A (upper) and B (lower) are the plates of a capacitor, with two bar magnets, each marked S–N, moving to the right on the two sides of it.]
+  sol: |
+    (a) **No.** However strong the magnets, a current can be induced only by a **changing** magnetic flux through the loop. A stationary loop in a steady field has constant flux.
+
+    (b) **No current in either case.** A current cannot be induced by changing the electric flux. (A loop moving in a constant electric field has no induced emf: $\mathbf v\times\mathbf B$ is zero here since there is no magnetic field.)
+
+    (c) The induced emf is expected to be constant only in the **rectangular** loop. For it the rate of change of area while leaving the field is constant ($Blv$). For the circular loop the rate of change of area is not constant, so the emf varies.
+
+    (d) The polarity of plate A is **positive** with respect to plate B.
+
+    [Inference] Part (d) is the book's answer; I did not derive it independently because the orientation of the magnets in Fig. 6.9 was not clear enough to me from the printed figure.
+  check: none
+
+- id: ncert12-ex-6-1
+  lvl: ncert-ex
+  num: "XII 6.1"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.1
+  kind: text
+  q: |
+    Predict the direction of induced current in the situations described by the following Figs. 6.15(a) to (f ). [Fig. 6.15 as printed: (a) a bar magnet moving towards a coil connected to a rectangular loop pqr; (b) a magnet moving between two coils connected through loops p q r and x y z; (c) two coaxial circular loops (labelled x, y, z) with the key of the first just closed; (d) the same two loops with a rheostat setting being changed; (e) two coils on a common axis, the left connected to a battery with the key just released and the right connected to a resistor (labelled x, y, r); (f) a loop with a straight wire through its centre carrying a current decreasing at a steady rate.]
+  sol: |
+    In every case use Lenz's law: the induced current flows so that its magnetic effect opposes the change of flux that causes it. The printed answer key gives the directions as paths through the lettered points:
+
+    (a) along **qrpq**;
+    (b) along **prq**, and along **yzx**;
+    (c) along **yzx**;
+    (d) along **zyx**;
+    (e) along **xry**;
+    (f) **no induced current**, since the magnetic field lines of the straight wire lie in the plane of the loop and there is no flux through the loop at all.
+
+    [Inference] For (a)–(e) I can state the principle (increasing flux produces an opposing field, decreasing flux a supporting field) but I cannot verify the lettered directions independently, because the senses of winding in the figures are not clear enough in the printed images. I have copied the key's answers.
+  answer_key: "(a) Along qrpq (b) Along prq, along yzx (c) Along yzx (d) Along zyx (e) Along xry (f) No induced current since field lines lie in the plane of the loop."
+  check: ncert-key
+
+- id: ncert12-ex-6-2
+  lvl: ncert-ex
+  num: "XII 6.2"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.2
+  kind: text
+  q: |-
+    Use Lenz's law to determine the direction of induced current in the situations described by Fig. 6.16:
+    (a) A wire of irregular shape turning into a circular shape;
+    (b) A circular loop being deformed into a narrow straight wire.
+    [Fig. 6.16 as printed: a loop in a uniform magnetic field perpendicular to the page; in (a) an irregular loop with points a, b, c, d turns into a circle, in (b) a circle with points a, b, c, d (and primed points a′, b′, c′, d′ for the deformed shape) is squeezed into a narrow shape.]
+  sol: |
+    (a) For a given perimeter a circle encloses the largest area. When the irregular wire turns into a circle the area, and so the flux through it, **increases**. The induced current must oppose this increase, so it flows in the sense that produces a field opposite to the applied field. The key gives the direction **adcd** (a path through the lettered points).
+
+    (b) When the circular loop is squeezed into a narrow wire the area, and the flux, **decreases**. The induced current opposes the decrease, so it produces a field in the same direction as the applied field. The key gives the direction **a′d′c′b′**.
+
+    [Inference] The letter paths are copied from the answer key. "adcd" is printed with a repeated letter in the key, which may be a typographical slip; I could not check it against the figure.
+  answer_key: "(a) Along adcd (flux through the surface increases during shape change, so induced current produces opposing flux). (b) Along a′d′c′b′ (flux decreases during the process)"
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Lenz's law is a consequence of the conservation of
+  opts: ["charge", "energy", "momentum", "mass"]
+  ans: 1
+  sol: |
+    If the induced current aided the change of flux that produced it, the effect would reinforce its cause and energy would be created from nothing. Lenz's law (opposition) keeps energy conserved: the work done against the opposing force becomes electrical energy.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: The north pole of a bar magnet is moved towards a closed coil. The face of the coil nearest the magnet becomes
+  opts: ["a north pole, repelling the magnet", "a south pole, attracting the magnet", "neutral", "a south pole, repelling the magnet"]
+  ans: 0
+  sol: |
+    The flux through the coil increases, so the induced current opposes the increase: the near face becomes a north pole and repels the approaching north pole.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: A magnet is dropped through a long vertical copper tube and falls much more slowly than through a plastic tube of the same size. Explain. (Original problem.)
+  sol: |
+    As the magnet falls, the flux through each ring of the tube changes, so eddy currents are induced in the copper. By Lenz's law these currents oppose the motion of the magnet: they create a force on it directed upward. The magnet reaches a small terminal speed at which the retarding force equals the weight. The mechanical energy is dissipated as heat in the tube. A plastic tube has no conduction, so no currents and no retarding force.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: A loop in the plane of the page is in a uniform field directed out of the page and the field is decreasing. In which sense does the induced current flow? (Original problem.)
+  sol: |
+    The outward flux decreases, so the induced current must produce a field out of the page (supporting the field). By the right-hand rule that requires an **anticlockwise** current as seen from the viewer.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A conducting ring of radius 5 cm and resistance 0.2 Ω is in a field of 0.4 T perpendicular to its plane that falls to zero in 0.1 s at a steady rate. What is the induced current? (Original problem.)
+  ask: Induced current
+  unit: A
+  ans: 0.157
+  tol: 0.001
+  verify: Math.PI*0.05**2*0.4/0.1/0.2
+  sol: $\varepsilon = A\,|\Delta B|/\Delta t = \pi(0.05)^2\times0.4/0.1 = 0.0314$ V and $I = \varepsilon/R = 0.0314/0.2 = 0.157$ A.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A magnet falls through a copper tube at terminal speed. Where does the lost gravitational potential energy go, and why does the terminal speed rise if the wall of the tube is made thinner? (Original problem.)
+  sol: |
+    The energy goes into Joule heating of the induced currents in the tube: at terminal speed the power $mgv$ equals the heat produced. A thinner wall has a larger resistance for the induced currents, so the currents and the retarding force are smaller for a given speed, and a larger speed is needed before the retarding force balances the weight.
+  check: none

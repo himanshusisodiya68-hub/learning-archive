@@ -1,0 +1,128 @@
+# Self and mutual inductance, and magnetic energy. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 6, §6.7 and Exercises 6.7–6.8. Found, board and main problems are original.
+
+- id: ncert12-eg-6-8
+  lvl: ncert-intext
+  num: "XII Ex 6.8"
+  source: NCERT XII Physics · Ch 6 · Example 6.8
+  kind: text
+  q: Two concentric circular coils, one of small radius r₁ and the other of large radius r₂, such that r₁ << r₂, are placed co-axially with centres coinciding. Obtain the mutual inductance of the arrangement.
+  sol: |
+    Let a current $I_2$ flow in the outer coil. The field at the centre is $B_2 = \mu_0I_2/(2r_2)$. Since $r_1\ll r_2$, $B_2$ is nearly uniform over the small coil, so the flux through the small coil (one turn) is
+
+    $$\Phi_1 = \pi r_1^2B_2 = \frac{\mu_0\pi r_1^2}{2r_2}I_2 = M_{12}I_2,\qquad\text{so}\qquad M_{12} = \frac{\mu_0\pi r_1^2}{2r_2}.$$
+
+    Since $M_{12} = M_{21}$ (reciprocity), $M_{21}$ has the same value. The result is approximate, because $B_2$ was taken as uniform over the area $\pi r_1^2$, which is acceptable for $r_1\ll r_2$.
+  check: none
+
+- id: ncert12-eg-6-9
+  lvl: ncert-intext
+  num: "XII Ex 6.9"
+  source: NCERT XII Physics · Ch 6 · Example 6.9
+  kind: text
+  q: (a) Obtain the expression for the magnetic energy stored in a solenoid in terms of magnetic field B, area A and length l of the solenoid. (b) How does this magnetic energy compare with the electrostatic energy stored in a capacitor?
+  sol: |
+    (a) The magnetic energy is $U_B = \tfrac12LI^2$. For a solenoid $B = \mu_0nI$, so $I = B/(\mu_0n)$, and $L = \mu_0n^2Al$. Then
+
+    $$U_B = \tfrac12\,\mu_0n^2Al\left(\frac{B}{\mu_0n}\right)^2 = \frac{1}{2\mu_0}B^2Al.$$
+
+    (b) The energy per unit volume (volume $Al$) is $u_B = \dfrac{B^2}{2\mu_0}$. For the electric field in a parallel-plate capacitor the stored energy per unit volume is $u_E = \tfrac12\varepsilon_0E^2$. Both are proportional to the square of the field. The two are alike in form: a field stores energy in the space it fills, with density ($\tfrac12\varepsilon_0E^2$ or $B^2/2\mu_0$) that depends only on the field there (the book notes that this holds generally).
+  check: none
+
+- id: ncert12-ex-6-7
+  lvl: ncert-ex
+  num: "XII 6.7"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.7
+  kind: num
+  q: Current in a circuit falls from 5.0 A to 0.0 A in 0.1 s. If an average emf of 200 V induced, give an estimate of the self-inductance of the circuit.
+  ask: Self-inductance
+  unit: H
+  ans: 4
+  tol: 0.001
+  verify: 200*0.1/5.0
+  sol: $|\varepsilon| = L\left|\dfrac{\Delta I}{\Delta t}\right|$, so $L = \dfrac{200}{5.0/0.1} = 4$ H.
+  answer_key: 4 H
+  check: both
+
+- id: ncert12-ex-6-8
+  lvl: ncert-ex
+  num: "XII 6.8"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.8
+  kind: num
+  q: A pair of adjacent coils has a mutual inductance of 1.5 H. If the current in one coil changes from 0 to 20 A in 0.5 s, what is the change of flux linkage with the other coil?
+  ask: Change of flux linkage
+  unit: Wb
+  ans: 30
+  tol: 0.001
+  verify: 1.5*20
+  sol: The flux linkage in the second coil is $N_2\Phi_2 = MI_1$, so its change is $\Delta(N_2\Phi_2) = M\Delta I_1 = 1.5\times20 = 30$ Wb. (The 0.5 s tells us the average induced emf, $30/0.5 = 60$ V, but is not needed.)
+  answer_key: 30 Wb
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The SI unit of inductance, the henry, is equal to
+  opts: ["V s A⁻¹", "V A s⁻¹", "Wb A", "A s V⁻¹"]
+  ans: 0
+  sol: $\varepsilon = L\,dI/dt$ gives $L$ in V per (A/s) $=$ V s A⁻¹. Equivalently Wb A⁻¹.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A coil of self-inductance 0.5 H carries a current changing at 20 A/s. Find the induced emf. (Original problem.)
+  ask: Induced emf
+  unit: V
+  ans: 10
+  tol: 0.001
+  verify: 0.5*20
+  sol: $|\varepsilon| = L\,|dI/dt| = 0.5\times20 = 10$ V, opposing the change of current.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Find the energy stored in a 2 H inductor carrying 3 A. (Original problem.)
+  ask: Energy
+  unit: J
+  ans: 9
+  tol: 0.001
+  verify: 0.5*2*3**2
+  sol: $U = \tfrac12LI^2 = \tfrac12\times2\times9 = 9$ J.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A long solenoid has 500 turns, length 0.5 m and cross-sectional area 2 × 10⁻⁴ m². Find its self-inductance. (Original problem.)
+  ask: Self-inductance
+  unit: mH
+  ans: 0.1257
+  tol: 0.0005
+  verify: 4e-7*Math.PI*500**2*2e-4/0.5*1000
+  sol: $L = \mu_0n^2Al = \mu_0N^2A/l = 4\pi\times10^{-7}\times(500)^2\times2\times10^{-4}/0.5 = 1.26\times10^{-4}$ H $= 0.126$ mH.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A current of 2 A in coil 1 links a flux of 4 × 10⁻³ Wb with each of the 100 turns of coil 2. Find the mutual inductance. (Original problem.)
+  ask: Mutual inductance
+  unit: H
+  ans: 0.2
+  tol: 0.0005
+  verify: 100*4e-3/2
+  sol: $M = N_2\Phi_2/I_1 = 100\times4\times10^{-3}/2 = 0.2$ H.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Find the energy stored per unit volume in a magnetic field of 0.5 T. (Original problem.)
+  ask: Energy density
+  unit: kJ/m³
+  ans: 99.47
+  tol: 0.1
+  verify: 0.5**2/(2*4e-7*Math.PI)/1000
+  sol: $u_B = B^2/(2\mu_0) = (0.5)^2/(2\times4\pi\times10^{-7}) = 9.9\times10^{4}$ J m⁻³ $\approx 99$ kJ m⁻³.
+  check: code

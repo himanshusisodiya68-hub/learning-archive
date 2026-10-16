@@ -1,0 +1,114 @@
+# Displacement current and Maxwell's modification of Ampère's law. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 8, Exercises 8.1–8.2 (§8.2 has no worked example). Figure details in [brackets] were added by the archive. Found, board and main problems are original.
+
+- id: ncert12-ex-8-1
+  lvl: ncert-ex
+  num: "XII 8.1"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.1
+  kind: num
+  q: |-
+    Figure 8.5 shows a capacitor made of two circular plates each of radius 12 cm, and separated by 5.0 cm. The capacitor is being charged by an external source (not shown in the figure). The charging current is constant and equal to 0.15A.
+    (a) Calculate the capacitance and the rate of change of potential difference between the plates.
+    (b) Obtain the displacement current across the plates.
+    (c) Is Kirchhoff's first rule (junction rule) valid at each plate of the capacitor? Explain.
+  ask: Rate of change of the potential difference, part (a)
+  unit: V/s
+  ans: 1.87e10
+  tol: 2e8
+  verify: 0.15/(8.854e-12*Math.PI*0.12**2/0.05)
+  sol: |
+    (a) $C = \dfrac{\varepsilon_0A}{d} = \dfrac{8.854\times10^{-12}\times\pi(0.12)^2}{0.05} = 8.0\times10^{-12}$ F $= 8.0$ pF. Since $Q = CV$, $\dfrac{dQ}{dt} = C\dfrac{dV}{dt} = I$, so
+
+    $$\frac{dV}{dt} = \frac{I}{C} = \frac{0.15}{8.0\times10^{-12}} = 1.87\times10^{10}\ \text{V s}^{-1}.$$
+
+    (b) The displacement current is $i_d = \varepsilon_0\dfrac{d\Phi_E}{dt}$. Between the plates (ignoring end effects) $\Phi_E = EA$ and $E = \dfrac{Q}{\varepsilon_0A}$, so $\dfrac{dE}{dt} = \dfrac{I}{\varepsilon_0A}$ and $i_d = \varepsilon_0A\dfrac{dE}{dt} = I = 0.15$ A. The displacement current between the plates equals the conduction current in the wires.
+
+    (c) **Yes**, provided "current" means the sum of the conduction current and the displacement current: the conduction current $I$ arrives at one plate, and the same amount leaves it as displacement current across the gap, so no charge piles up unaccounted for in the sense of the rule.
+  answer_key: "(a) C = ε₀A/d = 8.00 pF; dV/dt = 0.15/(8 × 10⁻¹²) = 1.87 × 10¹⁰ V s⁻¹ (b) i_d = i = 0.15 A (c) Yes, provided by 'current' we mean the sum of conduction and displacement currents."
+  check: both
+
+- id: ncert12-ex-8-2
+  lvl: ncert-ex
+  num: "XII 8.2"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.2
+  kind: num
+  q: |-
+    A parallel plate capacitor (Fig. 8.6) made of circular plates each of radius R = 6.0 cm has a capacitance C = 100 pF. The capacitor is connected to a 230 V ac supply with a (angular) frequency of 300 rad s⁻¹.
+    (a) What is the rms value of the conduction current?
+    (b) Is the conduction current equal to the displacement current?
+    (c) Determine the amplitude of B at a point 3.0 cm from the axis between the plates.
+  ask: Amplitude of B at 3.0 cm from the axis, part (c)
+  unit: T
+  ans: 1.63e-11
+  tol: 5e-14
+  verify: 2e-7*0.03*(Math.SQRT2*230*300*100e-12)/0.06**2
+  sol: |
+    (a) $I_{rms} = V_{rms}\,\omega C = 230\times300\times100\times10^{-12} = 6.9\ \mu$A.
+
+    (b) **Yes.** The relation $i_d = i$ derived in Exercise 8.1(b) holds even if $i$ oscillates in time: the displacement current between the plates equals the conduction current in the wires at every instant.
+
+    (c) By Ampère's law with the displacement current, for a circle of radius $r<R$ in the gap, $B(2\pi r) = \mu_0\,i_d\dfrac{\pi r^2}{\pi R^2}$, so $B = \dfrac{\mu_0r}{2\pi R^2}i_d$. It oscillates in phase with $i_d$, so the amplitudes are related by $B_0 = \dfrac{\mu_0r}{2\pi R^2}i_0$. The amplitude of the current is $i_0 = \sqrt2I_{rms} = 9.76\ \mu$A. With $r = 3$ cm and $R = 6$ cm,
+
+    $$B_0 = \frac{2\times10^{-7}\times0.03}{(0.06)^2}\times9.76\times10^{-6} = 1.63\times10^{-11}\ \text{T}.$$
+  answer_key: "(a) I_rms = V_rms ωC = 6.9 µA (b) Yes ... (c) B₀ = 1.63 × 10⁻¹¹ T"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A displacement current exists in a region where
+  opts: ["a conductor carries a steady current", "the electric field changes with time", "a magnet is at rest", "the magnetic field is zero"]
+  ans: 1
+  sol: Maxwell's displacement current is $i_d = \varepsilon_0\,d\Phi_E/dt$, nonzero only when the electric flux is changing.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A 2 µF capacitor is charged so that the potential difference across it rises at 5 V/s. Find the displacement current between its plates. (Original problem.)
+  ask: Displacement current
+  unit: µA
+  ans: 10
+  tol: 0.001
+  verify: 2e-6*5*1e6
+  sol: $i_d = i_c = C\,dV/dt = 2\times10^{-6}\times5 = 10^{-5}$ A $= 10\ \mu$A.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A capacitor has plates of area 0.01 m². The electric field between them changes at 10¹² V m⁻¹ s⁻¹. Find the displacement current. (Original problem.)
+  ask: Displacement current
+  unit: A
+  ans: 0.08854
+  tol: 0.0005
+  verify: 8.854e-12*0.01*1e12
+  sol: $i_d = \varepsilon_0A\,\dfrac{dE}{dt} = 8.854\times10^{-12}\times0.01\times10^{12} = 0.0885$ A.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Why did Ampère's circuital law need a correction for a charging capacitor? (Original problem.)
+  sol: |
+    Take a loop around the wire to the capacitor. Apply Ampère's law to two surfaces bounded by the same loop: a flat disc that the wire crosses (current $I$ passes through it), and a bulging surface that passes between the plates (no conduction current passes through it). The left side $\oint\mathbf B\cdot d\mathbf l$ is the same, but the right-hand side would be $\mu_0I$ for one and $0$ for the other: a contradiction. Maxwell added the displacement current $\varepsilon_0\,d\Phi_E/dt$ in the gap, which carries the same "current" through the second surface, so both give $\mu_0I$.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A displacement current of 0.5 A flows uniformly between circular capacitor plates of radius 5 cm. Find the magnetic field at 2 cm from the axis. (Original problem.)
+  ask: Magnetic field
+  unit: µT
+  ans: 0.8
+  tol: 0.001
+  verify: 2e-7*0.5*0.02/0.05**2*1e6
+  sol: $B = \dfrac{\mu_0i_dr}{2\pi R^2} = \dfrac{2\times10^{-7}\times0.5\times0.02}{(0.05)^2} = 8\times10^{-7}$ T $= 0.8$ µT.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: State Maxwell's modification of Ampère's circuital law and explain how it leads to the existence of electromagnetic waves. (Original problem.)
+  sol: |
+    $\oint\mathbf B\cdot d\mathbf l = \mu_0\left(i_c + \varepsilon_0\dfrac{d\Phi_E}{dt}\right)$. A changing electric field now produces a magnetic field, just as a changing magnetic field produces an electric field (Faraday). Each can regenerate the other: an oscillating field in one region makes the other in the next, and the disturbance travels through empty space at $c = 1/\sqrt{\mu_0\varepsilon_0}$.
+  check: none

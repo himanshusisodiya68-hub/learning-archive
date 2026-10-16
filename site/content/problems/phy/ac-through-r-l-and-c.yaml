@@ -1,0 +1,163 @@
+# AC applied to a resistor, an inductor and a capacitor (reactance and phase). NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 7, §7.2–7.5 and Exercises 7.3–7.5. The printed text writes µF as "mF"; µF is used here. Found, board and main problems are original.
+
+- id: ncert12-eg-7-2
+  lvl: ncert-intext
+  num: "XII Ex 7.2"
+  source: NCERT XII Physics · Ch 7 · Example 7.2
+  kind: num
+  q: A pure inductor of 25.0 mH is connected to a source of 220 V. Find the inductive reactance and rms current in the circuit if the frequency of the source is 50 Hz.
+  ask: rms current
+  unit: A
+  ans: 28
+  tol: 0.1
+  verify: 220/(2*Math.PI*50*25e-3)
+  sol: |
+    $X_L = 2\pi\nu L = 2\times3.14\times50\times25\times10^{-3} = 7.85\ \Omega$. The rms current is $I = V/X_L = 220/7.85 = 28$ A. (This is the current through a pure inductor: no resistance, so no power is dissipated.)
+  check: code
+
+- id: ncert12-eg-7-3
+  lvl: ncert-intext
+  num: "XII Ex 7.3"
+  source: NCERT XII Physics · Ch 7 · Example 7.3
+  kind: text
+  q: A lamp is connected in series with a capacitor. Predict your observations for dc and ac connections. What happens in each case if the capacitance of the capacitor is reduced?
+  sol: |
+    **DC:** the capacitor charges up and then no current flows, so the lamp does not glow. Reducing $C$ makes no difference.
+
+    **AC:** the capacitor offers a capacitive reactance $1/\omega C$ and a current flows, so the lamp shines. If $C$ is reduced the reactance increases and the current falls, so the lamp shines **less brightly**.
+  check: none
+
+- id: ncert12-eg-7-4
+  lvl: ncert-intext
+  num: "XII Ex 7.4"
+  source: NCERT XII Physics · Ch 7 · Example 7.4
+  kind: num
+  q: A 15.0 µF capacitor is connected to a 220 V, 50 Hz source. Find the capacitive reactance and the current (rms and peak) in the circuit. If the frequency is doubled, what happens to the capacitive reactance and the current?
+  ask: Capacitive reactance
+  unit: Ω
+  ans: 212.2
+  tol: 0.2
+  verify: 1/(2*Math.PI*50*15e-6)
+  sol: |
+    $X_C = \dfrac{1}{2\pi\nu C} = \dfrac{1}{2\pi\times50\times15.0\times10^{-6}} = 212\ \Omega$. The rms current is $I = V/X_C = 220/212 = 1.04$ A and the peak current is $i_m = \sqrt2I = 1.47$ A. The current oscillates between $+1.47$ A and $-1.47$ A and is **ahead of the voltage by $\pi/2$**.
+
+    If the frequency is doubled, $X_C$ is halved and the current is doubled.
+  check: code
+
+- id: ncert12-eg-7-5
+  lvl: ncert-intext
+  num: "XII Ex 7.5"
+  source: NCERT XII Physics · Ch 7 · Example 7.5
+  kind: text
+  q: |
+    A light bulb and an open coil inductor are connected to an ac source through a key as shown in Fig. 7.9. The switch is closed and after sometime, an iron rod is inserted into the interior of the inductor. The glow of the light bulb (a) increases; (b) decreases; (c) is unchanged, as the iron rod is inserted. Give your answer with reasons. [Fig. 7.9 as described in the text: a bulb and an inductor coil in series with an ac source and a key.]
+  sol: |
+    **(b) decreases.** The iron rod is magnetised by the field of the coil and increases the magnetic field inside it, so the inductance $L$ increases. The inductive reactance $X_L = \omega L$ therefore increases, and a larger fraction of the applied ac voltage appears across the inductor. That leaves less voltage across the bulb, so it glows less.
+  check: none
+
+- id: ncert12-ex-7-3
+  lvl: ncert-ex
+  num: "XII 7.3"
+  source: NCERT XII Physics · Ch 7 · Exercise 7.3
+  kind: num
+  q: A 44 mH inductor is connected to 220 V, 50 Hz ac supply. Determine the rms value of the current in the circuit.
+  ask: rms current
+  unit: A
+  ans: 15.9
+  tol: 0.05
+  verify: 220/(2*Math.PI*50*44e-3)
+  sol: $X_L = 2\pi\nu L = 2\pi\times50\times44\times10^{-3} = 13.8\ \Omega$, so $I_{rms} = 220/13.8 = 15.9$ A.
+  answer_key: 15.9 A
+  check: both
+
+- id: ncert12-ex-7-4
+  lvl: ncert-ex
+  num: "XII 7.4"
+  source: NCERT XII Physics · Ch 7 · Exercise 7.4
+  kind: num
+  q: A 60 µF capacitor is connected to a 110 V, 60 Hz ac supply. Determine the rms value of the current in the circuit.
+  ask: rms current
+  unit: A
+  ans: 2.49
+  tol: 0.01
+  verify: 110*2*Math.PI*60*60e-6
+  sol: $X_C = \dfrac{1}{2\pi\nu C} = \dfrac{1}{2\pi\times60\times60\times10^{-6}} = 44.2\ \Omega$, so $I_{rms} = 110/44.2 = 2.49$ A.
+  answer_key: 2.49 A
+  check: both
+
+- id: ncert12-ex-7-5
+  lvl: ncert-ex
+  num: "XII 7.5"
+  source: NCERT XII Physics · Ch 7 · Exercise 7.5
+  kind: text
+  q: In Exercises 7.3 and 7.4, what is the net power absorbed by each circuit over a complete cycle. Explain your answer.
+  sol: |
+    **Zero in each case.** In a pure inductor or a pure capacitor the current and the voltage are $90^\circ$ out of phase, so the average power $P = VI\cos\phi = VI\cos90^\circ = 0$. Energy is stored in the field during one quarter of the cycle and returned to the source in the next, so there is no net absorption over a full cycle.
+  answer_key: Zero in each case.
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: In a purely capacitive AC circuit, the current
+  opts: ["leads the voltage by π/2", "lags the voltage by π/2", "is in phase with the voltage", "is zero"]
+  ans: 0
+  sol: |
+    $q = Cv$, so $i = dq/dt = C\,dv/dt$: the current is maximum when $v$ passes through zero, a quarter cycle before $v$ peaks. It leads by $\pi/2$.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the inductive reactance of a 0.1 H inductor at 50 Hz. (Original problem.)
+  ask: Reactance
+  unit: Ω
+  ans: 31.42
+  tol: 0.02
+  verify: 2*Math.PI*50*0.1
+  sol: $X_L = 2\pi\nu L = 2\pi\times50\times0.1 = 31.4\ \Omega$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Find the capacitive reactance of a 10 µF capacitor at 50 Hz. (Original problem.)
+  ask: Reactance
+  unit: Ω
+  ans: 318.3
+  tol: 0.2
+  verify: 1/(2*Math.PI*50*10e-6)
+  sol: $X_C = \dfrac{1}{2\pi\nu C} = \dfrac{1}{2\pi\times50\times10^{-5}} = 318\ \Omega$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A 2 µF capacitor is connected to a 220 V, 50 Hz supply. Find the rms current. (Original problem.)
+  ask: rms current
+  unit: mA
+  ans: 138.2
+  tol: 0.2
+  verify: 220*2*Math.PI*50*2e-6*1000
+  sol: $I = V\omega C = 220\times2\pi\times50\times2\times10^{-6} = 0.138$ A $= 138$ mA.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A pure inductor of 0.2 H is connected to a 12 V rms supply of frequency 400 Hz. Find the peak current. (Original problem.)
+  ask: Peak current
+  unit: mA
+  ans: 33.8
+  tol: 0.1
+  verify: 12*Math.SQRT2/(2*Math.PI*400*0.2)*1000
+  sol: $X_L = 2\pi\times400\times0.2 = 502.7\ \Omega$. $I_{rms} = 12/502.7 = 23.9$ mA, so $I_0 = \sqrt2\times23.9 = 33.8$ mA.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Why does a capacitor block direct current but pass alternating current, and why does an inductor do the opposite for high frequencies? (Original problem.)
+  sol: |
+    For a capacitor $X_C = 1/\omega C\to\infty$ as $\omega\to0$: DC (zero frequency) cannot flow steadily because the plates charge up; for high frequency $X_C$ is small. For an inductor $X_L = \omega L\to0$ as $\omega\to0$: DC passes freely, but at high frequency the large $X_L$ opposes the current (a choke).
+  check: none

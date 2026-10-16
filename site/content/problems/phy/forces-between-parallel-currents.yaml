@@ -98,3 +98,151 @@
   sol: |
     The beams repel electrically and attract magnetically (parallel currents attract). The ratio of the magnetic to the electric force is $(v/c)^2$, using $\mu_0\varepsilon_0 = 1/c^2$. So the net force is repulsive and decreases as $v$ increases, approaching zero only as $v\to c$, where the two nearly cancel.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Three long parallel wires A, B and C lie in one plane, with B midway between A and C and AB = BC = 10 cm. They carry 10 A, 20 A and 30 A respectively, all in the same direction. Find the magnitude of the net force per unit length on B. (Original problem.)
+  ask: Net force per unit length on B
+  unit: N/m
+  ans: 8e-4
+  tol: 1e-6
+  verify: 2e-7*20*30/0.1 - 2e-7*10*20/0.1
+  sol: |
+    All currents are parallel, so B is attracted towards A and towards C.
+
+    Towards A: $f_A = 2\times10^{-7}\times\dfrac{10\times20}{0.1} = 4\times10^{-4}$ N/m.
+
+    Towards C: $f_C = 2\times10^{-7}\times\dfrac{20\times30}{0.1} = 1.2\times10^{-3}$ N/m.
+
+    These are opposite, so the net force is $1.2\times10^{-3} - 4\times10^{-4} = 8\times10^{-4}$ N/m, **towards C**. (B would be in equilibrium only at $x = 10\times20/(10+30) = 5$ cm from A, and that equilibrium is unstable along the line.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A long straight wire carries 20 A. A rectangular loop carrying 5 A lies in the same plane, with its 20 cm sides parallel to the wire. The near side is 2 cm from the wire and the far side 7 cm from it, and the current in the near side is in the same direction as in the wire. Find the net force on the loop. (Original problem.)
+  ask: Net force on the loop
+  unit: N
+  ans: 1.4286e-4
+  tol: 1e-7
+  verify: 2e-7*20*5*0.2*(1/0.02 - 1/0.07)
+  sol: |
+    The forces on the two 5 cm sides are equal and opposite (same distances, opposite currents), so they cancel.
+
+    Near side (parallel, attracted): $F_1 = \dfrac{\mu_0I_1I_2l}{2\pi a} = 2\times10^{-7}\times\dfrac{20\times5\times0.2}{0.02} = 2.0\times10^{-4}$ N.
+
+    Far side (antiparallel, repelled): $F_2 = 2\times10^{-7}\times\dfrac{20\times5\times0.2}{0.07} = 5.71\times10^{-5}$ N.
+
+    Net: $F = F_1 - F_2 = 1.43\times10^{-4}$ N, **towards the wire**.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Four long parallel wires pass through the corners of a square of side 10 cm, perpendicular to its plane. Each carries 10 A in the same direction. Find the force per unit length on any one wire. (Original problem.)
+  ask: Force per unit length on one wire
+  unit: N/m
+  ans: 4.2426e-4
+  tol: 1e-7
+  verify: 2e-7*10*10/0.1*(sqrt(2) + 1/sqrt(2))
+  sol: |
+    Let $f_0 = \dfrac{\mu_0I^2}{2\pi a} = 2\times10^{-7}\times\dfrac{100}{0.1} = 2\times10^{-4}$ N/m.
+
+    The two neighbours pull along the two sides, at right angles; their resultant is $\sqrt2 f_0$ along the diagonal, towards the centre. The opposite corner is $a\sqrt2$ away and pulls with $f_0/\sqrt2$, also along the diagonal towards the centre.
+
+    $$f = f_0\left(\sqrt2 + \tfrac1{\sqrt2}\right) = \tfrac{3}{\sqrt2}f_0 = 4.24\times10^{-4}\ \text{N/m},$$
+
+    directed towards the centre of the square.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: Two identical long horizontal wires, each of mass 10 g per metre, hang from a common horizontal axis by light insulating threads 50 cm long. When equal currents flow in them in opposite directions, they repel and each thread makes 6° with the vertical. Find the current. Take g = 9.8 m/s². (Original problem.)
+  ask: Current in each wire
+  unit: A
+  ans: 73.37
+  tol: 0.05
+  verify: sqrt(tan(rad(6))*0.01*9.8*2*0.5*sin(rad(6))/2e-7)
+  sol: |
+    The separation is $d = 2L\sin\theta = 2\times0.5\times\sin6^\circ = 0.1045$ m.
+
+    Per unit length, each wire is in balance under its weight $\lambda g$ (down), the thread tension, and the magnetic repulsion $f$ (horizontal). Resolving: $\tan\theta = f/\lambda g$, so
+
+    $$\frac{\mu_0 I^2}{2\pi d} = \lambda g\tan\theta \;\Rightarrow\; I = \sqrt{\frac{\lambda g\tan\theta\, d}{2\times10^{-7}}} = \sqrt{\frac{0.01\times9.8\times0.1051\times0.1045}{2\times10^{-7}}} \approx 73.4\ \text{A}.$$
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A straight plasma column of radius 1.0 cm carries a current of 100 kA spread uniformly over its cross-section. Assuming the plasma pressure is zero at the edge and the column is in equilibrium, find the pressure on its axis. (Original problem.)
+  ask: Pressure on the axis
+  unit: Pa
+  ans: 3.183e6
+  tol: 2000
+  verify: 4e-7*PI*1e10/(4*PI*PI*1e-4)
+  sol: |
+    With $j = I/\pi R^2$, Ampère's law gives $B(r) = \mu_0 j r/2$ inside. The force per unit volume $\mathbf j\times\mathbf B$ points inwards with size $jB$, and it must be balanced by the pressure gradient: $\dfrac{dp}{dr} = -jB = -\dfrac{\mu_0 j^2 r}{2}$.
+
+    Integrating from $r = 0$ to $R$ with $p(R) = 0$:
+
+    $$p(0) = \frac{\mu_0 j^2R^2}{4} = \frac{\mu_0 I^2}{4\pi^2R^2} = \frac{4\pi\times10^{-7}\times(10^5)^2}{4\pi^2\times10^{-4}} = \frac{10^{7}}{\pi} \approx 3.18\times10^{6}\ \text{Pa},$$
+
+    about 31 atmospheres. Check: the surface field is $B_s = \mu_0I/2\pi R = 2$ T and $B_s^2/2\mu_0 = 1.59\times10^6$ Pa, exactly half of $p(0)$, as the lesson shows in general.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Two long, thin, parallel beams of protons, each with the same uniform linear charge density, move side by side in the same direction at speed 0.8c in the laboratory. In the laboratory frame, what fraction of the electric repulsion between them is the net (electric plus magnetic) force? (Original problem.)
+  ask: Net force ÷ electric force
+  unit: ""
+  ans: 0.36
+  tol: 0.001
+  verify: 1 - 0.8*0.8
+  sol: |
+    For line charges $\lambda$ at separation $d$, the electric repulsion per unit length is $f_E = \lambda^2/2\pi\varepsilon_0d$. Each beam is a current $I = \lambda v$, so the magnetic attraction is $f_B = \mu_0\lambda^2v^2/2\pi d$. Then
+
+    $$\frac{f_B}{f_E} = \mu_0\varepsilon_0v^2 = \frac{v^2}{c^2} = 0.64,$$
+
+    and the net force is $f_E(1 - 0.64) = 0.36\,f_E$, still repulsive. A beam that would blow apart quickly at low speed stays together much longer at high speed, which is one reason fast particle beams are easier to keep narrow.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A long, closely wound solenoid has 500 turns, length 25 cm and radius 2.0 cm, and carries 10 A. Ignoring end effects, find the axial force with which the turns are pressed together (the force that tends to shorten it). (Original problem.)
+  ask: Compressive force
+  unit: N
+  ans: 0.3158
+  tol: 0.001
+  verify: (4e-7*PI*500*10/0.25)**2/(2*4e-7*PI)*PI*0.02*0.02
+  sol: |
+    **Energy method at constant current.** The stored energy is $U = \tfrac12L_{\text{ind}}I^2$ with $L_{\text{ind}} = \mu_0N^2A/\ell$. When the current is held fixed, the battery supplies twice the change in $U$, so the mechanical force along a coordinate $x$ is $F = +\partial U/\partial x$. With $x = \ell$:
+
+    $$F = \frac{\partial U}{\partial\ell} = -\frac{\mu_0N^2AI^2}{2\ell^2} = -\frac{B^2}{2\mu_0}A,\qquad B = \frac{\mu_0NI}{\ell}.$$
+
+    The minus sign means the force tends to reduce $\ell$: compression.
+
+    Numbers: $B = 4\pi\times10^{-7}\times500\times10/0.25 = 2.51\times10^{-2}$ T, $B^2/2\mu_0 = 251$ Pa, $A = \pi(0.02)^2 = 1.257\times10^{-3}$ m², so $|F| \approx 0.316$ N.
+
+    Physical picture: every turn attracts its neighbours (like currents), and the total is the magnetic pressure $B^2/2\mu_0$ acting on the cross-section.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: Two coaxial circular rings of radius 10 cm are 2.0 mm apart, and each carries 50 A in the same sense. Using the fact that the separation is much smaller than the radius, estimate the force between them. (Original problem.)
+  ask: Force between the rings
+  unit: N
+  ans: 0.157
+  tol: 0.005
+  verify: 4e-7*PI*50*50*0.1/0.002
+  sol: |
+    Since $d \ll R$, each small piece of one ring sees the other ring as a nearly straight parallel wire at distance $d$. The force per unit length is $\mu_0I^2/2\pi d$, along the axis, and the total length is $2\pi R$:
+
+    $$F \approx \frac{\mu_0I^2}{2\pi d}\cdot2\pi R = \frac{\mu_0I^2R}{d} = \frac{4\pi\times10^{-7}\times2500\times0.1}{0.002} \approx 0.157\ \text{N},$$
+
+    attractive because the currents circulate in the same sense. [Inference: the neglected curvature correction is of relative order $(d/R)\ln(R/d)$, a few per cent here; it is stated, not derived.]
+  check: code

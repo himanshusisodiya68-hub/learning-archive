@@ -1,0 +1,136 @@
+# Faraday's law of electromagnetic induction. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 6, §6.1–6.4 and Exercise 6.3. The printed text writes "W" for Ω in some resistances; Ω is used here. Found, board and main problems are original.
+
+- id: ncert12-eg-6-1
+  lvl: ncert-intext
+  num: "XII Ex 6.1"
+  source: NCERT XII Physics · Ch 6 · Example 6.1
+  kind: text
+  q: Consider Experiment 6.2. (a) What would you do to obtain a large deflection of the galvanometer? (b) How would you demonstrate the presence of an induced current in the absence of a galvanometer?
+  sol: |
+    (Experiment 6.2: a coil C₁ connected to a galvanometer, and a second coil C₂ connected to a battery, moved relative to each other.)
+
+    (a) To get a large deflection: (i) put a soft-iron rod inside coil C₂ (it strengthens the field), (ii) connect C₂ to a powerful battery (larger current, larger field), and (iii) move the arrangement rapidly towards the test coil C₁ (a faster change of flux). Each of these increases $d\Phi/dt$.
+
+    (b) Replace the galvanometer by a small bulb of the kind used in a torch. The relative motion of the two coils makes the bulb glow, showing the induced current.
+  check: none
+
+- id: ncert12-eg-6-2
+  lvl: ncert-intext
+  num: "XII Ex 6.2"
+  source: NCERT XII Physics · Ch 6 · Example 6.2
+  kind: num
+  q: A square loop of side 10 cm and resistance 0.5 Ω is placed vertically in the east-west plane. A uniform magnetic field of 0.10 T is set up across the plane in the north-east direction. The magnetic field is decreased to zero in 0.70 s at a steady rate. Determine the magnitudes of induced emf and current during this time-interval.
+  ask: Induced emf
+  unit: mV
+  ans: 1.0
+  tol: 0.02
+  verify: 0.1*0.1**2*Math.cos(Math.PI/4)/0.70*1000
+  sol: |
+    The loop lies in the east-west vertical plane, so its normal is north–south. The field points north-east, so the angle between the area vector and $\mathbf B$ is $\theta = 45^\circ$. The initial flux is $\Phi = BA\cos\theta = 0.10\times(0.10)^2\times\cos45^\circ = \dfrac{10^{-3}}{\sqrt2}$ Wb, and the final flux is zero. The magnitude of the induced emf is
+
+    $$\varepsilon = \frac{\Delta\Phi}{\Delta t} = \frac{10^{-3}}{\sqrt2\times0.7} \approx 1.0\ \text{mV},\qquad I = \frac{\varepsilon}{R} = \frac{10^{-3}}{0.5} = 2\ \text{mA}.$$
+
+    The Earth's field also gives a flux through the loop, but it is steady (it does not change during the experiment), so it induces no emf.
+  check: code
+
+- id: ncert12-eg-6-3
+  lvl: ncert-intext
+  num: "XII Ex 6.3"
+  source: NCERT XII Physics · Ch 6 · Example 6.3
+  kind: num
+  q: A circular coil of radius 10 cm, 500 turns and resistance 2 Ω is placed with its plane perpendicular to the horizontal component of the earth's magnetic field. It is rotated about its vertical diameter through 180° in 0.25 s. Estimate the magnitudes of the emf and current induced in the coil. Horizontal component of the earth's magnetic field at the place is 3.0 × 10⁻⁵ T.
+  ask: Induced emf
+  unit: mV
+  ans: 3.77
+  tol: 0.05
+  verify: 500*2*3.0e-5*Math.PI*1e-2/0.25*1000
+  sol: |
+    Initial flux: $\Phi_i = BA\cos0^\circ = 3.0\times10^{-5}\times\pi(0.1)^2 = 3\pi\times10^{-7}$ Wb. After 180°, $\Phi_f = BA\cos180^\circ = -3\pi\times10^{-7}$ Wb. The change is $6\pi\times10^{-7}$ Wb.
+
+    $$\varepsilon = N\frac{\Delta\Phi}{\Delta t} = 500\times\frac{6\pi\times10^{-7}}{0.25} = 3.8\times10^{-3}\ \text{V},\qquad I = \frac{\varepsilon}{R} = 1.9\times10^{-3}\ \text{A}.$$
+
+    These are estimates of the average values; the instantaneous values depend on the speed of rotation at each instant.
+  check: code
+
+- id: ncert12-ex-6-3
+  lvl: ncert-ex
+  num: "XII 6.3"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.3
+  kind: num
+  q: A long solenoid with 15 turns per cm has a small loop of area 2.0 cm² placed inside the solenoid normal to its axis. If the current carried by the solenoid changes steadily from 2.0 A to 4.0 A in 0.1 s, what is the induced emf in the loop while the current is changing?
+  ask: Induced emf
+  unit: µV
+  ans: 7.5
+  tol: 0.1
+  verify: 2.0e-4*4e-7*Math.PI*1500*(4.0-2.0)/0.1*1e6
+  sol: |
+    The field inside the solenoid is $B = \mu_0nI$ with $n = 15\ \text{cm}^{-1} = 1500\ \text{m}^{-1}$, so the flux through the small loop is $\Phi = BA = \mu_0nIA$. Then
+
+    $$\varepsilon = A\mu_0n\frac{\Delta I}{\Delta t} = 2.0\times10^{-4}\times4\pi\times10^{-7}\times1500\times\frac{2.0}{0.1} = 7.5\times10^{-6}\ \text{V}.$$
+  answer_key: 7.5 × 10⁻⁶ V
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: According to Faraday's law, the emf induced in a coil depends on
+  opts: ["the magnitude of the magnetic flux", "the rate of change of magnetic flux through the coil", "the resistance of the coil", "the material of the coil"]
+  ans: 1
+  sol: $\varepsilon = -N\,d\Phi/dt$. A large steady flux induces nothing; a changing flux does.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A coil of 200 turns has a flux through each turn that changes from 0.02 Wb to 0.01 Wb in 0.5 s. Find the magnitude of the induced emf. (Original problem.)
+  ask: Induced emf
+  unit: V
+  ans: 4
+  tol: 0.01
+  verify: 200*(0.02-0.01)/0.5
+  sol: $\varepsilon = N\,|\Delta\Phi|/\Delta t = 200\times0.01/0.5 = 4$ V.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A circular loop of radius 5 cm is placed perpendicular to a magnetic field that rises uniformly from 0 to 0.4 T in 2 s. Find the induced emf. (Original problem.)
+  ask: Induced emf
+  unit: mV
+  ans: 1.571
+  tol: 0.005
+  verify: Math.PI*0.05**2*0.4/2*1000
+  sol: $\varepsilon = A\,dB/dt = \pi(0.05)^2\times(0.4/2) = 1.57\times10^{-3}$ V $= 1.6$ mV.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A coil of resistance 10 Ω has an induced emf of 0.5 V while the flux through it changes. Find the charge that flows through the coil while the flux changes by 0.05 Wb. (Original problem.)
+  ask: Charge
+  unit: C
+  ans: 0.005
+  tol: 0.00001
+  verify: 0.05/10
+  sol: $q = \int I\,dt = \int\dfrac{\varepsilon}{R}dt = \dfrac{\Delta\Phi}{R} = \dfrac{0.05}{10} = 5\times10^{-3}$ C. The charge depends only on the total flux change and the resistance, not on how fast it changes.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A square loop of side 10 cm with resistance 2 Ω is pulled out of a uniform 0.5 T field (perpendicular to it) in 0.1 s. Find the total heat dissipated, assuming a constant emf. (Original problem.)
+  ask: Heat dissipated
+  unit: mJ
+  ans: 0.125
+  tol: 0.001
+  verify: (0.5*0.1**2/0.1)**2/2*0.1*1000
+  sol: The flux falls from $BA = 0.5\times10^{-2} = 5\times10^{-3}$ Wb to zero in 0.1 s, so $\varepsilon = 0.05$ V (constant). The current is $I = 0.05/2 = 0.025$ A. The heat is $I^2Rt = (0.025)^2\times2\times0.1 = 1.25\times10^{-4}$ J $= 0.125$ mJ.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A conducting ring is held at rest in a region where a uniform magnetic field (normal to the ring) increases linearly with time. Explain, by symmetry, why the induced electric field lines are circles centred on the axis, and find the induced electric field at radius r inside the field region. (Original problem.)
+  sol: |
+    By the symmetry of the situation the induced field $E$ has the same magnitude at all points of a circle of radius $r$ concentric with the field region, and is tangential. Faraday's law in the form $\oint\mathbf E\cdot d\mathbf l = -d\Phi/dt$ gives $E(2\pi r) = \pi r^2\,dB/dt$, so $E = \dfrac r2\dfrac{dB}{dt}$ (in magnitude). The field lines are closed circles, so this electric field is not electrostatic: it is non-conservative.
+  check: none

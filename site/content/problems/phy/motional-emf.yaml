@@ -1,0 +1,162 @@
+# Motional emf. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 6, §6.6 and Exercises 6.4–6.6. Found, board and main problems are original.
+
+- id: ncert12-eg-6-6
+  lvl: ncert-intext
+  num: "XII Ex 6.6"
+  source: NCERT XII Physics · Ch 6 · Example 6.6
+  kind: num
+  q: A metallic rod of 1 m length is rotated with a frequency of 50 rev/s, with one end hinged at the centre and the other end at the circumference of a circular metallic ring of radius 1 m, about an axis passing through the centre and perpendicular to the plane of the ring (Fig. 6.11). A constant and uniform magnetic field of 1 T parallel to the axis is present everywhere. What is the emf between the centre and the metallic ring?
+  ask: Emf between the centre and the ring
+  unit: V
+  ans: 157.08
+  tol: 0.1
+  verify: 0.5*1*2*Math.PI*50*1**2
+  sol: |
+    **Method I.** The free electrons in the rod are pushed outward by the Lorentz force and spread over the ring, so an emf appears across the rod. A length $dr$ at distance $r$ moves at right angles to $\mathbf B$ with speed $v = \omega r$, so $d\varepsilon = Bv\,dr = B\omega r\,dr$ and
+
+    $$\varepsilon = \int_0^RB\omega r\,dr = \frac{B\omega R^2}{2} = \tfrac12\times1.0\times2\pi\times50\times1^2 = 157\ \text{V}.$$
+
+    **Method II.** Close the circuit with a resistor connecting the ring to the centre. The induced emf is $B\times$ (rate of change of area of the loop). The area of the sector swept by the rod at angle $\theta$ is $\tfrac12R^2\theta$, so $\varepsilon = B\dfrac{d}{dt}\left(\tfrac12R^2\theta\right) = \dfrac{B\omega R^2}{2}$, the same.
+  check: code
+
+- id: ncert12-eg-6-7
+  lvl: ncert-intext
+  num: "XII Ex 6.7"
+  source: NCERT XII Physics · Ch 6 · Example 6.7
+  kind: num
+  q: A wheel with 10 metallic spokes each 0.5 m long is rotated with a speed of 120 rev/min in a plane normal to the horizontal component of earth's magnetic field H_E at a place. If H_E = 0.4 G at the place, what is the induced emf between the axle and the rim of the wheel? Note that 1 G = 10⁻⁴ T.
+  ask: Induced emf
+  unit: V
+  ans: 6.283e-5
+  tol: 1e-8
+  verify: 0.5*(2*Math.PI*2)*0.4e-4*0.5**2
+  sol: |
+    $120$ rev/min $= 2$ rev/s, so $\omega = 4\pi$ rad/s. Each spoke gives $\varepsilon = \tfrac12\omega BR^2 = \tfrac12\times4\pi\times0.4\times10^{-4}\times(0.5)^2 = 6.28\times10^{-5}$ V. The number of spokes does not matter: the emfs across the spokes are in parallel.
+  check: code
+
+- id: ncert12-ex-6-4
+  lvl: ncert-ex
+  num: "XII 6.4"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.4
+  kind: num
+  q: A rectangular wire loop of sides 8 cm and 2 cm with a small cut is moving out of a region of uniform magnetic field of magnitude 0.3 T directed normal to the loop. What is the emf developed across the cut if the velocity of the loop is 1 cm s⁻¹ in a direction normal to the (a) longer side, (b) shorter side of the loop? For how long does the induced voltage last in each case?
+  ask: Emf in case (a)
+  unit: µV
+  ans: 240
+  tol: 0.5
+  verify: 0.3*0.08*0.01*1e6
+  sol: |
+    The emf is $\varepsilon = Blv$, where $l$ is the length of the side that moves at right angles to its own length through the field edge.
+
+    (a) The velocity is normal to the longer side, so the side cutting the field edge is the 8 cm side: $\varepsilon = 0.3\times0.08\times0.01 = 2.4\times10^{-4}$ V. The loop is 2 cm wide in the direction of motion, so it takes $0.02/0.01 = 2$ s to leave the field: the emf lasts **2 s**.
+
+    (b) The velocity is normal to the shorter side, so the 2 cm side leads: $\varepsilon = 0.3\times0.02\times0.01 = 6\times10^{-5}$ V, and the 8 cm length takes $0.08/0.01 = 8$ s: the emf lasts **8 s**.
+  answer_key: "(1) 2.4 × 10⁻⁴ V, lasting 2 s (2) 0.6 × 10⁻⁴ V, lasting 8 s"
+  check: both
+
+- id: ncert12-ex-6-5
+  lvl: ncert-ex
+  num: "XII 6.5"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.5
+  kind: num
+  q: A 1.0 m long metallic rod is rotated with an angular frequency of 400 rad s⁻¹ about an axis normal to the rod passing through its one end. The other end of the rod is in contact with a circular metallic ring. A constant and uniform magnetic field of 0.5 T parallel to the axis exists everywhere. Calculate the emf developed between the centre and the ring.
+  ask: Emf
+  unit: V
+  ans: 100
+  tol: 0.01
+  verify: 0.5*0.5*400*1.0**2
+  sol: $\varepsilon = \tfrac12B\omega R^2 = \tfrac12\times0.5\times400\times(1.0)^2 = 100$ V.
+  answer_key: 100 V
+  check: both
+
+- id: ncert12-ex-6-6
+  lvl: ncert-ex
+  num: "XII 6.6"
+  source: NCERT XII Physics · Ch 6 · Exercise 6.6
+  kind: num
+  q: |-
+    A horizontal straight wire 10 m long extending from east to west is falling with a speed of 5.0 m s⁻¹, at right angles to the horizontal component of the earth's magnetic field, 0.30 × 10⁻⁴ Wb m⁻².
+    (a) What is the instantaneous value of the emf induced in the wire?
+    (b) What is the direction of the emf?
+    (c) Which end of the wire is at the higher electrical potential?
+  ask: Emf
+  unit: mV
+  ans: 1.5
+  tol: 0.001
+  verify: 0.30e-4*10*5.0*1000
+  sol: |
+    (a) $\varepsilon = Blv = 0.30\times10^{-4}\times10\times5.0 = 1.5\times10^{-3}$ V.
+
+    (b) Take east $= +x$, north $= +y$ (the horizontal field), up $= +z$. The velocity is $-\hat z$ and $\mathbf B$ is along $+\hat y$, so $\mathbf v\times\mathbf B = (-\hat z)\times\hat y = +\hat x$: positive charges are pushed towards the **east**. The emf is directed from west to east.
+
+    (c) The **eastern** end is at the higher potential, as positive charge accumulates there (the wire is like a battery with its positive terminal at the east end).
+  answer_key: "(a) 1.5 × 10⁻³ V, (b) West to East, (c) Eastern end."
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A rod 0.5 m long moves at 4 m/s perpendicular to a 0.2 T field and to its length. Find the emf between its ends. (Original problem.)
+  ask: Emf
+  unit: V
+  ans: 0.4
+  tol: 0.001
+  verify: 0.2*0.5*4
+  sol: $\varepsilon = Blv = 0.2\times0.5\times4 = 0.4$ V.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A rod moves parallel to its own length in a uniform magnetic field. The motional emf across it is
+  opts: ["Blv", "zero", "Bl²", "B/lv"]
+  ans: 1
+  sol: |
+    The Lorentz force $q\mathbf v\times\mathbf B$ is perpendicular to the rod, so it does not push charges along the rod: no emf.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A rod of length 20 cm slides on frictionless rails 20 cm apart, in a 0.5 T field normal to the rails, at 3 m/s. The rails are joined by a 0.6 Ω resistor. Find the current and the force needed to keep the rod moving uniformly. (Original problem.) Give the force.
+  ask: Force needed
+  unit: N
+  ans: 0.05
+  tol: 0.0001
+  verify: (0.5*0.2*3/0.6)*0.5*0.2
+  sol: |
+    $\varepsilon = Blv = 0.5\times0.2\times3 = 0.3$ V, $I = \varepsilon/R = 0.5$ A. The magnetic force on the rod is $BIl = 0.5\times0.5\times0.2 = 0.05$ N, opposing the motion, so an equal applied force of 0.05 N is needed. (Check with power: $Fv = 0.05\times3 = 0.15$ W $= I^2R = 0.25\times0.6$.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Where does the energy come from that appears as heat in a resistor connected to a rod moving in a magnetic field? (Original problem.)
+  sol: |
+    From the agent that pushes the rod. The induced current in the rod experiences a magnetic force $BIl$ opposing the motion (Lenz's law), so the agent must do work at a rate $Fv$, equal to the electrical power $\varepsilon I = I^2R$ dissipated in the circuit. The magnetic field itself does no net work; it only transfers energy from mechanical to electrical form.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A rod of length 1 m rotates about one end at 10 rev/s in a plane perpendicular to a 0.2 T field. Find the potential difference between the ends. (Original problem.)
+  ask: Potential difference
+  unit: V
+  ans: 6.283
+  tol: 0.005
+  verify: 0.5*0.2*2*Math.PI*10*1
+  sol: $\varepsilon = \tfrac12B\omega L^2 = \tfrac12\times0.2\times(2\pi\times10)\times1 = 6.28$ V.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A rectangular loop of width 10 cm and resistance 4 Ω is partly in a 0.5 T field and pulled out at 2 m/s. Find the power needed to pull it at constant speed. (Original problem.)
+  ask: Power
+  unit: mW
+  ans: 2.5
+  tol: 0.01
+  verify: (0.5*0.1*2)**2/4*1000
+  sol: |
+    $\varepsilon = Blv = 0.5\times0.1\times2 = 0.1$ V, $I = 0.1/4 = 0.025$ A. The power is $\varepsilon I = I^2R = (0.025)^2\times4 = 2.5\times10^{-3}$ W. Then it equals $Fv$ with $F = BIl = 0.5\times0.025\times0.1 = 1.25\times10^{-3}$ N and $v = 2$ m/s: $2.5\times10^{-3}$ W.
+  check: code

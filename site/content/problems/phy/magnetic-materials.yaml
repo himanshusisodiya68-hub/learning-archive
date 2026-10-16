@@ -87,3 +87,150 @@
   verify: 1.2e-5*300/200
   sol: $\chi\propto 1/T$, so $\chi_{200} = 1.2\times10^{-5}\times\dfrac{300}{200} = 1.8\times10^{-5}$.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: An iron ring of mean circumference 60 cm and relative permeability 1200 has a narrow radial air gap 1.5 mm wide cut in it. It is uniformly wound with 600 turns carrying 1.5 A. Neglecting fringing and leakage, find the magnetic field in the gap. (Original problem.)
+  ask: Field in the gap
+  unit: T
+  ans: 0.5655
+  tol: 0.002
+  verify: 4e-7*Math.PI*600*1.5/(0.60/1200+1.5e-3)
+  sol: |
+    The flux crosses the gap faces normally, and the normal component of $B$ is continuous, so $B$ is the same in the iron and in the gap. The intensities differ: $H_\text{iron} = B/(\mu_r\mu_0)$ and $H_\text{gap} = B/\mu_0$.
+
+    Ampère's law for $H$ round the ring (the iron path is $0.60 - 0.0015 \approx 0.60$ m):
+
+    $$\frac{B}{\mu_r\mu_0}\,l + \frac{B}{\mu_0}\,g = NI\quad\Longrightarrow\quad B = \frac{\mu_0NI}{l/\mu_r + g} = \frac{4\pi\times10^{-7}\times600\times1.5}{0.60/1200 + 1.5\times10^{-3}} = \frac{1.131\times10^{-3}}{2.0\times10^{-3}} = 0.565\ \text{T}.$$
+
+    The 1.5 mm gap "costs" three times as much as the 60 cm of iron (0.5 mm equivalent). Without the gap the field would be $0.565\times4 = 2.26$ T, which real iron could not reach anyway because it would saturate.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: The core of a transformer has volume 1500 cm³ and its B–H hysteresis loop encloses an area of 400 J/m³. The transformer runs on 50 Hz mains. How much heat does hysteresis produce in the core in one hour? (Original problem.)
+  ask: Heat in one hour
+  unit: kJ
+  ans: 108
+  tol: 0.5
+  verify: 400*1.5e-3*50*3600/1000
+  sol: |
+    The area of the $B$–$H$ loop, $\oint H\,dB$, is the energy turned into heat per unit volume in each cycle.
+
+    Per cycle: $400\times1.5\times10^{-3} = 0.60$ J. Cycles per hour: $50\times3600 = 1.8\times10^{5}$.
+
+    Heat $= 0.60\times1.8\times10^{5} = 1.08\times10^{5}$ J $= 108$ kJ, a steady 30 W. This is why transformer cores use soft iron or silicon steel with the narrowest loops available.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Inside a block of soft iron of relative permeability 800, the magnetic field lines meet the flat surface of the block at 80° to the normal. There is no free current on the surface. At what angle to the normal do the field lines leave into the air? (Original problem.)
+  ask: Angle with the normal in air
+  unit: °
+  ans: 0.406
+  tol: 0.005
+  verify: deg(atan(tan(rad(80))/800))
+  sol: |
+    With no free surface current, $B_\perp$ is continuous (no magnetic charge) and $H_\parallel$ is continuous (Ampère's law for $H$). Measuring angles from the normal, $\tan\theta = B_\parallel/B_\perp = \mu H_\parallel/B_\perp$, so $\tan\theta/\mu$ is the same on both sides:
+
+    $$\tan\theta_\text{air} = \frac{\tan80^\circ}{800} = \frac{5.671}{800} = 7.09\times10^{-3},\qquad \theta_\text{air} = 0.406^\circ.$$
+
+    Even lines running almost along the surface inside the iron leave it almost exactly perpendicular. This is why the field near an iron pole face is normal to the face.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: Water has susceptibility χ = −9.0 × 10⁻⁶ and density 1000 kg/m³. A small drop of water is to float at rest in the vertical, non-uniform field above the bore of a strong magnet. Find the value of B·(dB/dz) needed at the drop, taking g = 9.8 m/s². (Original problem.)
+  ask: Required |B dB/dz|
+  unit: T²/m
+  ans: 1368
+  tol: 3
+  verify: 4e-7*Math.PI*1000*9.8/9.0e-6
+  sol: |
+    For a small sample with $|\chi|\ll1$, the energy is $U = -\dfrac{\chi V}{2\mu_0}B^2$, so the vertical force is
+
+    $$F_z = \frac{\chi V}{\mu_0}\,B\,\frac{dB}{dz}.$$
+
+    With $\chi<0$ this points towards decreasing $B$; above the magnet $B$ falls with height, so the force is upward. Balance it against the weight $\rho Vg$ (the volume cancels):
+
+    $$\frac{|\chi|}{\mu_0}\,B\frac{dB}{dz} = \rho g\quad\Longrightarrow\quad B\frac{dB}{dz} = \frac{\mu_0\rho g}{|\chi|} = \frac{4\pi\times10^{-7}\times1000\times9.8}{9.0\times10^{-6}} \approx 1.37\times10^{3}\ \text{T}^2/\text{m}.$$
+
+    For example, $B \approx 14$ T with a gradient of about 100 T/m. Such fields exist only in a few high-field laboratories; that is roughly what levitating a living frog requires, since tissue is mostly water. [Unverified: the comparison with actual frog-levitation experiments is from memory.]
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A dilute paramagnetic salt contains 3.0 × 10²⁸ magnetic ions per cubic metre. Model each ion as a moment of one Bohr magneton (9.274 × 10⁻²⁴ J/T) that can point only parallel or antiparallel to the applied field, the ions not interacting with one another. Find the magnetic susceptibility at 300 K in a weak field (k_B = 1.381 × 10⁻²³ J/K). (Original problem.)
+  ask: Susceptibility χ
+  unit: ""
+  ans: 7.83e-4
+  tol: 0.02e-4
+  verify: 4e-7*Math.PI*3e28*(9.274e-24)**2/(1.381e-23*300)
+  hints: ["Use Boltzmann weights e^{±mB/kT} for the two states.", "Expand tanh x for small x, then use χ ≈ μ₀M/B."]
+  sol: |
+    The two states have energies $\mp mB$. With Boltzmann weights $e^{\pm x}$, $x = mB/k_BT$, the mean moment along $B$ is
+
+    $$\langle m_z\rangle = m\,\frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} = m\tanh x,\qquad M = nm\tanh x.$$
+
+    At 300 K and fields of a few tesla, $x\sim10^{-2}$, so $\tanh x\approx x$ and $M = nm^2B/(k_BT)$. Since $|\chi|\ll1$, $B\approx\mu_0H$ and $\chi = M/H \approx \mu_0M/B$:
+
+    $$\chi = \frac{\mu_0nm^2}{k_BT} = \frac{4\pi\times10^{-7}\times3.0\times10^{28}\times(9.274\times10^{-24})^2}{1.381\times10^{-23}\times300} = 7.8\times10^{-4}.$$
+
+    This is Curie's law, $\chi\propto1/T$, with Curie constant $C = nm^2/k_B$ in NCERT's form $\chi = C\mu_0/T$. A classical model allowing every direction would give one third of this.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: In a simple classical model, an electron moves in a circular orbit of radius 0.53 × 10⁻¹⁰ m. A magnetic field of 2.0 T is switched on slowly, perpendicular to the plane of the orbit. Assuming the orbit radius does not change, find the change in the orbital magnetic moment, expressed as a multiple of the Bohr magneton μ_B = 9.274 × 10⁻²⁴ J/T. Give your answer in units of 10⁻⁶ μ_B. (e = 1.602 × 10⁻¹⁹ C, mₑ = 9.109 × 10⁻³¹ kg.) (Original problem.)
+  ask: Δm / μ_B
+  unit: × 10⁻⁶
+  ans: 4.267
+  tol: 0.01
+  verify: (1.602e-19)**2*(0.53e-10)**2*2/(4*9.109e-31)/9.274e-24*1e6
+  hints: ["Faraday's law round the orbit gives a tangential electric field E = (r/2) dB/dt.", "The orbital moment is evr/2."]
+  sol: |
+    While $B$ rises, the changing flux through the orbit induces a tangential field: $E\cdot2\pi r = \pi r^2\,dB/dt$, so $E = \tfrac12r\,dB/dt$. It changes the electron's speed by
+
+    $$m_e\,dv = eE\,dt = \tfrac12er\,dB\quad\Longrightarrow\quad\Delta v = \frac{erB}{2m_e}.$$
+
+    The orbital moment is $m = \tfrac12evr$, so
+
+    $$\Delta m = \frac{e^2r^2B}{4m_e} = \frac{(1.602\times10^{-19})^2(0.53\times10^{-10})^2\times2.0}{4\times9.109\times10^{-31}} = 3.96\times10^{-29}\ \text{J/T}.$$
+
+    By Lenz's law it points against $B$, whichever way the electron circulates. As a fraction of $\mu_B$: $3.96\times10^{-29}/9.274\times10^{-24} = 4.27\times10^{-6}$.
+
+    So even a 2 T field changes an atomic moment by only a few parts per million of a Bohr magneton. That is why diamagnetic susceptibilities are around $10^{-5}$, and why any permanent moment, when present, swamps the diamagnetic effect.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A solid sphere of a type-I superconductor, whose critical field is 0.080 T, is placed in a uniform applied field B₀ and held below its critical temperature. Inside it B = 0. Treating the sphere as uniformly magnetised, find the largest B₀ for which the field at every point of its surface stays below the critical field. (Original problem.)
+  ask: Largest applied field
+  unit: mT
+  ans: 53.33
+  tol: 0.1
+  verify: 2*0.080/3*1e3
+  hints: ["A uniformly magnetised sphere has B = (2/3)μ₀M inside and a pure dipole field outside with m = (4/3)πR³M.", "Find where on the surface the outside field is largest."]
+  sol: |
+    A uniformly magnetised sphere of radius $R$ has a uniform interior field $\tfrac23\mu_0\vec M$ and, outside, the field of a dipole $\vec m = \tfrac43\pi R^3\vec M$ at its centre. To make the total field inside zero:
+
+    $$\tfrac23\mu_0\vec M = -\vec B_0\quad\Longrightarrow\quad\vec M = -\frac{3\vec B_0}{2\mu_0}.$$
+
+    Outside, add the dipole field to $\vec B_0$.
+
+    - At the **poles**, the dipole field on its axis is $\mu_0m/(2\pi R^3) = \tfrac23\mu_0M$, antiparallel to $\vec B_0$ and of size $B_0$. The total is zero, as it must be: $B_\perp$ is continuous and $B = 0$ inside.
+    - At the **equator**, the dipole field is $\mu_0m/(4\pi R^3) = \tfrac13\mu_0M = \tfrac12B_0$, pointing opposite to $\vec m$, that is along $\vec B_0$. The total is $\tfrac32B_0$, tangential to the surface.
+
+    In between, the field is tangential with size $\tfrac32B_0\sin\theta$ ($\theta$ from the axis), so the maximum is at the equator. Superconductivity first breaks down there when $\tfrac32B_0 = B_c$:
+
+    $$B_0 = \tfrac23B_c = \tfrac23\times0.080 = 0.0533\ \text{T} = 53.3\ \text{mT}.$$
+
+    (Real type-I spheres then enter an "intermediate state" of mixed normal and superconducting regions rather than switching off all at once. [Unverified: recalled from memory.])
+  check: code

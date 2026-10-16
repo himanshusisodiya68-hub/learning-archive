@@ -138,3 +138,147 @@
   sol: |
     $B = \dfrac{\mu_0I}{4\pi d}(\sin\theta_1+\sin\theta_2)$ with $d = 0.1$ m and $\sin\theta = 0.1/\sqrt{0.1^2+0.1^2} = 0.707$ at each end: $B = 10^{-7}\times\dfrac{10}{0.1}\times1.414 = 1.4\times10^{-5}$ T $= 14$ µT.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A long wire carrying 10 A is bent into a hairpin: two long parallel straight parts 10 cm apart, joined by a semicircle of radius 5.0 cm. Find the magnetic field at the centre of the semicircle. (Original problem.)"
+  ask: Field at the centre of the semicircle
+  unit: µT
+  ans: 102.8
+  tol: 0.3
+  verify: 4e-7*Math.PI*10/(4*0.05)*(1+2/Math.PI)*1e6
+  sol: |
+    Split the wire into three pieces and add their fields at the centre C.
+
+    - **Semicircle:** an arc of angle $\pi$ gives $\dfrac{\mu_0I\pi}{4\pi R} = \dfrac{\mu_0I}{4R}$.
+    - **Each straight part** is effectively semi-infinite, and C lies opposite its end at perpendicular distance $R$. With $\theta_1 = 90^\circ$ (towards infinity) and $\theta_2 = 0$, each gives $\dfrac{\mu_0I}{4\pi R}$.
+
+    The current goes one way along one straight part, round the semicircle, and back along the other, so all three pieces circulate in the same sense about C. By the right-hand rule all three fields point the same way, normal to the plane. Hence
+    $$B = \frac{\mu_0I}{4R}\left(1+\frac{2}{\pi}\right) = \frac{4\pi\times10^{-7}\times10}{0.20}\times1.637 = 1.03\times10^{-4}\ \text{T} \approx 103\ \mu\text{T}.$$
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "A wire carrying 2.0 A is bent into a regular hexagon of side 10 cm. Find the magnetic field at the centre of the hexagon. (Original problem.)"
+  ask: Field at the centre
+  unit: µT
+  ans: 13.86
+  tol: 0.03
+  verify: 6*1e-7*2/(0.1*Math.sqrt(3)/2)*2*Math.sin(Math.PI/6)*1e6
+  sol: |
+    Each side is a finite straight wire. For a regular hexagon the distance from the centre to each vertex equals the side, $a = 0.10$ m, so the perpendicular distance to each side is $d = a\cos30^\circ = 0.0866$ m. Each side subtends $\pm30^\circ$ at the centre, measured from the perpendicular.
+
+    One side gives
+    $$B_1 = \frac{\mu_0I}{4\pi d}(\sin30^\circ+\sin30^\circ) = \frac{10^{-7}\times2.0}{0.0866}\times1 = 2.31\times10^{-6}\ \text{T}.$$
+    All six sides carry current round the centre in the same sense, so their fields add:
+    $$B = 6B_1 = 1.39\times10^{-5}\ \text{T} \approx 13.9\ \mu\text{T}.$$
+    Check with the general result $B = \dfrac{n\mu_0I}{2\pi R}\tan\dfrac{\pi}{n}$: $\dfrac{6\times4\pi\times10^{-7}\times2}{2\pi\times0.1}\tan30^\circ = 1.39\times10^{-5}$ T. A circle of radius 0.1 m would give $\mu_0I/2R = 12.6$ µT, slightly less.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: "Two identical coaxial coils, each of 100 turns and radius 10 cm, are placed 10 cm apart and carry 0.50 A in the same sense. Find the magnetic field at the point on the axis midway between them. (Original problem.)"
+  ask: Field at the midpoint
+  unit: µT
+  ans: 449.6
+  tol: 0.5
+  verify: (4/5)**1.5*4e-7*Math.PI*100*0.5/0.1*1e6
+  sol: |
+    The midpoint is at $x = R/2 = 0.05$ m from each coil. Each coil gives, along the common axis and in the same direction,
+    $$B_1 = \frac{\mu_0NIR^2}{2(R^2+R^2/4)^{3/2}} = \frac{\mu_0NI}{2R}\left(\frac45\right)^{3/2}.$$
+    The two add:
+    $$B = \left(\frac45\right)^{3/2}\frac{\mu_0NI}{R} = 0.7155\times\frac{4\pi\times10^{-7}\times100\times0.50}{0.10} = 4.50\times10^{-4}\ \text{T}.$$
+    This spacing (separation equal to the radius) is the Helmholtz arrangement, for which the field near the midpoint is uniform to fourth order.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: "Two long straight wires meet at right angles at a point O, forming an L. A current of 5.0 A flows in along one wire towards O and out along the other. Find the magnetic field at the point P inside the right angle that is 4.0 cm from each wire. (Original problem.)"
+  ask: Field at P
+  unit: µT
+  ans: 42.68
+  tol: 0.05
+  verify: 2*1e-7*5/0.04*(1+1/Math.sqrt(2))*1e6
+  sol: |
+    Put O at the origin with the wires along the positive $x$ and $y$ axes, and P at $(a, a)$ with $a = 0.04$ m.
+
+    **Wire along $x$.** The foot of the perpendicular from P is $(a, 0)$. The wire runs from $x = 0$ to $\infty$. The far end is at $90^\circ$ from the perpendicular. The near end O is at $(-a)$ from the foot, at $45^\circ$ on the other side. So
+    $$B_x = \frac{\mu_0I}{4\pi a}\left(\sin90^\circ+\sin45^\circ\right) = \frac{\mu_0I}{4\pi a}\left(1+\frac1{\sqrt2}\right).$$
+    The wire along $y$ gives the same magnitude by symmetry.
+
+    **Directions.** Say the current comes in along $x$ (in the $-x$ direction) and leaves along $+y$. For the first wire, $d\vec l\propto-\hat i$ and P is in the $+\hat j$ direction from it: $-\hat i\times\hat j = -\hat k$. For the second, $d\vec l\propto\hat j$ and P is in the $+\hat i$ direction: $\hat j\times\hat i = -\hat k$. Both point the same way, so they add:
+    $$B = \frac{\mu_0I}{2\pi a}\left(1+\frac1{\sqrt2}\right) = \frac{2\times10^{-7}\times5.0}{0.04}\times1.707 = 4.27\times10^{-5}\ \text{T} \approx 42.7\ \mu\text{T}.$$
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "A thin non-conducting disc of radius 5.0 cm carries a charge of 10 µC spread uniformly over one face. It spins about its axis at 6000 revolutions per minute. Find the magnetic field at the centre of the disc. (Original problem.)"
+  ask: Field at the centre
+  unit: nT
+  ans: 25.13
+  tol: 0.05
+  verify: 4e-7*Math.PI*1e-5*(200*Math.PI)/(2*Math.PI*0.05)*1e9
+  sol: |
+    Let $\sigma = Q/\pi R^2$ and $\omega = 6000\times2\pi/60 = 200\pi$ rad/s. Divide the disc into rings. The ring between $r$ and $r+dr$ carries charge $\sigma\,2\pi r\,dr$, which passes a fixed point $\omega/2\pi$ times per second, so it is a current
+    $$dI = \sigma\,2\pi r\,dr\cdot\frac{\omega}{2\pi} = \sigma\omega r\,dr.$$
+    At the centre this ring gives $dB = \dfrac{\mu_0\,dI}{2r} = \dfrac{\mu_0\sigma\omega}{2}dr$, the same for every ring. All rings give fields along the axis in the same direction, so
+    $$B = \frac{\mu_0\sigma\omega R}{2} = \frac{\mu_0Q\omega}{2\pi R} = \frac{4\pi\times10^{-7}\times10^{-5}\times200\pi}{2\pi\times0.05} = 2.51\times10^{-8}\ \text{T} \approx 25\ \text{nT}.$$
+    That is twice the value for a ring of the same charge and radius, and only about 1/2000 of the Earth's field.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "Two protons move side by side along parallel lines with the same velocity, 3.0 × 10⁶ m/s, at a fixed separation. Treating the speed as small compared with c = 3.0 × 10⁸ m/s and using the Biot–Savart field of a moving point charge, find the ratio of the magnetic force to the electric force that one proton exerts on the other. (Original problem.)"
+  ask: Ratio of magnetic to electric force
+  unit: ""
+  ans: 1.0e-4
+  tol: 2e-6
+  verify: (3e6/3e8)**2
+  sol: |
+    At the second proton, which lies in the plane through the first proton perpendicular to $\vec v$, the first proton makes
+    $$E = \frac{1}{4\pi\varepsilon_0}\frac{e}{r^2},\qquad B = \frac{\mu_0}{4\pi}\frac{ev}{r^2} = \mu_0\varepsilon_0 vE = \frac{vE}{c^2}.$$
+    The electric force on the second proton is $F_e = eE$, a repulsion. The magnetic force is $F_m = evB$, since $\vec v\perp\vec B$. By the right-hand rule ($\vec v\times\vec B$) it points towards the first proton, an attraction. The ratio is
+    $$\frac{F_m}{F_e} = \frac{evB}{eE} = \frac{v^2}{c^2} = \left(\frac{3.0\times10^6}{3.0\times10^8}\right)^2 = 1.0\times10^{-4}.$$
+    The net force is still a repulsion, reduced by one part in $10^4$. In the protons' own rest frame there is no magnetic force at all; the two descriptions agree once relativity is included (time dilation and the transformation of forces), which is why magnetism is called a relativistic effect.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: "A solenoid 20 cm long and of radius 5.0 cm is wound uniformly. Using the field of a circular loop on its axis, find the ratio of the magnetic field at the centre of one end face to the field at the centre of the solenoid. (Original problem.)"
+  ask: Ratio B(end) / B(centre)
+  unit: ""
+  ans: 0.5423
+  tol: 0.001
+  verify: Math.sqrt(0.1**2+0.05**2)/Math.sqrt(0.2**2+0.05**2)
+  sol: |
+    A slice $dz$ of the solenoid, at distance $z$ from the field point, is a loop carrying $nI\,dz$. Its axial field is $\dfrac{\mu_0nI\,dz\,R^2}{2(R^2+z^2)^{3/2}}$. Integrating over a length running from the field point out to distance $L_1$ on one side,
+    $$\int_0^{L_1}\frac{R^2\,dz}{(R^2+z^2)^{3/2}} = \frac{L_1}{\sqrt{R^2+L_1^2}},$$
+    using the substitution $z = R\tan u$. So $B = \dfrac{\mu_0nI}{2}\left(\dfrac{L_1}{\sqrt{R^2+L_1^2}}+\dfrac{L_2}{\sqrt{R^2+L_2^2}}\right)$, with $L_1, L_2$ the lengths on either side.
+
+    - **Centre:** $L_1 = L_2 = 0.10$ m: $B_c = \mu_0nI\cdot\dfrac{0.10}{\sqrt{0.0125}} = 0.894\,\mu_0nI$.
+    - **End face:** $L_1 = 0.20$ m, $L_2 = 0$: $B_e = \dfrac{\mu_0nI}{2}\cdot\dfrac{0.20}{\sqrt{0.0425}} = 0.485\,\mu_0nI$.
+
+    Ratio $= \dfrac{\sqrt{0.0125}}{\sqrt{0.0425}} = 0.542$. For a very long solenoid the ratio tends to 1/2; this short, fat one is a little above that because its centre field is itself well below $\mu_0nI$.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: proof
+  q: "Two identical coaxial circular coils of radius R carry equal currents in the same sense and are separated by a distance d. Show that the axial field at the midpoint has zero first, second and third derivatives along the axis if and only if d = R. (Original problem.)"
+  hints: ["Write the axial field of one loop as a constant times f(x) = (R² + x²)^(−3/2).", "The total field at distance s from the midpoint is proportional to f(d/2 + s) + f(d/2 − s). Which derivatives vanish by symmetry?", "Compute f''(x) and set it to zero at x = d/2."]
+  sol: |
+    One loop gives $B_1(x) = \dfrac{\mu_0IR^2}{2}f(x)$ on its axis, with $f(x) = (R^2+x^2)^{-3/2}$ and $x$ measured from the loop. With the loops at $\mp d/2$, the field at distance $s$ from the midpoint is
+    $$B(s) = \frac{\mu_0IR^2}{2}\left[f\!\left(\tfrac d2+s\right)+f\!\left(\tfrac d2-s\right)\right].$$
+    The bracket is unchanged when $s\to-s$, so it is an even function of $s$: its odd derivatives (first and third) vanish at $s = 0$ for every $d$.
+
+    The second derivative at $s = 0$ is $2f''(d/2)$. Differentiating,
+    $$f'(x) = -3x(R^2+x^2)^{-5/2},\qquad f''(x) = -3(R^2+x^2)^{-5/2}+15x^2(R^2+x^2)^{-7/2} = 3(R^2+x^2)^{-7/2}\,(4x^2-R^2).$$
+    This vanishes at $x = d/2$ if and only if $4(d/2)^2 = R^2$, that is, $d = R$. Then the first non-zero correction is of order $s^4$, and the field near the midpoint is uniform to a high degree. (For $d < R$, $f''(d/2) < 0$ and the midpoint is a maximum of $B$; for $d > R$ it is a minimum.)
+  check: none

@@ -205,3 +205,133 @@
   verify: 5*0.4*0.2
   sol: The effective length is the diameter, $2R = 0.4$ m, so $F = BI(2R) = 0.2\times5\times0.4 = 0.4$ N, perpendicular to the diameter in the plane.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A rod of mass 100 g lies across two parallel rails 0.50 m apart. The rails lie in a plane inclined at 30° to the horizontal, and a uniform field of 0.50 T acts perpendicular to that plane. The coefficient of static friction between rod and rails is 0.20. A current through the rod is arranged so that the magnetic force points up the slope. Find the largest current for which the rod stays at rest. Take g = 9.8 m/s². (Original problem.)"
+  ask: Largest current
+  unit: A
+  ans: 2.64
+  tol: 0.01
+  verify: 0.1*9.8*(Math.sin(Math.PI/6)+0.2*Math.cos(Math.PI/6))/(0.5*0.5)
+  sol: |
+    The field is perpendicular to the rails' plane and the rod lies across the rails, so the magnetic force $BIl$ lies **in** the plane, along the slope (up it, by the stated current direction). It has no component normal to the plane, so $N = mg\cos\theta$ and the friction limit is $\mu mg\cos\theta$.
+
+    At the largest current the rod is about to slide **up**, so friction acts down the slope:
+    $$BIl = mg\sin\theta + \mu mg\cos\theta = 0.98\,(0.5 + 0.2\times0.866) = 0.660\ \text{N},$$
+    $$I_{max} = \frac{0.660}{0.5\times0.5} = 2.64\ \text{A}.$$
+
+    For comparison, the smallest current (rod about to slide down, friction up the slope) is $I_{min} = 0.98\,(0.5 - 0.1732)/0.25 = 1.28$ A. The rod stays at rest for $1.28\ \text{A} \le I \le 2.64$ A.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "A rod of mass 0.20 kg lies across two rough horizontal rails 0.50 m apart (coefficient of static friction 0.50) and carries a current of 4.0 A. A uniform magnetic field can be applied in any direction in the vertical plane perpendicular to the rod. Find the smallest field that will just start the rod sliding. Take g = 9.8 m/s². (Original problem.)"
+  ask: Smallest field
+  unit: T
+  ans: 0.438
+  tol: 0.002
+  verify: 0.5*0.2*9.8/Math.sqrt(1+0.5*0.5)/(4*0.5)
+  sol: |
+    With $\mathbf B$ perpendicular to the rod, the magnetic force has its full size $F = BIl$ and lies in the same vertical plane, perpendicular to $\mathbf B$. Let it point at angle $\alpha$ above the horizontal (the field is then tilted by $\alpha$ from the vertical). The normal reaction is $N = mg - F\sin\alpha$, and the rod just slides when
+    $$F\cos\alpha = \mu(mg - F\sin\alpha) \;\Rightarrow\; F = \frac{\mu mg}{\cos\alpha + \mu\sin\alpha}.$$
+    The denominator has maximum $\sqrt{1+\mu^2}$, at $\tan\alpha = \mu$. So
+    $$F_{min} = \frac{\mu mg}{\sqrt{1+\mu^2}} = \frac{0.5\times0.2\times9.8}{\sqrt{1.25}} = 0.877\ \text{N}, \qquad B_{min} = \frac{F_{min}}{Il} = \frac{0.877}{4\times0.5} = 0.438\ \text{T}.$$
+    The field is tilted by $\alpha = \tan^{-1}0.5 = 26.6^\circ$ from the vertical. A vertical field would need $\mu mg/(Il) = 0.49$ T, about 12% more.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: "A horizontal rod of mass 30 g and length 0.20 m hangs at rest from two light, vertical conducting threads in a uniform vertical magnetic field of 0.60 T. A current of 1.5 A is suddenly switched on through the rod and then kept steady. Ignoring air resistance and any induced EMF, find the largest angle the threads make with the vertical in the motion that follows. Take g = 9.8 m/s². (Original problem.)"
+  ask: Largest angle
+  unit: °
+  ans: 63.0
+  tol: 0.1
+  verify: 2*deg(Math.atan(0.6*1.5*0.2/(0.03*9.8)))
+  sol: |
+    The magnetic force $F = BIl = 0.6\times1.5\times0.2 = 0.18$ N is horizontal and constant. Together with the weight $mg = 0.294$ N it acts like a constant effective gravity, tilted from the vertical by
+    $$\theta_0 = \tan^{-1}\frac{F}{mg} = \tan^{-1}\frac{0.18}{0.294} = 31.5^\circ.$$
+    This is the new equilibrium direction of the threads. At switch-on the rod hangs at rest, $31.5^\circ$ from this new "down", so it swings like a pendulum released from rest at amplitude $\theta_0$: through the new equilibrium and out to $\theta_0$ on the other side. The largest angle from the vertical is
+    $$2\theta_0 = 63.0^\circ.$$
+    (Energy check: the work done by the effective force $\sqrt{F^2+(mg)^2}$ over a swing from $-\theta_0$ to $+\theta_0$ about the effective vertical is zero, so the rod is momentarily at rest there.)
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: "A 2000 μF capacitor charged to 50 V is discharged in about a millisecond through a rod of mass 20 g lying across two horizontal rails 0.25 m apart. A uniform horizontal field of 0.60 T acts along the rails, and the current is in the sense that pushes the rod upward. Assuming the capacitor discharges completely while the rod is still on the rails, how high does the rod jump? Take g = 9.8 m/s². (Original problem.)"
+  ask: Height of the jump
+  unit: cm
+  ans: 2.87
+  tol: 0.02
+  verify: Math.pow(0.6*0.25*2000e-6*50/0.02,2)/(2*9.8)*100
+  sol: |
+    The rod is across the field, so the force is $BIl$, vertical. Its impulse is
+    $$J = \int BIl\,dt = Bl\,q, \qquad q = CV = 2000\times10^{-6}\times50 = 0.10\ \text{C}.$$
+    So $J = 0.6\times0.25\times0.10 = 0.015$ N s, and the take-off speed is $v = J/m = 0.015/0.020 = 0.75$ m/s. The pulse is so short that gravity's impulse during it ($mg\,\Delta t \approx 2\times10^{-4}$ N s) is negligible. Then
+    $$h = \frac{v^2}{2g} = \frac{0.5625}{19.6} = 0.0287\ \text{m} = 2.87\ \text{cm}.$$
+    The shape of the current pulse does not matter, only the total charge.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "A loop of soft, flexible wire of total length 1.0 m lies on a smooth horizontal table in a uniform vertical magnetic field of 0.80 T. The wire breaks if its tension exceeds 0.50 N. A current is passed round the loop in the sense that pushes each element outward, and is slowly increased. At what current does the wire break? (Original problem.)"
+  ask: Breaking current
+  unit: A
+  ans: 3.93
+  tol: 0.01
+  verify: 2*Math.PI*0.5/(0.8*1.0)
+  sol: |
+    **Shape.** Every element feels an outward force $BI$ per unit length, the same everywhere, perpendicular to the wire. For a taut wire with a uniform normal load, the balance on an element gives $T/\rho = BI$ ($\rho$ the radius of curvature), and the tangential balance gives $dT/ds = 0$, so $T$ is constant. Hence $\rho$ is constant and the loop is a circle, of radius $R = L/2\pi = 0.159$ m.
+
+    **Tension.** A short arc subtending $d\varphi$ feels an outward force $BI\,R\,d\varphi$. The tensions at its ends, along tangents differing by $d\varphi$, give an inward force $2T\sin(d\varphi/2) \approx T\,d\varphi$. So $T = BIR = \dfrac{BIL}{2\pi}$.
+
+    **Breaking.** Set $T = 0.50$ N:
+    $$I = \frac{2\pi T}{BL} = \frac{2\pi\times0.50}{0.80\times1.0} = 3.93\ \text{A}.$$
+    (Alternatively, half the loop: the net magnetic force on a semicircle is $BI(2R)$, balanced by the tension at its two ends, $2T$, giving $T = BIR$ at once.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "In a region of space the magnetic field is B = (B₀ + Gx) ẑ + Gz x̂, with B₀ = 0.50 T and G = 2.0 T/m. (a) Show that this field satisfies ∇·B = 0 and ∇×B = 0, so it can exist in empty space. (b) A square loop of side 10 cm lies in the plane z = 0 with corners at (0,0), (a,0), (a,a), (0,a), and carries 5.0 A anticlockwise as seen from +z. Find the magnitude of the net force on the loop. (Original problem.)"
+  ask: Net force
+  unit: N
+  ans: 0.1
+  tol: 0.001
+  verify: 5*0.1*0.1*2
+  sol: |
+    **(a)** $B_x = Gz$, $B_y = 0$, $B_z = B_0 + Gx$. Divergence: $\partial B_x/\partial x + \partial B_z/\partial z = 0 + 0 = 0$. Curl: the only possibly non-zero component is $(\nabla\times\mathbf B)_y = \partial B_x/\partial z - \partial B_z/\partial x = G - G = 0$. So the field is source-free and current-free.
+
+    **(b)** In the plane $z = 0$, $B_x = 0$ and $\mathbf B = (B_0 + Gx)\,\hat z$. Use $d\mathbf F = I\,d\mathbf l\times\mathbf B$:
+    - side $x = a$, current along $+\hat y$: $\hat y\times\hat z = \hat x$, so $\mathbf F = Ia(B_0 + Ga)\,\hat x$;
+    - side $x = 0$, current along $-\hat y$: $\mathbf F = -IaB_0\,\hat x$;
+    - side $y = 0$, current along $+\hat x$: $\hat x\times\hat z = -\hat y$, force $-I\int_0^a(B_0+Gx)\,dx\;\hat y$; side $y = a$, current along $-\hat x$: the same integral with $+\hat y$. These cancel.
+
+    Net force:
+    $$\mathbf F = Ia^2G\,\hat x = 5.0\times0.01\times2.0\ \hat x = 0.10\ \text{N along } +x.$$
+    This is $m\,\partial B_z/\partial x$ with moment $m = Ia^2 = 0.05$ A m² along $+\hat z$: a closed loop feels a net force in a non-uniform field, towards the stronger field when its moment is aligned with it.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: "A uniform solid cylindrical metal rod of mass 0.50 kg rests across two parallel rails 0.40 m apart, inclined at 30° to the horizontal, with the rod horizontal. A uniform vertical magnetic field of 0.50 T acts, and a steady current of 20 A flows through the rod (treat the current as flowing uniformly along the rod's axis between the rails), in the sense that pushes the rod towards the slope. The rod rolls without slipping. Find its acceleration up the slope. Take g = 9.8 m/s². (Original problem.)"
+  ask: Acceleration up the slope
+  unit: m/s²
+  ans: 1.35
+  tol: 0.01
+  verify: (0.5*20*0.4*Math.cos(Math.PI/6)-0.5*9.8*Math.sin(Math.PI/6))/(1.5*0.5)
+  sol: |
+    The vertical field and the horizontal rod give a horizontal magnetic force $F = BIl = 0.5\times20\times0.4 = 4.0$ N, towards the slope. With the current uniform across the rod's cross-section, the force density is uniform, so the force acts through the axis and exerts no torque about it.
+
+    Along the slope (up positive), the driving force on the centre is
+    $$F_\parallel = BIl\cos30^\circ - mg\sin30^\circ = 3.464 - 2.450 = 1.014\ \text{N}.$$
+    Let friction $f$ act up the slope at the contact. Then $ma = F_\parallel + f$, and about the axis $\tfrac12 mr^2\alpha = -fr$ with $a = r\alpha$, so $f = -\tfrac12 ma$. Hence
+    $$a = \frac{F_\parallel}{\tfrac32 m} = \frac{1.014}{0.75} = 1.35\ \text{m/s}^2.$$
+    Friction is $f = -0.338$ N (it acts down the slope). The normal reaction is $N = mg\cos30^\circ + BIl\sin30^\circ = 4.24 + 2.00 = 6.24$ N, so rolling needs only $\mu \ge 0.338/6.24 = 0.054$. Note that the magnetic force both drives the rod and presses it into the rails.
+  check: code

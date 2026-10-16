@@ -1,0 +1,240 @@
+# Electromagnetic waves and the electromagnetic spectrum. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 8, §8.3 and Exercises 8.3–8.10. Found, board and main problems are original.
+
+- id: ncert12-eg-8-1
+  lvl: ncert-intext
+  num: "XII Ex 8.1"
+  source: NCERT XII Physics · Ch 8 · Example 8.1
+  kind: num
+  q: A plane electromagnetic wave of frequency 25 MHz travels in free space along the x-direction. At a particular point in space and time, E = 6.3 ĵ V/m. What is B at this point?
+  ask: Magnitude of B
+  unit: T
+  ans: 2.1e-8
+  tol: 1e-10
+  verify: 6.3/3e8
+  sol: |
+    In an electromagnetic wave in vacuum $E/B = c$, so $B = E/c = \dfrac{6.3}{3\times10^{8}} = 2.1\times10^{-8}$ T. For the direction: $\mathbf E\times\mathbf B$ must point along the direction of propagation, $+x$. With $\mathbf E$ along $+y$, $(+\hat j)\times(+\hat k) = \hat i$, so $\mathbf B$ is along $+z$: $\mathbf B = 2.1\times10^{-8}\,\hat k$ T.
+  check: code
+
+- id: ncert12-eg-8-2
+  lvl: ncert-intext
+  num: "XII Ex 8.2"
+  source: NCERT XII Physics · Ch 8 · Example 8.2
+  kind: num
+  q: |-
+    The magnetic field in a plane electromagnetic wave is given by B_y = (2 × 10⁻⁷) T sin (0.5×10³x + 1.5×10¹¹t).
+    (a) What is the wavelength and frequency of the wave?
+    (b) Write an expression for the electric field.
+  ask: Wavelength, part (a)
+  unit: cm
+  ans: 1.2566
+  tol: 0.005
+  verify: 2*Math.PI/0.5e3*100
+  sol: |
+    (a) Comparing with $B_y = B_0\sin2\pi\left(\dfrac{x}{\lambda} + \dfrac tT\right)$, i.e. $\sin(kx + \omega t)$ with $k = 0.5\times10^{3}$ m⁻¹ and $\omega = 1.5\times10^{11}$ s⁻¹:
+
+    $$\lambda = \frac{2\pi}{k} = \frac{2\pi}{0.5\times10^{3}} = 1.26\ \text{cm},\qquad \nu = \frac{\omega}{2\pi} = \frac{1.5\times10^{11}}{2\pi} = 23.9\ \text{GHz}.$$
+
+    (b) $E_0 = B_0c = 2\times10^{-7}\times3\times10^{8} = 60$ V/m. The electric field is perpendicular to both the direction of propagation ($-x$, since the phase is $kx + \omega t$) and $\mathbf B$ (along $y$), so it is along $z$:
+
+    $$E_z = 60\sin(0.5\times10^{3}x + 1.5\times10^{11}t)\ \text{V/m}.$$
+  check: code
+
+- id: ncert12-ex-8-3
+  lvl: ncert-ex
+  num: "XII 8.3"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.3
+  kind: text
+  q: What physical quantity is the same for X-rays of wavelength 10⁻¹⁰ m, red light of wavelength 6800 Å and radiowaves of wavelength 500m?
+  sol: |
+    The **speed in vacuum** is the same for all electromagnetic waves: $c = 3\times10^{8}$ m s⁻¹. (Their wavelengths, frequencies and photon energies differ.)
+  answer_key: The speed in vacuum is the same for all, c = 3 × 10⁸ m s⁻¹.
+  check: ncert-key
+
+- id: ncert12-ex-8-4
+  lvl: ncert-ex
+  num: "XII 8.4"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.4
+  kind: num
+  q: A plane electromagnetic wave travels in vacuum along z-direction. What can you say about the directions of its electric and magnetic field vectors? If the frequency of the wave is 30 MHz, what is its wavelength?
+  ask: Wavelength
+  unit: m
+  ans: 10
+  tol: 0.01
+  verify: 3e8/30e6
+  sol: |
+    The electric and magnetic field vectors are perpendicular to each other and to the direction of propagation, so both lie in the $x$–$y$ plane (the wave is transverse), with $\mathbf E\times\mathbf B$ along $+z$. $\lambda = c/\nu = 3\times10^{8}/(30\times10^{6}) = 10$ m.
+  answer_key: E and B in x-y plane and are mutually perpendicular, 10 m.
+  check: both
+
+- id: ncert12-ex-8-5
+  lvl: ncert-ex
+  num: "XII 8.5"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.5
+  kind: num
+  q: A radio can tune in to any station in the 7.5 MHz to 12 MHz band. What is the corresponding wavelength band?
+  ask: Shortest wavelength
+  unit: m
+  ans: 25
+  tol: 0.01
+  verify: 3e8/12e6
+  sol: |
+    $\lambda = c/\nu$: for 7.5 MHz, $\lambda = 3\times10^{8}/7.5\times10^{6} = 40$ m; for 12 MHz, $\lambda = 25$ m. The wavelength band is 40 m to 25 m.
+  answer_key: |
+    Wavelength band: 40 m – 25 m.
+  check: both
+
+- id: ncert12-ex-8-6
+  lvl: ncert-ex
+  num: "XII 8.6"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.6
+  kind: text
+  q: A charged particle oscillates about its mean equilibrium position with a frequency of 10⁹ Hz. What is the frequency of the electromagnetic waves produced by the oscillator?
+  sol: |
+    **10⁹ Hz.** An oscillating charge is an accelerated charge that radiates electromagnetic waves of the same frequency as its oscillation.
+  answer_key: 10⁹ Hz
+  check: ncert-key
+
+- id: ncert12-ex-8-7
+  lvl: ncert-ex
+  num: "XII 8.7"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.7
+  kind: num
+  q: The amplitude of the magnetic field part of a harmonic electromagnetic wave in vacuum is B₀ = 510 nT. What is the amplitude of the electric field part of the wave?
+  ask: Amplitude of the electric field
+  unit: N/C
+  ans: 153
+  tol: 0.1
+  verify: 510e-9*3e8
+  sol: $E_0 = cB_0 = 3\times10^{8}\times510\times10^{-9} = 153$ N C⁻¹.
+  answer_key: 153 N/C
+  check: both
+
+- id: ncert12-ex-8-8
+  lvl: ncert-ex
+  num: "XII 8.8"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.8
+  kind: num
+  q: Suppose that the electric field amplitude of an electromagnetic wave is E₀ = 120 N/C and that its frequency is ν = 50.0 MHz. (a) Determine, B₀, ω, k, and λ. (b) Find expressions for E and B.
+  ask: Amplitude of the magnetic field
+  unit: nT
+  ans: 400
+  tol: 0.5
+  verify: 120/3e8*1e9
+  sol: |
+    (a) $B_0 = E_0/c = \dfrac{120}{3\times10^{8}} = 4.0\times10^{-7}$ T $= 400$ nT. $\omega = 2\pi\nu = 2\pi\times50.0\times10^{6} = 3.14\times10^{8}$ rad/s. $k = \omega/c = 1.05$ rad/m. $\lambda = c/\nu = 6.00$ m.
+
+    (b) Take the wave travelling along $+x$ with $\mathbf E$ along $\hat j$ (so $\mathbf B$ is along $\hat k$):
+    $$\mathbf E = (120\ \text{N/C})\sin[(1.05\ \text{rad/m})x - (3.14\times10^{8}\ \text{rad/s})t]\,\hat j,$$
+    $$\mathbf B = (400\ \text{nT})\sin[(1.05\ \text{rad/m})x - (3.14\times10^{8}\ \text{rad/s})t]\,\hat k.$$
+    (The direction of travel and of the fields is a choice: the question does not specify it, and the key makes this one.)
+  answer_key: "(a) 400 nT, 3.14 × 10⁸ rad/s, 1.05 rad/m, 6.00 m. (b) E = {(120 N/C) sin[(1.05 rad/m)x − (3.14 × 10⁸ rad/s)t]} ĵ; B = {(400 nT) sin[(1.05 rad/m)x − (3.14 × 10⁸ rad/s)t]} k̂"
+  check: both
+
+- id: ncert12-ex-8-9
+  lvl: ncert-ex
+  num: "XII 8.9"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.9
+  kind: num
+  q: |
+    The terminology of different parts of the electromagnetic spectrum is given in the text. Use the formula E = hν (for energy of a quantum of radiation: photon) and obtain the photon energy in units of eV for different parts of the electromagnetic spectrum. In what way are the different scales of photon energies that you obtain related to the sources of electromagnetic radiation?
+  ask: Photon energy for λ = 1 m
+  unit: µeV
+  ans: 1.24
+  tol: 0.005
+  verify: 6.63e-34*3e8/1/1.6e-19*1e6
+  sol: |
+    $E = h\nu = hc/\lambda$. For $\lambda = 1$ m: $E = \dfrac{6.63\times10^{-34}\times3\times10^{8}}{1.6\times10^{-19}}$ eV $= 1.24\times10^{-6}$ eV. For other wavelengths multiply by the appropriate power of ten: $E\ (\text{eV}) \approx 1.24\times10^{-6}/\lambda\ (\text{m})$.
+
+    **Relation to the sources.** The photon energy shows the spacing of the energy levels of the source that emits it. For example, $\lambda = 10^{-12}$ m corresponds to $1.24\times10^{6}$ eV $= 1.24$ MeV: nuclear energy levels (transitions between which give $\gamma$-rays) are typically spaced by about 1 MeV. A visible wavelength $\lambda = 5\times10^{-7}$ m corresponds to 2.5 eV: the levels in atoms that give visible light are typically spaced by a few eV.
+  answer_key: Photon energy (for λ = 1 m) = 6.63 × 10⁻³⁴ × 3 × 10⁸/1.6 × 10⁻¹⁹ eV = 1.24 × 10⁻⁶ eV; λ = 10⁻¹² m corresponds to 1.24 MeV (nuclear levels); λ = 5 × 10⁻⁷ m corresponds to 2.5 eV (levels of a few eV).
+  check: both
+
+- id: ncert12-ex-8-10
+  lvl: ncert-ex
+  num: "XII 8.10"
+  source: NCERT XII Physics · Ch 8 · Exercise 8.10
+  kind: num
+  q: |-
+    In a plane electromagnetic wave, the electric field oscillates sinusoidally at a frequency of 2.0 × 10¹⁰ Hz and amplitude 48 V m⁻¹.
+    (a) What is the wavelength of the wave?
+    (b) What is the amplitude of the oscillating magnetic field?
+    (c) Show that the average energy density of the E field equals the average energy density of the B field. [c = 3 × 10⁸ m s⁻¹.]
+  ask: Amplitude of the magnetic field
+  unit: nT
+  ans: 160
+  tol: 0.1
+  verify: 48/3e8*1e9
+  sol: |
+    (a) $\lambda = c/\nu = \dfrac{3\times10^{8}}{2.0\times10^{10}} = 1.5\times10^{-2}$ m.
+
+    (b) $B_0 = E_0/c = \dfrac{48}{3\times10^{8}} = 1.6\times10^{-7}$ T $= 160$ nT.
+
+    (c) The energy density in the electric field is $u_E = \tfrac12\varepsilon_0E^2$ and in the magnetic field $u_B = \dfrac{1}{2\mu_0}B^2$. Using $E = cB$ and $c^2 = \dfrac{1}{\mu_0\varepsilon_0}$: $u_E = \tfrac12\varepsilon_0c^2B^2 = \tfrac12\varepsilon_0\dfrac{1}{\mu_0\varepsilon_0}B^2 = \dfrac{B^2}{2\mu_0} = u_B$. (The same holds for the time averages.)
+  answer_key: "(a) λ = c/ν = 1.5 × 10⁻² m (b) B₀ = E₀/c = 1.6 × 10⁻⁷ T (c) u_E = ½ε₀E², u_B = B²/2µ₀; with E = cB and c = 1/√(µ₀ε₀), u_E = u_B"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Electromagnetic waves in vacuum
+  opts: ["are longitudinal", "travel at c with E and B perpendicular to each other and to the direction of travel", "need a medium", "have E parallel to B"]
+  ans: 1
+  sol: Electromagnetic waves are transverse, need no medium, and travel at $c$ with $\mathbf E\perp\mathbf B\perp$ direction of propagation.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the wavelength of an FM radio wave of frequency 100 MHz. (Original problem.)
+  ask: Wavelength
+  unit: m
+  ans: 3
+  tol: 0.001
+  verify: 3e8/100e6
+  sol: $\lambda = c/\nu = 3\times10^{8}/10^{8} = 3$ m.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: The electric field amplitude of a plane electromagnetic wave in vacuum is 30 V/m. Find the amplitude of the magnetic field. (Original problem.)
+  ask: Magnetic field amplitude
+  unit: nT
+  ans: 100
+  tol: 0.1
+  verify: 30/3e8*1e9
+  sol: $B_0 = E_0/c = 30/(3\times10^{8}) = 10^{-7}$ T $= 100$ nT.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Find the average intensity of a plane wave with electric field amplitude 100 V/m, using I = ½ε₀cE₀². (Original problem.)
+  ask: Intensity
+  unit: W/m²
+  ans: 13.28
+  tol: 0.02
+  verify: 0.5*8.854e-12*3e8*100**2
+  sol: $I = \tfrac12\varepsilon_0cE_0^2 = \tfrac12\times8.854\times10^{-12}\times3\times10^{8}\times10^{4} = 13.3$ W m⁻².
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Sunlight falls on a perfectly absorbing surface with an intensity of 1000 W/m². Find the radiation pressure on it, p = I/c. (Original problem.)
+  ask: Radiation pressure
+  unit: µPa
+  ans: 3.333
+  tol: 0.005
+  verify: 1000/3e8*1e6
+  sol: For a perfect absorber, $p = I/c = 1000/(3\times10^{8}) = 3.3\times10^{-6}$ Pa. For a perfect reflector the pressure is twice this.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: |
+    Arrange the following in order of increasing wavelength: X-rays, radio waves, visible light, γ-rays, microwaves, ultraviolet. State what stays constant. (Original problem.)
+  sol: |
+    Increasing wavelength: γ-rays < X-rays < ultraviolet < visible light < microwaves < radio waves. The speed in vacuum, $c$, stays constant for all of them. Photon energy $E = hc/\lambda$ decreases in the same order.
+  check: none

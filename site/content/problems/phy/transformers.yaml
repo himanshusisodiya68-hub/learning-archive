@@ -1,0 +1,72 @@
+# Transformers and power transmission. This leaf has no NCERT questions in the reprint of Class XII Physics Ch 7 §7.8 (the section has no examples or exercises), so all problems here are original. Found, board and main.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A transformer works on
+  opts: ["dc only", "ac only", "both ac and dc", "neither"]
+  ans: 1
+  sol: |
+    A transformer works by mutual induction: the primary current must change to produce a changing flux through the secondary. A steady dc current gives a constant flux and no induced emf (apart from a brief transient on switching).
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A transformer steps 220 V down to 11 V. The primary has 1000 turns. Find the number of turns in the secondary. (Original problem.)
+  ask: Secondary turns
+  unit: ""
+  ans: 50
+  tol: 0.01
+  verify: 1000*11/220
+  sol: For an ideal transformer $V_s/V_p = N_s/N_p$, so $N_s = 1000\times11/220 = 50$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A transformer takes 100 W from the mains and delivers 90 W to its load. Find its efficiency. (Original problem.)
+  ask: Efficiency
+  unit: "%"
+  ans: 90
+  tol: 0.01
+  verify: 90/100*100
+  sol: Efficiency $= P_{out}/P_{in} = 90/100 = 90\%$. The losses are copper losses ($I^2R$ in the windings), eddy-current and hysteresis losses in the core, and flux leakage.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A step-up transformer converts 220 V to 4400 V and delivers 0.1 A in the secondary. Assuming it is ideal, find the primary current. (Original problem.)
+  ask: Primary current
+  unit: A
+  ans: 2
+  tol: 0.001
+  verify: 4400*0.1/220
+  sol: For an ideal transformer $V_pI_p = V_sI_s$, so $I_p = 4400\times0.1/220 = 2$ A. Stepping the voltage up by a factor of 20 steps the current down by 20.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: 11 kW is sent through a line of resistance 2 Ω, first at 220 V and then at 22 kV. Find the ratio of the power lost in the line in the first case to that in the second. (Original problem.)
+  ask: Ratio of losses
+  unit: ""
+  ans: 10000
+  tol: 1
+  verify: (22000/220)**2
+  sol: The current is $I = P/V$ and the loss is $I^2R = P^2R/V^2$. The ratio of losses for the same $P$ and $R$ is $(22000/220)^2 = 10^4$. At 220 V the current would be 50 A and the loss $I^2R = 5$ kW (half the power); at 22 kV the current is 0.5 A and the loss only 0.5 W. This is why power is transmitted at high voltage.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: An ideal transformer has turns ratio N_s/N_p = 5 and its primary is connected to 20 V ac. The secondary drives a 100 Ω resistor. Find the primary current. (Original problem.)
+  ask: Primary current
+  unit: A
+  ans: 5
+  tol: 0.001
+  verify: (20*5)**2/100/20
+  sol: |
+    The secondary voltage is $5\times20 = 100$ V, so $I_s = 100/100 = 1$ A and the power is 100 W. The ideal transformer draws the same power from the primary: $I_p = 100/20 = 5$ A. (Equivalently, the load seen by the source is $R/5^2 = 4\ \Omega$.)
+  check: code

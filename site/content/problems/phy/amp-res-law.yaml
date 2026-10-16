@@ -163,3 +163,138 @@
   sol: |
     At the end of a long solenoid the field on the axis is half of that deep inside: $B = \tfrac12\mu_0nI = \tfrac12\times4\pi\times10^{-7}\times400\times5 = 1.26\times10^{-3}$ T. (Half of the field lines have already spread out.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A long straight wire of radius 2 mm carries a total current of 6 A. The current density is not uniform but grows in proportion to the distance from the axis, J = J₀r/a. Find the magnetic field 1 mm from the axis. (Original problem.)
+  ask: Field at r = 1 mm
+  unit: µT
+  ans: 150
+  tol: 0.5
+  verify: 2e-7*6*0.001**2/0.002**3*1e6
+  sol: |
+    Add up thin rings: $I_{\text{enc}}(r) = \int_0^r J_0\dfrac{r'}{a}\,2\pi r'\,dr' = \dfrac{2\pi J_0 r^3}{3a}$. The total is $I = 2\pi J_0a^2/3$, so $I_{\text{enc}} = I\,r^3/a^3$.
+
+    A circle of radius $r$ gives $B\cdot2\pi r = \mu_0 I r^3/a^3$, so $B = \dfrac{\mu_0 I r^2}{2\pi a^3}$.
+
+    With $r = a/2$: $B = \dfrac{\mu_0 I}{2\pi a}\times\dfrac14 = \dfrac{2\times10^{-7}\times6}{0.002}\times\dfrac14 = 1.5\times10^{-4}$ T $= 150$ µT. (A uniform current would give twice this, 300 µT: the current here is concentrated towards the surface, so less of it lies inside 1 mm.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A coaxial cable has a solid inner conductor of radius 1 mm and an outer conducting tube with inner radius 4 mm and outer radius 5 mm. A current of 10 A flows along the inner conductor and returns along the tube, each spread uniformly over its cross-section. Find the magnetic field at a distance of 4.5 mm from the axis. (Original problem.)
+  ask: Field at r = 4.5 mm
+  unit: µT
+  ans: 234.6
+  tol: 0.5
+  verify: 2e-7*10*(1-(4.5**2-16)/(25-16))/0.0045*1e6
+  sol: |
+    Take a circle of radius $r = 4.5$ mm centred on the axis. It encloses all of the inner current, $+10$ A, and part of the return current in the tube. The tube's current is uniform over its area $\pi(c^2-b^2)$, so the part inside $r$ is
+    $$10\times\frac{r^2-b^2}{c^2-b^2} = 10\times\frac{20.25-16}{25-16} = 10\times\frac{4.25}{9} = 4.72\text{ A}.$$
+    Net enclosed current: $I_{\text{enc}} = 10 - 4.72 = 5.28$ A.
+
+    Then $B = \dfrac{\mu_0 I_{\text{enc}}}{2\pi r} = \dfrac{2\times10^{-7}\times5.278}{4.5\times10^{-3}} = 2.35\times10^{-4}$ T $\approx 235$ µT, circling the axis in the sense set by the inner current.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A strip transmission line is made of two flat metal strips, each 2.0 m wide, held parallel 1.0 cm apart. A current of 50 A flows along one strip and returns along the other, spread evenly across the width. Treating the strips as infinite sheets, find the magnetic field between them. (Original problem.)
+  ask: Field between the strips
+  unit: µT
+  ans: 31.42
+  tol: 0.05
+  verify: 4e-7*Math.PI*(50/2.0)*1e6
+  sol: |
+    Each strip is a current sheet with surface current density $K = I/w = 50/2.0 = 25$ A/m. A rectangle crossing one sheet gives $2Bl = \mu_0Kl$, so each sheet alone gives $\mu_0K/2$ on both sides, in opposite directions on the two sides.
+
+    With opposite currents, the two sheets' fields add between the strips and cancel outside. So between them
+    $$B = \mu_0K = 4\pi\times10^{-7}\times25 = 3.14\times10^{-5}\text{ T} = 31.4\ \mu\text{T},$$
+    and $B \approx 0$ outside. The gap (1 cm) is much smaller than the width (2 m), so the infinite-sheet model is good away from the edges. [Inference: edge corrections are of order gap/width, here about 0.5%.]
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: A solenoid 20 cm long and 5.0 cm in radius has 1000 turns per metre and carries 2.0 A. Using the on-axis result for a finite solenoid, B = (μ₀nI/2)(cos α₁ + cos α₂), where α₁ and α₂ are the half-angles subtended at the point by the rims of the two ends, find the field at the centre of the solenoid. By what percentage is it below the ideal value μ₀nI? (Original problem.)
+  ask: Field at the centre
+  unit: mT
+  ans: 2.248
+  tol: 0.005
+  verify: 4e-7*Math.PI*1000*2*0.1/Math.sqrt(0.1**2+0.05**2)*1000
+  sol: |
+    At the centre each end is $x = 10$ cm away, so $\cos\alpha_1 = \cos\alpha_2 = \dfrac{10}{\sqrt{10^2+5^2}} = \dfrac{10}{11.18} = 0.894$.
+
+    $B = \dfrac{\mu_0nI}{2}(2\times0.894) = 0.894\,\mu_0nI = 0.894\times4\pi\times10^{-7}\times1000\times2.0 = 2.25\times10^{-3}$ T.
+
+    The ideal value is $\mu_0nI = 2.51$ mT, so the field is about **10.6% lower**. The long-solenoid formula needs length $\gg$ radius; here the ratio is only 4.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A long copper rod of radius 2.0 cm has a long cylindrical hole of radius 0.50 cm drilled parallel to its axis. The axis of the hole is 1.0 cm from the axis of the rod. The rod carries a total current of 15 A along its length, spread uniformly over the remaining metal. Find the magnetic field inside the hole. (Original problem.)
+  ask: Field in the hole
+  unit: µT
+  ans: 80
+  tol: 0.2
+  verify: 4e-7*Math.PI*(15/(Math.PI*(0.02**2-0.005**2)))*0.01/2*1e6
+  sol: |
+    **Current density.** The metal's cross-section is $\pi(R^2 - r_h^2) = \pi(4.0 - 0.25)\times10^{-4} = \pi\times3.75\times10^{-4}$ m², so $J = \dfrac{15}{\pi\times3.75\times10^{-4}} = 1.27\times10^4$ A/m².
+
+    **Superposition.** The rod with the hole = a full rod carrying $+\vec J$ + a rod filling the hole carrying $-\vec J$. Inside a full rod, Ampère's law gives $B\cdot2\pi r = \mu_0J\pi r^2$, i.e. $\vec B = \tfrac{\mu_0}{2}\vec J\times\vec r$ with $\vec r$ measured from that rod's axis. In the hole,
+    $$\vec B = \tfrac{\mu_0}{2}\vec J\times\vec r - \tfrac{\mu_0}{2}\vec J\times\vec r\,' = \tfrac{\mu_0}{2}\vec J\times\vec d,$$
+    with $\vec d$ the vector from the rod's axis to the hole's axis. The field is uniform, perpendicular to $\vec d$.
+
+    **Size.** $B = \tfrac12\mu_0Jd = 2\pi\times10^{-7}\times1.273\times10^4\times0.010 = 8.0\times10^{-5}$ T $= 80$ µT. (Neatly, $B = \dfrac{\mu_0 I d}{2\pi(R^2 - r_h^2)} = \dfrac{2\times10^{-7}\times15\times0.01}{3.75\times10^{-4}}$.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A long solenoid has 2000 turns per metre and carries 10 A. Find the outward force per unit area (pressure) on its winding. (Original problem.)
+  ask: Pressure on the winding
+  unit: Pa
+  ans: 251.3
+  tol: 0.3
+  verify: 4e-7*Math.PI*(2000*10)**2/2
+  sol: |
+    The winding is a current sheet with $K = nI = 2.0\times10^4$ A/m. Just inside it the field is $B = \mu_0nI$; just outside it is zero.
+
+    The sheet's own field ($\pm\mu_0K/2$, opposite on the two sides) exerts no net force on the sheet, so the force per unit area comes from the **average** field $(B + 0)/2$:
+    $$p = K\cdot\frac{B}{2} = \frac{\mu_0n^2I^2}{2} = \frac{B^2}{2\mu_0}.$$
+    Numbers: $p = \dfrac{4\pi\times10^{-7}\times(2.0\times10^4)^2}{2} = 2\pi\times10^{-7}\times4.0\times10^8 = 251$ Pa.
+
+    Direction: outward, because opposite sides of each turn carry antiparallel currents, which repel. (Using the full inside field $B$ instead of the average would give twice the right answer.)
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A toroid has a rectangular cross-section, with inner radius 10 cm, outer radius 15 cm and height 2.0 cm. It is wound with 500 turns carrying 2.0 A. Find the magnetic flux through one turn (that is, through the rectangular cross-section). Compare with the estimate that uses the field at the mean radius. (Original problem.)
+  ask: Flux through one turn
+  unit: µWb
+  ans: 1.622
+  tol: 0.003
+  verify: 2e-7*500*2*0.02*Math.log(1.5)*1e6
+  sol: |
+    Ampère's law on a coaxial circle of radius $r$ inside the core: $B = \dfrac{\mu_0NI}{2\pi r}$. The field varies across the cross-section, so integrate over strips of height $h$ and width $dr$:
+    $$\Phi = \int_a^b \frac{\mu_0NI}{2\pi r}\,h\,dr = \frac{\mu_0NIh}{2\pi}\ln\frac{b}{a}.$$
+    Numbers: $\Phi = 2\times10^{-7}\times500\times2.0\times0.020\times\ln1.5 = 4\times10^{-6}\times0.4055 = 1.62\times10^{-6}$ Wb $= 1.62$ µWb.
+
+    **Mean-radius estimate:** $B(12.5\text{ cm}) = 2\times10^{-7}\times1000/0.125 = 1.6$ mT, times the area $0.05\times0.02 = 1.0\times10^{-3}$ m² gives $1.60$ µWb, about 1.4% low. Because $1/r$ is curved, the average of $1/r$ over the section exceeds $1/r_{\text{mean}}$.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: text
+  q: A small metal sphere carrying charge Q sits at the centre of a large sphere of weakly conducting material, so charge leaks away radially and equally in all directions, giving a current I(t) that flows straight outwards. Show that this current produces no magnetic field anywhere, and explain why Ampère's circuital law seems to say otherwise. (Original problem.)
+  sol: |
+    **Symmetry.** The current distribution is spherically symmetric: it looks the same after any rotation about the centre. A magnetic field at a point P must then be unchanged by every rotation about the line OP. The only vector unchanged by all these rotations points along OP, so $\vec B$ would have to be radial, $\vec B = B(r)\hat r$.
+
+    **No radial field.** The magnetic flux out of any closed surface is zero (field lines of $\vec B$ have no ends). A sphere of radius $r$ would have flux $4\pi r^2B(r)$, so $B(r) = 0$. Hence $\vec B = 0$ everywhere.
+
+    **The apparent paradox.** Take a small circle round a radial line of current. A flat cap on that circle is crossed by current, so the naive law would demand $\oint\vec B\cdot d\vec l \ne 0$. But a different surface on the same circle (one that wraps round the centre the other way) is crossed by a different current. The answer depends on the surface because the current is not steady: charge is leaving the centre, $\nabla\cdot\vec J \ne 0$. So Ampère's law in its steady-current form simply does not apply. When Maxwell's displacement current is added, it exactly cancels the conduction current at every point here (the changing radial $\vec E$ gives $\varepsilon_0\,\partial\vec E/\partial t = -\vec J$), and the corrected law gives $\oint\vec B\cdot d\vec l = 0$, in agreement with the symmetry argument.
+  check: none

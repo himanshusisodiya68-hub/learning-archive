@@ -135,3 +135,153 @@
   sol: |
     For straight-line motion the electric force $qE$ must balance the magnetic force $qvB$: $v = E/B$. The charge and mass cancel, so the speed does not depend on them (a velocity selector).
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A uniform magnetic field of 0.10 T, directed into the page, fills the whole region above a straight boundary line (the x-axis). A proton crosses the boundary into the field at the origin with speed 1.0 × 10⁶ m/s, its velocity making 60° with the +x direction, and the field bends it towards the −x side. How long does the proton spend in the field, and how far from the origin does it leave? (m = 1.67 × 10⁻²⁷ kg, e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Time spent in the field
+  unit: µs
+  ans: 0.4372
+  tol: 0.003
+  verify: (4*PI/3)*1.67e-27/(1.6e-19*0.1)*1e6
+  sol: |
+    The force $e\mathbf v\times\mathbf B$ with $\mathbf B = -B\hat z$ points along $(-v_y, v_x)$, i.e. the velocity turns **anticlockwise**. It starts at 60° to $+x$ and the proton leaves when it is back on the boundary. The chord joining entry and exit points is a line of symmetry of the arc, so the exit velocity makes the same angle with the boundary, pointing down: direction $-60°$, i.e. $300°$. Turning anticlockwise from $60°$ to $300°$ is a turn of $240°$.
+
+    The velocity turns at the steady rate $\omega = eB/m$, so the time is
+    $$t = \frac{240°}{360°}\,T = \frac{4\pi}{3}\frac{m}{eB} = \frac{4\pi}{3}\times\frac{1.67\times10^{-27}}{1.6\times10^{-19}\times0.10} = 4.37\times10^{-7}\ \text{s} \approx 0.44\ \mu\text{s}.$$
+
+    Radius $r = mv/(eB) = 1.67\times10^{-27}\times10^{6}/(1.6\times10^{-20}) = 0.104$ m. A chord that subtends angle $\phi$ at the centre has length $2r\sin(\phi/2) = 2r\sin120° = \sqrt3\,r = 0.18$ m. The proton leaves 18 cm from the origin, on the $-x$ side.
+
+    Had the field been reversed (clockwise turning), the turn would be only $120°$ and the time half as long: the two senses share the same chord but use the two different arcs of the circle.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: An electron is accelerated from rest through 500 V and then enters a uniform magnetic field of 2.0 × 10⁻³ T with its velocity at 30° to the field. Find the pitch of its helical path and the radius of the helix. (m = 9.11 × 10⁻³¹ kg, e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Pitch of the helix
+  unit: cm
+  ans: 20.53
+  tol: 0.1
+  verify: 2*PI*9.11e-31*sqrt(2*1.6e-19*500/9.11e-31)*cos(rad(30))/(1.6e-19*2e-3)*100
+  sol: |
+    Speed: $v = \sqrt{2eV/m} = \sqrt{2\times1.6\times10^{-19}\times500/9.11\times10^{-31}} = 1.33\times10^{7}$ m/s.
+
+    Split $\mathbf v$ along and across $\mathbf B$: $v_\parallel = v\cos30° = 1.15\times10^{7}$ m/s, $v_\perp = v\sin30° = 6.6\times10^{6}$ m/s. The field only acts on $v_\perp$, which goes round a circle with period $T = 2\pi m/(eB) = 2\pi\times9.11\times10^{-31}/(3.2\times10^{-22}) = 1.79\times10^{-8}$ s, the same as for a perpendicular electron.
+
+    Pitch $p = v_\parallel T = 1.15\times10^{7}\times1.79\times10^{-8} = 0.205$ m $\approx 20.5$ cm.
+
+    Radius $r = mv_\perp/(eB) = 9.11\times10^{-31}\times6.63\times10^{6}/(3.2\times10^{-22}) = 1.9\times10^{-2}$ m $= 1.9$ cm.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A copper strip 0.50 mm thick and 2.0 cm wide carries a current of 10 A along its length. A magnetic field of 1.5 T is applied perpendicular to the broad face of the strip. Taking the density of free electrons in copper as 8.5 × 10²⁸ m⁻³, find the Hall voltage across the width of the strip. (e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Hall voltage
+  unit: µV
+  ans: 2.206
+  tol: 0.02
+  verify: 1.5*10/(8.5e28*1.6e-19*0.5e-3)*1e6
+  sol: |
+    In the steady state the sideways electric force from the Hall field balances the magnetic force on each carrier: $eE_H = ev_dB$, so $E_H = v_dB$. Across the width $w$, $V_H = v_dBw$. With $I = nev_d(wt)$, $v_d = I/(newt)$, and the width cancels:
+    $$V_H = \frac{BI}{net} = \frac{1.5\times10}{8.5\times10^{28}\times1.6\times10^{-19}\times5.0\times10^{-4}} = 2.2\times10^{-6}\ \text{V}.$$
+
+    About 2 µV: tiny, because copper has so many carriers that they drift very slowly ($v_d \approx 0.37$ mm/s here). Hall probes therefore use semiconductors, where $n$ is smaller by a factor of a million or more and $V_H$ is correspondingly larger. The 2.0 cm width is not needed.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: In a mass spectrometer, singly charged ions of neon-20 and neon-22 start from rest, are accelerated through 1000 V, and then enter a uniform magnetic field of 0.20 T at right angles to it. Each ion travels a semicircle and strikes a detector plate in the plane of the entrance slit. Find the distance between the two spots. (Take the ion masses as 20 u and 22 u, 1 u = 1.66 × 10⁻²⁷ kg, e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Separation of the spots
+  unit: mm
+  ans: 9.94
+  tol: 0.05
+  verify: 2*(sqrt(2*22*1.66e-27*1000/1.6e-19)-sqrt(2*20*1.66e-27*1000/1.6e-19))/0.2*1000
+  sol: |
+    After acceleration $\tfrac12mv^2 = eV$, so $mv = \sqrt{2meV}$ and the radius is
+    $$r = \frac{mv}{eB} = \frac1B\sqrt{\frac{2mV}{e}}.$$
+    For neon-20: $r_{20} = \dfrac{1}{0.20}\sqrt{\dfrac{2\times20\times1.66\times10^{-27}\times1000}{1.6\times10^{-19}}} = 0.1019$ m. Since $r\propto\sqrt m$, $r_{22} = r_{20}\sqrt{1.1} = 0.1068$ m.
+
+    Each ion lands a diameter $2r$ from the slit, so the spots are $2(r_{22}-r_{20}) = 2\times0.00497 = 9.9\times10^{-3}$ m, about 1 cm apart.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A uniform electric field E = 1.0 × 10⁴ V/m points along +y and a uniform magnetic field B = 0.10 T points along +z. A proton is released from rest at the origin. Find the greatest distance it ever reaches from the x-axis, and its greatest speed. (m = 1.67 × 10⁻²⁷ kg, e = 1.6 × 10⁻¹⁹ C; ignore gravity.) (Original problem.)
+  ask: Greatest distance from the x-axis
+  unit: cm
+  ans: 2.0875
+  tol: 0.01
+  verify: 2*1.67e-27*1e4/(1.6e-19*0.1**2)*100
+  sol: |
+    **Drift frame.** In a frame moving with velocity $\mathbf u = \mathbf E\times\mathbf B/B^2$, here $u = E/B = 10^{5}$ m/s along $+x$ ($\hat y\times\hat z = \hat x$), the electric field vanishes (non-relativistically $\mathbf E' = \mathbf E + \mathbf u\times\mathbf B = 0$). In that frame the proton starts with velocity $-u\hat x$ and simply goes round a circle at speed $u$ with radius
+    $$R = \frac{mu}{eB} = \frac{mE}{eB^2}.$$
+
+    Back in the lab, the proton's position is the circle's centre (moving at $u$) plus a rotating radius: the path is a **cycloid**, the curve traced by a point on the rim of a wheel of radius $R$ rolling along the $x$-axis. The farthest point from the axis is a diameter away:
+    $$y_{\max} = 2R = \frac{2mE}{eB^2} = \frac{2\times1.67\times10^{-27}\times10^{4}}{1.6\times10^{-19}\times0.01} = 2.09\times10^{-2}\ \text{m}.$$
+
+    At the top the rotation velocity $+u\hat x$ adds to the drift $+u\hat x$, so $v_{\max} = 2u = 2E/B = 2.0\times10^{5}$ m/s.
+
+    **Check by energy.** The magnetic force does no work, so $\tfrac12mv^2 = eEy$. At the top, $\tfrac12m(2E/B)^2 = eEy_{\max}$ gives $y_{\max} = 2mE/(eB^2)$, the same.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Electrons accelerated through 1000 V leave a small hole in a narrow cone of directions, all at small angles to the axis of a long solenoid, which provides a uniform axial magnetic field. A screen is placed 20 cm from the hole, perpendicular to the axis. Find the smallest field for which all the electrons come back to a single point on the screen. (m = 9.11 × 10⁻³¹ kg, e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Smallest focusing field
+  unit: mT
+  ans: 3.352
+  tol: 0.02
+  verify: 2*PI*9.11e-31*sqrt(2*1.6e-19*1000/9.11e-31)/(1.6e-19*0.2)*1000
+  sol: |
+    Each electron moves on a helix whose projection on the plane perpendicular to the axis is a circle **passing through the axis** (it started on the axis). After one full period $T = 2\pi m/(eB)$, every projected circle has closed, so every electron is back on the axis, whatever its angle. The period does not depend on $v_\perp$, which is why the focusing works.
+
+    For small angles, $v_\parallel \approx v$ for all electrons, so they all reach the same axial distance $vT$ after one period. The first focus falls on the screen when
+    $$L = vT = \frac{2\pi mv}{eB}\ \Rightarrow\ B = \frac{2\pi mv}{eL},\quad v = \sqrt{\frac{2eV}{m}} = 1.87\times10^{7}\ \text{m/s}.$$
+    $$B = \frac{2\pi\times9.11\times10^{-31}\times1.87\times10^{7}}{1.6\times10^{-19}\times0.20} = 3.35\times10^{-3}\ \text{T}.$$
+
+    Larger fields $B = 2B_1, 3B_1,\dots$ also focus (two, three turns before the screen). Measuring the first focusing field and $V$ gives $e/m = 8\pi^2V/(B^2L^2)$, a classic way to measure the specific charge of the electron. The focus is exact only to first order in the angle, because $v_\parallel = v\cos\alpha$.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: In a magnetic bottle the field strength on the axis is 0.10 T at the centre and rises smoothly to 0.40 T at each end. Charged particles near the axis at the centre move in all directions. Assuming that the quantity m v⊥²/(2B) stays constant as a particle spirals along the slowly varying field, find the smallest angle between a particle's velocity and the field at the centre for which it is trapped. (Original problem.)
+  ask: Smallest pitch angle for trapping
+  unit: °
+  ans: 30
+  tol: 0.2
+  verify: deg(asin(sqrt(0.10/0.40)))
+  sol: |
+    The magnetic force does no work, so the speed $v$ is constant. With $\mu = mv_\perp^2/(2B)$ constant, $v_\perp^2 \propto B$: as the particle moves into stronger field its circular speed grows and its speed along the field, $v_\parallel^2 = v^2 - v_\perp^2$, shrinks.
+
+    At the centre, $v_\perp = v\sin\alpha$. The particle turns back where $v_\parallel = 0$, i.e. where $v_\perp = v$:
+    $$\frac{v^2}{B_{\text{turn}}} = \frac{v^2\sin^2\alpha}{B_0}\ \Rightarrow\ B_{\text{turn}} = \frac{B_0}{\sin^2\alpha}.$$
+    It is reflected (trapped) if this turning field is reached before the end, $B_0/\sin^2\alpha \le B_{\max}$:
+    $$\sin\alpha \ge \sqrt{B_0/B_{\max}} = \sqrt{0.25} = 0.5,\quad \alpha \ge 30°.$$
+    Particles with $\alpha < 30°$ lie in the "loss cone" and escape through the ends. The same physics traps charged particles in the Earth's radiation belts.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: A small ball of mass 2.0 g carrying a charge of 5.0 mC slides on a smooth horizontal table in a uniform vertical magnetic field of 0.40 T. The air exerts a drag force −kv on it with k = 1.5 × 10⁻³ kg/s. It is launched with speed 1.0 m/s. How far from the launch point does it finally come to rest? (Original problem.)
+  ask: Distance from the launch point
+  unit: m
+  ans: 0.8
+  tol: 0.005
+  verify: 2e-3*1.0/sqrt(1.5e-3**2+(5e-3*0.4)**2)
+  sol: |
+    Write the horizontal velocity as a complex number $w = v_x + iv_y$. The magnetic force turns the velocity at the rate $\omega = qB/m$ and the drag shrinks it at the rate $\gamma = k/m$, so (choosing the sense of rotation)
+    $$\frac{dw}{dt} = -(\gamma + i\omega)\,w\ \Rightarrow\ w = w_0e^{-(\gamma+i\omega)t}.$$
+    The speed decays as $v_0e^{-\gamma t}$ while the direction turns steadily: the ball spirals inwards. The displacement is
+    $$z(\infty) = \int_0^\infty w\,dt = \frac{w_0}{\gamma + i\omega},\qquad |z| = \frac{v_0}{\sqrt{\gamma^2+\omega^2}} = \frac{mv_0}{\sqrt{k^2 + q^2B^2}}.$$
+    Here $qB = 5.0\times10^{-3}\times0.40 = 2.0\times10^{-3}$ kg/s and $k = 1.5\times10^{-3}$ kg/s, so
+    $$|z| = \frac{2.0\times10^{-3}\times1.0}{2.5\times10^{-3}} = 0.80\ \text{m}.$$
+    Checks: with $B = 0$ this is $mv_0/k$, the straight-line stopping distance, which is also the total **path length** in every case (the speed history is unchanged by $B$). With $k\to0$ the ball circles for ever and the "final point" is the centre, at distance $r = mv_0/qB$ from the start, matching $|z|\to mv_0/(qB)$. The final point lies at angle $\arctan(\omega/\gamma) = 53°$ from the launch direction, on the side towards which the field bends it.
+  check: code

@@ -1,0 +1,141 @@
+# Alternating current and the AC generator; rms values. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 6 §6.8 (Example 6.10) and Ch 7 §7.1–7.3 and Exercises 7.1–7.2. Found, board and main problems are original.
+
+- id: ncert12-eg-6-10
+  lvl: ncert-intext
+  num: "XII Ex 6.10"
+  source: NCERT XII Physics · Ch 6 · Example 6.10
+  kind: num
+  q: Kamla peddles a stationary bicycle. The pedals of the bicycle are attached to a 100 turn coil of area 0.10 m². The coil rotates at half a revolution per second and it is placed in a uniform magnetic field of 0.01 T perpendicular to the axis of rotation of the coil. What is the maximum voltage generated in the coil?
+  ask: Maximum voltage
+  unit: V
+  ans: 0.314
+  tol: 0.001
+  verify: 100*0.01*0.1*2*Math.PI*0.5
+  sol: $\varepsilon_0 = NBA\omega = NBA(2\pi\nu) = 100\times0.01\times0.1\times2\times3.14\times0.5 = 0.314$ V. The emf varies as $\varepsilon_0\sin\omega t$, so 0.314 V is its peak value.
+  check: code
+
+- id: ncert12-eg-7-1
+  lvl: ncert-intext
+  num: "XII Ex 7.1"
+  source: NCERT XII Physics · Ch 7 · Example 7.1
+  kind: num
+  q: A light bulb is rated at 100W for a 220 V supply. Find (a) the resistance of the bulb; (b) the peak voltage of the source; and (c) the rms current through the bulb.
+  ask: Resistance of the bulb
+  unit: Ω
+  ans: 484
+  tol: 0.5
+  verify: 220**2/100
+  sol: |
+    (a) $R = V^2/P = (220)^2/100 = 484\ \Omega$.
+
+    (b) The rated voltage is the rms value, so the peak voltage is $v_m = \sqrt2V = 311$ V.
+
+    (c) $I = P/V = 100/220 = 0.454$ A (rms).
+  check: code
+
+- id: ncert12-ex-7-1
+  lvl: ncert-ex
+  num: "XII 7.1"
+  source: NCERT XII Physics · Ch 7 · Exercise 7.1
+  kind: num
+  q: |-
+    A 100 Ω resistor is connected to a 220 V, 50 Hz ac supply.
+    (a) What is the rms value of current in the circuit?
+    (b) What is the net power consumed over a full cycle?
+  ask: rms current
+  unit: A
+  ans: 2.2
+  tol: 0.001
+  verify: 220/100
+  sol: |
+    (a) $I_{rms} = V_{rms}/R = 220/100 = 2.20$ A.
+
+    (b) $P = I_{rms}^2R = (2.2)^2\times100 = 484$ W (equal to $V_{rms}^2/R$).
+  answer_key: "(a) 2.20 A (b) 484 W"
+  check: both
+
+- id: ncert12-ex-7-2
+  lvl: ncert-ex
+  num: "XII 7.2"
+  source: NCERT XII Physics · Ch 7 · Exercise 7.2
+  kind: num
+  q: |-
+    (a) The peak voltage of an ac supply is 300 V. What is the rms voltage?
+    (b) The rms value of current in an ac circuit is 10 A. What is the peak current?
+  ask: rms voltage
+  unit: V
+  ans: 212.13
+  tol: 0.05
+  verify: 300/Math.SQRT2
+  sol: |
+    (a) $V_{rms} = V_0/\sqrt2 = 300/\sqrt2 = 212.1$ V.
+
+    (b) $I_0 = \sqrt2I_{rms} = 10\sqrt2 = 14.1$ A.
+  answer_key: "(a) 300/√2 = 212.1 V (b) 10√2 = 14.1 A"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The rms value of an alternating voltage with peak value V₀ is
+  opts: ["V₀", "V₀/2", "V₀/√2", "√2 V₀"]
+  ans: 2
+  sol: $V_{rms} = V_0/\sqrt2 \approx 0.707V_0$ because the average of $\sin^2\omega t$ is $\tfrac12$.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: The mains voltage is 220 V rms. Find the peak voltage. (Original problem.)
+  ask: Peak voltage
+  unit: V
+  ans: 311.13
+  tol: 0.05
+  verify: 220*Math.SQRT2
+  sol: $V_0 = \sqrt2\times220 = 311$ V.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A coil of 200 turns and area 0.05 m² rotates at 50 Hz in a 0.2 T field perpendicular to its axis. Find the peak emf. (Original problem.)
+  ask: Peak emf
+  unit: V
+  ans: 628.3
+  tol: 0.5
+  verify: 200*0.2*0.05*2*Math.PI*50
+  sol: $\varepsilon_0 = NBA\omega = 200\times0.2\times0.05\times2\pi\times50 = 628$ V.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: An alternating current i = 5 sin(100πt) A flows in a resistor. State the frequency, the rms current and the current at t = 1/300 s. (Original problem.)
+  sol: |
+    $\omega = 100\pi$ rad/s, so $f = \omega/2\pi = 50$ Hz. $I_{rms} = 5/\sqrt2 = 3.54$ A. At $t = 1/300$ s: $i = 5\sin(100\pi/300) = 5\sin(\pi/3) = 4.33$ A.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A half-wave rectifier passes only the positive half of a sinusoidal current of peak 10 A. Find the rms value of the output. (Original problem.)
+  ask: rms current
+  unit: A
+  ans: 5
+  tol: 0.001
+  verify: 10/2
+  sol: |
+    The mean square over a full period is $\tfrac12\times\overline{i^2}_{\text{positive half}}$: the current is zero for half the cycle, and over the other half the mean of $I_0^2\sin^2$ is $I_0^2/2$. So $\overline{i^2} = I_0^2/4$ and $I_{rms} = I_0/2 = 5$ A.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A heater draws the same heat from a 2 A direct current as from an alternating current of what peak value? (Original problem.)
+  ask: Peak value
+  unit: A
+  ans: 2.828
+  tol: 0.002
+  verify: 2*Math.SQRT2
+  sol: The rms value of the AC must equal the DC value, $I_{rms} = 2$ A, so the peak value is $I_0 = 2\sqrt2 = 2.83$ A. The rms value is defined as the DC that gives the same heating.
+  check: code
