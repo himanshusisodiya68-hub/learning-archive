@@ -186,3 +186,149 @@
   sol: |
     Current sensitivity $\phi/I = NAB/k$ doubles. But the coil's resistance also roughly doubles (twice as much wire), and the voltage sensitivity $\phi/V = NAB/(kR)$ stays about the same.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |
+    An ideal 12.0 V source drives two 10.0 kΩ resistors in series. A voltmeter connected across one of the resistors reads 5.00 V. Find the resistance of the voltmeter. (Original problem.)
+  ask: Voltmeter resistance
+  unit: Ω
+  ans: 25000
+  tol: 50
+  verify: 1/(1/(10000*5/7)-1/10000)
+  hints: ["The voltmeter and the resistor it spans form a parallel pair R_p.", "The reading is 12 R_p/(R_p + 10 kΩ)."]
+  sol: |
+    Let $R_p$ be the parallel combination of the resistor and the voltmeter. The divider gives $12\,\dfrac{R_p}{R_p + 10\text{ k}\Omega} = 5$, so $7R_p = 50$ kΩ and $R_p = 7.143$ kΩ.
+
+    Then $\dfrac1{R_V} = \dfrac1{7.143\text{ k}\Omega} - \dfrac1{10\text{ k}\Omega} = (0.140 - 0.100)\ \text{k}\Omega^{-1}$, so $R_V = 25.0$ kΩ.
+
+    The true voltage is 6.00 V; the meter's loading makes it read about 17% low. A meter of a few hundred kΩ would be needed for 1% accuracy here.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |
+    A square wire frame of side 10.0 cm and mass 20.0 g hangs from a frictionless horizontal axle along its top side, and is free to swing about it. It carries a current of 2.00 A and sits in a uniform vertical magnetic field of 0.500 T. At what angle from the vertical does the frame come to rest? Take g = 9.8 m/s². (Original problem.)
+  ask: Angle from the vertical
+  unit: °
+  ans: 45.58
+  tol: 0.05
+  verify: Math.atan(2*2*0.1*0.5/(0.02*9.8))*180/Math.PI
+  hints: ["The two sloping sides give equal and opposite forces along the axle; only the bottom side gives a torque about the axle.", "The weight acts at the centre, a/2 below the axle along the frame."]
+  sol: |
+    Let the frame make angle $\theta$ with the vertical. The two sloping sides lie in a vertical plane perpendicular to the axle; their forces are along the axle, equal and opposite, and give no torque about it.
+
+    The bottom side (length $a$, parallel to the axle) is perpendicular to B and feels a horizontal force $IaB$, perpendicular to the axle. Its lever arm about the axle is the vertical drop of that side, $a\cos\theta$. The weight $Mg$ acts at the centre with lever arm $\tfrac a2\sin\theta$. Balance:
+
+    $$IaB\cdot a\cos\theta = Mg\cdot\frac a2\sin\theta \;\Rightarrow\; \tan\theta = \frac{2IaB}{Mg} = \frac{2\times2\times0.1\times0.5}{0.02\times9.8} = 1.020 .$$
+
+    So $\theta = 45.6^\circ$. (Check with $\tau = mB\sin\alpha$: the normal makes angle $90^\circ - \theta$ with the vertical B, so the magnetic torque is $Ia^2B\cos\theta$, the same.) The current must flow so that the bottom-side force pushes the frame outward; reversing it would swing the frame to $-45.6^\circ$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |
+    A thin circular ring of mass 10.0 g carries a current of 5.00 A. It is pivoted about a diameter that is perpendicular to a uniform magnetic field of 0.200 T. Find the period of small oscillations about its stable position, and explain why it does not depend on the ring's radius. (Original problem.)
+  ask: Period
+  unit: s
+  ans: 0.2507
+  tol: 0.001
+  verify: 2*Math.PI*Math.sqrt(0.01/(2*Math.PI*5*0.2))
+  hints: ["The moment of inertia of a ring about a diameter is MR²/2.", "The restoring torque for small θ is mBθ with m = IπR²."]
+  sol: |
+    With $m = I\pi R^2$ and moment of inertia $J = \tfrac12MR^2$ about a diameter,
+
+    $$T = 2\pi\sqrt{\frac{J}{mB}} = 2\pi\sqrt{\frac{MR^2/2}{I\pi R^2B}} = 2\pi\sqrt{\frac{M}{2\pi IB}} .$$
+
+    $R^2$ cancels: both the moment and the moment of inertia grow as $R^2$. Numerically $T = 2\pi\sqrt{0.010/(2\pi\times5\times0.2)} = 2\pi\times0.0399 = 0.251$ s.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: |
+    A thin disc of mass 2.00 g carries a charge of 4.00 μC spread uniformly over it. It spins rapidly about its axis, which is tilted at an angle to a uniform 1.00 T magnetic field, and its centre is held fixed. Find the angular frequency at which its axis precesses about the field. Ignore gravity and assume the spin angular momentum is much larger than any other. (Original problem.)
+  ask: Precession angular frequency
+  unit: rad/s
+  ans: 0.001
+  tol: 0.00001
+  verify: 4e-6*1/(2*2e-3)
+  hints: ["Find m and L for the disc in terms of ω and R.", "dL/dt = m × B with m parallel to L makes L precess at Ω = mB/L."]
+  sol: |
+    For the disc, $m = Q\omega R^2/4$ and $L = \tfrac12MR^2\omega$, both along the axis, so $\mathbf m = \dfrac{Q}{2M}\mathbf L$.
+
+    The torque $\boldsymbol\tau = \mathbf m\times\mathbf B = \dfrac{Q}{2M}\mathbf L\times\mathbf B$ is perpendicular to $\mathbf L$, so it changes only the direction of $\mathbf L$. Its component perpendicular to $\mathbf B$, of length $L\sin\theta$, turns at rate $\Omega$ with $\Omega L\sin\theta = \dfrac{Q}{2M}LB\sin\theta$:
+
+    $$\Omega = \frac{QB}{2M} = \frac{4.00\times10^{-6}\times1.00}{2\times2.00\times10^{-3}} = 1.00\times10^{-3}\ \text{rad s}^{-1}.$$
+
+    It is independent of $\omega$, $R$ and the tilt (the classical analogue of Larmor precession). The "rapid spin" assumption is the usual gyroscope approximation: it lets us ignore the small angular momentum of the precession itself.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |
+    A large single-turn circular coil of radius 10.0 cm carries 10.0 A. A small single-turn coil of radius 1.00 cm carrying 2.00 A is placed coaxially 10.0 cm from the centre of the large coil, with its moment along the large coil's field. Find the magnitude of the force between them, in micronewtons, and say whether it is attractive or repulsive. (Original problem.)
+  ask: Force
+  unit: μN
+  ans: 0.2094
+  tol: 0.001
+  verify: 2*Math.PI*0.01**2 * 3*4*Math.PI*1e-7*10*0.1**2*0.1/(2*Math.pow(0.1**2+0.1**2,2.5))*1e6
+  hints: ["Treat the small coil as a dipole: F = m dB/dz along the axis.", "Differentiate B = μ₀IR²/[2(R² + z²)^{3/2}] with respect to z."]
+  sol: |
+    The small coil has $m = I\pi r^2 = 2.00\times\pi\times10^{-4} = 6.283\times10^{-4}$ A m². It is small compared with the distance, so treat it as a dipole and use $F_z = m\,dB_z/dz$.
+
+    On the axis of the large coil, $B_z = \dfrac{\mu_0I_0R^2}{2(R^2+z^2)^{3/2}}$, so
+
+    $$\frac{dB_z}{dz} = -\frac{3\mu_0I_0R^2z}{2(R^2+z^2)^{5/2}} = -\frac{3\times4\pi\times10^{-7}\times10\times0.01\times0.1}{2\times(0.02)^{5/2}} = -3.33\times10^{-4}\ \text{T m}^{-1}.$$
+
+    $F = m\,|dB_z/dz| = 6.283\times10^{-4}\times3.33\times10^{-4} = 2.09\times10^{-7}$ N $= 0.209$ μN.
+
+    The field is stronger toward the large coil and m is along B, so the force is toward the large coil: **attractive**, as expected for coaxial currents in the same sense. [Inference: the dipole approximation changes the answer by a fraction of order (r/d)², about 1% here.]
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: |
+    A ballistic galvanometer has a coil of 100 turns and area 2.00 cm² in a radial field of 0.200 T. Its suspension has torsional constant 1.00 × 10⁻⁶ N m rad⁻¹, and the coil swings freely with period 5.00 s. A capacitor discharged through it produces a first throw of 0.100 rad. Ignoring damping, find the charge that passed, in microcoulombs. (Original problem.)
+  ask: Charge
+  unit: μC
+  ans: 19.89
+  tol: 0.05
+  verify: 1e-6*0.1/(100*2e-4*0.2*(2*Math.PI/5))*1e6
+  hints: ["The short pulse gives an angular impulse NABQ = Jω₀.", "Energy: ½Jω₀² = ½kθ², and J = kT²/4π²."]
+  sol: |
+    The pulse gives angular momentum $J\omega_0 = NABQ$. The coil then swings until $\tfrac12J\omega_0^2 = \tfrac12k\theta_{\max}^2$, so $\theta_{\max} = \omega_0\sqrt{J/k}$. With $\sqrt{J/k} = T/2\pi$ and $J = kT^2/4\pi^2$,
+
+    $$Q = \frac{J\omega_0}{NAB} = \frac{k}{NAB}\,\frac{T}{2\pi}\,\theta_{\max}.$$
+
+    Here $NAB = 100\times2.00\times10^{-4}\times0.200 = 4.00\times10^{-3}$ N m A⁻¹, so
+
+    $$Q = \frac{1.00\times10^{-6}}{4.00\times10^{-3}}\times\frac{5.00}{2\pi}\times0.100 = 1.99\times10^{-5}\ \text{C} = 19.9\ \mu\text{C}.$$
+
+    The pulse must be much shorter than 5 s, so that the coil has not yet moved while the charge flows.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: proof
+  q: |
+    A rigid body of total mass M and total charge Q rotates with angular velocity ω about a fixed axis. At every point its charge density is Q/M times its mass density. Prove that its magnetic moment is m = (Q/2M) L, where L is the component of its angular momentum along the axis, and deduce the moments of a uniformly charged ring, disc and solid sphere of radius R. (Original problem.)
+  hints: ["Split the body into thin rings coaxial with the axis.", "A ring of charge dq at distance r⊥ from the axis is a current dq·ω/2π round an area πr⊥².", "The same ring has angular momentum dM·ω r⊥²."]
+  sol: |
+    Split the body into thin rings about the axis. A ring at perpendicular distance $r_\perp$ holding charge $dq$ goes round $\omega/2\pi$ times a second, so it is a current $dq\,\omega/2\pi$ enclosing area $\pi r_\perp^2$, with moment along the axis
+
+    $$dm = \frac{dq\,\omega}{2\pi}\,\pi r_\perp^2 = \tfrac12\,dq\,\omega r_\perp^2 .$$
+
+    The same ring has mass $dM$ and angular momentum about the axis $dL = dM\,\omega r_\perp^2$. With $dq = (Q/M)\,dM$ everywhere,
+
+    $$dm = \frac{Q}{2M}\,dM\,\omega r_\perp^2 = \frac{Q}{2M}\,dL ,$$
+
+    and integrating over the body gives $m = \dfrac{Q}{2M}L$. (The moment of a ring is along the axis by symmetry, and the axial component of $\mathbf L$ is $I\omega$.)
+
+    With $L = I\omega$: ring $I = MR^2$, so $m = Q\omega R^2/2$; disc $I = \tfrac12MR^2$, so $m = Q\omega R^2/4$; solid sphere $I = \tfrac25MR^2$, so $m = Q\omega R^2/5$.
+  check: none

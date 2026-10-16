@@ -352,8 +352,8 @@ Ampère's law alone cannot answer this: the symmetry is gone. **Superposition** 
 Each of these has cylindrical symmetry. Inside a full rod, from the thick-wire result, $B = \mu_0 J r/2$, circling the axis. In vector form, with $\vec r$ the perpendicular vector from the axis to the point:
 $$\vec B = \frac{\mu_0}{2}\,\vec J\times\vec r.$$
 
-At a point in the hole, with $\vec r$ measured from the rod's axis and $\vec r\,'$ from the hole's axis,
-$$\vec B = \frac{\mu_0}{2}\vec J\times\vec r - \frac{\mu_0}{2}\vec J\times\vec r\,' = \frac{\mu_0}{2}\vec J\times(\vec r - \vec r\,') = \frac{\mu_0}{2}\vec J\times\vec d,$$
+At a point in the hole, with $\vec r$ measured from the rod's axis and $\vec r^{\prime}$ from the hole's axis,
+$$\vec B = \frac{\mu_0}{2}\vec J\times\vec r - \frac{\mu_0}{2}\vec J\times\vec r^{\prime} = \frac{\mu_0}{2}\vec J\times(\vec r - \vec r^{\prime}) = \frac{\mu_0}{2}\vec J\times\vec d,$$
 where $\vec d$ runs from the rod's axis to the hole's axis.
 
 :::figure caption="A rod (axis O) with an off-axis hole (axis O′), current density J out of the page. For any point in the hole, r − r′ = d, so the field is the same everywhere in it: (μ₀/2) J × d, perpendicular to d (arrows)."

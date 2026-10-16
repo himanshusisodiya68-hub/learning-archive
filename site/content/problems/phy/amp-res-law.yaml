@@ -245,7 +245,7 @@
     **Current density.** The metal's cross-section is $\pi(R^2 - r_h^2) = \pi(4.0 - 0.25)\times10^{-4} = \pi\times3.75\times10^{-4}$ m², so $J = \dfrac{15}{\pi\times3.75\times10^{-4}} = 1.27\times10^4$ A/m².
 
     **Superposition.** The rod with the hole = a full rod carrying $+\vec J$ + a rod filling the hole carrying $-\vec J$. Inside a full rod, Ampère's law gives $B\cdot2\pi r = \mu_0J\pi r^2$, i.e. $\vec B = \tfrac{\mu_0}{2}\vec J\times\vec r$ with $\vec r$ measured from that rod's axis. In the hole,
-    $$\vec B = \tfrac{\mu_0}{2}\vec J\times\vec r - \tfrac{\mu_0}{2}\vec J\times\vec r\,' = \tfrac{\mu_0}{2}\vec J\times\vec d,$$
+    $$\vec B = \tfrac{\mu_0}{2}\vec J\times\vec r - \tfrac{\mu_0}{2}\vec J\times\vec r^{\prime} = \tfrac{\mu_0}{2}\vec J\times\vec d,$$
     with $\vec d$ the vector from the rod's axis to the hole's axis. The field is uniform, perpendicular to $\vec d$.
 
     **Size.** $B = \tfrac12\mu_0Jd = 2\pi\times10^{-7}\times1.273\times10^4\times0.010 = 8.0\times10^{-5}$ T $= 80$ µT. (Neatly, $B = \dfrac{\mu_0 I d}{2\pi(R^2 - r_h^2)} = \dfrac{2\times10^{-7}\times15\times0.01}{3.75\times10^{-4}}$.)
