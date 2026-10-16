@@ -174,11 +174,126 @@
 - id: m2
   lvl: main
   kind: num
-  q: The resistance of a copper wire is given by $R = R_0[1 + \alpha(T - T_0)]$ with $\alpha = 4\times10^{-3}\ \text{K}^{-1}$. A coil of this wire has $R = 10\ \Omega$ at $20\,^\circ$C. Find its resistance at $70\,^\circ$C. (Original problem; the value of $\alpha$ is given, not taken from NCERT.)
+  q: The resistance of a copper wire is given by $R = R_0[1 + \alpha(T - T_0)]$ with $\alpha = 4\times10^{-3}\ \text{K}^{-1}$. A coil of this wire has $R = 10\ \Omega$ at $20\,{}^\circ$C. Find its resistance at $70\,{}^\circ$C. (Original problem; the value of $\alpha$ is given, not taken from NCERT.)
   ask: Resistance
   unit: Ω
   ans: 12
   tol: 0.01
   verify: 10*(1+4e-3*50)
   sol: $R = 10[1 + 4\times10^{-3}\times50] = 10\times1.2 = 12\ \Omega$. Resistance of metals rises with temperature because the lattice ions vibrate more and scatter the electrons more often.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A copper wire (resistivity 1.7 × 10⁻⁸ Ω m) is 2.0 m long and tapers uniformly from a radius of 0.50 mm at one end to 1.0 mm at the other. Find its resistance in milliohm. (Original problem.)
+  ask: Resistance
+  unit: mΩ
+  ans: 21.6
+  tol: 0.1
+  verify: 1.7e-8*2/(Math.PI*0.5e-3*1e-3)*1e3
+  sol: |
+    Slice the wire into discs of thickness $dx$. With $r = a + (b-a)x/L$, $dx = L\,dr/(b-a)$ and
+
+    $$R = \int_a^b \frac{\rho}{\pi r^2}\frac{L\,dr}{b-a} = \frac{\rho L}{\pi a b} = \frac{1.7\times10^{-8}\times2.0}{\pi\times0.50\times10^{-3}\times1.0\times10^{-3}} = 2.16\times10^{-2}\ \Omega.$$
+
+    That is about 21.6 mΩ. Check: the answer equals a uniform wire of radius $\sqrt{ab} = 0.707$ mm.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A carbon resistor (temperature coefficient −5.0 × 10⁻⁴ K⁻¹) is connected in series with a copper coil (temperature coefficient 4.0 × 10⁻³ K⁻¹). The total resistance is 100 Ω and, to first order, does not change with temperature. Find the resistance of the copper coil. (Original problem.)
+  ask: Resistance of the copper coil
+  unit: Ω
+  ans: 11.1
+  tol: 0.05
+  verify: 100/(1+4e-3/5e-4)
+  sol: |
+    Total $= R_c(1 + \alpha_c\Delta T) + R_{cu}(1 + \alpha_{cu}\Delta T)$. The $\Delta T$ term vanishes when $R_c\alpha_c + R_{cu}\alpha_{cu} = 0$, so $R_c = R_{cu}\,\alpha_{cu}/|\alpha_c| = 8R_{cu}$.
+
+    Then $9R_{cu} = 100\ \Omega$, giving $R_{cu} = 11.1\ \Omega$ and $R_c = 88.9\ \Omega$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: The tungsten filament of a lamp rated 100 W, 220 V has a resistance of 40 Ω at 20 °C. Assuming the linear law R = R₀[1 + α(T − 20 °C)] with α = 4.5 × 10⁻³ K⁻¹ holds all the way, estimate the filament temperature when the lamp works at its rating. (Original problem.)
+  ask: Filament temperature
+  unit: °C
+  ans: 2487
+  tol: 2
+  verify: 20+(220**2/100/40-1)/4.5e-3
+  sol: |
+    At its rating the hot resistance is $R = V^2/P = 220^2/100 = 484\ \Omega$. Then
+
+    $$1 + \alpha\Delta T = \frac{484}{40} = 12.1 \;\Rightarrow\; \Delta T = \frac{11.1}{4.5\times10^{-3}} = 2467\ \text{K},$$
+
+    so $T \approx 2487\,{}^\circ$C. This is only an estimate: tungsten's resistivity is not exactly linear over so wide a range. The answer is reasonable for a filament, well below tungsten's melting point (about 3400 °C).
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A coaxial cable 10 m long has a core of radius 1.0 mm and a metal sheath of inner radius 5.0 mm. The space between them is filled with insulation of resistivity 1.0 × 10¹³ Ω m. Find the leakage resistance between core and sheath, in gigaohm. (Original problem.)
+  ask: Leakage resistance
+  unit: GΩ
+  ans: 256
+  tol: 1
+  verify: 1e13*Math.log(5)/(2*Math.PI*10)/1e9
+  sol: |
+    Leakage current flows radially. A cylindrical shell of radius $r$, thickness $dr$ and length $L$ has resistance $\rho\,dr/(2\pi r L)$, and the shells are in series:
+
+    $$R = \frac{\rho}{2\pi L}\ln\frac{b}{a} = \frac{1.0\times10^{13}\times\ln 5}{2\pi\times10} = \frac{1.609\times10^{13}}{62.83} = 2.56\times10^{11}\ \Omega \approx 256\ \text{G}\Omega.$$
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: An earthing electrode is a metal hemisphere of radius 0.50 m buried flat side up, level with the ground surface, in soil of uniform resistivity 100 Ω m. Find the resistance between the electrode and a very distant point in the soil. (Original problem.)
+  ask: Earth resistance
+  unit: Ω
+  ans: 31.8
+  tol: 0.1
+  verify: 100/(2*Math.PI*0.5)
+  sol: |
+    Current spreads radially into the soil. A hemispherical shell of radius $r$ and thickness $dr$ has area $2\pi r^2$, so
+
+    $$R = \int_a^\infty \frac{\rho\,dr}{2\pi r^2} = \frac{\rho}{2\pi a} = \frac{100}{2\pi\times0.50} = 31.8\ \Omega.$$
+
+    Half of this ($\int_a^{2a}$) lies in the first 0.5 m of soil around the electrode, which is why improving the soil right next to an earth electrode helps so much.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A rod of length 1.0 m and uniform cross-section 1.0 mm² is made of a graded material whose conductivity rises linearly from 1.0 × 10⁶ S/m at one end to 2.0 × 10⁶ S/m at the other. Find the resistance between the ends. (Original problem.)
+  ask: Resistance
+  unit: Ω
+  ans: 0.693
+  tol: 0.002
+  verify: 1/(1e6*1e-6)*Math.log(2)
+  sol: |
+    Write $\sigma(x) = \sigma_0(1 + x/L)$ with $\sigma_0 = 1.0\times10^6$ S/m. Slices are in series, each with $dR = dx/(\sigma A)$:
+
+    $$R = \int_0^L \frac{dx}{\sigma_0 A(1 + x/L)} = \frac{L}{\sigma_0 A}\ln 2 = \frac{1.0}{10^6\times10^{-6}}\times0.693 = 0.693\ \Omega.$$
+
+    Check: it lies between the values for uniform rods of the two end conductivities (1.0 Ω and 0.5 Ω), and below the 0.75 Ω you would get by averaging the resistivities naively.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: Aluminium has resistivity 2.65 × 10⁻⁸ Ω m and 1.81 × 10²⁹ free electrons per cubic metre (three per atom). Using the free-electron model, estimate the mean time between collisions, in units of 10⁻¹⁵ s. Take m = 9.11 × 10⁻³¹ kg and e = 1.60 × 10⁻¹⁹ C. (Original problem.)
+  ask: Mean free time
+  unit: × 10⁻¹⁵ s
+  ans: 7.42
+  tol: 0.05
+  verify: 9.11e-31/(1.81e29*(1.60e-19)**2*2.65e-8)/1e-15
+  sol: |
+    From $v_d = eE\tau/m$ and $J = nev_d$, $\rho = m/(ne^2\tau)$, so
+
+    $$\tau = \frac{m}{ne^2\rho} = \frac{9.11\times10^{-31}}{1.81\times10^{29}\times(1.60\times10^{-19})^2\times2.65\times10^{-8}} = \frac{9.11\times10^{-31}}{1.228\times10^{-16}} \approx 7.42\times10^{-15}\ \text{s}.$$
+
+    This is about three times shorter than for copper, even though aluminium's resistivity is only 1.6 times higher, because aluminium has more free electrons per unit volume.
   check: code
