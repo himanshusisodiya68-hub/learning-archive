@@ -1,0 +1,95 @@
+# Wheatstone bridge. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 3, §3.13. Figure details in [brackets] were read from the printed figure and added by the archive. Found, board, main problems are original.
+
+- id: ncert12-eg-3-7
+  lvl: ncert-intext
+  num: "XII Ex 3.7"
+  source: NCERT XII Physics · Ch 3 · Example 3.7
+  kind: num
+  q: |
+    The four arms of a Wheatstone bridge (Fig. 3.19) have the following resistances: AB = 100 Ω, BC = 10 Ω, CD = 5 Ω, and DA = 60 Ω. A galvanometer of 15 Ω resistance is connected across BD. Calculate the current through the galvanometer when a potential difference of 10 V is maintained across AC.
+  ask: Galvanometer current
+  unit: mA
+  ans: 4.87
+  tol: 0.005
+  verify: (x=>(x[0]-x[1])/15*1000)(((A,b)=>{const n=b.length;for(let i=0;i<n;i++){let p=i;for(let r=i+1;r<n;r++)if(Math.abs(A[r][i])>Math.abs(A[p][i]))p=r;[A[i],A[p]]=[A[p],A[i]];[b[i],b[p]]=[b[p],b[i]];for(let r=i+1;r<n;r++){const f=A[r][i]/A[i][i];for(let c=i;c<n;c++)A[r][c]-=f*A[i][c];b[r]-=f*b[i]}}const x=Array(n).fill(0);for(let i=n-1;i>=0;i--){let s=b[i];for(let c=i+1;c<n;c++)s-=A[i][c]*x[c];x[i]=s/A[i][i]}return x})([[1/100+1/10+1/15,-1/15],[-1/15,1/60+1/5+1/15]],[0.1,10/60]))
+  sol: |
+    Let $I_1$ be the current in AB, $I_2$ in AD, $I_g$ in the galvanometer (B to D), so BC carries $I_1 - I_g$ and DC carries $I_2 + I_g$ (Fig. 3.19).
+
+    Mesh BADB: $100I_1 + 15I_g - 60I_2 = 0$, i.e. $20I_1 + 3I_g - 12I_2 = 0$.
+
+    Mesh BCDB: $10(I_1 - I_g) - 15I_g - 5(I_2 + I_g) = 0$, i.e. $2I_1 - 6I_g - I_2 = 0$.
+
+    Mesh ADCEA (through the 10 V source): $60I_2 + 5(I_2 + I_g) = 10$, i.e. $13I_2 + I_g = 2$.
+
+    Eliminating $I_1$ gives $63I_g - 2I_2 = 0$, so $I_2 = 31.5I_g$. Then $13(31.5I_g) + I_g = 2$, so $410.5\,I_g = 2$ and
+
+    $$I_g = 4.87\ \text{mA}.$$
+
+    As a check, solving by node potentials ($V_A = 10$ V, $V_C = 0$) gives the same value. The bridge is far from balanced: $100/10 \ne 60/5$.
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A Wheatstone bridge has arms P, Q (one side) and R, S (other side), with P/Q = R/S. The current through the galvanometer is
+  opts: ["maximum", "zero", "equal to the battery current", "negative"]
+  ans: 1
+  sol: P/Q = R/S is the balance condition. The two midpoints of the bridge are then at the same potential, so no current flows through the galvanometer.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A Wheatstone bridge is balanced with P = 10 Ω, Q = 20 Ω and R = 15 Ω, where P/Q = R/S. Find S. (Original problem.)
+  ask: S
+  unit: Ω
+  ans: 30
+  tol: 0.01
+  verify: 20*15/10
+  sol: Balance gives $P/Q = R/S$, so $S = QR/P = 20\times15/10 = 30\ \Omega$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: In a metre bridge the unknown resistance X is in the left gap and a 12 Ω resistor in the right gap. The balance point is 40 cm from the left end. Find X. (Original problem.)
+  ask: X
+  unit: Ω
+  ans: 8
+  tol: 0.01
+  verify: 12*40/60
+  sol: Balance of the bridge gives $X/12 = l/(100 - l) = 40/60$, so $X = 8\ \Omega$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In a balanced Wheatstone bridge the arms are AB = 10 Ω, BC = 15 Ω, AD = 20 Ω and DC = 30 Ω, with a 6 V battery across AC and a galvanometer across BD. Find the current drawn from the battery. (Original problem.)
+  ask: Battery current
+  unit: A
+  ans: 0.36
+  tol: 0.005
+  verify: 6/((10+15)*(20+30)/(10+15+20+30))
+  sol: $10/15 = 20/30$, so the bridge is balanced and the galvanometer arm carries no current. The two arms AB + BC = 25 Ω and AD + DC = 50 Ω are in parallel, giving $25\times50/75 = 16.7\ \Omega$. $I = 6/16.7 = 0.36$ A.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: In a Wheatstone bridge, AB = 2 Ω, BC = 4 Ω, AD = 3 Ω and DC = 3 Ω. A galvanometer of resistance 1 Ω joins B and D, and 6 V is applied across AC. Find the galvanometer current. (Original problem.)
+  ask: Galvanometer current
+  unit: A
+  ans: 0.2609
+  tol: 0.0005
+  verify: (x=>x[0]-x[1])(((A,b)=>{const n=b.length;for(let i=0;i<n;i++){let p=i;for(let r=i+1;r<n;r++)if(Math.abs(A[r][i])>Math.abs(A[p][i]))p=r;[A[i],A[p]]=[A[p],A[i]];[b[i],b[p]]=[b[p],b[i]];for(let r=i+1;r<n;r++){const f=A[r][i]/A[i][i];for(let c=i;c<n;c++)A[r][c]-=f*A[i][c];b[r]-=f*b[i]}}const x=Array(n).fill(0);for(let i=n-1;i>=0;i--){let s=b[i];for(let c=i+1;c<n;c++)s-=A[i][c]*x[c];x[i]=s/A[i][i]}return x})([[1/2+1/4+1,-1],[-1,1/3+1/3+1]],[3,2]))
+  sol: |
+    Take $V_A = 6$ V, $V_C = 0$. Node B: $(6 - V_B)/2 = V_B/4 + (V_B - V_D)/1$, so $3 = 1.75V_B - V_D$. Node D: $(6 - V_D)/3 = V_D/3 + (V_D - V_B)/1$, so $2 = \tfrac53V_D - V_B$. Solving: $V_D = 78/23$ V, $V_B = 84/23$ V. The galvanometer current is $(V_B - V_D)/1 = 6/23 = 0.26$ A from B to D. Here $2/4 \ne 3/3$, so the bridge is unbalanced.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Show that if the battery and the galvanometer of a balanced Wheatstone bridge are interchanged, the bridge is still balanced. (Original problem.)
+  sol: |
+    The balance condition is $P/Q = R/S$, that is $PS = QR$. Interchanging the battery and galvanometer swaps the roles of the two diagonals: the battery now joins the old galvanometer points, and the galvanometer the old battery points. In the new arrangement the arms adjacent to the new battery arm form the ratios $P/R$ and $Q/S$, and the new balance condition is $P/R = Q/S$, that is $PS = QR$, the same condition. So a bridge balanced one way stays balanced after the interchange.
+  check: none

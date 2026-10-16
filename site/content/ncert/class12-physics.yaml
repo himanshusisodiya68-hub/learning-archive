@@ -6,7 +6,10 @@ code: leph1 / leph2
 chapters:
   - { n: 1, title: Electric Charges and Fields, pdf: leph101 }
   - { n: 2, title: Electrostatic Potential and Capacitance, pdf: leph102 }
-  - { n: 3, title: Current Electricity, pdf: leph103 }
+  - n: 3
+    title: Current Electricity
+    pdf: leph103
+    leaves: [phy/electric-current-and-potential-difference, phy/ohms-law, phy/resistance-and-resistivity, phy/heating-effect-and-power, phy/kirchhoffs-rules, phy/wheatstone-bridge]
   - { n: 4, title: Moving Charges and Magnetism, pdf: leph104 }
   - { n: 5, title: Magnetism and Matter, pdf: leph105 }
   - { n: 6, title: Electromagnetic Induction, pdf: leph106 }

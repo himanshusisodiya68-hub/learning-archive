@@ -260,3 +260,35 @@
 
     Check: $6\times90/100 = 5.40$ V and $6\times190/200 = 5.70$ V. Lesson: no real voltmeter reads the EMF exactly, but two readings with different meters let you extrapolate to an infinite-resistance meter.
   check: code
+
+- id: ncert12-ex-3-1
+  lvl: ncert-ex
+  num: "XII 3.1"
+  source: NCERT XII Physics · Ch 3 · Exercise 3.1
+  kind: num
+  q: The storage battery of a car has an emf of 12 V. If the internal resistance of the battery is 0.4 Ω, what is the maximum current that can be drawn from the battery?
+  ask: Maximum current
+  unit: A
+  ans: 30
+  tol: 0.01
+  verify: 12/0.4
+  sol: |
+    The current is largest when the external resistance is zero (a short circuit), so only the internal resistance limits it: $I_{max} = \varepsilon/r = 12/0.4 = 30$ A.
+  answer_key: 30 A
+  check: both
+
+- id: ncert12-ex-3-2
+  lvl: ncert-ex
+  num: "XII 3.2"
+  source: NCERT XII Physics · Ch 3 · Exercise 3.2
+  kind: num
+  q: A battery of emf 10 V and internal resistance 3 Ω is connected to a resistor. If the current in the circuit is 0.5 A, what is the resistance of the resistor? What is the terminal voltage of the battery when the circuit is closed?
+  ask: Resistance of the resistor
+  unit: Ω
+  ans: 17
+  tol: 0.01
+  verify: 10/0.5-3
+  sol: |
+    $I = \dfrac{\varepsilon}{R + r}$, so $R + r = 10/0.5 = 20\ \Omega$ and $R = 20 - 3 = 17\ \Omega$. The terminal voltage is $V = \varepsilon - Ir = 10 - 0.5\times3 = 8.5$ V (equal to $IR = 0.5\times17 = 8.5$ V).
+  answer_key: 17 Ω, 8.5 V
+  check: both

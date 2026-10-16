@@ -1,0 +1,163 @@
+# Kirchhoff's rules. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 3, §3.12 and Exercises. Figure details in [brackets] were read from the printed figures and added by the archive. Found, board, main problems are original.
+
+- id: ncert12-eg-3-5
+  lvl: ncert-intext
+  num: "XII Ex 3.5"
+  source: NCERT XII Physics · Ch 3 · Example 3.5
+  kind: num
+  q: A battery of 10 V and negligible internal resistance is connected across the diagonally opposite corners of a cubical network consisting of 12 resistors each of resistance 1 Ω (Fig. 3.16). Determine the equivalent resistance of the network and the current along each edge of the cube.
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 0.8333
+  tol: 0.001
+  verify: 10/(3*(2*10/(5*1)))
+  sol: |
+    The network cannot be reduced by series and parallel rules, but it has symmetry. Let the battery be across the opposite corners A and C′ (Fig. 3.16). The three edges leaving A are symmetric, so each carries the same current $I$. At each of the next corners the current $I$ splits equally into two edges, each carrying $I/2$. The six middle edges therefore carry $I/2$ each, and by the junction rule the three edges into the far corner carry $I$ each, so the total current is $3I$.
+
+    The loop rule on a loop such as ABCC′EA, which crosses one edge with $I$, one with $I/2$ and one with $I$, gives $-IR - \tfrac12 IR - IR + \varepsilon = 0$, so $\varepsilon = \tfrac52 IR$.
+
+    $$R_{eq} = \frac{\varepsilon}{3I} = \frac{5}{6}R = \frac56\ \Omega = 0.83\ \Omega.$$
+
+    With $\varepsilon = 10$ V the total current is $3I = 10/(5/6) = 12$ A, so $I = 4$ A in each of the three edges leaving A and the three entering the far corner, and $I/2 = 2$ A in each of the six middle edges.
+  check: code
+
+- id: ncert12-eg-3-6
+  lvl: ncert-intext
+  num: "XII Ex 3.6"
+  source: NCERT XII Physics · Ch 3 · Example 3.6
+  kind: num
+  q: |
+    Determine the current in each branch of the network shown in Fig. 3.17. [Fig. 3.17 as printed: branches AB 4 Ω, BC 2 Ω, AD 4 Ω, CD 2 Ω; branch CA has a 10 V cell in series with 1 Ω; branch DB has a 5 V cell.]
+  ask: Current in branch AB
+  unit: A
+  ans: 0.625
+  tol: 0.001
+  verify: (()=>{const d=a=>a[0][0]*(a[1][1]*a[2][2]-a[1][2]*a[2][1])-a[0][1]*(a[1][0]*a[2][2]-a[1][2]*a[2][0])+a[0][2]*(a[1][0]*a[2][1]-a[1][1]*a[2][0]);return d([[7,10,-2],[1,10,2],[2,-5,-4]])/d([[7,-6,-2],[1,6,2],[2,-4,-4]])})()
+  sol: |
+    Label the branch currents so that the junction rule is used at every junction first: $I_1$ in CA, $I_2$ in AB, $I_1 - I_2$ in AD, $I_3$ in DB, $I_2+I_3$ in BC and $I_2+I_3-I_1$ in CD. Three unknowns remain, so three loop equations are needed.
+
+    Loop ADCA: $10 - 4(I_1 - I_2) + 2(I_2 + I_3 - I_1) - I_1 = 0$, i.e. $7I_1 - 6I_2 - 2I_3 = 10$.
+
+    Loop ABCA: $10 - 4I_2 - 2(I_2 + I_3) - I_1 = 0$, i.e. $I_1 + 6I_2 + 2I_3 = 10$.
+
+    Loop BCDEB: $5 - 2(I_2 + I_3) - 2(I_2 + I_3 - I_1) = 0$, i.e. $2I_1 - 4I_2 - 4I_3 = -5$.
+
+    Solving: $I_1 = 2.5$ A, $I_2 = 5/8$ A, $I_3 = 15/8$ A. So AB $= 5/8$ A, CA $= 2\tfrac12$ A, DEB $= 1\tfrac78$ A, AD $= 1\tfrac78$ A, CD $= 0$ A, BC $= 2\tfrac12$ A.
+
+    Check with another loop, BADEB: $5 + \tfrac58\cdot4 - \tfrac{15}{8}\cdot4 = 5 + 2.5 - 7.5 = 0$ ✓.
+  check: code
+
+- id: ncert12-ex-3-7
+  lvl: ncert-ex
+  num: "XII 3.7"
+  source: NCERT XII Physics · Ch 3 · Exercise 3.7
+  kind: num
+  q: "Determine the current in each branch of the network shown in Fig. 3.20: [Fig. 3.20 as printed: AB 10 Ω, BC 5 Ω, BD 5 Ω, AD 5 Ω, DC 10 Ω; between C and A the outer branch holds a 10 Ω resistor in series with a 10 V battery.]"
+  ask: Current in branch AB
+  unit: A
+  ans: 0.2353
+  tol: 0.0005
+  verify: (x=>(x[0]-x[1])/10)(((A,b)=>{const n=b.length;for(let i=0;i<n;i++){let p=i;for(let r=i+1;r<n;r++)if(Math.abs(A[r][i])>Math.abs(A[p][i]))p=r;[A[i],A[p]]=[A[p],A[i]];[b[i],b[p]]=[b[p],b[i]];for(let r=i+1;r<n;r++){const f=A[r][i]/A[i][i];for(let c=i;c<n;c++)A[r][c]-=f*A[i][c];b[r]-=f*b[i]}}const x=Array(n).fill(0);for(let i=n-1;i>=0;i--){let s=b[i];for(let c=i+1;c<n;c++)s-=A[i][c]*x[c];x[i]=s/A[i][i]}return x})([[0.1,-0.5,0.2,0],[0.2,0.2,-0.5,0],[1,0,0,10],[-0.3,0.1,0.2,1]],[0,0,10,0]))
+  sol: |
+    Let the total current leaving the battery be $I$. It flows C → battery leg → A, then through the network from A to C. Take $V_C = 0$, so $V_A = 10 - 10I$ (the 10 V emf less the drop across the 10 Ω resistor).
+
+    Node B: $\dfrac{V_A - V_B}{10} = \dfrac{V_B}{5} + \dfrac{V_B - V_D}{5}$. Node D: $\dfrac{V_A - V_D}{5} + \dfrac{V_B - V_D}{5} = \dfrac{V_D}{10}$. Also $I = \dfrac{V_A - V_B}{10} + \dfrac{V_A - V_D}{5}$. (These are the junction rule written in terms of potentials; the loop rule is built in.)
+
+    Solving: $I = 10/17$ A, and the branch currents are AB $= 4/17$ A, BC $= 6/17$ A, AD $= 6/17$ A, DC $= 4/17$ A (from D to C), BD $= 2/17$ A from D to B.
+
+    The answer key writes CD $= -4/17$ A and BD $= -2/17$ A; the minus signs only mean that these currents flow opposite to the direction CD and BD, i.e. D to C and D to B, as found here. Check, junction B: in $4/17$ from A, out $6/17$ to C, so $2/17$ must come in from D ✓.
+
+    [Inference] I read the resistor values and battery position from the printed figure; they reproduce the answer key exactly.
+  answer_key: "Current in branch AB = (4/17) A, in BC = (6/17) A, in CD = (–4/17) A, in AD = (6/17) A, in BD = (–2/17) A, total current = (10/17) A."
+  check: both
+
+- id: ncert12-ex-3-8
+  lvl: ncert-ex
+  num: "XII 3.8"
+  source: NCERT XII Physics · Ch 3 · Exercise 3.8
+  kind: num
+  q: A storage battery of emf 8.0 V and internal resistance 0.5 Ω is being charged by a 120 V dc supply using a series resistor of 15.5 Ω. What is the terminal voltage of the battery during charging? What is the purpose of having a series resistor in the charging circuit?
+  ask: Terminal voltage during charging
+  unit: V
+  ans: 11.5
+  tol: 0.01
+  verify: 8+(120-8)/(15.5+0.5)*0.5
+  sol: |
+    In the loop, the 120 V supply drives the current against the battery's emf: $I = \dfrac{120 - 8}{15.5 + 0.5} = 7.0$ A. During charging, the current enters the positive terminal, so the terminal voltage is $V = \varepsilon + Ir = 8.0 + 7.0\times0.5 = 11.5$ V (Eq. 3.60 of the chapter, with the current going through the cell from P to N).
+
+    **Purpose of the series resistor:** it limits the charging current. Without it the current would be $(120-8)/0.5 = 224$ A, which is dangerously large.
+  answer_key: 11.5 V; the series resistor limits the current drawn from the external source. In its absence, the current will be dangerously high.
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Kirchhoff's junction rule is a statement of conservation of
+  opts: ["energy", "charge", "momentum", "mass"]
+  ans: 1
+  sol: In a steady current, charge cannot pile up at a junction, so the current entering equals the current leaving. This is conservation of charge. (The loop rule expresses conservation of energy.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: At a junction, currents of 3 A and 2 A flow in, and one current of 4 A flows out. What is the fourth current, taken as flowing out? (Original problem.)
+  ask: Fourth current (out)
+  unit: A
+  ans: 1
+  tol: 0.01
+  verify: 3+2-4
+  sol: Current in = current out, so $3 + 2 = 4 + I$ and $I = 1$ A out of the junction.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Two cells are connected in series, with their polarities opposing, across a 4 Ω resistor. Their emfs are 12 V and 6 V and each has internal resistance 1 Ω. Find the current. (Original problem.)
+  ask: Current
+  unit: A
+  ans: 1
+  tol: 0.01
+  verify: (12-6)/(1+1+4)
+  sol: |
+    The net emf is $12 - 6 = 6$ V, and the total resistance is $1 + 1 + 4 = 6\ \Omega$, so $I = 6/6 = 1$ A. Loop rule, going round with the current: $+12 - 1\cdot I - 6 - 1\cdot I - 4I = 0$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A 12 V storage battery of internal resistance 0.2 Ω is to be charged from a 15 V supply with a current of 5 A. What series resistance is needed? (Original problem.)
+  ask: Series resistance
+  unit: Ω
+  ans: 0.4
+  tol: 0.005
+  verify: (15-12)/5-0.2
+  sol: |
+    Loop rule: $15 - 12 - I(R + 0.2) = 0$, so $R + 0.2 = 3/5 = 0.6$ and $R = 0.4\ \Omega$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two cells, 12 V with internal resistance 1 Ω and 10 V with internal resistance 2 Ω, are connected in parallel (like poles together) across a 5 Ω resistor. Find the potential difference across the 5 Ω resistor. (Original problem.)
+  ask: Potential difference
+  unit: V
+  ans: 10
+  tol: 0.01
+  verify: (12/1+10/2)/(1/1+1/2+1/5)
+  sol: |
+    Let the common node potential be $V$ (the other node at 0). Current into the node from each cell: $(12 - V)/1$ and $(10 - V)/2$. Out through the resistor: $V/5$. Junction rule: $(12 - V) + (10 - V)/2 = V/5$, so $17 = 1.7V$ and $V = 10$ V. The 10 V cell then supplies no current ($(10-10)/2 = 0$).
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A 9 V cell of internal resistance 1 Ω feeds two parallel branches. One branch is a 4 Ω resistor. The other is a 2 Ω resistor in series with a 3 V cell whose emf opposes the current from the 9 V cell. Find the current in the second branch. (Original problem.)
+  ask: Current in the second branch
+  unit: A
+  ans: 1.5
+  tol: 0.01
+  verify: ((9/1+3/2)/(1/1+1/4+1/2)-3)/2
+  sol: |
+    Let the potential of the branch point be $V$ relative to the common return. The 9 V cell gives $(9 - V)/1$ into the junction. Branch 1 takes $V/4$, branch 2 takes $(V - 3)/2$. Junction rule: $9 - V = V/4 + (V-3)/2$, so $10.5 = 1.75V$ and $V = 6$ V. The second branch carries $(6-3)/2 = 1.5$ A.
+  check: code

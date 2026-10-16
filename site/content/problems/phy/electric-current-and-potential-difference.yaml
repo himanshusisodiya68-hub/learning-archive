@@ -280,3 +280,69 @@
     $$S = \frac{EB}{\mu_0} = \frac{V}{L}\cdot\frac{I}{2\pi a}.$$
     The power entering through the curved area $2\pi aL$ is $S\cdot2\pi aL = VI$. The end faces contribute nothing, since $\vec E\times\vec B$ has no axial part there from the axial $\vec E$. This equals the Joule heating $VI$, so in steady state all the dissipated energy enters through the sides from the surrounding field.
   check: none
+
+- id: ncert12-eg-3-1
+  lvl: ncert-intext
+  num: "XII Ex 3.1"
+  source: NCERT XII Physics · Ch 3 · Example 3.1
+  kind: num
+  q: (a) Estimate the average drift speed of conduction electrons in a copper wire of cross-sectional area 1.0 × 10⁻⁷ m² carrying a current of 1.5 A. Assume that each copper atom contributes roughly one conduction electron. The density of copper is 9.0 × 10³ kg/m³, and its atomic mass is 63.5 u. (b) Compare the drift speed obtained above with, (i) thermal speeds of copper atoms at ordinary temperatures, (ii) speed of propagation of electric field along the conductor which causes the drift motion.
+  ask: Drift speed, part (a)
+  unit: m/s
+  ans: 1.1e-3
+  tol: 1e-5
+  verify: 1.5/(8.5e28*1.6e-19*1.0e-7)
+  sol: |
+    (a) Electrons drift opposite to the field, towards higher potential. From $I = nevA$, $v_d = I/(neA)$. The electron density equals the number of atoms per cubic metre (one conduction electron per atom): a cubic metre has mass $9.0\times10^{3}$ kg $=9.0\times10^{6}$ g, and $6.0\times10^{23}$ atoms have mass 63.5 g, so
+
+    $$n = \frac{6.0\times10^{23}}{63.5}\times9.0\times10^{6} = 8.5\times10^{28}\ \text{m}^{-3}.$$
+
+    $$v_d = \frac{1.5}{8.5\times10^{28}\times1.6\times10^{-19}\times1.0\times10^{-7}} = 1.1\times10^{-3}\ \text{m s}^{-1} = 1.1\ \text{mm s}^{-1}.$$
+
+    (b)(i) The thermal speed from $\tfrac12 Mv^2 = \tfrac32 k_BT$ is of order $\sqrt{k_BT/M}\approx2\times10^{2}$ m/s for copper at 300 K. The drift speed is about $10^{-5}$ times this.
+
+    (ii) The electric field travels along the conductor at about the speed of an electromagnetic wave, $3.0\times10^{8}$ m s⁻¹, so the drift speed is smaller by a factor of about $10^{-11}$.
+  check: code
+
+- id: ncert12-eg-3-2
+  lvl: ncert-intext
+  num: "XII Ex 3.2"
+  source: NCERT XII Physics · Ch 3 · Example 3.2
+  kind: text
+  q: |-
+    (a) In Example 3.1, the electron drift speed is estimated to be only a few mm s⁻¹ for currents in the range of a few amperes? How then is current established almost the instant a circuit is closed?
+    (b) The electron drift arises due to the force experienced by electrons in the electric field inside the conductor. But force should cause acceleration. Why then do the electrons acquire a steady average drift speed?
+    (c) If the electron drift speed is so small, and the electron's charge is small, how can we still obtain large amounts of current in a conductor?
+    (d) When electrons drift in a metal from lower to higher potential, does it mean that all the 'free' electrons of the metal are moving in the same direction?
+    (e) Are the paths of electrons straight lines between successive collisions (with the positive ions of the metal) in the (i) absence of electric field, (ii) presence of electric field?
+  sol: |
+    (a) The electric field is established throughout the circuit almost instantly (at about the speed of light), causing a local electron drift at every point. Current does not have to wait for electrons to travel from one end of the conductor to the other. It does take a little while for the current to reach its steady value.
+
+    (b) Each free electron accelerates, increasing its drift speed until it collides with a positive ion of the metal. It loses its drift speed in the collision, then starts to accelerate again, and so on. On average, therefore, electrons acquire only a steady drift speed.
+
+    (c) Because the electron number density is enormous, about $10^{29}\ \text{m}^{-3}$.
+
+    (d) By no means. The drift velocity is superposed on the large random velocities of the electrons.
+
+    (e) (i) In the absence of an electric field the paths are straight lines between collisions. (ii) In the presence of a field the paths are, in general, curved.
+  check: none
+
+- id: ncert12-ex-3-9
+  lvl: ncert-ex
+  num: "XII 3.9"
+  source: NCERT XII Physics · Ch 3 · Exercise 3.9
+  kind: num
+  q: The number density of free electrons in a copper conductor estimated in Example 3.1 is 8.5 × 10²⁸ m⁻³. How long does an electron take to drift from one end of a wire 3.0 m long to its other end? The area of cross-section of the wire is 2.0 × 10⁻⁶ m² and it is carrying a current of 3.0 A.
+  ask: Time to drift along the wire
+  unit: s
+  ans: 2.72e4
+  tol: 100
+  verify: 3.0/(3.0/(8.5e28*1.6e-19*2.0e-6))
+  sol: |
+    The drift speed is $v_d = I/(neA) = \dfrac{3.0}{8.5\times10^{28}\times1.6\times10^{-19}\times2.0\times10^{-6}} = 1.1\times10^{-4}$ m s⁻¹. The time to cover $l = 3.0$ m is
+
+    $$t = \frac{l}{v_d} = \frac{3.0}{1.1\times10^{-4}} = 2.7\times10^{4}\ \text{s} \approx 7.5\ \text{h}.$$
+
+    Exactly, $3.0\times n e A/I = 27\,200$ s; the key's $2.7\times10^{4}$ s is this value rounded to two figures.
+  answer_key: 2.7 × 10⁴ s (7.5 h)
+  check: both
