@@ -1,0 +1,944 @@
+# Knowledge tree: subject > pillar > branch > leaf. A leaf with a lesson file in content/lessons/<subject>/<leaf-id>.md is live.
+subjects:
+  - id: phy
+    name: Physics
+    what: >-
+      Physics asks what the world is made of and what rules govern how it changes. It strips a situation down to a few
+      measurable quantities (position, time, mass, charge, energy) and looks for laws that connect them. Those laws are
+      few, and they hold everywhere: the rule that drops an apple also keeps the Moon in orbit.
+
+
+      Chemistry, engineering, electronics and computing all sit on top of these laws, which is why physics is the
+      deepest base for everything you want to build later.
+    split: The pillars are grouped by what is changing and on what scale.
+    links: >-
+      <b>How the pillars connect.</b> Energy conservation runs through every pillar. Mechanics supplies force, momentum
+      and energy, which every later pillar reuses. Waves link mechanics to optics and to quantum physics.
+      Electromagnetism unifies electricity, magnetism and light. Thermal physics is mechanics applied to enormous
+      numbers of particles.
+    pillars:
+      - id: mechanics
+        name: Mechanics
+        tag: How things move and why. Every other pillar reuses its ideas.
+        what: >-
+          Mechanics studies motion. It starts from three measured quantities, length, time and mass, and asks two
+          questions: how do we describe a motion, and what causes it to change? Newton answered the second with three
+          laws and a law of gravitation, and with them explained falling bodies, projectiles and planetary orbits by one
+          set of rules.
+
+
+          Mechanics comes first because its concepts (force, momentum, energy) reappear in every other pillar.
+        split: First describe motion, then explain it, then find shortcuts, then extend to real bodies and specific forces.
+        branches:
+          - id: kinematics
+            name: Kinematics
+            tag: 'Describing motion: where, when, how fast. No causes yet.'
+            what: >-
+              Kinematics answers “where is it, and when?” without asking why. Choose an origin, a set of axes and a
+              clock, and a motion becomes a function: position as a function of time, x(t). Velocity is how fast
+              position changes (dx/dt) and acceleration is how fast velocity changes (dv/dt).
+
+
+              Because these are rates, calculus is the natural language: the Class 9 equations of motion are exactly
+              what you get by integrating a constant acceleration. In two or three dimensions every quantity becomes a
+              vector, and each axis can be handled separately. That is why a projectile splits into steady horizontal
+              motion and accelerated vertical motion.
+            leaves:
+              - id: distance-and-displacement
+                name: Distance and displacement
+                from: C9
+              - id: speed-velocity-acceleration
+                name: Speed, velocity, acceleration
+                from: C9
+              - id: equations-of-motion
+                name: Equations of motion
+                from: C9
+              - id: motion-graphs
+                name: Motion graphs
+                from: C9
+              - id: vectors-in-motion
+                name: Vectors in motion
+                from: C11
+              - id: projectile-motion
+                name: Projectile motion
+                from: C11
+              - id: relative-motion
+                name: Relative motion
+                from: JEE
+              - id: circular-motion
+                name: Circular motion
+                from: C11
+          - id: newtons-laws
+            name: Newton's laws
+            tag: 'Why motion changes: force, mass and momentum.'
+            what: >-
+              Dynamics explains why motion changes. The first law says that with no net force, velocity stays constant;
+              it defines the inertial frames in which the other laws hold. The second law, F = dp/dt, says force is what
+              changes momentum, and mass measures how hard that change is. The third law says forces come in equal and
+              opposite pairs acting on different bodies, which leads to conservation of momentum.
+
+
+              Almost every mechanics problem follows one recipe: isolate a body, draw every force acting on it, apply F
+              = ma along chosen axes, and add equations for any constraints linking the bodies.
+            leaves:
+              - id: inertia-and-the-first-law
+                name: Inertia and the first law
+                from: C9
+              - id: momentum-and-the-second-law
+                name: Momentum and the second law
+                from: C9
+              - id: third-law
+                name: Third law
+                from: C9
+              - id: free-body-diagrams
+                name: Free-body diagrams
+                from: C11
+              - id: friction
+                name: Friction
+                from: C11
+              - id: constraint-relations
+                name: Constraint relations
+                from: JEE
+              - id: pseudo-forces
+                name: Pseudo forces
+                from: JEE
+          - id: work-energy-and-power
+            name: Work, energy and power
+            tag: 'A shortcut: follow one conserved number instead of every force.'
+            what: >-
+              Following forces moment by moment is hard. Energy offers a shortcut: one number that is conserved. Work, W
+              = ∫F·dr, is energy transferred by a force. The work–energy theorem says the net work equals the change in
+              kinetic energy. For conservative forces such as gravity and springs, that work can be stored as potential
+              energy, so kinetic plus potential energy stays constant. Power is the rate of transfer.
+
+
+              Energy ignores direction and timing, so it is fastest when you only need a speed or a height.
+            leaves:
+              - id: work-done-by-a-force
+                name: Work done by a force
+                from: C9
+              - id: kinetic-and-potential-energy
+                name: Kinetic and potential energy
+                from: C9
+              - id: work-energy-theorem
+                name: Work–energy theorem
+                from: C11
+              - id: conservative-forces
+                name: Conservative forces
+                from: C11
+              - id: power
+                name: Power
+                from: C9
+          - id: rotation
+            name: Rotation
+            tag: 'Bodies with size: spinning as well as moving.'
+            what: >-
+              Real bodies have size, so they can spin as well as travel. Treat a rigid body as many particles held at
+              fixed distances. Its centre of mass moves as if all the mass and all the external force were concentrated
+              there. About that point, rotation follows copies of Newton's laws: torque plays the role of force, moment
+              of inertia the role of mass, and angular momentum the role of momentum. Rolling combines the two motions
+              through the constraint v = ωR.
+            leaves:
+              - id: centre-of-mass
+                name: Centre of mass
+                from: C11
+              - id: collisions
+                name: Collisions
+                from: C11
+              - id: torque
+                name: Torque
+                from: C11
+              - id: moment-of-inertia
+                name: Moment of inertia
+                from: C11
+              - id: rolling-motion
+                name: Rolling motion
+                from: JEE
+              - id: angular-momentum
+                name: Angular momentum
+                from: C11
+          - id: gravitation
+            name: Gravitation
+            tag: One force, important enough for its own branch.
+            what: >-
+              Newton's law of gravitation says every pair of masses attracts with F = Gm₁m₂/r². The same law explains
+              falling objects, tides and orbits. From it follow g and how it changes with height and depth, Kepler's
+              laws, and orbital and escape speeds. It is also your first field: a mass changes the space around it, and
+              other masses respond to that field.
+            leaves:
+              - id: universal-law-of-gravitation
+                name: Universal law of gravitation
+                from: C9
+              - id: variation-of-g
+                name: Variation of g
+                from: C11
+              - id: keplers-laws
+                name: Kepler's laws
+                from: C11
+              - id: orbits-and-escape-speed
+                name: Orbits and escape speed
+                from: C11
+          - id: properties-of-matter
+            name: Properties of matter
+            tag: Real materials stretch, flow and float.
+            what: >-
+              So far bodies were rigid or point-like. Real matter deforms and flows. Solids resist deformation
+              (elasticity). Fluids cannot resist sliding forces, so they flow. Pressure and buoyancy come from the
+              weight of fluid above a point. Bernoulli's principle is energy conservation for a moving fluid. Viscosity
+              is internal friction, and surface tension comes from the extra energy of molecules at a surface.
+            leaves:
+              - id: pressure-and-buoyancy
+                name: Pressure and buoyancy
+                from: C9
+              - id: elasticity
+                name: Elasticity
+                from: C11
+              - id: bernoullis-principle
+                name: Bernoulli's principle
+                from: C11
+              - id: viscosity
+                name: Viscosity
+                from: C11
+              - id: surface-tension
+                name: Surface tension
+                from: C11
+      - id: oscillations-and-waves
+        name: Oscillations and waves
+        tag: Motion that repeats in time and travels through space.
+        what: >-
+          Push most systems away from equilibrium and they are pulled back, overshoot and repeat: an oscillation. When
+          neighbouring parts of a medium pass that oscillation along, you get a wave, which carries energy without
+          carrying matter.
+
+
+          One mathematical shape, the sine curve, describes springs, pendulums, sound, light and even quantum particles.
+          That is why this pillar links mechanics to optics and to modern physics.
+        split: First the oscillation of a single system, then the wave that spreads it through a medium.
+        branches:
+          - id: simple-harmonic-motion
+            name: Simple harmonic motion
+            tag: 'The basic oscillation: restoring force proportional to displacement.'
+            what: >-
+              If the restoring force is proportional to the displacement, F = −kx, the motion is a pure sine curve, x =
+              A sin(ωt + φ), with ω = √(k/m) independent of the amplitude. Almost any system near a stable equilibrium
+              behaves like this for small displacements, so SHM is the first approximation for everything that vibrates.
+              Friction adds damping; a periodic push adds forced oscillation and resonance.
+            leaves:
+              - id: periodic-motion
+                name: Periodic motion
+                from: C11
+              - id: shm-equation
+                name: SHM equation
+                from: C11
+              - id: springs-and-pendulums
+                name: Springs and pendulums
+                from: C11
+              - id: damped-and-forced-oscillations
+                name: Damped and forced oscillations
+                from: JEE
+          - id: waves-and-sound
+            name: Waves and sound
+            tag: Oscillations passed along a medium.
+            what: >-
+              A wave is a disturbance that travels: y(x, t) = A sin(kx − ωt). Its speed v = fλ is set by the medium, for
+              example tension and density for a string. Sound is a longitudinal pressure wave. Overlapping waves add
+              (superposition), which gives standing waves in strings and pipes, beats, and the Doppler shift when the
+              source or listener moves.
+            leaves:
+              - id: sound-as-a-wave
+                name: Sound as a wave
+                from: C9
+              - id: speed-of-sound
+                name: Speed of sound
+                from: C9
+              - id: wave-equation
+                name: Wave equation
+                from: C11
+              - id: standing-waves
+                name: Standing waves
+                from: C11
+              - id: beats
+                name: Beats
+                from: C11
+              - id: doppler-effect
+                name: Doppler effect
+                from: C11
+      - id: thermal-physics
+        name: Thermal physics
+        tag: 'Huge numbers of particles: heat, temperature, entropy.'
+        what: >-
+          A glass of water holds about 10²⁵ molecules, far too many to track one by one. Thermal physics replaces
+          individual motion with averages. Temperature measures the average kinetic energy per molecule. Heat is energy
+          that flows because of a temperature difference. Entropy counts how many microscopic arrangements match what we
+          observe.
+
+
+          The laws of thermodynamics then say what is possible and what is not, from engines to refrigerators.
+        split: First measure heat and temperature, then find the laws that limit what heat can do.
+        branches:
+          - id: heat-and-temperature
+            name: Heat and temperature
+            tag: Measuring heat and how it moves.
+            what: >-
+              Temperature is what a thermometer reads and what becomes equal when two bodies are left in contact. Heat
+              is energy flowing because of a temperature difference. Calorimetry tracks that energy (Q = mcΔT, plus
+              latent heat for changes of state). Expansion shows how matter responds to heating. Conduction, convection
+              and radiation are the three routes heat takes.
+            leaves:
+              - id: temperature-and-heat
+                name: Temperature and heat
+                from: C7
+              - id: calorimetry
+                name: Calorimetry
+                from: C11
+              - id: thermal-expansion
+                name: Thermal expansion
+                from: C11
+              - id: conduction-convection-radiation
+                name: Conduction, convection, radiation
+                from: C7
+          - id: thermodynamics
+            name: Thermodynamics
+            tag: The laws that limit what heat can do.
+            what: >-
+              Kinetic theory links pressure and temperature to molecular motion (pV = NkT). The first law is energy
+              conservation including heat: ΔU = Q − W. The second law says heat flows on its own only from hot to cold;
+              equivalently, the entropy of an isolated system never decreases. It sets the maximum efficiency any engine
+              can reach.
+            leaves:
+              - id: kinetic-theory-of-gases
+                name: Kinetic theory of gases
+                from: C11
+              - id: first-law
+                name: First law
+                from: C11
+              - id: second-law-and-entropy
+                name: Second law and entropy
+                from: C11
+              - id: heat-engines
+                name: Heat engines
+                from: C11
+      - id: electricity-and-magnetism
+        name: Electricity and magnetism
+        tag: The force between charges, and its unification with light.
+        what: >-
+          Matter carries electric charge, and charges push and pull each other. Charges at rest produce electric fields.
+          Moving charges, or currents, also produce magnetic fields. A changing magnetic field produces an electric
+          field, and a changing electric field produces a magnetic one.
+
+
+          Maxwell wrote all of this in four equations, whose solutions include a wave travelling at the speed of light:
+          light is electromagnetic. This force holds atoms together and drives nearly all technology, including the
+          instruments of your engineering branch.
+        split: >-
+          Charges at rest, then charges in motion, then the magnetic forces they produce, then fields that change in
+          time.
+        branches:
+          - id: electrostatics
+            name: Electrostatics
+            tag: Charges at rest and the fields they make.
+            what: >-
+              Coulomb's law gives the force between two point charges. The field E describes the force per unit charge
+              everywhere in space. Gauss's law relates the field to the charge enclosed and makes symmetric problems
+              easy. Potential V is energy per unit charge, a single number at each point that is often simpler to work
+              with than the field. Capacitors store energy in the field between conductors.
+            leaves:
+              - id: electric-charge
+                name: Electric charge
+                from: C8
+              - id: coulombs-law
+                name: Coulomb's law
+                from: C12
+              - id: electric-field
+                name: Electric field
+                from: C12
+              - id: gausss-law
+                name: Gauss's law
+                from: C12
+              - id: potential
+                name: Potential
+                from: C12
+              - id: capacitors
+                name: Capacitors
+                from: C12
+          - id: current-electricity
+            name: Current electricity
+            tag: Charges flowing through circuits.
+            what: >-
+              A battery keeps a potential difference across a circuit. Current is the rate at which charge flows, and
+              resistance relates the two: V = IR for ohmic materials. Every circuit is solved with two conservation
+              laws: charge (Kirchhoff's junction rule) and energy (the loop rule). Power dissipated is VI = I²R.
+            leaves:
+              - id: ohms-law
+                name: Ohm's law
+                from: C10
+              - id: resistors-in-series-and-parallel
+                name: Resistors in series and parallel
+                from: C10
+              - id: heating-effect-and-power
+                name: Heating effect and power
+                from: C10
+              - id: kirchhoffs-rules
+                name: Kirchhoff's rules
+                from: C12
+              - id: wheatstone-bridge
+                name: Wheatstone bridge
+                from: C12
+          - id: magnetism
+            name: Magnetism
+            tag: Forces on and from moving charges.
+            what: >-
+              Moving charges create and feel magnetic forces. A current produces a magnetic field (Biot–Savart and
+              Ampère's laws). A charge moving through a field feels F = qv × B, always perpendicular to its motion, so
+              the field bends its path without changing its speed. Motors, meters and the steering of electron beams all
+              come from this force.
+            leaves:
+              - id: field-lines-and-compasses
+                name: Field lines and compasses
+                from: C10
+              - id: force-on-a-current
+                name: Force on a current
+                from: C10
+              - id: biot-savart-law
+                name: Biot–Savart law
+                from: C12
+              - id: amp-res-law
+                name: Ampère's law
+                from: C12
+          - id: induction-and-ac
+            name: Induction and AC
+            tag: Changing fields create currents.
+            what: >-
+              A changing magnetic flux induces an EMF (Faraday's law), in the direction that opposes the change (Lenz's
+              law). This runs generators and transformers and leads to alternating current, inductance, LCR circuits and
+              resonance. Maxwell completed the picture: a changing electric field makes a magnetic field, and together
+              they form electromagnetic waves.
+            leaves:
+              - id: electromagnetic-induction
+                name: Electromagnetic induction
+                from: C12
+              - id: lenzs-law
+                name: Lenz's law
+                from: C12
+              - id: alternating-current
+                name: Alternating current
+                from: C12
+              - id: electromagnetic-waves
+                name: Electromagnetic waves
+                from: C12
+      - id: optics
+        name: Optics
+        tag: 'Light: how it travels, bends and interferes.'
+        what: >-
+          Optics studies light. When the objects and openings involved are much larger than its wavelength (about half a
+          micrometre), light can be treated as rays that travel in straight lines. That is ray optics, which explains
+          mirrors, lenses and instruments with geometry.
+
+
+          When features approach the wavelength, light's wave nature appears as interference, diffraction and
+          polarisation. That is wave optics. Ray optics is the short-wavelength limit of wave optics, and both follow
+          from light being an electromagnetic wave.
+        split: The large-scale approximation first, then the wave behaviour behind it.
+        branches:
+          - id: ray-optics
+            name: Ray optics
+            tag: 'Light as straight rays: mirrors, lenses, instruments.'
+            what: >-
+              Three rules describe everything in this branch: light travels in straight lines in a uniform medium,
+              reflects with equal angles, and refracts according to Snell's law. Mirrors, lenses, prisms and optical
+              instruments are those rules plus geometry. Read the leaves in order: each one adds one rule or one device.
+
+
+              A deeper single principle, that light takes the path of stationary time (Fermat), produces all three
+              rules. You meet it at the Olympiad level of the refraction lesson.
+            leaves:
+              - id: rectilinear-propagation
+                name: Rectilinear propagation
+                from: C6
+              - id: laws-of-reflection
+                name: Laws of reflection
+                from: C7
+              - id: spherical-mirrors
+                name: Spherical mirrors
+                from: C10
+              - id: refraction-and-snells-law
+                name: Refraction and Snell's law
+                from: C10
+              - id: total-internal-reflection
+                name: Total internal reflection
+                from: C10
+              - id: lenses-and-the-lens-formula
+                name: Lenses and the lens formula
+                from: C10
+              - id: prism-and-dispersion
+                name: Prism and dispersion
+                from: C10
+              - id: optical-instruments
+                name: Optical instruments
+                from: C12
+          - id: wave-optics
+            name: Wave optics
+            tag: 'Light as a wave: interference, diffraction, polarisation.'
+            what: >-
+              Light is a wave, so overlapping beams add with their phases. Huygens' principle treats every point on a
+              wavefront as a source of new wavelets. From it come interference fringes (Young's experiment), diffraction
+              around edges and through slits, and polarisation, which shows that light's oscillation is transverse.
+            leaves:
+              - id: huygens-principle
+                name: Huygens' principle
+                from: C12
+              - id: interference-and-youngs-experiment
+                name: Interference and Young's experiment
+                from: C12
+              - id: diffraction
+                name: Diffraction
+                from: C12
+              - id: polarisation
+                name: Polarisation
+                from: C12
+              - id: thin-films
+                name: Thin films
+                from: OLY
+      - id: modern-physics
+        name: Modern physics
+        tag: What breaks for the very small and the very fast.
+        what: >-
+          Around 1900, experiments showed that classical physics fails for the very small and the very fast. Light
+          arrives in packets (photons). Electrons behave as waves. Atoms have discrete energy levels. Nuclei can split
+          or fuse. Measurements of space and time depend on the observer's motion. This pillar collects those
+          discoveries and the devices built on them.
+        split: Light and atoms first, then nuclei and solids, then relativity.
+        branches:
+          - id: quanta-and-atoms
+            name: Quanta and atoms
+            tag: Energy in packets; particles that act as waves.
+            what: >-
+              Energy comes in packets, E = hf. The photoelectric effect shows light's particle side, and de Broglie's λ
+              = h/p gives matter a wave side. Bohr's model explains the hydrogen spectrum by allowing only certain
+              orbits, a first step towards quantum mechanics.
+            leaves:
+              - id: photoelectric-effect
+                name: Photoelectric effect
+                from: C12
+              - id: matter-waves
+                name: Matter waves
+                from: C12
+              - id: bohr-model
+                name: Bohr model
+                from: C12
+          - id: nuclei-and-devices
+            name: Nuclei and devices
+            tag: The nucleus, radioactivity and semiconductors.
+            what: >-
+              Nuclei are held together by the strong force against electric repulsion. Mass defect and binding energy (E
+              = mc²) explain why fission and fusion release energy. Radioactive decay follows an exponential law.
+              Semiconductors use the band structure of solids to make diodes and transistors, the base of all
+              electronics.
+            leaves:
+              - id: radioactivity
+                name: Radioactivity
+                from: C12
+              - id: nuclear-energy
+                name: Nuclear energy
+                from: C12
+              - id: semiconductors-and-diodes
+                name: Semiconductors and diodes
+                from: C12
+          - id: beyond-the-syllabus
+            name: Beyond the syllabus
+            tag: Relativity, needed for Olympiad problems.
+            what: >-
+              Special relativity starts from one experimental fact: the speed of light is the same for every inertial
+              observer. Time dilation, length contraction and E = mc² follow from it with only algebra.
+            leaves:
+              - id: special-relativity
+                name: Special relativity
+                from: OLY
+      - id: tools-of-the-trade
+        name: Tools of the trade
+        tag: The mathematics and measurement every pillar uses.
+        what: >-
+          Every pillar uses the same toolkit: mathematics to state laws precisely, and measurement to test them. Learn
+          these tools once and every other branch becomes easier. Many links here lead into the Maths tree.
+        split: The mathematics first, then the craft of measuring.
+        branches:
+          - id: mathematical-methods
+            name: Mathematical methods
+            tag: Dimensions, vectors, calculus, approximations.
+            what: >-
+              Dimensional analysis checks any formula and can even predict one. Vectors handle quantities with
+              direction. Calculus handles rates and accumulation. Series approximations (sin θ ≈ θ, (1 + x)ⁿ ≈ 1 + nx)
+              make hard problems tractable. Differential equations express laws as rates of change.
+            leaves:
+              - id: units-and-dimensions
+                name: Units and dimensions
+                from: C11
+              - id: vectors
+                name: Vectors
+                from: C11
+              - id: calculus-for-physics
+                name: Calculus for physics
+                from: C11
+              - id: approximations-and-series
+                name: Approximations and series
+                from: OLY
+              - id: differential-equations
+                name: Differential equations
+                from: OLY
+          - id: experiments
+            name: Experiments
+            tag: How much to trust a measurement.
+            what: >-
+              Physics is settled by measurement. Every reading has an uncertainty. Significant figures and error
+              propagation say how far a result can be trusted, and graphs turn data into laws: a straight line reveals a
+              proportionality.
+            leaves:
+              - id: errors-and-significant-figures
+                name: Errors and significant figures
+                from: C11
+              - id: graph-plotting
+                name: Graph plotting
+                from: C9
+  - id: mat
+    name: Mathematics
+    what: >-
+      Mathematics studies patterns and structures that follow from precise definitions by pure logic: numbers, shapes,
+      change and chance. A statement is accepted only once it is proved from earlier ones, so mathematics builds upwards
+      like a tower, and nothing proved is ever lost.
+
+
+      It is the language physics is written in and the foundation of programming and AI: algorithms are mathematics, and
+      machine learning is mostly linear algebra, calculus and probability.
+    split: The pillars follow the kinds of object being studied.
+    links: >-
+      <b>How the pillars connect.</b> Number gives the raw material. Algebra lets you reason about numbers you do not
+      know yet. Coordinates turn geometry into algebra. Trigonometry links angles to lengths and to anything periodic.
+      Calculus studies change, and probability studies uncertainty, using everything before it.
+    pillars:
+      - id: number
+        name: Number
+        tag: What numbers are and how they divide.
+        what: >-
+          Counting gives the natural numbers. Each new kind of number fixes something the previous kind could not do:
+          integers allow subtraction, fractions allow division, and irrational numbers fill the gaps on the number line
+          (√2 is not a fraction). Divisibility, primes and factorisation reveal the hidden structure of the integers.
+        split: Calculating with numbers, then their structure.
+        branches:
+          - id: arithmetic
+            name: Arithmetic
+            tag: Calculating with every kind of number.
+            what: >-
+              The four operations, extended step by step from whole numbers to fractions, decimals and powers. Fluency
+              here makes everything above it faster.
+            leaves:
+              - id: integers
+                name: Integers
+                from: C6
+              - id: fractions-and-decimals
+                name: Fractions and decimals
+                from: C6
+              - id: exponents-and-powers
+                name: Exponents and powers
+                from: C7
+              - id: ratio-and-percentage
+                name: Ratio and percentage
+                from: C7
+          - id: divisibility
+            name: Divisibility
+            tag: Primes, factors and irrational numbers.
+            what: >-
+              Every integer factors uniquely into primes (the fundamental theorem of arithmetic). HCF and LCM come
+              straight from that factorisation, and so does the proof that √2 is irrational.
+            leaves:
+              - id: primes-and-factorisation
+                name: Primes and factorisation
+                from: C6
+              - id: hcf-and-lcm
+                name: HCF and LCM
+                from: C6
+              - id: fundamental-theorem-of-arithmetic
+                name: Fundamental theorem of arithmetic
+                from: C10
+              - id: irrational-numbers
+                name: Irrational numbers
+                from: C10
+      - id: algebra
+        name: Algebra
+        tag: Symbols for unknown or general quantities.
+        what: >-
+          Algebra replaces specific numbers with letters so that you can reason about all cases at once, or about a
+          number you do not know yet. Equations become puzzles solved by doing the same thing to both sides. Later,
+          algebra studies structures (complex numbers, matrices) that obey their own rules of combination.
+        split: Equations, then patterns and counting, then new number systems.
+        branches:
+          - id: equations
+            name: Equations
+            tag: 'Finding unknowns: linear, quadratic, polynomial.'
+            what: >-
+              From one unknown to two, from straight lines to quadratics and polynomials. Each step asks how many
+              solutions exist and how to find them.
+            leaves:
+              - id: expressions-and-identities
+                name: Expressions and identities
+                from: C8
+              - id: linear-equations
+                name: Linear equations
+                from: C8
+              - id: pair-of-linear-equations
+                name: Pair of linear equations
+                from: C10
+              - id: quadratic-equations
+                name: Quadratic equations
+                from: C10
+              - id: polynomials
+                name: Polynomials
+                from: C10
+          - id: sequences-and-counting
+            name: Sequences and counting
+            tag: Patterns in lists, and counting without listing.
+            what: >-
+              Progressions describe regular patterns. Permutations and combinations count arrangements without listing
+              them, and the binomial theorem connects counting to algebra.
+            leaves:
+              - id: arithmetic-progressions
+                name: Arithmetic progressions
+                from: C10
+              - id: geometric-progressions
+                name: Geometric progressions
+                from: C11
+              - id: permutations-and-combinations
+                name: Permutations and combinations
+                from: C11
+              - id: binomial-theorem
+                name: Binomial theorem
+                from: C11
+          - id: structures
+            name: Structures
+            tag: New number systems and tools for inequalities.
+            what: >-
+              Complex numbers solve every polynomial equation. Matrices handle many linear equations at once and are the
+              core of computer graphics and machine learning. Inequalities and functional equations are where Olympiad
+              algebra lives.
+            leaves:
+              - id: complex-numbers
+                name: Complex numbers
+                from: C11
+              - id: matrices-and-determinants
+                name: Matrices and determinants
+                from: C12
+              - id: inequalities-and-am-gm
+                name: Inequalities and AM–GM
+                from: OLY
+              - id: functional-equations
+                name: Functional equations
+                from: OLY
+      - id: geometry
+        name: Geometry
+        tag: Shape, size and position.
+        what: >-
+          Euclid started from a handful of axioms and proved everything else about lines, triangles and circles.
+          Descartes then attached coordinates to the plane, turning shapes into equations so that algebra can prove
+          geometric facts.
+        split: Proofs from axioms, then coordinates.
+        branches:
+          - id: euclidean
+            name: Euclidean
+            tag: Proofs about lines, triangles and circles.
+            what: >-
+              Congruence and similarity are the two engines of classical geometry. Circle theorems and, at Olympiad
+              level, cyclic quadrilaterals and power of a point build on them.
+            leaves:
+              - id: lines-and-angles
+                name: Lines and angles
+                from: C7
+              - id: congruent-triangles
+                name: Congruent triangles
+                from: C9
+              - id: similar-triangles
+                name: Similar triangles
+                from: C10
+              - id: circles-and-tangents
+                name: Circles and tangents
+                from: C10
+              - id: cyclic-quadrilaterals
+                name: Cyclic quadrilaterals
+                from: OLY
+          - id: coordinate
+            name: Coordinate
+            tag: Shapes written as equations.
+            what: >-
+              Distance and section formulas, straight lines, conic sections and three-dimensional geometry, all handled
+              with algebra and vectors.
+            leaves:
+              - id: distance-and-section-formula
+                name: Distance and section formula
+                from: C10
+              - id: straight-lines
+                name: Straight lines
+                from: C11
+              - id: conic-sections
+                name: Conic sections
+                from: C11
+              - id: 3d-geometry-and-vectors
+                name: 3D geometry and vectors
+                from: C12
+      - id: trigonometry
+        name: Trigonometry
+        tag: Angles linked to lengths, and to anything periodic.
+        what: >-
+          Trigonometry starts as the measurement of triangles: the ratios of sides depend only on the angles. Extended
+          to all angles, sine and cosine become functions that describe every periodic process, from waves to
+          alternating current.
+        split: Right triangles first, then trigonometric functions in general.
+        branches:
+          - id: foundations
+            name: Foundations
+            tag: Ratios, identities, heights and distances.
+            what: >-
+              Define the ratios in a right triangle, prove the identities that link them, and use them to measure what
+              you cannot reach.
+            leaves:
+              - id: trigonometric-ratios
+                name: Trigonometric ratios
+                from: C10
+              - id: identities
+                name: Identities
+                from: C10
+              - id: heights-and-distances
+                name: Heights and distances
+                from: C10
+          - id: further
+            name: Further
+            tag: Trigonometric functions for any angle.
+            what: Compound-angle formulas, inverse functions and equations, the tools JEE expects.
+            leaves:
+              - id: compound-angles
+                name: Compound angles
+                from: C11
+              - id: inverse-functions
+                name: Inverse functions
+                from: C12
+              - id: trigonometric-equations
+                name: Trigonometric equations
+                from: JEE
+      - id: calculus
+        name: Calculus
+        tag: Instantaneous change and accumulation.
+        what: >-
+          Calculus answers two questions: how fast is something changing at this instant (the derivative), and how much
+          has built up over time (the integral)? The fundamental theorem shows they are inverse operations. Physics,
+          engineering and optimisation in machine learning all rest on it.
+        split: Rates of change first, then accumulation.
+        branches:
+          - id: differential
+            name: Differential
+            tag: Limits, derivatives and their uses.
+            what: The limit makes "instantaneous" precise. Derivatives give slopes, rates, maxima and minima.
+            leaves:
+              - id: limits
+                name: Limits
+                from: C11
+              - id: derivatives
+                name: Derivatives
+                from: C11
+              - id: applications-of-derivatives
+                name: Applications of derivatives
+                from: C12
+          - id: integral
+            name: Integral
+            tag: Areas, accumulation, differential equations.
+            what: >-
+              Integration reverses differentiation and computes areas and totals. Differential equations state laws as
+              rates and solve for the behaviour.
+            leaves:
+              - id: indefinite-integrals
+                name: Indefinite integrals
+                from: C12
+              - id: definite-integrals-and-area
+                name: Definite integrals and area
+                from: C12
+              - id: differential-equations
+                name: Differential equations
+                from: C12
+      - id: data-and-chance
+        name: Data and chance
+        tag: Summarising data and reasoning under uncertainty.
+        what: >-
+          Statistics summarises what data shows. Probability measures how likely an outcome is before you see it.
+          Together they are the mathematical base of machine learning.
+        split: Describing data, then predicting outcomes.
+        branches:
+          - id: statistics
+            name: Statistics
+            tag: Describing data with a few numbers.
+            what: Averages and spread summarise a data set; grouped data handles large ones.
+            leaves:
+              - id: mean-median-mode
+                name: Mean, median, mode
+                from: C9
+              - id: grouped-data
+                name: Grouped data
+                from: C10
+          - id: probability
+            name: Probability
+            tag: Measuring how likely things are.
+            what: >-
+              Classical probability counts equally likely outcomes. Conditional probability and Bayes' theorem update
+              beliefs with evidence, which is exactly what learning algorithms do.
+            leaves:
+              - id: classical-probability
+                name: Classical probability
+                from: C10
+              - id: conditional-probability-and-bayes
+                name: Conditional probability and Bayes
+                from: C12
+              - id: random-variables
+                name: Random variables
+                from: C12
+      - id: olympiad-toolkit
+        name: Olympiad toolkit
+        tag: Problem-solving techniques beyond the syllabus.
+        what: >-
+          Olympiad problems are not harder versions of textbook exercises. They test ways of thinking: find an
+          invariant, consider the extreme case, count in two ways, use induction. This pillar collects those techniques,
+          following books such as Zeitz and Engel.
+        split: Two classic fields where the techniques are used most.
+        branches:
+          - id: number-theory
+            name: Number theory
+            tag: Remainders and divisibility, made powerful.
+            what: >-
+              Modular arithmetic turns divisibility questions into calculations; Fermat's and Euler's theorems are its
+              main tools.
+            leaves:
+              - id: modular-arithmetic
+                name: Modular arithmetic
+                from: OLY
+              - id: fermat-and-euler-theorems
+                name: Fermat and Euler theorems
+                from: OLY
+          - id: combinatorics
+            name: Combinatorics
+            tag: Counting and arrangement arguments.
+            what: >-
+              Pigeonhole, invariants, the extremal principle, induction and graph theory: arguments that prove something
+              must happen without computing it.
+            leaves:
+              - id: pigeonhole-principle
+                name: Pigeonhole principle
+                from: OLY
+              - id: invariants
+                name: Invariants
+                from: OLY
+              - id: induction
+                name: Induction
+                from: C11
+              - id: graph-theory-basics
+                name: Graph theory basics
+                from: OLY
+  - id: chem
+    name: Chemistry
+  - id: bio
+    name: Biology
+  - id: eng
+    name: English

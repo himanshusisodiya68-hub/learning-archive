@@ -1,0 +1,14 @@
+{
+  "name": "learning-archive-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node check-answers.mjs"
+  },
+  "dependencies": {
+    "js-yaml": "4.1.0",
+    "katex": "0.16.11",
+    "marked": "12.0.2"
+  }
+}

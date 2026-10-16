@@ -1,0 +1,198 @@
+---
+title: Laws of reflection
+summary: How light bounces off a surface, why plane mirrors form the images they do, and the shortest-path idea behind the law.
+ncert: ["Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.1)", "Class 12 Physics · Ch 9 Ray Optics"]
+up_to: Olympiad
+builds_on: [Rectilinear propagation, Angles and parallel lines]
+notes_prompt: Explain why your image in a plane mirror seems to swap left and right but never up and down.
+margin:
+  - kind: history
+    title: History
+    text: Heron of Alexandria (1st century CE) showed that light reflecting off a mirror takes the shortest possible path between two points. It was the first "least principle" in physics.
+  - kind: tip
+    title: Board favourite
+    text: "Angles are measured from the normal, not from the mirror. A ray at 30° to the mirror has an angle of incidence of 60°."
+  - kind: olympiad
+    title: Olympiad link
+    text: A corner reflector of three perpendicular mirrors sends any ray straight back. Astronauts left such reflectors on the Moon for laser ranging.
+books:
+  - { title: "H. C. Verma, Concepts of Physics Vol. 1", ref: "Ch. 18 Geometrical Optics" }
+  - { title: "I. E. Irodov, Problems in General Physics", ref: "Part 5 · 5.1 Photometry and geometrical optics" }
+  - { title: "The Feynman Lectures on Physics Vol. I", ref: "Ch. 26 Optics: The Principle of Least Time" }
+cards:
+  - { front: "State the two laws of reflection.", back: "1) The angle of incidence equals the angle of reflection, both measured from the normal. 2) The incident ray, the reflected ray and the normal lie in one plane." }
+  - { front: "Describe the image formed by a plane mirror.", back: "Virtual and erect, the same size as the object, as far behind the mirror as the object is in front, and laterally inverted." }
+  - { front: "A plane mirror turns through an angle $\\theta$ while the incident ray stays fixed. How far does the reflected ray turn?", back: "Through $2\\theta$." }
+  - { front: "Minimum length of a plane mirror in which you can see your whole height $H$?", back: "$H/2$, whatever your distance from the mirror." }
+---
+
+:::hook
+q: You stand 2 m in front of a large mirror and walk 0.5 m towards it. By how much does the distance between you and your image shrink?
+options: ["0.5 m", "1 m", "2 m"]
+answer: 1
+right: Right. The image always sits as far behind the mirror as you are in front, so the gap is twice your distance from the mirror. Moving 0.5 m closer shrinks the gap by 1 m.
+wrong: Not quite. Your image is always as far behind the mirror as you are in front of it. Work out the gap before and after.
+:::
+
+## The two laws {lvl=1 id=s-laws}
+
+Light travels in straight lines until it meets a surface. At a smooth, shiny surface it bounces back in a predictable direction. Draw the **normal**, the line perpendicular to the surface at the point where the ray strikes. Then:
+
+1. **The angle of incidence equals the angle of reflection**, $i = r$, both measured from the normal.
+2. **The incident ray, the reflected ray and the normal all lie in one plane.**
+
+These laws hold for every reflecting surface, flat or curved. At a curved mirror, the normal at each point is the line to the centre of curvature, and the same two laws apply point by point.
+
+:::figure caption="The normal is drawn at the point of incidence; i and r are measured from it."
+<svg viewBox="0 0 360 200" role="img" aria-label="Law of reflection: incident and reflected rays make equal angles with the normal">
+<rect class="m2" x="40" y="150" width="280" height="14"/><line class="ln" x1="40" y1="150" x2="320" y2="150"/>
+<line class="faint" x1="180" y1="30" x2="180" y2="150"/>
+<line class="ray" x1="80" y1="50" x2="180" y2="150"/><line class="ray" x1="180" y1="150" x2="280" y2="50"/>
+<path class="gr" d="M180 110 A40 40 0 0 0 151.7 121.7"/><path class="gr" d="M180 110 A40 40 0 0 1 208.3 121.7"/>
+<text class="k" x="158" y="104">i</text><text class="k" x="196" y="104">r</text>
+<text x="184" y="26">normal</text><text x="42" y="182">mirror</text><text x="64" y="44">incident ray</text><text x="232" y="44">reflected ray</text>
+</svg>
+:::
+
+**Regular and diffuse reflection.** A mirror is smooth on the scale of the light's wavelength, so parallel rays stay parallel after reflecting and you see a clear image. Paper is rough at that scale: each tiny patch has its own normal, parallel rays scatter in all directions, and you see the paper itself rather than an image. Both obey the same laws; only the surface differs.
+
+:::qc
+q: A ray strikes a plane mirror making an angle of 35° with the mirror surface. What is the angle of reflection?
+options: ["35°", "55°", "70°"]
+answer: 1
+right: Right. The angle with the normal is 90° − 35° = 55°, and the angle of reflection equals it.
+wrong: Angles are measured from the normal. The ray makes 90° − 35° with the normal.
+:::
+
+## Images in a plane mirror {lvl=1 id=s-plane}
+
+Every ray from a point on an object reflects according to the law. Traced backwards, the reflected rays all seem to come from a single point behind the mirror. That point is the **image**. No light actually passes through it, so it is a **virtual** image: it cannot be caught on a screen.
+
+:::figure caption="Reflected rays reaching the eye seem to come from the image, as far behind the mirror as the object is in front."
+<svg viewBox="0 0 360 200" role="img" aria-label="Plane mirror image formation">
+<line class="ln" x1="200" y1="20" x2="200" y2="185" style="stroke-width:2.2"/>
+<line class="gr" x1="200" y1="30" x2="210" y2="22"/><line class="gr" x1="200" y1="60" x2="210" y2="52"/><line class="gr" x1="200" y1="90" x2="210" y2="82"/><line class="gr" x1="200" y1="120" x2="210" y2="112"/><line class="gr" x1="200" y1="150" x2="210" y2="142"/><line class="gr" x1="200" y1="180" x2="210" y2="172"/>
+<line class="pen" x1="120" y1="140" x2="120" y2="60" style="stroke-width:3"/><path class="pen" d="M114 70L120 60L126 70" style="stroke-width:3;fill:none"/>
+<line class="pen" x1="280" y1="140" x2="280" y2="60" style="stroke-width:3;opacity:.4;stroke-dasharray:5 4"/>
+<line class="ray" x1="120" y1="60" x2="200" y2="96.4"/><line class="ray" x1="200" y1="96.4" x2="60" y2="160"/>
+<line class="faint" x1="200" y1="96.4" x2="280" y2="60"/><line class="faint" x1="150" y1="96.4" x2="250" y2="96.4"/>
+<ellipse class="eye" cx="54" cy="163" rx="8" ry="4"/>
+<line class="faint" x1="120" y1="150" x2="280" y2="150"/><text x="150" y="166">d</text><text x="236" y="166">d</text>
+<text x="92" y="52">object</text><text x="262" y="52">image</text>
+</svg>
+:::
+
+The image in a plane mirror is
+
+- **virtual and erect**,
+- **the same size** as the object (magnification $m = +1$),
+- **as far behind the mirror** as the object is in front,
+- **laterally inverted**: your right hand appears as the image's left hand.
+
+Lateral inversion is really a front–back reversal. The mirror reverses only the direction perpendicular to itself; up stays up and left stays on the left of the picture. Your image is facing you, so its "right" is on your left. That is why the word AMBULANCE is painted mirror-reversed on the front of ambulances: drivers ahead read it correctly in their rear-view mirrors.
+
+:::qc
+q: You walk towards a plane mirror at 1.5 m/s. How fast does your image approach you?
+options: ["1.5 m/s", "3 m/s", "0.75 m/s"]
+answer: 1
+right: Right. The image approaches the mirror at 1.5 m/s from the other side, so relative to you it closes at 3 m/s.
+wrong: The image moves towards the mirror at the same speed as you, from the other side. Add the two.
+:::
+
+## How tall must a mirror be? {lvl=2 id=s-height label="Class 12"}
+
+To see your feet, light from your feet must reflect into your eyes. The reflection point sits halfway, in height, between your eyes and your feet, because the mirror is midway between you and your image. The same holds for the top of your head. So the mirror needs to span only from halfway between eyes and feet to halfway between eyes and the top of your head:
+
+$$L_{\min} = \tfrac12 (h_{\text{eye}} + (H - h_{\text{eye}})) = \frac{H}{2}$$
+
+The distance from the mirror never appears: stepping back does not let you see more of yourself in a small mirror, a common surprise.
+
+## Why the law holds: the shortest path {lvl=2 id=s-heron label="Class 12"}
+
+Light from A reaches B by bouncing off a mirror. Of all possible bounce points, which one does light choose? Reflect B in the mirror to get its image B′. Any path A → mirror → B has the same length as A → mirror → B′, because the mirror is the perpendicular bisector of BB′. The shortest route from A to B′ is a straight line, and a straight line crosses the mirror at exactly the point where $i = r$.
+
+:::figure caption="Heron's trick: the path to B has the same length as the path to its image B′. The straight line to B′ gives the shortest route and equal angles."
+<svg viewBox="0 0 360 200" role="img" aria-label="Shortest path reflection via image point">
+<line class="ln" x1="20" y1="110" x2="340" y2="110" style="stroke-width:2"/>
+<circle class="obj" cx="80" cy="40" r="5"/><circle class="obj" cx="280" cy="60" r="5"/><circle class="ghost" cx="280" cy="160" r="5"/>
+<line class="ray" x1="80" y1="40" x2="196.7" y2="110"/><line class="ray" x1="196.7" y1="110" x2="280" y2="60"/>
+<line class="faint" x1="196.7" y1="110" x2="280" y2="160"/><line class="faint" x1="280" y1="60" x2="280" y2="160"/>
+<line class="gr" x1="80" y1="40" x2="140" y2="110" style="stroke-dasharray:2 3"/><line class="gr" x1="140" y1="110" x2="280" y2="60" style="stroke-dasharray:2 3"/>
+<text class="k" x="66" y="34">A</text><text class="k" x="290" y="58">B</text><text class="k" x="290" y="166">B′</text>
+<text x="100" y="128">a longer path (dotted)</text>
+</svg>
+:::
+
+This is the first "least principle" in physics. Fermat later extended it to refraction: light takes the path of least, or more precisely stationary, travel time. The refraction lesson develops that idea.
+
+## Rotating mirrors and inclined pairs {lvl=3 id=s-rotate label="JEE"}
+
+**Rotating a mirror.** Keep the incident ray fixed and turn the mirror by $\theta$. The normal turns by $\theta$, so the angle of incidence changes by $\theta$ and so does the angle of reflection. The reflected ray therefore turns by $2\theta$. This doubling made the optical lever possible: a tiny mirror on a galvanometer coil turns a small rotation into a large movement of a light spot on a scale.
+
+**Two mirrors at an angle $\theta$.** A ray reflecting once from each mirror turns through a total angle
+
+$$\delta = 360^\circ - 2\theta,$$
+
+independent of the angle at which it first arrives. With $\theta = 90^\circ$ the ray is sent straight back, parallel to itself.
+
+**Number of images** of an object placed between two mirrors at angle $\theta$: when $360^\circ/\theta$ is an even integer, there are $n = 360^\circ/\theta - 1$ images wherever the object is. When $360^\circ/\theta$ is odd, the count is $360^\circ/\theta - 1$ for an object on the bisector and $360^\circ/\theta$ otherwise. Two parallel mirrors ($\theta \to 0$) give an endless row of images.
+
+:::worked title="Worked example: deviation by two mirrors"
+Two plane mirrors meet at 60°. A ray reflects once from each. Find the total deviation.
+
+The formula gives $\delta = 360^\circ - 2(60^\circ) = 240^\circ$. Equivalently, the ray ends up turned $120^\circ$ the other way, since $240^\circ$ and $120^\circ$ describe the same final direction measured in opposite senses.
+:::
+
+:::qc lvl=3
+q: Two mirrors are inclined at 90°, and an object sits between them. How many images do you see?
+options: ["2", "3", "4"]
+answer: 1
+right: Right. 360°/90° = 4 is even, so n = 4 − 1 = 3.
+wrong: Use n = 360°/θ − 1 when 360°/θ is even.
+:::
+
+## Moving mirrors {lvl=3 id=s-moving label="JEE"}
+
+Take the mirror as a coordinate plane. The image is the object's reflection, so in the direction perpendicular to the mirror the image coordinate is the negative of the object's, while along the mirror it is the same. Differentiate:
+
+- object velocity along the mirror → the image moves the same way, at the same speed;
+- object velocity perpendicular to the mirror → the image moves the opposite way;
+- a mirror moving perpendicular to itself at speed $v$ moves a stationary object's image at $2v$.
+
+## Reflection as a vector rule {lvl=3 id=s-vector label="Irodov"}
+
+Let $\hat{\mathbf{i}}$ be the unit vector along the incident ray and $\hat{\mathbf{n}}$ the unit normal. Reflection flips the part of $\hat{\mathbf{i}}$ along the normal and keeps the rest:
+
+$$\hat{\mathbf{r}} = \hat{\mathbf{i}} - 2(\hat{\mathbf{i}}\cdot\hat{\mathbf{n}})\,\hat{\mathbf{n}}$$
+
+Both laws are inside this one line: the dot product fixes equal angles, and $\hat{\mathbf{r}}$ is built from $\hat{\mathbf{i}}$ and $\hat{\mathbf{n}}$ alone, so it lies in their plane.
+
+**Corner reflector.** Three mutually perpendicular mirrors along the $x$, $y$ and $z$ planes each flip one component of the direction. A ray that strikes all three leaves with every component reversed: $(a, b, c) \to (-a, -b, -c)$, straight back towards its source, whatever its direction. Bicycle reflectors, road signs and the reflectors left on the Moon by Apollo astronauts use this.
+
+## A spot sweeping a wall {lvl=4 id=s-sweep label="Olympiad"}
+
+A mirror rotates steadily at angular speed $\omega$, reflecting a fixed beam onto a wall a perpendicular distance $d$ away. The reflected beam turns at $2\omega$. When the beam makes angle $\phi$ with the perpendicular to the wall, the spot is at $x = d\tan\phi$, so its speed is
+
+$$v = \frac{dx}{dt} = d\sec^2\phi \cdot 2\omega.$$
+
+At the foot of the perpendicular, $v = 2\omega d$, and it grows without limit as the beam swings towards the wall's plane. Nothing physical travels along the wall, so the spot may even move faster than light without breaking relativity. Foucault used a rotating mirror in 1862 to measure the speed of light this way.
+
+## Key ideas to remember {lvl=1 id=s-keys}
+
+:::keys
+1. $i = r$, measured from the normal, and the incident ray, reflected ray and normal lie in one plane.
+2. A plane mirror forms a virtual, erect, same-size image, as far behind the mirror as the object is in front.
+3. Lateral inversion is a front–back reversal.
+4. Seeing your full height needs a mirror half your height. {lvl=2}
+5. Turning a mirror by $\theta$ turns the reflected ray by $2\theta$. {lvl=3}
+6. Vector form: $\hat{\mathbf{r}} = \hat{\mathbf{i}} - 2(\hat{\mathbf{i}}\cdot\hat{\mathbf{n}})\hat{\mathbf{n}}$. {lvl=3}
+:::
+
+## Toolkit and traps {lvl=1 id=s-traps}
+
+:::traps
+- Angles of incidence and reflection are measured from the normal. Subtract from 90° if a problem gives the angle with the mirror.
+- The image is behind the mirror; distances between you and your image are twice your distance from the mirror.
+- For the number of images, check whether $360^\circ/\theta$ is even or odd before using a formula. {lvl=3}
+- For moving mirrors, split velocities into parts along and perpendicular to the mirror. {lvl=3}
+:::

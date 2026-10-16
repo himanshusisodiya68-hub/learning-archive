@@ -1,0 +1,351 @@
+# Lenses and the lens formula. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 9.
+
+- id: ncert-it158-1
+  lvl: ncert-intext
+  num: "p158 Q1"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 158 · Q1
+  kind: text
+  q: Define 1 dioptre of power of a lens.
+  sol: One dioptre is the power of a lens whose focal length is 1 metre. $1\text{ D} = 1\text{ m}^{-1}$.
+  check: none
+
+- id: ncert-it158-2
+  lvl: ncert-intext
+  num: "p158 Q2"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 158 · Q2
+  kind: num
+  q: A convex lens forms a real and inverted image of a needle at a distance of 50 cm from it. Where is the needle placed in front of the convex lens if the image is equal to the size of the object? Also, find the power of the lens.
+  ask: Power of the lens
+  unit: D
+  ans: 4
+  tol: 0.01
+  verify: 1/(50/2/100)
+  hints: ["A same-size real image forms when the object is at 2F₁ and the image at 2F₂.", "So 2f = 50 cm."]
+  sol: |
+    Same size, real and inverted means the object is at $2F_1$ and the image at $2F_2$. So $v = +50$ cm $= 2f$, giving $f = 25$ cm, and the needle is at $u = -50$ cm, 50 cm in front of the lens.
+    Check: $\frac1v - \frac1u = \frac{1}{50} + \frac{1}{50} = \frac{1}{25}$ ✓. Power $P = 1/0.25 = +4$ D.
+  check: code
+
+- id: ncert-it158-3
+  lvl: ncert-intext
+  num: "p158 Q3"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 158 · Q3
+  kind: num
+  q: Find the power of a concave lens of focal length 2 m.
+  ask: Power, with sign
+  unit: D
+  ans: -0.5
+  tol: 0.01
+  verify: 1/(-2)
+  sol: $f = -2$ m for a concave lens, so $P = 1/f = -0.5$ D.
+  check: code
+
+- id: ncert-ex9-3
+  lvl: ncert-intext
+  num: "Ex 9.3"
+  source: NCERT X Science · Ch 9 · Example 9.3
+  kind: num
+  q: A concave lens has focal length of 15 cm. At what distance should the object from the lens be placed so that it forms an image at 10 cm from the lens? Also, find the magnification produced by the lens.
+  ask: Object distance u, with sign
+  unit: cm
+  ans: -30
+  tol: 0.1
+  verify: 1/(1/(-10)-1/(-15))
+  hints: ["The image of a concave lens is virtual, on the object side: v = −10 cm, f = −15 cm."]
+  sol: |
+    $\frac1u = \frac1v - \frac1f = -\frac{1}{10} + \frac{1}{15} = -\frac{1}{30}$, so $u = -30$ cm. $m = v/u = (-10)/(-30) = +0.33$: erect, virtual, one-third the size.
+  check: code
+
+- id: ncert-ex9-4
+  lvl: ncert-intext
+  num: "Ex 9.4"
+  source: NCERT X Science · Ch 9 · Example 9.4
+  kind: num
+  q: A 2.0 cm tall object is placed perpendicular to the principal axis of a convex lens of focal length 10 cm. The distance of the object from the lens is 15 cm. Find the nature, position and size of the image. Also find its magnification.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: 30
+  tol: 0.1
+  verify: 1/(1/10+1/(-15))
+  hints: ["u = −15 cm, f = +10 cm.", "m = v/u and h′ = m h."]
+  sol: $\frac1v = \frac1f + \frac1u = \frac{1}{10} - \frac{1}{15} = \frac{1}{30}$, so $v = +30$ cm. $m = v/u = -2$ and $h' = -4.0$ cm. The image is real, inverted, enlarged, 30 cm behind the lens.
+  check: code
+
+- id: ncert-ex-1
+  lvl: ncert-ex
+  num: 1
+  source: NCERT X Science · Ch 9 · Exercise 1 · p. 159
+  kind: mcq
+  q: Which one of the following materials cannot be used to make a lens?
+  opts: ["Water", "Glass", "Plastic", "Clay"]
+  ans: 3
+  sol: A lens must be transparent so that light can pass through and refract. Clay is opaque.
+  answer_key: (d)
+  check: ncert-key
+
+- id: ncert-ex-3
+  lvl: ncert-ex
+  num: 3
+  source: NCERT X Science · Ch 9 · Exercise 3 · p. 159
+  kind: mcq
+  q: Where should an object be placed in front of a convex lens to get a real image of the size of the object?
+  opts: ["At the principal focus of the lens", "At twice the focal length", "At infinity", "Between the optical centre of the lens and its principal focus."]
+  ans: 1
+  sol: An object at $2F_1$ (twice the focal length) gives a real, inverted, same-size image at $2F_2$.
+  answer_key: (b)
+  check: ncert-key
+
+- id: ncert-ex-6
+  lvl: ncert-ex
+  num: 6
+  source: NCERT X Science · Ch 9 · Exercise 6 · p. 160
+  kind: mcq
+  q: Which of the following lenses would you prefer to use while reading small letters found in a dictionary?
+  opts: ["A convex lens of focal length 50 cm.", "A concave lens of focal length 50 cm.", "A convex lens of focal length 5 cm.", "A concave lens of focal length 5 cm."]
+  ans: 2
+  sol: A magnifying glass is a convex lens used with the object inside its focus, giving a virtual, erect, enlarged image. A short focal length (5 cm) gives greater magnification. Concave lenses only diminish.
+  answer_key: (c)
+  check: ncert-key
+
+- id: ncert-ex-9
+  lvl: ncert-ex
+  num: 9
+  source: NCERT X Science · Ch 9 · Exercise 9 · p. 160
+  kind: text
+  q: One-half of a convex lens is covered with a black paper. Will this lens produce a complete image of the object? Verify your answer experimentally. Explain your observations.
+  sol: |
+    **Yes.** Each point of the object sends rays to every part of the lens, and every part of the lens bends those rays to the same image point. Covering half the lens blocks half the rays from each object point, but the uncovered half still brings the rest together at the same image points. So the complete image forms, only with less brightness.
+
+    Experiment: focus the image of a distant window or candle on a screen with a convex lens, then cover the upper half of the lens with black paper. The whole image remains, dimmer.
+  answer_key: "Yes"
+  check: ncert-key
+
+- id: ncert-ex-10
+  lvl: ncert-ex
+  num: 10
+  source: NCERT X Science · Ch 9 · Exercise 10 · p. 160
+  kind: num
+  q: An object 5 cm in length is held 25 cm away from a converging lens of focal length 10 cm. Draw the ray diagram and find the position, size and the nature of the image formed.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: 16.7
+  tol: 0.05
+  verify: 1/(1/10+1/(-25))
+  hints: ["u = −25 cm, f = +10 cm.", "h′ = (v/u) h."]
+  sol: |
+    $\frac1v = \frac{1}{10} - \frac{1}{25} = \frac{3}{50}$, so $v = +16.7$ cm. $m = v/u = 16.7/(-25) = -0.67$, so $h' = -3.3$ cm.
+    The image is 16.7 cm on the other side of the lens, real, inverted and diminished, 3.3 cm long.
+    Ray diagram: object beyond $2F_1$; draw a ray parallel to the axis refracting through $F_2$ and a ray through O going straight; they meet between $F_2$ and $2F_2$, below the axis. The lens bench in the lesson shows this with u = 25, f = 10.
+  answer_key: 16.7 cm from the lens on the other side; 3.3 cm, reduced; real, inverted.
+  check: both
+
+- id: ncert-ex-11
+  lvl: ncert-ex
+  num: 11
+  source: NCERT X Science · Ch 9 · Exercise 11 · p. 160
+  kind: num
+  q: A concave lens of focal length 15 cm forms an image 10 cm from the lens. How far is the object placed from the lens? Draw the ray diagram.
+  ask: Object distance (magnitude)
+  unit: cm
+  ans: 30
+  tol: 0.1
+  verify: -1/(1/(-10)-1/(-15))
+  hints: ["v = −10 cm (virtual image on the object side) and f = −15 cm."]
+  sol: |
+    $\frac1u = \frac1v - \frac1f = -\frac{1}{10} + \frac{1}{15} = -\frac{1}{30}$, so $u = -30$ cm: the object is 30 cm in front of the lens.
+    Ray diagram: a ray parallel to the axis diverges as if from $F_1$; a ray through O goes straight. Extended back, they meet 10 cm from the lens on the object side, giving an erect, diminished, virtual image.
+  answer_key: 30 cm
+  check: both
+
+- id: ncert-ex-16
+  lvl: ncert-ex
+  num: 16
+  source: NCERT X Science · Ch 9 · Exercise 16 · p. 160
+  kind: num
+  q: Find the focal length of a lens of power – 2.0 D. What type of lens is this?
+  ask: Focal length, with sign
+  unit: m
+  ans: -0.5
+  tol: 0.005
+  verify: 1/(-2)
+  sol: $f = 1/P = 1/(-2.0) = -0.50$ m. The negative focal length means a **concave (diverging) lens**.
+  answer_key: –0.50 m; concave lens
+  check: both
+
+- id: ncert-ex-17
+  lvl: ncert-ex
+  num: 17
+  source: NCERT X Science · Ch 9 · Exercise 17 · p. 160
+  kind: num
+  q: A doctor has prescribed a corrective lens of power +1.5 D. Find the focal length of the lens. Is the prescribed lens diverging or converging?
+  ask: Focal length, with sign
+  unit: m
+  ans: 0.67
+  tol: 0.005
+  verify: 1/1.5
+  sol: $f = 1/P = 1/1.5 = +0.67$ m. Positive focal length, so the lens is **converging** (convex).
+  answer_key: + 0.67 m; converging lens
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A lens that is thicker at the middle than at the edges is
+  opts: ["converging", "diverging", "neither"]
+  ans: 0
+  sol: A lens thicker in the middle is convex. Light passing near the edge crosses less glass than light near the centre, so the wavefronts are bent inwards and parallel rays converge.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: What is the power of a convex lens of focal length 50 cm?
+  ask: Power
+  unit: D
+  ans: 2
+  tol: 0.01
+  verify: 1/0.5
+  sol: $f = 0.50$ m, so $P = 1/0.50 = +2$ D.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: An object is placed 30 cm from a convex lens of focal length 20 cm. Find the image distance.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: 60
+  tol: 0.1
+  verify: 1/(1/20+1/(-30))
+  sol: $\frac1v = \frac{1}{20} - \frac{1}{30} = \frac{1}{60}$, so $v = +60$ cm.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In the previous problem (u = −30 cm, v = +60 cm), find the magnification.
+  ask: m
+  unit: ""
+  ans: -2
+  tol: 0.01
+  verify: 60/(-30)
+  sol: |
+    $m = v/u = 60/(-30) = -2$: real, inverted, twice the size.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: Lenses of power +2.5 D and −1.0 D are placed in contact. Find the focal length of the combination.
+  ask: Focal length
+  unit: cm
+  ans: 66.7
+  tol: 0.1
+  verify: 100/(2.5-1)
+  sol: $P = 2.5 - 1.0 = 1.5$ D, so $f = 1/1.5$ m $= 66.7$ cm, converging.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A biconvex lens is made of glass of refractive index 1.5. Both surfaces have radius of curvature 20 cm. Find its focal length in air.
+  ask: Focal length
+  unit: cm
+  ans: 20
+  tol: 0.1
+  verify: 1/(0.5*(1/20+1/20))
+  hints: ["Lens maker's formula with R₁ = +20 cm, R₂ = −20 cm."]
+  sol: $\frac1f = (1.5 - 1)\left(\frac{1}{20} - \frac{1}{-20}\right) = 0.5 \times \frac{2}{20} = \frac{1}{20}$, so $f = 20$ cm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: The same lens (n = 1.5, R₁ = +20 cm, R₂ = −20 cm) is immersed in water of refractive index 1.33. Find its focal length.
+  ask: Focal length
+  unit: cm
+  ans: 78.2
+  tol: 0.5
+  verify: 1/((1.5/1.33-1)*(2/20))
+  hints: ["Replace n by the relative index n_glass/n_water."]
+  sol: $\frac1f = \left(\frac{1.5}{1.33} - 1\right)\frac{2}{20} = 0.1278 \times 0.1$, so $f \approx 78$ cm, nearly four times longer than in air.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: One end of a long glass rod ($n = 1.5$) is ground into a convex hemispherical surface of radius 10 cm. An object in air is on the axis 30 cm from that surface. Where is the image formed inside the rod?
+  ask: Image distance from the surface
+  unit: cm
+  ans: 90
+  tol: 0.2
+  verify: 1.5/(0.5/10-1/30)
+  hints: ["n₂/v − n₁/u = (n₂ − n₁)/R with n₁ = 1, n₂ = 1.5, u = −30 cm, R = +10 cm."]
+  sol: $\frac{1.5}{v} + \frac{1}{30} = \frac{0.5}{10}$, so $\frac{1.5}{v} = \frac{1}{60}$ and $v = +90$ cm, a real image 90 cm inside the rod.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: An object and a screen are fixed 90 cm apart. A convex lens gives a sharp image on the screen at two positions 30 cm apart. Find its focal length.
+  ask: Focal length
+  unit: cm
+  ans: 20
+  tol: 0.1
+  verify: (90**2-30**2)/(4*90)
+  hints: ["The two positions are symmetric: the object and image distances swap.", "f = (D² − x²)/(4D)."]
+  sol: $f = \frac{D^2 - x^2}{4D} = \frac{8100 - 900}{360} = 20$ cm. (Object and image distances are 30 cm and 60 cm in one position, swapped in the other.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A plano-convex lens of radius of curvature 15 cm and refractive index 1.5 is silvered on its curved surface. What is the focal length of the resulting mirror?
+  ask: Focal length (magnitude)
+  unit: cm
+  ans: 5
+  tol: 0.05
+  verify: 15/(2*1.5)
+  hints: ["P_eq = 2 P_lens + P_mirror (converging powers).", "Lens focal length R/(n − 1); the silvered curved face is a concave mirror of focal length R/2."]
+  sol: |
+    $f_{\text{lens}} = R/(n - 1) = 30$ cm and the curved mirror has $f_m = R/2 = 7.5$ cm. Converging powers: $\frac{1}{F} = \frac{2}{30} + \frac{1}{7.5} = \frac{2 + 4}{30} = \frac{1}{5}$, so $F = 5$ cm, which matches $R/2n = 15/3$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A convex lens of focal length 20 cm and a concave lens of focal length 10 cm are placed coaxially 15 cm apart. Find the focal length of the combination.
+  ask: Focal length, with sign
+  unit: cm
+  ans: 40
+  tol: 0.1
+  verify: 1/(1/20+1/(-10)-15/(20*(-10)))
+  hints: ["1/F = 1/f₁ + 1/f₂ − d/(f₁f₂), with f₂ = −10 cm."]
+  sol: $\frac1F = \frac{1}{20} - \frac{1}{10} - \frac{15}{20 \times (-10)} = 0.05 - 0.1 + 0.075 = 0.025$, so $F = +40$ cm. The pair is converging overall even though the concave lens is stronger.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: An achromatic doublet of focal length +40 cm is made from a crown-glass lens (dispersive power 0.02) in contact with a flint-glass lens (dispersive power 0.04). Find the focal length of the crown-glass lens.
+  ask: Focal length of crown lens
+  unit: cm
+  ans: 20
+  tol: 0.1
+  verify: 40*(1-0.02/0.04)
+  hints: ["Achromatism: ω₁/f₁ + ω₂/f₂ = 0.", "Combine with 1/f₁ + 1/f₂ = 1/F."]
+  sol: From $\omega_1/f_1 = -\omega_2/f_2$, $f_2 = -2f_1$. Then $\frac1{f_1} - \frac{1}{2f_1} = \frac{1}{2f_1} = \frac{1}{40}$, so $f_1 = +20$ cm (crown, converging) and $f_2 = -40$ cm (flint, diverging).
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Using Newton's form $xx' = f^2$, find the smallest possible distance between a real object and its real image formed by a convex lens of focal length 12 cm.
+  ask: Minimum distance
+  unit: cm
+  ans: 48
+  tol: 0.1
+  verify: 4*12
+  hints: ["Object-to-image distance = 2f + x + x′.", "Minimise x + x′ subject to xx′ = f² (AM–GM)."]
+  sol: The distance is $2f + x + x'$. With $xx' = f^2$, AM–GM gives $x + x' \ge 2\sqrt{xx'} = 2f$, with equality at $x = x' = f$. So the minimum is $4f = 48$ cm, with the object at $2F_1$.
+  check: code

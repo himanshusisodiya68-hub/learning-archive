@@ -1,0 +1,239 @@
+# Refraction and Snell's law. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 9.
+
+- id: ncert-it150-1
+  lvl: ncert-intext
+  num: "p150 Q1"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 150 · Q1
+  kind: text
+  q: A ray of light travelling in air enters obliquely into water. Does the light ray bend towards the normal or away from the normal? Why?
+  sol: It bends **towards the normal**. Water is optically denser than air (refractive index 1.33 against 1.0003), so light slows down on entering it, and a ray entering a medium where it travels more slowly bends towards the normal.
+  check: none
+
+- id: ncert-it150-2
+  lvl: ncert-intext
+  num: "p150 Q2"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 150 · Q2
+  kind: num
+  q: Light enters from air to glass having refractive index 1.50. What is the speed of light in the glass? The speed of light in vacuum is $3 \times 10^8$ m s$^{-1}$.
+  ask: Speed, in units of 10⁸ m/s
+  unit: × 10⁸ m/s
+  ans: 2
+  tol: 0.01
+  verify: 3/1.5
+  hints: ["n = c/v, so v = c/n."]
+  sol: $v = c/n = (3 \times 10^8)/1.50 = 2 \times 10^8$ m s$^{-1}$.
+  check: code
+
+- id: ncert-it150-3
+  lvl: ncert-intext
+  num: "p150 Q3"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 150 · Q3
+  kind: text
+  q: Find out, from Table 9.3, the medium having highest optical density. Also find the medium with lowest optical density.
+  sol: The higher the refractive index, the higher the optical density. **Highest:** diamond ($n = 2.42$). **Lowest:** air ($n = 1.0003$).
+  check: none
+
+- id: ncert-it150-4
+  lvl: ncert-intext
+  num: "p150 Q4"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 150 · Q4
+  kind: mcq
+  q: You are given kerosene, turpentine and water. In which of these does the light travel fastest? Use the information given in Table 9.3.
+  opts: ["Kerosene", "Turpentine", "Water"]
+  ans: 2
+  sol: Speed $v = c/n$ is largest where $n$ is smallest. From Table 9.3, kerosene 1.44, turpentine oil 1.47, water 1.33. Light travels fastest in **water**.
+  check: none
+
+- id: ncert-it150-5
+  lvl: ncert-intext
+  num: "p150 Q5"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 150 · Q5
+  kind: text
+  q: The refractive index of diamond is 2.42. What is the meaning of this statement?
+  sol: It means the ratio of the speed of light in vacuum to the speed of light in diamond is 2.42, so light travels 2.42 times more slowly in diamond than in vacuum, at about $3 \times 10^8 / 2.42 \approx 1.24 \times 10^8$ m s$^{-1}$.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A ray of light travels from glass into air, striking the boundary at an angle. Which way does it bend?
+  opts: ["Towards the normal", "Away from the normal", "It does not bend"]
+  ans: 1
+  hints: ["Compare the refractive indices: glass is about 1.5 and air about 1.0.", "Light bends towards the normal when it slows down."]
+  sol: |
+    Light speeds up as it enters air, which has the smaller refractive index, so it bends away from the normal. Snell's law says the same: if $n_1 > n_2$ then $\sin\theta_2 > \sin\theta_1$.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: The speed of light in water is $2.25 \times 10^8$ m/s. What is the refractive index of water?
+  ask: n
+  unit: ""
+  ans: 1.33
+  tol: 0.01
+  verify: 3/2.25
+  hints: ["n = c/v."]
+  sol: $n = c/v = 3.00/2.25 = 1.33$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Light passes from air into water ($n = 1.33$) with an angle of incidence of 45°. Find the angle of refraction.
+  ask: Angle of refraction
+  unit: "°"
+  ans: 32.1
+  tol: 0.5
+  verify: deg(asin(sin(rad(45))/1.33))
+  hints: ["Air has n = 1.00.", "sin θ₂ = sin 45° / 1.33."]
+  sol: $\sin\theta_2 = 0.7071/1.33 = 0.5317$, so $\theta_2 \approx 32.1^\circ$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: The refractive index of glass is 1.50 and that of water is 1.33. Find the refractive index of glass with respect to water.
+  ask: n (glass w.r.t. water)
+  unit: ""
+  ans: 1.128
+  tol: 0.01
+  verify: 1.5/1.33
+  hints: ["The relative index is the index of the medium light enters divided by the index of the medium it leaves."]
+  sol: $n_{\text{glass, water}} = 1.50/1.33 \approx 1.13$.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A coin lies at the bottom of a bucket of water ($n = 1.33$) 40 cm deep. Seen from directly above, how deep does it appear?
+  ask: Apparent depth
+  unit: cm
+  ans: 30.1
+  tol: 0.6
+  verify: 40/1.33
+  hints: ["For viewing almost straight down, apparent depth = real depth ÷ n."]
+  sol: $40/1.33 \approx 30.1$ cm. The coin appears about 10 cm higher than it really is.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: In which case does a ray cross from air into glass without changing direction?
+  opts: ["When it strikes the surface along the normal", "When it strikes at 45°", "Never: refraction always bends light"]
+  ans: 0
+  hints: ["Put θ₁ = 0 into Snell's law."]
+  sol: At normal incidence $\sin\theta_1 = 0$, so $\sin\theta_2 = 0$ and the ray goes straight through. Its speed still changes.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A ray strikes a glass slab 6.0 cm thick ($n = 1.5$) at an angle of incidence of 60°. Find the lateral shift of the emerging ray.
+  ask: Lateral shift
+  unit: cm
+  ans: 3.07
+  tol: 0.05
+  verify: "(function(){ var r = asin(sin(rad(60))/1.5); return 6*sin(rad(60)-r)/cos(r); })()"
+  hints: ["The emerging ray is parallel to the incident ray. First find the angle of refraction r.", "Lateral shift d = t sin(i − r) / cos r."]
+  sol: $\sin r = \sin 60^\circ/1.5 = 0.577$, so $r = 35.3^\circ$. Then $d = 6.0 \times \sin 24.7^\circ/\cos 35.3^\circ = 6.0 \times 0.418/0.816 \approx 3.07$ cm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Find the critical angle for light going from glass ($n = 1.5$) into air.
+  ask: Critical angle
+  unit: "°"
+  ans: 41.8
+  tol: 0.3
+  verify: deg(asin(1/1.5))
+  hints: ["At the critical angle the refracted ray grazes the surface, so θ₂ = 90°."]
+  sol: $\sin\theta_c = 1/1.5 = 0.667$, so $\theta_c \approx 41.8^\circ$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A small lamp sits 2.0 m below the surface of a still pond ($n = 4/3$). Light escapes only through a circular patch of the surface. Find the radius of that patch.
+  ask: Radius
+  unit: m
+  ans: 2.27
+  tol: 0.03
+  verify: 2/sqrt((4/3)**2-1)
+  hints: ["Beyond the critical angle, light is totally reflected back into the water.", "r = h tan θc, with sin θc = 1/n."]
+  sol: $\sin\theta_c = 3/4$, so $\tan\theta_c = 3/\sqrt7$. Then $r = 2.0 \times 3/\sqrt7 \approx 2.27$ m.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A 6 cm layer of oil ($n = 1.5$) floats on water 8 cm deep ($n = 4/3$). Seen from directly above, how far below the oil surface does the bottom of the vessel appear?
+  ask: Apparent depth
+  unit: cm
+  ans: 10
+  tol: 0.1
+  verify: 6/1.5+8/(4/3)
+  hints: ["Each layer looks shallower by its own refractive index. Add the apparent thicknesses."]
+  sol: $6/1.5 + 8/(4/3) = 4 + 6 = 10$ cm.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A prism has a refracting angle of 60° and refractive index $\sqrt2$. Find its angle of minimum deviation.
+  ask: Minimum deviation
+  unit: "°"
+  ans: 30
+  tol: 0.3
+  verify: 2*deg(asin(sqrt(2)*sin(rad(30))))-60
+  hints: ["At minimum deviation the ray passes through symmetrically, so r = A/2 = 30°.", "n = sin((A + D)/2) / sin(A/2)."]
+  sol: $\sin\frac{60^\circ + D}{2} = \sqrt2\sin 30^\circ = 0.707$, so $\frac{60^\circ + D}{2} = 45^\circ$ and $D = 30^\circ$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A fish 1.2 m below the water surface ($n = 4/3$) looks straight up at a bird hovering 3.0 m above the surface. How far away does the bird appear to the fish?
+  ask: Apparent distance
+  unit: m
+  ans: 5.2
+  tol: 0.05
+  verify: 3*4/3+1.2
+  hints: ["Seen from inside the denser medium, heights above the surface look multiplied by n.", "Then add the fish's own depth."]
+  sol: Apparent height above the surface $= 3.0 \times 4/3 = 4.0$ m. Distance from the fish $= 4.0 + 1.2 = 5.2$ m.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Light enters the top face of a glass cube at every possible angle. What is the smallest refractive index for which none of this light can leave through a vertical side face?
+  ask: Minimum n
+  unit: ""
+  ans: 1.414
+  tol: 0.01
+  verify: sqrt(2)
+  hints: ["If the ray refracts at angle r on top, it meets a side face at 90° − r.", "The worst case is grazing entry, where sin r = 1/n. Require total internal reflection even then."]
+  sol: Total internal reflection at the side needs $\cos r \ge 1/n$. Grazing entry gives the smallest $\cos r = \sqrt{1 - 1/n^2}$. Setting $\sqrt{1 - 1/n^2} \ge 1/n$ gives $n^2 \ge 2$, so $n \ge \sqrt2 \approx 1.414$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A tank holds a sugar solution whose refractive index falls steadily from 1.50 at the bottom to 1.40 at a height of 20 cm. A laser beam enters horizontally at mid-height. Find the radius of curvature of its path where it enters, in metres. Which way does it bend?
+  ask: Radius of curvature
+  unit: m
+  ans: 2.9
+  tol: 0.1
+  verify: 1.45/(0.10/0.20)
+  hints: ["Treat the liquid as many thin layers: n sin θ stays the same from layer to layer.", "For a ray that is momentarily horizontal, the curvature is 1/R = (1/n)(dn/dy)."]
+  sol: $dn/dy = 0.10/0.20\text{ m} = 0.5$ m$^{-1}$ and $n = 1.45$ at mid-height, so $R = 1.45/0.5 = 2.9$ m. The beam curves downwards, towards higher refractive index. A mirage works the same way.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: Light goes from point A in medium 1 to point B in medium 2 along the path that takes the least time (Fermat's principle). Derive Snell's law from this.
+  hints: ["Let the ray cross the boundary at horizontal position x. Write the total travel time T(x) using speeds c/n₁ and c/n₂.", "Set dT/dx = 0 and read each term as the sine of an angle."]
+  sol: Put A at height $a$ above the boundary and B at depth $b$ below it, a horizontal distance $d$ apart. Then $cT(x) = n_1\sqrt{a^2 + x^2} + n_2\sqrt{b^2 + (d - x)^2}$. Setting $dT/dx = 0$ gives $n_1 x/\sqrt{a^2 + x^2} = n_2(d - x)/\sqrt{b^2 + (d - x)^2}$, which is $n_1\sin\theta_1 = n_2\sin\theta_2$.
+  check: none

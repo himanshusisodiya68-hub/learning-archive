@@ -1,0 +1,21 @@
+# NCERT Mathematics, Class 10 (reprint 2026-27)
+class: 10
+subject: mat
+name: Mathematics
+code: jemh1
+chapters:
+  - { n: 1, title: Real Numbers, pdf: jemh101 }
+  - { n: 2, title: Polynomials, pdf: jemh102 }
+  - { n: 3, title: Pair of Linear Equations in Two Variables, pdf: jemh103 }
+  - { n: 4, title: Quadratic Equations, pdf: jemh104 }
+  - { n: 5, title: Arithmetic Progressions, pdf: jemh105 }
+  - { n: 6, title: Triangles, pdf: jemh106 }
+  - { n: 7, title: Coordinate Geometry, pdf: jemh107 }
+  - { n: 8, title: Introduction to Trigonometry, pdf: jemh108 }
+  - { n: 9, title: Some Applications of Trigonometry, pdf: jemh109 }
+  - { n: 10, title: Circles, pdf: jemh110 }
+  - { title: Constructions, restored: true }
+  - { n: 11, title: Areas Related to Circles, pdf: jemh111 }
+  - { n: 12, title: Surface Areas and Volumes, pdf: jemh112 }
+  - { n: 13, title: Statistics, pdf: jemh113 }
+  - { n: 14, title: Probability, pdf: jemh114 }

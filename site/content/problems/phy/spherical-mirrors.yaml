@@ -1,0 +1,386 @@
+# Spherical mirrors. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 9.
+
+- id: ncert-it142-1
+  lvl: ncert-intext
+  num: "p142 Q1"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 142 · Q1
+  kind: text
+  q: Define the principal focus of a concave mirror.
+  sol: The principal focus of a concave mirror is the point on its principal axis at which rays of light parallel to the principal axis meet after reflection from the mirror.
+  check: none
+
+- id: ncert-it142-2
+  lvl: ncert-intext
+  num: "p142 Q2"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 142 · Q2
+  kind: num
+  q: The radius of curvature of a spherical mirror is 20 cm. What is its focal length?
+  ask: Focal length (magnitude)
+  unit: cm
+  ans: 10
+  tol: 0.05
+  verify: 20/2
+  hints: ["f = R/2."]
+  sol: $f = R/2 = 20/2 = 10$ cm. With signs, $f = -10$ cm for a concave mirror and $+10$ cm for a convex mirror.
+  check: code
+
+- id: ncert-it142-3
+  lvl: ncert-intext
+  num: "p142 Q3"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 142 · Q3
+  kind: text
+  q: Name a mirror that can give an erect and enlarged image of an object.
+  sol: A **concave mirror**, when the object is placed between its pole and principal focus.
+  check: none
+
+- id: ncert-it142-4
+  lvl: ncert-intext
+  num: "p142 Q4"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 142 · Q4
+  kind: text
+  q: Why do we prefer a convex mirror as a rear-view mirror in vehicles?
+  sol: A convex mirror always forms an erect, diminished image of objects behind the vehicle, so the driver sees traffic the right way up. Because the image is diminished, the mirror shows a much wider field of view than a plane mirror of the same size.
+  check: none
+
+- id: ncert-it145-1
+  lvl: ncert-intext
+  num: "p145 Q1"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 145 · Q1
+  kind: num
+  q: Find the focal length of a convex mirror whose radius of curvature is 32 cm.
+  ask: Focal length, with sign
+  unit: cm
+  ans: 16
+  tol: 0.05
+  verify: 32/2
+  hints: ["f = R/2; for a convex mirror the focus is behind the mirror."]
+  sol: $f = R/2 = +32/2 = +16$ cm. The positive sign shows the focus lies behind the mirror.
+  check: code
+
+- id: ncert-it145-2
+  lvl: ncert-intext
+  num: "p145 Q2"
+  source: NCERT X Science · Ch 9 · In-text questions · p. 145 · Q2
+  kind: num
+  q: A concave mirror produces three times magnified (enlarged) real image of an object placed at 10 cm in front of it. Where is the image located?
+  ask: Image distance v, with sign
+  unit: cm
+  ans: -30
+  tol: 0.1
+  verify: "-(-3)*(-10)"
+  hints: ["A real image from a mirror is inverted, so m = −3.", "m = −v/u, so v = −m u."]
+  sol: |
+    Real image, so inverted: $m = -3$. With $u = -10$ cm,
+    $$m = -\frac{v}{u} \Rightarrow v = -m\,u = -(-3)(-10) = -30 \text{ cm}.$$
+    The image is 30 cm in front of the mirror.
+  check: code
+
+- id: ncert-ex9-1
+  lvl: ncert-intext
+  num: "Ex 9.1"
+  source: NCERT X Science · Ch 9 · Example 9.1
+  kind: num
+  q: A convex mirror used for rear-view on an automobile has a radius of curvature of 3.00 m. If a bus is located at 5.00 m from this mirror, find the position, nature and size of the image.
+  ask: Image distance v, with sign
+  unit: m
+  ans: 1.15
+  tol: 0.01
+  verify: 1/(1/1.5+1/5)
+  hints: ["f = R/2 = +1.50 m and u = −5.00 m.", "Then use m = −v/u for the size."]
+  sol: |
+    $f = +1.50$ m, $u = -5.00$ m. $\dfrac1v = \dfrac{1}{1.50} + \dfrac{1}{5.00}$, so $v = +1.15$ m.
+    $m = -v/u = -1.15/(-5.00) = +0.23$. The image is 1.15 m behind the mirror, virtual, erect and 0.23 times the size of the bus.
+  check: code
+
+- id: ncert-ex9-2
+  lvl: ncert-intext
+  num: "Ex 9.2"
+  source: NCERT X Science · Ch 9 · Example 9.2
+  kind: num
+  q: An object, 4.0 cm in size, is placed at 25.0 cm in front of a concave mirror of focal length 15.0 cm. At what distance from the mirror should a screen be placed in order to obtain a sharp image? Find the nature and the size of the image.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: -37.5
+  tol: 0.1
+  verify: 1/(1/(-15)-1/(-25))
+  hints: ["u = −25.0 cm, f = −15.0 cm.", "Image height h′ = −(v/u) h."]
+  sol: |
+    $\dfrac1v = -\dfrac{1}{15.0} + \dfrac{1}{25.0} = -\dfrac{2}{75}$, so $v = -37.5$ cm: place the screen 37.5 cm in front of the mirror.
+    $h' = -(v/u)h = -(-37.5/-25.0)(4.0) = -6.0$ cm. The image is real, inverted and enlarged.
+  check: code
+
+- id: ncert-ex-2
+  lvl: ncert-ex
+  num: 2
+  source: NCERT X Science · Ch 9 · Exercise 2 · p. 159
+  kind: mcq
+  q: The image formed by a concave mirror is observed to be virtual, erect and larger than the object. Where should be the position of the object?
+  opts: ["Between the principal focus and the centre of curvature", "At the centre of curvature", "Beyond the centre of curvature", "Between the pole of the mirror and its principal focus."]
+  ans: 3
+  sol: Only an object between the pole and the principal focus gives a virtual, erect, enlarged image with a concave mirror. Every other position gives a real, inverted image.
+  answer_key: (d)
+  check: ncert-key
+
+- id: ncert-ex-4
+  lvl: ncert-ex
+  num: 4
+  source: NCERT X Science · Ch 9 · Exercise 4 · p. 159
+  kind: mcq
+  q: A spherical mirror and a thin spherical lens have each a focal length of –15 cm. The mirror and the lens are likely to be
+  opts: ["both concave.", "both convex.", "the mirror is concave and the lens is convex.", "the mirror is convex, but the lens is concave."]
+  ans: 0
+  sol: In the New Cartesian convention a negative focal length means a concave mirror (focus in front) and a concave, diverging lens (focus on the object side). So both are concave.
+  answer_key: (a)
+  check: ncert-key
+
+- id: ncert-ex-5
+  lvl: ncert-ex
+  num: 5
+  source: NCERT X Science · Ch 9 · Exercise 5 · p. 160
+  kind: mcq
+  q: No matter how far you stand from a mirror, your image appears erect. The mirror is likely to be
+  opts: ["only plane.", "only concave.", "only convex.", "either plane or convex."]
+  ans: 3
+  sol: Plane and convex mirrors always form erect, virtual images at every distance. A concave mirror forms an inverted image once you stand beyond its focus.
+  answer_key: (d)
+  check: ncert-key
+
+- id: ncert-ex-7
+  lvl: ncert-ex
+  num: 7
+  source: NCERT X Science · Ch 9 · Exercise 7 · p. 160
+  kind: text
+  q: We wish to obtain an erect image of an object, using a concave mirror of focal length 15 cm. What should be the range of distance of the object from the mirror? What is the nature of the image? Is the image larger or smaller than the object? Draw a ray diagram to show the image formation in this case.
+  sol: |
+    The object must be **between the pole and the focus**, at a distance less than 15 cm from the mirror. The image is **virtual and erect**, formed behind the mirror, and **larger** than the object.
+
+    Ray diagram: draw a ray from the top of the object parallel to the axis, reflecting through F; and a ray that strikes the pole, reflecting symmetrically. The reflected rays diverge; extend them behind the mirror (dashed) to meet at the top of the enlarged, erect image. Set the bench in the lesson to a concave mirror with |u| < |f| to see it.
+  answer_key: Distance less than 15 cm; virtual; Enlarged.
+  check: ncert-key
+
+- id: ncert-ex-8
+  lvl: ncert-ex
+  num: 8
+  source: NCERT X Science · Ch 9 · Exercise 8 · p. 160
+  kind: text
+  q: |
+    Name the type of mirror used in the following situations.
+    (a) Headlights of a car. (b) Side/rear-view mirror of a vehicle. (c) Solar furnace.
+    Support your answer with reason.
+  sol: |
+    (a) **Concave mirror.** The bulb sits at the principal focus, so reflected light leaves as a strong parallel beam.
+
+    (b) **Convex mirror.** It always forms an erect, diminished image and gives a wide field of view.
+
+    (c) **Concave mirror.** It brings sunlight to a focus, concentrating heat at one point.
+  check: none
+
+- id: ncert-ex-12
+  lvl: ncert-ex
+  num: 12
+  source: NCERT X Science · Ch 9 · Exercise 12 · p. 160
+  kind: num
+  q: An object is placed at a distance of 10 cm from a convex mirror of focal length 15 cm. Find the position and nature of the image.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: 6
+  tol: 0.05
+  verify: 1/(1/15-1/(-10))
+  hints: ["u = −10 cm, f = +15 cm for a convex mirror."]
+  sol: |
+    $\dfrac1v = \dfrac1f - \dfrac1u = \dfrac{1}{15} + \dfrac{1}{10} = \dfrac{1}{6}$, so $v = +6.0$ cm.
+    The image is 6.0 cm behind the mirror, virtual and erect, with $m = -v/u = +0.6$ (diminished).
+  answer_key: 6.0 cm, behind the mirror; virtual, erect
+  check: both
+
+- id: ncert-ex-14
+  lvl: ncert-ex
+  num: 14
+  source: NCERT X Science · Ch 9 · Exercise 14 · p. 160
+  kind: num
+  q: An object 5.0 cm in length is placed at a distance of 20 cm in front of a convex mirror of radius of curvature 30 cm. Find the position of the image, its nature and size.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: 8.6
+  tol: 0.05
+  verify: 1/(1/15-1/(-20))
+  hints: ["f = +R/2 = +15 cm, u = −20 cm.", "h′ = −(v/u) h."]
+  sol: |
+    $\dfrac1v = \dfrac{1}{15} + \dfrac{1}{20} = \dfrac{7}{60}$, so $v = +8.6$ cm.
+    $m = -v/u = 8.57/20 = +0.43$, so $h' = 0.43 \times 5.0 = 2.1$ cm. The image is 8.6 cm behind the mirror, virtual, erect and diminished.
+  answer_key: 8.6 cm, behind the mirror; virtual, erect; 2.2 cm, reduced.
+  check: both
+
+- id: ncert-ex-15
+  lvl: ncert-ex
+  num: 15
+  source: NCERT X Science · Ch 9 · Exercise 15 · p. 160
+  kind: num
+  q: An object of size 7.0 cm is placed at 27 cm in front of a concave mirror of focal length 18 cm. At what distance from the mirror should a screen be placed, so that a sharp focussed image can be obtained? Find the size and the nature of the image.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: -54
+  tol: 0.1
+  verify: 1/(1/(-18)-1/(-27))
+  hints: ["u = −27 cm, f = −18 cm.", "h′ = −(v/u) h."]
+  sol: |
+    $\dfrac1v = -\dfrac{1}{18} + \dfrac{1}{27} = -\dfrac{1}{54}$, so $v = -54$ cm: place the screen 54 cm in front of the mirror.
+    $m = -v/u = -(-54)/(-27) = -2$, so $h' = -14$ cm. The image is real, inverted and magnified, 14 cm tall.
+  answer_key: 54 cm on the object side; 14 cm, magnified; real, inverted.
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: What kind of image does a convex mirror form of a real object?
+  opts: ["Real, inverted", "Virtual, erect, diminished", "Virtual, erect, magnified"]
+  ans: 1
+  sol: A convex mirror diverges light, so reflected rays never meet; they only appear to come from a point behind the mirror. The image is always virtual, erect and diminished.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A concave mirror has a radius of curvature of 24 cm. What is the magnitude of its focal length?
+  ask: Focal length
+  unit: cm
+  ans: 12
+  tol: 0.05
+  verify: 24/2
+  sol: $f = R/2 = 12$ cm.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: An object is 10 cm in front of a concave mirror of focal length 15 cm. Find the image distance.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: 30
+  tol: 0.1
+  verify: 1/(1/(-15)-1/(-10))
+  hints: ["u = −10 cm and f = −15 cm.", "The object is inside the focus, so expect a virtual image behind the mirror."]
+  sol: $\dfrac1v = -\dfrac{1}{15} + \dfrac{1}{10} = \dfrac{1}{30}$, so $v = +30$ cm. The image is virtual, 30 cm behind the mirror.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: For the mirror and object of the previous problem (u = −10 cm, v = +30 cm), find the magnification.
+  ask: m
+  unit: ""
+  ans: 3
+  tol: 0.01
+  verify: -(30)/(-10)
+  sol: $m = -v/u = -30/(-10) = +3$. The image is erect and three times the size of the object.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Where should an object be placed in front of a concave mirror of focal length 20 cm to obtain a real image twice the size of the object?
+  ask: Object distance u, with sign
+  unit: cm
+  ans: -30
+  tol: 0.1
+  verify: 1/((1/(-20))*2/3)
+  hints: ["Real image means m = −2, so v = 2u.", "Substitute v = 2u in the mirror formula."]
+  sol: |
+    $m = -v/u = -2 \Rightarrow v = 2u$. Then $\dfrac{1}{2u} + \dfrac1u = \dfrac{3}{2u} = -\dfrac{1}{20}$, so $u = -30$ cm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Where should the object be placed in front of the same mirror (f = 20 cm) to obtain a virtual image twice the size of the object?
+  ask: Object distance u, with sign
+  unit: cm
+  ans: -10
+  tol: 0.1
+  verify: -20/2
+  hints: ["Virtual image means m = +2, so v = −2u."]
+  sol: $m = -v/u = +2 \Rightarrow v = -2u$. Then $-\dfrac{1}{2u} + \dfrac1u = \dfrac{1}{2u} = -\dfrac{1}{20}$, so $u = -10$ cm.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A concave mirror of focal length 10 cm and a plane mirror face each other. An object is placed 15 cm from the concave mirror, between the two mirrors. How far from the concave mirror must the plane mirror be so that the images formed by the two mirrors coincide?
+  ask: Distance of plane mirror from concave mirror
+  unit: cm
+  ans: 22.5
+  tol: 0.1
+  verify: (30+15)/2
+  hints: ["Find the concave mirror's image first: it is 30 cm in front of that mirror.", "The plane mirror's image is as far behind it as the object is in front."]
+  sol: |
+    Concave mirror: $u = -15$, $f = -10$ gives $v = -30$ cm. Let the plane mirror be $d$ from the concave mirror. The object is $d - 15$ from the plane mirror, so its image there lies at $d + (d - 15) = 2d - 15$ from the concave mirror. Setting $2d - 15 = 30$ gives $d = 22.5$ cm.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A small object moves along the axis towards a concave mirror of focal length 10 cm at 2 cm/s. How fast is its image moving when the object is 30 cm from the mirror?
+  ask: Image speed
+  unit: cm/s
+  ans: 0.5
+  tol: 0.01
+  verify: (15/30)**2*2
+  hints: ["Find v first: v = −15 cm.", "Image speed = m² × object speed."]
+  sol: |
+    $\dfrac1v = -\dfrac{1}{10} + \dfrac{1}{30}$ gives $v = -15$ cm, so $m = -v/u = -0.5$.
+    Image speed $= m^2 \times 2 = 0.25 \times 2 = 0.5$ cm/s, moving away from the mirror as the object approaches.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A concave mirror has radius of curvature 40 cm. A ray parallel to the axis strikes it at a height of 12 cm. At what distance from the pole does the reflected ray cross the axis?
+  ask: Distance from pole
+  unit: cm
+  ans: 19.03
+  tol: 0.05
+  verify: 40-20/sqrt(1-0.09)
+  hints: ["sin θ = h/R, where θ is the angle of incidence.", "The crossing point is at R − R/(2 cos θ) from the pole."]
+  sol: |
+    $\sin\theta = 12/40 = 0.3$, so $\cos\theta = 0.954$. The crossing point is at
+    $$R - \frac{R}{2\cos\theta} = 40 - \frac{20}{0.954} = 19.03 \text{ cm},$$
+    about 1 mm closer than the paraxial focus at 20 cm. This is spherical aberration.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: An object is 4 cm beyond the focus of a concave mirror of focal length 12 cm. Use Newton's form to find the distance of the image from the mirror.
+  ask: Distance of image from mirror
+  unit: cm
+  ans: 48
+  tol: 0.1
+  verify: 12+12*12/4
+  hints: ["x x′ = f² with distances measured from the focus."]
+  sol: $x' = f^2/x = 144/4 = 36$ cm beyond the focus, so the image is $12 + 36 = 48$ cm from the mirror. Check with the mirror formula ($u = -16$, $f = -12$) gives $v = -48$ cm.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: In a Cassegrain telescope, a concave primary mirror of focal length 100 cm faces a distant star. A convex secondary mirror of focal length 25 cm is placed on the axis 80 cm in front of the primary, facing it. Where is the final image of the star?
+  ask: Distance of final image behind the primary mirror
+  unit: cm
+  ans: 20
+  tol: 0.1
+  verify: -(1/(1/25-1/20))-80
+  hints: ["The primary alone would form the image 100 cm from it, which is 20 cm behind the secondary. That point is a virtual object for the secondary.", "For the secondary, take the direction of the light reaching it as positive: u = +20 cm, f = +25 cm."]
+  sol: |
+    The primary converges the starlight towards a point 100 cm from it, 20 cm beyond the secondary. For the secondary this is a virtual object at $u = +20$ cm. With $f = +25$ cm,
+    $$\frac1v = \frac{1}{25} - \frac{1}{20} = -\frac{1}{100} \Rightarrow v = -100 \text{ cm},$$
+    a real image 100 cm in front of the secondary, back towards the primary: $100 - 80 = 20$ cm behind the primary, through a hole in its centre. The secondary magnifies by $m = -v/u = 5$, so the telescope behaves like a single mirror of focal length 500 cm packed into an 80 cm tube.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: Prove that every ray parallel to the axis of the parabolic mirror $y^2 = 4ax$ passes through the point $(a, 0)$ after reflection.
+  hints: ["The slope of the parabola at (x, y) is 2a/y.", "Alternatively, use Fermat: compare path lengths to the directrix x = −a."]
+  sol: |
+    Use the focus–directrix property: every point P on the parabola is equally far from the focus S $(a, 0)$ and from the directrix $x = -a$. Take a ray arriving parallel to the axis. Draw a reference line perpendicular to the axis far to the right, at $x = L$. The path from that line to P and then to S has length $(L - x_P) + PS = (L - x_P) + (x_P + a) = L + a$, the same for every point P. Since all such paths take equal time, Fermat's principle says each is a possible light path, and the reflected rays all reach S. (Directly: the tangent at P bisects the angle between PS and the line through P parallel to the axis, which is the law of reflection.)
+  check: none

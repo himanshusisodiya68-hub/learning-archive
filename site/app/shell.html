@@ -1,0 +1,104 @@
+<title>Learning Archive</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap">
+<style>/*CSS*/</style>
+
+<div class="app">
+  <nav class="rail" aria-label="Main">
+    <div class="brand">learning archive<small id="build-info">phase 1</small></div>
+    <a class="nav" href="#home" data-nav="home"><span data-icon="home"></span>Home</a>
+    <a class="nav" href="#learn" data-nav="learn"><span data-icon="tree"></span>Learn</a>
+    <a class="nav" href="#practice" data-nav="practice"><span data-icon="pen"></span>Practice</a>
+    <a class="nav" href="#review" data-nav="review"><span data-icon="review"></span>Review<span class="badge" id="rev-badge" hidden>0</span></a>
+    <div class="rail-foot"><div id="sync-state">Progress saved in this browser.</div></div>
+  </nav>
+
+  <main>
+    <div class="inner">
+
+    <section data-view="home">
+      <div class="home-hero">
+        <div class="eyebrow" id="today-date">Today</div>
+        <h1 class="h1">What do you want to understand today?</h1>
+        <div class="search big">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="q" type="search" placeholder="Search a topic, formula or question: mirage, focal length, power of a lens…" autocomplete="off" aria-label="Search the archive">
+          <kbd aria-hidden="true">/</kbd>
+        </div>
+        <div class="suggest" id="suggest"><span>Try</span></div>
+        <div id="results" class="sresults" hidden></div>
+      </div>
+      <div id="continue"></div>
+      <div class="duo">
+        <div class="panel mini-card">
+          <span class="tile" data-icon="review"></span>
+          <div><h3 id="due-title">Nothing due yet</h3><p id="due-text">Cards and missed problems come back here at growing intervals.</p><a class="btn quiet" href="#review">Open review</a></div>
+        </div>
+        <div class="panel mini-card">
+          <span class="tile" data-icon="shuffle"></span>
+          <div><h3>Today's problem set</h3><p id="daily-text">Problems mixed across levels and topics, so you have to recognise the method yourself.</p><button class="btn quiet" data-start="daily">Start set</button></div>
+        </div>
+      </div>
+      <div class="sec-title">Your subjects <span class="eyebrow" id="live-count"></span></div>
+      <div class="subj-cards" id="subj-list"></div>
+      <div class="sec-title">How this archive helps you remember</div>
+      <div class="principles">
+        <div class="pr"><span class="tile sm" data-icon="question"></span><div><b>Recall before reading</b><span>Every lesson opens with a question, and checks sit between sections. Pulling an answer from memory strengthens it more than rereading does.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="calendar"></span><div><b>Spaced reviews</b><span>Cards and missed problems come back at growing intervals, just before you would forget them.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="shuffle"></span><div><b>Mixed practice</b><span>Daily sets shuffle topics and levels, so you learn to choose the method, not just apply it.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="image"></span><div><b>Words and pictures</b><span>Each idea comes with a diagram or simulation as well as text, giving memory two routes in.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="pen"></span><div><b>Your own words</b><span>The notes tab asks you to explain each idea simply, which shows exactly where your understanding has gaps.</span></div></div>
+      </div>
+    </section>
+
+    <section data-view="learn">
+      <div class="head">
+        <div class="eyebrow">Learn</div>
+        <h1 class="h1">Find an idea and open it</h1>
+        <p class="lede">Each subject is a tree. Pillars split into branches, branches into leaves, and every leaf is one lesson with its own problems.</p>
+      </div>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Browse by" id="mode-seg">
+          <button aria-pressed="true" data-mode="subject">By subject</button>
+          <button aria-pressed="false" data-mode="class">By class (NCERT)</button>
+        </div>
+        <div class="seg" role="group" aria-label="Subject" id="subj-seg"></div>
+      </div>
+      <div id="by-subject">
+        <div class="crumbs" id="crumbs"></div>
+        <div class="panel about" id="about"></div>
+        <div class="cols" id="cols"></div>
+      </div>
+      <div id="by-class" hidden>
+        <div class="class-pills" id="class-pills"></div>
+        <div class="books" id="books"></div>
+        <p class="note">Chapters follow the current NCERT reprint. Rows marked + were removed from the current edition; they sit where the older edition placed them and are written back in.</p>
+      </div>
+    </section>
+
+    <section data-view="lesson">
+      <div id="lesson-root"><div class="loading">Loading lesson…</div></div>
+    </section>
+
+    <section data-view="practice">
+      <div class="head">
+        <div class="eyebrow">Practice</div>
+        <h1 class="h1">Solve problems</h1>
+        <p class="lede">Every NCERT question word for word, then the key problems from each level above it. Your answer is checked, hints come one at a time, and anything you miss comes back for review.</p>
+      </div>
+      <div class="sec-title" style="margin-top:0">Start a set</div>
+      <div class="sets" id="sets"></div>
+      <div class="sec-title">Or train one level</div>
+      <div class="level-row" id="level-row"></div>
+    </section>
+
+    <section data-view="play"><div class="player" id="player"></div></section>
+    <section data-view="review"><div class="rev" id="rev"></div></section>
+
+    </div>
+  </main>
+</div>
+
+<script>/*JS*/</script>

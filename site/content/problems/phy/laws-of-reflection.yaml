@@ -1,0 +1,150 @@
+# Laws of reflection. verify: a JavaScript expression (Math functions available, deg() converts radians to degrees)
+# that check-answers.mjs recomputes and compares with ans.
+
+- id: ncert-ex-13
+  lvl: ncert-ex
+  num: 13
+  source: NCERT X Science · Ch 9 · Exercise 13 · p. 160
+  kind: text
+  q: The magnification produced by a plane mirror is +1. What does this mean?
+  sol: |
+    Magnification $m = h'/h$, the ratio of image height to object height.
+    - $|m| = 1$: the image is the **same size** as the object.
+    - The **positive sign** means the image is **erect** and, for a mirror, **virtual** (it forms behind the mirror).
+  answer_key: m = 1 indicates that image formed by a plane mirror is of the same size as the object. Further, the positive sign of m indicates that the image is virtual and erect.
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A ray strikes a plane mirror at 30° to the mirror surface. What is the angle of reflection?
+  opts: ["30°", "60°", "90°", "120°"]
+  ans: 1
+  hints: ["Angles are measured from the normal, which is perpendicular to the mirror."]
+  sol: The angle with the normal is $90^\circ - 30^\circ = 60^\circ$, and the angle of reflection equals the angle of incidence, so it is $60^\circ$.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: You stand 2.5 m in front of a plane mirror. How far are you from your image?
+  ask: Distance
+  unit: m
+  ans: 5
+  tol: 0.05
+  verify: 2*2.5
+  hints: ["The image is as far behind the mirror as you are in front of it."]
+  sol: The image is 2.5 m behind the mirror, so the distance is $2.5 + 2.5 = 5$ m.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: You walk towards a plane mirror at 1.5 m/s. At what speed does your image approach you?
+  ask: Relative speed
+  unit: m/s
+  ans: 3
+  tol: 0.05
+  verify: 2*1.5
+  hints: ["The image moves towards the mirror at your speed, from the other side."]
+  sol: You approach the mirror at 1.5 m/s and so does your image, from the opposite side. Their closing speed is $1.5 + 1.5 = 3$ m/s.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Why does a plane mirror seem to swap left and right, but not up and down?
+  hints: ["Which direction does the mirror actually reverse: the one along the mirror or the one perpendicular to it?"]
+  sol: |
+    A mirror reverses only the direction perpendicular to its surface (front–back). Up stays up and the left side of the scene stays on the left. The image faces you, though, so when you imagine yourself standing in its place you turn around a vertical axis, and that turn is what swaps left and right. If you imagined turning head over heels instead, you would say the mirror swaps up and down.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A person 1.8 m tall wants to see their full height in a vertical plane mirror. What is the minimum length of mirror needed?
+  ask: Length
+  unit: m
+  ans: 0.9
+  tol: 0.01
+  verify: 1.8/2
+  hints: ["Light from your feet reflects into your eyes at a point halfway, in height, between eyes and feet.", "Do the same for the top of your head and add the two halves."]
+  sol: The mirror must span from halfway between eyes and feet to halfway between eyes and head, a total of half the height, $1.8/2 = 0.9$ m. The answer does not depend on how far you stand.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A plane mirror is turned through 12° while the incident ray stays fixed. Through what angle does the reflected ray turn?
+  ask: Angle
+  unit: "°"
+  ans: 24
+  tol: 0.1
+  verify: 2*12
+  hints: ["The normal turns with the mirror, changing both i and r."]
+  sol: Turning the mirror by $\theta$ changes both the angle of incidence and the angle of reflection by $\theta$, so the reflected ray turns by $2\theta = 24^\circ$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: Two plane mirrors are inclined at 60° to each other. How many images of an object placed between them are formed?
+  ask: Number of images
+  unit: ""
+  ans: 5
+  tol: 0.01
+  verify: 360/60-1
+  hints: ["Is 360°/θ even or odd?"]
+  sol: $360^\circ/60^\circ = 6$ is even, so $n = 6 - 1 = 5$ images form for any position of the object.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A ray reflects once from each of two plane mirrors inclined at 70°. Find the total deviation of the ray, as an angle between 180° and 360°.
+  ask: Deviation
+  unit: "°"
+  ans: 220
+  tol: 0.1
+  verify: 360-2*70
+  hints: ["Deviation at one mirror is 180° − 2i. Add the two and use the triangle formed by the ray and the mirrors.", "The result does not depend on the angle of incidence."]
+  sol: |
+    Use glancing angles (angles with the mirror surface). A reflection with glancing angle $\alpha$ turns the ray by $2\alpha$. Let the ray between the mirrors make glancing angles $\alpha$ with the first mirror and $\beta$ with the second. That ray and the two mirrors form a triangle, so $\alpha + \beta + \theta = 180^\circ$. The total deviation is
+    $$\delta = 2\alpha + 2\beta = 2(180^\circ - \theta) = 360^\circ - 2\theta = 360^\circ - 140^\circ = 220^\circ.$$
+    Equivalently, the ray ends up turned $140^\circ$ in the other sense.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A ray travelling along the unit vector $(2, -3, 6)/7$ enters a corner reflector made of three mutually perpendicular mirrors and reflects once from each. What is the $z$-component of its final direction?
+  ask: z-component
+  unit: ""
+  ans: -0.857
+  tol: 0.005
+  verify: -6/7
+  hints: ["Each mirror flips exactly one component of the direction vector."]
+  sol: Each mirror reverses one component, so after all three the direction is $(-2, 3, -6)/7$. The $z$-component is $-6/7 \approx -0.857$. The ray goes straight back.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A mirror rotates at 10 rad/s, reflecting a fixed laser beam onto a wall 5 m away (measured perpendicular to the wall). How fast does the spot move when it is at the foot of the perpendicular from the mirror?
+  ask: Speed
+  unit: m/s
+  ans: 100
+  tol: 0.5
+  verify: 2*10*5
+  hints: ["The reflected beam turns at twice the mirror's angular speed.", "x = d tan φ; differentiate and set φ = 0."]
+  sol: The beam turns at $2\omega = 20$ rad/s. With $x = d\tan\phi$, $v = d\sec^2\phi \cdot 2\omega$, which at $\phi = 0$ is $2\omega d = 2 \times 10 \times 5 = 100$ m/s.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: Points A and B lie on the same side of a plane mirror. Prove that among all paths from A to the mirror and then to B, the one obeying the law of reflection is the shortest.
+  hints: ["Reflect B in the mirror to get B′.", "Compare AP + PB with AP + PB′ for any point P on the mirror."]
+  sol: |
+    Let B′ be the reflection of B in the mirror. For any point P on the mirror, PB = PB′, because the mirror is the perpendicular bisector of BB′. So the path length is AP + PB′. By the triangle inequality this is smallest when A, P and B′ are collinear. For that P, the angle APB′ is a straight line, and the vertical angles at P show that AP and PB make equal angles with the normal. Hence the reflecting path is the shortest.
+  check: none

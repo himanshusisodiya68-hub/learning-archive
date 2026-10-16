@@ -1,0 +1,26 @@
+# NCERT Science, Class 10 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+# leaves: lessons in content/lessons that cover the chapter. restored: removed in the rationalised edition, placed where the older edition had it.
+class: 10
+subject: phy
+name: Science
+code: jesc1
+chapters:
+  - { n: 1, title: Chemical Reactions and Equations, pdf: jesc101 }
+  - { n: 2, title: "Acids, Bases and Salts", pdf: jesc102 }
+  - { n: 3, title: Metals and Non-metals, pdf: jesc103 }
+  - { n: 4, title: Carbon and its Compounds, pdf: jesc104 }
+  - { title: Periodic Classification of Elements, restored: true }
+  - { n: 5, title: Life Processes, pdf: jesc105 }
+  - { n: 6, title: Control and Coordination, pdf: jesc106 }
+  - { n: 7, title: How do Organisms Reproduce?, pdf: jesc107 }
+  - { n: 8, title: Heredity, pdf: jesc108 }
+  - n: 9
+    title: Light – Reflection and Refraction
+    pdf: jesc109
+    leaves: [phy/spherical-mirrors, phy/laws-of-reflection, phy/refraction-and-snells-law, phy/lenses-and-the-lens-formula]
+  - { n: 10, title: The Human Eye and the Colourful World, pdf: jesc110 }
+  - { n: 11, title: Electricity, pdf: jesc111 }
+  - { n: 12, title: Magnetic Effects of Electric Current, pdf: jesc112 }
+  - { title: Sources of Energy, restored: true }
+  - { n: 13, title: Our Environment, pdf: jesc113 }
+  - { title: Sustainable Management of Natural Resources, restored: true }
