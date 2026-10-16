@@ -317,3 +317,133 @@
   sol: |
     For two parallel conducting plates with like charges, the charge settles on the two outer faces, $\sigma_{outer} = 4\ \mu$C/m² each, and none stays on the inner faces. Between the plates the fields of the two equal sheets cancel, so $E = 0$ there. Just outside, $E = \sigma_{outer}/\varepsilon_0 = \dfrac{4\times10^{-6}}{8.854\times10^{-12}} = 4.5\times10^{5}$ N/C, directed away from the plates. (Equivalent to two sheets of total $8\ \mu$C/m²: $E = \dfrac{8\times10^{-6}}{2\varepsilon_0}$.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A ball of radius R = 20 cm carries a charge density that grows linearly from the centre, ρ = ρ₀r/R, with ρ₀ = 1.0 µC/m³. Find the magnitude of the electric field at r = 10 cm from the centre. (Original problem.)"
+  ask: Electric field at r = 10 cm
+  unit: N/C
+  ans: 1412
+  tol: 3
+  verify: 1e-6*0.1**2/(4*8.854e-12*0.2)
+  sol: |
+    The distribution is spherically symmetric, so a concentric Gaussian sphere of radius $r$ works, and only the charge inside it counts:
+    $$q_{enc} = \int_0^r \frac{\rho_0 r'}{R}\,4\pi r'^2\,dr' = \frac{\pi\rho_0 r^4}{R}.$$
+    Gauss's law: $E\cdot4\pi r^2 = q_{enc}/\varepsilon_0$, so
+    $$E = \frac{\rho_0 r^2}{4\varepsilon_0 R} = \frac{1.0\times10^{-6}\times(0.10)^2}{4\times8.854\times10^{-12}\times0.20} \approx 1.41\times10^{3}\ \text{N/C},$$
+    radially outward. Note $E \propto r^2$ inside, not $\propto r$ as for a uniform ball.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "A non-conducting ball of radius 10 cm has a uniform charge density of 2.0 µC/m³. A spherical cavity of radius 3.0 cm is cut out of it, with the cavity's centre 5.0 cm from the ball's centre. Find the magnitude of the electric field at the centre of the cavity, and say how it varies across the cavity. (Original problem.)"
+  ask: Field at the centre of the cavity
+  unit: N/C
+  ans: 3765
+  tol: 5
+  verify: 2e-6*0.05/(3*8.854e-12)
+  sol: |
+    Treat the ball with the cavity as a full ball of density $+\rho$ plus a small ball of density $-\rho$ filling the cavity. Inside a uniform ball, Gauss's law gives $\vec E = \rho\vec r/(3\varepsilon_0)$ from its centre. At a point in the cavity, with $\vec r$ from the big centre and $\vec r'$ from the cavity centre,
+    $$\vec E = \frac{\rho\vec r}{3\varepsilon_0} - \frac{\rho\vec r'}{3\varepsilon_0} = \frac{\rho\vec d}{3\varepsilon_0},$$
+    where $\vec d$ is the vector from the ball's centre to the cavity's centre. So the field is the **same at every point of the cavity**, directed along the line of centres (away from the ball's centre for positive ρ):
+    $$E = \frac{2.0\times10^{-6}\times0.050}{3\times8.854\times10^{-12}} \approx 3.76\times10^{3}\ \text{N/C}.$$
+    The cavity radius (3.0 cm) does not enter, as long as the cavity lies wholly inside the ball.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: "A point charge of 10 nC lies on the axis of a flat circular disc of radius 4.0 cm, at a distance of 3.0 cm from the disc's centre. Find the electric flux through the disc. (Original problem.)"
+  ask: Flux through the disc
+  unit: N m²/C
+  ans: 225.9
+  tol: 0.5
+  verify: 1e-8/(2*8.854e-12)*(1-0.03/Math.sqrt(0.03**2+0.04**2))
+  sol: |
+    The flux of a point charge through any surface is $\dfrac{q}{4\pi\varepsilon_0}\Omega$, where $\Omega$ is the solid angle the surface subtends at the charge. A disc seen from a point on its axis is a cone of half-angle $\alpha$ with $\cos\alpha = d/\sqrt{d^2+a^2} = 3/5$, and $\Omega = 2\pi(1-\cos\alpha)$. So
+    $$\phi = \frac{q}{2\varepsilon_0}(1-\cos\alpha) = \frac{10\times10^{-9}}{2\times8.854\times10^{-12}}\times(1 - 0.6) \approx 226\ \text{N m}^2/\text{C}.$$
+    This is 20% of the total flux $q/\varepsilon_0 \approx 1129$ N m²/C. (Direct integration: $\int_0^a \dfrac{q\,d}{4\pi\varepsilon_0(d^2+s^2)^{3/2}}2\pi s\,ds$ gives the same result.)
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: "A point charge of 2.4 nC is placed exactly at one corner of a cube. Find the electric flux through one of the three faces of the cube that do not touch that corner. (Original problem.)"
+  ask: Flux through one far face
+  unit: N m²/C
+  ans: 11.29
+  tol: 0.03
+  verify: 2.4e-9/(24*8.854e-12)
+  sol: |
+    Eight identical cubes can be stacked so that they meet at the corner and completely surround the charge. By symmetry each receives one eighth of the total flux, $q/(8\varepsilon_0)$.
+    For our cube, the three faces that meet at the charge contain it, so the field from the charge runs along them and their flux is zero. The remaining three faces are equivalent by symmetry, so each gets
+    $$\phi = \frac{q}{24\varepsilon_0} = \frac{2.4\times10^{-9}}{24\times8.854\times10^{-12}} \approx 11.3\ \text{N m}^2/\text{C}.$$
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "A thin conducting spherical shell of radius 10 cm is made of two hemispheres resting against each other, with no glue. It is given a charge of 1.0 µC. What minimum force must hold the two hemispheres together? (Original problem.)"
+  ask: Force needed to hold the hemispheres together
+  unit: N
+  ans: 0.1124
+  tol: 0.0005
+  verify: (1e-6)**2/(32*Math.PI*8.854e-12*0.1**2)
+  sol: |
+    **Pressure on the surface charge.** Just outside the conductor $E = \sigma/\varepsilon_0$, inside $E = 0$. A patch of surface charge does not push itself; its own field is $\sigma/2\varepsilon_0$ away from it on each side, so the field of all other charges at the patch is $\sigma/2\varepsilon_0$ outward. The force per unit area is therefore $\sigma\cdot\sigma/2\varepsilon_0 = \sigma^2/2\varepsilon_0$, outward.
+
+    **Net force on a hemisphere.** By symmetry only the component along the hemisphere's axis survives. A uniform normal pressure $p$ on a curved surface gives a net force $p\times$(projected area) $= p\pi R^2$ (the same as for a flat disc closing the hemisphere). With $\sigma = Q/4\pi R^2$:
+    $$F = \frac{\sigma^2}{2\varepsilon_0}\pi R^2 = \frac{Q^2}{32\pi\varepsilon_0R^2} = \frac{(1.0\times10^{-6})^2}{32\pi\times8.854\times10^{-12}\times(0.10)^2} \approx 0.112\ \text{N}.$$
+
+    **Check by energy.** $U = Q^2/(8\pi\varepsilon_0R)$, so the outward pressure is $-\dfrac{dU}{dR}\Big/4\pi R^2 = \dfrac{Q^2}{32\pi^2\varepsilon_0R^4} = \dfrac{\sigma^2}{2\varepsilon_0}$ ✓.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "Inside a spherically symmetric ball of charge of radius 30 cm, the electric field has the same magnitude, 1000 N/C, at every point (pointing radially outward). Find the charge density at 10 cm from the centre, in µC/m³. Also find the total charge of the ball. (Original problem.)"
+  ask: Charge density at r = 10 cm
+  unit: µC/m³
+  ans: 0.1771
+  tol: 0.0005
+  verify: 2*8.854e-12*1000/0.1*1e6
+  sol: |
+    Gauss's law on a concentric sphere: $E_0\cdot4\pi r^2 = q_{enc}(r)/\varepsilon_0$, so $q_{enc}(r) = 4\pi\varepsilon_0E_0r^2$.
+    The charge in a thin shell between $r$ and $r + dr$ is $dq_{enc} = \rho\,4\pi r^2\,dr$. Differentiating, $dq_{enc}/dr = 8\pi\varepsilon_0E_0 r$, so
+    $$\rho(r) = \frac{1}{4\pi r^2}\frac{dq_{enc}}{dr} = \frac{2\varepsilon_0E_0}{r}.$$
+    At $r = 0.10$ m: $\rho = \dfrac{2\times8.854\times10^{-12}\times1000}{0.10} = 1.77\times10^{-7}$ C/m³ $= 0.177$ µC/m³.
+    (Check with the local form: $\nabla\cdot\vec E = \dfrac{1}{r^2}\dfrac{d}{dr}(r^2E_0) = \dfrac{2E_0}{r} = \rho/\varepsilon_0$ ✓.) The density diverges at the centre, but only as $1/r$, so the charge stays finite.
+    Total charge: $Q = 4\pi\varepsilon_0E_0R^2 = 4\pi\times8.854\times10^{-12}\times1000\times0.09 \approx 1.0\times10^{-8}$ C $= 10$ nC.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: "A thin spherical shell carries a surface charge density σ = σ₀ cos θ, where θ is the polar angle measured from the z-axis through its centre, and σ₀ = 3.0 × 10⁻⁸ C/m². Show that the field inside the shell is uniform and find its magnitude and direction. (Original problem.)"
+  ask: Field inside the shell
+  unit: N/C
+  ans: 1129
+  tol: 2
+  verify: 3e-8/(3*8.854e-12)
+  sol: |
+    **Model.** Take two balls of radius $R$ with uniform densities $+\rho$ and $-\rho$, the positive one centred at $+\tfrac{s}{2}\hat z$ and the negative one at $-\tfrac{s}{2}\hat z$. Where they overlap the charge cancels. Near the surface, the uncovered layer has thickness $s\cos\theta$ (positive on top, negative underneath), so in the limit $s\to0$, $\rho s = \sigma_0$ fixed, the pair becomes exactly a shell with $\sigma = \rho s\cos\theta = \sigma_0\cos\theta$.
+
+    **Field inside.** In the overlap, each ball gives $\pm\rho(\vec r - \vec c_\pm)/(3\varepsilon_0)$ by Gauss's law. Adding,
+    $$\vec E = \frac{\rho}{3\varepsilon_0}(\vec c_- - \vec c_+) = -\frac{\rho s}{3\varepsilon_0}\hat z = -\frac{\sigma_0}{3\varepsilon_0}\hat z,$$
+    independent of position: uniform, pointing from the positive cap ($\theta = 0$) towards the negative cap.
+    $$E = \frac{3.0\times10^{-8}}{3\times8.854\times10^{-12}} \approx 1.13\times10^{3}\ \text{N/C}.$$
+    (Outside, the same superposition gives the field of a point dipole $p = \tfrac43\pi R^3\sigma_0$ at the centre. This shell is exactly the bound charge on a uniformly polarised sphere.)
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: proof
+  q: "A set of point charges is held fixed. A small test charge q > 0 is free to move in a region containing none of the fixed charges. Using Gauss's law, prove that there is no point in that region where the test charge is in stable equilibrium under electrostatic forces alone. Then explain why a positive charge on the line midway between two fixed equal positive charges is not a counter-example. (Original problem.)"
+  hints: ["Stable equilibrium at P means a restoring force for a small displacement in every direction.", "What does that say about the direction of E on a tiny sphere around P, and so about the flux through it?", "For the midpoint, compare displacements along the line and perpendicular to it."]
+  sol: |
+    Suppose the test charge were in stable equilibrium at a point P of the charge-free region. Stability means that for every small displacement, in every direction, the force $q\vec E$ points back toward P. Since $q > 0$, the field $\vec E$ at every point of a small sphere $S$ centred on P points inward (it has a negative component along the outward normal), and it is not zero all over $S$, or there would be no restoring force.
+    Then the flux $\oint_S\vec E\cdot d\vec S < 0$. By Gauss's law the enclosed charge is negative. But $S$ can be taken small enough to lie in the charge-free region, so the enclosed charge is zero. This contradiction shows that no stable equilibrium exists. (The test charge's own field does not act on it, so it is excluded from $\vec E$.)
+    At the midpoint between two equal positive charges, $\vec E = 0$, so it is an equilibrium. Along the line joining them the force is restoring, but in the perpendicular plane the two charges both push the test charge further outward, so the equilibrium is unstable sideways. Indeed the flux through a small sphere around the midpoint is zero: the inward flux near the line is balanced by outward flux round the equator, exactly as Gauss's law requires.
+  check: none
