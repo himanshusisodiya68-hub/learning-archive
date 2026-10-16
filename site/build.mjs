@@ -195,6 +195,8 @@ fs.writeFileSync(path.join(DIST, 'index.html'), page);
 // Standalone document (Vercel / phone): the artifact host adds its own skeleton, a plain host does not.
 const standalone = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F4F6F5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#10141A" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Archive"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><style>[hidden]{display:none!important}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{margin:0}</style></head><body>${page}</body></html>`;
 fs.writeFileSync(path.join(DIST, 'standalone.html'), standalone);
+// On a plain host (Vercel sets VERCEL=1) the root file must be the full document, because an existing index.html wins over any rewrite.
+if (process.env.VERCEL) fs.writeFileSync(path.join(DIST, 'index.html'), standalone);
 fs.writeFileSync(path.join(DIST, 'preview.html'), standalone);
 fs.mkdirSync(path.join(DIST, 'icons'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'app/icons'))) fs.copyFileSync(path.join(ROOT, 'app/icons', f), path.join(DIST, 'icons', f));
