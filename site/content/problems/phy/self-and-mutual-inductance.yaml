@@ -126,3 +126,152 @@
   verify: 0.5**2/(2*4e-7*Math.PI)/1000
   sol: $u_B = B^2/(2\mu_0) = (0.5)^2/(2\times4\pi\times10^{-7}) = 9.9\times10^{4}$ J m⁻³ $\approx 99$ kJ m⁻³.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A toroid has a rectangular cross-section, inner radius 10 cm, outer radius 15 cm and height 2.0 cm, with 1000 turns closely wound in air. Find its self-inductance exactly (not using the thin-ring approximation). (Original problem.)
+  ask: Self-inductance
+  unit: mH
+  ans: 1.622
+  tol: 0.005
+  verify: 4e-7*Math.PI*1000**2*0.02/(2*Math.PI)*Math.log(0.15/0.10)*1000
+  sol: |
+    With current $I$, Ampère's law round a circle of radius $r$ inside the core gives $B = \mu_0NI/2\pi r$. A strip of the cross-section at radius $r$ has area $h\,dr$, so the flux through one turn is
+
+    $$\Phi = \int_a^b\frac{\mu_0NI}{2\pi r}h\,dr = \frac{\mu_0NIh}{2\pi}\ln\frac ba.$$
+
+    Then $L = N\Phi/I = \dfrac{\mu_0N^2h}{2\pi}\ln\dfrac ba = 2\times10^{-7}\times10^6\times0.02\times\ln1.5 = 4\times10^{-3}\times0.4055 = 1.622\times10^{-3}$ H.
+
+    Check: the thin-ring formula $\mu_0N^2A/2\pi R$ with $A = 0.05\times0.02 = 10^{-3}$ m² and $R = 0.125$ m gives $1.600$ mH, about 1.4% low, because $B$ is stronger near the inner edge.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A coil of inductance 2.0 H and resistance 10 Ω is connected to a 20 V battery at t = 0. How long after this does the energy stored in the coil's magnetic field reach half its final value? (Original problem.)
+  ask: Time
+  unit: s
+  ans: 0.2456
+  tol: 0.001
+  verify: (2/10)*Math.log(1/(1-1/Math.sqrt(2)))
+  sol: |
+    $\tau = L/R = 0.2$ s, $I = I_0(1 - e^{-t/\tau})$ with $I_0 = 2$ A. Energy $\propto I^2$, so half the final energy needs $I = I_0/\sqrt2$:
+
+    $$1 - e^{-t/\tau} = \frac1{\sqrt2}\ \Rightarrow\ t = \tau\ln\frac{1}{1 - 1/\sqrt2} = 0.2\ln3.414 = 0.2\times1.228 = 0.246\ \text{s}.$$
+
+    Note it is not $\tau\ln2 = 0.139$ s, which is when the **current** reaches half its final value.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Two coils are joined in series. With one connection the combination measures 19 mH; with the connections of one coil reversed it measures 7 mH. Separately the coils measure 4 mH and 9 mH. Find the coupling coefficient between them. (Original problem.)
+  ask: Coupling coefficient k
+  unit: ""
+  ans: 0.5
+  tol: 0.001
+  verify: ((19-7)/4)/Math.sqrt(4*9)
+  sol: |
+    In series $L_\pm = L_1 + L_2 \pm 2M$. Subtracting, $L_+ - L_- = 4M$, so $M = (19 - 7)/4 = 3$ mH. Check: $L_1 + L_2 = (19 + 7)/2 = 13$ mH $= 4 + 9$, consistent.
+
+    $$k = \frac{M}{\sqrt{L_1L_2}} = \frac{3}{\sqrt{36}} = 0.5.$$
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: In a series L–R circuit connected to a battery at t = 0, consider the interval from t = 0 to t = τ (one time constant). What percentage of the energy delivered by the battery in this interval is stored in the inductor at t = τ (the rest being heat in the resistor)? (Original problem.)
+  ask: Percentage stored
+  unit: "%"
+  ans: 54.31
+  tol: 0.05
+  verify: 0.5*Math.E*(1-Math.exp(-1))**2*100
+  sol: |
+    $I = I_0(1 - e^{-t/\tau})$ with $I_0 = \varepsilon/R$, $\tau = L/R$. Battery work:
+
+    $$W_b = \int_0^\tau\varepsilon I\,dt = \varepsilon I_0\left[t + \tau e^{-t/\tau}\right]_0^\tau = \varepsilon I_0\tau e^{-1}.$$
+
+    Stored at $t = \tau$: $U = \tfrac12LI_0^2(1 - e^{-1})^2 = \tfrac12\varepsilon I_0\tau(1 - e^{-1})^2$, using $LI_0 = \varepsilon\tau$.
+
+    $$\frac{U}{W_b} = \frac{e}{2}(1 - e^{-1})^2 = 1.3591\times0.3996 = 0.543,$$
+
+    so 54.3% is stored and 45.7% is heat. (Over the whole growth, $t\to\infty$, the battery delivers infinitely more? No: $W_b$ grows without limit because the steady current keeps heating $R$; only the stored part saturates at $\tfrac12LI_0^2$.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A 12 V battery (negligible internal resistance) and a switch are in series with a 2.0 Ω resistor R₁. The far ends of R₁ and the battery are connected across a parallel pair consisting of a coil of inductance 0.50 H (negligible resistance) and a 100 Ω resistor R₂. The switch has been closed for a long time and is then opened. (a) Find the voltage across R₂ just after the switch opens. (b) Find the total heat produced in R₂ after the switch opens. Give (a) as the answer. (Original problem.)
+  ask: Voltage across R₂ just after opening
+  unit: V
+  ans: 600
+  tol: 0.5
+  verify: (12/2)*100
+  sol: |
+    **Before opening.** In steady state the coil is a plain wire, so it shorts R₂. The current is $\varepsilon/R_1 = 6$ A, all through the coil; R₂ carries nothing.
+
+    **Just after opening.** The battery branch is broken. The coil's current cannot jump, so 6 A still flows in the coil, and its only path is round through R₂. The voltage across R₂ is $6\times100 = 600$ V, fifty times the battery emf. This is the switch-off spike; the polarity across R₂ is reversed relative to the battery's earlier voltage across the pair (which was zero anyway in the steady state).
+
+    **(b)** The current then decays as $6e^{-t/\tau}$ with $\tau = L/R_2 = 5$ ms. All the stored energy becomes heat in R₂: $\tfrac12LI_0^2 = \tfrac12\times0.5\times36 = 9$ J.
+
+    (For interest: on closing, the time constant is set by the resistance the coil sees with the battery shorted, $R_1\parallel R_2 = 1.96\ \Omega$, so $\tau_{\text{on}} = 0.255$ s, not 5 ms.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A superconducting ring of radius 5.0 cm has self-inductance 0.25 μH. It carries no current and lies in zero field. A uniform magnetic field of 0.020 T is then switched on perpendicular to the plane of the ring. Find the magnitude of the current that flows in the ring afterwards, and explain why it does not decay. (Original problem.)
+  ask: Current
+  unit: A
+  ans: 628.3
+  tol: 0.5
+  verify: 0.020*Math.PI*0.05**2/0.25e-6
+  sol: |
+    With $R = 0$ the loop rule is $-\dfrac{d\Phi_{\text{ext}}}{dt} - L\dfrac{dI}{dt} = 0$, so the total flux $\Phi_{\text{ext}} + LI$ stays at its initial value, zero. Hence
+
+    $$|I| = \frac{\Phi_{\text{ext}}}{L} = \frac{0.020\times\pi\times(0.05)^2}{0.25\times10^{-6}} = \frac{1.571\times10^{-4}}{2.5\times10^{-7}} = 628\ \text{A}.$$
+
+    The current circulates so that its own field opposes the applied field inside the ring (Lenz). It does not depend on how fast the field was switched on. It persists because there is no resistance to dissipate the energy $\tfrac12LI^2 \approx 0.05$ J and no change in flux to drive it down.
+
+    [Inference] The value 0.25 μH is consistent with the standard thin-ring estimate $\mu_0r(\ln(8r/a) - 2)$ for a wire radius of about 1 mm; the problem simply gives $L$.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A long straight coaxial cable has a solid inner conductor of radius 1.0 mm carrying a current I uniformly spread over its cross-section, and a thin outer conducting tube of radius 3.5 mm carrying the return current. Using the magnetic field energy, find the self-inductance per metre of the cable. (Original problem.)
+  ask: Inductance per metre
+  unit: nH/m
+  ans: 300.6
+  tol: 0.3
+  verify: 2e-7*(Math.log(3.5/1.0)+0.25)*1e9
+  sol: |
+    Fields (Ampère's law): inside the wire $B = \mu_0Ir/2\pi a^2$; between conductors $B = \mu_0I/2\pi r$; outside, $B = 0$ (net enclosed current zero).
+
+    Energy per metre, using shells of volume $2\pi r\,dr$:
+
+    $$\frac{U}{l} = \int_0^a\frac{1}{2\mu_0}\left(\frac{\mu_0Ir}{2\pi a^2}\right)^2 2\pi r\,dr + \int_a^b\frac{1}{2\mu_0}\left(\frac{\mu_0I}{2\pi r}\right)^2 2\pi r\,dr = \frac{\mu_0I^2}{16\pi} + \frac{\mu_0I^2}{4\pi}\ln\frac ba.$$
+
+    Setting $U/l = \tfrac12(L/l)I^2$:
+
+    $$\frac Ll = \frac{\mu_0}{2\pi}\left(\ln\frac ba + \frac14\right) = 2\times10^{-7}(\ln3.5 + 0.25) = 2\times10^{-7}\times1.5028 = 3.006\times10^{-7}\ \text{H/m}.$$
+
+    So about 301 nH per metre. The energy method is needed because inside the solid wire different filaments of current encircle different amounts of flux, so "flux linkage" has no single value there.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: proof
+  q: Two circuits have self-inductances L₁ and L₂ and mutual inductance M. (a) By setting up the currents I₁ and I₂ in two different orders and counting the work done against the induced emfs, show that M₁₂ = M₂₁. (b) Using the fact that the stored magnetic energy cannot be negative, show that M² ≤ L₁L₂. (c) Two coils of 2 mH and 8 mH are claimed to have M = 5 mH. Show that some pair of currents would then give negative stored energy. (Original problem.)
+  hints:
+    - While I₂ rises with I₁ held fixed, coil 1's source must push against the emf M₁₂ dI₂/dt; that costs extra work.
+    - The energy ½L₁I₁² + MI₁I₂ + ½L₂I₂² is a quadratic in x = I₁/I₂ that must never be negative.
+    - For (c) try I₁/I₂ = −M/L₁, the minimum of the quadratic.
+  sol: |
+    **(a)** Raise $I_1$ from 0 with $I_2 = 0$: work $\tfrac12L_1I_1^2$. Then raise $I_2$ from 0, holding $I_1$ fixed. Coil 2's source does $\tfrac12L_2I_2^2$. Coil 1 sees an emf $-M_{12}\,dI_2/dt$ (where $M_{12}$ gives the flux in 1 due to current in 2), so its source does extra work $\int I_1M_{12}\,dI_2 = M_{12}I_1I_2$. Total $U = \tfrac12L_1I_1^2 + \tfrac12L_2I_2^2 + M_{12}I_1I_2$. The other order gives the same with $M_{21}$. The final state, and so the field and its energy $\int B^2/2\mu_0\,dV$, is the same, so $M_{12} = M_{21}$.
+
+    **(b)** $U = \int B^2/2\mu_0\,dV \ge 0$ for all $I_1, I_2$. With $I_2 \ne 0$ and $x = I_1/I_2$: $f(x) = \tfrac12L_1x^2 + Mx + \tfrac12L_2 \ge 0$ for all real $x$. Since $L_1 > 0$, this needs the discriminant $M^2 - L_1L_2 \le 0$.
+
+    **(c)** The minimum of $f$ is at $x = -M/L_1 = -2.5$, where $f = \tfrac12L_2 - M^2/2L_1 = 4 - 25/4 = -2.25$ (in mH). So $I_1 = -2.5$ A, $I_2 = 1$ A would give $U = -2.25$ mJ, impossible. Hence $M \le \sqrt{2\times8} = 4$ mH.
+  check: none
