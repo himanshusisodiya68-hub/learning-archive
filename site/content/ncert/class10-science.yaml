@@ -18,7 +18,10 @@ chapters:
     title: Light – Reflection and Refraction
     pdf: jesc109
     leaves: [phy/spherical-mirrors, phy/laws-of-reflection, phy/refraction-and-snells-law, phy/lenses-and-the-lens-formula]
-  - { n: 10, title: The Human Eye and the Colourful World, pdf: jesc110 }
+  - n: 10
+    title: The Human Eye and the Colourful World
+    pdf: jesc110
+    leaves: [phy/the-human-eye, phy/prism-and-dispersion, phy/atmospheric-refraction-and-scattering]
   - { n: 11, title: Electricity, pdf: jesc111 }
   - { n: 12, title: Magnetic Effects of Electric Current, pdf: jesc112 }
   - { title: Sources of Energy, restored: true }

@@ -1,0 +1,26 @@
+# NCERT Physics, Class 12, Parts I and II (reprint 2026-27)
+class: 12
+subject: phy
+name: Physics
+code: leph1 / leph2
+chapters:
+  - { n: 1, title: Electric Charges and Fields, pdf: leph101 }
+  - { n: 2, title: Electrostatic Potential and Capacitance, pdf: leph102 }
+  - { n: 3, title: Current Electricity, pdf: leph103 }
+  - { n: 4, title: Moving Charges and Magnetism, pdf: leph104 }
+  - { n: 5, title: Magnetism and Matter, pdf: leph105 }
+  - { n: 6, title: Electromagnetic Induction, pdf: leph106 }
+  - { n: 7, title: Alternating Current, pdf: leph107 }
+  - { n: 8, title: Electromagnetic Waves, pdf: leph108 }
+  - n: 9
+    title: Ray Optics and Optical Instruments
+    pdf: leph201
+    leaves: [phy/refraction-and-snells-law, phy/spherical-mirrors, phy/total-internal-reflection, phy/lenses-and-the-lens-formula, phy/prism-and-dispersion, phy/optical-instruments]
+  - n: 10
+    title: Wave Optics
+    pdf: leph202
+    leaves: [phy/huygens-principle, phy/interference-and-youngs-experiment, phy/diffraction, phy/polarisation]
+  - { n: 11, title: Dual Nature of Radiation and Matter, pdf: leph203 }
+  - { n: 12, title: Atoms, pdf: leph204 }
+  - { n: 13, title: Nuclei, pdf: leph205 }
+  - { n: 14, title: Semiconductor Electronics, pdf: leph206 }

@@ -1,6 +1,74 @@
 # Laws of reflection. verify: a JavaScript expression (Math functions available, deg() converts radians to degrees)
 # that check-answers.mjs recomputes and compares with ans.
 
+- id: c7-11-8
+  lvl: ncert-ex
+  num: "VII Q8"
+  source: NCERT VII Curiosity · Ch 11 Light Shadows and Reflections · Q8
+  kind: text
+  q: Write your name on a piece of paper and hold it in front of a plane mirror such that the paper is parallel to the mirror. Sketch the image. What difference do you notice? Explain the reason for the difference.
+  sol: The letters appear in reverse order and each letter is mirror-reversed left to right (lateral inversion); the image stays the same size and upright. The mirror reverses only the direction perpendicular to itself, so the side of the paper nearer your left hand appears on the image's right as you face it.
+  check: none
+
+- id: c7-11-10
+  lvl: ncert-ex
+  num: "VII Q10"
+  source: NCERT VII Curiosity · Ch 11 · Q10
+  kind: mcq
+  q: |
+    On the basis of following statements, choose the correct option.
+    Statement A: Image formed by a plane mirror is laterally inverted.
+    Statement B: Images of alphabets T and O appear identical to themselves in a plane mirror.
+  opts: ["Both statements are true", "Both statements are false", "Statement A is true, but statement B is false", "Statement A is false, but statement B is true"]
+  ans: 0
+  sol: A plane mirror image is laterally inverted, so A is true. T and O are symmetric about a vertical line, so their mirror images look exactly like them; B is also true.
+  check: none
+
+- id: c7-11-11
+  lvl: ncert-ex
+  num: "VII Q11"
+  source: NCERT VII Curiosity · Ch 11 · Q11
+  kind: text
+  q: "Suppose you are given a tube of the shape shown in the Fig. 11.20 and two plane mirrors smaller than the diameter of the tube. Can this tube be used to make a periscope? If yes, mark where you will fix the plane mirrors. [Fig. 11.20 shows a tube bent at right angles twice, like a square bracket: a top arm, a vertical section and a bottom arm, both arms pointing the same way.]"
+  sol: Yes. Fix one plane mirror at each of the two corners, each inclined at 45° to the tube's arms and parallel to each other. Light entering the top arm reflects down the vertical section from the first mirror, then reflects out along the bottom arm from the second mirror. That is exactly a periscope.
+  check: none
+
+- id: c8-10-1
+  lvl: ncert-ex
+  num: "VIII Q1"
+  source: NCERT VIII Curiosity · Ch 10 Light Mirrors and Lenses · Q1
+  kind: mcq
+  q: A light ray is incident on a mirror and gets reflected by it (Fig. 10.21). The angle made by the incident ray with the normal to the mirror is 40°. What is the angle made by the reflected ray with the mirror?
+  opts: ["40°", "50°", "45°", "60°"]
+  ans: 1
+  sol: The angle of reflection equals the angle of incidence, 40°, measured from the normal. The angle with the mirror itself is $90^\circ - 40^\circ = 50^\circ$.
+  check: none
+
+- id: c8-10-2
+  lvl: ncert-ex
+  num: "VIII Q2"
+  source: NCERT VIII Curiosity · Ch 10 · Q2
+  kind: text
+  q: |
+    Fig. 10.22 shows three different situations where a light ray falls on a mirror:
+    (i) The light ray falls along the normal.
+    (ii) The mirror is tilted, but the light ray still falls along the normal to the tilted surface.
+    (iii) The mirror is tilted, and the light ray falls at an angle of 20° from the normal.
+    Draw the reflected ray in each case (Use a ruler and protractor for accurate drawing). What is the angle of reflection in each case?
+  sol: (i) 0°, the ray returns along itself. (ii) 0°, it again returns along itself, because it strikes along the normal of the tilted mirror. (iii) 20°, the reflected ray leaves on the other side of the normal at 20°.
+  check: none
+
+- id: c8-10-5
+  lvl: ncert-ex
+  num: "VIII Q5"
+  source: NCERT VIII Curiosity · Ch 10 · Q5
+  kind: mcq
+  q: "When the light is incident along the normal on the mirror, which of the following statements is true:"
+  opts: ["Angle of incidence is 90°", "Angle of incidence is 0°", "Angle of reflection is 90°", "No reflection of light takes place in this case"]
+  ans: 1
+  sol: Angles are measured from the normal, so a ray along the normal has angle of incidence 0° (and angle of reflection 0°); it reflects straight back.
+  check: none
+
 - id: ncert-ex-13
   lvl: ncert-ex
   num: 13
@@ -148,3 +216,19 @@
   sol: |
     Let B′ be the reflection of B in the mirror. For any point P on the mirror, PB = PB′, because the mirror is the perpendicular bisector of BB′. So the path length is AP + PB′. By the triangle inequality this is smallest when A, P and B′ are collinear. For that P, the angle APB′ is a straight line, and the vertical angles at P show that AP and PB make equal angles with the normal. Hence the reflecting path is the shortest.
   check: none
+
+- id: ncert12-ex-9-30
+  lvl: ncert-ex
+  num: "XII 9.30"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.30
+  kind: num
+  q: Light incident normally on a plane mirror attached to a galvanometer coil retraces backwards as shown in Fig. 9.29. A current in the coil produces a deflection of 3.5° of the mirror. What is the displacement of the reflected spot of light on a screen placed 1.5 m away?
+  ask: Displacement
+  unit: cm
+  ans: 18.4
+  tol: 0.1
+  verify: 150*tan(rad(7))
+  hints: ["Turning the mirror by θ turns the reflected ray by 2θ."]
+  sol: The reflected ray turns through $2 \times 3.5^\circ = 7^\circ$. On a screen 1.5 m away, $d = 1.5\tan 7^\circ = 0.184$ m $= 18.4$ cm.
+  answer_key: d/1.5 = tan 7°. Hence d = 18.4 cm.
+  check: both

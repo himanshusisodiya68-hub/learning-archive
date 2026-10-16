@@ -165,7 +165,11 @@
     if (!TREE) return;
     let { v, key } = parseHash();
     if (v === 'play' && !S.set.length) v = 'practice';
-    if (v === 'lesson') { if (key) S.lessonKey = key; if (!S.lessonKey) v = 'learn'; }
+    if (v === 'lesson') {
+      if (key && key !== S.lessonKey && !S.tabSet) S.ltab = 'learn';
+      S.tabSet = false;
+      if (key) S.lessonKey = key; if (!S.lessonKey) v = 'learn';
+    }
     document.querySelectorAll('section[data-view]').forEach(s => s.classList.toggle('on', s.dataset.view === v));
     const nav = NAV_OF[v] || v;
     document.querySelectorAll('.nav').forEach(a => a.dataset.nav === nav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
@@ -174,7 +178,7 @@
   }
   window.addEventListener('hashchange', route);
   const go = v => { if (location.hash === '#' + v) route(); else location.hash = v; };
-  const openLesson = (key, tab = 'learn', section = null) => { S.lessonKey = key; S.ltab = tab; pendingSection = section; go('lesson~' + key.replace('/', '~')); };
+  const openLesson = (key, tab = 'learn', section = null) => { S.ltab = tab; S.tabSet = true; pendingSection = section; go('lesson~' + key.replace('/', '~')); };
   function rerender() { if (TREE) route(); }
 
   /* ================= HOME ================= */

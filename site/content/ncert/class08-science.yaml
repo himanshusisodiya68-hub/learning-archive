@@ -1,0 +1,22 @@
+# NCERT Curiosity (Science), Grade 8 (reprint 2026-27)
+class: 8
+subject: phy
+name: Science (Curiosity)
+code: hecu1
+chapters:
+  - { n: 1, title: Exploring the Investigative World of Science, pdf: hecu101 }
+  - { n: 2, title: "The Invisible Living World: Beyond Our Naked Eye", pdf: hecu102 }
+  - { n: 3, title: "Health: The Ultimate Treasure", pdf: hecu103 }
+  - { n: 4, title: "Electricity: Magnetic and Heating Effects", pdf: hecu104 }
+  - { n: 5, title: Exploring Forces, pdf: hecu105 }
+  - { n: 6, title: "Pressure, Winds, Storms, and Cyclones", pdf: hecu106 }
+  - { n: 7, title: Particulate Nature of Matter, pdf: hecu107 }
+  - { n: 8, title: "Nature of Matter: Elements, Compounds, and Mixtures", pdf: hecu108 }
+  - { n: 9, title: "The Amazing World of Solutes, Solvents, and Solutions", pdf: hecu109 }
+  - n: 10
+    title: "Light: Mirrors and Lenses"
+    pdf: hecu110
+    leaves: [phy/spherical-mirrors, phy/laws-of-reflection, phy/lenses-and-the-lens-formula, phy/refraction-and-snells-law]
+  - { n: 11, title: Keeping Time with the Skies, pdf: hecu111 }
+  - { n: 12, title: How Nature Works in Harmony, pdf: hecu112 }
+  - { n: 13, title: "Our Home: Earth, a Unique Life Sustaining Planet", pdf: hecu113 }

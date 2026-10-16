@@ -1,7 +1,7 @@
 ---
 title: Spherical mirrors
 summary: Concave and convex mirrors, the rules for drawing their images, the sign convention, the mirror formula and its derivation, and what happens beyond the paraxial approximation.
-ncert: ["Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.2)", "Class 12 Physics · Ch 9 Ray Optics (§9.2)"]
+ncert: ["Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.2)", "Class 12 Physics · Ch 9 Ray Optics (§9.2)"]
 up_to: Olympiad
 builds_on: [Laws of reflection, Similar triangles, Reciprocals and fractions]
 notes_prompt: Explain why a concave mirror can make a real image but a convex mirror never can.

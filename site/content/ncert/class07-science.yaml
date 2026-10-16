@@ -1,0 +1,21 @@
+# NCERT Curiosity (Science), Grade 7 (reprint 2026-27)
+class: 7
+subject: phy
+name: Science (Curiosity)
+code: gecu1
+chapters:
+  - { n: 1, title: The Ever-Evolving World of Science, pdf: gecu101 }
+  - { n: 2, title: "Exploring Substances: Acidic, Basic, and Neutral", pdf: gecu102 }
+  - { n: 3, title: "Electricity: Circuits and their Components", pdf: gecu103 }
+  - { n: 4, title: The World of Metals and Non-metals, pdf: gecu104 }
+  - { n: 5, title: "Changes Around Us: Physical and Chemical", pdf: gecu105 }
+  - { n: 6, title: "Adolescence: A Stage of Growth and Change", pdf: gecu106 }
+  - { n: 7, title: Heat Transfer in Nature, pdf: gecu107 }
+  - { n: 8, title: Measurement of Time and Motion, pdf: gecu108 }
+  - { n: 9, title: Life Processes in Animals, pdf: gecu109 }
+  - { n: 10, title: Life Processes in Plants, pdf: gecu110 }
+  - n: 11
+    title: "Light: Shadows and Reflections"
+    pdf: gecu111
+    leaves: [phy/rectilinear-propagation, phy/laws-of-reflection]
+  - { n: 12, title: "Earth, Moon, and the Sun", pdf: gecu112 }

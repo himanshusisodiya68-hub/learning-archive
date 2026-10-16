@@ -1,5 +1,58 @@
 # Spherical mirrors. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 9.
 
+- id: c8-10-3
+  lvl: ncert-ex
+  num: "VIII Q3"
+  source: NCERT VIII Curiosity · Ch 10 · Q3
+  kind: text
+  q: "In Fig. 10.23, the cap of a sketch pen is placed in front of three types of mirrors. Match each image with the correct mirror: images (i), (ii), (iii); mirrors: plane mirror, convex mirror, concave mirror. [Fig. 10.23: in (i) the image is small and upright; in (ii) it is much larger and upright; in (iii) it is the same size as the cap.]"
+  sol: (i) Convex mirror (erect, diminished). (ii) Concave mirror (erect, enlarged, with the cap close to the mirror). (iii) Plane mirror (erect, same size).
+  check: none
+
+- id: c8-10-6
+  lvl: ncert-ex
+  num: "VIII Q6"
+  source: NCERT VIII Curiosity · Ch 10 · Q6
+  kind: text
+  q: "Three mirrors — plane, concave and convex are placed in Fig. 10.25. On the basis of the images of the graph sheet formed in the mirrors, identify the mirrors and write their names above the mirrors. [Fig. 10.25: in the left mirror the grid lines look spread out and curved; in the middle mirror the grid looks the same as the sheet behind; in the right mirror the grid looks finer and denser.]"
+  sol: Left — concave mirror (squares magnified). Middle — plane mirror (squares the same size). Right — convex mirror (squares diminished, so the grid looks finer).
+  check: none
+
+- id: c8-10-7
+  lvl: ncert-ex
+  num: "VIII Q7"
+  source: NCERT VIII Curiosity · Ch 10 · Q7
+  kind: mcq
+  q: "In a museum, a woman walks towards a large concave mirror (Fig. 10.26). She will see that:"
+  opts: ["her erect image keeps decreasing in size.", "her inverted image keeps decreasing in size.", "her inverted image keeps increasing in size and eventually it becomes erect and magnified.", "her erect image keeps increasing in size."]
+  ans: 2
+  sol: Far from the mirror (beyond C) the image is real, inverted and small. As she approaches C and then F, the inverted image grows. Once she is between F and the mirror, the image becomes virtual, erect and magnified.
+  check: none
+
+- id: c8-10-10
+  lvl: ncert-ex
+  num: "VIII Q10"
+  source: NCERT VIII Curiosity · Ch 10 · Q10
+  kind: mcq
+  q: |
+    Assertion: Convex mirrors are preferred for observing the traffic behind us.
+    Reason: Convex mirrors provide a significantly larger view area than plane mirrors.
+  opts: ["Both Assertion and Reason are correct and Reason is the correct explanation for Assertion.", "Both Assertion and Reason are correct but Reason is not the correct explanation for Assertion.", "Assertion is correct but Reason is incorrect.", "Both Assertion and Reason are incorrect."]
+  ans: 0
+  sol: Both are true, and the wider field of view (from the diminished, erect image) is exactly why convex mirrors are used as rear-view mirrors.
+  check: none
+
+- id: c8-10-11
+  lvl: ncert-ex
+  num: "VIII Q11"
+  source: NCERT VIII Curiosity · Ch 10 · Q11
+  kind: mcq
+  q: "In Fig. 10.27, note that O stands for object, M for mirror, and I for image. Which of the following statements is true? [Fig. 10.27: in (a) the image I behind the mirror is the same size as the object O; in (b) the image is larger than the object. Both images are upright.]"
+  opts: ["Figure (a) indicates a plane mirror and Figure (b) indicates a concave mirror.", "Figure (a) indicates a convex mirror and Figure (b) indicates a concave mirror.", "Figure (a) indicates a concave mirror and Figure (b) indicates a convex mirror.", "Figure (a) indicates a plane mirror and Figure (b) indicates a convex mirror."]
+  ans: 0
+  sol: Both images are upright and behind the mirror, so both are virtual. A same-size virtual image comes from a plane mirror; an enlarged virtual image comes from a concave mirror with the object inside its focus. (Distances in the figure are not drawn to scale; read it by image size.)
+  check: none
+
 - id: ncert-it142-1
   lvl: ncert-intext
   num: "p142 Q1"
@@ -384,3 +437,127 @@
   sol: |
     Use the focus–directrix property: every point P on the parabola is equally far from the focus S $(a, 0)$ and from the directrix $x = -a$. Take a ray arriving parallel to the axis. Draw a reference line perpendicular to the axis far to the right, at $x = L$. The path from that line to P and then to S has length $(L - x_P) + PS = (L - x_P) + (x_P + a) = L + a$, the same for every point P. Since all such paths take equal time, Fermat's principle says each is a possible light path, and the reflected rays all reach S. (Directly: the tangent at P bisects the angle between PS and the line through P parallel to the axis, which is the law of reflection.)
   check: none
+
+- id: ncert12-eg-9-1
+  lvl: ncert-intext
+  num: "XII Ex 9.1"
+  source: NCERT XII Physics · Ch 9 · Example 9.1
+  kind: text
+  q: Suppose that the lower half of the concave mirror's reflecting surface in Fig. 9.6 is covered with an opaque (non-reflective) material. What effect will this have on the image of an object placed in front of the mirror?
+  sol: The whole image still forms, because every part of the mirror reflects rays from every point of the object to the corresponding image point. With half the reflecting area covered, only half as much light reaches the image, so it is less bright.
+  check: none
+
+- id: ncert12-eg-9-2
+  lvl: ncert-intext
+  num: "XII Ex 9.2"
+  source: NCERT XII Physics · Ch 9 · Example 9.2
+  kind: text
+  q: A mobile phone lies along the principal axis of a concave mirror, as shown in Fig. 9.7. Show by suitable diagram, the formation of its image. Explain why the magnification is not uniform. Will the distortion of image depend on the location of the phone with respect to the mirror?
+  sol: Each point of the phone is at a different distance from the mirror, so each forms its image at a different distance with a different magnification $m = -v/u$. The part nearer the focus is magnified far more than the part farther away, so the image is distorted (along the axis the magnification is $-m^2$). Yes, the distortion depends on the location; it is largest when the phone is close to the focus.
+  check: none
+
+- id: ncert12-eg-9-3
+  lvl: ncert-intext
+  num: "XII Ex 9.3"
+  source: NCERT XII Physics · Ch 9 · Example 9.3
+  kind: num
+  q: An object is placed at (i) 10 cm, (ii) 5 cm in front of a concave mirror of radius of curvature 15 cm. Find the position, nature, and magnification of the image in each case.
+  ask: Image distance v for case (i), with sign
+  unit: cm
+  ans: -30
+  tol: 0.1
+  verify: 1/(1/(-7.5)-1/(-10))
+  hints: ["f = −R/2 = −7.5 cm."]
+  sol: |
+    $f = -7.5$ cm.
+    (i) $u = -10$: $\frac1v = -\frac{1}{7.5} + \frac{1}{10} = -\frac{1}{30}$, so $v = -30$ cm; $m = -v/u = -3$. Real, inverted, magnified, 30 cm in front.
+    (ii) $u = -5$: $\frac1v = -\frac{1}{7.5} + \frac{1}{5} = \frac{1}{15}$, so $v = +15$ cm; $m = +3$. Virtual, erect, magnified, 15 cm behind the mirror.
+  check: code
+
+- id: ncert12-eg-9-4
+  lvl: ncert-intext
+  num: "XII Ex 9.4"
+  source: NCERT XII Physics · Ch 9 · Example 9.4
+  kind: num
+  q: Suppose while sitting in a parked car, you notice a jogger approaching towards you in the side view mirror of R = 2 m. If the jogger is running at a speed of 5 m s$^{-1}$, how fast the image of the jogger appear to move when the jogger is (a) 39 m, (b) 29 m, (c) 19 m, and (d) 9 m away.
+  ask: Image speed in case (d), m/s
+  unit: m/s
+  ans: 0.05
+  tol: 0.001
+  verify: (1/(1+9))**2*5
+  hints: ["Side mirror is convex: f = +1 m.", "Image speed = (v/u)² × object speed, and v/u = f/(f − u)."]
+  sol: |
+    $f = +1$ m and $v = \frac{fu}{u - f}$, so $\frac{dv}{dt} = -\frac{f^2}{(u - f)^2}\frac{du}{dt}$, with speed factor $\left(\frac{1}{|u| + 1}\right)^2$.
+    (a) $u = -39$: $5/40^2 = 1/320 \approx 0.0031$ m/s. (b) $5/30^2 = 1/180 \approx 0.0056$ m/s. (c) $5/20^2 = 1/80 = 0.0125$ m/s. (d) $5/10^2 = 0.05$ m/s.
+    The jogger runs at a steady 5 m/s, yet the image speeds up as the jogger approaches.
+  check: code
+
+- id: ncert12-ex-9-1
+  lvl: ncert-ex
+  num: "XII 9.1"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.1
+  kind: num
+  q: A small candle, 2.5 cm in size is placed at 27 cm in front of a concave mirror of radius of curvature 36 cm. At what distance from the mirror should a screen be placed in order to obtain a sharp image? Describe the nature and size of the image. If the candle is moved closer to the mirror, how would the screen have to be moved?
+  ask: Image distance v, with sign
+  unit: cm
+  ans: -54
+  tol: 0.1
+  verify: 1/(1/(-18)-1/(-27))
+  sol: |
+    $f = -18$ cm, $u = -27$ cm: $\frac1v = -\frac{1}{18} + \frac{1}{27} = -\frac{1}{54}$, so $v = -54$ cm. $m = -v/u = -2$, so the image is 5.0 cm tall, real, inverted and magnified. As the candle moves towards F, the image moves farther away, so the screen must be moved back; once the candle is inside F, the image is virtual and no screen can catch it.
+  answer_key: v = –54 cm. The image is real, inverted and magnified. The size of the image is 5.0 cm. As u → f, v → ∞; for u < f, image is virtual.
+  check: both
+
+- id: ncert12-ex-9-2
+  lvl: ncert-ex
+  num: "XII 9.2"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.2
+  kind: num
+  q: A 4.5 cm needle is placed 12 cm away from a convex mirror of focal length 15 cm. Give the location of the image and the magnification. Describe what happens as the needle is moved farther from the mirror.
+  ask: Image distance v, with sign
+  unit: cm
+  ans: 6.7
+  tol: 0.05
+  verify: 1/(1/15-1/(-12))
+  sol: $\frac1v = \frac{1}{15} + \frac{1}{12} = \frac{9}{60}$, so $v = +6.7$ cm behind the mirror. $m = -v/u = 6.7/12 = 5/9$, so the image is 2.5 cm, virtual and erect. As the needle moves away, the image moves towards F (never beyond) and shrinks towards zero.
+  answer_key: v = 6.7 cm. Magnification = 5/9, i.e., the size of the image is 2.5 cm. As u → ∞; v → f (but never beyond) while m → 0.
+  check: both
+
+- id: ncert12-ex-9-15
+  lvl: ncert-ex
+  num: "XII 9.15"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.15
+  kind: proof
+  q: |
+    Use the mirror equation to deduce that:
+    (a) an object placed between f and 2 f of a concave mirror produces a real image beyond 2 f.
+    (b) a convex mirror always produces a virtual image independent of the location of the object.
+    (c) the virtual image produced by a convex mirror is always diminished in size and is located between the focus and the pole.
+    (d) an object placed between the pole and focus of a concave mirror produces a virtual and enlarged image.
+  sol: |
+    Write $\frac1v = \frac1f - \frac1u$.
+    (a) Concave: $f < 0$ and $2f < u < f$. Then $\frac{1}{2f} > \frac1u > \frac1f$ (all negative), so $\frac1v = \frac1f - \frac1u$ lies between $\frac1f - \frac1f = 0$ and $\frac1f - \frac{1}{2f} = \frac{1}{2f}$. So $v < 2f$ (more negative): a real image beyond $2f$.
+    (b) Convex: $f > 0$, $u < 0$. Both terms $\frac1f$ and $-\frac1u$ are positive, so $v > 0$: always behind the mirror, virtual.
+    (c) From (b), $\frac1v > \frac1f$, so $0 < v < f$: between pole and focus. Using $v = \frac{fu}{u - f}$, $m = -\frac{v}{u} = \frac{f}{f - u} = \frac{f}{f + |u|}$, which lies between 0 and 1: erect and diminished.
+    (d) Concave, $f < u < 0$: $\frac1u < \frac1f < 0$, so $\frac1v = \frac1f - \frac1u > 0$: $v > 0$, virtual. $m = \frac{f}{f - u}$ with $f < 0$ and $|u| < |f|$ gives $m = \frac{|f|}{|f| - |u|} > 1$: enlarged.
+  answer_key: "Apply mirror equation and the condition: (a) f < 0; u < 0 (b) f > 0; u < 0 (c) f > 0 and u < 0 (d) f < 0; f < u < 0, to deduce the desired result."
+  check: none
+
+- id: ncert12-ex-9-29
+  lvl: ncert-ex
+  num: "XII 9.29"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.29
+  kind: num
+  q: A Cassegrain telescope uses two mirrors as shown in Fig. 9.26. Such a telescope is built with the mirrors 20 mm apart. If the radius of curvature of the large mirror is 220 mm and the small mirror is 140 mm, where will the final image of an object at infinity be?
+  ask: Distance of final image from the small mirror
+  unit: mm
+  ans: 315
+  tol: 0.5
+  verify: 1/(1/70-1/90)
+  hints: ["The large mirror alone would focus the rays 110 mm from it, which is 90 mm beyond the small mirror: a virtual object for it.", "Small convex mirror: f = +70 mm, u = +90 mm (taking the direction of the light reaching it as positive)."]
+  sol: |
+    Large mirror: $f_1 = 110$ mm, so the rays converge towards a point 110 mm from it, $110 - 20 = 90$ mm beyond the small mirror. For the small convex mirror ($f_2 = +70$ mm), this is a virtual object at $u = +90$ mm:
+    $$\frac1v = \frac{1}{70} - \frac{1}{90} = \frac{2}{630} \Rightarrow v = 315 \text{ mm}.$$
+    The final image is 315 mm from the small mirror, as NCERT's key states. Note the sign: $v$ comes out positive, the same side as the virtual object, so by the formula the reflected rays diverge from a point behind the small mirror. In a working Cassegrain design the virtual object lies inside the secondary's focal length, which gives a real image behind the primary; compare the Olympiad problem on this page.
+  answer_key: Parallel rays focus at 110 mm from the larger mirror; virtual object for the smaller mirror at (110 – 20) = 90 mm; focal length of smaller mirror 70 mm; image formed at 315 mm from the smaller mirror.
+  check: both

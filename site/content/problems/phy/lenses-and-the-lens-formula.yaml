@@ -1,5 +1,35 @@
 # Lenses and the lens formula. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 9.
 
+- id: c8-10-4
+  lvl: ncert-ex
+  num: "VIII Q4"
+  source: NCERT VIII Curiosity · Ch 10 · Q4
+  kind: text
+  q: "In Fig. 10.24, the cap of a sketch pen is placed behind a convex lens, a concave lens, and a flat transparent glass piece — all at the same distance. Match each image with the correct type of lens or glass: images (i), (ii), (iii); flat transparent glass piece, convex lens, concave lens. [Fig. 10.24: through (i) the cap looks much larger, through (ii) much smaller, through (iii) the same size.]"
+  sol: (i) Convex lens (magnified). (ii) Concave lens (diminished). (iii) Flat transparent glass piece (same size).
+  check: none
+
+- id: c8-10-8
+  lvl: ncert-ex
+  num: "VIII Q8"
+  source: NCERT VIII Curiosity · Ch 10 · Q8
+  kind: text
+  q: Hold a magnifying glass over text and identify the distance where you can see the text bigger than they are written. Now move it away from the text. What do you notice? Which type of lens is a magnifying glass?
+  sol: Close to the page (text inside the focal length) the letters look bigger and upright. As you move the lens away, the letters grow, become blurred near the focal distance, and then appear inverted and smaller. A magnifying glass is a convex (converging) lens.
+  check: none
+
+- id: c8-10-9
+  lvl: ncert-ex
+  num: "VIII Q9"
+  source: NCERT VIII Curiosity · Ch 10 · Q9
+  kind: text
+  q: |
+    Match the entries in Column I with those in Column II.
+    Column I: (i) Concave mirror (ii) Convex mirror (iii) Convex lens (iv) Concave lens
+    Column II: (a) Spherical mirror with a reflecting surface that curves inwards. (b) It forms an image which is always erect and diminished in size. (c) Object placed behind it may appear inverted at some distance. (d) Object placed behind it always appears diminished in size.
+  sol: (i)–(a), (ii)–(b), (iii)–(c), (iv)–(d).
+  check: none
+
 - id: ncert-it158-1
   lvl: ncert-intext
   num: "p158 Q1"
@@ -349,3 +379,193 @@
   hints: ["Object-to-image distance = 2f + x + x′.", "Minimise x + x′ subject to xx′ = f² (AM–GM)."]
   sol: The distance is $2f + x + x'$. With $xx' = f^2$, AM–GM gives $x + x' \ge 2\sqrt{xx'} = 2f$, with equality at $x = x' = f$. So the minimum is $4f = 48$ cm, with the object at $2F_1$.
   check: code
+
+- id: ncert12-eg-9-5
+  lvl: ncert-intext
+  num: "XII Ex 9.5"
+  source: NCERT XII Physics · Ch 9 · Example 9.5
+  kind: num
+  q: Light from a point source in air falls on a spherical glass surface (n = 1.5 and radius of curvature = 20 cm). The distance of the light source from the glass surface is 100 cm. At what position the image is formed?
+  ask: Image distance v
+  unit: cm
+  ans: 100
+  tol: 0.2
+  verify: 1.5/(0.5/20-1/100)
+  hints: ["n₂/v − n₁/u = (n₂ − n₁)/R with u = −100 cm, R = +20 cm."]
+  sol: $\frac{1.5}{v} + \frac{1}{100} = \frac{0.5}{20}$, so $\frac{1.5}{v} = 0.015$ and $v = +100$ cm. A real image forms 100 cm inside the glass, along the direction of the incident light.
+  check: code
+
+- id: ncert12-eg-9-6
+  lvl: ncert-intext
+  num: "XII Ex 9.6"
+  source: NCERT XII Physics · Ch 9 · Example 9.6
+  kind: text
+  q: A magician during a show makes a glass lens with n = 1.47 disappear in a trough of liquid. What is the refractive index of the liquid? Could the liquid be water?
+  sol: The lens vanishes when it does not bend light at all, which happens when its refractive index equals the liquid's, so the liquid has $n = 1.47$. Then $\frac1f = (n_{\text{rel}} - 1)(\dots) = 0$ and the lens acts like a plain sheet of the liquid. It cannot be water ($n = 1.33$); glycerine is a possibility.
+  check: none
+
+- id: ncert12-eg-9-7
+  lvl: ncert-intext
+  num: "XII Ex 9.7"
+  source: NCERT XII Physics · Ch 9 · Example 9.7
+  kind: num
+  q: (i) If f = 0.5 m for a glass lens, what is the power of the lens? (ii) The radii of curvature of the faces of a double convex lens are 10 cm and 15 cm. Its focal length is 12 cm. What is the refractive index of glass? (iii) A convex lens has 20 cm focal length in air. What is focal length in water? (Refractive index of air-water = 1.33, refractive index for air-glass = 1.5.)
+  ask: Refractive index of glass in part (ii)
+  unit: ""
+  ans: 1.5
+  tol: 0.01
+  verify: 1+(1/12)/(1/10+1/15)
+  sol: |
+    (i) $P = 1/0.5 = +2$ D.
+    (ii) $\frac{1}{12} = (n - 1)\left(\frac{1}{10} + \frac{1}{15}\right) = \frac{n - 1}{6}$, so $n = 1.5$.
+    (iii) $\frac{f_w}{f_a} = \frac{n_g - 1}{n_g/n_w - 1} = \frac{0.5}{0.128}$, so $f_w \approx 78$ cm, about four times the focal length in air.
+  check: code
+
+- id: ncert12-eg-9-8
+  lvl: ncert-intext
+  num: "XII Ex 9.8"
+  source: NCERT XII Physics · Ch 9 · Example 9.8
+  kind: num
+  q: "Find the position of the image formed by the lens combination given in the Fig. 9.20. [Fig. 9.20: three thin lenses on one axis with focal lengths +10 cm, −10 cm and +30 cm; the second lens is 5 cm beyond the first, the third further along; the object is 30 cm to the left of the first lens.]"
+  ask: Distance of final image to the right of the third lens
+  unit: cm
+  ans: 30
+  tol: 0.1
+  verify: 1/(1/30+0)
+  hints: ["First lens: u = −30 cm, f = +10 cm.", "Its image is a virtual object 10 cm to the right of the second lens."]
+  sol: |
+    Lens 1: $\frac{1}{v_1} = \frac{1}{10} - \frac{1}{30}$, so $v_1 = 15$ cm. This is $15 - 5 = 10$ cm to the right of lens 2: a virtual object, $u_2 = +10$ cm.
+    Lens 2: $\frac{1}{v_2} = \frac{1}{-10} + \frac{1}{10} = 0$, so the light leaves parallel ($v_2 = \infty$).
+    Lens 3: parallel light focuses at its focal point, $v_3 = +30$ cm. The final image is 30 cm to the right of the third lens, wherever that lens is placed.
+  check: code
+
+- id: ncert12-ex-9-7
+  lvl: ncert-ex
+  num: "XII 9.7"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.7
+  kind: num
+  q: Double-convex lenses are to be manufactured from a glass of refractive index 1.55, with both faces of the same radius of curvature. What is the radius of curvature required if the focal length is to be 20 cm?
+  ask: Radius of curvature
+  unit: cm
+  ans: 22
+  tol: 0.05
+  verify: 2*0.55*20
+  sol: $\frac{1}{20} = 0.55\left(\frac1R + \frac1R\right)$, so $R = 2 \times 0.55 \times 20 = 22$ cm.
+  answer_key: R = 22 cm
+  check: both
+
+- id: ncert12-ex-9-8
+  lvl: ncert-ex
+  num: "XII 9.8"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.8
+  kind: num
+  q: A beam of light converges at a point P. Now a lens is placed in the path of the convergent beam 12 cm from P. At what point does the beam converge if the lens is (a) a convex lens of focal length 20 cm, and (b) a concave lens of focal length 16 cm?
+  ask: Image distance for case (b)
+  unit: cm
+  ans: 48
+  tol: 0.1
+  verify: 1/(1/(-16)+1/12)
+  hints: ["P is a virtual object on the far side of the lens: u = +12 cm."]
+  sol: |
+    $u = +12$ cm (virtual object).
+    (a) $\frac1v = \frac{1}{20} + \frac{1}{12} = \frac{8}{60}$, so $v = +7.5$ cm: the beam converges 7.5 cm beyond the lens.
+    (b) $\frac1v = -\frac{1}{16} + \frac{1}{12} = \frac{1}{48}$, so $v = +48$ cm: the beam converges 48 cm beyond the lens.
+  answer_key: "u = +12 cm (object virtual). (a) Image real, at 7.5 cm from the lens on its right side. (b) Image real, at 48 cm from the lens on its right side."
+  check: both
+
+- id: ncert12-ex-9-9
+  lvl: ncert-ex
+  num: "XII 9.9"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.9
+  kind: num
+  q: An object of size 3.0 cm is placed 14 cm in front of a concave lens of focal length 21 cm. Describe the image produced by the lens. What happens if the object is moved further away from the lens?
+  ask: Image distance v, with sign
+  unit: cm
+  ans: -8.4
+  tol: 0.05
+  verify: 1/(1/(-21)+1/(-14))
+  sol: |
+    $\frac1v = -\frac{1}{21} - \frac{1}{14} = -\frac{5}{42}$, so $v = -8.4$ cm: virtual, erect, on the object's side. $m = v/u = 0.6$, so the image is 1.8 cm tall. As the object moves away, the image moves towards the focus (never beyond) and shrinks towards zero. With the object at the focus (21 cm) the image is at 10.5 cm, not at infinity.
+  answer_key: v = 8.4 cm, image is erect and virtual. It is diminished to a size 1.8 cm. As u → ∞, v → f (but never beyond f while m → 0).
+  check: both
+
+- id: ncert12-ex-9-10
+  lvl: ncert-ex
+  num: "XII 9.10"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.10
+  kind: num
+  q: What is the focal length of a convex lens of focal length 30 cm in contact with a concave lens of focal length 20 cm? Is the system a converging or a diverging lens? Ignore thickness of the lenses.
+  ask: Focal length, with sign
+  unit: cm
+  ans: -60
+  tol: 0.1
+  verify: 1/(1/30-1/20)
+  sol: |
+    $\frac1F = \frac{1}{30} - \frac{1}{20} = -\frac{1}{60}$, so $F = -60$ cm: a diverging lens.
+  answer_key: A diverging lens of focal length 60 cm
+  check: both
+
+- id: ncert12-ex-9-18
+  lvl: ncert-ex
+  num: "XII 9.18"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.18
+  kind: num
+  q: The image of a small electric bulb fixed on the wall of a room is to be obtained on the opposite wall 3 m away by means of a large convex lens. What is the maximum possible focal length of the lens required for the purpose?
+  ask: Maximum focal length
+  unit: m
+  ans: 0.75
+  tol: 0.005
+  verify: 3/4
+  sol: For a fixed object–screen distance $D$, a real image is possible only if $D \ge 4f$. So $f_{\max} = D/4 = 0.75$ m.
+  answer_key: fmax = 0.75 m
+  check: both
+
+- id: ncert12-ex-9-19
+  lvl: ncert-ex
+  num: "XII 9.19"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.19
+  kind: num
+  q: A screen is placed 90 cm from an object. The image of the object on the screen is formed by a convex lens at two different locations separated by 20 cm. Determine the focal length of the lens.
+  ask: Focal length
+  unit: cm
+  ans: 21.4
+  tol: 0.05
+  verify: (90**2-20**2)/(4*90)
+  sol: $f = \frac{D^2 - x^2}{4D} = \frac{8100 - 400}{360} = 21.4$ cm.
+  answer_key: 21.4 cm
+  check: both
+
+- id: ncert12-ex-9-20
+  lvl: ncert-ex
+  num: "XII 9.20"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.20
+  kind: num
+  q: (a) Determine the 'effective focal length' of the combination of the two lenses in Exercise 9.10, if they are placed 8.0 cm apart with their principal axes coincident. Does the answer depend on which side of the combination a beam of parallel light is incident? Is the notion of effective focal length of this system useful at all? (b) An object 1.5 cm in size is placed on the side of the convex lens in the arrangement (a) above. The distance between the object and the convex lens is 40 cm. Determine the magnification produced by the two-lens system, and the size of the image.
+  ask: Size of the image in part (b)
+  unit: cm
+  ans: 0.98
+  tol: 0.01
+  verify: "1.5*(120/40)*(20/92)"
+  sol: |
+    (a) Light from the left onto the convex lens first: $v_1 = 30$ cm, a virtual object at $u_2 = +22$ cm for the concave lens, giving $v_2 = -220$ cm, so the beam appears to diverge from 216 cm from the centre of the system. Light onto the concave lens first: $v_1 = -20$ cm, $u_2 = -28$ cm for the convex lens, giving $v_2 = -420$ cm, a point 416 cm on the left of the centre. The answers differ, so no single effective focal length describes this separated pair.
+    (b) Convex lens: $u_1 = -40$, $v_1 = +120$ cm, magnification 3. Concave lens: $u_2 = +112$ cm, $\frac{1}{v_2} = -\frac{1}{20} + \frac{1}{112}$, $v_2 = -\frac{112 \times 20}{92}$ cm, magnification $20/92$. Net magnification $3 \times 20/92 = 0.652$, image size $1.5 \times 0.652 = 0.98$ cm.
+  answer_key: "(a) 216 cm (light first on convex lens), 416 cm (light first on concave lens); the notion of effective focal length is not meaningful here. (b) Net magnification 0.652; size of the image 0.98 cm."
+  check: both
+
+- id: ncert12-ex-9-31
+  lvl: ncert-ex
+  num: "XII 9.31"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.31
+  kind: num
+  q: Figure 9.30 shows an equiconvex lens (of refractive index 1.50) in contact with a liquid layer on top of a plane mirror. A small needle with its tip on the principal axis is moved along the axis until its inverted image is found at the position of the needle. The distance of the needle from the lens is measured to be 45.0 cm. The liquid is removed and the experiment is repeated. The new distance is measured to be 30.0 cm. What is the refractive index of the liquid?
+  ask: Refractive index of liquid
+  unit: ""
+  ans: 1.33
+  tol: 0.01
+  verify: 1+30*(1/30-1/45)
+  hints: ["The image coincides with the needle when the needle sits at the focus of the lens system, so light returns along itself from the mirror.", "Without liquid f = 30 cm; with liquid the combination has F = 45 cm. The liquid forms a plano-concave lens."]
+  sol: |
+    Without liquid, the needle is at the lens's focus: $f_1 = 30$ cm, so for the equiconvex lens $\frac{1}{30} = 0.5 \times \frac{2}{R}$ and $R = 30$ cm.
+    With liquid, $F = 45$ cm, so $\frac{1}{f_2} = \frac{1}{45} - \frac{1}{30} = -\frac{1}{90}$. The liquid is a plano-concave lens with one face of radius 30 cm: $-\frac{1}{90} = (n - 1)\left(-\frac{1}{30}\right)$, so $n - 1 = \frac13$ and $n = 1.33$.
+  answer_key: n = 1.33
+  check: both

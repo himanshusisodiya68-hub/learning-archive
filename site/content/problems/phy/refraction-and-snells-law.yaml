@@ -1,5 +1,14 @@
 # Refraction and Snell's law. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 9.
 
+- id: c8-10-12
+  lvl: ncert-ex
+  num: "VIII Q12"
+  source: NCERT VIII Curiosity · Ch 10 · Q12
+  kind: text
+  q: Place a pencil behind a transparent glass tumbler (Fig. 10.28a). Now fill the tumbler halfway with water (Fig. 10.28b). How does the pencil appear when viewed through the water? Explain why its shape appears changed.
+  sol: Through the water the pencil looks thicker and shifted sideways, so it appears broken at the water line. Light from the pencil refracts as it passes through the curved water surface. A cylindrical tumbler of water acts like a converging lens across its width, so it magnifies and displaces the part seen through the water, while the part above the water is seen normally.
+  check: none
+
 - id: ncert-it150-1
   lvl: ncert-intext
   num: "p150 Q1"
@@ -237,3 +246,53 @@
   hints: ["Let the ray cross the boundary at horizontal position x. Write the total travel time T(x) using speeds c/n₁ and c/n₂.", "Set dT/dx = 0 and read each term as the sine of an angle."]
   sol: Put A at height $a$ above the boundary and B at depth $b$ below it, a horizontal distance $d$ apart. Then $cT(x) = n_1\sqrt{a^2 + x^2} + n_2\sqrt{b^2 + (d - x)^2}$. Setting $dT/dx = 0$ gives $n_1 x/\sqrt{a^2 + x^2} = n_2(d - x)/\sqrt{b^2 + (d - x)^2}$, which is $n_1\sin\theta_1 = n_2\sin\theta_2$.
   check: none
+
+- id: ncert12-ex-9-3
+  lvl: ncert-ex
+  num: "XII 9.3"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.3
+  kind: num
+  q: A tank is filled with water to a height of 12.5 cm. The apparent depth of a needle lying at the bottom of the tank is measured by a microscope to be 9.4 cm. What is the refractive index of water? If water is replaced by a liquid of refractive index 1.63 up to the same height, by what distance would the microscope have to be moved to focus on the needle again?
+  ask: Refractive index of water
+  unit: ""
+  ans: 1.33
+  tol: 0.01
+  verify: 12.5/9.4
+  sol: |
+    $n = \frac{\text{real depth}}{\text{apparent depth}} = \frac{12.5}{9.4} = 1.33$.
+    In the new liquid the apparent depth is $12.5/1.63 = 7.67$ cm, so the image rises by $9.4 - 7.67 = 1.7$ cm and the microscope must be moved up by about 1.7 cm.
+  answer_key: 1.33; 1.7 cm
+  check: both
+
+- id: ncert12-ex-9-4
+  lvl: ncert-ex
+  num: "XII 9.4"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.4
+  kind: num
+  q: "Figures 9.27(a) and (b) show refraction of a ray in air incident at 60° with the normal to a glass-air and water-air interface, respectively. Predict the angle of refraction in glass when the angle of incidence in water is 45° with the normal to a water-glass interface [Fig. 9.27(c)]. [In the figure, the ray refracts at 35° in glass and at 41° in water, the values NCERT's answers are based on.]"
+  ask: Angle of refraction in glass
+  unit: "°"
+  ans: 38
+  tol: 0.5
+  verify: deg(asin(sin(rad(45))*(sin(rad(60))/sin(rad(41)))/(sin(rad(60))/sin(rad(35)))))
+  hints: ["From (a) and (b), find the refractive indices of glass and water with respect to air.", "Then n_w sin 45° = n_g sin r."]
+  sol: |
+    $n_{ga} = \sin 60^\circ/\sin 35^\circ = 1.51$ and $n_{wa} = \sin 60^\circ/\sin 41^\circ = 1.32$, so $n_{gw} = 1.51/1.32 = 1.144$.
+    $\sin r = \sin 45^\circ/1.144 = 0.618$, so $r \approx 38^\circ$.
+  answer_key: nga = 1.51; nwa = 1.32; ngw = 1.144; which gives sin r = 0.6181 i.e., r ~ 38°.
+  check: both
+
+- id: ncert12-ex-9-16
+  lvl: ncert-ex
+  num: "XII 9.16"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.16
+  kind: num
+  q: A small pin fixed on a table top is viewed from above from a distance of 50 cm. By what distance would the pin appear to be raised if it is viewed from the same point through a 15 cm thick glass slab held parallel to the table? Refractive index of glass = 1.5. Does the answer depend on the location of the slab?
+  ask: Apparent rise
+  unit: cm
+  ans: 5
+  tol: 0.05
+  verify: 15*(1-1/1.5)
+  sol: The shift is $t\left(1 - \frac1n\right) = 15\left(1 - \frac{1}{1.5}\right) = 5.0$ cm. It does not depend on where the slab is held between the eye and the pin (for near-normal viewing), because each layer of glass simply replaces a thickness $t$ of air by an apparent thickness $t/n$.
+  answer_key: The pin appears raised by 5.0 cm. The answer is independent of the location of the slab (for small angles of incidence).
+  check: both

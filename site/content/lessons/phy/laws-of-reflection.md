@@ -1,7 +1,7 @@
 ---
 title: Laws of reflection
 summary: How light bounces off a surface, why plane mirrors form the images they do, and the shortest-path idea behind the law.
-ncert: ["Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.1)", "Class 12 Physics · Ch 9 Ray Optics"]
+ncert: ["Class 7 Curiosity · Ch 11 Light: Shadows and Reflections", "Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.1)", "Class 12 Physics · Ch 9 Ray Optics"]
 up_to: Olympiad
 builds_on: [Rectilinear propagation, Angles and parallel lines]
 notes_prompt: Explain why your image in a plane mirror seems to swap left and right but never up and down.

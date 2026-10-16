@@ -1,7 +1,7 @@
 ---
 title: Lenses and the lens formula
 summary: Convex and concave lenses, ray diagrams, the lens formula and magnification, power in dioptres, refraction at a curved surface, the lens maker's formula, lens combinations, the displacement method, silvered lenses and achromatic doublets.
-ncert: ["Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.3.3–9.3.6)", "Class 12 Physics · Ch 9 Ray Optics (§9.5)"]
+ncert: ["Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.3.3–9.3.6)", "Class 12 Physics · Ch 9 Ray Optics (§9.5)"]
 up_to: Olympiad
 builds_on: [Refraction and Snell's law, Spherical mirrors (sign convention), Similar triangles]
 notes_prompt: Explain why a lens that is thick in the middle brings light together, using only the idea that glass slows light down.

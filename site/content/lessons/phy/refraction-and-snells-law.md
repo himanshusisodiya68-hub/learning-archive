@@ -1,7 +1,7 @@
 ---
 title: Refraction and Snell's law
 summary: Why light bends when it changes medium, Snell's law from wavefronts and from least time, refractive index, apparent depth, slabs, total internal reflection and curved rays in graded media.
-ncert: ["Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.3)", "Class 12 Physics · Ch 9 Ray Optics (§9.3–9.4)"]
+ncert: ["Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.3)", "Class 12 Physics · Ch 9 Ray Optics (§9.3–9.4)"]
 up_to: Olympiad
 builds_on: [Laws of reflection, Speed of light, Sine of an angle, Vectors (JEE level), Derivatives and maxima (Olympiad level)]
 notes_prompt: Explain refraction to a Class 8 student using the marching-band picture.
