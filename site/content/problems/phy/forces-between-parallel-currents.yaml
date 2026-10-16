@@ -1,0 +1,100 @@
+# Force between parallel currents, and the definition of the ampere. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 4, §4.8 and Exercise 4.7. Found, board and main problems are original.
+
+- id: ncert12-eg-4-9
+  lvl: ncert-intext
+  num: "XII Ex 4.9"
+  source: NCERT XII Physics · Ch 4 · Example 4.9
+  kind: num
+  q: The horizontal component of the earth's magnetic field at a certain place is 3.0 ×10⁻⁵ T and the direction of the field is from the geographic south to the geographic north. A very long straight conductor is carrying a steady current of 1A. What is the force per unit length on it when it is placed on a horizontal table and the direction of the current is (a) east to west; (b) south to north?
+  ask: Force per unit length in case (a)
+  unit: N/m
+  ans: 3e-5
+  tol: 1e-8
+  verify: 1*3.0e-5
+  sol: |
+    $\mathbf F = I\mathbf l\times\mathbf B$, so $f = F/l = IB\sin\theta$.
+
+    (a) Current east to west, field south to north: $\theta = 90^\circ$, $f = IB = 1\times3\times10^{-5} = 3\times10^{-5}$ N m⁻¹, directed downwards (into the table).
+
+    (b) Current south to north: parallel to the field, $\theta = 0$, so $f = 0$.
+
+    The value in (a) is larger than $2\times10^{-7}$ N m⁻¹ used to define the ampere, so the effect of the Earth's field and other stray fields must be eliminated when standardising the ampere.
+  check: code
+
+- id: ncert12-ex-4-7
+  lvl: ncert-ex
+  num: "XII 4.7"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.7
+  kind: num
+  q: Two long and parallel straight wires A and B carrying currents of 8.0 A and 5.0 A in the same direction are separated by a distance of 4.0 cm. Estimate the force on a 10 cm section of wire A.
+  ask: Force on the 10 cm section
+  unit: N
+  ans: 2e-5
+  tol: 1e-8
+  verify: 2e-7*8*5*0.1/0.04
+  sol: |
+    The field of wire B at wire A is $B = \dfrac{\mu_0I_B}{2\pi d} = \dfrac{2\times10^{-7}\times5.0}{0.04} = 2.5\times10^{-5}$ T. The force on a length $l = 0.1$ m of A is $F = I_ABl = 8.0\times2.5\times10^{-5}\times0.1 = 2\times10^{-5}$ N. The currents are in the same direction, so the force is **attractive**, normal to A and directed towards B.
+  answer_key: 2 × 10⁻⁵ N; attractive force normal to A towards B
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Two long parallel wires carry currents in the same direction. They
+  opts: ["attract each other", "repel each other", "exert no force", "rotate"]
+  ans: 0
+  sol: Each wire's field at the other exerts a force towards the first wire (right-hand and left-hand rules), so parallel currents attract and antiparallel currents repel.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Two long parallel wires 5 cm apart carry 10 A and 20 A in the same direction. Find the force per unit length. (Original problem.)
+  ask: Force per unit length
+  unit: N/m
+  ans: 8e-4
+  tol: 1e-7
+  verify: 2e-7*10*20/0.05
+  sol: $f = \dfrac{\mu_0I_1I_2}{2\pi d} = 2\times10^{-7}\times\dfrac{10\times20}{0.05} = 8\times10^{-4}$ N m⁻¹ (attractive).
+  check: code
+
+- id: b1
+  lvl: board
+  kind: text
+  q: Define the ampere using the force between parallel current-carrying wires. (Original problem.)
+  sol: |
+    One ampere is the steady current which, flowing in each of two infinitely long straight parallel wires of negligible cross-section placed 1 m apart in vacuum, produces a force of $2\times10^{-7}$ newton per metre of length between them.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Two wires 4 cm apart carry 6 A and 9 A in opposite directions. Find the force on a 50 cm length of one wire. (Original problem.)
+  ask: Force
+  unit: N
+  ans: 0.000135
+  tol: 1e-7
+  verify: 2e-7*6*9*0.5/0.04
+  sol: $F = \dfrac{\mu_0I_1I_2l}{2\pi d} = 2\times10^{-7}\times\dfrac{6\times9\times0.5}{0.04} = 1.35\times10^{-4}$ N, repulsive since the currents are opposite.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A long fixed wire carries 20 A. A parallel wire of mass 0.1 g per metre, carrying current in the opposite direction, floats in equilibrium 5 cm above it. Find the current in the floating wire. Take g = 9.8 m/s². (Original problem.)
+  ask: Current in the floating wire
+  unit: A
+  ans: 12.25
+  tol: 0.01
+  verify: 1e-4*9.8*0.05/(2e-7*20)
+  sol: |
+    Balance of forces per unit length: $\dfrac{\mu_0I_1I_2}{2\pi d} = \lambda g$, so $I_2 = \dfrac{\lambda g\,2\pi d}{\mu_0I_1} = \dfrac{10^{-4}\times9.8\times0.05}{2\times10^{-7}\times20} = 12.25$ A. (The currents are opposite, so the force is repulsive and lifts the upper wire.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Two parallel beams of electrons move in the same direction with the same speed v. Compare the magnetic force between them with the electric force, and say how it varies with v. (Original problem.)
+  sol: |
+    The beams repel electrically and attract magnetically (parallel currents attract). The ratio of the magnetic to the electric force is $(v/c)^2$, using $\mu_0\varepsilon_0 = 1/c^2$. So the net force is repulsive and decreases as $v$ increases, approaching zero only as $v\to c$, where the two nearly cancel.
+  check: none

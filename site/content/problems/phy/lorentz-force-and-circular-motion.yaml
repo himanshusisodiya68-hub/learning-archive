@@ -1,0 +1,137 @@
+# Lorentz force and circular motion of charged particles. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 4, §4.2–4.3 and Exercises. The printed text gives e = 1.5 × 10⁻¹⁹ C in Exercise 4.11; this is discussed in that solution. Found, board and main problems are original.
+
+- id: ncert12-eg-4-2
+  lvl: ncert-intext
+  num: "XII Ex 4.2"
+  source: NCERT XII Physics · Ch 4 · Example 4.2
+  kind: text
+  q: If the magnetic field is parallel to the positive y-axis and the charged particle is moving along the positive x-axis (Fig. 4.4), which way would the Lorentz force be for (a) an electron (negative charge), (b) a proton (positive charge).
+  sol: |
+    The velocity is along $x$ and $\mathbf B$ along $y$, so $\mathbf v\times\mathbf B$ is along $\hat x\times\hat y = +\hat z$ (screw rule / right-hand rule). (a) For the electron the force $q\mathbf v\times\mathbf B$ is along $-z$. (b) For the proton (positive charge) the force is along $+z$.
+  check: none
+
+- id: ncert12-eg-4-3
+  lvl: ncert-intext
+  num: "XII Ex 4.3"
+  source: NCERT XII Physics · Ch 4 · Example 4.3
+  kind: num
+  q: What is the radius of the path of an electron (mass 9 × 10⁻³¹ kg and charge 1.6 × 10⁻¹⁹ C) moving at a speed of 3 × 10⁷ m/s in a magnetic field of 6 × 10⁻⁴ T perpendicular to it? What is its frequency? Calculate its energy in keV. ( 1 eV = 1.6 × 10⁻¹⁹ J).
+  ask: Radius of the path
+  unit: cm
+  ans: 28
+  tol: 0.2
+  verify: 9e-31*3e7/(1.6e-19*6e-4)*100
+  sol: |
+    The magnetic force provides the centripetal force, $qvB = mv^2/r$, so
+
+    $$r = \frac{mv}{qB} = \frac{9\times10^{-31}\times3\times10^{7}}{1.6\times10^{-19}\times6\times10^{-4}} = 0.28\ \text{m} = 28\ \text{cm}.$$
+
+    Frequency: $\nu = \dfrac{v}{2\pi r} = \dfrac{qB}{2\pi m} = 1.7\times10^{7}$ Hz $= 17$ MHz.
+
+    Energy: $E = \tfrac12mv^2 = \tfrac12\times9\times10^{-31}\times9\times10^{14} = 4.05\times10^{-16}$ J $\approx 2.5$ keV.
+  check: code
+
+- id: ncert12-ex-4-11
+  lvl: ncert-ex
+  num: "XII 4.11"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.11
+  kind: num
+  q: In a chamber, a uniform magnetic field of 6.5 G (1 G = 10⁻⁴ T ) is maintained. An electron is shot into the field with a speed of 4.8 × 10⁶ m s⁻¹ normal to the field. Explain why the path of the electron is a circle. Determine the radius of the circular orbit. (e = 1.5 × 10⁻¹⁹ C, m_e = 9.1×10⁻³¹ kg )
+  ask: Radius of the orbit
+  unit: cm
+  ans: 4.2
+  tol: 0.01
+  verify: 9.1e-31*4.8e6/(1.6e-19*6.5e-4)*100
+  sol: |
+    The magnetic force $-e\mathbf v\times\mathbf B$ is always perpendicular to the velocity, so it changes the direction but not the magnitude of $\mathbf v$. Since $\mathbf v\perp\mathbf B$, the force has constant magnitude $evB$ and is always directed towards a fixed centre in the plane perpendicular to $\mathbf B$: that is uniform circular motion.
+
+    $$r = \frac{mv}{eB} = \frac{9.1\times10^{-31}\times4.8\times10^{6}}{1.6\times10^{-19}\times6.5\times10^{-4}} = 4.2\times10^{-2}\ \text{m} = 4.2\ \text{cm}.$$
+
+    **Discrepancy:** the question as printed gives $e = 1.5\times10^{-19}$ C, which would give $r = 4.5$ cm. The answer key (4.2 cm) corresponds to $e = 1.6\times10^{-19}$ C, the true value, so the "1.5" looks like a typographical error. [Inference] I use $1.6\times10^{-19}$ C.
+  answer_key: 4.2 cm
+  check: both
+
+- id: ncert12-ex-4-12
+  lvl: ncert-ex
+  num: "XII 4.12"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.12
+  kind: num
+  q: In Exercise 4.11 obtain the frequency of revolution of the electron in its circular orbit. Does the answer depend on the speed of the electron? Explain.
+  ask: Frequency
+  unit: MHz
+  ans: 18.2
+  tol: 0.1
+  verify: 1.6e-19*6.5e-4/(2*Math.PI*9.1e-31)/1e6
+  sol: |
+    $\nu = \dfrac{eB}{2\pi m} = \dfrac{1.6\times10^{-19}\times6.5\times10^{-4}}{2\pi\times9.1\times10^{-31}} = 1.8\times10^{7}$ Hz $\approx 18$ MHz.
+
+    It does **not** depend on the speed. A faster electron moves on a bigger circle ($r\propto v$) but covers it proportionally faster ($T = 2\pi r/v = 2\pi m/eB$), so the time for one revolution is the same. This is the principle of the cyclotron. (The printed $e = 1.5\times10^{-19}$ C is again taken as $1.6\times10^{-19}$ C; see Exercise 4.11.)
+  answer_key: 18 MHz
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The work done by the magnetic force on a moving charged particle is
+  opts: ["always positive", "always negative", "zero", "depends on the speed"]
+  ans: 2
+  sol: |
+    The force $q\mathbf v\times\mathbf B$ is perpendicular to $\mathbf v$, so $\mathbf F\cdot\mathbf v = 0$ and no work is done: the kinetic energy and speed are unchanged.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A proton of speed 2 × 10⁶ m/s enters a 0.5 T field perpendicular to it. Find the radius of its path. (m = 1.67 × 10⁻²⁷ kg, e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Radius
+  unit: cm
+  ans: 4.175
+  tol: 0.01
+  verify: 1.67e-27*2e6/(1.6e-19*0.5)*100
+  sol: $r = mv/(eB) = 1.67\times10^{-27}\times2\times10^{6}/(1.6\times10^{-19}\times0.5) = 4.2\times10^{-2}$ m $= 4.2$ cm.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: An alpha particle (mass 6.68 × 10⁻²⁷ kg, charge 3.2 × 10⁻¹⁹ C) moves in a circle of radius 0.5 m in a magnetic field of 0.2 T. Find its speed. (Original problem.)
+  ask: Speed
+  unit: m/s
+  ans: 4.791e6
+  tol: 1e4
+  verify: 3.2e-19*0.2*0.5/6.68e-27
+  sol: $v = qBr/m = 3.2\times10^{-19}\times0.2\times0.5/6.68\times10^{-27} = 4.8\times10^{6}$ m/s.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Find the time period of revolution of a proton in a 1.0 T magnetic field. (m = 1.67 × 10⁻²⁷ kg, e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Period
+  unit: ns
+  ans: 65.58
+  tol: 0.05
+  verify: 2*Math.PI*1.67e-27/(1.6e-19*1.0)*1e9
+  sol: $T = 2\pi m/(eB) = 2\pi\times1.67\times10^{-27}/(1.6\times10^{-19}\times1.0) = 6.56\times10^{-8}$ s $\approx 66$ ns, independent of the speed.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: An electron accelerated from rest through 100 V enters a uniform field of 1.0 × 10⁻³ T perpendicular to its velocity. Find the radius of its orbit. (m = 9.11 × 10⁻³¹ kg, e = 1.6 × 10⁻¹⁹ C.) (Original problem.)
+  ask: Radius
+  unit: cm
+  ans: 3.375
+  tol: 0.01
+  verify: 9.11e-31*Math.sqrt(2*1.6e-19*100/9.11e-31)/(1.6e-19*1.0e-3)*100
+  sol: |
+    Speed: $\tfrac12mv^2 = eV$ gives $v = \sqrt{2eV/m} = 5.9\times10^{6}$ m/s. Radius: $r = mv/(eB) = 9.11\times10^{-31}\times5.93\times10^{6}/(1.6\times10^{-19}\times10^{-3}) = 3.4\times10^{-2}$ m $= 3.4$ cm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A charged particle moves in a region with uniform electric field E and uniform magnetic field B, both perpendicular to its velocity and to each other, and goes straight. Find its speed and say whether it depends on the particle's charge and mass. (Original problem.)
+  sol: |
+    For straight-line motion the electric force $qE$ must balance the magnetic force $qvB$: $v = E/B$. The charge and mass cancel, so the speed does not depend on them (a velocity selector).
+  check: none

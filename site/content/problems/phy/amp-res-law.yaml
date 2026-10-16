@@ -1,0 +1,165 @@
+# Ampère's circuital law and the solenoid. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 4, §4.6–4.7 and Exercises. Found, board and main problems are original.
+
+- id: ncert12-eg-4-7
+  lvl: ncert-intext
+  num: "XII Ex 4.7"
+  source: NCERT XII Physics · Ch 4 · Example 4.7
+  kind: text
+  q: Figure 4.13 shows a long straight wire of a circular cross-section (radius a) carrying steady current I. The current I is uniformly distributed across this cross-section. Calculate the magnetic field in the region r < a and r > a.
+  sol: |
+    Use an Amperian loop that is a circle of radius $r$ concentric with the wire, so $B$ is tangential and of constant magnitude on it: $\oint\mathbf B\cdot d\mathbf l = B(2\pi r) = \mu_0I_e$.
+
+    **$r > a$:** the loop encloses the whole current, $I_e = I$. So $B = \dfrac{\mu_0I}{2\pi r}$, falling as $1/r$, like a thin wire.
+
+    **$r < a$:** the current is uniform over the cross-section, so the part enclosed is $I_e = I\dfrac{\pi r^2}{\pi a^2} = \dfrac{Ir^2}{a^2}$. Then $B(2\pi r) = \mu_0\dfrac{Ir^2}{a^2}$, giving $B = \dfrac{\mu_0I}{2\pi a^2}\,r$, rising linearly with $r$.
+
+    The two expressions agree at $r = a$, where $B = \mu_0I/(2\pi a)$ is the maximum. The direction is tangential, given by the right-hand rule.
+  check: none
+
+- id: ncert12-eg-4-8
+  lvl: ncert-intext
+  num: "XII Ex 4.8"
+  source: NCERT XII Physics · Ch 4 · Example 4.8
+  kind: num
+  q: A solenoid of length 0.5 m has a radius of 1 cm and is made up of 500 turns. It carries a current of 5 A. What is the magnitude of the magnetic field inside the solenoid?
+  ask: Field inside the solenoid
+  unit: T
+  ans: 6.28e-3
+  tol: 1e-5
+  verify: 4e-7*Math.PI*(500/0.5)*5
+  sol: |
+    The number of turns per unit length is $n = 500/0.5 = 1000$ turns/m. Since $l/a = 50 \gg 1$ the long-solenoid formula applies: $B = \mu_0nI = 4\pi\times10^{-7}\times10^{3}\times5 = 6.28\times10^{-3}$ T.
+  check: code
+
+- id: ncert12-ex-4-2
+  lvl: ncert-ex
+  num: "XII 4.2"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.2
+  kind: num
+  q: A long straight wire carries a current of 35 A. What is the magnitude of the field B at a point 20 cm from the wire?
+  ask: Field
+  unit: T
+  ans: 3.5e-5
+  tol: 1e-8
+  verify: 2e-7*35/0.2
+  sol: $B = \dfrac{\mu_0I}{2\pi r} = \dfrac{2\times10^{-7}\times35}{0.20} = 3.5\times10^{-5}$ T.
+  answer_key: 3.5 × 10⁻⁵ T
+  check: both
+
+- id: ncert12-ex-4-3
+  lvl: ncert-ex
+  num: "XII 4.3"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.3
+  kind: num
+  q: A long straight wire in the horizontal plane carries a current of 50 A in north to south direction. Give the magnitude and direction of B at a point 2.5 m east of the wire.
+  ask: Magnitude of B
+  unit: T
+  ans: 4e-6
+  tol: 1e-9
+  verify: 2e-7*50/2.5
+  sol: |
+    $B = \dfrac{\mu_0I}{2\pi r} = \dfrac{2\times10^{-7}\times50}{2.5} = 4\times10^{-6}$ T. Direction: the right-hand thumb rule with the thumb pointing south: at a point to the east, the fingers point **vertically upward**.
+  answer_key: 4 × 10⁻⁶ T, vertical up
+  check: both
+
+- id: ncert12-ex-4-4
+  lvl: ncert-ex
+  num: "XII 4.4"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.4
+  kind: num
+  q: A horizontal overhead power line carries a current of 90 A in east to west direction. What is the magnitude and direction of the magnetic field due to the current 1.5 m below the line?
+  ask: Magnitude of B
+  unit: T
+  ans: 1.2e-5
+  tol: 1e-8
+  verify: 2e-7*90/1.5
+  sol: |
+    $B = \dfrac{2\times10^{-7}\times90}{1.5} = 1.2\times10^{-5}$ T. With the current towards the west and the point below the line, the right-hand rule gives a field pointing **towards the south**. (This agrees with Example 12.1 of the Class X chapter.)
+  answer_key: 1.2 × 10⁻⁵ T, towards south
+  check: both
+
+- id: ncert12-ex-4-8
+  lvl: ncert-ex
+  num: "XII 4.8"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.8
+  kind: num
+  q: A closely wound solenoid 80 cm long has 5 layers of windings of 400 turns each. The diameter of the solenoid is 1.8 cm. If the current carried is 8.0 A, estimate the magnitude of B inside the solenoid near its centre.
+  ask: Field inside
+  unit: T
+  ans: 0.0251
+  tol: 0.0001
+  verify: 4e-7*Math.PI*(5*400/0.8)*8
+  sol: |
+    The total number of turns is $5\times400 = 2000$ over 0.80 m, so $n = 2500$ turns/m, and $l/a \gg 1$. $B = \mu_0nI = 4\pi\times10^{-7}\times2500\times8.0 = 8\pi\times10^{-3} = 2.5\times10^{-2}$ T. (The diameter is not needed.)
+  answer_key: 8π × 10⁻³ T ≃ 2.5 × 10⁻² T
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The field inside a long solenoid of n turns per metre carrying a current I is
+  opts: ["μ₀nI", "μ₀I/2πr", "μ₀nI/2", "zero"]
+  ans: 0
+  sol: Applying Ampère's law to a rectangular loop with one side inside the solenoid gives $B = \mu_0nI$, uniform inside and nearly zero outside.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A solenoid has 1000 turns per metre and carries 2 A. Find the field inside. (Original problem.)
+  ask: Field
+  unit: mT
+  ans: 2.513
+  tol: 0.005
+  verify: 4e-7*Math.PI*1000*2*1000
+  sol: $B = \mu_0nI = 4\pi\times10^{-7}\times1000\times2 = 2.5\times10^{-3}$ T $= 2.5$ mT.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Find the field 10 cm from a long straight wire carrying 20 A. (Original problem.)
+  ask: Field
+  unit: µT
+  ans: 40
+  tol: 0.01
+  verify: 2e-7*20/0.1*1e6
+  sol: $B = \mu_0I/(2\pi r) = 2\times10^{-7}\times20/0.1 = 4\times10^{-5}$ T $= 40$ µT.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A toroid has 1000 turns and a mean radius of 10 cm and carries 1 A. Find the field inside it at the mean radius. (Original problem.)
+  ask: Field
+  unit: mT
+  ans: 2
+  tol: 0.005
+  verify: 2e-7*1000*1/0.1*1000
+  sol: Ampère's law on a circle of radius $r$ inside the toroid gives $B(2\pi r) = \mu_0NI$, so $B = \dfrac{\mu_0NI}{2\pi r} = \dfrac{2\times10^{-7}\times1000\times1}{0.1} = 2\times10^{-3}$ T $= 2$ mT.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A long straight wire of radius 1 cm carries 10 A uniformly distributed over its cross-section. Find the field at a distance of 0.5 cm from the axis. (Original problem.)
+  ask: Field
+  unit: µT
+  ans: 100
+  tol: 0.1
+  verify: 2e-7*10*0.005/0.01**2*1e6
+  sol: Inside, $B = \dfrac{\mu_0Ir}{2\pi a^2} = 2\times10^{-7}\times\dfrac{10\times0.005}{(0.01)^2} = 10^{-4}$ T $= 100$ µT.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A long solenoid has 400 turns per metre and carries 5 A. Find the field at the centre of one of its ends, on the axis. (Original problem.)
+  ask: Field at the end
+  unit: mT
+  ans: 1.2566
+  tol: 0.005
+  verify: 4e-7*Math.PI*400*5/2*1000
+  sol: |
+    At the end of a long solenoid the field on the axis is half of that deep inside: $B = \tfrac12\mu_0nI = \tfrac12\times4\pi\times10^{-7}\times400\times5 = 1.26\times10^{-3}$ T. (Half of the field lines have already spread out.)
+  check: code

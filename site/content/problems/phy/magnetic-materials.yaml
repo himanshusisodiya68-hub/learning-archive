@@ -1,0 +1,89 @@
+# Magnetisation, magnetic intensity and the magnetic properties of materials. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 5, §5.4–5.5. Found, board and main problems are original.
+
+- id: ncert12-eg-5-5
+  lvl: ncert-intext
+  num: "XII Ex 5.5"
+  source: NCERT XII Physics · Ch 5 · Example 5.5
+  kind: num
+  q: A solenoid has a core of a material with relative permeability 400. The windings of the solenoid are insulated from the core and carry a current of 2A. If the number of turns is 1000 per metre, calculate (a) H, (b) M, (c) B and (d) the magnetising current I_M.
+  ask: Magnetic field B in the core
+  unit: T
+  ans: 1.0
+  tol: 0.01
+  verify: 400*4e-7*Math.PI*1000*2
+  sol: |
+    (a) $H = nI = 1000\times2.0 = 2\times10^{3}$ A m⁻¹, independent of the core material.
+
+    (c) $B = \mu_r\mu_0H = 400\times4\pi\times10^{-7}\times2\times10^{3} = 1.0$ T.
+
+    (b) $M = \dfrac{B - \mu_0H}{\mu_0} = (\mu_r - 1)H = 399\times H \approx 8\times10^{5}$ A m⁻¹.
+
+    (d) The magnetising current is the extra current that would be needed in the windings, in the absence of the core, to give the same $B$: $B = \mu_0n(I + I_M)$. With $B = 1$ T and $I = 2$ A this gives $I_M \approx 794$ A.
+
+    **Notes on the printed text.** (1) The question lists the parts as (b) M and (c) B, but the book's solution labels B as (b) and M as (c); I follow the order of the question above. (2) The book's expression for the magnetising current is printed as $B = \mu_r n(I + I_M)$; the numbers (794 A) correspond to $\mu_0$, not $\mu_r$, so "$\mu_r$" looks like a typographical error. [Inference]
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A material with a small positive susceptibility that is weakly attracted by a magnet is
+  opts: ["diamagnetic", "paramagnetic", "ferromagnetic", "an insulator"]
+  ans: 1
+  sol: Paramagnetic materials have small positive χ and are weakly attracted; diamagnetic materials have negative χ and are weakly repelled; ferromagnetic materials have large positive χ.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A solenoid with 500 turns per metre carries 1 A and has a core of relative permeability 200. Find B in the core. (Original problem.)
+  ask: Field
+  unit: T
+  ans: 0.1257
+  tol: 0.0005
+  verify: 200*4e-7*Math.PI*500*1
+  sol: $B = \mu_r\mu_0nI = 200\times4\pi\times10^{-7}\times500\times1 = 0.126$ T.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A material has susceptibility χ = 2 × 10⁻⁵. Find its relative permeability. (Original problem.)
+  ask: Relative permeability
+  unit: ""
+  ans: 1.00002
+  tol: 0.000001
+  verify: 1+2e-5
+  sol: $\mu_r = 1 + \chi = 1.00002$. A small positive χ means a paramagnetic material, with $\mu_r$ barely above 1.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Distinguish diamagnetic, paramagnetic and ferromagnetic substances by their susceptibility and behaviour in a non-uniform field. (Original problem.)
+  sol: |
+    Diamagnetic: χ small and negative; weakly repelled (moves towards the weaker field). Paramagnetic: χ small and positive; weakly attracted (towards the stronger field); χ falls as temperature rises (Curie's law). Ferromagnetic: χ large and positive; strongly attracted, and shows hysteresis; loses its ferromagnetism above the Curie temperature.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A solenoid with 2000 turns per metre carries 1 A. With an iron core the field inside is 0.8 T. Find the relative permeability of the core. (Original problem.)
+  ask: Relative permeability
+  unit: ""
+  ans: 318.3
+  tol: 0.5
+  verify: 0.8/(4e-7*Math.PI*2000*1)
+  sol: $B = \mu_r\mu_0nI$, so $\mu_r = \dfrac{B}{\mu_0nI} = \dfrac{0.8}{4\pi\times10^{-7}\times2000\times1} = 318$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: By Curie's law the susceptibility of a paramagnetic sample is inversely proportional to the absolute temperature. If χ = 1.2 × 10⁻⁵ at 300 K, find χ at 200 K. (Original problem.)
+  ask: χ at 200 K
+  unit: ""
+  ans: 1.8e-5
+  tol: 1e-8
+  verify: 1.2e-5*300/200
+  sol: $\chi\propto 1/T$, so $\chi_{200} = 1.2\times10^{-5}\times\dfrac{300}{200} = 1.8\times10^{-5}$.
+  check: code

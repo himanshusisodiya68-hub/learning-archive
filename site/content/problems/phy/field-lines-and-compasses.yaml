@@ -1,0 +1,182 @@
+# Magnetic field and field lines. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 12, §12.1–12.2 and Exercises. Found, board and main problems are original.
+
+- id: ncert-it12-1-1
+  lvl: ncert-intext
+  num: "§12.1 Q1"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.1 · Q1
+  kind: text
+  q: Why does a compass needle get deflected when brought near a bar magnet?
+  sol: |
+    A compass needle is itself a small bar magnet. The bar magnet produces a magnetic field around it, and the field exerts a force (a torque) on the needle's poles, turning the needle until it lines up with the field there. So the needle is deflected from its north–south direction.
+  check: none
+
+- id: ncert-eg12-1
+  lvl: ncert-intext
+  num: "Ex 12.1"
+  source: NCERT X Science · Ch 12 · Example 12.1
+  kind: text
+  q: A current through a horizontal power line flows in east to west direction. What is the direction of magnetic field at a point directly below it and at a point directly above it?
+  sol: |
+    Apply the right-hand thumb rule: point the thumb along the current (towards the west). The fingers curl round the wire in the direction of the field. The field lines are circles in planes perpendicular to the wire, turning clockwise when viewed from the east end and anti-clockwise when viewed from the west end.
+
+    Working this out for the two points (a derivation from the rule, not quoted from the book): with current towards the west, the field at a point **directly above** the wire points **north**, and at a point **directly below** it points **south**.
+  check: none
+
+- id: ncert-it12-2-1
+  lvl: ncert-intext
+  num: "§12.2 Q1"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.2.2 · Q1
+  kind: text
+  q: Draw magnetic field lines around a bar magnet.
+  sol: |
+    Draw closed curves leaving the north pole, bending round outside the magnet and entering the south pole, then continuing inside the magnet from the south pole back to the north pole. The lines are most crowded near the two poles (where the field is strongest), spread out far from the magnet, are symmetric about the axis of the magnet, and never cross. Arrows on the outside lines point from N to S. (Sketch to be drawn on paper; the lesson for this leaf has a figure.)
+  check: none
+
+- id: ncert-it12-2-2
+  lvl: ncert-intext
+  num: "§12.2 Q2"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.2.2 · Q2
+  kind: text
+  q: List the properties of magnetic field lines.
+  sol: |
+    - They emerge from the north pole and merge at the south pole outside the magnet; inside the magnet they run from south to north, so they are **closed curves**.
+    - The direction of the field at a point is the direction a compass needle's north pole takes there, i.e. the tangent to the line.
+    - The closeness of the lines shows the strength of the field: crowded lines mean a stronger field.
+    - Two field lines never cross each other.
+  check: none
+
+- id: ncert-it12-2-3
+  lvl: ncert-intext
+  num: "§12.2 Q3"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.2.2 · Q3
+  kind: text
+  q: Why don't two magnetic field lines intersect each other?
+  sol: |
+    If two lines crossed, the compass needle placed at the point of intersection would have to point along two different directions at once, which is impossible. The field has one definite direction at every point, so lines cannot cross.
+  check: none
+
+- id: ncert-it12-4-1
+  lvl: ncert-intext
+  num: "§12.2.4 Q1"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.2.4 · Q1
+  kind: text
+  q: Consider a circular loop of wire lying in the plane of the table. Let the current pass through the loop clockwise. Apply the right-hand rule to find out the direction of the magnetic field inside and outside the loop.
+  sol: |
+    Viewed from above, the current goes clockwise. Using the right-hand rule for a loop (curl the fingers of the right hand in the direction of the current, and the thumb gives the field through the loop), the field **inside** the loop points **downwards, into the table**. The field lines close up outside the loop, so **outside** the loop the field points **upwards, out of the table**.
+  check: none
+
+- id: ncert-it12-4-2
+  lvl: ncert-intext
+  num: "§12.2.4 Q2"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.2.4 · Q2
+  kind: text
+  q: The magnetic field in a given region is uniform. Draw a diagram to represent it.
+  sol: |
+    Draw a set of **parallel, equally spaced straight lines**, all with arrows in the same direction. Equal spacing means the same strength everywhere, and parallel lines mean the same direction everywhere. (Inside a long solenoid the field is of this kind.)
+  check: none
+
+- id: ncert-it12-4-3
+  lvl: ncert-intext
+  num: "§12.2.4 Q3"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.2.4 · Q3
+  kind: mcq
+  q: |-
+    Choose the correct option.
+    The magnetic field inside a long straight solenoid-carrying current
+  opts: ["is zero.", "decreases as we move towards its end.", "increases as we move towards its end.", "is the same at all points."]
+  ans: 3
+  sol: |
+    Inside a long solenoid the field lines are parallel straight lines, equally spaced, so the field is uniform: the same at all points (away from the ends).
+  check: none
+
+- id: ncert-ex12-1
+  lvl: ncert-ex
+  num: 1
+  source: NCERT X Science · Ch 12 · Exercise 1
+  kind: mcq
+  q: |-
+    Which of the following correctly describes the magnetic field near a long straight wire?
+  opts: ["The field consists of straight lines perpendicular to the wire.", "The field consists of straight lines parallel to the wire.", "The field consists of radial lines originating from the wire.", "The field consists of concentric circles centred on the wire."]
+  ans: 3
+  sol: The field lines around a straight current-carrying wire are concentric circles in planes perpendicular to the wire, centred on it (Activity 12.5). Their direction is given by the right-hand thumb rule.
+  answer_key: (d)
+  check: ncert-key
+
+- id: ncert-ex12-3
+  lvl: ncert-ex
+  num: 3
+  source: NCERT X Science · Ch 12 · Exercise 3
+  kind: text
+  q: |-
+    State whether the following statements are true or false.
+    (a) The field at the centre of a long circular coil carrying current will be parallel straight lines.
+    (b) A wire with a green insulation is usually the live wire of an electric supply.
+  sol: |
+    (a) **True.** At the centre of a circular coil the arcs of the large field circles look like straight lines, all in the same direction (along the axis).
+
+    (b) **False.** The live wire usually has red insulation. Green insulation marks the earth wire.
+  answer_key: "(a) True (b) False"
+  check: ncert-key
+
+- id: ncert-ex12-4
+  lvl: ncert-ex
+  num: 4
+  source: NCERT X Science · Ch 12 · Exercise 4
+  kind: text
+  q: List two methods of producing magnetic fields.
+  sol: |
+    1. By passing an electric current through a conductor: a straight wire, a circular loop, or a solenoid (which can magnetise an iron core to make an electromagnet).
+    2. By using a permanent magnet, such as a bar magnet, a horse-shoe magnet or a piece of magnetised steel.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Outside a bar magnet, magnetic field lines run
+  opts: ["from the south pole to the north pole", "from the north pole to the south pole", "in straight lines from the north pole to infinity", "in circles around the north pole only"]
+  ans: 1
+  sol: By convention the lines emerge from the north pole and enter the south pole outside the magnet, and continue from south to north inside, forming closed curves.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A current flows through a vertical straight wire towards the ceiling. Looking down from the ceiling, the field lines around it run
+  opts: ["clockwise", "anticlockwise", "radially outward", "parallel to the wire"]
+  ans: 1
+  sol: |
+    Right-hand thumb rule: thumb along the current (upward); the fingers curl anticlockwise when viewed from above (from the tip of the thumb).
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: Describe an activity that shows that a current-carrying wire produces a magnetic field. How can the direction of that field be found? (Original problem.)
+  sol: |
+    Place a small compass near a straight wire connected to a battery through a key. When the key is closed the needle is deflected, showing a magnetic field around the wire (Oersted's observation). Reversing the current reverses the deflection. The direction of the field at a point is that of the north pole of the compass there, or can be found from the right-hand thumb rule. Iron filings sprinkled on a card through which the wire passes line up in concentric circles.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: How does the magnetic field of a solenoid compare with that of a bar magnet? What is an electromagnet? (Original problem.)
+  sol: |
+    The field pattern of a current-carrying solenoid is like that of a bar magnet: one end behaves as a north pole and the other as a south pole, and the lines inside are parallel straight lines (uniform field). An electromagnet is a soft-iron core placed inside a solenoid: the strong field of the coil magnetises the core, and it loses most of its magnetism when the current is switched off.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Two long parallel straight wires carry equal currents in opposite directions. Sketch or describe the magnetic field at a point midway between them, and say how it differs from the case where the currents are in the same direction. (Original problem.)
+  sol: |
+    Midway between the wires, each wire's field points the same way for opposite currents (they add), so the field there is double that of one wire at that distance. For currents in the same direction, the fields at the midpoint are equal and opposite, so the field is zero at the midpoint. Use the right-hand rule for each wire.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: mcq
+  q: The direction of magnetic field lines is defined as the direction in which
+  opts: ["a free north pole would tend to move", "a free south pole would tend to move", "a positive charge at rest would move", "a current element would move"]
+  ans: 0
+  sol: By convention the field direction at a point is that in which a north pole (of a compass needle) would be pushed.
+  check: none

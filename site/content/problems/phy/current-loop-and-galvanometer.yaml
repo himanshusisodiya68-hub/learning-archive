@@ -1,0 +1,188 @@
+# Torque on a current loop, magnetic dipole moment, and the moving-coil galvanometer. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 4, §4.9–4.10 and Exercises. Figure details in [brackets] were added by the archive. Found, board and main problems are original.
+
+- id: ncert12-eg-4-10
+  lvl: ncert-intext
+  num: "XII Ex 4.10"
+  source: NCERT XII Physics · Ch 4 · Example 4.10
+  kind: num
+  q: |-
+    A 100 turn closely wound circular coil of radius 10 cm carries a current of 3.2 A. (a) What is the field at the centre of the coil? (b) What is the magnetic moment of this coil?
+    The coil is placed in a vertical plane and is free to rotate about a horizontal axis which coincides with its diameter. A uniform magnetic field of 2T in the horizontal direction exists such that initially the axis of the coil is in the direction of the field. The coil rotates through an angle of 90° under the influence of the magnetic field. (c) What are the magnitudes of the torques on the coil in the initial and final position? (d) What is the angular speed acquired by the coil when it has rotated by 90°? The moment of inertia of the coil is 0.1 kg m².
+  ask: Angular speed after rotating through 90°, part (d)
+  unit: rad/s
+  ans: 20
+  tol: 0.2
+  verify: Math.sqrt(2*(100*3.2*Math.PI*0.01)*2/0.1)
+  sol: |
+    (a) $B = \dfrac{\mu_0NI}{2R} = \dfrac{4\pi\times10^{-7}\times100\times3.2}{2\times0.1} \approx 2\times10^{-3}$ T (using $\pi\times3.2\approx10$), along the axis (right-hand rule).
+
+    (b) $m = NIA = NI\pi r^2 = 100\times3.2\times3.14\times10^{-2} \approx 10$ A m², along the axis.
+
+    (c) $\tau = mB\sin\theta$. Initially $\theta = 0$ (axis along the field), so $\tau_i = 0$. Finally $\theta = 90^\circ$, so $\tau_f = mB = 10\times2 = 20$ N m.
+
+    (d) The torque does work $\int_0^{\pi/2}mB\sin\theta\,d\theta = mB$, which becomes rotational kinetic energy: $\tfrac12I\omega^2 = mB$, so $\omega = \sqrt{2mB/I} = \sqrt{2\times10\times2/0.1} = 20$ rad s⁻¹.
+  check: code
+
+- id: ncert12-eg-4-11
+  lvl: ncert-intext
+  num: "XII Ex 4.11"
+  source: NCERT XII Physics · Ch 4 · Example 4.11
+  kind: text
+  q: |-
+    (a) A current-carrying circular loop lies on a smooth horizontal plane. Can a uniform magnetic field be set up in such a manner that the loop turns around itself (i.e., turns about the vertical axis).
+    (b) A current-carrying circular loop is located in a uniform external magnetic field. If the loop is free to turn, what is its orientation of stable equilibrium? Show that in this orientation, the flux of the total field (external field + field produced by the loop) is maximum.
+    (c) A loop of irregular shape carrying current is located in an external magnetic field. If the wire is flexible, why does it change to a circular shape?
+  sol: |
+    (a) **No.** Turning about the vertical axis needs a vertical torque. But $\boldsymbol\tau = I\mathbf A\times\mathbf B$, and for a horizontal loop $\mathbf A$ is vertical, so $\boldsymbol\tau$ is perpendicular to $\mathbf A$, i.e. in the horizontal plane, for any $\mathbf B$.
+
+    (b) Stable equilibrium is when the area vector $\mathbf A$ (the magnetic moment) is parallel to the external field. Then the loop's own field through its plane is in the same direction as the external field (both normal to the plane), so the total flux through the loop is the sum of the two and is maximum.
+
+    (c) For a given perimeter the circle encloses the greatest area, and the system moves to the configuration of maximum flux (the lowest energy, $-\mathbf m\cdot\mathbf B$ with $m = IA$ largest), so the flexible loop becomes circular with its plane normal to the field.
+  check: none
+
+- id: ncert12-eg-4-12
+  lvl: ncert-intext
+  num: "XII Ex 4.12"
+  source: NCERT XII Physics · Ch 4 · Example 4.12
+  kind: num
+  q: |
+    In the circuit (Fig. 4.23) the current is to be measured. What is the value of the current if the ammeter shown (a) is a galvanometer with a resistance R_G = 60.00 Ω; (b) is a galvanometer described in (a) but converted to an ammeter by a shunt resistance r_s = 0.02 Ω; (c) is an ideal ammeter with zero resistance? [Fig. 4.23 as printed: a 3.00 V battery in series with a 3.00 Ω resistor and the ammeter.]
+  ask: Current with the shunted galvanometer, part (b)
+  unit: A
+  ans: 0.99
+  tol: 0.005
+  verify: 3/(3+60*0.02/(60+0.02))
+  sol: |
+    (a) The total resistance is $R_G + 3 = 63\ \Omega$, so $I = 3/63 = 0.048$ A.
+
+    (b) The shunted galvanometer has resistance $\dfrac{R_Gr_s}{R_G+r_s} = \dfrac{60\times0.02}{60.02}\approx0.02\ \Omega$. The total resistance is $3.02\ \Omega$, so $I = 3/3.02 = 0.99$ A.
+
+    (c) For an ideal ammeter of zero resistance $I = 3/3 = 1.00$ A.
+
+    A good ammeter has a very small resistance so that it hardly changes the current it measures.
+  check: code
+
+- id: ncert12-ex-4-9
+  lvl: ncert-ex
+  num: "XII 4.9"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.9
+  kind: num
+  q: A square coil of side 10 cm consists of 20 turns and carries a current of 12 A. The coil is suspended vertically and the normal to the plane of the coil makes an angle of 30º with the direction of a uniform horizontal magnetic field of magnitude 0.80 T. What is the magnitude of torque experienced by the coil?
+  ask: Torque
+  unit: N m
+  ans: 0.96
+  tol: 0.001
+  verify: 20*12*0.1**2*0.8*Math.sin(Math.PI/6)
+  sol: $\tau = NIAB\sin\theta = 20\times12\times(0.1)^2\times0.80\times\sin30^\circ = 0.96$ N m, where $\theta$ is the angle between the normal (magnetic moment) and the field.
+  answer_key: 0.96 N m
+  check: both
+
+- id: ncert12-ex-4-10
+  lvl: ncert-ex
+  num: "XII 4.10"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.10
+  kind: num
+  q: |-
+    Two moving coil meters, M₁ and M₂ have the following particulars:
+    R₁ = 10 Ω, N₁ = 30, A₁ = 3.6 × 10⁻³ m², B₁ = 0.25 T
+    R₂ = 14 Ω, N₂ = 42, A₂ = 1.8 × 10⁻³ m², B₂ = 0.50 T
+    (The spring constants are identical for the two meters). Determine the ratio of (a) current sensitivity and (b) voltage sensitivity of M₂ and M₁.
+  ask: Ratio of current sensitivities, M₂ to M₁
+  unit: ""
+  ans: 1.4
+  tol: 0.001
+  verify: (42*1.8e-3*0.5)/(30*3.6e-3*0.25)
+  sol: |
+    Current sensitivity is $\dfrac{\phi}{I} = \dfrac{NAB}{k}$ and voltage sensitivity is $\dfrac{\phi}{V} = \dfrac{NAB}{kR}$.
+
+    (a) $\dfrac{(NAB)_2}{(NAB)_1} = \dfrac{42\times1.8\times10^{-3}\times0.50}{30\times3.6\times10^{-3}\times0.25} = \dfrac{0.0378}{0.027} = 1.4$.
+
+    (b) Dividing also by the resistances: $1.4\times\dfrac{R_1}{R_2} = 1.4\times\dfrac{10}{14} = 1$.
+  answer_key: "(a) 1.4, (b) 1"
+  check: both
+
+- id: ncert12-ex-4-13
+  lvl: ncert-ex
+  num: "XII 4.13"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.13
+  kind: num
+  q: |-
+    (a) A circular coil of 30 turns and radius 8.0 cm carrying a current of 6.0 A is suspended vertically in a uniform horizontal magnetic field of magnitude 1.0 T. The field lines make an angle of 60° with the normal of the coil. Calculate the magnitude of the counter torque that must be applied to prevent the coil from turning.
+    (b) Would your answer change, if the circular coil in (a) were replaced by a planar coil of some irregular shape that encloses the same area? (All other particulars are also unaltered.)
+  ask: Counter torque in part (a)
+  unit: N m
+  ans: 3.13
+  tol: 0.02
+  verify: 30*6.0*Math.PI*0.08**2*1.0*Math.sin(Math.PI/3)
+  sol: |
+    (a) $\tau = NIAB\sin\theta$ with $\theta = 60^\circ$ between the normal and the field: $\tau = 30\times6.0\times\pi(0.08)^2\times1.0\times\sin60^\circ = 3.1$ N m. The counter torque must have this magnitude.
+
+    (b) **No.** The formula $\boldsymbol\tau = NI\mathbf A\times\mathbf B$ holds for a planar loop of any shape, depending only on the area.
+  answer_key: "(a) 3.1 N m (b) No, the answer is unchanged because the formula τ = NIA × B is true for a planar loop of any shape."
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The torque on a current loop in a uniform field is maximum when
+  opts: ["the plane of the loop is perpendicular to B", "the plane of the loop is parallel to B", "the loop is outside the field", "the current is zero"]
+  ans: 1
+  sol: $\tau = mB\sin\theta$ where $\theta$ is between the normal and $\mathbf B$. It is maximum at $90^\circ$, i.e. when the plane of the loop is parallel to the field.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A coil of 50 turns, area 0.01 m² and current 2 A has its plane parallel to a 0.5 T field. Find the torque. (Original problem.)
+  ask: Torque
+  unit: N m
+  ans: 0.5
+  tol: 0.001
+  verify: 50*2*0.01*0.5
+  sol: $\tau = NIAB\sin90^\circ = 50\times2\times0.01\times0.5 = 0.5$ N m.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A 10-turn circular coil of radius 5 cm carries 3 A. Find its magnetic moment. (Original problem.)
+  ask: Magnetic moment
+  unit: A m²
+  ans: 0.2356
+  tol: 0.001
+  verify: 10*3*Math.PI*0.05**2
+  sol: $m = NIA = 10\times3\times\pi(0.05)^2 = 0.236$ A m².
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A galvanometer of resistance 50 Ω gives full-scale deflection for 5 mA. What shunt converts it into an ammeter reading up to 1 A? (Original problem.)
+  ask: Shunt resistance
+  unit: Ω
+  ans: 0.2513
+  tol: 0.001
+  verify: 0.005*50/(1-0.005)
+  sol: |
+    The shunt $S$ in parallel carries $I - I_g = 0.995$ A at the same potential difference as the galvanometer: $S = \dfrac{I_gG}{I - I_g} = \dfrac{0.005\times50}{0.995} = 0.25\ \Omega$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Convert the same galvanometer (50 Ω, 5 mA) into a voltmeter reading up to 10 V. Find the series resistance. (Original problem.)
+  ask: Series resistance
+  unit: Ω
+  ans: 1950
+  tol: 0.01
+  verify: 10/0.005-50
+  sol: At full scale $I_g(G + R) = 10$ V, so $R = 10/0.005 - 50 = 1950\ \Omega$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: The number of turns in a galvanometer coil is doubled. What happens to its current sensitivity and to its voltage sensitivity? (Original problem.)
+  sol: |
+    Current sensitivity $\phi/I = NAB/k$ doubles. But the coil's resistance also roughly doubles (twice as much wire), and the voltage sensitivity $\phi/V = NAB/(kR)$ stays about the same.
+  check: none

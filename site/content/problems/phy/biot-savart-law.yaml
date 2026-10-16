@@ -1,0 +1,140 @@
+# Biot–Savart law. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 4, §4.4–4.5 and Exercise 4.1. Figure details in [brackets] were added by the archive. Found, board and main problems are original.
+
+- id: ncert12-eg-4-4
+  lvl: ncert-intext
+  num: "XII Ex 4.4"
+  source: NCERT XII Physics · Ch 4 · Example 4.4
+  kind: num
+  q: An element ∆l = ∆x î is placed at the origin and carries a large current I = 10 A (Fig. 4.8). What is the magnetic field on the y-axis at a distance of 0.5 m. ∆x = 1 cm.
+  ask: Magnitude of the field
+  unit: T
+  ans: 4e-8
+  tol: 1e-10
+  verify: 1e-7*10*1e-2/0.5**2
+  sol: |
+    By the Biot–Savart law, $|d\mathbf B| = \dfrac{\mu_0}{4\pi}\dfrac{I\,dl\sin\theta}{r^2}$. Here $dl = 10^{-2}$ m, $I = 10$ A, $r = y = 0.5$ m, $\theta = 90^\circ$, and $\mu_0/4\pi = 10^{-7}$ T m/A:
+
+    $$dB = \frac{10^{-7}\times10\times10^{-2}}{(0.5)^2} = 4\times10^{-8}\ \text{T}.$$
+
+    The direction is $+z$, since $d\mathbf l\times\mathbf r = \Delta x\,\hat i\times y\,\hat j = y\Delta x\,\hat k$. The field of one small element is small.
+  check: code
+
+- id: ncert12-eg-4-5
+  lvl: ncert-intext
+  num: "XII Ex 4.5"
+  source: NCERT XII Physics · Ch 4 · Example 4.5
+  kind: num
+  q: A straight wire carrying a current of 12 A is bent into a semi-circular arc of radius 2.0 cm as shown in Fig. 4.11(a). Consider the magnetic field B at the centre of the arc. (a) What is the magnetic field due to the straight segments? (b) In what way the contribution to B from the semicircle differs from that of a circular loop and in what way does it resemble? (c) Would your answer be different if the wire were bent into a semi-circular arc of the same radius but in the opposite way as shown in Fig. 4.11(b)?
+  ask: Field at the centre due to the semicircle, part (b)
+  unit: T
+  ans: 1.9e-4
+  tol: 1e-5
+  verify: 4e-7*Math.PI*12/(4*0.02)
+  sol: |
+    (a) For every element of the straight segments, $d\mathbf l$ and $\mathbf r$ are parallel (the centre lies on their line), so $d\mathbf l\times\mathbf r = 0$: the straight parts contribute **nothing**.
+
+    (b) For all elements of the semicircle $d\mathbf l\times\mathbf r$ points the same way (into the page in Fig. 4.11(a)), so the contributions add. The magnitude is half that of a full circular loop, $B = \dfrac12\cdot\dfrac{\mu_0I}{2R} = \dfrac{\mu_0I}{4R} = \dfrac{4\pi\times10^{-7}\times12}{4\times0.02} = 1.9\times10^{-4}$ T, directed normal to the plane, into it (by the right-hand rule). It resembles the loop in direction and in the $\mu_0I/R$ dependence.
+
+    (c) The magnitude is the same but the direction is opposite, since the current in the arc circulates the other way: out of the page.
+  check: code
+
+- id: ncert12-eg-4-6
+  lvl: ncert-intext
+  num: "XII Ex 4.6"
+  source: NCERT XII Physics · Ch 4 · Example 4.6
+  kind: num
+  q: Consider a tightly wound 100 turn coil of radius 10 cm, carrying a current of 1 A. What is the magnitude of the magnetic field at the centre of the coil?
+  ask: Field at the centre
+  unit: T
+  ans: 6.28e-4
+  tol: 1e-6
+  verify: 4e-7*Math.PI*100*1/(2*0.1)
+  sol: |
+    The coil is tightly wound, so each turn has the same radius $R = 0.1$ m, and the field of $N$ turns is $N$ times that of one: $B = \dfrac{\mu_0NI}{2R} = \dfrac{4\pi\times10^{-7}\times100\times1}{2\times0.1} = 2\pi\times10^{-4} = 6.28\times10^{-4}$ T.
+  check: code
+
+- id: ncert12-ex-4-1
+  lvl: ncert-ex
+  num: "XII 4.1"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.1
+  kind: num
+  q: A circular coil of wire consisting of 100 turns, each of radius 8.0 cm carries a current of 0.40 A. What is the magnitude of the magnetic field B at the centre of the coil?
+  ask: Field at the centre
+  unit: T
+  ans: 3.14e-4
+  tol: 1e-6
+  verify: 4e-7*Math.PI*100*0.40/(2*0.08)
+  sol: $B = \dfrac{\mu_0NI}{2R} = \dfrac{4\pi\times10^{-7}\times100\times0.40}{2\times0.08} = \pi\times10^{-4}\ \text{T} \approx 3.1\times10^{-4}$ T.
+  answer_key: π × 10⁻⁴ T ≃ 3.1 × 10⁻⁴ T
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The magnetic field at the centre of a circular loop of radius R carrying current I is
+  opts: ["μ₀I/2πR", "μ₀I/2R", "μ₀I/4πR", "μ₀I R²/2"]
+  ans: 1
+  sol: Integrating the Biot–Savart law round the loop gives $B = \mu_0I/(2R)$, along the axis.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the field at the centre of a single circular loop of radius 5 cm carrying 2 A. (Original problem.)
+  ask: Field
+  unit: µT
+  ans: 25.13
+  tol: 0.02
+  verify: 4e-7*Math.PI*2/(2*0.05)*1e6
+  sol: $B = \dfrac{\mu_0I}{2R} = \dfrac{4\pi\times10^{-7}\times2}{2\times0.05} = 2.5\times10^{-5}$ T $= 25$ µT.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A circular loop of radius 10 cm carries 5 A. Find the magnetic field on its axis at 10 cm from the centre. (Original problem.)
+  ask: Field on the axis
+  unit: µT
+  ans: 11.107
+  tol: 0.01
+  verify: 4e-7*Math.PI*5*0.1**2/(2*(0.1**2+0.1**2)**1.5)*1e6
+  sol: $B = \dfrac{\mu_0IR^2}{2(R^2+x^2)^{3/2}} = \dfrac{4\pi\times10^{-7}\times5\times(0.1)^2}{2(0.02)^{3/2}} = 1.1\times10^{-5}$ T $= 11$ µT, along the axis.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A 50-turn circular coil of radius 4 cm carries 0.5 A. What is the field at its centre? (Original problem.)
+  ask: Field
+  unit: µT
+  ans: 392.7
+  tol: 0.5
+  verify: 4e-7*Math.PI*50*0.5/(2*0.04)*1e6
+  sol: $B = \mu_0NI/(2R) = 4\pi\times10^{-7}\times50\times0.5/(0.08) = 3.9\times10^{-4}$ T $= 0.39$ mT.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A square loop of side 20 cm carries 5 A. Find the magnetic field at its centre. (Original problem.)
+  ask: Field at the centre
+  unit: µT
+  ans: 28.28
+  tol: 0.05
+  verify: 2*Math.SQRT2*4e-7*Math.PI*5/(Math.PI*0.2)*1e6
+  sol: |
+    Each side is a finite straight wire at perpendicular distance $a/2 = 0.1$ m from the centre, subtending angles of $45^\circ$ at each end. The field of one side is $\dfrac{\mu_0I}{4\pi d}(\sin45^\circ + \sin45^\circ) = \dfrac{10^{-7}\times5}{0.1}\times\sqrt2 = 7.07\times10^{-6}$ T. Four sides add in the same direction: $B = 4\times7.07\times10^{-6} = 2.83\times10^{-5}$ T $= 28$ µT, i.e. $B = \dfrac{2\sqrt2\,\mu_0I}{\pi a}$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A straight wire 20 cm long carries 10 A. Find the field at a point on its perpendicular bisector, 10 cm from the wire. (Original problem.)
+  ask: Field
+  unit: µT
+  ans: 14.14
+  tol: 0.02
+  verify: 1e-7*10/0.1*(2*Math.sin(Math.PI/4))*1e6
+  sol: |
+    $B = \dfrac{\mu_0I}{4\pi d}(\sin\theta_1+\sin\theta_2)$ with $d = 0.1$ m and $\sin\theta = 0.1/\sqrt{0.1^2+0.1^2} = 0.707$ at each end: $B = 10^{-7}\times\dfrac{10}{0.1}\times1.414 = 1.4\times10^{-5}$ T $= 14$ µT.
+  check: code

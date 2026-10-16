@@ -357,6 +357,9 @@ subjects:
       - id: heating-effect-and-power
         name: Heating effect and power
         from: C10
+      - id: domestic-electric-circuits
+        name: Domestic electric circuits
+        from: C10
       - id: kirchhoffs-rules
         name: Kirchhoff's rules
         from: C12
@@ -376,11 +379,26 @@ subjects:
       - id: force-on-a-current
         name: Force on a current
         from: C10
+      - id: lorentz-force-and-circular-motion
+        name: Lorentz force and circular motion
+        from: C12
       - id: biot-savart-law
         name: Biot–Savart law
         from: C12
       - id: amp-res-law
         name: Ampère's law
+        from: C12
+      - id: forces-between-parallel-currents
+        name: Forces between parallel currents
+        from: C12
+      - id: current-loop-and-galvanometer
+        name: Current loop and moving-coil galvanometer
+        from: C12
+      - id: magnetic-dipole-and-bar-magnet
+        name: Magnetic dipole and bar magnet
+        from: C12
+      - id: magnetic-materials
+        name: Magnetic materials
         from: C12
     - id: induction-and-ac
       name: Induction and AC
@@ -395,8 +413,26 @@ subjects:
       - id: lenzs-law
         name: Lenz's law
         from: C12
+      - id: motional-emf
+        name: Motional emf
+        from: C12
+      - id: self-and-mutual-inductance
+        name: Self and mutual inductance
+        from: C12
       - id: alternating-current
         name: Alternating current
+        from: C12
+      - id: ac-through-r-l-and-c
+        name: AC through a resistor, inductor and capacitor
+        from: C12
+      - id: lcr-circuit-and-resonance
+        name: LCR circuit and resonance
+        from: C12
+      - id: transformers
+        name: Transformers
+        from: C12
+      - id: displacement-current
+        name: Displacement current
         from: C12
       - id: electromagnetic-waves
         name: Electromagnetic waves

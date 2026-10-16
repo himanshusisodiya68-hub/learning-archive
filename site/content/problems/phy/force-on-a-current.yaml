@@ -1,0 +1,207 @@
+# Force on a current-carrying conductor in a magnetic field. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 12, §12.3 and Exercises, and NCERT Physics Class XII Part I (reprint 2026-27), Ch 4, §4.2 and Exercises. Found, board and main problems are original.
+
+- id: ncert-it12-3-1
+  lvl: ncert-intext
+  num: "§12.3 Q1"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.3 · Q1
+  kind: text
+  q: |-
+    Which of the following property of a proton can change while it moves freely in a magnetic field? (There may be more than one correct answer.)
+    (a) mass
+    (b) speed
+    (c) velocity
+    (d) momentum
+  sol: |
+    **(c) velocity and (d) momentum.** The magnetic force on a moving charge is perpendicular to its velocity, so it changes the direction of motion but does no work: the speed (and so the kinetic energy) is unchanged. Velocity is a vector, so changing its direction changes it; momentum $m\mathbf v$ changes with it. The mass does not change.
+  check: none
+
+- id: ncert-it12-3-2
+  lvl: ncert-intext
+  num: "§12.3 Q2"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.3 · Q2
+  kind: text
+  q: In Activity 12.7, how do we think the displacement of rod AB will be affected if (i) current in rod AB is increased; (ii) a stronger horse-shoe magnet is used; and (iii) length of the rod AB is increased?
+  sol: |
+    The force on the rod is $F = BIl\sin\theta$. (i) A larger current increases the force, so the displacement increases. (ii) A stronger magnet means a larger $B$, so the displacement increases. (iii) A longer rod (more of it in the field) gives a larger force, so the displacement increases.
+  check: none
+
+- id: ncert-it12-3-3
+  lvl: ncert-intext
+  num: "§12.3 Q3"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.3 · Q3
+  kind: mcq
+  q: |-
+    A positively-charged particle (alpha-particle) projected towards west is deflected towards north by a magnetic field. The direction of magnetic field is
+  opts: ["towards south", "towards east", "downward", "upward"]
+  ans: 3
+  sol: |
+    Use Fleming's left-hand rule with the current in the direction of the positive charge's motion (west) and the force towards north. Equivalently, $\mathbf F = q\mathbf v\times\mathbf B$ with east $=+x$, north $=+y$, up $=+z$: $\mathbf v = -\hat x$ and $\mathbf F = +\hat y$ require $\mathbf B = +\hat z$, since $(-\hat x)\times\hat z = +\hat y$. The field is **upward**.
+  check: none
+
+- id: ncert-eg12-2
+  lvl: ncert-intext
+  num: "Ex 12.2"
+  source: NCERT X Science · Ch 12 · Example 12.2
+  kind: mcq
+  q: |-
+    An electron enters a magnetic field at right angles to it, as shown in Fig. 12.14. The direction of force acting on the electron will be [Fig. 12.14 as printed: three horizontal field lines pointing to the right; the electron enters moving downward, in the plane of the page.]
+  opts: ["to the right.", "to the left.", "out of the page.", "into the page."]
+  ans: 3
+  sol: |
+    The force is perpendicular to both the field and the current. The current's direction is opposite to the electron's motion, so the equivalent current points upward. With $\mathbf B$ to the right and the current up, Fleming's left-hand rule gives the force **into the page**. (Equivalently, $\mathbf F = -e\,\mathbf v\times\mathbf B$ with $\mathbf v$ down and $\mathbf B$ to the right: $\mathbf v\times\mathbf B$ points out of the page, so $\mathbf F$ points into it.)
+  answer_key: (d) into the page (the book's own solution)
+  check: ncert-key
+
+- id: ncert-ex12-5
+  lvl: ncert-ex
+  num: 5
+  source: NCERT X Science · Ch 12 · Exercise 5
+  kind: text
+  q: When is the force experienced by a current–carrying conductor placed in a magnetic field largest?
+  sol: |
+    The force $F = BIl\sin\theta$ is largest when the current is at right angles to the magnetic field ($\theta = 90^\circ$), where it equals $BIl$. It is zero when the current is parallel to the field.
+  check: none
+
+- id: ncert-ex12-6
+  lvl: ncert-ex
+  num: 6
+  source: NCERT X Science · Ch 12 · Exercise 6
+  kind: text
+  q: Imagine that you are sitting in a chamber with your back to one wall. An electron beam, moving horizontally from back wall towards the front wall, is deflected by a strong magnetic field to your right side. What is the direction of magnetic field?
+  sol: |
+    The electron beam moves forward (away from you), so the conventional current is backward (towards you). The force is to your right. Fleming's left-hand rule: first finger along the field, second finger along the current (backward), thumb along the force (right). That requires the field to be **vertically downward**. Check with vectors: with $x$ = right, $y$ = up, and forward $= -z$, $\mathbf F = -e\mathbf v\times\mathbf B$, with $\mathbf v = -v\hat z$ and $\mathbf B = -B\hat y$: $\mathbf v\times\mathbf B = vB(\hat z\times\hat y) = -vB\hat x$, so $\mathbf F = +evB\hat x$, to the right ✓.
+  answer_key: vertically downwards
+  check: ncert-key
+
+- id: ncert-ex12-7
+  lvl: ncert-ex
+  num: 7
+  source: NCERT X Science · Ch 12 · Exercise 7
+  kind: text
+  q: State the rule to determine the direction of a (i) magnetic field produced around a straight conductor-carrying current, (ii) force experienced by a current-carrying straight conductor placed in a magnetic field which is perpendicular to it, and (iii) current induced in a coil due to its rotation in a magnetic field.
+  sol: |
+    (i) **Right-hand thumb rule:** hold the wire in the right hand with the thumb along the current; the fingers curl round the wire in the direction of the field.
+
+    (ii) **Fleming's left-hand rule:** stretch the thumb, forefinger and middle finger of the left hand mutually perpendicular; if the forefinger points along the field and the middle finger along the current, the thumb gives the force.
+
+    (iii) **Fleming's right-hand rule** (the rule for induced current): with the right hand's thumb along the motion of the conductor and the forefinger along the field, the middle finger gives the direction of the induced current.
+
+    [Unverified against NCERT] The printed answer key lists only (i) and (ii). Part (iii) is not developed in this chapter of the reprint, so my answer to (iii) is the standard rule from general knowledge, and Lenz's law (see the induction leaves) gives the same direction.
+  answer_key: "7. (i) Right-hand thumb rule, (ii) Fleming's left-hand rule (the key gives no answer for (iii))"
+  check: ncert-key
+
+- id: ncert12-eg-4-1
+  lvl: ncert-intext
+  num: "XII Ex 4.1"
+  source: NCERT XII Physics · Ch 4 · Example 4.1
+  kind: num
+  q: A straight wire of mass 200 g and length 1.5 m carries a current of 2 A. It is suspended in mid-air by a uniform horizontal magnetic field B (Fig. 4.3). What is the magnitude of the magnetic field?
+  ask: Magnetic field
+  unit: T
+  ans: 0.65
+  tol: 0.005
+  verify: 0.2*9.8/(2*1.5)
+  sol: |
+    The upward magnetic force $IlB$ must balance the weight: $mg = IlB$, so
+
+    $$B = \frac{mg}{Il} = \frac{0.2\times9.8}{2\times1.5} = 0.65\ \text{T}.$$
+
+    Only the mass per unit length $m/l$ matters. Earth's field ($\approx4\times10^{-5}$ T) has been ignored.
+  check: code
+
+- id: ncert12-ex-4-5
+  lvl: ncert-ex
+  num: "XII 4.5"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.5
+  kind: num
+  q: What is the magnitude of magnetic force per unit length on a wire carrying a current of 8 A and making an angle of 30º with the direction of a uniform magnetic field of 0.15 T ?
+  ask: Force per unit length
+  unit: N/m
+  ans: 0.6
+  tol: 0.001
+  verify: 8*0.15*Math.sin(Math.PI/6)
+  sol: $F/l = IB\sin\theta = 8\times0.15\times\sin30^\circ = 0.6$ N m⁻¹.
+  answer_key: 0.6 N m⁻¹
+  check: both
+
+- id: ncert12-ex-4-6
+  lvl: ncert-ex
+  num: "XII 4.6"
+  source: NCERT XII Physics · Ch 4 · Exercise 4.6
+  kind: num
+  q: A 3.0 cm wire carrying a current of 10 A is placed inside a solenoid perpendicular to its axis. The magnetic field inside the solenoid is given to be 0.27 T. What is the magnetic force on the wire?
+  ask: Force on the wire
+  unit: N
+  ans: 0.081
+  tol: 0.0005
+  verify: 10*0.03*0.27
+  sol: The wire is perpendicular to the field, so $F = IlB = 10\times0.03\times0.27 = 8.1\times10^{-2}$ N. The direction is given by Fleming's left-hand rule (perpendicular to both the wire and the axis of the solenoid).
+  answer_key: 8.1 × 10⁻² N; direction of force given by Fleming's left-hand rule
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A straight wire carrying a current is parallel to a uniform magnetic field. The force on the wire is
+  opts: ["maximum", "zero", "equal to BIl/2", "dependent on the wire's material"]
+  ans: 1
+  sol: $F = BIl\sin\theta$ with $\theta = 0$ gives zero force.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A wire 20 cm long carries 5 A perpendicular to a field of 0.3 T. Find the force on it. (Original problem.)
+  ask: Force
+  unit: N
+  ans: 0.3
+  tol: 0.001
+  verify: 5*0.2*0.3
+  sol: $F = BIl = 0.3\times5\times0.2 = 0.3$ N.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A rod of mass 50 g and length 25 cm lies perpendicular to a horizontal magnetic field of 0.4 T on two horizontal rails. What current must flow in it to just lift it? Take g = 10 m/s². (Original problem.)
+  ask: Current
+  unit: A
+  ans: 5
+  tol: 0.01
+  verify: 0.05*10/(0.4*0.25)
+  sol: |
+    The magnetic force must balance the weight: $BIl = mg$, so $I = \dfrac{mg}{Bl} = \dfrac{0.05\times10}{0.4\times0.25} = 5$ A.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Name three devices that use the force on a current-carrying conductor in a magnetic field, and state the rule used to find the direction of the force. (Original problem.)
+  sol: |
+    Electric motors, loudspeakers, microphones and measuring instruments (galvanometer, ammeter, voltmeter). The direction is found by Fleming's left-hand rule.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A wire of length 40 cm in the shape of a "U" bent at right angles has a 40 cm base and two 30 cm legs. It carries 10 A in a uniform 0.5 T field perpendicular to its plane. Find the net force on the whole wire. (Original problem.)
+  ask: Net force
+  unit: N
+  ans: 2
+  tol: 0.01
+  verify: 10*0.4*0.5
+  sol: |
+    The force on a wire of any shape between two end points equals that on the straight wire joining the ends: $F = BI\,l_{eff}$ where $l_{eff}$ is the straight distance between the ends, here the 40 cm base (the ends of the U are 40 cm apart). So $F = 0.5\times10\times0.4 = 2$ N. (The two legs' forces are equal and opposite and cancel.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A semicircular wire of radius 20 cm carries 5 A in a uniform field of 0.2 T perpendicular to the plane of the wire. Find the magnitude of the force on the semicircle. (Original problem.)
+  ask: Force
+  unit: N
+  ans: 0.4
+  tol: 0.001
+  verify: 5*0.4*0.2
+  sol: The effective length is the diameter, $2R = 0.4$ m, so $F = BI(2R) = 0.2\times5\times0.4 = 0.4$ N, perpendicular to the diameter in the plane.
+  check: code

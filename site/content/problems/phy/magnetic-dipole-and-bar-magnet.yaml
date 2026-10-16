@@ -1,0 +1,285 @@
+# The bar magnet as a magnetic dipole, and Gauss's law for magnetism. NCERT questions copied word for word from NCERT Physics Class XII Part I (reprint 2026-27), Ch 5, §5.1–5.3 and Exercises 5.1–5.7. Figure details in [brackets] were added by the archive. Found, board and main problems are original.
+
+- id: ncert12-eg-5-1
+  lvl: ncert-intext
+  num: "XII Ex 5.1"
+  source: NCERT XII Physics · Ch 5 · Example 5.1
+  kind: text
+  q: |-
+    (a) What happens if a bar magnet is cut into two pieces: (i) transverse to its length, (ii) along its length?
+    (b) A magnetised needle in a uniform magnetic field experiences a torque but no net force. An iron nail near a bar magnet, however, experiences a force of attraction in addition to a torque. Why?
+    (c) Must every magnetic configuration have a north pole and a south pole? What about the field due to a toroid?
+    (d) Two identical looking iron bars A and B are given, one of which is definitely known to be magnetised. (We do not know which one.) How would one ascertain whether or not both are magnetised? If only one is magnetised, how does one ascertain which one? [Use nothing else but the bars A and B.]
+  sol: |
+    (a) In either case one gets two magnets, each with a north pole and a south pole (isolated poles cannot be obtained).
+
+    (b) In a **uniform** field the forces on the two poles are equal and opposite, so there is no net force. The nail is in the **non-uniform** field of the bar magnet. The magnet induces a magnetic moment in the nail, so it feels both a torque and a force. The net force is attractive because the induced pole of opposite type is nearer the magnet's pole than the induced pole of the same type.
+
+    (c) Not necessarily. A north–south pair appears only when the source has a net non-zero magnetic moment. This is not so for a toroid (its field is confined inside the windings) or for a straight infinite conductor.
+
+    (d) Bring different ends of the bars close to each other. A repulsion in some case shows that both are magnetised. If the force is always attractive, only one is magnetised. To tell which: the field of a bar magnet is strongest at its ends and weakest at the middle. Lower one end of A first on an end of B and then on the middle of B. If A feels no force at the middle of B, then B is the magnet; if there is no difference between the end and the middle, A is the magnet.
+  check: none
+
+- id: ncert12-eg-5-2
+  lvl: ncert-intext
+  num: "XII Ex 5.2"
+  source: NCERT XII Physics · Ch 5 · Example 5.2
+  kind: text
+  q: |-
+    Figure 5.4 shows a small magnetised needle P placed at a point O. The arrow shows the direction of its magnetic moment. The other arrows show different positions (and orientations of the magnetic moment) of another identical magnetised needle Q.
+    (a) In which configuration the system is not in equilibrium?
+    (b) In which configuration is the system in (i) stable, and (ii) unstable equilibrium?
+    (c) Which configuration corresponds to the lowest potential energy among all the configurations shown?
+    [Fig. 5.4 as printed: P at O with its moment pointing up. Six positions of Q on a circle round O: Q₁ and Q₂ at the left and right of P, each with its moment pointing horizontally to the right; Q₃ and Q₅ at the right and left ends (on the normal bisector), with moments pointing down and up respectively; Q₄ above and Q₆ below (on the axis of P), with moments pointing down and up respectively.]
+  sol: |
+    The energy of the configuration is the energy of Q in the field of P: on the normal bisector $\mathbf B_P = -\dfrac{\mu_0\mathbf m_P}{4\pi r^3}$ and on the axis $\mathbf B_P = \dfrac{\mu_0}{4\pi}\dfrac{2\mathbf m_P}{r^3}$. Equilibrium is stable if $\mathbf m_Q$ is parallel to $\mathbf B_P$ and unstable if it is antiparallel.
+
+    (a) **PQ₁ and PQ₂** are not in equilibrium: Q₁ and Q₂ lie on the normal bisector of P, where the field of P is vertical (downward), but the moment of Q points horizontally, perpendicular to that field. The torque $mB\sin90^\circ$ is then maximum, so Q is not in equilibrium.
+
+    (b)(i) Stable: **PQ₃ and PQ₆**. (ii) Unstable: **PQ₅ and PQ₄**.
+
+    (c) The lowest potential energy is **PQ₆**: it is stable and on the axis, where the field of P is twice as large as on the normal bisector, so $-\mathbf m_Q\cdot\mathbf B_P$ is most negative.
+
+    [Inference] The positions and arrows were read from the printed figure; they agree with the book's answers above.
+  answer_key: "(a) PQ₁ and PQ₂ (b) (i) PQ₃, PQ₆ (stable); (ii) PQ₅, PQ₄ (unstable) (c) PQ₆ (the book's own solution)"
+  check: ncert-key
+
+- id: ncert12-eg-5-3
+  lvl: ncert-intext
+  num: "XII Ex 5.3"
+  source: NCERT XII Physics · Ch 5 · Example 5.3
+  kind: text
+  q: |
+    Many of the diagrams given in Fig. 5.6 show magnetic field lines (thick lines in the figure) wrongly. Point out what is wrong with them. Some of them may describe electrostatic field lines correctly. Point out which ones. [Fig. 5.6 as printed: (a) lines radiating from a point or a long charged wire; (b) crossing straight lines with closed loops in empty space; (c) closed lines inside a toroid; (d) straight lines inside and outside a solenoid with no curving at its ends; (e) lines outside and inside a bar magnet; (f) lines starting on an upper plate and ending on a lower plate; (g) straight lines between two pole pieces.]
+  sol: |
+    (a) **Wrong.** Magnetic field lines cannot emanate from a point: the net flux of $\mathbf B$ through any closed surface is zero. These lines are the electric field lines of a long positively charged wire. The correct magnetic lines circle the straight conductor.
+
+    (b) **Wrong.** Magnetic field lines cannot cross, and static magnetic field lines cannot form closed loops around empty space: a closed loop of static magnetic field must enclose a region through which a current passes. Electrostatic field lines can never form closed loops at all.
+
+    (c) **Right.** The lines are confined within a toroid. Closed loops are fine here since each loop encloses a region through which a current passes. (Only a few lines are drawn; the whole region inside the windings has field.)
+
+    (d) **Wrong.** The lines of a solenoid at its ends and outside cannot be perfectly straight and confined: that would violate Ampère's law. They must curve out at the ends and close into loops.
+
+    (e) **Right.** These are lines outside and inside a bar magnet. Not all lines start at a north pole and end at a south pole; around each pole the net flux is zero.
+
+    (f) **Wrong** as magnetic field lines. All the lines seem to emanate from the upper plate, so the flux through a surface round it is not zero, which is impossible for $\mathbf B$. These are electrostatic field lines of a positively charged upper plate and a negatively charged lower plate.
+
+    (g) **Wrong.** The lines between two pole pieces cannot be exactly straight at the ends; some fringing is inevitable, otherwise Ampère's law is violated. (The same is true of electric field lines.)
+  check: none
+
+- id: ncert12-eg-5-4
+  lvl: ncert-intext
+  num: "XII Ex 5.4"
+  source: NCERT XII Physics · Ch 5 · Example 5.4
+  kind: text
+  q: |-
+    (a) Magnetic field lines show the direction (at every point) along which a small magnetised needle aligns (at the point). Do the magnetic field lines also represent the lines of force on a moving charged particle at every point?
+    (b) If magnetic monopoles existed, how would the Gauss's law of magnetism be modified?
+    (c) Does a bar magnet exert a torque on itself due to its own field? Does one element of a current-carrying wire exert a force on another element of the same wire?
+    (d) Magnetic field arises due to charges in motion. Can a system have magnetic moments even though its net charge is zero?
+  sol: |
+    (a) **No.** The magnetic force on a moving charge is $q\mathbf v\times\mathbf B$, always normal to $\mathbf B$, so it is misleading to call field lines "lines of force".
+
+    (b) Gauss's law of magnetism says $\oint_S\mathbf B\cdot d\mathbf S = 0$ for any closed surface. If monopoles existed the right-hand side would be $\mu_0q_m$, where $q_m$ is the (monopole) magnetic charge enclosed, in analogy with $\oint\mathbf E\cdot d\mathbf S = q/\varepsilon_0$.
+
+    (c) **No** torque on the magnet and no force on an element due to the field produced by that same element. There is, however, a force (or torque) on an element of the wire due to the field of other elements of the same wire. (For a straight wire this force is zero.)
+
+    (d) **Yes.** The charge may average to zero while the mean of the magnetic moments due to the various current loops does not. Paramagnetic materials, whose atoms have net dipole moments though they are neutral, are examples.
+  check: none
+
+- id: ncert12-ex-5-1
+  lvl: ncert-ex
+  num: "XII 5.1"
+  source: NCERT XII Physics · Ch 5 · Exercise 5.1
+  kind: num
+  q: A short bar magnet placed with its axis at 30° with a uniform external magnetic field of 0.25 T experiences a torque of magnitude equal to 4.5 × 10⁻² J. What is the magnitude of magnetic moment of the magnet?
+  ask: Magnetic moment
+  unit: J/T
+  ans: 0.36
+  tol: 0.001
+  verify: 4.5e-2/(0.25*Math.sin(Math.PI/6))
+  sol: $\tau = mB\sin\theta$, so $m = \dfrac{\tau}{B\sin\theta} = \dfrac{4.5\times10^{-2}}{0.25\times\sin30^\circ} = 0.36$ J T⁻¹.
+  answer_key: 0.36 J T⁻¹
+  check: both
+
+- id: ncert12-ex-5-2
+  lvl: ncert-ex
+  num: "XII 5.2"
+  source: NCERT XII Physics · Ch 5 · Exercise 5.2
+  kind: num
+  q: A short bar magnet of magnetic moment m = 0.32 J T⁻¹ is placed in a uniform magnetic field of 0.15 T. If the bar is free to rotate in the plane of the field, which orientation would correspond to its (a) stable, and (b) unstable equilibrium? What is the potential energy of the magnet in each case?
+  ask: Potential energy in the stable orientation
+  unit: J
+  ans: -0.048
+  tol: 0.0005
+  verify: -0.32*0.15
+  sol: |
+    $U = -\mathbf m\cdot\mathbf B = -mB\cos\theta$.
+
+    (a) Stable equilibrium: $\mathbf m$ parallel to $\mathbf B$ ($\theta = 0$), $U = -mB = -0.32\times0.15 = -4.8\times10^{-2}$ J.
+
+    (b) Unstable equilibrium: $\mathbf m$ antiparallel to $\mathbf B$ ($\theta = 180^\circ$), $U = +mB = +4.8\times10^{-2}$ J.
+  answer_key: "(a) m parallel to B; U = –mB = –4.8 × 10⁻² J: stable. (b) m anti-parallel to B; U = +mB = +4.8 × 10⁻² J; unstable."
+  check: both
+
+- id: ncert12-ex-5-3
+  lvl: ncert-ex
+  num: "XII 5.3"
+  source: NCERT XII Physics · Ch 5 · Exercise 5.3
+  kind: num
+  q: A closely wound solenoid of 800 turns and area of cross section 2.5 × 10⁻⁴ m² carries a current of 3.0 A. Explain the sense in which the solenoid acts like a bar magnet. What is its associated magnetic moment?
+  ask: Magnetic moment
+  unit: J/T
+  ans: 0.6
+  tol: 0.001
+  verify: 800*3.0*2.5e-4
+  sol: |
+    The field outside a current-carrying solenoid has the same pattern as that of a bar magnet: one end acts as a north pole and the other as a south pole, and its moment lies along the axis. The magnetic moment is $m = NIA = 800\times3.0\times2.5\times10^{-4} = 0.60$ J T⁻¹, along the axis in the sense given by the right-hand rule from the direction of the current.
+  answer_key: 0.60 J T⁻¹ along the axis of the solenoid determined by the sense of flow of the current.
+  check: both
+
+- id: ncert12-ex-5-4
+  lvl: ncert-ex
+  num: "XII 5.4"
+  source: NCERT XII Physics · Ch 5 · Exercise 5.4
+  kind: num
+  q: If the solenoid in Exercise 5.5 is free to turn about the vertical direction and a uniform horizontal magnetic field of 0.25 T is applied, what is the magnitude of torque on the solenoid when its axis makes an angle of 30° with the direction of applied field?
+  ask: Torque
+  unit: N m
+  ans: 0.075
+  tol: 0.0005
+  verify: 800*3.0*2.5e-4*0.25*Math.sin(Math.PI/6)
+  sol: |
+    **Note:** the printed question refers to "Exercise 5.5", but the solenoid described is the one in Exercise 5.3 (800 turns, $2.5\times10^{-4}$ m², 3.0 A); Exercise 5.5 is about a bar magnet. The answer key's value (7.5 × 10⁻² J) matches Exercise 5.3. [Inference] The "5.5" is a typographical error for "5.3".
+
+    $\tau = mB\sin\theta = 0.60\times0.25\times\sin30^\circ = 7.5\times10^{-2}$ N m.
+  answer_key: 7.5 × 10⁻² J (as printed; the unit of torque is N m)
+  check: both
+
+- id: ncert12-ex-5-5
+  lvl: ncert-ex
+  num: "XII 5.5"
+  source: NCERT XII Physics · Ch 5 · Exercise 5.5
+  kind: num
+  q: |-
+    A bar magnet of magnetic moment 1.5 J T⁻¹ lies aligned with the direction of a uniform magnetic field of 0.22 T.
+    (a) What is the amount of work required by an external torque to turn the magnet so as to align its magnetic moment: (i) normal to the field direction, (ii) opposite to the field direction?
+    (b) What is the torque on the magnet in cases (i) and (ii)?
+  ask: Work to turn the magnet opposite to the field, part (a)(ii)
+  unit: J
+  ans: 0.66
+  tol: 0.001
+  verify: 2*1.5*0.22
+  sol: |
+    The work done equals the change in potential energy, $W = U_f - U_i$ with $U = -mB\cos\theta$ and $U_i = -mB$.
+
+    (a)(i) Normal to the field: $U_f = 0$, so $W = mB = 1.5\times0.22 = 0.33$ J. (ii) Opposite to the field: $U_f = +mB$, so $W = 2mB = 0.66$ J.
+
+    (b)(i) The torque is $mB\sin90^\circ = 0.33$ N m, in a direction that tends to align $\mathbf m$ with $\mathbf B$. (ii) The torque is $mB\sin180^\circ = 0$ (an unstable equilibrium).
+  answer_key: "(a) (i) 0.33 J (ii) 0.66 J (b) (i) Torque of magnitude 0.33 J in a direction that tends to align the magnetic moment vector along B. (ii) Zero."
+  check: both
+
+- id: ncert12-ex-5-6
+  lvl: ncert-ex
+  num: "XII 5.6"
+  source: NCERT XII Physics · Ch 5 · Exercise 5.6
+  kind: num
+  q: |-
+    A closely wound solenoid of 2000 turns and area of cross-section 1.6 × 10⁻⁴ m², carrying a current of 4.0 A, is suspended through its centre allowing it to turn in a horizontal plane.
+    (a) What is the magnetic moment associated with the solenoid?
+    (b) What is the force and torque on the solenoid if a uniform horizontal magnetic field of 7.5 × 10⁻² T is set up at an angle of 30° with the axis of the solenoid?
+  ask: Magnitude of the torque, part (b)
+  unit: N m
+  ans: 0.048
+  tol: 0.0005
+  verify: 2000*4.0*1.6e-4*7.5e-2*Math.sin(Math.PI/6)
+  sol: |
+    (a) $m = NIA = 2000\times4.0\times1.6\times10^{-4} = 1.28$ A m², along the axis in the direction given by the right-hand screw rule from the current's sense.
+
+    (b) In a uniform field the net force is **zero**. The torque is $\tau = mB\sin30^\circ = 1.28\times7.5\times10^{-2}\times0.5 = 0.048$ N m, in a direction that tends to align the axis (the moment) with the field.
+  answer_key: "(a) 1.28 A m² along the axis in the direction related to the sense of current via the right-handed screw rule. (b) Force is zero in uniform field; torque = 0.048 N m in a direction that tends to align the axis of the solenoid (i.e., its magnetic moment vector) along B."
+  check: both
+
+- id: ncert12-ex-5-7
+  lvl: ncert-ex
+  num: "XII 5.7"
+  source: NCERT XII Physics · Ch 5 · Exercise 5.7
+  kind: num
+  q: A short bar magnet has a magnetic moment of 0.48 J T⁻¹. Give the direction and magnitude of the magnetic field produced by the magnet at a distance of 10 cm from the centre of the magnet on (a) the axis, (b) the equatorial lines (normal bisector) of the magnet.
+  ask: Field on the axis, part (a)
+  unit: G
+  ans: 0.96
+  tol: 0.001
+  verify: 1e-7*2*0.48/0.1**3*1e4
+  sol: |
+    (a) On the axis: $B = \dfrac{\mu_0}{4\pi}\dfrac{2m}{r^3} = 10^{-7}\times\dfrac{2\times0.48}{(0.1)^3} = 9.6\times10^{-5}$ T $= 0.96$ G, directed along the moment, i.e. from the south pole towards the north pole side (the S–N direction).
+
+    (b) On the equatorial line: $B = \dfrac{\mu_0}{4\pi}\dfrac{m}{r^3} = 4.8\times10^{-5}$ T $= 0.48$ G, directed opposite to the moment (the N–S direction).
+  answer_key: "(a) 0.96 G along S–N direction. (b) 0.48 G along N–S direction."
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: If a bar magnet is cut into two equal pieces along its length, each piece
+  opts: ["has only a north pole", "has only a south pole", "is a magnet with both poles but weaker", "has no magnetism"]
+  ans: 2
+  sol: Magnetic poles cannot be isolated. Each piece has both a north and a south pole (and half the moment).
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A magnet of moment 2 A m² is at 30° to a field of 0.1 T. Find the torque on it. (Original problem.)
+  ask: Torque
+  unit: N m
+  ans: 0.1
+  tol: 0.0005
+  verify: 2*0.1*Math.sin(Math.PI/6)
+  sol: $\tau = mB\sin\theta = 2\times0.1\times\sin30^\circ = 0.1$ N m.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Find the energy needed to turn a magnet of moment 0.5 J/T from the direction of a 0.2 T field to the opposite direction. (Original problem.)
+  ask: Energy
+  unit: J
+  ans: 0.2
+  tol: 0.0005
+  verify: 2*0.5*0.2
+  sol: $W = U_{180^\circ} - U_{0^\circ} = mB - (-mB) = 2mB = 2\times0.5\times0.2 = 0.2$ J.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A short bar magnet of moment 0.6 J/T is placed so that its axis points to a point P at 20 cm from its centre. Find the field at P. (Original problem.)
+  ask: Field
+  unit: µT
+  ans: 15
+  tol: 0.02
+  verify: 1e-7*2*0.6/0.2**3*1e6
+  sol: On the axis $B = \dfrac{\mu_0}{4\pi}\dfrac{2m}{r^3} = 10^{-7}\times\dfrac{1.2}{0.008} = 1.5\times10^{-5}$ T $= 15$ µT.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A bar magnet of moment 1.5 J/T and moment of inertia 1.2 × 10⁻⁵ kg m² about its centre oscillates in a uniform field of 0.2 T. Find the period of small oscillations. (Original problem.)
+  ask: Period
+  unit: s
+  ans: 0.0397
+  tol: 0.0002
+  verify: 2*Math.PI*Math.sqrt(1.2e-5/(1.5*0.2))
+  sol: |
+    For small angles $\tau = -mB\theta$, so $I\ddot\theta = -mB\theta$: simple harmonic motion with $T = 2\pi\sqrt{\dfrac{I}{mB}} = 2\pi\sqrt{\dfrac{1.2\times10^{-5}}{1.5\times0.2}} = 3.97\times10^{-2}$ s.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Explain why the magnetic field at a point on the axis of a short bar magnet is twice that at an equal distance on the equatorial line. (Original problem.)
+  sol: |
+    By analogy with the electric dipole, the axial field is $\dfrac{\mu_0}{4\pi}\dfrac{2m}{r^3}$ and the equatorial field is $\dfrac{\mu_0}{4\pi}\dfrac{m}{r^3}$ (opposite in direction). On the axis the fields of the two poles are in the same direction and the nearer pole dominates; on the equatorial line they have components that partly cancel, so the field is half as large.
+  check: none

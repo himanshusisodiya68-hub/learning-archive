@@ -25,8 +25,11 @@ chapters:
   - n: 11
     title: Electricity
     pdf: jesc111
-    leaves: [phy/electric-current-and-potential-difference, phy/ohms-law, phy/resistance-and-resistivity, phy/resistors-in-series-and-parallel, phy/heating-effect-and-power]
-  - { n: 12, title: Magnetic Effects of Electric Current, pdf: jesc112 }
+    leaves: [phy/electric-current-and-potential-difference, phy/ohms-law, phy/resistance-and-resistivity, phy/resistors-in-series-and-parallel, phy/heating-effect-and-power, phy/domestic-electric-circuits]
+  - n: 12
+    title: Magnetic Effects of Electric Current
+    pdf: jesc112
+    leaves: [phy/field-lines-and-compasses, phy/force-on-a-current, phy/domestic-electric-circuits, phy/electromagnetic-induction]
   - { title: Sources of Energy, restored: true }
   - { n: 13, title: Our Environment, pdf: jesc113 }
   - { title: Sustainable Management of Natural Resources, restored: true }

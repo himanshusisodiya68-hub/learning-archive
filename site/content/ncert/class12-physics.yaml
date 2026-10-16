@@ -16,11 +16,26 @@ chapters:
     title: Current Electricity
     pdf: leph103
     leaves: [phy/electric-current-and-potential-difference, phy/ohms-law, phy/resistance-and-resistivity, phy/heating-effect-and-power, phy/kirchhoffs-rules, phy/wheatstone-bridge]
-  - { n: 4, title: Moving Charges and Magnetism, pdf: leph104 }
-  - { n: 5, title: Magnetism and Matter, pdf: leph105 }
-  - { n: 6, title: Electromagnetic Induction, pdf: leph106 }
-  - { n: 7, title: Alternating Current, pdf: leph107 }
-  - { n: 8, title: Electromagnetic Waves, pdf: leph108 }
+  - n: 4
+    title: Moving Charges and Magnetism
+    pdf: leph104
+    leaves: [phy/lorentz-force-and-circular-motion, phy/force-on-a-current, phy/biot-savart-law, phy/amp-res-law, phy/forces-between-parallel-currents, phy/current-loop-and-galvanometer]
+  - n: 5
+    title: Magnetism and Matter
+    pdf: leph105
+    leaves: [phy/magnetic-dipole-and-bar-magnet, phy/magnetic-materials]
+  - n: 6
+    title: Electromagnetic Induction
+    pdf: leph106
+    leaves: [phy/electromagnetic-induction, phy/lenzs-law, phy/motional-emf, phy/self-and-mutual-inductance, phy/alternating-current]
+  - n: 7
+    title: Alternating Current
+    pdf: leph107
+    leaves: [phy/alternating-current, phy/ac-through-r-l-and-c, phy/lcr-circuit-and-resonance, phy/transformers]
+  - n: 8
+    title: Electromagnetic Waves
+    pdf: leph108
+    leaves: [phy/displacement-current, phy/electromagnetic-waves]
   - n: 9
     title: Ray Optics and Optical Instruments
     pdf: leph201

@@ -1,0 +1,131 @@
+# Domestic electric circuits. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 12, §12.4 and Exercises. Found, board and main problems are original.
+
+- id: ncert-it12-5-1
+  lvl: ncert-intext
+  num: "§12.4 Q1"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.4 · Q1
+  kind: text
+  q: Name two safety measures commonly used in electric circuits and appliances.
+  sol: |
+    1. **Electric fuse** (or a circuit breaker): it melts and breaks the circuit when the current is unduly large.
+    2. **Earthing** (the earth wire connected to the metallic body of an appliance): it gives leakage current a low-resistance path to the ground so the user does not get a shock.
+  check: none
+
+- id: ncert-it12-5-2
+  lvl: ncert-intext
+  num: "§12.4 Q2"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.4 · Q2
+  kind: num
+  q: An electric oven of 2 kW power rating is operated in a domestic electric circuit (220 V) that has a current rating of 5 A. What result do you expect? Explain.
+  ask: Current drawn by the oven
+  unit: A
+  ans: 9.09
+  tol: 0.01
+  verify: 2000/220
+  sol: |
+    The oven draws $I = P/V = 2000/220 = 9.1$ A. This is more than the 5 A rating of the circuit, so the circuit is overloaded: the fuse in the 5 A circuit will melt and break the circuit (or a breaker will trip) and the oven will not work. Such an oven must be connected to the 15 A circuit meant for high-power appliances.
+  check: code
+
+- id: ncert-it12-5-3
+  lvl: ncert-intext
+  num: "§12.4 Q3"
+  source: NCERT X Science · Ch 12 · In-text questions after §12.4 · Q3
+  kind: text
+  q: What precaution should be taken to avoid the overloading of domestic electric circuits?
+  sol: |
+    Do not connect too many appliances to a single socket; use the 15 A circuit for high-power appliances; fit a fuse of the correct rating in the live wire; do not let the live and neutral wires touch (keep the insulation in good condition); and do not overload the circuit by raising the supply voltage.
+  check: none
+
+- id: ncert-ex12-2
+  lvl: ncert-ex
+  num: 2
+  source: NCERT X Science · Ch 12 · Exercise 2
+  kind: mcq
+  q: At the time of short circuit, the current in the circuit
+  opts: ["reduces substantially.", "does not change.", "increases heavily.", "vary continuously."]
+  ans: 2
+  sol: In a short circuit the live and neutral wires touch, so the resistance of the circuit falls to almost zero and the current ($I = V/R$) increases enormously.
+  answer_key: (c)
+  check: ncert-key
+
+- id: ncert-ex12-8
+  lvl: ncert-ex
+  num: 8
+  source: NCERT X Science · Ch 12 · Exercise 8
+  kind: text
+  q: When does an electric short circuit occur?
+  sol: |
+    A short circuit occurs when the live wire and the neutral wire come into direct contact, for example when their insulation is damaged or there is a fault in an appliance. The resistance of the circuit drops to a very low value and the current increases abruptly.
+  check: none
+
+- id: ncert-ex12-9
+  lvl: ncert-ex
+  num: 9
+  source: NCERT X Science · Ch 12 · Exercise 9
+  kind: text
+  q: What is the function of an earth wire? Why is it necessary to earth metallic appliances?
+  sol: |
+    The earth wire (green insulation) is connected to a metal plate deep in the ground. It is joined to the metallic body of an appliance and gives any leakage current a low-resistance path to the earth. This keeps the body of the appliance at the potential of the earth, so a user touching it does not get a severe electric shock. Metallic appliances (toaster, electric press, refrigerator, table fan) need it because a fault that connects the live wire to the body would otherwise make the body live.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: In a domestic circuit in India the potential difference between the live and the neutral wire is
+  opts: ["12 V", "110 V", "220 V", "440 V"]
+  ans: 2
+  sol: The mains supply has a potential difference of 220 V (frequency 50 Hz) between the live and neutral wires.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A 100 W bulb is used on a 220 V supply. What fuse rating (1 A, 2 A, 5 A) is suitable? Give the current it draws. (Original problem.)
+  ask: Current drawn
+  unit: A
+  ans: 0.4545
+  tol: 0.001
+  verify: 100/220
+  sol: $I = P/V = 100/220 = 0.45$ A. A 1 A fuse is the smallest standard rating that is above this and protects the wiring.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A room has four 60 W bulbs, two 75 W fans and a 1000 W heater, all on a 220 V supply and all switched on. What is the total current? Would a 5 A fuse suffice? (Original problem.) Give the total current.
+  ask: Total current
+  unit: A
+  ans: 6.32
+  tol: 0.01
+  verify: (4*60+2*75+1000)/220
+  sol: Total power $= 4\times60 + 2\times75 + 1000 = 1390$ W, so $I = 1390/220 = 6.32$ A. This is more than 5 A, so a 5 A fuse would blow; the 1000 W heater should be on the 15 A circuit.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Why are the appliances in a house connected in parallel and not in series? (Original problem.)
+  sol: |
+    In parallel every appliance gets the full 220 V and draws the current it needs; each can be switched on and off independently; and a fault or fuse failure in one does not stop the others. In series the same current would pass through all, the voltage would be shared, and one failure would break the circuit.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A geyser rated 2 kW, 220 V is connected through a copper wire of resistance 0.5 Ω to the mains. Find the power actually delivered to the geyser, taking its resistance as constant. (Original problem.)
+  ask: Power delivered
+  unit: W
+  ans: 1920
+  tol: 1
+  verify: (220/(220*220/2000+0.5))**2*(220*220/2000)
+  sol: |
+    The geyser's resistance is $R = V^2/P = 220^2/2000 = 24.2\ \Omega$. With the wire in series the total is $24.7\ \Omega$ and $I = 220/24.7 = 8.9$ A. The power in the geyser is $I^2R = (8.906)^2\times24.2 \approx 1920$ W, about 80 W less than the rating, because the wire takes part of the supply voltage.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A metallic-bodied appliance's live wire comes loose and touches the body, and the appliance is not earthed. Explain what happens when a person touches it, and what changes if it is earthed through a fuse. (Original problem.)
+  sol: |
+    Not earthed: the body is at the mains (live) potential, so touching it with feet on the ground gives a large potential difference across the person's body and a dangerous current through them. Earthed: the fault current flows through the low-resistance earth wire. This is large enough to blow the fuse, which disconnects the live wire, and the body stays near earth potential.
+  check: none
