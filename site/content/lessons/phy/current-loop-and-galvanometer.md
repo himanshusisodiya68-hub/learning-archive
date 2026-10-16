@@ -75,7 +75,7 @@ wrong: The couple is largest when the plane is parallel to B and zero when the p
 
 Now let the loop be tilted. Take a rectangle with sides $a$ and $b$, carrying current $I$, free to turn about an axis through its centre parallel to the sides of length $a$. A uniform field $\mathbf B$ is perpendicular to that axis. Let $\theta$ be the angle between the **normal** to the loop and $\mathbf B$.
 
-**The sides of length $b$.** Their currents are opposite, and both make the same angle with B, so their forces are equal and opposite. Both forces lie along the rotation axis's direction and act along the same line through the loop's centre, so they cancel and give no torque.
+**The sides of length $b$.** Their currents are opposite, and both make the same angle with B, so their forces are equal and opposite. Both forces point along the rotation axis and act along that same line, so they cancel and give no torque about it.
 
 **The sides of length $a$.** Each is perpendicular to B, so each feels a force $F = IaB$, perpendicular both to the side and to B. The two forces are equal and opposite, but they act along parallel lines a distance $b\sin\theta$ apart (see the figure). That is a couple of moment
 
@@ -313,8 +313,12 @@ In the stable position the loop's own field through its area points the same way
 
 [Inference: the "energy" $-\mathbf m\cdot\mathbf B$ is the mechanical potential energy of a loop whose current is kept constant. The battery that keeps $I$ fixed while the flux changes does extra work, and a full energy count includes it. For torques and equilibria, $-\mathbf m\cdot\mathbf B$ gives the right answers.]
 
-:::worked title="NCERT Example 4.10(d): released from the stable-to-unstable midpoint"
-A coil with $m = 10$ A m² starts with its axis along a 2 T field and is turned through 90°... wait, here it starts **at** $\theta = 0$ with no torque. In NCERT's setup the coil is released from rest and rotates through 90°, gaining $\tfrac12I\omega^2 = mB(\cos\theta_i - \cos\theta_f)$ in magnitude $= mB = 20$ J. With $I = 0.1$ kg m², $\omega = \sqrt{2\times20/0.1} = 20$ rad s⁻¹.
+:::worked title="Energy turned into rotation (the idea behind NCERT Example 4.10d)"
+A coil with $m = 10$ A m² and moment of inertia $0.1$ kg m² is released from rest with its axis **perpendicular** to a 2 T field ($\theta = 90^\circ$). It swings to $\theta = 0$, losing potential energy
+
+$$U(90^\circ) - U(0) = 0 - (-mB) = mB = 20\ \text{J}.$$
+
+All of this becomes kinetic energy: $\tfrac12(0.1)\omega^2 = 20$, so $\omega = 20$ rad s⁻¹ as it passes the stable position. NCERT's Example 4.10(d) gets the same 20 rad s⁻¹ by integrating the torque over a 90° turn. Note that a coil released exactly **at** $\theta = 0$ feels no torque and would not move at all; read the setup carefully.
 :::
 
 :::qc

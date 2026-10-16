@@ -283,3 +283,126 @@
   sol: |
     By analogy with the electric dipole, the axial field is $\dfrac{\mu_0}{4\pi}\dfrac{2m}{r^3}$ and the equatorial field is $\dfrac{\mu_0}{4\pi}\dfrac{m}{r^3}$ (opposite in direction). On the axis the fields of the two poles are in the same direction and the nearer pole dominates; on the equatorial line they have components that partly cancel, so the field is half as large.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A short bar magnet with moment of inertia 5.0 × 10⁻⁵ kg m² about a vertical axis through its centre makes small horizontal oscillations in the Earth's field with period 5.55 s. The same magnet is then placed east–west in the tan A (end-on) position of a deflection magnetometer, with the needle 20 cm from the magnet's centre, and the needle deflects by 45°. Find the horizontal component of the Earth's field at the place. Take μ₀/4π = 10⁻⁷ T m/A. (Original problem.)
+  ask: Horizontal component B_H
+  unit: µT
+  ans: 40.03
+  tol: 0.1
+  verify: Math.sqrt(4*Math.PI**2*5e-5/5.55**2/(Math.tan(rad(45))*0.2**3/2e-7))*1e6
+  sol: |
+    **Oscillation magnetometer** gives the product: $T = 2\pi\sqrt{I/(mB_H)}$, so
+    $$mB_H = \frac{4\pi^2I}{T^2} = \frac{39.48\times5.0\times10^{-5}}{30.80} = 6.41\times10^{-5}\ \text{A m}^2\,\text{T}.$$
+
+    **Deflection magnetometer, tan A position, short magnet:** the magnet's axial field is perpendicular to $B_H$, so $\dfrac{\mu_0}{4\pi}\dfrac{2m}{d^3} = B_H\tan45^\circ$, giving
+    $$\frac{m}{B_H} = \frac{d^3\tan45^\circ}{2\times10^{-7}} = \frac{8\times10^{-3}}{2\times10^{-7}} = 4.0\times10^{4}\ \text{A m}^2/\text{T}.$$
+
+    Dividing: $B_H^2 = \dfrac{6.41\times10^{-5}}{4.0\times10^4} = 1.60\times10^{-9}$ T², so $B_H = 4.00\times10^{-5}$ T $= 40.0$ µT. Multiplying instead gives $m^2 = 2.56$, $m = 1.60$ A m².
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A short bar magnet lies on a horizontal table with its axis in the magnetic meridian and its N pole pointing geographic south. Neutral points are found 14 cm from its centre. The horizontal component of the Earth's field there is 36 µT. (a) Find the magnet's moment. (b) Find the magnitude of the total horizontal field at a point 14 cm from the centre on the magnet's equatorial line. Take μ₀/4π = 10⁻⁷ T m/A. (Original problem.)
+  ask: Total horizontal field in (b)
+  unit: µT
+  ans: 54
+  tol: 0.1
+  verify: 36 + 1e-7*(3.6e-5*0.14**3/2e-7)/0.14**3*1e6
+  sol: |
+    (a) With N pointing south, $\vec m$ points south, against $B_H$. On the axis the magnet's field is along $\vec m$ (southwards), so the neutral points are on the axis, where
+    $$\frac{\mu_0}{4\pi}\frac{2m}{d^3} = B_H\ \Rightarrow\ m = \frac{B_Hd^3}{2\times10^{-7}} = \frac{3.6\times10^{-5}\times2.744\times10^{-3}}{2\times10^{-7}} = 0.494\ \text{A m}^2.$$
+
+    (b) On the equatorial line at the same distance the magnet's field is half as strong, $B_H/2 = 18$ µT, and points **opposite** to $\vec m$, i.e. northwards, the same way as $B_H$. Total: $36 + 18 = 54$ µT, northwards. You do not even need $m$: the answer is $\tfrac32B_H$ for any short magnet.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Two small identical magnets, each of moment 1.2 A m², are placed in a smooth vertical glass tube, which keeps them coaxial and stops them turning. The lower one rests on the bottom; the upper one, of mass 10 g, is placed with like poles facing and floats above it. Treat the magnets as point dipoles, take g = 9.8 m/s² and μ₀/4π = 10⁻⁷ T m/A. Find the period of small vertical oscillations of the upper magnet about its equilibrium. (Original problem.)
+  ask: Period
+  unit: s
+  ans: 0.2343
+  tol: 0.001
+  verify: Math.PI*Math.sqrt(Math.pow(6e-7*1.2*1.2/(0.01*9.8),0.25)/9.8)
+  sol: |
+    Like poles facing means the moments are antiparallel. The upper magnet sits on the axis of the lower one, where the field is $\dfrac{\mu_0}{4\pi}\dfrac{2m}{x^3}$ along $\vec m_1$, so $U = +\dfrac{\mu_0}{4\pi}\dfrac{2m^2}{x^3}$ and the repulsion is
+    $$F(x) = -\frac{dU}{dx} = \frac{\mu_0}{4\pi}\frac{6m^2}{x^4}.$$
+
+    **Equilibrium:** $F(x_0) = Mg$, so $x_0^4 = \dfrac{6\times10^{-7}\times1.44}{0.098} = 8.82\times10^{-6}$ m⁴ and $x_0 = 5.45$ cm.
+
+    **Stiffness:** the repulsion weakens as the gap grows, so a small displacement $\xi$ gives a restoring force $-|F'(x_0)|\xi$, with $|F'(x_0)| = 4F(x_0)/x_0 = 4Mg/x_0$. Hence
+    $$\omega^2 = \frac{4g}{x_0},\qquad T = 2\pi\sqrt{\frac{x_0}{4g}} = \pi\sqrt{\frac{x_0}{g}} = \pi\sqrt{\frac{0.0545}{9.8}} = 0.234\ \text{s}.$$
+
+    The mass and the moments enter only through $x_0$. The tube is essential: without it the upper magnet would flip over, since antiparallel coaxial alignment is unstable against turning.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Model the Earth's field as that of a point dipole at its centre. At a certain place the dip is 60° and the total field is 50 µT. Find the magnitude of the field at the magnetic equator (on the Earth's surface). (Original problem; the numbers are illustrative, not measured values.)
+  ask: Field at the magnetic equator
+  unit: µT
+  ans: 33.07
+  tol: 0.05
+  verify: 50/Math.sqrt(1+3*Math.sin(Math.atan(Math.tan(rad(60))/2))**2)
+  sol: |
+    For a dipole, at magnetic latitude $\lambda$ on a sphere of radius $R$: $B_V = 2B_0\sin\lambda$ and $B_H = B_0\cos\lambda$, where $B_0 = \dfrac{\mu_0}{4\pi}\dfrac{m}{R^3}$ is the field at the magnetic equator. Hence $\tan I = 2\tan\lambda$ and $|B| = B_0\sqrt{1+3\sin^2\lambda}$.
+
+    From the dip: $\tan\lambda = \tfrac12\tan60^\circ = 0.866$, so $\lambda = 40.9^\circ$ and $\sin^2\lambda = \dfrac{0.75}{1.75} = 0.4286$.
+
+    Then $B_0 = \dfrac{50}{\sqrt{1+3\times0.4286}} = \dfrac{50}{\sqrt{2.286}} = \dfrac{50}{1.512} = 33.1$ µT.
+
+    A cleaner route: $|B|^2 = B_H^2+B_V^2$ and $B_H = B_0\cos\lambda$, so you can also write $|B| = B_0\cos\lambda/\cos I$; with $\cos\lambda = 0.756$ and $\cos I = 0.5$ this gives $B_0 = 50\times0.5/0.756 = 33.1$ µT, a useful check.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: In a point-dipole model of the Earth, a field line leaves the Earth's surface at magnetic latitude 60° and returns at −60°. Find the ratio of the field strength where this line meets the Earth's surface to the field strength where it crosses the magnetic equatorial plane. (Original problem.)
+  ask: Ratio B(surface foot) / B(equatorial crossing)
+  ans: 115.4
+  tol: 0.2
+  verify: Math.sqrt(1+3*Math.sin(rad(60))**2)*Math.pow(1/Math.cos(rad(60))**2,3)
+  sol: |
+    **The field line.** With $\theta$ measured from the dipole axis, $B_r/B_\theta = 2\cot\theta$, and along a line $\dfrac{dr}{r\,d\theta} = 2\cot\theta$. Integrating, $r = L\sin^2\theta = L\cos^2\lambda$, where $\lambda$ is the latitude and $L$ the distance at which the line crosses the equatorial plane.
+
+    At the foot, $r = R$ and $\lambda = 60^\circ$, so $L = R/\cos^260^\circ = 4R$.
+
+    **Field strengths.** $|B| = \dfrac{\mu_0}{4\pi}\dfrac{m}{r^3}\sqrt{1+3\sin^2\lambda}$.
+    - At the equatorial crossing: $\dfrac{\mu_0m}{4\pi}\dfrac{1}{(4R)^3}$.
+    - At the foot: $\dfrac{\mu_0m}{4\pi R^3}\sqrt{1+3\times0.75} = \dfrac{\mu_0m}{4\pi R^3}\times1.803$.
+
+    Ratio $= 1.803\times64 = 115.4$.
+
+    This ratio matters for charged particles trapped in the Earth's field: a particle spiralling along the line is reflected where the field grows strong enough (a "magnetic mirror"), and a large ratio means most particles bounce before reaching the atmosphere. (Context only; the mirror effect is not developed here.)
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: Two identical small magnets, each of moment 0.50 A m² and moment of inertia 2.0 × 10⁻⁶ kg m², are mounted on fixed vertical pivots through their centres, 10 cm apart, so that each can turn freely in a horizontal plane. Ignore the Earth's field and treat the magnets as point dipoles; take μ₀/4π = 10⁻⁷ T m/A. (a) Show that the configuration in which both lie along the line joining the pivots, pointing the same way, is stable. (b) Small oscillations about it are a superposition of two normal modes. Find the period of the slower mode. (Original problem.)
+  ask: Period of the slower mode
+  unit: s
+  ans: 1.777
+  tol: 0.005
+  verify: 2*Math.PI*Math.sqrt(2e-6/(1e-7*0.25/0.1**3))
+  sol: |
+    Let the magnets make angles $\theta_1$, $\theta_2$ with the line joining them. The energy of two dipoles a distance $d$ apart is
+    $$U = \frac{\mu_0}{4\pi}\frac{\vec m_1\cdot\vec m_2-3(\vec m_1\cdot\hat r)(\vec m_2\cdot\hat r)}{d^3} = K\left[\cos(\theta_1-\theta_2)-3\cos\theta_1\cos\theta_2\right],\quad K = \frac{\mu_0}{4\pi}\frac{m^2}{d^3}.$$
+
+    (a) Expand to second order: $\cos(\theta_1-\theta_2)\approx1-\tfrac12(\theta_1-\theta_2)^2$ and $\cos\theta_1\cos\theta_2\approx1-\tfrac12\theta_1^2-\tfrac12\theta_2^2$. Then
+    $$U\approx K\left[-2+\theta_1^2+\theta_2^2+\theta_1\theta_2\right].$$
+    The quadratic form $\theta_1^2+\theta_1\theta_2+\theta_2^2 = \tfrac34(\theta_1+\theta_2)^2+\tfrac14(\theta_1-\theta_2)^2$ is positive for every displacement, so the head-to-tail position is a minimum: stable.
+
+    (b) Equations of motion $I\ddot\theta_1 = -\partial U/\partial\theta_1 = -K(2\theta_1+\theta_2)$ and $I\ddot\theta_2 = -K(2\theta_2+\theta_1)$.
+    - $\theta_1 = \theta_2$ (both turn the same way): $\omega^2 = 3K/I$.
+    - $\theta_1 = -\theta_2$ (opposite ways): $\omega^2 = K/I$, the slower mode.
+
+    $K = 10^{-7}\times0.25/10^{-3} = 2.5\times10^{-5}$ J, so $\omega_{\text{slow}} = \sqrt{2.5\times10^{-5}/2.0\times10^{-6}} = \sqrt{12.5} = 3.54$ rad/s and $T = 2\pi/3.54 = 1.78$ s. The faster mode has period $1.78/\sqrt3 = 1.03$ s.
+
+    Note that if one magnet were held fixed, the other would oscillate in the field $2\mu_0m/4\pi d^3$ with $\omega^2 = 2K/I$, between the two modal values.
+  check: code
