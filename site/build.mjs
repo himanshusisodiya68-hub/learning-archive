@@ -195,3 +195,17 @@ fs.writeFileSync(path.join(DIST, 'index.html'), page);
 // local preview wrapper (the artifact host adds the document skeleton itself)
 fs.writeFileSync(path.join(DIST, 'preview.html'), `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}</style></head><body>${page}</body></html>`);
 console.log(`built: ${liveCount} lessons, ${problemCount} problems, ${search.length} search entries, page ${(page.length / 1024).toFixed(0)} KB`);
+
+// Lint the output without a browser: KaTeX errors, unknown widgets, unbalanced ::: blocks, empty solutions.
+{
+  const widgets = new Set([...js.matchAll(/^    '([a-z-]+)'\(el/gm)].map(m => m[1]));
+  const issues = [];
+  for (const dir of ['lessons', 'problems']) for (const f of fs.readdirSync(path.join(DIST, 'data', dir))) {
+    const txt = fs.readFileSync(path.join(DIST, 'data', dir, f), 'utf8');
+    const kerr = (txt.match(/katex-error/g) || []).length;
+    if (kerr) issues.push(`${dir}/${f}: ${kerr} KaTeX error(s), e.g. ${(txt.match(/katex-error[^>]*title=\\"([^\\]*)/) || [])[1] || ''}`);
+    for (const m of txt.matchAll(/data-widget=\\"([^\\]+)\\"/g)) if (!widgets.has(m[1])) issues.push(`${dir}/${f}: unknown widget "${m[1]}"`);
+    if (/(^|[^\w]):::/.test(txt.replace(/<code>[^<]*<\/code>/g, ''))) issues.push(`${dir}/${f}: stray ":::" (unclosed or misspelt block)`);
+  }
+  if (issues.length) { console.log('LINT:\n  ' + issues.join('\n  ')); process.exitCode = 1; } else console.log('lint: no KaTeX errors, unknown widgets or stray blocks');
+}

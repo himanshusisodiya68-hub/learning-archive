@@ -20,12 +20,26 @@ Later phases: English (Wren & Martin, literature), a programming/AI foundation, 
 
 ## Keeping cost down
 
-The owner pays per token. Work lean:
-- **One chapter (or a few leaves) per session.** Don't reread finished lessons. Open one existing lesson only as a style reference if needed.
-- **Read only what you need from NCERT PDFs:** the exercise and example sections, via `pdftotext`, and `grep -n` to find them. Render a page image (`pdftoppm -r 80 -f N -l N -png`) only when a question depends on a figure.
-- **Write each file in one go.** Avoid many small edits.
-- **Run browser screenshots or Playwright tests only when app code or a widget changes.** For content-only changes, `npm run check` and `npm run build` are enough.
-- **No workflows or fan-out agents** unless the owner asks.
+The owner pays per token. Work lean.
+
+**Model split.**
+- The main session runs on **Sonnet**: `.claude/settings.json` sets `"model": "sonnet"`; also pick Sonnet when starting a session if the UI asks. It does the routine work:
+  - downloading and extracting NCERT;
+  - updating `tree.yaml` and `ncert/*.yaml`;
+  - copying NCERT questions word for word, with their solutions;
+  - `found`, `board` and `main` problems;
+  - checks, builds, git and publishing.
+- **Opus writes the deep content** through the `theory-writer` subagent (`.claude/agents/theory-writer.md`, `model: opus`): the lesson file for each leaf, plus its `adv` and `oly` problems. Call it once per leaf, after the problems file holds the NCERT and lower-level problems. Pass it the leaf id, the NCERT section numbers and the problems-file path. Run independent leaves in parallel. Don't write lesson theory in the main session.
+
+**No browser by default.**
+- `node build.mjs` lints the output without a browser: KaTeX errors, unknown widget names, unclosed `:::` blocks. Together with `node check-answers.mjs`, that is the whole test for content changes.
+- Run Playwright or take screenshots **only when `site/app/*` changes** (a new or changed widget, a UI fix). Even then, screenshot only the changed widget.
+
+**Other habits.**
+- One chapter (or a few leaves) per session. Don't reread finished lessons; open one existing lesson only as a style reference if needed.
+- Read only what you need from NCERT PDFs: the exercise and example sections, via `pdftotext` and `grep -n`. Render a page image (`pdftoppm -r 80 -f N -l N -png`) only when a question depends on a figure.
+- Write each file in one go; avoid many small edits.
+- No workflows or fan-out agents beyond `theory-writer` unless the owner asks.
 
 ## Repository layout
 
@@ -59,9 +73,10 @@ Subject ids: `phy`, `mat`, `chem`, `bio` (and `eng` later).
 
    Find other codes from ncert.nic.in/textbook.php.
 2. Map the chapter to leaves in `tree.yaml`. Add leaves if needed, each with a first-principles `what`; branches and pillars also carry `split` and `links`. Add `leaves: [subj/leaf-id, ...]` to the chapter in `content/ncert/...yaml`.
-3. Write `lessons/<subj>/<leaf>.md` and `problems/<subj>/<leaf>.yaml` (formats below).
-4. `cd site && python3 fix-yaml.py && node check-answers.mjs && node build.mjs`. Fix every reported problem; the checker has caught real arithmetic slips.
-5. Commit and push (see Git below). When a pillar is complete, republish the site (see Publishing).
+3. Write `problems/<subj>/<leaf>.yaml` with every NCERT item word for word (with its solution), plus `found`, `board` and `main` problems (format below).
+4. For each leaf, call the `theory-writer` subagent (Opus). It writes `lessons/<subj>/<leaf>.md` and appends the `adv` and `oly` problems.
+5. `cd site && python3 fix-yaml.py && node check-answers.mjs && node build.mjs`. Fix every reported problem, from the checker or the lint; the checker has caught real arithmetic slips.
+6. Commit and push (see Git below). When a pillar is complete, republish the site (see Publishing).
 
 ## Lesson format (`content/lessons/<subj>/<leaf>.md`)
 
@@ -114,7 +129,7 @@ The first line is a comment naming the source, e.g. `# ... NCERT questions copie
 
 Aim for every NCERT item, then about 2–4 problems at each level: found, board, main, adv, oly.
 
-## Running a local preview (only when the app changes)
+## Running a local preview (only when `site/app/*` changes)
 
 ```
 cd site/dist && npx -y http-server -p 8765 -s &
