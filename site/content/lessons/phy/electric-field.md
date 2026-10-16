@@ -17,9 +17,9 @@ margin:
     text: For a finite straight rod, the field at a point at perpendicular distance d depends only on the two angles its ends subtend there, (kλ/d)(sin α + sin β) across and (kλ/d)(cos α − cos β) along. Arcs, polygons of rods and semi-infinite wires all reduce to this one result.
 books:
   - { title: "NCERT Physics Class XII Part I", ref: "Ch 1 Electric Charges and Fields, §1.7–1.12, Examples 1.7–1.9, Exercises 1.7–1.10, 1.13" }
-  - { title: "H. C. Verma, Concepts of Physics Vol. 2", ref: "Ch. 29 Electric Field and Potential (field, field lines, dipole)" }
-  - { title: "I. E. Irodov, Problems in General Physics", ref: "Part 3 · 3.1 Constant electric field in vacuum" }
-  - { title: "E. M. Purcell and D. J. Morin, Electricity and Magnetism", ref: "Ch. 1 Electrostatics (the field, continuous distributions); Ch. 2 (dipole field)" }
+  - { title: "H. C. Verma, Concepts of Physics Vol. 2", ref: "Ch. 29 Electric Field and Potential (field, field lines, dipole) [Unverified chapter reference]" }
+  - { title: "I. E. Irodov, Problems in General Physics", ref: "Part 3 · 3.1 Constant electric field in vacuum [Unverified chapter reference]" }
+  - { title: "E. M. Purcell and D. J. Morin, Electricity and Magnetism", ref: "Ch. 1 Electrostatics (the field, continuous distributions); Ch. 2 (dipole field) [Unverified chapter reference]" }
 cards:
   - { front: "Definition of the electric field at a point?", back: "$\\vec E = \\lim_{q_0\\to0}\\vec F/q_0$, the force per unit positive test charge. Unit N/C (= V/m). For a point charge $\\vec E = kQ\\hat r/r^2$, $k = 1/4\\pi\\varepsilon_0$." }
   - { front: "Dipole fields on the axis and on the equator (far away)?", back: "Axial $E = 2kp/r^3$ along $\\vec p$; equatorial $E = kp/r^3$ opposite to $\\vec p$. In general $E_r = 2kp\\cos\\theta/r^3$, $E_\\theta = kp\\sin\\theta/r^3$." }

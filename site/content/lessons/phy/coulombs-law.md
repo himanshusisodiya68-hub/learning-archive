@@ -17,9 +17,9 @@ margin:
     text: "Near any point free of charge, the three 'spring constants' of the electric force always add to zero (Earnshaw). So if a charge is pushed back along two directions, it is pushed away along the third. Use this to get one stiffness from the other two without integrating."
 books:
   - { title: "NCERT Physics Class XII Part I", ref: "Ch. 1 Electric Charges and Fields, §1.5 Coulomb's law, §1.6 Forces between multiple charges" }
-  - { title: "H. C. Verma, Concepts of Physics Vol. 2", ref: "Ch. 29 Electric Field and Potential (Coulomb's law sections)" }
-  - { title: "E. M. Purcell and D. J. Morin, Electricity and Magnetism", ref: "Ch. 1 Electrostatics: charges and fields" }
-  - { title: "I. E. Irodov, Problems in General Physics", ref: "Part 3 · 3.1 Constant electric field in vacuum" }
+  - { title: "H. C. Verma, Concepts of Physics Vol. 2", ref: "Ch. 29 Electric Field and Potential (Coulomb's law sections) [Unverified chapter reference]" }
+  - { title: "E. M. Purcell and D. J. Morin, Electricity and Magnetism", ref: "Ch. 1 Electrostatics: charges and fields [Unverified chapter reference]" }
+  - { title: "I. E. Irodov, Problems in General Physics", ref: "Part 3 · 3.1 Constant electric field in vacuum [Unverified chapter reference]" }
 cards:
   - { front: "Coulomb's law in vector form (force on 2 due to 1)?", back: "$\\mathbf F_{21} = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q_1q_2}{r_{21}^2}\\,\\hat{\\mathbf r}_{21}$, with $\\hat{\\mathbf r}_{21}$ pointing from 1 to 2. The sign of $q_1q_2$ decides repulsion or attraction." }
   - { front: "Why 1/r² and not some other power?", back: "Whatever spreads out from a point in 3D is shared over a sphere of area $4\\pi r^2$. A force that is 'carried' undiminished outward must therefore weaken as $1/r^2$." }

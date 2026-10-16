@@ -172,10 +172,11 @@ Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per us
 
 **In progress: Physics › Electricity and magnetism pillar** (not complete, so the site has not been republished for it). Work one pillar at a time, branch by branch.
 - **Done: Current electricity branch (7 leaves):** electric current and potential difference, Ohm's law, resistance and resistivity, resistors in series and parallel, heating effect and power, Kirchhoff's rules, Wheatstone bridge. NCERT covered: Class 10 Ch 11 (54 items) and all of Class 12 Physics Ch 3 (examples 3.1–3.7, exercises 3.1–3.9).
-- **Still to do:** Electrostatics (6 leaves; Class 12 Ch 1–2), Magnetism (4 leaves plus Class 10 Ch 12, and leaves for force on moving charges and magnetic materials that the tree lacks; Class 12 Ch 4–5), Induction and AC (4 leaves plus self/mutual inductance and LCR circuits, which the tree lacks; Class 12 Ch 6–8), and Sources of Energy (restored Class 10 chapter). Republish when the pillar is complete.
+- **Done: Electrostatics branch (6 leaves):** electric charge, Coulomb's law, electric field (with the dipole), Gauss's law, potential, capacitors. NCERT covered: Class 12 Physics Ch 1 (examples 1.1–1.12, exercises 1.1–1.23) and Ch 2 (examples 2.1–2.10, exercises 2.1–2.11). The printed answer key has errors for Exercises 1.17/1.18 (swapped), 1.22 and 1.23 (power of ten); the solutions flag them. The `electric-charge` leaf is marked `from: C8` in the tree but no Class 8 chapter is mapped to it.
+- **Still to do:** Magnetism (4 leaves plus Class 10 Ch 12, and leaves for force on moving charges and magnetic materials that the tree lacks; Class 12 Ch 4–5), Induction and AC (4 leaves plus self/mutual inductance and LCR circuits, which the tree lacks; Class 12 Ch 6–8), and Sources of Energy (restored Class 10 chapter). Republish when the pillar is complete.
 
 **Next, in order:**
-1. Finish the Electricity and magnetism pillar (Electrostatics, Magnetism, Induction and AC), then republish.
+1. Finish the Electricity and magnetism pillar (Magnetism, then Induction and AC), then republish.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.
