@@ -70,3 +70,135 @@
   sol: |
     The secondary voltage is $5\times20 = 100$ V, so $I_s = 100/100 = 1$ A and the power is 100 W. The ideal transformer draws the same power from the primary: $I_p = 100/20 = 5$ A. (Equivalently, the load seen by the source is $R/5^2 = 4\ \Omega$.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A transformer delivers 20 kW to a resistive load at full load. Its iron loss is 200 W and its full-load copper loss is 800 W. Assuming the iron loss does not depend on load and the output voltage stays constant, find the maximum efficiency of the transformer. (Original problem.)
+  ask: Maximum efficiency
+  unit: "%"
+  ans: 96.15
+  tol: 0.02
+  verify: 10000/(10000+200+200)*100
+  sol: |
+    Copper loss scales as the square of the load current, i.e. as $x^2$ for a fraction $x$ of full load: $P_{cu} = 800x^2$ W. Efficiency is greatest when copper loss equals iron loss: $800x^2 = 200$, so $x = 0.5$. The output is then $0.5\times20 = 10$ kW and the total loss is $200 + 200 = 400$ W:
+    $$\eta_{max} = \frac{10000}{10000 + 400} = 96.15\%.$$
+    For comparison, at full load $\eta = 20000/21000 = 95.24\%$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A signal source has internal resistance 2.0 kΩ and is to drive an 8.0 Ω loudspeaker through an ideal transformer so that the speaker receives the maximum possible power. Find the required turns ratio N_p/N_s. (Original problem.)
+  ask: N_p/N_s
+  unit: ""
+  ans: 15.81
+  tol: 0.02
+  verify: sqrt(2000/8)
+  sol: |
+    Maximum power is transferred when the load seen by the source equals the internal resistance. The speaker seen through the transformer is $(N_p/N_s)^2\times8$, so
+    $$\left(\frac{N_p}{N_s}\right)^2 = \frac{2000}{8} = 250,\qquad \frac{N_p}{N_s} = 15.81.$$
+    With a source emf of, say, 10 V rms, the speaker would then receive $E^2/(4r) = 100/8000 = 12.5$ mW, compared with $10^2\times8/2008^2 \approx 0.20$ mW if connected directly.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A power station sends 2.0 MW to a town through lines whose total resistance is 10 Ω. The power lost in the lines must not exceed 1% of the power sent. Find the minimum transmission voltage, assuming unity power factor. (Original problem.)
+  ask: Minimum voltage
+  unit: kV
+  ans: 44.72
+  tol: 0.05
+  verify: sqrt(2e6*10/0.01)/1000
+  sol: |
+    The line current is $I = P/V$ and the loss is $P^2R/V^2$. Require $P^2R/V^2 \le 0.01P$:
+    $$V^2 \ge \frac{PR}{0.01} = \frac{2\times10^6\times10}{0.01} = 2\times10^9\ \text{V}^2,\qquad V \ge 44.7\ \text{kV}.$$
+    Check: $I = 2\times10^6/44721 = 44.7$ A, loss $= 44.7^2\times10 = 20$ kW $= 1\%$.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: A transformer for 230 V, 50 Hz mains has a core of cross-sectional area 25 cm². The peak flux density in the core must not exceed 1.2 T. Find the minimum number of primary turns. (Original problem.)
+  ask: Primary turns
+  unit: ""
+  ans: 346
+  tol: 1
+  verify: ceil(230*sqrt(2)/(2*PI*50*1.2*25e-4))
+  sol: |
+    The supply fixes the flux: $V_p = N_p\,d\Phi/dt$, so the peak flux is $\Phi_0 = V_0/(N_p\omega)$ with $V_0 = 230\sqrt2 = 325.3$ V. Requiring $\Phi_0 \le B_{max}A$:
+    $$N_p \ge \frac{V_0}{\omega B_{max}A} = \frac{325.3}{314.16\times1.2\times25\times10^{-4}} = 345.1 .$$
+    So at least 346 turns. Fewer turns would mean more volts per turn, a larger flux swing and a saturated core. (Equivalently, $V_{rms} = 4.44fN\Phi_0$.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A transformer has perfect coupling (no leakage), negligible winding resistance and no core loss. Its primary self-inductance is 2.0 H and its turns ratio is N_p/N_s = 10. The primary is connected to 230 V (rms), 50 Hz, and a 10 Ω resistor is connected across the secondary. Find the rms current drawn from the supply. (Original problem.)
+  ask: Primary current (rms)
+  unit: A
+  ans: 0.432
+  tol: 0.002
+  verify: sqrt((230/(2*PI*50*2))**2+(230/1000)**2)
+  sol: |
+    With perfect coupling, the coupled-coil equations $V_p = j\omega L_pI_p + j\omega MI_2$, $0 = j\omega MI_p + (R + j\omega L_s)I_2$ and $M^2 = L_pL_s$, $L_p/L_s = (N_p/N_s)^2$ give
+    $$Z_{in} = \frac{j\omega L_pR}{R + j\omega L_s} = (j\omega L_p)\parallel\left(\frac{N_p}{N_s}\right)^2R,$$
+    an ideal transformer with $L_p$ in parallel across its primary.
+
+    Magnetising branch: $\omega L_p = 314.16\times2 = 628.3\ \Omega$, current $230/628.3 = 0.366$ A, lagging by 90°.
+
+    Reflected load: $10^2\times10 = 1000\ \Omega$, current $0.230$ A, in phase.
+
+    The two are in quadrature, so
+    $$I_p = \sqrt{0.366^2 + 0.230^2} = 0.432\ \text{A}.$$
+    The power factor seen by the supply is $0.230/0.432 = 0.53$, and the power is $230\times0.230 = 52.9$ W, all of it in the load ($V_s = 23$ V, $23^2/10 = 52.9$ W). The ideal-transformer answer, 0.23 A, ignores the magnetising current, which here is not small because the load is light.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: In steady operation the peak flux density in a transformer core is 1.4 T. The transformer, with its core initially unmagnetised, is switched on at the instant when the supply voltage V_0 sin(ωt + θ) has phase θ = 60°. Neglecting winding resistance, find the largest flux density reached in the core during the first cycle (assume the core does not saturate). (Original problem.)
+  ask: Peak flux density
+  unit: T
+  ans: 2.1
+  tol: 0.005
+  verify: 1.4*(1+cos(rad(60)))
+  sol: |
+    With no resistance, $N\,d\Phi/dt = V_0\sin(\omega t + \theta)$ and $\Phi(0) = 0$. Integrating,
+    $$\Phi(t) = \Phi_0\left[\cos\theta - \cos(\omega t + \theta)\right],\qquad \Phi_0 = \frac{V_0}{N\omega}.$$
+    The steady part $-\Phi_0\cos(\omega t + \theta)$ is shifted by a constant offset $\Phi_0\cos\theta$. The maximum, when $\cos(\omega t + \theta) = -1$ (half a cycle later in phase), is $\Phi_0(1 + \cos\theta)$. In terms of flux density,
+    $$B_{max} = 1.4\,(1 + \cos60^\circ) = 1.4\times1.5 = 2.1\ \text{T}.$$
+    Real silicon steel saturates near 2 T [Unverified: typical figure], so in practice the core would saturate and the magnetising current would spike (inrush). With resistance, the offset decays with the winding's $L/R$ time constant. Switching on at $\theta = 90^\circ$ avoids the offset entirely; $\theta = 0$ is the worst case, $2\Phi_0$.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A transformer core is made of laminations 0.35 mm thick, of conductivity 2.0 × 10⁶ S/m. The flux density in the plane of each lamination is uniform across its thickness and varies as B_0 sin ωt with B_0 = 1.2 T at 50 Hz. Find the average eddy-current power dissipated per cubic metre of core. (Original problem.)
+  ask: Eddy-current loss per unit volume
+  unit: W/m³
+  ans: 1451
+  tol: 3
+  verify: 2e6*(2*PI*50)**2*1.2**2*(0.35e-3)**2/24
+  sol: |
+    Put the lamination's mid-plane at $y = 0$, with thickness along $y$ and $\mathbf B$ in the plane. A long thin current loop extending from $-y$ to $+y$ across the thickness and a length $L \gg t$ along the width encloses flux $2yLB$, so its emf is $2yL\dot B$; the field along each long side is $E = y\dot B$. The power density is $\sigma E^2 = \sigma y^2\dot B^2$. Averaging over the thickness, $\langle y^2\rangle = t^2/12$, and over time, $\langle\dot B^2\rangle = \omega^2B_0^2/2$:
+    $$p = \frac{\sigma\omega^2B_0^2t^2}{24} = \frac{(2\times10^6)(314.16)^2(1.2)^2(0.35\times10^{-3})^2}{24} = 1.45\times10^3\ \text{W/m}^3 .$$
+    With a density of about 7650 kg/m³ this is about 0.19 W/kg. A solid core would be far worse: the loss grows as $t^2$ until the thickness becomes comparable with the skin depth, after which the field no longer penetrates uniformly and this formula fails. [Inference: for $\mu_r$ of a few thousand the skin depth at 50 Hz is of order 1 mm, so the uniform-field assumption is fair but not exact at 0.35 mm.]
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: The primary of a transformer has resistance 2.0 Ω and self-inductance 8.0 mH; the coupling is perfect and N_s/N_p = 100. At t = 0 the primary is connected to a 12 V battery; the secondary is open. Find the magnitude of the secondary emf at t = 4.0 ms. (Original problem.)
+  ask: Secondary emf
+  unit: V
+  ans: 441.5
+  tol: 0.5
+  verify: 12*100*exp(-4e-3/(8e-3/2))
+  sol: |
+    With the secondary open, the primary is an RL circuit: $12 = 2I + L_p\,dI/dt$, so $I = 6(1 - e^{-t/\tau})$ A with $\tau = L_p/R_p = 4.0$ ms. The primary's self-induced emf is $L_p\,dI/dt = 12e^{-t/\tau}$ V.
+
+    With perfect coupling every turn links the same flux, so the secondary emf is $N_s/N_p$ times the primary emf (equivalently $M\,dI/dt$ with $M = (N_s/N_p)L_p$):
+    $$\varepsilon_s = 100\times12\,e^{-t/\tau} = 1200\,e^{-1} = 441.5\ \text{V at } t = \tau .$$
+    The emf starts at 1200 V and decays to zero; in steady dc the secondary gives nothing and the primary carries 6 A limited only by its resistance. (We assume the core does not saturate.) Breaking the current quickly gives a larger pulse of opposite sign, which is how an ignition coil works.
+  check: code

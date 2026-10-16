@@ -347,7 +347,7 @@ A voltage is +12 V for 2 ms, then −4 V for 6 ms, repeating. Average: $(12 \tim
 
 :::qc
 q: v = 3 + 4√2 sin ωt volts. What is its rms value?
-options: ["5 V", "7 V", "√(3² + 4√2²) ≈ 6.4 V", "4 V"]
+options: ["5 V", "7 V", "8.66 V", "4 V"]
 answer: 0
 right: Right. The AC part has rms $4\sqrt2/\sqrt2 = 4$ V and the DC part is 3 V; they combine as $\sqrt{3^2 + 4^2} = 5$ V.
 wrong: Use $V_{rms}^2 = V_d^2 + V_0^2/2 = 9 + 32/2 = 25$, so $V_{rms} = 5$ V. The cross term averages to zero.
