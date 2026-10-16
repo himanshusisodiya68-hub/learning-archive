@@ -293,3 +293,159 @@
   verify: Math.sqrt(2*9e9*3e-6*1e-6/0.03/2e-3)
   sol: Energy conservation. $U_i = \dfrac{1}{4\pi\varepsilon_0}\dfrac{q_1q_2}{r} = 9\times10^{9}\times\dfrac{3\times10^{-6}\times10^{-6}}{0.03} = 0.9$ J, and $U_f = 0$ at infinity. So $\tfrac12mv^2 = 0.9$ J and $v = \sqrt{2\times0.9/(2\times10^{-3})} = 30$ m/s.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A thin ring of radius 10 cm carries +1 µC spread uniformly and is held fixed. A small bead of mass 1 g and charge +1 µC is on the ring's axis, 10 cm from its centre, and can move only along the axis. What is the least speed with which it must be projected towards the ring so that it passes through the centre? Ignore gravity. (Original problem.)"
+  ask: Least projection speed
+  unit: m/s
+  ans: 7.26
+  tol: 0.02
+  verify: Math.sqrt(2*9e9*1e-12/0.1*(1-1/Math.SQRT2)/1e-3)
+  sol: |
+    On the axis every element of the ring is at distance $\sqrt{R^2+x^2}$, so $V(x) = \dfrac{kQ}{\sqrt{R^2+x^2}}$. This increases steadily as $x$ falls to 0, so the highest point of the potential "hill" on the path is the centre itself. The bead just gets there if its speed falls to zero at $x = 0$.
+
+    $kqQ/R = 9\times10^{9}\times10^{-6}\times10^{-6}/0.1 = 0.09$ J. Start at $x = R$: $U_i = 0.09/\sqrt2 = 0.0636$ J. At the centre $U_f = 0.09$ J.
+
+    $\tfrac12mv_0^2 = U_f - U_i = 0.09\,(1 - 1/\sqrt2) = 0.02636$ J, so $v_0 = \sqrt{2\times0.02636/10^{-3}} = 7.26$ m/s.
+
+    Once past the centre it is pushed out the other side and escapes.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "Two small balls, of masses 2 g and 6 g and charges +2 µC and +3 µC, are held 10 cm apart on a smooth horizontal insulating table and released together. Find the speed of the lighter ball when they are very far apart. (Original problem.)"
+  ask: Final speed of the 2 g ball
+  unit: m/s
+  ans: 20.12
+  tol: 0.05
+  verify: Math.sqrt(2*6e-3*(9e9*6e-12/0.1)/(2e-3*8e-3))
+  sol: |
+    No external horizontal force acts, so momentum stays zero: $m_1v_1 = m_2v_2$. Energy: $U_i = \dfrac{kq_1q_2}{r} = \dfrac{9\times10^9\times6\times10^{-12}}{0.1} = 0.54$ J becomes kinetic energy.
+
+    $\tfrac12m_1v_1^2 + \tfrac12m_2v_2^2 = U$ with $v_2 = m_1v_1/m_2$ gives $\tfrac12m_1v_1^2\left(1 + \dfrac{m_1}{m_2}\right) = U$, so
+    $$v_1 = \sqrt{\frac{2m_2U}{m_1(m_1+m_2)}} = \sqrt{\frac{2\times6\times10^{-3}\times0.54}{2\times10^{-3}\times8\times10^{-3}}} = \sqrt{405} = 20.1\ \text{m/s}.$$
+
+    The light ball takes $\tfrac{3}{4}$ of the energy (0.405 J), the heavy one $\tfrac14$: the shares are in the inverse ratio of the masses.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: "Two thin concentric metal shells have radii 10 cm and 20 cm. The outer shell carries +6 nC; the inner shell is initially uncharged. The inner shell is now connected to earth by a fine insulated wire passing through a tiny hole in the outer shell. Find the potential of the outer shell afterwards. (Original problem.)"
+  ask: Potential of the outer shell
+  unit: V
+  ans: 135
+  tol: 0.5
+  verify: 9e9*(6e-9-6e-9*0.1/0.2)/0.2
+  sol: |
+    Earthing fixes the inner shell's **potential** at zero, not its charge. Let it acquire $q$. The inner shell is inside the outer one, so the outer shell's charge contributes the constant $kQ/b$ there:
+    $$\frac{kq}{a} + \frac{kQ}{b} = 0 \;\Rightarrow\; q = -Q\frac{a}{b} = -6\times\frac{10}{20} = -3\ \text{nC}.$$
+
+    For the outer shell both charges act as if at the centre:
+    $$V_b = \frac{k(q + Q)}{b} = \frac{9\times10^9\times3\times10^{-9}}{0.2} = 135\ \text{V}.$$
+
+    Before earthing it was $9\times10^9\times6\times10^{-9}/0.2 = 270$ V; earthing the inner shell halves it.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: "In a region of space the electric potential is V = 4x²y − 3yz volts, with x, y, z in metres. Find the magnitude of the electric field at the point (1 m, 2 m, 1 m). (Original problem.)"
+  ask: Magnitude of E
+  unit: V/m
+  ans: 17.12
+  tol: 0.02
+  verify: Math.sqrt((8*1*2)**2+(4*1-3*1)**2+(3*2)**2)
+  sol: |
+    $\vec E = -\nabla V$:
+    $E_x = -\partial V/\partial x = -8xy = -16$, $E_y = -\partial V/\partial y = -(4x^2 - 3z) = -1$, $E_z = -\partial V/\partial z = 3y = 6$ (V/m).
+
+    $|\vec E| = \sqrt{256 + 1 + 36} = \sqrt{293} = 17.1$ V/m.
+
+    (Since $\nabla^2V = 8y \ne 0$, this region contains charge, of density $\rho = -\varepsilon_0\nabla^2V$; the potential is a valid one, just not charge-free.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "A small ball carrying +2 µC is held 3 cm from a large flat earthed metal plate. How much work must an external agent do to carry the ball slowly away to a very large distance? (Original problem.)"
+  ask: Work required
+  unit: J
+  ans: 0.3
+  tol: 0.002
+  verify: 9e9*(2e-6)**2/(4*0.03)
+  sol: |
+    **Image.** Above the plate, the field is that of the charge $q$ together with an image $-q$ at the mirror point. When the ball is at distance $x$ from the plate, the image is $2x$ away, so the attraction is
+    $$F(x) = \frac{kq^2}{(2x)^2} = \frac{kq^2}{4x^2}.$$
+
+    **Work.** The image moves as the ball moves, so we must integrate the force, not use a two-charge energy formula:
+    $$W = \int_d^\infty \frac{kq^2}{4x^2}\,dx = \frac{kq^2}{4d} = \frac{9\times10^9\times(2\times10^{-6})^2}{4\times0.03} = 0.30\ \text{J}.$$
+
+    **Trap.** $kq^2/(2d) = 0.60$ J is wrong: that would be the energy to separate two real charges $q$ and $-q$ from $2d$, where the field fills all space. Here the field exists only above the plate, so the energy is half.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "A ball of radius R carries charge Q spread uniformly through its volume. It splits into two identical balls of the same charge density, which fly far apart. What fraction of the original electrostatic self-energy is released in the process? (Original problem.)"
+  ask: Fraction released
+  unit: ""
+  ans: 0.370
+  tol: 0.002
+  verify: 1-Math.pow(2,-2/3)
+  sol: |
+    **Self-energy of a uniform ball.** Build it in thin layers. When the radius is $r$, the charge is $Qr^3/R^3$ and the surface potential is $kQr^2/R^3$. A layer $dq = 3Qr^2dr/R^3$ costs $kQr^2/R^3\cdot dq$. So
+    $$U_0 = \int_0^R \frac{3kQ^2r^4}{R^6}\,dr = \frac{3kQ^2}{5R}.$$
+
+    **After the split.** Each piece has charge $Q/2$ and half the volume, so radius $R/2^{1/3}$. The two are far apart, so there is no interaction energy:
+    $$U_1 = 2\times\frac{3k(Q/2)^2}{5R/2^{1/3}} = \frac{3kQ^2}{5R}\cdot\frac{2^{1/3}}{2} = U_0\,2^{-2/3}.$$
+
+    **Released:** $1 - 2^{-2/3} = 1 - 0.630 = 0.370$ of $U_0$, i.e. 37 %.
+
+    This is the electrostatic part of the energy argument for why heavy nuclei can release energy by splitting; in a real nucleus the attractive nuclear (surface) energy works the other way. [Inference: the nuclear remark is qualitative context, not part of the calculation.]
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: "An uncharged, isolated metal sphere of radius 10 cm has a point charge of +5 nC held 30 cm from its centre. (a) What is the potential of the sphere? (b) The sphere is now connected to earth. How much charge flows through the earth wire? Give the magnitude for (b). (Original problem.)"
+  ask: Magnitude of charge through the earth wire
+  unit: nC
+  ans: 1.667
+  tol: 0.005
+  verify: 5*10/30
+  sol: |
+    **Key idea.** The whole sphere, including its centre, is at one potential. So compute the potential **at the centre**, where the unknown induced charge is easy to handle: all of it lies at distance $R$ from the centre, so it contributes $kQ_{\text{ind}}/R$, however it is distributed.
+
+    **(a)** The sphere is uncharged, so $Q_{\text{ind}} = 0$ in total and contributes nothing at the centre:
+    $$V = \frac{kq}{a} = \frac{9\times10^9\times5\times10^{-9}}{0.30} = 150\ \text{V}.$$
+
+    **(b)** Earthed, the sphere is at $V = 0$ with some net charge $Q$:
+    $$\frac{kq}{a} + \frac{kQ}{R} = 0 \;\Rightarrow\; Q = -q\frac{R}{a} = -5\times\frac{10}{30} = -1.67\ \text{nC}.$$
+    So 1.67 nC of negative charge (electrons) flows up from the earth onto the sphere.
+
+    This agrees with the image method: the image of $q$ in an earthed sphere is $-qR/a$, and by Gauss's law it equals the total induced charge.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: "A proton with kinetic energy 1.0 MeV moves straight towards an alpha particle that is initially at rest and free to move. Treat both as point charges, take the alpha particle's mass as 4 times the proton's, and use e²/4πε₀ = 1.44 MeV fm. Find the distance of closest approach. (Original problem.)"
+  ask: Distance of closest approach
+  unit: fm
+  ans: 3.6
+  tol: 0.01
+  verify: 2*1.44/(1.0*4/5)
+  sol: |
+    **Momentum.** At closest approach the separation stops changing, so both particles move with the same velocity, the centre-of-mass velocity $V = \dfrac{mv}{m + M}$.
+
+    **Energy.** The kinetic energy left at that moment is $\tfrac12(m+M)V^2 = K\,\dfrac{m}{m+M}$. The remainder became potential energy:
+    $$\frac{k(e)(2e)}{r_{\min}} = K\,\frac{M}{m+M} = 1.0\times\frac45 = 0.80\ \text{MeV}.$$
+
+    $$r_{\min} = \frac{2\times1.44\ \text{MeV fm}}{0.80\ \text{MeV}} = 3.6\ \text{fm}.$$
+
+    A fixed target would give $2\times1.44/1.0 = 2.88$ fm: the recoil keeps the proton further away. (At such distances the nuclear force would matter in reality; the problem asks for the electrostatic answer only.)
+  check: code

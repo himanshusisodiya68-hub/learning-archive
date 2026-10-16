@@ -255,3 +255,150 @@
   sol: |
     Charge $Q = 4\times10^{-6}\times200 = 8\times10^{-4}$ C is shared: $V' = Q/(C_1+C_2) = 80$ V. $U_i = \tfrac12\times4\times10^{-6}\times200^2 = 0.08$ J and $U_f = \tfrac12\times10\times10^{-6}\times80^2 = 0.032$ J. The energy lost is $0.048$ J $= 48$ mJ, as heat and radiation in the connecting wires.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A spherical capacitor has an inner conducting sphere of radius 1.0 cm and an outer conducting shell of inner radius 3.0 cm. The region from r = 1.0 cm to r = 2.0 cm is filled with a dielectric of K = 2, and the region from r = 2.0 cm to r = 3.0 cm with a dielectric of K = 4. Find the capacitance. (Original problem.)
+  ask: Capacitance
+  unit: pF
+  ans: 3.815
+  tol: 0.01
+  verify: 1/(1/(4*PI*8.854e-12)*((1/0.01-1/0.02)/2+(1/0.02-1/0.03)/4))*1e12
+  sol: |
+    Put $+Q$ on the inner sphere. The free charge enclosed by a sphere of radius $r$ is $Q$ in both layers, so $D = Q/(4\pi r^2)$ and $E = Q/(4\pi\varepsilon_0Kr^2)$, with $K$ the local value. Integrating layer by layer,
+
+    $$V = \frac{Q}{4\pi\varepsilon_0}\left[\frac{1}{K_1}\left(\frac1a - \frac1c\right) + \frac{1}{K_2}\left(\frac1c - \frac1b\right)\right].$$
+
+    With $a = 0.01$ m, $c = 0.02$ m, $b = 0.03$ m: $\tfrac1a - \tfrac1c = 50$ m⁻¹, divided by 2 gives 25; $\tfrac1c - \tfrac1b = 16.67$ m⁻¹, divided by 4 gives 4.17. The bracket is $29.17$ m⁻¹. So
+
+    $$C = \frac{4\pi\varepsilon_0}{29.17\ \text{m}^{-1}} = \frac{1.113\times10^{-10}}{29.17}\ \text{F} \approx 3.81\ \text{pF}.$$
+
+    This is two spherical capacitors in series: the boundary at $r = c$ is an equipotential.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A parallel-plate capacitor has square plates of side 10 cm, 1.0 mm apart, and is kept connected to a 1000 V supply. A slab of dielectric constant 3, 10 cm wide and exactly 1.0 mm thick, is partly inserted between the plates. Neglecting friction, find the force drawing the slab in. (Original problem.)
+  ask: Force
+  unit: mN
+  ans: 0.885
+  tol: 0.01
+  verify: 8.854e-12*(3-1)*0.1*1000**2/(2*1e-3)*1e3
+  sol: |
+    With the slab in a distance $x$ (plate length $L$, width $b$), the two parts are in parallel:
+
+    $$C(x) = \frac{\varepsilon_0 b}{d}\big[Kx + (L - x)\big], \qquad \frac{dC}{dx} = \frac{\varepsilon_0 b(K-1)}{d}.$$
+
+    At constant $V$ the force is $F = \tfrac12V^2\,dC/dx$ (the battery does work $V^2dC$, of which half goes into the field and half into mechanical work). So
+
+    $$F = \frac{\varepsilon_0(K-1)bV^2}{2d} = \frac{8.854\times10^{-12}\times2\times0.1\times10^6}{2\times10^{-3}} = 8.85\times10^{-4}\ \text{N} \approx 0.885\ \text{mN}.$$
+
+    It does not depend on how far the slab has gone in. Physically, the fringing field at the slab's edge pulls on its bound charges.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: An infinite ladder network is built from identical 2.0 µF capacitors. Each section has one capacitor in series along the top rail and one capacitor connecting the top rail to the bottom rail; the bottom rail has no components. Find the capacitance between the two input terminals (the left ends of the top and bottom rails). (Original problem.)
+  ask: Equivalent capacitance
+  unit: µF
+  ans: 1.236
+  tol: 0.01
+  verify: 2*(sqrt(5)-1)/2
+  sol: |
+    Let the ladder's capacitance be $X$. Removing the first section leaves an identical infinite ladder, so the whole network is $C$ (series) followed by ($C$ in parallel with $X$):
+
+    $$X = \frac{C(C + X)}{C + (C + X)} \;\Longrightarrow\; X(2C + X) = C^2 + CX \;\Longrightarrow\; X^2 + CX - C^2 = 0.$$
+
+    The positive root is $X = \tfrac{\sqrt5 - 1}{2}C \approx 0.618C$. For $C = 2.0$ µF, $X \approx 1.236$ µF.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: A 3.0 µF capacitor charged to 100 V and a 6.0 µF capacitor charged to 40 V are connected together with the positive plate of each joined to the negative plate of the other. Find the heat produced in the connecting wires. (Original problem.)
+  ask: Heat produced
+  unit: mJ
+  ans: 19.6
+  tol: 0.01
+  verify: (0.5*3e-6*100**2+0.5*6e-6*40**2-0.5*9e-6*((300e-6-240e-6)/9e-6)**2)*1e3
+  sol: |
+    Charges: $Q_1 = 300$ µC and $Q_2 = 240$ µC. Each joined pair of plates holds $+300 - 240 = 60$ µC (or its negative), so the common voltage is $V = 60/9 = 6.67$ V.
+
+    Energies: initially $\tfrac12(3\times10^{-6})(100)^2 + \tfrac12(6\times10^{-6})(40)^2 = 15 + 4.8 = 19.8$ mJ. Finally $\tfrac12(9\times10^{-6})(6.67)^2 = 0.2$ mJ. The heat is $19.6$ mJ.
+
+    Check with the formula: $\dfrac{C_1C_2}{2(C_1+C_2)}(V_1 + V_2)^2 = \tfrac12(2\ \mu\text{F})(140)^2 = 19.6$ mJ. The plus sign is because opposite plates were joined.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: The plates of a parallel-plate capacitor (area 0.020 m², air between them) stay connected to an ideal 100 V battery. An external agent pulls the plates apart slowly at a steady 1.0 mm/s. At the instant the gap is 2.0 mm, find the rate at which energy is delivered into the battery. (Original problem.)
+  ask: Power into the battery
+  unit: µW
+  ans: 0.4427
+  tol: 0.01
+  verify: 8.854e-12*0.02*100**2*1e-3/(2e-3)**2*1e6
+  hints: ["Q = CV with V fixed, so I = V dC/dt.", "Check the books: agent's power + decrease in field energy = power into the battery."]
+  sol: |
+    With $C = \varepsilon_0A/x$ and $V$ fixed, $Q = \varepsilon_0AV/x$ and
+
+    $$I = \frac{dQ}{dt} = -\frac{\varepsilon_0AV}{x^2}\,\frac{dx}{dt}.$$
+
+    The minus sign means charge flows **back into** the positive terminal: the battery is being charged. The power into it is
+
+    $$P_b = V|I| = \frac{\varepsilon_0AV^2v}{x^2} = \frac{8.854\times10^{-12}\times0.020\times10^4\times10^{-3}}{(2.0\times10^{-3})^2} = 4.43\times10^{-7}\ \text{W} \approx 0.443\ \mu\text{W}.$$
+
+    Energy check. The plates attract with $F = Q^2/(2\varepsilon_0A) = \varepsilon_0AV^2/(2x^2)$, so the agent supplies $Fv = 2.21\times10^{-7}$ W. The field energy $\varepsilon_0AV^2/(2x)$ falls at $\varepsilon_0AV^2v/(2x^2) = 2.21\times10^{-7}$ W. The two together, $4.43\times10^{-7}$ W, go into the battery. (Slow motion means the resistance of the leads dissipates negligible power.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Twelve identical 3.0 µF capacitors, initially uncharged, form the edges of a cube. Find the capacitance between two corners that are diagonally opposite on the same face (a face diagonal). (Original problem.)
+  ask: Equivalent capacitance
+  unit: µF
+  ans: 4
+  tol: 0.001
+  verify: 4*3/3
+  hints: ["Label the corners by coordinates (x, y, z) with each 0 or 1; take the terminals as 000 and 110.", "Use two symmetries: swapping x and y, and the map (x, y, z) → (1−x, 1−y, z), which swaps the terminals and so turns V into 1 − V.", "For an isolated node, charge conservation says its potential is the average of its neighbours'."]
+  sol: |
+    For uncharged capacitors, each isolated node obeys $\sum_j C(V_j - V_i) = 0$: with equal capacitors, every inner node is at the **average** potential of its three neighbours.
+
+    Label corners $(x,y,z)$; terminals $A = 000$ at $V = 1$ and $B = 110$ at $V = 0$.
+
+    - Swapping $x \leftrightarrow y$ fixes both terminals, so $V(100) = V(010)$ and $V(101) = V(011)$.
+    - The map $(x,y,z)\to(1-x,1-y,z)$ swaps $A$ and $B$, so it sends $V$ to $1 - V$: $V(100) + V(010) = 1$, $V(101) + V(011) = 1$, $V(001) + V(111) = 1$.
+
+    Hence $V(100) = V(010) = V(101) = V(011) = \tfrac12$. Node $001$ has neighbours $000$ (1), $101$ ($\tfrac12$) and $011$ ($\tfrac12$), so $V(001) = \tfrac23$, and $V(111) = \tfrac13$ (which also equals the average of $\tfrac12, \tfrac12, 0$, a check).
+
+    Charge supplied through $A$ (per volt) is the charge on the three capacitors at $A$:
+
+    $$Q = C\left[(1 - \tfrac12) + (1 - \tfrac12) + (1 - \tfrac23)\right] = \tfrac43 C .$$
+
+    So $C_{\text{eq}} = \tfrac43C = 4.0$ µF. This matches the resistor result $\tfrac34R$ under $C \leftrightarrow 1/R$.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: The gap of a parallel-plate capacitor (plate area 0.010 m², separation 1.0 mm) is filled with a dielectric whose dielectric constant rises linearly from 2.0 at one plate to 4.0 at the other. Neglecting edge effects, find the capacitance. (Original problem.)
+  ask: Capacitance
+  unit: pF
+  ans: 255.47
+  tol: 0.01
+  verify: 8.854e-12*0.01*(4-2)/(1e-3*log(4/2))*1e12
+  hints: ["Gauss's law for free charge gives D = σ at every layer, so E = σ/(ε₀K(x)).", "Integrate dx/K(x) across the gap."]
+  sol: |
+    The free charge per area $\sigma$ is the same at every depth, so $D = \sigma$ and $E(x) = \sigma/(\varepsilon_0K(x))$. With $K = K_1 + (K_2 - K_1)x/d$,
+
+    $$V = \frac{\sigma}{\varepsilon_0}\int_0^d\frac{dx}{K_1 + (K_2-K_1)x/d} = \frac{\sigma d}{\varepsilon_0(K_2 - K_1)}\ln\frac{K_2}{K_1}.$$
+
+    So
+
+    $$C = \frac{\sigma A}{V} = \frac{\varepsilon_0A(K_2 - K_1)}{d\ln(K_2/K_1)} = \frac{8.854\times10^{-12}\times0.010\times2}{10^{-3}\times\ln2} \approx 2.555\times10^{-10}\ \text{F} = 255.5\ \text{pF}.$$
+
+    Check: this lies between the values for uniform $K = 2$ (177 pF) and $K = 4$ (354 pF). Inside, $P = \sigma(1 - 1/K)$ varies with $x$, so there is a volume bound charge $\rho_b = -dP/dx = -\sigma K'/K^2$ (with $x$ measured from the positive plate), of one sign throughout.
+  check: code
