@@ -170,8 +170,12 @@ Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per us
 - **Wave optics leaves:** Huygens' principle, interference and Young's experiment, diffraction, polarisation, thin films.
 - **NCERT covered:** Class 7 Ch 11; Class 8 Ch 10; Class 10 Ch 9–10; Class 12 Ch 9–10.
 
+**In progress: Physics › Electricity and magnetism pillar** (not complete, so the site has not been republished for it).
+- **Done: Class 10 Science Ch 11 Electricity.** Five leaves under Current electricity: electric current and potential difference, Ohm's law, resistance and resistivity, resistors in series and parallel, heating effect and power. All 54 NCERT items (23 in-text, 13 examples, 18 exercises) are copied word for word, with solutions.
+- **Still to do in this pillar:** Ch 12 Magnetic Effects of Electric Current and Sources of Energy (restored); the Current electricity leaves not in NCERT Class 10 (Kirchhoff's rules, Wheatstone bridge); electrostatics, magnetism and induction leaves, to Class 12 and Olympiad depth.
+
 **Next, in order:**
-1. Class 10 Science Ch 11 Electricity and Ch 12 Magnetic Effects of Electric Current, plus Sources of Energy (restored). Grow these into the Electromagnetism pillar, Class 12 to Olympiad depth.
+1. Class 10 Science Ch 12 Magnetic Effects of Electric Current, plus Sources of Energy (restored); then finish the Electricity and magnetism pillar.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.

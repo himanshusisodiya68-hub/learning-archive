@@ -336,3 +336,108 @@
   verify: 4*3/(5-3)
   sol: The 4 Ω branch carries 3 A, so the common potential difference is $12$ V. The unknown branch carries $5 - 3 = 2$ A, so $X = 12/2 = 6\ \Omega$.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A 60 W, 220 V bulb and a 100 W, 220 V bulb are connected in series across the 220 V mains. Treating each filament's resistance as constant, find the power drawn by the 60 W bulb. (Original problem.)
+  ask: Power in the 60 W bulb
+  unit: W
+  ans: 23.4
+  tol: 0.1
+  verify: (220/(220**2/60+220**2/100))**2*(220**2/60)
+  hints: ["Find each resistance from R = V²/P.", "In series the current is common, so use P = I²R."]
+  sol: |
+    $R_{60} = 220^2/60 = 806.7\ \Omega$ and $R_{100} = 220^2/100 = 484\ \Omega$. In series, $I = 220/1290.7 = 0.1705$ A. So $P_{60} = I^2R_{60} = 0.02905 \times 806.7 \approx 23.4$ W, while $P_{100} = 0.02905 \times 484 \approx 14.1$ W. The "weaker" bulb glows brighter, and both are far below their ratings. (Real filaments are cooler here, so their resistance is lower than the hot value; the constant-resistance assumption is a simplification.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: An infinite ladder network has a 2 Ω resistor in each section of the top rail and a 12 Ω resistor in each rung joining the top rail to the bottom rail. Find the resistance between the two input terminals. (Original problem.)
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 6
+  tol: 0.01
+  verify: (2+sqrt(2**2+4*2*12))/2
+  hints: ["Removing the first section leaves the same infinite ladder.", "x = 2 + 12x/(12 + x)."]
+  sol: |
+    Let the answer be $x$. The part after the first rung is again $x$, so $x = 2 + \dfrac{12x}{12 + x}$. Multiply out: $x(12 + x) = 2(12 + x) + 12x$, so $x^2 - 2x - 24 = 0$ and $(x - 6)(x + 4) = 0$. The positive root is $x = 6\ \Omega$. Check: it lies between $r = 2$ and $r + R = 14$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Twelve identical 12 Ω resistors form the edges of a cube. Find the equivalent resistance between two corners that are diagonally opposite on the same face. (Original problem.)
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 9
+  tol: 0.01
+  verify: 3*12/4
+  hints: ["Put the two terminals at potentials 1 and 0. Which corners lie on the plane of symmetry between them?", "Find the potential of the corner above the high-potential terminal from the condition that no charge piles up there."]
+  sol: |
+    Let the terminals be A ($V = 1$) and C ($V = 0$) on the bottom face. Swapping A and C is a symmetry of the cube that reverses all potentials about $\tfrac12$. The other two bottom corners and the two corners above them all lie on the bisecting plane, so they are at $\tfrac12$. The corner A′ above A connects to A (at 1) and to two corners at $\tfrac12$. With no charge piling up, its potential is the average, $\tfrac{1 + 1/2 + 1/2}{3} = \tfrac23$. Current out of A: $2 \times \tfrac{1 - 1/2}{R} + \tfrac{1 - 2/3}{R} = \tfrac{4}{3R}$ per volt, so $R_{AC} = \tfrac{3R}{4} = 9\ \Omega$.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: Two 6.0 kΩ resistors in series are connected across a 12 V battery of negligible internal resistance. A voltmeter of resistance 6.0 kΩ is connected across one of them. What does it read? (Original problem.)
+  ask: Voltmeter reading
+  unit: V
+  ans: 4
+  tol: 0.01
+  verify: 12*(6*6/12)/(6+6*6/12)
+  hints: ["The voltmeter is a resistor in parallel with the one it measures."]
+  sol: |
+    The meter and the resistor it measures combine to $6 \parallel 6 = 3$ kΩ. The circuit is now a 6 kΩ and a 3 kΩ divider, so the reading is $12 \times \tfrac{3}{9} = 4.0$ V instead of the true 6 V. A voltmeter must have a resistance much larger than the part it measures, or it changes what it measures.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Each of the 12 edges of a regular octahedron is a resistor of 12 Ω. Find the equivalent resistance between two vertices joined by an edge. (Original problem.)
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 5
+  tol: 0.01
+  verify: 12*(6-1)/12
+  hints: ["Foster's theorem: the sum over all edges of R_eff/R_edge equals N − 1.", "An octahedron has 6 vertices and 12 equivalent edges."]
+  sol: |
+    **By Foster's theorem.** With $N = 6$ vertices and 12 edges all equivalent by symmetry, $12\,R_{\text{adj}}/R = 5$, so $R_{\text{adj}} = 5R/12 = 5\ \Omega$.
+
+    **Check by symmetry.** Put A at potential 1 and B at 0. The six vertices are A, B, their opposites A′ and B′, and two "polar" vertices C and C′, each adjacent to all four of A, B, A′, B′. C and C′ lie on the bisecting plane, so they are at $\tfrac12$. A′ is opposite A, so it is adjacent to B, C, C′ and B′. By antisymmetry $V_{A'} + V_{B'} = 1$. The node equation at A′ is $4V_{A'} = V_B + V_{B'} + 1 = 0 + (1 - V_{A'}) + 1$, so $V_{A'} = \tfrac25$. The current out of A (neighbours B, C, C′, B′) is $\tfrac{1}{R}\left[1 + \tfrac12 + \tfrac12 + (1 - \tfrac35)\right] = \tfrac{12}{5R}$, giving $R_{AB} = \tfrac{5R}{12} = 5\ \Omega$. ✓
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Twelve identical 1.2 Ω resistors form the edges of a cube. Find the equivalent resistance between the two ends of one edge. (Original problem.)
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 0.7
+  tol: 0.001
+  verify: 7*1.2/12
+  hints: ["Foster's theorem with N = 8 vertices and 12 equivalent edges.", "Alternatively, use superposition of 'current in at A' and 'current out at B', or nodal analysis exploiting the mirror plane that bisects the edge."]
+  sol: |
+    Foster's theorem: $\sum_e R^{\text{eff}}_e/R_e = N - 1 = 7$. All 12 edges of a cube are equivalent, so $12\,R_{\text{edge}}/R = 7$ and $R_{\text{edge}} = \tfrac{7R}{12} = \tfrac{7 \times 1.2}{12} = 0.70\ \Omega$.
+
+    Independent check by nodes: put A at 1 and its neighbour B at 0. The mirror plane bisecting AB makes the network antisymmetric, so $V(\text{image of }X) = 1 - V(X)$. Four corners lie on A's side of that plane: A itself, A's two other neighbours (equivalent by symmetry, at potential $a$), and the corner diagonally across a face from A, at potential $b$. Each $a$-corner touches A (at 1), the $b$-corner, and its own mirror image (at $1 - a$), so $3a = 1 + b + (1 - a)$. The $b$-corner touches both $a$-corners and its own mirror image (at $1 - b$), so $3b = 2a + 1 - b$. Solving: $4a - b = 2$ and $4b - 2a = 1$ give $a = \tfrac{9}{14}$, $b = \tfrac47$. Current out of A: $\tfrac{1}{R}[1 + 2(1 - \tfrac{9}{14})] = \tfrac{12}{7R}$, so $R_{AB} = \tfrac{7R}{12}$. ✓
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: Four resistors $a, b, c, d$ are arranged as two series pairs ($a$ then $b$, and $c$ then $d$) connected in parallel between terminals A and B. Prove that joining the midpoints of the two pairs with a wire can never increase the resistance between A and B, i.e. $\dfrac{(a+b)(c+d)}{a+b+c+d} \ge \dfrac{ac}{a+c} + \dfrac{bd}{b+d}$, and find exactly when equality holds. (Original problem.)
+  hints: ["Bring everything to a common denominator.", "The difference should come out as a perfect square over a positive quantity."]
+  sol: |
+    Let $S = a + b + c + d$. Then
+    $$\frac{(a+b)(c+d)}{S} - \frac{ac}{a+c} - \frac{bd}{b+d} = \frac{(ad - bc)^2}{S\,(a+c)(b+d)}.$$
+    **Proof of the identity.** Write $p = a + c$ and $q = b + d$, so $S = p + q$. Multiplying the left side by $Spq$ gives
+    $$(a+b)(c+d)\,pq - (p+q)(ac\,q + bd\,p).$$
+    Split $(a+b)(c+d) = (ac + bd) + (ad + bc)$. The $(ac+bd)pq$ part cancels against the cross terms $ac\,pq + bd\,pq$ of the second product, leaving
+    $$(ad + bc)(a+c)(b+d) - ac(b+d)^2 - bd(a+c)^2.$$
+    Expand: $(ad+bc)(ab + ad + bc + cd) = a^2bd + a^2d^2 + 2abcd + acd^2 + ab^2c + b^2c^2 + bc^2d$. Subtract $ac(b^2 + 2bd + d^2) = ab^2c + 2abcd + acd^2$ and $bd(a^2 + 2ac + c^2) = a^2bd + 2abcd + bc^2d$. What remains is $a^2d^2 - 2abcd + b^2c^2 = (ad - bc)^2$. Numerical check with $a, b, c, d = 1, 2, 3, 4$: $\tfrac{21}{10} - \tfrac34 - \tfrac43 = \tfrac{1}{60}$ and $\tfrac{4}{240} = \tfrac{1}{60}$. ✓
+
+    The right side is a square divided by positive numbers, so it is $\ge 0$. Equality holds exactly when $ad = bc$, i.e. $a/b = c/d$. That is the balanced-bridge condition: the midpoints are then already at the same potential, so the wire carries no current and changes nothing. This is a special case of Rayleigh's monotonicity principle.
+  check: none
