@@ -145,3 +145,148 @@
   sol: |
     **Negative.** The positive rod attracts free electrons to the near side of the sphere. Earthing lets more electrons flow from the earth onto the sphere (they are drawn in by the rod). After the earth connection is removed, the sphere has an excess of electrons that cannot leave, and when the rod is removed these spread over the sphere. This is charging by induction: the sphere ends up with the sign opposite to the rod's.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A conducting sphere A of radius 3 cm carries 12 nC. It is joined by a long thin wire to an uncharged conducting sphere B of radius 1 cm, far away. Neglecting the charge on the wire, how much charge ends on B? (Original problem.)
+  ask: Charge on B
+  unit: nC
+  ans: 3
+  tol: 0.01
+  verify: 12*1/(3+1)
+  sol: |
+    Charge flows until both spheres are at the same potential. Far apart, each sphere's potential is $kq/R$, so $q_A/R_A = q_B/R_B$ and $q_A/q_B = 3/1$. With $q_A + q_B = 12$ nC (conservation),
+
+    $$q_B = \frac{R_B}{R_A + R_B}\times12 = \frac14\times12 = 3\ \text{nC},\qquad q_A = 9\ \text{nC}.$$
+
+    Note that B's surface charge density is three times A's, since $\sigma \propto q/R^2 \propto 1/R$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Three identical conducting spheres A, B and C are on insulating stands. A carries +64 nC; B and C are neutral. A is touched to B and separated, then B is touched to C and separated, then C is touched to A and separated. What is the final charge on A? (Original problem.)
+  ask: Final charge on A
+  unit: nC
+  ans: 24
+  tol: 0.01
+  verify: (64/2 + (64/2)/2)/2
+  sol: |
+    Identical spheres in contact share their total charge equally.
+
+    - A with B: total 64, so A = B = 32 nC.
+    - B with C: total 32, so B = C = 16 nC.
+    - C with A: total $16 + 32 = 48$, so C = A = 24 nC.
+
+    Final: A = 24 nC, B = 16 nC, C = 24 nC. Check: $24 + 16 + 24 = 64$ nC, so charge is conserved.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: In an oil-drop experiment the charges on five drops are measured as 3.2, 8.0, 12.8, 4.8 and 9.6 (all in units of 10⁻¹⁹ C). Taking the elementary charge as the largest value of which all five are whole-number multiples, how many elementary charges does the 12.8 × 10⁻¹⁹ C drop carry? (Original problem; the data are invented for practice.)
+  ask: Number of elementary charges
+  unit: ""
+  ans: 8
+  tol: 0
+  verify: 12.8/1.6
+  sol: |
+    Differences between the values: $4.8 - 3.2 = 1.6$, $9.6 - 8.0 = 1.6$, $12.8 - 9.6 = 3.2$. The smallest difference is $1.6$, and every value is a multiple of it: $3.2 = 2\times1.6$, $4.8 = 3\times1.6$, $8.0 = 5\times1.6$, $9.6 = 6\times1.6$, $12.8 = 8\times1.6$. No larger unit divides all of them (for example $3.2$ does not divide $4.8$). So $e = 1.6\times10^{-19}$ C and the drop carries $12.8/1.6 = 8$ elementary charges.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: An oil drop of radius 1.0 µm and density 900 kg/m³ carries 3 excess electrons. It is held at rest between two horizontal plates by a vertical electric field, which exerts a force qE on a charge q. Find the field strength needed. Take g = 9.8 m/s², e = 1.6 × 10⁻¹⁹ C, and neglect the buoyancy of air. (Original problem.)
+  ask: Field strength
+  unit: V/m
+  ans: 7.70e4
+  tol: 300
+  verify: (4/3)*PI*Math.pow(1e-6,3)*900*9.8/(3*1.6e-19)
+  sol: |
+    Mass of the drop:
+
+    $$m = \tfrac43\pi r^3\rho = \tfrac43\pi(1.0\times10^{-6})^3\times900 = 3.77\times10^{-15}\ \text{kg}.$$
+
+    Its weight is $mg = 3.69\times10^{-14}$ N. Its charge is $q = 3e = 4.8\times10^{-19}$ C. Balance requires $qE = mg$:
+
+    $$E = \frac{mg}{q} = \frac{3.69\times10^{-14}}{4.8\times10^{-19}} \approx 7.7\times10^{4}\ \text{V/m}.$$
+
+    The electrons make the drop negative, so the field must point **downwards** for the force on it to point up. If the drop picks up one more electron, the same field gives an upward net force and the drop rises: this is how Millikan saw the charge change in steps.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A large conducting sphere of radius R = 10 cm is initially neutral. A small conducting sphere of radius r = 1 cm is charged to q = 2 nC, then joined to the large sphere by a long thin wire, then disconnected. The small sphere is recharged to exactly 2 nC and the process repeated. The spheres are always far apart and the wire carries negligible charge. Find the charge on the large sphere after 5 such operations. (Original problem.)
+  ask: Charge on the large sphere after 5 operations
+  unit: nC
+  ans: 7.58
+  tol: 0.02
+  verify: 2*(10/1)*(1-Math.pow(10/11,5))
+  sol: |
+    Joined by the wire, the two spheres reach equal potentials, so charge divides in proportion to the radii. If the large sphere has $Q_{n-1}$ before step $n$, the total $Q_{n-1} + q$ divides so that the large sphere gets the fraction $R/(R+r)$:
+
+    $$Q_n = \frac{R}{R+r}\,(Q_{n-1} + q) = k(Q_{n-1} + q),\qquad k = \frac{10}{11}.$$
+
+    **Fixed point.** The process stops changing when $Q^* = k(Q^* + q)$, giving $Q^* = \dfrac{kq}{1-k} = \dfrac{qR}{r} = 20$ nC. (Then the large sphere is at the same potential $kq/r$ as the freshly charged small sphere, so no charge flows.)
+
+    **Approach.** Subtracting, $Q_n - Q^* = k(Q_{n-1} - Q^*)$, so the gap shrinks by $k$ each time. With $Q_0 = 0$,
+
+    $$Q_n = Q^*(1 - k^n) = 20\left[1 - \left(\tfrac{10}{11}\right)^5\right] = 20(1 - 0.6209) \approx 7.58\ \text{nC}.$$
+
+    However many times it is repeated, the large sphere never exceeds 20 nC.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: A small neutral body acquires an induced dipole moment p = αE when placed in a field E, with α a constant. A point charge q is at distance r from it, with r much larger than the body. Using the fact that the field of a point charge is kq/r² and that of a dipole on its axis is 2kp/r³, show that the body is attracted with a force proportional to q²/r⁵. By what factor does the force fall when r is doubled? (Original problem.)
+  hints: ["Find the induced dipole moment p from the field of q at the body.", "The dipole points along the line to q. Find the field the dipole makes at q, and the force on q.", "Newton's third law gives the force on the body."]
+  sol: |
+    The field of $q$ at the body is $E = kq/r^2$, directed along the line joining them. The induced dipole is $p = \alpha kq/r^2$, pointing along the same line, with its negative end towards $q$ if $q$ is positive (and its positive end towards $q$ if $q$ is negative).
+
+    The dipole's field at $q$, which lies on its axis, is $2kp/r^3$, and it points so as to attract $q$ (the near end of the dipole has the opposite sign to $q$). So the force on $q$ is
+
+    $$F = q\cdot\frac{2kp}{r^3} = q\cdot\frac{2k}{r^3}\cdot\frac{\alpha kq}{r^2} = \frac{2k^2\alpha q^2}{r^5},$$
+
+    attractive. By Newton's third law the body feels the same force towards $q$.
+
+    The force depends on $q^2$, so it is attractive whatever the sign of $q$: this is the polarisation attraction of the lesson. Doubling $r$ divides it by $2^5 = 32$. That steep fall is why a comb picks up paper only when held close.
+  check: none
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: Suppose the magnitude of the proton's charge exceeded that of the electron by a tiny fraction δ, so that each neutral atom carried a net charge δ·Z·e. Two iron spheres of mass 1 kg each have their centres 1 m apart. For what δ would their electric repulsion just equal their gravitational attraction? Iron has Z = 26 and molar mass 56 g/mol; treat each sphere as a point charge and point mass, with F = kq₁q₂/r² (k = 8.99 × 10⁹ N m²/C²) and F = Gm₁m₂/r² (G = 6.67 × 10⁻¹¹ N m²/kg²). Take e = 1.60 × 10⁻¹⁹ C and Nₐ = 6.02 × 10²³ /mol. (Original problem.)
+  ask: δ
+  unit: ""
+  ans: 1.92e-18
+  tol: 2e-20
+  verify: sqrt(6.67e-11/8.99e9)/((1000/56)*6.02e23*26*1.6e-19)
+  sol: |
+    **Charge needed.** Equal forces need $kQ^2 = Gm^2$, so
+
+    $$Q = m\sqrt{\frac{G}{k}} = 1\times\sqrt{\frac{6.67\times10^{-11}}{8.99\times10^{9}}} = 8.61\times10^{-11}\ \text{C}.$$
+
+    **Charge per sphere in terms of δ.** Number of atoms in 1 kg: $(1000/56)\times6.02\times10^{23} = 1.075\times10^{25}$. Protons: $26$ times that, $2.80\times10^{26}$. Their total charge is $2.80\times10^{26}\times1.6\times10^{-19} = 4.47\times10^{7}$ C, so the net charge is $Q = \delta\times4.47\times10^{7}$ C.
+
+    $$\delta = \frac{8.61\times10^{-11}}{4.47\times10^{7}} \approx 1.9\times10^{-18}.$$
+
+    So an imbalance of only about two parts in $10^{18}$ would cancel gravity between ordinary bodies. Gravity clearly dominates planetary motion, so $\delta$ must be smaller still; laboratory tests give far tighter bounds ([Unverified]: of order $10^{-21}$, quoted from memory).
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: proof
+  q: The up quark has charge +2e/3 and the down and strange quarks −e/3 each; an antiquark has the opposite charge to its quark. Show that every combination of three quarks, and every quark–antiquark pair, has a charge that is a whole multiple of e. Hence find the charge of the combinations uuu and sss. (Original problem.)
+  hints: ["Write each quark charge as 2e/3 plus a whole multiple of e.", "Then each antiquark charge is −2e/3 plus a whole multiple of e."]
+  sol: |
+    Each quark charge equals $\tfrac23 e$ plus a whole multiple of $e$: $u = \tfrac23 e + 0$, $d = s = -\tfrac13 e = \tfrac23 e - e$. So each antiquark is $-\tfrac23 e$ plus a whole multiple of $e$.
+
+    - **Three quarks:** total $= 3\times\tfrac23 e + (\text{whole multiple of } e) = 2e + (\text{whole multiple}) $, an integer multiple of $e$.
+    - **Quark + antiquark:** total $= \tfrac23 e - \tfrac23 e + (\text{whole multiple}) $, again an integer multiple of $e$.
+
+    So every allowed (colour-neutral) hadron has integer charge, even though its parts do not. Examples: $uuu$ has $3\times\tfrac23 e = +2e$ (the $\Delta^{++}$ particle); $sss$ has $3\times(-\tfrac13 e) = -e$ (the $\Omega^-$). A combination such as $uu$ ($+\tfrac43 e$) would have fractional charge, and such states are not found free, consistent with confinement.
+  check: none
