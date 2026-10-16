@@ -238,3 +238,158 @@
   sol: |
     Increasing wavelength: γ-rays < X-rays < ultraviolet < visible light < microwaves < radio waves. The speed in vacuum, $c$, stays constant for all of them. Photon energy $E = hc/\lambda$ decreases in the same order.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |
+    A 1.0 mW laser produces a beam of uniform intensity and circular cross-section of diameter 2.0 mm. Find the amplitude of the electric field in the beam. (Original problem.)
+  ask: Electric field amplitude
+  unit: V/m
+  ans: 489.6
+  tol: 1
+  verify: sqrt(2*(1e-3/(PI*1e-6))/(8.854e-12*3e8))
+  sol: |
+    Intensity: $I = P/(\pi r^2) = 10^{-3}/(\pi\times10^{-6}) = 318.3$ W m⁻².
+
+    From $I = \tfrac12\varepsilon_0cE_0^2$: $E_0 = \sqrt{2I/(\varepsilon_0c)} = \sqrt{636.6/(8.854\times10^{-12}\times3\times10^{8})} = \sqrt{2.40\times10^{5}} \approx 490$ V/m.
+
+    This is about half the peak field of full sunlight (about 1000 V/m): the milliwatt is squeezed into only 3 mm².
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |
+    A 100 W laser beam strikes a perfectly reflecting plane mirror at an angle of incidence of 60°. The whole beam falls on the mirror. Find the magnitude of the force the light exerts on the mirror. (Original problem.)
+  ask: Force
+  unit: µN
+  ans: 0.3333
+  tol: 0.001
+  verify: 2*100*cos(rad(60))/3e8*1e6
+  sol: |
+    The beam carries momentum at the rate $P/c$ along its direction. On reflection the component parallel to the mirror is unchanged and the normal component reverses, so the momentum change per second is $2(P/c)\cos\theta$, along the normal:
+
+    $$F = \frac{2P\cos\theta}{c} = \frac{2\times100\times0.5}{3\times10^{8}} = 3.33\times10^{-7}\ \text{N} = 0.333\ \mu\text{N}.$$
+
+    Trap: $\cos^2\theta$ appears only when the **intensity** is given, because the lit area per unit beam cross-section grows as $1/\cos\theta$. Here the total beam power is given, so only one $\cos\theta$ enters.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |
+    A plane electromagnetic wave travels in a non-magnetic glass of relative permittivity 2.25 (at the wave's frequency). The electric field amplitude in the glass is 60 V/m. Find the magnetic field amplitude in the glass. (Original problem.)
+  ask: Magnetic field amplitude
+  unit: nT
+  ans: 300
+  tol: 0.5
+  verify: sqrt(2.25)*60/3e8*1e9
+  sol: |
+    In the medium $v = c/\sqrt{\mu_r\varepsilon_r} = c/1.5 = 2\times10^{8}$ m/s, and the curl equations with $\varepsilon, \mu$ in place of $\varepsilon_0, \mu_0$ give $E_0 = vB_0$. So
+
+    $$B_0 = \frac{E_0}{v} = \frac{nE_0}{c} = \frac{1.5\times60}{3\times10^{8}} = 3\times10^{-7}\ \text{T} = 300\ \text{nT}.$$
+
+    Using $B_0 = E_0/c$ (200 nT) is the common slip: that ratio holds only in vacuum.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: text
+  q: |
+    A plane wave in vacuum has electric field E = E₀ cos(kz + ωt) î. (a) In which direction does it travel? (b) Write B as a vector. (c) Write the instantaneous Poynting vector and its time average. (Original problem.)
+  sol: |
+    (a) The phase $kz + \omega t$ is constant when $z$ decreases as $t$ grows: the wave travels along $-z$.
+
+    (b) $\vec B$ must make $\vec E\times\vec B$ point along $-\hat z$. With $\vec E$ along $\hat x$: $\hat x\times(-\hat y) = -\hat z$, so $\vec B = -\dfrac{E_0}{c}\cos(kz+\omega t)\,\hat y$.
+
+    (c) $\vec S = \dfrac{1}{\mu_0}\vec E\times\vec B = -\dfrac{E_0^2}{\mu_0c}\cos^2(kz+\omega t)\,\hat z$. Averaging $\cos^2$ to $\tfrac12$ and using $1/(\mu_0c) = \varepsilon_0c$: $\langle\vec S\rangle = -\tfrac12\varepsilon_0cE_0^2\,\hat z$, the intensity directed along the travel.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: |
+    A flat, perfectly reflecting solar sail is held facing the Sun. The Sun's luminosity is L = 3.83 × 10²⁶ W and GM_sun = 1.327 × 10²⁰ m³ s⁻². Find the areal density (mass per unit area) of the sail for which the radiation force exactly balances the Sun's gravity, and show that the answer does not depend on the distance from the Sun. (Original problem; solar data supplied as given values.)
+  ask: Critical areal density
+  unit: g/m²
+  ans: 1.531
+  tol: 0.005
+  verify: 3.83e26/(2*PI*3e8*1.327e20)*1e3
+  sol: |
+    At distance $r$ the intensity is $I = L/(4\pi r^2)$. A perfect reflector facing the Sun feels pressure $2I/c$, so a sail of area $A$ feels $F_{\text{rad}} = \dfrac{2LA}{4\pi r^2c}$.
+
+    Gravity on mass $\sigma A$: $F_g = \dfrac{GM\sigma A}{r^2}$.
+
+    Setting them equal, $A$ and $r^2$ cancel:
+
+    $$\sigma = \frac{L}{2\pi cGM} = \frac{3.83\times10^{26}}{2\pi\times3\times10^{8}\times1.327\times10^{20}} = 1.53\times10^{-3}\ \text{kg m}^{-2} = 1.53\ \text{g m}^{-2}.$$
+
+    Both forces fall as $1/r^2$, so the balance holds at every distance. A sail lighter than this (ordinary aluminised plastic film a few micrometres thick is several g/m², so it would need to be thinner [Inference]) is pushed outward everywhere, before counting any payload.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |
+    In a classical model of hydrogen, an electron circles the proton in an orbit of radius 5.29 × 10⁻¹¹ m. Using the Larmor formula P = q²a²/(6πε₀c³), find the power it would radiate. Take e = 1.602 × 10⁻¹⁹ C, mₑ = 9.109 × 10⁻³¹ kg, 1/(4πε₀) = 8.988 × 10⁹ N m² C⁻², ε₀ = 8.854 × 10⁻¹² F/m, c = 3 × 10⁸ m/s. Comment on the result. (Original problem.)
+  ask: Radiated power
+  unit: × 10⁻⁸ W
+  ans: 4.664
+  tol: 0.01
+  verify: (1.602e-19**2*(8.988e9*1.602e-19**2/(9.109e-31*5.29e-11**2))**2/(6*PI*8.854e-12*(3e8)**3))*1e8
+  sol: |
+    The Coulomb force supplies the centripetal acceleration:
+
+    $$a = \frac{e^2}{4\pi\varepsilon_0m_er^2} = \frac{8.988\times10^{9}\times(1.602\times10^{-19})^2}{9.109\times10^{-31}\times(5.29\times10^{-11})^2} = 9.05\times10^{22}\ \text{m s}^{-2}.$$
+
+    Larmor:
+
+    $$P = \frac{e^2a^2}{6\pi\varepsilon_0c^3} = \frac{(1.602\times10^{-19})^2(9.05\times10^{22})^2}{6\pi\times8.854\times10^{-12}\times2.7\times10^{25}} = 4.66\times10^{-8}\ \text{W}.$$
+
+    The orbital energy is only $13.6$ eV $= 2.18\times10^{-18}$ J, so at this rate it would be gone in about $2.18\times10^{-18}/4.66\times10^{-8} \approx 5\times10^{-11}$ s (the rate rises as the orbit shrinks; integrating the spiral gives about $1.6\times10^{-11}$ s [Unverified: quoted from memory]). Real atoms are stable, so classical electrodynamics cannot describe the atom; Bohr's stationary-orbit postulate and quantum mechanics replace it.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: |
+    In empty space a field has the form E = E_y(x, t) ĵ, B = B_z(x, t) k̂. (a) Apply Faraday's law and the Ampère–Maxwell law to small rectangular loops to show that ∂E_y/∂x = −∂B_z/∂t and ∂B_z/∂x = −μ₀ε₀ ∂E_y/∂t. (b) Deduce the wave equation for E_y and the wave speed. (c) Show that E_y = E₀ sin(kx − ωt) requires B_z = (E₀/c) sin(kx − ωt) and ω = ck. (Original problem.)
+  hints: ["For Faraday, use a rectangle in the xy-plane of width dx and height h; only the two sides parallel to y contribute.", "For Ampère–Maxwell, use a rectangle in the xz-plane; the flux of E through it is E_y h dx.", "Differentiate one equation with respect to x and the other with respect to t, and eliminate B_z."]
+  sol: |
+    (a) **Faraday.** Rectangle in the $xy$-plane, sides $dx$ and $h$, circulated anticlockwise seen from $+z$. Only the sides parallel to $y$ contribute: $\oint\vec E\cdot d\vec l = [E_y(x+dx)-E_y(x)]h = (\partial E_y/\partial x)\,h\,dx$. The flux is $B_zh\,dx$, so $\partial E_y/\partial x = -\partial B_z/\partial t$.
+
+    **Ampère–Maxwell** (no current). Rectangle in the $xz$-plane, circulated anticlockwise seen from $+y$ (up along $z$ at $x$, down at $x+dx$, since $\hat z\times\hat x = \hat y$): $\oint\vec B\cdot d\vec l = [B_z(x)-B_z(x+dx)]h = -(\partial B_z/\partial x)\,h\,dx$. This equals $\mu_0\varepsilon_0\,d\Phi_E/dt = \mu_0\varepsilon_0(\partial E_y/\partial t)\,h\,dx$. Hence $\partial B_z/\partial x = -\mu_0\varepsilon_0\,\partial E_y/\partial t$.
+
+    (b) Differentiate the first with respect to $x$: $\partial^2E_y/\partial x^2 = -\partial^2B_z/\partial x\,\partial t$. Differentiate the second with respect to $t$: $\partial^2B_z/\partial t\,\partial x = -\mu_0\varepsilon_0\,\partial^2E_y/\partial t^2$. Hence
+
+    $$\frac{\partial^2E_y}{\partial x^2} = \mu_0\varepsilon_0\frac{\partial^2E_y}{\partial t^2},$$
+
+    the wave equation with speed $v = 1/\sqrt{\mu_0\varepsilon_0} = c$.
+
+    (c) Substituting $E_y = E_0\sin(kx-\omega t)$ in the wave equation gives $-k^2 = -\mu_0\varepsilon_0\omega^2$, so $\omega = ck$. From the Faraday relation, $\partial B_z/\partial t = -kE_0\cos(kx-\omega t)$; integrating in time (dropping a static constant, which is not part of the wave), $B_z = (k/\omega)E_0\sin(kx-\omega t) = (E_0/c)\sin(kx-\omega t)$: in phase with $E_y$, with $E_0/B_0 = c$. The second relation is then satisfied as well: $\partial B_z/\partial x = (k^2/\omega)E_0\cos(\cdot)$ and $-\mu_0\varepsilon_0\,\partial E_y/\partial t = \mu_0\varepsilon_0\omega E_0\cos(\cdot)$, equal because $k^2/\omega = \omega/c^2$.
+  check: none
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: |
+    A spherical dust grain of density 2000 kg/m³ absorbs all sunlight that falls on its cross-section. Find the radius for which the Sun's radiation force on it equals the Sun's gravitational pull. Use L = 3.83 × 10²⁶ W, GM_sun = 1.327 × 10²⁰ m³ s⁻², c = 3 × 10⁸ m/s. Are larger or smaller grains blown out of the Solar System? (Original problem; treat the grain with geometric optics.)
+  ask: Critical radius
+  unit: µm
+  ans: 0.2871
+  tol: 0.001
+  verify: 3*3.83e26/(16*PI*3e8*1.327e20*2000)*1e6
+  sol: |
+    Radiation force on an absorber of cross-section $\pi s^2$: $F_{\text{rad}} = \dfrac{L}{4\pi r^2c}\,\pi s^2$. Gravity: $F_g = \dfrac{GM}{r^2}\cdot\dfrac43\pi s^3\rho$.
+
+    Their ratio, independent of $r$, is
+
+    $$\beta = \frac{F_{\text{rad}}}{F_g} = \frac{3L}{16\pi cGM\rho s}.$$
+
+    Setting $\beta = 1$:
+
+    $$s = \frac{3L}{16\pi cGM\rho} = \frac{3\times3.83\times10^{26}}{16\pi\times3\times10^{8}\times1.327\times10^{20}\times2000} = 2.87\times10^{-7}\ \text{m} \approx 0.29\ \mu\text{m}.$$
+
+    Since $\beta\propto1/s$, **smaller** grains feel more push than pull and are driven out; larger ones stay bound. [Inference] At this size the grain is smaller than the wavelength of most sunlight, so the geometric cross-section is only a rough estimate: very small grains actually absorb and scatter less efficiently, so the true critical size differs; the order of magnitude, a fraction of a micrometre, is the point.
+  check: code
