@@ -170,13 +170,21 @@ Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per us
 - **Wave optics leaves:** Huygens' principle, interference and Young's experiment, diffraction, polarisation, thin films.
 - **NCERT covered:** Class 7 Ch 11; Class 8 Ch 10; Class 10 Ch 9–10; Class 12 Ch 9–10.
 
-**In progress: Physics › Electricity and magnetism pillar** (not complete, so the site has not been republished for it). Work one pillar at a time, branch by branch.
-- **Done: Current electricity branch (7 leaves):** electric current and potential difference, Ohm's law, resistance and resistivity, resistors in series and parallel, heating effect and power, Kirchhoff's rules, Wheatstone bridge. NCERT covered: Class 10 Ch 11 (54 items) and all of Class 12 Physics Ch 3 (examples 3.1–3.7, exercises 3.1–3.9).
-- **Done: Electrostatics branch (6 leaves):** electric charge, Coulomb's law, electric field (with the dipole), Gauss's law, potential, capacitors. NCERT covered: Class 12 Physics Ch 1 (examples 1.1–1.12, exercises 1.1–1.23) and Ch 2 (examples 2.1–2.10, exercises 2.1–2.11). The printed answer key has errors for Exercises 1.17/1.18 (swapped), 1.22 and 1.23 (power of ten); the solutions flag them. The `electric-charge` leaf is marked `from: C8` in the tree but no Class 8 chapter is mapped to it.
-- **Still to do:** Magnetism (4 leaves plus Class 10 Ch 12, and leaves for force on moving charges and magnetic materials that the tree lacks; Class 12 Ch 4–5), Induction and AC (4 leaves plus self/mutual inductance and LCR circuits, which the tree lacks; Class 12 Ch 6–8), and Sources of Energy (restored Class 10 chapter). Republish when the pillar is complete.
+**Done: Physics › Electricity and magnetism pillar (33 leaves, all with lessons).** Published to the site artifact after completion.
+- **Current electricity (8 leaves):** electric current and potential difference, Ohm's law, resistance and resistivity, resistors in series and parallel, heating effect and power, domestic electric circuits, Kirchhoff's rules, Wheatstone bridge.
+- **Electrostatics (6 leaves):** electric charge, Coulomb's law, electric field (with the dipole), Gauss's law, potential, capacitors.
+- **Magnetism (9 leaves):** field lines and compasses, force on a current, Lorentz force and circular motion, Biot–Savart law, Ampère's law (id `amp-res-law`), forces between parallel currents, current loop and galvanometer, magnetic dipole and bar magnet, magnetic materials.
+- **Induction and AC (10 leaves):** electromagnetic induction, Lenz's law, motional emf, self and mutual inductance, alternating current, AC through R, L and C, LCR circuit and resonance, transformers, displacement current, electromagnetic waves.
+- **NCERT covered:** Class 10 Ch 11 and Ch 12 (except the restored Sources of Energy); Class 12 Physics Ch 1–8 (all examples and exercises in the 2026-27 reprint). The in-text questions of Class 10 are included.
+- **Known gaps:**
+  - *Sources of Energy* (restored Class 10 chapter) is not in the current reprint, so there is no PDF at the usual code; it needs the owner to upload the older edition.
+  - No Class 8 chapter is mapped to `electric-charge` (tree says `from: C8`).
+  - Figure-based items (Class 12 Ex 6.4/6.5, Exercises 6.1/6.2) use the answer key's lettered directions, which are not independently verified.
+  - The printed answer key has errors flagged in the solutions: Class 12 Ex 1.17/1.18 (swapped), 1.22, 1.23; Exercise 7.8 gives ω₀ for a frequency; Class 12 Exercise 4.11 prints e = 1.5×10⁻¹⁹ C.
+  - Book chapter references (H. C. Verma, Irodov, Purcell) in lessons come from memory and are labelled [Unverified]; no classic-book problems were copied.
 
 **Next, in order:**
-1. Finish the Electricity and magnetism pillar (Magnetism, then Induction and AC), then republish.
+1. Next pillar (owner to choose): candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.
