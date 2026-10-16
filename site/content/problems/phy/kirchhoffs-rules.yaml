@@ -161,3 +161,153 @@
   sol: |
     Let the potential of the branch point be $V$ relative to the common return. The 9 V cell gives $(9 - V)/1$ into the junction. Branch 1 takes $V/4$, branch 2 takes $(V - 3)/2$. Junction rule: $9 - V = V/4 + (V-3)/2$, so $10.5 = 1.75V$ and $V = 6$ V. The second branch carries $(6-3)/2 = 1.5$ A.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "Three branches join junction P to junction Q. Branch 1 is a 12 V cell (positive terminal towards P) with a total resistance of 4 Ω in the branch. Branch 2 is a 6 V cell (positive terminal towards Q) with a total resistance of 3 Ω. Branch 3 is a plain 4 Ω resistor. Find the current in the 4 Ω resistor of branch 3. (Original problem.)"
+  ask: Current in branch 3
+  unit: A
+  ans: 0.3
+  tol: 0.005
+  verify: (12/4-6/3)/(1/4+1/3+1/4)/4
+  sol: |
+    Nodal analysis with $V_Q = 0$ and $V_P = V$. For a branch from Q to P, the current into P is $(\varepsilon - V)/R$, with $\varepsilon$ counted positive if the cell's positive end faces P.
+
+    Branch 1: $(12 - V)/4$. Branch 2: the cell faces the other way, so $(-6 - V)/3$. Branch 3: $(0 - V)/4$. The junction rule at P (total current in = 0):
+    $$\frac{12 - V}{4} + \frac{-6 - V}{3} - \frac{V}{4} = 0 \;\Rightarrow\; 3 - 2 = V\left(\tfrac14 + \tfrac13 + \tfrac14\right) = \tfrac{5}{6}V,$$
+    so $V = 1.2$ V and the current in branch 3 is $1.2/4 = 0.3$ A, from P to Q.
+
+    Check: branch 1 delivers $(12 - 1.2)/4 = 2.7$ A into P; branch 2 carries $(-6 - 1.2)/3 = -2.4$ A, i.e. 2.4 A out of P; $2.7 - 2.4 - 0.3 = 0$ ✓. Both cells are discharging: they drive current round the outer loop in the same sense.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "A car's generator (EMF 14.0 V, internal resistance 0.10 Ω) and its battery (EMF 12.0 V, internal resistance 0.05 Ω) are connected in parallel, positive to positive, and the headlamps (total 2.0 Ω) are connected across them. Find the current charging the battery. (Original problem.)"
+  ask: Charging current
+  unit: A
+  ans: 9.18
+  tol: 0.01
+  verify: ((14/0.1+12/0.05)/(1/0.1+1/2+1/0.05)-12)/0.05
+  sol: |
+    Let $V$ be the common terminal voltage. Junction rule at the positive rail, all currents written as flowing **into** the rail:
+    $$\frac{14 - V}{0.10} + \frac{12 - V}{0.05} - \frac{V}{2.0} = 0.$$
+    So $140 + 240 = V(10 + 20 + 0.5)$, giving $V = 380/30.5 = 12.46$ V (Millman's rule).
+
+    The battery's term is $(12 - 12.46)/0.05 = -9.18$ A: the current flows **into** its positive terminal, so it is being charged at 9.18 A. Check with the charging formula: $V = \varepsilon + Ir = 12 + 9.18\times0.05 = 12.46$ V ✓.
+
+    The generator supplies $(14 - 12.46)/0.10 = 15.4$ A, the lamps take $12.46/2 = 6.2$ A, and $15.4 = 6.2 + 9.2$ ✓.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: "Six junctions form a 2 × 1 grid: T1, T2, T3 along the top and B1, B2, B3 directly below them. The horizontal links T1T2, T2T3, B1B2 and B2B3 are 1 Ω resistors. The middle link T2B2 is a 1 Ω resistor. The left link T1B1 is a 6 V cell of internal resistance 1 Ω with its positive terminal at T1, and the right link T3B3 is a 3 V cell of internal resistance 1 Ω with its positive terminal at T3. Find the current in T2B2. (Original problem.)"
+  ask: Current in T2B2
+  unit: A
+  ans: 1.8
+  tol: 0.005
+  verify: (6/3+3/3)/(1/3+1/1+1/3)/1
+  sol: |
+    **Mesh method.** Let $i_L$ circulate clockwise in the left square (up through the 6 V cell, along T1T2, down T2B2, back along B2B1) and $i_R$ clockwise in the right square (up T2B2, along T2T3, down through the 3 V cell, back along B3B2). T2B2 carries $i_L - i_R$ downwards.
+
+    Left mesh: $+6 - 1\cdot i_L - 1\cdot i_L - 1(i_L - i_R) - 1\cdot i_L = 0$ (cell from $-$ to $+$, its internal resistance, T1T2, T2B2, B2B1), so $4i_L - i_R = 6$.
+
+    Right mesh: $-1(i_R - i_L) - 1\cdot i_R - 1\cdot i_R - 3 - 1\cdot i_R = 0$ (T2B2 against its downward current, T2T3, internal resistance, the 3 V cell from $+$ to $-$, B3B2), so $-i_L + 4i_R = -3$.
+
+    Solving: $i_L = 1.4$ A, $i_R = -0.4$ A, and the current in T2B2 is $i_L - i_R = 1.8$ A, from T2 down to B2.
+
+    **Check by reduction.** Seen from T2 and B2, the left side is one branch with EMF 6 V and resistance 3 Ω, the right side one with 3 V and 3 Ω. Millman: $V_{T2} - V_{B2} = \dfrac{6/3 + 3/3}{1/3 + 1 + 1/3} = 1.8$ V, so the 1 Ω link carries 1.8 A ✓.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: mcq
+  q: A network has 6 junctions and 10 branches, each branch containing resistors and possibly cells. How many independent equations does Kirchhoff's loop rule give? (Original problem.)
+  opts: ["4", "5", "6", "10"]
+  ans: 1
+  sol: |
+    There are 10 unknown branch currents. The junction rule gives $n - 1 = 5$ independent equations (the sixth is the sum of the others). A tree joining the 6 junctions uses 5 branches; each of the other $b - n + 1 = 10 - 6 + 1 = 5$ branches closes one independent loop. So the loop rule gives **5** independent equations, and $5 + 5 = 10$ as needed.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "Twelve 1 Ω resistors form the edges of a cube. One edge is then broken open and a 12 V cell of negligible internal resistance is inserted in series with that edge's resistor. Find the current through the cell. (Original problem.)"
+  ask: Current through the cell
+  unit: A
+  ans: 5
+  tol: 0.01
+  verify: 12/(1+1/(12/7-1))
+  sol: |
+    **Thevenin view.** Let the edge be PQ. The cell sees its own 1 Ω resistor in series with the rest of the cube, i.e. the other 11 edges measured between P and Q. Call that $R'$.
+
+    **Finding $R'$.** For the complete cube, the resistance between the ends of one edge is $7R/12$ (Foster's theorem: $8$ corners, 12 equivalent edges, $12R_{\text{edge}}/R = 7$). The complete cube between P and Q is the edge resistor $R$ in parallel with $R'$:
+    $$\frac{12}{7R} = \frac1R + \frac1{R'} \;\Rightarrow\; \frac{1}{R'} = \frac{5}{7R} \;\Rightarrow\; R' = \frac{7R}{5} = 1.4\ \Omega.$$
+
+    **Current.** The loop through the cell, its edge resistor and the rest of the cube gives
+    $$I = \frac{\varepsilon}{R + R'} = \frac{12}{1 + 1.4} = 5\ \text{A}.$$
+    In general $I = 5\varepsilon/(12R)$.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: "A ladder extends to infinity. Its bottom rail is a single wire G of zero resistance. The top rail has junctions P0 (the input), P1, P2, … . Each rung, from every Pk down to G, is a 1 Ω resistor. Each top-rail section, from Pk+1 to Pk, is a 1 Ω resistor in series with a 10 V cell (negligible internal resistance) whose positive terminal faces Pk. Nothing is connected to the input. Find the potential of P0 above G. (Original problem.)"
+  ask: Open-circuit voltage V(P0) − V(G)
+  unit: V
+  ans: 6.180
+  tol: 0.005
+  verify: 10/(1+(sqrt(5)-1)/2)
+  sol: |
+    **Self-similarity.** Seen from P1 and G, everything beyond P1 is the same infinite ladder as the whole, so it has the same Thevenin equivalent $(E, R_t)$ as seen from P0 and G.
+
+    **$R_t$.** With the cells replaced by their (zero) internal resistances: $R_t = R \parallel (R + R_t)$, i.e. $R_t^2 + RR_t - R^2 = 0$, so $R_t = \tfrac{\sqrt5 - 1}{2}R = 0.618\ \Omega$ (positive root).
+
+    **$E$.** Seen from P0 the network is two branches in parallel between P0 and G: the first rung (EMF 0, resistance $R$), and the section P1→P0 followed by the rest (EMF $\varepsilon + E$, since walking from G up through the rest and then across the cell towards P0 the potential rises by $E$ and then $\varepsilon$; resistance $R + R_t$). Millman's rule:
+    $$E = \frac{(\varepsilon + E)/(R + R_t)}{1/(R + R_t) + 1/R} = \frac{(\varepsilon + E)R}{2R + R_t}.$$
+    So $E(2R + R_t) - ER = \varepsilon R$, giving
+    $$E = \frac{\varepsilon R}{R + R_t} = \frac{\varepsilon}{1 + 0.618} = \frac{\varepsilon}{\varphi} = 6.18\ \text{V},$$
+    where $\varphi = (1+\sqrt5)/2$.
+
+    **Sanity check with finite ladders.** Stop the ladder after one section and the rung at P1: the rung at P0, the cell section and the rung at P1 form a single 3 Ω loop, $10/3$ A flows and $V_{P0} = 3.33$ V. The same recursion gives 5.00 V for two sections, 5.71 V for three and 6.00 V for four, approaching 6.18 V.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: "A 12 V cell of negligible internal resistance is in series with a 2 Ω resistor, and the far end of the resistor and the cell's other terminal form two output terminals. A second 2 Ω resistor is connected across the output terminals. A non-ohmic element whose current is I = kV², with k = 0.5 A/V² (for V ≥ 0), is also connected across the output terminals, the right way round to conduct. Find the voltage across the element. (Original problem.)"
+  ask: Voltage across the element
+  unit: V
+  ans: 2.606
+  tol: 0.002
+  verify: -1+sqrt(13)
+  sol: |
+    The element is non-linear, so superposition cannot be used on the whole circuit. But everything **except** the element is linear, so replace it by its Thevenin equivalent.
+
+    **Thevenin.** Open circuit, the two 2 Ω resistors divide the 12 V equally: $E_{th} = 6$ V. With the cell replaced by a wire, the two resistors are in parallel: $R_{th} = 1\ \Omega$.
+
+    **Load line.** The element then satisfies both $V = 6 - I\cdot1$ and $I = 0.5V^2$:
+    $$6 - V = 0.5V^2 \;\Rightarrow\; V^2 + 2V - 12 = 0 \;\Rightarrow\; V = -1 + \sqrt{13} = 2.606\ \text{V}$$
+    (the negative root is outside $V \ge 0$).
+
+    **Check with Kirchhoff's rules on the full circuit.** Element current $0.5\times2.606^2 = 3.394$ A; the shunt 2 Ω carries $2.606/2 = 1.303$ A; the series resistor carries $(12 - 2.606)/2 = 4.697$ A, and $3.394 + 1.303 = 4.697$ ✓.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: "A closed ring consists of two resistors, R1 = 1 Ω and R2 = 3 Ω, joined at points A and B. The ring surrounds a long solenoid whose changing current induces an EMF of 4 V round the ring. A voltmeter is connected to A and B, with the meter and its leads lying close beside R1, so that the loop formed by the leads and R1 encloses none of the solenoid's flux. What does the voltmeter read (magnitude)? (Original problem.)"
+  ask: Voltmeter reading
+  unit: V
+  ans: 1
+  tol: 0.01
+  verify: 4/(1+3)*1
+  sol: |
+    **Current.** Round the ring, Faraday's law gives $\oint \vec E\cdot d\vec l = 4$ V, which drives $I = 4/(1 + 3) = 1$ A (an ideal voltmeter draws no current).
+
+    **Reading.** A voltmeter measures $\int \vec E\cdot d\vec l$ along its own leads from A to B. The loop made of the leads and R1 encloses no changing flux, so along that loop the field **is** conservative: the integral along the leads equals the integral through R1, which is $IR_1 = 1$ V in magnitude.
+
+    A second voltmeter placed beside R2 would read $IR_2 = 3$ V, although it is connected to the same points A and B. This is the failure of the loop rule with changing flux: "the potential difference between A and B" has no single value. The two readings add up to the 4 V induced EMF, as Faraday's law requires.
+  check: code

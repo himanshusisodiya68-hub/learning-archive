@@ -310,9 +310,9 @@
   tol: 1
   verify: 27+(85.8-75.3)/(75.3*1.7e-4)
   sol: |
-    With a negligible current the element is at room temperature, $T_1 = 27.0\,^\circ$C, $R_1 = 75.3\ \Omega$. At the steady state $R_2 = 230/2.68 = 85.8\ \Omega$. From $R_2 = R_1[1 + \alpha(T_2 - T_1)]$,
+    With a negligible current the element is at room temperature, $T_1 = 27.0\,{}^\circ$C, $R_1 = 75.3\ \Omega$. At the steady state $R_2 = 230/2.68 = 85.8\ \Omega$. From $R_2 = R_1[1 + \alpha(T_2 - T_1)]$,
 
-    $$T_2 - T_1 = \frac{85.8 - 75.3}{75.3\times1.70\times10^{-4}} = 820\,^\circ\text{C},\qquad T_2 = 847\,^\circ\text{C}.$$
+    $$T_2 - T_1 = \frac{85.8 - 75.3}{75.3\times1.70\times10^{-4}} = 820\,{}^\circ\text{C},\qquad T_2 = 847\,{}^\circ\text{C}.$$
 
     At this temperature the heat produced equals the heat lost to the surroundings.
 
@@ -333,7 +333,7 @@
   sol: |
     $R_0 = 5\ \Omega$, $R_{100} = 5.23\ \Omega$, $R_t = 5.795\ \Omega$. With $R_t = R_0(1 + \alpha t)$ the resistance is linear in $t$, so
 
-    $$t = \frac{R_t - R_0}{R_{100} - R_0}\times100 = \frac{5.795 - 5}{5.23 - 5}\times100 = \frac{0.795}{0.23}\times100 = 345.65\,^\circ\text{C}.$$
+    $$t = \frac{R_t - R_0}{R_{100} - R_0}\times100 = \frac{5.795 - 5}{5.23 - 5}\times100 = \frac{0.795}{0.23}\times100 = 345.65\,{}^\circ\text{C}.$$
   check: code
 
 - id: ncert12-ex-3-3
@@ -348,7 +348,7 @@
   tol: 1
   verify: 27+(117-100)/(100*1.7e-4)
   sol: |
-    $R_2 = R_1[1 + \alpha(T_2 - T_1)]$ gives $T_2 - T_1 = \dfrac{117 - 100}{100\times1.70\times10^{-4}} = 1000\,^\circ$C, so $T_2 = 1027\,^\circ$C.
+    $R_2 = R_1[1 + \alpha(T_2 - T_1)]$ gives $T_2 - T_1 = \dfrac{117 - 100}{100\times1.70\times10^{-4}} = 1000\,{}^\circ$C, so $T_2 = 1027\,{}^\circ$C.
   answer_key: 1027 °C
   check: both
 
@@ -379,7 +379,7 @@
   tol: 0.0001
   verify: (2.7/2.1-1)/(100-27.5)
   sol: |
-    Taking $R_1 = 2.1\ \Omega$ at $T_1 = 27.5\,^\circ$C and $R_2 = 2.7\ \Omega$ at $T_2 = 100\,^\circ$C, $R_2 = R_1[1 + \alpha(T_2 - T_1)]$ gives
+    Taking $R_1 = 2.1\ \Omega$ at $T_1 = 27.5\,{}^\circ$C and $R_2 = 2.7\ \Omega$ at $T_2 = 100\,{}^\circ$C, $R_2 = R_1[1 + \alpha(T_2 - T_1)]$ gives
 
     $$\alpha = \frac{R_2/R_1 - 1}{T_2 - T_1} = \frac{0.6/2.1}{72.5} = 3.9\times10^{-3}\ {}^\circ\text{C}^{-1}.$$
   answer_key: 0.0039 °C⁻¹
@@ -399,6 +399,6 @@
   sol: |
     The initial current flows while the element is still at room temperature: $R_1 = 230/3.2 = 71.9\ \Omega$ at 27.0 °C. At the steady state $R_2 = 230/2.8 = 82.1\ \Omega$. Then
 
-    $$T_2 - T_1 = \frac{R_2 - R_1}{R_1\alpha} = \frac{82.1 - 71.9}{71.9\times1.70\times10^{-4}} \approx 840\,^\circ\text{C},\qquad T_2 \approx 867\,^\circ\text{C}.$$
+    $$T_2 - T_1 = \frac{R_2 - R_1}{R_1\alpha} = \frac{82.1 - 71.9}{71.9\times1.70\times10^{-4}} \approx 840\,{}^\circ\text{C},\qquad T_2 \approx 867\,{}^\circ\text{C}.$$
   answer_key: 867 °C
   check: both
