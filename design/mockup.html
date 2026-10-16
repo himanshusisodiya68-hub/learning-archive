@@ -39,6 +39,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { min-height: 100%; }
 body {
   background-color: var(--paper);
@@ -160,6 +161,7 @@ section[data-view].on { display: block; }
 .chap { list-style: none; margin: 0; padding: 0; counter-reset: ch; }
 .chap li { counter-increment: ch; display: grid; grid-template-columns: 2.4ch minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--rule); font-size: 14px; }
 .chap li::before { content: counter(ch); font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-align: right; }
+.chap li.restored { counter-increment: none; }
 .chap li.restored::before { content: "+"; }
 .chap a { color: var(--ink); text-decoration: none; font-weight: 600; }
 .chap a.live { color: var(--accent); }
@@ -217,11 +219,53 @@ math { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", var(--
 .next-step { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; background: var(--accent-soft); border-radius: var(--r); padding: 16px 18px; margin-top: 28px; font-family: var(--f-display); }
 .next-step b { display: block; font-size: 16px; }
 .next-step span { font-size: 13px; color: var(--muted); }
-.margin { font-size: 13px; color: var(--muted); display: grid; gap: 22px; align-content: start; padding-top: 6px; }
+.margin { font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 22px; padding-top: 6px; }
 .margin .mn { border-left: 2px solid var(--rule); padding-left: 12px; }
 .margin .mn b { display: block; color: var(--ink); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
 .margin .mn.tip { border-color: var(--chem); }
 .margin .mn.oly { border-color: var(--eng); }
+
+/* first-principles panel above the tree */
+.about { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 26px; margin-bottom: 16px; border-top: 3px solid var(--c, var(--accent)); }
+.about h2 { font-size: clamp(21px, 2.6vw, 26px); font-weight: 800; letter-spacing: -.02em; margin: 2px 0 10px; }
+.about .what { font-family: var(--f-body); font-size: 16px; line-height: 1.7; }
+.about .what p + p { margin-top: .8em; }
+.about h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+.parts { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.parts button { width: 100%; background: none; border: 0; text-align: left; cursor: pointer; padding: 8px 10px; border-radius: 6px; display: grid; gap: 1px; }
+.parts button:hover { background: var(--sunk); }
+.parts b { font-size: 14px; }
+.parts span { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.about .links { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--rule); font-size: 13.5px; color: var(--muted); }
+.about .links b { color: var(--ink); }
+
+/* depth-layered lesson */
+.depth { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-bottom: 20px; font-size: 13px; color: var(--muted); }
+.lv { font-family: var(--f-mono); font-size: 10.5px; font-weight: 500; padding: 1px 7px; border-radius: 4px; border: 1px solid currentColor; letter-spacing: 0; text-transform: none; white-space: nowrap; }
+.lv.l1 { color: var(--mat); } .lv.l2 { color: var(--accent); } .lv.l3 { color: var(--chem); } .lv.l4 { color: var(--eng); }
+.prose h2 .lv { order: 2; }
+.prose h2::after { order: 1; }
+.prose h3 { font-family: var(--f-display); font-size: 16px; margin: 22px 0 8px; }
+.prose ul { margin: 0 0 1em; padding-left: 1.2em; }
+.prose li { margin-bottom: .45em; }
+.eq { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 12px 16px; text-align: center; font-size: 19px; margin: 14px 0; overflow-x: auto; }
+.eq small { display: block; font-family: var(--f-display); font-size: 12px; color: var(--muted); margin-top: 4px; }
+.fig { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 12px; margin: 14px 0; }
+.fig svg { width: 100%; max-width: min(100%, 460px); height: auto; display: block; margin: 0 auto; }
+.fig figcaption { font-family: var(--f-display); font-size: 12.5px; color: var(--muted); text-align: center; margin-top: 6px; }
+.fig .ln { stroke: var(--ink); stroke-width: 1.4; fill: none; }
+.fig .ray { stroke: var(--phy); stroke-width: 2; fill: none; }
+.fig .wf { stroke: var(--eng); stroke-width: 2; fill: none; }
+.fig .faint { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; fill: none; }
+.fig .m2 { fill: color-mix(in srgb, var(--phy) 10%, var(--surface)); }
+.fig text { fill: var(--muted); font-family: var(--f-mono); font-size: 11px; }
+.fig text.k { fill: var(--ink); font-weight: 500; }
+.traps { background: color-mix(in srgb, var(--chem) 9%, var(--surface)); border-radius: var(--r); padding: 14px 18px; }
+.toc-wrap { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); }
+.toc { display: grid; gap: 2px; }
+.toc button { background: none; border: 0; text-align: left; cursor: pointer; padding: 5px 8px; border-radius: 5px; font-size: 13px; color: var(--ink); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.toc button:hover { background: var(--sunk); }
+.toc button[hidden] { display: none; }
 
 /* practice list inside lesson */
 .ladder { display: grid; gap: 14px; }
@@ -312,7 +356,9 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
   .badge { position: absolute; top: 2px; left: calc(50% + 6px); margin: 0; font-size: 10px; line-height: 15px; padding: 0 5px; }
   main { padding-block: 22px calc(96px + env(safe-area-inset-bottom, 0px)); }
   .read { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .margin { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); padding-top: 26px; }
+  .margin { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); padding-top: 26px; }
+  .margin .toc-wrap { display: none; }
+  .about { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .cols { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .col { display: none; border-left: 0; }
   .col.active { display: flex; }
@@ -404,12 +450,13 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
       </div>
       <div id="by-subject">
         <div class="crumbs" id="crumbs"></div>
+        <div class="panel about" id="about"></div>
         <div class="cols" id="cols"></div>
       </div>
       <div id="by-class" hidden>
         <div class="class-pills" id="class-pills"></div>
         <div class="books" id="books"></div>
-        <p class="note">These chapter lists come from memory of the rationalised editions and have not yet been checked against ncert.nic.in. Rows marked + are chapters that were removed and will be written back in.</p>
+        <p class="note">These chapter lists come from memory of the rationalised editions and have not yet been checked against ncert.nic.in. Rows marked + are chapters removed from the current edition. They sit where the older edition placed them and will be written back in.</p>
       </div>
     </section>
 
@@ -432,6 +479,15 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
       </div>
 
       <div class="lpane" data-lpane="learn">
+        <div class="depth" role="group" aria-label="Depth">
+          <span>Show depth up to</span>
+          <div class="seg" id="depth-seg">
+            <button aria-pressed="false" data-depth="1">Class 10</button>
+            <button aria-pressed="false" data-depth="2">Class 12 · JEE Main</button>
+            <button aria-pressed="false" data-depth="3">JEE Adv. · Irodov</button>
+            <button aria-pressed="true" data-depth="4">Olympiad</button>
+          </div>
+        </div>
         <div class="read">
           <div>
             <div class="needs">
@@ -439,6 +495,8 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
               <span class="chip"><i class="glyph s-phy" style="--p:1;width:10px;height:10px"></i>Laws of reflection</span>
               <span class="chip"><i class="glyph s-phy" style="--p:.75;width:10px;height:10px"></i>Speed of light</span>
               <span class="chip"><i class="glyph s-mat" style="--p:1;width:10px;height:10px"></i>Sine of an angle</span>
+              <span class="chip" data-lvl="3"><i class="glyph s-mat" style="--p:.25;width:10px;height:10px"></i>Vectors</span>
+              <span class="chip" data-lvl="4"><i class="glyph s-mat" style="--p:0;width:10px;height:10px"></i>Derivatives and maxima</span>
             </div>
 
             <div class="hook" id="hook">
@@ -453,51 +511,165 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
             </div>
 
             <div class="prose">
-              <h2>The idea</h2>
-              <p>Light travels at about 3 × 10<sup>8</sup> m/s in vacuum and more slowly inside matter. When a beam crosses into a new material at an angle, one edge of the beam slows down before the other, so the beam swings round. A column of marchers turns the same way when one end steps into mud first.</p>
-              <p>The refractive index compares the two speeds: <i>n</i> = <i>c</i>/<i>v</i>. Water has <i>n</i> ≈ 1.33 and ordinary glass about 1.5. A larger <i>n</i> means slower light and a sharper bend towards the normal.</p>
-              <div class="law">
-                <math display="block"><msub><mi>n</mi><mn>1</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>1</mn></msub><mo>=</mo><msub><mi>n</mi><mn>2</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>2</mn></msub></math>
-                <small>Both angles are measured from the normal, the line perpendicular to the surface.</small>
-              </div>
-              <h2>Move the ray yourself</h2>
+              <section data-lvl="1" id="s-idea" data-toc="The idea">
+                <h2>The idea <span class="lv l1">Class 10</span></h2>
+                <p>Light travels at about 3 × 10<sup>8</sup> m/s in vacuum and more slowly inside matter. When a beam crosses into a new material at an angle, one edge of the beam slows down before the other, so the beam swings round. A column of marchers turns the same way when one end steps into mud first.</p>
+                <p>The refractive index compares the two speeds: <i>n</i> = <i>c</i>/<i>v</i>. Water has <i>n</i> ≈ 1.33 and ordinary glass about 1.5. A larger <i>n</i> means slower light and a sharper bend towards the normal.</p>
+                <div class="law">
+                  <math display="block"><msub><mi>n</mi><mn>1</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>1</mn></msub><mo>=</mo><msub><mi>n</mi><mn>2</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>2</mn></msub></math>
+                  <small>Both angles are measured from the normal. The incident ray, the refracted ray and the normal lie in one plane.</small>
+                </div>
+              </section>
             </div>
 
-            <div class="sim">
-              <svg viewBox="0 0 360 230" role="img" aria-label="Ray diagram: a light ray bending at the boundary between two media">
-                <rect class="m1" id="m1" x="0" y="0" width="360" height="115"/>
-                <rect class="m2" id="m2" x="0" y="115" width="360" height="115"/>
-                <line class="iface" x1="0" y1="115" x2="360" y2="115"/>
-                <line class="normal" x1="180" y1="8" x2="180" y2="222"/>
-                <path class="arc" id="arc1"/><path class="arc" id="arc2"/>
-                <line class="ray" id="rRefl" x1="180" y1="115" style="stroke-width:2"/>
-                <line class="ray" id="rIn" x2="180" y2="115"/>
-                <line class="ray" id="rOut" x1="180" y1="115"/>
-                <text class="lbl" id="lab1" x="10" y="20">Air · n = 1.00</text>
-                <text class="lbl" id="lab2" x="10" y="220">Water · n = 1.33</text>
-                <text class="lbl" x="186" y="18">normal</text>
-              </svg>
-              <div class="controls">
-                <label for="ang">Angle of incidence θ<sub>1</sub>: <b id="angv">40°</b></label>
-                <select id="pair" aria-label="Media">
-                  <option value="0">Air → Water</option><option value="1">Air → Glass</option>
-                  <option value="2">Water → Air</option><option value="3">Glass → Air</option><option value="4">Water → Glass</option>
-                </select>
-                <input id="ang" type="range" min="0" max="89" value="40">
+            <section data-lvl="1" id="s-sim" data-toc="Move the ray yourself">
+              <div class="prose"><h2>Move the ray yourself <span class="lv l1">Class 10</span></h2></div>
+              <div class="sim">
+                <svg viewBox="0 0 360 230" role="img" aria-label="Ray diagram: a light ray bending at the boundary between two media">
+                  <rect class="m1" id="m1" x="0" y="0" width="360" height="115"/>
+                  <rect class="m2" id="m2" x="0" y="115" width="360" height="115"/>
+                  <line class="iface" x1="0" y1="115" x2="360" y2="115"/>
+                  <line class="normal" x1="180" y1="8" x2="180" y2="222"/>
+                  <path class="arc" id="arc1"/><path class="arc" id="arc2"/>
+                  <line class="ray" id="rRefl" x1="180" y1="115" style="stroke-width:2"/>
+                  <line class="ray" id="rIn" x2="180" y2="115"/>
+                  <line class="ray" id="rOut" x1="180" y1="115"/>
+                  <text class="lbl" id="lab1" x="10" y="20">Air · n = 1.00</text>
+                  <text class="lbl" id="lab2" x="10" y="220">Water · n = 1.33</text>
+                  <text class="lbl" x="186" y="18">normal</text>
+                </svg>
+                <div class="controls">
+                  <label for="ang">Angle of incidence θ<sub>1</sub>: <b id="angv">40°</b></label>
+                  <select id="pair" aria-label="Media">
+                    <option value="0">Air → Water</option><option value="1">Air → Glass</option>
+                    <option value="2">Water → Air</option><option value="3">Glass → Air</option><option value="4">Water → Glass</option>
+                  </select>
+                  <input id="ang" type="range" min="0" max="89" value="40">
+                </div>
+                <div class="readout" id="readout"></div>
               </div>
-              <div class="readout" id="readout"></div>
-            </div>
+            </section>
 
             <div class="prose">
-              <h2>Worked example</h2>
-              <div class="worked">
-                A ray in air strikes a glass slab (<i>n</i> = 1.5) at 60° to the normal. Find the angle of refraction.
-                <ol>
-                  <li>Write the law: 1.00 × sin 60° = 1.5 × sin θ<sub>2</sub>.</li>
-                  <li>sin θ<sub>2</sub> = 0.866 / 1.5 = 0.577.</li>
-                  <li>θ<sub>2</sub> = sin<sup>−1</sup>(0.577) ≈ 35.3°. The ray bends towards the normal, as expected for a slower medium.</li>
-                </ol>
-              </div>
+              <section data-lvl="1" id="s-ex1" data-toc="Worked example">
+                <h2>Worked example <span class="lv l1">Class 10</span></h2>
+                <div class="worked">
+                  A ray in air strikes a glass slab (<i>n</i> = 1.5) at 60° to the normal. Find the angle of refraction.
+                  <ol>
+                    <li>Write the law: 1.00 × sin 60° = 1.5 × sin θ<sub>2</sub>.</li>
+                    <li>sin θ<sub>2</sub> = 0.866 / 1.5 = 0.577.</li>
+                    <li>θ<sub>2</sub> = sin<sup>−1</sup>(0.577) ≈ 35.3°. The ray bends towards the normal, as expected for a slower medium.</li>
+                  </ol>
+                </div>
+              </section>
+
+              <section data-lvl="2" id="s-why" data-toc="Why the law holds">
+                <h2>Why the law holds <span class="lv l2">Class 12</span></h2>
+                <p>Treat light as a wavefront, a line of crests that moves perpendicular to itself. Let the front AB reach the surface at A while its other end B still has a distance BC to go.</p>
+                <figure class="fig">
+                  <svg viewBox="0 0 360 240" role="img" aria-label="Huygens construction: wavefront AB meets the surface; wavelet from A of radius AD; refracted wavefront DC">
+                    <rect class="m2" x="0" y="120" width="360" height="120"/>
+                    <line class="ln" x1="0" y1="120" x2="360" y2="120"/>
+                    <line class="ray" x1="26.4" y1="75" x2="80" y2="120"/>
+                    <line class="ray" x1="80" y1="120" x2="146.4" y2="231.8"/>
+                    <line class="ray" x1="139.6" y1="2.2" x2="280" y2="120"/>
+                    <line class="ray" x1="280" y1="120" x2="310.6" y2="171.6"/>
+                    <path class="faint" d="M182.1,120 A102.1,102.1 0 0 1 80,222.1"/>
+                    <line class="wf" x1="80" y1="120" x2="162.6" y2="21.5"/>
+                    <line class="wf" x1="132.1" y1="207.8" x2="280" y2="120"/>
+                    <text class="k" x="68" y="112">A</text><text class="k" x="168" y="20">B</text>
+                    <text class="k" x="284" y="112">C</text><text class="k" x="118" y="222">D</text>
+                    <text x="232" y="64">v₁t</text><text x="70" y="178">v₂t</text>
+                    <text x="8" y="16">medium 1 (n₁)</text><text x="250" y="234">medium 2 (n₂)</text>
+                  </svg>
+                  <figcaption>Wavefront AB arrives; the wavelet from A grows to radius AD while B travels to C; DC is the new wavefront.</figcaption>
+                </figure>
+                <p>In the time <i>t</i> that B takes to reach C at speed <i>v</i><sub>1</sub>, the wavelet from A spreads into medium 2 to a radius AD = <i>v</i><sub>2</sub><i>t</i>. The new wavefront is the line from C that just touches this wavelet. The triangles ABC and ADC share the side AC, so</p>
+                <div class="eq">sin <i>i</i> = BC/AC = <i>v</i><sub>1</sub><i>t</i>/AC, &nbsp;&nbsp; sin <i>r</i> = AD/AC = <i>v</i><sub>2</sub><i>t</i>/AC &nbsp;⇒&nbsp; sin <i>i</i> / sin <i>r</i> = <i>v</i><sub>1</sub>/<i>v</i><sub>2</sub> = <i>n</i><sub>2</sub>/<i>n</i><sub>1</sub></div>
+                <p>The law is a statement about speeds and nothing else. The frequency cannot change at the boundary, because crests arrive at the surface at one rate on both sides. So the wavelength shrinks in the slower medium: λ<sub>2</sub> = λ<sub>1</sub><i>n</i><sub>1</sub>/<i>n</i><sub>2</sub>.</p>
+              </section>
+
+              <section data-lvl="2" id="s-cons" data-toc="Consequences">
+                <h2>Consequences you will use constantly <span class="lv l2">JEE Main</span></h2>
+                <ul>
+                  <li><b>Reversibility.</b> A ray sent backwards retraces its path, so the index of 2 relative to 1 is the reciprocal of 1 relative to 2: <sub>1</sub><i>n</i><sub>2</sub> = 1/<sub>2</sub><i>n</i><sub>1</sub>.</li>
+                  <li><b>Deviation at one surface.</b> The ray turns by δ = <i>i</i> − <i>r</i>.</li>
+                  <li><b>Critical angle.</b> Going from dense to rare, the refracted ray grazes the surface when sin θ<sub>c</sub> = <i>n</i><sub>2</sub>/<i>n</i><sub>1</sub>. Beyond θ<sub>c</sub> all the light reflects (total internal reflection). The largest turn refraction alone can give is therefore 90° − θ<sub>c</sub>.</li>
+                  <li><b>Apparent depth, near-normal viewing.</b> An object at depth <i>h</i> in medium <i>n</i>, seen from air, appears at <i>h</i>/<i>n</i>. In general, apparent depth = real depth × <i>n</i><sub>observer</sub>/<i>n</i><sub>object</sub>.</li>
+                  <li><b>Parallel slab.</b> The ray leaves parallel to the way it came in, shifted sideways by <i>d</i> = <i>t</i> sin(<i>i</i> − <i>r</i>)/cos <i>r</i>, because the path inside is <i>t</i>/cos <i>r</i> long and makes angle <i>i</i> − <i>r</i> with the original line. Seen face-on, the slab lifts an image by <i>t</i>(1 − 1/<i>n</i>).</li>
+                </ul>
+              </section>
+
+              <section data-lvl="3" id="s-inv" data-toc="The invariant n sin θ">
+                <h2>The invariant <i>n</i> sin θ <span class="lv l3">JEE Advanced</span></h2>
+                <p>Stack any number of parallel layers. At every boundary the product <i>n</i> sin θ is handed on unchanged, so</p>
+                <div class="eq"><i>n</i><sub>1</sub> sin θ<sub>1</sub> = <i>n</i><sub>2</sub> sin θ<sub>2</sub> = … = <i>n</i><sub>k</sub> sin θ<sub>k</sub><small>The final direction depends only on the first and last media, never on the layers between.</small></div>
+                <p>This turns multilayer problems into one line, and it tells you when total internal reflection happens deep inside a stack: wherever <i>n</i><sub>1</sub> sin θ<sub>1</sub> exceeds the local <i>n</i>. In the limit of a continuously varying index it becomes <i>n</i>(<i>y</i>) sin θ(<i>y</i>) = constant, which drives the Olympiad section below.</p>
+              </section>
+
+              <section data-lvl="3" id="s-depth" data-toc="Apparent depth at an angle">
+                <h2>Apparent depth at an angle <span class="lv l3">Irodov</span></h2>
+                <p>The rule <i>h</i>/<i>n</i> assumes you look almost straight down. Look obliquely and the image moves. Put the object at depth <i>h</i> in water (<i>n</i>) and follow a ray leaving at angle θ<sub>1</sub>. It meets the surface at <i>x</i> = <i>h</i> tan θ<sub>1</sub> and continues in air at θ<sub>2</sub>, with <i>n</i> sin θ<sub>1</sub> = sin θ<sub>2</sub>.</p>
+                <p>Your eye collects a thin bundle of neighbouring rays, and the image is where those rays, traced backwards, cross. A backward-traced ray at depth <i>y</i> sits at <i>x</i> − <i>y</i> tan θ<sub>2</sub>; neighbouring rays meet where this does not change with θ<sub>1</sub>:</p>
+                <div class="eq">d<i>x</i>/dθ<sub>1</sub> = <i>y</i> sec²θ<sub>2</sub> · dθ<sub>2</sub>/dθ<sub>1</sub>, &nbsp; with d<i>x</i>/dθ<sub>1</sub> = <i>h</i> sec²θ<sub>1</sub> and <i>n</i> cos θ<sub>1</sub> dθ<sub>1</sub> = cos θ<sub>2</sub> dθ<sub>2</sub></div>
+                <div class="eq"><i>h</i>′ = <i>h</i> cos³θ<sub>2</sub> / (<i>n</i> cos³θ<sub>1</sub>)<small>θ<sub>1</sub> in water, θ<sub>2</sub> in air. For θ → 0 this returns <i>h</i>/<i>n</i>.</small></div>
+                <p>Since θ<sub>2</sub> &gt; θ<sub>1</sub>, the ratio is below 1/<i>n</i>: the more obliquely you look, the shallower the object seems. That is why the floor of a pool appears to rise towards the far end.</p>
+              </section>
+
+              <section data-lvl="3" id="s-vec" data-toc="Snell's law as a vector equation">
+                <h2>Snell's law as a vector equation <span class="lv l3">Irodov</span></h2>
+                <p>Let <b>k̂</b><sub>1</sub> and <b>k̂</b><sub>2</sub> be unit vectors along the incident and refracted rays, and <b>N̂</b> the unit normal pointing into medium 2. Snell's law and the rule that both rays share a plane with the normal combine into one statement: the part of <i>n</i><b>k̂</b> along the surface is conserved.</p>
+                <div class="eq"><i>n</i><sub>1</sub>(<b>k̂</b><sub>1</sub> × <b>N̂</b>) = <i>n</i><sub>2</sub>(<b>k̂</b><sub>2</sub> × <b>N̂</b>) &nbsp;⇔&nbsp; <i>n</i><sub>2</sub><b>k̂</b><sub>2</sub> = <i>n</i><sub>1</sub><b>k̂</b><sub>1</sub> + (<i>n</i><sub>2</sub> cos θ<sub>2</sub> − <i>n</i><sub>1</sub> cos θ<sub>1</sub>)<b>N̂</b></div>
+                <p>This form handles tilted surfaces in three dimensions without drawing anything, which makes it the natural tool for prism and wedge problems in Irodov and the formula ray-tracing software uses.</p>
+              </section>
+
+              <section data-lvl="4" id="s-fermat" data-toc="Fermat's principle">
+                <h2>Fermat's principle <span class="lv l4">Olympiad</span></h2>
+                <p>One rule produces straight-line travel, reflection and refraction together: <b>light follows a path along which the travel time is stationary</b>. Equivalently, the optical path length ∫<i>n</i> d<i>s</i> is stationary.</p>
+                <p>Put A at height <i>a</i> above the boundary and B at depth <i>b</i> below it, a horizontal distance <i>d</i> apart. If the ray crosses at <i>x</i>, then</p>
+                <div class="eq"><i>c</i><i>T</i>(<i>x</i>) = <i>n</i><sub>1</sub>√(<i>a</i>² + <i>x</i>²) + <i>n</i><sub>2</sub>√(<i>b</i>² + (<i>d</i> − <i>x</i>)²)</div>
+                <p>Setting d<i>T</i>/d<i>x</i> = 0 gives <i>n</i><sub>1</sub><i>x</i>/√(<i>a</i>² + <i>x</i>²) = <i>n</i><sub>2</sub>(<i>d</i> − <i>x</i>)/√(<i>b</i>² + (<i>d</i> − <i>x</i>)²), and each fraction is a sine: <i>n</i><sub>1</sub> sin θ<sub>1</sub> = <i>n</i><sub>2</sub> sin θ<sub>2</sub>. "Stationary" matters: for some mirrors the actual path takes the longest time, not the shortest.</p>
+              </section>
+
+              <section data-lvl="4" id="s-grad" data-toc="Curved rays in graded media">
+                <h2>Curved rays in graded media <span class="lv l4">Olympiad</span></h2>
+                <p>If <i>n</i> changes smoothly with height, the layer invariant becomes <i>n</i>(<i>y</i>) sin θ(<i>y</i>) = constant, with θ measured from the vertical. The ray bends steadily towards higher <i>n</i>, with curvature set by the part of the index gradient perpendicular to the ray:</p>
+                <div class="eq">1/<i>R</i> = (1/<i>n</i>) ∂<i>n</i>/∂<i>N</i> &nbsp;&nbsp;and, in general,&nbsp;&nbsp;
+                  <math><mfrac><mi>d</mi><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mrow><mo>(</mo><mi>n</mi><mfrac><mrow><mi>d</mi><mi mathvariant="bold">r</mi></mrow><mrow><mi>d</mi><mi>s</mi></mrow></mfrac><mo>)</mo></mrow><mo>=</mo><mo>∇</mo><mi>n</mi></math>
+                  <small>The second form, the ray equation, is Newton's second law for light rays.</small></div>
+                <h3>Worked example: a parabolic ray</h3>
+                <div class="worked">
+                  A medium has <i>n</i>² = <i>n</i><sub>0</sub>²(1 + α<i>y</i>). A ray starts horizontally at <i>y</i> = 0. Find its path.
+                  <ol>
+                    <li>Horizontal start means sin θ = 1 at <i>n</i> = <i>n</i><sub>0</sub>, so <i>n</i> sin θ = <i>n</i><sub>0</sub> everywhere.</li>
+                    <li>The slope is d<i>y</i>/d<i>x</i> = cot θ = √(<i>n</i>² − <i>n</i><sub>0</sub>²)/<i>n</i><sub>0</sub> = √(α<i>y</i>).</li>
+                    <li>Separate and integrate: 2√<i>y</i> = √α · <i>x</i>, so <i>y</i> = α<i>x</i>²/4. The ray is a parabola, bending towards larger <i>n</i>.</li>
+                  </ol>
+                </div>
+                <p>A mirage on a hot road is the same physics: air near the surface is hotter, so its index is lower, and rays from the sky curve upwards into your eye from below.</p>
+              </section>
+
+              <section data-lvl="4" id="s-refine" data-toc="Two refinements">
+                <h2>Two refinements <span class="lv l4">Olympiad</span></h2>
+                <ul>
+                  <li><b>Dispersion.</b> <i>n</i> depends on wavelength. For glass in the visible range, Cauchy's formula <i>n</i>(λ) ≈ <i>A</i> + <i>B</i>/λ² works well, so violet bends more than red. This is how a prism splits white light.</li>
+                  <li><b>How much light reflects.</b> Refraction never takes all of the light. At normal incidence the reflected fraction is <i>R</i> = ((<i>n</i><sub>1</sub> − <i>n</i><sub>2</sub>)/(<i>n</i><sub>1</sub> + <i>n</i><sub>2</sub>))², about 4% at an air–glass surface. The Fresnel equations give the angle dependence.</li>
+                </ul>
+              </section>
+
+              <section data-lvl="1" id="s-traps" data-toc="Toolkit and traps">
+                <h2>Toolkit and traps <span class="lv l1">all levels</span></h2>
+                <div class="traps">
+                  <ul style="margin:0">
+                    <li>Angles are measured from the normal. Many problems give the angle with the surface instead.</li>
+                    <li data-lvl="2">Total internal reflection needs light going from dense to rare. Check the direction before using sin θ<sub>c</sub> = <i>n</i><sub>2</sub>/<i>n</i><sub>1</sub>.</li>
+                    <li data-lvl="2">For small angles, sin θ ≈ tan θ ≈ θ (in radians) turns most near-normal problems into simple ratios.</li>
+                    <li data-lvl="3">In layered problems, use <i>n</i> sin θ = constant and skip the layers in between.</li>
+                    <li data-lvl="3"><i>h</i>/<i>n</i> is a near-normal result. For oblique viewing, use the cos³ formula.</li>
+                    <li data-lvl="4">Any "quickest route" puzzle, such as a lifeguard running then swimming, is Snell's law with speeds in place of indices.</li>
+                  </ul>
+                </div>
+              </section>
             </div>
 
             <div class="next-step">
@@ -509,7 +681,7 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
           <aside class="margin">
             <div class="mn"><b>History</b>Ibn Sahl described the law of refraction in Baghdad around 984. Willebrord Snell found it again in 1621, and it carries his name.</div>
             <div class="mn tip"><b>Board favourite</b>Apparent depth = real depth ÷ <i>n</i>, valid only when viewing nearly straight down.</div>
-            <div class="mn oly"><b>Olympiad link</b>Snell's law follows from the principle of least time. The same reasoning leads to the brachistochrone and to Lagrangian mechanics.</div>
+            <div class="toc-wrap"><div class="eyebrow" style="margin-bottom:6px">On this page</div><nav class="toc" id="toc" aria-label="Sections"></nav></div>
           </aside>
         </div>
       </div>
@@ -524,7 +696,7 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
 
       <div class="lpane" data-lpane="books" hidden>
         <div class="panel" style="max-width:720px">
-          <p class="lede" style="margin:0 0 12px">Where this idea appears in your reference books. Add problems from your own copy and they join the practice ladder.</p>
+          <p class="lede" style="margin:0 0 12px">Where this idea appears in your reference books. Problems from your copies, word for word, join the practice ladder at their level once you share the PDFs.</p>
           <ul class="chap">
             <li style="grid-template-columns:minmax(0,1fr) auto"><span><b>H. C. Verma</b>, Concepts of Physics Vol. 1 · Ch. 18 Geometrical Optics</span><button class="btn quiet">Add problems</button></li>
             <li style="grid-template-columns:minmax(0,1fr) auto"><span><b>I. E. Irodov</b>, Problems in General Physics · Part 5 Optics</span><button class="btn quiet">Add problems</button></li>
@@ -740,6 +912,104 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
   ];
   const SUBJ_PROGRESS = { phy: .31, mat: .38, chem: .18, bio: .12, eng: 0 };
 
+  // First-principles introductions for every subject, pillar and branch. key: subj[/pillar[/branch]]
+  const INTRO = {
+    'phy': { what: 'Physics asks what the world is made of and what rules govern how it changes. It strips a situation down to a few measurable quantities (position, time, mass, charge, energy) and looks for laws that connect them. Those laws are few, and they hold everywhere: the rule that drops an apple also keeps the Moon in orbit.\n\nChemistry, engineering, electronics and computing all sit on top of these laws, which is why physics is the deepest base for everything you want to build later.',
+      split: 'The pillars are grouped by what is changing and on what scale.',
+      links: '<b>How the pillars connect.</b> Energy conservation runs through every pillar. Mechanics supplies force, momentum and energy, which every later pillar reuses. Waves link mechanics to optics and to quantum physics. Electromagnetism unifies electricity, magnetism and light. Thermal physics is mechanics applied to enormous numbers of particles.' },
+    'phy/Mechanics': { tag: 'How things move and why. Every other pillar reuses its ideas.',
+      what: 'Mechanics studies motion. It starts from three measured quantities, length, time and mass, and asks two questions: how do we describe a motion, and what causes it to change? Newton answered the second with three laws and a law of gravitation, and with them explained falling bodies, projectiles and planetary orbits by one set of rules.\n\nMechanics comes first because its concepts (force, momentum, energy) reappear in every other pillar.' ,
+      split: 'First describe motion, then explain it, then find shortcuts, then extend to real bodies and specific forces.' },
+    'phy/Mechanics/Kinematics': { tag: 'Describing motion: where, when, how fast. No causes yet.',
+      what: 'Kinematics answers “where is it, and when?” without asking why. Choose an origin, a set of axes and a clock, and a motion becomes a function: position as a function of time, x(t). Velocity is how fast position changes (dx/dt) and acceleration is how fast velocity changes (dv/dt).\n\nBecause these are rates, calculus is the natural language: the Class 9 equations of motion are exactly what you get by integrating a constant acceleration. In two or three dimensions every quantity becomes a vector, and each axis can be handled separately. That is why a projectile splits into steady horizontal motion and accelerated vertical motion.' },
+    'phy/Mechanics/Newton\'s laws': { tag: 'Why motion changes: force, mass and momentum.',
+      what: 'Dynamics explains why motion changes. The first law says that with no net force, velocity stays constant; it defines the inertial frames in which the other laws hold. The second law, F = dp/dt, says force is what changes momentum, and mass measures how hard that change is. The third law says forces come in equal and opposite pairs acting on different bodies, which leads to conservation of momentum.\n\nAlmost every mechanics problem follows one recipe: isolate a body, draw every force acting on it, apply F = ma along chosen axes, and add equations for any constraints linking the bodies.' },
+    'phy/Mechanics/Work, energy and power': { tag: 'A shortcut: follow one conserved number instead of every force.',
+      what: 'Following forces moment by moment is hard. Energy offers a shortcut: one number that is conserved. Work, W = ∫F·dr, is energy transferred by a force. The work–energy theorem says the net work equals the change in kinetic energy. For conservative forces such as gravity and springs, that work can be stored as potential energy, so kinetic plus potential energy stays constant. Power is the rate of transfer.\n\nEnergy ignores direction and timing, so it is fastest when you only need a speed or a height.' },
+    'phy/Mechanics/Rotation': { tag: 'Bodies with size: spinning as well as moving.',
+      what: 'Real bodies have size, so they can spin as well as travel. Treat a rigid body as many particles held at fixed distances. Its centre of mass moves as if all the mass and all the external force were concentrated there. About that point, rotation follows copies of Newton\'s laws: torque plays the role of force, moment of inertia the role of mass, and angular momentum the role of momentum. Rolling combines the two motions through the constraint v = ωR.' },
+    'phy/Mechanics/Gravitation': { tag: 'One force, important enough for its own branch.',
+      what: 'Newton\'s law of gravitation says every pair of masses attracts with F = Gm₁m₂/r². The same law explains falling objects, tides and orbits. From it follow g and how it changes with height and depth, Kepler\'s laws, and orbital and escape speeds. It is also your first field: a mass changes the space around it, and other masses respond to that field.' },
+    'phy/Mechanics/Properties of matter': { tag: 'Real materials stretch, flow and float.',
+      what: 'So far bodies were rigid or point-like. Real matter deforms and flows. Solids resist deformation (elasticity). Fluids cannot resist sliding forces, so they flow. Pressure and buoyancy come from the weight of fluid above a point. Bernoulli\'s principle is energy conservation for a moving fluid. Viscosity is internal friction, and surface tension comes from the extra energy of molecules at a surface.' },
+    'phy/Oscillations and waves': { tag: 'Motion that repeats in time and travels through space.',
+      what: 'Push most systems away from equilibrium and they are pulled back, overshoot and repeat: an oscillation. When neighbouring parts of a medium pass that oscillation along, you get a wave, which carries energy without carrying matter.\n\nOne mathematical shape, the sine curve, describes springs, pendulums, sound, light and even quantum particles. That is why this pillar links mechanics to optics and to modern physics.',
+      split: 'First the oscillation of a single system, then the wave that spreads it through a medium.' },
+    'phy/Oscillations and waves/Simple harmonic motion': { tag: 'The basic oscillation: restoring force proportional to displacement.',
+      what: 'If the restoring force is proportional to the displacement, F = −kx, the motion is a pure sine curve, x = A sin(ωt + φ), with ω = √(k/m) independent of the amplitude. Almost any system near a stable equilibrium behaves like this for small displacements, so SHM is the first approximation for everything that vibrates. Friction adds damping; a periodic push adds forced oscillation and resonance.' },
+    'phy/Oscillations and waves/Waves and sound': { tag: 'Oscillations passed along a medium.',
+      what: 'A wave is a disturbance that travels: y(x, t) = A sin(kx − ωt). Its speed v = fλ is set by the medium, for example tension and density for a string. Sound is a longitudinal pressure wave. Overlapping waves add (superposition), which gives standing waves in strings and pipes, beats, and the Doppler shift when the source or listener moves.' },
+    'phy/Thermal physics': { tag: 'Huge numbers of particles: heat, temperature, entropy.',
+      what: 'A glass of water holds about 10²⁵ molecules, far too many to track one by one. Thermal physics replaces individual motion with averages. Temperature measures the average kinetic energy per molecule. Heat is energy that flows because of a temperature difference. Entropy counts how many microscopic arrangements match what we observe.\n\nThe laws of thermodynamics then say what is possible and what is not, from engines to refrigerators.',
+      split: 'First measure heat and temperature, then find the laws that limit what heat can do.' },
+    'phy/Thermal physics/Heat and temperature': { tag: 'Measuring heat and how it moves.',
+      what: 'Temperature is what a thermometer reads and what becomes equal when two bodies are left in contact. Heat is energy flowing because of a temperature difference. Calorimetry tracks that energy (Q = mcΔT, plus latent heat for changes of state). Expansion shows how matter responds to heating. Conduction, convection and radiation are the three routes heat takes.' },
+    'phy/Thermal physics/Thermodynamics': { tag: 'The laws that limit what heat can do.',
+      what: 'Kinetic theory links pressure and temperature to molecular motion (pV = NkT). The first law is energy conservation including heat: ΔU = Q − W. The second law says heat flows on its own only from hot to cold; equivalently, the entropy of an isolated system never decreases. It sets the maximum efficiency any engine can reach.' },
+    'phy/Electricity and magnetism': { tag: 'The force between charges, and its unification with light.',
+      what: 'Matter carries electric charge, and charges push and pull each other. Charges at rest produce electric fields. Moving charges, or currents, also produce magnetic fields. A changing magnetic field produces an electric field, and a changing electric field produces a magnetic one.\n\nMaxwell wrote all of this in four equations, whose solutions include a wave travelling at the speed of light: light is electromagnetic. This force holds atoms together and drives nearly all technology, including the instruments of your engineering branch.',
+      split: 'Charges at rest, then charges in motion, then the magnetic forces they produce, then fields that change in time.' },
+    'phy/Electricity and magnetism/Electrostatics': { tag: 'Charges at rest and the fields they make.',
+      what: 'Coulomb\'s law gives the force between two point charges. The field E describes the force per unit charge everywhere in space. Gauss\'s law relates the field to the charge enclosed and makes symmetric problems easy. Potential V is energy per unit charge, a single number at each point that is often simpler to work with than the field. Capacitors store energy in the field between conductors.' },
+    'phy/Electricity and magnetism/Current electricity': { tag: 'Charges flowing through circuits.',
+      what: 'A battery keeps a potential difference across a circuit. Current is the rate at which charge flows, and resistance relates the two: V = IR for ohmic materials. Every circuit is solved with two conservation laws: charge (Kirchhoff\'s junction rule) and energy (the loop rule). Power dissipated is VI = I²R.' },
+    'phy/Electricity and magnetism/Magnetism': { tag: 'Forces on and from moving charges.',
+      what: 'Moving charges create and feel magnetic forces. A current produces a magnetic field (Biot–Savart and Ampère\'s laws). A charge moving through a field feels F = qv × B, always perpendicular to its motion, so the field bends its path without changing its speed. Motors, meters and the steering of electron beams all come from this force.' },
+    'phy/Electricity and magnetism/Induction and AC': { tag: 'Changing fields create currents.',
+      what: 'A changing magnetic flux induces an EMF (Faraday\'s law), in the direction that opposes the change (Lenz\'s law). This runs generators and transformers and leads to alternating current, inductance, LCR circuits and resonance. Maxwell completed the picture: a changing electric field makes a magnetic field, and together they form electromagnetic waves.' },
+    'phy/Optics': { tag: 'Light: how it travels, bends and interferes.',
+      what: 'Optics studies light. When the objects and openings involved are much larger than its wavelength (about half a micrometre), light can be treated as rays that travel in straight lines. That is ray optics, which explains mirrors, lenses and instruments with geometry.\n\nWhen features approach the wavelength, light\'s wave nature appears as interference, diffraction and polarisation. That is wave optics. Ray optics is the short-wavelength limit of wave optics, and both follow from light being an electromagnetic wave.',
+      split: 'The large-scale approximation first, then the wave behaviour behind it.' },
+    'phy/Optics/Ray optics': { tag: 'Light as straight rays: mirrors, lenses, instruments.',
+      what: 'Three rules describe everything in this branch: light travels in straight lines in a uniform medium, reflects with equal angles, and refracts according to Snell\'s law. Mirrors, lenses, prisms and optical instruments are those rules plus geometry. Read the leaves in order: each one adds one rule or one device.\n\nA deeper single principle, that light takes the path of stationary time (Fermat), produces all three rules. You meet it at the Olympiad level of the refraction lesson.' },
+    'phy/Optics/Wave optics': { tag: 'Light as a wave: interference, diffraction, polarisation.',
+      what: 'Light is a wave, so overlapping beams add with their phases. Huygens\' principle treats every point on a wavefront as a source of new wavelets. From it come interference fringes (Young\'s experiment), diffraction around edges and through slits, and polarisation, which shows that light\'s oscillation is transverse.' },
+    'phy/Modern physics': { tag: 'What breaks for the very small and the very fast.',
+      what: 'Around 1900, experiments showed that classical physics fails for the very small and the very fast. Light arrives in packets (photons). Electrons behave as waves. Atoms have discrete energy levels. Nuclei can split or fuse. Measurements of space and time depend on the observer\'s motion. This pillar collects those discoveries and the devices built on them.',
+      split: 'Light and atoms first, then nuclei and solids, then relativity.' },
+    'phy/Modern physics/Quanta and atoms': { tag: 'Energy in packets; particles that act as waves.',
+      what: 'Energy comes in packets, E = hf. The photoelectric effect shows light\'s particle side, and de Broglie\'s λ = h/p gives matter a wave side. Bohr\'s model explains the hydrogen spectrum by allowing only certain orbits, a first step towards quantum mechanics.' },
+    'phy/Modern physics/Nuclei and devices': { tag: 'The nucleus, radioactivity and semiconductors.',
+      what: 'Nuclei are held together by the strong force against electric repulsion. Mass defect and binding energy (E = mc²) explain why fission and fusion release energy. Radioactive decay follows an exponential law. Semiconductors use the band structure of solids to make diodes and transistors, the base of all electronics.' },
+    'phy/Modern physics/Beyond the syllabus': { tag: 'Relativity, needed for Olympiad problems.',
+      what: 'Special relativity starts from one experimental fact: the speed of light is the same for every inertial observer. Time dilation, length contraction and E = mc² follow from it with only algebra.' },
+    'phy/Tools of the trade': { tag: 'The mathematics and measurement every pillar uses.',
+      what: 'Every pillar uses the same toolkit: mathematics to state laws precisely, and measurement to test them. Learn these tools once and every other branch becomes easier. Many links here lead into the Maths tree.',
+      split: 'The mathematics first, then the craft of measuring.' },
+    'phy/Tools of the trade/Mathematical methods': { tag: 'Dimensions, vectors, calculus, approximations.',
+      what: 'Dimensional analysis checks any formula and can even predict one. Vectors handle quantities with direction. Calculus handles rates and accumulation. Series approximations (sin θ ≈ θ, (1 + x)ⁿ ≈ 1 + nx) make hard problems tractable. Differential equations express laws as rates of change.' },
+    'phy/Tools of the trade/Experiments': { tag: 'How much to trust a measurement.',
+      what: 'Physics is settled by measurement. Every reading has an uncertainty. Significant figures and error propagation say how far a result can be trusted, and graphs turn data into laws: a straight line reveals a proportionality.' },
+
+    'mat': { what: 'Mathematics studies patterns and structures that follow from precise definitions by pure logic: numbers, shapes, change and chance. A statement is accepted only once it is proved from earlier ones, so mathematics builds upwards like a tower, and nothing proved is ever lost.\n\nIt is the language physics is written in and the foundation of programming and AI: algorithms are mathematics, and machine learning is mostly linear algebra, calculus and probability.',
+      split: 'The pillars follow the kinds of object being studied.',
+      links: '<b>How the pillars connect.</b> Number gives the raw material. Algebra lets you reason about numbers you do not know yet. Coordinates turn geometry into algebra. Trigonometry links angles to lengths and to anything periodic. Calculus studies change, and probability studies uncertainty, using everything before it.' },
+    'mat/Number': { tag: 'What numbers are and how they divide.', what: 'Counting gives the natural numbers. Each new kind of number fixes something the previous kind could not do: integers allow subtraction, fractions allow division, and irrational numbers fill the gaps on the number line (√2 is not a fraction). Divisibility, primes and factorisation reveal the hidden structure of the integers.', split: 'Calculating with numbers, then their structure.' },
+    'mat/Number/Arithmetic': { tag: 'Calculating with every kind of number.', what: 'The four operations, extended step by step from whole numbers to fractions, decimals and powers. Fluency here makes everything above it faster.' },
+    'mat/Number/Divisibility': { tag: 'Primes, factors and irrational numbers.', what: 'Every integer factors uniquely into primes (the fundamental theorem of arithmetic). HCF and LCM come straight from that factorisation, and so does the proof that √2 is irrational.' },
+    'mat/Algebra': { tag: 'Symbols for unknown or general quantities.', what: 'Algebra replaces specific numbers with letters so that you can reason about all cases at once, or about a number you do not know yet. Equations become puzzles solved by doing the same thing to both sides. Later, algebra studies structures (complex numbers, matrices) that obey their own rules of combination.', split: 'Equations, then patterns and counting, then new number systems.' },
+    'mat/Algebra/Equations': { tag: 'Finding unknowns: linear, quadratic, polynomial.', what: 'From one unknown to two, from straight lines to quadratics and polynomials. Each step asks how many solutions exist and how to find them.' },
+    'mat/Algebra/Sequences and counting': { tag: 'Patterns in lists, and counting without listing.', what: 'Progressions describe regular patterns. Permutations and combinations count arrangements without listing them, and the binomial theorem connects counting to algebra.' },
+    'mat/Algebra/Structures': { tag: 'New number systems and tools for inequalities.', what: 'Complex numbers solve every polynomial equation. Matrices handle many linear equations at once and are the core of computer graphics and machine learning. Inequalities and functional equations are where Olympiad algebra lives.' },
+    'mat/Geometry': { tag: 'Shape, size and position.', what: 'Euclid started from a handful of axioms and proved everything else about lines, triangles and circles. Descartes then attached coordinates to the plane, turning shapes into equations so that algebra can prove geometric facts.', split: 'Proofs from axioms, then coordinates.' },
+    'mat/Geometry/Euclidean': { tag: 'Proofs about lines, triangles and circles.', what: 'Congruence and similarity are the two engines of classical geometry. Circle theorems and, at Olympiad level, cyclic quadrilaterals and power of a point build on them.' },
+    'mat/Geometry/Coordinate': { tag: 'Shapes written as equations.', what: 'Distance and section formulas, straight lines, conic sections and three-dimensional geometry, all handled with algebra and vectors.' },
+    'mat/Trigonometry': { tag: 'Angles linked to lengths, and to anything periodic.', what: 'Trigonometry starts as the measurement of triangles: the ratios of sides depend only on the angles. Extended to all angles, sine and cosine become functions that describe every periodic process, from waves to alternating current.', split: 'Right triangles first, then trigonometric functions in general.' },
+    'mat/Trigonometry/Foundations': { tag: 'Ratios, identities, heights and distances.', what: 'Define the ratios in a right triangle, prove the identities that link them, and use them to measure what you cannot reach.' },
+    'mat/Trigonometry/Further': { tag: 'Trigonometric functions for any angle.', what: 'Compound-angle formulas, inverse functions and equations, the tools JEE expects.' },
+    'mat/Calculus': { tag: 'Instantaneous change and accumulation.', what: 'Calculus answers two questions: how fast is something changing at this instant (the derivative), and how much has built up over time (the integral)? The fundamental theorem shows they are inverse operations. Physics, engineering and optimisation in machine learning all rest on it.', split: 'Rates of change first, then accumulation.' },
+    'mat/Calculus/Differential': { tag: 'Limits, derivatives and their uses.', what: 'The limit makes "instantaneous" precise. Derivatives give slopes, rates, maxima and minima.' },
+    'mat/Calculus/Integral': { tag: 'Areas, accumulation, differential equations.', what: 'Integration reverses differentiation and computes areas and totals. Differential equations state laws as rates and solve for the behaviour.' },
+    'mat/Data and chance': { tag: 'Summarising data and reasoning under uncertainty.', what: 'Statistics summarises what data shows. Probability measures how likely an outcome is before you see it. Together they are the mathematical base of machine learning.', split: 'Describing data, then predicting outcomes.' },
+    'mat/Data and chance/Statistics': { tag: 'Describing data with a few numbers.', what: 'Averages and spread summarise a data set; grouped data handles large ones.' },
+    'mat/Data and chance/Probability': { tag: 'Measuring how likely things are.', what: 'Classical probability counts equally likely outcomes. Conditional probability and Bayes\' theorem update beliefs with evidence, which is exactly what learning algorithms do.' },
+    'mat/Olympiad toolkit': { tag: 'Problem-solving techniques beyond the syllabus.', what: 'Olympiad problems are not harder versions of textbook exercises. They test ways of thinking: find an invariant, consider the extreme case, count in two ways, use induction. This pillar collects those techniques, following books such as Zeitz and Engel.', split: 'Two classic fields where the techniques are used most.' },
+    'mat/Olympiad toolkit/Number theory': { tag: 'Remainders and divisibility, made powerful.', what: 'Modular arithmetic turns divisibility questions into calculations; Fermat\'s and Euler\'s theorems are its main tools.' },
+    'mat/Olympiad toolkit/Combinatorics': { tag: 'Counting and arrangement arguments.', what: 'Pigeonhole, invariants, the extremal principle, induction and graph theory: arguments that prove something must happen without computing it.' }
+  };
+  const introOf = (...parts) => INTRO[parts.join('/')] || {};
+  const paras = s => s.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
   const leaves = n => typeof n[1] === 'string' ? [n] : n[1].flatMap(leaves);
   const mastery = n => { const L = leaves(n); return L.reduce((s, l) => s + l[2], 0) / (L.length * 4); };
   const chev = '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
@@ -812,6 +1082,7 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
     const T = TREES[S.subj], name = SUBJECTS.find(s => s[0] === S.subj)[1];
     const cr = $('crumbs'), cols = $('cols');
     if (!T) {
+      $('about').hidden = true;
       cr.innerHTML = `<span class="cur">${name}</span>`;
       cols.innerHTML = `<div class="col active" style="grid-column:1/-1"><div class="col-empty">The ${name} tree is not drawn in this mockup. It follows the same pattern as Physics and Maths.</div></div>`;
       return;
@@ -822,8 +1093,9 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
     if (BR) c += `<span class="sep">›</span><span class="cur">${BR[0]}</span>`;
     cr.innerHTML = c;
     const deepest = BR ? 2 : PL ? 1 : 0;
-    const col1 = `<div class="col ${deepest === 0 ? 'active' : ''}"><div class="col-h eyebrow">Pillars</div><ul class="col-list">${T.map((p, i) => `<li><button class="row s-${S.subj}" data-pillar="${i}" aria-selected="${S.pillar === i}"><span><span class="t">${p[0]}</span><span class="s">${p[1].length} branches · ${leaves(p).length} leaves</span></span><span class="meter"><i style="width:${Math.round(mastery(p) * 100)}%"></i></span>${chev}</button></li>`).join('')}</ul></div>`;
-    const col2 = `<div class="col ${deepest === 1 ? 'active' : ''}"><div class="col-h eyebrow">Branches</div>${PL ? `<ul class="col-list">${PL[1].map((b, i) => `<li><button class="row s-${S.subj}" data-branch="${i}" aria-selected="${S.branch === i}"><span><span class="t">${b[0]}</span><span class="s">${b[1].length} leaves</span></span><span class="meter"><i style="width:${Math.round(mastery(b) * 100)}%"></i></span>${chev}</button></li>`).join('')}</ul>` : '<div class="col-empty">Choose a pillar.</div>'}</div>`;
+    renderAbout(T, name, PL, BR);
+    const col1 = `<div class="col ${deepest === 0 ? 'active' : ''}"><div class="col-h eyebrow">Pillars</div><ul class="col-list">${T.map((p, i) => `<li><button class="row s-${S.subj}" data-pillar="${i}" aria-selected="${S.pillar === i}"><span><span class="t">${p[0]}</span><span class="s">${introOf(S.subj, p[0]).tag || ''}</span></span><span class="meter"><i style="width:${Math.round(mastery(p) * 100)}%"></i></span>${chev}</button></li>`).join('')}</ul></div>`;
+    const col2 = `<div class="col ${deepest === 1 ? 'active' : ''}"><div class="col-h eyebrow">Branches</div>${PL ? `<ul class="col-list">${PL[1].map((b, i) => `<li><button class="row s-${S.subj}" data-branch="${i}" aria-selected="${S.branch === i}"><span><span class="t">${b[0]}</span><span class="s">${introOf(S.subj, PL[0], b[0]).tag || ''}</span></span><span class="meter"><i style="width:${Math.round(mastery(b) * 100)}%"></i></span>${chev}</button></li>`).join('')}</ul>` : '<div class="col-empty">Choose a pillar.</div>'}</div>`;
     let col3 = '<div class="col-empty">Choose a branch.</div>';
     if (BR) {
       const sel = S.leaf != null ? BR[1][S.leaf] : null;
@@ -835,6 +1107,28 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
     col3 = `<div class="col ${deepest === 2 ? 'active' : ''}"><div class="col-h eyebrow">Leaves · one lesson each</div>${col3}</div>`;
     cols.innerHTML = col1 + col2 + col3;
   }
+  function renderAbout(T, name, PL, BR) {
+    const el = $('about'); el.hidden = false; el.className = 'panel about s-' + S.subj;
+    let eyebrow, title, intro, right;
+    if (!PL) {
+      intro = introOf(S.subj); eyebrow = 'Start here'; title = `What is ${name === 'Maths' ? 'mathematics' : name.toLowerCase()}?`;
+      right = `<h4>Why these ${T.length} pillars</h4><p class="lede" style="margin:0 0 8px;font-size:13px">${intro.split || ''}</p><ul class="parts">${T.map((p, i) => `<li><button data-pillar="${i}"><b>${p[0]}</b><span>${introOf(S.subj, p[0]).tag || ''}</span></button></li>`).join('')}</ul>`;
+    } else if (!BR) {
+      intro = introOf(S.subj, PL[0]); eyebrow = `Pillar of ${name}`; title = `What is ${PL[0].toLowerCase()}?`;
+      right = `<h4>Its ${PL[1].length} branches</h4><p class="lede" style="margin:0 0 8px;font-size:13px">${intro.split || ''}</p><ul class="parts">${PL[1].map((b, i) => `<li><button data-branch="${i}"><b>${b[0]}</b><span>${introOf(S.subj, PL[0], b[0]).tag || ''}</span></button></li>`).join('')}</ul>`;
+    } else {
+      intro = introOf(S.subj, PL[0], BR[0]); eyebrow = `Branch of ${PL[0]}`; title = BR[0];
+      right = `<h4>Read the ${BR[1].length} leaves in this order</h4><ul class="parts">${BR[1].map((l, i) => `<li><button data-leaf="${i}"><b>${i + 1}. ${l[0]}</b><span>${l[1] === 'OLY' ? 'Olympiad' : l[1] === 'JEE' ? 'JEE' : 'from Class ' + l[1].slice(1)}</span></button></li>`).join('')}</ul>`;
+    }
+    el.innerHTML = `<div><div class="eyebrow">${eyebrow}</div><h2>${title}</h2><div class="what">${paras(intro.what || 'Not written yet.')}</div>${intro.links ? `<div class="links">${intro.links}</div>` : ''}</div><div>${right}</div>`;
+  }
+  $('about').addEventListener('click', e => {
+    const t = e.target.closest('[data-pillar],[data-branch],[data-leaf]'); if (!t) return;
+    if (t.dataset.pillar != null) { S.pillar = +t.dataset.pillar; S.branch = S.leaf = null; }
+    else if (t.dataset.branch != null) { S.branch = +t.dataset.branch; S.leaf = null; }
+    else { S.leaf = +t.dataset.leaf; const l = TREES[S.subj][S.pillar][1][S.branch][1][S.leaf]; if (l[3]) { S.ltab = 'learn'; go('lesson'); return; } }
+    renderCols();
+  });
   $('mode-seg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { S.mode = b.dataset.mode; RENDER.learn(); } });
   $('subj-seg').addEventListener('click', e => { const b = e.target.closest('[data-subj]'); if (b) { S.subj = b.dataset.subj; S.pillar = S.branch = S.leaf = null; RENDER.learn(); } });
   $('crumbs').addEventListener('click', e => {
@@ -857,16 +1151,17 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
 
   const BOOKS = {
     10: [
-      ['Science', 'phy', ['Chemical Reactions and Equations', 'Acids, Bases and Salts', 'Metals and Non-metals', 'Carbon and its Compounds', 'Life Processes', 'Control and Coordination', 'How do Organisms Reproduce?', 'Heredity', 'Light – Reflection and Refraction', 'The Human Eye and the Colourful World', 'Electricity', 'Magnetic Effects of Electric Current', 'Our Environment'], ['Periodic Classification of Elements', 'Sources of Energy']],
-      ['Mathematics', 'mat', ['Real Numbers', 'Polynomials', 'Pair of Linear Equations in Two Variables', 'Quadratic Equations', 'Arithmetic Progressions', 'Triangles', 'Coordinate Geometry', 'Introduction to Trigonometry', 'Some Applications of Trigonometry', 'Circles', 'Areas Related to Circles', 'Surface Areas and Volumes', 'Statistics', 'Probability'], ['Constructions']]
+      // '+' marks a chapter removed in the rationalised edition, placed where the older edition had it
+      ['Science', 'phy', ['Chemical Reactions and Equations', 'Acids, Bases and Salts', 'Metals and Non-metals', 'Carbon and its Compounds', '+Periodic Classification of Elements', 'Life Processes', 'Control and Coordination', 'How do Organisms Reproduce?', 'Heredity', 'Light – Reflection and Refraction', 'The Human Eye and the Colourful World', 'Electricity', 'Magnetic Effects of Electric Current', '+Sources of Energy', 'Our Environment', '+Sustainable Management of Natural Resources']],
+      ['Mathematics', 'mat', ['Real Numbers', 'Polynomials', 'Pair of Linear Equations in Two Variables', 'Quadratic Equations', 'Arithmetic Progressions', 'Triangles', 'Coordinate Geometry', 'Introduction to Trigonometry', 'Some Applications of Trigonometry', 'Circles', '+Constructions', 'Areas Related to Circles', 'Surface Areas and Volumes', 'Statistics', 'Probability']]
     ]
   };
   function renderClasses() {
     $('class-pills').innerHTML = [6, 7, 8, 9, 10, 11, 12].map(c => `<button aria-pressed="${c === S.cls}" data-c="${c}">Class ${c}<small>${c >= 10 ? 'phase 1' : 'later'}</small></button>`).join('');
     const b = BOOKS[S.cls];
-    $('books').innerHTML = b ? b.map(([n, k, ch, rest]) => `<div class="panel s-${k}"><h3><span>${n}</span><span class="eyebrow">${ch.length} chapters</span></h3>
-      <ol class="chap">${ch.map(t => `<li>${t.startsWith('Light') ? `<a class="live" href="#lesson">${t} →</a>` : `<span>${t}</span>`}<span class="st">questions pending</span></li>`).join('')}
-      ${rest.map(t => `<li class="restored"><span>${t}</span><span class="st restored">restored</span></li>`).join('')}</ol></div>`).join('')
+    $('books').innerHTML = b ? b.map(([n, k, ch]) => `<div class="panel s-${k}"><h3><span>${n}</span><span class="eyebrow">${ch.filter(t => t[0] !== '+').length} chapters + ${ch.filter(t => t[0] === '+').length} restored</span></h3>
+      <ol class="chap">${ch.map(t => t[0] === '+' ? `<li class="restored"><span>${t.slice(1)}</span><span class="st restored">restored</span></li>`
+        : `<li>${t.startsWith('Light') ? `<a class="live" href="#lesson">${t} →</a>` : `<span>${t}</span>`}<span class="st">questions pending</span></li>`).join('')}</ol></div>`).join('')
       : `<div class="panel"><p style="color:var(--muted)">Class ${S.cls} is not built in the mockup. It will look the same as Class 10.</p></div>`;
   }
   $('class-pills').addEventListener('click', e => { const b = e.target.closest('[data-c]'); if (b) { S.cls = +b.dataset.c; renderClasses(); } });
@@ -879,6 +1174,20 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
     if (S.ltab === 'practice') renderLadder();
   };
   $('ltabs').addEventListener('click', e => { const b = e.target.closest('[data-ltab]'); if (b) { S.ltab = b.dataset.ltab; RENDER.lesson(); } });
+  // depth selector and contents
+  S.depth = 4;
+  const SECTIONS = [...document.querySelectorAll('[data-lpane="learn"] section[data-toc]')];
+  const LVNAME = { 1: ['l1', 'C10'], 2: ['l2', 'C12'], 3: ['l3', 'Adv'], 4: ['l4', 'Oly'] };
+  $('toc').innerHTML = SECTIONS.map(sec => `<button data-to="${sec.id}">${sec.dataset.toc}<span class="lv ${LVNAME[sec.dataset.lvl][0]}">${LVNAME[sec.dataset.lvl][1]}</span></button>`).join('');
+  function applyDepth() {
+    document.querySelectorAll('#depth-seg [data-depth]').forEach(b => b.setAttribute('aria-pressed', +b.dataset.depth === S.depth));
+    document.querySelectorAll('[data-lpane="learn"] [data-lvl]').forEach(el => el.hidden = +el.dataset.lvl > S.depth);
+    document.querySelectorAll('#toc [data-to]').forEach(b => b.hidden = +$(b.dataset.to).dataset.lvl > S.depth);
+  }
+  $('depth-seg').addEventListener('click', e => { const b = e.target.closest('[data-depth]'); if (b) { S.depth = +b.dataset.depth; applyDepth(); } });
+  $('toc').addEventListener('click', e => { const b = e.target.closest('[data-to]'); if (b) $(b.dataset.to).scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  applyDepth();
+
   $('to-practice').addEventListener('click', () => { S.ltab = 'practice'; RENDER.lesson(); window.scrollTo(0, 0); });
   $('lesson-back').addEventListener('click', () => { Object.assign(S, { subj: 'phy', pillar: 4, branch: 0, leaf: 3, mode: 'subject' }); go('learn'); });
 
