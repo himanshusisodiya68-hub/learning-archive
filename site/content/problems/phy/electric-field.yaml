@@ -218,3 +218,169 @@
   sol: |
     None. For $x > 20$ cm the field of the negative charge points towards it (in the $-x$ direction) and the field of the positive charge points away from it (in the $+x$ direction), so they do oppose each other. But the negative charge is the nearer one and the charges have equal magnitude, so its field is always the larger and the net field never vanishes: it points in the $-x$ direction. Zero field on the axis needs the nearer charge to be the smaller, which is not the case here.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A thin ring of radius 10 cm carries a charge of 20 nC spread uniformly. Find the greatest magnitude of the electric field anywhere on its axis. Take 1/4πε₀ = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Maximum axial field
+  unit: N/C
+  ans: 6928
+  tol: 5
+  verify: 2*9e9*20e-9/(3*Math.sqrt(3)*0.1**2)
+  sol: |
+    On the axis at distance $z$, $E(z) = \dfrac{kQz}{(z^2+R^2)^{3/2}}$. It is zero at the centre and tends to zero far away, so it has a maximum. 
+
+    $$\frac{dE}{dz} = kQ\,\frac{(z^2+R^2) - 3z^2}{(z^2+R^2)^{5/2}} = 0 \;\Rightarrow\; z = \frac{R}{\sqrt2}.$$
+
+    Then $z^2+R^2 = \tfrac32R^2$ and
+
+    $$E_{\max} = \frac{kQ\,R/\sqrt2}{(3/2)^{3/2}R^3} = \frac{2kQ}{3\sqrt3\,R^2} = \frac{2\times9\times10^9\times20\times10^{-9}}{3\sqrt3\times0.01} = 6.93\times10^{3}\ \text{N/C},$$
+
+    at 7.07 cm from the centre on either side.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A very long straight wire starts at point O and runs to infinity in one direction. It carries a uniform charge of 2 nC per metre. Find the magnitude of the electric field at a point P such that OP = 5 cm and OP is perpendicular to the wire. Also state the direction of the field. Take 1/4πε₀ = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Field magnitude at P
+  unit: N/C
+  ans: 509
+  tol: 1
+  verify: Math.sqrt(2)*9e9*2e-9/0.05
+  sol: |
+    Measure angles at P from PO (the perpendicular to the wire). An element at distance $x$ from O subtends angle $\varphi$ with $x = d\tan\varphi$, and contributes $dE = \dfrac{k\lambda}{d}d\varphi$. The wire runs from $\varphi = 0$ to $\varphi = 90^\circ$, so
+
+    $$E_\perp = \frac{k\lambda}{d}\int_0^{\pi/2}\cos\varphi\,d\varphi = \frac{k\lambda}{d},\qquad E_\parallel = \frac{k\lambda}{d}\int_0^{\pi/2}\sin\varphi\,d\varphi = \frac{k\lambda}{d}.$$
+
+    With $k\lambda/d = 9\times10^9\times2\times10^{-9}/0.05 = 360$ N/C, the magnitude is $\sqrt2\times360 = 509$ N/C.
+
+    The two components are equal, so the field is at $45^\circ$ to OP: its perpendicular part points away from the wire (along OP extended), and its parallel part points away from the wire's side, i.e. opposite to the direction in which the wire runs. The angle is $45^\circ$ for any distance $d$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: An electron moving at 2.0 × 10⁷ m/s enters midway between two parallel plates, 3.0 cm long and 1.2 cm apart, moving parallel to them. The uniform field between the plates is 2.0 × 10⁴ N/C. A screen stands perpendicular to the original direction, 20 cm beyond the centre of the plates. How far from the undeflected position does the electron hit the screen? Ignore gravity and edge effects. Take e = 1.6 × 10⁻¹⁹ C, mₑ = 9.11 × 10⁻³¹ kg. (Original problem.)
+  ask: Displacement on the screen
+  unit: cm
+  ans: 5.27
+  tol: 0.03
+  verify: 1.6e-19*2e4*0.03*0.2/(9.11e-31*(2e7)**2)*100
+  sol: |
+    Between the plates the acceleration is $a = eE/m = 1.6\times10^{-19}\times2\times10^4/9.11\times10^{-31} = 3.51\times10^{15}$ m s⁻², perpendicular to the plates, for a time $t = L/v = 0.03/(2\times10^7) = 1.5\times10^{-9}$ s.
+
+    Deflection at exit: $y = \tfrac12at^2 = \tfrac12\times3.51\times10^{15}\times2.25\times10^{-18} = 3.95\times10^{-3}$ m $= 0.40$ cm. This is less than half the gap (0.60 cm), so the electron clears the plates.
+
+    Exit angle: $\tan\varphi = at/v = \dfrac{eEL}{mv^2} = 0.263$.
+
+    The straight path after the plates, extended backwards, passes through the centre of the plates (because $y = \tfrac{L}{2}\tan\varphi$). So the displacement on the screen is
+
+    $$Y = D\tan\varphi = \frac{eELD}{mv^2} = \frac{1.6\times10^{-19}\times2\times10^4\times0.03\times0.20}{9.11\times10^{-31}\times4\times10^{14}} = 0.0527\ \text{m} = 5.27\ \text{cm}.$$
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: A thin hemispherical bowl of radius 20 cm carries a uniform surface charge density of 1.0 µC/m². Find the magnitude of the electric field at the centre of the hemisphere (the centre of the circle forming its rim). Take 1/4πε₀ = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Field at the centre
+  unit: N/C
+  ans: 2.83e4
+  tol: 100
+  verify: Math.PI*9e9*1e-6
+  sol: |
+    Slice the bowl into rings by the polar angle $\theta$ measured from its symmetry axis. The ring between $\theta$ and $\theta + d\theta$ has radius $R\sin\theta$, width $R\,d\theta$, and charge $dq = \sigma\,2\pi R^2\sin\theta\,d\theta$. Every point of it is at distance $R$ from the centre O.
+
+    By symmetry only the axial component survives, a fraction $\cos\theta$ of each element's field:
+
+    $$E = \int_0^{\pi/2}\frac{k\,\sigma\,2\pi R^2\sin\theta\,d\theta}{R^2}\cos\theta = 2\pi k\sigma\cdot\frac12 = \pi k\sigma = \frac{\sigma}{4\varepsilon_0}.$$
+
+    $E = \pi\times9\times10^9\times1.0\times10^{-6} = 2.83\times10^4$ N/C, along the axis, pointing away from the bowl (for positive charge). The radius does not enter: the 20 cm is not needed.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A thin fixed ring of radius 10 cm carries +10 µC uniformly. A small bead of mass 1.0 g and charge −1.0 µC can slide without friction along a straight non-conducting wire fixed along the ring's axis. The bead is pulled 5 mm from the centre and released. Find the period of its oscillations. Take 1/4πε₀ = 9 × 10⁹ N m² C⁻² and ignore gravity. (Original problem.)
+  ask: Period
+  unit: ms
+  ans: 20.94
+  tol: 0.05
+  verify: 2*Math.PI/Math.sqrt(9e9*1e-5*1e-6/(1e-3*0.1**3))*1000
+  sol: |
+    On the axis the ring's field is $E = \dfrac{kQz}{(z^2+R^2)^{3/2}}$, directed away from the centre. For $z = 5\text{ mm}\ll R = 100$ mm, $E\approx kQz/R^3$ (the correction factor $(1+z^2/R^2)^{-3/2}$ differs from 1 by under 0.4%).
+
+    The bead's charge is negative, so the force points back to the centre: $F = -\dfrac{kQq}{R^3}z$. The wire supplies whatever sideways force is needed (in the plane of the ring the bead would be unstable, so the wire matters). This is simple harmonic motion with
+
+    $$\omega = \sqrt{\frac{kQq}{mR^3}} = \sqrt{\frac{9\times10^9\times10^{-5}\times10^{-6}}{10^{-3}\times10^{-3}}} = \sqrt{9\times10^4} = 300\ \text{rad/s}.$$
+
+    $T = 2\pi/\omega = 2\pi/300 = 2.09\times10^{-2}$ s $= 20.9$ ms. For small amplitudes the period does not depend on the 5 mm.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: The ring of the previous problem (radius 10 cm, charge +10 µC) is now horizontal, and a small bead of mass 1.0 g and charge +1.0 µC moves without friction on a smooth horizontal table lying in the plane of the ring, inside it. Show that the centre of the ring is a stable equilibrium for motion on the table, and find the period of small oscillations about it. Take 1/4πε₀ = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Period of small in-plane oscillations
+  unit: ms
+  ans: 29.62
+  tol: 0.05
+  verify: 2*Math.PI/Math.sqrt(9e9*1e-5*1e-6/(2*1e-3*0.1**3))*1000
+  sol: |
+    You can find the in-plane field without integrating, from the axial field and the fact that the region near the centre contains no charge, so the net flux out of any small closed surface there is zero.
+
+    Near the centre, on and close to the axis, $E_z\approx kQz/R^3$. Take a small coaxial cylinder of radius $s$ between heights $z$ and $z+dz$. Flux out through the ends: $\pi s^2[E_z(z+dz)-E_z(z)] = \pi s^2\,\dfrac{kQ}{R^3}\,dz$. Flux out through the curved side: $2\pi s\,dz\,E_s$. Zero total flux gives
+
+    $$E_s = -\frac{kQ}{2R^3}\,s,$$
+
+    i.e. the field in the plane points **towards** the centre, growing linearly with distance $s$. (A direct integration over the ring gives the same result.)
+
+    A positive bead displaced by $s$ in the plane therefore feels a restoring force $F = -\dfrac{kQq}{2R^3}s$: stable, simple harmonic, with
+
+    $$\omega = \sqrt{\frac{kQq}{2mR^3}} = \sqrt{\frac{9\times10^{-2}}{2\times10^{-6}}} = 212\ \text{rad/s},\qquad T = \frac{2\pi}{212} = 29.6\ \text{ms}.$$
+
+    This is $\sqrt2$ times the axial period of problem o1. Along the axis this bead would be pushed out (the table prevents that): the centre is a saddle point, as Earnshaw's theorem requires.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A field line of a small (point) electric dipole crosses the dipole's equatorial plane at 9.0 cm from the dipole. At what angle θ, measured from the direction of the dipole moment, does this same field line pass a point 3.0 cm from the dipole? Give the angle between 0° and 90°. (Original problem.)
+  ask: Angle θ
+  unit: °
+  ans: 35.26
+  tol: 0.05
+  verify: Math.asin(Math.sqrt(1/3))*180/Math.PI
+  sol: |
+    In polar coordinates about the dipole, the field components are $E_r = 2kp\cos\theta/r^3$ and $E_\theta = kp\sin\theta/r^3$. Along a field line the displacement is parallel to $\vec E$:
+
+    $$\frac{dr}{r\,d\theta} = \frac{E_r}{E_\theta} = 2\cot\theta \;\Rightarrow\; \ln r = 2\ln\sin\theta + \text{const} \;\Rightarrow\; r = C\sin^2\theta.$$
+
+    On the equatorial plane $\theta = 90^\circ$, so $C = 9.0$ cm. At $r = 3.0$ cm: $\sin^2\theta = 1/3$, $\sin\theta = 0.577$, $\theta = 35.3^\circ$ (and, on the other side of the equator, $180^\circ - 35.3^\circ$).
+
+    At that point the field makes angle $\alpha$ with the radial direction where $\tan\alpha = \tfrac12\tan\theta = 0.354$, about $19.5^\circ$, which is a useful check when sketching the line.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: Two identical small dipoles, each made of charges ±1.0 µC held 1.0 mm apart, lie on a common straight line, both moments pointing the same way along that line. Their centres are 10 cm apart. Find the force between them, and say whether it is attractive or repulsive. Take 1/4πε₀ = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Magnitude of the force
+  unit: N
+  ans: 5.4e-4
+  tol: 2e-6
+  verify: 6*9e9*1e-9*1e-9/0.1**4
+  sol: |
+    Each moment is $p = 10^{-6}\times10^{-3} = 10^{-9}$ C m. Since 1 mm ≪ 10 cm, treat them as point dipoles.
+
+    The first dipole's field along its axis is $E_1(x) = 2kp/x^3$, pointing along the moments. The second dipole, at $x = r$, points along the axis, so the force on it is
+
+    $$F = p\,\frac{dE_1}{dx}\Big|_{x=r} = p\cdot\left(-\frac{6kp}{r^4}\right) = -\frac{6kp^2}{r^4}.$$
+
+    The minus sign means the force on the second dipole points back towards the first: **attraction** (head to tail, the nearest charges are opposite). Magnitude
+
+    $$F = \frac{6\times9\times10^9\times(10^{-9})^2}{(0.1)^4} = 5.4\times10^{-4}\ \text{N}.$$
+
+    Check by brute force with the four charges: $kq^2\left[\frac{1}{(r+d)^2}+\frac{1}{(r-d)^2}-\frac{2}{r^2}\right]$ (net attraction) with $d = 1$ mm also gives $5.40\times10^{-4}$ N to three figures, with an error of order $(d/r)^2$.
+  check: code

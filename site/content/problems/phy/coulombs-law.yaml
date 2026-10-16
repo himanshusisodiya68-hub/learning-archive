@@ -225,3 +225,167 @@
   sol: |
     The forces from the two like charges on a third charge between them are opposite, so they cancel where $\dfrac{q}{x^2} = \dfrac{4q}{(30-x)^2}$. Taking square roots, $30 - x = 2x$, so $x = 10$ cm from $+q$. This equilibrium is stable along the line but unstable sideways, whatever the sign of the third charge.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |
+    Four equal charges q sit at the corners of a square. What charge Q must be placed at the centre of the square so that all five charges are in equilibrium? Give Q/q. Is the equilibrium stable? (Original problem.)
+  ask: Q/q
+  unit: ""
+  ans: -0.957
+  tol: 0.002
+  verify: -(2*Math.sqrt(2)+1)/4
+  sol: |
+    Let the side be $a$. The centre charge is in equilibrium for any $Q$, by symmetry. Take one corner charge. The two neighbouring corners (distance $a$) push it with $kq^2/a^2$ each, at 90° to each other; their resultant is $\sqrt2\,kq^2/a^2$ along the diagonal, outward. The opposite corner (distance $\sqrt2a$) adds $kq^2/(2a^2)$ along the same diagonal, outward. Total outward push:
+    $$\frac{kq^2}{a^2}\left(\sqrt2+\tfrac12\right).$$
+    The centre charge is at distance $a/\sqrt2$, so its force on the corner is $kQq/(a^2/2) = 2kQq/a^2$, and it must pull inward, so $Q$ is negative with
+    $$2|Q| = q\left(\sqrt2+\tfrac12\right)\quad\Longrightarrow\quad Q = -\frac{(2\sqrt2+1)}{4}\,q \approx -0.957\,q.$$
+    The equilibrium is **unstable**. By Earnshaw's theorem no arrangement of charges held only by Coulomb forces can be stable; for instance, nudging the centre charge perpendicular to the square's plane leaves the four attractive corner forces pulling it back, but by the theorem some other displacement (here, in the plane, towards a corner it attracts) must then run away.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |
+    Two identical small balls, each of mass 10 g, hang from a common point by insulating threads 50 cm long. When given equal charges they come to rest with the threads at 60° to each other. Find the charge on each ball. Take g = 9.8 m/s² and k = 9 × 10⁹ N m² C⁻². Do not use the small-angle approximation. (Original problem.)
+  ask: Charge on each ball
+  unit: µC
+  ans: 1.254
+  tol: 0.005
+  verify: 0.5*Math.sqrt(0.01*9.8*Math.tan(rad(30))/9e9)*1e6
+  sol: |
+    Each thread makes $\theta = 30°$ with the vertical. The separation is $r = 2L\sin\theta = 2\times0.5\times0.5 = 0.5$ m. For each ball, $T\cos\theta = mg$ and $T\sin\theta = F$, so
+    $$F = mg\tan\theta = 0.01\times9.8\times\tan30° = 0.0566\ \text{N}.$$
+    Then $kq^2/r^2 = F$ gives
+    $$q = r\sqrt{F/k} = 0.5\sqrt{0.0566/(9\times10^{9})} = 1.25\times10^{-6}\ \text{C} = 1.25\ \mu\text{C}.$$
+    The small-angle formula $r^3 = 2kq^2L/(mg)$ would give $q\approx1.17\ \mu$C here, about 7% low, because $\tan30°$ and $\sin30°$ differ appreciably from 0.524 rad.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |
+    A thin ring of radius 10 cm carries 1.0 µC spread uniformly. A point charge of 1.0 µC is moved along the ring's axis. Find the largest force the ring exerts on it, and where it occurs. Take k = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Maximum force
+  unit: N
+  ans: 0.346
+  tol: 0.002
+  verify: 9e9*1e-6*1e-6*(0.1/Math.sqrt(2))/((0.1**2+0.005))**1.5
+  sol: |
+    On the axis at distance $z$ the sideways components cancel and
+    $$F(z) = \frac{kQq\,z}{(R^2+z^2)^{3/2}}.$$
+    $dF/dz \propto (R^2+z^2)^{3/2} - 3z^2(R^2+z^2)^{1/2} = (R^2+z^2)^{1/2}(R^2-2z^2)$, which vanishes at $z = R/\sqrt2 = 7.07$ cm. There
+    $$F_{\max} = \frac{kQq\,(R/\sqrt2)}{(3R^2/2)^{3/2}} = \frac{2}{3\sqrt3}\frac{kQq}{R^2} = 0.385\times\frac{9\times10^{9}\times10^{-12}}{0.01} = 0.346\ \text{N}.$$
+    The force is zero at the centre, rises to this maximum at 7.07 cm on either side, and then falls towards $kQq/z^2$ far away.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: |
+    A thin fixed ring of radius 10 cm carries +2.0 µC spread uniformly. A small bead of mass 1.0 g and charge −0.50 µC can slide without friction along a straight wire that lies on the ring's axis. The bead is displaced 2 mm from the centre along the wire and released. Find the period of its oscillation. Ignore gravity. Take k = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Period
+  unit: ms
+  ans: 66.2
+  tol: 0.2
+  verify: 2*Math.PI/Math.sqrt(9e9*2e-6*0.5e-6/(1e-3*0.1**3))*1e3
+  sol: |
+    The axial force on the bead at distance $z$ is $F = -\dfrac{k|Qq|\,z}{(R^2+z^2)^{3/2}}$ (attraction towards the centre). Since $z = 2$ mm $\ll R = 100$ mm, $(R^2+z^2)^{3/2}\approx R^3$ (the error is about $\tfrac32(z/R)^2 = 0.06\%$), so
+    $$F\approx-\frac{k|Qq|}{R^3}z,$$
+    simple harmonic motion with
+    $$\omega^2 = \frac{k|Qq|}{mR^3} = \frac{9\times10^{9}\times2\times10^{-6}\times0.5\times10^{-6}}{10^{-3}\times10^{-3}} = 9000\ \text{s}^{-2},\qquad \omega = 94.9\ \text{rad/s}.$$
+    $T = 2\pi/\omega = 0.0662$ s $= 66.2$ ms. The wire is needed: without it the bead would be unstable sideways (Earnshaw's theorem), drifting into the ring.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: |
+    A thin fixed ring of radius R = 20 cm carries Q = +4.0 µC spread uniformly. A small particle of mass 2.0 g and charge q = +1.0 µC is at the centre of the ring and is constrained to move only in the plane of the ring (for example, on a smooth horizontal table, with the ring horizontal and gravity irrelevant). (a) By integrating Coulomb's law over the ring, show that for a small displacement x in the plane the force is −kQq x/(2R³). (b) Find the angular frequency of small oscillations. (c) Check your result against the axial force and Earnshaw's theorem. (Original problem.)
+  ask: Angular frequency
+  unit: rad/s
+  ans: 33.5
+  tol: 0.1
+  verify: Math.sqrt(9e9*4e-6*1e-6/(2*2e-3*0.2**3))
+  sol: |
+    (a) Put the particle at $(x, 0)$ and an element of the ring at angle $\varphi$, position $(R\cos\varphi, R\sin\varphi)$, with charge $dQ = \lambda R\,d\varphi$, $\lambda = Q/2\pi R$. The vector from the element to the particle is $(x - R\cos\varphi,\,-R\sin\varphi)$ and its length cubed is
+    $$d^3 = (R^2 + x^2 - 2Rx\cos\varphi)^{3/2}\approx R^3\left(1 - \frac{3x\cos\varphi}{R}\right)$$
+    to first order in $x$, so $1/d^3\approx(1 + 3x\cos\varphi/R)/R^3$. The $x$ component of the force from the element is
+    $$dF_x = \frac{kq\,\lambda R\,d\varphi}{R^3}\,(x - R\cos\varphi)\left(1+\frac{3x\cos\varphi}{R}\right)\approx\frac{kq\lambda}{R^2}\left(x - R\cos\varphi - 3x\cos^2\varphi\right)d\varphi.$$
+    Integrating from 0 to $2\pi$: $\int x\,d\varphi = 2\pi x$, $\int\cos\varphi\,d\varphi = 0$, $\int3x\cos^2\varphi\,d\varphi = 3\pi x$. So
+    $$F_x = \frac{kq\lambda}{R^2}(2\pi x - 3\pi x) = -\frac{\pi kq\lambda x}{R^2} = -\frac{kQq}{2R^3}\,x.$$
+    (The $y$ component integrates to zero by symmetry.) The force is restoring.
+
+    (b) $\omega^2 = \dfrac{kQq}{2mR^3} = \dfrac{9\times10^{9}\times4\times10^{-6}\times10^{-6}}{2\times2\times10^{-3}\times(0.2)^3} = \dfrac{0.036}{3.2\times10^{-5}} = 1125\ \text{s}^{-2}$, so $\omega = 33.5$ rad/s (period 0.187 s).
+
+    (c) Along the axis, $F_z = +kQq\,z/(R^2+z^2)^{3/2}\approx+kQq\,z/R^3$ for like charges: stiffness $\kappa_z = -kQq/R^3$ (unstable). In the plane, $\kappa_x = \kappa_y = +kQq/2R^3$. The sum is $-1 + \tfrac12 + \tfrac12 = 0$, exactly as Earnshaw's theorem (zero divergence of the force in a charge-free region) requires. That is why the constraint to the plane is essential: free in 3D, the particle would slide off along the axis.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |
+    A light, smooth, insulating rod lies horizontally and spins at a constant 10 rad/s about a vertical axis through its midpoint. Two small beads, each of mass 1.0 g, are threaded on it; one carries +1.0 µC and the other −1.0 µC. (a) Find the separation at which the beads can remain at rest relative to the rod, symmetrically placed about the axis. (b) Is this equilibrium stable against a symmetric change of separation? (c) Could two beads with like charges rest on the rod? Take k = 9 × 10⁹ N m² C⁻²; ignore gravity and friction. (Original problem.)
+  ask: Separation
+  unit: cm
+  ans: 56.5
+  tol: 0.1
+  verify: 2*Math.cbrt(9e9*1e-12/(4*1e-3*100))*100
+  sol: |
+    (a) Work in the rotating frame. Each bead at distance $x$ from the axis feels the centrifugal force $m\omega^2x$ outward and the Coulomb attraction $kq^2/(2x)^2$ inward (the rod supplies only forces perpendicular to itself). Balance:
+    $$\frac{kq^2}{4x^2} = m\omega^2x\quad\Longrightarrow\quad x^3 = \frac{kq^2}{4m\omega^2} = \frac{9\times10^{9}\times10^{-12}}{4\times10^{-3}\times100} = 0.0225\ \text{m}^3,$$
+    $x = 0.282$ m, so the separation is $2x = 56.5$ cm.
+
+    (b) For symmetric motions the effective potential energy of the pair in the rotating frame is
+    $$U(x) = -\frac{kq^2}{2x} - 2\cdot\tfrac12m\omega^2x^2.$$
+    $U'(x) = kq^2/(2x^2) - 2m\omega^2x$ vanishes at the balance point found above, and $U''(x) = -kq^2/x^3 - 2m\omega^2 < 0$. The equilibrium is a maximum of $U$, so it is **unstable**: if the beads drift apart, the attraction weakens while the centrifugal pull grows, and they fly off; if they drift together, they collide.
+
+    (c) No. With like charges both the Coulomb force and the centrifugal force point outward along the rod, so nothing can balance them; the beads slide to the ends.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: |
+    A smooth, rigid, insulating wire is bent into a circle of radius 20 cm and fixed in a vertical plane. A small charge of +1.0 µC is fixed at the lowest point of the circle. A bead of mass 10 g carrying +1.0 µC slides without friction on the wire. Find the angle θ, measured at the centre of the circle from the lowest point, at which the bead rests, and decide whether this equilibrium is stable. Take g = 9.8 m/s² and k = 9 × 10⁹ N m² C⁻². (Original problem.)
+  ask: Angle θ
+  unit: degrees
+  ans: 82.5
+  tol: 0.2
+  verify: 2*Math.asin(Math.cbrt(9e9*1e-12/(8*0.01*9.8*0.04)))*180/Math.PI
+  sol: |
+    Let the bead be at central angle $\theta$ from the bottom. The chord from the fixed charge to the bead has length $2R\sin(\theta/2)$. Only tangential forces matter, since the wire supplies the normal force.
+
+    **Energy method.** Height above the bottom $= R(1-\cos\theta) = 2R s^2$ with $s = \sin(\theta/2)$. The potential energy is
+    $$U(s) = 2mgR\,s^2 + \frac{kQq}{2R\,s}.$$
+    Since $s$ increases steadily with $\theta$ on $0<\theta<\pi$, equilibrium is where $dU/ds = 0$:
+    $$4mgR\,s - \frac{kQq}{2R\,s^2} = 0\quad\Longrightarrow\quad s^3 = \frac{kQq}{8mgR^2} = \frac{9\times10^{-3}}{8\times0.01\times9.8\times0.04} = 0.287.$$
+    So $s = 0.660$, $\theta/2 = 41.3°$, $\theta = 82.5°$.
+
+    (Force check: the chord makes angle $\theta/2$ with the tangent at the bead, so the Coulomb force's tangential part is $F\cos(\theta/2)$, and the weight's tangential part is $mg\sin\theta$; equating them gives the same $s^3$.)
+
+    **Stability.** $d^2U/ds^2 = 4mgR + kQq/(R s^3) > 0$, so $U$ has a minimum: the equilibrium is **stable**. This does not contradict Earnshaw's theorem, because the bead is held by the wire's constraint force and by gravity, neither of which is a Coulomb force of fixed charges.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: |
+    Treat the hydrogen atom and positronium (an electron bound to a positron, which has the electron's mass and the opposite charge) classically, as two point charges in circular orbits about their common centre of mass, held by Coulomb attraction. Take the proton to be infinitely heavy. If the separation of the two particles is the same in both systems, find the ratio of the orbital period of positronium to that of hydrogen. (Original problem.)
+  ask: T(positronium)/T(hydrogen)
+  unit: ""
+  ans: 0.7071
+  tol: 0.001
+  verify: Math.sqrt(0.5)
+  sol: |
+    **Hydrogen.** The electron circles the fixed proton at radius $d$: $m v^2/d = ke^2/d^2$, so $v^2 = ke^2/(md)$ and
+    $$T_H = \frac{2\pi d}{v} = 2\pi\sqrt{\frac{m d^3}{ke^2}}.$$
+
+    **Positronium.** Equal masses circle the midpoint, each at radius $d/2$, with the same angular speed. For either particle: $m v^2/(d/2) = ke^2/d^2$, so $v^2 = ke^2/(2md)$ and
+    $$T_{Ps} = \frac{2\pi(d/2)}{v} = \pi d\sqrt{\frac{2md}{ke^2}} = 2\pi\sqrt{\frac{(m/2)\,d^3}{ke^2}}.$$
+
+    The second form shows the general rule: the relative motion is that of one particle of reduced mass $\mu = m_1m_2/(m_1+m_2)$ about a fixed centre, $T = 2\pi\sqrt{\mu d^3/k|q_1q_2|}$. Here $\mu = m/2$ against $\mu\approx m$ for hydrogen, so
+    $$\frac{T_{Ps}}{T_H} = \sqrt{\tfrac12} = 0.707.$$
+    [Inference] Real atoms are quantum systems, so this is a classical model only; it does, however, reproduce the correct reduced-mass scaling that appears in the quantum result.
+  check: code

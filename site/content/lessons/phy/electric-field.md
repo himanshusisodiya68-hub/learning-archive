@@ -256,7 +256,7 @@ wrong: Antiparallel is an equilibrium (sin180° = 0) but an unstable one. A smal
 
 Charge on a rod, a plate or in a ball is made of many electrons and ions, but at everyday scales it looks smooth. We describe it with densities:
 
-| | density | small piece |
+| kind | density | small piece |
 |---|---|---|
 | line | $\lambda$ (C/m) | $dq = \lambda\,dl$ |
 | surface | $\sigma$ (C/m²) | $dq = \sigma\,dA$ |
