@@ -170,12 +170,12 @@ Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per us
 - **Wave optics leaves:** Huygens' principle, interference and Young's experiment, diffraction, polarisation, thin films.
 - **NCERT covered:** Class 7 Ch 11; Class 8 Ch 10; Class 10 Ch 9–10; Class 12 Ch 9–10.
 
-**In progress: Physics › Electricity and magnetism pillar** (not complete, so the site has not been republished for it).
-- **Done: Class 10 Science Ch 11 Electricity.** Five leaves under Current electricity: electric current and potential difference, Ohm's law, resistance and resistivity, resistors in series and parallel, heating effect and power. All 54 NCERT items (23 in-text, 13 examples, 18 exercises) are copied word for word, with solutions.
-- **Still to do in this pillar:** Ch 12 Magnetic Effects of Electric Current and Sources of Energy (restored); the Current electricity leaves not in NCERT Class 10 (Kirchhoff's rules, Wheatstone bridge); electrostatics, magnetism and induction leaves, to Class 12 and Olympiad depth.
+**In progress: Physics › Electricity and magnetism pillar** (not complete, so the site has not been republished for it). Work one pillar at a time, branch by branch.
+- **Done: Current electricity branch (7 leaves):** electric current and potential difference, Ohm's law, resistance and resistivity, resistors in series and parallel, heating effect and power, Kirchhoff's rules, Wheatstone bridge. NCERT covered: Class 10 Ch 11 (54 items) and all of Class 12 Physics Ch 3 (examples 3.1–3.7, exercises 3.1–3.9).
+- **Still to do:** Electrostatics (6 leaves; Class 12 Ch 1–2), Magnetism (4 leaves plus Class 10 Ch 12, and leaves for force on moving charges and magnetic materials that the tree lacks; Class 12 Ch 4–5), Induction and AC (4 leaves plus self/mutual inductance and LCR circuits, which the tree lacks; Class 12 Ch 6–8), and Sources of Energy (restored Class 10 chapter). Republish when the pillar is complete.
 
 **Next, in order:**
-1. Class 10 Science Ch 12 Magnetic Effects of Electric Current, plus Sources of Energy (restored); then finish the Electricity and magnetism pillar.
+1. Finish the Electricity and magnetism pillar (Electrostatics, Magnetism, Induction and AC), then republish.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.
