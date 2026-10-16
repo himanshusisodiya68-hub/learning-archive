@@ -22,7 +22,10 @@ chapters:
     title: The Human Eye and the Colourful World
     pdf: jesc110
     leaves: [phy/the-human-eye, phy/prism-and-dispersion, phy/atmospheric-refraction-and-scattering]
-  - { n: 11, title: Electricity, pdf: jesc111 }
+  - n: 11
+    title: Electricity
+    pdf: jesc111
+    leaves: [phy/electric-current-and-potential-difference, phy/ohms-law, phy/resistance-and-resistivity, phy/resistors-in-series-and-parallel, phy/heating-effect-and-power]
   - { n: 12, title: Magnetic Effects of Electric Current, pdf: jesc112 }
   - { title: Sources of Energy, restored: true }
   - { n: 13, title: Our Environment, pdf: jesc113 }

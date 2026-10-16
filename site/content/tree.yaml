@@ -342,8 +342,14 @@ subjects:
         relates the two: V = IR for ohmic materials. Every circuit is solved with two conservation laws: charge (Kirchhoff''s
         junction rule) and energy (the loop rule). Power dissipated is VI = I²R.'
       leaves:
+      - id: electric-current-and-potential-difference
+        name: Electric current and potential difference
+        from: C10
       - id: ohms-law
         name: Ohm's law
+        from: C10
+      - id: resistance-and-resistivity
+        name: Resistance and resistivity
         from: C10
       - id: resistors-in-series-and-parallel
         name: Resistors in series and parallel

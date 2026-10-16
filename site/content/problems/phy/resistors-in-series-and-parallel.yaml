@@ -1,0 +1,338 @@
+# Resistors in series and parallel. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 11, §11.6. Found, board and main problems are original.
+
+- id: ncert-eg11-7
+  lvl: ncert-intext
+  num: "Ex 11.7"
+  source: NCERT X Science · Ch 11 · Example 11.7
+  kind: num
+  q: An electric lamp, whose resistance is 20 Ω, and a conductor of 4 Ω resistance are connected to a 6 V battery (Fig. 11.9). Calculate (a) the total resistance of the circuit, (b) the current through the circuit, and (c) the potential difference across the electric lamp and conductor.
+  ask: Current through the circuit, part (b)
+  unit: A
+  ans: 0.25
+  tol: 0.001
+  verify: 6/(20+4)
+  sol: |
+    The lamp and the conductor are in series (Fig. 11.9).
+
+    (a) $R_s = 20 + 4 = 24\ \Omega$.
+
+    (b) $I = V/R_s = 6/24 = 0.25$ A.
+
+    (c) Across the lamp, $V_1 = 20\times0.25 = 5$ V. Across the conductor, $V_2 = 4\times0.25 = 1$ V. Check: $5 + 1 = 6$ V.
+  check: code
+
+- id: ncert-it11-6a-1
+  lvl: ncert-intext
+  num: "§11.6.1 Q1"
+  source: NCERT X Science · Ch 11 · In-text questions after §11.6.1 · Q1
+  kind: text
+  q: Draw a schematic diagram of a circuit consisting of a battery of three cells of 2 V each, a 5 Ω resistor, an 8 Ω resistor, and a 12 Ω resistor, and a plug key, all connected in series.
+  sol: |
+    Draw one closed loop containing, in order: the battery (three 2 V cells in series, so 6 V, with the positive terminal of each cell joined to the negative of the next), the plug key, the 5 Ω resistor, the 8 Ω resistor and the 12 Ω resistor, with no branches. The same current passes through every element in turn.
+
+    ```
+    +–| |–| |–| |––––(key)––––[5 Ω]––––[8 Ω]––––[12 Ω]––––+
+    |      6 V battery (3 × 2 V)                             |
+    +––––––––––––––––––––––––––––––––––––––––––––––––––––––+
+    ```
+  check: none
+
+- id: ncert-it11-6a-2
+  lvl: ncert-intext
+  num: "§11.6.1 Q2"
+  source: NCERT X Science · Ch 11 · In-text questions after §11.6.1 · Q2
+  kind: num
+  q: Redraw the circuit of Question 1, putting in an ammeter to measure the current through the resistors and a voltmeter to measure the potential difference across the 12 Ω resistor. What would be the readings in the ammeter and the voltmeter?
+  ask: Voltmeter reading
+  unit: V
+  ans: 2.88
+  tol: 0.01
+  verify: 6/(5+8+12)*12
+  sol: |
+    Put the ammeter anywhere in the loop (in series) and connect the voltmeter in parallel across the 12 Ω resistor. The battery is $3\times2 = 6$ V and the total resistance is $5 + 8 + 12 = 25\ \Omega$.
+
+    Ammeter: $I = 6/25 = 0.24$ A.
+
+    Voltmeter: $V = IR = 0.24\times12 = 2.88$ V.
+
+    Ideal meters are assumed.
+  check: code
+
+- id: ncert-eg11-8
+  lvl: ncert-intext
+  num: "Ex 11.8"
+  source: NCERT X Science · Ch 11 · Example 11.8
+  kind: num
+  q: In the circuit diagram given in Fig. 11.10, suppose the resistors R₁, R₂ and R₃ have the values 5 Ω, 10 Ω, 30 Ω, respectively, which have been connected to a battery of 12 V. Calculate (a) the current through each resistor, (b) the total current in the circuit, and (c) the total circuit resistance.
+  ask: Total current, part (b)
+  unit: A
+  ans: 4
+  tol: 0.001
+  verify: 12/5+12/10+12/30
+  sol: |
+    The three resistors are in parallel, so each has the full 12 V across it.
+
+    (a) $I_1 = 12/5 = 2.4$ A, $I_2 = 12/10 = 1.2$ A, $I_3 = 12/30 = 0.4$ A.
+
+    (b) $I = I_1 + I_2 + I_3 = 4$ A.
+
+    (c) $\dfrac{1}{R_p} = \dfrac15 + \dfrac1{10} + \dfrac1{30} = \dfrac{6+3+1}{30} = \dfrac13$, so $R_p = 3\ \Omega$. Check: $12/3 = 4$ A.
+  check: code
+
+- id: ncert-eg11-9
+  lvl: ncert-intext
+  num: "Ex 11.9"
+  source: NCERT X Science · Ch 11 · Example 11.9
+  kind: num
+  q: If in Fig. 11.12, R₁ = 10 Ω, R₂ = 40 Ω, R₃ = 30 Ω, R₄ = 20 Ω, R₅ = 60 Ω, and a 12 V battery is connected to the arrangement. Calculate (a) the total resistance in the circuit, and (b) the total current flowing in the circuit.
+  ask: Total current, part (b)
+  unit: A
+  ans: 0.667
+  tol: 0.002
+  verify: 12/(1/(1/10+1/40)+1/(1/30+1/20+1/60))
+  sol: |
+    In Fig. 11.12, $R_1$ and $R_2$ are in parallel, and that pair is in series with the parallel group $R_3, R_4, R_5$.
+
+    $\dfrac{1}{R'} = \dfrac1{10} + \dfrac1{40} = \dfrac{5}{40}$, so $R' = 8\ \Omega$.
+
+    $\dfrac{1}{R''} = \dfrac1{30} + \dfrac1{20} + \dfrac1{60} = \dfrac{6}{60}$, so $R'' = 10\ \Omega$.
+
+    (a) $R = R' + R'' = 18\ \Omega$.
+
+    (b) $I = V/R = 12/18 = 0.67$ A.
+  check: code
+
+- id: ncert-it11-6b-1
+  lvl: ncert-intext
+  num: "§11.6.2 Q1"
+  source: NCERT X Science · Ch 11 · In-text questions after §11.6.2 · Q1
+  kind: text
+  q: Judge the equivalent resistance when the following are connected in parallel – (a) 1 Ω and 10⁶ Ω, and (b) 1 Ω and 10³ Ω, and 10⁶ Ω.
+  sol: |
+    In parallel the equivalent resistance is **smaller than the smallest** resistor, and with one resistor much smaller than the others it is very nearly that smallest value.
+
+    (a) $\dfrac1R = 1 + 10^{-6}$, so $R = 1/(1.000001) \approx 0.999999\ \Omega \approx 1\ \Omega$ (just under 1 Ω).
+
+    (b) $\dfrac1R = 1 + 10^{-3} + 10^{-6}$, so $R \approx 0.999\ \Omega \approx 1\ \Omega$.
+
+    The large resistors hardly matter, because they take almost no current compared with the 1 Ω path.
+  check: none
+
+- id: ncert-it11-6b-2
+  lvl: ncert-intext
+  num: "§11.6.2 Q2"
+  source: NCERT X Science · Ch 11 · In-text questions after §11.6.2 · Q2
+  kind: num
+  q: An electric lamp of 100 Ω, a toaster of resistance 50 Ω, and a water filter of resistance 500 Ω are connected in parallel to a 220 V source. What is the resistance of an electric iron connected to the same source that takes as much current as all three appliances, and what is the current through it?
+  ask: Resistance of the iron
+  unit: Ω
+  ans: 31.25
+  tol: 0.05
+  verify: 220/(220/100+220/50+220/500)
+  sol: |
+    Currents at 220 V: lamp $220/100 = 2.2$ A, toaster $220/50 = 4.4$ A, filter $220/500 = 0.44$ A. Total $= 7.04$ A.
+
+    The iron takes the same current, so the current through it is **7.04 A**, and its resistance is
+
+    $$R = \frac{220}{7.04} \approx 31.25\ \Omega.$$
+
+    Equivalently, $1/R_p = 1/100 + 1/50 + 1/500 = 0.032$, so $R_p = 31.25\ \Omega$.
+  check: code
+
+- id: ncert-it11-6b-3
+  lvl: ncert-intext
+  num: "§11.6.2 Q3"
+  source: NCERT X Science · Ch 11 · In-text questions after §11.6.2 · Q3
+  kind: text
+  q: What are the advantages of connecting electrical devices in parallel with the battery instead of connecting them in series?
+  sol: |
+    - In parallel, each device gets the **full potential difference** of the supply, and each takes the current it needs ($I = V/R$). In series one current flows through all, which would not suit devices needing widely different currents.
+    - Each device can be switched on or off **independently**. In series, if one device fails or is switched off the circuit breaks and none works.
+    - The total resistance falls, so a parallel circuit can carry more total current from the source.
+  check: none
+
+- id: ncert-it11-6b-4
+  lvl: ncert-intext
+  num: "§11.6.2 Q4"
+  source: NCERT X Science · Ch 11 · In-text questions after §11.6.2 · Q4
+  kind: text
+  q: How can three resistors of resistances 2 Ω, 3 Ω, and 6 Ω be connected to give a total resistance of (a) 4 Ω, (b) 1 Ω?
+  sol: |
+    (a) **4 Ω**: join the 3 Ω and 6 Ω in parallel, giving $\dfrac{3\times6}{3+6} = 2\ \Omega$, and put this in series with the 2 Ω resistor: $2 + 2 = 4\ \Omega$.
+
+    (b) **1 Ω**: join all three in parallel: $\dfrac1R = \dfrac12 + \dfrac13 + \dfrac16 = \dfrac{3+2+1}{6} = 1$, so $R = 1\ \Omega$.
+  check: none
+
+- id: ncert-it11-6b-5
+  lvl: ncert-intext
+  num: "§11.6.2 Q5"
+  source: NCERT X Science · Ch 11 · In-text questions after §11.6.2 · Q5
+  kind: text
+  q: What is (a) the highest, (b) the lowest total resistance that can be secured by combinations of four coils of resistance 4 Ω, 8 Ω, 12 Ω, 24 Ω?
+  sol: |
+    (a) The highest is with all four in **series**: $4 + 8 + 12 + 24 = 48\ \Omega$.
+
+    (b) The lowest is with all four in **parallel**: $\dfrac1R = \dfrac14 + \dfrac18 + \dfrac1{12} + \dfrac1{24} = \dfrac{6+3+2+1}{24} = \dfrac12$, so $R = 2\ \Omega$.
+  check: none
+
+- id: ncert-ex11-1
+  lvl: ncert-ex
+  num: 1
+  source: NCERT X Science · Ch 11 · Exercise 1
+  kind: mcq
+  q: A piece of wire of resistance R is cut into five equal parts. These parts are then connected in parallel. If the equivalent resistance of this combination is R′, then the ratio R/R′ is –
+  opts: ["1/25", "1/5", "5", "25"]
+  ans: 3
+  sol: |
+    Each piece has resistance $R/5$ (resistance is proportional to length). Five equal resistors $r$ in parallel give $r/5$, so $R' = (R/5)/5 = R/25$ and $R/R' = 25$.
+  answer_key: (d)
+  check: ncert-key
+
+- id: ncert-ex11-4
+  lvl: ncert-ex
+  num: 4
+  source: NCERT X Science · Ch 11 · Exercise 4
+  kind: mcq
+  q: Two conducting wires of the same material and of equal lengths and equal diameters are first connected in series and then parallel in a circuit across the same potential difference. The ratio of heat produced in series and parallel combinations would be –
+  opts: ["1:2", "2:1", "1:4", "4:1"]
+  ans: 2
+  sol: |
+    Let each wire have resistance $R$. In series $R_s = 2R$; in parallel $R_p = R/2$. For the same $V$ and time, $H = V^2t/R_{\text{eq}}$, so
+
+    $$\frac{H_s}{H_p} = \frac{R_p}{R_s} = \frac{R/2}{2R} = \frac14.$$
+  answer_key: (c)
+  check: ncert-key
+
+- id: ncert-ex11-9
+  lvl: ncert-ex
+  num: 9
+  source: NCERT X Science · Ch 11 · Exercise 9
+  kind: num
+  q: A battery of 9 V is connected in series with resistors of 0.2 Ω, 0.3 Ω, 0.4 Ω , 0.5 Ω and 12 Ω, respectively. How much current would flow through the 12 Ω resistor?
+  ask: Current
+  unit: A
+  ans: 0.67
+  tol: 0.005
+  verify: 9/(0.2+0.3+0.4+0.5+12)
+  sol: |
+    In series the same current flows through every resistor, so the current through the 12 Ω resistor is the circuit current. $R = 0.2 + 0.3 + 0.4 + 0.5 + 12 = 13.4\ \Omega$, so $I = 9/13.4 = 0.67$ A.
+  answer_key: 0.67 A
+  check: both
+
+- id: ncert-ex11-10
+  lvl: ncert-ex
+  num: 10
+  source: NCERT X Science · Ch 11 · Exercise 10
+  kind: num
+  q: How many 176 Ω resistors (in parallel) are required to carry 5 A on a 220 V line?
+  ask: Number of resistors
+  unit: ""
+  ans: 4
+  tol: 0.001
+  verify: 5/(220/176)
+  sol: |
+    Each 176 Ω resistor on 220 V carries $220/176 = 1.25$ A. To carry 5 A in total we need $5/1.25 = 4$ resistors in parallel. (Check: $176/4 = 44\ \Omega$ and $220/44 = 5$ A.)
+  answer_key: 4 resistors
+  check: both
+
+- id: ncert-ex11-11
+  lvl: ncert-ex
+  num: 11
+  source: NCERT X Science · Ch 11 · Exercise 11
+  kind: text
+  q: Show how you would connect three resistors, each of resistance 6 Ω, so that the combination has a resistance of (i) 9 Ω, (ii) 4 Ω.
+  sol: |
+    (i) **9 Ω**: connect two of the resistors in parallel, giving $6/2 = 3\ \Omega$, and put the third in series with that pair: $3 + 6 = 9\ \Omega$.
+
+    (ii) **4 Ω**: connect two of the resistors in series, giving $6 + 6 = 12\ \Omega$, and put the third in parallel with that pair: $\dfrac{12\times6}{12+6} = 4\ \Omega$.
+  check: none
+
+- id: ncert-ex11-13
+  lvl: ncert-ex
+  num: 13
+  source: NCERT X Science · Ch 11 · Exercise 13
+  kind: num
+  q: A hot plate of an electric oven connected to a 220 V line has two resistance coils A and B, each of 24 Ω resistance, which may be used separately, in series, or in parallel. What are the currents in the three cases?
+  ask: Current with the coils in parallel
+  unit: A
+  ans: 18.33
+  tol: 0.05
+  verify: 220/12
+  sol: |
+    - **One coil alone:** $I = 220/24 = 9.2$ A.
+    - **Series:** $R = 48\ \Omega$, so $I = 220/48 = 4.6$ A.
+    - **Parallel:** $R = 24/2 = 12\ \Omega$, so $I = 220/12 = 18.3$ A.
+  answer_key: 9.2 A, 4.6 A, 18.3 A
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Resistors of 10 Ω and 15 Ω are joined in series. What is the equivalent resistance? (Original problem.)
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 25
+  tol: 0.01
+  verify: 10+15
+  sol: In series, resistances add, so $R = 10 + 15 = 25\ \Omega$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Resistors of 6 Ω and 3 Ω are joined in parallel. What is the equivalent resistance? (Original problem.)
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 2
+  tol: 0.01
+  verify: 6*3/(6+3)
+  sol: $\dfrac1R = \dfrac16 + \dfrac13 = \dfrac12$, so $R = 2\ \Omega$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A 12 V battery is connected to a 4 Ω and a 6 Ω resistor in series. Find the potential difference across the 6 Ω resistor. (Original problem.)
+  ask: Potential difference
+  unit: V
+  ans: 7.2
+  tol: 0.01
+  verify: 12/(4+6)*6
+  sol: $I = 12/(4+6) = 1.2$ A, so $V = 1.2\times6 = 7.2$ V. The 4 Ω resistor drops the other 4.8 V.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Three resistors of 4 Ω, 6 Ω and 12 Ω are connected in parallel across a 12 V battery. Find the total current drawn from the battery. (Original problem.)
+  ask: Total current
+  unit: A
+  ans: 6
+  tol: 0.01
+  verify: 12/4+12/6+12/12
+  sol: Branch currents $12/4 = 3$ A, $12/6 = 2$ A, $12/12 = 1$ A. Total $= 6$ A, which corresponds to $R_p = 12/6 = 2\ \Omega$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Find the equivalent resistance between A and B when a 6 Ω resistor is in series with a parallel pair of 12 Ω and 4 Ω resistors, and the whole is connected between A and B. (Original problem.)
+  ask: Equivalent resistance
+  unit: Ω
+  ans: 9
+  tol: 0.01
+  verify: 6+12*4/(12+4)
+  sol: The parallel pair gives $\dfrac{12\times4}{16} = 3\ \Omega$. In series with 6 Ω, $R_{AB} = 9\ \Omega$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A battery sends a current of 3 A through a 4 Ω resistor in parallel with an unknown resistor X. The total current drawn from the battery is 5 A. Find X. (Original problem.)
+  ask: Resistance X
+  unit: Ω
+  ans: 6
+  tol: 0.01
+  verify: 4*3/(5-3)
+  sol: The 4 Ω branch carries 3 A, so the common potential difference is $12$ V. The unknown branch carries $5 - 3 = 2$ A, so $X = 12/2 = 6\ \Omega$.
+  check: code

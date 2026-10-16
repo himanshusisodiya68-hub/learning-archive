@@ -1,0 +1,146 @@
+# Ohm's law. NCERT questions copied word for word from NCERT Science Class X (reprint 2026-27), Ch 11, §11.4. Found, board and main problems are original.
+
+- id: ncert-eg11-3
+  lvl: ncert-intext
+  num: "Ex 11.3"
+  source: NCERT X Science · Ch 11 · Example 11.3
+  kind: num
+  q: (a) How much current will an electric bulb draw from a 220 V source, if the resistance of the bulb filament is 1200 Ω? (b) How much current will an electric heater coil draw from a 220 V source, if the resistance of the heater coil is 100 Ω?
+  ask: Current drawn by the bulb, part (a)
+  unit: A
+  ans: 0.18
+  tol: 0.005
+  verify: 220/1200
+  sol: |
+    (a) $V = 220$ V, $R = 1200\ \Omega$, so $I = V/R = 220/1200 = 0.18$ A.
+
+    (b) $V = 220$ V, $R = 100\ \Omega$, so $I = 220/100 = 2.2$ A.
+
+    The same 220 V source drives about 12 times more current through the heater coil than through the bulb filament, because the coil's resistance is 12 times smaller.
+
+    [Note] The NCERT text for part (a) cites "Eq. (12.6)"; the relation it uses is Eq. (11.6)/(11.7), $I = V/R$. This looks like a typographical slip in the book.
+  check: code
+
+- id: ncert-eg11-4
+  lvl: ncert-intext
+  num: "Ex 11.4"
+  source: NCERT X Science · Ch 11 · Example 11.4
+  kind: num
+  q: The potential difference between the terminals of an electric heater is 60 V when it draws a current of 4 A from the source. What current will the heater draw if the potential difference is increased to 120 V?
+  ask: New current
+  unit: A
+  ans: 8
+  tol: 0.01
+  verify: 120/(60/4)
+  sol: |
+    $R = V/I = 60/4 = 15\ \Omega$. Assuming $R$ stays the same (Ohm's law holds, temperature unchanged), $I = 120/15 = 8$ A. The current doubles when the potential difference doubles.
+  check: code
+
+- id: ncert-ex11-7
+  lvl: ncert-ex
+  num: 7
+  source: NCERT X Science · Ch 11 · Exercise 7
+  kind: num
+  q: |-
+    The values of current I flowing in a given resistor for the corresponding values of potential difference V across the resistor are given below –
+    I (amperes): 0.5, 1.0, 2.0, 3.0, 4.0
+    V (volts): 1.6, 3.4, 6.7, 10.2, 13.2
+    Plot a graph between V and I and calculate the resistance of that resistor.
+  ask: Resistance
+  unit: Ω
+  ans: 3.33
+  tol: 0.1
+  verify: (1.6/0.5+3.4/1+6.7/2+10.2/3+13.2/4)/5
+  sol: |
+    Plot $I$ (amperes) along the horizontal axis and $V$ (volts) along the vertical axis. The five points lie close to a straight line through the origin, so the resistor obeys Ohm's law, and the resistance is the slope $V/I$ of that line.
+
+    | $I$ (A) | 0.5 | 1.0 | 2.0 | 3.0 | 4.0 |
+    |---|---|---|---|---|---|
+    | $V$ (V) | 1.6 | 3.4 | 6.7 | 10.2 | 13.2 |
+    | $V/I$ ($\Omega$) | 3.2 | 3.4 | 3.35 | 3.4 | 3.3 |
+
+    Mean of the five ratios: $(3.2+3.4+3.35+3.4+3.3)/5 = 3.33\ \Omega$. A least-squares line through the origin gives $\sum VI/\sum I^2 = 101.0/30.25 = 3.34\ \Omega$. Either way, $R \approx 3.3\ \Omega$.
+
+    [Inference] The NCERT answer key's 3.33 Ω matches the mean of the five $V/I$ ratios exactly, so that is probably how the key was obtained. The graph itself cannot be drawn here; the points are listed above.
+  answer_key: 3.33 Ω
+  check: both
+
+- id: ncert-ex11-8
+  lvl: ncert-ex
+  num: 8
+  source: NCERT X Science · Ch 11 · Exercise 8
+  kind: num
+  q: When a 12 V battery is connected across an unknown resistor, there is a current of 2.5 mA in the circuit. Find the value of the resistance of the resistor.
+  ask: Resistance
+  unit: kΩ
+  ans: 4.8
+  tol: 0.01
+  verify: 12/2.5e-3/1000
+  sol: |
+    $I = 2.5\ \text{mA} = 2.5\times10^{-3}$ A. From Ohm's law,
+
+    $$R = \frac{V}{I} = \frac{12}{2.5\times10^{-3}} = 4800\ \Omega = 4.8\ \text{k}\Omega.$$
+  answer_key: 4.8 kΩ
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The V–I graph of a metallic wire at constant temperature is
+  opts: ["a curve bending upwards", "a straight line through the origin", "a horizontal line", "a straight line not through the origin"]
+  ans: 1
+  sol: Ohm's law says $V \propto I$ at constant temperature, so the graph is a straight line through the origin whose slope is $R$.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A resistor of 25 Ω is connected across a 9 V cell. What current flows? (Original problem.)
+  ask: Current
+  unit: A
+  ans: 0.36
+  tol: 0.005
+  verify: 9/25
+  sol: $I = V/R = 9/25 = 0.36$ A.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A conductor carries 0.4 A when a potential difference of 12 V is applied. What current will flow if the potential difference is raised to 18 V, the temperature being unchanged? (Original problem.)
+  ask: New current
+  unit: A
+  ans: 0.6
+  tol: 0.005
+  verify: 18/(12/0.4)
+  sol: $R = 12/0.4 = 30\ \Omega$, so $I = 18/30 = 0.6$ A. Current is proportional to potential difference, so it rises by the same factor, $18/12 = 1.5$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: A student measures V and I for a torch bulb and finds that V/I is not the same at different voltages. Does this mean Ohm's law is false? Explain. (Original problem.)
+  sol: |
+    No. Ohm's law holds only if the temperature of the conductor stays the same. As the current rises the bulb filament gets hotter, and its resistance increases, so $V/I$ increases with $V$. The $V$–$I$ graph of the filament is therefore a curve, and the filament is a non-ohmic conductor over this range. A nichrome wire kept cool by a small current gives a straight line.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: An ammeter of resistance 0.5 Ω is placed in series with a 4.5 Ω resistor and a 10 V cell of negligible internal resistance. By what percentage is the current without the ammeter reduced by inserting it? (Original problem.)
+  ask: Percentage reduction
+  unit: "%"
+  ans: 10
+  tol: 0.01
+  verify: (10/4.5-10/5)/(10/4.5)*100
+  sol: |
+    Without the ammeter, $I_0 = 10/4.5 = 2.22$ A. With it, the total resistance is $5\ \Omega$ and $I = 10/5 = 2.0$ A. The reduction is $(2.22-2.0)/2.22 = 0.10$, or 10%. An ideal ammeter has zero resistance for exactly this reason.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A voltmeter reads 6 V across a 100 Ω resistor in a circuit when the voltmeter has a resistance of 1 kΩ. Without the voltmeter, would the true potential difference across the resistor be larger or smaller? Give a reason. (Original problem.)
+  sol: |
+    **Larger**, assuming the resistor is in series with other resistance in the circuit (the usual case; the problem does not say, so this is an assumption). The voltmeter in parallel makes that part of the circuit $100\times1000/1100 = 90.9\ \Omega$, less than $100\ \Omega$. In a potential-divider arrangement a smaller resistance gets a smaller share of the supply, so the reading is lower than the true potential difference. Removing the voltmeter restores the larger value. An ideal voltmeter has infinite resistance.
+  check: none
