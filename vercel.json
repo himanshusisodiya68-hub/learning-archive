@@ -1,0 +1,9 @@
+{
+  "installCommand": "cd site && npm ci",
+  "buildCommand": "cd site && npm run build",
+  "outputDirectory": "site/dist",
+  "framework": null,
+  "headers": [
+    { "source": "/data/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }] }
+  ]
+}
