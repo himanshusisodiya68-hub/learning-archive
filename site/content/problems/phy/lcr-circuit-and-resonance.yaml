@@ -212,3 +212,113 @@
   verify: 10/0.1
   sol: The half-power points are at $\omega_{1,2}$ where $|X_L - X_C| = R$. For a sharp resonance their separation is $\Delta\omega = R/L = 10/0.1 = 100$ rad/s. Smaller $R$ means a sharper peak (larger $Q = \omega_0/\Delta\omega$).
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A series LCR circuit has L = 0.1 H, C = 10 µF and R = 100 Ω, driven by a source of fixed rms voltage and variable angular frequency. At what angular frequency is the rms voltage across the capacitor largest? (Original problem.)
+  ask: Angular frequency of maximum capacitor voltage
+  unit: rad/s
+  ans: 707.1
+  tol: 0.5
+  verify: Math.sqrt(1/(0.1*10e-6) - 100**2/(2*0.1**2))
+  sol: |
+    $V_C = \dfrac{V}{\omega C Z}$, so $V_C$ is largest when $\omega^2Z^2 = \omega^2R^2 + (\omega^2L - 1/C)^2$ is smallest. With $u = \omega^2$, $\dfrac{d}{du}\big[uR^2 + (uL - 1/C)^2\big] = R^2 + 2L(uL - 1/C) = 0$, so
+    $$\omega_C^2 = \frac{1}{LC} - \frac{R^2}{2L^2} = 10^6 - \frac{10^4}{0.02} = 5\times10^5,\qquad \omega_C = 707.1\ \text{rad/s}.$$
+    This is well below $\omega_0 = 1000$ rad/s because the circuit has a low $Q = \omega_0L/R = 1$. The capacitor voltage carries an extra factor $1/\omega$ compared with the current, which pulls its peak below the current peak.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: An inductive load takes 2.2 kW from a 220 V (rms), 50 Hz supply at a power factor of 0.6 lagging. What capacitance must be connected in parallel with it to raise the power factor to 1? (Original problem.)
+  ask: Capacitance
+  unit: µF
+  ans: 192.9
+  tol: 0.3
+  verify: 2200*Math.tan(Math.acos(0.6))/(2*Math.PI*50*220**2)*1e6
+  sol: |
+    The in-phase (power) component of the load current is $I_p = P/V = 2200/220 = 10$ A. The total load current is $I = I_p/\cos\phi = 16.67$ A, so the lagging wattless component is $I_q = I\sin\phi = 16.67\times0.8 = 13.33$ A (equivalently $I_p\tan\phi = 10\times4/3$).
+
+    A parallel capacitor draws a leading current $\omega CV$. For unity power factor it must cancel $I_q$:
+    $$C = \frac{I_q}{\omega V} = \frac{13.33}{2\pi(50)(220)} = 1.929\times10^{-4}\ \text{F} \approx 193\ \mu\text{F}.$$
+    The line current then falls from 16.7 A to 10 A, and the line loss to $0.6^2 = 36\%$ of its earlier value. The load itself is unaffected.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: The half-power angular frequencies of a series LCR circuit are measured as 800 rad/s and 1250 rad/s. The resistance is 9 Ω. Find the quality factor of the circuit. (Original problem.)
+  ask: Quality factor Q
+  unit: ""
+  ans: 2.222
+  tol: 0.005
+  verify: Math.sqrt(800*1250)/(1250-800)
+  sol: |
+    At the half-power points $|\omega L - 1/\omega C| = R$, i.e. $\omega^2 \mp (R/L)\omega - \omega_0^2 = 0$. The positive roots satisfy, exactly,
+    $$\omega_2 - \omega_1 = \frac{R}{L},\qquad \omega_1\omega_2 = \omega_0^2.$$
+    So $\omega_0 = \sqrt{800\times1250} = 1000$ rad/s (the geometric mean, not the arithmetic mean 1025 rad/s), and $\Delta\omega = 450$ rad/s.
+    $$Q = \frac{\omega_0}{\Delta\omega} = \frac{1000}{450} = 2.22.$$
+    As a by-product, $L = R/\Delta\omega = 9/450 = 0.02$ H and $C = 1/(\omega_0^2L) = 50\ \mu$F. Check: $Q = \omega_0L/R = 1000\times0.02/9 = 2.22$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A 4 µF capacitor charged to 50 V is connected at t = 0 across a coil of inductance 25 mH and resistance 5 Ω. After how long has the energy of the oscillation (averaged over a cycle) fallen to half its initial value? Check first that the circuit oscillates. (Original problem.)
+  ask: Time for the energy to halve
+  unit: ms
+  ans: 3.466
+  tol: 0.01
+  verify: 0.025*Math.log(2)/5*1000
+  sol: |
+    The loop rule gives $L\ddot q + R\dot q + q/C = 0$. The critical resistance is $2\sqrt{L/C} = 2\sqrt{0.025/4\times10^{-6}} = 158\ \Omega$, and $R = 5\ \Omega$ is far below it, so the circuit is underdamped:
+    $$q = q_0e^{-Rt/2L}\cos(\omega' t + \alpha),\qquad \omega' = \sqrt{\omega_0^2 - R^2/4L^2}.$$
+    Here $\omega_0 = 1/\sqrt{LC} = 1/\sqrt{10^{-7}} = 3162$ rad/s and $R/2L = 100\ \text{s}^{-1}$, so $\omega' = 3146$ rad/s.
+
+    The energy is quadratic in the amplitude, so its cycle-average decays as $e^{-Rt/L}$. Setting $e^{-Rt/L} = \tfrac12$:
+    $$t = \frac{L\ln2}{R} = \frac{0.025\times0.693}{5} = 3.47\times10^{-3}\ \text{s} = 3.47\ \text{ms},$$
+    about 1.7 oscillations. (The initial energy is $\tfrac12CV^2 = 5$ mJ.)
+
+    [Note] "Averaged over a cycle" matters: the instantaneous energy $q^2/2C + \tfrac12Li^2$ does not decay exactly exponentially, because the loss rate $i^2R$ is zero whenever $i = 0$. For $Q = \omega_0L/R = 15.8$ the difference is small.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A coil of inductance 2 mH and resistance 20 Ω is connected in parallel with a 50 nF capacitor. Find the impedance of the combination at the frequency at which the current drawn from the source is in phase with the source voltage. (Original problem.)
+  ask: Impedance at unity power factor
+  unit: Ω
+  ans: 2000
+  tol: 1
+  verify: 2e-3/(20*50e-9)
+  sol: |
+    Use complex admittances. The capacitor branch has $Y_C = j\omega C$; the coil branch has
+    $$Y_L = \frac{1}{r + j\omega L} = \frac{r - j\omega L}{r^2 + \omega^2L^2}.$$
+    The total current is in phase with $V$ when the imaginary part of $Y = Y_C + Y_L$ vanishes:
+    $$\omega C = \frac{\omega L}{r^2 + \omega^2L^2}\quad\Longrightarrow\quad r^2 + \omega^2L^2 = \frac{L}{C}.$$
+    (Here $\omega^2 = 1/LC - r^2/L^2 = 10^7 - 10^5$, so $\omega = 3146$ rad/s, which exists because $r^2 < L/C$.)
+
+    The admittance is then purely real: $Y = \dfrac{r}{r^2 + \omega^2L^2} = \dfrac{rC}{L}$, so
+    $$Z = \frac{L}{rC} = \frac{2\times10^{-3}}{20\times50\times10^{-9}} = 2000\ \Omega.$$
+    A 20 Ω coil and a capacitor together present 2 kΩ: this is anti-resonance. The current circulating between L and C is about $Q = \sqrt{L/C}/r = 10$ times the line current.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A 2 µF capacitor charged to 100 V is connected, through an ideal 5 mH inductor and a switch, to an identical uncharged 2 µF capacitor. The switch is closed at t = 0. Find the maximum current in the circuit. (Original problem.)
+  ask: Maximum current
+  unit: A
+  ans: 1.414
+  tol: 0.003
+  verify: (2e-6*100)/Math.sqrt(2*5e-3*2e-6)
+  sol: |
+    Let the first capacitor hold charge $q$; charge is conserved on the connected plates, so the second holds $Q_0 - q$, with $Q_0 = CV_0 = 2\times10^{-4}$ C. The electric energy is
+    $$U(q) = \frac{q^2}{2C} + \frac{(Q_0 - q)^2}{2C},$$
+    which is least at $q = Q_0/2$, where $U_{min} = Q_0^2/4C$. The initial energy is $Q_0^2/2C$. With no resistance, the current is largest when $U$ is least, and energy conservation gives
+    $$\tfrac12LI_{max}^2 = \frac{Q_0^2}{2C} - \frac{Q_0^2}{4C} = \frac{Q_0^2}{4C}\quad\Longrightarrow\quad I_{max} = \frac{Q_0}{\sqrt{2LC}}.$$
+    $I_{max} = \dfrac{2\times10^{-4}}{\sqrt{2\times5\times10^{-3}\times2\times10^{-6}}} = \dfrac{2\times10^{-4}}{1.414\times10^{-4}} = 1.414$ A.
+
+    Equivalently, $q$ oscillates about $Q_0/2$ with amplitude $Q_0/2$ at $\omega = 1/\sqrt{L\,C/2}$ (the two capacitors act in series), so $I_{max} = \omega Q_0/2$, the same result. Half of the initial energy sloshes back and forth; the other half stays as the "equilibrium" charge $Q_0/2$ on each capacitor.
+  check: code

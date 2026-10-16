@@ -115,11 +115,11 @@ When the loop is entirely inside or entirely outside the region, the flux is con
 The method also works for an open circuit. If a coil is connected to a capacitor instead of a resistor, no steady current flows, but the emf has the sign Lenz's law would give the current: the plate the current "would flow into" becomes positive.
 
 :::qc
-q: A circular loop lies flat on a table. A long straight wire, also on the table, runs beside the loop and carries a current that is increasing. The current in the wire flows from left to right, and the loop is on the far side of the wire (away from you). Which way does the induced current in the loop circulate, seen from above?
+q: A circular loop lies flat on a table. A long straight wire, also on the table, runs beside the loop and carries a current that is increasing. Seen from above, the current in the wire flows from left to right and the loop lies on the far side of the wire (towards the top of your view). Which way does the induced current in the loop circulate, seen from above?
 options: ["Clockwise", "Anticlockwise", "No current, because the wire's field lines lie in the plane of the table", "It alternates"]
-answer: 1
-right: "Right. By the right-hand grip rule, a left-to-right current makes a field pointing down into the table on its far side. That downward flux is growing, so the induced field points up, and a current with an upward field is anticlockwise seen from above."
-wrong: "Work it through step by step. On the far side of the wire, its field points down into the table. That downward flux is increasing, so the induced field must point up, and a current making an upward field circulates anticlockwise seen from above."
+answer: 0
+right: "Right. By the right-hand grip rule, a left-to-right current makes a field pointing up out of the table on its far side. That upward flux is growing, so the induced field points down, and a current with a downward field is clockwise seen from above."
+wrong: "Work it through step by step. Grip the wire with the thumb pointing left to right: on the far side the fingers come up out of the table. That upward flux is increasing, so the induced field must point down, and a current making a downward field circulates clockwise seen from above."
 :::
 
 ## Why the minus sign: energy conservation {lvl=2 id=s-energy label="Class 12"}
@@ -266,8 +266,8 @@ Think of the pipe as a stack of rings. Take a magnet falling with its N pole dow
 <rect x="130" y="105" width="40" height="25" style="fill:var(--phy);opacity:0.25"/>
 <text x="144" y="94">S</text><text x="144" y="123">N</text>
 <line x1="230" y1="90" x2="230" y2="130" class="pen"/><polygon points="226,128 230,136 234,128" style="fill:var(--ink)"/><text x="238" y="115">v</text>
-<text x="88" y="60" style="fill:var(--phy)">⊙</text><text x="203" y="60" style="fill:var(--phy)">⊗</text>
-<text x="88" y="160" style="fill:var(--phy)">⊗</text><text x="203" y="160" style="fill:var(--phy)">⊙</text>
+<text x="88" y="60" style="fill:var(--phy)">⊗</text><text x="203" y="60" style="fill:var(--phy)">⊙</text>
+<text x="88" y="160" style="fill:var(--phy)">⊙</text><text x="203" y="160" style="fill:var(--phy)">⊗</text>
 <text x="215" y="50" style="font-size:11px">flux falling: attracts</text>
 <text x="215" y="175" style="font-size:11px">flux rising: repels</text>
 <line x1="150" y1="70" x2="150" y2="35" style="stroke:var(--phy);stroke-width:2"/><polygon points="146,38 150,30 154,38" style="fill:var(--phy)"/>
