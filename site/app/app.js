@@ -486,6 +486,84 @@
       q('ang').addEventListener('input', draw); q('pair').addEventListener('change', draw); draw();
     },
 
+    // Young's double slit and single-slit diffraction: intensity on the screen and the fringe pattern.
+    'fringes'(el, o) {
+      const single = o.mode === 'single';
+      el.innerHTML = `<div class="bench"><svg viewBox="0 0 600 230" role="img" aria-label="Interference and diffraction pattern on a screen"></svg>
+        <div class="controls">
+          <label>Wavelength λ: <b data-r="lv"></b><input data-r="l" type="range" min="400" max="700" value="${o.lambda || 550}"></label>
+          ${single ? '' : `<label>Slit separation d: <b data-r="dv"></b><input data-r="d" type="range" min="0.1" max="1" step="0.01" value="0.3"></label>`}
+          <label>Screen distance D: <b data-r="Dv"></b><input data-r="D" type="range" min="0.5" max="2.5" step="0.1" value="1"></label>
+          <label>Slit width a: <b data-r="av"></b><input data-r="a" type="range" min="${single ? 0.02 : 0}" max="0.2" step="0.005" value="${single ? 0.1 : 0}"></label>
+        </div><div class="readout" data-r="out"></div></div>`;
+      const q = n => el.querySelector(`[data-r="${n}"]`), svg = el.querySelector('svg');
+      function rgb(nm) { // rough wavelength-to-colour map for display
+        let r = 0, g = 0, b = 0;
+        if (nm < 440) { r = (440 - nm) / 60; b = 1; } else if (nm < 490) { g = (nm - 440) / 50; b = 1; } else if (nm < 510) { g = 1; b = (510 - nm) / 20; }
+        else if (nm < 580) { r = (nm - 510) / 70; g = 1; } else if (nm < 645) { r = 1; g = (645 - nm) / 65; } else r = 1;
+        return [r, g, b].map(v => Math.round(255 * Math.pow(v, 0.8)));
+      }
+      function draw() {
+        const lam = +q('l').value * 1e-9, d = single ? 0 : +q('d').value * 1e-3, D = +q('D').value, a = +q('a').value * 1e-3;
+        q('lv').textContent = q('l').value + ' nm'; if (!single) q('dv').textContent = q('d').value + ' mm'; q('Dv').textContent = D.toFixed(1) + ' m'; q('av').textContent = a ? (a * 1e3).toFixed(3) + ' mm' : 'narrow';
+        const Y = 0.015, N = 600, [cr, cg, cb] = rgb(+q('l').value);
+        let path = '', strip = '';
+        for (let k = 0; k <= N; k++) {
+          const y = -Y + 2 * Y * k / N, th = y / D;
+          let I = 1;
+          if (!single) I *= Math.cos(Math.PI * d * th / lam) ** 2;
+          if (a > 0) { const b = Math.PI * a * th / lam; I *= b === 0 ? 1 : (Math.sin(b) / b) ** 2; }
+          const x = k, yy = 150 - I * 120;
+          path += (k ? 'L' : 'M') + x.toFixed(1) + ' ' + yy.toFixed(1);
+          if (k % 2 === 0) strip += `<rect x="${x}" y="160" width="2.2" height="60" fill="rgb(${cr},${cg},${cb})" opacity="${I.toFixed(3)}"/>`;
+        }
+        let g = `<rect x="0" y="160" width="600" height="60" style="fill:#05060a"/>${strip}<path d="${path}" style="fill:none;stroke:var(--phy);stroke-width:1.6"/>`;
+        g += `<line x1="300" y1="20" x2="300" y2="152" style="stroke:var(--muted);stroke-dasharray:3 3"/><text x="304" y="30">centre</text><text x="2" y="14">intensity</text><text x="2" y="156">−15 mm</text><text x="548" y="156">+15 mm</text>`;
+        svg.innerHTML = g;
+        let out = '';
+        if (!single) out += `<span>fringe width β = λD/d = <b>${(lam * D / d * 1e3).toFixed(2)} mm</b></span>`;
+        if (a > 0) out += `<span>central ${single ? 'maximum' : 'diffraction envelope'} width 2λD/a = <b>${(2 * lam * D / a * 1e3).toFixed(1)} mm</b></span>`;
+        q('out').innerHTML = out;
+      }
+      el.querySelectorAll('input').forEach(i => i.addEventListener('input', draw)); draw();
+    },
+
+    // Unpolarised light through two or three polaroids: Malus' law at each sheet.
+    'polarisers'(el) {
+      el.innerHTML = `<div class="bench"><svg viewBox="0 0 600 200" role="img" aria-label="Light passing through polaroid sheets"></svg>
+        <div class="controls">
+          <label>Second polaroid at θ: <b data-r="tv"></b><input data-r="t" type="range" min="0" max="180" value="30"></label>
+          <label><input data-r="three" type="checkbox"> add a third polaroid crossed with the first (at 90°)</label>
+        </div><div class="readout" data-r="out"></div></div>`;
+      const q = n => el.querySelector(`[data-r="${n}"]`), svg = el.querySelector('svg'), R = Math.PI / 180;
+      function sheet(x, ang, label) {
+        const dx = 26 * Math.sin(ang * R), dy = -26 * Math.cos(ang * R);
+        return `<ellipse cx="${x}" cy="90" rx="16" ry="44" style="fill:color-mix(in srgb, var(--phy) 12%, transparent);stroke:var(--phy);stroke-width:1.6"/>
+          <line x1="${x - dx}" y1="${90 - dy}" x2="${x + dx}" y2="${90 + dy}" style="stroke:var(--ink);stroke-width:2.4"/><text x="${x - 22}" y="160">${label}</text>`;
+      }
+      function beam(x1, x2, I, ang) { // beam segment whose opacity shows intensity; double arrow shows E direction
+        let s = `<rect x="${x1}" y="82" width="${x2 - x1}" height="16" style="fill:var(--phy)" opacity="${(0.08 + 0.85 * I).toFixed(3)}"/>`;
+        const cx = (x1 + x2) / 2;
+        if (ang === null) s += `<text x="${cx - 10}" y="60">✳</text>`;
+        else if (I > 0.005) { const L = 6 + 16 * Math.sqrt(I), dx = L * Math.sin(ang * R), dy = -L * Math.cos(ang * R);
+          s += `<line x1="${cx - dx}" y1="${50 - dy}" x2="${cx + dx}" y2="${50 + dy}" style="stroke:var(--ink);stroke-width:2"/>`; }
+        return s + `<text x="${cx - 18}" y="190">${(100 * I).toFixed(1)}%</text>`;
+      }
+      function draw() {
+        const t = +q('t').value, three = q('three').checked;
+        q('tv').textContent = t + '°';
+        const I1 = 0.5, I2 = I1 * Math.cos(t * R) ** 2, I3 = three ? I2 * Math.cos((90 - t) * R) ** 2 : null;
+        let g = beam(10, 150, 1, null) + sheet(160, 0, 'P₁ at 0°') + beam(176, 300, I1, 0) + sheet(310, t, `P₂ at ${t}°`);
+        if (three) g += beam(326, 450, I2, t) + sheet(460, 90, 'P₃ at 90°') + beam(476, 590, I3, 90);
+        else g += beam(326, 590, I2, t);
+        svg.innerHTML = g;
+        let out = `<span>after P₁: <b>I₀/2</b></span><span>after P₂: <b>(I₀/2) cos²θ = ${(100 * I2).toFixed(1)}% of I₀</b></span>`;
+        if (three) out += `<span>after P₃: <b>(I₀/8) sin²2θ = ${(100 * I3).toFixed(1)}% of I₀</b></span>`;
+        q('out').innerHTML = out;
+      }
+      q('t').addEventListener('input', draw); q('three').addEventListener('change', draw); draw();
+    },
+
     // A ray through a triangular prism: vector Snell's law at each face.
     'prism-sim'(el) {
       el.innerHTML = `<div class="bench"><svg viewBox="0 0 400 250" role="img" aria-label="A ray refracting through a prism"></svg>

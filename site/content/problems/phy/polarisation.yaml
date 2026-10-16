@@ -1,0 +1,179 @@
+# Polarisation. NCERT question copied word for word from NCERT Physics Class XII (reprint 2026-27), Ch 10. The rationalised chapter has no exercises on polarisation.
+
+- id: ncert12-eg-10-2
+  lvl: ncert-intext
+  num: "XII Ex 10.2"
+  source: NCERT XII Physics · Ch 10 · Example 10.2
+  kind: num
+  q: Discuss the intensity of transmitted light when a polaroid sheet is rotated between two crossed polaroids?
+  ask: Maximum transmitted intensity, as a fraction of the intensity I₀ leaving the first polaroid
+  unit: × I₀
+  ans: 0.25
+  tol: 0.001
+  verify: cos(PI/4)**2*sin(PI/4)**2
+  sol: |
+    Let $I_0$ be the intensity of polarised light after the first polariser $P_1$. After the middle polaroid $P_2$, at angle $\theta$ to $P_1$, the intensity is $I_0\cos^2\theta$.
+    $P_1$ and $P_3$ are crossed, so the angle between $P_2$ and $P_3$ is $(\pi/2 - \theta)$. The intensity emerging from $P_3$ is
+    $$I = I_0\cos^2\theta\cos^2(\pi/2 - \theta) = I_0\cos^2\theta\sin^2\theta = (I_0/4)\sin^2 2\theta.$$
+    The transmitted intensity is maximum, $I_0/4$, when $\theta = \pi/4$, and zero when $\theta = 0$ or $\pi/2$.
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of these waves cannot be polarised?
+  opts: ["Light", "Radio waves", "Sound in air"]
+  ans: 2
+  sol: |
+    Sound in air is longitudinal: the air moves along the direction of travel, so there is no transverse direction to select.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Unpolarised light of intensity 40 W/m² falls on an ideal polaroid. What intensity comes out?
+  ask: Intensity
+  unit: W/m²
+  ans: 20
+  tol: 0.01
+  verify: 40/2
+  sol: A polaroid passes the component along its axis; averaged over all random directions, $\overline{\cos^2} = \tfrac12$, so 20 W/m².
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Unpolarised light of intensity 32 W/m² passes through two polaroids whose axes are at 60°. Find the transmitted intensity.
+  ask: Intensity
+  unit: W/m²
+  ans: 4
+  tol: 0.001
+  verify: 32/2*cos(rad(60))**2
+  sol: After the first, 16 W/m². After the second, $16\cos^2 60° = 16 \times \tfrac14 = 4$ W/m².
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: What is the Brewster angle for light going from air into glass of refractive index 1.5?
+  ask: Brewster angle
+  unit: degrees
+  ans: 56.31
+  tol: 0.02
+  verify: deg(atan(1.5))
+  sol: $\tan\theta_B = n = 1.5$, so $\theta_B = 56.3°$.
+  answer_key: tan⁻¹(1.5) ≈ 56.3° (NCERT's answer key still lists this value for an exercise no longer in the reprinted text.)
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: Through what angle must the analyser be turned from the parallel position to reduce the intensity of polarised light to one quarter?
+  ask: Angle
+  unit: degrees
+  ans: 60
+  tol: 0.01
+  verify: deg(acos(sqrt(0.25)))
+  sol: $\cos^2\theta = \tfrac14$ gives $\cos\theta = \tfrac12$, so $\theta = 60°$.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: Why do polaroid sunglasses cut glare from a wet road?
+  opts: ["They absorb all blue light", "Reflected light is partly polarised horizontally, and their pass axis is vertical", "They reflect sunlight back"]
+  ans: 1
+  sol: Light reflected from a horizontal surface is partly polarised parallel to it (fully at Brewster's angle). A vertical pass axis blocks that component.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Light is reflected from a liquid surface at the polarising angle, and the angle of refraction is 35°. Find the refractive index of the liquid.
+  ask: Refractive index
+  unit: ""
+  ans: 1.428
+  tol: 0.002
+  verify: tan(rad(55))
+  sol: At Brewster's angle $\theta_B + r = 90°$, so $\theta_B = 55°$ and $n = \tan 55° = 1.43$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A middle polaroid between two crossed polaroids is at 30° to the first. Unpolarised light of intensity I enters. What fraction of I emerges?
+  ask: Fraction
+  unit: ""
+  ans: 0.09375
+  tol: 0.0005
+  verify: 0.5*cos(rad(30))**2*sin(rad(30))**2
+  sol: $\tfrac12 \times \cos^2 30° \times \cos^2 60° = \tfrac12 \times \tfrac34 \times \tfrac14 = \tfrac{3}{32} \approx 0.094$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A beam is a mixture of unpolarised light of intensity I_u and linearly polarised light of intensity I_p. Rotating a polaroid in it, the maximum transmitted intensity is 3 times the minimum. Find I_p/I_u.
+  ask: I_p / I_u
+  unit: ""
+  ans: 1
+  tol: 0.001
+  verify: (3-1)/2
+  sol: $I_{\max} = I_u/2 + I_p$ and $I_{\min} = I_u/2$. $I_{\max} = 3I_{\min}$ gives $I_p = I_u$, a ratio of 1.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Polarised light passes through 6 polaroids, each turned 15° from the previous one, so that the last is at 90° to the original polarisation. What fraction of the intensity is transmitted?
+  ask: Fraction
+  unit: ""
+  ans: 0.6597
+  tol: 0.001
+  verify: cos(rad(15))**12
+  sol: Each sheet passes $\cos^2 15°$, so the total is $(\cos^2 15°)^6 = (0.933)^6 \approx 0.66$. Compare with zero for a single sheet at 90°.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Light travelling in water (n = 1.33) is reflected from a glass plate (n = 1.50) immersed in it. Find the Brewster angle.
+  ask: Brewster angle
+  unit: degrees
+  ans: 48.44
+  tol: 0.03
+  verify: deg(atan(1.50/1.33))
+  sol: $\tan\theta_B = n_2/n_1 = 1.50/1.33 = 1.128$, so $\theta_B = 48.4°$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Quartz has nₑ − nₒ = 0.0091 for light of 589 nm. Find the minimum thickness of a quartz quarter-wave plate for this light.
+  ask: Thickness
+  unit: µm
+  ans: 16.18
+  tol: 0.02
+  verify: 589e-9/(4*0.0091)*1e6
+  sol: A quarter-wave plate needs $|n_e - n_o|t = \lambda/4$, so $t = 589\ \text{nm}/(4 \times 0.0091) = 16.2\ \mu$m.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Show that N polaroids, each turned π/(2N) from the last, transmit (cos²(π/2N))ᴺ of polarised light, and evaluate it for N = 30.
+  ask: Transmitted fraction for N = 30
+  unit: ""
+  ans: 0.9211
+  tol: 0.001
+  verify: cos(PI/60)**60
+  sol: Each sheet passes $\cos^2(\pi/2N)$ by Malus' law, giving $T = \cos^{2N}(\pi/2N)$. For large $N$, $\ln T = 2N\ln\cos(\pi/2N) \approx -2N\cdot\tfrac12(\pi/2N)^2 = -\pi^2/(4N)$, so $T \to 1$. For $N = 30$, $T = \cos^{60}(3°) = 0.921$ (the approximation gives $e^{-\pi^2/120} = 0.921$).
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: Using Snell's law, prove that at Brewster's angle the reflected and refracted rays are perpendicular, and show tan θ_B = n.
+  hints: ["Assume the rays are perpendicular, so r = 90° − θ_B.", "Substitute into sin θ_B = n sin r."]
+  sol: The field in the plane of incidence cannot be reflected when the reflected direction lies along the oscillation of the surface electrons, which oscillate perpendicular to the refracted ray. This happens when the reflected and refracted rays are perpendicular, i.e. $\theta_B + r = 90°$. Then $\sin r = \cos\theta_B$, and Snell's law $\sin\theta_B = n\sin r$ gives $\sin\theta_B = n\cos\theta_B$, so $\tan\theta_B = n$. Conversely, if $\tan\theta_B = n$, then $\sin r = \sin\theta_B/n = \cos\theta_B$, so $r = 90° - \theta_B$ and the rays are perpendicular.
+  check: none

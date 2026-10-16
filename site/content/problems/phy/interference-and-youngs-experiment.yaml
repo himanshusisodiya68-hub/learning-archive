@@ -1,0 +1,263 @@
+# Interference and Young's experiment. NCERT questions copied word for word from NCERT Physics Class XII (reprint 2026-27), Ch 10.
+
+- id: ncert12-ex-10-4
+  lvl: ncert-ex
+  num: "XII 10.4"
+  source: NCERT XII Physics · Ch 10 · Exercise 10.4
+  kind: num
+  q: In a Young's double-slit experiment, the slits are separated by 0.28 mm and the screen is placed 1.4 m away. The distance between the central bright fringe and the fourth bright fringe is measured to be 1.2 cm. Determine the wavelength of light used in the experiment.
+  ask: Wavelength
+  unit: nm
+  ans: 600
+  tol: 0.5
+  verify: (1.2e-2/4)*0.28e-3/1.4*1e9
+  sol: |
+    The fourth bright fringe is 4 fringe widths from the centre: $4\beta = 1.2$ cm, so $\beta = 3.0 \times 10^{-3}$ m.
+    $\lambda = \dfrac{\beta d}{D} = \dfrac{3.0 \times 10^{-3} \times 0.28 \times 10^{-3}}{1.4} = 6.0 \times 10^{-7}$ m $= 600$ nm.
+  answer_key: λ = (1.2 × 10⁻² × 0.28 × 10⁻³)/(4 × 1.4) m = 600 nm
+  check: both
+
+- id: ncert12-ex-10-5
+  lvl: ncert-ex
+  num: "XII 10.5"
+  source: NCERT XII Physics · Ch 10 · Exercise 10.5
+  kind: num
+  q: In Young's double-slit experiment using monochromatic light of wavelength λ, the intensity of light at a point on the screen where path difference is λ, is K units. What is the intensity of light at a point where path difference is λ/3 ?
+  ask: Intensity, as a fraction of K
+  unit: × K
+  ans: 0.25
+  tol: 0.001
+  verify: cos(PI/3)**2
+  sol: |
+    With equal slits, $I = 4I_0\cos^2(\phi/2)$, where $\phi = 2\pi\Delta/\lambda$.
+    Path difference $\lambda$: $\phi = 2\pi$, so $I = 4I_0 = K$.
+    Path difference $\lambda/3$: $\phi = 2\pi/3$, so $I = 4I_0\cos^2(\pi/3) = 4I_0 \times \tfrac14 = I_0 = K/4$.
+  answer_key: K/4
+  check: both
+
+- id: ncert12-ex-10-6
+  lvl: ncert-ex
+  num: "XII 10.6"
+  source: NCERT XII Physics · Ch 10 · Exercise 10.6
+  kind: num
+  q: |
+    A beam of light consisting of two wavelengths, 650 nm and 520 nm, is used to obtain interference fringes in a Young's double-slit experiment.
+    (a) Find the distance of the third bright fringe on the screen from the central maximum for wavelength 650 nm.
+    (b) What is the least distance from the central maximum where the bright fringes due to both the wavelengths coincide?
+  ask: (b) Least distance where the bright fringes coincide (taking D/d = 600, see the note)
+  unit: mm
+  ans: 1.56
+  tol: 0.005
+  verify: 4*650e-9*600*1e3
+  sol: |
+    **Note on the data.** The reprinted question does not give the slit separation or the screen distance, but NCERT's answers (1.17 mm and 1.56 mm) both correspond to $D/d = 600$, for example $d = 2$ mm and $D = 1.2$ m. [Inference: the values were dropped from the text when the book was rationalised; the answers are reproduced here with $D/d = 600$.]
+    (a) $x_3 = 3\lambda D/d = 3 \times 650 \times 10^{-9} \times 600 = 1.17 \times 10^{-3}$ m $= 1.17$ mm.
+    (b) Bright fringes coincide where $n_1 \times 650 = n_2 \times 520$, i.e. $n_1/n_2 = 4/5$. The smallest case is the 4th bright fringe of 650 nm on the 5th of 520 nm, a path difference of 2600 nm: $x = 2600 \times 10^{-9} \times 600 = 1.56 \times 10^{-3}$ m $= 1.56$ mm.
+  answer_key: (a) 1.17 mm (b) 1.56 mm
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which pair of sources can produce a steady interference pattern?
+  opts: ["Two separate sodium lamps", "Two slits lit by the same sodium lamp", "Two candles of the same size"]
+  ans: 1
+  sol: Only light split from one source keeps a constant phase difference. Separate lamps change their relative phase about every $10^{-10}$ s.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Two waves of wavelength 600 nm reach a point with a path difference of 150 nm. What is their phase difference?
+  ask: Phase difference
+  unit: degrees
+  ans: 90
+  tol: 0.01
+  verify: 360*150/600
+  sol: $\phi = \dfrac{2\pi}{\lambda}\Delta = 2\pi \times \tfrac{150}{600} = \pi/2$, that is 90°.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: Two coherent waves, each of intensity I₀, meet in phase. What is the resulting intensity?
+  opts: ["2I₀", "4I₀", "I₀"]
+  ans: 1
+  sol: The amplitudes add to $2a$, and intensity goes as amplitude squared, so $4I_0$.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: In Young's experiment the slits are 0.5 mm apart and the screen is 1.0 m away. Light of wavelength 500 nm is used. Find the fringe width.
+  ask: Fringe width
+  unit: mm
+  ans: 1
+  tol: 0.001
+  verify: 500e-9*1.0/0.5e-3*1e3
+  sol: $\beta = \lambda D/d = 5 \times 10^{-7} \times 1.0/5 \times 10^{-4} = 1.0 \times 10^{-3}$ m $= 1.0$ mm.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In a double-slit experiment with light of wavelength 600 nm, the angular width of a fringe is 0.20°. What is the angular width if the whole apparatus is immersed in water (refractive index 4/3)?
+  ask: New angular width
+  unit: degrees
+  ans: 0.15
+  tol: 0.001
+  verify: 0.20/(4/3)
+  sol: The angular width is $\lambda/d$. In water the wavelength becomes $\lambda/\mu$, so the angular width becomes $0.20°/(4/3) = 0.15°$.
+  answer_key: 0.15° (NCERT's answer key still lists this value for an exercise no longer in the reprinted text.)
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: In Young's experiment the fringe width is 2.0 mm. How far is the fifth dark fringe from the third bright fringe on the same side of the centre?
+  ask: Distance
+  unit: mm
+  ans: 3
+  tol: 0.001
+  verify: (4.5-3)*2.0
+  sol: The $n$th dark fringe is at $(n - \tfrac12)\beta$, so the fifth is at $4.5\beta$; the third bright fringe is at $3\beta$. The gap is $1.5\beta = 3.0$ mm.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: In Young's experiment, the screen is moved farther from the slits. What happens to the fringes?
+  opts: ["They get narrower", "They get wider", "They are unchanged"]
+  ans: 1
+  sol: $\beta = \lambda D/d$ grows in proportion to $D$.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |
+    The two slits in a Young's experiment have widths in the ratio 9 : 1. Find the ratio of the maximum to the minimum intensity in the pattern.
+  ask: I_max/I_min
+  unit: ""
+  ans: 4
+  tol: 0.001
+  verify: ((sqrt(9)+1)/(sqrt(9)-1))**2
+  sol: |
+    Intensity is proportional to slit width, so $I_1 : I_2 = 9 : 1$ and amplitudes are $3 : 1$. $I_{\max}/I_{\min} = \left(\dfrac{3 + 1}{3 - 1}\right)^2 = 4$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: When a thin glass sheet of refractive index 1.5 covers one slit of a Young's arrangement, the central bright fringe moves to where the fifth bright fringe was. The wavelength is 600 nm. Find the thickness of the sheet.
+  ask: Thickness
+  unit: µm
+  ans: 6
+  tol: 0.001
+  verify: 5*600e-9/(1.5-1)*1e6
+  sol: The extra optical path $(\mu - 1)t$ must equal $5\lambda$, so $t = 5 \times 600\ \text{nm}/0.5 = 6.0\ \mu$m.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: In Young's experiment, d = 1.0 mm, D = 1.0 m and λ = 600 nm. How far from the central maximum does the intensity first fall to half its maximum value?
+  ask: Distance
+  unit: mm
+  ans: 0.15
+  tol: 0.0005
+  verify: 600e-9*1.0/1.0e-3/4*1e3
+  sol: $\cos^2(\phi/2) = \tfrac12$ first at $\phi = \pi/2$, a path difference of $\lambda/4$. So $x = \beta/4 = \lambda D/(4d) = 0.15$ mm.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: Light of wavelengths 600 nm and 480 nm is used in a Young's experiment with d = 0.5 mm and D = 1.0 m. Find the least distance from the centre where bright fringes of both coincide.
+  ask: Distance
+  unit: mm
+  ans: 4.8
+  tol: 0.005
+  verify: 4*600e-9*1.0/0.5e-3*1e3
+  sol: $n_1 \times 600 = n_2 \times 480$ gives $n_1/n_2 = 4/5$. So $x = 4 \times 600 \times 10^{-9} \times 1.0/0.5 \times 10^{-3} = 4.8$ mm.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Two coherent beams of intensities I₀ and 4I₀ meet with a phase difference of 90°. What is the resultant intensity, as a fraction of the maximum possible intensity?
+  ask: I/I_max
+  unit: ""
+  ans: 0.5556
+  tol: 0.001
+  verify: (1+4+2*sqrt(4)*cos(PI/2))/(1+sqrt(4))**2
+  sol: $I = I_0 + 4I_0 + 2\sqrt{4}I_0\cos 90° = 5I_0$, and $I_{\max} = (1 + 2)^2 I_0 = 9I_0$. Ratio $5/9 \approx 0.556$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: In Young's experiment (d = 0.5 mm, D = 1.0 m, λ = 500 nm), one slit is covered by a film of refractive index 1.6 and thickness 2.5 µm. By how much does the central maximum shift?
+  ask: Shift
+  unit: mm
+  ans: 3
+  tol: 0.001
+  verify: (1.6-1)*2.5e-6*1.0/0.5e-3*1e3
+  sol: $x_0 = (\mu - 1)tD/d = 0.6 \times 2.5 \times 10^{-6} \times 1.0/0.5 \times 10^{-3} = 3.0 \times 10^{-3}$ m, towards the covered slit. That is $(\mu - 1)t/\lambda = 3$ fringe widths.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: In Young's experiment the source slit S is moved 1.0 mm sideways. The source slit is 20 cm from the double slit, and the screen is 1.0 m beyond it. By how much does the central fringe move on the screen?
+  ask: Shift (in the opposite direction)
+  unit: mm
+  ans: 5
+  tol: 0.001
+  verify: 1.0*1.0/0.20
+  sol: Moving S by $s$ adds a path difference $sd/L$ on the source side. The central fringe moves to where $xd/D$ cancels it, so $x = sD/L = 1.0 \times 1.0/0.20 = 5.0$ mm, on the opposite side. The fringe width is unchanged.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: In a Lloyd's mirror arrangement a slit source is 1.0 mm above the plane of the mirror, and the screen is 1.0 m from the slit. Light of wavelength 500 nm is used. Find the fringe width. Is the fringe nearest the mirror bright or dark?
+  ask: Fringe width
+  unit: mm
+  ans: 0.25
+  tol: 0.0005
+  verify: 500e-9*1.0/2e-3*1e3
+  sol: The slit and its mirror image form two coherent sources $d = 2.0$ mm apart, so $\beta = \lambda D/d = 0.25$ mm. Reflection at the denser mirror adds a phase of $\pi$, so the fringe at zero path difference (at the mirror plane) is **dark**.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A Fresnel biprism of refractive index 1.5 has prism angles of 1.0°. A slit source is 10 cm from it, and the screen is 1.0 m from the source. Find the fringe width for light of wavelength 600 nm.
+  ask: Fringe width
+  unit: mm
+  ans: 0.344
+  tol: 0.002
+  verify: 600e-9*1.0/(2*0.10*(1.5-1)*rad(1))*1e3
+  sol: Each half deviates light by $\delta = (\mu - 1)A = 0.5°$, so the two virtual sources are $d = 2a\delta = 2 \times 0.10 \times 0.5 \times \tfrac{\pi}{180} = 1.75 \times 10^{-3}$ m apart, in the plane of the slit. Then $\beta = \lambda D/d = 6 \times 10^{-7} \times 1.0/1.75 \times 10^{-3} = 0.34$ mm.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: Estimate the coherence length of light with a central wavelength of 589 nm and a spectral width of 0.6 nm.
+  ask: Coherence length
+  unit: mm
+  ans: 0.578
+  tol: 0.005
+  verify: (589e-9)**2/0.6e-9*1e3
+  sol: $\ell_c \approx \lambda^2/\Delta\lambda = (5.89 \times 10^{-7})^2/6 \times 10^{-10} \approx 5.8 \times 10^{-4}$ m, about 0.6 mm. Path differences much larger than this wash out the fringes.
+  check: code
+
+- id: o4
+  lvl: oly
+  kind: proof
+  q: Show that for two coherent waves of intensities I₁ and I₂, the intensity averaged over a whole fringe is I₁ + I₂.
+  hints: ["Write I = I₁ + I₂ + 2√(I₁I₂) cos φ.", "Across one fringe, φ runs uniformly through 2π."]
+  sol: Across one fringe the phase difference $\phi$ increases uniformly through $2\pi$. The average of $\cos\phi$ over a full cycle is zero, so the average of $I_1 + I_2 + 2\sqrt{I_1 I_2}\cos\phi$ is $I_1 + I_2$. Interference only redistributes energy from the dark regions to the bright ones; the total is conserved.
+  check: none

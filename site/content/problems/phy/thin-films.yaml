@@ -1,0 +1,150 @@
+# Thin films. Not in the NCERT syllabus; the problems below are original practice at JEE and Olympiad level.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The colours of a soap bubble are caused by
+  opts: ["dyes in the soap", "interference of light reflected from the two surfaces of the film", "dispersion, as in a prism"]
+  ans: 1
+  sol: The two reflections come from the same incoming wave and interfere; which colours reinforce depends on the film's thickness.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Light in air reflects from glass. The reflected wave
+  opts: ["has a phase change of π", "has no phase change", "has a phase change of π/2"]
+  ans: 0
+  sol: Reflection from a denser medium inverts the wave, a phase change of $\pi$.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: What is the minimum thickness of a soap film (n = 1.33) in air that strongly reflects light of wavelength 600 nm at normal incidence?
+  ask: Thickness
+  unit: nm
+  ans: 112.8
+  tol: 0.2
+  verify: 600/(4*1.33)
+  sol: |
+    One flip (at the front surface), so bright reflection needs $2nt = \lambda/2$: $t = \lambda/4n = 600/(4 \times 1.33) = 113$ nm.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: An air wedge between two glass plates shows dark fringes 0.20 mm apart in light of wavelength 600 nm. Find the wedge angle.
+  ask: Angle
+  unit: × 10⁻³ rad
+  ans: 1.5
+  tol: 0.001
+  verify: 600e-9/(2*0.20e-3)*1e3
+  sol: $\beta = \lambda/2\alpha$, so $\alpha = \lambda/2\beta = 6 \times 10^{-7}/(4 \times 10^{-4}) = 1.5 \times 10^{-3}$ rad.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A lens (n = 1.52) is coated with magnesium fluoride (n = 1.38). What minimum coating thickness minimises reflection at 550 nm?
+  ask: Thickness
+  unit: nm
+  ans: 99.6
+  tol: 0.2
+  verify: 550/(4*1.38)
+  sol: |
+    Both reflections flip ($1 < 1.38 < 1.52$), so they cancel when $2n_c t = \lambda/2$: $t = 550/(4 \times 1.38) = 99.6$ nm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: An oil film (n = 1.25) floats on water (n = 1.33). Viewed at normal incidence, the film strongly reflects 500 nm light and no other visible wavelength nearby. What is its minimum thickness?
+  ask: Thickness
+  unit: nm
+  ans: 200
+  tol: 0.1
+  verify: 500/(2*1.25)
+  sol: Air < oil < water, so both reflections flip and bright reflection needs $2nt = m\lambda$. The minimum is $m = 1$, $t = 500/(2 \times 1.25) = 200$ nm.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A hair placed at one end between two glass plates forms an air wedge 10 cm long. Viewed in light of wavelength 600 nm, 40 dark fringes are counted along the wedge beyond the dark fringe at the contact edge. Find the hair's diameter.
+  ask: Diameter
+  unit: µm
+  ans: 12
+  tol: 0.01
+  verify: 40*600e-9/2*1e6
+  sol: Each successive dark fringe means the gap has grown by $\lambda/2$. After 40 fringes the gap is $40 \times 300$ nm $= 12\ \mu$m, the hair's diameter.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: In a Newton's rings experiment with light of wavelength 589 nm, the radius of curvature of the lens is 1.0 m. Find the radius of the 10th dark ring (in reflected light, the central dark spot counted as m = 0).
+  ask: Radius
+  unit: mm
+  ans: 2.427
+  tol: 0.005
+  verify: sqrt(10*589e-9*1.0)*1e3
+  sol: $r_m = \sqrt{m\lambda R} = \sqrt{10 \times 5.89 \times 10^{-7} \times 1.0} = 2.43 \times 10^{-3}$ m.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: In Newton's rings, the diameter of the 15th dark ring is 5.90 mm and that of the 5th is 3.36 mm. The lens has R = 1.0 m. Find the wavelength.
+  ask: Wavelength
+  unit: nm
+  ans: 588.0
+  tol: 1
+  verify: ((5.90e-3)**2-(3.36e-3)**2)/(4*10*1.0)*1e9
+  sol: |
+    $D_{m+p}^2 - D_m^2 = 4p\lambda R$ with $p = 10$: $\lambda = (5.90^2 - 3.36^2) \times 10^{-6}/(40 \times 1.0) = 23.52 \times 10^{-6}/40 = 5.88 \times 10^{-7}$ m.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: When the space under the lens in a Newton's rings arrangement is filled with a liquid, the diameter of a given ring falls from 1.40 cm to 1.27 cm. Find the refractive index of the liquid.
+  ask: Refractive index
+  unit: ""
+  ans: 1.215
+  tol: 0.002
+  verify: (1.40/1.27)**2
+  sol: Ring radii scale as $1/\sqrt n$, so $n = (1.40/1.27)^2 = 1.22$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: White light falls at normal incidence on a soap film (n = 1.33) of thickness 500 nm in air. Which visible wavelength (400–700 nm) is most strongly reflected?
+  ask: Wavelength
+  unit: nm
+  ans: 532
+  tol: 0.5
+  verify: 2*1.33*500/2.5
+  sol: Bright reflection needs $2nt = (m + \tfrac12)\lambda$, with $2nt = 1330$ nm. $m = 1$ gives 887 nm (infrared), $m = 2$ gives **532 nm** (green), $m = 3$ gives 380 nm (just beyond violet). So the film looks green.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: For an anti-reflection layer on glass of index 1.50, what coating index gives zero reflection at the design wavelength (normal incidence)?
+  ask: Coating index
+  unit: ""
+  ans: 1.2247
+  tol: 0.001
+  verify: sqrt(1.50)
+  sol: The reflection amplitudes at the two surfaces are proportional to $(n_c - 1)/(n_c + 1)$ and $(n_g - n_c)/(n_g + n_c)$. Setting them equal gives $n_c^2 = n_g$, so $n_c = \sqrt{1.50} = 1.22$.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: Show that the optical path difference between the two rays reflected from a film of index n and thickness t is 2nt cos r, where r is the angle of refraction inside the film.
+  hints: ["Ray 2 travels 2t/cos r inside the film.", "Meanwhile ray 1 travels 2t tan r sin i in air."]
+  sol: Inside the film, ray 2 covers $2t/\cos r$, an optical path $2nt/\cos r$. Over the same stretch, ray 1 travels in air from its reflection point to the foot of the perpendicular from where ray 2 emerges, a distance $2t\tan r\sin i$. With $\sin i = n\sin r$ this is $2nt\sin^2 r/\cos r$. The difference is $\dfrac{2nt}{\cos r}(1 - \sin^2 r) = 2nt\cos r$.
+  check: none

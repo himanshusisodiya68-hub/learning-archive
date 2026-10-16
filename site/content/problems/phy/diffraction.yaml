@@ -1,0 +1,169 @@
+# Diffraction. NCERT Class XII Ch 10 §10.6 has no exercises; the problems below are original practice at each level.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Why can you hear someone around a corner but not see them?
+  opts: ["Sound travels faster than light", "Sound's wavelength is comparable to doorways; light's is far smaller", "Light cannot pass through air around corners"]
+  ans: 1
+  sol: Diffraction is strong when the opening is comparable to the wavelength. Sound is about a metre long; light about half a micrometre.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A single slit is made narrower. The central bright band on a distant screen
+  opts: ["becomes narrower", "becomes wider", "does not change"]
+  ans: 1
+  sol: Its width is $2\lambda D/a$, so a smaller $a$ gives a wider band.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Light of wavelength 600 nm falls on a slit 0.20 mm wide. A screen is 1.5 m away. Find the width of the central maximum.
+  ask: Width
+  unit: mm
+  ans: 9
+  tol: 0.01
+  verify: 2*600e-9*1.5/0.20e-3*1e3
+  sol: $2\lambda D/a = 2 \times 6 \times 10^{-7} \times 1.5/2 \times 10^{-4} = 9.0 \times 10^{-3}$ m $= 9.0$ mm.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: The first minimum of a single-slit pattern is at 0.30° for light of wavelength 550 nm. Find the slit width.
+  ask: Slit width
+  unit: mm
+  ans: 0.105
+  tol: 0.001
+  verify: 550e-9/sin(rad(0.30))*1e3
+  sol: $a = \lambda/\sin\theta = 5.5 \times 10^{-7}/\sin 0.30° = 5.5 \times 10^{-7}/5.24 \times 10^{-3} = 1.05 \times 10^{-4}$ m $\approx 0.105$ mm.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: In a single-slit experiment the first minimum for red light (660 nm) coincides with the first maximum for another wavelength. Find that wavelength.
+  ask: Wavelength
+  unit: nm
+  ans: 440
+  tol: 0.5
+  verify: 660/1.5
+  sol: First minimum for red, $a\sin\theta = \lambda_r$; first secondary maximum for $\lambda'$, $a\sin\theta \approx \tfrac32\lambda'$. So $\lambda' = \tfrac23 \times 660 = 440$ nm.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: How does the angular width of the central maximum compare with that of the first secondary maximum?
+  opts: ["Equal", "Twice as wide", "Half as wide"]
+  ans: 1
+  sol: The central maximum runs from $-\lambda/a$ to $+\lambda/a$ (width $2\lambda/a$); each secondary maximum lies between two successive minima ($\lambda/a$ wide).
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Find the Fresnel distance for an aperture 2.0 mm wide and light of wavelength 500 nm.
+  ask: Fresnel distance
+  unit: m
+  ans: 8
+  tol: 0.01
+  verify: (2.0e-3)**2/500e-9
+  sol: $z_F = a^2/\lambda = (2 \times 10^{-3})^2/5 \times 10^{-7} = 8.0$ m.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: In a double-slit experiment the slit separation is 0.50 mm and each slit is 0.10 mm wide. How many bright interference fringes lie within the central diffraction maximum?
+  ask: Number of bright fringes
+  unit: ""
+  ans: 9
+  tol: 0.01
+  verify: 2*floor(0.50/0.10 - 1e-9)+1
+  sol: |
+    The envelope's first minima are at $\sin\theta = \lambda/a$, where $d\sin\theta = (d/a)\lambda = 5\lambda$. So the order $m = 5$ falls on the minimum and is missing, leaving $m = 0, \pm1, \dots, \pm4$: **9** bright fringes.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A telescope has an objective of diameter 10 cm. Find its limit of angular resolution for light of wavelength 550 nm.
+  ask: Angle
+  unit: × 10⁻⁶ rad
+  ans: 6.71
+  tol: 0.01
+  verify: 1.22*550e-9/0.10*1e6
+  sol: $\theta = 1.22\lambda/D = 1.22 \times 5.5 \times 10^{-7}/0.10 = 6.7 \times 10^{-6}$ rad, about 1.4 arcseconds.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A grating has 500 lines per mm. At what angle is the second-order maximum for light of wavelength 600 nm?
+  ask: Angle
+  unit: degrees
+  ans: 36.87
+  tol: 0.02
+  verify: deg(asin(2*600e-9/(1e-3/500)))
+  sol: $d = 1/500$ mm $= 2 \times 10^{-6}$ m. $\sin\theta = 2\lambda/d = 1.2 \times 10^{-6}/2 \times 10^{-6} = 0.6$, so $\theta = 36.9°$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: For the grating of the previous problem (500 lines per mm), what is the highest order visible for light of wavelength 600 nm?
+  ask: Highest order
+  unit: ""
+  ans: 3
+  tol: 0.01
+  verify: floor((1e-3/500)/600e-9)
+  sol: $n \le d/\lambda = 2 \times 10^{-6}/6 \times 10^{-7} = 3.33$, so the third order is the highest.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Two headlights 1.5 m apart are viewed by an eye with a pupil diameter of 3.0 mm, at a wavelength of 550 nm. Beyond what distance can the eye not resolve them (diffraction limit only)?
+  ask: Distance
+  unit: km
+  ans: 6.71
+  tol: 0.02
+  verify: 1.5/(1.22*550e-9/3.0e-3)/1000
+  sol: $\theta_{\min} = 1.22\lambda/D = 1.22 \times 5.5 \times 10^{-7}/3 \times 10^{-3} = 2.24 \times 10^{-4}$ rad. The lights merge when $1.5/L < \theta_{\min}$, i.e. $L > 6.7$ km. (In practice the retina limits the eye to about $3 \times 10^{-4}$ rad.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: What is the minimum number of lines a grating must have to resolve the sodium D lines (589.0 nm and 589.6 nm) in the second order?
+  ask: Number of lines
+  unit: ""
+  ans: 491
+  tol: 0.6
+  verify: ceil(589.0/0.6/2)
+  sol: Resolving power $\lambda/\Delta\lambda = 589.0/0.6 = 982$ must not exceed $nN$, so $N \ge 982/2 = 491$.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Find the position of the first secondary maximum of a single slit, in units of λ/a for sin θ, by solving tan β = β with β = π a sin θ/λ.
+  ask: a sin θ / λ
+  unit: ""
+  ans: 1.4303
+  tol: 0.001
+  verify: 4.4934/PI
+  sol: Setting $dI/d\beta = 0$ for $I \propto (\sin\beta/\beta)^2$ gives $\tan\beta = \beta$. The first non-zero root is $\beta = 4.4934$ (iterate $\beta \leftarrow \pi + \arctan\beta$ from $1.5\pi$). So $a\sin\theta = \beta\lambda/\pi = 1.430\lambda$, slightly inside $1.5\lambda$. Its intensity is $(\sin\beta/\beta)^2 = 0.047$ of the centre.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: A grating with spacing d is illuminated with light falling at angle i to its normal. Show that the maxima satisfy d(sin θ − sin i) = nλ, with θ measured on the same side as i for the transmitted beam.
+  hints: ["Find the extra path of the incoming light to the second slit.", "Add the extra path on the outgoing side."]
+  sol: For adjacent slits, the incoming wavefront reaches one slit later by a path $d\sin i$, so the light leaving that slit already lags by $d\sin i$. On the way out at angle $\theta$, the same slit's light travels $d\sin\theta$ less (taking $\theta$ on the side towards which the incident beam is heading). The net path difference is $d\sin\theta - d\sin i$, and the maxima require it to be $n\lambda$. For $i = 0$ this reduces to $d\sin\theta = n\lambda$.
+  check: none

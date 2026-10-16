@@ -1,0 +1,322 @@
+# Optical instruments. NCERT questions copied word for word from NCERT Physics Class XII (reprint 2026-27), Ch 9.
+
+- id: ncert12-ex-9-11
+  lvl: ncert-ex
+  num: "XII 9.11"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.11
+  kind: num
+  q: A compound microscope consists of an objective lens of focal length 2.0 cm and an eyepiece of focal length 6.25 cm separated by a distance of 15 cm. How far from the objective should an object be placed in order to obtain the final image at (a) the least distance of distinct vision (25 cm), and (b) at infinity? What is the magnifying power of the microscope in each case?
+  ask: Magnifying power in case (a)
+  unit: ""
+  ans: 20
+  tol: 0.1
+  verify: "(function(){ var ue=1/(1/(-25)-1/6.25), vo=15+ue, uo=1/(1/vo-1/2); return (vo/-uo)*(1+25/6.25); })()"
+  hints: ["Start from the eyepiece: its image is at −25 cm, so find uₑ.", "The objective's image lies 15 − |uₑ| cm from the objective."]
+  sol: |
+    (a) Eyepiece: $v_e = -25$, $f_e = 6.25$ gives $u_e = -5$ cm. So the objective's image is at $v_o = 15 - 5 = 10$ cm, and $\frac{1}{u_o} = \frac{1}{10} - \frac{1}{2}$ gives $u_o = -2.5$ cm. Magnifying power $= \frac{v_o}{|u_o|}\left(1 + \frac{25}{6.25}\right) = 4 \times 5 = 20$.
+    (b) Image at infinity: $u_e = -6.25$ cm, $v_o = 8.75$ cm, $u_o = -2.59$ cm. Magnifying power $= \frac{8.75}{2.59} \times \frac{25}{6.25} = 13.5$.
+  answer_key: "(a) uₒ = –2.5 cm; magnifying power = 20. (b) uₒ = –2.59 cm; magnifying power = 13.5."
+  check: both
+
+- id: ncert12-ex-9-12
+  lvl: ncert-ex
+  num: "XII 9.12"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.12
+  kind: num
+  q: A person with a normal near point (25 cm) using a compound microscope with objective of focal length 8.0 mm and an eyepiece of focal length 2.5 cm can bring an object placed at 9.0 mm from the objective in sharp focus. What is the separation between the two lenses? Calculate the magnifying power of the microscope,
+  ask: Magnifying power
+  unit: ""
+  ans: 88
+  tol: 0.5
+  verify: "(function(){ var vo=1/(1/0.8-1/0.9); return (vo/0.9)*(1+25/2.5); })()"
+  sol: |
+    Objective: $\frac{1}{v_o} = \frac{1}{0.8} - \frac{1}{0.9}$ (cm), so $v_o = 7.2$ cm. Eyepiece with image at 25 cm: $\frac{1}{u_e} = -\frac{1}{25} - \frac{1}{2.5}$, so $|u_e| = 2.27$ cm. Separation $= 7.2 + 2.27 = 9.47$ cm. Magnifying power $= \frac{7.2}{0.9} \times \left(1 + \frac{25}{2.5}\right) = 8 \times 11 = 88$.
+  answer_key: Separation = 9.47 cm; Magnifying power = 88
+  check: both
+
+- id: ncert12-ex-9-13
+  lvl: ncert-ex
+  num: "XII 9.13"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.13
+  kind: num
+  q: A small telescope has an objective lens of focal length 144 cm and an eyepiece of focal length 6.0 cm. What is the magnifying power of the telescope? What is the separation between the objective and the eyepiece?
+  ask: Magnifying power
+  unit: ""
+  ans: 24
+  tol: 0.05
+  verify: 144/6
+  sol: In normal adjustment, $m = f_o/f_e = 144/6.0 = 24$, and the separation is $f_o + f_e = 150$ cm.
+  answer_key: 24; 150 cm
+  check: both
+
+- id: ncert12-ex-9-14
+  lvl: ncert-ex
+  num: "XII 9.14"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.14
+  kind: num
+  q: (a) A giant refracting telescope at an observatory has an objective lens of focal length 15 m. If an eyepiece of focal length 1.0 cm is used, what is the angular magnification of the telescope? (b) If this telescope is used to view the moon, what is the diameter of the image of the moon formed by the objective lens? The diameter of the moon is $3.48 \times 10^6$ m, and the radius of lunar orbit is $3.8 \times 10^8$ m.
+  ask: Diameter of the Moon's image, part (b)
+  unit: cm
+  ans: 13.7
+  tol: 0.05
+  verify: 1500*3.48e6/3.8e8
+  sol: (a) $m = f_o/f_e = 1500/1.0 = 1500$. (b) The Moon subtends $3.48 \times 10^6/3.8 \times 10^8 = 9.16 \times 10^{-3}$ rad, so its image at the focal plane has diameter $f_o\theta = 1500 \times 9.16 \times 10^{-3} = 13.7$ cm.
+  answer_key: (a) Angular magnification = 1500 (b) Diameter of the image = 13.7 cm.
+  check: both
+
+- id: ncert12-ex-9-22
+  lvl: ncert-ex
+  num: "XII 9.22"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.22
+  kind: num
+  q: A card sheet divided into squares each of size 1 mm² is being viewed at a distance of 9 cm through a magnifying glass (a converging lens of focal length 9 cm) held close to the eye. (a) What is the magnification produced by the lens? How much is the area of each square in the virtual image? (b) What is the angular magnification (magnifying power) of the lens ? (c) Is the magnification in (a) equal to the magnifying power in (b)? Explain.
+  ask: Magnifying power, part (b)
+  unit: ""
+  ans: 2.8
+  tol: 0.05
+  verify: 25/9
+  sol: |
+    **Note on the data:** the printed question gives a focal length of 9 cm, but NCERT's own answers to Exercises 9.22–9.24 all use 10 cm (with $f = 9$ cm and the card at 9 cm, the image would be at infinity). The solution follows NCERT's answers with $f = 10$ cm.
+    (a) $\frac1v = \frac{1}{10} - \frac{1}{9} = -\frac{1}{90}$, so $v = -90$ cm and the magnification is $90/9 = 10$. Each square's image has sides 10 mm, area $100\text{ mm}^2 = 1\text{ cm}^2$.
+    (b) Magnifying power $= 25/|u| = 25/9 = 2.8$.
+    (c) No. Linear magnification compares image and object sizes; magnifying power compares the angle of the image at the eye with the angle of the object placed at 25 cm. They are equal only when the image is at 25 cm.
+  answer_key: "(a) v = –90 cm; magnification = 10; each square in the virtual image has area 100 mm² = 1 cm². (b) Magnifying power = 25/9 = 2.8. (c) No; they are equal only when the image is at the near point."
+  check: both
+
+- id: ncert12-ex-9-23
+  lvl: ncert-ex
+  num: "XII 9.23"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.23
+  kind: num
+  q: (a) At what distance should the lens be held from the card sheet in Exercise 9.22 in order to view the squares distinctly with the maximum possible magnifying power? (b) What is the magnification in this case? (c) Is the magnification equal to the magnifying power in this case? Explain.
+  ask: Distance of lens from card, part (a)
+  unit: cm
+  ans: 7.14
+  tol: 0.02
+  verify: -1/(1/(-25)-1/10)
+  sol: |
+    (a) Maximum magnifying power needs the image at 25 cm: $\frac1u = -\frac{1}{25} - \frac{1}{10}$, so $u = -7.14$ cm. (b) Magnification $= 25/7.14 = 3.5$. (c) The magnifying power is also $25/7.14 = 3.5$: with the image at the near point the two are equal. (Using $f = 10$ cm, as NCERT's answers do.)
+  answer_key: (a) u = – 7.14 cm (b) magnification = 3.5 (c) magnifying power = 3.5; yes, equal when the image is at 25 cm.
+  check: both
+
+- id: ncert12-ex-9-24
+  lvl: ncert-ex
+  num: "XII 9.24"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.24
+  kind: num
+  q: What should be the distance between the object in Exercise 9.23 and the magnifying glass if the virtual image of each square in the figure is to have an area of 6.25 mm². Would you be able to see the squares distinctly with your eyes very close to the magnifier?
+  ask: Object distance
+  unit: cm
+  ans: 6
+  tol: 0.02
+  verify: -((1/2.5-1)/0.1)
+  hints: ["Area 6.25 mm² means linear magnification 2.5, so v = 2.5u."]
+  sol: Magnification $= \sqrt{6.25} = 2.5$, so $v = 2.5u$. Then $\frac{1}{2.5u} - \frac1u = \frac{1}{10}$ gives $u = -6$ cm and $v = -15$ cm. The image is only 15 cm from the eye, closer than the near point, so it cannot be seen distinctly.
+  answer_key: u = – 6 cm; |v| = 15 cm; the virtual image is closer than the normal near point (25 cm) and cannot be seen by the eye distinctly.
+  check: both
+
+- id: ncert12-ex-9-25
+  lvl: ncert-ex
+  num: "XII 9.25"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.25
+  kind: text
+  q: |
+    Answer the following questions:
+    (a) The angle subtended at the eye by an object is equal to the angle subtended at the eye by the virtual image produced by a magnifying glass. In what sense then does a magnifying glass provide angular magnification?
+    (b) In viewing through a magnifying glass, one usually positions one's eyes very close to the lens. Does angular magnification change if the eye is moved back?
+    (c) Magnifying power of a simple microscope is inversely proportional to the focal length of the lens. What then stops us from using a convex lens of smaller and smaller focal length and achieving greater and greater magnifying power?
+    (d) Why must both the objective and the eyepiece of a compound microscope have short focal lengths?
+    (e) When viewing through a compound microscope, our eyes should be positioned not on the eyepiece but a short distance away from it for best viewing. Why? How much should be that short distance between the eye and eyepiece?
+  sol: |
+    (a) Without the lens, the object could be held no closer than 25 cm. With the lens, it can be held much closer and still be seen sharply. The closer object subtends a larger angle than it would at 25 cm; that is the angular magnification.
+    (b) Yes, it decreases a little, because the angle subtended at the eye becomes slightly smaller than that at the lens. The effect is negligible when the image is very far away.
+    (c) Lenses of very short focal length are hard to grind, and aberrations (spherical and chromatic) grow rapidly. In practice a simple lens gives no more than about 3×, or about 10× with an aberration-corrected lens system.
+    (d) The eyepiece's angular magnification $1 + D/f_e$ grows as $f_e$ shrinks, and the objective's magnification $v_o/|u_o|$ is large when the object is just outside a short $f_o$. Short focal lengths for both give high overall magnification.
+    (e) All the light passing through the objective converges through the eye ring, the image of the objective formed by the eyepiece. Placing the eye there collects all the light and gives the widest field of view; too close and you lose light and field. The ideal distance depends on the lens separation and is usually built into the instrument's design.
+  check: none
+
+- id: ncert12-ex-9-26
+  lvl: ncert-ex
+  num: "XII 9.26"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.26
+  kind: num
+  q: An angular magnification (magnifying power) of 30X is desired using an objective of focal length 1.25 cm and an eyepiece of focal length 5 cm. How will you set up the compound microscope?
+  ask: Separation of objective and eyepiece
+  unit: cm
+  ans: 11.67
+  tol: 0.03
+  verify: 7.5+25/6
+  hints: ["With the image at 25 cm, the eyepiece gives 1 + 25/5 = 6, so the objective must give 5.", "vₒ = 5|uₒ|; use the lens formula for the objective."]
+  sol: |
+    Eyepiece magnification $= 1 + 25/5 = 6$, so the objective must magnify 5: $v_o = -5u_o$. Then $\frac{1}{-5u_o} - \frac{1}{u_o} = \frac{1}{1.25}$ gives $u_o = -1.5$ cm and $v_o = 7.5$ cm. For the eyepiece, $|u_e| = 25/6 = 4.17$ cm. Place the object 1.5 cm from the objective and the lenses $7.5 + 4.17 = 11.67$ cm apart.
+  answer_key: uₒ = –1.5 cm; vₒ = 7.5 cm; |uₑ| = 4.17 cm; separation 11.67 cm; object 1.5 cm from the objective.
+  check: both
+
+- id: ncert12-ex-9-27
+  lvl: ncert-ex
+  num: "XII 9.27"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.27
+  kind: num
+  q: A small telescope has an objective lens of focal length 140 cm and an eyepiece of focal length 5.0 cm. What is the magnifying power of the telescope for viewing distant objects when (a) the telescope is in normal adjustment (i.e., when the final image is at infinity)? (b) the final image is formed at the least distance of distinct vision (25 cm)?
+  ask: Magnifying power, part (b)
+  unit: ""
+  ans: 33.6
+  tol: 0.05
+  verify: (140/5)*(1+5/25)
+  sol: (a) $m = f_o/f_e = 140/5.0 = 28$. (b) $m = \frac{f_o}{f_e}\left(1 + \frac{f_e}{25}\right) = 28 \times 1.2 = 33.6$.
+  answer_key: (a) m = 28 (b) m = 33.6
+  check: both
+
+- id: ncert12-ex-9-28
+  lvl: ncert-ex
+  num: "XII 9.28"
+  source: NCERT XII Physics · Ch 9 · Exercise 9.28
+  kind: num
+  q: (a) For the telescope described in Exercise 9.27 (a), what is the separation between the objective lens and the eyepiece? (b) If this telescope is used to view a 100 m tall tower 3 km away, what is the height of the image of the tower formed by the objective lens? (c) What is the height of the final image of the tower if it is formed at 25 cm?
+  ask: Height of objective's image, part (b)
+  unit: cm
+  ans: 4.67
+  tol: 0.03
+  verify: 140*100/3000
+  sol: (a) $f_o + f_e = 145$ cm. (b) The tower subtends $100/3000 = 1/30$ rad, so the objective's image is $140/30 = 4.7$ cm tall. (c) With the final image at 25 cm the eyepiece magnifies $1 + 25/5 = 6$ times, so the final image is about 28 cm tall.
+  answer_key: (a) 145 cm (b) h = 4.7 cm (c) 28 cm
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: For a large magnifying power, an astronomical telescope needs an objective of
+  opts: ["short focal length and small aperture", "long focal length and large aperture", "long focal length and small aperture"]
+  ans: 1
+  sol: Magnifying power is $f_o/f_e$, so $f_o$ should be long; a large aperture gathers more light and resolves finer detail.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the magnifying power of a magnifier of focal length 5 cm when the image is formed at the near point (25 cm).
+  ask: Magnifying power
+  unit: ""
+  ans: 6
+  tol: 0.01
+  verify: 1+25/5
+  sol: $m = 1 + D/f = 1 + 25/5 = 6$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A telescope has an objective of focal length 100 cm and an eyepiece of focal length 4 cm. Find its magnifying power in normal adjustment.
+  ask: Magnifying power
+  unit: ""
+  ans: 25
+  tol: 0.05
+  verify: 100/4
+  sol: $m = f_o/f_e = 100/4 = 25$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: What is the length of the telescope in the previous problem in normal adjustment?
+  ask: Length
+  unit: cm
+  ans: 104
+  tol: 0.1
+  verify: 100+4
+  sol: $L = f_o + f_e = 104$ cm.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A compound microscope has an objective of focal length 1.0 cm, an eyepiece of focal length 2.5 cm and a tube length of 16 cm. Find its magnifying power in normal adjustment.
+  ask: Magnifying power
+  unit: ""
+  ans: 160
+  tol: 0.5
+  verify: (16/1)*(25/2.5)
+  sol: $m \approx \frac{L}{f_o}\cdot\frac{D}{f_e} = 16 \times 10 = 160$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Find the angular resolution of a telescope of aperture 10 cm for light of wavelength 550 nm, in seconds of arc.
+  ask: Resolution
+  unit: arcsec
+  ans: 1.38
+  tol: 0.02
+  verify: 1.22*550e-9/0.1*180/PI*3600
+  sol: $\theta = 1.22\lambda/D = 6.7 \times 10^{-6}$ rad $\approx 1.4''$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: How many times more light does an 8.0 m telescope mirror collect than a dark-adapted eye with a 7.0 mm pupil? Give the answer in millions.
+  ask: Ratio, in millions
+  unit: × 10⁶
+  ans: 1.31
+  tol: 0.01
+  verify: (8/0.007)**2/1e6
+  sol: |
+    Light gathered ∝ area ∝ $D^2$: $(8.0/0.0070)^2 = 1.31 \times 10^6$.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A telescope with an objective of diameter 10 cm and focal length 100 cm is used with an eyepiece of focal length 2.5 cm. Find the diameter of its exit pupil.
+  ask: Exit pupil diameter
+  unit: mm
+  ans: 2.5
+  tol: 0.01
+  verify: 100*2.5/100
+  sol: Exit pupil $= D_{\text{obj}}\,f_e/f_o = 100\text{ mm} \times 2.5/100 = 2.5$ mm, smaller than a typical pupil, so all the collected light enters the eye.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Where is the eye ring of a telescope with $f_o = 100$ cm and $f_e = 5$ cm in normal adjustment, measured from the eyepiece?
+  ask: Distance behind eyepiece
+  unit: cm
+  ans: 5.25
+  tol: 0.01
+  verify: 5*(100+5)/100
+  hints: ["The eye ring is the eyepiece's image of the objective, which is fₒ + fₑ in front of the eyepiece."]
+  sol: With $u = -(f_o + f_e) = -105$ cm and $f = 5$ cm, $\frac1v = \frac15 - \frac{1}{105}$, giving $v = \frac{5 \times 105}{100} = 5.25$ cm behind the eyepiece.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A Galilean telescope uses a convex objective of focal length 30 cm and a concave eyepiece of focal length 5 cm. Find its length in normal adjustment.
+  ask: Length
+  unit: cm
+  ans: 25
+  tol: 0.1
+  verify: 30-5
+  sol: In normal adjustment the focal points coincide, so the length is $f_o - |f_e| = 25$ cm. The magnifying power is $30/5 = 6$, and the image is erect, which is why opera glasses use this design.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A telescope has an aperture of 20 cm. Taking the eye's resolution as 1 arcminute and λ = 550 nm, estimate the largest useful magnification, beyond which no further detail is revealed.
+  ask: Largest useful magnification
+  unit: ""
+  ans: 86.7
+  tol: 1
+  verify: (PI/180/60)/(1.22*550e-9/0.2)
+  sol: The telescope resolves $1.22 \times 5.5 \times 10^{-7}/0.20 = 3.36 \times 10^{-6}$ rad. Magnifying this to the eye's $2.91 \times 10^{-4}$ rad needs $m \approx 87$. Beyond that, the image just gets larger and blurrier.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: Show that a compound microscope in normal adjustment has magnifying power $m \approx \dfrac{L}{f_o}\cdot\dfrac{D}{f_e}$, where $L$ is the distance between the second focal point of the objective and the first focal point of the eyepiece.
+  hints: ["In normal adjustment the objective's image lies at the eyepiece's first focal point.", "Use Newton's form for the objective: the image is L beyond F₂ of the objective."]
+  sol: In normal adjustment the final image is at infinity, so the objective's image lies at the eyepiece's first focal point, a distance $L$ beyond the objective's second focal point. Newton's form for the objective gives linear magnification $m_o = x'/f_o = L/f_o$ (magnitude), since $x' = L$. The eyepiece then acts as a magnifier with its object at its focus, giving angular magnification $m_e = D/f_e$. The total is $m = m_o m_e = \frac{L}{f_o}\cdot\frac{D}{f_e}$.
+  check: none

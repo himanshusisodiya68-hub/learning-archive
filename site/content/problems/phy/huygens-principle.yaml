@@ -1,0 +1,170 @@
+# Huygens' principle. NCERT questions copied word for word from NCERT Physics Class XII (reprint 2026-27), Ch 10.
+
+- id: ncert12-eg-10-1
+  lvl: ncert-intext
+  num: "XII Ex 10.1"
+  source: NCERT XII Physics · Ch 10 · Example 10.1
+  kind: text
+  q: (a) When monochromatic light is incident on a surface separating two media, the reflected and refracted light both have the same frequency as the incident frequency. Explain why? (b) When light travels from a rarer to a denser medium, the speed decreases. Does the reduction in speed imply a reduction in the energy carried by the light wave? (c) In the wave picture of light, intensity of light is determined by the square of the amplitude of the wave. What determines the intensity of light in the photon picture of light.
+  sol: |
+    (a) Reflection and refraction happen because light makes the charged particles in atoms oscillate. A driven oscillator vibrates at the frequency of the driving force, and it radiates at its own frequency of oscillation. So the reflected and refracted light have the same frequency as the incident light.
+    (b) No. The energy carried by a wave depends on its amplitude, not on its speed.
+    (c) For light of a given frequency, the intensity is set by the number of photons crossing unit area per unit time.
+  check: none
+
+- id: ncert12-ex-10-1
+  lvl: ncert-ex
+  num: "XII 10.1"
+  source: NCERT XII Physics · Ch 10 · Exercise 10.1
+  kind: num
+  q: Monochromatic light of wavelength 589 nm is incident from air on a water surface. What are the wavelength, frequency and speed of (a) reflected, and (b) refracted light? Refractive index of water is 1.33.
+  ask: Wavelength of the refracted light
+  unit: nm
+  ans: 443
+  tol: 1.5
+  verify: 589/1.33
+  sol: |
+    (a) Reflected light stays in air: $\lambda = 589$ nm, $\nu = c/\lambda = 3.00 \times 10^8/589 \times 10^{-9} = 5.09 \times 10^{14}$ Hz, speed $3.00 \times 10^8$ m/s.
+    (b) Refracted light: the frequency is unchanged, $5.09 \times 10^{14}$ Hz; the speed is $c/n = 2.26 \times 10^8$ m/s; the wavelength is $589/1.33 \approx 443$ nm (NCERT quotes 444 nm).
+  answer_key: "(a) λ = 589 nm, ν = 5.09 × 10¹⁴ Hz, c = 3.00 × 10⁸ m s⁻¹ (b) ν = 5.09 × 10¹⁴ Hz, v = 2.26 × 10⁸ m s⁻¹, λ = 444 nm"
+  check: both
+
+- id: ncert12-ex-10-2
+  lvl: ncert-ex
+  num: "XII 10.2"
+  source: NCERT XII Physics · Ch 10 · Exercise 10.2
+  kind: text
+  q: |
+    What is the shape of the wavefront in each of the following cases:
+    (a) Light diverging from a point source.
+    (b) Light emerging out of a convex lens when a point source is placed at its focus.
+    (c) The portion of the wavefront of light from a distant star intercepted by the Earth.
+  sol: |
+    (a) Spherical. (b) Plane: the lens turns the diverging spherical wavefront into a parallel beam. (c) Plane: a small area of a very large sphere is nearly flat.
+  answer_key: (a) Spherical (b) Plane (c) Plane (a small area on the surface of a large sphere is nearly planar).
+  check: ncert-key
+
+- id: ncert12-ex-10-3
+  lvl: ncert-ex
+  num: "XII 10.3"
+  source: NCERT XII Physics · Ch 10 · Exercise 10.3
+  kind: num
+  q: (a) The refractive index of glass is 1.5. What is the speed of light in glass? (Speed of light in vacuum is $3.0 \times 10^8$ m s$^{-1}$) (b) Is the speed of light in glass independent of the colour of light? If not, which of the two colours red and violet travels slower in a glass prism?
+  ask: Speed in glass, in units of 10⁸ m/s
+  unit: × 10⁸ m/s
+  ans: 2
+  tol: 0.01
+  verify: 3/1.5
+  sol: (a) $v = c/n = 2.0 \times 10^8$ m/s. (b) No. The refractive index depends on wavelength; glass has a larger index for violet than for red (violet deviates more in a prism), so **violet travels slower**.
+  answer_key: (a) 2.0 × 10⁸ m s⁻¹ (b) No; violet travels slower (n_v > n_r).
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: What is the shape of the wavefronts from a small bulb, close to the bulb?
+  opts: ["Plane", "Spherical", "Cylindrical"]
+  ans: 1
+  sol: A point source sends out spherical wavefronts.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Find the frequency of light of wavelength 600 nm in vacuum.
+  ask: Frequency, in units of 10¹⁴ Hz
+  unit: × 10¹⁴ Hz
+  ans: 5
+  tol: 0.01
+  verify: 3e8/600e-9/1e14
+  sol: $\nu = c/\lambda = 3 \times 10^8/6 \times 10^{-7} = 5 \times 10^{14}$ Hz.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Light of wavelength 600 nm in air enters glass of refractive index 1.5. What is its wavelength in the glass?
+  ask: Wavelength
+  unit: nm
+  ans: 400
+  tol: 0.5
+  verify: 600/1.5
+  sol: $\lambda_g = \lambda/n = 600/1.5 = 400$ nm. The frequency stays the same.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: When light passes from air into water, which of these stays the same?
+  opts: ["Speed", "Wavelength", "Frequency"]
+  ans: 2
+  sol: The frequency is set by the source and cannot change at the boundary; speed and wavelength both decrease by the factor $n$.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: The hydrogen line at 656.3 nm is observed in the light of a galaxy receding at 1.0% of the speed of light. By how much is the line shifted?
+  ask: Shift
+  unit: nm
+  ans: 6.56
+  tol: 0.02
+  verify: 656.3*0.01
+  sol: $\Delta\lambda = \lambda v/c = 656.3 \times 0.010 = 6.6$ nm towards the red, so the line appears at about 662.9 nm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Light crosses 2.0 cm of glass ($n = 1.5$) and then 3.0 cm of air. What is the total optical path length?
+  ask: Optical path
+  unit: cm
+  ans: 6
+  tol: 0.01
+  verify: 2*1.5+3
+  sol: $1.5 \times 2.0 + 1.0 \times 3.0 = 6.0$ cm. Light takes as long as it would to cross 6.0 cm of vacuum.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: How many wavelengths of light of vacuum wavelength 500 nm fit into a 1.0 mm thick glass plate of refractive index 1.5?
+  ask: Number of wavelengths
+  unit: ""
+  ans: 3000
+  tol: 1
+  verify: 1e-3*1.5/500e-9
+  sol: $nd/\lambda = 1.5 \times 10^{-3}/5 \times 10^{-7} = 3000$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A glass sheet 10 µm thick ($n = 1.5$) is placed in the path of light of wavelength 500 nm. By how many wavelengths does it delay the light compared with the same thickness of air?
+  ask: Extra wavelengths
+  unit: ""
+  ans: 10
+  tol: 0.01
+  verify: (1.5-1)*10e-6/500e-9
+  sol: Extra optical path $(n - 1)t = 0.5 \times 10\ \mu\text{m} = 5\ \mu\text{m}$, which is $5/0.5 = 10$ wavelengths.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Plane waves of wavelength 500 nm fall on an aperture, and the screen is 1.0 m away. Find the radius of the first Fresnel zone, as seen from the centre of the screen.
+  ask: Radius
+  unit: mm
+  ans: 0.707
+  tol: 0.005
+  verify: sqrt(500e-9*1.0)*1000
+  sol: $r_1 = \sqrt{\lambda L} = \sqrt{5 \times 10^{-7} \times 1.0} = 7.1 \times 10^{-4}$ m $\approx 0.71$ mm.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: Use Huygens' construction to prove the law of reflection for a plane wave meeting a plane mirror.
+  hints: ["Let the wavefront AB touch the mirror at A while B is still a distance BC from it.", "In the time B takes to reach C, the wavelet from A grows to radius AE = BC."]
+  sol: Let the incident wavefront AB meet the mirror at A, with B still a distance BC from the mirror. In the time B takes to travel BC, the wavelet from A grows to radius AE = BC (same medium, same speed). The reflected wavefront is the tangent from C to this wavelet, touching it at E. Triangles ABC and CEA are right-angled (at B and E), share the hypotenuse AC, and have BC = AE, so they are congruent. Hence the angle the incident wavefront makes with the mirror equals the angle the reflected wavefront makes with it, and since rays are perpendicular to wavefronts, $i = r$.
+  check: none
