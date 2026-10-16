@@ -1,0 +1,856 @@
+<title>Learning Archive</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: graph-paper ground; app views on a 2-column grid, concept pages as one ~66ch reading column with margin notes on wide screens */
+:root {
+  --paper: #F4F6F5;
+  --grid: rgba(38, 72, 120, .055);
+  --surface: #FFFFFF;
+  --sunk: #ECEFEE;
+  --ink: #17202B;
+  --muted: #586272;
+  --rule: #D7DCE0;
+  --accent: #2A4A9A;
+  --accent-soft: rgba(42, 74, 154, .09);
+  --phy: #4350B5;
+  --mat: #0D776D;
+  --chem: #A2650F;
+  --bio: #3D7624;
+  --eng: #AB3A60;
+  --good: #2E7A4D;
+  --bad: #B03838;
+  --f-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Literata", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10141A; --grid: rgba(150, 180, 225, .045); --surface: #171C24; --sunk: #1D232D;
+    --ink: #E2E6EC; --muted: #9AA3B2; --rule: #2A313C; --accent: #93AAF2; --accent-soft: rgba(147, 170, 242, .12);
+    --phy: #8F99F2; --mat: #4FC4B4; --chem: #E2AA4C; --bio: #88C46C; --eng: #E88DAC; --good: #6CC48F; --bad: #EE8080;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10141A; --grid: rgba(150, 180, 225, .045); --surface: #171C24; --sunk: #1D232D;
+  --ink: #E2E6EC; --muted: #9AA3B2; --rule: #2A313C; --accent: #93AAF2; --accent-soft: rgba(147, 170, 242, .12);
+  --phy: #8F99F2; --mat: #4FC4B4; --chem: #E2AA4C; --bio: #88C46C; --eng: #E88DAC; --good: #6CC48F; --bad: #EE8080;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-size: 15px;
+  line-height: 1.5;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+a { color: var(--accent); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* ---------- top bar ---------- */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; align-items: center; gap: 20px; padding-block: 10px; }
+.mark { display: flex; align-items: baseline; gap: 8px; font-weight: 800; letter-spacing: -.01em; font-size: 17px; white-space: nowrap; color: var(--ink); text-decoration: none; }
+.mark small { font-family: var(--f-mono); font-weight: 400; font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.tabs a { padding: 6px 12px; border-radius: 999px; text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14px; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); background: var(--sunk); }
+.tabs a[aria-current="page"] { color: var(--ink); background: var(--accent-soft); }
+.mock-flag { margin-left: auto; font-family: var(--f-mono); font-size: 11px; color: var(--muted); border: 1px dashed var(--rule); padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+
+main { padding-block: 28px 64px; }
+section[data-view] { display: none; }
+section[data-view].on { display: block; }
+
+.eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.page-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.page-head h1 { font-size: clamp(26px, 4vw, 34px); font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+.page-head p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 18px; min-width: 0; }
+.panel h2 { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 12px; }
+.panel h2 .eyebrow { font-weight: 400; }
+.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); border-radius: 999px; padding: 7px 16px; font-weight: 600; font-size: 14px; cursor: pointer; text-decoration: none; }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+.sample { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); letter-spacing: .03em; }
+
+/* subject dot + mastery glyph (quarter-filled circle: 0 unseen … 4 mastered) */
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--muted)); flex: none; display: inline-block; }
+.glyph { --p: 0; width: 14px; height: 14px; border-radius: 50%; flex: none; border: 1.5px solid var(--c, var(--accent)); background: conic-gradient(var(--c, var(--accent)) calc(var(--p) * 1turn), transparent 0); display: inline-block; }
+.s-phy { --c: var(--phy); } .s-mat { --c: var(--mat); } .s-chem { --c: var(--chem); } .s-bio { --c: var(--bio); } .s-eng { --c: var(--eng); }
+
+/* ---------- today ---------- */
+.today-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 18px; align-items: start; }
+.queue { list-style: none; margin: 0; padding: 0; }
+.queue li { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--rule); }
+.queue li:first-child { border-top: 0; }
+.queue .what { font-weight: 600; font-size: 14px; }
+.queue .kind { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.big-n { font-size: 44px; font-weight: 800; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.queue-head { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.queue-head p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+.continue { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; text-decoration: none; color: inherit; border-left: 3px solid var(--phy); }
+.continue h3 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+.continue p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+.meter { height: 5px; background: var(--sunk); border-radius: 3px; overflow: hidden; margin-top: 10px; }
+.meter i { display: block; height: 100%; background: var(--c, var(--accent)); }
+
+.tracks { display: grid; gap: 18px; }
+.track-row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: start; }
+.track-row .name { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 7px; padding-top: 1px; }
+.track { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); position: relative; }
+.track::before { content: ""; position: absolute; left: 7px; right: 7px; top: 6px; height: 2px; background: var(--rule); }
+.track .fillline { position: absolute; left: 7px; top: 6px; height: 2px; background: var(--c); }
+.track li { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; font-size: 11px; color: var(--muted); line-height: 1.25; padding-right: 4px; }
+.track li:last-child { align-items: flex-end; text-align: right; padding-right: 0; }
+.track .glyph { background-color: var(--surface); }
+.stack { display: grid; gap: 18px; }
+
+/* ---------- flashcard ---------- */
+.card { border: 1px solid var(--rule); border-radius: var(--r); background: var(--surface); padding: 18px; }
+.card .q { font-family: var(--f-body); font-size: 17px; }
+.card .a { font-family: var(--f-body); border-top: 1px dashed var(--rule); margin-top: 14px; padding-top: 14px; }
+.rate { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 14px; }
+.rate button { border: 1px solid var(--rule); background: var(--sunk); border-radius: var(--r); padding: 7px 4px; cursor: pointer; font-size: 13px; font-weight: 600; display: grid; }
+.rate button span { font-family: var(--f-mono); font-weight: 400; font-size: 10.5px; color: var(--muted); }
+.rate button:hover { border-color: var(--accent); }
+
+/* ---------- knowledge tree ---------- */
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--surface); flex-wrap: wrap; }
+.seg button { border: 0; background: transparent; padding: 5px 12px; border-radius: 999px; font-weight: 600; font-size: 13px; cursor: pointer; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--ink); }
+.seg button:disabled { cursor: not-allowed; opacity: .55; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); align-items: center; }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.tree-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 16px; }
+.tree { display: grid; gap: 10px; }
+.tree details { min-width: 0; }
+.tree summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.tree summary::-webkit-details-marker { display: none; }
+.tree summary .chev { width: 16px; height: 16px; color: var(--muted); transition: transform .15s; }
+.tree details[open] > summary .chev { transform: rotate(90deg); }
+.pillar { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); }
+.pillar > summary { padding: 14px 16px; }
+.pillar > summary .t { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+.pillar > summary .sub { display: block; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.pillar-body { padding: 0 16px 14px 42px; display: grid; gap: 4px; }
+.branch > summary { padding: 7px 0; }
+.branch > summary .t { font-weight: 600; font-size: 14.5px; }
+.branch-body { border-left: 1px solid var(--rule); margin-left: 7px; padding: 2px 0 8px 18px; display: grid; }
+.leaf { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 5px 8px; margin-left: -8px; border-radius: 4px; text-decoration: none; color: var(--ink); font-size: 14px; }
+.leaf:hover { background: var(--sunk); }
+.leaf.link { font-weight: 600; }
+.leaf.link .nm::after { content: " →"; color: var(--accent); }
+.mini { display: flex; align-items: center; gap: 10px; }
+.mini .meter { width: 80px; margin: 0; }
+.mini .n { font-family: var(--f-mono); font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 4.5ch; text-align: right; }
+.lvl { font-family: var(--f-mono); font-size: 10.5px; padding: 1px 6px; border-radius: 3px; border: 1px solid var(--rule); color: var(--muted); white-space: nowrap; }
+.lvl.jee { border-color: currentColor; color: var(--chem); }
+.lvl.oly { border-color: currentColor; color: var(--eng); }
+
+/* ---------- subjects ---------- */
+.subj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 18px; }
+.subj { border-top: 3px solid var(--c); }
+.subj h2 { font-size: 20px; letter-spacing: -.01em; justify-content: flex-start; }
+.subj .phase { font-family: var(--f-mono); font-size: 11px; color: var(--muted); font-weight: 400; margin-left: auto; }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; }
+.stages li { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; padding: 8px 0; border-top: 1px solid var(--rule); font-size: 13.5px; }
+.stages li b { font-weight: 600; font-size: 12.5px; color: var(--c); }
+.stages li span { font-family: var(--f-body); font-size: 14px; }
+
+/* ---------- classes ---------- */
+.class-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+.class-pills button { border: 1px solid var(--rule); background: var(--surface); border-radius: var(--r); padding: 8px 14px; cursor: pointer; font-weight: 700; font-size: 14px; min-width: 64px; }
+.class-pills button small { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 10.5px; color: var(--muted); }
+.class-pills button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.books { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 18px; }
+.chap { list-style: none; margin: 0; padding: 0; counter-reset: ch; }
+.chap li { counter-increment: ch; display: grid; grid-template-columns: 2.4ch minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--rule); font-size: 14px; }
+.chap li::before { content: counter(ch); font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-align: right; }
+.chap li a { color: var(--ink); text-decoration: none; font-weight: 600; }
+.chap li a:hover { color: var(--accent); }
+.st { font-family: var(--f-mono); font-size: 10.5px; padding: 1px 7px; border-radius: 999px; white-space: nowrap; }
+.st.ready { background: color-mix(in srgb, var(--good) 14%, transparent); color: var(--good); }
+.st.draft { background: color-mix(in srgb, var(--chem) 14%, transparent); color: var(--chem); }
+.st.none { color: var(--muted); border: 1px solid var(--rule); }
+.st.restored { background: var(--accent-soft); color: var(--accent); }
+.note { font-size: 12.5px; color: var(--muted); margin-top: 14px; }
+
+/* ---------- concept page ---------- */
+.concept { display: grid; grid-template-columns: minmax(0, 66ch) minmax(0, 1fr); gap: 40px; }
+.crumbs { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+.concept h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -.025em; line-height: 1.05; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 16px 0 26px; font-size: 13px; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 12.5px; border: 1px solid var(--rule); border-radius: 999px; padding: 2px 10px; background: var(--surface); color: var(--ink); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.prose { font-family: var(--f-body); font-size: 17px; line-height: 1.7; }
+.prose p { margin: 0 0 1em; }
+.prose h2 { font-family: var(--f-display); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 38px 0 14px; display: flex; align-items: center; gap: 10px; }
+.prose h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.law { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 18px; text-align: center; font-size: 24px; margin: 18px 0; overflow-x: auto; }
+.law small { display: block; font-family: var(--f-display); font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+math { font-family: "Latin Modern Math", "STIX Two Math", "Cambria Math", var(--f-body); }
+.hook { background: var(--surface); border: 1px solid var(--rule); border-left: 3px solid var(--phy); border-radius: var(--r); padding: 18px; font-family: var(--f-display); }
+.hook .q { font-family: var(--f-body); font-size: 17.5px; margin: 6px 0 14px; }
+.opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.opts button { border: 1px solid var(--rule); background: var(--sunk); border-radius: var(--r); padding: 10px; cursor: pointer; font-weight: 600; }
+.opts button:hover { border-color: var(--accent); }
+.opts button.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--surface)); }
+.opts button.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 10%, var(--surface)); }
+.feedback { font-family: var(--f-body); font-size: 15.5px; margin-top: 12px; }
+
+.sim { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 14px; font-family: var(--f-display); }
+.sim svg { width: 100%; height: auto; display: block; max-width: min(100%, 460px); margin: 0 auto; }
+.sim .controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px; align-items: center; margin-top: 10px; font-size: 13px; }
+.sim input[type=range] { width: 100%; accent-color: var(--phy); }
+.sim select { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--sunk); color: var(--ink); }
+.readout { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--f-mono); font-size: 12.5px; margin-top: 10px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.readout b { color: var(--ink); font-weight: 500; }
+.readout .tir { color: var(--bad); font-weight: 500; }
+.sim .m1 { fill: var(--sunk); } .sim .m2 { fill: color-mix(in srgb, var(--phy) 12%, var(--surface)); }
+.sim .normal { stroke: var(--muted); stroke-dasharray: 4 4; stroke-width: 1; }
+.sim .iface { stroke: var(--rule); stroke-width: 1.5; }
+.sim .ray { stroke: var(--phy); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+.sim .ray.refl { stroke-width: 2; }
+.sim .lbl { fill: var(--muted); font-family: var(--f-mono); font-size: 10px; }
+.sim .arc { stroke: var(--muted); fill: none; stroke-width: 1; }
+
+.worked { background: var(--sunk); border-radius: var(--r); padding: 16px 18px; font-size: 16px; }
+.worked ol { margin: 8px 0 0; padding-left: 1.3em; }
+
+.problems { display: grid; gap: 12px; font-family: var(--f-display); }
+.prob { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 16px; }
+.prob-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+.tier { font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: var(--sunk); }
+.tier.t1 { color: var(--mat); } .tier.t2 { color: var(--accent); } .tier.t3 { color: var(--chem); } .tier.t4 { color: var(--bad); } .tier.t5 { color: var(--eng); }
+.src { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.ver { margin-left: auto; font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); display: inline-flex; gap: 5px; align-items: center; }
+.ver.ok { color: var(--good); }
+.prob .stmt { font-family: var(--f-body); font-size: 16px; line-height: 1.6; margin: 0 0 10px; }
+.prob details { border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: 8px; }
+.prob summary { cursor: pointer; font-weight: 600; font-size: 13px; color: var(--accent); }
+.prob details p { font-family: var(--f-body); font-size: 15.5px; margin: 8px 0 0; }
+.answer { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; font-size: 13px; }
+.answer input { font: inherit; width: 110px; padding: 6px 10px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--sunk); color: var(--ink); font-family: var(--f-mono); }
+.answer .res { font-weight: 600; }
+.answer .res.good { color: var(--good); } .answer .res.bad { color: var(--bad); }
+
+.refs { list-style: none; margin: 0; padding: 0; font-family: var(--f-display); }
+.refs li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); font-size: 14px; }
+.refs li em { font-style: normal; font-family: var(--f-mono); font-size: 11px; color: var(--muted); display: block; }
+.next-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 10px; font-family: var(--f-display); }
+.next-grid a { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r); padding: 12px; text-decoration: none; color: var(--ink); font-size: 14px; font-weight: 600; }
+.next-grid a span { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 10.5px; color: var(--muted); margin-bottom: 4px; }
+textarea { width: 100%; min-height: 110px; font-family: var(--f-body); font-size: 15.5px; padding: 12px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--surface); color: var(--ink); resize: vertical; }
+
+.margin { font-family: var(--f-display); font-size: 13px; color: var(--muted); display: grid; gap: 22px; align-content: start; padding-top: 120px; }
+.margin .mn { border-left: 2px solid var(--rule); padding-left: 12px; }
+.margin .mn b { display: block; color: var(--ink); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+.margin .mn.tip { border-color: var(--chem); }
+.margin .mn.oly { border-color: var(--eng); }
+
+footer { border-top: 1px solid var(--rule); padding-block: 18px; font-size: 12px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .today-grid { grid-template-columns: minmax(0, 1fr); }
+  .concept { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .margin { padding-top: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+  .mock-flag { display: none; }
+}
+@media (max-width: 520px) {
+  .track-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .track li { font-size: 10px; }
+  .opts { grid-template-columns: minmax(0, 1fr); }
+  .stages li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .pillar-body { padding-left: 16px; }
+  .mini .meter { width: 48px; }
+  .prose { font-size: 16.5px; }
+  .bar .wrap { gap: 12px; }
+  .mark small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#today">learning archive <small>v0 mockup</small></a>
+    <nav class="tabs" aria-label="Views">
+      <a href="#today" data-tab="today">Today</a>
+      <a href="#tree" data-tab="tree">Knowledge tree</a>
+      <a href="#subjects" data-tab="subjects">Subjects</a>
+      <a href="#classes" data-tab="classes">Classes</a>
+      <a href="#concept" data-tab="concept">Sample page</a>
+    </nav>
+    <span class="mock-flag">progress numbers are sample data</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ================= TODAY ================= -->
+<section data-view="today">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow" id="today-date">Today</div>
+      <h1>Keep what you learned.</h1>
+      <p>Reviews come back just before you would forget them. New material waits until the reviews are done.</p>
+    </div>
+  </div>
+
+  <div class="today-grid">
+    <div class="stack">
+      <div class="panel">
+        <div class="queue-head">
+          <div>
+            <div class="eyebrow">Due for review</div>
+            <div class="big-n">14</div>
+            <p>about 18 minutes · 9 cards, 5 problems</p>
+          </div>
+          <a class="btn" href="#review-demo" id="start-review">Start review</a>
+        </div>
+        <ul class="queue">
+          <li class="s-phy"><span class="dot"></span><span><div class="what">Equations of motion</div><div class="kind">problem · Class 9</div></span><span class="kind">2 d late</span></li>
+          <li class="s-mat"><span class="dot"></span><span><div class="what">Nature of roots and the discriminant</div><div class="kind">card · Class 10</div></span><span class="kind">today</span></li>
+          <li class="s-chem"><span class="dot"></span><span><div class="what">Types of chemical reactions</div><div class="kind">card · Class 10</div></span><span class="kind">today</span></li>
+          <li class="s-phy"><span class="dot"></span><span><div class="what">Ohm's law and resistivity</div><div class="kind">problem · Class 10</div></span><span class="kind">today</span></li>
+          <li class="s-mat"><span class="dot"></span><span><div class="what">Sum of an arithmetic progression</div><div class="kind">card · Class 10</div></span><span class="kind">today</span></li>
+          <li class="s-bio"><span class="dot"></span><span><div class="what">Parts of a flower</div><div class="kind">card · Class 10</div></span><span class="kind">today</span></li>
+        </ul>
+      </div>
+
+      <div class="card" id="review-demo" hidden>
+        <div class="prob-top"><span class="s-phy"><span class="dot"></span></span><span class="src">Physics · Optics · card 1 of 14</span></div>
+        <div class="q">State Snell's law and say what the refractive index <i>n</i> measures.</div>
+        <button class="btn ghost" id="show-ans" style="margin-top:14px">Show answer</button>
+        <div class="a" id="ans" hidden>
+          <i>n</i><sub>1</sub> sin θ<sub>1</sub> = <i>n</i><sub>2</sub> sin θ<sub>2</sub>, with both angles measured from the normal.
+          <i>n</i> = <i>c</i>/<i>v</i>: how many times slower light travels in the medium than in vacuum.
+          <div class="rate" role="group" aria-label="How well did you recall it?">
+            <button>Again<span>10 min</span></button>
+            <button>Hard<span>2 days</span></button>
+            <button>Good<span>5 days</span></button>
+            <button>Easy<span>12 days</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <a class="panel continue s-phy" href="#concept">
+        <div>
+          <div class="eyebrow">Continue</div>
+          <h3>Refraction and Snell's law</h3>
+          <p>Physics › Optics › Ray optics · next leaf: Total internal reflection</p>
+          <div class="meter"><i style="width:60%"></i></div>
+        </div>
+        <span class="btn ghost">Open</span>
+      </a>
+
+      <div class="panel">
+        <h2>Tracks <span class="eyebrow">mastery by stage</span></h2>
+        <div class="tracks" id="tracks"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KNOWLEDGE TREE ================= -->
+<section data-view="tree">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Knowledge tree</div>
+      <h1>Every subject, split down to single ideas</h1>
+      <p>Pillars split into branches, and branches into leaves. A leaf is one idea and one page. The tag shows the earliest class where it appears.</p>
+    </div>
+  </div>
+  <div class="tree-tools">
+    <div class="seg" role="group" aria-label="Subject">
+      <button aria-pressed="true" data-tree="phy"><span class="dot s-phy"></span>Physics</button>
+      <button aria-pressed="false" data-tree="mat"><span class="dot s-mat"></span>Mathematics</button>
+      <button disabled title="Phase 1, later"><span class="dot s-chem"></span>Chemistry</button>
+      <button disabled title="Phase 1, later"><span class="dot s-bio"></span>Biology</button>
+      <button disabled title="Phase 3"><span class="dot s-eng"></span>English</button>
+    </div>
+    <div class="legend">
+      <span><i class="glyph" style="--p:0"></i>unseen</span>
+      <span><i class="glyph" style="--p:.25"></i>seen</span>
+      <span><i class="glyph" style="--p:.5"></i>practised</span>
+      <span><i class="glyph" style="--p:.75"></i>recalled</span>
+      <span><i class="glyph" style="--p:1"></i>mastered</span>
+    </div>
+  </div>
+  <div class="tree" id="tree-root"></div>
+  <p class="note">Mockup: the tree is a partial outline and the progress shown is sample data. The full tree will list every leaf from Class 6 to Olympiad level.</p>
+</section>
+
+<!-- ================= SUBJECTS ================= -->
+<section data-view="subjects">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Subjects</div>
+      <h1>One continuous track per subject</h1>
+      <p>Each subject starts at the earliest basics and climbs to the level you choose. These are the books each stage draws on.</p>
+    </div>
+  </div>
+  <div class="subj-grid" id="subj-grid"></div>
+</section>
+
+<!-- ================= CLASSES ================= -->
+<section data-view="classes">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Classes</div>
+      <h1>The NCERT books, chapter by chapter</h1>
+      <p>Every chapter links to the leaves it covers and to its full set of exercises, word for word.</p>
+    </div>
+  </div>
+  <div class="class-pills" id="class-pills"></div>
+  <div class="books" id="books"></div>
+  <p class="note">Chapter lists are recalled from the rationalised editions and have not been checked against ncert.nic.in yet. "Restored" marks material cut from older editions that will be written back in.</p>
+</section>
+
+<!-- ================= CONCEPT PAGE ================= -->
+<section data-view="concept">
+  <div class="concept">
+    <article>
+      <div class="crumbs"><a href="#tree">Physics</a>›<a href="#tree">Optics</a>›<a href="#tree">Ray optics</a>›<span>Refraction and Snell's law</span></div>
+      <h1>Refraction and Snell's law</h1>
+      <div class="meta">
+        <span><b>Appears in</b> Class 10 Science · Light &nbsp;·&nbsp; Class 12 Physics · Ray Optics</span>
+        <span><b>Levels</b> Class 10 → Olympiad</span>
+        <span class="s-phy" style="display:inline-flex;gap:6px;align-items:center"><i class="glyph" style="--p:.5"></i><b>practised</b></span>
+      </div>
+      <div class="chips" style="margin-bottom:28px">
+        <span class="eyebrow" style="align-self:center;margin-right:4px">Needs</span>
+        <a class="chip" href="#tree"><i class="glyph s-phy" style="--p:1;width:10px;height:10px"></i>Laws of reflection</a>
+        <a class="chip" href="#tree"><i class="glyph s-phy" style="--p:.75;width:10px;height:10px"></i>Speed of light</a>
+        <a class="chip" href="#tree"><i class="glyph s-mat" style="--p:1;width:10px;height:10px"></i>Sine of an angle</a>
+      </div>
+
+      <div class="hook" id="hook">
+        <div class="eyebrow">Try first</div>
+        <div class="q">A coin lies at the bottom of a bucket filled with water to a depth of 40 cm. Looking straight down, how deep does the coin seem to be?</div>
+        <div class="opts">
+          <button data-ok="0">40 cm</button>
+          <button data-ok="1">about 30 cm</button>
+          <button data-ok="0">about 53 cm</button>
+        </div>
+        <div class="feedback" id="hook-fb" hidden></div>
+      </div>
+
+      <div class="prose">
+        <h2>The idea</h2>
+        <p>Light travels at about 3 × 10<sup>8</sup> m/s in vacuum and more slowly inside matter. When a beam crosses at an angle from one material into another, one edge of the beam slows down before the other. The beam swings round, the way a column of marchers turns when one end steps into mud first.</p>
+        <p>The refractive index of a medium compares the two speeds: <i>n</i> = <i>c</i>/<i>v</i>. Water has <i>n</i> ≈ 1.33 and ordinary glass about 1.5. A larger <i>n</i> means slower light and a sharper bend towards the normal.</p>
+
+        <div class="law">
+          <math display="block"><msub><mi>n</mi><mn>1</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>1</mn></msub><mo>=</mo><msub><mi>n</mi><mn>2</mn></msub><mo>sin</mo><msub><mi>θ</mi><mn>2</mn></msub></math>
+          <small>Both angles are measured from the normal, the line perpendicular to the surface.</small>
+        </div>
+
+        <h2>See it move</h2>
+      </div>
+
+      <div class="sim">
+        <svg viewBox="0 0 360 230" role="img" aria-label="Ray diagram: a light ray bending at the boundary between two media">
+          <rect class="m1" x="0" y="0" width="360" height="115"/>
+          <rect class="m2" id="m2" x="0" y="115" width="360" height="115"/>
+          <line class="iface" x1="0" y1="115" x2="360" y2="115"/>
+          <line class="normal" x1="180" y1="8" x2="180" y2="222"/>
+          <path class="arc" id="arc1"/>
+          <path class="arc" id="arc2"/>
+          <line class="ray refl" id="rRefl" x1="180" y1="115"/>
+          <line class="ray" id="rIn" x2="180" y2="115"/>
+          <line class="ray" id="rOut" x1="180" y1="115"/>
+          <text class="lbl" id="lab1" x="10" y="20">Air · n = 1.00</text>
+          <text class="lbl" id="lab2" x="10" y="220">Water · n = 1.33</text>
+          <text class="lbl" x="186" y="18">normal</text>
+        </svg>
+        <div class="controls">
+          <label for="ang">Angle of incidence θ<sub>1</sub>: <b id="angv">40°</b></label>
+          <select id="pair" aria-label="Media">
+            <option value="0">Air → Water</option>
+            <option value="1">Air → Glass</option>
+            <option value="2">Water → Air</option>
+            <option value="3">Glass → Air</option>
+            <option value="4">Water → Glass</option>
+          </select>
+          <input id="ang" type="range" min="0" max="89" value="40" style="grid-column:1/-1">
+        </div>
+        <div class="readout" id="readout"></div>
+      </div>
+
+      <div class="prose">
+        <h2>Worked example</h2>
+        <div class="worked">
+          A ray in air strikes a glass slab (<i>n</i> = 1.5) at 60° to the normal. Find the angle of refraction.
+          <ol>
+            <li>Write the law: 1.00 × sin 60° = 1.5 × sin θ<sub>2</sub>.</li>
+            <li>sin θ<sub>2</sub> = 0.866 / 1.5 = 0.577.</li>
+            <li>θ<sub>2</sub> = sin<sup>−1</sup>(0.577) ≈ 35.3°. The ray bends towards the normal, as expected for a slower medium.</li>
+          </ol>
+        </div>
+
+        <h2>Practice</h2>
+      </div>
+
+      <div class="problems">
+        <div class="prob">
+          <div class="prob-top"><span class="tier t1">NCERT</span><span class="src">Class 10 · Light · Exercises</span><span class="ver">exact text appears here once extracted</span></div>
+          <p class="stmt" style="color:var(--muted)">NCERT in-text questions and end-of-chapter exercises go here, copied word for word from the official PDF, each with a full solution.</p>
+        </div>
+        <div class="prob">
+          <div class="prob-top"><span class="tier t2">Board</span><span class="src">sample problem</span><span class="ver ok">✓ answer checked by code</span></div>
+          <p class="stmt">Light enters water (<i>n</i> = 1.33) from air at an angle of incidence of 45°. Find the angle of refraction, in degrees.</p>
+          <div class="answer"><label for="a1">θ<sub>2</sub> =</label><input id="a1" inputmode="decimal" placeholder="degrees"><button class="btn ghost" id="check1">Check</button><span class="res" id="res1" aria-live="polite"></span></div>
+          <details><summary>Hint 1</summary><p>Only the medium you are entering changes. Air has <i>n</i> = 1.00.</p></details>
+          <details><summary>Hint 2</summary><p>sin θ<sub>2</sub> = sin 45° / 1.33.</p></details>
+          <details><summary>Solution</summary><p>sin θ<sub>2</sub> = 0.7071 / 1.33 = 0.5317, so θ<sub>2</sub> ≈ 32.1°.</p></details>
+        </div>
+        <div class="prob">
+          <div class="prob-top"><span class="tier t3">JEE Main</span><span class="src">sample problem</span><span class="ver ok">✓ answer checked by code</span></div>
+          <p class="stmt">A layer of oil 6 cm thick (<i>n</i> = 1.5) floats on water 8 cm deep (<i>n</i> = 4/3). Seen from directly above, how far below the oil surface does the bottom of the vessel appear?</p>
+          <details><summary>Hint</summary><p>For near-normal viewing, each layer appears shallower by a factor of its own refractive index, and the apparent depths add.</p></details>
+          <details><summary>Solution</summary><p>6/1.5 + 8/(4/3) = 4 + 6 = 10 cm.</p></details>
+        </div>
+        <div class="prob">
+          <div class="prob-top"><span class="tier t5">Olympiad</span><span class="src">sample problem</span><span class="ver">not yet verified</span></div>
+          <p class="stmt">Light goes from point A in medium 1 to point B in medium 2 along the path that takes the least time (Fermat's principle). Derive Snell's law from this.</p>
+          <details><summary>Hint 1</summary><p>Let the ray cross the boundary at a distance <i>x</i> along it. Write the total travel time <i>T</i>(<i>x</i>) using the speeds <i>c</i>/<i>n</i><sub>1</sub> and <i>c</i>/<i>n</i><sub>2</sub>.</p></details>
+          <details><summary>Hint 2</summary><p>Set d<i>T</i>/d<i>x</i> = 0 and read each term as the sine of an angle.</p></details>
+        </div>
+      </div>
+
+      <div class="prose">
+        <h2>From your books</h2>
+        <ul class="refs">
+          <li><span>H. C. Verma, <i>Concepts of Physics</i> Vol. 1<em>Ch. 18 · Geometrical Optics</em></span><button class="btn ghost">Add problems</button></li>
+          <li><span>I. E. Irodov, <i>Problems in General Physics</i><em>Part 5 · Optics</em></span><button class="btn ghost">Add problems</button></li>
+          <li><span><i>The Feynman Lectures on Physics</i> Vol. I<em>Ch. 26 · Optics: The Principle of Least Time</em></span><button class="btn ghost">Add problems</button></li>
+        </ul>
+
+        <h2>Leads to</h2>
+        <div class="next-grid">
+          <a href="#tree"><span>next leaf</span>Total internal reflection</a>
+          <a href="#tree"><span>Class 10 · Light</span>Lenses and the lens formula</a>
+          <a href="#tree"><span>Olympiad</span>Fermat's principle</a>
+          <a href="#tree"><span>Instrumentation, later</span>Optical fibres and sensors</a>
+        </div>
+
+        <h2>In your own words</h2>
+        <label for="notes" class="sample">Explain it as if teaching a Class 8 student. Your notes stay on this device in the mockup.</label>
+        <textarea id="notes" placeholder="Light slows down when…"></textarea>
+      </div>
+    </article>
+
+    <aside class="margin">
+      <div class="mn"><b>History</b>Ibn Sahl described the law of refraction in Baghdad around 984. Willebrord Snell found it again in 1621, and it carries his name.</div>
+      <div class="mn tip"><b>Board favourite</b>Apparent depth = real depth ÷ <i>n</i>, valid only when viewing nearly straight down.</div>
+      <div class="mn oly"><b>Olympiad link</b>Snell's law follows from least time. The same reasoning later gives the brachistochrone and Lagrangian mechanics.</div>
+      <div class="mn"><b>Unchecked claims</b>Sample problems carry a status. "Checked by code" means the numeric answer was recomputed in Python.</div>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Learning Archive · design mockup v0 · Content is illustrative, NCERT chapter lists are unverified, and all progress figures are sample data.</div>
+</footer>
+
+<script>
+(function () {
+  /* ---------- routing ---------- */
+  const views = ['today', 'tree', 'subjects', 'classes', 'concept'];
+  function route() {
+    let v = (location.hash || '#today').slice(1);
+    if (v === 'review-demo') v = 'today';
+    if (!views.includes(v)) v = 'today';
+    document.querySelectorAll('section[data-view]').forEach(s => s.classList.toggle('on', s.dataset.view === v));
+    document.querySelectorAll('.tabs a').forEach(a => {
+      if (a.dataset.tab === v) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    if (location.hash !== '#review-demo') window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', route);
+
+  document.getElementById('today-date').textContent =
+    new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' });
+
+  /* ---------- review demo ---------- */
+  document.getElementById('start-review').addEventListener('click', e => {
+    e.preventDefault();
+    const c = document.getElementById('review-demo');
+    c.hidden = false; c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  document.getElementById('show-ans').addEventListener('click', e => { document.getElementById('ans').hidden = false; e.target.hidden = true; });
+  document.querySelectorAll('.rate button').forEach(b => b.addEventListener('click', () => {
+    document.getElementById('ans').hidden = true; document.getElementById('show-ans').hidden = false;
+  }));
+
+  /* ---------- tracks ---------- */
+  const STAGES = ['Class 6–8', 'Class 9–10', 'Class 11–12', 'JEE Main', 'JEE Adv.', 'Olympiad'];
+  const tracks = [
+    ['Physics', 'phy', [.9, .6, .2, .1, 0, 0]],
+    ['Maths', 'mat', [.95, .7, .25, .1, 0, 0]],
+    ['Chemistry', 'chem', [.8, .4, .05, 0, 0, null]],
+    ['Biology', 'bio', [.7, .3, 0, null, null, null]],
+    ['English', 'eng', [.6, .2, 0, null, null, null], ['Grammar', 'Usage', 'Vocabulary', 'Writing', 'Literature', null]]
+  ];
+  document.getElementById('tracks').innerHTML = tracks.map(([n, k, p, labels]) => {
+    const st = (labels || STAGES).map((l, i) => [l, p[i]]).filter(s => s[0] && s[1] !== null);
+    const lastDone = Math.max(0, st.filter(s => s[1] > 0).length - 1);
+    const fillW = lastDone === st.length - 1 ? 'calc(100% - 14px)' : `${lastDone / st.length * 100}%`;
+    return `<div class="track-row s-${k}"><div class="name"><span class="dot"></span>${n}</div>
+      <ol class="track" style="--n:${st.length}"><li class="fillline" aria-hidden="true" style="width:${fillW}"></li>
+      ${st.map(([l, v]) => `<li><i class="glyph" style="--p:${v}"></i>${l}</li>`).join('')}</ol></div>`;
+  }).join('');
+
+  /* ---------- knowledge tree ---------- */
+  // leaf: [name, level, mastery 0-4, link?]
+  const TREES = {
+    phy: [
+      ['Mechanics', [
+        ['Kinematics', [['Distance and displacement', 'C9', 4], ['Speed, velocity, acceleration', 'C9', 4], ['Equations of motion', 'C9', 3], ['Motion graphs', 'C9', 3], ['Vectors in motion', 'C11', 2], ['Projectile motion', 'C11', 1], ['Relative motion', 'JEE', 0], ['Circular motion', 'C11', 1]]],
+        ['Newton\'s laws', [['Inertia and the first law', 'C9', 4], ['Momentum and the second law', 'C9', 3], ['Third law', 'C9', 3], ['Free-body diagrams', 'C11', 1], ['Friction', 'C11', 1], ['Constraint relations', 'JEE', 0], ['Pseudo forces', 'JEE', 0]]],
+        ['Work, energy and power', [['Work done by a force', 'C9', 3], ['Kinetic and potential energy', 'C9', 3], ['Work–energy theorem', 'C11', 1], ['Conservative forces', 'C11', 0], ['Power', 'C9', 2]]],
+        ['Rotation and systems of particles', [['Centre of mass', 'C11', 1], ['Collisions', 'C11', 0], ['Torque', 'C11', 0], ['Moment of inertia', 'C11', 0], ['Rolling motion', 'JEE', 0], ['Angular momentum', 'C11', 0]]],
+        ['Gravitation', [['Universal law of gravitation', 'C9', 3], ['Variation of g', 'C11', 1], ['Kepler\'s laws', 'C11', 0], ['Orbits and escape speed', 'C11', 0]]],
+        ['Properties of matter', [['Pressure and buoyancy', 'C9', 3], ['Elasticity', 'C11', 0], ['Bernoulli\'s principle', 'C11', 0], ['Viscosity', 'C11', 0], ['Surface tension', 'C11', 0]]]
+      ]],
+      ['Oscillations and waves', [
+        ['Simple harmonic motion', [['Periodic motion', 'C11', 1], ['SHM equation', 'C11', 0], ['Springs and pendulums', 'C11', 0], ['Damped and forced oscillations', 'JEE', 0]]],
+        ['Waves and sound', [['Sound as a wave', 'C9', 3], ['Speed of sound', 'C9', 2], ['Wave equation', 'C11', 0], ['Standing waves', 'C11', 0], ['Beats', 'C11', 0], ['Doppler effect', 'C11', 0]]]
+      ]],
+      ['Thermal physics', [
+        ['Heat and temperature', [['Temperature and heat', 'C7', 4], ['Calorimetry', 'C11', 1], ['Thermal expansion', 'C11', 0], ['Conduction, convection, radiation', 'C7', 3]]],
+        ['Thermodynamics', [['Kinetic theory of gases', 'C11', 0], ['First law', 'C11', 0], ['Second law and entropy', 'C11', 0], ['Heat engines', 'C11', 0]]]
+      ]],
+      ['Electricity and magnetism', [
+        ['Electrostatics', [['Electric charge', 'C8', 3], ['Coulomb\'s law', 'C12', 1], ['Electric field', 'C12', 0], ['Gauss\'s law', 'C12', 0], ['Potential', 'C12', 0], ['Capacitors', 'C12', 0]]],
+        ['Current electricity', [['Ohm\'s law', 'C10', 3], ['Resistors in series and parallel', 'C10', 3], ['Heating effect and power', 'C10', 2], ['Kirchhoff\'s rules', 'C12', 0], ['Wheatstone bridge', 'C12', 0]]],
+        ['Magnetism', [['Field lines and compasses', 'C10', 3], ['Force on a current', 'C10', 2], ['Biot–Savart law', 'C12', 0], ['Ampère\'s law', 'C12', 0]]],
+        ['Induction and AC', [['Electromagnetic induction', 'C12', 0], ['Lenz\'s law', 'C12', 0], ['Alternating current', 'C12', 0], ['Electromagnetic waves', 'C12', 0]]]
+      ]],
+      ['Optics', [
+        ['Ray optics', [['Rectilinear propagation', 'C6', 4], ['Laws of reflection', 'C7', 4], ['Spherical mirrors', 'C10', 3], ['Refraction and Snell\'s law', 'C10', 2, true], ['Total internal reflection', 'C10', 1], ['Lenses and the lens formula', 'C10', 1], ['Prism and dispersion', 'C10', 1], ['Optical instruments', 'C12', 0]]],
+        ['Wave optics', [['Huygens\' principle', 'C12', 0], ['Interference and Young\'s experiment', 'C12', 0], ['Diffraction', 'C12', 0], ['Polarisation', 'C12', 0], ['Thin films', 'OLY', 0]]]
+      ]],
+      ['Modern physics', [
+        ['Quanta and atoms', [['Photoelectric effect', 'C12', 0], ['Matter waves', 'C12', 0], ['Bohr model', 'C12', 0]]],
+        ['Nuclei and devices', [['Radioactivity', 'C12', 0], ['Nuclear energy', 'C12', 0], ['Semiconductors and diodes', 'C12', 0]]],
+        ['Beyond the syllabus', [['Special relativity', 'OLY', 0]]]
+      ]],
+      ['Tools of the trade', [
+        ['Mathematical methods', [['Units and dimensions', 'C11', 1], ['Vectors', 'C11', 1], ['Calculus for physics', 'C11', 0], ['Approximations and series', 'OLY', 0], ['Differential equations', 'OLY', 0]]],
+        ['Experiments', [['Errors and significant figures', 'C11', 1], ['Graph plotting', 'C9', 2]]]
+      ]]
+    ],
+    mat: [
+      ['Number', [
+        ['Arithmetic', [['Integers', 'C6', 4], ['Fractions and decimals', 'C6', 4], ['Exponents and powers', 'C7', 4], ['Ratio and percentage', 'C7', 4]]],
+        ['Divisibility', [['Primes and factorisation', 'C6', 4], ['HCF and LCM', 'C6', 4], ['Fundamental theorem of arithmetic', 'C10', 3], ['Irrational numbers', 'C10', 2]]]
+      ]],
+      ['Algebra', [
+        ['Equations', [['Expressions and identities', 'C8', 4], ['Linear equations', 'C8', 4], ['Pair of linear equations', 'C10', 3], ['Quadratic equations', 'C10', 2], ['Polynomials', 'C10', 2]]],
+        ['Sequences and counting', [['Arithmetic progressions', 'C10', 2], ['Geometric progressions', 'C11', 0], ['Permutations and combinations', 'C11', 0], ['Binomial theorem', 'C11', 0]]],
+        ['Structures', [['Complex numbers', 'C11', 0], ['Matrices and determinants', 'C12', 0], ['Inequalities and AM–GM', 'OLY', 0], ['Functional equations', 'OLY', 0]]]
+      ]],
+      ['Geometry', [
+        ['Euclidean', [['Lines and angles', 'C7', 4], ['Congruent triangles', 'C9', 3], ['Similar triangles', 'C10', 2], ['Circles and tangents', 'C10', 1], ['Cyclic quadrilaterals and power of a point', 'OLY', 0]]],
+        ['Coordinate', [['Distance and section formula', 'C10', 2], ['Straight lines', 'C11', 0], ['Conic sections', 'C11', 0], ['3D geometry and vectors', 'C12', 0]]]
+      ]],
+      ['Trigonometry', [
+        ['Foundations', [['Trigonometric ratios', 'C10', 2], ['Identities', 'C10', 1], ['Heights and distances', 'C10', 1]]],
+        ['Further', [['Compound angles', 'C11', 0], ['Inverse functions', 'C12', 0], ['Trigonometric equations', 'JEE', 0]]]
+      ]],
+      ['Calculus', [
+        ['Differential', [['Limits', 'C11', 0], ['Derivatives', 'C11', 0], ['Applications of derivatives', 'C12', 0]]],
+        ['Integral', [['Indefinite integrals', 'C12', 0], ['Definite integrals and area', 'C12', 0], ['Differential equations', 'C12', 0]]]
+      ]],
+      ['Data and chance', [
+        ['Statistics', [['Mean, median, mode', 'C9', 3], ['Grouped data', 'C10', 1]]],
+        ['Probability', [['Classical probability', 'C10', 1], ['Conditional probability and Bayes', 'C12', 0], ['Random variables', 'C12', 0]]]
+      ]],
+      ['Olympiad toolkit', [
+        ['Number theory', [['Modular arithmetic', 'OLY', 0], ['Fermat and Euler', 'OLY', 0]]],
+        ['Combinatorics', [['Pigeonhole principle', 'OLY', 0], ['Invariants and extremal principle', 'OLY', 0], ['Induction', 'C11', 0], ['Graph theory basics', 'OLY', 0]]]
+      ]]
+    ]
+  };
+  const chev = '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+  const lvlTag = l => `<span class="lvl ${l === 'JEE' ? 'jee' : l === 'OLY' ? 'oly' : ''}">${l === 'OLY' ? 'Olympiad' : l === 'JEE' ? 'JEE' : 'Class ' + l.slice(1)}</span>`;
+  const leaves = node => typeof node[1] === 'string' ? [node] : node[1].flatMap(leaves);
+  const mastery = node => { const L = leaves(node); return L.reduce((s, l) => s + l[2], 0) / (L.length * 4); };
+  const mini = node => { const m = mastery(node), L = leaves(node); return `<span class="mini"><span class="meter"><i style="width:${Math.round(m * 100)}%"></i></span><span class="n">${L.length} leaves</span></span>`; };
+
+  function renderTree(key) {
+    const el = document.getElementById('tree-root');
+    el.className = 'tree s-' + key;
+    el.innerHTML = TREES[key].map((p, i) => `
+      <details class="pillar" ${i === (key === 'phy' ? 4 : 1) ? 'open' : ''}>
+        <summary>${chev}<span><span class="t">${p[0]}</span> <span class="sub">${p[1].length} branches</span></span>${mini(p)}</summary>
+        <div class="pillar-body">${p[1].map((b, j) => `
+          <details class="branch" ${(key === 'phy' && i === 4 && j === 0) || (key === 'mat' && i === 1 && j === 0) ? 'open' : ''}>
+            <summary>${chev}<span class="t">${b[0]}</span>${mini(b)}</summary>
+            <div class="branch-body">${b[1].map(l => `
+              <a class="leaf ${l[3] ? 'link' : ''}" href="${l[3] ? '#concept' : '#tree'}"><i class="glyph" style="--p:${l[2] / 4}"></i><span class="nm">${l[0]}</span>${lvlTag(l[1])}</a>`).join('')}
+            </div>
+          </details>`).join('')}
+        </div>
+      </details>`).join('');
+  }
+  document.querySelectorAll('[data-tree]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-tree]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderTree(b.dataset.tree);
+  }));
+  document.getElementById('tree-root').addEventListener('click', e => {
+    const a = e.target.closest('a.leaf:not(.link)'); if (a) e.preventDefault();
+  });
+  renderTree('phy');
+
+  /* ---------- subjects ---------- */
+  const SUBJ = [
+    ['Physics', 'phy', 'Phase 1 · to Olympiad', [
+      ['Foundations', 'NCERT Science, Classes 6–10'], ['Board', 'NCERT Physics, Classes 11–12, with Exemplar problems'],
+      ['JEE', 'H. C. Verma, Concepts of Physics · Halliday, Resnick & Krane'], ['Problem depth', 'I. E. Irodov · past JEE Advanced papers'],
+      ['Olympiad', 'Kleppner & Kolenkow · Morin · Purcell (E&M) · Jaan Kalda\'s handouts · past INPhO/IPhO papers']]],
+    ['Mathematics', 'mat', 'Phase 1 · to Olympiad', [
+      ['Foundations', 'NCERT Mathematics, Classes 6–10'], ['Board', 'NCERT Mathematics, Classes 11–12, with Exemplar problems'],
+      ['JEE', 'Hall & Knight · S. L. Loney · I. A. Maron'], ['Problem depth', 'Problems Plus in IIT Mathematics · past JEE Advanced papers'],
+      ['Olympiad', 'Zeitz · Engel · Challenge and Thrill of Pre-College Mathematics · Evan Chen (EGMO) · past RMO/INMO papers'],
+      ['Bridge to AI', 'John Bird · Strang (linear algebra) · Blitzstein (probability) · discrete mathematics']]],
+    ['Chemistry', 'chem', 'Phase 1 · to JEE', [
+      ['Foundations', 'NCERT Science, Classes 6–10'], ['Board', 'NCERT Chemistry, Classes 11–12'],
+      ['Physical', 'P. Bahadur · Atkins (reference)'], ['Inorganic', 'J. D. Lee'], ['Organic', 'Morrison & Boyd · Clayden']]],
+    ['Biology', 'bio', 'Phase 1 · depth to confirm', [
+      ['Foundations', 'NCERT Science, Classes 6–10'], ['Board', 'NCERT Biology, Classes 11–12'], ['Reference', 'Campbell Biology']]],
+    ['English', 'eng', 'Phase 3', [
+      ['Grammar', 'Wren & Martin · Murphy, English Grammar in Use'], ['Vocabulary', 'Norman Lewis, Word Power Made Easy'],
+      ['Writing', 'Strunk & White'], ['Literature', 'NCERT readers: First Flight, Footprints, Hornbill, Snapshots, Flamingo, Vistas']]]
+  ];
+  document.getElementById('subj-grid').innerHTML = SUBJ.map(([n, k, ph, st]) => `
+    <div class="panel subj s-${k}"><h2><span class="dot"></span>${n}<span class="phase">${ph}</span></h2>
+    <ul class="stages">${st.map(([a, b]) => `<li><b>${a}</b><span>${b}</span></li>`).join('')}</ul></div>`).join('');
+
+  /* ---------- classes ---------- */
+  const BOOKS = {
+    10: [
+      ['Science', 'phy', [
+        ['Chemical Reactions and Equations', 'ready'], ['Acids, Bases and Salts', 'draft'], ['Metals and Non-metals', 'none'],
+        ['Carbon and its Compounds', 'none'], ['Life Processes', 'none'], ['Control and Coordination', 'none'],
+        ['How do Organisms Reproduce?', 'none'], ['Heredity', 'none'], ['Light – Reflection and Refraction', 'draft', true],
+        ['The Human Eye and the Colourful World', 'none'], ['Electricity', 'none'], ['Magnetic Effects of Electric Current', 'none'],
+        ['Our Environment', 'none'], ['Periodic Classification of Elements', 'restored'], ['Sources of Energy', 'restored']]],
+      ['Mathematics', 'mat', [
+        ['Real Numbers', 'ready'], ['Polynomials', 'ready'], ['Pair of Linear Equations in Two Variables', 'draft'],
+        ['Quadratic Equations', 'none'], ['Arithmetic Progressions', 'none'], ['Triangles', 'none'], ['Coordinate Geometry', 'none'],
+        ['Introduction to Trigonometry', 'none'], ['Some Applications of Trigonometry', 'none'], ['Circles', 'none'],
+        ['Areas Related to Circles', 'none'], ['Surface Areas and Volumes', 'none'], ['Statistics', 'none'], ['Probability', 'none'],
+        ['Constructions', 'restored']]]
+    ]
+  };
+  const CLASSES = [6, 7, 8, 9, 10, 11, 12];
+  const stLabel = { ready: 'ready', draft: 'draft', none: 'not started', restored: 'restored' };
+  let cur = 10;
+  function renderClasses() {
+    document.getElementById('class-pills').innerHTML = CLASSES.map(c =>
+      `<button aria-pressed="${c === cur}" data-c="${c}">${c}<small>${c >= 10 ? 'phase 1' : 'later'}</small></button>`).join('');
+    const b = BOOKS[cur];
+    document.getElementById('books').innerHTML = b ? b.map(([n, k, ch]) => `
+      <div class="panel s-${k}"><h2><span>Class ${cur} · ${n}</span><span class="eyebrow">${ch.length} chapters</span></h2>
+      <ol class="chap">${ch.map(([t, s, link]) => `<li><a href="${link ? '#concept' : '#classes'}">${t}</a><span class="st ${s}">${stLabel[s]}</span></li>`).join('')}</ol></div>`).join('')
+      : `<div class="panel"><h2>Class ${cur}</h2><p style="margin:0;color:var(--muted)">Not built in the mockup. The real site shows every NCERT book for this class in the same layout as Class 10.</p></div>`;
+  }
+  document.getElementById('class-pills').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return; cur = +b.dataset.c; renderClasses();
+  });
+  document.getElementById('books').addEventListener('click', e => {
+    const a = e.target.closest('a[href="#classes"]'); if (a) e.preventDefault();
+  });
+  renderClasses();
+
+  /* ---------- hook question ---------- */
+  document.querySelectorAll('#hook .opts button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#hook .opts button').forEach(x => x.classList.remove('right', 'wrong'));
+    const ok = b.dataset.ok === '1';
+    b.classList.add(ok ? 'right' : 'wrong');
+    const fb = document.getElementById('hook-fb'); fb.hidden = false;
+    fb.innerHTML = ok
+      ? 'Right. Light from the coin bends away from the normal as it leaves the water, so your eye traces it back to a shallower point: 40 ÷ 1.33 ≈ 30 cm. The page below explains why.'
+      : 'Not quite. Water makes things look <i>shallower</i>, not deeper or unchanged. Try again, or read on and come back.';
+  }));
+
+  /* ---------- refraction simulation ---------- */
+  const PAIRS = [['Air', 'Water', 1.00, 1.33], ['Air', 'Glass', 1.00, 1.50], ['Water', 'Air', 1.33, 1.00], ['Glass', 'Air', 1.50, 1.00], ['Water', 'Glass', 1.33, 1.50]];
+  const O = { x: 180, y: 115 }, L = 125, deg = Math.PI / 180;
+  const $ = id => document.getElementById(id);
+  function sim() {
+    const t1 = +$('ang').value * deg, [m1, m2, n1, n2] = PAIRS[+$('pair').value];
+    $('angv').textContent = $('ang').value + '°';
+    $('lab1').textContent = `${m1} · n = ${n1.toFixed(2)}`;
+    $('lab2').textContent = `${m2} · n = ${n2.toFixed(2)}`;
+    $('m2').style.fill = n2 > n1 ? '' : 'var(--sunk)';
+    document.querySelector('.sim .m1').style.fill = n1 > n2 ? 'color-mix(in srgb, var(--phy) 12%, var(--surface))' : '';
+    const ix = O.x - L * Math.sin(t1), iy = O.y - L * Math.cos(t1);
+    $('rIn').setAttribute('x1', ix); $('rIn').setAttribute('y1', iy);
+    $('rRefl').setAttribute('x2', O.x + L * Math.sin(t1)); $('rRefl').setAttribute('y2', O.y - L * Math.cos(t1));
+    $('arc1').setAttribute('d', `M${O.x},${O.y - 34} A34,34 0 0 0 ${O.x - 34 * Math.sin(t1)},${O.y - 34 * Math.cos(t1)}`);
+    const s2 = n1 * Math.sin(t1) / n2;
+    const crit = n1 > n2 ? Math.asin(n2 / n1) / deg : null;
+    let out = `<span>θ<sub>1</sub> = <b>${(t1 / deg).toFixed(0)}°</b></span>`;
+    if (s2 > 1) {
+      $('rOut').style.display = 'none'; $('arc2').style.display = 'none';
+      $('rRefl').style.opacity = 1;
+      out += `<span class="tir">total internal reflection</span>`;
+    } else {
+      const t2 = Math.asin(s2);
+      $('rOut').style.display = ''; $('arc2').style.display = '';
+      $('rOut').setAttribute('x2', O.x + L * Math.sin(t2)); $('rOut').setAttribute('y2', O.y + L * Math.cos(t2));
+      $('arc2').setAttribute('d', `M${O.x},${O.y + 34} A34,34 0 0 0 ${O.x + 34 * Math.sin(t2)},${O.y + 34 * Math.cos(t2)}`);
+      $('rRefl').style.opacity = .22;
+      out += `<span>θ<sub>2</sub> = <b>${(t2 / deg).toFixed(1)}°</b></span>`;
+    }
+    out += `<span>n<sub>1</sub> sin θ<sub>1</sub> = <b>${(n1 * Math.sin(t1)).toFixed(3)}</b></span>`;
+    if (crit) out += `<span>critical angle = <b>${crit.toFixed(1)}°</b></span>`;
+    $('readout').innerHTML = out;
+  }
+  $('ang').addEventListener('input', sim); $('pair').addEventListener('change', sim);
+  sim();
+
+  /* ---------- answer check ---------- */
+  $('check1').addEventListener('click', () => {
+    const v = parseFloat($('a1').value), r = $('res1');
+    const ans = Math.asin(Math.sin(45 * deg) / 1.33) / deg;
+    if (isNaN(v)) { r.className = 'res bad'; r.textContent = 'Enter a number in degrees.'; return; }
+    const ok = Math.abs(v - ans) <= 0.5;
+    r.className = 'res ' + (ok ? 'good' : 'bad');
+    r.textContent = ok ? `Correct: ${ans.toFixed(1)}°` : 'Not yet. Try hint 2.';
+  });
+
+  /* ---------- notes draft ---------- */
+  const notes = $('notes');
+  try { notes.value = localStorage.getItem('la-notes-snell') || ''; } catch (e) {}
+  notes.addEventListener('input', () => { try { localStorage.setItem('la-notes-snell', notes.value); } catch (e) {} });
+
+  route();
+})();
+</script>
