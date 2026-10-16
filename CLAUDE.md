@@ -163,7 +163,7 @@ From a new session:
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
 
-**Vercel (mobile/standalone copy).** `vercel.json` at the repo root builds `site/` and serves `site/dist`. The app falls back to `localStorage` when the artifact runtime is absent, so progress is per device there. The Vercel site is public by default unless deployment protection is on; the content includes NCERT text, so keep it protected or private.
+**Vercel (mobile/standalone copy).** `vercel.json` at the repo root builds `site/` and serves `site/dist`, with `/` rewritten to `standalone.html` (a full HTML document with viewport, theme colour, manifest and icons; `index.html` is only the artifact fragment and must not be served directly on a plain host). The app falls back to `localStorage` when the artifact runtime is absent, so progress is per device there. The Vercel site is public by default unless deployment protection is on; the content includes NCERT text, so keep it protected or private.
 
 ## Build order and status
 

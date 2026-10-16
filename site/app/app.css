@@ -517,3 +517,17 @@ textarea { width: 100%; min-height: 160px; font-family: var(--f-body); font-size
   .pcard { padding: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* ---------- next / previous lesson ---------- */
+.lnav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.lnav-b { text-align: left; border: 1px solid var(--rule); background: var(--surface); border-radius: var(--r); padding: 14px 16px; cursor: pointer; display: grid; gap: 3px; align-content: start; min-height: 88px; }
+.lnav-b small { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.lnav-b b { font-size: 16px; line-height: 1.25; }
+.lnav-b span { font-size: 12.5px; color: var(--muted); }
+.lnav-b.next { border-color: var(--accent); background: var(--accent-soft); text-align: right; grid-column: 2; }
+.lnav-b.next small { color: var(--accent); }
+.lnav-b:hover { border-color: var(--accent); }
+.lnav-end { grid-column: 2; align-self: center; text-align: right; font-size: 13px; color: var(--muted); }
+@media (max-width: 560px) { .lnav { grid-template-columns: minmax(0, 1fr); } .lnav-b.next, .lnav-end { grid-column: 1; grid-row: 1; text-align: left; } .lnav-b.prev { grid-row: 2; } }
+
+@media (max-width: 560px) { .cover-art { width: 150px; right: -8px; top: -6px; opacity: .3; } .lesson-head { padding: 16px 16px; } }

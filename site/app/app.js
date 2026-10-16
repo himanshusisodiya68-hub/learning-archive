@@ -79,6 +79,15 @@
   }
   const liveLeaves = () => TREE.subjects.flatMap(s => (s.pillars || []).flatMap(p => p.branches.flatMap(b => b.leaves.filter(l => l.live || l.problems).map(l => ({ key: `${s.id}/${l.id}`, l, s })))));
 
+  function lessonNeighbours(key) {
+    const list = liveLeaves().filter(x => x.l.live); const i = list.findIndex(x => x.key === key);
+    return i < 0 ? {} : { prev: list[i - 1], next: list[i + 1] };
+  }
+  const lessonCard = (x, dir, cur) => {
+    const L = leafByKey(x.key); const where = L.b.id !== cur.b.id ? `${escHTML(L.p.name)} · ${escHTML(L.b.name)}` : escHTML(L.b.name);
+    return `<button class="lnav-b ${dir}" data-goto="${x.key}"><small>${dir === 'next' ? 'Next lesson →' : '← Previous lesson'}</small><b>${escHTML(x.l.name)}</b><span>${where}</span></button>`;
+  };
+
   /* ================= PROGRESS (db per viewer, browser copy as fallback) ================= */
   const LS = 'la-progress-v1';
   const today = () => Math.floor(Date.now() / 86400000);
@@ -393,6 +402,7 @@
           ${needs ? `<div class="needs"><span class="eyebrow" style="margin-right:4px">Builds on</span>${needs}</div>` : ''}
           <div class="prose">${lesson.introHtml}${sections}</div>
           <div class="next-step"><div><b>That's the lesson.</b><span>Now test it: ${probs.length} problems, from NCERT to Olympiad.</span></div><button class="btn" data-ltab-go="practice">Go to practice</button></div>
+          ${(() => { const n = lessonNeighbours(key); const cur = L; return (n.prev || n.next) ? `<nav class="lnav" aria-label="Lessons">${n.prev ? lessonCard(n.prev, 'prev', cur) : '<span></span>'}${n.next ? lessonCard(n.next, 'next', cur) : '<span class="lnav-end">That is the last lesson written so far.</span>'}</nav>` : ''; })()}
         </div>
         <aside class="margin">${(lesson.margin || []).map(m => `<div class="mn ${m.kind === 'tip' ? 'tip' : m.kind === 'olympiad' ? 'oly' : ''}"><b>${escHTML(m.title || m.kind)}</b>${m.html}</div>`).join('')}
           <div class="toc-wrap"><div class="eyebrow" style="margin-bottom:6px">On this page</div><nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}">${escHTML(sec.title)}<span class="lv l${sec.lvl}">${LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
@@ -444,6 +454,7 @@
     if (t.closest('[data-ltab-go]')) { S.ltab = 'practice'; showLessonTab(); return window.scrollTo(0, 0); }
     const d = t.closest('[data-depth]'); if (d) { S.depth = +d.dataset.depth; return applyDepth(); }
     const to = t.closest('[data-to]'); if (to) return $(to.dataset.to).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    { const g = t.closest('[data-goto]'); if (g) { openLesson(g.dataset.goto); window.scrollTo(0, 0); return; } }
     if (t.closest('[data-back]')) { const L = leafByKey(S.lessonKey); Object.assign(S, { subj: L.s.id, pillar: L.pi, branch: L.bi, leaf: L.li, mode: 'subject' }); return go('learn'); }
     const qa = t.closest('[data-qa]');
     if (qa) { const box = qa.closest('.qc, .hook'), f = box.querySelector('.qf'), ok = qa.dataset.qa === '1';

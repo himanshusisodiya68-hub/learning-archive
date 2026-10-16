@@ -192,8 +192,13 @@ const css = fs.readFileSync(path.join(ROOT, 'app/app.css'), 'utf8');
 const js = fs.readFileSync(path.join(ROOT, 'app/app.js'), 'utf8');
 const page = shell.replace('/*CSS*/', () => css + '\n' + kcss).replace('/*JS*/', () => js.replace(/<\/script/g, '<\\/script'));
 fs.writeFileSync(path.join(DIST, 'index.html'), page);
-// local preview wrapper (the artifact host adds the document skeleton itself)
-fs.writeFileSync(path.join(DIST, 'preview.html'), `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}</style></head><body>${page}</body></html>`);
+// Standalone document (Vercel / phone): the artifact host adds its own skeleton, a plain host does not.
+const standalone = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F4F6F5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#10141A" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Archive"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><style>[hidden]{display:none!important}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{margin:0}</style></head><body>${page}</body></html>`;
+fs.writeFileSync(path.join(DIST, 'standalone.html'), standalone);
+fs.writeFileSync(path.join(DIST, 'preview.html'), standalone);
+fs.mkdirSync(path.join(DIST, 'icons'), { recursive: true });
+for (const f of fs.readdirSync(path.join(ROOT, 'app/icons'))) fs.copyFileSync(path.join(ROOT, 'app/icons', f), path.join(DIST, 'icons', f));
+fs.writeFileSync(path.join(DIST, 'manifest.webmanifest'), JSON.stringify({ name: 'Learning Archive', short_name: 'Archive', start_url: './standalone.html', scope: './', display: 'standalone', background_color: '#F4F6F5', theme_color: '#2A4A9A', icons: [{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' }, { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml' }] }));
 console.log(`built: ${liveCount} lessons, ${problemCount} problems, ${search.length} search entries, page ${(page.length / 1024).toFixed(0)} KB`);
 
 // Lint the output without a browser: KaTeX errors, unknown widgets, unbalanced ::: blocks, empty solutions.
