@@ -144,3 +144,119 @@
   sol: |
     **Larger**, assuming the resistor is in series with other resistance in the circuit (the usual case; the problem does not say, so this is an assumption). The voltmeter in parallel makes that part of the circuit $100\times1000/1100 = 90.9\ \Omega$, less than $100\ \Omega$. In a potential-divider arrangement a smaller resistance gets a smaller share of the supply, so the reading is lower than the true potential difference. Removing the voltmeter restores the larger value. An ideal voltmeter has infinite resistance.
   check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A cell drives a current of 0.50 A through a 4.0 Ω resistor and 0.25 A through a 9.0 Ω resistor. Find the internal resistance of the cell. (Original problem.)
+  ask: Internal resistance
+  unit: Ω
+  ans: 1
+  tol: 0.01
+  verify: (0.25*9-0.5*4)/(0.5-0.25)
+  sol: |
+    In each case $E = I(R + r)$:
+
+    $E = 0.50(4.0 + r) = 2.0 + 0.50r$ and $E = 0.25(9.0 + r) = 2.25 + 0.25r$.
+
+    Equating, $0.25r = 0.25$, so $r = 1.0\ \Omega$, and $E = 2.0 + 0.5 = 2.5$ V.
+
+    Check: $2.5/(4+1) = 0.50$ A and $2.5/(9+1) = 0.25$ A.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A resistor of true resistance 100 Ω is measured with a voltmeter of resistance 2.0 kΩ connected directly across it, and an ideal ammeter that reads the total current drawn from the supply. What value of V/I does the student obtain? (Original problem.)
+  ask: Measured resistance
+  unit: Ω
+  ans: 95.2
+  tol: 0.1
+  verify: 100*2000/(100+2000)
+  sol: |
+    The ammeter's current splits between the resistor and the voltmeter, while the voltmeter reads the true voltage across the resistor. So $V/I$ is the resistance of the parallel combination:
+
+    $$R_m = \frac{RR_V}{R + R_V} = \frac{100\times2000}{2100} = 95.2\ \Omega.$$
+
+    The result is 4.8% low, about $R/R_V = 5\%$. For this resistor the other connection (ammeter directly in series with $R$) would be exact here, since the ammeter is ideal; with a real ammeter of resistance $R_A$ it would read $100 + R_A$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A 1.0 kΩ potentiometer (slide wire with three terminals) is connected across an ideal 12 V supply with its slider at the midpoint. A 500 Ω load is connected between the slider and the negative end. Find the voltage across the load. (Original problem.)
+  ask: Voltage across the load
+  unit: V
+  ans: 4
+  tol: 0.01
+  verify: 12*(500*500/1000)/(500+500*500/1000)
+  sol: |
+    The slider splits the potentiometer into two 500 Ω halves. The lower half is in parallel with the 500 Ω load: $500\parallel500 = 250\ \Omega$.
+
+    The supply sees $500 + 250 = 750\ \Omega$, so the current from it is $12/750 = 0.016$ A, and the voltage across the parallel part is $0.016\times250 = 4.0$ V.
+
+    Unloaded, the midpoint would give 6.0 V. The load pulls the output down by a third because its resistance is comparable to the divider's.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "Copper has about 8.5 × 10^28 free electrons per cubic metre and resistivity 1.7 × 10^-8 Ω m at room temperature. Using the Drude model, estimate the mean time τ between collisions, in femtoseconds (1 fs = 10^-15 s). Take m = 9.11 × 10^-31 kg and e = 1.6 × 10^-19 C. (Original problem.)"
+  ask: Relaxation time τ
+  unit: fs
+  ans: 24.6
+  tol: 0.2
+  verify: 9.11e-31/(8.5e28*(1.6e-19)**2*1.7e-8)*1e15
+  sol: |
+    From $\rho = m/(ne^2\tau)$,
+
+    $$\tau = \frac{m}{ne^2\rho} = \frac{9.11\times10^{-31}}{8.5\times10^{28}\times(1.6\times10^{-19})^2\times1.7\times10^{-8}}.$$
+
+    The denominator is $8.5\times10^{28}\times2.56\times10^{-38}\times1.7\times10^{-8} = 3.70\times10^{-17}$, so $\tau = 2.46\times10^{-14}$ s $= 24.6$ fs.
+
+    Taking the Fermi speed of copper, about $1.6\times10^6$ m/s, the mean free path is $v_F\tau \approx 39$ nm, about 150 interatomic spacings. Electrons are not stopped by every ion they pass, only by lattice vibrations and defects.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A non-ohmic device obeys I = kV² with k = 0.020 A/V². It is connected in series with a 10 Ω resistor across an ideal 6.0 V source. Find the potential difference across the device. (Original problem.)
+  ask: Voltage across the device
+  unit: V
+  ans: 3.52
+  tol: 0.01
+  verify: (-1+sqrt(1+4*0.2*6))/(2*0.2)
+  sol: |
+    The device obeys $I = kV^2$, and the rest of the circuit obeys the load line $V = 6.0 - 10I$. Substituting,
+
+    $$V + 10\times0.020\,V^2 = 6.0 \quad\Longrightarrow\quad 0.2V^2 + V - 6.0 = 0.$$
+
+    Taking the positive root, $V = \dfrac{-1 + \sqrt{1 + 4.8}}{0.4} = \dfrac{-1 + 2.408}{0.4} = 3.52$ V.
+
+    Then $I = 0.020\times3.52^2 = 0.248$ A, and the resistor takes $2.48$ V; $3.52 + 2.48 = 6.0$ V as required.
+
+    At this point the device's static resistance is $V/I = 14.2\ \Omega$, and its dynamic resistance is $dV/dI = 1/(2kV) = 7.1\ \Omega$, half the static value, as for any $I \propto V^2$ device. The total differential resistance $10 + 7.1 > 0$, so the operating point is stable.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: A cell of unknown EMF and internal resistance is connected in turn to two different voltmeters and nothing else. A voltmeter of resistance 90 Ω reads 5.40 V; one of resistance 190 Ω reads 5.70 V. Find the EMF of the cell. (Original problem.)
+  ask: EMF
+  unit: V
+  ans: 6
+  tol: 0.01
+  verify: 1/(1/5.4 - ((1/5.4-1/5.7)/(1/90-1/190))/90)
+  sol: |
+    Each voltmeter is the only load, so it reads $V = \dfrac{ER_V}{R_V + r}$. Inverting,
+
+    $$\frac{1}{V} = \frac{1}{E} + \frac{r}{E}\cdot\frac{1}{R_V}.$$
+
+    So $1/V$ is linear in $1/R_V$: the intercept is $1/E$ and the slope is $r/E$.
+
+    Slope: $\dfrac{1/5.40 - 1/5.70}{1/90 - 1/190} = \dfrac{0.185185 - 0.175439}{0.011111 - 0.005263} = \dfrac{0.009747}{0.005848} = 1.667\ \Omega$, i.e. $r/E = 5/3\ \Omega\,\text{V}^{-1}$.
+
+    Intercept: $1/E = 1/5.40 - 1.667/90 = 0.185185 - 0.018519 = 0.166667\ \text{V}^{-1}$, so $E = 6.00$ V, and $r = 6.00\times5/3 = 10\ \Omega$.
+
+    Check: $6\times90/100 = 5.40$ V and $6\times190/200 = 5.70$ V. Lesson: no real voltmeter reads the EMF exactly, but two readings with different meters let you extrapolate to an infinite-resistance meter.
+  check: code

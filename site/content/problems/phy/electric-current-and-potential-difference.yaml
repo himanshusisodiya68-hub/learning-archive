@@ -191,3 +191,92 @@
   sol: |
     Charge per second is $0.8$ C, and each electron carries $1.6\times10^{-19}$ C, so the rate is $0.8/(1.6\times10^{-19}) = 5\times10^{18}$ electrons per second. Conventional current flows opposite to the electrons' drift.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A copper wire of cross-section 2.0 mm² carries a steady current of 3.0 A. Copper has $8.5\times10^{28}$ free electrons per m³. Find the drift speed of the electrons, and hence the time an electron takes to drift along 1.0 m of the wire. Give the drift speed. Take $e = 1.6\times10^{-19}$ C. (Original problem.)
+  ask: Drift speed
+  unit: mm/s
+  ans: 0.110
+  tol: 0.002
+  verify: 3/(8.5e28*2e-6*1.6e-19)*1000
+  sol: |
+    From $I = nAv_de$,
+    $$v_d = \frac{I}{nAe} = \frac{3.0}{8.5\times10^{28}\times2.0\times10^{-6}\times1.6\times10^{-19}} = \frac{3.0}{2.72\times10^{4}} \approx 1.10\times10^{-4}\ \text{m/s} = 0.110\ \text{mm/s}.$$
+    Time to drift 1.0 m: $1.0/1.10\times10^{-4}\approx 9.1\times10^3$ s, about 2.5 hours. A lamp on such a wire still lights at once, because the field, not the electrons, travels from the source at nearly the speed of light.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A voltmeter across the terminals of a cell reads 1.45 V when the cell supplies 0.50 A, and 1.30 V when it supplies 2.0 A. Find the internal resistance of the cell. (Original problem.)
+  ask: Internal resistance
+  unit: Ω
+  ans: 0.10
+  tol: 0.002
+  verify: (1.45-1.30)/(2.0-0.5)
+  sol: |
+    For a discharging cell $V = \varepsilon - Ir$. The two readings give
+    $$1.45 = \varepsilon - 0.50\,r,\qquad 1.30 = \varepsilon - 2.0\,r.$$
+    Subtracting, $0.15 = 1.5\,r$, so $r = 0.10\ \Omega$. Then $\varepsilon = 1.45 + 0.50\times0.10 = 1.50$ V. The terminal voltage falls by $r$ volts for every extra ampere drawn.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A battery of EMF 12.0 V and internal resistance 0.050 Ω is being charged by a current of 10 A (current enters at its positive terminal). What is the potential difference across its terminals? How much of the charger's power is stored as chemical energy, and how much heats the battery? Give the terminal voltage. (Original problem.)
+  ask: Terminal voltage
+  unit: V
+  ans: 12.5
+  tol: 0.01
+  verify: 12.0+10*0.050
+  sol: |
+    While charging, the charger must overcome both the EMF and the drop across the internal resistance:
+    $$V = \varepsilon + Ir = 12.0 + 10\times0.050 = 12.5\ \text{V}.$$
+    Power from the charger: $VI = 125$ W. Stored as chemical energy: $\varepsilon I = 120$ W. Heat in the battery: $I^2r = 100\times0.050 = 5$ W. Check: $120 + 5 = 125$ W.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Copper has $8.5\times10^{28}$ free electrons per m³ and resistivity $1.7\times10^{-8}\ \Omega\,$m at room temperature. Using the Drude model ($v_d = eE\tau/m$), estimate the mean time $\tau$ between collisions of a conduction electron. Take $e = 1.6\times10^{-19}$ C and $m = 9.11\times10^{-31}$ kg. (Original problem.)
+  ask: Mean free time τ
+  unit: × 10⁻¹⁴ s
+  ans: 2.46
+  tol: 0.03
+  verify: 9.11e-31/(8.5e28*1.6e-19**2*1.7e-8)*1e14
+  sol: |
+    Current density $j = nev_d = ne\cdot\dfrac{eE\tau}{m} = \dfrac{ne^2\tau}{m}E$. Comparing with $j = E/\rho$ (the definition of resistivity) gives
+    $$\tau = \frac{m}{ne^2\rho} = \frac{9.11\times10^{-31}}{8.5\times10^{28}\times(1.6\times10^{-19})^2\times1.7\times10^{-8}} = \frac{9.11\times10^{-31}}{3.70\times10^{-17}} \approx 2.46\times10^{-14}\ \text{s}.$$
+    With the Fermi speed $v_F\approx1.6\times10^6$ m/s, the mean free path is $v_F\tau\approx 40$ nm, roughly 150 atomic spacings, which shows that electrons are not scattered by every ion; quantum mechanics explains why a perfect lattice does not scatter them at all.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Electrons leave a hot cathode essentially at rest, are accelerated through a potential difference of 5.0 kV, and form a beam of current 1.0 mA that is fully absorbed by a target. Find the force the beam exerts on the target. Take $e = 1.6\times10^{-19}$ C and $m = 9.11\times10^{-31}$ kg; ignore relativity. (Original problem.)
+  ask: Force on target
+  unit: × 10⁻⁷ N
+  ans: 2.39
+  tol: 0.02
+  verify: 1e-3*sqrt(2*9.11e-31*5000/1.6e-19)*1e7
+  sol: |
+    Each electron gains kinetic energy $eV$, so $\tfrac12mv^2 = eV$ and $v = \sqrt{2eV/m} \approx 4.19\times10^7$ m/s.
+    Electrons arrive at a rate $I/e$ per second, each bringing momentum $mv$, all absorbed. The force is the momentum delivered per second:
+    $$F = \frac{I}{e}\,mv = I\sqrt{\frac{2mV}{e}} = 1.0\times10^{-3}\sqrt{\frac{2\times9.11\times10^{-31}\times5000}{1.6\times10^{-19}}} \approx 2.39\times10^{-7}\ \text{N}.$$
+    By contrast the power delivered is $VI = 5.0$ W: a beam can heat its target strongly while pushing it with a negligible force. The linear charge density of the beam is $I/v\approx2.4\times10^{-11}$ C/m, about $1.5\times10^8$ electrons per metre.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: A long straight cylindrical resistor of radius $a$ and length $L$ carries a steady current $I$, with potential difference $V$ between its ends. Using $\vec S = \vec E\times\vec B/\mu_0$, show that the electromagnetic energy flowing into the resistor through its curved surface per second equals $VI$. (Original problem.)
+  hints: ["Inside a uniform resistor the field is along the axis with magnitude V/L, and its tangential component is continuous at the surface.", "Use Ampère's law for B at the surface, then find the direction of E × B.", "Multiply the flux density by the curved area 2πaL."]
+  sol: |
+    In the steady state the field inside a uniform resistor is uniform and along the axis, $E = V/L$. The tangential component of $\vec E$ is continuous across the surface, so just outside it also has an axial component $V/L$ (surface charges may add a radial component, but that gives no radial Poynting flux).
+    By Ampère's law around a circle of radius $a$, $B\cdot2\pi a = \mu_0 I$, so $B = \mu_0I/(2\pi a)$, circling the wire.
+    With $\vec E$ along the current and $\vec B$ circling it by the right-hand rule, $\vec E\times\vec B$ points radially **inward**, with magnitude
+    $$S = \frac{EB}{\mu_0} = \frac{V}{L}\cdot\frac{I}{2\pi a}.$$
+    The power entering through the curved area $2\pi aL$ is $S\cdot2\pi aL = VI$. The end faces contribute nothing, since $\vec E\times\vec B$ has no axial part there from the axial $\vec E$. This equals the Joule heating $VI$, so in steady state all the dissipated energy enters through the sides from the surrounding field.
+  check: none
