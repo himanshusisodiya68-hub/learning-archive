@@ -1,0 +1,142 @@
+# Tenses. All problems are original (no NCERT items for this leaf). All answers are written for this archive.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: She ___ in Jaipur since 2019."
+  opts: ["lives", "lived", "has lived", "will live"]
+  ans: 2
+  sol: |
+    "Since 2019" is a point in the past from which the state continues to now, so a perfect form is needed: *has lived* (present perfect). *Lives* and *lived* do not connect the past start to the present, and *will live* is the future.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Look! The baby ___."
+  opts: ["sleeps", "is sleeping", "has slept", "slept"]
+  ans: 1
+  sol: |
+    "Look!" asks you to notice something happening at this moment, so the present continuous *is sleeping* fits. *Sleeps* states a habit or fact, *has slept* and *slept* put the action in the past.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: I ___ the answer to your question."
+  opts: ["am knowing", "know", "was knowing", "have been knowing"]
+  ans: 1
+  sol: |
+    *Know* is a stative verb: it names a state of mind, not an action in progress. Stative verbs are not used in the continuous forms, so the simple present *know* is correct. The other three options are all continuous forms.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: If it ___ tomorrow, we will cancel the picnic."
+  opts: ["rains", "will rain", "would rain", "is raining"]
+  ans: 0
+  sol: |
+    After *if* the future is expressed by the present simple, and the main clause carries *will*: "If it rains tomorrow, we will cancel the picnic." *Will rain* is the common mistake. *Would rain* belongs to an unlikely situation, and *is raining* would mean it is raining right now.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Fill each gap with the correct form of the verb in brackets. Ravi (1) (live) in Pune since he (2) (be) five. Last year he (3) (visit) Delhi, where his uncle (4) (work) for ten years by then."
+  sol: |
+    Model answer: (1) has lived, (2) was, (3) visited, (4) had been working.
+
+    (1) *Since* + a point in the past, with the state continuing to now: present perfect, *has lived* (*has been living* is also acceptable).
+    (2) "Since he was five" names the starting point, and it is a finished past time, so past simple, *was*.
+    (3) *Last year* is a finished time: past simple, *visited*.
+    (4) "For ten years by then" looks back from a past moment (last year) at a duration, so the past perfect continuous: *had been working*.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Each sentence has one tense error. Find it and correct it. (a) She has left for Mumbai yesterday. (b) I am knowing his brother. (c) If he will come early, we will start the game. (d) He did not went to school today."
+  sol: |
+    (a) *has left* should be *left*. "Yesterday" is a finished-time word, so the present perfect cannot be used: "She left for Mumbai yesterday."
+
+    (b) *am knowing* should be *know*. Know is a stative verb and does not take the continuous: "I know his brother."
+
+    (c) *will come* should be *comes*. After *if* the present simple stands for the future: "If he comes early, we will start the game."
+
+    (d) *did not went* should be *did not go*. After *did* the main verb is the base form: "He did not go to school today."
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Rani said, \"I read the book yesterday.\" Choose the correct reported form."
+  opts: ["Rani said that she read the book the day before.", "Rani said that she had read the book the day before.", "Rani said that she has read the book yesterday.", "Rani said that she reads the book the day before."]
+  ans: 1
+  sol: |
+    The reporting verb *said* is in the past, so the past simple of the speech, *read*, shifts one step back to the past perfect, *had read*. *Yesterday* becomes *the day before*. The first option leaves the verb unshifted, the third keeps a present perfect and yesterday, and the fourth changes it to a present tense.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the correct form: When we reached the station, the train ___."
+  opts: ["left", "had left", "has left", "was leaving"]
+  ans: 1
+  sol: |
+    Two past events: reaching the station and the train leaving. The train left first, so the earlier event takes the past perfect, *had left*. *Left* would suggest it left at the same moment, *has left* is a present tense, and *was leaving* would mean it was in the middle of leaving as we arrived, which is a different meaning.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Fill the five gaps with the correct form of the verb in brackets. Last Sunday, Meera (1) (go) to the railway station to receive her cousin. By the time she (2) (reach) there, the train (3) (already, arrive) and passengers (4) (walk) out of the platform. She (5) (look) for her cousin when someone tapped her shoulder."
+  sol: |
+    Model answer: (1) went, (2) reached, (3) had already arrived, (4) were walking, (5) was looking.
+
+    (1) "Last Sunday" is a finished time, so the story is in the past: *went*.
+    (2) "By the time she reached" names the later past moment, so *reached* in the past simple.
+    (3) The arrival of the train came before she reached the station: *had already arrived* (past perfect).
+    (4) Passengers were in the middle of walking out at that moment: *were walking* (past continuous).
+    (5) She was in the middle of looking when the shorter action (the tap) happened: *was looking*.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "The paragraph below has seven tense errors (sentence 4 has two). Find and correct each. (1) Yesterday our class goes on a trip to the science museum. (2) We have left school at eight o'clock and reached there by nine. (3) The guide told us that the museum is built in 1950. (4) We are seeing many models, and I was liking the planetarium most. (5) We were tired when we returned, because we walk all day. (6) By the time we got home, it already got dark."
+  sol: |
+    (1) *goes* should be *went*: "Yesterday" makes it past.
+
+    (2) *have left* should be *left*: the school-leaving time ("at eight o'clock") is a finished past time.
+
+    (3) *is built in 1950* should be *had been built in 1950* (the building was earlier than the telling). *Was built* is also acceptable in most exam keys.
+
+    (4) *are seeing* should be *saw*, and *was liking* should be *liked*: "Like" is stative and does not take the continuous.
+
+    (5) *walk* should be *had been walking* (or *had walked*): the walking came before the tiredness and lasted all day.
+
+    (6) *already got dark* should be *it was already dark* or *it had already got dark*: the darkness came before arriving home, a past perfect or a state in the past.
+
+    [Note] Seven corrections in all. A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Rewrite each sentence as directed, without changing the meaning. (a) He began to teach here ten years ago. (Begin: He has ...) (b) \"I will call you after I finish dinner,\" she said. (Report it.) (c) The film started before we reached the cinema. (Begin: By the time ...) (d) When did you last see him? (Begin: How long is it since ...)"
+  sol: |
+    (a) *He has been teaching here for ten years.* The activity began in the past and continues, so present perfect continuous with *for* and a length of time (*has taught here for ten years* also works).
+
+    (b) *She said that she would call me after she finished dinner.* The reporting verb is past, so *will* becomes *would*, and the present simple in the time clause (*finish*) shifts to *finished*; *I* becomes *she* and *you* becomes *me*.
+
+    (c) *By the time we reached the cinema, the film had started.* The earlier event takes the past perfect and the later one (reaching) the past simple.
+
+    (d) *How long is it since you last saw him?* After *since* the event is in the past simple, and the main clause is in the present: "How long is it since ...".
+
+    [Note] Model answers written for this archive.
+  check: none
