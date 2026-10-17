@@ -1,0 +1,42 @@
+# NCERT English, Class 10, English · First Flight (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 10
+subject: eng
+name: "English · First Flight"
+code: jeff1
+chapters:
+  - n: 1
+    title: "A Letter to God"
+    pdf: jeff101
+    leaves: [eng/ff-a-letter-to-god]
+  - n: 2
+    title: "Nelson Mandela: Long Walk to Freedom"
+    pdf: jeff102
+    leaves: [eng/ff-nelson-mandela]
+  - n: 3
+    title: "Two Stories about Flying"
+    pdf: jeff103
+    leaves: [eng/ff-two-stories-about-flying]
+  - n: 4
+    title: "From the Diary of Anne Frank"
+    pdf: jeff104
+    leaves: [eng/ff-diary-of-anne-frank]
+  - n: 5
+    title: "Glimpses of India"
+    pdf: jeff105
+    leaves: [eng/ff-glimpses-of-india]
+  - n: 6
+    title: "Mijbil the Otter"
+    pdf: jeff106
+    leaves: [eng/ff-mijbil-the-otter]
+  - n: 7
+    title: "Madam Rides the Bus"
+    pdf: jeff107
+    leaves: [eng/ff-madam-rides-the-bus]
+  - n: 8
+    title: "The Sermon at Benares"
+    pdf: jeff108
+    leaves: [eng/ff-the-sermon-at-benares]
+  - n: 9
+    title: "The Proposal"
+    pdf: jeff109
+    leaves: [eng/ff-the-proposal]

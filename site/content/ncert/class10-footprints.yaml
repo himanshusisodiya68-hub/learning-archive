@@ -1,0 +1,42 @@
+# NCERT English, Class 10, English · Footprints Without Feet (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 10
+subject: eng
+name: "English · Footprints Without Feet"
+code: jefp1
+chapters:
+  - n: 1
+    title: "A Triumph of Surgery"
+    pdf: jefp101
+    leaves: [eng/fp-a-triumph-of-surgery]
+  - n: 2
+    title: "The Thief's Story"
+    pdf: jefp102
+    leaves: [eng/fp-the-thiefs-story]
+  - n: 3
+    title: "The Midnight Visitor"
+    pdf: jefp103
+    leaves: [eng/fp-the-midnight-visitor]
+  - n: 4
+    title: "A Question of Trust"
+    pdf: jefp104
+    leaves: [eng/fp-a-question-of-trust]
+  - n: 5
+    title: "Footprints without Feet"
+    pdf: jefp105
+    leaves: [eng/fp-footprints-without-feet]
+  - n: 6
+    title: "The Making of a Scientist"
+    pdf: jefp106
+    leaves: [eng/fp-the-making-of-a-scientist]
+  - n: 7
+    title: "The Necklace"
+    pdf: jefp107
+    leaves: [eng/fp-the-necklace]
+  - n: 8
+    title: "Bholi"
+    pdf: jefp108
+    leaves: [eng/fp-bholi]
+  - n: 9
+    title: "The Book That Saved the Earth"
+    pdf: jefp109
+    leaves: [eng/fp-the-book-that-saved-the-earth]

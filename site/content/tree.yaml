@@ -922,3 +922,207 @@ subjects:
   name: Biology
 - id: eng
   name: English
+  what: 'English is the tool you use to understand everything else you will study, and to be understood. It has four jobs: take in meaning (reading), put meaning out (writing), obey the rules that make a sentence clear (grammar), and learn from other minds (literature).\n\nSo the pillars follow the jobs. Grammar comes first because writing and reading both depend on it. Writing and reading are the two directions of one skill. Literature is where all three are used on real texts.'
+  split: 'The pillars are the four jobs of language: grammar (the rules), writing (meaning out), reading (meaning in) and literature (all three on real texts).'
+  links: '<b>How the pillars connect.</b> Grammar is used by every other pillar. Reading builds the vocabulary that writing uses. Literature gives the examples that grammar and writing talk about.'
+  pillars:
+  - id: grammar
+    name: Grammar
+    tag: The rules that make a sentence clear.
+    what: 'Grammar is the set of agreements that let a reader decode a sentence. It starts with the jobs words do, adds what the verb says about time and mood, then shows how clauses combine, and ends with checking work for errors.'
+    split: 'The branches go from the smallest unit (the word) to the largest (the whole edited passage).'
+    branches:
+    - id: words
+      name: Words and their jobs
+      tag: Every word does one job in a sentence.
+      what: 'A sentence is a team of words, and each word has a job: naming (nouns), standing in for names (pronouns), describing (adjectives, adverbs), showing action or state (verbs), and joining or relating (prepositions, conjunctions). Learning the jobs first means every later rule is just about which job needs what form.'
+      leaves:
+      - id: nouns-and-articles
+        name: Nouns and articles
+        from: C6
+      - id: pronouns
+        name: Pronouns
+        from: C6
+      - id: adjectives-and-adverbs
+        name: Adjectives and adverbs
+        from: C7
+      - id: verbs-and-auxiliaries
+        name: Verbs and auxiliaries
+        from: C7
+      - id: prepositions-and-conjunctions
+        name: Prepositions and conjunctions
+        from: C7
+    - id: verbs-in-time
+      name: Verbs in time and mood
+      tag: The verb carries time, doubt and obligation.
+      what: 'The verb is the engine of a sentence. Its form tells the reader when something happens (tense), how sure we are or what must be done (modals), and whether the subject and verb agree. Most Class 10 errors are verb errors, so this branch is the heart of grammar.'
+      leaves:
+      - id: tenses
+        name: Tenses
+        from: C8
+      - id: subject-verb-agreement
+        name: Subject–verb agreement
+        from: C8
+      - id: modals
+        name: Modals
+        from: C9
+      - id: non-finite-verbs
+        name: Infinitives, gerunds and participles
+        from: C9
+    - id: sentences
+      name: Building sentences
+      tag: Joining ideas into longer sentences.
+      what: 'Once words and verbs are clear, the next step is joining ideas. A clause is a unit with its own verb; sentences join clauses by coordinating, subordinating or relating them. The same meaning can be rebuilt in other shapes (active or passive, direct or reported), which is what most board grammar questions test.'
+      leaves:
+      - id: sentence-types-and-clauses
+        name: Sentence types and clauses
+        from: C9
+      - id: relative-clauses
+        name: Relative clauses
+        from: C10
+      - id: conditionals
+        name: Conditional sentences
+        from: C10
+      - id: active-and-passive-voice
+        name: Active and passive voice
+        from: C10
+      - id: reported-speech
+        name: Reported speech
+        from: C10
+      - id: linkers-and-connectors
+        name: Linkers and connectors
+        from: C10
+    - id: editing
+      name: Editing and usage
+      tag: Spotting and fixing errors.
+      what: 'Writers have to check their own work. This branch applies the rules to the question types that appear on the board paper: gap filling, editing, omission and reordering.'
+      leaves:
+      - id: gap-filling-editing-and-reordering
+        name: Gap filling, editing and reordering
+        from: C10
+  - id: writing
+    name: Writing
+    tag: Putting meaning out clearly.
+    what: 'Writing is grammar plus a reader. The first question is always: who is reading and what do they need?'
+    split: 'Formats first (what a reader expects), then the craft skills that sit under every format.'
+    branches:
+    - id: formats
+      name: Writing formats
+      tag: Fit the message to the reader.
+      what: 'Each format exists because a reader expects something: a letter has a purpose and a polite tone, a notice must be short and complete, a paragraph has one main idea. Learn the expectation first and the layout follows.'
+      leaves:
+      - id: formal-letters
+        name: Formal letters
+        from: C10
+      - id: analytical-paragraph
+        name: Analytical paragraph
+        from: C10
+      - id: notices-and-emails
+        name: Notices and emails
+        from: C10
+    - id: craft
+      name: Craft of writing
+      tag: Clear sentences and the right word.
+      what: 'Good writing needs correct punctuation, well-built paragraphs and a precise vocabulary. These skills sit under every format.'
+      leaves:
+      - id: punctuation-and-paragraphs
+        name: Punctuation and paragraphs
+        from: C8
+      - id: vocabulary-and-word-formation
+        name: Vocabulary and word formation
+        from: C8
+  - id: reading
+    name: Reading
+    tag: Taking meaning in accurately.
+    what: 'Reading is active: ask what the text says, what it implies and why the author chose these words.'
+    split: 'One branch: reading with understanding.'
+    branches:
+    - id: comprehension
+      name: Reading with understanding
+      tag: Getting meaning from an unseen text.
+      what: 'A passage can be read for the main idea, for detail, or for what is only hinted. The skill is choosing the right way of reading for each question, and proving each answer from the text.'
+      leaves:
+      - id: unseen-passages
+        name: Unseen passages
+        from: C10
+      - id: inference-and-vocabulary-in-context
+        name: Inference and vocabulary in context
+        from: C10
+  - id: literature
+    name: Literature
+    tag: Stories, plays and what they teach.
+    what: 'Literature is language used for more than information: it builds character, argument and feeling. Study it by asking what happens, why it matters and how the author does it.'
+    split: 'The craft toolkit first, then the two Class 10 books chapter by chapter.'
+    branches:
+    - id: literary-craft
+      name: How stories work
+      tag: Plot, character, voice and figures of speech.
+      what: 'Before reading any one story it helps to know the tools every author uses: plot and setting, character, point of view, irony, and figures of speech such as simile and metaphor. The chapter lessons point back to this one.'
+      leaves:
+      - id: literary-devices
+        name: Literary devices
+        from: C10
+    - id: first-flight
+      name: First Flight
+      tag: Nine prose chapters.
+      what: "Each lesson covers the story or play in your own words (never the full text): what happens, who the characters are, the theme, the author's craft, key vocabulary, and every NCERT question with a model answer."
+      leaves:
+      - id: ff-a-letter-to-god
+        name: A Letter to God
+        from: C10
+      - id: ff-nelson-mandela
+        name: "Nelson Mandela: Long Walk to Freedom"
+        from: C10
+      - id: ff-two-stories-about-flying
+        name: Two Stories about Flying
+        from: C10
+      - id: ff-diary-of-anne-frank
+        name: From the Diary of Anne Frank
+        from: C10
+      - id: ff-glimpses-of-india
+        name: Glimpses of India
+        from: C10
+      - id: ff-mijbil-the-otter
+        name: Mijbil the Otter
+        from: C10
+      - id: ff-madam-rides-the-bus
+        name: Madam Rides the Bus
+        from: C10
+      - id: ff-the-sermon-at-benares
+        name: The Sermon at Benares
+        from: C10
+      - id: ff-the-proposal
+        name: The Proposal
+        from: C10
+    - id: footprints
+      name: Footprints Without Feet
+      tag: Nine supplementary chapters.
+      what: 'The supplementary reader. Same layout as First Flight: summary, characters, theme, craft, vocabulary and every NCERT question with a model answer.'
+      leaves:
+      - id: fp-a-triumph-of-surgery
+        name: A Triumph of Surgery
+        from: C10
+      - id: fp-the-thiefs-story
+        name: The Thief's Story
+        from: C10
+      - id: fp-the-midnight-visitor
+        name: The Midnight Visitor
+        from: C10
+      - id: fp-a-question-of-trust
+        name: A Question of Trust
+        from: C10
+      - id: fp-footprints-without-feet
+        name: Footprints without Feet
+        from: C10
+      - id: fp-the-making-of-a-scientist
+        name: The Making of a Scientist
+        from: C10
+      - id: fp-the-necklace
+        name: The Necklace
+        from: C10
+      - id: fp-bholi
+        name: Bholi
+        from: C10
+      - id: fp-the-book-that-saved-the-earth
+        name: The Book That Saved the Earth
+        from: C10

@@ -165,6 +165,17 @@ Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per us
 
 **Vercel (mobile/standalone copy).** `vercel.json` at the repo root builds `site/` and serves `site/dist`, and `build.mjs` writes the full mobile-ready document (viewport, theme colour, manifest, icons) as `standalone.html`, and also as `index.html` when `VERCEL=1` (an existing `index.html` beats any rewrite). Locally `index.html` stays the artifact fragment for publishing. The app falls back to `localStorage` when the artifact runtime is absent, so progress is per device there. The Vercel site is public by default unless deployment protection is on; the content includes NCERT text, so keep it protected or private.
 
+## English (subject id `eng`)
+
+Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose chapters only; poems were not found at any NCERT code, so they are not covered) plus a Class 6–9 grammar foundation. Wren & Martin and other books only if the owner uploads PDFs.
+
+- **Writer:** Sonnet subagents (`general-purpose` with `model: "sonnet"`, a fresh small context), not `theory-writer` (Opus, science-specific). One subagent per leaf or per small group of leaves. Give it the leaf id, the source text path and this section; it writes the lesson and the problems file, runs `python3 fix-yaml.py && node build.mjs`, and does not commit.
+- **Copyright:** the stories, plays and poems are third-party text. Never reproduce passages: summarise in your own words, quote at most a short phrase (under 15 words) with a note on where it comes from. NCERT's own questions and activity instructions are copied word for word, as for science.
+- **No NCERT answer key exists for English.** Every answer is a *model answer* written by us; say so in the problems file's first-line comment. Where a question is open-ended (opinion, discussion), give a model answer and label it as one possible answer.
+- **Lessons:** same front matter and block format as science, with depth levels `lvl=1` Foundation (Class 6–8), `lvl=2` Class 10 board, `lvl=3` Beyond the board (style and nuance); `up_to: Class 10`. Use tables instead of SVG figures unless a diagram truly helps. No widgets. (The depth selector in the app still shows the science labels; fix in `app.js` when more English is live.)
+- **Chapter lessons (literature):** summary in own words, characters, setting, theme, author's craft, key vocabulary with meanings, then the exercises. **Grammar lessons:** the rule from first principles (why the form exists), examples, common mistakes, then original exercises with answers. **Writing lessons:** what the reader expects, a layout table, a model sample, a marking checklist.
+- **Problems:** `kind: text` (model answer in `sol`) or `mcq`; `check: none`; `lvl: ncert-ex` for NCERT questions (ids `ncert10-ff-C-n`, `ncert10-fp-C-n`), and `found`/`board`/`main` for originals as in science.
+
 ## Build order and status
 
 **Done: Physics › Optics pillar.**
