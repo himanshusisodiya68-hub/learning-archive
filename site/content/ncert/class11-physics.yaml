@@ -20,11 +20,23 @@ chapters:
   - n: 5
     title: Work, Energy and Power
     pdf: keph105
-    leaves: [phy/work-done-by-a-force, phy/kinetic-and-potential-energy, phy/work-energy-theorem, phy/conservative-forces, phy/power, phy/collisions]
-  - { n: 6, title: Systems of Particles and Rotational Motion, pdf: keph106 }
-  - { n: 7, title: Gravitation, pdf: keph107 }
-  - { n: 8, title: Mechanical Properties of Solids, pdf: keph201 }
-  - { n: 9, title: Mechanical Properties of Fluids, pdf: keph202 }
+    leaves: [phy/work-done-by-a-force, phy/kinetic-and-potential-energy, phy/work-energy-theorem, phy/conservative-forces, phy/power, phy/simple-machines]
+  - n: 6
+    title: Systems of Particles and Rotational Motion
+    pdf: keph106
+    leaves: [phy/centre-of-mass, phy/torque, phy/moment-of-inertia, phy/rolling-motion, phy/angular-momentum]
+  - n: 7
+    title: Gravitation
+    pdf: keph107
+    leaves: [phy/universal-law-of-gravitation, phy/variation-of-g, phy/keplers-laws, phy/orbits-and-escape-speed]
+  - n: 8
+    title: Mechanical Properties of Solids
+    pdf: keph201
+    leaves: [phy/elasticity]
+  - n: 9
+    title: Mechanical Properties of Fluids
+    pdf: keph202
+    leaves: [phy/pressure-and-buoyancy, phy/bernoullis-principle, phy/viscosity, phy/surface-tension]
   - { n: 10, title: Thermal Properties of Matter, pdf: keph203 }
   - { n: 11, title: Thermodynamics, pdf: keph204 }
   - { n: 12, title: Kinetic Theory, pdf: keph205 }

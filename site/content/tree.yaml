@@ -127,9 +127,6 @@ subjects:
       - id: simple-machines
         name: Simple machines
         from: C7
-      - id: collisions
-        name: Collisions
-        from: C11
     - id: rotation
       name: Rotation
       tag: 'Bodies with size: spinning as well as moving.'

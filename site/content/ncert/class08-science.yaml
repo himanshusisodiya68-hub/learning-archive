@@ -12,7 +12,10 @@ chapters:
     title: Exploring Forces
     pdf: hecu105
     leaves: [phy/inertia-and-the-first-law, phy/friction]
-  - { n: 6, title: "Pressure, Winds, Storms, and Cyclones", pdf: hecu106 }
+  - n: 6
+    title: "Pressure, Winds, Storms, and Cyclones"
+    pdf: hecu106
+    leaves: [phy/pressure-and-buoyancy]
   - { n: 7, title: Particulate Nature of Matter, pdf: hecu107 }
   - { n: 8, title: "Nature of Matter: Elements, Compounds, and Mixtures", pdf: hecu108 }
   - { n: 9, title: "The Amazing World of Solutes, Solvents, and Solutions", pdf: hecu109 }
