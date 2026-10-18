@@ -1,0 +1,87 @@
+# How mobile apps work. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A phone screen redraws 120 times every second. About how many milliseconds does the app have to prepare each frame?
+  ask: Frame budget
+  unit: ms
+  ans: 8.33
+  tol: 0.05
+  verify: 1000/120
+  sol: One second is 1000 ms. Divided among 120 frames, each frame gets $1000/120 \approx 8.33$ ms. At 60 frames per second it would be about 16.7 ms, so a faster screen leaves less time for the same work.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A user types half a message, switches to the maps app for ten minutes, and returns. The OS has killed your app in the meantime. What lets the app still show the half-written message?
+  opts: ["The OS keeps killed apps running secretly", "The app saved the draft to local storage when it went to the background", "The server stored every keystroke as it was typed"]
+  ans: 1
+  sol: A killed app has no memory left, and there may be no close event. The reliable approach is to save the draft as soon as the app leaves the foreground and restore it on return. Saving every keystroke on a server would fail with no signal.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A user on a weak signal uploads a 5 MB photo over a connection that delivers 2 megabits per second. Taking 1 byte as 8 bits (so 5 MB is 40 megabits), how many seconds does the upload take at best?
+  ask: Upload time
+  unit: s
+  ans: 20
+  tol: 0.1
+  verify: 5*8/2
+  sol: Size in bits is $5 \times 8 = 40$ megabits. Time is size divided by speed, $40/2 = 20$ seconds. This is a best case; real networks add delay and retries, so the app should compress the photo, show progress and allow resuming.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Your app reads the news feed directly from the server on every screen open. Users in a tunnel see a blank screen. What is the most direct fix?
+  opts: ["Make the server faster", "Show cached data from a local database first and refresh it in the background", "Ask users to move to a better network"]
+  ans: 1
+  sol: The delay is not the server's speed, the network is absent. An offline-first design shows the local copy at once and updates it when the connection allows.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Design the "send" behaviour of a chat app so that a message typed in a tunnel is neither lost nor delivered twice when the signal returns.
+  sol: |
+    1. When the user taps send, give the message a unique id (a UUID made on the phone), save it in the local database with status `pending`, and show it immediately with a clock.
+    2. A background sender reads pending messages in order and posts each to the server along with its id. It retries with growing waits (for example 1 s, 2 s, 4 s) when the network fails.
+    3. The server stores a message only once per id: if it sees an id again, it returns the earlier result without creating a duplicate. This makes retries safe (idempotency).
+    4. On success the app marks the message `sent` (the tick). Delivery and read ticks arrive later as separate updates.
+    5. If the app is killed, nothing is lost: the pending rows are still in the database and the sender resumes at next launch (or when the OS wakes it).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Trace what happens, step by step, when a delivery app tells you "your order has arrived" and its app is closed. Why does your server not connect to the phone directly?
+  sol: |
+    Registration (done earlier): when the app first runs, it asks the OS for a push token and sends the token to your server, which stores it against the user.
+
+    On the event: the server sends a small message with the token and the text to the platform push service (Apple's or Google's). The push service already has one shared, open connection to the phone, and delivers the message down it. The OS shows the notification, and wakes the app only if you tap it or the message asks for a short background job.
+
+    The server cannot dial the phone because phones sit behind changing, translated mobile networks with no stable address, and keeping a private connection per app would drain the battery. A push is best effort: it can be delayed or dropped, so the app should re-fetch the order state when it opens.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Your app has 20 million installs and you ship version 5.0, which changes an API field name from `userName` to `name`. Two weeks later, 30% of users are still on version 4.x. What goes wrong, and how should the change have been shipped?
+  sol: |
+    The server now sends or expects `name`, but about 6 million phones still read and send `userName`. Those users see blank names or failed requests, and you cannot recall their app.
+
+    Safer path: make changes additive. Keep serving `userName` and add `name` alongside it. Version 5.0 reads `name` (falling back to `userName`). Keep the old field until usage of old versions falls below an agreed threshold, using analytics on app version to decide. For emergencies, have the server read a minimum supported version and show an "update required" screen to anything older, and use a staged rollout (1%, 10%, 50%, 100%) watching crash reports. Feature flags let you switch off a broken feature without a store release.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A notes app lets you edit a note offline on your phone and on your tablet. Both devices come online with different edits to the same note. Compare three ways to resolve this, and say which you would pick for a notes app and which for a bank balance.
+  sol: |
+    Last write wins: keep the version with the later timestamp. Simple, but one device's edit is silently lost and device clocks can be wrong. Field-level merge: track edits per field (title, body) and keep both when they touch different fields; conflicts remain when both edit the same field, so a rule or a prompt is needed. CRDTs (conflict-free replicated data types), for example for text: represent edits so that applying them in any order gives the same result, so no edit is lost. The costs are complexity and extra stored history.
+
+    For a notes app, losing text is the worst outcome, so choose field-level merge, or a CRDT if live shared editing is needed, with "keep both versions" as the fallback. For a bank balance, merging is wrong: the money lives on the server, the phone sends commands such as "debit 100 with request id X", and the server applies them in a single order, rejecting overdrafts. [Inference: this is the common design pattern, not any specific bank's system.]
+  check: none

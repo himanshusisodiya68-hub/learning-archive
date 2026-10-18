@@ -1,0 +1,92 @@
+# Transactions and isolation. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Asha has 5,000 rupees and Ravi has 1,000. A transfer of 1,000 from Asha to Ravi commits. What is the total money in the two accounts afterwards?
+  ask: Total
+  unit: rupees
+  ans: 6000
+  tol: 0.01
+  verify: (5000-1000)+(1000+1000)
+  sol: Asha has $5000 - 1000 = 4000$ and Ravi has $1000 + 1000 = 2000$. The total is $6000$, the same as before ($5000 + 1000$). A transfer moves money; it never creates or destroys it. That is the consistency rule.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which ACID property says "all the steps happen, or none do"?
+  opts: ["Atomicity", "Consistency", "Isolation", "Durability"]
+  ans: 0
+  sol: Atomicity is all-or-nothing. Consistency keeps the rules true, isolation shields concurrent transactions from each other, and durability makes committed data survive crashes.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A balance is 1,000. Two transactions run correctly one after the other, adding 200 and 300. What is the final balance? A buggy concurrent run, where both read 1,000 first, can leave 1,200 or 1,300. Give the correct final balance.
+  ask: Correct final balance
+  unit: rupees
+  ans: 1500
+  tol: 0.01
+  verify: 1000+200+300
+  sol: Correctly, $1000 + 200 + 300 = 1500$. If both read 1,000 and the transaction adding 300 writes first, then the one adding 200 overwrites it with 1,200, so 300 rupees of credit vanished. If the other order, 1,300 remains and 200 vanished. Either way this is a lost update.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Transaction A changes a seller's stock from 5 to 4 but has not committed. Transaction B reads 4 and tells a customer "only 4 left". A then rolls back. What anomaly is this?
+  opts: ["Dirty read", "Phantom", "Lost update", "Deadlock"]
+  ans: 0
+  sol: B read data that A had written but not committed. A rolled back, so the value 4 never really existed. Reading uncommitted data is a dirty read. Read committed and stronger isolation levels prevent it.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: 'Two customers try to book the last seat (seat 14) at the same moment. The code does: SELECT to check the seat is free, then INSERT a booking. Both succeed. Explain exactly what went wrong and give two different fixes.'
+  sol: |
+    This is write skew (a check-then-write race). Each transaction's SELECT saw the seat free, since neither booking was committed yet. Each then inserted a booking row. Neither write conflicts with the other at the row level because they are different new rows, so even snapshot isolation lets both through.
+    Fix 1: a **unique constraint** on `(show_id, seat)`. The second INSERT fails, the application catches the error and says "sorry, taken". This is the simplest and most robust fix.
+    Fix 2: lock the seat before checking: `SELECT ... FOR UPDATE` on the seat row (in databases that support it), so the second customer waits and then sees it taken. Alternative: run both steps under **serializable** isolation and retry on abort.
+    Whichever fix you choose, the check and the write must live in a single transaction.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A 10-minute sales report scans millions of rows while customers keep buying. Compare what happens under lock-based isolation and under MVCC, and say which suits this workload.
+  sol: |
+    With lock-based isolation the report locks the rows it reads (or the whole range). Purchases that need those rows wait until the report ends, so sales may stall for minutes. Conversely, if purchases hold write locks, the report waits.
+    With MVCC the report reads from a snapshot taken when it started, so it sees the data as of that moment, consistent, and never blocks writers. Purchases create new row versions and carry on. The report simply does not see them, which is fine for a report "as of 10:00".
+    MVCC suits this mixed workload. The costs are extra storage for old versions (cleaned up later) and weaker isolation unless you add serializable checks. [Inference] Exact behaviour differs between databases.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: 'An order service must (1) charge a payment provider and (2) record the order in its own database. The payment API is a separate company. Why can''t you wrap both in one transaction? Design the flow so a retry after a timeout never charges twice, and say what happens if step 2 fails after step 1 succeeded.'
+  sol: |
+    One transaction needs a single log that can commit both changes. The payment provider's database is not ours, so no shared commit is possible, and two-phase commit with an outside company is not on offer.
+    Design as a saga with idempotency:
+    1. Create the order row first, with status `pending` and a unique **idempotency key** (for example the order id).
+    2. Call the payment API with that key. If the call times out and we retry with the same key, the provider returns the first result instead of charging again.
+    3. On success, set the order to `paid` in a local transaction.
+    4. If recording the result fails after the charge succeeded, the order stays `pending`. A background job reconciles by asking the provider "what happened to this key?" and either marks the order paid or issues a refund (the compensating step).
+    The price: intermediate states (`pending`) are visible to other users, and the code must handle them. [Inference] Real payment APIs offer idempotency keys in this style, but details differ between providers.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A popular seller's balance row is updated by every sale. Each transaction takes a lock on that row and holds it for 20 milliseconds until commit. What is the highest number of sales per second the system can record against that row, however many servers you add? Then suggest two ways to raise it.
+  ask: Maximum sales per second
+  unit: per second
+  ans: 50
+  tol: 0.1
+  verify: 1000/20
+  sol: |
+    The row lock lets one transaction in at a time, each taking 20 ms. In one second (1000 ms) at most $1000/20 = 50$ transactions fit. Extra servers do not help because they all queue on the same row.
+    Ways to raise the ceiling: (1) shorten the time the lock is held, for example do slow work (network calls, calculations) before the transaction and keep only the quick UPDATE inside; at 2 ms the cap becomes 500 per second. (2) Split the single balance into several rows (say 10 shards), each sale updating a random one, and add them up when reading; the cap becomes about 10 times higher. A third option is to put the sales in a queue and apply them in batches. Each trades some simplicity or freshness for throughput.
+  check: code

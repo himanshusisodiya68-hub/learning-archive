@@ -1,6 +1,6 @@
 ---
 title: DNS and HTTP
-summary: How typing a name like zomato.com becomes a number, and how a browser and a server then talk in plain, polite text.
+summary: How a name like zomato.com becomes a number, and how a browser and a server then talk in plain text.
 ncert: []
 up_to: SDE-2
 builds_on: [How the internet works, TCP/IP and the layers]

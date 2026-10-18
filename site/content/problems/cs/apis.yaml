@@ -1,0 +1,109 @@
+# APIs (REST and beyond). All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "A delivery app's rate limit is 100 requests per minute. A buggy script sends one request every 400 milliseconds without stopping. How many requests does it try to send in one minute?"
+  ask: Requests per minute
+  unit: ""
+  ans: 150
+  tol: 0.1
+  verify: 60/0.4
+  sol: "One minute is 60 seconds, and 400 ms is 0.4 s, so the script sends $60 / 0.4 = 150$ requests. That is 50 over the limit, so the server would answer the extra ones with 429 Too Many Requests."
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "A client sends GET /orders/9999, but no order with that number exists. Which status code fits best?"
+  opts: ["200 OK with an empty body", "404 Not Found", "500 Internal Server Error"]
+  ans: 1
+  sol: "The thing named by the URL does not exist, which is exactly what 404 means. 500 is for server failures, and it would wrongly tell the client the request might work if retried. A 200 hides the problem from tools that only read the status."
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "A user has 50,000 orders. The API returns them in pages of 20 using ?page=N. How many pages are there?"
+  ask: Pages
+  unit: ""
+  ans: 2500
+  tol: 0.1
+  verify: ceil(50000/20)
+  sol: "$50{,}000 / 20 = 2500$ pages exactly, so the last page is page 2500."
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: "With offset paging at 20 rows per page, the database must count past every skipped row before it returns the page. How many rows does it skip to serve page 2500?"
+  ask: Rows skipped
+  unit: ""
+  ans: 49980
+  tol: 0.1
+  verify: (2500-1)*20
+  sol: "Pages 1 to 2499 hold $2499 \\times 20 = 49{,}980$ rows, and all must be skipped before page 2500 starts. A cursor would instead seek straight to the row after the last one you saw, so the cost would stay about the same for every page."
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Design the REST endpoints for a small library app with books, members and loans. Give the method and URL for: list all books, add a book, see one member, return a borrowed book, and list a member's loans. Say which status codes you would return on success."
+  sol: |
+    One reasonable design (others are valid if they follow the same rules: nouns in URLs, verbs for actions):
+
+    | Action | Request | Success status |
+    |---|---|---|
+    | List all books | `GET /books` | 200 |
+    | Add a book | `POST /books` | 201 (with the new book in the body) |
+    | See one member | `GET /members/7` | 200 (404 if missing) |
+    | List a member's loans | `GET /members/7/loans` | 200 |
+    | Return a borrowed book | `PATCH /loans/31` with `{"returned": true}` | 200 |
+
+    "Return a book" is the tricky one. It is a change to the loan, not a new verb, so a PATCH on the loan resource works better than a URL like `/returnBook`. Lists should be paginated.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A phone app calls POST /payments and the request times out. The user taps Pay again. Explain how the server avoids charging twice, and what must be true about where it stores the key."
+  sol: |
+    The app generates a unique idempotency key (for example a random UUID) when the user first presses Pay, and sends the same key on every retry of that payment. The server looks the key up before doing anything:
+
+    ```python
+    def pay(req, key):
+        done = store.get(key)
+        if done:
+            return done            # replay the saved answer, no new charge
+        result = charge(req)
+        store.put(key, result)     # must be atomic with the charge
+        return result
+    ```
+
+    The key and the charge must be recorded in one database transaction. Otherwise a crash between the charge and the save would leave a charge with no key, and the retry would charge again. Two retries arriving at the same moment also need a unique constraint on the key, so only one of them proceeds. Keys are usually kept for a limited time, such as a day. [Unverified: retention periods used by real payment companies.]
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: "Your mobile app's v1 API returns {\"name\": \"Asha Rao\"}. You want to split it into first and last name. List a way to do it without breaking old app versions that are still installed on millions of phones."
+  sol: |
+    Keep the old contract alive and add to it:
+
+    1. Keep `name` in the response, now computed from the new fields. Add `first_name` and `last_name` beside it. Old apps ignore the extra fields; new apps use them. Adding is not a breaking change.
+    2. Accept both shapes on writes: if a request has `name` only, split it on the server (or store it as the first name and leave the last name empty).
+    3. When most clients have updated, announce a deprecation date for `name`, and remove it in `/v2/`, not in `/v1/`.
+    4. Watch the usage of `name` in logs to decide when it is safe to retire it.
+
+    The pattern is add, overlap, then remove under a new version.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "A feed API sorts posts by created_at, newest first, and returns a cursor. Two posts can have exactly the same created_at. What goes wrong if the cursor is just the last created_at, and how do you fix it?"
+  sol: |
+    With `?before=<created_at>`, the next page asks for posts strictly older than that time. If two posts share a timestamp and the page boundary falls between them, the second one is skipped forever. Using "older or equal" instead would repeat the first one.
+
+    Fix: sort by a total order, such as `(created_at, id)`, and make the cursor carry both values. The next page asks for rows where `created_at < t OR (created_at = t AND id < last_id)`. A database index on `(created_at, id)` makes this seek fast. The cursor should be encoded as an opaque string, so clients cannot depend on its shape and you can change it later.
+  check: none
