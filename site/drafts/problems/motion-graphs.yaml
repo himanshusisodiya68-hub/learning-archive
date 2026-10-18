@@ -335,7 +335,8 @@
     **No, it is not correct.** An $x$-$t$ graph shows how the position changes with time; it is not a picture of the path (trajectory). The motion is one-dimensional, along a straight line, for all times. The graph is flat for $t < 0$ (the particle is at rest at $x = 0$) and a parabola $x \propto t^2$ for $t > 0$ (uniform acceleration from rest).
 
     A suitable context: a body is released (dropped) from a tower at $x = 0$ at $t = 0$, with $x$ measured downward. Before $t = 0$ it is held at rest; after release it falls with $x = \tfrac12gt^2$.
-  answer_key: No, wrong. x- t plot does not show the trajectory of a particle. Context: A body is dropped from a tower (x = 0) at t = 0.
+  answer_key: |
+    No, wrong. x- t plot does not show the trajectory of a particle. Context: A body is dropped from a tower (x = 0) at t = 0.
   check: ncert-key
 
 - id: ncert11-ex-2-15

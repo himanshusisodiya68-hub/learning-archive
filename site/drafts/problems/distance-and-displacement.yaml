@@ -366,7 +366,8 @@
 - id: ncert9-it-4-3
   lvl: ncert-intext
   num: "IX 4 · Activity 4.1"
-  source: NCERT Grade 9 Science · Ch 4 · Activity 4.1: Let us analyse
+  source: |
+    NCERT Grade 9 Science · Ch 4 · Activity 4.1: Let us analyse
   kind: mcq
   q: |-
     As shown in Fig. 4.5, a ball is thrown vertically upwards from O. It moves up straight till B and then falls back to O. Can this be considered a motion in a straight line? For this motion, fill up the values in Table 4.1. Analyse the data filled in Table 4.1 and choose which of the following is true for displacement:

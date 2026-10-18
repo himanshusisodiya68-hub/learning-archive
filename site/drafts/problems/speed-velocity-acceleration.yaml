@@ -27,7 +27,8 @@
 - id: ncert7-it-8-3
   lvl: ncert-intext
   num: "VII 8 · Activity 8.2"
-  source: NCERT Grade 7 Science · Ch 8 · Activity 8.2: Let us experiment
+  source: |
+    NCERT Grade 7 Science · Ch 8 · Activity 8.2: Let us experiment
   kind: text
   q: |-
     Is the time period of your pendulum almost the same every time? What do you conclude from this observation?
@@ -55,7 +56,8 @@
 - id: ncert7-it-8-5
   lvl: ncert-intext
   num: "VII 8 · Activity 8.3"
-  source: NCERT Grade 7 Science · Ch 8 · Activity 8.3: Let us identify
+  source: |
+    NCERT Grade 7 Science · Ch 8 · Activity 8.3: Let us identify
   kind: text
   q: |-
     Look at the wall clock shown in Fig. 8.9 carefully. What is the smallest interval of time you can measure with it?
