@@ -216,6 +216,8 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
   - The printed answer key has errors flagged in the solutions: Class 12 Ex 1.17/1.18 (swapped), 1.22, 1.23; Exercise 7.8 gives ω₀ for a frequency; Class 12 Exercise 4.11 prints e = 1.5×10⁻¹⁹ C.
   - Book chapter references (H. C. Verma, Irodov, Purcell) in lessons come from memory and are labelled [Unverified]; no classic-book problems were copied.
 
+**Retrofit status:** Optics and Electricity and magnetism have had the cheap pass (opener, hook, symbols, life, models, links, next); see `docs/retrofit.md`. Deep passes not started.
+
 **Map of everything (Oct 2026):** all six subject trees exist (Physics 118 leaves, Maths 59, Chemistry 53, Biology 33, English 51, Computer Science 80) and the class view lists every NCERT book for Classes 6–12 (Science/Physics, Maths, Chemistry, Biology, English Class 10). Chapters of Class 11/12 Chemistry and Biology are already mapped to leaves.
 
 **In progress: Mechanics branches 1–3 (Kinematics, Newton's laws, Work–energy–power).** Interrupted by usage limits.

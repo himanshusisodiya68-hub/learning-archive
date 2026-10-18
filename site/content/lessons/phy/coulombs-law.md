@@ -47,14 +47,56 @@ outcomes:
   - 'Solve equilibrium problems for hanging spheres and for three collinear charges'
   - 'Derive the force of a ring on a charge on its axis and the period of small oscillations'
   - 'Apply the shell theorem, Earnshaws theorem and Kepler-type orbit results to Coulomb forces'
+opener:
+  story: |
+    Run a plastic comb through dry hair and hold it just above some torn scraps of paper. They leap up and cling to it. Think about what just happened. The whole Earth, six trillion trillion kilograms of it, is pulling each scrap down, and a comb you rubbed for five seconds wins.
+
+    So the electric push between charged things must be huge. And yet nobody trips over it. The Sun and the Earth are made of billions upon billions of charges, but they do not pull on each other electrically at all. The planets obey gravity alone, even though, particle for particle, electricity is about 10³⁹ times stronger.
+
+    How can one force be that strong and still hide? To find out we need to know exactly how hard two charges push or pull, and what happens as they move apart.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A rubbed comb lifts a scrap of paper against the pull of the whole Earth"><circle cx="160" cy="430" r="210" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:2"/><text x="210" y="226" style="font-size:11px;fill:var(--muted)">the whole Earth</text><rect x="96" y="22" width="128" height="18" rx="4" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><g style="fill:var(--ink)"><rect x="104" y="40" width="3" height="14"/><rect x="118" y="40" width="3" height="14"/><rect x="132" y="40" width="3" height="14"/><rect x="146" y="40" width="3" height="14"/><rect x="160" y="40" width="3" height="14"/><rect x="174" y="40" width="3" height="14"/><rect x="188" y="40" width="3" height="14"/><rect x="202" y="40" width="3" height="14"/></g><text x="232" y="35" style="font-size:11px;fill:var(--muted)">rubbed comb</text><rect x="150" y="138" width="22" height="7" rx="1" transform="rotate(-12 161 141)" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><text x="36" y="144" style="font-size:11px;fill:var(--muted)">scrap of paper</text><path d="M166 132 L166 80" style="fill:none;stroke:var(--c);stroke-width:4"/><path d="M158 88 L166 72 L174 88Z" style="fill:var(--c)"/><text x="182" y="106" style="font-size:11px;fill:var(--c)">comb pulls up</text><path d="M156 152 L156 184" style="fill:none;stroke:var(--bad);stroke-width:3"/><path d="M149 178 L156 194 L163 178Z" style="fill:var(--bad)"/><text x="30" y="178" style="font-size:11px;fill:var(--bad)">Earth pulls down</text></svg>'
+life:
+  - 'A rubbed comb lifts paper against the pull of the whole Earth: a small electric force beats a gigantic gravitational one at close range.'
+  - 'Factory chimneys use electrostatic precipitators, which charge the soot and pull it onto plates, so that cleaner smoke leaves the stack.'
+  - 'Salt dissolves in water because water molecules pull the sodium and chloride ions apart; in water the Coulomb pull between them falls to about one eightieth.'
+  - 'Atoms exist at all because the nucleus pulls its electrons with this very law.'
+  - 'Car factories spray charged paint droplets that are drawn to the bare metal, wrapping paint even round the hidden side.'
+symbols:
+  - { s: 'F', means: 'the force between two charges, a push or a pull (newton, N)' }
+  - { s: 'q_1, q_2', means: 'the two charges (coulomb, C)' }
+  - { s: 'r', means: 'distance between the two charges, centre to centre (metre, m)' }
+  - { s: '\varepsilon_0', means: 'permittivity of free space: how easily empty space allows electric forces (8.85 \times 10^{-12}\ \text{C}^2\,\text{N}^{-1}\text{m}^{-2})' }
+  - { s: 'k', means: 'the force constant, k = 1/(4\pi\varepsilon_0), about 9 \times 10^{9}\ \text{N m}^2\,\text{C}^{-2}' }
+  - { s: '\hat{\mathbf r}_{21}', means: 'unit vector: an arrow of length one pointing from charge 1 towards charge 2 (no unit)' }
+  - { s: '\mathbf F_{21}', means: 'the force on charge 2 caused by charge 1 (N)' }
+models:
+  - name: 'Double the distance, a quarter of the effect'
+    text: 'Anything that spreads out from a point in three dimensions shares itself over a bigger and bigger sphere, so it weakens as 1/r². Wi-Fi, light and a loudspeaker all do it: do not expect a speaker twice as far to sound half as loud; it will sound a quarter as strong.'
+  - name: 'A weak force that adds up beats a strong one that cancels'
+    text: 'Gravity is about 10⁴² times weaker than the electric force, yet it runs the universe, because it never cancels. A small habit repeated every day beats a huge effort made once and then undone.'
+  - name: 'Same shape, different constants'
+    text: 'Two different phenomena can share a formula. Before you treat them as the same, check what changes: the constant, and whether the sign can flip.'
+links:
+  - leaf: 'phy/universal-law-of-gravitation'
+    name: 'Universal law of gravitation'
+    same: 'Same inverse-square shape: the force is proportional to the product of two "charges" (masses, for gravity) and to $1/r^2$, along the line joining them. Both add by superposition and both obey the shell theorem.'
+    differs: 'Charge has two signs, so the electric force can repel and can cancel; mass has one sign, so gravity only attracts and never cancels. And the electric push between two electrons is about $10^{42}$ times stronger than their gravity.'
+  - leaf: 'phy/bohr-model'
+    name: 'Bohr model'
+    same: 'Swap the Sun for a nucleus, a planet for an electron and gravity for Coulomb''s law: the circular-orbit mathematics is identical to a planet''s.'
+    differs: 'Real electrons obey quantum rules: only certain orbits are allowed, and the neat planet picture is only a first approximation.'
+next:
+  q: 'Charge 1 pushes charge 2 across empty space with nothing in between. How does charge 2 "know" charge 1 is there, and can we describe the push without mentioning charge 2 at all?'
+  leaf: 'phy/electric-field'
+  name: 'Electric field'
 ---
 
 :::hook
-q: The electric force between an electron and a proton is about 10³⁹ times their gravitational attraction. Why, then, do the planets move under gravity and not under electric forces?
-options: ["Electric forces fall off faster with distance than gravity", "Large bodies are almost exactly neutral, so their electric forces cancel", "Electric forces cannot act across empty space", "Gravity grows stronger at large distances"]
+q: So what's your guess? If electric forces are so much stronger, why do the planets move by gravity?
+options: ["Electric forces fade much faster with distance than gravity does", "Big bodies are almost perfectly neutral, so their electric pushes and pulls cancel", "Electric forces cannot cross empty space"]
 answer: 1
-right: Right. Both forces fall as 1/r². But charge comes in two signs and matter is neutral to better than one part in 10¹⁸, so the huge attractions and repulsions cancel. Mass has only one sign, so gravity adds up.
-wrong: Both forces fall as 1/r², and both act across empty space. The difference is that charge comes in two signs. Planets are almost perfectly neutral, so the electric pushes and pulls of their particles cancel, while every kilogram adds to gravity.
+right: Right. Both forces fade as 1/r², but charge comes in two signs and matter is neutral to better than one part in 10¹⁸, so the huge pushes and pulls cancel. Mass has only one sign, so every kilogram adds to gravity and nothing cancels it.
+wrong: Both forces fade as 1/r², and both cross empty space happily. The difference is that charge comes in two signs. Planets are almost perfectly neutral, so the electric pushes and pulls of their particles cancel, while every kilogram adds to gravity.
 :::
 
 ## What Coulomb measured {lvl=2 id=s-law label="Class 12"}

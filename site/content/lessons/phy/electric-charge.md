@@ -47,14 +47,56 @@ outcomes:
   - 'Apply additivity, conservation and quantisation to count charge and electrons'
   - 'Calculate charge sharing between identical and unequal conductors joined by contact or by a wire'
   - 'Discuss quarks, local conservation of charge and charge invariance'
+opener:
+  story: |
+    Rub a balloon on your hair for ten seconds, then press it against the wall and let go. It stays there, sometimes for an hour, as if glued. Meanwhile your hair is standing on end and following the balloon wherever it goes.
+
+    That is two puzzles in one. The wall is only a wall: no glue, no magnet, no battery. And your hair strands, which used to lie quietly together, are suddenly pushing each other apart. What did the rubbing do?
+
+    Whatever the balloon picked up is called **charge**. To crack the puzzle you only need three facts about it: it comes in two kinds, it is never made or destroyed, and it comes in whole lumps. Once you know those, balloons, sparks from a jumper and even lightning stop being magic.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A rubbed balloon sticks to a neutral wall while hair strands stand apart"><rect x="238" y="0" width="82" height="240" style="fill:var(--surface);stroke:var(--muted);stroke-width:2"/><text x="244" y="226" style="font-size:11px;fill:var(--muted)">neutral wall</text><g style="font-size:12px"><text x="246" y="60" style="fill:var(--c)">+</text><text x="246" y="90" style="fill:var(--c)">+</text><text x="246" y="120" style="fill:var(--c)">+</text><text x="246" y="150" style="fill:var(--c)">+</text><text x="282" y="60" style="fill:var(--bad)">&#8722;</text><text x="282" y="90" style="fill:var(--bad)">&#8722;</text><text x="282" y="120" style="fill:var(--bad)">&#8722;</text><text x="282" y="150" style="fill:var(--bad)">&#8722;</text></g><ellipse cx="196" cy="106" rx="40" ry="50" style="fill:color-mix(in srgb,var(--c) 18%,var(--surface));stroke:var(--c);stroke-width:2"/><g style="font-size:13px;fill:var(--bad)"><text x="206" y="84">&#8722;</text><text x="216" y="106">&#8722;</text><text x="206" y="128">&#8722;</text><text x="190" y="96">&#8722;</text><text x="190" y="120">&#8722;</text></g><path d="M196 156 Q190 180 200 204" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><text x="136" y="56" style="font-size:11px;fill:var(--muted)">rubbed balloon</text><circle cx="64" cy="190" r="30" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><g style="stroke:var(--c);stroke-width:2;fill:none"><path d="M44 168 L26 130"/><path d="M52 162 L42 118"/><path d="M62 160 L60 112"/><path d="M74 161 L80 114"/><path d="M84 166 L100 124"/></g><g style="font-size:12px;fill:var(--c)"><text x="18" y="126">+</text><text x="38" y="112">+</text><text x="57" y="106">+</text><text x="77" y="108">+</text><text x="98" y="118">+</text></g><text x="22" y="100" style="font-size:11px;fill:var(--muted)">hair stands up</text></svg>'
+life:
+  - 'Pulling off a woollen jumper in a dark room gives tiny crackles and sparks: charge jumping back across the gap.'
+  - 'Lightning is the same thing on a giant scale: clouds separate charge until the air gives way and the charge rushes across.'
+  - 'A petrol tanker trails an earthing strap so that charge built up by sloshing fuel drains away before it can spark.'
+  - 'Dust clings to a TV screen or a fan blade because charged surfaces attract neutral specks, just like the balloon and the wall.'
+  - 'Photocopiers and laser printers lay down a pattern of charge so that powder sticks only where the ink should go.'
+symbols:
+  - { s: 'q', means: 'charge of a body: how much it has gained or lost (coulomb, C)' }
+  - { s: 'e', means: 'the elementary charge, the size of the charge on one electron or proton (1.6 \times 10^{-19}\ \text{C})' }
+  - { s: 'n', means: 'a whole number: how many electrons were gained or lost (no unit)' }
+  - { s: '\sum q_i', means: 'the total charge of a system, adding all its parts with their signs (C)' }
+  - { s: 'Q', means: 'total charge on a larger body or sphere (C)' }
+  - { s: 'R', means: 'radius of a sphere (metre, m)' }
+  - { s: '\sigma', means: 'surface charge density: charge per square metre of surface (C/m^2)' }
+models:
+  - name: 'Nothing is made, only moved'
+    text: 'Charge is never created, only shifted from one place to another. When any account has to balance (money, headcount, water in a tank), ask first: what moved, and where did it come from? Most puzzles dissolve when you track the transfers.'
+  - name: 'Look at the net, not the gross'
+    text: 'Opposite charges cancel, so a body can hold huge amounts of both and still look neutral. A shop that takes in a lakh of rupees and pays out a lakh shows zero profit and is anything but quiet. Always ask how big the flows behind a small net are.'
+  - name: 'Count in whole units'
+    text: 'Charge comes in whole electrons; nobody owns half an electron. When things come in indivisible units (people, votes, coins) an average such as 2.4 children per family is only a summary, never a real thing.'
+links:
+  - leaf: 'chem/structure-of-atom'
+    name: 'Structure of the atom'
+    same: 'Every atom is a balance of positive protons and negative electrons: charge is literally what atoms are made of.'
+    differs: 'Chemistry arranges the electrons into shells and orbitals by energy; this lesson only counts the total charge.'
+  - leaf: 'chem/chemical-bonding'
+    name: 'Chemical bonding'
+    same: 'Ionic bonding is plain attraction between opposite charges, the same push and pull as balloon and wall.'
+    differs: 'Covalent bonds are shared electrons and need quantum rules; the simple picture of charges only takes you part of the way.'
+next:
+  q: 'You can now tell that two charges push or pull, but not how hard. If you pull two charged balloons twice as far apart, does the push halve, quarter, or do something else?'
+  leaf: 'phy/coulombs-law'
+  name: 'Coulomb''s law'
 ---
 
 :::hook
-q: A comb run through dry hair picks up small bits of paper. The bits of paper were never charged. Why are they attracted?
-options: ["The air near the comb charges the paper before it moves", "The comb separates charges inside each bit, and the opposite charge ends up nearer the comb", "Rubbing magnetises the comb", "The paper is attracted only if its charge is opposite to the comb's"]
+q: So what's your guess? The wall is not charged at all, so how can it hold the balloon?
+options: ["The wall secretly has a charge of its own", "The balloon shifts charge inside the wall, so opposite charge sits nearer and pulls harder than the far charge pushes", "Rubbing makes the balloon sticky, like glue"]
 answer: 1
-right: Right. The paper stays neutral overall, but the comb pulls opposite charge slightly towards it and pushes like charge away. The nearer charge feels the larger force, so the paper is pulled in. This is polarisation, and it is why a charged body attracts any neutral body.
-wrong: The paper stays neutral. The comb shifts charge inside each bit, so opposite charge sits a little nearer the comb than like charge. Electric forces weaken with distance, so the attraction wins. Section "Why charged bodies attract neutral ones" works this out.
+right: Right. The wall stays neutral overall, but the balloon pulls opposite charge a tiny bit closer and pushes like charge a tiny bit away. Nearer charges feel the bigger force, so the pull beats the push and the balloon sticks. This is called polarisation, and it is why a charged body attracts almost anything.
+wrong: The wall really is neutral, and rubbing makes no glue. The balloon shifts charge a tiny distance inside the wall, so opposite charge sits slightly nearer and is pulled harder. Electric forces weaken with distance, so the attraction wins.
 :::
 
 ## Rubbing things: two kinds of charge {lvl=1 id=s-rub label="Class 10"}

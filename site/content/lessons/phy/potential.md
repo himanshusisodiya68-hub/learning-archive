@@ -48,14 +48,58 @@ outcomes:
   - 'Relate field and potential through equipotentials and E = −dV/dx'
   - 'Compute the potential energy of charge systems and dipoles, and use energy conservation for moving charges'
   - 'Solve problems on conductors, charge sharing and earthing, self-energy and the method of images'
+opener:
+  story: |
+    Look at a crow sitting on a bare 11,000-volt power line by the roadside. It is not electrocuted. It does not even look worried. A lineman who touched the same wire without protection would not survive.
+
+    Same wire, same voltage. The bird stands with both feet on it and nothing happens. But if it stretched a wing to the next wire, or to the pole, it would be in deadly trouble. So what decides whether a voltage hurts you?
+
+    The answer is that "how high" a voltage is means nothing by itself. Only the gap between two places matters, like the drop of a hill and not its height above sea level. This lesson gives that idea a name, **potential**, and shows why it turns hard problems into easy sums.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A bird perched on a high-voltage wire with both feet at the same potential, while the large voltage drop is between the wire and the ground"><rect x="36" y="52" width="9" height="178" style="fill:var(--muted)"/><rect x="14" y="54" width="52" height="6" style="fill:var(--muted)"/><path d="M40 60 Q160 108 300 62" style="fill:none;stroke:var(--ink);stroke-width:3"/><text x="62" y="46" style="font-size:11px;fill:var(--bad)">11 000 V</text><ellipse cx="166" cy="76" rx="16" ry="10" style="fill:var(--c)"/><circle cx="181" cy="67" r="6" style="fill:var(--c)"/><path d="M186 66 L194 68 L186 70Z" style="fill:var(--ink)"/><path d="M152 80 L138 86 L152 84Z" style="fill:var(--c)"/><line x1="162" y1="84" x2="162" y2="92" style="stroke:var(--ink);stroke-width:2"/><line x1="172" y1="85" x2="172" y2="93" style="stroke:var(--ink);stroke-width:2"/><text x="112" y="132" style="font-size:11px;fill:var(--muted)">both feet at the same potential</text><line x1="0" y1="228" x2="320" y2="228" style="stroke:var(--muted);stroke-width:2"/><text x="240" y="222" style="font-size:11px;fill:var(--muted)">0 V (earth)</text><path d="M270 80 L270 216" style="fill:none;stroke:var(--chem);stroke-width:2;stroke-dasharray:5 4"/><path d="M264 90 L270 76 L276 90Z" style="fill:var(--chem)"/><path d="M264 206 L270 220 L276 206Z" style="fill:var(--chem)"/><text x="116" y="170" style="font-size:11px;fill:var(--chem)">the big difference is down here,</text><text x="116" y="184" style="font-size:11px;fill:var(--chem)">not across the bird</text></svg>'
+life:
+  - 'The 1.5 V on a battery label is a potential difference: every coulomb that passes gains or gives 1.5 joules.'
+  - 'An ECG measures potential differences between points on your skin to read your heartbeat.'
+  - 'After shuffling across a carpet your body can reach thousands of volts, yet the shock is harmless because the charge involved is tiny.'
+  - 'A thundercloud and the ground can differ by many millions of volts, and lightning is what happens when the air gives way.'
+  - 'Lightning conductors have sharp tips because charge crowds onto points of a conductor even though the whole conductor sits at one potential.'
+symbols:
+  - { s: 'W', means: 'work done in moving a charge (joule, J)' }
+  - { s: 'U', means: 'electric potential energy: the energy a charge has because of where it sits (J)' }
+  - { s: 'V', means: 'electric potential: potential energy per coulomb at a point (volt, V = J/C)' }
+  - { s: '\Delta V', means: 'potential difference between two points (V)' }
+  - { s: 'q', means: 'the charge being moved (coulomb, C)' }
+  - { s: 'k', means: 'the force constant, k = 1/(4\pi\varepsilon_0), about 9 \times 10^{9}\ \text{N m}^2\,\text{C}^{-2}' }
+  - { s: 'r', means: 'distance from the source charge (metre, m)' }
+  - { s: '\vec E', means: 'electric field (N/C, the same as V/m)' }
+  - { s: '\nabla V', means: 'how steeply the potential changes in each direction (V/m)' }
+models:
+  - name: 'Only the drop counts, not the path'
+    text: 'Climbing a hill costs the same energy by whichever path; only the difference in height matters. In life too, it is the gap between two places that drives people to move or a price to change, not the absolute level.'
+  - name: 'Zero is your choice'
+    text: 'Potential, like altitude above sea level, has an arbitrary zero. Nothing real changes if you shift it. Celsius versus Kelvin and "ahead or behind compared with whom?" are the same idea.'
+  - name: 'Flow runs downhill until levels match'
+    text: 'Charge flows until potentials are equal, as water between two tanks does, as heat between two objects does, and as prices between two markets do once traders step in.'
+links:
+  - leaf: 'phy/kinetic-and-potential-energy'
+    name: 'Kinetic and potential energy'
+    same: 'Potential is potential energy per unit charge, just as height is gravitational potential energy per kilogram divided by g. Only differences matter and the path does not.'
+    differs: 'Gravity always pulls masses downhill; the same electric move can raise or lower the energy depending on the sign of the moving charge.'
+  - leaf: 'phy/heat-and-temperature'
+    name: 'Heat and temperature'
+    same: 'Temperature is the "potential" for heat: heat flows from high to low until the levels match, as charge flows until the potentials match.'
+    differs: 'Heat flows by random collisions and never reverses by itself; charge is pushed by a field in a direction that depends on its sign. Temperature has a true zero; potential''s zero is chosen freely.'
+next:
+  q: 'Potential tells us how hard a battery can push charge onto a metal plate. How much charge can a pair of plates hold at a given voltage, and how much energy ends up stored?'
+  leaf: 'phy/capacitors'
+  name: 'Capacitors'
 ---
 
 :::hook
-q: A metal sphere of radius 3 cm carries 12 nC. It is joined by a long thin wire to an uncharged metal sphere of radius 1 cm far away. How does the charge share out?
-options: ["6 nC on each, because the spheres are joined", "9 nC on the big sphere and 3 nC on the small one", "3 nC on the big sphere and 9 nC on the small one"]
+q: So what's your guess? Why is the bird safe on the wire?
+options: ["Its feathers insulate it from the wire", "Both feet are at almost the same potential, so nothing pushes current through its body", "Its body conducts so poorly that the current is tiny"]
 answer: 1
-right: Right. Charge flows until the two spheres are at the same potential, kq/R. That needs q ∝ R, so 9 nC and 3 nC. Yet the small sphere ends up with the stronger field at its surface, three times stronger. This lesson explains both facts.
-wrong: Charge stops flowing when there is nothing to push it, that is, when both spheres are at the same potential kq/R. Then q ∝ R, so the 3 cm sphere keeps 9 nC and the 1 cm sphere gets 3 nC.
+right: Right. Current flows only when there is a potential difference across the body. A bird's feet sit a few centimetres apart on a good conductor, so the difference is a tiny fraction of a volt. Danger starts when it bridges two different potentials, such as a wire and the pole.
+wrong: Feathers do almost nothing at 11,000 V, and a bird's body conducts well enough. What matters is that its two feet touch points of almost the same potential, so there is almost no voltage across the bird to drive a current.
 :::
 
 ## Height for charges {lvl=1 id=s-why label="Class 10"}

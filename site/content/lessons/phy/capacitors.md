@@ -47,14 +47,59 @@ outcomes:
   - 'Calculate stored energy and energy density, and explain where the batterys other half goes'
   - 'Derive the capacitance of spherical and cylindrical capacitors and the energy lost in charge sharing'
   - 'Find forces on plates and dielectrics at constant Q and constant V, and solve symmetric networks'
+opener:
+  story: |
+    Your phone screen is a sheet of glass with no buttons on it and no pressure sensor you can feel. Yet it knows within a millimetre where your finger is, even if you touch so lightly that you barely press.
+
+    Here is the odd part. It works for a bare fingertip, and even for a banana. But a thick woollen glove or a plastic pen does nothing, though you press just as hard. So what is the screen actually sensing?
+
+    The answer is that your finger and a hidden grid of tiny metal strips under the glass form a **capacitor**: two conductors separated by an insulator. Your finger changes how much charge the strips can hold, and the phone feels that change. This lesson is about that sneaky device, found inside every gadget you own.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Side view of a touch screen: a finger above a glass layer above a grid of metal sensor strips, forming a capacitor"><rect x="104" y="24" width="112" height="56" rx="26" style="fill:color-mix(in srgb,var(--c) 18%,var(--surface));stroke:var(--c);stroke-width:2"/><text x="132" y="56" style="font-size:11px;fill:var(--ink)">finger</text><rect x="40" y="110" width="240" height="14" style="fill:color-mix(in srgb,var(--chem) 22%,var(--surface));stroke:var(--chem);stroke-width:1.5"/><text x="228" y="102" style="font-size:11px;fill:var(--muted)">glass</text><g style="fill:var(--ink)"><rect x="52" y="148" width="20" height="8"/><rect x="88" y="148" width="20" height="8"/><rect x="124" y="148" width="20" height="8"/><rect x="160" y="148" width="20" height="8"/><rect x="196" y="148" width="20" height="8"/><rect x="232" y="148" width="20" height="8"/></g><text x="64" y="184" style="font-size:11px;fill:var(--muted)">grid of metal sensor strips</text><g style="font-size:13px"><text x="124" y="100" style="fill:var(--c)">+</text><text x="150" y="102" style="fill:var(--c)">+</text><text x="176" y="100" style="fill:var(--c)">+</text><text x="128" y="144" style="fill:var(--bad)">&#8722;</text><text x="164" y="144" style="fill:var(--bad)">&#8722;</text></g><g style="fill:none;stroke:var(--c);stroke-width:1.5;stroke-dasharray:3 4"><path d="M132 84 L132 144"/><path d="M152 84 L152 144"/><path d="M172 84 L172 144"/></g><path d="M262 84 L262 146" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><path d="M257 92 L262 82 L267 92Z" style="fill:var(--ink)"/><path d="M257 138 L262 148 L267 138Z" style="fill:var(--ink)"/><text x="244" y="72" style="font-size:11px;fill:var(--ink)">gap d</text><text x="64" y="214" style="font-size:11px;fill:var(--ink)">more gap, less capacitance</text></svg>'
+life:
+  - 'A touch screen senses your finger as a tiny change in capacitance.'
+  - 'A camera flash charges up slowly from small batteries, then dumps its energy in about a thousandth of a second.'
+  - 'A defibrillator charges a capacitor and then releases the energy in one sharp pulse through the chest.'
+  - 'The capacitor in a ceiling fan gives its motor the starting kick and keeps it turning smoothly.'
+  - 'Mobile chargers use capacitors to smooth out the ripples left after turning mains AC into steady DC.'
+symbols:
+  - { s: 'Q', means: 'charge stored on one plate, the other holds the opposite (coulomb, C)' }
+  - { s: 'V', means: 'voltage across the plates (volt, V)' }
+  - { s: 'C', means: 'capacitance: charge stored per volt, Q divided by V (farad, F = C/V)' }
+  - { s: '\varepsilon_0', means: 'permittivity of free space (8.85 \times 10^{-12}\ \text{C}^2\,\text{N}^{-1}\text{m}^{-2})' }
+  - { s: 'A', means: 'area of each plate (m^2)' }
+  - { s: 'd', means: 'gap between the plates (metre, m)' }
+  - { s: 'K', means: 'dielectric constant: the factor by which an insulator between the plates multiplies capacitance (no unit)' }
+  - { s: 'U', means: 'energy stored in the capacitor (joule, J)' }
+  - { s: '\sigma', means: 'charge per unit area on a plate (C/m^2)' }
+  - { s: 'E', means: 'electric field between the plates (V/m)' }
+models:
+  - name: 'A buffer stores when there is plenty'
+    text: 'A roof tank, a granary and an emergency fund all store when supply is generous and give back when it is short. A buffer smooths the mismatch between how fast things arrive and how fast they are needed.'
+  - name: 'Capacity belongs to the container'
+    text: 'How much a system can hold depends on its shape (big area, small gap), not on how full it is. A hall''s seating is set by its floor area, not by today''s crowd.'
+  - name: 'Ask what is held fixed'
+    text: 'Before predicting what changes, find out which quantity is held constant. Same action, different result: disconnect the battery and the charge is fixed; keep it and the voltage is fixed. A fixed budget and a fixed target behave just as differently.'
+links:
+  - leaf: 'phy/springs-and-pendulums'
+    name: 'Springs and pendulums'
+    same: 'A stretched spring stores energy of the form $\tfrac12kx^2$ and a charged capacitor $\tfrac12CV^2$, both quadratic. The charge plays the role of the stretch and the capacitance C plays the role of softness, 1/k.'
+    differs: 'A spring stores its energy as strain in matter; a capacitor stores it in the electric field between the plates, even if the gap is a vacuum.'
+  - leaf: 'phy/lcr-circuit-and-resonance'
+    name: 'LCR circuit and resonance'
+    same: 'Join a capacitor to a coil and the charge swings back and forth like a mass on a spring: the capacitor acts as the spring and the coil as the mass.'
+    differs: 'Resistance drains energy as heat just as friction drains a pendulum, but the analogy works for the gaps and the timing, not for every detail.'
+next:
+  q: 'A charged capacitor keeps its charge only while the plates stay apart. Join the plates with a wire and the charge rushes across. How fast does it flow, and what keeps it flowing continuously, as in a torch?'
+  leaf: 'phy/electric-current-and-potential-difference'
+  name: 'Electric current and potential difference'
 ---
 
 :::hook
-q: A capacitor is charged to 100 V and then disconnected from the battery. You pull its plates apart until the gap is twice as wide. What is the voltage across it now?
-options: ["50 V", "100 V", "200 V", "400 V"]
-answer: 2
-right: Right. With the battery gone, the charge has nowhere to go, so Q is fixed. The field between the plates depends only on the charge per unit area, so it stays the same, and the voltage (field × gap) doubles. You did work pulling the plates apart, and that work is now stored as extra energy.
-wrong: Disconnected means the charge Q cannot change. The field between the plates is set by Q per unit area, so it stays the same; voltage is field × gap, so it doubles to 200 V. The capacitance halved, and V = Q/C doubled.
+q: So what's your guess? Why does a thick glove stop the screen from seeing your finger?
+options: ["The glove is too thick for you to press hard enough", "The glove widens the gap between finger and sensor, so the change in capacitance becomes too small to detect", "Cloth blocks a heat sensor under the glass"]
+answer: 1
+right: Right. The capacitance of two plates goes as area divided by gap, so a thicker gap means a much smaller change for the phone to notice, and cloth does not conduct the way a finger does. Some screens are sensitive enough for thin gloves, which fits the same story.
+wrong: Pressing has nothing to do with it, because the screen senses charge, not force. The glove adds a gap, and capacitance, which goes as area divided by gap, falls below what the phone can detect.
 :::
 
 ## A bucket for charge {lvl=1 id=s-idea label="Class 10"}

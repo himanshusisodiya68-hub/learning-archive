@@ -45,14 +45,58 @@ outcomes:
   - 'Use solid angle to find the flux through a disc or a cube face'
   - 'Handle non-uniform spheres, conductors and cavities using enclosed charge and superposition'
   - 'Derive the pressure on a charged conductor, Earnshaws theorem and Gausss law for gravity'
+opener:
+  story: |
+    Lightning strikes a car on a highway. Millions of volts, enough to split a tree. Yet the people sitting inside walk away unhurt. Not because of the rubber tyres, as the myth says: lightning has just jumped through kilometres of air, so a few centimetres of rubber mean nothing to it.
+
+    The real hero is the metal body. Inside it the electric push is zero, and the charge sits on the outside. Even stranger, from outside a closed box you can tell exactly how much charge is inside without ever opening it, just by checking the push on its surface.
+
+    That is **Gauss's law**, and it hides a lovely trick: to know what is inside a closed surface, count what crosses it. Once you can count, hard field problems collapse to one line.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Lightning strikes a metal car and the passenger inside is safe"><path d="M252 6 L228 54 L246 58 L206 114" style="fill:none;stroke:var(--chem);stroke-width:4;stroke-linejoin:round"/><path d="M96 150 Q96 126 124 124 L142 100 L204 100 L224 124 Q256 128 256 152 L256 172 L96 172Z" style="fill:color-mix(in srgb,var(--c) 16%,var(--surface));stroke:var(--c);stroke-width:3"/><path d="M148 106 L142 124 L200 124 L196 106Z" style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"/><circle cx="172" cy="112" r="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><circle cx="124" cy="176" r="14" style="fill:var(--ink)"/><circle cx="226" cy="176" r="14" style="fill:var(--ink)"/><line x1="0" y1="190" x2="320" y2="190" style="stroke:var(--muted);stroke-width:2"/><g style="font-size:12px;fill:var(--bad)"><text x="150" y="96">+</text><text x="172" y="94">+</text><text x="194" y="96">+</text><text x="108" y="122">+</text><text x="232" y="122">+</text><text x="86" y="156">+</text><text x="260" y="156">+</text></g><text x="40" y="214" style="font-size:11px;fill:var(--muted)">charge sits on the outside</text><text x="150" y="146" style="font-size:11px;fill:var(--ink)">field inside = 0</text></svg>'
+life:
+  - 'Sitting inside a car or an aeroplane during a thunderstorm is safe, because the metal shell keeps the field inside near zero.'
+  - 'Your phone loses signal inside a metal lift for the same reason: the closed metal box shields its inside.'
+  - 'The metal braid around a TV aerial cable is a shield that keeps outside fields from disturbing the signal.'
+  - 'The metal mesh on a microwave oven door keeps the microwaves in while you watch your food.'
+symbols:
+  - { s: '\vec E', means: 'electric field at a point (N/C)' }
+  - { s: '\Delta S', means: 'area of one small flat patch of a surface (m^2)' }
+  - { s: '\theta', means: 'angle between the field and the line sticking straight out of the patch (degrees or radians)' }
+  - { s: '\phi', means: 'electric flux: how much field passes through a surface, E times area (N m^2/C)' }
+  - { s: '\oint', means: 'add up over every patch of a closed surface' }
+  - { s: 'q_{\text{enc}}', means: 'the charge enclosed inside the surface (C)' }
+  - { s: '\varepsilon_0', means: 'permittivity of free space (8.85 \times 10^{-12}\ \text{C}^2\,\text{N}^{-1}\text{m}^{-2})' }
+  - { s: '\sigma', means: 'charge per unit area on a surface (C/m^2)' }
+  - { s: '\rho', means: 'charge per unit volume inside a body (C/m^3)' }
+  - { s: '\Omega', means: 'solid angle: how much of the sky a patch covers as seen from a point (steradian, sr)' }
+models:
+  - name: 'Judge the box, not the contents'
+    text: 'To know what is inside a closed box, measure what crosses its boundary. An auditor checks the statements at the door, and a hospital knows its patients from admissions minus discharges.'
+  - name: 'Let symmetry do the work'
+    text: 'When a problem looks the same from every side, one answer covers all directions. Do not compute what symmetry already tells you.'
+  - name: 'Zero net is not nothing happening'
+    text: 'Zero net flux through a box does not mean zero field: equal amounts may pour in and out. A firm with zero profit may still have moved a great deal of money.'
+links:
+  - leaf: 'phy/universal-law-of-gravitation'
+    name: 'Universal law of gravitation'
+    same: 'The same trick works for gravity: the gravitational flux through a closed surface depends only on the mass inside, which proves that a planet pulls like a point at its centre.'
+    differs: 'Mass has only one sign, so there is no gravity shield: you cannot build a box that blocks gravity the way a metal box blocks an electric field.'
+  - leaf: 'phy/amp-res-law'
+    name: 'Ampere''s law'
+    same: 'Choose a path or surface where symmetry makes the field constant, and one equation hands you the answer. Gauss counts flux through a closed surface; Ampere sums the field around a closed loop.'
+    differs: 'Gauss''s law links field to the charge inside a surface; Ampere''s law links field to the current through a loop. There is no magnetic charge, so magnetic flux through any closed surface is zero.'
+next:
+  q: 'Gauss''s law finds the push at each point. But moving a charge through a field costs energy. Can we keep track of that with a single number at each point instead of a whole arrow?'
+  leaf: 'phy/potential'
+  name: 'Potential'
 ---
 
 :::hook
-q: A small charge sits inside a closed rubber balloon. Without letting the charge out, you squeeze the balloon into a long thin sausage, so that parts of its surface come much closer to the charge. What happens to the total electric flux out of the balloon?
-options: ["It increases, because the field is stronger where the surface is close", "It decreases, because the surface area is smaller", "It stays exactly the same", "It depends on where the charge sits inside"]
-answer: 2
-right: Right. Where the surface comes closer the field is stronger, but the surface there intercepts a smaller cone of field lines. The two effects cancel exactly because the field falls as 1/r² while area grows as r². This lesson shows why, and how to turn it into a tool.
-wrong: The total flux through a closed surface depends only on the charge inside it. Closer patches see a stronger field but intercept a narrower cone of lines; for an inverse-square field the two cancel exactly. So the flux stays the same.
+q: So what's your guess? Why is the inside of a closed metal car safe from lightning?
+options: ["The rubber tyres cut it off from the ground", "The charge spreads over the outside of the metal, and the field inside the shell stays zero", "The metal soaks up the lightning's energy and keeps it"]
+answer: 1
+right: Right. Charge in a conductor keeps moving until nothing is left to push it, and that leaves zero field inside a hollow metal shell. Gauss's law shows why: a surface drawn inside the metal encloses no net charge, so no net flux crosses it.
+wrong: The tyres do not matter, because the lightning has already crossed kilometres of air. And the metal does not store the energy: the charge spreads over the outside and the field inside is zero. Gauss's law explains why, since a surface drawn inside the metal encloses no net charge.
 :::
 
 ## Counting field lines {lvl=1 id=s-lines label="Class 10"}

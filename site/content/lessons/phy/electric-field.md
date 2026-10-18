@@ -47,14 +47,61 @@ outcomes:
   - 'Find the dipole field on the axis and equator, and the torque on a dipole in a uniform field'
   - 'Integrate, using symmetry, for the field of a ring, disc, rod, arc and hemispherical shell'
   - 'Analyse charged-particle motion in uniform fields and dipole forces in non-uniform fields'
+opener:
+  story: |
+    Turn a tap on until you get a thin, smooth stream of water. Now rub a balloon on your hair and bring it close to the stream without touching it. The stream bends towards the balloon, as if an invisible hand were pulling it.
+
+    There is nothing between them but air. No string, no wind you can feel, no hand. The water is falling past a spot the balloon cannot touch, and yet it bends the right way, by the right amount, at exactly the right place.
+
+    So how does the water **know** the balloon is there? The tempting answer is that the balloon reaches out across the gap. Physics found a cleverer one: the balloon changes the space around it, and the water simply reacts to the space where it is. Hold on to that thought. It is the idea of a **field**.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A thin stream of water from a tap bends towards a charged balloon"><rect x="30" y="16" width="70" height="14" rx="3" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="46" y="30" width="14" height="16" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M53 46 L53 236" style="fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 5"/><text x="8" y="232" style="font-size:11px;fill:var(--muted)">straight</text><path d="M53 46 L53 92 Q56 140 88 176 Q108 200 114 236" style="fill:none;stroke:var(--chem);stroke-width:4;stroke-linecap:round"/><text x="62" y="70" style="font-size:11px;fill:var(--chem)">water stream</text><ellipse cx="226" cy="134" rx="38" ry="48" style="fill:color-mix(in srgb,var(--c) 18%,var(--surface));stroke:var(--c);stroke-width:2"/><g style="font-size:13px;fill:var(--bad)"><text x="206" y="120">&#8722;</text><text x="228" y="112">&#8722;</text><text x="216" y="140">&#8722;</text><text x="238" y="146">&#8722;</text><text x="210" y="162">&#8722;</text></g><path d="M226 182 Q232 206 222 226" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><g style="fill:none;stroke:var(--c);stroke-width:1.5;stroke-dasharray:3 4;opacity:0.8"><path d="M186 120 Q150 116 122 128"/><path d="M188 134 Q150 142 108 156"/><path d="M190 150 Q156 170 122 192"/><path d="M188 104 Q154 90 120 100"/></g><text x="140" y="74" style="font-size:11px;fill:var(--muted)">what is in between?</text><text x="196" y="204" style="font-size:11px;fill:var(--muted)">charged balloon</text></svg>'
+life:
+  - 'An ECG reads the tiny electric field that a beating heart spreads through your body to the skin.'
+  - 'Inkjet printers steer charged ink droplets with electric fields so that each lands on the right dot.'
+  - 'Electrostatic air purifiers push charged dust grains onto collector plates with a field.'
+  - 'Lightning conductors on tall buildings work because the field is strongest at sharp metal points, where charge can leak away quietly.'
+  - 'Old television tubes steered electrons across the screen with fields, line by line.'
+symbols:
+  - { s: 'F', means: 'force on a charge placed in the field (newton, N)' }
+  - { s: 'q_0', means: 'a small test charge, used only to probe the field (coulomb, C)' }
+  - { s: '\vec E', means: 'electric field: the force per coulomb on a test charge at that point (N/C)' }
+  - { s: 'Q', means: 'the source charge that creates the field (C)' }
+  - { s: 'r', means: 'distance from the source charge (metre, m)' }
+  - { s: '\hat r', means: 'unit vector: an arrow of length one pointing away from the source (no unit)' }
+  - { s: '\varepsilon_0', means: 'permittivity of free space (8.85 \times 10^{-12}\ \text{C}^2\,\text{N}^{-1}\text{m}^{-2})' }
+  - { s: 'q', means: 'any charge placed in the field (C)' }
+  - { s: '\vec p', means: 'dipole moment of a pair of opposite charges: charge times separation (C m)' }
+  - { s: '\lambda', means: 'charge per unit length along a line (C/m)' }
+  - { s: '\sigma', means: 'charge per unit area on a surface (C/m^2)' }
+  - { s: '\rho', means: 'charge per unit volume inside a body (C/m^3)' }
+models:
+  - name: 'Describe the place, not the pair'
+    text: 'Instead of tracking every pair of interactions, describe what each place in space offers, and let whatever arrives respond. A city map of rents or a weather map of wind works the same way: the property belongs to the place, and whoever moves in pays it.'
+  - name: 'Probe with something tiny'
+    text: 'To measure something without disturbing it, use a probe small enough not to change it: a test charge, a pinch of food to taste, a small survey sample.'
+  - name: 'Add the pushes, do not average them'
+    text: 'Independent influences simply add, and opposite ones can cancel to a quiet middle. In a market or a debate, the outcome is the sum of the pushes, not any one of them.'
+links:
+  - leaf: 'phy/field-lines-and-compasses'
+    name: 'Field lines and compasses'
+    same: 'A magnetic field is also a map of pushes: a compass needle is the magnetic test probe, and field lines are drawn by the same rules.'
+    differs: 'Electric field lines start and end on charges; magnetic field lines have no ends and always close into loops.'
+  - leaf: 'phy/variation-of-g'
+    name: 'Variation of g'
+    same: 'The quantity g is the gravitational field: the pull per kilogram at a place, exactly as E is the pull per coulomb.'
+    differs: 'Mass has one sign, so the gravitational field always points inward; the electric field can point either way and be cancelled.'
+next:
+  q: 'The field of one point charge is easy. But a charged sphere, a long wire or a huge sheet is made of billions of charges. Is there a shortcut that avoids adding them all?'
+  leaf: 'phy/gausss-law'
+  name: 'Gauss''s law'
 ---
 
 :::hook
-q: A thin ring of radius R carries positive charge spread evenly round it. You move a small test charge along the ring's axis, starting at the centre. Where is the electric field strongest?
-options: ["At the centre of the ring", "At a distance of about 0.71R from the centre", "At a distance of exactly R", "Very far away"]
+q: So what's your guess? What carries the balloon's push across the gap to the water?
+options: ["A draught of air from the balloon", "The space around the balloon, which now has a push at every point", "Nothing, it only looks like a push"]
 answer: 1
-right: Right. At the centre the pushes from opposite sides of the ring cancel, so the field is zero. Far away it fades like 1/z². In between it peaks, at z = R/√2 ≈ 0.71R, as the section on the ring shows.
-wrong: At the centre every bit of ring is cancelled by the bit opposite, so the field is zero; very far away it dies off like 1/z². So it must peak somewhere in between, and the calculation in the ring section puts the peak at z = R/√2 ≈ 0.71R.
+right: Right. Every point of space near the charge now has a push attached to it, and anything charged that arrives there feels that push on the spot. That map of pushes is the field. The water is neutral overall, but the balloon tugs its charges slightly apart, just like paper on a comb.
+wrong: A draught could not do it, because the effect also works in a vacuum where there is no air. The charge changes the space around it, giving each point a push, and the water simply reacts where it is.
 :::
 
 ## Why talk about a field at all? {lvl=1 id=s-why label="Class 10"}
