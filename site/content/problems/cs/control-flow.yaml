@@ -1,0 +1,117 @@
+# Decisions and loops. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "How many times does the body of `for k in range(2, 20, 3):` run?"
+  ask: Passes
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: ceil((20-2)/3)
+  sol: "`range(2, 20, 3)` gives 2, 5, 8, 11, 14, 17, and the next value, 20, is not below 20, so it stops. That is 6 values, so the body runs 6 times."
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which loop never stops?"
+  opts: ["`i = 0` then `while i < 5: i += 1`", "`i = 0` then `while i < 5: print(i)`", "`for i in range(5): print(i)`"]
+  ans: 1
+  sol: "In the second loop nothing changes `i`, so `i < 5` stays True for ever. The first loop moves `i` towards 5 on every pass, and the `for` loop runs out of numbers."
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "What is the value of `i` after this code runs? `i = 0` then `while i < 10: i += 3`."
+  ask: Final i
+  unit: ""
+  ans: 12
+  tol: 0.1
+  verify: 3*ceil(10/3)
+  sol: "`i` takes the values 0, 3, 6, 9 (each is below 10, so the loop continues) and then 12. At 12 the test `12 < 10` fails and the loop ends, so `i` is 12, not 10. The loop stops at the first value that is not below 10."
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "What does this print? `for n in [1, 3, 5]:` then (inside) `if n % 2 == 0: break`, and after the loop, `else: print('no even')`."
+  opts: ["Nothing", "no even", "An error, because for cannot have an else"]
+  ans: 1
+  sol: "The `else` of a loop runs when the loop finished without hitting `break`. None of 1, 3, 5 is even, so `break` never runs and 'no even' is printed."
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Write a function `is_leap(year)` for the Gregorian rule: a year is a leap year if it is divisible by 4, except century years, which must also be divisible by 400. Explain why the order of your conditions matters and give four test years."
+  sol: |
+    ```python
+    def is_leap(y):
+        if y % 400 == 0:
+            return True
+        if y % 100 == 0:
+            return False
+        return y % 4 == 0
+    ```
+
+    **Order.** The most specific exception comes first. If we tested `y % 4 == 0` first, 1900 would be wrongly accepted. Checking 400 first accepts 2000; then checking 100 rejects 1900 and 2100; and only then does the plain rule of 4 apply.
+
+    **Tests.** 1900 gives `False` (century, not divisible by 400); 2000 gives `True`; 2024 gives `True`; 2100 gives `False`; 2023 gives `False`.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Write a loop that, given a sorted list `xs` and a value `t`, returns the first position whose item is at least `t` (or `len(xs)` if there is none). State the loop invariant and the quantity that guarantees termination."
+  sol: |
+    ```python
+    def first_at_least(xs, t):
+        lo, hi = 0, len(xs)       # answer is in lo..hi
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if xs[mid] < t:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
+    ```
+
+    **Invariant.** All items before position `lo` are less than `t`, and all items from position `hi` onwards are at least `t`. At the start, `lo = 0` and `hi = len(xs)`, so both parts are empty and the claim is true. If `xs[mid] < t`, then everything up to `mid` is less than `t`, so `lo = mid + 1` keeps it true. Otherwise `xs[mid]` is at least `t`, and since the list is sorted so is everything after it, so `hi = mid` keeps it true.
+
+    **Termination.** The variant is `hi - lo`. Because `lo < hi`, we have `lo <= mid < hi`; moving `lo` to `mid + 1` or `hi` to `mid` shrinks the gap by at least 1, so the gap reaches 0 and the loop ends. When it ends, `lo == hi`, and the invariant says that position is the first item at least `t`.
+
+    **Tests.** On `[1, 3, 5, 7]`: `t = 4` gives 2, `t = 0` gives 0, `t = 9` gives 4; on `[]` any `t` gives 0.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "How many times does the innermost line run? `count = 0`, then `for i in range(1, 11):`, inside it `for j in range(i):`, inside that `count += 1`."
+  ask: Final count
+  unit: ""
+  ans: 55
+  tol: 0.1
+  verify: 10*11/2
+  sol: "For a given `i`, the inner loop `range(i)` runs `i` times. So the total is $1 + 2 + 3 + \\dots + 10 = \\frac{10 \\times 11}{2} = 55$. The pattern is that a triangle of passes has about half of $n \\times n$, which is still of order $n^2$."
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Euclid's algorithm is `while b != 0: a, b = b, a % b`, and the answer is `a`. Using a loop invariant and a variant, explain why it terminates and why it returns the greatest common divisor of the original `a` and `b` (both positive whole numbers)."
+  sol: |
+    ```python
+    def gcd(a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+    ```
+
+    **Invariant.** The greatest common divisor of the current pair `(a, b)` equals the gcd of the original pair. Initially it is the same pair, so it holds. For the step: write $a = qb + r$ with $r = a \bmod b$. Any number dividing both $a$ and $b$ divides $r = a - qb$; any number dividing both $b$ and $r$ divides $a = qb + r$. So the pairs $(a, b)$ and $(b, r)$ have exactly the same common divisors, hence the same gcd. The assignment `a, b = b, a % b` moves from the first pair to the second, so the invariant is kept.
+
+    **Variant.** `b` is a non-negative whole number, and after a pass the new `b` is `a % b`, which is strictly less than the old `b`. A whole number cannot decrease for ever, so `b` reaches 0 and the loop ends.
+
+    **Conclusion.** When the loop ends, `b = 0` and the pair is `(a, 0)`, whose gcd is `a` (everything divides 0). By the invariant this equals the gcd of the original pair. Example: `gcd(48, 18)` goes through `(18, 12)`, `(12, 6)`, `(6, 0)` and returns 6. The number of passes is at most about $\log_\phi$ of the smaller number (Lamé's theorem) [Unverified], so it is very fast.
+  check: none

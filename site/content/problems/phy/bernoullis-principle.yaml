@@ -220,3 +220,79 @@
     $$t = \frac{A}{a}\sqrt{\frac{2h_0}{g}} = \frac{0.50}{2.0\times10^{-4}}\sqrt{\frac{2\times1.0}{9.8}} = 2500\times0.452 = 1.13\times10^{3}\ \text{s},$$
     about 19 minutes. This equals $2V/Q_0$, twice the time that the initial flow rate $Q_0 = a\sqrt{2gh_0}$ would take to empty the tank, because the flow slows as the level falls.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A siphon draws water from a large open tank. Its outlet is 0.60 m below the water surface in the tank, and the highest point of the tube is 1.0 m above the water surface. The tube has the same bore throughout. By how much is the pressure at the highest point below atmospheric pressure? Take $g = 9.8$ m/s² and the density of water 1000 kg/m³. (Original problem.)
+  ask: Pressure below atmospheric at the crest
+  unit: kPa
+  ans: 15.68
+  tol: 0.05
+  verify: 1000*(9.8*1.0+0.5*2*9.8*0.6)/1e3
+  sol: |
+    Between the tank surface (speed about zero, pressure $P_a$) and the outlet (pressure $P_a$): $\rho g(0.60) = \tfrac12\rho v^2$, so $v^2 = 2g(0.60) = 11.76$ m²/s² and $v = 3.43$ m/s. The bore is uniform, so the speed at the crest is the same $v$.
+    Between the tank surface and the crest, which is 1.0 m higher:
+    $$P_a = P_c + \rho g(1.0) + \tfrac12\rho v^2\;\Rightarrow\;P_a - P_c = 1000\,(9.8\times1.0 + 5.88) = 1.57\times10^{4}\ \text{Pa}.$$
+    The crest is at 15.7 kPa below atmospheric. The crest could be raised until this deficit reaches about $P_a\approx101$ kPa, an extra height of roughly 10 m of water, but the flow would break up well before that.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A Pitot tube on an aircraft measures the difference between the stagnation pressure (air brought to rest at the mouth of the tube) and the pressure of the surrounding air. A liquid manometer of density 800 kg/m³ shows a height difference of 5.0 cm. Find the speed of the air relative to the aircraft. Air density is 1.2 kg/m³ and $g = 9.8$ m/s². (Original problem.)
+  ask: Air speed
+  unit: m/s
+  ans: 25.56
+  tol: 0.1
+  verify: sqrt(2*800*9.8*0.05/1.2)
+  sol: |
+    The manometer reads a pressure difference $\Delta P = \rho_{liq}\,g\,h = 800\times9.8\times0.050 = 392$ Pa. Apply Bernoulli along the streamline that ends at the mouth of the tube: far away the air has speed $v$ and pressure $P$; at the mouth it is at rest, with pressure $P_0$. Then $P + \tfrac12\rho_{air}v^2 = P_0$, so $\Delta P = P_0 - P = \tfrac12\rho_{air}v^2$ and
+    $$v = \sqrt{\frac{2\Delta P}{\rho_{air}}} = \sqrt{\frac{2\times392}{1.2}} = 25.6\ \text{m/s}\;(92\ \text{km/h}).$$
+    The small height of air between the points is ignored, since $\rho_{air}$ is so small.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Water leaves a tap of inner diameter 2.0 cm at a speed of 0.50 m/s and falls freely. What is the diameter of the stream 20 cm below the tap? Treat the stream as a continuous, cylindrical column and take $g = 9.8$ m/s². (Original problem.)
+  ask: Diameter of the stream
+  unit: cm
+  ans: 0.990
+  tol: 0.005
+  verify: 2.0*sqrt(0.5/sqrt(0.5**2+2*9.8*0.2))
+  sol: |
+    Falling through 0.20 m raises the speed: $v^2 = v_0^2 + 2gh = 0.25 + 2\times9.8\times0.20 = 4.17$, so $v = 2.04$ m/s. (Equivalently, Bernoulli along the stream with the pressure atmospheric at both levels.) By continuity $A_0v_0 = Av$, so
+    $$\frac{d}{d_0} = \sqrt{\frac{v_0}{v}} = \sqrt{\frac{0.50}{2.04}} = 0.495,\qquad d = 0.99\ \text{cm}.$$
+    The stream is half as wide after falling just 20 cm, and keeps thinning until surface tension breaks it into drops.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A tall open tank stands on a platform 1.5 m above the floor and is filled with water to a depth of 2.0 m. A small hole can be drilled in its side at any height. What is the greatest horizontal distance from the tank at which the jet can land on the floor, and at what depth below the water surface must the hole be drilled? Give the greatest distance. (Original problem.)
+  ask: Greatest horizontal range
+  unit: m
+  ans: 3.5
+  tol: 0.01
+  verify: 2.0+1.5
+  sol: |
+    Let the hole be a depth $h$ below the surface. The speed is $\sqrt{2gh}$. The hole is at height $(2.0 - h) + 1.5 = 3.5 - h$ above the floor, so the fall time is $\sqrt{2(3.5 - h)/g}$ and the range is
+    $$x = 2\sqrt{h\,(3.5 - h)}.$$
+    The product $h(3.5 - h)$ of two numbers with a fixed sum is greatest when they are equal: $h = 1.75$ m, which is allowed since the water is 2.0 m deep. Then $x_{\max} = 2\times1.75 = 3.5$ m, equal to the total height of the water surface above the floor. If the platform were lower than the water depth allows (a hole at depth $h > $ the depth of the water is impossible) the best hole would be the lowest one, but not here.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A tank of water stands on a smooth horizontal floor, and a small hole of area 1.0 cm² is made in its vertical side at a depth of 1.25 m below the open water surface. Find the horizontal force needed to keep the tank from moving once water starts to flow out through the hole. Take $g = 9.8$ m/s² and the density of water 1000 kg/m³, and assume the level falls very slowly. (Original problem.)
+  ask: Force needed to hold the tank
+  unit: N
+  ans: 2.45
+  tol: 0.01
+  verify: 2*1000*9.8*1.25*1.0e-4
+  sol: |
+    The water leaves with speed $v = \sqrt{2gh}$. In a time $\Delta t$ it carries off a mass $\rho av\,\Delta t$ and with it a momentum $\rho av^2\,\Delta t$. The tank gives the water that momentum, so the water pushes the tank back with a force
+    $$F = \rho av^2 = \rho a\,(2gh) = 2\rho gha = 2\times1000\times9.8\times1.25\times1.0\times10^{-4} = 2.45\ \text{N}.$$
+    To hold the tank still we need to push it with 2.45 N towards the side of the hole. Note that this is *twice* $\rho gha = 1.23$ N, the force of the missing hydrostatic pressure on the hole's area; the other half comes from the pressure on the inside wall near the hole being lower than hydrostatic because the water there is moving.
+  check: code
