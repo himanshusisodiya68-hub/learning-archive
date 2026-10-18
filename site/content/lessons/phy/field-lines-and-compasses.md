@@ -27,6 +27,26 @@ cards:
   - { front: "Field of a long straight wire, and where the neutral point is when it sits in a uniform perpendicular field $B_0$?", back: "$B = \\mu_0 I/(2\\pi r)$, circling the wire. Neutral point at $r = \\mu_0 I/(2\\pi B_0)$, on the side where the wire's field opposes $B_0$." }
   - { front: "Why is $\\vec B$ called an axial vector?", back: "It is built from a cross product of two ordinary vectors ($I\\,d\\vec l\\times\\vec r$). In a mirror its components parallel to the mirror flip and the perpendicular one stays, the opposite of an ordinary arrow." }
   - { front: "Ratio of magnetic to electric force between two parallel beams of like charges moving at speed $v$?", back: "$v^2/c^2$. The magnetic part attracts, so the net repulsion is $(1 - v^2/c^2)$ times the electric force: magnetism is a relativistic side of electricity." }
+core:
+  idea: 'Moving charges (currents) make a magnetic field $\vec B$, and $\vec B$ acts only on moving charges. Field lines are closed curves: the tangent gives the direction of $\vec B$, the crowding its strength. A straight current gives circles about the wire, found by the right-hand thumb rule.'
+  formulas:
+    - tex: 'B = \frac{\mu_0 I}{2\pi r}'
+      label: 'Long straight wire'
+    - tex: '\oint \vec B\cdot d\vec S = 0'
+      label: 'No magnetic monopoles (field lines never end)'
+    - tex: '\vec F = q\,\vec v\times\vec B'
+      label: 'Force on a moving charge'
+  conditions:
+    - 'Steady currents, field in vacuum (air), no iron nearby'
+    - 'Infinitely long straight wire (or a point close to a long one); ideal long solenoid with a uniform field inside'
+    - 'Fields from different sources add as vectors (superposition); the compass needle is small enough not to disturb the field'
+  sign: 'For a straight wire the thumb is the current and the fingers give the field; for a loop or solenoid the fingers follow the current and the thumb gives the field. Outside a magnet lines run N to S, inside S to N.'
+outcomes:
+  - 'Draw the field lines of a bar magnet, a straight wire, a loop and a solenoid, and read direction and strength from them'
+  - 'Find the direction of the field of a current using the right-hand thumb rule'
+  - 'Explain how a compass needle detects a field, including the Earth''s field and a wire''s field together'
+  - 'Locate neutral points by adding fields as vectors'
+  - 'State why $\oint\vec B\cdot d\vec S = 0$ and what it says about field lines and monopoles'
 ---
 
 :::hook

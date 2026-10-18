@@ -27,6 +27,24 @@ cards:
   - { front: "Field just outside a conductor, and the outward force per unit area on its surface charge?", back: "$E = \\sigma/\\varepsilon_0$ along the normal. Pressure $\\sigma^2/(2\\varepsilon_0)$: the charge feels only the average of the inside (0) and outside ($\\sigma/\\varepsilon_0$) fields." }
   - { front: "Field inside a spherical cavity cut from a uniformly charged sphere?", back: "Uniform: $\\vec E = \\rho\\vec d/(3\\varepsilon_0)$, where $\\vec d$ runs from the sphere's centre to the cavity's centre." }
   - { front: "Why can no static arrangement of charges hold a test charge in stable equilibrium (Earnshaw)?", back: "Stability needs $\\vec E$ to point inward all over a small sphere round the point, giving negative flux. Gauss then demands negative charge at that point, but the region is charge-free." }
+core:
+  idea: 'The net outward flux of the electric field through any closed surface equals the enclosed charge divided by $\varepsilon_0$. It holds for every surface, and gives $E$ directly only when symmetry makes the field normal and constant, or parallel, over each part.'
+  formulas:
+    - tex: '\phi = \vec E\cdot\Delta\vec S = E\,\Delta S\cos\theta'
+      label: 'Flux through a small patch'
+    - tex: '\oint_S \vec E\cdot d\vec S = \frac{q_{\text{enc}}}{\varepsilon_0}'
+      label: 'Gausss law'
+  conditions:
+    - 'Force law exactly inverse-square (Coulomb) with superposition'
+    - 'Closed imaginary surface with outward normal; charges outside add nothing to the net flux but still contribute to the field'
+    - 'To find E: spherical, cylindrical or planar symmetry, so E is normal and constant (or parallel) on each part of the surface'
+  sign: 'Zero net flux does not mean zero field: E in the law is the total field of all charges, inside and outside.'
+outcomes:
+  - 'Explain flux as a count of field lines and calculate it through a flat patch'
+  - 'Apply Gausss law with the correct Gaussian surface to a line, sheet, shell and solid sphere'
+  - 'Use solid angle to find the flux through a disc or a cube face'
+  - 'Handle non-uniform spheres, conductors and cavities using enclosed charge and superposition'
+  - 'Derive the pressure on a charged conductor, Earnshaws theorem and Gausss law for gravity'
 ---
 
 :::hook

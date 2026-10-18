@@ -27,6 +27,24 @@ cards:
   - { front: "Ratio of conduction to displacement current density in a medium (σ, ε) at angular frequency ω?", back: "$J_c/J_d = \\sigma/(\\omega\\varepsilon)$. They are equal at $\\omega = \\sigma/\\varepsilon$; above it the medium behaves like a dielectric, below it like a conductor." }
   - { front: "Why must the displacement term exist (continuity argument)?", back: "Charge conservation says $\\nabla\\cdot\\vec J = -\\partial\\rho/\\partial t$, but the divergence of a curl is zero, so $\\nabla\\times\\vec B = \\mu_0\\vec J$ forces $\\nabla\\cdot\\vec J = 0$. Adding $\\varepsilon_0\\partial\\vec E/\\partial t$ (with Gauss's law) restores consistency." }
   - { front: "Energy flow into a charging parallel-plate capacitor?", back: "The Poynting vector $\\vec S = \\vec E\\times\\vec B/\\mu_0$ points radially inward at the rim; $S\\cdot 2\\pi R d = \\dfrac{d}{dt}\\left(\\tfrac12\\varepsilon_0E^2\\,\\pi R^2 d\\right)$. Energy enters through the sides, not along the wires." }
+core:
+  idea: 'A changing electric flux acts as a source of magnetic field exactly like a conduction current: $i_d = \varepsilon_0\,d\Phi_E/dt$. With it Ampère''s law holds for every surface bounded by the loop, and in a charging capacitor $i_d = i_c$.'
+  formulas:
+    - tex: 'i_d = \varepsilon_0\frac{d\Phi_E}{dt}'
+      label: 'Displacement current'
+    - tex: '\oint \vec B\cdot d\vec l = \mu_0\left(i_c + i_d\right) = \mu_0 i_c + \mu_0\varepsilon_0\frac{d\Phi_E}{dt}'
+      label: 'Ampère–Maxwell law'
+  conditions:
+    - 'Parallel-plate capacitor with a uniform field between the plates and fringing neglected'
+    - 'Vacuum gap ($\varepsilon_0$); with a dielectric use $\varepsilon = K\varepsilon_0$'
+    - 'Circular plates, so symmetry gives $B(r)$ from a circular Amperian loop; charge is conserved'
+  sign: '$i_d$ points along $d\vec E/dt$, not along $\vec E$: while the capacitor discharges they point opposite ways. $i_d$ carries no charge across the gap.'
+outcomes:
+  - 'Explain why Ampère''s law fails for a charging capacitor and how displacement current repairs it'
+  - 'Show that $i_d = i_c$ and find the magnetic field between circular plates, inside and outside'
+  - 'State Maxwell''s four equations in integral form and what each says'
+  - 'Compare conduction and displacement current in matter using $\sigma/\omega\varepsilon$'
+  - 'Derive the displacement term from charge conservation and show energy enters the capacitor through its rim'
 ---
 
 :::hook

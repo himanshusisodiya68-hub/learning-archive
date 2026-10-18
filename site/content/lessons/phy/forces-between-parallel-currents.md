@@ -27,6 +27,24 @@ cards:
   - { front: "Two line charges λ moving side by side at speed v: ratio of magnetic to electric force?", back: "$F_B/F_E = v^2/c^2$, using $\\mu_0\\varepsilon_0 = 1/c^2$. Net force $= F_E(1 - v^2/c^2)$, still repulsive." }
   - { front: "Net force on a rectangular loop (parallel sides of length l at distances a and a+b) beside a long wire?", back: "$F = \\dfrac{\\mu_0 I_1 I_2 l}{2\\pi}\\left(\\dfrac1a - \\dfrac1{a+b}\\right)$, towards the wire if the near side's current is parallel to the wire's." }
   - { front: "Magnetic pressure at the surface of a conductor carrying current?", back: "$p_B = B^2/2\\mu_0$, directed inwards. For a uniform current, the pressure needed on the axis to resist the pinch is $\\mu_0 I^2/4\\pi^2R^2$." }
+core:
+  idea: 'Each of two long parallel currents lies in the field of the other, $B = \mu_0 I/2\pi d$, so each feels $F = BIL$. Parallel currents attract and antiparallel currents repel, with force per unit length $\mu_0 I_1 I_2/2\pi d$, equal and opposite on the two wires.'
+  formulas:
+    - tex: '\frac{F}{L} = \frac{\mu_0 I_1 I_2}{2\pi d}'
+      label: 'Force per unit length between parallel wires'
+    - tex: 'B = \frac{\mu_0 I}{2\pi d}'
+      label: 'Field of one wire at the other'
+  conditions:
+    - 'Straight, parallel, very long wires (separation much smaller than their length)'
+    - 'Thin wires in air or vacuum carrying steady currents'
+    - 'No other fields acting (the Earth''s field must be cancelled)'
+  sign: 'Opposite to the rule for charges: like (parallel) currents attract, unlike (antiparallel) currents repel.'
+outcomes:
+  - 'Explain why two current-carrying wires exert forces on each other without any magnet'
+  - 'Calculate the force per unit length and state its direction for parallel and antiparallel currents'
+  - 'Define the ampere through the force between wires and say why the Earth''s field matters'
+  - 'Solve equilibrium problems with several wires and the net force on a loop beside a long wire'
+  - 'Compare the magnetic and electric forces between beams of charges ($v^2/c^2$) and describe the pinch effect'
 ---
 
 :::hook

@@ -27,6 +27,26 @@ cards:
   - { front: "A magnet falls through a horizontal ring. Does the ring push or pull it?", back: "Approaching: the ring repels it. Leaving: the ring attracts it. Both forces point upward, so the magnet is slowed throughout (except at the instant $d\\Phi/dz = 0$)." }
   - { front: "Why does a jumping ring with a slit not jump?", back: "No closed path, so no induced current and no force. An emf is still induced across the slit, but emf alone exerts no magnetic force." }
   - { front: "What does a superconducting ring conserve?", back: "Its total flux $\\Phi_\\text{ext} + LI$. With $R = 0$ the emf must be zero, so any change of external flux is exactly cancelled by a change in the ring current." }
+core:
+  idea: 'The induced current has a direction such that its own magnetic field opposes the change of flux that caused it, not the flux itself. This is conservation of energy, and it is the minus sign in $\varepsilon = -d\Phi_B/dt$.'
+  formulas:
+    - tex: '\varepsilon = -\frac{d\Phi_B}{dt}'
+      label: 'Faraday''s law with Lenz''s sign'
+    - tex: 'Fv = \frac{\varepsilon^2}{R}'
+      label: 'Mechanical power in = Joule heat out'
+    - tex: 'F = \frac{B^2L^2v}{R}'
+      label: 'Drag on a loop entering or leaving a field'
+  conditions:
+    - 'Closed conducting circuit: an open circuit has an emf but no current and no force'
+    - 'Negligible self-inductance, so the current follows the emf instantly (needed for $Fv = \varepsilon^2/R$)'
+    - 'Rigid loop moving at steady speed; only a superconducting ring ($R=0$) opposes the change completely'
+  sign: 'Rising flux: induced field points against the external field. Falling flux: along it. An approaching pole meets a like pole, a receding pole an unlike pole.'
+outcomes:
+  - 'Find the direction of an induced current with the four-step Lenz method'
+  - 'Explain why the minus sign in Faraday''s law is required by energy conservation'
+  - 'Calculate the force on a loop entering a field and equate $Fv$ to $\varepsilon^2/R$'
+  - 'Explain eddy-current braking and a magnet falling through a ring or a tube'
+  - 'Analyse the jumping ring and the flux frozen in a superconducting ring'
 ---
 
 :::hook

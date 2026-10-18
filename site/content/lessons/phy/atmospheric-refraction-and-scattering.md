@@ -24,6 +24,23 @@ cards:
   - { front: "What is the Tyndall effect?", back: "Scattering of a beam of light by small particles (dust, smoke, colloids), which makes the path of the beam visible." }
   - { front: "Why is the sky blue?", back: "Air molecules, much smaller than the wavelength, scatter short wavelengths (blue) far more strongly than long ones (red); scattered intensity ∝ 1/λ⁴." }
   - { front: "Why are danger signals red?", back: "Red light is scattered least by fog and smoke, so it travels farthest and stays visible from a distance." }
+core:
+  idea: 'Air''s refractive index changes with height and temperature, so light bends continuously: stars twinkle and the Sun is seen about 2 minutes before sunrise. Particles much smaller than the wavelength scatter light with $I \propto 1/\lambda^4$, so blue is scattered most.'
+  formulas:
+    - tex: 'I_{\text{scattered}} \propto \frac{1}{\lambda^4}'
+      label: 'Rayleigh scattering'
+    - tex: 'R \approx (n_0 - 1)\tan z'
+      label: 'Refraction shift for a star at zenith angle $z$ (flat layers)'
+  conditions:
+    - 'For Rayleigh scattering, the scatterers (air molecules) are much smaller than the wavelength; larger droplets scatter all colours about equally'
+    - 'A star is a point source, so its image shakes as the air moves; a planet is an extended source and its flickers average out'
+    - 'For the shift formula, the atmosphere is flat layers of refractive index falling with height, valid well above the horizon'
+outcomes:
+  - 'Explain twinkling of stars, the steady light of planets, and advance sunrise and delayed sunset'
+  - 'Describe scattering and the Tyndall effect, and explain the blue sky, the red Sun at sunrise and sunset, red danger signals and white clouds'
+  - 'State and apply Rayleigh''s $1/\lambda^4$ law, and explain why the sky is not violet'
+  - 'Explain why skylight is polarised at 90° to the Sun'
+  - 'Estimate atmospheric refraction from the layer invariant and the horizon value of about 34 arcminutes'
 ---
 
 :::hook

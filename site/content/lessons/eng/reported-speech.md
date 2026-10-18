@@ -24,6 +24,29 @@ cards:
   - { front: "How is a command or request reported?", back: "Use told, ordered, asked or requested plus an object and a to-infinitive: He said to me, \"Sit down.\" becomes He told me to sit down. A negative command takes not to." }
   - { front: "Name the three kinds of change in indirect speech.", back: "Person (pronouns), tense, and time/place words. Remember them as who, when, where." }
   - { front: "When do you not backshift?", back: "When the reporting verb is present or future, and usually when the statement is a universal truth or still true: The teacher said that the Earth moves round the Sun." }
+core:
+  idea: 'Reported speech re-anchors the speaker''s words to the reporter''s moment. Three things move: who (pronouns), when (tense steps one back, time words change) and where (here to there). The sentence type decides the pattern: that, if/whether, to + verb.'
+  patterns:
+    - text: 'Subject + said (that) + clause, tense one step back'
+      label: 'Statement'
+    - text: 'Subject + asked + if / whether / wh-word + subject + verb (no helper, no question mark)'
+      label: 'Question'
+    - text: 'Subject + told / ordered / requested + object + (not) to + base verb'
+      label: 'Command or request'
+    - text: 'Subject + exclaimed with joy / sorrow / surprise + that + statement'
+      label: 'Exclamation'
+  conditions:
+    - 'Pronouns follow 1-2-3: first person to the subject, second person to the object, third person unchanged'
+    - 'After a past reporting verb the tense steps one back, and now, today, tomorrow, here become then, that day, the next day, there'
+    - 'Do not backshift when the reporting verb is present or future, or for a universal truth'
+    - 'A reported question takes statement word order with no do/does/did'
+  sign: 'Never write "said me" (use told me) or keep the question order: "asked where was the station" should be "asked where the station was".'
+outcomes:
+  - 'Explain the three anchors that change when speech is reported: who, when and where'
+  - 'Report statements with correct pronoun, tense and time-word changes'
+  - 'Report questions, commands, requests and exclamations in the right pattern'
+  - 'Choose a reporting verb that fits the speaker''s attitude, and know when not to backshift'
+  - 'Convert between direct and indirect speech and correct errors in board-style questions'
 ---
 
 :::hook

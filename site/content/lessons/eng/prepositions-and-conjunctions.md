@@ -24,6 +24,29 @@ cards:
   - { front: "Can 'although' and 'but' sit in one sentence?", back: "No. Although he was tired, he kept working. Or: He was tired, but he kept working. Never both." }
   - { front: "Rule for neither...nor and either...or?", back: "The verb agrees with the subject nearer to it: Neither the teacher nor the students were present." }
   - { front: "Which word follows 'no sooner' and 'hardly'?", back: "No sooner had... than; Hardly had... when. The first part is inverted (had + subject + V3)." }
+core:
+  idea: 'Prepositions link a noun, pronoun or -ing word to the sentence and show a relation; conjunctions join clauses, equal ones (and, but, or, so) or unequal ones (because, although, if). Many pairings are fixed and must be learned.'
+  patterns:
+    - text: 'preposition + noun / object pronoun / -ing form'
+      label: 'Preposition phrase'
+    - text: 'at + clock time; on + day or date; in + month, year or season'
+      label: 'Time words'
+    - text: 'adjective or verb + its fixed preposition (afraid of, good at, married to)'
+      label: 'Appropriate prepositions'
+    - text: 'No sooner had + subject + V3 + than / Hardly had + subject + V3 + when'
+      label: 'Correlatives'
+  conditions:
+    - 'After a preposition use the object form of a pronoun and -ing for a verb'
+    - 'Check the word before the gap for a fixed pairing first; apply the at/on/in rules only if there is none'
+    - 'Use one linking word for one job: although or but, because or so, never both'
+    - 'Either...or and neither...nor take the verb that agrees with the nearer subject'
+  sign: 'Never use two conjunctions for one job ("Although he was tired, but...") or "than" after senior, junior, superior, inferior or prefer.'
+outcomes:
+  - 'Tell a preposition from a conjunction by what follows the word'
+  - 'Use at, on and in correctly for time and place'
+  - 'Choose the appropriate preposition after common adjectives and verbs'
+  - 'Join clauses with the conjunction that matches the relation: contrast, reason, condition, result'
+  - 'Use correlative pairs with parallel structure and the correct inversion'
 ---
 
 :::hook

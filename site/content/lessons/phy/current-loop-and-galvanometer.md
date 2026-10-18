@@ -27,6 +27,27 @@ cards:
   - { front: "Shunt for an ammeter, series resistor for a voltmeter (galvanometer G, full scale I_g)?", back: "Shunt $S = I_gG/(I - I_g)$ in parallel; series $R = V/I_g - G$." }
   - { front: "Orbital magnetic moment of an electron and its ratio to angular momentum?", back: "$m = evr/2$, and $m/L = e/2m_e$, with m opposite to L. For L = ħ this is the Bohr magneton eħ/2m_e ≈ 9.27 × 10⁻²⁴ J/T." }
   - { front: "Force on a small loop in a non-uniform field?", back: "$\\mathbf F = \\nabla(\\mathbf m\\cdot\\mathbf B)$. A loop with m along B is pulled toward the stronger field." }
+core:
+  idea: 'A planar current loop of $N$ turns has magnetic moment $\vec m = NI\vec A$. In a uniform field it feels no net force but a torque $\vec\tau = \vec m\times\vec B$ that turns $\vec m$ towards $\vec B$; its orientation energy is $-\vec m\cdot\vec B$.'
+  formulas:
+    - tex: '\vec m = NI\vec A,\qquad \vec\tau = \vec m\times\vec B,\qquad \tau = NIAB\sin\theta'
+      label: 'Moment and torque on a coil'
+    - tex: 'U = -\vec m\cdot\vec B'
+      label: 'Energy of a magnetic moment'
+    - tex: 'k\phi = NIAB'
+      label: 'Moving-coil galvanometer (radial field)'
+  conditions:
+    - 'Uniform magnetic field, so the net force is zero and only a couple acts'
+    - 'Rigid planar loop carrying a steady current; $\theta$ is the angle between the normal ($\vec m$) and $\vec B$'
+    - 'Galvanometer: radial field so the torque is $NIAB$ at every deflection, and a linear restoring spring'
+    - 'Ideal ammeter has zero resistance and ideal voltmeter infinite resistance'
+  sign: '$\vec A$ and $\vec m$ follow the right-hand rule (fingers along the current, thumb along the normal). The torque is largest when the plane of the loop is parallel to $\vec B$.'
+outcomes:
+  - 'Explain why a loop in a field turns, and how a commutator keeps a DC motor turning one way'
+  - 'Find the magnetic moment of any planar loop and the torque on it in a uniform field'
+  - 'Explain the moving-coil galvanometer and compare current and voltage sensitivity'
+  - 'Convert a galvanometer to an ammeter or voltmeter and estimate the loading error'
+  - 'Use $U = -\vec m\cdot\vec B$, small oscillations, orbital moments and $\vec F = \nabla(\vec m\cdot\vec B)$'
 ---
 
 :::hook

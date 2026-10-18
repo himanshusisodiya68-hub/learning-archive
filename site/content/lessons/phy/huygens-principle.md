@@ -24,6 +24,26 @@ cards:
   - { front: "State Huygens' principle.", back: "Every point on a wavefront acts as a source of secondary wavelets spreading in the forward direction at the wave speed; the new wavefront is the common forward envelope (tangent surface) of these wavelets." }
   - { front: "Light passes from air into water. What happens to its frequency, wavelength and speed?", back: "Frequency unchanged; wavelength and speed both reduced by the factor n (1.33)." }
   - { front: "Doppler shift for light from a source receding at speed $v \\ll c$?", back: "$\\Delta\\lambda/\\lambda = v/c$, a shift to longer wavelength (red shift)." }
+core:
+  idea: 'Every point on a wavefront is a source of secondary wavelets spreading forward at the wave speed, and the new wavefront is their forward envelope. This gives $i = r$ and $\sin i/\sin r = v_1/v_2 = n_2/n_1$, with the frequency unchanged and $\lambda = \lambda_0/n$.'
+  formulas:
+    - tex: '\frac{\sin i}{\sin r} = \frac{v_1}{v_2} = \frac{n_2}{n_1}'
+      label: 'Refraction from Huygens'' construction'
+    - tex: '\lambda_{\text{medium}} = \frac{\lambda_{\text{vacuum}}}{n}'
+      label: 'Wavelength in a medium (frequency fixed)'
+    - tex: 'L_{\text{opt}} = nd'
+      label: 'Optical path length'
+  conditions:
+    - 'Light is treated as a wave of wavelength about 400 to 700 nm; rays are the lines perpendicular to wavefronts'
+    - 'The wavelets spread only in the forward direction (justified by Kirchhoff''s obliquity factor)'
+    - 'The medium is uniform, so the wave speed is constant and a wavelet after time $t$ has radius $vt$'
+  sign: 'At a boundary the frequency is fixed; speed and wavelength both divide by $n$. In the second medium the wavelet radius is $v_2 t$, and light is slower in the denser medium.'
+outcomes:
+  - 'Define wavefronts and rays, and recognise spherical, cylindrical and plane wavefronts'
+  - 'State Huygens'' principle and use it to derive the laws of reflection and refraction'
+  - 'Explain why the frequency stays fixed while speed and wavelength change at a boundary'
+  - 'Use optical path length to find phase differences, and apply the Doppler shift $\Delta\lambda/\lambda = v/c$'
+  - 'Describe Fresnel zones, zone plates and the bright spot in a disc''s shadow'
 ---
 
 :::hook

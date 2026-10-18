@@ -24,6 +24,29 @@ cards:
   - { front: "What does unless mean?", back: "Unless = if ... not. 'Unless you hurry, you will be late' means 'If you do not hurry, you will be late'. Never add not after unless." }
   - { front: "Which verb form follows I wish about the present?", back: "The past simple (with were for I/he/she/it in formal English): I wish I were taller. About the past, use the past perfect: I wish I had listened." }
   - { front: "How do you drop if from a conditional?", back: "Invert the helper: Had I known (= If I had known), Were I you (= If I were you), Should you need help (= If you should need help)." }
+core:
+  idea: 'The verb form in an if-sentence shows how real the condition is: real stays in the present; imagined steps one tense back; imagined past steps two back. The past tense here marks distance from reality, not past time.'
+  patterns:
+    - text: 'If + present simple, present simple'
+      label: 'Zero: always true'
+    - text: 'If + present simple, will + base verb'
+      label: 'First: real, likely future'
+    - text: 'If + past simple (were), would + base verb'
+      label: 'Second: unreal now or unlikely'
+    - text: 'If + past perfect, would have + V3'
+      label: 'Third: unreal past'
+  conditions:
+    - 'Ask first whether the condition is real or imagined, then whether it is about the past'
+    - 'Never put will or would directly after if in the four basic types'
+    - 'Unless means if not, so the verb after it is positive'
+    - 'Wishes and as if take the same backshift: past simple for the present, past perfect for the past'
+  sign: 'Never write "If it will rain" or "If I would have money": the if-clause takes the present or the past form, not will or would.'
+outcomes:
+  - 'Name the four conditional types and build each from its pattern'
+  - 'Choose the type by asking whether the condition is real and whether it is about the past'
+  - 'Use unless, in case, provided that and but for correctly'
+  - 'Form mixed conditionals and wishes with the right backshift'
+  - 'Transform and correct conditionals in board-style questions, including inversion such as Had I known'
 ---
 
 :::hook

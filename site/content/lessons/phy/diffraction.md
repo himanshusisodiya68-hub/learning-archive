@@ -26,6 +26,27 @@ cards:
   - { front: "Fresnel distance, and what it means?", back: "$z_F = a^2/\\lambda$. Up to this distance a beam through an aperture $a$ stays roughly the size of the aperture, so ray optics works." }
   - { front: "Angular resolution limit of a circular aperture of diameter $D$?", back: "$\\theta \\approx 1.22\\lambda/D$ (Rayleigh's criterion)." }
   - { front: "Grating equation?", back: "$d\\sin\\theta = n\\lambda$, where $d$ is the spacing of the lines." }
+core:
+  idea: 'Each point of a wavefront across an opening acts as a wavelet source and the wavelets interfere. For a single slit of width $a$ the minima are at $a\sin\theta = n\lambda$ ($n \ne 0$), so the central maximum has angular width $2\lambda/a$, and narrower openings spread light more.'
+  formulas:
+    - tex: 'a\sin\theta = n\lambda,\quad n = \pm1, \pm2, \dots'
+      label: 'Minima of a single slit'
+    - tex: 'I = I_0\left(\frac{\sin\beta}{\beta}\right)^2,\quad \beta = \frac{\pi a\sin\theta}{\lambda}'
+      label: 'Single-slit intensity'
+    - tex: '\theta \approx 1.22\,\frac{\lambda}{D}'
+      label: 'Rayleigh limit for a circular aperture of diameter $D$'
+  conditions:
+    - 'A parallel monochromatic beam falls normally on the slit'
+    - 'The screen is far away, or a lens is used (far-field, Fraunhofer diffraction)'
+    - 'The slit is long and narrow, so the problem is one-dimensional'
+    - 'For linear widths such as $2\lambda D/a$, the angles are small'
+  sign: 'In a single slit, $a\sin\theta = n\lambda$ gives dark, the opposite of Young''s bright condition, and $n = 0$ is the central maximum.'
+outcomes:
+  - 'Explain diffraction as interference of wavelets and say when it is noticeable'
+  - 'Derive the single-slit minima and find the width of the central maximum'
+  - 'Use the intensity curve $(\sin\beta/\beta)^2$ and combine it with the double-slit pattern, including missing orders'
+  - 'Use the Fresnel distance $a^2/\lambda$ to say when ray optics holds, and the Rayleigh criterion for resolving power'
+  - 'Apply the grating equation $d\sin\theta = n\lambda$, its dispersion and its resolving power $nN$'
 ---
 
 :::hook

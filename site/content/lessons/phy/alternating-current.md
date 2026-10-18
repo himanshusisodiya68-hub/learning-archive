@@ -26,6 +26,26 @@ cards:
   - { front: "rms of half-wave rectified, full-wave rectified, square and triangular waves of peak V₀?", back: "$V_0/2$, $V_0/\\sqrt2$, $V_0$, $V_0/\\sqrt3$." }
   - { front: "rms of v = V_d + V₀ sin ωt?", back: "$\\sqrt{V_d^2 + V_0^2/2}$. The cross term $2V_dV_0\\sin\\omega t$ averages to zero." }
   - { front: "Amplitude of A₁ sin ωt + A₂ sin(ωt + φ)?", back: "$A = \\sqrt{A_1^2 + A_2^2 + 2A_1A_2\\cos\\varphi}$, the length of the phasor sum." }
+core:
+  idea: 'A coil of $N$ turns and area $A$ rotating at angular speed $\omega$ in a uniform field $B$ gives a sinusoidal emf $\varepsilon = NBA\omega\sin\omega t$. An AC is rated by its rms value, the DC that heats equally: $V_{rms} = V_0/\sqrt2$.'
+  formulas:
+    - tex: '\varepsilon = NBA\omega\sin\omega t'
+      label: 'AC generator emf'
+    - tex: 'V_{rms} = \frac{V_0}{\sqrt2},\qquad I_{rms} = \frac{I_0}{\sqrt2}'
+      label: 'rms values of a sinusoid'
+    - tex: '\bar P = V_{rms}I_{rms} = I_{rms}^2 R'
+      label: 'Average power in a resistor'
+  conditions:
+    - 'Uniform field and a coil rotating at constant $\omega$'
+    - 'Purely sinusoidal waveform (the factor $\sqrt2$ holds only for a sinusoid)'
+    - 'Resistive load, so voltage and current are in phase; averages taken over a whole number of cycles'
+  sign: 'The emf is largest when the coil''s plane is parallel to $\vec B$ (flux zero, changing fastest) and zero when the flux is maximum.'
+outcomes:
+  - 'Explain why mains is AC and how a rotating coil makes it'
+  - 'Write an AC as $V_0\sin\omega t$ and convert between peak, rms, frequency and $\omega$'
+  - 'Calculate the average power in a resistor using rms values'
+  - 'Find the rms value of other waveforms (rectified, square, triangular, offset) and the reading of AC meters'
+  - 'Add sinusoids as phasors and use $\overline{ab} = \tfrac12AB\cos\varphi$; outline three-phase supply'
 ---
 
 :::hook

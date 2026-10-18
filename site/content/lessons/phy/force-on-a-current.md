@@ -28,6 +28,24 @@ cards:
   - { front: "Force on a bent wire from A to B in a uniform field?", back: "The same as on the straight wire from A to B: $\\mathbf F = I\\,\\overrightarrow{AB}\\times\\mathbf B$. A closed loop in a uniform field feels zero net force, though it may feel a torque." }
   - { front: "Kick given by a short current pulse to a rod of length $l$?", back: "Impulse $= Bl\\int I\\,dt = Blq$, where $q$ is the charge that passed. The shape of the pulse does not matter." }
   - { front: "Tension in a flexible circular current loop of radius $R$ in a perpendicular field?", back: "$T = BIR$. Each element feels an outward force $BI\\,R\\,d\\varphi$, balanced by $T\\,d\\varphi$ from the tension at its two ends." }
+core:
+  idea: 'A current-carrying wire in a magnetic field feels the sum of the Lorentz forces on its moving charges: $\vec F = I\,\vec l\times\vec B$, perpendicular to both wire and field. In a uniform field a wire of any shape feels the force of the straight chord joining its ends.'
+  formulas:
+    - tex: '\vec F = I\,\vec l\times\vec B,\qquad F = BIl\sin\theta'
+      label: 'Force on a straight wire'
+    - tex: '\vec F = I\,\overrightarrow{AB}\times\vec B'
+      label: 'Wire of any shape in a uniform field'
+  conditions:
+    - 'Uniform magnetic field over the length of wire used'
+    - 'Steady current in a thin wire; only the length actually inside the field counts'
+    - 'The wire''s own field and the Earth''s field are ignored unless given'
+  sign: 'Fleming''s left-hand rule: first finger Field, second finger Current (conventional), thumb Motion. For an electron beam reverse the motion to get the conventional current first.'
+outcomes:
+  - 'State why a current in a field feels a force and find its direction with Fleming''s left-hand rule'
+  - 'Calculate the force on a straight wire using $F = BIl\sin\theta$'
+  - 'Use $\vec F = I\,\vec l\times\vec B$ for a wire of any shape and show that a closed loop has zero net force'
+  - 'Solve rod-on-rails, inclined-plane and hanging-wire equilibrium problems'
+  - 'Use impulse $Blq$ for a current pulse and tension $T = BIR$ for a flexible current loop'
 ---
 
 :::hook

@@ -27,6 +27,26 @@ cards:
   - { front: "Two like charges q and 4q are distance L apart. Where does a third charge feel no force?", back: "Between them, at $L/3$ from $q$ (distance from each $\\propto\\sqrt{\\text{charge}}$). If all three are free, the third must be $-4q/9$." }
   - { front: "Force on a charge q on the axis of a ring (charge Q, radius R) at distance z?", back: "$F = \\dfrac{kQq\\,z}{(R^2+z^2)^{3/2}}$ along the axis; largest at $z = R/\\sqrt2$." }
   - { front: "Earnshaw's theorem in one line?", back: "A charge cannot rest in stable equilibrium under electrostatic forces alone, because the stiffnesses along three perpendicular directions add to zero." }
+core:
+  idea: 'The force between two stationary point charges acts along the line joining them, is proportional to $q_1q_2$ and to $1/r^2$, and is repulsive for like charges and attractive for unlike. Forces from several charges add as vectors.'
+  formulas:
+    - tex: 'F = \frac{1}{4\pi\varepsilon_0}\frac{q_1 q_2}{r^2}'
+      label: 'Coulombs law (magnitude)'
+    - tex: '\mathbf F_{21} = \frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r_{21}^2}\,\hat{\mathbf r}_{21}'
+      label: 'Vector form: force on 2 due to 1'
+    - tex: '\mathbf F_1 = \mathbf F_{12} + \mathbf F_{13} + \dots + \mathbf F_{1n}'
+      label: 'Superposition'
+  conditions:
+    - 'Point charges: size negligible compared with their separation'
+    - 'Charges at rest (or moving slowly), in vacuum or air'
+    - 'Superposition holds: other charges do not alter the two-body force'
+  sign: 'Put signed charges into the vector form: q1q2 > 0 gives repulsion, q1q2 < 0 attraction. Do not also choose a direction by hand.'
+outcomes:
+  - 'Calculate the force between point charges with Coulombs law, converting units correctly'
+  - 'Find the net force on a charge from several charges by vector addition and symmetry'
+  - 'Solve equilibrium problems for hanging spheres and for three collinear charges'
+  - 'Derive the force of a ring on a charge on its axis and the period of small oscillations'
+  - 'Apply the shell theorem, Earnshaws theorem and Kepler-type orbit results to Coulomb forces'
 ---
 
 :::hook

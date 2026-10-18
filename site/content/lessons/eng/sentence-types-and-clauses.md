@@ -24,6 +24,29 @@ cards:
   - { front: "What are the coordinating conjunctions (FANBOYS)?", back: "for, and, nor, but, or, yet, so. They join clauses of equal rank, and a comma usually comes before them when they join two main clauses." }
   - { front: "What is a comma splice, and how do you fix it?", back: "Two main clauses joined only by a comma: 'It was late, we left.' Fix with a full stop, a semicolon, or a conjunction: 'It was late, so we left.'" }
   - { front: "Three kinds of subordinate clause?", back: "Noun clause (does the work of a noun), adjective clause (describes a noun), adverb clause (tells when, where, why, how or on what condition)." }
+core:
+  idea: 'A sentence is built from clauses, each with its own subject and finite verb. A main clause stands alone; a subordinate clause depends on it. Count the clauses and test each one: simple, compound, complex or compound-complex.'
+  patterns:
+    - text: 'One main clause'
+      label: 'Simple'
+    - text: 'Main clause + (and / but / or / so / yet) + main clause'
+      label: 'Compound'
+    - text: 'Main clause + subordinate clause (because, although, if, when, that, who)'
+      label: 'Complex'
+    - text: 'Two or more main clauses + at least one subordinate clause'
+      label: 'Compound-complex'
+  conditions:
+    - 'A clause has a subject and a finite verb; a phrase does not'
+    - 'By purpose a sentence is declarative, interrogative, imperative or exclamatory'
+    - 'A subordinate clause does the work of a noun, an adjective or an adverb'
+    - 'Two main clauses need a conjunction, a semicolon or a full stop; a comma alone is a comma splice'
+  sign: 'Do not call a sentence complex because it is long, and do not punctuate a subordinate clause as a sentence: "Because I was late." is a fragment.'
+outcomes:
+  - 'Tell a phrase from a clause and a main clause from a subordinate clause'
+  - 'Name the four sentence types by purpose'
+  - 'Classify any sentence as simple, compound, complex or compound-complex'
+  - 'Name a subordinate clause as a noun, adjective or adverb clause'
+  - 'Combine and transform sentences and repair fragments, run-ons and comma splices'
 ---
 
 :::hook

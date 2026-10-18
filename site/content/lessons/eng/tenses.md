@@ -24,6 +24,29 @@ cards:
   - { front: "Why is 'I am knowing the answer' wrong?", back: "Know is a stative verb (a state, not an action in progress). Use the simple form: I know the answer." }
   - { front: "Which tense follows 'if' for a likely future?", back: "The present simple: If it rains, we will stay home. Never 'if it will rain'." }
   - { front: "In reported speech after a past reporting verb, what happens to 'I am tired'?", back: "It shifts back one step: He said that he was tired. Present becomes past; past becomes past perfect." }
+core:
+  idea: 'A tense answers two questions: when (present, past, future) and what shape (simple, continuous, perfect, perfect continuous). Continuous = be + V-ing, perfect = have + V3, perfect continuous = have been + V-ing; only the helper changes for time.'
+  patterns:
+    - text: 'Subject + V1 (+ s/es) / V2 / will + V1'
+      label: 'Simple: fact, habit or finished event'
+    - text: 'Subject + am/is/are/was/were/will be + V-ing'
+      label: 'Continuous: in progress'
+    - text: 'Subject + has/have/had/will have + V3'
+      label: 'Perfect: completed, looking back from a point'
+    - text: 'Subject + has/have/had/will have been + V-ing'
+      label: 'Perfect continuous: duration up to a point'
+  conditions:
+    - 'Use the present perfect for a past action linked to now (result now, experience, unfinished period) with no finished time named'
+    - 'Use since with a point in time and for with a length of time, with a perfect form'
+    - 'Use the past perfect only for the earlier of two past events'
+    - 'After if, unless, when, before, after, as soon as and until, use the present simple for the future'
+  sign: 'Never put a finished-time word (yesterday, last year, ago) with the present perfect, or a stative verb in the continuous.'
+outcomes:
+  - 'Name the tense of any verb phrase from its helpers'
+  - 'Choose between simple, continuous and perfect forms by the shape of the action'
+  - 'Use since, for, already, yet and just correctly with perfect forms'
+  - 'Keep one time frame in narration and use will correctly in if and time clauses'
+  - 'Fill and correct tense gaps in board-style passages and reported speech'
 ---
 
 :::hook

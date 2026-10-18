@@ -26,6 +26,26 @@ cards:
   - { front: "Gauss's law for magnetism, and with monopoles?", back: "$\\oint\\vec B\\cdot d\\vec S = 0$ for every closed surface. If monopoles of strength $q_m$ existed it would read $\\oint\\vec B\\cdot d\\vec S = \\mu_0 q_{m,\\text{enc}}$." }
   - { front: "Deflection magnetometer: tan A and tan B positions?", back: "Magnet east–west, needle at distance $d$. Tan A (end-on, on the axis): $\\dfrac{\\mu_0}{4\\pi}\\dfrac{2md}{(d^2-l^2)^2} = B_H\\tan\\theta$. Tan B (broadside-on, equatorial): $\\dfrac{\\mu_0}{4\\pi}\\dfrac{m}{(d^2+l^2)^{3/2}} = B_H\\tan\\theta$. Gives $m/B_H$; the oscillation magnetometer gives $mB_H$." }
   - { front: "Dip $I$ at magnetic latitude $\\lambda$ for a dipole Earth?", back: "$\\tan I = 2\\tan\\lambda$. Zero at the magnetic equator, $90^\\circ$ at the magnetic poles. Total field $B_{eq}\\sqrt{1+3\\sin^2\\lambda}$: twice as strong at the poles as at the equator." }
+core:
+  idea: 'A bar magnet is a magnetic dipole of moment $\vec m$ (a crowd of atomic current loops, pointing S to N inside); isolated poles do not exist. At large distance its field is the electric dipole field with $\vec p\to\vec m$ and $1/4\pi\varepsilon_0\to\mu_0/4\pi$.'
+  formulas:
+    - tex: 'B_{\text{axial}} = \frac{\mu_0}{4\pi}\frac{2m}{r^3},\qquad B_{\text{equat}} = \frac{\mu_0}{4\pi}\frac{m}{r^3}'
+      label: 'Far field of a short magnet'
+    - tex: '\vec\tau = \vec m\times\vec B,\qquad U = -\vec m\cdot\vec B'
+      label: 'Dipole in a uniform field'
+    - tex: '\oint \vec B\cdot d\vec S = 0'
+      label: 'Gauss''s law for magnetism'
+  conditions:
+    - 'Short (point) magnet, distance much larger than its length; otherwise use the exact pole-model forms'
+    - 'Uniform external field for the torque and energy results (net force is then zero)'
+    - 'No magnetic monopoles; the Earth treated as a dipole with its field horizontal and vertical parts $B_H$, $B_V$'
+  sign: 'On the axis $\vec B$ is along $\vec m$; on the equatorial line it is opposite to $\vec m$ (outside the magnet the lines run from N to S).'
+outcomes:
+  - 'Explain why magnetic poles always come in pairs and why a magnet is equivalent to a solenoid'
+  - 'Find the field of a bar magnet on its axis and equatorial line'
+  - 'Calculate the torque, energy and oscillation period of a magnet in a uniform field'
+  - 'Use dip, declination and $B_H$, neutral points, and deflection and oscillation magnetometers'
+  - 'Write the full dipole field and the $1/x^4$ force between two magnets'
 ---
 
 :::hook

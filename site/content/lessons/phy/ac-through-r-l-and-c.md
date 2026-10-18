@@ -27,6 +27,24 @@ cards:
   - { front: "Complex impedances of R, L and C?", back: "$Z_R = R$, $Z_L = j\\omega L$, $Z_C = 1/(j\\omega C) = -j/(\\omega C)$. Add in series; add reciprocals in parallel." }
   - { front: "Real coil (R in series with L) on AC?", back: "$I = V/\\sqrt{R^2+\\omega^2L^2}$, current lags by $\\varphi$ with $\\tan\\varphi = \\omega L/R$. Only $R$ takes power: $P = I_{rms}^2R$." }
   - { front: "Cutoff of an RC filter?", back: "$\\omega_c = 1/RC$ (for RL, $R/L$). There the output is $1/\\sqrt2$ of the input, shifted by $45^\\circ$. Output across C: low-pass; across R: high-pass." }
+core:
+  idea: 'In a pure resistor $i$ is in phase with $v$. In a pure inductor $i$ lags $v$ by $\pi/2$ with reactance $X_L = \omega L$; in a pure capacitor $i$ leads $v$ by $\pi/2$ with $X_C = 1/\omega C$. A pure L or C takes no power on average.'
+  formulas:
+    - tex: 'X_L = \omega L,\qquad X_C = \frac{1}{\omega C}'
+      label: 'Reactances (peak or rms current = voltage / reactance)'
+    - tex: 'Z_R = R,\quad Z_L = j\omega L,\quad Z_C = \frac{1}{j\omega C}'
+      label: 'Complex impedances'
+  conditions:
+    - 'Ideal elements: inductor with no resistance, capacitor with no leakage, both linear'
+    - 'Steady state under a single-frequency sinusoidal drive (no switch-on transient)'
+    - 'Voltages or currents of different elements add as phasors, not as numbers'
+  sign: 'Lead and lag refer to the current relative to the voltage: it lags in an inductor and leads in a capacitor. Doubling the frequency doubles $X_L$ but halves $X_C$.'
+outcomes:
+  - 'Compare how R, L and C oppose a current and what each does with energy'
+  - 'Find reactance, current amplitude and phase for a pure L or C and explain the zero average power'
+  - 'Represent voltages and currents as phasors and as complex impedances'
+  - 'Analyse a real coil, parallel branches and RC or RL low-pass and high-pass filters'
+  - 'Explain the switch-on offset of an inductor and treat non-sinusoidal drives harmonic by harmonic'
 ---
 
 :::hook

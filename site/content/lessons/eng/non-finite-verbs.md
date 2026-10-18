@@ -24,6 +24,29 @@ cards:
   - { front: "Which verbs take the bare infinitive?", back: "Modals (can, must, will, should), let, make, help (optional to), had better, would rather, and see/hear/watch + object: She made him laugh. I saw him go." }
   - { front: "What is a dangling participle?", back: "A participle phrase whose doer is not the subject of the main clause. 'Walking home, the rain began' is wrong; 'Walking home, I felt the rain begin' is right." }
   - { front: "Stop to rest or stop resting?", back: "Stop to rest means stop in order to rest. Stop resting means finish the resting. The infinitive gives the purpose; the gerund names the activity that ends." }
+core:
+  idea: 'A non-finite verb (infinitive, gerund, participle) has no tense or subject of its own and works as a noun, adjective or adverb. The word before it decides the form: a preposition takes -ing; a modal takes the bare verb; want, hope and decide take to + verb.'
+  patterns:
+    - text: 'to + base verb (bare verb after a modal, let, make, had better)'
+      label: 'Infinitive'
+    - text: 'preposition / enjoy / avoid / finish + V-ing'
+      label: 'Gerund (a noun)'
+    - text: 'V-ing / V3 / having + V3 + noun'
+      label: 'Participle (an adjective)'
+    - text: 'Participle phrase, + the doer as subject of the main clause'
+      label: 'Participle phrase'
+  conditions:
+    - 'Use -ing after any preposition, including the to in look forward to and be used to'
+    - 'Use to + verb after want, hope, decide, plan, promise and refuse'
+    - 'Use -ing after enjoy, finish, avoid, mind, deny and suggest'
+    - 'A participle phrase must refer to the subject of the main clause; otherwise it dangles'
+  sign: 'After a preposition never use the infinitive: "look forward to meeting", not "to meet".'
+outcomes:
+  - 'Tell a finite verb from an infinitive, gerund or participle'
+  - 'Choose between to + verb, the bare infinitive and -ing after a given word'
+  - 'Distinguish a gerund from a participle by its job'
+  - 'Spot and repair a dangling participle'
+  - 'Combine and transform sentences using infinitives, gerunds and participles in board-style questions'
 ---
 
 :::hook

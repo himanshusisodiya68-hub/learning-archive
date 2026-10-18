@@ -26,6 +26,26 @@ cards:
   - { front: "Where should the metre-bridge balance point be, and why?", back: "Near 50 cm. The fractional error $\\delta l\\,[1/l + 1/(100-l)]$ is smallest there, and end corrections matter least." }
   - { front: "Carey Foster bridge result?", back: "$X - Y = \\lambda\\,(l_2 - l_1)$, where $\\lambda$ is the wire's resistance per cm. End corrections cancel exactly." }
   - { front: "Quarter, half and full strain-gauge bridge outputs?", back: "About $E\\,x/4$, exactly $E\\,x/2$, exactly $E\\,x$, where $x = \\Delta R/R = G_F\\,\\varepsilon$." }
+core:
+  idea: 'A bridge is balanced when no current flows through the galvanometer, which happens exactly when the two midpoints are at the same potential: $R_1/R_2 = R_3/R_4$. This null condition contains no emf, battery resistance or galvanometer resistance.'
+  formulas:
+    - tex: '\frac{R_1}{R_2} = \frac{R_3}{R_4}'
+      label: 'Balance condition (products of opposite arms equal)'
+    - tex: 'S = R\,\frac{100 - l}{l}'
+      label: 'Metre bridge (R in the left gap, l in cm)'
+    - tex: 'X - Y = \lambda\,(l_2 - l_1)'
+      label: 'Carey Foster bridge'
+  conditions:
+    - 'Exact balance: galvanometer current zero, so the two midpoints B and D are at equal potential'
+    - 'Uniform metre-bridge wire, so resistance is proportional to length (end corrections neglected)'
+    - 'Ideal battery and stable resistors that do not heat appreciably'
+  sign: 'Pair the arms correctly: R1/R2 and R3/R4 are the two arms of each path from A to C. In the metre bridge, l is measured on the side of the gap holding R.'
+outcomes:
+  - 'Explain why a null method is accurate and derive the balance condition'
+  - 'Find an unknown resistance with a Wheatstone bridge or a metre bridge'
+  - 'Choose the balance point and ratio arms for best sensitivity, and account for end corrections'
+  - 'Find the galvanometer current in an unbalanced bridge using Thevenins theorem'
+  - 'Use the Carey Foster bridge, and quarter, half and full strain-gauge bridges'
 ---
 
 :::hook

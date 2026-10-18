@@ -35,6 +35,8 @@
     pen: '<path d="M15 4l5 5L9 20H4v-5z"/><path d="M13 6l5 5"/>',
     lesson: '<path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5M8 13h8M8 17h5"/>',
     chapter: '<path d="M5 3h12a2 2 0 0 1 2 2v16l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2z"/>',
+    bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+    alert: '<path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5v.01"/>',
     chev: '<path d="M9 5l7 7-7 7"/>'
   };
   const ico = (name, cls = '') => `<svg viewBox="0 0 24 24" class="ic ${cls}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.lesson}</svg>`;
@@ -168,6 +170,7 @@
   function parseHash() {
     const h = (location.hash || '#home').slice(1);
     if (h.startsWith('lesson~')) { const [, sid, lid] = h.split('~'); return { v: 'lesson', key: `${sid}/${lid}` }; }
+    if (h.startsWith('learn~')) { const [, sid, pid] = h.split('~'); return { v: 'learn', sid, pid }; }
     return { v: ['home', 'learn', 'practice', 'play', 'review', 'lesson'].includes(h) ? h : 'home' };
   }
   function route() {
@@ -200,31 +203,43 @@
       const L = leafByKey(lastKey), n = L.l.problems || 0;
       const got = Object.entries(PG.problems).filter(([k, v]) => k.startsWith(lastKey + '#') && v.r === 'got').length;
       const idx = L.b.leaves.findIndex(l => l.id === L.l.id), next = L.b.leaves[idx + 1];
-      C.innerHTML = `<div class="panel hero s-${L.s.id} tinted"><div>
-        <div style="display:flex;gap:12px;align-items:center;margin-bottom:4px"><span class="tile sm">${ico(L.p.id)}</span><div class="eyebrow">${PG.last ? 'Continue' : 'Start here'} · ${escHTML(L.s.name)} · ${escHTML(L.p.name)} · ${escHTML(L.b.name)}</div></div>
+      C.innerHTML = `<div class="cont s-${L.s.id}">${coverArt(L)}
+        <div class="eyebrow">${PG.last ? 'Continue where you left off' : 'Start here'}</div>
+        <div class="cont-path">${escHTML(L.s.name)} › ${escHTML(L.p.name)} › ${escHTML(L.b.name)}</div>
         <h2>${escHTML(L.l.name)}</h2>
-        <div class="stats"><span><b>Problems</b> ${got} of ${n} solved</span>${next ? `<span><b>Next</b> ${escHTML(next.name)}</span>` : ''}</div>
-        <div class="meter"><i style="width:${n ? Math.round(got / n * 100) : 0}%"></i></div></div>
-        <div class="acts"><button class="btn" data-open="${lastKey}">Open lesson</button><button class="btn ghost" data-open="${lastKey}" data-tab="practice">Practise it</button></div></div>`;
+        ${L.l.summary ? `<p class="cont-sum">${escHTML(L.l.summary)}</p>` : ''}
+        <div class="cont-row"><span class="meter"><i style="width:${n ? Math.round(got / n * 100) : 0}%"></i></span><span>${got} of ${n} problems solved</span>${next ? `<span class="muted">Next: ${escHTML(next.name)}</span>` : ''}</div>
+        <div class="acts"><button class="btn" data-open="${lastKey}">${PG.last ? 'Resume lesson' : 'Open lesson'}</button><button class="btn ghost" data-open="${lastKey}" data-tab="practice">Practise it</button></div></div>`;
     } else C.innerHTML = '';
     const dc = dueCards().length, dp = dueProblems().length;
     $('due-title').textContent = dc + dp ? `${dc + dp} due for review` : 'Nothing due yet';
-    $('due-text').textContent = dc + dp ? `${dc} cards and ${dp} problems, timed to come back just before you forget them.` : 'Add key ideas from a lesson, or rate problems, and they come back here at growing intervals.';
+    $('due-text').textContent = dc + dp ? `${dc} cards and ${dp} problems, timed to come back just before you forget them.` : 'Memorise a core idea or rate problems, and they come back here at growing intervals.';
+    const solved = Object.values(PG.problems).filter(v => v.r === 'got').length;
+    const allLeaves = TREE.subjects.flatMap(s => (s.pillars || []).flatMap(leavesOf));
+    $('stats').innerHTML = [
+      [Object.keys(PG.lessons).length, `of ${live.length} lessons opened`],
+      [solved, 'problems solved'],
+      [Object.keys(PG.cards).length, 'ideas memorised'],
+      [allLeaves.length, 'ideas mapped so far']
+    ].map(([n, t]) => `<div><b>${n}</b><span>${t}</span></div>`).join('');
     $('live-count').textContent = `${live.length} lessons live`;
     $('subj-list').innerHTML = TREE.subjects.map(s => {
-      const allLeaves = (s.pillars || []).flatMap(p => p.branches.flatMap(b => b.leaves.map(l => `${s.id}/${l.id}`)));
-      const pct = allLeaves.length ? Math.round(allLeaves.reduce((a, k) => a + mastery(k), 0) / allLeaves.length * 100) : 0;
-      const nLive = allLeaves.filter(k => leafByKey(k).l.live).length;
-      return `<button class="scard s-${s.id}" data-open-subj="${s.id}"><span class="tile">${ico(SUBJ_ICON[s.id])}</span>
-        <span><span class="nm">${escHTML(s.name)}</span><span class="nx" style="display:block">${s.pillars ? `${allLeaves.length} ideas mapped · ${nLive} lessons live` : 'Tree coming in a later phase'}</span></span>
-        <span class="row2"><span class="meter"><i style="width:${pct}%"></i></span>${pct}%</span></button>`;
+      const ls = (s.pillars || []).flatMap(leavesOf), nLive = countLive(ls), pct = Math.round(avgMastery(s.id, ls) * 100);
+      return `<button class="subj-card s-${s.id} ${s.pillars ? '' : 'soon'}" data-open-subj="${s.id}">
+        <span class="sc-top"><span class="tile">${ico(SUBJ_ICON[s.id])}</span>${s.pillars ? ring(pct, 44) : ''}</span>
+        <span class="sc-name">${escHTML(s.name)}</span>
+        <span class="sc-sub">${s.pillars ? `${nLive} lessons written · ${ls.length} mapped` : 'Tree comes in a later phase'}</span>
+        ${s.pillars ? `<span class="sc-pils">${s.pillars.map(p => `<span title="${escHTML(p.name)}" class="${countLive(leavesOf(p)) ? 'on' : ''}">${ico(p.id)}</span>`).join('')}</span>` : ''}</button>`;
     }).join('');
+    const ready = TREE.subjects.flatMap(s => (s.pillars || []).map(p => ({ s, p, ls: leavesOf(p) }))).filter(x => countLive(x.ls));
+    $('ready').innerHTML = ready.map(({ s, p, ls }) => { const m = Math.round(avgMastery(s.id, ls) * 100);
+      return `<button class="ready-row s-${s.id}" data-ready="${s.id}~${p.id}"><span class="tile sm">${ico(p.id)}</span>
+        <span class="rr-t"><b>${escHTML(p.name)}</b><span>${escHTML(s.name)} · ${countLive(ls)} of ${ls.length} lessons · ${p.branches.length} branches</span></span>
+        <span class="rr-m"><span class="meter"><i style="width:${m}%"></i></span>${m}%</span>${ico('chev', 'chev')}</button>`; }).join('');
   };
   $('continue').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openLesson(b.dataset.open, b.dataset.tab || 'learn'); });
-  $('subj-list').addEventListener('click', e => {
-    const b = e.target.closest('[data-open-subj]'); if (!b) return;
-    Object.assign(S, { subj: b.dataset.openSubj, pillar: null, branch: null, leaf: null, mode: 'subject' }); go('learn');
-  });
+  $('subj-list').addEventListener('click', e => { const b = e.target.closest('[data-open-subj]'); if (b) go('learn~' + b.dataset.openSubj); });
+  $('ready').addEventListener('click', e => { const b = e.target.closest('[data-ready]'); if (b) go('learn~' + b.dataset.ready); });
 
   /* ---------- search ---------- */
   const GROUPS = ['Lessons', 'Topics', 'Problems', 'NCERT chapters'];
@@ -254,7 +269,9 @@
     if (g.problem) { const ps = await getProblems(g.problem); return startSet(ps, leafByKey(g.problem).l.name, g.index); }
     if (g.lesson) return openLesson(g.lesson, 'learn', g.section || null);
     if (g.ncert) { Object.assign(S, { mode: 'class', cls: +g.ncert }); return go('learn'); }
-    Object.assign(S, { subj: g.subj, pillar: g.pillar ?? null, branch: g.branch ?? null, leaf: g.leaf ?? null, mode: 'subject' }); go('learn');
+    const sj = subjOf(g.subj), pl = g.pillar != null && sj && sj.pillars ? sj.pillars[g.pillar] : null;
+    if (pl && g.branch != null) S.focusBranch = 'br-' + pl.branches[g.branch].id;
+    S.mode = 'subject'; go('learn~' + g.subj + (pl ? '~' + pl.id : ''));
   }
   $('q').addEventListener('input', runSearch);
   $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && HITS[0]) { e.preventDefault(); goHit(HITS[0]); } if (e.key === 'Escape') { $('q').value = ''; runSearch(); } });
@@ -265,78 +282,98 @@
   });
 
   /* ================= LEARN ================= */
+  /* Two levels only: a subject page (pillar cards) and a pillar page (each branch once, as a numbered learning path). */
   const lvlTag = l => `<span class="lvl ${l === 'JEE' ? 'jee' : l === 'OLY' ? 'oly' : ''}">${l === 'OLY' ? 'Olympiad' : l === 'JEE' ? 'JEE' : 'Class ' + String(l).slice(1)}</span>`;
+  const leavesOf = p => p.branches.flatMap(b => b.leaves);
+  const countLive = ls => ls.filter(l => l.live).length;
+  const avgMastery = (sid, ls) => ls.length ? ls.reduce((a, l) => a + mastery(`${sid}/${l.id}`), 0) / ls.length : 0;
+  const ring = (pct, size = 64) => `<span class="ring" style="--v:${pct};width:${size}px;height:${size}px"><b>${pct}%</b></span>`;
+  const splitWhat = html => { const i = (html || '').indexOf('</p>'); return i < 0 ? [html || '', ''] : [html.slice(0, i + 4), html.slice(i + 4)]; };
   RENDER.learn = () => {
+    const h = parseHash();
+    if (h.sid && subjOf(h.sid)) { S.subj = h.sid; S.mode = 'subject'; }
+    const s = subjOf(S.subj);
+    S.pillar = h.pid && s.pillars ? s.pillars.findIndex(p => p.id === h.pid) : null;
+    if (S.pillar < 0) S.pillar = null;
     document.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === S.mode));
     $('by-subject').hidden = S.mode !== 'subject'; $('by-class').hidden = S.mode !== 'class'; $('subj-seg').hidden = S.mode !== 'subject';
-    $('subj-seg').innerHTML = TREE.subjects.map(s => `<button aria-pressed="${S.subj === s.id}" data-subj="${s.id}"><span class="dot s-${s.id}"></span>${escHTML(s.name === 'Mathematics' ? 'Maths' : s.name)}</button>`).join('');
-    if (S.mode === 'subject') renderCols(); else renderClasses();
+    $('learn-head').hidden = S.mode === 'subject' && S.pillar != null;
+    $('subj-seg').innerHTML = TREE.subjects.map(x => `<button aria-pressed="${S.subj === x.id}" data-subj="${x.id}"><span class="dot s-${x.id}"></span>${escHTML(x.name === 'Mathematics' ? 'Maths' : x.name)}</button>`).join('');
+    if (S.mode === 'subject') renderTree(); else renderClasses();
+    if (S.focusBranch) { const id = S.focusBranch; S.focusBranch = null; setTimeout(() => { const el = $(id); if (el) el.scrollIntoView({ block: 'start' }); }, 30); }
   };
   function mapSVG(s) {
     const T = s.pillars, cx = 190, cy = 150, R = 108, n = T.length;
     const pts = T.map((p, i) => { const a = (-90 + i * 360 / n) * Math.PI / 180; return [cx + R * Math.cos(a), cy + R * Math.sin(a)]; });
     const spokes = pts.map(([x, y]) => `<line class="spoke" x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}"/>`).join('');
     const nodes = T.map((p, i) => { const [x, y] = pts[i], below = y > cy + 5;
-      return `<g class="node" data-pillar="${i}" tabindex="0" role="button" aria-label="${escHTML(p.name)}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="21"/>
+      return `<g class="node" data-goto-pillar="${p.id}" tabindex="0" role="button" aria-label="${escHTML(p.name)}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="21"/>
         <svg class="glyphs" x="${(x - 11).toFixed(1)}" y="${(y - 11).toFixed(1)}" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${ICONS[p.id] || ''}</svg>
         <text class="nl" x="${x.toFixed(1)}" y="${(below ? y + 35 : y - 28).toFixed(1)}" text-anchor="middle">${escHTML(SHORT[p.name] || p.name)}</text></g>`; }).join('');
-    return `<div class="map"><svg viewBox="0 0 380 300" role="group" aria-label="Map of ${escHTML(s.name)}"><circle class="ring" cx="${cx}" cy="${cy}" r="${R}"/>${spokes}
+    return `<div class="map"><svg viewBox="0 0 380 300" role="group" aria-label="Map of ${escHTML(s.name)}"><circle class="ring-c" cx="${cx}" cy="${cy}" r="${R}"/>${spokes}
       <circle class="hub" cx="${cx}" cy="${cy}" r="34"/><text class="hubt" x="${cx}" y="${cy + 4.5}" text-anchor="middle">${escHTML(s.name === 'Mathematics' ? 'Maths' : s.name)}</text>${nodes}</svg>
-      <div class="map-cap">Tap a pillar to open it. ${RING[s.id] || ''}</div></div>`;
+      <div class="map-cap">${RING[s.id] || ''}</div></div>`;
   }
-  function renderAbout(s, PL, BR) {
-    const el = $('about'); el.hidden = false; el.className = 'panel about s-' + s.id;
-    let eyebrow, title, what, links = '', right, icn;
-    if (!PL) { eyebrow = 'Start here'; title = `What is ${s.name.toLowerCase()}?`; what = s.whatHtml; links = s.linksHtml; icn = SUBJ_ICON[s.id];
-      right = `<h4>Why these ${s.pillars.length} pillars</h4><p class="lede" style="margin:0 0 8px;font-size:13px">${escHTML(s.split || '')}</p>${mapSVG(s)}`; }
-    else if (!BR) { eyebrow = `Pillar of ${s.name}`; title = `What is ${PL.name.toLowerCase()}?`; what = PL.whatHtml; icn = PL.id;
-      right = `<h4>Its ${PL.branches.length} branches</h4><p class="lede" style="margin:0 0 8px;font-size:13px">${escHTML(PL.split || '')}</p><ul class="parts">${PL.branches.map((b, i) => `<li><button data-branch="${i}"><b>${escHTML(b.name)}</b><span>${escHTML(b.tag || '')}</span></button></li>`).join('')}</ul>`; }
-    else { eyebrow = `Branch of ${PL.name}`; title = BR.name; what = BR.whatHtml; icn = PL.id;
-      right = `<h4>Read the ${BR.leaves.length} leaves in this order</h4><ul class="parts">${BR.leaves.map((l, i) => `<li><button data-leaf="${i}"><b>${i + 1}. ${escHTML(l.name)}${l.live ? ' →' : ''}</b><span>${l.from === 'OLY' ? 'Olympiad' : l.from === 'JEE' ? 'JEE' : 'from Class ' + String(l.from).slice(1)}${l.live ? ` · lesson and ${l.problems || 0} problems` : ' · not written yet'}</span></button></li>`).join('')}</ul>`; }
-    el.innerHTML = `<div><div class="eyebrow">${eyebrow}</div><div class="about-title"><span class="tile lg">${ico(icn)}</span><h2>${escHTML(title)}</h2></div><div class="what">${what || '<p>Not written yet.</p>'}</div>${links ? `<div class="links">${links}</div>` : ''}</div><div>${right}</div>`;
-  }
-  function renderCols() {
-    const s = subjOf(S.subj), cr = $('crumbs'), cols = $('cols');
-    if (!s.pillars) { $('about').hidden = true; cr.innerHTML = `<span class="cur">${escHTML(s.name)}</span>`;
-      cols.innerHTML = `<div class="col active" style="grid-column:1/-1"><div class="col-empty">The ${escHTML(s.name)} tree comes in a later phase. It will follow the same pattern as Physics and Maths.</div></div>`; return; }
+  function renderTree() {
+    const s = subjOf(S.subj), host = $('tree-view'), cr = $('crumbs');
+    if (!s.pillars) { cr.innerHTML = `<span class="cur">${escHTML(s.name)}</span>`; host.innerHTML = `<div class="panel empty-card">The ${escHTML(s.name)} tree comes in a later phase. It will follow the same pattern as Physics.</div>`; return; }
     s.pillars.forEach(p => p.branches.forEach(b => { b._sid = s.id; }));
-    const PL = S.pillar != null ? s.pillars[S.pillar] : null, BR = PL && S.branch != null ? PL.branches[S.branch] : null;
-    let c = PL ? `<button data-crumb="root">${escHTML(s.name)}</button>` : `<span class="cur">${escHTML(s.name)}</span>`;
-    if (PL) c += `<span class="sep">›</span>` + (BR ? `<button data-crumb="pillar">${escHTML(PL.name)}</button>` : `<span class="cur">${escHTML(PL.name)}</span>`);
-    if (BR) c += `<span class="sep">›</span><span class="cur">${escHTML(BR.name)}</span>`;
-    cr.innerHTML = c;
-    renderAbout(s, PL, BR);
-    const deepest = BR ? 2 : PL ? 1 : 0;
-    const col1 = `<div class="col ${deepest === 0 ? 'active' : ''}"><div class="col-h eyebrow">Pillars</div><ul class="col-list">${s.pillars.map((p, i) => `<li><button class="row pil s-${s.id}" data-pillar="${i}" aria-selected="${S.pillar === i}"><span class="tile sm">${ico(p.id)}</span><span><span class="t">${escHTML(p.name)}</span><span class="s">${escHTML(p.tag || '')}</span></span><span class="meter"><i style="width:${Math.round(pillarMastery(p) * 100)}%"></i></span>${ico('chev', 'chev')}</button></li>`).join('')}</ul></div>`;
-    const col2 = `<div class="col ${deepest === 1 ? 'active' : ''}"><div class="col-h eyebrow">Branches</div>${PL ? `<ul class="col-list">${PL.branches.map((b, i) => `<li><button class="row s-${s.id}" data-branch="${i}" aria-selected="${S.branch === i}"><span><span class="t">${escHTML(b.name)}</span><span class="s">${escHTML(b.tag || '')}</span></span><span class="meter"><i style="width:${Math.round(branchMastery(b) * 100)}%"></i></span>${ico('chev', 'chev')}</button></li>`).join('')}</ul>` : '<div class="col-empty">Choose a pillar.</div>'}</div>`;
-    let col3 = '<div class="col-empty">Choose a branch.</div>';
-    if (BR) {
-      const sel = S.leaf != null ? BR.leaves[S.leaf] : null;
-      col3 = `<ul class="col-list">${BR.leaves.map((l, i) => `<li><button class="row leafrow s-${s.id} ${l.live ? 'has' : ''}" data-leaf="${i}" aria-selected="${S.leaf === i}"><i class="glyph" style="--p:${mastery(`${s.id}/${l.id}`)}"></i><span class="t">${escHTML(l.name)}</span>${lvlTag(l.from)}</button></li>`).join('')}</ul>`;
-      if (sel) col3 += `<div class="leaf-preview"><h3>${escHTML(sel.name)}</h3>${sel.live
-        ? `<p>Lesson from first principles to Olympiad, with ${sel.problems || 0} problems including every NCERT question on it.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" data-open-lesson="learn">Open lesson</button><button class="btn ghost" data-open-lesson="practice">Practise</button></div>`
-        : `<p>This lesson is not written yet.</p>`}</div>`;
-    }
-    col3 = `<div class="col ${deepest === 2 ? 'active' : ''}"><div class="col-h eyebrow">Leaves · one lesson each</div>${col3}</div>`;
-    cols.innerHTML = col1 + col2 + col3;
+    const PL = S.pillar != null ? s.pillars[S.pillar] : null;
+    cr.innerHTML = PL ? `<button data-goto-subj="${s.id}">${ico(SUBJ_ICON[s.id])}${escHTML(s.name)}</button><span class="sep">›</span><span class="cur">${escHTML(PL.name)}</span>` : '';
+    host.innerHTML = PL ? pillarPage(s, PL) : subjectPage(s);
   }
-  function pickNode(t) {
-    const s = subjOf(S.subj);
-    if (t.dataset.openLesson) return openLesson(`${s.id}/${s.pillars[S.pillar].branches[S.branch].leaves[S.leaf].id}`, t.dataset.openLesson);
-    if (t.dataset.pillar != null) { S.pillar = +t.dataset.pillar; S.branch = S.leaf = null; }
-    else if (t.dataset.branch != null) { S.branch = +t.dataset.branch; S.leaf = null; }
-    else if (t.dataset.leaf != null) {
-      S.leaf = +t.dataset.leaf; const l = s.pillars[S.pillar].branches[S.branch].leaves[S.leaf];
-      if (l.live && (t.closest('#about') || matchMedia('(max-width: 860px)').matches)) return openLesson(`${s.id}/${l.id}`);
-    }
-    renderCols();
+  function subjectPage(s) {
+    const all = s.pillars.flatMap(leavesOf), live = countLive(all), pct = Math.round(avgMastery(s.id, all) * 100);
+    const [first, rest] = splitWhat(s.whatHtml);
+    return `<div class="tv-hero s-${s.id}">
+      <div class="tv-main"><div class="about-title"><span class="tile lg">${ico(SUBJ_ICON[s.id])}</span><div><div class="eyebrow">Subject</div><h2>What is ${escHTML(s.name.toLowerCase())}?</h2></div></div>
+        <div class="what">${first}</div>
+        <details class="more"><summary>Why these ${s.pillars.length} pillars, and how they connect</summary>
+          <div class="more-grid"><div><div class="what">${rest}</div>${s.split ? `<p class="split"><b>How it splits.</b> ${escHTML(s.split)}</p>` : ''}${s.linksHtml ? `<div class="links">${s.linksHtml}</div>` : ''}</div>${mapSVG(s)}</div></details></div>
+      <div class="tv-stats">${ring(pct, 76)}<div><b>${live}</b> of ${all.length} lessons written</div><div class="muted">${s.pillars.length} pillars · ${s.pillars.reduce((a, p) => a + p.branches.length, 0)} branches</div></div>
+    </div>
+    <div class="sec-title">Pillars <span class="eyebrow">open one to see its learning path</span></div>
+    <div class="pil-grid">${s.pillars.map(p => { const ls = leavesOf(p), n = countLive(ls), m = Math.round(avgMastery(s.id, ls) * 100);
+      return `<button class="pil-card s-${s.id} ${n ? '' : 'soon'}" data-goto-pillar="${p.id}">
+        <span class="pc-top"><span class="tile">${ico(p.id)}</span><span class="pc-n">${n ? `${n} / ${ls.length} lessons` : 'coming later'}</span></span>
+        <span class="pc-name">${escHTML(p.name)}</span><span class="pc-tag">${escHTML(p.tag || '')}</span>
+        <span class="pc-br">${p.branches.map(b => `<span class="${countLive(b.leaves) ? 'on' : ''}">${escHTML(b.name)}</span>`).join('')}</span>
+        <span class="pc-foot"><span class="meter"><i style="width:${m}%"></i></span><span>${m}%</span></span></button>`; }).join('')}</div>`;
   }
-  $('cols').addEventListener('click', e => { const t = e.target.closest('[data-pillar],[data-branch],[data-leaf],[data-open-lesson]'); if (t) pickNode(t); });
-  $('about').addEventListener('click', e => { const t = e.target.closest('[data-pillar],[data-branch],[data-leaf]'); if (t) pickNode(t); });
-  $('about').addEventListener('keydown', e => { const n = e.target.closest('.node'); if (n && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pickNode(n); } });
-  $('mode-seg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { S.mode = b.dataset.mode; RENDER.learn(); } });
-  $('subj-seg').addEventListener('click', e => { const b = e.target.closest('[data-subj]'); if (b) { S.subj = b.dataset.subj; S.pillar = S.branch = S.leaf = null; RENDER.learn(); } });
-  $('crumbs').addEventListener('click', e => { const b = e.target.closest('[data-crumb]'); if (!b) return; if (b.dataset.crumb === 'root') S.pillar = S.branch = S.leaf = null; else S.branch = S.leaf = null; renderCols(); });
+  function pillarPage(s, PL) {
+    const ls = leavesOf(PL), pct = Math.round(avgMastery(s.id, ls) * 100);
+    const nextLeaf = PL.branches.flatMap(b => b.leaves).find(l => l.live && !PG.lessons[`${s.id}/${l.id}`]);
+    return `<div class="tv-hero s-${s.id}">
+      <div class="tv-main"><div class="about-title"><span class="tile lg">${ico(PL.id)}</span><div><div class="eyebrow">Pillar of ${escHTML(s.name)}</div><h2>${escHTML(PL.name)}</h2></div></div>
+        <p class="tv-tag">${escHTML(PL.tag || '')}</p>
+        <details class="more"><summary>What is ${escHTML(PL.name.toLowerCase())}, and why these ${PL.branches.length} branches?</summary><div class="what">${PL.whatHtml || ''}</div>${PL.split ? `<p class="split"><b>How it splits.</b> ${escHTML(PL.split)}</p>` : ''}</details></div>
+      <div class="tv-stats">${ring(pct, 76)}<div><b>${countLive(ls)}</b> of ${ls.length} lessons written</div>
+        ${nextLeaf ? `<button class="btn" data-open-leaf="${s.id}/${nextLeaf.id}">Next up: ${escHTML(nextLeaf.name)}</button>` : ''}</div>
+    </div>
+    <nav class="branch-nav" aria-label="Branches">${PL.branches.map((b, i) => `<button data-to-branch="br-${b.id}"><span class="bn">${i + 1}</span>${escHTML(b.name)}<small>${countLive(b.leaves)}/${b.leaves.length}</small></button>`).join('')}</nav>
+    ${PL.branches.map((b, bi) => { const m = Math.round(avgMastery(s.id, b.leaves) * 100);
+      return `<section class="branch s-${s.id}" id="br-${b.id}">
+      <header class="br-h"><span class="bnum">${bi + 1}</span><div class="br-t"><h3>${escHTML(b.name)}</h3><p>${escHTML(b.tag || '')}</p></div>
+        <span class="br-s"><span class="meter"><i style="width:${m}%"></i></span>${countLive(b.leaves)} of ${b.leaves.length} written</span></header>
+      ${b.whatHtml ? `<details class="more sm"><summary>Why this branch, from first principles</summary><div class="what">${b.whatHtml}</div>${b.split ? `<p class="split"><b>Order.</b> ${escHTML(b.split)}</p>` : ''}</details>` : ''}
+      <ol class="path">${b.leaves.map((l, li) => { const k = `${s.id}/${l.id}`, mm = mastery(k);
+        return `<li><button class="stone ${l.live ? 'live' : 'soon'}" ${l.live ? `data-open-leaf="${k}"` : 'disabled'}>
+          <span class="so-n" style="--p:${mm}">${li + 1}</span>
+          <span class="so-t"><b>${escHTML(l.name)}</b><span>${l.live ? escHTML(l.summary || '') : 'Not written yet'}</span></span>
+          <span class="so-x">${lvlTag(l.from)}${l.live ? `<span class="pcount">${l.problems || 0} problems</span>` : ''}</span></button></li>`; }).join('')}</ol>
+    </section>`; }).join('')}`;
+  }
+  $('tree-view').addEventListener('click', e => {
+    const t = e.target.closest('[data-goto-pillar],[data-open-leaf],[data-to-branch]'); if (!t) return;
+    if (t.dataset.gotoPillar) return go(`learn~${S.subj}~${t.dataset.gotoPillar}`);
+    if (t.dataset.openLeaf) return openLesson(t.dataset.openLeaf);
+    const el = $(t.dataset.toBranch); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  $('tree-view').addEventListener('keydown', e => { const n = e.target.closest('.node'); if (n && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go(`learn~${S.subj}~${n.dataset.gotoPillar}`); } });
+  $('crumbs').addEventListener('click', e => { const b = e.target.closest('[data-goto-subj]'); if (b) go('learn~' + b.dataset.gotoSubj); });
+  $('mode-seg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { S.mode = b.dataset.mode; if (S.mode === 'class') go('learn'); RENDER.learn(); } });
+  $('subj-seg').addEventListener('click', e => { const b = e.target.closest('[data-subj]'); if (b) go('learn~' + b.dataset.subj); });
+
 
   function renderClasses() {
     const classes = [6, 7, 8, 9, 10, 11, 12];
@@ -379,16 +416,52 @@
     showLessonTab();
     if (pendingSection) { const id = pendingSection; pendingSection = null; S.depth = 4; applyDepth(); setTimeout(() => { const el = $(id); if (el) el.scrollIntoView({ block: 'start' }); }, 40); }
   };
+  const BANDS = {
+    sci: { 1: ['Class 10', 'The foundation: every student needs this'], 2: ['Class 12 · JEE Main', 'Stop above this line if you only need Class 10'], 3: ['JEE Advanced · Irodov', 'Same core idea, harder situations'], 4: ['Olympiad', 'The idea at full depth'] },
+    eng: { 1: ['Foundation', 'Classes 6 to 8: the rule itself'], 2: ['Class 10 board', 'What the board paper tests'], 3: ['Beyond the board', 'Style and nuance'] }
+  };
+  const ENG_DEPTH = [[1, 'Foundation'], [2, 'Class 10 board'], [3, 'Beyond the board']];
+  let spy = null;
   function buildLesson(root, L, lesson, probs) {
-    const key = lesson.key;
-    const sections = lesson.sections.map(sec => `<section data-lvl="${sec.lvl}" id="${sec.id}" data-toc="${escHTML(sec.title)}"><h2>${sec.titleHtml} <span class="lv l${sec.lvl}">${escHTML(sec.label)}</span></h2>${sec.html}</section>`).join('');
+    const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = isEng ? BANDS.eng : BANDS.sci, D = isEng ? ENG_DEPTH : DEPTH;
+    const wrap = ['s-keys', 's-traps'];
+    const body = lesson.sections.filter(x => !wrap.includes(x.id)), tail = lesson.sections.filter(x => wrap.includes(x.id));
+    const words = lesson.sections.reduce((a, x) => a + (x.text || '').split(/\s+/).length, 0), mins = Math.max(5, Math.round(words / 180 / 5) * 5);
+    let num = 0, maxLvl = 0;
+    const secHTML = sec => { num++; const n = String(num).padStart(2, '0'); sec._n = n;
+      const cls = sec.id === 's-keys' ? ' sec-keys' : sec.id === 's-traps' ? ' sec-traps' : '';
+      return `<section class="sec${cls}" data-lvl="${sec.lvl}" id="${sec.id}"><div class="sec-h"><span class="sec-n">${n}</span><h2>${sec.titleHtml}</h2>${cls ? '' : `<span class="lv l${sec.lvl}">${escHTML(sec.label)}</span>`}</div><div class="sec-b">${sec.html}</div></section>`; };
+    let sections = '';
+    body.forEach(sec => { if (sec.lvl > maxLvl) { maxLvl = sec.lvl; const [bn, bh] = B[sec.lvl] || ['', ''];
+      sections += `<div class="band l${sec.lvl}" data-lvl="${sec.lvl}"><span class="band-n">${escHTML(bn)}</span><span class="band-h">${escHTML(bh)}</span></div>`; }
+      sections += secHTML(sec); });
+    const margin = (lesson.margin || []).map(m => `<div class="mn ${m.kind === 'tip' ? 'tip' : m.kind === 'olympiad' ? 'oly' : ''}"><b>${escHTML(m.title || m.kind)}</b>${m.html}</div>`).join('');
+    if (margin) sections += `<div class="around"><div class="eyebrow">Around this idea</div><div class="around-g">${margin}</div></div>`;
+    sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Wrap-up</span><span class="band-h">What to carry in your head</span></div>` + tail.map(secHTML).join('');
+    const groups = []; body.forEach(sec => { let g = groups.find(x => x.lvl === sec.lvl); if (!g) groups.push(g = { lvl: sec.lvl, secs: [] }); g.secs.push(sec); });
+    if (tail.length) groups.push({ lvl: 0, secs: tail });
+    const c = lesson.core;
+    const coreHTML = c ? `<div class="core">
+        <div class="core-h"><span class="core-badge">${ico('bulb')}</span><div><div class="core-k">The core idea</div><div class="core-s">Memorise this exactly. Every question on this topic is this idea under harder conditions.</div></div></div>
+        <p class="core-idea">${c.ideaHtml}</p>
+        ${c.formulas && c.formulas.length ? `<div class="core-f">${c.formulas.map(f => `<div class="cf">${f.html}${f.label ? `<small>${f.label}</small>` : ''}</div>`).join('')}</div>` : ''}
+        ${c.patterns && c.patterns.length ? `<div class="core-f">${c.patterns.map(p => `<div class="cf pat"><code>${p.text}</code>${p.label ? `<small>${p.label}</small>` : ''}</div>`).join('')}</div>` : ''}
+        ${c.conditions && c.conditions.length ? `<div class="core-c"><b>${isEng ? 'Use it when' : 'Holds exactly when (ideal conditions)'}</b><ul>${c.conditions.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+        ${c.signHtml ? `<div class="core-w">${ico('alert')}<span>${c.signHtml}</span></div>` : ''}
+        <button class="btn quiet sm" data-add-core>${PG.cards[key + '#core'] ? 'In your review cards ✓' : '+ Add to my review cards'}</button>
+      </div>` : '';
+    const outHTML = lesson.outcomes && lesson.outcomes.length ? `<div class="outcomes"><div class="eyebrow">After this lesson you can</div><ol>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ol></div>` : '';
+    const mapHTML = `<div class="lmap"><div class="lmap-h"><b>Lesson map</b><span>${lesson.sections.length} sections · about ${mins} min at full depth</span></div>
+        <div class="depth"><span>Show depth up to</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div></div>
+        <div class="lmap-g">${groups.map(g => `<div class="lmb l${g.lvl}" data-lvl="${g.lvl || 1}"><div class="lmb-h">${g.lvl ? escHTML((B[g.lvl] || [''])[0]) : 'Wrap-up'}</div>${g.secs.map(sec => `<button data-to="${sec.id}"><span class="n">${sec._n}</span><span>${escHTML(sec.title)}</span></button>`).join('')}</div>`).join('')}</div></div>`;
     const needs = (lesson.builds_on || []).map(b => `<span class="chip">${escHTML(b)}</span>`).join('');
     const ncert = (lesson.ncert || []).map(n => `<span>${escHTML(n)}</span>`).join('<span>·</span>');
     root.innerHTML = `
-      <div class="lesson-head s-${L.s.id}">${coverArt(L)}
+      <div class="lesson-head s-${sid}">${coverArt(L)}
         <button class="back" data-back>← ${escHTML(L.s.name)} · ${escHTML(L.p.name)} · ${escHTML(L.b.name)}</button>
         <h1>${escHTML(lesson.title || L.l.name)}</h1>
-        <div class="meta"><span><b>NCERT</b></span>${ncert}<span><b>Goes up to</b> ${escHTML(lesson.up_to || 'Olympiad')}</span></div>
+        ${lesson.summary ? `<p class="lh-sum">${escHTML(lesson.summary)}</p>` : ''}
+        <div class="meta">${ncert ? `<span><b>NCERT</b></span>${ncert}` : '<span><b>Beyond NCERT</b></span>'}<span><b>Up to</b> ${escHTML(lesson.up_to || 'Olympiad')}</span><span><b>${probs.length}</b> problems</span></div>
       </div>
       <div class="ltabs" role="tablist" id="ltabs">
         <button role="tab" data-ltab="learn">Learn</button>
@@ -396,16 +469,16 @@
         <button role="tab" data-ltab="books">From books</button>
         <button role="tab" data-ltab="notes">My notes</button>
       </div>
-      <div class="lpane s-${L.s.id}" data-lpane="learn">
-        <div class="depth"><span>Show depth up to</span><div class="seg" id="depth-seg">${DEPTH.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div></div>
-        <div class="read"><div>
-          ${needs ? `<div class="needs"><span class="eyebrow" style="margin-right:4px">Builds on</span>${needs}</div>` : ''}
-          <div class="prose">${lesson.introHtml}${sections}</div>
+      <div class="lpane s-${sid}" data-lpane="learn">
+        <div class="read"><div class="read-main">
+          <div class="top-grid">${coreHTML}<div class="top-side">${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}</div></div>
+          ${mapHTML}
+          <div class="prose">${lesson.introHtml ? `<div class="intro">${lesson.introHtml}</div>` : ''}${sections}</div>
           <div class="next-step"><div><b>That's the lesson.</b><span>Now test it: ${probs.length} problems, from NCERT to Olympiad.</span></div><button class="btn" data-ltab-go="practice">Go to practice</button></div>
-          ${(() => { const n = lessonNeighbours(key); const cur = L; return (n.prev || n.next) ? `<nav class="lnav" aria-label="Lessons">${n.prev ? lessonCard(n.prev, 'prev', cur) : '<span></span>'}${n.next ? lessonCard(n.next, 'next', cur) : '<span class="lnav-end">That is the last lesson written so far.</span>'}</nav>` : ''; })()}
+          ${(() => { const n = lessonNeighbours(key); return (n.prev || n.next) ? `<nav class="lnav" aria-label="Lessons">${n.prev ? lessonCard(n.prev, 'prev', L) : '<span></span>'}${n.next ? lessonCard(n.next, 'next', L) : '<span class="lnav-end">That is the last lesson written so far.</span>'}</nav>` : ''; })()}
         </div>
-        <aside class="margin">${(lesson.margin || []).map(m => `<div class="mn ${m.kind === 'tip' ? 'tip' : m.kind === 'olympiad' ? 'oly' : ''}"><b>${escHTML(m.title || m.kind)}</b>${m.html}</div>`).join('')}
-          <div class="toc-wrap"><div class="eyebrow" style="margin-bottom:6px">On this page</div><nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}">${escHTML(sec.title)}<span class="lv l${sec.lvl}">${LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
+        <aside class="side"><div class="toc-wrap"><div class="toc-top"><b>On this page</b><span id="read-pct">0%</span></div><div class="readbar"><i id="read-bar"></i></div>
+          <nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
         </aside></div>
       </div>
       <div class="lpane" data-lpane="practice" hidden>
@@ -425,8 +498,22 @@
     const notes = $('notes'); notes.value = PG.notes[key] || '';
     let nt; notes.addEventListener('input', () => { clearTimeout(nt); nt = setTimeout(() => { PG.notes[key] = notes.value; touch(); }, 800); });
     renderLadder(key, probs);
+    if (S.depth > D.length) S.depth = D.length;
     applyDepth();
+    startSpy(root);
   }
+  function startSpy(root) {
+    if (spy) spy.disconnect();
+    const toc = $('toc'); if (!toc || !('IntersectionObserver' in window)) return;
+    spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) toc.querySelectorAll('[data-to]').forEach(b => b.classList.toggle('on', b.dataset.to === en.target.id)); }), { rootMargin: '-15% 0px -75% 0px' });
+    root.querySelectorAll('.sec').forEach(s => spy.observe(s));
+  }
+  window.addEventListener('scroll', () => {
+    const bar = $('read-bar'); if (!bar || parseHash().v !== 'lesson' || S.ltab !== 'learn') return;
+    const pr = document.querySelector('[data-lpane="learn"] .prose'); if (!pr) return;
+    const r = pr.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .4 - r.top) / r.height));
+    bar.style.width = (p * 100).toFixed(1) + '%'; $('read-pct').textContent = Math.round(p * 100) + '%';
+  }, { passive: true });
   function showLessonTab() {
     document.querySelectorAll('#ltabs [data-ltab]').forEach(b => b.setAttribute('aria-selected', b.dataset.ltab === S.ltab));
     document.querySelectorAll('[data-lpane]').forEach(p => p.hidden = p.dataset.lpane !== S.ltab);
@@ -455,10 +542,16 @@
     const d = t.closest('[data-depth]'); if (d) { S.depth = +d.dataset.depth; return applyDepth(); }
     const to = t.closest('[data-to]'); if (to) return $(to.dataset.to).scrollIntoView({ behavior: 'smooth', block: 'start' });
     { const g = t.closest('[data-goto]'); if (g) { openLesson(g.dataset.goto); window.scrollTo(0, 0); return; } }
-    if (t.closest('[data-back]')) { const L = leafByKey(S.lessonKey); Object.assign(S, { subj: L.s.id, pillar: L.pi, branch: L.bi, leaf: L.li, mode: 'subject' }); return go('learn'); }
+    if (t.closest('[data-back]')) { const L = leafByKey(S.lessonKey); S.focusBranch = 'br-' + L.b.id; return go(`learn~${L.s.id}~${L.p.id}`); }
     const qa = t.closest('[data-qa]');
     if (qa) { const box = qa.closest('.qc, .hook'), f = box.querySelector('.qf'), ok = qa.dataset.qa === '1';
       box.querySelectorAll('[data-qa]').forEach(x => x.classList.remove('right', 'wrong')); qa.classList.add(ok ? 'right' : 'wrong'); f.hidden = false; f.innerHTML = ok ? f.dataset.ok : f.dataset.no; return; }
+    const ac = t.closest('[data-add-core]');
+    if (ac) { const lesson = await getLesson(S.lessonKey), c = lesson.core, id = S.lessonKey + '#core';
+      if (c && !PG.cards[id]) { PG.cards[id] = { front: `The core idea of <b>${escHTML(lesson.title)}</b>: state it exactly, with its formula and conditions.`,
+        back: `<p>${c.ideaHtml}</p>${(c.formulas || []).map(f => f.html).join('')}${(c.patterns || []).map(x => `<p><code>${x.text}</code></p>`).join('')}${c.conditions && c.conditions.length ? `<ul>${c.conditions.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}`,
+        where: lesson.title, c: leafByKey(S.lessonKey).s.id, due: today(), iv: 0 }; touch(); updateBadge(); }
+      ac.textContent = 'In your review cards ✓'; ac.disabled = true; return; }
     const ak = t.closest('[data-add-keys]');
     if (ak) { const lesson = await getLesson(S.lessonKey); let n = 0;
       (lesson.cards || []).forEach((c, i) => { const id = `${S.lessonKey}#c${i}`; if (!PG.cards[id]) { PG.cards[id] = { front: c.front, back: c.back, where: lesson.title, c: leafByKey(S.lessonKey).s.id, due: today(), iv: 0 }; n++; } });

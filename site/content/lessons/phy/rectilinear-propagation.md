@@ -24,6 +24,24 @@ cards:
   - { front: "Difference between umbra and penumbra?", back: "Umbra: no light from the source reaches it (full shadow). Penumbra: part of the source is visible (partial shadow). Only extended sources make a penumbra." }
   - { front: "How long does sunlight take to reach the Earth?", back: "About 8 minutes 20 seconds (1.5 × 10¹¹ m ÷ 3 × 10⁸ m/s ≈ 500 s)." }
   - { front: "Illuminance at distance $r$ from a point source of intensity $I$, at angle $\\theta$ to the surface normal?", back: "$E = \\dfrac{I\\cos\\theta}{r^2}$ (inverse-square law with Lambert's cosine factor)." }
+core:
+  idea: 'In a uniform transparent medium light travels in straight lines called rays, so an opaque body casts a shadow. A point source of intensity $I$ spreads its light over $4\pi r^2$, so illuminance falls as $1/r^2$, with a factor $\cos\theta$ for a tilted surface.'
+  formulas:
+    - tex: 'E = \frac{I\cos\theta}{r^2}'
+      label: 'Illuminance from a point source (inverse-square law with Lambert''s cosine law)'
+    - tex: '\frac{h_{\text{image}}}{h_{\text{object}}} = \frac{d_{\text{screen}}}{d_{\text{object}}}'
+      label: 'Pinhole camera, from similar triangles (image inverted)'
+  conditions:
+    - 'The medium is uniform (constant refractive index), so rays do not bend'
+    - 'Apertures and obstacles are much larger than the wavelength, so diffraction is negligible'
+    - 'A point source gives a sharp shadow; an extended source gives an umbra and a penumbra'
+    - 'For the inverse-square law, the source is small compared with the distance and no light is absorbed on the way'
+outcomes:
+  - 'Classify bodies as luminous or non-luminous and materials as transparent, translucent or opaque'
+  - 'Explain shadows and the inverted image of a pinhole camera using straight rays and similar triangles'
+  - 'Distinguish umbra from penumbra and explain solar and lunar eclipses'
+  - 'Apply the inverse-square and cosine laws to find the illuminance on a surface'
+  - 'Explain why a smaller pinhole can give a worse image, and estimate the best size from diffraction'
 ---
 
 :::hook

@@ -27,6 +27,25 @@ cards:
   - { front: "Field at the centre of an arc of angle φ (radians)?", back: "$\\dfrac{\\mu_0 I}{4\\pi R}\\varphi$. Semicircle: $\\mu_0I/4R$. Straight leads pointing at the centre add nothing." }
   - { front: "Field at the centre of a uniformly charged disc (charge Q, radius R) spinning at ω?", back: "Each ring is a current $dI = \\sigma\\omega r\\,dr$, so $B = \\mu_0\\sigma\\omega R/2 = \\mu_0 Q\\omega/(2\\pi R)$." }
   - { front: "Magnetic field of a slowly moving point charge?", back: "$\\vec B = \\dfrac{\\mu_0}{4\\pi}\\dfrac{q\\,\\vec v\\times\\hat r}{r^2} = \\dfrac{\\vec v\\times\\vec E}{c^2}$, so magnetic forces between moving charges are about $v^2/c^2$ of the electric ones." }
+core:
+  idea: 'Each current element $I\,d\vec l$ makes a field $d\vec B = \frac{\mu_0}{4\pi}\frac{I\,d\vec l\times\vec r}{r^3}$: inverse square, perpendicular to both $d\vec l$ and $\vec r$. The field of a circuit is the vector sum (integral) of these contributions.'
+  formulas:
+    - tex: 'd\vec B = \frac{\mu_0}{4\pi}\,\frac{I\,d\vec l\times\vec r}{r^3}'
+      label: 'Biot–Savart law'
+    - tex: 'B = \frac{\mu_0 I R^2}{2\left(R^2+x^2\right)^{3/2}}'
+      label: 'Axis of a circular loop (centre: $\mu_0 I/2R$)'
+    - tex: 'B = \frac{\mu_0 I}{4\pi d}\left(\sin\theta_1+\sin\theta_2\right)'
+      label: 'Finite straight wire'
+  conditions:
+    - 'Steady current in a thin (filamentary) wire, in vacuum'
+    - 'Superposition: total field is the vector sum of the fields of all elements'
+    - 'Infinite straight wire: $\theta_1=\theta_2=90^\circ$; the point-charge form $\vec B = \frac{\mu_0}{4\pi}\frac{q\vec v\times\hat r}{r^2}$ needs $v\ll c$'
+  sign: '$\vec r$ points from the element to the field point; the direction of $d\vec B$ follows the right-hand rule for $d\vec l\times\vec r$.'
+outcomes:
+  - 'State the Biot–Savart law and the direction of the field of a current element'
+  - 'Find the field at the centre and on the axis of a circular loop'
+  - 'Find the field of straight wires, arcs, hairpins and polygon loops by adding contributions'
+  - 'Build the solenoid and Helmholtz coils from stacked loops and use the field of a rotating charge'
 ---
 
 :::hook

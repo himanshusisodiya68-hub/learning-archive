@@ -24,6 +24,29 @@ cards:
   - { front: "Why is 'She gave me many advices' wrong?", back: "Advice is uncountable: it has no plural and does not take many. Say 'a lot of advice', 'some advice' or 'a piece of advice'." }
   - { front: "Singular or plural: 'The news ___ good'?", back: "Singular: The news is good. News, mathematics, physics and measles look plural but take singular verbs." }
   - { front: "Where does the apostrophe go: the boys' hostel or the boy's hostel?", back: "After the s for a plural owner (boys' hostel, many boys); before the s for a singular owner (boy's hostel, one boy). Irregular plurals add 's: children's park." }
+core:
+  idea: 'Every noun answers two questions: how many (countable nouns take a plural; uncountable ones do not) and which one (the = the listener knows which; a/an = one, not yet identified; no article = plural or general).'
+  patterns:
+    - text: 'the + noun (known, unique or specific)'
+      label: 'Definite: the listener can tell which one'
+    - text: 'a / an + singular countable noun (first mention, one of many)'
+      label: 'Indefinite: chosen by the sound of the next word'
+    - text: 'no article + plural or uncountable noun (general sense)'
+      label: 'Zero article'
+    - text: 'owner + ''s (one owner); owners'' (plural in -s)'
+      label: 'Possessive'
+  conditions:
+    - 'Use the when the noun was already mentioned, is unique, is made specific by what follows, follows a superlative or ordinal, or is a river, sea or range'
+    - 'Use a / an only with a singular countable noun, and choose by sound (an hour, a university)'
+    - 'Use no article with plural or uncountable nouns in general, and with meals, languages, subjects, games and most proper nouns'
+    - 'Uncountable nouns (advice, furniture, information, luggage, news) have no plural and take much, not many'
+  sign: 'Never add a/an or -s to an uncountable noun: not "an advice" or "furnitures".'
+outcomes:
+  - 'Name the five kinds of noun and sort a noun as countable or uncountable'
+  - 'Form plurals and possessives correctly, including irregular ones'
+  - 'Choose a, an, the or no article by asking whether the reader already knows which one'
+  - 'Pick the correct verb for collective and singular-looking nouns such as team, news and mathematics'
+  - 'Correct article and noun errors in board-style gap-filling and editing passages'
 ---
 
 :::hook

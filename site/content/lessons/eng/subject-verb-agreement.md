@@ -24,6 +24,29 @@ cards:
   - { front: "Each, every, everyone, nobody: singular or plural?", back: "Singular. Each of the girls has a pen. Everyone is here. Nobody knows the answer." }
   - { front: "Are news, mathematics and physics singular or plural?", back: "Singular, although they end in s. The news is good. Mathematics is my favourite subject." }
   - { front: "'A number of' or 'the number of': which takes a plural verb?", back: "A number of takes a plural verb (A number of students are absent). The number of takes a singular verb (The number of students is small)." }
+core:
+  idea: 'The verb agrees in number with its real subject, the head noun, not the noun nearest to it. Cross out the phrases in between, then match: singular subject takes the singular verb (is, has, -s), plural subject takes the plural verb.'
+  patterns:
+    - text: 'Singular subject (+ of / along with phrase) + singular verb'
+      label: 'Head noun rule'
+    - text: 'Subject A and subject B + plural verb'
+      label: 'Joined by and'
+    - text: 'Subject A or / nor subject B + verb agreeing with B'
+      label: 'Nearer-subject rule'
+    - text: 'There + is / are + real subject'
+      label: 'Verb before subject'
+  conditions:
+    - 'Ignore of-, in-, with-phrases and who-clauses between the subject and the verb'
+    - 'Each, every, everyone, nobody, either and neither are singular; both, few, many and several are plural'
+    - 'News, mathematics and physics are singular; scissors and trousers are plural; a pair of scissors is singular'
+    - 'A number of is plural; the number of is singular'
+  sign: 'Do not match the verb to the nearest noun: "The box of apples are..." should be "The box of apples is...".'
+outcomes:
+  - 'Apply the singular and plural rule with am, is, are, was, were, has, have, does and do'
+  - 'Find the real subject in a sentence with a phrase between subject and verb'
+  - 'Choose the verb after and, or, nor, either...or and neither...nor'
+  - 'Handle collective nouns, amounts, fractions and indefinite pronouns'
+  - 'Fix agreement errors with there is/are and relative clauses in board-style editing questions'
 ---
 
 :::hook

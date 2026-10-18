@@ -28,6 +28,26 @@ cards:
   - { front: "Intensity of a plane wave of field amplitude $E_0$?", back: "$I = \\tfrac12\\varepsilon_0 c E_0^2 = cB_0^2/(2\\mu_0)$. The electric and magnetic energy densities are equal; the mean total is $\\tfrac12\\varepsilon_0E_0^2$." }
   - { front: "Radiation pressure on an absorber and on a perfect reflector (normal incidence)?", back: "$I/c$ on an absorber, $2I/c$ on a perfect reflector. A pulse of energy $U$ carries momentum $U/c$." }
   - { front: "Spectrum in order of increasing frequency?", back: "Radio, microwave, infrared, visible, ultraviolet, X-rays, γ-rays. All travel at $c$ in vacuum; photon energy $h\\nu$ rises in the same order." }
+core:
+  idea: 'A changing $\vec B$ makes $\vec E$ and a changing $\vec E$ makes $\vec B$, so a transverse wave travels in vacuum at $c = 1/\sqrt{\mu_0\varepsilon_0}$, with $\vec E\perp\vec B\perp$ direction of travel, $\vec E\times\vec B$ along it, and $E_0 = cB_0$.'
+  formulas:
+    - tex: 'c = \frac{1}{\sqrt{\mu_0\varepsilon_0}},\qquad \frac{E_0}{B_0} = c = \frac{\omega}{k}'
+      label: 'Speed and the E to B ratio'
+    - tex: 'E_y = E_0\sin(kx-\omega t),\qquad B_z = B_0\sin(kx-\omega t)'
+      label: 'Plane wave travelling along +x'
+    - tex: 'I = \tfrac12\varepsilon_0 c E_0^2'
+      label: 'Intensity (radiation pressure $I/c$ absorbed, $2I/c$ reflected)'
+  conditions:
+    - 'Plane, monochromatic wave in vacuum (in matter $v = c/n$ with $n = \sqrt{\mu_r\varepsilon_r}$)'
+    - 'Far from the source, where the wave is transverse and $E$, $B$ are in phase'
+    - 'Radiation pressure at normal incidence on a perfect absorber or perfect reflector'
+  sign: 'The direction of travel is that of $\vec E\times\vec B$; $kx - \omega t$ means travel along $+x$. $E_0 = cB_0$, not $B_0 = cE_0$.'
+outcomes:
+  - 'Explain how changing fields sustain each other and why the wave needs no medium'
+  - 'Find the directions of $\vec E$, $\vec B$ and travel, and relate $E_0$, $B_0$, $k$, $\omega$ and $c$'
+  - 'Place the types of radiation in the electromagnetic spectrum by wavelength, source and use'
+  - 'Calculate energy density, intensity, momentum and radiation pressure'
+  - 'Derive the wave equation from Maxwell''s equations and explain why accelerated charges radiate (Larmor)'
 ---
 
 :::hook

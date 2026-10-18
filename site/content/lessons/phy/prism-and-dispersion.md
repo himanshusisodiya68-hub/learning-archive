@@ -25,6 +25,27 @@ cards:
   - { front: "What is dispersion and why does it happen?", back: "The splitting of white light into its colours. The refractive index depends on wavelength, so each colour bends by a different amount; violet bends most." }
   - { front: "Define dispersive power.", back: "$\\omega = \\dfrac{n_V - n_R}{n_Y - 1}$, the angular dispersion divided by the mean deviation." }
   - { front: "How is a rainbow formed?", back: "Sunlight is refracted into raindrops, dispersed, reflected once inside each drop and refracted out. The bow appears about 42° from the point opposite the Sun, red outside and violet inside." }
+core:
+  idea: 'A prism of angle $A$ deviates a ray by $\delta = i + e - A$, with $r_1 + r_2 = A$. At minimum deviation the path is symmetric and $n = \sin\frac{A+\delta_m}{2}\big/\sin\frac{A}{2}$. Because $n$ depends on wavelength, white light is dispersed, violet most.'
+  formulas:
+    - tex: '\delta = i + e - A,\quad r_1 + r_2 = A'
+      label: 'Deviation through a prism'
+    - tex: 'n = \frac{\sin\frac{A + \delta_m}{2}}{\sin\frac{A}{2}}'
+      label: 'Refractive index from minimum deviation'
+    - tex: '\delta = (n - 1)A'
+      label: 'Thin prism, small angles'
+  conditions:
+    - 'A prism of uniform glass with plane faces, and a ray in the plane perpendicular to the edge'
+    - 'Monochromatic light for a single value of $n$; white light splits because $n$ varies with colour'
+    - 'The minimum-deviation formula holds only for the symmetric path, $i = e$ and $r_1 = r_2 = A/2$'
+    - 'The thin-prism formula needs small $A$ and small angles; a ray emerges only if $A \le 2\theta_c$'
+  sign: 'Deviation is the angle between the incident ray extended and the emergent ray, towards the base. Violet has the larger $n$, so it is deviated more and travels more slowly in glass.'
+outcomes:
+  - 'Trace a ray through a prism and define the angle of the prism and the angle of deviation'
+  - 'Explain dispersion and the formation of a rainbow'
+  - 'Derive and apply the minimum-deviation formula and the thin-prism result $\delta = (n-1)A$'
+  - 'Calculate angular dispersion and dispersive power, and design achromatic and direct-vision prism pairs'
+  - 'Find when light cannot emerge from a prism, and derive the primary and secondary rainbow angles'
 ---
 
 :::hook

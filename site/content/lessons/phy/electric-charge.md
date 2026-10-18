@@ -27,6 +27,26 @@ cards:
   - { front: "Charging by induction: sign of the final charge?", back: "Opposite to the inducing charge. The rod never touches the body and loses no charge." }
   - { front: "Two conductors of radii $R_1$, $R_2$ far apart, joined by a thin wire: how is charge shared?", back: "In the ratio of the radii, $q_1/q_2 = R_1/R_2$, because both end at the same potential $kq/R$." }
   - { front: "Quark charges, and why we never see $e/3$?", back: "$u$: $+\\tfrac23 e$, $d$: $-\\tfrac13 e$. Quarks are confined inside hadrons, and every allowed combination has an integer total charge." }
+core:
+  idea: 'There are two kinds of charge (like repel, unlike attract), carried by electrons and protons. Charge is additive (a scalar sum), conserved in any isolated system, and quantised: $q = ne$ for every free body.'
+  formulas:
+    - tex: 'q = ne'
+      label: 'Quantisation of charge'
+    - tex: 'e = 1.6\times10^{-19}\ \text{C}'
+      label: 'Elementary charge'
+    - tex: '\sum q_i = \text{constant}'
+      label: 'Conservation (isolated system)'
+  conditions:
+    - 'Isolated system: no charge crosses its boundary, so the total stays fixed'
+    - 'Free, isolatable bodies: fractional quark charges are confined inside hadrons'
+    - 'In solids only electrons move; the nuclei stay in place'
+  sign: 'Only repulsion proves a body is charged; attraction also occurs between a charged body and a neutral one.'
+outcomes:
+  - 'Explain charging by rubbing, contact and induction in terms of electrons gained or lost'
+  - 'Predict the sign of the charge left after induction and earthing'
+  - 'Apply additivity, conservation and quantisation to count charge and electrons'
+  - 'Calculate charge sharing between identical and unequal conductors joined by contact or by a wire'
+  - 'Discuss quarks, local conservation of charge and charge invariance'
 ---
 
 :::hook

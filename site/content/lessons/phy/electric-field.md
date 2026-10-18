@@ -27,6 +27,26 @@ cards:
   - { front: "Field on the axis of a ring (charge $Q$, radius $R$) at distance $z$?", back: "$E = kQz/(z^2+R^2)^{3/2}$ along the axis. Zero at the centre, maximum $2kQ/(3\\sqrt3R^2)$ at $z = R/\\sqrt2$, like a point charge far away." }
   - { front: "Field of a finite straight rod at perpendicular distance $d$, ends at angles $\\alpha, \\beta$ from the perpendicular?", back: "$E_\\perp = (k\\lambda/d)(\\sin\\alpha+\\sin\\beta)$, $E_\\parallel = (k\\lambda/d)|\\cos\\alpha-\\cos\\beta|$. Infinite rod $2k\\lambda/d$; semi-infinite rod (at its end) $\\sqrt2\\,k\\lambda/d$ at $45^\\circ$." }
   - { front: "Do charges move along field lines?", back: "Only in special cases (released from rest on a straight line). The field fixes the acceleration, not the velocity, so on curved lines inertia carries the particle off the line." }
+core:
+  idea: 'The electric field at a point is the force per unit positive test charge, $\vec E = \vec F/q_0$ as $q_0\to0$. Source charges create it, any charge $q$ placed there feels $\vec F = q\vec E$, and fields of several sources add as vectors.'
+  formulas:
+    - tex: '\vec E = \lim_{q_0\to 0}\frac{\vec F}{q_0}'
+      label: 'Definition of the field'
+    - tex: '\vec E = \frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2}\,\hat r'
+      label: 'Field of a point charge'
+    - tex: '\vec F = q\vec E'
+      label: 'Force on a charge in a field'
+  conditions:
+    - 'Test charge small enough not to disturb the source charges'
+    - 'Static sources in vacuum, so Coulombs law and superposition apply'
+    - 'Continuous distributions are treated as many point charges dq, added by integration'
+  sign: 'E points along the force on a positive charge, so the force on a negative charge is opposite to E.'
+outcomes:
+  - 'Define the field and find it for point charges and simple arrangements by vector addition'
+  - 'Draw and interpret field lines, and state their rules'
+  - 'Find the dipole field on the axis and equator, and the torque on a dipole in a uniform field'
+  - 'Integrate, using symmetry, for the field of a ring, disc, rod, arc and hemispherical shell'
+  - 'Analyse charged-particle motion in uniform fields and dipole forces in non-uniform fields'
 ---
 
 :::hook

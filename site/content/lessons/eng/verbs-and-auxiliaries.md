@@ -24,6 +24,29 @@ cards:
   - { front: "Which verb form follows did, does and do?", back: "The base form: Did she go? He does not know. They do not play. Never 'did she went' or 'does he knows'." }
   - { front: "What is the rule for 'each', 'every', 'either' and 'neither'?", back: "They take a singular verb: Each of the boys has a ticket. Neither of the answers is correct." }
   - { front: "Transitive or intransitive?", back: "A transitive verb needs an object (She raised her hand). An intransitive verb does not (The sun rises). Lay, raise and fell are transitive; lie, rise and fall are not." }
+core:
+  idea: 'Every sentence needs a verb that agrees with its real subject. An auxiliary (be, have, do or a modal) carries the tense, person or mood, so the main verb stays in the form the helper demands: base after do or a modal, V3 after have.'
+  patterns:
+    - text: 'do / does / did + subject + base verb (V1)'
+      label: 'Questions and negatives of ordinary verbs'
+    - text: 'modal + base verb (V1): no -s, no to, no second modal'
+      label: 'Modal verbs'
+    - text: 'have / has / had + V3'
+      label: 'Perfect forms'
+    - text: 'linking verb + adjective'
+      label: 'Linking verbs'
+  conditions:
+    - 'Use do, does or did to form questions and negatives of ordinary verbs, and put the main verb back to V1'
+    - 'Use a modal for the speaker''s view: ability, permission, possibility, advice, duty or certainty'
+    - 'The verb agrees with the head noun, not the nearest noun; each, every, either and neither are singular'
+    - 'Only transitive verbs take an object and can form a passive'
+  sign: 'Show the tense or -s once, on the helper: not "Did she went?", "He can sings" or "I have saw".'
+outcomes:
+  - 'Distinguish action, linking and auxiliary verbs and name V1, V2 and V3'
+  - 'Form questions and negatives with do-support'
+  - 'Choose the right modal for ability, advice, obligation or certainty'
+  - 'Make the verb agree with its real subject, including tricky subjects such as news and a number of'
+  - 'Use transitive and intransitive pairs, question tags and finite versus non-finite forms in board-style questions'
 ---
 
 :::hook

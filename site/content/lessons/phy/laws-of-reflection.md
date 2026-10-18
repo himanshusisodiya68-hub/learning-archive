@@ -24,6 +24,26 @@ cards:
   - { front: "Describe the image formed by a plane mirror.", back: "Virtual and erect, the same size as the object, as far behind the mirror as the object is in front, and laterally inverted." }
   - { front: "A plane mirror turns through an angle $\\theta$ while the incident ray stays fixed. How far does the reflected ray turn?", back: "Through $2\\theta$." }
   - { front: "Minimum length of a plane mirror in which you can see your whole height $H$?", back: "$H/2$, whatever your distance from the mirror." }
+core:
+  idea: 'At a smooth surface the angle of reflection equals the angle of incidence, both measured from the normal, and the incident ray, reflected ray and normal lie in one plane. A plane mirror therefore forms a virtual, erect, same-size image as far behind it as the object is in front.'
+  formulas:
+    - tex: 'i = r'
+      label: 'Law of reflection (angles from the normal)'
+    - tex: '\hat{\mathbf{r}} = \hat{\mathbf{i}} - 2(\hat{\mathbf{i}}\cdot\hat{\mathbf{n}})\,\hat{\mathbf{n}}'
+      label: 'Vector form of the law'
+    - tex: '\delta = 360^\circ - 2\theta'
+      label: 'Total deviation after one reflection from each of two mirrors inclined at $	heta$'
+  conditions:
+    - 'The surface is smooth on the scale of the wavelength (regular reflection); a rough surface scatters but still obeys the law patch by patch'
+    - 'At a curved surface the law applies at each point, using the local normal'
+    - 'In a plane mirror the image is the point from which the reflected rays appear to diverge when traced backwards'
+  sign: 'Angles are measured from the normal, not from the mirror: a ray at 30° to the mirror has $i = 60^\circ$.'
+outcomes:
+  - 'State the two laws of reflection and measure angles from the normal'
+  - 'Describe the image in a plane mirror and locate it, including lateral inversion'
+  - 'Find the minimum mirror height needed to see a full-length image'
+  - 'Solve problems on rotating mirrors, inclined mirrors and the number of images'
+  - 'Use the vector form of reflection, and Heron''s shortest-path argument, for corner reflectors and moving mirrors'
 ---
 
 :::hook

@@ -9,6 +9,7 @@ import yaml from 'js-yaml';
 const safeLoad = (txt, file) => { try { return yaml.load(txt); } catch (e) { console.error(`YAML error in ${file}: ${e.reason} (line ${e.mark && e.mark.line + 1})`); process.exit(1); } };
 import katex from 'katex';
 import { marked } from 'marked';
+const escHtml = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const C = p => path.join(ROOT, 'content', p);
@@ -104,7 +105,15 @@ function parseLesson(file) {
     const html = renderBody(text);
     return { id, lvl, title: head, titleHtml: mdi(head), label: a.label || LEVEL_LABEL[lvl], html, text: stripTags(html).slice(0, 4000) };
   });
-  return { ...meta, introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
+  const co = meta.core;
+  const core = co ? {
+    ideaHtml: mdi(co.idea || ''),
+    formulas: (co.formulas || []).map(f => ({ html: katex.renderToString(String(f.tex), { displayMode: true, throwOnError: false, strict: 'ignore' }), label: f.label ? mdi(f.label) : '' })),
+    patterns: (co.patterns || []).map(x => ({ text: escHtml(String(x.text)), label: x.label ? mdi(x.label) : '' })),
+    conditions: (co.conditions || []).map(c => mdi(c)),
+    signHtml: co.sign ? mdi(co.sign) : ''
+  } : null;
+  return { ...meta, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
     cards: (meta.cards || []).map(c => ({ front: mdi(c.front), back: md(c.back) })) };
 }
 
@@ -156,7 +165,7 @@ for (const s of tree.subjects) {
           const lesson = parseLesson(lf);
           lesson.key = key; lesson.problems = probs.length;
           write(`data/lessons/${s.id}--${l.id}.json`, lesson);
-          l.live = true; liveCount++;
+          l.live = true; liveCount++; l.summary = lesson.summary || ''; l.sections = lesson.sections.length;
           search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: l.name, path: `${s.name} › ${p.name} › ${b.name}`, text: lesson.summary || '', go: { lesson: key } });
           lesson.sections.forEach(sec => search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: sec.title, path: `${l.name} · section`, text: sec.text, go: { lesson: key, section: sec.id } }));
         } else {
@@ -212,6 +221,7 @@ console.log(`built: ${liveCount} lessons, ${problemCount} problems, ${search.len
     const kerr = (txt.match(/katex-error/g) || []).length;
     if (kerr) issues.push(`${dir}/${f}: ${kerr} KaTeX error(s), e.g. ${(txt.match(/katex-error[^>]*title=\\"([^\\]*)/) || [])[1] || ''}`);
     for (const m of txt.matchAll(/data-widget=\\"([^\\]+)\\"/g)) if (!widgets.has(m[1])) issues.push(`${dir}/${f}: unknown widget "${m[1]}"`);
+    if (dir === 'lessons' && (/"core":null/.test(txt) || /"outcomes":\[\]/.test(txt))) issues.push(`${dir}/${f}: missing core idea or outcomes in front matter`);
     if (/(^|[^\w]):::/.test(txt.replace(/<code>[^<]*<\/code>/g, ''))) issues.push(`${dir}/${f}: stray ":::" (unclosed or misspelt block)`);
   }
   if (issues.length) { console.log('LINT:\n  ' + issues.join('\n  ')); process.exitCode = 1; } else console.log('lint: no KaTeX errors, unknown widgets or stray blocks');

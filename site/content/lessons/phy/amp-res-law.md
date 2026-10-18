@@ -27,6 +27,26 @@ cards:
   - { front: "Field of an infinite sheet with surface current density $K$ (A/m)?", back: "$B = \\mu_0 K/2$ on each side, parallel to the sheet and perpendicular to $K$, opposite on the two sides. Tangential $B$ jumps by $\\mu_0 K$ across the sheet." }
   - { front: "Field inside an off-axis cylindrical hole in a rod carrying uniform current density $\\vec J$?", back: "Uniform: $\\vec B = \\tfrac{\\mu_0}{2}\\vec J\\times\\vec d$, where $\\vec d$ runs from the rod's axis to the hole's axis." }
   - { front: "Why does Ampère's law fail for a charging capacitor?", back: "A flat surface on the loop cuts the wire (current $I$), a bulging one through the gap cuts no current. The law needs $\\nabla\\cdot\\vec J = 0$ (steady currents); Maxwell's displacement current repairs it." }
+core:
+  idea: 'The line integral of $\vec B$ round any closed loop equals $\mu_0$ times the net steady current threading the loop. When symmetry makes $B$ constant and along the loop, this gives $B$ in one line.'
+  formulas:
+    - tex: '\oint \vec B\cdot d\vec l = \mu_0\, I_{\text{enc}}'
+      label: 'Ampère''s circuital law'
+    - tex: 'B = \mu_0 n I'
+      label: 'Inside a long solenoid'
+    - tex: 'B = \frac{\mu_0 N I}{2\pi r}'
+      label: 'Inside a toroid'
+  conditions:
+    - 'Steady currents only (no changing electric flux)'
+    - 'High symmetry so that $B$ is constant and tangential on the Amperian loop: infinite straight wire, infinite sheet, coaxial cylinders'
+    - 'Ideal solenoid: infinitely long, tightly wound, field outside taken as zero'
+  sign: '$I_{\text{enc}}$ is positive when its direction is related to the sense of going round the loop by the right-hand rule; currents outside the loop add nothing to the circulation.'
+outcomes:
+  - 'State Ampère''s law and choose an Amperian loop that exploits the symmetry'
+  - 'Find the field of a long wire, inside and outside, using $\mu_0 I_{\text{enc}}$'
+  - 'Derive the fields of a solenoid and a toroid'
+  - 'Handle non-uniform currents, hollow conductors, coaxial cables and current sheets'
+  - 'Find the field in a cavity by superposition and state where the law fails'
 ---
 
 :::hook

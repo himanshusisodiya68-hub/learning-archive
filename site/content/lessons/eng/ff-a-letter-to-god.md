@@ -24,6 +24,18 @@ cards:
   - { front: "What is the irony at the end?", back: "Lencho trusts God fully but calls the post office staff crooks, even though they (and the postmaster) are the ones who helped him." }
   - { front: "What is a non-defining relative clause?", back: "Extra information about a noun whose identity is already clear, set off by commas or dashes: *Lencho, who knew his fields well, ...*" }
   - { front: "Name two metaphors from the story.", back: "'Huge mountains of clouds' (the clouds are as massive as mountains) and 'an ox of a man' (Lencho is as strong and hard-working as an ox)." }
+core:
+  idea: 'Lencho''s faith in God is complete and moving, but it is blind: he thanks God for the postmaster''s kindness and then accuses the very people who helped him. The gap between what he expects and what happens is the story''s gentle irony.'
+  conditions:
+    - 'Character: Lencho is hard-working, sincere and trusting, with one blind spot (he suspects others without checking); the postmaster is kind, practical and respects another person''s belief'
+    - 'Irony needs two sides: what Lencho expects (money from God) and what actually happens (the post office staff are blamed for the shortfall); we know the real sender, and he does not'
+    - 'Message: faith and ordinary human kindness can work together, and two conflicts run through the story, humans against nature and humans against one another'
+outcomes:
+  - 'Retell what happens in the story in a few sentences'
+  - 'Describe Lencho and the postmaster with evidence from the text'
+  - 'Explain the irony and the two conflicts in board-style answers'
+  - 'Identify and explain the metaphors and the narrative voice'
+  - 'Use non-defining relative clauses and emphatic negatives correctly'
 ---
 
 :::hook

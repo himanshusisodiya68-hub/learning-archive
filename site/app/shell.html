@@ -30,34 +30,33 @@
         <div class="suggest" id="suggest"><span>Try</span></div>
         <div id="results" class="sresults" hidden></div>
       </div>
-      <div id="continue"></div>
-      <div class="duo">
-        <div class="panel mini-card">
-          <span class="tile" data-icon="review"></span>
-          <div><h3 id="due-title">Nothing due yet</h3><p id="due-text">Cards and missed problems come back here at growing intervals.</p><a class="btn quiet" href="#review">Open review</a></div>
-        </div>
-        <div class="panel mini-card">
-          <span class="tile" data-icon="shuffle"></span>
-          <div><h3>Today's problem set</h3><p id="daily-text">Problems mixed across levels and topics, so you have to recognise the method yourself.</p><button class="btn quiet" data-start="daily">Start set</button></div>
+      <div class="home-grid">
+        <div id="continue"></div>
+        <div class="home-side">
+          <a class="panel mini-card" href="#review"><span class="tile" data-icon="review"></span><div><h3 id="due-title">Nothing due yet</h3><p id="due-text">Cards and missed problems come back here at growing intervals.</p></div></a>
+          <button class="panel mini-card" data-start="daily"><span class="tile" data-icon="shuffle"></span><div><h3>Today's problem set</h3><p id="daily-text">Mixed across topics and levels, so you learn to pick the method yourself.</p></div></button>
         </div>
       </div>
+      <div class="stats-strip" id="stats"></div>
       <div class="sec-title">Your subjects <span class="eyebrow" id="live-count"></span></div>
-      <div class="subj-cards" id="subj-list"></div>
-      <div class="sec-title">How this archive helps you remember</div>
+      <div class="subj-grid" id="subj-list"></div>
+      <div class="sec-title">Ready to study <span class="eyebrow">pillars with lessons written</span></div>
+      <div class="ready" id="ready"></div>
+      <details class="method"><summary>How this archive helps you remember</summary>
       <div class="principles">
-        <div class="pr"><span class="tile sm" data-icon="question"></span><div><b>Recall before reading</b><span>Every lesson opens with a question, and checks sit between sections. Pulling an answer from memory strengthens it more than rereading does.</span></div></div>
-        <div class="pr"><span class="tile sm" data-icon="calendar"></span><div><b>Spaced reviews</b><span>Cards and missed problems come back at growing intervals, just before you would forget them.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="question"></span><div><b>Core idea first</b><span>Every lesson opens with the one idea to memorise, in exam-ready form, with the ideal conditions under which it holds.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="calendar"></span><div><b>Spaced reviews</b><span>Core ideas and missed problems come back at growing intervals, just before you would forget them.</span></div></div>
         <div class="pr"><span class="tile sm" data-icon="shuffle"></span><div><b>Mixed practice</b><span>Daily sets shuffle topics and levels, so you learn to choose the method, not just apply it.</span></div></div>
-        <div class="pr"><span class="tile sm" data-icon="image"></span><div><b>Words and pictures</b><span>Each idea comes with a diagram or simulation as well as text, giving memory two routes in.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="image"></span><div><b>Words and pictures</b><span>Diagrams and simulations sit beside the text, giving memory two routes in.</span></div></div>
         <div class="pr"><span class="tile sm" data-icon="pen"></span><div><b>Your own words</b><span>The notes tab asks you to explain each idea simply, which shows exactly where your understanding has gaps.</span></div></div>
-      </div>
+      </div></details>
     </section>
 
     <section data-view="learn">
-      <div class="head">
+      <div class="head" id="learn-head">
         <div class="eyebrow">Learn</div>
-        <h1 class="h1">Find an idea and open it</h1>
-        <p class="lede">Each subject is a tree. Pillars split into branches, branches into leaves, and every leaf is one lesson with its own problems.</p>
+        <h1 class="h1">Pick a subject, then a pillar</h1>
+        <p class="lede">Each pillar is a learning path: its branches in order, each branch a numbered list of lessons.</p>
       </div>
       <div class="toolbar">
         <div class="seg" role="group" aria-label="Browse by" id="mode-seg">
@@ -68,8 +67,7 @@
       </div>
       <div id="by-subject">
         <div class="crumbs" id="crumbs"></div>
-        <div class="panel about" id="about"></div>
-        <div class="cols" id="cols"></div>
+        <div id="tree-view"></div>
       </div>
       <div id="by-class" hidden>
         <div class="class-pills" id="class-pills"></div>

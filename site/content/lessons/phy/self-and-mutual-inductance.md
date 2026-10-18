@@ -27,6 +27,26 @@ cards:
   - { front: "Current in an L–R circuit after switching on, and after removing the battery?", back: "Growth $I = \\frac{\\varepsilon}{R}(1-e^{-t/\\tau})$, decay $I = I_0e^{-t/\\tau}$, with $\\tau = L/R$. After one $\\tau$: 63% grown, or 37% left." }
   - { front: "Two inductors in series, with mutual inductance $M$?", back: "$L = L_1 + L_2 \\pm 2M$ (+ when the fluxes aid, − when they oppose). Uncoupled parallel: $1/L = 1/L_1 + 1/L_2$. Coupling coefficient $k = M/\\sqrt{L_1L_2} \\le 1$." }
   - { front: "Why is $M_{12} = M_{21}$?", back: "Set up $I_1$ then $I_2$, or $I_2$ then $I_1$: the work is $\\tfrac12L_1I_1^2 + \\tfrac12L_2I_2^2 + M_{12}I_1I_2$ or the same with $M_{21}$. The final state is the same, so the energy is too." }
+core:
+  idea: 'Flux linkage is proportional to the current that produces it, $N\Phi = LI$ (self) and $N_2\Phi_2 = MI_1$ (mutual), with $L$ and $M$ fixed by geometry and core alone. Hence $\varepsilon = -L\,dI/dt$, and the energy stored is $\tfrac12LI^2$.'
+  formulas:
+    - tex: 'N\Phi = LI,\qquad \varepsilon = -L\frac{dI}{dt}'
+      label: 'Self-inductance'
+    - tex: 'L = \mu_0 n^2 A l'
+      label: 'Long solenoid (multiply by $\mu_r$ with a core)'
+    - tex: 'U = \tfrac12 L I^2'
+      label: 'Energy stored in an inductor'
+  conditions:
+    - 'Air core or linear core, so $L$ does not depend on the current'
+    - 'Long solenoid with ends neglected and a uniform field inside'
+    - 'Ideal inductor has zero resistance; for $M$, coupling $k\le 1$ with $M^2\le L_1L_2$'
+  sign: 'The minus sign is a back emf opposing the change of current. The voltage across an inductor depends on $dI/dt$, not on $I$; the current cannot change abruptly.'
+outcomes:
+  - 'Define self and mutual inductance and give their units'
+  - 'Calculate the inductance of a solenoid, and the mutual inductance of coaxial coils'
+  - 'Find the energy stored in an inductor and the energy density $B^2/2\mu_0$ of the field'
+  - 'Solve L–R growth and decay with $\tau = L/R$ and explain the spark on breaking a circuit'
+  - 'Combine inductors and prove reciprocity and $|M|\le\sqrt{L_1L_2}$ from energy'
 ---
 
 :::hook

@@ -24,6 +24,29 @@ cards:
   - { front: "Correct the sentence: 'He is senior than me.'", back: "He is senior to me. Senior, junior, superior, inferior, prefer and preferable take to, not than." }
   - { front: "Order of adjectives before a noun?", back: "Opinion, size, age, shape, colour, origin, material, purpose: a lovely small old round red Indian wooden toy box." }
   - { front: "Hard or hardly?", back: "Hard is both adjective and adverb: she works hard. Hardly means almost not: she hardly works. They are not related in meaning." }
+core:
+  idea: 'Ask what the describing word is attached to. A noun or pronoun takes an adjective; a verb, an adjective or another adverb takes an adverb. After a linking verb (be, seem, look, smell, taste) the word describes the subject, so use an adjective.'
+  patterns:
+    - text: 'adjective + noun / linking verb + adjective'
+      label: 'Adjective'
+    - text: 'verb + adverb / adverb + adjective or adverb'
+      label: 'Adverb'
+    - text: 'adjective + -er + than / the + adjective + -est (more / most for long words)'
+      label: 'Comparison'
+    - text: 'too + adjective + to + verb / adjective + enough + to + verb'
+      label: 'Too and enough'
+  conditions:
+    - 'Use the comparative (than) for two things and the superlative (the) for three or more; never double the degree'
+    - 'Compare like with like (that of, those of) and exclude the subject with any other'
+    - 'Senior, junior, superior, inferior and prefer take to, not than'
+    - 'Adverbs go after the verb or object (manner, place, time); frequency adverbs go before the main verb and after be'
+  sign: 'Do not use an adjective for an action: "sings beautiful" should be "sings beautifully".'
+outcomes:
+  - 'Decide between an adjective and an adverb by finding the word being described'
+  - 'Form adverbs and the comparative and superlative of regular and irregular words'
+  - 'Order two or three adjectives before a noun naturally'
+  - 'Choose between pairs such as good/well, hard/hardly, few/a few, too/very'
+  - 'Rewrite a sentence in another degree and fix comparison errors in board-style editing'
 ---
 
 :::hook

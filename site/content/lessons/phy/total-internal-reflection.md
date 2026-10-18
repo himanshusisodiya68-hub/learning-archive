@@ -24,6 +24,27 @@ cards:
   - { front: "Why does a diamond sparkle?", back: "Its critical angle is only about 24°, so light entering it is totally reflected many times inside a well-cut stone before leaving through the top." }
   - { front: "Acceptance angle of an optical fibre in air?", back: "$\\sin\\theta_{\\max} = \\sqrt{n_1^2 - n_2^2}$ (core $n_1$, cladding $n_2$), the numerical aperture." }
   - { front: "How wide is the circle of sky a fish sees from below the water surface?", back: "A cone of half-angle $\\theta_c \\approx 48.6^\\circ$ (Snell's window); outside it the surface acts as a mirror." }
+core:
+  idea: 'When light goes from a denser to a rarer medium and the angle of incidence exceeds the critical angle $\theta_c$, where $\sin\theta_c = n_2/n_1$, no refracted ray exists and all the light is reflected.'
+  formulas:
+    - tex: '\sin\theta_c = \frac{n_2}{n_1}'
+      label: 'Critical angle ($n_1 > n_2$; into air, $\sin\theta_c = 1/n$)'
+    - tex: '\sin\theta_{\max} = \sqrt{n_1^2 - n_2^2}'
+      label: 'Acceptance angle of an optical fibre (core $n_1$, cladding $n_2$, light entering from air)'
+    - tex: 'R_{\text{circle}} = h\tan\theta_c'
+      label: 'Lit circle for a lamp at depth $h$, or Snell''s window for a diver'
+  conditions:
+    - 'Light travels from the higher refractive index to the lower one'
+    - 'The angle of incidence, measured from the normal, is greater than $\theta_c$'
+    - 'A smooth, sharp boundary between uniform media, ignoring the evanescent wave that reaches a fraction of a wavelength across it'
+    - 'Monochromatic light, since $\theta_c$ depends on wavelength'
+  sign: 'Check the direction first: total internal reflection never happens going from rarer to denser, and $\theta_c$ is measured from the normal.'
+outcomes:
+  - 'State the two conditions for total internal reflection and compute the critical angle'
+  - 'Explain why diamonds sparkle and how totally reflecting prisms and optical fibres work'
+  - 'Find the lit area for a submerged lamp and the view through Snell''s window'
+  - 'Derive the acceptance angle and numerical aperture of a fibre, and the modal-dispersion delay'
+  - 'Describe the evanescent wave and frustrated total internal reflection'
 ---
 
 :::hook

@@ -24,6 +24,29 @@ cards:
   - { front: "How do you punctuate however between two sentences?", back: "A semicolon or full stop before it and a comma after it: It was late; however, we went on. A comma alone before it is a comma splice." }
   - { front: "Which verb agrees in 'Neither the captain nor the players ___ ready'?", back: "The nearer subject decides: players, so 'were'. The same rule works for either...or." }
   - { front: "What does unless mean, and can it take 'not'?", back: "Unless means if not. It already holds the negative, so write 'Unless you hurry', not 'Unless you do not hurry'." }
+core:
+  idea: 'A linker announces how one idea relates to the next. Name the relation first (addition, contrast, cause, result, condition, time, purpose, example, summing up), then choose a word of that relation. One relation needs one linker.'
+  patterns:
+    - text: 'Clause, + for / and / nor / but / or / yet / so + clause'
+      label: 'Coordinating (equal rank)'
+    - text: 'Subordinating word (because, although, if, unless, when) + clause + main clause'
+      label: 'Subordinating (dependent clause)'
+    - text: 'Clause; however / therefore / moreover, + clause'
+      label: 'Linking adverb'
+    - text: 'although + clause / despite or in spite of + noun or -ing'
+      label: 'Matching the word to what follows'
+  conditions:
+    - 'Use a coordinating conjunction to join equal clauses, with a comma before it'
+    - 'A subordinate clause can come first or second and is a fragment if left alone'
+    - 'A linking adverb needs a full stop or semicolon before it and a comma after it, never a bare comma'
+    - 'Match correlative pairs correctly (neither...nor, no sooner...than, hardly...when) and keep the two halves parallel'
+  sign: 'Never use two linkers for one relation ("Although... but", "Because... so") or "despite of".'
+outcomes:
+  - 'Name the relation between two ideas and pick a linker that shows it'
+  - 'Tell coordinating, subordinating and correlative conjunctions apart and use each correctly'
+  - 'Punctuate linking adverbs such as however and therefore without a comma splice'
+  - 'Choose between although/despite, because/because of, and so that/so...that/in case'
+  - 'Fill gaps, join sentences and correct linker errors in board-style questions'
 ---
 
 :::hook

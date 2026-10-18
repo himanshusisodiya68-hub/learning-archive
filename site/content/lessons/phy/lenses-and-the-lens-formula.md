@@ -26,6 +26,27 @@ cards:
   - { front: "Lens maker's formula?", back: "$\\dfrac1f = (n - 1)\\left(\\dfrac1{R_1} - \\dfrac1{R_2}\\right)$, with $n$ the index of the lens relative to the surrounding medium." }
   - { front: "Half of a convex lens is covered. What happens to the image?", back: "The full image still forms, but it is dimmer, because every part of the lens forms the whole image." }
   - { front: "Displacement method: object and screen D apart, two sharp positions x apart. Focal length?", back: "$f = \\dfrac{D^2 - x^2}{4D}$, possible only if $D \\ge 4f$." }
+core:
+  idea: 'For a thin lens and paraxial rays, object distance $u$, image distance $v$ and focal length $f$ obey $\frac{1}{v}-\frac{1}{u}=\frac{1}{f}$, with $m = v/u$. The focal length is set by the glass and the two radii through the lens maker''s formula.'
+  formulas:
+    - tex: '\frac{1}{v} - \frac{1}{u} = \frac{1}{f}'
+      label: 'Thin-lens formula'
+    - tex: 'm = \frac{h''}{h} = \frac{v}{u}'
+      label: 'Magnification'
+    - tex: '\frac{1}{f} = (n - 1)\left(\frac{1}{R_1} - \frac{1}{R_2}\right)'
+      label: 'Lens maker''s formula (lens in air)'
+  conditions:
+    - 'A thin lens: thickness small compared with the focal length, with distances measured from the optical centre'
+    - 'Paraxial rays, close to the axis and at small angles to it'
+    - 'Monochromatic light, so there is no chromatic aberration'
+    - 'The lens is surrounded by one uniform medium; in a medium $n_m$, replace $n$ by $n/n_m$'
+  sign: 'The lens formula has a minus and $m = +v/u$, whereas the mirror formula has a plus and $m = -v/u$. With New Cartesian signs, $u < 0$, $f > 0$ for convex and $f < 0$ for concave.'
+outcomes:
+  - 'Draw ray diagrams for convex and concave lenses and describe the image for each object position'
+  - 'Apply the lens formula, magnification and power $P = 1/f$ with the New Cartesian sign convention'
+  - 'Use the lens maker''s formula, including a lens placed in a different medium'
+  - 'Find the focal length of lens combinations and of silvered lenses'
+  - 'Solve problems on the displacement method, the $4f$ minimum distance and the achromatic doublet'
 ---
 
 :::hook

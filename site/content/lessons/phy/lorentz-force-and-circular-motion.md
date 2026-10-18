@@ -27,6 +27,26 @@ cards:
   - { front: "Velocity selector condition and maximum cyclotron energy?", back: "Undeflected if $v = E/B$ (E ⊥ B ⊥ v). Cyclotron of radius $R$: $K_{\\max} = q^2B^2R^2/(2m)$." }
   - { front: "Hall voltage across a strip of thickness t (along B) carrying current I?", back: "$V_H = BI/(nqt)$. Its sign gives the sign of the charge carriers." }
   - { front: "Drift velocity in crossed uniform E and B?", back: "$\\mathbf v_d = \\mathbf E\\times\\mathbf B/B^2$, magnitude $E/B$, same for every charge and mass. Released from rest: cycloid of height $2mE/(qB^2)$." }
+core:
+  idea: 'The force on a charge is $\vec F = q(\vec E + \vec v\times\vec B)$. The magnetic part is perpendicular to $\vec v$, so it does no work and changes direction, not speed. In a uniform $\vec B$ the charge moves on a circle of radius $mv/qB$ with a period independent of speed.'
+  formulas:
+    - tex: '\vec F = q\left(\vec E + \vec v\times\vec B\right)'
+      label: 'Lorentz force'
+    - tex: 'r = \frac{mv}{qB},\qquad T = \frac{2\pi m}{qB}'
+      label: 'Circular motion in a uniform field'
+    - tex: 'v = \frac{E}{B}'
+      label: 'Velocity selector (crossed E and B)'
+  conditions:
+    - 'Uniform, steady magnetic field; $\vec v\perp\vec B$ for a circle (otherwise a helix with $v_\parallel$ unchanged)'
+    - 'Point charge in vacuum, non-relativistic speed, no radiation loss'
+    - 'Other forces (gravity, collisions) negligible'
+  sign: 'Find $\vec v\times\vec B$ for a positive charge; reverse it for a negative charge such as an electron. The force is always perpendicular to $\vec v$.'
+outcomes:
+  - 'Find the direction and magnitude of the magnetic force on a moving charge'
+  - 'Derive and use $r = mv/qB$ and the period $2\pi m/qB$ for circular motion'
+  - 'Analyse helical paths and a velocity selector, and use them for $e/m$ and mass spectrometry'
+  - 'Treat a particle entering a field region: chord, exit angle and time spent in the field'
+  - 'Explain the Hall effect, the cyclotron limit, and $\vec E\times\vec B$ drift and cycloids'
 ---
 
 :::hook

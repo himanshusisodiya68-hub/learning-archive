@@ -26,6 +26,26 @@ cards:
   - { front: "Brewster's law?", back: "At incidence $\\theta_B$ with $\\tan\\theta_B = n$, the reflected light is completely polarised (perpendicular to the plane of incidence), and the reflected and refracted rays are at 90°." }
   - { front: "Why is skylight polarised?", back: "Air molecules scatter sunlight as dipole radiators; light scattered at 90° to the sunlight is strongly polarised perpendicular to the plane containing the Sun, the molecule and the observer." }
   - { front: "Three polaroids: P₁ and P₃ crossed, P₂ at θ to P₁. Transmitted fraction of the light leaving P₁?", back: "$\\cos^2\\theta\\sin^2\\theta = \\tfrac14\\sin^2 2\\theta$, maximum $\\tfrac14$ at $\\theta = 45°$ (NCERT Example 10.2)." }
+core:
+  idea: 'Light is a transverse wave: its electric field is perpendicular to the direction of travel. An ideal polaroid passes only the field component along its axis, so polarised light of intensity $I_0$ emerges with $I = I_0\cos^2\theta$ (Malus'' law), and unpolarised light is halved.'
+  formulas:
+    - tex: 'I = I_0\cos^2\theta'
+      label: 'Malus'' law (light already polarised)'
+    - tex: 'I = \frac{I_0}{2}'
+      label: 'Unpolarised light through one ideal polaroid'
+    - tex: '\tan\theta_B = n'
+      label: 'Brewster''s law: reflected light is completely polarised'
+  conditions:
+    - 'An ideal polaroid passes the field component along its pass axis completely and absorbs the perpendicular component completely'
+    - 'Malus'' law applies only to light that is already linearly polarised; natural light has random field directions'
+    - 'Brewster''s law: reflection at a smooth surface between transparent media, with reflected and refracted rays at 90°'
+  sign: 'In multi-polaroid problems $\theta$ is the angle between successive axes; at Brewster''s angle only the reflected light is completely polarised.'
+outcomes:
+  - 'Explain why polarisation shows that light is a transverse wave'
+  - 'Distinguish unpolarised, plane-polarised light and explain how a polaroid works'
+  - 'State and apply Malus'' law, including problems with several polaroids'
+  - 'Derive and apply Brewster''s law, and explain polarisation by scattering'
+  - 'Describe birefringence, quarter-wave and half-wave plates, photoelasticity and optical activity'
 ---
 
 :::hook

@@ -25,6 +25,27 @@ cards:
   - { front: "Fringe spacing of an air wedge of angle $\\alpha$?", back: "$\\beta = \\lambda/(2\\alpha)$; in a wedge of index $n$, $\\lambda/(2n\\alpha)$." }
   - { front: "Radius of the $m$th dark Newton's ring in reflection?", back: "$r_m = \\sqrt{m\\lambda R}$, with a dark spot at the centre." }
   - { front: "Ideal single-layer anti-reflection coating on glass of index $n_g$?", back: "Index $\\sqrt{n_g}$, optical thickness $\\lambda/4$ ($t = \\lambda/4n_c$)." }
+core:
+  idea: 'The two reflections from the faces of a thin film are coherent (division of amplitude). Their optical path difference is $2nt\cos r$, plus $\lambda/2$ for each unmatched reflection from a denser medium, which adds a phase change of $\pi$; whole or half wavelengths then give bright or dark.'
+  formulas:
+    - tex: '\Delta = 2nt\cos r'
+      label: 'Optical path difference between the two reflected rays'
+    - tex: '2nt = \left(m + \tfrac12\right)\lambda'
+      label: 'Bright reflection from a film in air, normal incidence (one phase flip)'
+    - tex: '\beta = \frac{\lambda}{2\alpha}'
+      label: 'Fringe spacing of an air wedge of angle $\alpha$'
+  conditions:
+    - 'The film is uniform and thin, comparable to the wavelength and within the light''s coherence length'
+    - 'Monochromatic light; only the first two reflections matter, since each surface reflects only a few per cent'
+    - 'Count the phase changes: reflection from a higher $n$ adds $\pi$, from a lower $n$ adds nothing, and transmission never changes phase'
+    - 'A wedge or Newton''s-rings gap is small and slowly varying, so the local gap is $t = \alpha x$ or $r^2/2R$'
+  sign: 'Count the phase flips before writing the condition: they swap bright and dark between $m\lambda$ and $(m+\tfrac12)\lambda$.'
+outcomes:
+  - 'Explain the colours of soap bubbles and oil films as interference between two reflections'
+  - 'State when reflection adds a phase change of $\pi$ and write the bright and dark conditions for a film'
+  - 'Find the thinnest film that looks bright or dark for a given wavelength'
+  - 'Analyse air-wedge fringes and use them to measure thickness or test flatness'
+  - 'Derive Newton''s ring radii, quarter-wave anti-reflection coatings and multilayer mirrors'
 ---
 
 :::hook

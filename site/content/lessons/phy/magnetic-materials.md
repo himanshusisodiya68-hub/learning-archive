@@ -27,6 +27,26 @@ cards:
   - { front: "Retentivity and coercivity?", back: "Retentivity: the B (or M) left when H is brought back to zero. Coercivity: the reverse H needed to bring B to zero. Permanent magnets need both large; electromagnet and transformer cores need low coercivity and a thin loop." }
   - { front: "Energy lost per cycle in a ferromagnetic core?", back: "$\\oint H\\,dB$ per unit volume per cycle: the area of the hysteresis loop on a B–H graph. Power = loop area × volume × frequency." }
   - { front: "Boundary conditions at an interface between two magnetic media (no free surface current)?", back: "$B_\\perp$ is continuous, $H_\\parallel$ is continuous. Field lines bend so that $\\tan\\theta_1/\\mu_1 = \\tan\\theta_2/\\mu_2$ (angles from the normal)." }
+core:
+  idea: 'In matter $\vec B = \mu_0(\vec H + \vec M)$: $\vec H$ is fixed by the free current alone and the magnetisation $\vec M$ (moment per unit volume) is the response of atomic moments. For a linear material $\vec M = \chi\vec H$, so $\vec B = \mu_0\mu_r\vec H$ with $\mu_r = 1+\chi$.'
+  formulas:
+    - tex: '\vec B = \mu_0\left(\vec H + \vec M\right)'
+      label: 'Field, intensity and magnetisation'
+    - tex: '\vec M = \chi\vec H,\qquad \mu_r = 1+\chi'
+      label: 'Susceptibility and relative permeability'
+    - tex: '\chi = \frac{C\mu_0}{T}'
+      label: 'Curie''s law (paramagnet)'
+  conditions:
+    - 'Linear, isotropic, homogeneous material (a ferromagnet is non-linear, with hysteresis)'
+    - 'Curie''s law: weak field and not too low a temperature (absolute scale)'
+    - '$H$ depends on the free current only, e.g. $H = nI$ in a long solenoid whatever the core'
+  sign: 'Diamagnet: $\chi < 0$ (induced moment opposes $\vec B$, pushed to weaker field). Paramagnet: $\chi > 0$ small. Ferromagnet: $\chi$ large and positive.'
+outcomes:
+  - 'Distinguish diamagnetic, paramagnetic and ferromagnetic materials by their atomic origin and their $\chi$'
+  - 'Use $\vec B = \mu_0(\vec H + \vec M)$ and $\mu_r = 1+\chi$ in a solenoid with a core'
+  - 'Apply Curie''s law and read a hysteresis loop (retentivity, coercivity, loss per cycle)'
+  - 'Choose materials for permanent magnets, cores and shielding'
+  - 'Find the force on a weak sample in a non-uniform field and the field across a boundary or air gap'
 ---
 
 :::hook

@@ -24,6 +24,29 @@ cards:
   - { front: "When do we drop the 'by' agent?", back: "When the doer is unknown, obvious, unimportant or deliberately hidden: 'My bag was stolen.' 'English is spoken here.'" }
   - { front: "Passive of 'You must close the door'?", back: "The door must be closed. Modal + be + V3." }
   - { front: "How do we change the voice of a command like 'Open the window'?", back: "Let the window be opened. / You are requested to open the window. (For a plain order, the board accepts 'Let the window be opened.')" }
+core:
+  idea: 'Voice is about the subject: active if the subject does the action, passive if it receives it. Only a transitive verb has a passive: the object becomes the subject, be takes the tense of the active verb, and the main verb is always V3.'
+  patterns:
+    - text: 'Object + be (same tense as the active verb) + V3 + by + old subject'
+      label: 'Passive formula'
+    - text: 'is / are / was / were + being + V3'
+      label: 'Continuous passive'
+    - text: 'has / have / had + been + V3; will be + V3'
+      label: 'Perfect and future passive'
+    - text: 'Modal + be + V3; Let + object + be + V3'
+      label: 'Modals and commands'
+  conditions:
+    - 'Change voice only when the verb has an object (is transitive)'
+    - 'Keep the tense of the active verb; be carries the tense and agrees with the new subject'
+    - 'Use the passive when the doer is unknown, obvious, unimportant, or less important than the action, and then drop the by-agent'
+    - 'Change pronoun forms (I becomes me, they becomes them) when they move across'
+  sign: 'The main verb in the passive is always V3: "is wrote" and "was win" are wrong, and an intransitive verb has no passive ("was slept").'
+outcomes:
+  - 'Decide whether a verb can take a passive by finding its object'
+  - 'Build the passive in all tenses using be (being, been) + V3'
+  - 'Change the voice of statements, questions, modals and sentences with two objects'
+  - 'Convert commands and requests and keep the preposition of verb phrases'
+  - 'Choose active or passive for a purpose and correct voice errors in board-style questions'
 ---
 
 :::hook

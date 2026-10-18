@@ -27,6 +27,26 @@ cards:
   - { front: "Why are heater coils made of nichrome rather than copper?", back: "Nichrome has about 60 times the resistivity of copper, hardly changes resistance with temperature, and does not oxidise at red heat." }
   - { front: "Resistance of a wire tapering from radius $a$ to $b$ over length $L$?", back: "$R = \\rho L/(\\pi a b)$, from $\\int \\rho\\,dx/(\\pi r^2)$." }
   - { front: "Resistivity in the free-electron model?", back: "$\\rho = m/(n e^2 \\tau)$, with $n$ the electron density and $\\tau$ the mean time between collisions." }
+core:
+  idea: 'The resistance of a uniform conductor is $R = \rho l/A$: slices in series add resistance along the length, strands in parallel lower it as the area grows, and the resistivity $\rho$ belongs to the material (and its temperature). Locally $\vec J = \sigma\vec E$.'
+  formulas:
+    - tex: 'R = \rho\,\frac{l}{A}'
+      label: 'Resistance of a uniform wire'
+    - tex: 'R = \int \frac{\rho\,dx}{A(x)}'
+      label: 'Non-uniform conductor (slices in series)'
+    - tex: '\rho(T) = \rho_0\,[1 + \alpha\,(T - T_0)]'
+      label: 'Temperature dependence'
+  conditions:
+    - 'Uniform cross-section and resistivity along the current (otherwise integrate over slices)'
+    - 'Constant temperature, with the dimensions fixed (thermal expansion neglected)'
+    - 'Volume stays constant when a wire is stretched or drawn out'
+  sign: 'Stretching a wire to n times its length gives n² R, not nR, because the area shrinks too; folding it in half gives R/4.'
+outcomes:
+  - 'Explain how R depends on length, area, material and temperature, and calculate it from R = ρl/A'
+  - 'Find the new resistance of a wire that is stretched, cut or folded'
+  - 'Use conductivity and the local form J = σE'
+  - 'Apply the temperature coefficient to metals, alloys and semiconductors'
+  - 'Integrate to find the resistance of tapered conductors and of radial flow between spheres or cylinders'
 ---
 
 :::hook

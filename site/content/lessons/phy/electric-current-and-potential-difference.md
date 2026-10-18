@@ -26,6 +26,26 @@ cards:
   - { front: "Microscopic formula for current?", back: "$I = nAv_d e$: carrier density × area × drift speed × charge per carrier. In copper $v_d$ is typically below 1 mm/s." }
   - { front: "EMF versus terminal voltage of a cell delivering current I?", back: "$V = \\varepsilon - Ir$ while discharging; $V = \\varepsilon + Ir$ while being charged; $V = \\varepsilon$ only when no current flows." }
   - { front: "Where does the energy travel from battery to bulb?", back: "Through the fields around the wires: the Poynting vector $\\vec S = \\vec E\\times\\vec B/\\mu_0$ points into a resistor's surface and carries exactly $VI$ per second." }
+core:
+  idea: 'Current is the rate of flow of charge, $I = Q/t$, and potential difference is energy per unit charge, $V = W/Q$. In a steady current charge does not pile up, so a series loop carries one current, and $I = nAv_de$ links it to the drifting carriers.'
+  formulas:
+    - tex: 'I = \frac{Q}{t}'
+      label: 'Current'
+    - tex: 'V = \frac{W}{Q}'
+      label: 'Potential difference'
+    - tex: 'I = nAv_d e'
+      label: 'Microscopic current'
+  conditions:
+    - 'Steady current: no charge accumulates anywhere in the circuit'
+    - 'Ideal ammeter of zero resistance in series; ideal voltmeter of infinite resistance in parallel'
+    - 'Cell treated as an ideal source of fixed potential difference unless internal resistance is included'
+  sign: 'Conventional current flows from + to − outside the cell, opposite to the electron drift in a metal. Terminal voltage is ε − Ir while discharging but ε + Ir while charging.'
+outcomes:
+  - 'Calculate current, charge and number of electrons using I = Q/t'
+  - 'Calculate energy and power from V = W/Q and P = VI'
+  - 'Connect ammeters and voltmeters correctly and read circuit symbols'
+  - 'Use I = nAv_d e to find drift speed, and explain why a bulb lights instantly'
+  - 'Apply EMF, terminal voltage and internal resistance, and explain energy flow by the Poynting vector'
 ---
 
 :::hook

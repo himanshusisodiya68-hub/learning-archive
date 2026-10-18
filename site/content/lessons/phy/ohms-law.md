@@ -27,6 +27,26 @@ cards:
   - { front: "Terminal voltage of a cell (EMF $E$, internal resistance $r$) delivering current $I$?", back: "$V = E - Ir$; while being charged, $V = E + Ir$." }
   - { front: "Which way to connect meters when measuring a small resistance?", back: "Voltmeter directly across the resistor, ammeter outside it. The measured value is $RR_V/(R+R_V)$, slightly low." }
   - { front: "Static vs dynamic resistance?", back: "Static $R = V/I$ at a point; dynamic $r = dV/dI$, the inverse slope of the I–V curve there. They are equal only for an ohmic conductor." }
+core:
+  idea: 'For a metallic conductor at constant temperature the current is proportional to the potential difference across it, $V = IR$, with the resistance $R$ constant. The linearity arises because the drift velocity is proportional to the field, $v_d = eE\tau/m$.'
+  formulas:
+    - tex: 'V = IR'
+      label: 'Ohms law'
+    - tex: 'v_d = \frac{eE}{m}\,\tau'
+      label: 'Drift velocity (Drude)'
+    - tex: '\rho = \frac{m}{ne^2\tau}'
+      label: 'Resistivity'
+  conditions:
+    - 'Constant temperature (and other physical conditions) of the conductor'
+    - 'Metallic conductor: the relaxation time τ does not depend on the field'
+    - 'Ideal source and ideal meters when V = IR is applied to a whole circuit'
+  sign: 'Ohms law is a property of certain materials, not a law of nature: filaments, diodes and thermistors are non-ohmic. On the NCERT graph V is vertical, so slope = R; on an I–V graph the slope is 1/R.'
+outcomes:
+  - 'State Ohms law with its condition and calculate V, I or R from it'
+  - 'Use a rheostat and V–I graphs to control current and find R'
+  - 'Explain Ohms law from drift velocity and collisions, and recognise non-ohmic devices'
+  - 'Apply V = E − Ir to find EMF and internal resistance, and allow for meter loading error'
+  - 'Solve potential-divider and load-line problems'
 ---
 
 :::hook

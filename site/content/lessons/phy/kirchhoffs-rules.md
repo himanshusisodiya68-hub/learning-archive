@@ -27,6 +27,27 @@ cards:
   - { front: "How many independent equations for a network with $b$ branches and $n$ nodes?", back: "$n-1$ junction equations plus $b-n+1$ loop equations, total $b$: one per branch current." }
   - { front: "Terminal voltage of a cell being charged?", back: "$V = \\varepsilon + Ir$: the current enters the positive terminal, so the charger must supply the EMF plus the internal drop." }
   - { front: "Thevenin equivalent of a two-terminal linear network?", back: "A cell of EMF $E_{th}$ = open-circuit voltage, in series with $R_{th}$ = resistance between the terminals with every source replaced by its internal resistance (or $E_{th}/I_{sc}$)." }
+core:
+  idea: 'Junction rule: in a steady state the currents into any junction sum to zero (conservation of charge). Loop rule: round any closed loop the potential changes sum to zero (the electrostatic field is conservative). Together they solve any network of cells and resistors.'
+  formulas:
+    - tex: '\sum I_{\text{in}} = \sum I_{\text{out}}'
+      label: 'Junction rule'
+    - tex: '\sum_{\text{loop}} \Delta V = 0'
+      label: 'Loop rule'
+    - tex: 'V = \varepsilon - Ir\ \ (\text{discharging}),\qquad V = \varepsilon + Ir\ \ (\text{charging})'
+      label: 'Terminal voltage of a cell'
+  conditions:
+    - 'Steady state: no charge accumulates at any junction'
+    - 'No changing magnetic flux through the loop, so the field is conservative'
+    - 'Circuit small compared with the wavelength of its signals (low frequency)'
+    - 'Linear (ohmic) elements when superposition or Thevenins theorem is used'
+  sign: 'Walking along the current through a resistor gives −IR, against it +IR. Crossing a cell from − to + gives +ε whatever the current direction. A negative answer only means the arrow was drawn the wrong way.'
+outcomes:
+  - 'State both rules and the conservation laws behind them'
+  - 'Apply the sign conventions to write loop equations and solve by the branch-current method'
+  - 'Decide whether a cell is charging or discharging and apply V = ε ± Ir'
+  - 'Use nodal analysis, mesh analysis, Millmans rule, superposition and symmetry'
+  - 'Apply Thevenins theorem and explain when the rules fail'
 ---
 
 :::hook

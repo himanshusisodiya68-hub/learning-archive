@@ -26,6 +26,26 @@ cards:
   - { front: "Why are homes wired in parallel?", back: "Each appliance gets the full mains voltage, can be switched on and off independently, and one failure does not cut the others off." }
   - { front: "Resistance across the body diagonal of a cube of resistors R?", back: "$5R/6$. Face diagonal $3R/4$, edge $7R/12$." }
   - { front: "Infinite ladder with series r and shunt R?", back: "$R_\\infty = \\tfrac12\\left(r + \\sqrt{r^2 + 4rR}\\right)$; for $r = R$ it is $\\varphi R \\approx 1.618R$." }
+core:
+  idea: 'In series the same current flows through every resistor and the potential drops add, so $R_s = \sum R_i$. In parallel every resistor has the same potential difference and the currents add, so $1/R_p = \sum 1/R_i$.'
+  formulas:
+    - tex: 'R_s = R_1 + R_2 + R_3 + \dots'
+      label: 'Series'
+    - tex: '\frac{1}{R_p} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \dots'
+      label: 'Parallel'
+    - tex: 'V_k = V\,\frac{R_k}{R_1 + R_2 + \dots}'
+      label: 'Voltage divider (series)'
+  conditions:
+    - 'Steady current, so charge does not accumulate and each resistor obeys Ohms law with a fixed R'
+    - 'Connecting wires of zero resistance'
+    - 'Series: no branch leaves between the resistors. Parallel: both ends of every resistor share the same two nodes'
+  sign: 'After adding reciprocals for a parallel group, invert at the end. In a current divider the other resistor goes on top.'
+outcomes:
+  - 'Calculate the equivalent resistance of series and parallel combinations, and the current and voltage in each resistor'
+  - 'Explain why houses are wired in parallel'
+  - 'Reduce nested networks step by step and apply voltage and current dividers'
+  - 'Use equipotential points, symmetry, balanced bridges, the cube and infinite ladders on harder networks'
+  - 'Apply delta–star transformation, superposition and Fosters theorem to networks with no series or parallel structure'
 ---
 
 :::hook

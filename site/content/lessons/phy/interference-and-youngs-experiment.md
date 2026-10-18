@@ -26,6 +26,27 @@ cards:
   - { front: "Fringe width in Young's experiment?", back: "$\\beta = \\lambda D/d$ (angular width $\\lambda/d$). Bright and dark fringes are equally spaced." }
   - { front: "A glass sheet of thickness $t$, index $\\mu$, covers one slit. What happens to the fringes?", back: "The whole pattern shifts towards the covered slit by $(\\mu - 1)tD/d$; the fringe width is unchanged." }
   - { front: "Phase difference for a path difference $\\Delta$?", back: "$\\phi = \\dfrac{2\\pi}{\\lambda}\\Delta$." }
+core:
+  idea: 'Coherent waves add as fields, so intensity depends on the phase difference $\phi = 2\pi\Delta/\lambda$: bright where $\Delta = n\lambda$ and dark where $\Delta = (n+\tfrac12)\lambda$. In Young''s experiment this gives equally spaced fringes of width $\beta = \lambda D/d$.'
+  formulas:
+    - tex: 'I = I_1 + I_2 + 2\sqrt{I_1 I_2}\cos\phi'
+      label: 'Two coherent beams (equal beams: $I = 4I_0\cos^2\frac{\phi}{2}$)'
+    - tex: '\phi = \frac{2\pi}{\lambda}\,\Delta'
+      label: 'Phase difference from path difference'
+    - tex: '\beta = \frac{\lambda D}{d}'
+      label: 'Fringe width in Young''s double-slit experiment'
+  conditions:
+    - 'The sources are coherent: same frequency and a constant phase difference, obtained by splitting light from one source'
+    - 'Monochromatic light; each colour makes its own pattern'
+    - '$D \gg d$ and small angles, so $\Delta \approx dx/D$'
+    - 'Narrow slits (the diffraction envelope is ignored); the dark fringes are completely dark only if the two beams have equal intensity'
+  sign: 'Maxima need a whole number of wavelengths of path difference, and give $4I_0$, not $2I_0$; the average over the pattern is $2I_0$.'
+outcomes:
+  - 'Apply superposition to find the intensity from two waves, and relate phase difference to path difference'
+  - 'Explain coherence and why two separate lamps do not give fringes'
+  - 'Derive fringe positions and fringe width in Young''s experiment, and predict how they change with $\lambda$, $d$, $D$ and the medium'
+  - 'Handle unequal beams, visibility, a sheet over one slit and white-light fringes'
+  - 'Analyse biprism, Lloyd''s mirror and Michelson set-ups, and the limits set by coherence length and source size'
 ---
 
 :::hook

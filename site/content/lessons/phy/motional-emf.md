@@ -28,6 +28,26 @@ cards:
   - { front: "Distance a rod coasts on rails from speed $v_0$?", back: "$x = mv_0R/(B^2l^2)$; charge through the circuit $Q = mv_0/(Bl)$, from impulse $BlQ = mv_0$." }
   - { front: "Emf of a rod of length $l$ rotating about one end at $\\omega$ in a perpendicular field?", back: "$\\varepsilon = \\tfrac12B\\omega l^2$, the same as $B\\times$ (area swept per second). A disc of radius $R$ gives $\\tfrac12B\\omega R^2$; spokes are in parallel." }
   - { front: "Rod with a capacitor $C$ across the rails, pushed by force $F$?", back: "It accelerates uniformly at $a = F/(m + CB^2l^2)$: the capacitor acts like extra mass $CB^2l^2$." }
+core:
+  idea: 'A conductor of length $l$ moving with velocity $\vec v$ in a field $\vec B$ has emf $\varepsilon = Blv$ (with $l$, $v$, $B$ mutually perpendicular), because the Lorentz force pushes its free charges along it. The same value follows from $-d\Phi_B/dt$.'
+  formulas:
+    - tex: '\varepsilon = Blv'
+      label: 'Motional emf of a moving rod'
+    - tex: 'F = \frac{B^2l^2v}{R}'
+      label: 'Magnetic drag on the rod'
+    - tex: '\varepsilon = \tfrac12 B\omega l^2'
+      label: 'Rod rotating about one end'
+  conditions:
+    - 'Uniform, steady magnetic field; straight rigid rod with $l$, $v$, $\vec B$ mutually perpendicular'
+    - 'Smooth, perfectly conducting rails with all the resistance lumped in $R$'
+    - 'Negligible self-inductance; for the flux rule the circuit must be thin and move with the material'
+  sign: 'The positive end of the rod is the one that $\vec v\times\vec B$ points towards; the magnetic drag always opposes the motion.'
+outcomes:
+  - 'Derive $\varepsilon = Blv$ from the Lorentz force and from the changing flux'
+  - 'Find the current, drag force and power for a rod on rails, and show $Fv = I^2R$'
+  - 'Calculate the emf of a rotating rod or disc and of conductors in the Earth''s field'
+  - 'Solve terminal-speed, coasting and loop-crossing-a-field-edge problems'
+  - 'Treat rods with a battery, capacitor or inductor and explain why the magnetic force does no net work'
 ---
 
 :::hook

@@ -25,6 +25,26 @@ cards:
   - { front: "Two bulbs rated P₁ and P₂ at the same voltage in series across that voltage: which glows brighter?", back: "The lower-rated one (larger resistance). Total power $P_1P_2/(P_1+P_2)$." }
   - { front: "Maximum power transfer from a source of internal resistance r?", back: "When the load $R = r$; then $P_{\\max} = \\mathcal{E}^2/4r$ and the efficiency is only 50%." }
   - { front: "How does the fusing current of a wire depend on its radius?", back: "$I^2 \\propto r^3$, so $I \\propto r^{3/2}$: heat produced $\\propto 1/r^2$, heat lost $\\propto r$." }
+core:
+  idea: 'A charge falling through potential difference $V$ gives up $V$ joules per coulomb, which a resistor turns into heat: $H = VIt = I^2Rt$, with power $P = VI = I^2R = V^2/R$. Choose the form by whether current or voltage is shared.'
+  formulas:
+    - tex: 'H = I^2Rt'
+      label: 'Joules law'
+    - tex: 'P = VI = I^2R = \frac{V^2}{R}'
+      label: 'Electric power'
+    - tex: '1\ \text{kW h} = 3.6\times10^6\ \text{J}'
+      label: 'Kilowatt hour'
+  conditions:
+    - 'Resistor obeys Ohms law with a fixed R (change with temperature ignored)'
+    - 'All the electrical energy is dissipated as heat in the resistor (no motor or other work)'
+    - 'For a rated bulb or heater, R = V_rated²/P_rated stays constant'
+  sign: 'Always say what is held fixed: at the same current the larger resistance heats more; at the same voltage the smaller resistance heats more.'
+outcomes:
+  - 'Calculate heat, power and the cost of electrical energy using Joules law and the kilowatt hour'
+  - 'Find the actual power of rated bulbs and heaters connected in series and in parallel'
+  - 'Use an energy balance to find the efficiency and heating time of a kettle'
+  - 'Derive maximum power transfer at R = r and the r^(3/2) law for fuse wires'
+  - 'Analyse heating with cooling and thermal runaway, and use the local form p = J·E'
 ---
 
 :::hook

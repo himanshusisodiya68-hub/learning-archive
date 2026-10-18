@@ -24,6 +24,29 @@ cards:
   - { front: "What is the difference between should have done and needn't have done?", back: "Should have done: it was the right thing but it did not happen (criticism). Needn't have done: it happened but was not necessary (wasted effort)." }
   - { front: "How do can, may, will and shall change in reported speech after a past reporting verb?", back: "can becomes could, may becomes might, will becomes would, shall becomes would or should. Could, might, would, should and ought to stay the same. Must usually stays must or becomes had to." }
   - { front: "Can you say 'He will can swim next year'?", back: "No. Modals have no infinitive, so two modals cannot stand together. Use a substitute: He will be able to swim next year." }
+core:
+  idea: 'A modal is a helper verb that adds the speaker''s attitude (ability, permission, possibility, advice, duty, certainty) to the next verb, which stays in the bare base form: modal + V1, with no -s, no to and no do.'
+  patterns:
+    - text: 'Subject + modal + base verb (V1)'
+      label: 'Present or future'
+    - text: 'Modal + subject + base verb?'
+      label: 'Question (no do/does/did)'
+    - text: 'Subject + modal + have + V3'
+      label: 'Modal in the past'
+    - text: 'be able to / have to / be allowed to'
+      label: 'Substitutes where a modal has no form'
+  conditions:
+    - 'Must for duty or strong certainty, should or ought to for advice, may or might for possibility, can for ability, shall for offers with I or we'
+    - 'Must not forbids; do not have to and needn''t mean there is no obligation'
+    - 'For a deduction, must means nearly sure it is and can''t means nearly sure it is not'
+    - 'Should have + V3 means it did not happen but should have; needn''t have + V3 means it happened but was unnecessary'
+  sign: 'Never add -s, to or -ing after a modal, and never stack two modals: "She will can come" should be "She will be able to come".'
+outcomes:
+  - 'State the three form rules that separate modals from ordinary verbs'
+  - 'Choose the modal that matches ability, permission, advice, duty or certainty'
+  - 'Distinguish must not from do not have to, and should have from needn''t have'
+  - 'Use substitutes (be able to, have to) and past modals correctly'
+  - 'Backshift modals in reported speech and correct modal errors in board-style editing'
 ---
 
 :::hook

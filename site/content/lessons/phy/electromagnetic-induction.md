@@ -28,6 +28,26 @@ cards:
   - { front: "Peak emf of a coil of N turns, area A, spinning at ω in a uniform field B?", back: "$\\varepsilon = NBA\\omega\\sin\\omega t$, peak $NBA\\omega$, when the plane of the coil is parallel to $\\vec B$ (flux zero but changing fastest)." }
   - { front: "Induced electric field inside and outside a long solenoid of radius R whose field changes at dB/dt?", back: "Circles round the axis. $E = \\dfrac r2\\dfrac{dB}{dt}$ for $r<R$, $E = \\dfrac{R^2}{2r}\\dfrac{dB}{dt}$ for $r>R$, from $\\oint\\vec E\\cdot d\\vec l = -d\\Phi/dt$." }
   - { front: "Why is the induced electric field not electrostatic?", back: "Its line integral round a closed loop is $-d\\Phi/dt \\neq 0$. An electrostatic field has $\\oint\\vec E\\cdot d\\vec l = 0$. So the induced field has closed field lines and no potential function." }
+core:
+  idea: 'An emf is induced in a circuit whenever the magnetic flux through it changes: $\varepsilon = -N\,d\Phi_B/dt$, where $\Phi_B = \vec B\cdot\vec A = BA\cos\theta$. Only the rate of change of flux matters, however the change is produced.'
+  formulas:
+    - tex: '\varepsilon = -N\frac{d\Phi_B}{dt}'
+      label: 'Faraday''s law'
+    - tex: '\Phi_B = \vec B\cdot\vec A = BA\cos\theta'
+      label: 'Magnetic flux'
+    - tex: 'q = \frac{N\,|\Delta\Phi|}{R}'
+      label: 'Charge driven round a circuit'
+  conditions:
+    - 'Thin closed loop of $N$ identical turns; $\theta$ is the angle between $\vec B$ and the normal'
+    - 'Charge formula: total resistance $R$ and negligible self-inductance'
+    - 'The emf exists even in an open circuit; a current needs a closed path'
+  sign: 'The minus sign is Lenz''s law: the induced current opposes the change of flux. A steady flux, however large, gives no emf.'
+outcomes:
+  - 'State the conditions under which a magnet and a coil produce a current'
+  - 'Calculate flux $BA\cos\theta$ and the induced emf from $\varepsilon = -N\,d\Phi/dt$'
+  - 'Find the charge that flows and use a search coil to measure $B$'
+  - 'Derive the emf of a rotating-coil generator and explain eddy currents'
+  - 'Use the induced electric field $\oint\vec E\cdot d\vec l = -d\Phi_B/dt$ for a solenoid and a betatron'
 ---
 
 :::hook

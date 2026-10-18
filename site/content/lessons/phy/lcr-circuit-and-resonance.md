@@ -27,6 +27,26 @@ cards:
   - { front: "Average power in an ac circuit?", back: "$\\langle P\\rangle = V_{rms} I_{rms}\\cos\\phi = I_{rms}^2 R$, with power factor $\\cos\\phi = R/Z$. Only the resistor takes net power; L and C hand energy back each cycle." }
   - { front: "Capacitance in parallel needed to raise the power factor of a load $P$ from $\\cos\\phi_1$ to $\\cos\\phi_2$?", back: "$C = \\dfrac{P(\\tan\\phi_1 - \\tan\\phi_2)}{\\omega V_{rms}^2}$: the capacitor's leading current cancels part of the load's lagging wattless current." }
   - { front: "Frequency of damped LCR oscillations?", back: "$\\omega' = \\sqrt{\\omega_0^2 - R^2/4L^2}$; the charge amplitude decays as $e^{-Rt/2L}$, the energy as $e^{-Rt/L}$. Oscillation stops (critical damping) at $R = 2\\sqrt{L/C}$." }
+core:
+  idea: 'In a series LCR circuit one current flows through all three elements; the phasor triangle gives $Z = \sqrt{R^2 + (X_L - X_C)^2}$. At $\omega_0 = 1/\sqrt{LC}$ the reactances cancel, $Z = R$, and the current is maximum and in phase with the source.'
+  formulas:
+    - tex: 'Z = \sqrt{R^2 + \left(\omega L - \frac{1}{\omega C}\right)^2},\qquad \tan\phi = \frac{X_L - X_C}{R}'
+      label: 'Impedance and phase angle'
+    - tex: '\omega_0 = \frac{1}{\sqrt{LC}},\qquad Q = \frac{\omega_0 L}{R} = \frac{1}{R}\sqrt{\frac{L}{C}}'
+      label: 'Resonance and quality factor'
+    - tex: '\langle P\rangle = V_{rms}I_{rms}\cos\phi,\qquad \cos\phi = \frac{R}{Z}'
+      label: 'Average power and power factor'
+  conditions:
+    - 'Series circuit, steady sinusoidal source of fixed amplitude'
+    - 'Ideal L and C; all the resistance is lumped in $R$'
+    - 'High $Q$ for the simple results (peak of $V_C$ at $\omega_0$, bandwidth $R/L$)'
+  sign: '$X_L > X_C$: inductive, current lags the voltage. $X_C > X_L$: capacitive, current leads. Only $\cos\phi = R/Z$ enters the power, so the sign convention for $\phi$ does not matter.'
+outcomes:
+  - 'Use phasors to find the impedance, current and phase angle of a series LCR circuit'
+  - 'Find the resonant frequency and explain why $V_L$ and $V_C$ can exceed the source voltage'
+  - 'Calculate bandwidth and quality factor from the shape of the resonance curve'
+  - 'Calculate average power, power factor and the capacitor that corrects it'
+  - 'Treat free and damped LC oscillations, the true peak of $V_C$ and parallel anti-resonance'
 ---
 
 :::hook

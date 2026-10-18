@@ -24,6 +24,29 @@ cards:
   - { front: "Name six error families the examiner uses.", back: "Tense, subject-verb agreement, articles, prepositions, pronouns, and connectors (also word form, such as noun for adjective)." }
   - { front: "How do you reorder jumbled sentences?", back: "Find the opening sentence (it introduces; it does not refer back), then follow the clues: pronouns, connectors, time order and general-to-specific order. Read the final order aloud." }
   - { front: "How do you check a finished answer?", back: "Read the finished passage as a whole. A wrong tense, a plural mismatch or a dangling connector sounds wrong when read in sequence." }
+core:
+  idea: 'Gap filling, editing and reordering test grammar in context: a word is right or wrong because of the words around it. Read the whole passage first, name the error family, then check both sides of the gap or line and change only what is wrong.'
+  patterns:
+    - text: 'Read all; name the family (tense, agreement, article, preposition, pronoun, connector, word form); fit both sides of the gap'
+      label: 'Gap filling'
+    - text: 'One error per marked line: check verbs first, then small words, then word forms; change the minimum'
+      label: 'Editing'
+    - text: 'Find where the line stumbles; give the missing word with the words before and after it'
+      label: 'Omission'
+    - text: 'Opening sentence (looks back at nothing), then pronouns, connectors, time order, general to specific'
+      label: 'Reordering'
+  conditions:
+    - 'Cross out options that break a hard rule (agreement, tense, a fixed preposition), then choose from what is left'
+    - 'Find the true subject before judging agreement, and choose a or an by sound'
+    - 'Open gaps usually need one small word; the meaning and the neighbouring words decide it'
+    - 'Read the finished passage as a whole to catch clashes of tense and number'
+  sign: 'Do not correct a line that is right, and do not rewrite a whole line when one word is faulty.'
+outcomes:
+  - 'Name the grammar family behind a gap or a faulty line'
+  - 'Fill gaps by checking both sides of the gap and eliminating options that break a rule'
+  - 'Find and correct one error per line with the minimum change, including omissions'
+  - 'Reorder jumbled words into a sentence and jumbled sentences into a paragraph using opening, pronoun and connector clues'
+  - 'Check a finished answer against a marking checklist'
 ---
 
 :::hook

@@ -25,6 +25,27 @@ cards:
   - { front: "Astronomical telescope in normal adjustment: magnifying power and length?", back: "$m = f_o/f_e$; length $f_o + f_e$." }
   - { front: "Two advantages of reflecting telescopes?", back: "No chromatic aberration, and large mirrors can be supported from behind and made parabolic (no spherical aberration); a mirror needs only one polished surface." }
   - { front: "Resolving limit of a telescope of aperture $D$?", back: "$\\theta \\approx 1.22\\lambda/D$: a larger aperture resolves finer detail and gathers more light (∝ $D^2$)." }
+core:
+  idea: 'An optical instrument works by increasing the angle subtended at the eye. Magnifying power is $m$ = (angle subtended by the final image) / (angle subtended by the object seen directly); for a simple magnifier $m = 1 + D/f$, and for a telescope in normal adjustment $m = f_o/f_e$.'
+  formulas:
+    - tex: 'm = 1 + \frac{D}{f}'
+      label: 'Simple magnifier, image at the near point $D = 25$ cm ($m = D/f$ for image at infinity)'
+    - tex: 'm \approx \frac{L}{f_o}\cdot\frac{D}{f_e}'
+      label: 'Compound microscope, normal adjustment'
+    - tex: 'm = \frac{f_o}{f_e}'
+      label: 'Astronomical telescope, normal adjustment (tube length $f_o + f_e$)'
+  conditions:
+    - 'Thin lenses and paraxial rays'
+    - 'The reference for a microscope or magnifier is the object at the near point, $D = 25$ cm'
+    - 'Normal adjustment: the final image is at infinity and the eye is relaxed'
+    - 'For a telescope the object is effectively at infinity, and its image is formed in the objective''s focal plane'
+  sign: 'Magnifying power (a ratio of angles) is not linear magnification $v/u$; the telescope''s tube length is $f_o + f_e$ only in normal adjustment.'
+outcomes:
+  - 'Define magnifying power as a ratio of angles and explain why a magnifier lets you hold an object closer than 25 cm'
+  - 'Calculate the magnifying power of a simple magnifier for the image at the near point and at infinity'
+  - 'Describe and analyse the compound microscope and the astronomical telescope in normal adjustment'
+  - 'Compare refracting and reflecting telescopes'
+  - 'Apply light-gathering power $\propto D^2$, the resolution limit $1.22\lambda/D$ and the exit pupil'
 ---
 
 :::hook

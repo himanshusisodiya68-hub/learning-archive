@@ -28,6 +28,26 @@ cards:
   - { front: "Potential energy of a dipole in a uniform field?", back: "$U = -\\vec p\\cdot\\vec E = -pE\\cos\\theta$. Minimum (stable) at $\\theta = 0$; turning it from 0 to 180° needs work $2pE$." }
   - { front: "Two metal spheres of radii R₁, R₂ far apart are joined by a thin wire. How do charge and surface field divide?", back: "Equal potential: $q_1/R_1 = q_2/R_2$, so $q \\propto R$, $\\sigma \\propto 1/R$ and the surface field $\\propto 1/R$. The smaller sphere has the stronger field." }
   - { front: "Self-energy of a charge Q spread on a thin shell and through a solid ball of radius R?", back: "Shell: $\\dfrac{Q^2}{8\\pi\\varepsilon_0 R}$. Uniform ball: $\\dfrac{3Q^2}{20\\pi\\varepsilon_0 R}$, i.e. $\\tfrac35\\,\\dfrac{Q^2}{4\\pi\\varepsilon_0 R}$." }
+core:
+  idea: 'The electrostatic field is conservative, so each point has a potential $V$: the work per unit positive charge to bring a test charge slowly from infinity. For a point charge $V = kq/r$; potentials of several charges add as signed scalars, and $\vec E = -\nabla V$.'
+  formulas:
+    - tex: 'V_B - V_A = -\int_A^B \vec E\cdot d\vec l'
+      label: 'Potential difference'
+    - tex: 'V = \frac{1}{4\pi\varepsilon_0}\frac{q}{r}'
+      label: 'Potential of a point charge'
+    - tex: '\vec E = -\nabla V'
+      label: 'Field from potential'
+  conditions:
+    - 'Static charges, so the field is conservative and its closed-loop integral is zero'
+    - 'Test charge moved slowly (no kinetic energy gained), with V = 0 at infinity for finite charge distributions'
+    - 'Conductor in equilibrium: E = 0 inside and one potential throughout'
+  sign: 'V is a scalar: add potentials with their signs and never resolve components. V = 0 does not mean E = 0, and E = 0 does not mean V = 0.'
+outcomes:
+  - 'Calculate the work to move a charge between two points using q(V_B − V_A)'
+  - 'Find the potential of point charges, dipoles and charge systems by adding signed scalars'
+  - 'Relate field and potential through equipotentials and E = −dV/dx'
+  - 'Compute the potential energy of charge systems and dipoles, and use energy conservation for moving charges'
+  - 'Solve problems on conductors, charge sharing and earthing, self-energy and the method of images'
 ---
 
 :::hook

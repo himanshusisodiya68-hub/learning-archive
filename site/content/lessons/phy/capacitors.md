@@ -27,6 +27,26 @@ cards:
   - { front: "Energy lost when C1 at V1 and C2 at V2 are joined like plate to like plate?", back: "$\\Delta U = \\dfrac{C_1C_2}{2(C_1+C_2)}(V_1-V_2)^2$, as heat and radiation, whatever the wire resistance. Joined opposite plates: use $V_1+V_2$." }
   - { front: "Force between the plates of a charged parallel-plate capacitor?", back: "$F = Q^2/(2\\varepsilon_0 A) = \\tfrac12 QE$. Each plate feels only the other plate's field, $\\sigma/2\\varepsilon_0$." }
   - { front: "Force pulling a dielectric slab (width b) into a capacitor held at voltage V?", back: "$F = \\tfrac12 V^2\\,dC/dx = \\varepsilon_0(K-1)bV^2/(2d)$, independent of how far it is in. At constant Q, $F = (Q^2/2C^2)\\,dC/dx$, which falls as the slab goes in." }
+core:
+  idea: 'A capacitor is two conductors holding $+Q$ and $-Q$; since $V\propto Q$, the ratio $C = Q/V$ depends only on geometry and the insulator. For parallel plates $C = \varepsilon_0A/d$, a dielectric multiplies it by $K$, and the stored energy is $\tfrac12CV^2$.'
+  formulas:
+    - tex: 'C = \frac{Q}{V}'
+      label: 'Capacitance'
+    - tex: 'C = \frac{K\varepsilon_0 A}{d}'
+      label: 'Parallel plates (K = 1 for vacuum)'
+    - tex: 'U = \frac{Q^2}{2C} = \frac12 CV^2'
+      label: 'Stored energy'
+  conditions:
+    - 'Plates large compared with the gap, so fringing is neglected'
+    - 'Equal and opposite charges on the two conductors, with a linear dielectric'
+    - 'Series islands start neutral; battery connected means V fixed, disconnected means Q fixed'
+  sign: 'Capacitors combine opposite to resistors: series adds reciprocals, parallel adds directly. Always decide first whether V or Q is held fixed.'
+outcomes:
+  - 'Calculate C for parallel-plate capacitors, with and without dielectrics or partial slabs'
+  - 'Find the equivalent capacitance of series and parallel combinations, and the charge and voltage on each capacitor'
+  - 'Calculate stored energy and energy density, and explain where the batterys other half goes'
+  - 'Derive the capacitance of spherical and cylindrical capacitors and the energy lost in charge sharing'
+  - 'Find forces on plates and dielectrics at constant Q and constant V, and solve symmetric networks'
 ---
 
 :::hook

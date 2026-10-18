@@ -24,6 +24,29 @@ cards:
   - { front: "Which pronoun in each pair is the possessive pronoun (stands alone): my/mine, your/yours?", back: "Mine and yours stand alone: The bag is mine. My and your come before a noun: my bag." }
   - { front: "Who or whom?", back: "Who is the doer (subject): the boy who won. Whom is the receiver (object): the boy whom we praised. Test: if he/she fits, use who; if him/her fits, use whom." }
   - { front: "Do 'everyone', 'each' and 'neither' take a singular or plural verb?", back: "Singular: Everyone is here. Each of the boys has a ticket. Neither of the answers is correct." }
+core:
+  idea: 'A pronoun stands for a noun already named. It must pass two checks: it agrees with its antecedent in number, person and gender, and it takes the case (form) that fits its own job in the clause: doer, receiver or owner.'
+  patterns:
+    - text: 'Subject form (I, he, she, we, they) + verb'
+      label: 'Doer'
+    - text: 'verb or preposition + object form (me, him, her, us, them)'
+      label: 'Receiver'
+    - text: 'my, your, her, our, their + noun / mine, yours, hers, ours, theirs alone'
+      label: 'Possessive'
+    - text: 'who (doer) / whom (receiver or after a preposition)'
+      label: 'Relative and interrogative'
+  conditions:
+    - 'For "X and me/I", drop the other person and test the pronoun alone'
+    - 'After any preposition the pronoun is in the object form: between you and me'
+    - 'Each, either, neither, everyone, someone and nobody are singular'
+    - 'A defining clause takes no commas and may use that; a non-defining clause takes commas and which or who'
+  sign: 'Never write "between you and I" or put an apostrophe in a possessive (its, yours, theirs).'
+outcomes:
+  - 'Replace a repeated noun with the correct pronoun and name its antecedent'
+  - 'Choose subject, object or possessive form by the pronoun''s job in the clause'
+  - 'Use reflexive and emphatic pronouns correctly and avoid hisself and theirselves'
+  - 'Pick who, whom, which or that, and decide whether a clause takes commas'
+  - 'Spot and fix pronoun errors in board-style error-correction and gap-filling'
 ---
 
 :::hook

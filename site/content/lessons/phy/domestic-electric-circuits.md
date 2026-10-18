@@ -25,6 +25,26 @@ cards:
   - { front: "Peak voltage of 220 V AC mains?", back: "$V_0 = \\sqrt2\\times220 \\approx 311$ V. 220 V is the rms value, which gives the same heating as 220 V DC." }
   - { front: "When does earthing make the fuse blow?", back: "Only if the fault loop (live wiring + earth path) has a low resistance, so the fault current is several times the fuse rating. A poor earth gives a few amperes, no blow and a live body: that is what an RCD is for." }
   - { front: "How does an RCD detect a leak?", back: "Live and neutral pass through one ring. Normally their currents are equal and opposite, net flux 0. A leak to earth (about 30 mA) unbalances them, the changing flux induces an emf in a sense coil, and the device trips." }
+core:
+  idea: 'A house takes live (220 V rms), neutral and earth wires. Every appliance is connected in parallel between live and neutral, with each switch and fuse in the live wire, and the circuit current $I = P/V$ must stay within the rating.'
+  formulas:
+    - tex: 'I = \frac{P}{V}'
+      label: 'Current drawn by an appliance'
+    - tex: 'V_{\text{rms}} = \frac{V_0}{\sqrt2}'
+      label: 'rms value of the mains voltage'
+    - tex: 'I_{\text{fault}} = \frac{220}{R_L + R_E}'
+      label: 'Earth-fault current'
+  conditions:
+    - 'Resistive appliances, so the DC formulas hold with rms values'
+    - 'Fuse or breaker rated just above the normal circuit current and fitted in the live wire'
+    - 'Low-resistance earth path, so that a fault current is large enough to blow the fuse'
+  sign: 'A switch in the neutral wire turns an appliance off but leaves it connected to 220 V. The earth wire carries current only during a fault.'
+outcomes:
+  - 'Identify live, neutral and earth wires and the order of components on a meter board'
+  - 'Choose a 5 A or 15 A circuit using I = P/V, and explain fuses, short circuits and overloading'
+  - 'Explain earthing and why switches go in the live wire'
+  - 'Convert between rms and peak values, and calculate voltage drop and heating in wires'
+  - 'Calculate fault currents, explain MCBs and RCDs, and estimate the adiabatic melting time of a fuse'
 ---
 
 :::hook

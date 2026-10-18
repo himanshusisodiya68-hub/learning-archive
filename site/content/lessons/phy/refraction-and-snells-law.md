@@ -26,6 +26,27 @@ cards:
   - { front: "Is an optically denser medium always denser in mass?", back: "No. Kerosene (n = 1.44) is optically denser than water (n = 1.33) but floats on water." }
   - { front: "Critical angle condition?", back: "Light going from dense to rare: $\\sin\\theta_c = n_2/n_1$. Beyond $\\theta_c$, total internal reflection." }
   - { front: "What stays the same when light crosses into a new medium: speed, wavelength or frequency?", back: "Frequency. Speed and wavelength both change by the factor $n_1/n_2$." }
+core:
+  idea: 'Light travels at $v = c/n$ in a medium. At a boundary its frequency is fixed and the wavefront turns so that $n\sin\theta$ is the same on both sides: $n_1\sin\theta_1 = n_2\sin\theta_2$, with angles from the normal. Equivalently, the travel time along the actual path is stationary.'
+  formulas:
+    - tex: 'n_1\sin\theta_1 = n_2\sin\theta_2'
+      label: 'Snell''s law'
+    - tex: 'n = \frac{c}{v}'
+      label: 'Absolute refractive index'
+    - tex: '\text{apparent depth} = \frac{\text{real depth}}{n}'
+      label: 'Object in a denser medium seen from air, near-normal viewing'
+  conditions:
+    - 'Each medium is uniform and isotropic, with a sharp plane boundary between them'
+    - 'Monochromatic light, since $n$ depends on wavelength'
+    - 'All angles are measured from the normal, and the incident ray, refracted ray and normal lie in one plane'
+    - 'For the apparent-depth rule, the eye looks almost straight down so angles are small'
+  sign: 'Entering a higher $n$, light slows and bends towards the normal; entering a lower $n$, it bends away. Optically denser means higher $n$, not higher mass density.'
+outcomes:
+  - 'State the laws of refraction and compute refracted angles with $n_1\sin\theta_1 = n_2\sin\theta_2$'
+  - 'Explain refraction using the change of light speed, and find the shift of a ray through a glass slab'
+  - 'Calculate apparent depth, and show that frequency stays fixed while speed and wavelength change'
+  - 'Use the invariant $n\sin\theta$ through stacks of layers and the vector form of Snell''s law'
+  - 'Derive Snell''s law from Fermat''s principle and trace rays in graded-index media'
 ---
 
 :::hook

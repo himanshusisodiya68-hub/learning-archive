@@ -24,6 +24,29 @@ cards:
   - { front: "When can the relative pronoun be dropped?", back: "When it is the object of its own clause: The book (that) I bought is old. Never when it is the subject: The book that fell is mine." }
   - { front: "Can that be used after a comma?", back: "No. That is only for defining clauses. Write 'My bag, which is old, is torn', not 'My bag, that is old, is torn'." }
   - { front: "Which relative pronoun for a whole clause?", back: "Which, after a comma: He passed the test, which surprised everyone. Which refers to the entire idea, not to one noun." }
+core:
+  idea: 'A relative clause is a small sentence hung on a noun by who, whom, whose, which or that, which replaces the noun and joins the clauses. A defining clause says which one and has no commas; a non-defining clause adds extra information between commas.'
+  patterns:
+    - text: 'Noun (person) + who / whom / whose + clause'
+      label: 'People'
+    - text: 'Noun (thing or animal) + which / that + clause'
+      label: 'Things and animals'
+    - text: 'Noun (place / time / reason) + where / when / why + clause'
+      label: 'Place, time, reason'
+    - text: 'Name or specific noun, + who / which + clause,'
+      label: 'Non-defining (commas, never that)'
+  conditions:
+    - 'Use who for a person as subject, whom for a person as object or after a preposition, whose for belonging, which for things'
+    - 'Use that only in a defining clause, never after a comma'
+    - 'Drop the pronoun only when it is the object of its own clause in a defining clause'
+    - 'Put the clause directly after its noun, and never repeat the noun'
+  sign: 'Never use that after a comma or repeat the noun: "The film that we watched it" should be "The film that we watched".'
+outcomes:
+  - 'Choose who, whom, whose, which or that from the noun and its job in the clause'
+  - 'Tell a defining clause from a non-defining one and punctuate each'
+  - 'Decide when the relative pronoun can be dropped'
+  - 'Join two sentences with a relative clause, including with a preposition'
+  - 'Correct relative-clause errors in board-style editing and gap-filling'
 ---
 
 :::hook

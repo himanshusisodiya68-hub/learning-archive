@@ -26,6 +26,26 @@ cards:
   - { front: "Four losses in a real transformer, and the cure for each?", back: "Copper ($I^2R$; thick wire), eddy currents (laminated core), hysteresis (soft iron with a thin loop), flux leakage (windings on top of each other, closed core)." }
   - { front: "Condition for maximum efficiency?", back: "Copper loss = iron (core) loss. Iron loss is fixed; copper loss grows as $I^2$." }
   - { front: "Line loss when power P is sent at voltage V through line resistance R?", back: "$P_{loss} = I^2R = P^2R/V^2$. Raising V by a factor n cuts the loss by $n^2$." }
+core:
+  idea: 'In an ideal transformer one changing flux links both windings, so each turn has the same emf: $V_s/V_p = N_s/N_p$. With no losses $V_pI_p = V_sI_s$, so the current ratio is the inverse of the turns ratio and the power is unchanged.'
+  formulas:
+    - tex: '\frac{V_s}{V_p} = \frac{N_s}{N_p} = \frac{I_p}{I_s}'
+      label: 'Ideal transformer'
+    - tex: 'R_{\text{prim}} = \left(\frac{N_p}{N_s}\right)^2 R'
+      label: 'Load reflected to the primary'
+    - tex: 'P_{loss} = I^2R = \frac{P^2R}{V^2}'
+      label: 'Line loss when power P is sent at voltage V'
+  conditions:
+    - 'No flux leakage: the same flux links primary and secondary'
+    - 'Zero winding resistance, no eddy-current or hysteresis loss, negligible magnetising current'
+    - 'Alternating (changing) supply only; for the line-loss result the load is at unity power factor'
+  sign: 'Voltage goes with the turns, current goes against the turns. A step-up transformer raises voltage by lowering current, never power.'
+outcomes:
+  - 'Explain how a transformer works and why it needs a changing current'
+  - 'Use the turns ratio to find secondary voltage and current for step-up and step-down transformers'
+  - 'Account for copper, eddy, hysteresis and flux losses and calculate efficiency'
+  - 'Show why power is transmitted at high voltage using $P_{loss} = P^2R/V^2$'
+  - 'Use reflected impedance for matching and find the load at which efficiency is greatest'
 ---
 
 :::hook

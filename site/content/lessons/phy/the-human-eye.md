@@ -24,6 +24,24 @@ cards:
   - { front: "Hypermetropia: symptom, cause, correction?", back: "Near objects blurred; image forms behind the retina (eyeball too short or focal length too long). Corrected by a convex lens." }
   - { front: "What is presbyopia and how is it corrected?", back: "Loss of accommodation with age as the ciliary muscles weaken and the lens stiffens; near point recedes. Corrected by convex lenses, or bifocals if myopia is also present." }
   - { front: "Power needed by a myopic eye with far point $x$?", back: "$P = -1/x$ (x in metres): a concave lens that images infinity at the far point." }
+core:
+  idea: 'The cornea and eye lens form a real, inverted image on the retina, a fixed 2 cm behind. The ciliary muscles change the lens''s focal length (accommodation) so objects from the near point, 25 cm, to infinity are focused; a spectacle lens corrects a shifted range.'
+  formulas:
+    - tex: 'P = -\frac{1}{x}'
+      label: 'Myopia: concave lens for far point $x$ (metres)'
+    - tex: 'P = 4 - \frac{1}{d}'
+      label: 'Hypermetropia: convex lens for near point $d$ (metres), reading distance 25 cm; $P$ in dioptres'
+  conditions:
+    - 'The eye is treated as a single thin lens a fixed distance (about 2 cm) in front of the retina'
+    - 'A normal eye has its near point at about 25 cm and its far point at infinity'
+    - 'The correcting lens is thin and placed against the eye, so the gap to the spectacle lens is ignored'
+  sign: 'Myopia needs a concave (negative power) lens and hypermetropia a convex (positive power) one. Use metres to get dioptres, and note the pupil controls brightness, not focus.'
+outcomes:
+  - 'Describe how the eye forms an image on the retina and the role of accommodation'
+  - 'State the near point and far point of a normal eye'
+  - 'Identify myopia, hypermetropia, presbyopia and cataract, and name the correcting lens for each'
+  - 'Calculate the power of the corrective lens from the far point or near point'
+  - 'Estimate the eye''s power, accommodation range and resolution limit, and explain blurred underwater vision'
 ---
 
 :::hook

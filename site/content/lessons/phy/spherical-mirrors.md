@@ -26,6 +26,26 @@ cards:
   - { front: "Where must an object be placed for a concave mirror to give a virtual, erect, enlarged image?", back: "Between the pole P and the principal focus F." }
   - { front: "Why are convex mirrors used as rear-view mirrors?", back: "They always form an erect, diminished image and give a much wider field of view than a plane mirror." }
   - { front: "Longitudinal magnification of a small object lying along the axis?", back: "$m_L = -m^2$: lengths along the axis are magnified by the square of the transverse magnification." }
+core:
+  idea: 'For paraxial rays a spherical mirror has focal length $f = R/2$: rays parallel to the axis meet at (or appear to come from) the focus. Object distance $u$, image distance $v$ and $f$ obey the mirror formula, and the magnification is $m = -v/u$.'
+  formulas:
+    - tex: '\frac{1}{v} + \frac{1}{u} = \frac{1}{f}'
+      label: 'Mirror formula'
+    - tex: 'm = \frac{h''}{h} = -\frac{v}{u}'
+      label: 'Magnification'
+    - tex: 'f = \frac{R}{2}'
+      label: 'Focal length and radius of curvature'
+  conditions:
+    - 'Paraxial rays: small aperture compared with $R$, rays close to the principal axis and at small angles to it'
+    - 'A small object placed perpendicular to the principal axis'
+    - 'A spherical surface, which focuses only approximately; only a parabolic mirror focuses parallel rays exactly'
+  sign: 'New Cartesian convention: distances from the pole, positive along the incident light, so $u < 0$; $f < 0$ for a concave mirror and $f > 0$ for a convex one; a real image has $v < 0$.'
+outcomes:
+  - 'Define pole, centre of curvature, focus and focal length, and relate $f$ to $R$'
+  - 'Draw ray diagrams for concave and convex mirrors and describe the image for each object position'
+  - 'Apply the mirror formula and $m = -v/u$ with the New Cartesian sign convention'
+  - 'Explain spherical aberration and why parabolic mirrors are used for telescopes and dishes'
+  - 'Use longitudinal magnification $-m^2$, Newton''s form $xx'' = f^2$ and the $1/v$ against $1/u$ graph'
 ---
 
 :::hook
