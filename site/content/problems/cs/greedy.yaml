@@ -1,0 +1,108 @@
+# Greedy algorithms. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A shopkeeper has notes and coins of 1, 2, 5, 10, 20 and 50 and always hands back the biggest piece that fits. How many pieces does he use to give back 93?
+  ask: Pieces
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: 1+2+1+1
+  sol: The biggest piece that fits is 50, leaving 43. Then 20 and 20 leave 3. Then 2 leaves 1, and 1 finishes. That is one 50, two 20s, one 2 and one 1, which is $1+2+1+1 = 5$ pieces.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: To fit the most meetings into one room, which rule is guaranteed to work?
+  opts: ["Pick the meeting that starts earliest", "Pick the shortest meeting", "Pick the meeting that finishes earliest"]
+  ans: 2
+  sol: Finishing earliest leaves the most time for the remaining meetings, and an exchange argument proves it is optimal. Earliest start fails when a long meeting starts first; shortest fails when a short meeting sits across the boundary of two others that would both have fitted.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Coins are 1, 3 and 4. For an amount of 10, how many more coins does the biggest-coin-first habit use than the best possible answer?
+  ask: Extra coins
+  unit: ""
+  ans: 1
+  tol: 0.1
+  verify: 4-3
+  sol: Greedy takes 4, 4, then 2 is left, so 1 and 1. That is 4 coins. The best uses 4 + 3 + 3, which is 3 coins. So greedy uses $4 - 3 = 1$ extra coin.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A bag holds 50 kg. Items can be cut into parts. Item A weighs 10 kg and is worth 60, item B weighs 20 kg and is worth 100, item C weighs 30 kg and is worth 120. What is the largest total value?
+  ask: Value
+  unit: ""
+  ans: 240
+  tol: 0.01
+  verify: 60+100+120*20/30
+  sol: Value per kilo is 6 for A, 5 for B and 4 for C, so take the items in that order. A (10 kg) and B (20 kg) fill 30 kg and give 160. The remaining 20 kg is two thirds of C, worth $120 \times 20/30 = 80$. The total is $60 + 100 + 80 = 240$. This greedy rule is optimal for the cuttable version.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A conference has many talks, each with a start and an end time. What is the smallest number of rooms that lets every talk happen? Describe a greedy method and its cost.
+  sol: |
+    Sort the talks by start time. Keep a min-heap of the end times of the rooms currently in use. For each talk in order, look at the earliest end time in the heap. If that room is free by the time this talk starts (end time at or before the start), reuse the room by removing that end time. Either way, push the end time of this talk. The size of the heap at the end is the number of rooms needed (the largest heap size seen is the same).
+    ```python
+    import heapq
+    def min_rooms(talks):               # talks: list of (start, end)
+        talks.sort()
+        ends = []
+        for start, end in talks:
+            if ends and ends[0] <= start:
+                heapq.heapreplace(ends, end)   # reuse a freed room
+            else:
+                heapq.heappush(ends, end)      # open a new room
+        return len(ends)
+    ```
+    A new room is opened only when every existing room is still busy at that moment, so the number of rooms is exactly the largest number of talks overlapping at one instant, which no schedule can beat. Sorting costs $O(n\log n)$ and each heap step costs $O(\log n)$, so the total is $O(n\log n)$.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: You stand on the first square of a row of squares. Each square holds a number saying the farthest you may jump forward from it. Can you reach the last square? Give an O(n) greedy method and say why it works.
+  sol: |
+    Walk through the squares left to right while keeping `reach`, the farthest square you could possibly have got to so far. At square $i$, if $i > \text{reach}$ you are stuck, so answer no. Otherwise update `reach = max(reach, i + jump[i])`. If `reach` ever covers the last square, answer yes.
+    ```python
+    def can_finish(jump):
+        reach = 0
+        for i, j in enumerate(jump):
+            if i > reach:
+                return False
+            reach = max(reach, i + j)
+        return True
+    ```
+    Why it is safe: every square up to `reach` can be stood on (you can stop at any square on the way), so tracking only the farthest point loses no information. There is no need to decide which exact jumps to make. The pass is $O(n)$ with $O(1)$ memory.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "Letters A, B, C, D, E occur 40, 30, 15, 10 and 5 times in every 100 letters. A Huffman code is built. How many bits does it use for every 100 letters? (A plain fixed-length code needs 3 bits per letter, so 300.)"
+  ask: Bits
+  unit: bits
+  ans: 205
+  tol: 0.5
+  verify: 40*1+30*2+15*3+10*4+5*4
+  sol: |
+    Merge the two rarest repeatedly: E (5) + D (10) = 15; C (15) + that 15 = 30; B (30) + that 30 = 60; A (40) + 60 = 100. The code lengths are A 1, B 2, C 3, D 4, E 4. The cost is $40\cdot1 + 30\cdot2 + 15\cdot3 + 10\cdot4 + 5\cdot4 = 205$ bits, or about 32% less than 300. As a check, the sum of the merged values (15 + 30 + 60 + 100) is 205 as well.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Several jobs must run one after another on one machine. Job i takes time $t_i$. Waiting time of a job is the time until it finishes. Which order minimises the total finishing time of all jobs? Prove it with an exchange argument.
+  sol: |
+    The best order is **shortest job first**.
+    Proof. Suppose an order has two neighbouring jobs $a$ then $b$ with $t_a > t_b$. Let $S$ be the time at which this pair starts. Their finishing times are $S + t_a$ and $S + t_a + t_b$, adding up to $2S + 2t_a + t_b$. If we swap them, the finishing times are $S + t_b$ and $S + t_a + t_b$, which add up to $2S + 2t_b + t_a$. The difference (before minus after) is $t_a - t_b > 0$, so the swap strictly lowers the total. Jobs outside the pair finish at the same times as before, because the pair together still occupies the same stretch of time.
+    So any order with a longer job directly before a shorter one can be improved. Repeating swaps removes every such pair, and the only order left has jobs in non-decreasing time: shortest first. Hence shortest job first is optimal. The same swap idea underlies many scheduling rules, and the proof needs only neighbouring pairs.
+  check: none

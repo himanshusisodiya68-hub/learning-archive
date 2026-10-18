@@ -46,7 +46,7 @@ outcomes:
   - 'Test a greedy idea against small counter-examples before using it'
 opener:
   story: |
-    You buy a ₹93 pen refill with a ₹100 note... no wait, you buy something for ₹7 and hand over ₹100. The shopkeeper does not think. He counts back: a ₹50 note, a ₹20, another ₹20, a ₹2 and a ₹1. Biggest note first, every time.
+    You buy something for ₹7 and hand over ₹100. The shopkeeper does not stop to think. He counts back: a ₹50 note, a ₹20, another ₹20, a ₹2 and a ₹1. Biggest note first, every time.
 
     It feels obvious, but is it obviously right? He never checked whether some other mix of notes would give you fewer pieces. He just grabbed the biggest one that fits, over and over, and it worked. A habit like that is called **greedy**.
 
@@ -146,23 +146,24 @@ def max_meetings(events):             # events: list of (start, end)
 
 Sorting costs $O(n\log n)$ and the pass costs $O(n)$, so the whole thing is $O(n\log n)$.
 
-:::figure caption="Six requests on a timeline. Sorting by finish time and taking every one that fits picks the green ones."
-<svg viewBox="0 0 320 170" role="img" aria-label="Timeline with six meetings; three chosen by earliest-finish rule">
-<line x1="20" y1="150" x2="300" y2="150" class="axis"/>
-<g style="font-size:9px;fill:var(--muted);text-anchor:middle"><text x="20" y="164">9</text><text x="90" y="164">11</text><text x="160" y="164">13</text><text x="230" y="164">15</text><text x="300" y="164">17</text></g>
+:::figure caption="Six requests, sorted by finish time. Walking down the list and taking each one that fits picks A, C and E (green)."
+<svg viewBox="0 0 320 175" role="img" aria-label="Timeline with six meetings from 9 to 17; the earliest-finish rule chooses A, C and E">
+<line x1="20" y1="152" x2="300" y2="152" class="axis"/>
+<g style="font-size:9px;fill:var(--muted);text-anchor:middle"><text x="20" y="166">9</text><text x="90" y="166">11</text><text x="160" y="166">13</text><text x="230" y="166">15</text><text x="300" y="166">17</text></g>
 <g style="stroke-width:1.5;stroke:var(--muted);fill:color-mix(in srgb,var(--muted) 10%,var(--surface))">
-<rect x="20" y="12" width="280" height="16" rx="3"/>
-<rect x="55" y="62" width="120" height="16" rx="3"/>
-<rect x="125" y="112" width="140" height="16" rx="3"/>
+<rect x="55" y="34" width="70" height="16" rx="3"/>
+<rect x="125" y="82" width="105" height="16" rx="3"/>
+<rect x="20" y="130" width="280" height="16" rx="3"/>
 </g>
-<g style="stroke-width:1.5;stroke:var(--mat);fill:color-mix(in srgb,var(--mat) 18%,var(--surface))">
-<rect x="20" y="37" width="75" height="16" rx="3"/>
-<rect x="130" y="87" width="70" height="16" rx="3"/>
-<rect x="210" y="137" width="60" height="9" rx="2" style="stroke:none;fill:none"/>
-<rect x="200" y="37" width="90" height="16" rx="3"/>
+<g style="stroke-width:1.5;stroke:var(--mat);fill:color-mix(in srgb,var(--mat) 20%,var(--surface))">
+<rect x="20" y="10" width="70" height="16" rx="3"/>
+<rect x="90" y="58" width="70" height="16" rx="3"/>
+<rect x="160" y="106" width="105" height="16" rx="3"/>
 </g>
-<g style="font-size:9px;fill:var(--ink)"><text x="24" y="24">all day (blocks everything)</text><text x="24" y="49">A</text><text x="204" y="49">C</text><text x="134" y="99">B</text><text x="59" y="74">too long</text><text x="129" y="124">too late to fit</text></g>
-<text x="300" y="100" style="font-size:9px;fill:var(--mat);text-anchor:end">green: chosen A, B, C</text>
+<g style="font-size:10px;fill:var(--ink)">
+<text x="24" y="22">A 9-11</text><text x="59" y="46">B 10-12 (overlaps A)</text><text x="94" y="70">C 11-13</text>
+<text x="129" y="94">D 12-15 (overlaps C)</text><text x="164" y="118">E 13-16</text><text x="24" y="142">F 9-17 (overlaps everything)</text>
+</g>
 </svg>
 :::
 
