@@ -1,0 +1,171 @@
+# Relative clauses. All problems are original (no NCERT items for this leaf). All answers are model answers written by us for this archive; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The teacher ___ taught us grammar has moved to another school."
+  opts: ["which", "who", "whose", "whom"]
+  ans: 1
+  sol: |
+    The antecedent *teacher* is a person, and the pronoun is the subject of *taught* (she taught us), so *who* is correct. *Which* is for things, *whose* needs a noun after it, and *whom* is an object form.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: This is the house ___ my grandfather was born."
+  opts: ["who", "whose", "where", "whom"]
+  ans: 2
+  sol: |
+    The noun is a place, and the clause says where the birth happened. *Where* works as "in which": the house in which my grandfather was born.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The boy ___ bicycle was stolen reported it to the police."
+  opts: ["who", "which", "whose", "that"]
+  ans: 2
+  sol: |
+    The bicycle belongs to the boy, so the word that shows belonging, *whose*, is needed, followed by the noun *bicycle*.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Which sentence is correct?"
+  opts: ["The book which I borrowed it was interesting.", "The book which I borrowed was interesting.", "The book who I borrowed was interesting.", "The book whose I borrowed was interesting."]
+  ans: 1
+  sol: |
+    *Which* replaces the noun *book* in the clause, so the noun must not be repeated by *it* (first option). *Who* is for people (third), and *whose* would need a noun after it (fourth).
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Join each pair of sentences into one, using the relative pronoun in brackets. (a) I know a man. He plays the sitar. (who) (b) The bag was expensive. I bought it yesterday. (which) (c) Rohan is my neighbour. His sister is a doctor. (whose) (d) This is the park. We played cricket here as children. (where)"
+  sol: |
+    (a) *I know a man who plays the sitar.*
+
+    (b) *The bag which I bought yesterday was expensive.* (*That* or no pronoun also works: *The bag I bought yesterday was expensive.* It is a defining clause and the pronoun is an object.)
+
+    (c) *Rohan, whose sister is a doctor, is my neighbour.* The name is already specific, so the clause is non-defining and sits between commas.
+
+    (d) *This is the park where we played cricket as children.*
+
+    [Note] Model answers written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["Mumbai, that is a large city, is on the coast.", "Mumbai, which is a large city, is on the coast.", "Mumbai which is a large city, is on the coast.", "Mumbai, which is a large city is on the coast."]
+  ans: 1
+  sol: |
+    Mumbai is a name, so the clause is non-defining. That means commas on both sides and *which*, never *that*. The first option uses *that* after a comma, and the third and fourth each miss one comma.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Fill the gap with the correct word: The lady ___ I met at the wedding is a famous writer."
+  opts: ["whom", "whose", "which", "who is"]
+  ans: 0
+  sol: |
+    I met *her*, so the pronoun is the object of *met* and the formal word is *whom*. (The pronoun could also be dropped, or *who* used informally.) *Whose* and *which* do not fit a person who is met, and *who is* would leave the clause without a subject after it.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Each sentence has one error in the relative clause. Find it and correct it. (a) The girl which won the prize is my cousin. (b) The film, that we saw on Sunday, was boring. (c) The friend with who I travelled lives in Goa. (d) The pen which I bought it is leaking."
+  sol: |
+    (a) *which* should be *who*: the antecedent is a person. "The girl who won the prize is my cousin."
+
+    (b) *that* should be *which*: a non-defining clause between commas cannot take *that*. "The film, which we saw on Sunday, was boring."
+
+    (c) *with who* should be *with whom*: after a preposition the pronoun must be *whom*. "The friend with whom I travelled lives in Goa."
+
+    (d) Delete *it*: the pronoun *which* already stands for the pen. "The pen which I bought is leaking."
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "In which sentence can the relative pronoun be omitted?"
+  opts: ["The man who called you is waiting.", "The song that she sang was beautiful.", "The bus which stops here goes to the airport.", "Anyone who has a ticket may enter."]
+  ans: 1
+  sol: |
+    The pronoun can be dropped only if it is the object of its own clause, with a noun or pronoun after it. In "The song that she sang", *that* is the object of *sang*, and *she* follows it. In the other three sentences a verb follows the pronoun (*called*, *stops*, *has*), so the pronoun is the subject and must stay.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Combine each pair into one sentence, using a relative clause. Use commas where the clause is non-defining. (a) The scientist won an award. She discovered the comet. (b) My grandmother is eighty. She still walks to the market every day. (c) The horse was a champion. We saw the horse at the fair. (d) The teacher praised Seema. Seema's essay was the best."
+  sol: |
+    (a) *The scientist who discovered the comet won an award.* The clause tells us which scientist, so it is defining and takes no commas.
+
+    (b) *My grandmother, who is eighty, still walks to the market every day.* Or *My grandmother, who still walks to the market every day, is eighty.* The noun is specific, so the clause is non-defining.
+
+    (c) *The horse that we saw at the fair was a champion.* (*Which*, or no pronoun, is also correct.)
+
+    (d) *The teacher praised Seema, whose essay was the best.* The name is specific, so the clause is non-defining with *whose*.
+
+    [Note] More than one arrangement is possible in (b). A model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Rewrite each sentence with the preposition moved before the relative pronoun, as in formal English. (a) The woman who I spoke to is the principal. (b) The pen that he wrote with was borrowed. (c) The village which they live in has no hospital. (d) The man whose house we stayed in was very kind."
+  sol: |
+    (a) *The woman to whom I spoke is the principal.*
+
+    (b) *The pen with which he wrote was borrowed.*
+
+    (c) *The village in which they live has no hospital.*
+
+    (d) *The man in whose house we stayed was very kind.*
+
+    After a preposition, people take *whom* and things take *which*; *who* and *that* are not used there. *Whose* can follow a preposition directly.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "The paragraph below has six errors involving relative clauses (one per line). Find and correct each. (1) I have a friend which lives in Shimla. (2) Her house, that is on a hill, has a lovely garden. (3) The garden, in that she grows roses, is famous. (4) The roses whom she grows are red. (5) My friend, who I met in 2018 is a painter. (6) She sold a painting that I liked it."
+  sol: |
+    (1) *which* should be *who*: the antecedent *friend* is a person.
+
+    (2) *that* should be *which*: the clause is non-defining (between commas), where *that* is not allowed.
+
+    (3) *in that* should be *in which*: after a preposition, *that* cannot be used.
+
+    (4) *whom* should be *which* (or *that*): *roses* are things, and *whom* is for people.
+
+    (5) A comma is missing after *2018*: "My friend, who I met in 2018, is a painter." (*Whom* is the formal form.) Both commas must enclose the non-defining clause.
+
+    (6) Delete *it*: "She sold a painting that I liked." The pronoun *that* already stands for the painting.
+
+    [Note] Model answer written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Explain the difference in meaning between the two sentences, and say how many cousins the speaker probably has in each case. (a) My cousin who lives in Chennai is a lawyer. (b) My cousin, who lives in Chennai, is a lawyer."
+  sol: |
+    In (a) the clause is defining: it tells us which cousin is meant. That suggests the speaker has more than one cousin, and the one who lives in Chennai is a lawyer.
+
+    In (b) the commas make the clause non-defining: it only adds a fact about the cousin, who is already identified. That suggests the speaker has one cousin (at least one cousin in mind), who happens to live in Chennai.
+
+    So the commas are not decoration: they change how many people the writer has in mind.
+
+    [Note] The implied number of cousins is an inference from the usual convention, not a strict rule: a speaker could use (b) for one chosen cousin among several. [Inference]
+  check: none

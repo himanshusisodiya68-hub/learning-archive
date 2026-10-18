@@ -1,0 +1,161 @@
+# Conditional sentences. All problems are original (no NCERT items for this leaf). There is no NCERT answer key: every answer is a model answer written by us.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the general truth: If you heat ice, it ___."
+  opts: ["melts", "will melt", "would melt", "melted"]
+  ans: 0
+  sol: |
+    A general truth is a zero conditional: both clauses use the present simple, so *melts*. *Will melt* is a first conditional (a particular future), *would melt* is second, and *melted* is a past form.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Choose the correct form for formal English: If I ___ a bird, I would fly to you."
+  opts: ["am", "was", "were", "will be"]
+  ans: 2
+  sol: |
+    The sentence is imagined (I am not a bird) and the result uses *would*, so it is a second conditional. Its if-clause takes the past form, and in formal English *be* becomes *were* for every person. *Was* is heard in speech but exam keys prefer *were*.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: If she had studied harder, she ___ the exam."
+  opts: ["would pass", "would have passed", "will pass", "had passed"]
+  ans: 1
+  sol: |
+    The if-clause has the past perfect (*had studied*), which marks the third conditional, so the result is *would have + V3*: *would have passed*.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Unless you ___ hard, you will not pass."
+  opts: ["do not work", "work", "will work", "worked"]
+  ans: 1
+  sol: |
+    *Unless* already means *if ... not*, so the verb after it is positive. Because the result uses *will* (a first conditional), the unless-clause is in the present simple: *work*. *Do not work* would make a double negative.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Fill each gap with the correct form of the verb in brackets. (a) If it (1) (rain) tomorrow, we (2) (stay) at home. (b) If I (3) (be) you, I (4) (apologise). (c) If he (5) (leave) earlier, he (6) (catch) the train."
+  sol: |
+    Model answer: (1) rains, (2) will stay, (3) were, (4) would apologise, (5) had left, (6) would have caught.
+
+    (a) A real possibility: first conditional, present simple in the if-clause and *will* in the result.
+    (b) Advice with an untrue condition (I am not you): second conditional, *were* and *would + base*.
+    (c) The missed train is a past event that cannot change: third conditional, past perfect and *would have + V3*.
+
+    [Note] A model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Each sentence has one error. Find it and correct it. (a) If I will see him, I will tell him. (b) If I would have money, I would buy a car. (c) Unless you do not hurry, you will miss the bus. (d) If he had known, he would told you."
+  sol: |
+    (a) *will see* should be *see*: no *will* in the if-clause of a first conditional. "If I see him, I will tell him."
+
+    (b) *would have* should be *had*: the if-clause of a second conditional takes the past simple. "If I had money, I would buy a car."
+
+    (c) *do not hurry* should be *hurry*: *unless* already means *if ... not*. "Unless you hurry, you will miss the bus." (Or: "If you do not hurry, you will miss the bus.")
+
+    (d) *would told* should be *would have told*: the third conditional needs *would have + V3*. "If he had known, he would have told you."
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Choose the sentence with the same meaning as: Unless you apologise, she will not forgive you."
+  opts: ["If you apologise, she will not forgive you.", "If you do not apologise, she will not forgive you.", "If you did not apologise, she would forgive you.", "If you will not apologise, she forgives you."]
+  ans: 1
+  sol: |
+    *Unless* means *if ... not*, so the exact equivalent is "If you do not apologise, she will not forgive you." The first option drops the negative meaning, the third changes the type and the meaning, and the fourth wrongly puts *will* in the if-clause and changes the result.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Which sentence is a third conditional?"
+  opts: ["If I knew, I would tell you.", "If I had known, I would have told you.", "If I know, I will tell you.", "If I know, I tell you."]
+  ans: 1
+  sol: |
+    The third conditional is *if + past perfect, would have + V3*: "If I had known, I would have told you." The first sentence is the second conditional, the third is the first conditional, and the fourth is the zero conditional.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Rewrite each sentence as directed. (a) She is not rich, so she cannot buy a house. (Begin: If she ...) (b) He did not work hard, so he failed. (Begin: If he ...) (c) Hurry up, or you will miss the train. (Begin: Unless ...)"
+  sol: |
+    (a) *If she were rich, she could buy a house.* The facts are untrue now, so the second conditional: past form (*were*) and a modal in the result (*could*).
+
+    (b) *If he had worked hard, he would not have failed.* The facts belong to the past, so the third conditional. The negative fact becomes positive, and the positive fact becomes negative.
+
+    (c) *Unless you hurry, you will miss the train.* "Or" gives the consequence of not hurrying, so *unless* (= if ... not) with a positive verb.
+
+    [Note] Model answers written for this archive. Other forms such as "If she was rich" (informal) may appear in some keys.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Rewrite each sentence using the word given, keeping the meaning. (a) I am not tall. (I wish ...) (b) He did not listen to me. (I wish ...) (c) It is raining and we cannot play outside. (If only ...) (d) She talks about Paris, but she has never been there. (Begin: She talks as if ...)"
+  sol: |
+    (a) *I wish I were tall.* A wish about the present takes the past form (*were*).
+
+    (b) *I wish he had listened to me.* A regret about the past takes the past perfect.
+
+    (c) *If only it were not raining, we could play outside.* (Also acceptable: *If only it would stop raining.*) *If only* works like a stronger *I wish*.
+
+    (d) *She talks as if she had been there.* (Or: *as if she knew Paris well.*) *As if* with an untrue comparison takes a backshifted form; the past perfect looks back at the visit that never happened.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Rewrite each sentence without if, using inversion (beginning with Had, Were or Should). (a) If I had known the answer, I would have told you. (b) If I were you, I would wait. (c) If you should need help, please call me. (d) If she had not left early, she would have met him."
+  sol: |
+    (a) *Had I known the answer, I would have told you.*
+
+    (b) *Were I you, I would wait.*
+
+    (c) *Should you need help, please call me.*
+
+    (d) *Had she not left early, she would have met him.* The *not* stays after the subject.
+
+    Inversion is formal and is mostly used in writing. [Note] Model answers written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Read the sentence: \"If I had taken the medicine, I would be well now.\" (a) Which two types of conditional does it combine? (b) Why is it not a plain third conditional? (c) Combine these facts into one mixed conditional: He did not study medicine. He is not a doctor now."
+  sol: |
+    (a) The if-clause is a third-conditional form (past perfect, *had taken*) and the result is a second-conditional form (*would be*).
+
+    (b) A plain third conditional would say *would have been well*. Here the result is about the present (*now*), while the condition lies in the past, so the clauses sit on different timelines. That is a mixed conditional.
+
+    (c) *If he had studied medicine, he would be a doctor now.* The past condition takes the past perfect and the present result takes *would + base verb*.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: mcq
+  q: "Rani does not own a car. Which sentence correctly says what she would do if she did?"
+  opts: ["If Rani has a car, she will drive us.", "If Rani had a car, she would drive us.", "If Rani had had a car, she would drive us.", "If Rani would have a car, she drives us."]
+  ans: 1
+  sol: |
+    She does not own a car now, so the situation is imagined and in the present: second conditional, *past simple + would + base verb*. The first option is a real possibility, the third mixes in a past perfect without a past reason, and the fourth puts *would* in the if-clause and the present simple in the result.
+  check: none
