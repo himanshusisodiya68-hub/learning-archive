@@ -1,0 +1,127 @@
+# Design principles and patterns. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A program has 8 modules and each is allowed to depend directly on every other module. How many one-way dependencies can there be?
+  ask: Dependencies
+  unit: ""
+  ans: 56
+  tol: 0.1
+  verify: 8*7
+  sol: Each of the 8 modules can depend on the other 7, so there are $8 \times 7 = 56$ one-way links. If all 8 instead depend only on one shared interface, the number drops to 8.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which module has the highest cohesion?
+  opts: ["utils: sends emails, formats dates, computes GST", "invoice: builds an invoice, totals its lines, applies its tax", "misc: whatever did not fit elsewhere"]
+  ans: 1
+  sol: Everything in `invoice` serves one purpose and changes for the same reason. The other two collect unrelated things that change for different reasons.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: |
+    A function decides a delivery charge with `if city == "Delhi": ... elif city == "Pune": ... elif ...`, and a new city means editing it. Which SOLID principle is most directly broken?
+  opts: ["Open/closed", "Liskov substitution", "Interface segregation"]
+  ans: 0
+  sol: Adding a new case forces an edit to code that already works. Open/closed asks that new behaviour arrive as new code, for example a table of city rates (a strategy), leaving the old code untouched.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Write, in at most 15 lines of Python, a strategy-style solution for computing shipping cost with three methods: \"standard\" (₹40), \"express\" (₹90) and \"pickup\" (₹0). Show how a fourth method \"drone\" is added without editing the function that computes the total."
+  sol: |
+    ```python
+    def standard(): return 40
+    def express():  return 90
+    def pickup():   return 0
+
+    SHIPPING = {"standard": standard, "express": express, "pickup": pickup}
+
+    def total(items_cost, method):
+        return items_cost + SHIPPING[method]()
+
+    # Adding "drone" later, elsewhere:
+    def drone(): return 150
+    SHIPPING["drone"] = drone
+    ```
+    The function `total` never mentions a specific method; it looks the method up by name. A new method is one function plus one registration, so `total` is closed to editing and the design is open to extension. (A class with a `cost()` method per method would work equally well.)
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: When an order is placed, an e-commerce backend must send an email, reduce stock, add loyalty points and notify the warehouse. Today `place_order` calls all four directly. Redesign using the observer idea, and list two problems the new design can introduce.
+  sol: |
+    **Design.** `place_order` saves the order and then publishes one event, "order placed", carrying the order data. Email, stock, loyalty and warehouse each register a listener for that event. `place_order` no longer imports or knows about any of them, so adding "fraud check" is a new subscription elsewhere, with no edit to `place_order`.
+
+    **Problems the design can introduce.**
+    1. *Hidden control flow and ordering:* reading `place_order` no longer shows what happens next, and listeners may need an order (stock before warehouse). Fix with logging of events, documentation, and where order matters, an explicit pipeline.
+    2. *Failure handling:* if the email listener fails, should the order fail? Usually not, but the stock update must not be lost. Fix with retries, a queue and idempotent listeners.
+    Other acceptable points: listeners never unsubscribed leak memory; one slow listener delays the rest unless run asynchronously.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Your app talks to an SMS vendor through calls like `vendor.push_text(to, body)` scattered through 60 files. The vendor is raising prices and you want to switch. Show how an adapter and dependency inversion make the switch cheap, and how a test would use them.
+  sol: |
+    **Step 1: your own shape.** Define what your app needs, in your words: an object with `send(phone, message)`.
+
+    **Step 2: adapters.** One small class per vendor translates your shape to theirs:
+    ```python
+    class VendorAAdapter:
+        def __init__(self, client):
+            self.client = client
+        def send(self, phone, message):
+            self.client.push_text(phone, message)
+    ```
+    A second class, `VendorBAdapter`, calls the new vendor's differently named method.
+
+    **Step 3: hand it in.** Functions receive a `sender` argument instead of creating a vendor client. One place at start-up decides which adapter to build (a factory). Switching vendors then means writing `VendorBAdapter` and changing that one line; the 60 files call only `sender.send(...)`.
+
+    **Testing.** A test passes a fake object whose `send` stores messages in a list; the test then checks the list. No real SMS is sent and no network is needed.
+
+    Migrating the 60 call sites is a one-off cost, done safely with small steps and tests.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A teammate has built `PaymentStrategyFactoryProvider`, `IPaymentStrategy` and `AbstractPaymentStrategyBase` for an app that supports exactly one payment method, "in case we add more". Review the design with a critique that is useful and kind, and say what you would do instead.
+  sol: |
+    **Critique (kind and reasoned).** "I like that you are thinking about flexibility. My worry is cost versus benefit today: with one method, these three layers add three files and three names for a reader to learn, yet nothing yet varies. If a second method arrives, it may differ from what we guess now, and we would have to reshape the layers. This is speculative generality. Can you tell me which change you expect, and when?"
+
+    **What to do instead.** Keep one plain `pay(amount)` function, written cleanly with the payment details isolated in one place and its inputs passed in (so it is testable). When the second real payment method is actually requested, refactor to a strategy: now the real difference between the two is known and the right shape is clear. The rule of three and the habit "solve the problem you have" apply.
+
+    **Exception.** If a second method is already committed on the roadmap for next month, a light seam (a dictionary of functions) is fine, though still not three classes. Cheap, reversible choices beat elaborate ones.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Write the outline of a one-page design doc for replacing a payments module that supports 3 hard-coded methods with a plug-in system. Include goals, non-goals, at least two alternatives, the main trade-off, a rollout plan with rollback, and a measure of success."
+  sol: |
+    **Context.** Adding a payment method takes about six weeks because "card" and "UPI" are assumed in many files; three launches are delayed. (Use real numbers from your tracker.)
+
+    **Goals.** A new method can be added by one team in under a week, touching only new code plus one registration. Existing behaviour does not change. Methods can be tested without real money.
+
+    **Non-goals.** Changing the user interface of checkout; supporting recurring subscriptions; rewriting refunds this quarter.
+
+    **Proposal.** A small `PaymentMethod` interface (authorise, capture, refund, status) with one adapter per provider, a registry that maps names to implementations, and a fake provider for tests. Checkout calls only the interface.
+
+    **Alternatives.** (1) Do nothing: no risk, but each launch stays slow. (2) Add `if` cases for the new methods: fast now, worse coupling later. (3) Buy or adopt a third-party aggregator: fastest to start, but ongoing fees and a new vendor dependency.
+
+    **Trade-offs and risks.** One extra layer to learn and maintain; the interface must cover all methods' quirks (a method that needs a redirect, for example), so a too-narrow interface leaks details.
+
+    **Rollout.** Wrap the existing methods in adapters first with no behaviour change, ship behind a feature flag to 1% of traffic, widen in steps, then add the new method. Rollback: switch the flag off; the old path stays until the new one has run cleanly for two weeks.
+
+    **Success measure.** Time to add a method; payment failure rate unchanged; number of files touched per new method.
+
+    **Open questions.** How are refunds routed when a provider is retired?
+  check: none
