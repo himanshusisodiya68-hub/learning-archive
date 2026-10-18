@@ -126,7 +126,7 @@
   tol: 0.01
   verify: '(()=>{const a=[5,1,4,2,3,6,7,1];let c=0;for(let i=0;i<a.length;i++){let s=0;for(let j=i;j<a.length;j++){s^=a[j];if(s===0)c++}}return c})()'
   sol: |
-    Prefix xors (with the leading 0) are 0, 5, 4, 0, 2, 1, 7, 0, 1. A stretch has xor 0 exactly when two prefix xors are equal. The value 0 appears 3 times, giving 3 pairs, and the value 1 appears 2 times, giving 1 pair; every other value appears once. Total 4: the stretches are $[5,1,4]$, $[2,3,6,7]$... no wait, check each pair: $[5,1,4]$ (positions 0-2), $[5,1,4,2,3,6,7]$ (0-6), $[2,3,6,7]$ (3-6) and $[1,4,2,3,6,7,1]$... the last needs prefix indices 5 and 8 whose xors are both 1, which is positions 5-7, $[6,7,1]$. The brute-force check confirms the count 4.
+    Prefix xors (with the leading 0) are 0, 5, 4, 0, 2, 1, 7, 0, 1. A stretch has xor 0 exactly when two prefix xors are equal. The value 0 appears at prefix positions 0, 3 and 7, giving 3 pairs: the stretches $[5,1,4]$, $[2,3,6,7]$ and the whole first seven numbers $[5,1,4,2,3,6,7]$. The value 1 appears at positions 5 and 8, giving the stretch $[6,7,1]$. Every other value appears once. Total 4.
   check: code
 
 - id: o1
