@@ -841,3 +841,8 @@ details.inside > summary span { font-weight: 400; color: var(--muted); font-size
 details.inside .outcomes { border: 0; padding: 4px 0 10px; }
 details.inside .needs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; } details.inside .needs .eyebrow { width: 100%; }
 .depthbar { margin: 0 0 6px; }
+
+.symbols { margin: 0 0 14px; }
+.sym-g { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 14px; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; }
+.sym { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 8px; align-items: baseline; font-size: 13.5px; line-height: 1.45; }
+.sym-s { font-size: 17px; text-align: center; color: var(--c); }

@@ -20,7 +20,7 @@ Later phases: English (Wren & Martin, literature), a programming/AI foundation, 
 
 ## Content principles (mandatory)
 
-**Read `docs/content-principles.md` before writing or revising any lesson.** In short: life first; Feynman style (real-life puzzle, plain words before notation, first principles); every lesson has an illustrated opener card, core idea, In real life, depth sections, Think with it (mental models, same idea elsewhere), wrap-up and a closing question that leads to the next lesson. CS levels follow the career ladder (Foundations, SDE-1, SDE-2, SDE-3). Reference books: the owner's Drive folder and the Feynman Lectures website; save reading notes in `docs/refs/` so books are read once.
+**Read `docs/content-principles.md` before writing or revising any lesson.** In short: life first; Feynman style (real-life puzzle, plain words before notation, first principles); every lesson has an illustrated opener card, core idea, In real life, depth sections, Think with it (mental models, same idea elsewhere), wrap-up and a closing question that leads to the next lesson. CS levels follow the career ladder (Foundations, SDE-1, SDE-2, SDE-3). Notation rules (words before symbols, one new symbol per paragraph, every equation read aloud, a Symbols card) are in §2a. Reference books: catalogue and token-free download method in `docs/refs/books.md`; save reading notes in `docs/refs/` so books are read once.
 
 ## Keeping cost down
 
@@ -100,6 +100,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 | `core` | **Required.** The one idea to memorise, shown boxed at the top of the lesson: `idea` (1–2 sentences, exam-ready, may use `$…$`), `formulas` (1–3 items of `{tex, label}`, KaTeX without `$$`; English uses `patterns` of `{text, label}` instead), `conditions` (2–4 ideal conditions or assumptions under which it holds exactly; for English, when to use the form), optional `sign` (the sign convention or the commonest mistake). Use single-quoted YAML strings. |
 | `outcomes` | **Required.** 3–5 verb-first "after this lesson you can" items, ordered basic to advanced. |
 | `opener` | **Required for new lessons.** `{story, art}`: conversational 3-paragraph puzzle (markdown) and an inline SVG illustration; shown as the top card with the `:::hook` question. |
+| `symbols` | **Required for new lessons.** `{s, means}` per symbol (KaTeX, meaning + unit); shown as the Symbols card. |
 | `life` | **Required for new lessons.** 3–5 places the reader meets this idea in daily life. |
 | `models` | **Required for new lessons.** 2–3 `{name, text}` mental models that transfer beyond the subject. |
 | `links` | Same idea elsewhere: `{leaf: subj/id, name, same, differs}`. |
@@ -116,7 +117,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 - **Widgets in `app.js`:** `refraction-sim`, `optics-bench types=... u= f=`, `prism-sim`, `fringes [mode=single] [lambda=]`, `polarisers`, `projectile [u= angle= g=]` (trajectory, range, height, time of flight, complementary-angle ghost), `motion-graphs [u= a=]` (linked x–t, v–t, a–t graphs with areas). A new widget goes in the `WIDGETS` map in `app.js`; reuse the `.bench`, `.controls` and `.readout` classes.
 - **Math:** `$...$` and `$$...$$` (KaTeX).
 - **Style:** short paragraphs and concrete numbers. Explain *why* before formulas. One idea per section. Bold only key terms: the app renders bold as a highlighter mark.
-- **How the app presents a lesson:** core-idea card and outcomes at the top, a lesson map grouped by depth, then each `##` section as a numbered card. A band marks where each new depth begins. Key ideas and traps form the wrap-up. So keep section titles short (they appear in the map and the contents list), and keep sections ordered by depth.
+- **How the app presents a lesson (one column):** opener card (story, art, hook) → core idea → Symbols → In real life → a collapsed "What's inside" (outcomes, map) and the depth bar → each `##` section as a numbered card, with a band where each new depth begins → Think with it (models, links) → wrap-up (key ideas, traps) → the question that leads on. Keep section titles short and sections ordered by depth.
 
 ## Problem format (`content/problems/<subj>/<leaf>.yaml`)
 

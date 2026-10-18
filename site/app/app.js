@@ -519,6 +519,7 @@
       </div>` : '';
     const hasHook = /class="hook"/.test(lesson.introHtml || ''), op = lesson.opener || {};
     const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}"><div class="op-art">${op.art || coverArt(L)}</div><div class="op-body"><div class="op-k">A puzzle to start</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div></div>` : '';
+    const symHTML = lesson.symbols && lesson.symbols.length ? `<div class="symbols"><div class="rl-h"><b>Symbols in this lesson</b><span>shorthand only: each one is a word you already know</span></div><div class="sym-g">${lesson.symbols.map(x => `<div class="sym"><span class="sym-s">${x.s}</span><span>${x.m}</span></div>`).join('')}</div></div>` : '';
     const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><b>In real life</b><span>where this idea is quietly at work around you</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl"><span class="rl-n">${i + 1}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
     const outHTML = lesson.outcomes && lesson.outcomes.length ? `<div class="outcomes"><div class="eyebrow">After this lesson you can</div><ol>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ol></div>` : '';
     const mapHTML = `<div class="lmap-g">${groups.map(g => `<div class="lmb l${g.lvl}" data-lvl="${g.lvl || 1}"><div class="lmb-h">${g.lvl ? escHTML((B[g.lvl] || [''])[0]) : 'Wrap-up'}</div>${g.secs.map(sec => `<button data-to="${sec.id}"><span class="n">${sec._n}</span><span>${escHTML(sec.title)}</span></button>`).join('')}</div>`).join('')}</div>`;
@@ -540,7 +541,7 @@
       </div>
       <div class="lpane s-${sid}" data-lpane="learn">
         <div class="read"><div class="read-main">
-          ${openerHTML}${coreHTML}${lifeHTML}
+          ${openerHTML}${coreHTML}${symHTML}${lifeHTML}
           <details class="inside"><summary>What's inside this lesson<span>${lesson.sections.length} sections · about ${mins} min at full depth</span></summary>${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}${mapHTML}</details>
           ${depthHTML}
           <div class="prose">${lesson.introHtml ? `<div class="intro">${lesson.introHtml}</div>` : ''}${sections}</div>

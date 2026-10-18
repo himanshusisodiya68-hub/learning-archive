@@ -119,7 +119,8 @@ function parseLesson(file) {
   const next = meta.next ? { q: mdi(meta.next.q || ''), leaf: meta.next.leaf || '', name: meta.next.name || '' } : null;
   const hm = body.match(/^:::hook[^\n]*\n([\s\S]*?)\n:::/m), hookQ = hm ? mdi(parseChoice(hm[1]).q || '') : '';
   const opener = meta.opener ? { story: md(meta.opener.story || ''), art: meta.opener.art || '' } : null;
-  return { ...meta, hookQ, opener, life, models, links, next, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
+  const symbols = (meta.symbols || []).map(x => ({ s: katex.renderToString(String(x.s), { throwOnError: false, strict: 'ignore' }), m: mdi(String(x.means || '')) }));
+  return { ...meta, symbols, hookQ, opener, life, models, links, next, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
     cards: (meta.cards || []).map(c => ({ front: mdi(c.front), back: md(c.back) })) };
 }
 

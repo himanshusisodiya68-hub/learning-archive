@@ -14,7 +14,7 @@ You write the deep content for one leaf of the Learning Archive. Before writing,
 
 **Your output:**
 1. **The lesson** at `site/content/lessons/<subj>/<leaf>.md`, written in one go:
-   - front matter (including the required `core` and `outcomes`), then a hook;
+   - front matter (including the required `summary` (one plain sentence), `core`, `outcomes`, `opener` (story + SVG art), `symbols`, `life`, `models`, `links`, `next`; see `docs/content-principles.md`), then the `:::hook` that follows the opener story;
    - sections from depth 1 or 2 up to 4, each starting from first principles (why before formula);
    - at least one SVG figure, plus a `qc` per major idea;
    - an existing widget where one fits;

@@ -16,9 +16,20 @@ Sources: *Six Easy Pieces* and the Feynman Lectures (read chapters online at fey
 - **Be honest about limits**: where the idea stops working, what is still unknown.
 - **The test**: could you explain it to a freshman, or a twelve-year-old? If not, it is not yet understood. The notes tab asks the reader to do exactly this.
 
+## 2a. Notation and terminology: never a barrier
+Most readers quit physics, maths and CS at the first page of unexplained symbols. These rules stop that:
+1. **Words before symbols, always.** Say the idea in a full sentence first; only then introduce the symbol as shorthand for it ("call this push the force, F for short").
+2. **At most one new symbol or term per paragraph**, and never two new ideas in one sentence.
+3. **Every equation is read aloud** in the line after it: "Read it as: twice the distance, a quarter of the pull."
+4. **Every symbol has a meaning and a unit** the first time it appears, and is listed in the lesson's **Symbols** card (`symbols` front matter), which the app shows under the core idea.
+5. **Terms are defined in passing** at first use, in plain words, with an everyday example; jargon never appears in titles or summaries.
+6. **Prefer the picture or the number to the symbol**: show a worked number before the general formula.
+7. **Notation is a convenience, not the content**: if a section reads fine with the symbols removed, it is written right.
+
 ## 3. Lesson anatomy (front matter fields in brackets)
 1. **Opener card** (`opener.story`, `opener.art`, then the `:::hook`): conversational, second person, 3 short paragraphs that build a puzzle, an illustration (inline SVG, using `var(--c)` colours), then a guess-first question. It must make the reader want the answer.
 2. **Core idea** (`core`): the one statement to memorise, its 1–3 formulas or patterns, and the ideal conditions under which it holds exactly.
+   **Symbols** (`symbols`): every symbol used in the lesson, `{s, means}` with its unit, e.g. `{s: 'F', means: "force, the push or pull (newtons, N)"}`.
 3. **After this lesson you can** (`outcomes`).
 4. **In real life** (`life`): 3–5 concrete places the idea is at work around the reader (Indian contexts welcome: trains, cricket, monsoon, UPI, ISRO).
 5. **Sections by depth** (Class 10 → 12 → JEE → Olympiad; for CS Foundations → SDE-1 → SDE-2 → SDE-3). Short titles, one idea each, a quick check after each major idea, at least one figure or widget.
@@ -27,6 +38,8 @@ Sources: *Six Easy Pieces* and the Feynman Lectures (read chapters online at fey
 8. **The question that leads on** (`next`): a genuine open question the next lesson answers. This forms the chain that lights up the knowledge tree.
 
 ## 4. Language
+- **Summary** (`summary`): one plain sentence of at most 22 words, a promise or teaser, never a list of topics.
+- **Titles**: the app renders headings and card titles in Title Case; write them in sentence case in the files.
 - Conversational, warm, second person ("you"). Short sentences. Concrete numbers.
 - No term before the reader needs it; define each term in passing the first time.
 - Prefer a story or a surprising fact over a summary. Never open a section with a definition.
@@ -53,13 +66,13 @@ Use psychology, not guilt. Avoid streak pressure and vanity counters.
 - **English**: vocabulary (synonyms, antonyms, idioms, phrasal verbs, one-word substitution, collocations) is its own pillar; grammar rules are explained by why the form exists.
 
 ## 8. References and the reality filter
-- Use the owner's reference books (Google Drive folder https://drive.google.com/drive/folders/1acWIOWLTCwTVJsaBmTg9ElI6NJRPjX5X) and the Feynman Lectures website. Copy problems word for word only from these or NCERT.
+- Use the owner's reference books (catalogue with file ids and the token-free download method: `docs/refs/books.md`) and the Feynman Lectures website. Copy problems word for word only from these or NCERT.
 - To save tokens, read a reference once per chapter and save short notes (page/section pointers, key examples, order of ideas) in `docs/refs/<subject>/<branch>.md`; later sessions read the notes, not the book.
 - Anything from memory (book chapter numbers, historical details) is labelled [Unverified]. Inferences are labelled [Inference].
 
 ## 9. Retrofitting older lessons
 Older lessons (Optics, Electricity and magnetism, English grammar) predate these rules. Bring each up to standard in this order:
-1. **Cheap pass (Sonnet, front matter only)**: add `opener` (story + art), rewrite the `:::hook` question conversationally, add `life`, `models`, `links`, `next`. No body changes.
+1. **Cheap pass (Sonnet, front matter only)**: brief in `docs/retrofit-cheap.md`: plain summary, `opener` (story + art), conversational `:::hook`, `symbols`, `life`, `models`, `links`, `next`. No body changes.
 2. **Deep pass (Opus, selected lessons)**: rewrite section openings so each starts from a question or picture, remove notation-first passages, add figures.
 Track progress in `docs/retrofit.md` (one line per lesson: cheap pass done / deep pass done).
 
