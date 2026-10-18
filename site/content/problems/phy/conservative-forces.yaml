@@ -92,6 +92,19 @@
     Also, if a machine does useful work on a load, that work has to come from somewhere: a machine cannot give out more energy than it takes in (conservation of energy). With no energy supply, the machine runs down.
   check: none
 
+- id: ncert9-it-7-w1
+  lvl: ncert-intext
+  num: "IX 7 · What if"
+  source: NCERT Grade 9 Science · Ch 7 · §7.6 What if ...
+  kind: text
+  q: |-
+    What if it were possible to build a perpetual motion machine, which once started, could continue doing useful work forever, without any fuel or electricity?
+  sol: |
+    Such a machine would give out more energy than it takes in, because doing useful work forever means a steady output of energy while nothing is supplied. That would break the **law of conservation of energy**: energy cannot be created, only changed from one form to another.
+
+    In a real machine some of the input energy is always turned into heat and sound by friction and air resistance (non-conservative forces), so less and less mechanical energy is left and the machine slows down and stops unless more energy is supplied. [Note] Our reading: this "What if ..." prompt has no printed answer in the book; the solution above is ours.
+  check: none
+
 - id: ncert9-ex-7-5
   lvl: ncert-ex
   num: "IX 7 · Q5"
@@ -292,6 +305,28 @@
 
     [Note] The part (c) result uses the circular-orbit energy formulae from the chapter on Gravitation; the NCERT key only says that the kinetic energy increases while the potential energy decreases and the sum decreases.
   answer_key: "(a) rocket; (b) For a conservative force work done over a path is minus of change in potential energy. Over a complete orbit, there is no change in potential energy; (c) K.E. increases, but P.E. decreases, and the sum decreases due to dissipation against friction; (d) in the second case."
+  check: ncert-key
+
+- id: ncert11-ex-5-6
+  lvl: ncert-ex
+  num: "XI 5.6"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.6
+  kind: text
+  q: |-
+    Underline the correct alternative :
+    (a) When a conservative force does positive work on a body, the potential energy of the body increases/decreases/remains unaltered.
+    (b) Work done by a body against friction always results in a loss of its kinetic/potential energy.
+    (c) The rate of change of total momentum of a many-particle system is proportional to the external force/sum of the internal forces on the system.
+    (d) In an inelastic collision of two bodies, the quantities which do not change after the collision are the total kinetic energy/total linear momentum/total energy of the system of two bodies.
+  sol: |
+    (a) **Decreases.** For a conservative force $W = -\Delta V$, so positive work means $\Delta V < 0$.
+
+    (b) **Kinetic energy.** Friction is not conservative and has no potential energy attached to it. Work done against it removes mechanical energy from the body, which shows up as a loss of kinetic energy and an equal gain in heat (internal energy).
+
+    (c) **The external force.** For a system, $\dfrac{d\mathbf P}{dt} = \mathbf F_{\text{ext}}$. The internal forces occur in equal and opposite pairs (third law), so their sum is zero and cannot change the total momentum.
+
+    (d) **Total linear momentum, and also total energy.** Momentum is conserved if no external force acts, and energy is conserved if the system is isolated (counting the heat and sound produced). The total kinetic energy is not conserved in an inelastic collision.
+  answer_key: "(a) decrease; (b) kinetic energy; (c) external force; (d) total linear momentum, and also total energy (if the system of two bodies is isolated)."
   check: ncert-key
 
 - id: ncert11-ex-5-18

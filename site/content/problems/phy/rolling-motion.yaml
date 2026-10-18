@@ -1,0 +1,152 @@
+# Rolling motion. No NCERT example or exercise in Class XI Ch 6 (reprint 2026-27) belongs here: the reprint mentions rolling only in the chapter introduction, without questions. Every problem below is original (found, board and main).
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A wheel of radius 0.40 m rolls without slipping along a straight road, with its centre moving at 6 m/s. Find its angular speed. (Original problem.)
+  ask: Angular speed
+  unit: rad/s
+  ans: 15
+  tol: 0.05
+  verify: 6/0.4
+  sol: |
+    Rolling without slipping means the contact point is momentarily at rest, so $v_{cm}=\omega R$. Hence $\omega=v_{cm}/R=6/0.40=15$ rad/s. (Original problem.)
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A wheel rolls without slipping and its centre moves at 6 m/s. Find the speed of the topmost point of the wheel relative to the road. (Original problem.)
+  ask: Speed of the top point
+  unit: m/s
+  ans: 12
+  tol: 0.05
+  verify: 6+6
+  sol: |
+    The top point has velocity $v_{cm}$ (translation) plus $\omega R=v_{cm}$ (rotation) in the same direction, so $v_{top}=2v_{cm}=12$ m/s. The bottom point has $v_{cm}-\omega R=0$. (Original problem.)
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: A wheel rolls without slipping on a level road. At any instant, the point of the wheel touching the road is (Original problem)
+  opts: ["moving forward with the speed of the centre", "moving backward with the speed of the centre", "at rest relative to the road", "moving with twice the speed of the centre"]
+  ans: 2
+  sol: The velocity of the contact point is the centre's velocity forward ($v_{cm}$) plus the rotational velocity backward ($\omega R=v_{cm}$), which cancel. That is exactly the no-slip condition, and it is why static (not kinetic) friction acts there. (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A solid cylinder of mass 2 kg rolls without slipping along a level surface at 4 m/s. Find its total kinetic energy. (Original problem.)
+  ask: Total kinetic energy
+  unit: J
+  ans: 24
+  tol: 0.05
+  verify: 0.5*2*4**2+0.5*(0.5*2)*4**2
+  sol: |
+    Translational part: $\tfrac12mv^2=\tfrac12(2)(16)=16$ J. Rotational part: $\tfrac12I\omega^2=\tfrac12\left(\tfrac12mR^2\right)\left(\tfrac vR\right)^2=\tfrac14mv^2=8$ J. Total $=\tfrac34mv^2=24$ J. (Original problem.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: What fraction of the total kinetic energy of a solid sphere rolling without slipping is rotational? (Original problem.)
+  ask: Rotational fraction
+  unit: ""
+  ans: 0.2857
+  tol: 0.001
+  verify: 0.4/(1+0.4)
+  sol: |
+    For a body with $I=kmR^2$ rolling without slipping, $K_{rot}=\tfrac12(kmR^2)(v/R)^2=\tfrac12kmv^2$ and $K_{tr}=\tfrac12mv^2$, so the rotational fraction is $\dfrac{k}{1+k}$. For the solid sphere $k=\tfrac25$: $\dfrac{2/5}{7/5}=\dfrac27\approx0.286$. For comparison a ring ($k=1$) gives $\tfrac12$ and a solid cylinder ($k=\tfrac12$) gives $\tfrac13$. (Original problem.)
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A solid cylinder starts from rest at the top of a rough incline of height 1.5 m and rolls down without slipping. Find its speed at the bottom. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Speed at the bottom
+  unit: m/s
+  ans: 4.43
+  tol: 0.01
+  verify: sqrt(4*9.8*1.5/3)
+  sol: |
+    Static friction does no work on a rolling body, so energy is conserved: $mgh=\tfrac12mv^2+\tfrac12I\omega^2=\tfrac34mv^2$ for the solid cylinder. Hence $v=\sqrt{\dfrac{4gh}{3}}=\sqrt{\dfrac{4(9.8)(1.5)}{3}}=\sqrt{19.6}=4.43$ m/s. A frictionless sliding block would reach $\sqrt{2gh}=5.42$ m/s; the difference went into rotation. The angle of the incline does not matter. (Original problem.)
+  check: code
+
+- id: b4
+  lvl: board
+  kind: num
+  q: A ring and a solid sphere, equal in radius, are released together from the top of a long rough incline and roll without slipping. Find the ratio of the time the ring takes to reach the bottom to the time the sphere takes. (Original problem.)
+  ask: Ratio $t_{ring}/t_{sphere}$
+  unit: ""
+  ans: 1.195
+  tol: 0.002
+  verify: sqrt((5/7)/(1/2))
+  sol: |
+    Down an incline of angle $\theta$, a body with $I=kmR^2$ rolling without slipping has $a=\dfrac{g\sin\theta}{1+k}$. Ring: $k=1$, $a_r=\tfrac12g\sin\theta$. Sphere: $k=\tfrac25$, $a_s=\tfrac57g\sin\theta$. Over the same length $s=\tfrac12at^2$, so $t\propto1/\sqrt a$:
+    $$\frac{t_r}{t_s}=\sqrt{\frac{a_s}{a_r}}=\sqrt{\frac{5/7}{1/2}}=\sqrt{\frac{10}{7}}=1.195.$$
+    The sphere wins. The ratio depends only on the shapes. (Original problem.)
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A uniform solid sphere rolls down a rough incline of angle 30° without slipping. Find its linear acceleration, and the force of friction as a fraction of its weight. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Linear acceleration
+  unit: m/s²
+  ans: 3.5
+  tol: 0.01
+  verify: 5/7*9.8*sin(rad(30))
+  sol: |
+    Along the incline: $mg\sin\theta-f=ma$. About the centre: $fR=I\alpha=\tfrac25mR^2(a/R)$, so $f=\tfrac25ma$. Adding, $mg\sin\theta=\tfrac75ma$ and
+    $$a=\tfrac57g\sin\theta=\tfrac57(9.8)(0.5)=3.5\ \text{m/s}^2.$$
+    Then $f=\tfrac25m(3.5)=1.4m$ N per kg, i.e. $f/(mg)=1.4/9.8=\tfrac17\approx0.143$. The friction acts up the slope and does no work, since the contact point does not move. (Original problem.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A solid cylinder is to roll down a 30° incline without slipping. What is the smallest coefficient of static friction between the cylinder and the incline that allows this? (Original problem.)
+  ask: Minimum coefficient of static friction
+  unit: ""
+  ans: 0.1925
+  tol: 0.001
+  verify: tan(rad(30))/3
+  sol: |
+    For a solid cylinder, $a=\tfrac23g\sin\theta$ and the friction required is $f=\tfrac12ma=\tfrac13mg\sin\theta$. The normal force is $N=mg\cos\theta$. Rolling without slipping needs $f\le\mu N$:
+    $$\mu\ge\frac{\tfrac13mg\sin\theta}{mg\cos\theta}=\tfrac13\tan\theta=\tfrac13\tan30^\circ=0.192.$$
+    For a ring, $f=\tfrac12mg\sin\theta$ and $\mu\ge\tfrac12\tan\theta$; for a solid sphere, $\mu\ge\tfrac27\tan\theta$. On a very slippery slope (smaller $\mu$) the body slides and spins at a lower rate instead. (Original problem.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A bowling ball (a uniform solid sphere) is thrown along a level lane so that it slides with speed 7.0 m/s and no spin. Friction between ball and lane acts until the ball rolls without slipping. Find its final speed of rolling. (Original problem.)
+  ask: Final rolling speed
+  unit: m/s
+  ans: 5
+  tol: 0.02
+  verify: 5/7*7
+  sol: |
+    While the ball slides, kinetic friction at the contact point acts. Take angular momentum about the contact point (a point on the lane): the friction passes through it, and gravity and the normal force have no moment about it (their lines of action pass through the line along which the contact point is measured, parallel to the motion; strictly, the moment arms are along the line of motion), so the angular momentum about the lane's surface line is conserved.
+
+    Initially: $L=mv_0R$ (the ball's centre moves at $v_0$ at height $R$, no spin). Finally, rolling at $v$ with $\omega=v/R$:
+    $$mv_0R=mvR+\tfrac25mR^2\,\frac vR=\tfrac75mvR\ \Rightarrow\ v=\tfrac57v_0=5.0\ \text{m/s}.$$
+    This is independent of the friction coefficient. With friction coefficient $\mu$ the time taken is $t=\dfrac{2v_0}{7\mu g}$ (for $\mu=0.20$, about 1.02 s). Energy lost: $\tfrac12m(49-25)-\tfrac12\tfrac25m(25)=12m-5m=7m$ J, so 7 of the original $24.5m$ J... the kinetic energy falls from $24.5m$ to $17.5m$ J. (Original problem.)
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A billiard ball is a uniform solid sphere of radius 2.8 cm. It lies on a level table and is struck by a cue with a horizontal impulse along a line in the vertical plane through its centre. At what height above its centre must the cue strike so that the ball begins to roll without slipping immediately? (Original problem.)
+  ask: Height of the strike above the centre
+  unit: cm
+  ans: 1.12
+  tol: 0.01
+  verify: 0.4*2.8
+  sol: |
+    Let the impulse be $J$, applied at height $h$ above the centre. The centre gets $mv=J$ and the sphere gets angular momentum about its centre $I\omega=Jh$ with $I=\tfrac25mR^2$. Rolling without slipping from the start requires $v=\omega R$:
+    $$\frac Jm=\frac{Jh}{\tfrac25mR^2}\,R\ \Rightarrow\ h=\tfrac25R=\tfrac25(2.8\ \text{cm})=1.12\ \text{cm}.$$
+    Strike lower and the ball slides with backspin; strike higher and it has topspin and the table's friction drives it forward. The result is independent of the ball's mass. (Original problem.)
+  check: code

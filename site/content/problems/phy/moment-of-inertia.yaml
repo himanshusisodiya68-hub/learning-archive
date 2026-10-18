@@ -1,0 +1,216 @@
+# Moment of inertia, rotation about a fixed axis, parallel and perpendicular axes theorems. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 6 (Examples 6.10 and 6.11; Exercises 6.10 and 6.13). Rotational kinematics and the law tau = I alpha are filed here. Found, board and main problems are original.
+
+- id: ncert11-eg-6-10
+  lvl: ncert-intext
+  num: "XI Ex 6.10"
+  source: NCERT XI Physics · Ch 6 · Example 6.10
+  kind: proof
+  q: Obtain Eq. (6.36) from first principles.
+  hints:
+    - Eq. (6.36) is $\omega=\omega_0+\alpha t$ (rotation with uniform angular acceleration). Start from the definition $\alpha=d\omega/dt$ with $\alpha$ constant.
+    - Integrate both sides with respect to $t$ and call the constant of integration $c$.
+    - Use the initial condition $\omega=\omega_0$ at $t=0$ to find $c$.
+  sol: |
+    Eq. (6.36) is $\omega=\omega_0+\alpha t$, for rotation about a fixed axis with uniform angular acceleration. Here $\omega$ is the angular velocity at time $t$ and $\omega_0$ its value at $t=0$.
+
+    The angular acceleration is uniform, hence
+    $$\frac{d\omega}{dt}=\alpha=\text{constant}.$$
+    Integrating with respect to $t$,
+    $$\omega=\int\alpha\,dt+c=\alpha t+c\quad(\alpha\ \text{constant}).$$
+    At $t=0$, $\omega=\omega_0$ (given), so $\omega_0=c$. Thus $\omega=\omega_0+\alpha t$, as required.
+
+    Integrating $\omega=d\theta/dt$ once more gives $\theta=\omega_0t+\tfrac12\alpha t^2$ (Eq. 6.37), and eliminating $t$ gives $\omega^2=\omega_0^2+2\alpha\theta$ (Eq. 6.38), the exact analogues of the linear equations of motion.
+  check: none
+
+- id: ncert11-eg-6-11
+  lvl: ncert-intext
+  num: "XI Ex 6.11"
+  source: NCERT XI Physics · Ch 6 · Example 6.11
+  kind: num
+  q: The angular speed of a motor wheel is increased from 1200 rpm to 3120 rpm in 16 seconds. (i) What is its angular acceleration, assuming the acceleration to be uniform? (ii) How many revolutions does the engine make during this time?
+  ask: Angular acceleration, part (i)
+  unit: rad/s²
+  ans: 12.57
+  tol: 0.02
+  verify: (2*PI*3120/60-2*PI*1200/60)/16
+  sol: |
+    (i) Use $\omega=\omega_0+\alpha t$. Convert to rad/s: $\omega_0=\dfrac{2\pi\times1200}{60}=40\pi$ rad/s and $\omega=\dfrac{2\pi\times3120}{60}=104\pi$ rad/s. Then
+    $$\alpha=\frac{\omega-\omega_0}{t}=\frac{104\pi-40\pi}{16}=4\pi\ \text{rad/s}^2\approx12.57\ \text{rad/s}^2.$$
+
+    (ii) The angular displacement in time $t$ is
+    $$\theta=\omega_0t+\tfrac12\alpha t^2=\left(40\pi\times16+\tfrac12\times4\pi\times16^2\right)\text{rad}=(640\pi+512\pi)\ \text{rad}=1152\pi\ \text{rad}.$$
+    Number of revolutions $=\dfrac{1152\pi}{2\pi}=576$.
+  check: code
+
+- id: ncert11-ex-6-10
+  lvl: ncert-ex
+  num: "XI 6.10"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.10
+  kind: text
+  q: |-
+    Torques of equal magnitude are applied to a hollow cylinder and a solid sphere, both having the same mass and radius. The cylinder is free to rotate about its standard axis of symmetry, and the sphere is free to rotate about an axis passing through its centre. Which of the two will acquire a greater angular speed after a given time.
+  sol: |
+    The **solid sphere** acquires the greater angular speed.
+
+    Both start from rest and feel the same torque $\tau$, so $\alpha=\tau/I$ and, after time $t$, $\omega=\alpha t=\tau t/I$. The angular speed is larger for the body with the smaller moment of inertia.
+
+    For the same mass $M$ and radius $R$: hollow cylinder about its axis, $I_c=MR^2$ (all the mass is at distance $R$); solid sphere about a diameter, $I_s=\tfrac25MR^2$. The sphere's $I$ is smaller, so
+    $$\frac{\omega_s}{\omega_c}=\frac{I_c}{I_s}=\frac52 .$$
+    After the same time the sphere spins 2.5 times as fast. The sphere has its mass nearer the axis, so it is "easier to spin up".
+  answer_key: Sphere
+  check: ncert-key
+
+- id: ncert11-ex-6-13
+  lvl: ncert-ex
+  num: "XI 6.13"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.13
+  kind: num
+  q: |-
+    A rope of negligible mass is wound round a hollow cylinder of mass 3 kg and radius 40 cm. What is the angular acceleration of the cylinder if the rope is pulled with a force of 30 N? What is the linear acceleration of the rope? Assume that there is no slipping.
+  ask: Angular acceleration of the cylinder
+  unit: rad/s²
+  ans: 25
+  tol: 0.05
+  verify: 30*0.4/(3*0.4**2)
+  sol: |
+    The rope pulls tangentially at the rim, so the torque about the axis is $\tau=FR=30\times0.40=12$ N m. The hollow cylinder has $I=MR^2=3\times0.40^2=0.48$ kg m$^2$. Then
+    $$\alpha=\frac{\tau}{I}=\frac{12}{0.48}=25\ \text{rad/s}^2.$$
+    With no slipping, a point on the rope moves with the rim: $a=\alpha R=25\times0.40=10\ \text{m/s}^2$.
+  answer_key: 25 s-2; 10 m s-2
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Two 2 kg masses are fixed at the two ends of a light rod 1 m long. Find the moment of inertia about an axis through the midpoint of the rod, perpendicular to it. (Original problem.)
+  ask: Moment of inertia
+  unit: kg m²
+  ans: 1
+  tol: 0.005
+  verify: 2*2*0.5**2
+  sol: |
+    Each mass is 0.5 m from the axis: $I=\sum m r^2=2(2)(0.5)^2=1.0$ kg m$^2$. The rod is light, so it adds nothing. (Original problem.)
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A uniform solid disc of mass 2 kg and radius 0.30 m rotates about its axis through the centre and perpendicular to the disc. Find its moment of inertia. (Original problem.)
+  ask: Moment of inertia
+  unit: kg m²
+  ans: 0.09
+  tol: 0.001
+  verify: 0.5*2*0.3**2
+  sol: |
+    For a uniform solid disc about its symmetry axis, $I=\tfrac12MR^2=\tfrac12(2)(0.30)^2=0.09$ kg m$^2$. (Original problem.)
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: A ring and a solid disc have the same mass and radius. The same torque is applied to each about its own axis. Which one gets the greater angular acceleration? (Original problem.)
+  opts: ["the ring", "the disc", "both equally", "it depends on the direction of the torque"]
+  ans: 1
+  sol: $\alpha=\tau/I$. The ring has $I=MR^2$ and the disc has $I=\tfrac12MR^2$, so the disc has the smaller $I$ and the larger $\alpha$ (twice as large). (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A uniform rod of mass 3 kg and length 1.2 m has $I=\tfrac1{12}ML^2$ about an axis through its centre perpendicular to its length. Use the parallel axes theorem to find its moment of inertia about a parallel axis through one end. (Original problem.)
+  ask: Moment of inertia about the end
+  unit: kg m²
+  ans: 1.44
+  tol: 0.005
+  verify: 3*1.2**2/12+3*0.6**2
+  sol: |
+    $I_{cm}=\tfrac1{12}(3)(1.2)^2=0.36$ kg m$^2$. The end is $d=0.6$ m from the centre, so
+    $$I_{end}=I_{cm}+Md^2=0.36+3(0.6)^2=0.36+1.08=1.44\ \text{kg m}^2,$$
+    which equals $\tfrac13ML^2=\tfrac13(3)(1.44)=1.44$. (Original problem.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A flywheel is a uniform solid disc of mass 8 kg and radius 0.25 m. A constant torque of 2 N m acts on it about its axis. Find its angular acceleration. (Original problem.)
+  ask: Angular acceleration
+  unit: rad/s²
+  ans: 8
+  tol: 0.02
+  verify: 2/(0.5*8*0.25**2)
+  sol: |
+    $I=\tfrac12MR^2=\tfrac12(8)(0.25)^2=0.25$ kg m$^2$. So $\alpha=\tau/I=2/0.25=8$ rad/s$^2$. Starting from rest, after 5 s it would turn at $\omega=\alpha t=40$ rad/s. (Original problem.)
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A thin ring of mass 0.5 kg and radius 0.20 m has $I=MR^2$ about the axis through its centre perpendicular to its plane. Use the perpendicular axes theorem to find its moment of inertia about a diameter. (Original problem.)
+  ask: Moment of inertia about a diameter
+  unit: kg m²
+  ans: 0.01
+  tol: 0.0002
+  verify: 0.5*0.2**2/2
+  sol: |
+    For a plane lamina, $I_z=I_x+I_y$ where $x,y$ are two perpendicular axes in the plane through the same point and $z$ is perpendicular to the plane. By symmetry the ring has $I_x=I_y$, so $I_x=\tfrac12I_z=\tfrac12MR^2=\tfrac12(0.5)(0.20)^2=0.010$ kg m$^2$. (Original problem.)
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A 2 kg mass hangs from a light string wound round a solid cylinder (pulley) of mass 4 kg and radius 0.10 m. The cylinder turns on a fixed frictionless horizontal axle through its centre. The mass is released from rest and the string does not slip. Find the acceleration of the mass. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Acceleration of the mass
+  unit: m/s²
+  ans: 4.9
+  tol: 0.02
+  verify: 2*9.8/(2+4/2)
+  sol: |
+    Let $T$ be the tension. Mass: $mg-T=ma$. Cylinder: torque $TR=I\alpha$ with $I=\tfrac12MR^2$ and $\alpha=a/R$ (no slipping), so $T=\tfrac12Ma$. Adding,
+    $$mg=\left(m+\tfrac12M\right)a\ \Rightarrow\ a=\frac{mg}{m+M/2}=\frac{2(9.8)}{2+2}=4.9\ \text{m/s}^2.$$
+    The tension is $T=\tfrac12Ma=9.8$ N, which is less than $mg=19.6$ N. For a massless pulley $a$ would be $g$; the pulley's moment of inertia reduces it. (Original problem.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Four point masses of 1 kg each sit at the corners of a square of side 0.40 m, joined by a light frame. Find the moment of inertia about an axis through one corner, perpendicular to the plane of the square. Verify the result with the parallel axes theorem. (Original problem.)
+  ask: Moment of inertia about the corner axis
+  unit: kg m²
+  ans: 0.64
+  tol: 0.005
+  verify: 2*0.4**2+(0.4*sqrt(2))**2
+  sol: |
+    Distances from the chosen corner: 0 (itself), 0.40 m (two neighbours) and $0.40\sqrt2$ m (the opposite corner). So
+    $$I=1(0)^2+2(1)(0.40)^2+1(0.40\sqrt2)^2=0+0.32+0.32=0.64\ \text{kg m}^2.$$
+    Check. About the central axis (perpendicular to the plane) each mass is at $0.20\sqrt2$ m, so $I_{cm}=4(1)(0.08)=0.32$ kg m$^2$. The corner is $d=0.20\sqrt2$ m from the centre, so $I=I_{cm}+Md^2=0.32+4(0.08)=0.64$ kg m$^2$, as found. (Original problem.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A uniform solid sphere has mass 5 kg and radius 0.10 m, and $I=\tfrac25MR^2$ about a diameter. Find its moment of inertia about a tangent to the sphere, and its radius of gyration about that tangent. (Original problem.)
+  ask: Moment of inertia about the tangent
+  unit: kg m²
+  ans: 0.07
+  tol: 0.0005
+  verify: 5*(0.4*0.1**2+0.1**2)
+  sol: |
+    A tangent is parallel to a diameter at distance $R$. By the parallel axes theorem,
+    $$I=\tfrac25MR^2+MR^2=\tfrac75MR^2=\tfrac75(5)(0.10)^2=0.070\ \text{kg m}^2.$$
+    The radius of gyration $k$ is defined by $I=Mk^2$: $k=\sqrt{I/M}=\sqrt{0.070/5}=0.118$ m, that is $k=R\sqrt{7/5}$. (Original problem.)
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A uniform rod of length 1.5 m is hinged at one end and released from rest in a horizontal position. Find its angular acceleration at the instant of release, and the acceleration of its free end. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Angular acceleration at release
+  unit: rad/s²
+  ans: 9.8
+  tol: 0.02
+  verify: 3*9.8/(2*1.5)
+  sol: |
+    About the hinge the rod has $I=\tfrac13ML^2$. At release the weight $Mg$ acts at the centre, arm $L/2$, so $\tau=Mg\,L/2$. Then
+    $$\alpha=\frac\tau I=\frac{MgL/2}{ML^2/3}=\frac{3g}{2L}=\frac{3(9.8)}{2(1.5)}=9.8\ \text{rad/s}^2.$$
+    The free end has tangential acceleration $a=\alpha L=14.7\ \text{m/s}^2=1.5g$, larger than $g$. At that instant the rod is still at rest, so there is no centripetal term. A small object resting on the free end would lose contact with the rod. (Original problem.)
+  check: code

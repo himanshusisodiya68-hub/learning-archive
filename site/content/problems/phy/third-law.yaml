@@ -112,6 +112,18 @@
   answer_key: (a) The horse-cart system has no external force in empty space. The mutual forces between the horse and the cart cancel (Third Law). On the ground, the contact force between the system and the ground (friction) causes their motion from rest. (b) Due to inertia of the body not directly in contact with the seat. (c) A lawn mower is pulled or pushed by applying force at an angle. When you push, the normal force (N) must be more than its weight, for equilibrium in the vertical direction. This results in greater friction f (f ∝ N) and, therefore, a greater applied force to move. Just the opposite happens while pulling. (d) To reduce the rate of change of momentum and hence to reduce the force necessary to stop the ball.
   check: ncert-key
 
+
+- id: ncert8-it-5-8
+  lvl: ncert-intext
+  num: "VIII 5 · A step further"
+  source: NCERT Grade 8 Science · Ch 5 · §5.3 in-text question
+  kind: text
+  q: |-
+    When you pushed the table with your hand, did you feel a force on your hand too?
+  sol: |
+    Yes. The table pushes back on your hand with a force equal in size and opposite in direction to the push of your hand on the table. Whenever two objects interact, each experiences a force from the other (Newton's third law, met formally in Grade 9). The two forces act on different objects, your hand and the table, and exist only while the interaction lasts: the moment you stop pushing, the force on your hand disappears too.
+  check: none
+
 - id: f1
   lvl: found
   kind: mcq

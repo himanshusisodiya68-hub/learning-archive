@@ -1,0 +1,313 @@
+# Collisions: elastic and inelastic collisions, coefficient of restitution. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 5 (Examples 5.11-5.12 and Exercises 5.7, 5.8, 5.14, 5.16, 5.17, 5.19). Ch 6 of the same book (keph106) has no collision items. The Grade 9 chapter has no separate collision item (its carrom Example 7.3 is placed under the work-energy theorem). Exercise 5.19 is placed here as a momentum-conservation item. Found, board and main problems are original.
+- id: ncert11-eg-5-11
+  lvl: ncert-intext
+  num: "XI Ex 5.11"
+  source: NCERT XI Physics · Ch 5 · Example 5.11
+  kind: num
+  q: |-
+    Slowing down of neutrons: In a nuclear reactor a neutron of high speed (typically $10^7$ m s$^{-1}$) must be slowed to $10^3$ m s$^{-1}$ so that it can have a high probability of interacting with isotope $^{235}_{92}$U and causing it to fission. Show that a neutron can lose most of its kinetic energy in an elastic collision with a light nuclei like deuterium or carbon which has a mass of only a few times the neutron mass. The material making up the light nuclei, usually heavy water (D$_2$O) or graphite, is called a moderator.
+  ask: Fraction of the neutron's kinetic energy given to a deuterium nucleus (m2 = 2 m1)
+  unit: fraction
+  ans: 0.8889
+  tol: 0.001
+  verify: 4*1*2/(1+2)**2
+  sol: |
+    Let the neutron (mass $m_1$, speed $v_{1i}$) hit a nucleus of mass $m_2$ at rest, head-on and elastically. Momentum and kinetic energy conservation give
+    $$v_{1f} = \frac{m_1-m_2}{m_1+m_2}\,v_{1i},\qquad v_{2f} = \frac{2m_1}{m_1+m_2}\,v_{1i}.$$
+    The fraction of kinetic energy the neutron keeps is
+    $$f_1 = \frac{K_{1f}}{K_{1i}} = \left(\frac{m_1-m_2}{m_1+m_2}\right)^2,$$
+    and the fraction passed to the nucleus is
+    $$f_2 = 1-f_1 = \frac{4m_1m_2}{(m_1+m_2)^2}.$$
+    For deuterium $m_2 = 2m_1$: $f_1 = \left(\dfrac{-1}{3}\right)^2 = \dfrac19$ and $f_2 = \dfrac{8}{9} = 0.889$. Almost 90% of the neutron's energy goes to the deuterium.
+
+    For carbon, $m_2 \approx 12m_1$: $f_1 = (11/13)^2 = 0.716$ and $f_2 = 0.284$, i.e. 71.6% retained and 28.4% transferred, as the book states. A heavy nucleus would hardly slow the neutron ($m_2 \gg m_1$ gives $f_2 \to 0$); a light one is a good moderator. In practice head-on collisions are rare, so the transfer per collision is smaller.
+
+    Extension (ours): to cut the speed from $10^7$ to $10^3$ m s$^{-1}$ the kinetic energy must fall by $(10^{-4})^2 = 10^{-8}$. If every collision with deuterium were head-on, each keeps $1/9$, so $n = \dfrac{8\ln 10}{\ln 9} \approx 8.4$, about 9 collisions.
+  check: code
+
+- id: ncert11-eg-5-12
+  lvl: ncert-intext
+  num: "XI Ex 5.12"
+  source: NCERT XI Physics · Ch 5 · Example 5.12
+  kind: num
+  q: |-
+    Consider the collision depicted in Fig. 5.10 to be between two billiard balls with equal masses $m_1 = m_2$. The first ball is called the cue while the second ball is called the target. The billiard player wants to 'sink' the target ball in a corner pocket, which is at an angle $\theta_2 = 37°$. Assume that the collision is elastic and that friction and rotational motion are not important. Obtain $\theta_1$.
+  ask: Angle θ1 of the cue ball
+  unit: degrees
+  ans: 53
+  tol: 0.01
+  verify: 90-37
+  sol: |
+    Since the masses are equal, momentum conservation (target initially at rest) gives $\mathbf v_{1i} = \mathbf v_{1f} + \mathbf v_{2f}$. Squaring (dot product with itself):
+    $$v_{1i}^2 = v_{1f}^2 + v_{2f}^2 + 2\,\mathbf v_{1f}\cdot\mathbf v_{2f} = v_{1f}^2 + v_{2f}^2 + 2v_{1f}v_{2f}\cos(\theta_1+37^\circ). \quad (5.31)$$
+    The collision is elastic and $m_1 = m_2$, so kinetic energy conservation gives
+    $$v_{1i}^2 = v_{1f}^2 + v_{2f}^2. \quad (5.32)$$
+    Comparing the two, $\cos(\theta_1 + 37^\circ) = 0$, so $\theta_1 + 37^\circ = 90^\circ$ and $\theta_1 = 53^\circ$.
+
+    General result: when two equal masses undergo a glancing elastic collision with one at rest, they move off at right angles to each other.
+  check: code
+
+- id: ncert11-ex-5-7
+  lvl: ncert-ex
+  num: "XI 5.7"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.7
+  kind: text
+  q: |-
+    State if each of the following statements is true or false. Give reasons for your answer.
+    (a) In an elastic collision of two bodies, the momentum and energy of each body is conserved.
+    (b) Total energy of a system is always conserved, no matter what internal and external forces on the body are present.
+    (c) Work done in the motion of a body over a closed loop is zero for every force in nature.
+    (d) In an inelastic collision, the final kinetic energy is always less than the initial kinetic energy of the system.
+  sol: |
+    (a) **False.** In an elastic collision it is the *total* momentum and the *total* kinetic energy of the two-body system that are conserved. Each body's momentum and energy change: they are exchanged between the bodies (in a head-on collision of equal masses the speeds are swapped).
+
+    (b) **False.** The total energy of a system is conserved only if it is isolated, i.e. no external force does work on it. An external force doing work (for example a hand pushing a block) changes the system's energy.
+
+    (c) **False.** It is zero only for conservative forces (gravity, spring force, electrostatic force). For friction or air drag the work over a closed loop is negative and not zero.
+
+    (d) **False** as printed in the key, with the remark "true usually but not always, why?". [Note] In ordinary inelastic collisions the kinetic energy decreases, because part of it goes into heat, sound and deformation. It need not decrease if the bodies carry stored internal energy that is released in the collision (a compressed spring, a chemical or nuclear reaction, an explosion): then the final kinetic energy is greater. So "always" is too strong.
+  answer_key: "(a) F ; (b) F ; (c) F ; (d) F (true usually but not always, why?)"
+  check: ncert-key
+
+- id: ncert11-ex-5-8
+  lvl: ncert-ex
+  num: "XI 5.8"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.8
+  kind: text
+  q: |-
+    Answer carefully, with reasons :
+    (a) In an elastic collision of two billiard balls, is the total kinetic energy conserved during the short time of collision of the balls (i.e. when they are in contact) ?
+    (b) Is the total linear momentum conserved during the short time of an elastic collision of two balls ?
+    (c) What are the answers to (a) and (b) for an inelastic collision ?
+    (d) If the potential energy of two billiard balls depends only on the separation distance between their centres, is the collision elastic or inelastic ? (Note, we are talking here of potential energy corresponding to the force during collision, not gravitational potential energy).
+  sol: |
+    (a) **No.** While the balls are in contact they are deformed, like a compressed spring, and part of the kinetic energy is stored as elastic potential energy. Kinetic energy is regained only when the balls separate. It is the energy *before* and *after* the collision that is equal, not the kinetic energy during it.
+
+    (b) **Yes.** The two contact forces are equal and opposite at every instant (third law), and no net external force acts on the pair in the horizontal plane. So the total momentum is the same at every instant, also during the contact.
+
+    (c) For an inelastic collision the answer to (b) is again **yes**: momentum is conserved during and after. The answer to (a) is again **no**, and moreover the kinetic energy is not recovered even after the collision is over, because some of it has become heat and sound.
+
+    (d) **Elastic.** If the interaction depends only on the separation, the force is conservative and has a potential energy function. All the kinetic energy that became potential energy during the approach is returned as the balls separate, so the total kinetic energy after equals that before.
+  answer_key: |
+    (a) No (b) Yes (c) Linear momentum is conserved during an inelastic collision, kinetic energy is, of course, not conserved even after the collision is over. (d) elastic.
+  check: ncert-key
+
+- id: ncert11-ex-5-14
+  lvl: ncert-ex
+  num: "XI 5.14"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.14
+  kind: text
+  q: |-
+    A molecule in a gas container hits a horizontal wall with speed 200 m s$^{-1}$ and angle 30° with the normal, and rebounds with the same speed. Is momentum conserved in the collision ? Is the collision elastic or inelastic ?
+  sol: |
+    Take the normal to the wall as the $x$ axis. The component of the molecule's velocity along the wall is unchanged, and the normal component reverses: $v_x$ goes from $200\cos30^\circ$ to $-200\cos30^\circ$. So the molecule's own momentum changes by $\Delta p = 2mv\cos30^\circ$ along the normal, i.e. the molecule's momentum is **not** conserved by itself.
+
+    The wall (with the container and the Earth behind it) receives the opposite momentum. For the molecule plus wall system the total momentum is **conserved**: the wall recoils with momentum equal to what the molecule loses. Because the wall's mass is enormous, this recoil gives it a negligible velocity.
+
+    The speed of the molecule is the same before and after, and the wall's recoil kinetic energy is negligible, so the total kinetic energy is conserved. The collision is **elastic**.
+  answer_key: "Yes, momentum of the molecule + wall system is conserved. The wall has a recoil momentum such that the momentum of the wall + momentum of the outgoing molecule equals momentum of the incoming molecule, assuming the wall to be stationary initially. However, the recoil momentum produces negligible velocity because of the large mass of the wall. Since kinetic energy is also conserved, the collision is elastic."
+  check: ncert-key
+
+- id: ncert11-ex-5-16
+  lvl: ncert-ex
+  num: "XI 5.16"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.16
+  kind: mcq
+  q: |-
+    Two identical ball bearings in contact with each other and resting on a frictionless table are hit head-on by another ball bearing of the same mass moving initially with a speed $V$. If the collision is elastic, which of the following (Fig. 5.14) is a possible result after collision ?
+  opts:
+    - "(i) ball 1 at rest; balls 2 and 3 each moving with V/2"
+    - "(ii) balls 1 and 2 at rest; ball 3 moving with V"
+    - "(iii) all three balls moving together with V/3"
+  ans: 1
+  sol: |
+    The three outcomes in Fig. 5.14 (read from the page image) are: (i) ball 1 stops and balls 2 and 3 move on with $V/2$ each; (ii) balls 1 and 2 stop and ball 3 moves off with $V$; (iii) all three move together with $V/3$. Let each mass be $m$. Before the collision, momentum $= mV$ and kinetic energy $= \tfrac12mV^2$. An elastic collision must conserve both.
+
+    (i) Momentum: $m\frac V2 + m\frac V2 = mV$, correct. Energy: $2\times\tfrac12m\frac{V^2}{4} = \tfrac14mV^2 \ne \tfrac12mV^2$. Not possible.
+
+    (ii) Momentum: $mV$, correct. Energy: $\tfrac12mV^2$, correct. **Possible.**
+
+    (iii) Momentum: $3m\frac V3 = mV$, correct. Energy: $3\times\tfrac12m\frac{V^2}{9} = \tfrac16mV^2 \ne \tfrac12mV^2$. Not possible (this would be a completely inelastic collision).
+
+    So only **(ii)** conserves both momentum and kinetic energy. [Note] The answer key prints "(b)", which is the second figure, (ii).
+  answer_key: "(b)"
+  check: ncert-key
+
+- id: ncert11-ex-5-17
+  lvl: ncert-ex
+  num: "XI 5.17"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.17
+  kind: num
+  q: |-
+    The bob A of a pendulum released from 30$^\circ$ to the vertical hits another bob B of the same mass at rest on a table as shown in Fig. 5.15. How high does the bob A rise after the collision ? Neglect the size of the bobs and assume the collision to be elastic.
+  ask: Height A rises after the collision
+  unit: m
+  ans: 0
+  tol: 0.001
+  verify: ((1-1)/(1+1))**2*0.5*(1-cos(rad(30)))
+  sol: |
+    Let the string have length $L$ (the value is not needed). A swings down through height $L(1-\cos30^\circ)$ and reaches the table level with speed $v = \sqrt{2gL(1-\cos30^\circ)}$, where it hits B.
+
+    For a head-on elastic collision of equal masses with the second at rest, $v_{Af} = \dfrac{m-m}{m+m}v = 0$ and $v_{Bf} = \dfrac{2m}{2m}v = v$. A transfers its entire momentum to B and stops. It therefore rises to a height $h = v_{Af}^2/2g = 0$: **it does not rise at all**, and B slides off along the table with speed $v$.
+  answer_key: "It transfers its entire momentum to the ball on the table, and does not rise at all."
+  check: both
+
+- id: ncert11-ex-5-19
+  lvl: ncert-ex
+  num: "XI 5.19"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.19
+  kind: num
+  q: |-
+    A trolley of mass 300 kg carrying a sandbag of 25 kg is moving uniformly with a speed of 27 km/h on a frictionless track. After a while, sand starts leaking out of a hole on the floor of the trolley at the rate of 0.05 kg s$^{-1}$. What is the speed of the trolley after the entire sand bag is empty ?
+  ask: Speed of the trolley
+  unit: km/h
+  ans: 27
+  tol: 0.1
+  verify: (300*27+25*27)/(300+25)
+  sol: |
+    The track is frictionless, so no horizontal external force acts on the trolley and sand system. The sand leaks straight down out of the hole, so at the instant it leaves it has the same horizontal velocity as the trolley and no horizontal velocity relative to it. In a short time $dt$ a mass $dm$ leaves carrying horizontal momentum $dm\,v$, so the remaining system $M - dm$ keeps $v$:
+    $$Mv = (M-dm)v' + dm\,v \ \Rightarrow\ v' = v.$$
+    Applying this repeatedly until the bag is empty, the speed never changes. Equivalently, total momentum $(300+25)\times7.5$ kg m s$^{-1}$ ($27$ km/h $= 7.5$ m s$^{-1}$) is shared by the trolley and the sand that is still moving with it, all at $7.5$ m s$^{-1}$.
+
+    The speed is **27 km/h (no change)**. The rate 0.05 kg s$^{-1}$ is not needed. [Note] This item is about momentum conservation rather than a collision; it is kept here because the chapter groups it with the collision exercises.
+  answer_key: "27 km h–1 (no change in speed)"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A 2 kg trolley moving at 3 m/s hits a stationary 1 kg trolley and the two stick together. Find their common speed just after the collision. (Original problem.)
+  ask: Common speed
+  unit: m/s
+  ans: 2
+  tol: 0.01
+  verify: 2*3/(2+1)
+  sol: |
+    The collision is completely inelastic and the track is frictionless, so momentum is conserved: $2\times3 = (2+1)v$, giving $v = 2\ \text{m s}^{-1}$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Two bodies collide and stick together. No external force acts on them. Which quantity is the same just before and just after the collision? (Original problem.)
+  opts: ["the total kinetic energy", "the total linear momentum", "the speed of each body", "the kinetic energy of each body"]
+  ans: 1
+  sol: |
+    **The total linear momentum.** The internal forces are equal and opposite, so the total momentum cannot change. Kinetic energy is not conserved in a collision where the bodies stick (some goes into heat, sound and deformation), and the speed or kinetic energy of each body changes.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A rubber ball is dropped from 1.00 m onto a hard floor and rebounds to 0.64 m. Find the coefficient of restitution between the ball and the floor. (Original problem.)
+  ask: Coefficient of restitution
+  unit: ""
+  ans: 0.8
+  tol: 0.005
+  verify: sqrt(0.64/1.00)
+  sol: |
+    The speed just before impact is $\sqrt{2gh_1}$ and just after is $\sqrt{2gh_2}$. For a body hitting a fixed floor, $e = \dfrac{\text{speed of separation}}{\text{speed of approach}} = \sqrt{\dfrac{h_2}{h_1}} = \sqrt{0.64} = 0.80$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A bullet of mass 50 g moving horizontally at 400 m/s embeds itself in a wooden block of mass 1.95 kg resting on a frictionless table. Find the speed of the block with the bullet inside. (Original problem.)
+  ask: Speed of block and bullet
+  unit: m/s
+  ans: 10
+  tol: 0.05
+  verify: 0.05*400/(0.05+1.95)
+  sol: |
+    Momentum is conserved: $0.05\times400 = (0.05+1.95)v$, so $v = 20/2 = 10\ \text{m s}^{-1}$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In the situation of the previous problem (bullet 50 g at 400 m/s, block 1.95 kg), how much kinetic energy is converted into other forms (heat, sound and deformation) in the collision? (Original problem.)
+  ask: Kinetic energy lost
+  unit: J
+  ans: 3900
+  tol: 5
+  verify: 0.5*0.05*400**2-0.5*2.0*10**2
+  sol: |
+    Before: $\tfrac12(0.05)(400)^2 = 4000$ J. After: $\tfrac12(2.0)(10)^2 = 100$ J. Lost: $4000 - 100 = 3900$ J, i.e. 97.5% of the initial kinetic energy.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A ballistic pendulum is a block of mass 0.99 kg hanging from long strings. A 10 g bullet moving horizontally at 300 m/s embeds in it and the block swings up. Through what height does it rise? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Height risen
+  unit: m
+  ans: 0.459
+  tol: 0.002
+  verify: (0.01*300/1.0)**2/(2*9.8)
+  sol: |
+    The collision is over before the block moves appreciably, so momentum is conserved in it: $0.01\times300 = (0.01+0.99)v$, giving $v = 3\ \text{m s}^{-1}$. Afterwards only gravity (a conservative force) does work, so mechanical energy is conserved: $\tfrac12v^2 = gh$ and $h = \dfrac{9}{2\times9.8} = 0.459$ m. Note that kinetic energy is not conserved in the collision, so we must not apply energy conservation to the bullet before it embeds.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: text
+  q: Explain, with the help of a collision of two billiard balls, why momentum is conserved in every collision between two bodies but kinetic energy is conserved only in an elastic collision. (Original problem.)
+  sol: |
+    At every instant of the contact the two balls push on each other with forces that are equal and opposite (Newton's third law). The forces last for the same time, so the impulses are equal and opposite and the total momentum of the pair does not change, whether the collision is elastic or not (as long as no net external force acts).
+
+    Kinetic energy depends on the squares of the speeds and is not changed by equal and opposite impulses in a simple way. Whether it returns depends on what the contact forces do: if the balls deform and then spring back completely (a conservative interaction), all the kinetic energy that went into elastic potential energy comes back and the collision is **elastic**. If part of the deformation is permanent, or heat and sound are produced, some kinetic energy is lost and the collision is **inelastic**. In the extreme case the bodies stick together and the loss is greatest (completely inelastic).
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A 3 kg block moving at 4 m/s on a frictionless surface collides head-on and elastically with a 1 kg block at rest. Find the speed of the 1 kg block just after the collision. (Original problem.)
+  ask: Speed of the 1 kg block
+  unit: m/s
+  ans: 6
+  tol: 0.03
+  verify: 2*3*4/(3+1)
+  sol: |
+    For an elastic head-on collision with the second body at rest, $v_{2f} = \dfrac{2m_1}{m_1+m_2}v_{1i} = \dfrac{2\times3}{4}\times4 = 6\ \text{m s}^{-1}$. The 3 kg block continues at $v_{1f} = \dfrac{3-1}{3+1}\times4 = 2\ \text{m s}^{-1}$. Check: momentum $3\times4 = 12 = 3\times2 + 1\times6$; energy $\tfrac12\cdot3\cdot16 = 24 = \tfrac12\cdot3\cdot4 + \tfrac12\cdot1\cdot36 = 6 + 18$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A 2 kg body moving at +5 m/s collides head-on with a 3 kg body moving at -1 m/s along the same line. The coefficient of restitution is 0.5. Find the velocity of the 2 kg body after the collision (take the +5 m/s direction as positive). (Original problem.)
+  ask: Velocity of the 2 kg body
+  unit: m/s
+  ans: -0.4
+  tol: 0.005
+  verify: (2*5+3*(-1)-3*0.5*(5-(-1)))/(2+3)
+  sol: |
+    The coefficient of restitution is $e = \dfrac{v_{2f}-v_{1f}}{u_1-u_2}$, so $v_{2f} = v_{1f} + 0.5\times6 = v_{1f}+3$. Momentum conservation: $2(5) + 3(-1) = 2v_{1f} + 3v_{2f} = 2v_{1f} + 3(v_{1f}+3)$. Hence $7 = 5v_{1f} + 9$ and $v_{1f} = -0.4\ \text{m s}^{-1}$, i.e. the 2 kg body bounces back at 0.4 m/s. Then $v_{2f} = +2.6\ \text{m s}^{-1}$. Check: $2(-0.4) + 3(2.6) = 7$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: For the collision in the previous problem (2 kg at +5 m/s, 3 kg at -1 m/s, $e = 0.5$), find the kinetic energy lost in the collision. (Original problem.)
+  ask: Kinetic energy lost
+  unit: J
+  ans: 16.2
+  tol: 0.05
+  verify: 0.5*1.2*(1-0.5**2)*6**2
+  sol: |
+    Before: $\tfrac12(2)(5)^2 + \tfrac12(3)(1)^2 = 25 + 1.5 = 26.5$ J. After (velocities $-0.4$ and $2.6$ m/s): $\tfrac12(2)(0.16) + \tfrac12(3)(6.76) = 0.16 + 10.14 = 10.3$ J. Loss $= 26.5 - 10.3 = 16.2$ J.
+
+    Shortcut: the loss is $\tfrac12\mu(1-e^2)u_{rel}^2$ with reduced mass $\mu = \dfrac{2\times3}{2+3} = 1.2$ kg and relative speed $6$ m/s: $\tfrac12(1.2)(0.75)(36) = 16.2$ J. It vanishes for $e=1$ (elastic) and is greatest for $e = 0$.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A billiard ball moving at 5 m/s strikes an identical ball at rest in a glancing elastic collision. The first ball goes off at 30° to its original direction. Find the speed of the second ball just after the collision. Ignore friction and spin. (Original problem.)
+  ask: Speed of the second ball
+  unit: m/s
+  ans: 2.5
+  tol: 0.01
+  verify: 5*sin(rad(30))
+  sol: |
+    For equal masses in an elastic glancing collision with one ball at rest, the two balls leave at right angles (the result of Example 5.12). The second ball therefore moves at $90^\circ - 30^\circ = 60^\circ$ on the other side. Momentum conservation along the original direction and perpendicular to it gives $v_1\cos30^\circ + v_2\cos60^\circ = 5$ and $v_1\sin30^\circ = v_2\sin60^\circ$. Equivalently the velocity vectors form a right triangle with hypotenuse $5$ m/s, so $v_1 = 5\cos30^\circ = 4.33\ \text{m s}^{-1}$ and $v_2 = 5\sin30^\circ = 2.5\ \text{m s}^{-1}$. Check: $v_1^2 + v_2^2 = 18.75 + 6.25 = 25$.
+  check: code

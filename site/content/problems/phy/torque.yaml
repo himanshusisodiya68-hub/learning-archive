@@ -1,0 +1,346 @@
+# Torque, vector product and equilibrium of rigid bodies. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 6 (Examples 6.4, 6.5, 6.7-6.9; Exercises 6.4, 6.5, 6.8, 6.9, 6.16). Found, board and main problems are original.
+
+- id: ncert11-eg-6-4
+  lvl: ncert-intext
+  num: "XI Ex 6.4"
+  source: NCERT XI Physics · Ch 6 · Example 6.4
+  kind: num
+  q: Find the scalar and vector products of two vectors. $\mathbf a=(3\hat{\mathbf i}-4\hat{\mathbf j}+5\hat{\mathbf k})$ and $\mathbf b=(-2\hat{\mathbf i}+\hat{\mathbf j}-3\hat{\mathbf k})$.
+  ask: Scalar product a·b
+  unit: ""
+  ans: -25
+  tol: 0.01
+  verify: 3*(-2)+(-4)*1+5*(-3)
+  sol: |
+    **Scalar product.** Multiply matching components and add:
+    $$\mathbf a\cdot\mathbf b=(3)(-2)+(-4)(1)+(5)(-3)=-6-4-15=-25.$$
+
+    **Vector product.** Use the determinant rule:
+    $$\mathbf a\times\mathbf b=\begin{vmatrix}\hat{\mathbf i}&\hat{\mathbf j}&\hat{\mathbf k}\\3&-4&5\\-2&1&-3\end{vmatrix}=\hat{\mathbf i}\big[(-4)(-3)-(5)(1)\big]-\hat{\mathbf j}\big[(3)(-3)-(5)(-2)\big]+\hat{\mathbf k}\big[(3)(1)-(-4)(-2)\big]$$
+    $$=7\hat{\mathbf i}-\hat{\mathbf j}-5\hat{\mathbf k}.$$
+
+    Check: $\mathbf a\times\mathbf b$ must be perpendicular to both vectors, so its dot product with each must vanish: $(7)(3)+(-1)(-4)+(-5)(5)=21+4-25=0$ and $(7)(-2)+(-1)(1)+(-5)(-3)=-14-1+15=0$. As the book notes, $\mathbf b\times\mathbf a=-7\hat{\mathbf i}+\hat{\mathbf j}+5\hat{\mathbf k}$.
+  check: code
+
+- id: ncert11-eg-6-5
+  lvl: ncert-intext
+  num: "XI Ex 6.5"
+  source: NCERT XI Physics · Ch 6 · Example 6.5
+  kind: num
+  q: Find the torque of a force $7\hat{\mathbf i}+3\hat{\mathbf j}-5\hat{\mathbf k}$ about the origin. The force acts on a particle whose position vector is $\hat{\mathbf i}-\hat{\mathbf j}+\hat{\mathbf k}$.
+  ask: Magnitude of the torque
+  unit: units of force × length
+  ans: 15.75
+  tol: 0.02
+  verify: sqrt(2*2+12*12+10*10)
+  sol: |
+    Here $\mathbf r=\hat{\mathbf i}-\hat{\mathbf j}+\hat{\mathbf k}$ and $\mathbf F=7\hat{\mathbf i}+3\hat{\mathbf j}-5\hat{\mathbf k}$. Use the determinant rule for $\boldsymbol\tau=\mathbf r\times\mathbf F$:
+    $$\boldsymbol\tau=\begin{vmatrix}\hat{\mathbf i}&\hat{\mathbf j}&\hat{\mathbf k}\\1&-1&1\\7&3&-5\end{vmatrix}=(5-3)\hat{\mathbf i}-(-5-7)\hat{\mathbf j}+(3+7)\hat{\mathbf k}=2\hat{\mathbf i}+12\hat{\mathbf j}+10\hat{\mathbf k}.$$
+    The vector answer is $\boldsymbol\tau=2\hat{\mathbf i}+12\hat{\mathbf j}+10\hat{\mathbf k}$. Its magnitude is $\sqrt{2^2+12^2+10^2}=\sqrt{248}\approx15.75$. The question gives no units, so none are attached.
+  check: code
+
+- id: ncert11-eg-6-7
+  lvl: ncert-intext
+  num: "XI Ex 6.7"
+  source: NCERT XI Physics · Ch 6 · Example 6.7
+  kind: proof
+  q: Show that moment of a couple does not depend on the point about which you take the moments.
+  hints:
+    - Place the forces $\mathbf F$ and $-\mathbf F$ at points with position vectors $\mathbf r_2$ and $\mathbf r_1$ from an arbitrary origin O.
+    - Add the torques of the two forces about O and combine them into a single cross product.
+    - Express the difference $\mathbf r_2-\mathbf r_1$ as the vector joining the two points of application.
+  sol: |
+    Consider a couple acting on a rigid body (Fig. 6.22): the force $\mathbf F$ acts at A and $-\mathbf F$ acts at B, with position vectors $\mathbf r_2$ and $\mathbf r_1$ about an arbitrary origin O. The moment of the couple is the sum of the moments of the two forces:
+    $$\boldsymbol\tau=\mathbf r_1\times(-\mathbf F)+\mathbf r_2\times\mathbf F=\mathbf r_2\times\mathbf F-\mathbf r_1\times\mathbf F=(\mathbf r_2-\mathbf r_1)\times\mathbf F.$$
+    Since $\mathbf r_1+\overrightarrow{BA}=\mathbf r_2$, we get $\mathbf r_2-\mathbf r_1=\overrightarrow{BA}$ and so $\boldsymbol\tau=\overrightarrow{BA}\times\mathbf F$. This vector involves only the two points of application and the force, not the origin. Hence the moment of a couple is the same about every point: it is a **free vector** (magnitude: force × perpendicular separation of the two lines of action).
+  check: none
+
+- id: ncert11-eg-6-8
+  lvl: ncert-intext
+  num: "XI Ex 6.8"
+  source: NCERT XI Physics · Ch 6 · Example 6.8
+  kind: num
+  q: A metal bar 70 cm long and 4.00 kg in mass supported on two knife-edges placed 10 cm from each end. A 6.00 kg load is suspended at 30 cm from one end. Find the reactions at the knife-edges. (Assume the bar to be of uniform cross section and homogeneous.)
+  ask: Reaction R₁ at the knife-edge K₁ nearer the loaded end (g = 9.8 m/s²)
+  unit: N
+  ans: 54.88
+  tol: 0.05
+  verify: 5.6*9.8
+  sol: |
+    Let the bar be AB, with knife-edges $K_1$ and $K_2$ at 10 cm from A and from B. The load of 6.00 kg hangs at P, 30 cm from A (Fig. 6.26). The bar is uniform, so its weight $W=4.00g$ N acts at its centre G, 35 cm from A. Then $AK_1=10$, $AP=30$, $AG=35$, $AK_2=60$ cm, so $K_1G=K_2G=25$ cm and $PG=5$ cm. The load is $W_1=6.00g$ N.
+
+    Translational equilibrium: $R_1+R_2-W_1-W=0$, i.e. $R_1+R_2=10.00g=98.00$ N.
+
+    Rotational equilibrium about G (clockwise negative):
+    $$-R_1(K_1G)+W_1(PG)+R_2(K_2G)=0\ \Rightarrow\ -0.25R_1+0.05(6.00g)+0.25R_2=0\ \Rightarrow\ R_1-R_2=1.2g=11.76\ \text{N}.$$
+
+    Solving, $R_1=54.88$ N and $R_2=43.12$ N: about 55 N at $K_1$ and 43 N at $K_2$.
+
+    Check by taking moments about $K_2$: $R_1(0.50)=4.00g(0.25)+6.00g(0.30)=2.8g$, so $R_1=5.6g=54.88$ N.
+  check: code
+
+- id: ncert11-eg-6-9
+  lvl: ncert-intext
+  num: "XI Ex 6.9"
+  source: NCERT XI Physics · Ch 6 · Example 6.9
+  kind: num
+  q: |-
+    A 3m long ladder weighing 20 kg leans on a frictionless wall. Its feet rest on the floor 1 m from the wall as shown in Fig.6.27. Find the reaction forces of the wall and the floor.
+    [Fig. 6.27: ladder AB with its foot A on the floor, 1 m from the wall, and its top B against the vertical wall.]
+  ask: Reaction force F₁ of the wall (g = 9.8 m/s²)
+  unit: N
+  ans: 34.6
+  tol: 0.1
+  verify: 20*9.8/(4*sqrt(2))
+  sol: |
+    The ladder AB is 3 m long and its foot A is $AC=1$ m from the wall, so the top is at height $BC=\sqrt{3^2-1^2}=2\sqrt2$ m. The forces are: the weight $W=20g=196.0$ N at the midpoint D; the wall's reaction $F_1$, horizontal because the wall is frictionless; and the floor's reaction $F_2$, with a normal component $N$ and a friction component $F$. Friction points towards the wall to stop the foot sliding away.
+
+    Vertical balance: $N-W=0\Rightarrow N=196.0$ N.
+    Horizontal balance: $F-F_1=0$.
+    Moments about A (the weight's horizontal arm is $\tfrac12$ m): $2\sqrt2\,F_1-\tfrac12W=0$, so
+    $$F_1=\frac{W}{4\sqrt2}=\frac{196.0}{4\sqrt2}=34.6\ \text{N}.$$
+    Then $F=F_1=34.6$ N. The floor's total reaction is
+    $$F_2=\sqrt{F^2+N^2}=199.0\ \text{N},$$
+    at an angle $\alpha$ to the horizontal with $\tan\alpha=N/F=4\sqrt2$, i.e. $\alpha\approx80^\circ$.
+  check: code
+
+- id: ncert11-ex-6-4
+  lvl: ncert-ex
+  num: "XI 6.4"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.4
+  kind: proof
+  q: Show that the area of the triangle contained between the vectors $\mathbf a$ and $\mathbf b$ is one half of the magnitude of $\mathbf a\times\mathbf b$.
+  hints:
+    - Draw $\mathbf a$ and $\mathbf b$ from a common point with angle $\theta$ between them, and write the area of the triangle as ½ × base × height.
+    - Express the height in terms of $|\mathbf b|$ and $\sin\theta$.
+    - Compare with $|\mathbf a\times\mathbf b|=ab\sin\theta$.
+  sol: |
+    Draw $\mathbf a$ and $\mathbf b$ from a common point O, with the angle $\theta$ between them. The triangle has two sides $OA=\mathbf a$ and $OB=\mathbf b$. Take $OA$ as the base, of length $a$. The height of B above the line OA is $b\sin\theta$. Hence
+    $$\text{area}=\tfrac12\times\text{base}\times\text{height}=\tfrac12\,a\,(b\sin\theta).$$
+    The magnitude of the vector product is $|\mathbf a\times\mathbf b|=ab\sin\theta$. So $\text{area}=\tfrac12|\mathbf a\times\mathbf b|$. Equivalently, $|\mathbf a\times\mathbf b|$ is the area of the parallelogram on $\mathbf a$ and $\mathbf b$, and the triangle is half of it.
+  check: none
+
+- id: ncert11-ex-6-5
+  lvl: ncert-ex
+  num: "XI 6.5"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.5
+  kind: proof
+  q: Show that $\mathbf a\cdot(\mathbf b\times\mathbf c)$ is equal in magnitude to the volume of the parallelepiped formed on the three vectors, $\mathbf a$, $\mathbf b$ and $\mathbf c$.
+  hints:
+    - $|\mathbf b\times\mathbf c|$ is the area of the parallelogram on $\mathbf b$ and $\mathbf c$, and $\mathbf b\times\mathbf c$ is perpendicular to its plane.
+    - The height of the parallelepiped over that base is the component of $\mathbf a$ along $\mathbf b\times\mathbf c$.
+    - Volume = base area × height.
+  sol: |
+    Take the parallelogram formed by $\mathbf b$ and $\mathbf c$ as the base of the parallelepiped. Its area is $|\mathbf b\times\mathbf c|$, and the vector $\mathbf b\times\mathbf c$ is perpendicular to the base. Let $\hat{\mathbf n}=\dfrac{\mathbf b\times\mathbf c}{|\mathbf b\times\mathbf c|}$ be the unit normal to the base.
+
+    The height $h$ of the solid is the perpendicular distance of the tip of $\mathbf a$ from the base plane, which is the magnitude of the component of $\mathbf a$ along $\hat{\mathbf n}$: $h=|\mathbf a\cdot\hat{\mathbf n}|$. Then
+    $$V=(\text{base area})\times h=|\mathbf b\times\mathbf c|\,\big|\mathbf a\cdot\hat{\mathbf n}\big|=\big|\mathbf a\cdot(\mathbf b\times\mathbf c)\big|.$$
+    So $\mathbf a\cdot(\mathbf b\times\mathbf c)$ is equal in magnitude to the volume of the parallelepiped. Its sign is positive if $\mathbf a,\mathbf b,\mathbf c$ form a right-handed set, and negative otherwise.
+  check: none
+
+- id: ncert11-ex-6-8
+  lvl: ncert-ex
+  num: "XI 6.8"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.8
+  kind: num
+  q: |-
+    A non-uniform bar of weight $W$ is suspended at rest by two strings of negligible weight as shown in Fig.6.33. The angles made by the strings with the vertical are 36.9° and 53.1° respectively. The bar is 2 m long. Calculate the distance $d$ of the centre of gravity of the bar from its left end.
+    [Fig. 6.33: the horizontal bar hangs between two vertical walls. A string from its left end goes up to the left wall at 36.9° to the vertical, and a string from its right end goes up to the right wall at 53.1° to the vertical.]
+  ask: Distance d of the centre of gravity from the left end
+  unit: cm
+  ans: 72
+  tol: 0.5
+  verify: 200*cos(rad(53.1))**2
+  sol: |
+    Let $T_1$ and $T_2$ be the tensions in the left string (36.9° from the vertical) and the right string (53.1° from the vertical). The strings attach at the ends of the bar and slope inwards towards the bar.
+
+    Horizontal balance: $T_1\sin36.9^\circ=T_2\sin53.1^\circ$.
+    Vertical balance: $T_1\cos36.9^\circ+T_2\cos53.1^\circ=W$.
+
+    Because $36.9^\circ+53.1^\circ=90^\circ$, $\sin53.1^\circ=\cos36.9^\circ$ and $\cos53.1^\circ=\sin36.9^\circ$. Solving, $T_1=W\cos36.9^\circ=0.8W$ and $T_2=W\cos53.1^\circ=0.6W$. The vertical pulls at the ends are $T_1\cos36.9^\circ=0.64W$ (left) and $T_2\cos53.1^\circ=0.36W$ (right).
+
+    Moments about the left end (weight $W$ at distance $d$; right string's vertical pull at 2 m):
+    $$W\,d=0.36W\times2\ \text{m}\ \Rightarrow\ d=0.72\ \text{m}=72\ \text{cm}.$$
+
+    The centre of gravity is 72 cm from the left end, which is to the left of the bar's midpoint (100 cm). That is why the left string carries more of the load (64%) than the right string (36%). Check by moments about the right end: $W(2-d)=0.64W\times2$ gives $2-d=1.28$ m, so $d=0.72$ m again.
+
+    [Inference] The figure was read from the rendered page: strings attached at the two ends of the bar, the 36.9° string on the left. The answer key's 72 cm agrees with this reading.
+  answer_key: 72 cm
+  check: both
+
+- id: ncert11-ex-6-9
+  lvl: ncert-ex
+  num: "XI 6.9"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.9
+  kind: num
+  q: |-
+    A car weighs 1800 kg. The distance between its front and back axles is 1.8 m. Its centre of gravity is 1.05 m behind the front axle. Determine the force exerted by the level ground on each front wheel and each back wheel.
+  ask: Force on each front wheel (g = 9.8 m/s²)
+  unit: N
+  ans: 3675
+  tol: 5
+  verify: 1800*9.8*(1.8-1.05)/1.8/2
+  sol: |
+    The car's weight is $W=1800\times9.8=17640$ N. Let $R_f$ be the total upward force on the two front wheels and $R_b$ the total on the two back wheels. The centre of gravity is 1.05 m behind the front axle, so it is $1.8-1.05=0.75$ m in front of the back axle.
+
+    Translational equilibrium: $R_f+R_b=17640$ N.
+    Moments about the back axle: $R_f(1.8)=W(0.75)\Rightarrow R_f=17640\times\dfrac{0.75}{1.8}=7350$ N.
+    Then $R_b=17640-7350=10290$ N (check, moments about the front axle: $R_b(1.8)=W(1.05)$ gives $10290$ N).
+
+    There are two wheels at each axle, so each front wheel feels $7350/2=3675$ N and each back wheel $10290/2=5145$ N. The back wheels carry more because the centre of gravity is nearer the back axle.
+  answer_key: 3675 N on each front wheel, 5145 N on each back wheel.
+  check: both
+
+- id: ncert11-ex-6-16
+  lvl: ncert-ex
+  num: "XI 6.16"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.16
+  kind: num
+  q: |-
+    A metre stick is balanced on a knife edge at its centre. When two coins, each of mass 5 g are put one on top of the other at the 12.0 cm mark, the stick is found to be balanced at 45.0 cm. What is the mass of the metre stick?
+  ask: Mass of the metre stick
+  unit: g
+  ans: 66
+  tol: 0.5
+  verify: 10*(45-12)/(50-45)
+  sol: |
+    The uniform stick's centre of gravity is at the 50.0 cm mark; this is why it balances there on its own. With the two coins (total mass $m=10$ g) at 12.0 cm, the balance point moves to 45.0 cm. Take moments about the new balance point (45.0 cm): the coins are $45.0-12.0=33.0$ cm to its left and the stick's weight acts $50.0-45.0=5.0$ cm to its right.
+    $$m\,g\,(33.0)=M\,g\,(5.0)\ \Rightarrow\ M=\frac{10\times33.0}{5.0}\ \text{g}=66\ \text{g}.$$
+    The metre stick has mass 66 g.
+  answer_key: 66.0 g
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A force of 20 N is applied at right angles to a door handle 0.30 m from the hinge. What torque does it produce about the hinge? (Original problem.)
+  ask: Torque
+  unit: N m
+  ans: 6
+  tol: 0.01
+  verify: 20*0.30
+  sol: |
+    The force is perpendicular to the line from the hinge to the handle, so $\tau=rF\sin90^\circ=0.30\times20=6$ N m. Pushing at the same point at a slant would give less torque, $rF\sin\theta$. (Original problem.)
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A 10 N force acts at the end of a 0.25 m spanner. The force makes an angle of 30° with the spanner. Find the torque about the nut at the other end. (Original problem.)
+  ask: Torque
+  unit: N m
+  ans: 1.25
+  tol: 0.01
+  verify: 0.25*10*sin(rad(30))
+  sol: |
+    $\tau=rF\sin\theta=0.25\times10\times\sin30^\circ=0.25\times10\times0.5=1.25$ N m. Only the component of the force perpendicular to the spanner, $F\sin\theta=5$ N, turns the nut; the component along the spanner has no moment about the nut. (Original problem.)
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: A force acts on a rigid body. The torque of the force about a point P is zero when (Original problem)
+  opts: ["the force is very small", "the line of action of the force passes through P", "the force is perpendicular to the line joining P to its point of application", "the body is at rest"]
+  ans: 1
+  sol: The magnitude of the torque is $rF\sin\theta$, which is zero when $r=0$ or $\sin\theta=0$, that is, when the force acts along the line through P. A perpendicular force gives the maximum torque, not zero. (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: On a see-saw, a 25 kg child sits 1.8 m from the pivot. Where must a 30 kg child sit on the other side to balance it? (Original problem.)
+  ask: Distance of the 30 kg child from the pivot
+  unit: m
+  ans: 1.5
+  tol: 0.01
+  verify: 25*1.8/30
+  sol: |
+    Balance requires clockwise moment = anticlockwise moment about the pivot (the plank is taken as uniform and pivoted at its centre, so its own weight has no moment): $25g(1.8)=30g\,d$, so $d=25\times1.8/30=1.5$ m. The heavier child sits closer to the pivot. (Original problem.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A uniform beam 4 m long with mass 20 kg rests on supports at its two ends. A 60 kg person stands 1 m from the left end. Find the reaction at the left support. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Reaction at the left support
+  unit: N
+  ans: 539
+  tol: 0.5
+  verify: (20*2+60*3)*9.8/4
+  sol: |
+    Moments about the right end (so the right reaction drops out): $R_L(4)=20g(2)+60g(3)=220g$, so $R_L=55g=539$ N. Vertical balance gives $R_R=80g-55g=25g=245$ N. The person stands nearer the left support, so that support carries more. (Original problem.)
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A steering wheel has diameter 0.40 m. A driver applies a tangential force of 12 N with each hand, on opposite sides of the wheel, in opposite directions along the tangent (a couple). Find the moment of the couple. (Original problem.)
+  ask: Moment of the couple
+  unit: N m
+  ans: 4.8
+  tol: 0.01
+  verify: 12*0.40
+  sol: |
+    The two forces are equal, opposite and parallel, separated by the diameter $d=0.40$ m. The moment of a couple is force × perpendicular separation: $12\times0.40=4.8$ N m. Each force alone has moment $12\times0.20=2.4$ N m about the centre, and the two add. Because it is a couple, the moment is the same about any point (see NCERT Example 6.7). (Original problem.)
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two vectors are $\mathbf a=2\hat{\mathbf i}-\hat{\mathbf j}+3\hat{\mathbf k}$ and $\mathbf b=\hat{\mathbf i}+4\hat{\mathbf j}-2\hat{\mathbf k}$. Find the area of the triangle whose two sides are $\mathbf a$ and $\mathbf b$. (Original problem.)
+  ask: Area of the triangle
+  unit: square units
+  ans: 7.58
+  tol: 0.01
+  verify: sqrt(10*10+7*7+9*9)/2
+  sol: |
+    $$\mathbf a\times\mathbf b=\begin{vmatrix}\hat{\mathbf i}&\hat{\mathbf j}&\hat{\mathbf k}\\2&-1&3\\1&4&-2\end{vmatrix}=\hat{\mathbf i}(2-12)-\hat{\mathbf j}(-4-3)+\hat{\mathbf k}(8+1)=-10\hat{\mathbf i}+7\hat{\mathbf j}+9\hat{\mathbf k}.$$
+    $|\mathbf a\times\mathbf b|=\sqrt{100+49+81}=\sqrt{230}=15.17$. The triangle's area is half of this, $7.58$ square units (NCERT Exercise 6.4). (Original problem.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A uniform ladder 5 m long and of mass 20 kg leans against a smooth vertical wall. Its foot is on rough ground 3 m from the wall. What is the least coefficient of static friction between the ground and the ladder that stops it from slipping? (Original problem.)
+  ask: Minimum coefficient of friction
+  unit: ""
+  ans: 0.375
+  tol: 0.001
+  verify: (20*9.8*1.5/4)/(20*9.8)
+  sol: |
+    The top of the ladder is at height $\sqrt{5^2-3^2}=4$ m. The wall is smooth, so its reaction $F_1$ is horizontal. The ground gives a normal force $N$ and friction $f$.
+
+    Vertical balance: $N=W=20g$. Horizontal balance: $f=F_1$.
+    Moments about the foot (weight's horizontal arm is $1.5$ m, wall force's vertical arm is 4 m): $F_1(4)=W(1.5)\Rightarrow F_1=0.375W$.
+    So $f=0.375W$ is needed, while the ground can supply at most $\mu N=\mu W$. Hence $\mu\ge0.375$. The minimum coefficient is $0.375$; it is independent of the ladder's mass. (Original problem.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A uniform rod of mass 2.0 kg and length 1.0 m is hinged at its lower end A on a wall and held horizontal by a light string tied to its free end B. The string runs up to a point on the wall and makes 30° with the rod. Find the tension in the string. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Tension in the string
+  unit: N
+  ans: 19.6
+  tol: 0.05
+  verify: 2*9.8*0.5/sin(rad(30))
+  sol: |
+    Take moments about the hinge A so that the unknown hinge force drops out. The weight $mg$ acts at the midpoint, $L/2$ from A. The string pulls at B, a distance $L$ from A, with a component $T\sin30^\circ$ perpendicular to the rod. Then
+    $$T\sin30^\circ\times L=mg\times\frac L2\ \Rightarrow\ T=\frac{mg}{2\sin30^\circ}=mg=19.6\ \text{N}.$$
+    The hinge force has horizontal component $T\cos30^\circ=16.97$ N (pointing away from the wall) and vertical component $mg-T\sin30^\circ=9.8$ N upward, magnitude $\sqrt{16.97^2+9.8^2}=19.6$ N. (Original problem.)
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A uniform cube of side 0.50 m and mass 30 kg stands on a rough floor. A horizontal force is applied to a vertical face at height 0.40 m above the floor. What is the least force that will make the cube tip over about its lower edge, and what is the least coefficient of friction needed so that it tips instead of sliding? Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Least tipping force
+  unit: N
+  ans: 183.75
+  tol: 0.5
+  verify: 30*9.8*0.25/0.40
+  sol: |
+    Just as the cube is about to tip, it touches the floor only along the far lower edge, and the floor's normal reaction acts at that edge. Take moments about that edge: the push $F$ (arm 0.40 m) tends to tip it, and the weight $mg$ (arm $a/2=0.25$ m) resists:
+    $$F(0.40)=mg(0.25)\ \Rightarrow\ F=\frac{30\times9.8\times0.25}{0.40}=183.75\ \text{N}.$$
+    For the cube not to slide first, friction must supply $F$ with $N=mg=294$ N: $\mu\ge F/N=0.625$. If $\mu$ is smaller, the cube slides before it tips. A lower point of application raises the needed force, and for a push at the very top ($h=0.50$ m) the force would be $0.5\,mg=147$ N, the least possible. (Original problem.)
+  check: code

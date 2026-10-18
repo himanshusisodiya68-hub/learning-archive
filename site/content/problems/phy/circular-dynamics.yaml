@@ -1,0 +1,243 @@
+# Dynamics of circular motion (centripetal force, level and banked turns). NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 4: Examples 4.10 and 4.11 and Exercises 4.4, 4.21 and 4.22 (the circular-motion items of Laws of Motion; answer key in keph1an). Found, board and main problems are original.
+
+- id: ncert11-eg-4-10
+  lvl: ncert-intext
+  num: "XI Ex 4.10"
+  source: NCERT XI Physics · Ch 4 · Example 4.10
+  kind: num
+  q: |-
+    A cyclist speeding at 18 km/h on a level road takes a sharp circular turn of radius 3 m without reducing the speed. The co-efficient of static friction between the tyres and the road is 0.1. Will the cyclist slip while taking the turn?
+  ask: Maximum speed at which the cyclist can take the turn without slipping
+  unit: m s⁻¹
+  ans: 1.71
+  tol: 0.01
+  verify: sqrt(0.1*3*9.8)
+  sol: |
+    On an unbanked road only static friction can supply the centripetal force $mv^2/R$. Friction cannot exceed $\mu_s N = \mu_s mg$ (the road is level, so $N = mg$), so for no slipping
+    $$\frac{mv^2}{R} \le \mu_s mg \quad\Longrightarrow\quad v^2 \le \mu_s R g,$$
+    independent of the mass.
+
+    Here $\mu_s R g = 0.1 \times 3 \times 9.8 = 2.94\ \text{m}^2\text{s}^{-2}$, so the largest safe speed is $v_{max} = \sqrt{2.94} = 1.71$ m s$^{-1}$.
+
+    The cyclist's speed is $18\ \text{km/h} = 5$ m s$^{-1}$, so $v^2 = 25\ \text{m}^2\text{s}^{-2} > 2.94\ \text{m}^2\text{s}^{-2}$. The condition is not obeyed: **the cyclist will slip**. (The answer box asks for the limiting speed, 1.71 m s$^{-1}$, which is far below 5 m s$^{-1}$.)
+  check: code
+
+- id: ncert11-eg-4-11
+  lvl: ncert-intext
+  num: "XI Ex 4.11"
+  source: NCERT XI Physics · Ch 4 · Example 4.11
+  kind: num
+  q: |-
+    A circular racetrack of radius 300 m is banked at an angle of 15°. If the coefficient of friction between the wheels of a race-car and the road is 0.2, what is the (a) optimum speed of the race-car to avoid wear and tear on its tyres, and (b) maximum permissible speed to avoid slipping ?
+  ask: Maximum permissible speed, part (b)
+  unit: m s⁻¹
+  ans: 38.1
+  tol: 0.1
+  verify: sqrt(300*9.8*(0.2+tan(rad(15)))/(1-0.2*tan(rad(15))))
+  sol: |
+    Forces on the car: weight $mg$ down, normal reaction $N$ perpendicular to the road (tilted by $\theta$ from the vertical) and friction $f$ along the road. Vertical equilibrium and the centripetal equation along the horizontal radius give
+    $$N\cos\theta = mg + f\sin\theta,\qquad N\sin\theta + f\cos\theta = \frac{mv^2}{R}.$$
+
+    (a) At the optimum speed no friction is needed ($f = 0$), so $N\cos\theta = mg$ and $N\sin\theta = mv_o^2/R$. Dividing, $v_o = \sqrt{Rg\tan\theta} = \sqrt{300 \times 9.8 \times \tan 15^\circ} = 28.1$ m s$^{-1}$.
+
+    (b) At the maximum speed friction acts down the slope at its limit, $f = \mu_s N$. Then
+    $$v_{max} = \left[Rg\,\frac{\mu_s + \tan\theta}{1 - \mu_s\tan\theta}\right]^{1/2} = \left[300 \times 9.8 \times \frac{0.2 + 0.268}{1 - 0.2 \times 0.268}\right]^{1/2} = 38.1\ \text{m s}^{-1}.$$
+
+    For $v < v_o$ friction acts up the slope; the car can be parked on the bank only if $\tan\theta \le \mu_s$.
+  answer_key: "vo = 28.1 m s-1; v_max = 38.1 m s-1 (printed in the example)"
+  check: both
+
+- id: ncert11-ex-4-4
+  lvl: ncert-ex
+  num: "XI 4.4"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.4
+  kind: mcq
+  q: |-
+    One end of a string of length $l$ is connected to a particle of mass $m$ and the other to a small peg on a smooth horizontal table. If the particle moves in a circle with speed $v$ the net force on the particle (directed towards the centre) is :
+    (i) $T$, (ii) $T - \dfrac{mv^2}{l}$, (iii) $T + \dfrac{mv^2}{l}$, (iv) 0
+    $T$ is the tension in the string. [Choose the correct alternative].
+  opts: ["T", "T - mv^2/l", "T + mv^2/l", "0"]
+  ans: 0
+  sol: |
+    The table is smooth and horizontal, so the weight of the particle is balanced by the normal force of the table and neither contributes horizontally. The only horizontal force on the particle is the tension $T$ in the string, directed towards the peg, the centre of the circle. So the net force towards the centre is $T$, option (i).
+
+    The centripetal force is not an extra force added to $T$: it is the name for the net inward force, and here it is supplied entirely by the tension, $T = mv^2/l$. Options (ii) and (iii) wrongly subtract or add $mv^2/l$ as if it were a separate force.
+  answer_key: "(i) T"
+  check: ncert-key
+
+- id: ncert11-ex-4-21
+  lvl: ncert-ex
+  num: "XI 4.21"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.21
+  kind: num
+  q: |-
+    A stone of mass 0.25 kg tied to the end of a string is whirled round in a circle of radius 1.5 m with a speed of 40 rev./min in a horizontal plane. What is the tension in the string ? What is the maximum speed with which the stone can be whirled around if the string can withstand a maximum tension of 200 N ?
+  ask: Tension in the string
+  unit: N
+  ans: 6.6
+  tol: 0.05
+  verify: 0.25*(2*PI*1.5*40/60)**2/1.5
+  sol: |
+    Speed: 40 rev/min is $40/60 = 2/3$ rev/s, so $v = 2\pi R \times \dfrac{2}{3} = 2\pi \times 1.5 \times \dfrac{2}{3} = 2\pi = 6.28$ m s$^{-1}$.
+
+    The tension supplies the centripetal force (the stone moves in a horizontal plane, the string being taken as horizontal):
+    $$T = \frac{mv^2}{R} = \frac{0.25 \times (2\pi)^2}{1.5} = 6.6\ \text{N}.$$
+
+    Maximum speed: the largest tension the string can bear is 200 N, so
+    $$200 = \frac{m v_{max}^2}{R}\ \Rightarrow\ v_{max} = \sqrt{\frac{200 \times 1.5}{0.25}} = \sqrt{1200} = 34.6 \approx 35\ \text{m s}^{-1}.$$
+  answer_key: "v = 2π x 1.5 x 40/60 = 2π m s-1; T = mv^2/R = 0.25 x 4π^2/1.5 = 6.6 N; 200 = m v_max^2/R, which gives v_max = 35 m s-1"
+  check: both
+
+- id: ncert11-ex-4-22
+  lvl: ncert-ex
+  num: "XI 4.22"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.22
+  kind: mcq
+  q: |-
+    If, in Exercise 4.21, the speed of the stone is increased beyond the maximum permissible value, and the string breaks suddenly, which of the following correctly describes the trajectory of the stone after the string breaks :
+    (a) the stone moves radially outwards,
+    (b) the stone flies off tangentially from the instant the string breaks,
+    (c) the stone flies off at an angle with the tangent whose magnitude depends on the speed of the particle ?
+  opts: ["the stone moves radially outwards", "the stone flies off tangentially from the instant the string breaks", "the stone flies off at an angle with the tangent whose magnitude depends on the speed of the particle"]
+  ans: 1
+  sol: |
+    Alternative (b). The instant the string breaks, the only horizontal force on the stone, the tension, disappears. By the first law the stone then keeps the velocity it had at that instant, and the velocity of a body in circular motion is along the tangent. So it flies off along the tangent (in a horizontal plane if gravity is ignored; in practice it also falls along a parabola).
+
+    There is no outward "centrifugal" force acting on the stone in the ground frame: the sensation of being flung outwards is the inertia of the stone, which tends to go straight when the inward pull stops. Alternative (a) is therefore wrong, and the angle in (c) would require a force that does not exist.
+  answer_key: "Alternative (b) is correct, according to the First Law"
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A car takes a turn on a flat, level road. Which force provides the centripetal force that keeps it on the curve? (Original problem.)
+  opts: ["The thrust of the engine", "The force of friction between the tyres and the road", "The weight of the car", "The normal reaction of the road"]
+  ans: 1
+  sol: |
+    The centripetal force must point horizontally towards the centre of the turn. The weight and the normal reaction are both vertical on a level road, and the engine thrust is along the direction of motion. Only the sideways static friction of the road on the tyres points inward. This is why a turn on an oily or icy road is dangerous: friction is small and the car slides straight on.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A 0.50 kg stone is whirled in a horizontal circle on a string 0.80 m long at a constant speed of 4.0 m s$^{-1}$. What is the tension in the string? (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 10
+  tol: 0.05
+  verify: 0.50*4.0**2/0.80
+  sol: |
+    The tension supplies the centripetal force: $T = \dfrac{mv^2}{R} = \dfrac{0.50 \times 4.0^2}{0.80} = 10$ N.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A 2.0 kg ball on a light rod of length 0.50 m is spun in a horizontal circle with an angular speed of 3.0 rad s$^{-1}$. What force must the rod exert on the ball towards the centre? (Original problem.)
+  ask: Centripetal force
+  unit: N
+  ans: 9
+  tol: 0.05
+  verify: 2.0*3.0**2*0.50
+  sol: |
+    $F = m\omega^2 R = 2.0 \times 3.0^2 \times 0.50 = 9.0$ N, directed towards the axis. (Same as $mv^2/R$ with $v = \omega R = 1.5$ m s$^{-1}$: $2.0 \times 2.25/0.50 = 9.0$ N.)
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A car goes round a flat circular bend of radius 40 m. The coefficient of static friction between tyres and road is 0.40. Find the maximum speed at which it can take the bend without skidding. (Original problem.)
+  ask: Maximum speed
+  unit: m s⁻¹
+  ans: 12.5
+  tol: 0.05
+  verify: sqrt(0.40*40*9.8)
+  sol: |
+    Friction supplies the centripetal force and is limited by $\mu_s mg$, so $\dfrac{mv^2}{R} \le \mu_s mg$, giving $v_{max} = \sqrt{\mu_s R g} = \sqrt{0.40 \times 40 \times 9.8} = \sqrt{156.8} = 12.5$ m s$^{-1}$ (about 45 km/h). The mass of the car does not matter.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A road is to be banked so that cars can take a bend of radius 100 m at 72 km/h with no help from friction. At what angle must the road be banked? (Original problem.)
+  ask: Angle of banking
+  unit: °
+  ans: 22.2
+  tol: 0.1
+  verify: deg(atan(20**2/(100*9.8)))
+  sol: |
+    $72\ \text{km/h} = 20$ m s$^{-1}$. With no friction only the normal reaction $N$ acts besides the weight: $N\cos\theta = mg$ and $N\sin\theta = mv^2/R$. Dividing, $\tan\theta = \dfrac{v^2}{Rg} = \dfrac{400}{100 \times 9.8} = 0.408$, so $\theta = 22.2^\circ$.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A bucket of water is whirled in a vertical circle of radius 0.80 m. What is the minimum speed at the top of the circle at which the water does not fall out of the bucket? (Original problem.)
+  ask: Minimum speed at the top
+  unit: m s⁻¹
+  ans: 2.8
+  tol: 0.02
+  verify: sqrt(9.8*0.80)
+  sol: |
+    At the top both the weight of the water and the push of the bucket's bottom act downwards, so $mg + N = mv^2/R$. The water just stays in contact when $N = 0$: $mg = mv^2/R$, giving $v_{min} = \sqrt{gR} = \sqrt{9.8 \times 0.80} = 2.8$ m s$^{-1}$. Below this speed the water needs less than $mg$ downward and the bucket cannot supply a negative push, so the water leaves it.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A conical pendulum has a bob on a string of length 1.00 m that makes a constant angle of 30° with the vertical as the bob moves in a horizontal circle. Find the period of revolution. (Original problem.)
+  ask: Period
+  unit: s
+  ans: 1.87
+  tol: 0.01
+  verify: 2*PI*sqrt(1.00*cos(rad(30))/9.8)
+  sol: |
+    Forces on the bob: weight $mg$ down and tension $T$ along the string. Vertically $T\cos\theta = mg$; horizontally $T\sin\theta = m\omega^2 r$ with $r = L\sin\theta$. Dividing, $\omega^2 = \dfrac{g}{L\cos\theta}$, so
+    $$\text{period} = 2\pi\sqrt{\frac{L\cos\theta}{g}} = 2\pi\sqrt{\frac{1.00 \times 0.866}{9.8}} = 1.87\ \text{s}.$$
+    The mass of the bob cancels out.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A 1000 kg car crosses the crest of a circular hump-back bridge of radius 40 m at 10 m s$^{-1}$. What is the normal force of the road on the car at the crest? (Original problem.)
+  ask: Normal force
+  unit: N
+  ans: 7300
+  tol: 30
+  verify: 1000*(9.8-10**2/40)
+  sol: |
+    At the crest the centre of the circle is below the car, so the net force must point down: $mg - N = \dfrac{mv^2}{R}$. Hence
+    $$N = m\left(g - \frac{v^2}{R}\right) = 1000\left(9.8 - \frac{100}{40}\right) = 7300\ \text{N}.$$
+    This is less than the weight, 9800 N, so the car feels lighter. The car would just leave the road at $v = \sqrt{gR} = 19.8$ m s$^{-1}$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A bend of radius 50 m is banked at 10° and the coefficient of static friction between tyres and road is 0.30. Find the maximum speed at which a car can take the bend without sliding up the slope. (Original problem.)
+  ask: Maximum speed
+  unit: m s⁻¹
+  ans: 15.7
+  tol: 0.1
+  verify: sqrt(50*9.8*(0.30+tan(rad(10)))/(1-0.30*tan(rad(10))))
+  sol: |
+    At the limit friction acts down the slope with $f = \mu_s N$. Resolving, $N\cos\theta = mg + \mu_s N\sin\theta$ and $N\sin\theta + \mu_s N\cos\theta = mv^2/R$. Eliminating $N$:
+    $$v_{max} = \sqrt{Rg\,\frac{\mu_s + \tan\theta}{1 - \mu_s\tan\theta}} = \sqrt{50 \times 9.8 \times \frac{0.30 + 0.1763}{1 - 0.30 \times 0.1763}} = \sqrt{246.4} = 15.7\ \text{m s}^{-1}.$$
+    Compare with the flat road ($\theta = 0$): $\sqrt{0.30 \times 50 \times 9.8} = 12.1$ m s$^{-1}$. Banking raises the limit.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A 0.50 kg ball on a 1.0 m string is whirled in a vertical circle. At the lowest point its speed is 6.0 m s$^{-1}$. What is the tension in the string there? (Original problem.)
+  ask: Tension at the lowest point
+  unit: N
+  ans: 22.9
+  tol: 0.1
+  verify: 0.50*(9.8+6.0**2/1.0)
+  sol: |
+    At the bottom the centre of the circle is above the ball, so the net force is upward: $T - mg = \dfrac{mv^2}{R}$. Hence
+    $$T = m\left(g + \frac{v^2}{R}\right) = 0.50\left(9.8 + \frac{36}{1.0}\right) = 22.9\ \text{N}.$$
+    This is much more than the weight, 4.9 N: the string carries the weight and the centripetal force together.
+  check: code

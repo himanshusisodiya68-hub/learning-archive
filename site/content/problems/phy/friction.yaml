@@ -136,6 +136,29 @@
   answer_key: a = 22/23 m s⁻² = 0.96 m s⁻² and T = 27.1 N (worked answer of Example 4.9).
   check: both
 
+
+- id: ncert8-it-5-9
+  lvl: ncert-intext
+  num: "VIII 5 · Think"
+  source: NCERT Grade 8 Science · Ch 5 · §5.4.1 in-text question
+  kind: text
+  q: |-
+    Is it possible that some force is indeed acting on them? Which force is that?
+  sol: |
+    Yes. A ball rolling on flat ground, or a bicycle with the pedalling stopped, slows down, so some force must act against its motion (a change of speed needs a force). That force is the force of friction between the surfaces in contact (and, for fast motion, air drag): it acts opposite to the direction of motion and brings the object to rest.
+  check: none
+
+- id: ncert8-it-5-10
+  lvl: ncert-intext
+  num: "VIII 5 · A step further"
+  source: NCERT Grade 8 Science · Ch 5 · §5.4.1 in-text question
+  kind: text
+  q: |-
+    Does the force of friction act only if the objects are moving on solid surfaces? What about objects moving through liquids and gases?
+  sol: |
+    No. Air, water and other liquids and gases also exert a force of friction (drag) on an object moving through them, opposite to its motion. That is why aeroplanes, ships, boats and high-speed trains are given streamlined shapes: the shape reduces the friction due to the air or water around them.
+  check: none
+
 - id: f1
   lvl: found
   kind: num

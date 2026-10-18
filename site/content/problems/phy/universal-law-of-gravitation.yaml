@@ -1,4 +1,78 @@
-# Universal law of gravitation. Sample lesson; all problems are original. NCERT Class XI Ch 7 items will be added when the Gravitation branch is built.
+# Universal law of gravitation. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 7 (Example 7.2, Exercises 7.1 and 7.12); the book has no in-text questions. Found, board, main and adv problems are original.
+
+- id: ncert11-eg-7-2
+  lvl: ncert-intext
+  num: "XI Ex 7.2"
+  source: NCERT XI Physics · Ch 7 · Example 7.2
+  kind: num
+  q: |-
+    Three equal masses of $m$ kg each are fixed at the vertices of an equilateral triangle ABC.
+    (a) What is the force acting on a mass $2m$ placed at the centroid G of the triangle?
+    (b) What is the force if the mass at the vertex A is doubled?
+    Take AG = BG = CG = 1 m (see Fig. 7.5)
+  ask: "Part (b): coefficient of m² in the net force (force = coefficient × m²)"
+  unit: × 10⁻¹¹ N kg⁻²
+  ans: 13.34
+  tol: 0.02
+  verify: 2*6.67e-11/1e-11
+  sol: |
+    Take the $y$-axis from G towards A and the $x$-axis towards C (Fig. 7.5, with $\angle$ between GC and the $x$-axis equal to $30^\circ$). Each vertex is 1 m from G, so each pull on the mass $2m$ is $G\,m\,(2m)/1^2 = 2Gm^2$.
+
+    **(a)** $\mathbf F_{GA} = 2Gm^2\,\hat{\mathbf j}$, $\ \mathbf F_{GB} = 2Gm^2(-\hat{\mathbf i}\cos30^\circ - \hat{\mathbf j}\sin30^\circ)$, $\ \mathbf F_{GC} = 2Gm^2(+\hat{\mathbf i}\cos30^\circ - \hat{\mathbf j}\sin30^\circ)$.
+
+    The $x$-components of $\mathbf F_{GB}$ and $\mathbf F_{GC}$ cancel; their $y$-components add to $-2Gm^2\hat{\mathbf j}$, which cancels $\mathbf F_{GA}$. So $\mathbf F_R = 0$, as symmetry predicts.
+
+    **(b)** Doubling the mass at A makes $\mathbf F'_{GA} = G(2m)(2m)/1^2\,\hat{\mathbf j} = 4Gm^2\hat{\mathbf j}$, while $\mathbf F_{GB}$ and $\mathbf F_{GC}$ are unchanged. Their sum is still $-2Gm^2\hat{\mathbf j}$, so
+    $$\mathbf F'_R = 4Gm^2\hat{\mathbf j} - 2Gm^2\hat{\mathbf j} = 2Gm^2\,\hat{\mathbf j},$$
+    of magnitude $2Gm^2 = 1.334\times10^{-10}\,m^2$ N (with $m$ in kg), directed from G towards A. Equivalently, the extra mass $m$ at A alone supplies the net force $G\,m\,(2m)/1^2$.
+
+    The answer box asks for the coefficient of $m^2$, that is $2G$ in units of $10^{-11}$ N kg$^{-2}$.
+  check: code
+
+- id: ncert11-ex-7-1
+  lvl: ncert-ex
+  num: "XI 7.1"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.1
+  kind: text
+  q: |-
+    Answer the following :
+    (a) You can shield a charge from electrical forces by putting it inside a hollow conductor. Can you shield a body from the gravitational influence of nearby matter by putting it inside a hollow sphere or by some other means ?
+    (b) An astronaut inside a small space ship orbiting around the earth cannot detect gravity. If the space station orbiting around the earth has a large size, can he hope to detect gravity ?
+    (c) If you compare the gravitational force on the earth due to the sun to that due to the moon, you would find that the Sun's pull is greater than the moon's pull. (you can check this yourself using the data available in the succeeding exercises). However, the tidal effect of the moon's pull is greater than the tidal effect of sun. Why ?
+  sol: |
+    **(a) No.** A hollow shell of uniform density exerts no net force on anything inside it, but it does not stop outside bodies from pulling on that object. Electric shielding works because charges on a conductor rearrange to cancel the field inside; gravity has only one sign of "charge" (mass is always positive), so nothing can rearrange to cancel it. Gravitational shielding is impossible.
+
+    **(b) Yes**, if the station is large enough. Inside a small station every part falls with the same acceleration, so there is no relative motion and no sign of gravity. In a large station, parts at different distances from the Earth feel different values of $g$ (and different directions), so the variation of $g$ across the station, a tidal effect, can be detected.
+
+    **(c)** Force falls as $1/r^2$, but the *tidal* effect is the difference of the pull across the Earth's diameter, which falls as $1/r^3$. Using $M_{Sun} = 2.0\times10^{30}$ kg, $M_{Moon} = 7.4\times10^{22}$ kg, Sun distance $1.5\times10^{11}$ m, Moon distance $3.84\times10^{8}$ m:
+
+    - pull ratio $F_{Sun}/F_{Moon} = (M_S/M_M)(r_M/r_S)^2 \approx 2.7\times10^7\times6.6\times10^{-6} \approx 180$, so the Sun pulls harder;
+    - tidal ratio $T_{Moon}/T_{Sun} = (M_M/M_S)(r_S/r_M)^3 \approx 3.7\times10^{-8}\times5.9\times10^{7} \approx 2.2$, so the Moon's tide is larger.
+
+    The Moon is so much closer that the cube law wins over its small mass.
+  answer_key: |-
+    (a) No. (b) Yes, if the size of the space ship is large enough for him to detect the variation in g. (c) Tidal effect depends inversely on the cube of the distance unlike force, which depends inversely on the square of the distance.
+  check: ncert-key
+
+- id: ncert11-ex-7-12
+  lvl: ncert-ex
+  num: "XI 7.12"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.12
+  kind: num
+  q: A rocket is fired from the earth towards the sun. At what distance from the earth's centre is the gravitational force on the rocket zero ? Mass of the sun = 2×10³⁰ kg, mass of the earth = 6×10²⁴ kg. Neglect the effect of other planets etc. (orbital radius = 1.5 × 10¹¹ m).
+  ask: Distance from the Earth's centre
+  unit: × 10⁸ m
+  ans: 2.594
+  tol: 0.01
+  verify: 1.5e11/(1+sqrt(2e30/6e24))/1e8
+  sol: |
+    On the line from the Earth to the Sun, let $x$ be the distance of the rocket from the Earth's centre. The pulls are opposite, so they cancel when
+    $$\frac{GM_Em}{x^2} = \frac{GM_Sm}{(d-x)^2},\qquad d = 1.5\times10^{11}\ \text{m}.$$
+    Taking square roots, $(d-x)/x = \sqrt{M_S/M_E} = \sqrt{2\times10^{30}/6\times10^{24}} = 577.4$, so
+    $$x = \frac{d}{1+577.4} = \frac{1.5\times10^{11}}{578.4} = 2.59\times10^{8}\ \text{m}.$$
+    This is about 0.17% of the way to the Sun. The point is only a null point of the two pulls; the rocket's orbital motion around the Sun is ignored, as the question says.
+  answer_key: 2.6 × 10⁸ m
+  check: both
 
 - id: f1
   lvl: found
@@ -40,6 +114,40 @@
   tol: 0.02
   verify: 9.8*(6.37e6)**2/6.67e-11/1e24
   sol: $M = gR^2/G = 9.8\times(6.37\times10^6)^2/6.67\times10^{-11} = 5.96\times10^{24}$ kg.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: The Earth pulls the Moon with a force F. The force with which the Moon pulls the Earth is
+  opts: ["much smaller than F, because the Moon is lighter", "exactly F, in the opposite direction", "much larger than F, because the Earth is heavier"]
+  ans: 1
+  sol: Newton's third law applies to gravity. The two forces are an action-reaction pair, $\mathbf F_{12} = -\mathbf F_{21}$, equal in size and opposite in direction. The Moon's acceleration is larger only because its mass is smaller.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Find the gravitational force between the Earth ($6.0\times10^{24}$ kg) and the Moon ($7.4\times10^{22}$ kg), whose centres are $3.84\times10^8$ m apart.
+  ask: Force
+  unit: × 10²⁰ N
+  ans: 2.008
+  tol: 0.01
+  verify: 6.67e-11*6e24*7.4e22/(3.84e8)**2/1e20
+  sol: $F = GM_EM_M/r^2 = 6.67\times10^{-11}\times6.0\times10^{24}\times7.4\times10^{22}/(3.84\times10^{8})^2 = 2.0\times10^{20}$ N. This single force keeps the Moon on its curved path.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Two point masses $m$ and $4m$ are $1.2$ m apart. At what distance from the mass $m$, on the line joining them, does a third small mass feel zero net gravitational force?
+  ask: Distance from the mass m
+  unit: m
+  ans: 0.4
+  tol: 0.005
+  verify: 1.2/(1+sqrt(4))
+  sol: |
+    The pulls cancel only between the masses. Let the distance from $m$ be $x$. Then $Gm/x^2 = G(4m)/(1.2-x)^2$, so $(1.2-x) = 2x$ and $x = 0.4$ m. In general the null point divides the line in the ratio $1 : \sqrt{M_2/M_1}$, here $1:2$.
   check: code
 
 - id: a1

@@ -1,0 +1,293 @@
+# Variation of g, gravitational potential energy and potential. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 7 (Example 7.3, Exercises 7.2, 7.10, 7.11, 7.15, 7.16, 7.17, 7.20, 7.21); the book has no in-text questions. Figure-dependent items 7.10 and 7.11 were checked against the printed Fig. 7.11. Found, board and main problems are original.
+
+- id: ncert11-eg-7-3
+  lvl: ncert-intext
+  num: "XI Ex 7.3"
+  source: NCERT XI Physics · Ch 7 · Example 7.3
+  kind: num
+  q: Find the potential energy of a system of four particles placed at the vertices of a square of side $l$. Also obtain the potential at the centre of the square.
+  ask: Potential energy of the system, as a multiple of Gm²/l
+  unit: (× Gm²/l, negative)
+  ans: 5.414
+  tol: 0.005
+  verify: 2*(2+1/sqrt(2))
+  sol: |
+    Take four equal masses $m$ at the corners (Fig. 7.9). The potential energy of the system is the sum over all pairs of $-Gm_im_j/r_{ij}$. There are four pairs at distance $l$ (the sides) and two pairs at distance $\sqrt2\,l$ (the diagonals):
+    $$W = -4\frac{Gm^2}{l} - 2\frac{Gm^2}{\sqrt2\,l} = -\frac{2Gm^2}{l}\left(2+\frac{1}{\sqrt2}\right) = -5.41\,\frac{Gm^2}{l}.$$
+    The centre is at distance $r = \sqrt2\,l/2$ from each corner, so the potential there is the sum of four equal terms:
+    $$U = -4\frac{Gm}{\sqrt2\,l/2} = -4\sqrt2\,\frac{Gm}{l} = -5.66\,\frac{Gm}{l}.$$
+    Potential is a scalar, so the contributions simply add; no directions are involved. The answer box asks for the magnitude 5.414 of the coefficient of the potential energy.
+  check: code
+
+- id: ncert11-ex-7-2
+  lvl: ncert-ex
+  num: "XI 7.2"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.2
+  kind: text
+  q: |-
+    Choose the correct alternative :
+    (a) Acceleration due to gravity increases/decreases with increasing altitude.
+    (b) Acceleration due to gravity increases/decreases with increasing depth (assume the earth to be a sphere of uniform density).
+    (c) Acceleration due to gravity is independent of mass of the earth/mass of the body.
+    (d) The formula $-G\,Mm(1/r_2 - 1/r_1)$ is more/less accurate than the formula $mg(r_2 - r_1)$ for the difference of potential energy between two points $r_2$ and $r_1$ distance away from the centre of the earth.
+  sol: |
+    **(a) decreases.** Outside the Earth $g = GM/r^2$ falls as $r$ grows; at height $h \ll R$, $g_h \approx g(1 - 2h/R)$.
+
+    **(b) decreases.** Inside a uniform Earth only the mass within radius $r$ pulls, so $g_d = g(1 - d/R)$, falling linearly to zero at the centre.
+
+    **(c) mass of the body.** In $F = GMm/r^2 = ma$ the body's mass $m$ cancels, so $g = GM/r^2$ depends on the Earth's mass but not on the falling body's mass.
+
+    **(d) more.** $-GMm(1/r_2 - 1/r_1)$ is the exact difference $U(r_2) - U(r_1)$ for any $r_1, r_2$ outside the Earth. $mg(r_2 - r_1)$ assumes $g$ is constant, which holds only when $r_2 - r_1 \ll R$.
+  answer_key: |-
+    (a) decreases; (b) decreases; (c) mass of the body; (d) more.
+  check: ncert-key
+
+- id: ncert11-ex-7-10
+  lvl: ncert-ex
+  num: "XI 7.10"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.10
+  kind: mcq
+  q: |-
+    In the following two exercises, choose the correct answer from among the given ones: The gravitational intensity at the centre of a hemispherical shell of uniform mass density has the direction indicated by the arrow (see Fig 7.11) (i) a, (ii) b, (iii) c, (iv) 0.
+  opts: ["(i) a", "(ii) b", "(iii) c", "(iv) 0"]
+  ans: 2
+  sol: |
+    In Fig. 7.11 the shell is a bowl, open at the top, with its centre C on the plane of the rim. Arrow a points sideways along the plane, b points up, and c points down, towards the bowl's mass.
+
+    Complete the hemisphere to a full sphere by adding an identical hemisphere above. A full uniform shell gives zero intensity at every interior point, so the two halves give equal and opposite fields at C. The upper half pulls C upwards (towards its own mass), hence the lower half, our bowl, pulls it **downwards**. The sideways parts cancel by the symmetry of each hemisphere about the vertical axis. The direction is $c$.
+  answer_key: "7.10 and 7.11: (c) and (e) are correct. (Complete the hemisphere to sphere; at both P and C, potential is constant and hence intensity = 0 for the sphere.)"
+  check: ncert-key
+
+- id: ncert11-ex-7-11
+  lvl: ncert-ex
+  num: "XI 7.11"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.11
+  kind: mcq
+  q: For the above problem, the direction of the gravitational intensity at an arbitrary point P is indicated by the arrow (i) d, (ii) e, (iii) f, (iv) g.
+  opts: ["(i) d", "(ii) e", "(iii) f", "(iv) g"]
+  ans: 1
+  sol: |
+    Use the same trick as in 7.10: add the mirror-image hemisphere above the rim plane, so the full shell gives zero field at P. The field of the bowl at P is therefore the negative of the field of the upper hemisphere. The upper hemisphere is the mirror image of the bowl in the rim plane, so their fields have equal components along the plane and opposite components perpendicular to it. Their sum is zero only if the component along the plane is zero. So the bowl's field at P is perpendicular to the rim plane and points into the bowl, downwards.
+
+    In Fig. 7.11, arrows d, f and g at P all have a component along the plane; only arrow e points straight down. The direction is $e$.
+
+    [Note] The same argument shows the intensity on the whole flat face of the hemisphere is perpendicular to it.
+  answer_key: "7.10 and 7.11: (c) and (e) are correct."
+  check: ncert-key
+
+- id: ncert11-ex-7-15
+  lvl: ncert-ex
+  num: "XI 7.15"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.15
+  kind: num
+  q: A body weighs 63 N on the surface of the earth. What is the gravitational force on it due to the earth at a height equal to half the radius of the earth ?
+  ask: Gravitational force at height R/2
+  unit: N
+  ans: 28
+  tol: 0.1
+  verify: 63/(1.5**2)
+  sol: |
+    The weight on the surface is $mg = GMm/R^2 = 63$ N. At height $R/2$ the distance from the centre is $R + R/2 = 3R/2$, so the force is
+    $$F = \frac{GMm}{(3R/2)^2} = \frac{4}{9}\cdot\frac{GMm}{R^2} = \frac49\times63 = 28\ \text{N}.$$
+    The ratio $4/9$ is exact because the whole formula $GMm/r^2$ is used, not the small-height approximation.
+  answer_key: 28 N
+  check: both
+
+- id: ncert11-ex-7-16
+  lvl: ncert-ex
+  num: "XI 7.16"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.16
+  kind: num
+  q: Assuming the earth to be a sphere of uniform mass density, how much would a body weigh half way down to the centre of the earth if it weighed 250 N on the surface ?
+  ask: Weight halfway to the centre
+  unit: N
+  ans: 125
+  tol: 0.5
+  verify: 250*0.5
+  sol: |
+    Inside a uniform sphere only the mass within radius $r$ attracts the body, and that mass is $M(r/R)^3$. So
+    $$g_r = \frac{G M (r/R)^3}{r^2} = \frac{GM}{R^3}\,r = g\,\frac{r}{R}.$$
+    Halfway down, $r = R/2$, so $g_r = g/2$ and the weight is $250/2 = 125$ N.
+  answer_key: 125 N
+  check: both
+
+- id: ncert11-ex-7-17
+  lvl: ncert-ex
+  num: "XI 7.17"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.17
+  kind: num
+  q: A rocket is fired vertically with a speed of 5 km s⁻¹ from the earth's surface. How far from the earth does the rocket go before returning to the earth ? Mass of the earth = 6.0 × 10²⁴ kg; mean radius of the earth = 6.4 × 10⁶ m; $G$ = 6.67 × 10⁻¹¹ N m² kg⁻².
+  ask: Greatest distance reached, measured from the Earth's centre
+  unit: × 10⁶ m
+  ans: 7.999
+  tol: 0.02
+  verify: 1/(1/6.4e6-(5000)**2/(2*6.67e-11*6e24))/1e6
+  sol: |
+    Energy is conserved. At launch $E = \tfrac12mv^2 - GMm/R$; at the highest point the speed is zero, so $E = -GMm/r$. Hence
+    $$\frac{1}{r} = \frac1R - \frac{v^2}{2GM}.$$
+    Numbers: $GM = 6.67\times10^{-11}\times6.0\times10^{24} = 4.002\times10^{14}$ m³ s⁻²; $1/R = 1.5625\times10^{-7}$ m⁻¹; $v^2/2GM = (5000)^2/(8.004\times10^{14}) = 3.123\times10^{-8}$ m⁻¹. So $1/r = 1.2502\times10^{-7}$ and
+    $$r = 8.0\times10^{6}\ \text{m from the Earth's centre},$$
+    that is $h = r - R = 1.6\times10^6$ m above the surface. The question asks "how far from the earth"; the book's answer gives the distance from the centre, so the answer box does too.
+
+    [Note] Using the constant-$g$ formula $h = v^2/2g = 1.28\times10^6$ m would give a noticeably smaller height, because $g$ falls with height.
+  answer_key: 8.0 × 10⁶ m from the earth's centre
+  check: both
+
+- id: ncert11-ex-7-20
+  lvl: ncert-ex
+  num: "XI 7.20"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.20
+  kind: num
+  q: Two stars each of one solar mass (= 2×10³⁰ kg) are approaching each other for a head on collision. When they are a distance 10⁹ km, their speeds are negligible. What is the speed with which they collide ? The radius of each star is 10⁴ km. Assume the stars to remain undistorted until they collide. (Use the known value of $G$).
+  ask: Speed of each star at collision
+  unit: × 10⁶ m/s
+  ans: 2.583
+  tol: 0.01
+  verify: sqrt(6.67e-11*2e30*(1/2e7-1/1e12))/1e6
+  sol: |
+    The stars are identical, so each has speed $v$ at every instant (equal masses, equal and opposite momenta). They touch when their centres are $2\times10^4$ km $= 2\times10^7$ m apart. Initially the separation is $10^9$ km $= 10^{12}$ m and they are at rest.
+
+    Energy conservation for the pair:
+    $$-\frac{GM^2}{r_i} = -\frac{GM^2}{r_f} + 2\cdot\tfrac12Mv^2 \;\Rightarrow\; v^2 = GM\left(\frac1{r_f} - \frac1{r_i}\right).$$
+    With $GM = 6.67\times10^{-11}\times2\times10^{30} = 1.334\times10^{20}$:
+    $$v^2 = 1.334\times10^{20}\,(5\times10^{-8} - 10^{-12}) = 6.67\times10^{12}\ \text{m}^2\text{s}^{-2},\qquad v = 2.6\times10^6\ \text{m s}^{-1}.$$
+    The initial term $1/r_i$ is only 0.002% of $1/r_f$, so the starting distance hardly matters.
+  answer_key: 2.6 × 10⁶ m/s
+  check: both
+
+- id: ncert11-ex-7-21
+  lvl: ncert-ex
+  num: "XI 7.21"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.21
+  kind: num
+  q: Two heavy spheres each of mass 100 kg and radius 0.10 m are placed 1.0 m apart on a horizontal table. What is the gravitational force and potential at the mid point of the line joining the centres of the spheres ? Is an object placed at that point in equilibrium? If so, is the equilibrium stable or unstable ?
+  ask: Gravitational potential at the midpoint
+  unit: × 10⁻⁸ J/kg
+  ans: -2.668
+  tol: 0.01
+  verify: -2*6.67e-11*100/0.5/1e-8
+  sol: |
+    **Force.** The midpoint is 0.5 m from each centre. The two pulls are equal and opposite, so the net force (and the intensity) is **zero**.
+
+    **Potential.** Potential is a scalar; add the two contributions:
+    $$V = -2\,\frac{Gm}{r} = -2\times\frac{6.67\times10^{-11}\times100}{0.5} = -2.67\times10^{-8}\ \text{J kg}^{-1}.$$
+
+    **Equilibrium.** Since the force is zero, an object there is in equilibrium. Along the line of centres, a small displacement towards one sphere makes that sphere's pull stronger than the other's, so the object is pulled further away from the midpoint: the potential energy along this line has a maximum at the midpoint. The equilibrium is therefore **unstable**. (Perpendicular to the line, the net pull points back to the midpoint, so the point is really a saddle; one unstable direction is enough for instability.)
+
+    [Note] The answer key prints the potential as "2.7 × 10⁻⁸ J/kg" without a minus sign. Gravitational potential, with zero at infinity, is negative, so the key is missing the sign.
+  answer_key: 0, 2.7 × 10⁻⁸ J/kg; an object placed at the mid point is in an unstable equilibrium
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A body is taken from the surface of the Earth to the centre of the Earth, whose density is assumed uniform. Its weight
+  opts: ["increases steadily", "stays the same", "decreases steadily to zero"]
+  ans: 2
+  sol: Inside a uniform Earth $g_r = g\,r/R$, so the weight falls linearly with the distance from the centre and is zero at the centre, where the Earth's mass pulls equally in all directions.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: At what height above the Earth's surface is the acceleration due to gravity one quarter of its value on the surface?
+  opts: ["R/2", "R", "2R"]
+  ans: 1
+  sol: $g' = g\,R^2/(R+h)^2 = g/4$ needs $(R+h) = 2R$, so $h = R$, which is one Earth radius above the surface, two radii from the centre.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: The gravitational potential energy of a satellite and the Earth, with zero at infinity, is
+  opts: ["positive, because the satellite is high up", "zero, because it is in orbit", "negative, because gravity is attractive and we must do work to separate them"]
+  ans: 2
+  sol: With zero at infinity, work done by an outside agent to bring the satellite from infinity to $r$ is negative (gravity does the work), so $U = -GMm/r < 0$. It rises towards zero as the satellite moves away.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Taking the Earth's radius as 6400 km and $g = 9.8$ m/s² at the surface, find $g$ at a height of 320 km.
+  ask: g at 320 km
+  unit: m/s²
+  ans: 8.889
+  tol: 0.01
+  verify: 9.8*(6400/6720)**2
+  sol: $g_h = g\,R^2/(R+h)^2 = 9.8\times(6400/6720)^2 = 8.89$ m/s². The small-height formula $g(1-2h/R) = 9.8\times0.9 = 8.82$ m/s² is close because $h/R = 0.05$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Assuming the Earth to have uniform density and radius 6400 km, find $g$ at a depth of 1600 km below the surface.
+  ask: g at depth 1600 km
+  unit: m/s²
+  ans: 7.35
+  tol: 0.01
+  verify: 9.8*(1-1600/6400)
+  sol: $g_d = g(1 - d/R) = 9.8\times(1 - 1600/6400) = 9.8\times0.75 = 7.35$ m/s².
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: Using $g = 9.8$ m/s² and $R = 6.4\times10^6$ m, find the work needed to raise a 1 kg mass from the Earth's surface to a height equal to the Earth's radius.
+  ask: Work done
+  unit: × 10⁷ J
+  ans: 3.136
+  tol: 0.005
+  verify: 9.8*6.4e6/2/1e7
+  sol: $\Delta U = -\dfrac{GMm}{2R} + \dfrac{GMm}{R} = \dfrac{GMm}{2R} = \dfrac{gR\,m}{2} = \dfrac{9.8\times6.4\times10^6}{2} = 3.14\times10^7$ J. The simple formula $mgh = 6.27\times10^7$ J would be twice too large, because $g$ falls to $g/4$ at the top.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: At a depth of 10 km below the surface, $g$ has the same value as at some height $h$ above the surface. Using $R = 6400$ km and the exact formulae for a uniform Earth, find $h$.
+  ask: Height h
+  unit: km
+  ans: 5.006
+  tol: 0.01
+  verify: 6400*(1/sqrt(1-10/6400)-1)
+  sol: |
+    Depth: $g_d = g(1 - d/R)$. Height: $g_h = gR^2/(R+h)^2$. Equating, $(R+h)^2 = R^2/(1-d/R)$, so
+    $$h = R\left[\frac{1}{\sqrt{1-d/R}} - 1\right] = 6400\left[\frac1{\sqrt{1-10/6400}} - 1\right] = 5.006\ \text{km}.$$
+    For $d \ll R$ both sides are $\approx 1 - d/R$ and $1 - 2h/R$, giving the quick rule $h \approx d/2$, here 5 km.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Using $g = 9.8$ m/s², $R = 6.4\times10^6$ m and $G = 6.67\times10^{-11}$ N m² kg⁻², find the mean density of the Earth.
+  ask: Mean density
+  unit: kg/m³
+  ans: 5481
+  tol: 5
+  verify: 3*9.8/(4*PI*6.67e-11*6.4e6)
+  sol: $g = GM/R^2$ and $M = \tfrac43\pi R^3\rho$, so $g = \tfrac43\pi G\rho R$ and $\rho = \dfrac{3g}{4\pi GR} = \dfrac{3\times9.8}{4\pi\times6.67\times10^{-11}\times6.4\times10^6} = 5.5\times10^3$ kg/m³, about 5.5 times the density of water, much denser than surface rock, which shows that the core is dense.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A planet has $1/9$ of the Earth's mass and $1/2$ of its radius. Taking $g = 9.8$ m/s² on Earth, find $g$ on the planet's surface.
+  ask: g on the planet
+  unit: m/s²
+  ans: 4.356
+  tol: 0.01
+  verify: 9.8*(1/9)*4
+  sol: $g \propto M/R^2$, so $g_p = 9.8\times\dfrac{1/9}{(1/2)^2} = 9.8\times\dfrac49 = 4.36$ m/s².
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: Using $g = 9.8$ m/s² and $R = 6.4\times10^6$ m, find the gravitational potential at the Earth's surface, taking the potential at infinity as zero.
+  ask: Potential at the surface
+  unit: × 10⁷ J/kg
+  ans: -6.272
+  tol: 0.01
+  verify: -9.8*6.4e6/1e7
+  sol: $V = -GM/R = -gR = -9.8\times6.4\times10^6 = -6.27\times10^7$ J/kg, using $GM = gR^2$. Negative means that $6.27\times10^7$ J per kg must be supplied to take a mass from the surface to infinity; this is the energy behind the escape speed $\sqrt{2gR}$.
+  check: code
