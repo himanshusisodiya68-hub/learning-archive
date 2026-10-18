@@ -241,3 +241,70 @@
     $$T = m\left(g + \frac{v^2}{R}\right) = 0.50\left(9.8 + \frac{36}{1.0}\right) = 22.9\ \text{N}.$$
     This is much more than the weight, 4.9 N: the string carries the weight and the centripetal force together.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A road bend of radius 120 m is banked at 12$^\circ$ to the horizontal. The coefficient of static friction between the tyres and the road is 0.35. What is the greatest speed at which a car can take the bend without sliding up the bank? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Greatest safe speed
+  unit: m s⁻¹
+  ans: 26.7
+  tol: 0.05
+  verify: sqrt(120*9.8*(tan(rad(12))+0.35)/(1-0.35*tan(rad(12))))
+  sol: |
+    At the greatest speed the car tends to slide up the bank, so limiting friction $\mu N$ acts down the slope. Vertically: $N\cos\theta = mg + \mu N\sin\theta$. Towards the centre (horizontal): $N\sin\theta + \mu N\cos\theta = mv^2/r$. Dividing the second by the first,
+    $$v^2 = rg\,\frac{\tan\theta+\mu}{1-\mu\tan\theta}.$$
+    With $\tan 12^\circ = 0.2126$: $v^2 = 120 \times 9.8 \times \dfrac{0.5626}{1 - 0.0744} = 714.8$, so $v = 26.7$ m s$^{-1}$ (about 96 km/h). The mass cancels. Since $\mu > \tan\theta$, a car could also stand still on the bank without sliding down. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A 0.40 kg ball on a light string of length 0.90 m moves in a vertical circle. At the lowest point its speed is 7.0 m s$^{-1}$. What is the tension in the string at the highest point? Take $g = 9.8$ m s$^{-2}$ and assume the speed changes only because of gravity. (Original problem.)
+  ask: Tension at the top
+  unit: N
+  ans: 2.18
+  tol: 0.01
+  verify: 0.4*(49-4*9.8*0.9)/0.9-0.4*9.8
+  sol: |
+    From the bottom to the top the ball rises $2r = 1.8$ m, so $v_{\text{top}}^2 = v_{\text{bot}}^2 - 4gr = 49 - 4 \times 9.8 \times 0.9 = 13.72$ m$^2$ s$^{-2}$. At the top, tension and weight both point to the centre: $T + mg = mv^2/r$, so $T = 0.40 \times 13.72/0.90 - 0.40 \times 9.8 = 6.10 - 3.92 = 2.18$ N. This is positive, so the string stays taut (the ball does make the full circle; the minimum top speed would be $\sqrt{gr} = 2.97$ m s$^{-1}$ and here $v_{\text{top}} = 3.70$ m s$^{-1}$). (Original problem.)
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A small block slides from rest, from the very top, down a fixed smooth hemisphere of radius 1.5 m. At what speed does it leave the surface of the hemisphere? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Speed at the instant of leaving
+  unit: m s⁻¹
+  ans: 3.13
+  tol: 0.01
+  verify: sqrt(2*9.8*1.5/3)
+  sol: |
+    At an angle $\theta$ from the vertical, energy gives $v^2 = 2gR(1-\cos\theta)$. The radial equation is $mg\cos\theta - N = mv^2/R$. The block leaves when $N = 0$: $g\cos\theta = 2g(1-\cos\theta)$, so $\cos\theta = 2/3$. Then $v^2 = 2gR/3 = 2 \times 9.8 \times 1.5/3 = 9.8$ and $v = 3.13$ m s$^{-1}$. It leaves at a height $2R/3 = 1.0$ m above the centre of the hemisphere. (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A small bead can slide without friction on a vertical circular wire hoop of radius 0.50 m. The hoop spins steadily about its vertical diameter at 8.0 rad s$^{-1}$. At what angle from the downward vertical (measured at the centre of the hoop) does the bead stay in equilibrium relative to the hoop, other than at the bottom? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Angle from the downward vertical
+  unit: degrees
+  ans: 72.2
+  tol: 0.1
+  verify: deg(acos(9.8/(64*0.5)))
+  sol: |
+    The wire pushes the bead along the radius towards the hoop's centre with force $N$. The bead moves in a horizontal circle of radius $R\sin\theta$ about the axis. Vertically: $N\cos\theta = mg$. Horizontally (towards the axis): $N\sin\theta = m\omega^2 R\sin\theta$, which gives $N = m\omega^2 R$ for $\sin\theta \ne 0$. Hence $\cos\theta = g/(\omega^2 R) = 9.8/(64 \times 0.50) = 0.306$ and $\theta = 72.2^\circ$. This position exists only because $\omega^2 = 64 > g/R = 19.6$; below that spin rate the only equilibrium is the bottom. (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A small marble circles on the inner surface of a smooth funnel whose wall makes an angle of 30$^\circ$ with the vertical. It moves in a horizontal circle of radius 0.20 m. Find its speed. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Speed of the marble
+  unit: m s⁻¹
+  ans: 1.06
+  tol: 0.01
+  verify: sqrt(0.2*9.8*tan(rad(30)))
+  sol: |
+    The wall is inclined at $30^\circ$ to the vertical, so the normal to it makes $30^\circ$ with the horizontal and points up and towards the axis. Vertically: $N\cos 30^\circ = mg$. Horizontally, towards the axis: $N\sin 30^\circ = mv^2/r$. Dividing gives $v^2 = rg\tan 30^\circ = 0.20 \times 9.8 \times 0.5774 = 1.13$, so $v = 1.06$ m s$^{-1}$. A larger circle needs a greater speed; the mass cancels. (Original problem.)
+  check: code
