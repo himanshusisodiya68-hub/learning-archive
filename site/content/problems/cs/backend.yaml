@@ -1,0 +1,99 @@
+# Servers and back ends. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "One server copy can work on 10 requests at the same time, and each request takes 50 milliseconds. How many requests per second can one copy handle at most?"
+  ask: Requests per second
+  unit: req/s
+  ans: 200
+  tol: 0.1
+  verify: 10/0.05
+  sol: "Each request occupies one of the 10 slots for 0.05 s, so one slot finishes $1/0.05 = 20$ requests per second, and 10 slots finish $10 \\times 20 = 200$. In symbols, throughput = concurrency / time per request."
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "A user is logged in correctly but sends a request to read another customer's invoice. What should a correct back end return?"
+  opts: ["200 with the invoice, since the user is logged in", "403 Forbidden", "401 Unauthorized, because the token is wrong"]
+  ans: 1
+  sol: "Authentication passed (we know who they are), but authorisation failed (they may not see this invoice). That is 403. 401 is for a missing or invalid identity. Returning the invoice would be the classic ownership bug."
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "A sale brings 5,000 requests per second. Each server copy handles 200 requests per second, and you want to run each copy at no more than 70 percent of that. How many copies do you need?"
+  ask: Server copies
+  unit: ""
+  ans: 36
+  tol: 0.1
+  verify: ceil(5000/(200*0.7))
+  sol: "Usable capacity per copy is $200 \\times 0.7 = 140$ req/s. Then $5000 / 140 \\approx 35.7$, and you cannot run a fraction of a server, so round up to 36. The spare 30 percent absorbs spikes and lets you lose a copy without overload. This only works because the servers are stateless: any copy can take any request."
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Where should the payment company's secret API key be kept?"
+  opts: ["In the source code, so it is never lost", "In an environment variable or secrets manager, read at start-up", "In the mobile app, so the phone can call the payment company directly"]
+  ans: 1
+  sol: "Secrets belong in the server's environment (or a secrets manager), outside git. Code is copied around and kept in history. A key inside a mobile app can be extracted by anyone who has the app, so payment calls must go through your back end."
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Walk through what a back end does for DELETE /bookings/88 (cancel a booking), naming each stage and the status code if that stage fails."
+  sol: |
+    1. **Route:** match `DELETE /bookings/:id` to the cancel handler. No match: 404.
+    2. **Validate:** is `88` a valid number? If not: 400.
+    3. **Authenticate:** read the token, find the user. Missing or expired: 401.
+    4. **Authorise:** load booking 88 and check it belongs to this user (or the user is an admin). Not found: 404. Someone else's: 403 (or 404, to avoid revealing that it exists).
+    5. **Logic:** is cancellation still allowed (for example more than two hours before the show)? If not: 409 or 422 with a clear message. Compute the refund.
+    6. **Database:** in one transaction, mark the booking cancelled, free the seats and record the refund.
+    7. **Background job:** queue the refund and the cancellation email rather than doing them in the request.
+    8. **Response:** 204 No Content (or 200 with the updated booking).
+
+    DELETE should be idempotent: cancelling an already-cancelled booking should end in the same state, so return 204 or 404 consistently.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A site runs on 10 identical servers behind a load balancer. Design how login works so the user stays logged in whichever server answers. Give two options and one trade-off."
+  sol: |
+    **Option 1, a signed token.** After login the server issues a token (such as a JWT) containing the user ID and an expiry, signed with a secret key that all servers share. The client sends it on every request. Any server verifies the signature and trusts the contents. No lookup is needed, so it is fast and stateless. Trade-off: you cannot easily revoke one token before it expires (log out everywhere, stolen token), so tokens are kept short-lived and paired with a refresh token.
+
+    **Option 2, a session ID in a shared store.** After login the server creates a random session ID, saves `{id: user}` in a shared store such as Redis, and sends the ID to the client (often in a cookie). Every server looks the ID up. Trade-off: one extra lookup per request and a store that must stay available, but you can delete a session instantly to log someone out.
+
+    Both keep the web servers stateless, because the state lives in the token or in the shared store, not in a server's memory.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: "A worker sends the confirmation email, then crashes before it marks the job done. The queue gives the job to another worker. How do you stop the customer from getting two emails, and why is exactly-once delivery so hard?"
+  sol: |
+    The queue promises **at least once**: it prefers to run a job twice rather than lose it. A worker cannot send the email and record that it did so in one atomic step, because those happen in two different systems. A crash between the two steps is always possible.
+
+    Make the job idempotent. Give each job a unique ID (for example `confirm-booking-88`). Before sending, insert that ID into a `sent_emails` table with a unique constraint. If the insert fails, the email was already handled, so skip it. Better still, pass the same ID to the email provider if it supports idempotency keys. There is still a tiny window (send succeeded, insert not yet done), so the honest guarantee is "almost never twice", and for non-critical emails that is acceptable. For money, use the provider's idempotency key.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "You deploy a new version of the server by replacing the 10 copies one at a time. For a few minutes some copies run version 1 and some version 2, and both talk to the same database. What must be true of a database change in this release so nothing breaks, and how would you rename a column safely?"
+  sol: |
+    During a rolling deploy both versions run at the same time, so the database schema must work for both. A change must be **backward compatible** with the old code.
+
+    Renaming a column in one step breaks the version-1 copies (they still read the old name). Use several releases instead:
+    1. Add the new column, and keep the old one. Deploy code that writes to both and reads from the old.
+    2. Copy the old values into the new column (backfill).
+    3. Deploy code that reads from the new column (still writing both).
+    4. Deploy code that no longer touches the old column.
+    5. Drop the old column.
+
+    Each step is safe to run alongside the one before it. This "expand, migrate, contract" pattern costs more releases but gives a deploy with no downtime. It also makes rollback possible at every step.
+  check: none

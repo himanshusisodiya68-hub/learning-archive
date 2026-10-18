@@ -1,0 +1,102 @@
+# Caching. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A cache answers in 1 ms and the database in 50 ms. If 90 percent of requests are hits, what is the average time per request?
+  ask: Average time
+  unit: ms
+  ans: 5.9
+  tol: 0.05
+  verify: 0.9*1+0.1*50
+  sol: Hits cost 1 ms and make up 0.9 of requests; misses cost 50 ms and make up 0.1. So $T = 0.9\times1 + 0.1\times50 = 0.9 + 5 = 5.9$ ms.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these is a cache hit?
+  opts: ["The profile you ask for is found in the cache and returned", "The cache is empty, so the database is asked and the answer is stored", "The cache is full and an old entry is removed"]
+  ans: 0
+  sol: A hit means the answer was already in the cache. The second option describes a miss followed by a fill, and the third describes an eviction, which is a separate event.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A cache answers in 1 ms. A miss costs 101 ms in total (the failed cache check plus the database). What hit ratio do you need so that the average time is 5 ms? Give the answer as a fraction.
+  ask: Hit ratio
+  unit: ""
+  ans: 0.96
+  tol: 0.002
+  verify: (101-5)/100
+  sol: Average time is $h\times1 + (1-h)\times101 = 101 - 100h$. Set this equal to 5, so $100h = 96$ and $h = 0.96$. You need 96 percent of requests to hit.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: An app logs a million events a minute that are almost never read back. Which write policy best avoids filling the cache with useless data?
+  opts: ["Write-through", "Write-around", "Cache every event and flush later"]
+  ans: 1
+  sol: Write-around sends writes straight to the database and leaves the cache untouched, so only data that someone actually reads gets cached. Write-through and write-back would both put every event in the cache, evicting useful entries.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: An LRU cache holds 3 entries and starts empty. The keys requested, in order, are A B C A D B A C B D. How many of the 10 requests are hits?
+  ask: Hits
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: (()=>{let c=[],h=0;for(const k of "ABCADBACBD"){const i=c.indexOf(k);if(i>=0){h++;c.splice(i,1)}else if(c.length==3)c.shift();c.push(k)}return h})()
+  sol: |
+    Track the cache from least to most recent.
+    A miss [A]; B miss [A B]; C miss [A B C]; A hit [B C A]; D miss, evict B [C A D]; B miss, evict C [A D B]; A hit [D B A]; C miss, evict D [B A C]; B hit [A C B]; D miss, evict A [C B D].
+    Hits are the 4th, 7th and 9th requests, so 3 hits out of 10.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A celebrity's profile page is cached for 60 seconds. Every minute, just after it expires, the database spikes and sometimes falls over. Explain the cause and give two fixes.
+  sol: |
+    This is a **cache stampede**. When the entry expires, every request that arrives while it is being recomputed sees a miss and starts its own recomputation, so a very popular key sends a burst of identical queries to the database at exactly the moment of expiry, once a minute.
+
+    Fixes (any two):
+    - **Coalesce requests** ("single flight"): the first request recomputes, the others wait and share its result.
+    - **Serve stale while refreshing**: keep the old value for a few more seconds and refresh in the background.
+    - **Refresh early**: a background job renews the entry shortly before it expires.
+    - **Jitter the TTL** when many keys share the same lifetime, so they do not expire together (this helps with many keys, less with one hot key).
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A single hot entry receives 10,000 requests per second. It expires, and recomputing it takes 200 ms. With no coalescing, how many recomputations start in that window? After adding single-flight coalescing, how many start? Give the number without coalescing.
+  ask: Recomputations without coalescing
+  unit: ""
+  ans: 2000
+  tol: 1
+  verify: 10000*0.2
+  sol: During the 0.2 s recomputation the cache is still empty, so each of the $10{,}000 \times 0.2 = 2000$ arriving requests misses and starts its own recomputation. With single-flight coalescing the first request recomputes and the other 1,999 wait for its result, so exactly 1 recomputation starts, a 2,000 times reduction.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Design the caching for a social feed. Users read feeds far more than they post, a few celebrities have 50 million followers, and users must always see their own new post immediately. Say what you cache, at which layers, how you keep it fresh, and how you avoid a stampede or hot key on a celebrity.
+  sol: |
+    **What to cache.** Read-heavy objects: each post's content, user profile summaries, and perhaps a prebuilt list of post ids for each user's feed. Images and videos go to the CDN. Posts rarely change after creation, so post content can be cached with a long TTL and a versioned key.
+
+    **Freshness for the author.** The rule is read-your-own-writes: when you post, the application writes to the database and then updates or invalidates your own cache entries before returning, and reads for your own feed can be routed past a possibly stale shared copy. Other people can tolerate a few seconds of delay; this is the trade-off of eventual consistency.
+
+    **Feed assembly.** Two common strategies [Inference: typical designs, not any named company's]: precompute each follower's feed when someone posts (fast reads, expensive for celebrities, since one post means 50 million writes), or build feeds at read time by merging the posts of followed accounts (cheap writes, costlier reads). A hybrid precomputes feeds for ordinary accounts and merges celebrity posts at read time.
+
+    **Hot key.** A celebrity's latest posts are read by millions, so one cache machine would overload. Keep a short-lived copy in each application server's own memory (a second layer), or replicate the key to several cache nodes under different names and read from one at random.
+
+    **Stampede.** Use jittered TTLs, single-flight recomputation, and serve-stale-while-refresh for celebrity entries, so expiry never sends a wall of identical queries to the database.
+
+    **Safety.** Cache negative results briefly (deleted posts), include the viewer in the key for any personalised data, keep a TTL even where you invalidate explicitly (to repair missed invalidations), and make sure the system still works, slowly, with a cold cache.
+  check: none

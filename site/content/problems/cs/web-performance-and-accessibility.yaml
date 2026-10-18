@@ -1,0 +1,99 @@
+# Performance and accessibility. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Which Core Web Vital measures how much the page's content jumps around while loading?"
+  opts: ["LCP", "INP", "CLS"]
+  ans: 2
+  sol: CLS, Cumulative Layout Shift, scores unexpected movement of visible content. LCP is when the main content appears and INP is how quickly the page reacts to a tap.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Why should every image have a meaningful alt text?
+  opts: ["It makes the image load faster", "A screen reader reads it aloud to users who cannot see the image, and it shows if the image fails to load", "It stops the image being copied"]
+  ans: 1
+  sol: "`alt` is the text alternative of the image. Screen readers announce it, and browsers show it when the file cannot load. Purely decorative images get an empty `alt=\"\"` so they are skipped."
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A photo is 4000 by 3000 pixels. It is shown 400 CSS pixels wide (300 tall) on a screen with 2 device pixels per CSS pixel, so only 800 by 600 pixels are needed. How many times more pixels than needed does the full photo have?
+  ask: Ratio
+  unit: ""
+  ans: 25
+  tol: 0.1
+  verify: (4000*3000)/(800*600)
+  sol: The full photo has $4000 \times 3000 = 12{,}000{,}000$ pixels. The screen needs $800 \times 600 = 480{,}000$. The ratio is $12{,}000{,}000/480{,}000 = 25$. File size is not exactly proportional to pixels, but the waste is of that order.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Black text (luminance 0) on a white background (luminance 1). What is the contrast ratio using (L1 + 0.05) / (L2 + 0.05)?
+  ask: Contrast ratio
+  unit: ""
+  ans: 21
+  tol: 0.1
+  verify: (1 + 0.05)/(0 + 0.05)
+  sol: $(1 + 0.05)/(0 + 0.05) = 1.05/0.05 = 21$. This is the largest possible contrast ratio.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Grey text has relative luminance 0.30 on a white background (luminance 1). What is the contrast ratio? Round to one decimal place.
+  ask: Contrast ratio
+  unit: ""
+  ans: 3
+  tol: 0.05
+  verify: (1 + 0.05)/(0.30 + 0.05)
+  sol: $(1 + 0.05)/(0.30 + 0.05) = 1.05/0.35 = 3.0$. That passes the 3 to 1 limit for large text but fails the 4.5 to 1 limit for normal text, so this grey is acceptable only for big headings.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Interview question: a product page has a poor LCP of 5 s on mobile. Walk through how you would investigate and what you would try first."
+  sol: |
+    1. **Identify the LCP element** with Lighthouse or the browser's performance panel. It is usually the hero image or a large headline.
+    2. **Read the waterfall** for what happens before it: a slow server response, render-blocking CSS or scripts, a late-discovered image (found only after JavaScript runs), or a very large file.
+    3. **Fix the biggest cause first.** Typical fixes: resize and compress the hero image (WebP or AVIF, `srcset`), give it `fetchpriority="high"` and never `loading="lazy"`, `defer` non-critical scripts, inline or trim critical CSS, put assets behind a CDN, cache with hashed file names.
+    4. **Verify** in the lab, then confirm in field data after release, since lab runs on a fast machine can hide the slow-phone case.
+
+    A strong answer names measurement before fixes, and the one largest cost rather than a list of tricks.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A form's "Pay" button is a styled `<div onclick="pay()">`. List four accessibility problems this causes and the simple fix.
+  sol: |
+    Problems:
+    1. A **keyboard user** cannot reach it with Tab, since a `div` is not focusable.
+    2. Even if focused, **Enter or Space does nothing**, because only `onclick` for mouse clicks is wired.
+    3. A **screen reader** announces plain text, not "button", so the user does not know it is pressable.
+    4. There is **no focus outline** and no disabled state exposed to assistive tools.
+
+    Fix: use `<button type="submit">Pay</button>` and style it with CSS. The browser then gives focus, keyboard activation, role and disabled handling for free. Adding `tabindex`, `role="button"` and key handlers to the div would copy this by hand and is easy to get wrong, which is why the first rule of ARIA is to prefer the native element.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    A site serves `app.js` with `Cache-Control: max-age=31536000` under the same file name on every release, and `index.html` the same way. After a release, half the users see a broken page. Explain what happened, and design the fix.
+  sol: |
+    **What happened.** Browsers keep both files for a year, so returning users load the old `index.html` and old `app.js` from cache. Some may get a mix, such as a new `index.html` (cached late) that expects features absent from an old cached `app.js`, or the reverse, and the page breaks. Users cannot be told to clear their cache.
+
+    **Fix.**
+    1. Put a **content hash in each built file's name** (`app.3f9c1.js`). A new release produces new names, so old cached files are simply never requested again.
+    2. Serve hashed files with a long lifetime and `immutable`.
+    3. Serve `index.html` with `no-cache` (revalidate on every load, using an ETag so unchanged responses cost a tiny 304) so it always points to the current hashed names.
+    4. Keep the previous release's hashed files available for a while, so a user who loaded the old HTML a moment before can still fetch the files it names.
+
+    The principle: cache hard what is immutable by name, and revalidate the one small file that holds the names.
+  check: none
