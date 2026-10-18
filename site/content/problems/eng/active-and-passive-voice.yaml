@@ -1,0 +1,168 @@
+# Active and passive voice. All problems are original (no NCERT items for this leaf). All answers are model answers written by us for this archive; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Choose the correct passive form of: Rohan eats an apple."
+  opts: ["An apple eaten by Rohan.", "An apple is ate by Rohan.", "An apple is eaten by Rohan.", "An apple was eaten by Rohan."]
+  ans: 2
+  sol: |
+    The active verb *eats* is present simple, so the passive uses *is* (singular subject *an apple*) plus the past participle *eaten*: "An apple is eaten by Rohan." The first option has no *be*, the second uses *ate* (V2) in place of V3, and the fourth changes the tense to the past.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which of these sentences cannot be changed into the passive voice?"
+  opts: ["She opened the box.", "The sun rose at six.", "They built a house.", "He wrote a poem."]
+  ans: 1
+  sol: |
+    Only a sentence with an object can be made passive. *Rose* is intransitive: you cannot ask "rose what?". The other three have objects (the box, a house, a poem), which can become the subject of a passive sentence.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which sentence is in the passive voice?"
+  opts: ["The cat chased the mouse.", "The mouse was chased by the cat.", "The cat is chasing the mouse.", "The cat will chase the mouse."]
+  ans: 1
+  sol: |
+    In "The mouse was chased by the cat" the subject (the mouse) receives the action. In the other three sentences the subject, the cat, does the action, so they are active.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The cake ___ by my sister yesterday."
+  opts: ["bakes", "was baked", "is baked", "baked"]
+  ans: 1
+  sol: |
+    The cake receives the action, so the verb must be passive, and *yesterday* makes it past: *was baked*. *Bakes* and *baked* are active forms, and *is baked* is present.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Change the voice of each sentence. (a) The farmer ploughs the field. (b) The children were flying kites. (c) Has she posted the letters? (d) Why did you break the vase? (e) The manager will announce the winners."
+  sol: |
+    Model answers:
+
+    (a) The field is ploughed by the farmer. (present simple, so *is* + V3)
+
+    (b) Kites were being flown by the children. (past continuous, so *were being* + V3; the V3 of *fly* is *flown*)
+
+    (c) Have the letters been posted by her? (present perfect, so *have been* + V3; the helper stays at the front because it is a question)
+
+    (d) Why was the vase broken by you? (past simple, so *was* + V3; the wh- word stays in front)
+
+    (e) The winners will be announced by the manager. (future simple, so *will be* + V3)
+
+    [Note] These are model answers written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Fill each gap with the passive form of the verb in brackets. A new library (1) (build) in our town last year. It (2) (open) by the mayor, and thousands of books (3) (already, donate) so far. More books (4) (add) next month."
+  sol: |
+    Model answer: (1) was built, (2) was opened, (3) have already been donated, (4) will be added.
+
+    (1) *Last year* is a finished time: past simple passive, *was built*.
+    (2) The opening belongs to the same past story: *was opened*.
+    (3) *So far* links the past to now: present perfect passive, and *thousands of books* is plural, so *have already been donated*.
+    (4) *Next month* is future: *will be added*.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Choose the correct passive of: Someone has stolen my bicycle."
+  opts: ["My bicycle was stolen.", "My bicycle has been stolen.", "My bicycle is stolen.", "My bicycle has stolen."]
+  ans: 1
+  sol: |
+    The active verb is present perfect (*has stolen*), so the passive is *has been* + V3 with the singular subject *my bicycle*: "My bicycle has been stolen." The vague agent *someone* is dropped. *Was stolen* changes the tense, *is stolen* changes it again, and *has stolen* is an active form with the wrong subject.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the correct passive of: You must obey the rules."
+  opts: ["The rules must obey by you.", "The rules must be obeyed by you.", "The rules must been obeyed by you.", "The rules are must obeyed by you."]
+  ans: 1
+  sol: |
+    A modal verb is followed by *be* + V3 in the passive: "The rules must be obeyed by you." The first option omits *be*, the third uses *been* in place of *be*, and the fourth puts the modal in the wrong place.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Each sentence has one error connected with voice. Find it and correct it. (a) The letter was wrote by my uncle. (b) The match is being play now. (c) The prize gave to Seema by the principal. (d) The accident was happened on the highway."
+  sol: |
+    (a) *wrote* should be *written*. The main verb in the passive is V3: "The letter was written by my uncle."
+
+    (b) *play* should be *played*. After *is being* the verb must be V3: "The match is being played now."
+
+    (c) *gave* should be *was given*. *Be* is missing and the verb must be V3: "The prize was given to Seema by the principal."
+
+    (d) *was happened* should be *happened*. *Happen* is intransitive, so it has no passive: "The accident happened on the highway."
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Change the voice of each sentence. (a) Who taught you French? (b) The teacher gave the students some homework. (c) Please switch off the lights. (d) People believe that the bridge is unsafe. (e) The crowd laughed at the speaker."
+  sol: |
+    Model answers:
+
+    (a) By whom were you taught French? When the wh- word is the subject, it moves to the end and becomes *by whom*, which comes first in the question.
+
+    (b) The students were given some homework by the teacher. (or: Some homework was given to the students by the teacher.) The verb *give* has two objects, so either can become the new subject.
+
+    (c) You are requested to switch off the lights. (or: Let the lights be switched off.) A polite request keeps its force.
+
+    (d) It is believed that the bridge is unsafe. (or: The bridge is believed to be unsafe.) The vague agent *people* is dropped.
+
+    (e) The speaker was laughed at by the crowd. The preposition *at* stays with the verb.
+
+    [Note] Model answers written for this archive. Other equivalent forms are acceptable.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Rewrite the instructions in the passive voice, as a lab-style report, dropping the doer where suitable. Then say in one sentence why dropping the doer is suitable here. Instructions: First, we washed the rice. Then we boiled it for fifteen minutes. We added salt and served it hot."
+  sol: |
+    Model answer: First, the rice was washed. Then it was boiled for fifteen minutes. Salt was added and it was served hot.
+
+    Reason: the doer (*we*) is obvious and unimportant; the reader needs to know what was done and in which order, so the passive keeps the focus on the process.
+
+    Note that every verb is past simple passive (*was/were* + V3), keeping the original tense.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "Which sentence is correct?"
+  opts: ["The bridge was being repaired when we arrived.", "The bridge was repairing when we arrived.", "The bridge had being repaired when we arrived.", "The bridge being repaired when we arrived."]
+  ans: 0
+  sol: |
+    The repair was in progress at a past moment, so the past continuous passive is needed: *was being* + V3. The second option makes the bridge the doer of repairing, the third uses *being* with *had* (it should be *had been*), and the fourth has no finite helper.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Two versions of one news line are given. A: The council has closed the park. B: The park has been closed. In which situation would B be the better choice, and in which would A be better? Answer in three or four sentences."
+  sol: |
+    Model answer (one possible answer; wording may vary):
+
+    B is better when the doer is not important or not known, or when the park is what the reader cares about, for example on a notice board for visitors: "The park has been closed until Monday." A is better when the doer matters, for example in a news report about the council's decision, where readers want to know who is responsible. A is also shorter and more direct. The facts are the same in both; only the focus changes.
+
+    [Note] An open-ended question: this is a model answer written for this archive, not the only acceptable one.
+  check: none
