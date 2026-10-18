@@ -1,0 +1,101 @@
+# Checking a username among a billion. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A service stores 2 billion usernames averaging 20 bytes each. How many gigabytes of raw text is that (1 GB = 1,000,000,000 bytes)?
+  ask: Raw storage
+  unit: GB
+  ans: 40
+  tol: 0.1
+  verify: 2e9*20/1e9
+  sol: $2\times10^9$ names $\times$ 20 bytes $= 4\times10^{10}$ bytes $= 40$ GB. That fits in one large server's memory, so the hard part of the problem is request rate, failures and races, not raw size.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which answer is safest to keep in a cache for several hours?
+  opts: ["'asha_r' is available", "'asha_r' is taken", "Both are equally safe"]
+  ans: 1
+  sol: Names are rarely released, so "taken" stays true. "Available" becomes false the moment anyone claims the name, so a cached "available" sends users to a failed sign-up.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A Bloom filter must hold 2 billion usernames with a false-positive rate of 1% (p = 0.01). Using m = -n ln(p) / (ln 2)^2 bits, how many gigabytes (1 GB = 8 x 10^9 bits) does it need? Give the answer to one decimal place.
+  ask: Filter size
+  unit: GB
+  ans: 2.4
+  tol: 0.05
+  verify: -2e9*log(0.01)/(log(2)**2)/8e9
+  sol: $\ln 0.01 = -4.605$ and $(\ln 2)^2 = 0.4805$, so $m/n = 4.605/0.4805 \approx 9.59$ bits per name. For $n = 2\times10^9$ that is $1.92\times10^{10}$ bits, and dividing by $8\times10^9$ bits per GB gives about 2.4 GB.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: 50 million sign-up attempts happen per day and each triggers 10 username checks. Peak traffic is 3 times the daily average rate. What is the peak rate in checks per second (a day has 86,400 seconds)?
+  ask: Peak rate
+  unit: checks/s
+  ans: 17361
+  tol: 5
+  verify: 50e6*10/86400*3
+  sol: Daily checks $= 50\times10^6 \times 10 = 5\times10^8$. Average rate $= 5\times10^8 / 86{,}400 \approx 5{,}787$ per second. Peak $= 3 \times 5{,}787 \approx 17{,}361$ per second. The attempt count and the factor of 3 are assumptions, not measured values. [Inference]
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A junior engineer writes sign-up as "if the name exists, say taken; otherwise insert it". Under load, support finds two accounts with the same username. Explain exactly how that happens and fix it.
+  sol: |
+    Two requests run the existence check at nearly the same time, both see "not found", and both insert. Between the check and the insert there is a gap, and the database does not know the two steps belong together. This is a check-then-act race, and making the code faster only shrinks the gap.
+
+    Fix: store the normalised username under a **unique constraint** (a primary key or unique index) and drop the separate existence check as the authority. Do the insert directly and treat a uniqueness error as "taken".
+    ```python
+    try:
+        db.insert("names", name=normalised, uid=uid)
+    except UniqueViolation:
+        return "taken"
+    ```
+    The database serialises inserts of the same key, so exactly one succeeds. A lock inside one app server would not help, because many app servers run at once. Also make sure all requests normalise the name the same way, or "Asha" and "asha" would be different keys.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Your Bloom filter has 1% false positives and the database confirms every "maybe there". Of 10,000 checks for names that are all actually free, roughly how many reach the database, and how many does the filter answer alone? Why does this still help when most real users type names that are already taken?
+  sol: |
+    A free name hits "maybe there" with probability about 1%, so about 100 of the 10,000 reach the database; the filter answers the other 9,900 alone as "definitely free".
+
+    For taken names, the filter always says "maybe there", so it saves nothing on its own for them. Their savings come from the cache: popular taken names ("john", "admin") are answered from memory, and the rest go to the owner shard. The filter's job is to protect the database from the free-name traffic, which is large because a person types several names before finding a free one. A design that measures the real mix of free and taken checks can tell whether the filter earns its 2.4 GB. [Inference: the real mix is not public.]
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Users can delete accounts, and the name should become available again after 30 days. Your Bloom filter cannot delete. Give two designs that keep the filter correct, and compare them.
+  sol: |
+    Remember what a stale filter does: after a deletion it keeps answering "maybe there" for a free name. That is safe (the database confirms and says "free") but wasteful, and it adds database load for those names.
+
+    Design 1, **rebuild**: rebuild the filter on a schedule (say nightly) from the table of live names, then swap it in. Cost: periodic scan of 2 billion names, and a day of stale "maybe there" for released names. Very simple.
+
+    Design 2, **counting Bloom filter**: replace each bit with a small counter (often 4 bits). Adding increments the counters, deleting decrements them. Cost: about 4 times the memory (roughly 9.6 GB instead of 2.4 GB at the same error rate), counters can overflow, and a careless double delete corrupts it.
+
+    The 30-day cooling-off period makes design 1 acceptable, because a few extra confirmations for released names cost little. Never use "delete from the filter" unless it is counting.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: The leader of the shard owning "asha_r" accepts the claim, replies "yours", and crashes before copying the claim to its followers. A follower is promoted. Later a second user claims "asha_r" and succeeds. What went wrong, and how would you prevent it? Mention the cost of your fix.
+  sol: |
+    **What went wrong.** The leader acknowledged before the write was durable on another machine (asynchronous replication). The promoted follower never saw the claim, so it honestly reports the name as free. The system has lost an acknowledged write and given one name to two people.
+
+    **Fixes.**
+    1. **Synchronous or quorum replication for claims.** The leader replies "yours" only after a majority of replicas (for example 2 of 3) have stored the claim. After failover, the new leader is chosen from the replicas that hold it, so the claim survives. This is what consensus-based stores do.
+    2. Keep asynchronous replication for the cheap hint reads, since a stale hint is harmless.
+
+    **Cost.** Each claim waits for a round trip to at least one other machine (extra milliseconds, more if across regions), and the shard stops accepting claims if it cannot reach a majority. Claims happen once per account, so we pay it where it matters; the frequent checks stay on the fast path. The trade is a small delay on a rare action for correctness on the one action that must be exact.
+  check: none

@@ -1,0 +1,102 @@
+# Load balancing. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A balancer spreads 12,000 requests per second evenly across 8 identical servers. How many requests per second does each server receive?
+  ask: Requests per server
+  unit: req/s
+  ans: 1500
+  tol: 0.5
+  verify: 12000/8
+  sol: With an even split, each server gets $12{,}000 / 8 = 1{,}500$ requests per second.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: You want one set of servers to handle requests whose URL starts with /images and another set for /api. Which kind of balancer can do this?
+  opts: ["Layer 4, because it is fastest", "Layer 7, because it reads the request path", "Neither; DNS must do it"]
+  ans: 1
+  sol: The URL path is inside the web request. A layer 4 balancer sees only addresses and ports, so it cannot route by path. A layer 7 balancer reads the request and can send /images and /api to different groups.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A cache cluster picks a server with hash(key) mod N. It grows from 4 servers to 5. About what percentage of keys now map to a different server?
+  ask: Keys that move
+  unit: "%"
+  ans: 80
+  tol: 1
+  verify: 4/5*100
+  sol: A key keeps its server only if hash mod 4 equals hash mod 5. Over any 20 consecutive hash values, this holds for 4 of them (the values 0 to 3), so one key in 5 stays and four in 5 move. In general $N/(N+1) = 4/5 = 80$ percent. A consistent hash ring would move only about $1/5 = 20$ percent.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Weighted round robin uses weights 5, 3 and 2 for three servers. Out of 1,000 requests, how many go to the server with weight 5?
+  ask: Requests
+  unit: ""
+  ans: 500
+  tol: 0.5
+  verify: 1000*5/(5+3+2)
+  sol: The share is the weight over the total, $5/(5+3+2) = 0.5$, so 500 of 1,000 requests.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A team enables sticky sessions so that users keep their shopping cart in server memory. List the problems this creates, and the better design.
+  sol: |
+    Problems with sticky sessions:
+    - **Uneven load**: heavy users pin one server while others idle, and the balancer cannot move them freely.
+    - **Lost state on failure**: if that server crashes or is replaced during a deployment, its users lose their carts.
+    - **Awkward scaling in**: removing a server breaks the sessions on it, so you must wait for them to drain.
+    - **Weak failover**: the cart is held in one place, with no copy.
+
+    Better design: make the servers stateless. Keep carts in a shared store (a fast key-value store or the database), so any server can serve any request. Stickiness can still be kept as a mild optimisation, for example to reuse a warm local cache, as long as correctness does not depend on it.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A balancer probes each of 4 servers every 5 seconds and removes a server after 3 consecutive failed probes. Total traffic is 2,000 requests per second, shared evenly. One server dies at an instant just after a successful probe. At worst, about how many requests are sent to it before it is removed? Count 3 full probe intervals of 5 seconds.
+  ask: Requests sent to the dead server
+  unit: ""
+  ans: 7500
+  tol: 1
+  verify: 2000/4*3*5
+  sol: Each of the 4 servers gets $2000/4 = 500$ requests per second. The balancer needs 3 failed probes at 5 second intervals, about 15 seconds. During that time $500 \times 15 = 7{,}500$ requests are sent to the dead server and fail, unless retries or passive checks rescue them. Shortening the interval reduces this but raises the risk of false alarms.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A consistent hash ring has 10 servers holding 1,100,000 cached keys spread evenly. An 11th server joins. About how many keys change owner?
+  ask: Keys moved
+  unit: ""
+  ans: 100000
+  tol: 100
+  verify: 1.1e6/11
+  sol: The new server takes over about $1/(N+1) = 1/11$ of the keys, roughly an even share. $1{,}100{,}000 / 11 = 100{,}000$ keys. With hash mod N the number moving would be about $10/11$ of them, a million keys, because almost every key changes server. This assumes keys and virtual nodes are spread evenly.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A video service runs in three regions (Mumbai, Frankfurt, Virginia), each sized to carry 40 percent of global traffic at 70 percent utilisation. Mumbai fails. Design how traffic is moved, covering DNS, TTLs, capacity, and what you do to avoid overloading the other two regions.
+  sol: |
+    **Capacity check first.** Normally each region carries about a third at under 70 percent busy. If Mumbai fails, the other two share its load. If each region has about 40 percent of global traffic as capacity at its target 70 percent, then two regions can carry about 80 percent, plus some headroom up to full utilisation. So the system can survive but only if the survivors are allowed to run hotter than usual for a while, and some non-essential traffic is shed. This is why N+1 sizing at the region level matters. (The percentages here are assumptions.)
+
+    **Detection.** Health checks from several vantage points mark Mumbai unhealthy, requiring agreement from more than one so that one bad network path does not trigger a false failover.
+
+    **Redirecting users.** The geo DNS service removes Mumbai's address from its answers. The limit is the DNS TTL: resolvers keep old answers until it expires, so a 30 to 60 second TTL is chosen for the entry that fronts regions, accepting more DNS lookups. Anycast or a layer 4 front door can also help move traffic without waiting on DNS caches [Unverified: depends on provider].
+
+    **Avoid a stampede.** Do not switch every Mumbai user at once. Shift gradually (weighted DNS answers, say 10 percent at a time), watch utilisation and error rates, and prefer sending Indian users to the nearer of the two remaining regions in proportion to its spare capacity.
+
+    **Protect the survivors.** Shed or degrade low-priority work (lower video quality, pause recommendations refresh, disable uploads), apply limits on retries, and warm caches in the receiving regions, since Mumbai's users will start with a cold cache there and may stampede the origin.
+
+    **Data and recovery.** Content must already be replicated or available from the origin in the receiving regions, so replication lag and consistency come into the plan. When Mumbai recovers, move users back slowly too, and test this process regularly with planned failure drills.
+  check: none

@@ -74,8 +74,8 @@
 - id: a1
   lvl: adv
   kind: num
-  q: A single hot entry receives 10,000 requests per second. It expires, and recomputing it takes 200 ms. With no coalescing, how many recomputations start in that window? After adding single-flight coalescing, how many start? Give the number without coalescing.
-  ask: Recomputations without coalescing
+  q: A single hot entry receives 10,000 requests per second. It expires, and recomputing it takes 200 ms. With no coalescing, how many recomputations start in that window? (The solution also says how many start with single-flight coalescing.)
+  ask: Recomputations
   unit: ""
   ans: 2000
   tol: 1

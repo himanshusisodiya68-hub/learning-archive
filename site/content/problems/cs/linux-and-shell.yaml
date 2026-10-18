@@ -1,0 +1,91 @@
+# Linux and the shell. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A file shows the permission string -rw-r----- in ls -l. What is its numeric mode (three digits, owner then group then others)?
+  ask: Mode
+  unit: ""
+  ans: 640
+  tol: 0.1
+  verify: (4+2)*100 + 4*10 + 0
+  sol: 'Owner has rw- = 4+2 = 6. Group has r-- = 4. Others have --- = 0. So the mode is 640.'
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: You run a command and then type echo $?. It prints 0. What does that tell you?
+  opts: ["The command failed", "The command succeeded", "The command is still running"]
+  ans: 1
+  sol: 'Exit code 0 means success; any other number means some kind of failure. $? holds the exit code of the last command.'
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A script has mode 754. How many of the nine permission bits (three each for owner, group, others) are set?
+  ask: Bits set
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: 3 + 2 + 1
+  sol: '7 = 4+2+1 sets all three bits (rwx). 5 = 4+1 sets two bits (r-x). 4 sets one bit (r--). In total 3+2+1 = 6 bits.'
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: In the pipeline "cut -d' ' -f7 access.log | sort | uniq -c", why is sort needed before uniq -c?
+  opts: ["uniq only counts runs of identical neighbouring lines, so equal lines must be next to each other", "uniq refuses to read unsorted input", "sort makes the file smaller"]
+  ans: 0
+  sol: 'uniq compares each line only with the one just before it. If /home appears at lines 1, 5 and 9, unsorted uniq -c would report three counts of 1. Sorting puts equal lines together so each page is counted once with its true total.'
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A server alert says "disk 98% full". Using only the shell, describe the commands you would run to find what filled it, and what you would check before deleting anything.
+  sol: |
+    First confirm and locate the full disk, then drill down into the biggest directories, then check who is using the files.
+    ```bash
+    df -h                                   # which filesystem is full
+    du -sh /var/* 2>/dev/null | sort -h | tail   # biggest folders under /var
+    du -sh /var/log/* | sort -h | tail      # keep drilling down
+    ```
+    Common culprits are logs that were never rotated, old backups and temporary files. Before deleting, check what the file is (`ls -l`, `head`), whether a running program still has it open (`lsof | grep deleted` can show deleted-but-open files that still hold space), and whether it can be compressed or moved instead. Prefer truncating a log a program is writing to (`: > app.log`) over removing it, so the program keeps a valid file. Never run rm -rf with a variable in the path without checking it first.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: An SSH server writes lines such as "Failed password for root from 203.0.113.5 port 22 ssh2" to auth.log. Write a pipeline that prints the five addresses with the most failed attempts, with counts.
+  sol: |
+    The address is the fourth word from the end of each matching line, so it can be picked with awk (the exact log format varies by system [Unverified]).
+    ```bash
+    grep "Failed password" auth.log |
+      awk '{print $(NF-3)}' |
+      sort | uniq -c | sort -rn | head -5
+    ```
+    Stage by stage: grep keeps only failures; awk prints the address; sort groups equal addresses; uniq -c counts each group; the second sort puts the biggest count first; head keeps five. Each tool does one job and the pipe joins them.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A cleanup script contains the two lines "cd /app/cache" and "rm -rf *". The cd fails because the folder was renamed. Explain what happens without safety settings, and give two changes that prevent the damage.
+  sol: |
+    The shell prints an error for the failed cd, but carries on. The rm then runs in the current directory (perhaps the user's home or the app folder) and deletes everything in it.
+
+    Two fixes: (1) begin the script with `set -euo pipefail`, so it stops at the failed cd; (2) join the commands, `cd /app/cache && rm -rf ./*`, so the rm runs only if cd succeeded, and use `./*` rather than a bare `*`. An even safer habit is to delete by explicit full path (`rm -rf /app/cache/*`) after checking the variable is not empty (`${dir:?}`).
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: When you run "producer | consumer", both programs start at once. What happens if the producer is much faster than the consumer, and what happens if the consumer exits early (for example head -1)? Why is this good for huge files?
+  sol: |
+    The pipe is a small buffer held by the operating system. If the producer is faster, the buffer fills and the system pauses the producer until the consumer has taken some lines. This is **backpressure**, so memory use stays small however large the data is. If the consumer exits early, the next write by the producer fails with a "broken pipe" signal and the producer is stopped, so `producer | head -1` does not process the whole input.
+
+    This is why pipelines handle files bigger than memory: lines flow through in a stream and nothing holds the whole file. The detail that the buffer is about 64 KB on Linux is [Unverified] and varies by system.
+  check: none

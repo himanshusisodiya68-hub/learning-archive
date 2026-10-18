@@ -1,0 +1,95 @@
+# Message queues and events. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Orders arrive at 5,000 per second for 60 seconds, while the workers finish 2,000 per second. How many orders are waiting in the queue at the end of the minute?
+  ask: Backlog
+  unit: orders
+  ans: 180000
+  tol: 1
+  verify: (5000-2000)*60
+  sol: Each second the queue gains $5000 - 2000 = 3000$ orders. Over 60 seconds, $3000 \times 60 = 180{,}000$ orders are waiting.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A restaurant kitchen has a rail of order slips and several cooks, each taking one slip at a time. Which messaging shape is this?
+  opts: ["Publish/subscribe, since every cook gets a copy of every slip", "A work queue, since each slip goes to exactly one cook", "Request/response, since the waiter waits for the food"]
+  ans: 1
+  sol: Each slip (message) is taken by one cook (worker), which is a work queue. In pub/sub every subscriber would receive its own copy of each slip, so every cook would make every dish.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: After the spike in the first problem ends, arrivals fall to 1,000 per second and the workers still finish 2,000 per second. How many seconds does it take to drain the 180,000 backlog?
+  ask: Drain time
+  unit: s
+  ans: 180
+  tol: 0.5
+  verify: 180000/(2000-1000)
+  sol: Each second the queue shrinks by $2000 - 1000 = 1000$ messages, since arrivals continue during the drain. So $180000 / 1000 = 180$ seconds, three minutes.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A consumer adds 100 rupees to a wallet for every "cashback" message. The queue redelivers one message after a crash. What is the safest fix?
+  opts: ["Make the queue exactly-once by buying a better broker", "Attach a unique id to each message and skip ids already processed, recording the id in the same transaction as the wallet change", "Subtract 100 rupees whenever a crash is detected"]
+  ans: 1
+  sol: At-least-once delivery means repeats happen, so the consumer must be idempotent. A processed-ids table checked and written in the same database transaction as the credit makes a second delivery do nothing. Buying a different broker does not remove the window between "effect done" and "ack sent". Subtracting after a crash cannot know whether the credit happened.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: At peak, 12,000 image-resize jobs per second arrive. One worker handles 150 jobs per second. How many workers are needed so that the queue does not grow at the peak, if you want 20 percent spare capacity?
+  ask: Workers
+  unit: workers
+  ans: 96
+  tol: 0.5
+  verify: ceil(12000/150*1.2)
+  sol: Without spare capacity we need $12000/150 = 80$ workers. With 20 percent headroom, $80 \times 1.2 = 96$ workers. Rounding up keeps $\mu \ge 1.2\lambda$ so the backlog stays near zero.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Your notification service sends push messages through an external provider that sometimes returns errors. Describe a retry and dead-letter policy, and say what could go wrong if you skip each part.
+  sol: |
+    A reasonable policy:
+    1. **Retry with exponential backoff**, for example after 1 s, 2 s, 4 s, 8 s, up to about 5 attempts. Without backoff, retries arrive just as the provider is struggling and make the outage worse.
+    2. **Add jitter**, a random extra delay. Without it thousands of workers retry at the same instants, producing synchronized waves of load.
+    3. **Separate temporary errors from permanent ones.** A timeout or a 503 is worth retrying; "invalid device token" is not. Retrying permanent errors wastes capacity.
+    4. **Dead-letter queue** for messages that exhaust their attempts. Without it a poison message is retried forever or silently dropped. Alert when the DLQ grows, and keep the messages so they can be replayed after a fix.
+    5. **Idempotency key** per notification, since a timeout may hide a send that actually succeeded, and the user would otherwise get two pushes.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Events for one customer's order (created, paid, packed, shipped) must be processed in order, but you want 50 workers for throughput. Explain a design that gives per-order ordering without a single global queue, and name one thing that can still break the order.
+  sol: |
+    Split the stream into partitions (say 50) and send each event to partition $h(\text{order id}) \bmod 50$. Each partition is read by exactly one worker at a time, so events for one order are handled one after another in the order they were written, while different orders proceed in parallel. This is how Kafka-style logs provide ordering per key.
+
+    Things that can still break the order:
+    - **Producers**: if two producers publish events of the same order from different machines, the arrival order at the broker may differ from the real-world order. Use one writer per order or a sequence number in each event.
+    - **Retries**: if message 3 fails and is retried while message 4 proceeds, the order inverts. Either pause the partition on failure or let the consumer check sequence numbers and park out-of-order events.
+    - **Changing the partition count** remaps keys and can interleave old and new events for the same key.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A service writes an order to its database and then publishes "order created" to a broker. If it crashes between the two steps, the event is lost; if it publishes first and the write fails, a false event escapes. Design a fix, state what guarantee it gives, and what the consumers must still do.
+  sol: |
+    Use the **transactional outbox**. In one database transaction, insert the order row and an "outbox" row holding the event. Either both exist or neither does, so there is no state where an order exists without its event waiting.
+
+    A separate **relay** process reads unpublished outbox rows (by polling, or by reading the database's change log), publishes each to the broker, and marks it published only after the broker acknowledges it.
+
+    **Guarantee:** every committed order is eventually published, so events are never lost. But if the relay crashes after publishing and before marking the row, it will publish again, so the delivery is **at-least-once**, not exactly-once.
+
+    **Consumers must be idempotent**, for example by remembering the event id and ignoring repeats. Events for one order should carry a sequence number or be keyed by order id so that the order is preserved.
+  check: none

@@ -1,0 +1,98 @@
+# Building a full-stack app end to end. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Four friends share a trip. Total spend is 4,000 rupees, split equally. How many rupees is each person's share?
+  ask: Share per person
+  unit: rupees
+  ans: 1000
+  tol: 0.1
+  verify: 4000/4
+  sol: Equal split means $4000 / 4 = 1000$ rupees each. A person's balance is what they paid minus this share.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Why should an expense app store amounts as whole paise (integers) and not as decimal rupees?
+  opts: ["Integers are exact; decimals can carry tiny rounding errors", "Integers use less disk space on every database", "Users prefer to see paise"]
+  ans: 0
+  sol: Computers store most decimals such as 0.1 only approximately, so sums can drift (0.1 + 0.2 is not exactly 0.3). Whole paise are exact; convert to rupees only when displaying.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A bill of 10,001 paise is split equally among 3 people, and leftover paise are handed out one at a time so that the shares add up exactly. What is the largest share, in paise?
+  ask: Largest share
+  unit: paise
+  ans: 3334
+  tol: 0.1
+  verify: ceil(10001/3)
+  sol: $10001 = 3 \times 3333 + 2$, so each person gets 3,333 paise and two paise are left. Two people get one extra paise each, so the shares are 3,334, 3,334 and 3,333. They add to 10,001, so no money is lost or created.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A logged-in user edits the group id in the address bar and sees another group's expenses. What is the bug?
+  opts: ["Authentication is missing", "Authorisation is missing: the server does not check group membership", "The database is too slow"]
+  ans: 1
+  sol: The user is who they claim to be (authentication works), but the server never checks that this user belongs to the group they ask for. Add a membership check on every request that touches a group, on the server.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: |
+    Five people have these net balances in rupees: A +50, B +30, C -20, D -25, E -35. Use the greedy rule (biggest debtor pays biggest creditor) to list the payments. How many are there, and what is the most that n people could need?
+  sol: |
+    Check first that the balances sum to zero: $50 + 30 - 20 - 25 - 35 = 0$.
+
+    Round 1: biggest debtor E (-35) pays biggest creditor A (+50) 35. Now A +15, E 0.
+    Round 2: biggest debtor D (-25) pays biggest creditor B (+30) 25. Now B +5, D 0.
+    Round 3: biggest debtor C (-20) pays biggest creditor A (+15) 15. Now A 0, C -5.
+    Round 4: C pays B 5. Everything is zero.
+
+    Four payments. Each payment makes at least one person's balance zero, and the last payment clears two, so n people need at most $n-1 = 4$ payments. [Inference: greedy is not guaranteed to give the true minimum in all cases.]
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Design the POST request that adds an expense so that a double-tap or a retry after a timeout never records it twice. State what the screen sends, what the server stores, and what it returns on the second attempt.
+  sol: |
+    The screen generates a unique id (a UUID) once, when the user opens the form, and sends it as `requestId` in the body or a header. A double-tap or a retry sends the same id.
+
+    The server inserts the expense inside a transaction with the `requestId` in a column that has a UNIQUE constraint. On the first request the insert succeeds and the server returns 201 with the expense. On a repeat, the unique constraint fails; the server looks up the existing expense with that `requestId` and returns it again (200 or 201 with the same body), without creating a second row.
+
+    The screen then shows the same expense whichever response arrives first. If the first attempt actually failed before saving, the retry saves it. Ids must be generated per intended action, not per attempt, or the protection is lost.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: The balances screen sums every expense in a group on each request. A group has 50,000 expenses and users complain of slow loads. Give three escalating fixes and the trade-off of each.
+  sol: |
+    1. Add an index on `expenses.group_id` (and `splits.expense_id`) so the database does not scan the whole table. Cost: slightly slower writes and more disk; usually the first fix and often enough.
+    2. Cache the computed balances for a short time, or store a running balance row per user per group, updated in the same transaction as each new expense. Cost: more code and the risk of the two getting out of step, so keep the ability to recompute from the expenses as the source of truth.
+    3. Move the heavy reads to a read replica or compute balances in a background job. Cost: replicas lag, so a user may briefly not see the expense they just added; handle this by reading from the primary right after a write.
+
+    Measure first (a slow-query log) so the fix matches the real cause.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    Your expense app is a hit. On the first of every month, traffic jumps 40 times for an hour, and the single server and database fall over. Write a plan for the next 90 days: what you measure, what you change first, what you change later, and what you deliberately leave alone.
+  sol: |
+    Measure (week 1): add request rate, error rate, p95 latency, database CPU and the slow-query list, then load-test the month-start flows (open the group, add an expense, view balances) at 40 times normal traffic. Find which resource saturates first. [Inference: usually the database.]
+
+    Change first (weeks 2-4): add missing indexes, cache the balances query for a few seconds, cut payload sizes, put static files on a CDN, and add connection pooling. Add autoscaling or a second server behind a load balancer; move sessions out of server memory so any server can serve any request.
+
+    Change later (weeks 5-12): a read replica for reads (watching lag), a queue and background workers for notifications and exports so that spikes are smoothed, and rate limits to protect the system. Add alerts tied to a target (for example 99.9% of requests under 500 ms).
+
+    Leave alone: splitting into microservices and sharding the database. At this size they add far more complexity than benefit, and the measurements do not point to them. Revisit when a single database primary can no longer take the write load.
+  check: none
