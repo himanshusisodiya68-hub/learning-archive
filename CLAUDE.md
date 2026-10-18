@@ -220,16 +220,28 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 
 **Map of everything (Oct 2026):** all six subject trees exist (Physics 118 leaves, Maths 59, Chemistry 53, Biology 33, English 51, Computer Science 80) and the class view lists every NCERT book for Classes 6–12 (Science/Physics, Maths, Chemistry, Biology, English Class 10). Chapters of Class 11/12 Chemistry and Biology are already mapped to leaves.
 
-**In progress: Mechanics branches 1–3 (Kinematics, Newton's laws, Work–energy–power).** Interrupted by usage limits.
-- Done: problems for vectors-in-motion, projectile-motion, relative-motion, circular-motion (committed); lessons for vectors-in-motion and circular-motion.
-- Drafts in `site/drafts/problems/` (15 files, possibly incomplete or invalid YAML): finish each, validate (`python3 fix-yaml.py <file> && node check-answers.mjs`), then move into `content/problems/phy/`.
-- Still to write: lessons for every other leaf of the three branches (theory-writer), in the new Feynman style with `life`, `models`, `links`, `next`.
-- NCERT sources: Class 6 Ch 5 (fecu105), Class 7 Ch 8 (gecu108), Class 8 Ch 5 (hecu105), Class 9 new book Ch 4, 6, 7 (iesc104, iesc106, iesc107), Class 11 Ch 2–5 (keph102–105, answers keph1an).
+**Done: Physics › Mechanics pillar (37 leaves, all with lessons).** Published to the site artifact (version 15).
+- **Branches:** kinematics (8), Newton's laws (8), work–energy–power (6), rotation (6, includes collisions), gravitation (4), properties of matter (5).
+- **NCERT covered:** Class 6 Ch 5; Class 7 Ch 8; Class 8 Ch 5–6; Class 9 (new book) Ch 4, 6, 7; Class 11 Ch 2–9 (all examples and exercises).
+- **Writing:** lessons were written by Sonnet subagents (to save cost), not the Opus theory-writer; an Opus deep pass can come later.
+- **Known gaps:**
+  - The Class 11 Part 2 answer key (`keph2an`, Ch 8–9) was downloaded but not compared; those solutions are ours.
+  - The last lessons were written without rereading NCERT, so some `ncert` fields give chapter and topic but no § numbers.
+  - Book references and from-memory constants are labelled [Unverified].
+  - The 2026-27 reprint lists §2.5 Relative velocity, but its text was not found in keph102.
+
+**Owner's rule (Oct 2026): no more reading of PDFs or books to save tokens.** Write Computer Science (and later English) from training knowledge; the CS books in Drive are not to be read.
+
+**In progress: Computer Science (117 leaves).**
+- Brief for writers: `docs/cs-brief.md` (Sonnet general-purpose subagents, 3 leaves each, no book reading).
+- Done: How computers work, Programming (all leaves), hash-tables, plus parts of Data structures and Algorithms.
+- Order: data-structures → algorithms → operating-systems → networks → data-systems → software-engineering → web-and-apps → system-design → cloud-devops → ai → competitive-programming → interviews.
+- `next` chain: the last leaf of each pillar points to the first leaf of the next pillar in this order.
 
 **Owner's direction (Oct 2026):** build Physics and Maths fully first (see `docs/content-principles.md` §0); CS gains Competitive programming and Interviews pillars as pattern catalogues.
 
 **Next, in order:**
-1. Finish Mechanics 1–3, then the owner chooses: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
+1. Finish Computer Science (owner's choice, Oct 2026). Then the owner chooses: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.
