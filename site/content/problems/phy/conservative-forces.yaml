@@ -489,3 +489,93 @@
     $$W_f = -1.96\times4.0 = -7.84\ \text{J}.$$
     The block returns to its starting point, yet the work is not zero. For a conservative force the work around any closed path is zero, so **friction is not conservative**: the work depends on the path length, and no potential energy can be defined for it.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A uniform chain of length 1.0 m lies on a smooth horizontal table with 0.25 m of it hanging over the edge. It is released from rest and slides off. Find its speed at the instant its last link leaves the table. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Speed when the chain has left the table
+  unit: m/s
+  ans: 3.03
+  tol: 0.02
+  verify: sqrt(15*9.8*1.0/16)
+  sol: |
+    Use energy, with the table top as the zero level of $U$. A hanging piece of length $\ell$ has mass $m\ell/L$ and its centre sits $\ell/2$ below the table, so its potential energy is $-\dfrac{m\ell}{L}\,g\,\dfrac{\ell}{2}$.
+
+    Start ($\ell = L/4$): $U_1 = -\dfrac{mg L}{32}$. End ($\ell = L$, the whole chain hanging): $U_2 = -\dfrac{mgL}{2}$.
+
+    The table is smooth and nothing else does work, so
+    $$\tfrac12mv^2 = U_1 - U_2 = mgL\left(\tfrac12 - \tfrac1{32}\right) = \tfrac{15}{32}mgL
+    \ \Rightarrow\ v = \sqrt{\tfrac{15}{16}gL} = \sqrt{\tfrac{15\times9.8\times1.0}{16}} = 3.03\ \text{m s}^{-1}.$$
+    The mass cancels. We assumed the chain turns the corner at the table edge without losing energy.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A simple pendulum has a string of length 1.0 m. The bob is released from rest with the string horizontal. When the string becomes vertical it catches on a thin peg at distance $d$ directly below the point of suspension, and the bob then swings in a vertical circle about the peg. Find the smallest $d$ for which the bob completes the circle with the string just staying taut at the top. (Original problem.)
+  ask: Smallest distance $d$ of the peg below the suspension point
+  unit: m
+  ans: 0.6
+  tol: 0.001
+  verify: 3*1.0/5
+  sol: |
+    At the lowest point the bob has dropped $L$, so $v^2 = 2gL$ (the string does no work).
+
+    After the string catches the peg, the circle has radius $r = L - d$. To just complete it, the bottom speed must satisfy $v^2 \ge 5gr$ (vertical circle on a string, from the lesson). Therefore
+    $$2gL \ge 5g(L - d)\ \Rightarrow\ d \ge \tfrac35L = 0.60\ \text{m}.$$
+    The peg must be at least 0.60 m below the suspension point, that is, at most 0.40 m above the bob's lowest position. A peg lower than this gives a smaller circle that the bob can complete; a peg higher than this does not.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A 2.0 kg block slides on a rough horizontal floor with $\mu = 0.20$. It moves at 4.0 m/s towards a horizontal spring of force constant 800 N/m, whose free end is 1.0 m ahead of the block, and compresses the spring. Find the maximum compression of the spring. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Maximum compression
+  unit: m
+  ans: 0.169
+  tol: 0.001
+  verify: (-0.2*2*9.8+sqrt((0.2*2*9.8)**2+4*400*(0.5*2*16-0.2*2*9.8*1.0)))/(2*400)
+  sol: |
+    Friction does negative work over the whole path, $1.0 + x$ metres, so mechanical energy is not conserved; use $\Delta E = W_{nc}$. The block starts with $K = \tfrac12(2.0)(4.0)^2 = 16$ J and ends at rest, with energy $\tfrac12kx^2$ in the spring. Friction is $\mu mg = 0.20\times2.0\times9.8 = 3.92$ N.
+    $$16 - 3.92\,(1.0 + x) = \tfrac12(800)x^2$$
+    $$400x^2 + 3.92x - 12.08 = 0\ \Rightarrow\ x = \frac{-3.92 + \sqrt{3.92^2 + 4(400)(12.08)}}{800} = 0.169\ \text{m}.$$
+    Friction acts over the first metre and over the compression itself; dropping either term gives a wrong value. The compression is about 0.17 m.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Two neutral atoms interact through the potential energy $U(r) = U_0\left[\left(\dfrac{a}{r}\right)^{12} - 2\left(\dfrac{a}{r}\right)^{6}\right]$, where $r$ is the separation. One atom of mass $m = 6.64\times10^{-26}$ kg is held fixed and the other makes small oscillations about its equilibrium separation. Show that the equilibrium is at $r = a$, and find the frequency of small oscillations for $U_0 = 1.0\times10^{-21}$ J and $a = 3.0\times10^{-10}$ m. (Original problem; the numbers are illustrative [Unverified as real argon values].) Give the frequency.
+  ask: Frequency of small oscillations
+  unit: Hz
+  ans: 5.52e11
+  tol: 2e9
+  verify: sqrt(72*1e-21/(6.64e-26*(3e-10)**2))/(2*PI)
+  sol: |
+    Slope: $U' = U_0\left[-12\dfrac{a^{12}}{r^{13}} + 12\dfrac{a^{6}}{r^{7}}\right]$, which vanishes when $r^6 = a^6$, that is $r = a$.
+
+    Curvature: $U'' = U_0\left[156\dfrac{a^{12}}{r^{14}} - 84\dfrac{a^{6}}{r^{8}}\right]$. At $r = a$ this is $\dfrac{72U_0}{a^2} > 0$, so the equilibrium is stable and the effective spring constant is $k = 72U_0/a^2$.
+
+    Then
+    $$\omega = \sqrt{\frac{72U_0}{ma^2}} = \sqrt{\frac{72\times10^{-21}}{6.64\times10^{-26}\times9.0\times10^{-20}}} = 3.47\times10^{12}\ \text{rad s}^{-1},$$
+    $$f = \frac{\omega}{2\pi} = 5.5\times10^{11}\ \text{Hz}.$$
+    [Inference] If both atoms are free to move, the mass $m$ is replaced by the reduced mass $m/2$, which raises the frequency by $\sqrt2$.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A particle is taken once anticlockwise round a right-angled triangle with legs 3.0 m (along $x$) and 4.0 m (along $y$) in the force field $\vec F = (\alpha y,\ \beta x)$ with $\alpha = 2.0$ N/m and $\beta = 5.0$ N/m. Find the work done by the force, and find the condition on $\alpha$ and $\beta$ for the field to be conservative. (Original problem.) Give the work.
+  ask: Work done by the force round the loop
+  unit: J
+  ans: 18
+  tol: 0.01
+  verify: (5-2)*0.5*3*4
+  sol: |
+    For a small loop the work is $(\partial F_y/\partial x - \partial F_x/\partial y)\,A$, and the field is uniform in its curl, so the same holds for the whole triangle. Here $\partial F_y/\partial x = \beta$ and $\partial F_x/\partial y = \alpha$, so the work per unit area is $\beta - \alpha = 3.0$ N/m. The area is $\tfrac12\times3.0\times4.0 = 6.0\ \text{m}^2$, so
+    $$W = (\beta - \alpha)A = 3.0\times6.0 = 18\ \text{J}.$$
+    Direct check, with vertices $(0,0)$, $(3,0)$ and $(0,4)$ taken anticlockwise: along the base ($y = 0$, $dy = 0$) the work is 0; along the $y$-axis ($x = 0$, $dx = 0$) the work is 0; along the hypotenuse from $(3,0)$ to $(0,4)$, put $x = 3 - 3s$, $y = 4s$: $\int_0^1\left[\alpha(4s)(-3) + \beta(3-3s)(4)\right]ds = -12 + 30 = 18$ J. The total is 18 J, as above.
+
+    The field is conservative only when the work around every loop is zero, which needs $\alpha = \beta$ (then $\vec F = \alpha\,\nabla(xy)$, with $U = -\alpha xy$).
+  check: code

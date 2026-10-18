@@ -1,0 +1,222 @@
+# Equation of continuity, Bernoulli's principle and applications. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 9 Mechanical Properties of Fluids: Example 9.7 and Exercises 9.4, 9.11, 9.12, 9.14, 9.15, 9.16. keph1an covers Part 1 only, so no NCERT answer key exists for this chapter: every solution is ours (check: code for numeric items, none otherwise). Exercise 9.15 depends on Fig. 9.20, which we read from the page image. Found, board and main problems are original.
+
+- id: ncert11-eg-9-7
+  lvl: ncert-intext
+  num: "XI Ex 9.7"
+  source: NCERT XI Physics · Ch 9 · Example 9.7
+  kind: num
+  q: A fully loaded Boeing aircraft has a mass of 3.3 × 10^5 kg. Its total wing area is 500 m^2. It is in level flight with a speed of 960 km/h. (a) Estimate the pressure difference between the lower and upper surfaces of the wings (b) Estimate the fractional increase in the speed of the air on the upper surface of the wing relative to the lower surface. [The density of air is ρ = 1.2 kg m^-3]
+  ask: Pressure difference, part (a)
+  unit: Pa
+  ans: 6468
+  tol: 40
+  verify: 3.3e5*9.8/500
+  sol: |
+    (a) In level flight the weight is balanced by the upward force from the pressure difference: $\Delta P\times A = 3.3\times10^{5}\times9.8$, so
+    $$\Delta P = \frac{3.3\times10^{5}\times9.8}{500} = 6.5\times10^{3}\ \text{N m}^{-2}.$$
+
+    (b) Ignoring the small height difference in Bernoulli's equation, $\Delta P = \tfrac12\rho(v_2^2-v_1^2) = \rho\,(v_2-v_1)\,v_{av}$, where $v_2$ is the speed over the upper surface, $v_1$ under the wing and $v_{av} = (v_1+v_2)/2 = 960$ km/h $=267$ m s$^{-1}$. Therefore
+    $$\frac{v_2-v_1}{v_{av}} = \frac{\Delta P}{\rho v_{av}^2} = \frac{6468}{1.2\times267^2} \approx0.08 .$$
+    The air above the wing needs to be only about 8% faster than that below. (Our arithmetic gives 7.6%, which the book rounds to 8%.)
+  check: code
+
+- id: ncert11-ex-9-4
+  lvl: ncert-ex
+  num: "XI 9.4"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.4
+  kind: text
+  q: |-
+    Explain why
+    (a) To keep a piece of paper horizontal, you should blow over, not under, it
+    (b) When we try to close a water tap with our fingers, fast jets of water gush through the openings between our fingers
+    (c) The size of the needle of a syringe controls flow rate better than the thumb pressure exerted by a doctor while administering an injection
+    (d) A fluid flowing out of a small hole in a vessel results in a backward thrust on the vessel
+    (e) A spinning cricket ball in air does not follow a parabolic trajectory
+  sol: |
+    (a) Blowing over the paper makes the air above it move fast, so by Bernoulli's principle the pressure above falls below the atmospheric pressure underneath, and the net upward push supports the paper. Blowing under it would lower the pressure below and press the paper down.
+
+    (b) The water is the same flow, $Q = Av$ (equation of continuity). Closing the tap with fingers leaves only narrow gaps, a small total area $A$, so the speed $v = Q/A$ through them is large: fast jets.
+
+    (c) The flow rate through a narrow tube depends very strongly on its radius (Poiseuille's law, $Q\propto r^4$ for a given pressure difference), so the needle's bore matters far more than modest changes in thumb pressure, which only change $Q$ in proportion.
+
+    (d) The jet leaves with momentum in one direction, so the vessel gains an equal momentum the other way (Newton's third law, momentum conservation). Equivalently, the pressure on the wall opposite the hole is not balanced by one at the hole.
+
+    (e) A spinning ball drags a layer of air around with it. On the side where the surface moves with the airstream the relative air speed is low and the pressure is high. On the other side the relative speed is high and the pressure low. This pressure difference gives a sideways force (the Magnus effect), so the path is curved, not a parabola.
+  check: none
+
+- id: ncert11-ex-9-11
+  lvl: ncert-ex
+  num: "XI 9.11"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.11
+  kind: text
+  q: Can Bernoulli's equation be used to describe the flow of water through a rapid in a river ? Explain.
+  sol: |
+    **No.** Bernoulli's equation assumes steady, streamline (laminar) flow of an incompressible, non-viscous fluid, so that mechanical energy is conserved along a streamline. In a rapid the flow is turbulent: the speed and pressure at a point fluctuate irregularly, eddies form, and a lot of mechanical energy is dissipated as heat through viscosity. The conditions fail, so the equation cannot be used.
+  check: none
+
+- id: ncert11-ex-9-12
+  lvl: ncert-ex
+  num: "XI 9.12"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.12
+  kind: text
+  q: Does it matter if one uses gauge instead of absolute pressures in applying Bernoulli's equation ? Explain.
+  sol: |
+    **No, as long as the same kind is used on both sides.** Bernoulli's equation $P_1+\tfrac12\rho v_1^2+\rho gh_1 = P_2+\tfrac12\rho v_2^2+\rho gh_2$ involves the pressures at two points. Gauge pressure $=$ absolute pressure $-P_a$, and the atmospheric pressure $P_a$ is the same constant on both sides of the equation (provided the two points are at about the same atmospheric level), so it cancels. Mixing gauge pressure at one point with absolute pressure at the other would be an error.
+  check: none
+
+- id: ncert11-ex-9-14
+  lvl: ncert-ex
+  num: "XI 9.14"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.14
+  kind: num
+  q: In a test experiment on a model aeroplane in a wind tunnel, the flow speeds on the upper and lower surfaces of the wing are 70 m s^-1 and 63 m s^-1 respectively. What is the lift on the wing if its area is 2.5 m^2 ? Take the density of air to be 1.3 kg m^-3.
+  ask: Lift
+  unit: N
+  ans: 1513
+  tol: 5
+  verify: 0.5*1.3*(70**2-63**2)*2.5
+  sol: |
+    By Bernoulli (same height), the pressure difference between the lower and upper surfaces is
+    $$\Delta P = \tfrac12\rho(v_1^2-v_2^2) = \tfrac12\times1.3\times(70^2-63^2) = 0.65\times931 = 605\ \text{Pa}.$$
+    The lift is $\Delta P\times A = 605\times2.5 = 1.5\times10^{3}$ N (1513 N).
+  check: code
+
+- id: ncert11-ex-9-15
+  lvl: ncert-ex
+  num: "XI 9.15"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.15
+  kind: mcq
+  q: Figures 9.20(a) and (b) refer to the steady flow of a (non-viscous) liquid. Which of the two figures is incorrect ? Why ?
+  opts: ["Figure 9.20(a)", "Figure 9.20(b)"]
+  ans: 0
+  sol: |
+    **Figure (a) is incorrect.** [Inference] Both figures show a horizontal pipe with a constriction and two vertical tubes measuring the pressure, one in the wide part and one at the throat. In (a) the liquid stands higher in the tube at the throat than in the tube at the wide part; in (b) it stands lower there.
+
+    By the equation of continuity the liquid moves faster in the narrow throat, and by Bernoulli's principle (horizontal pipe) the pressure is then lower there. The liquid level in the tube at the constriction must therefore be lower, as drawn in (b). In (a) the throat tube shows a higher pressure, which is impossible for steady non-viscous flow.
+  check: none
+
+- id: ncert11-ex-9-16
+  lvl: ncert-ex
+  num: "XI 9.16"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.16
+  kind: num
+  q: The cylindrical tube of a spray pump has a cross-section of 8.0 cm^2 one end of which has 40 fine holes each of diameter 1.0 mm. If the liquid flow inside the tube is 1.5 m min^-1, what is the speed of ejection of the liquid through the holes ?
+  ask: Speed of ejection
+  unit: m/s
+  ans: 0.637
+  tol: 0.005
+  verify: (8.0e-4*(1.5/60))/(40*PI*(0.5e-3)**2)
+  sol: |
+    Equation of continuity: $A_1v_1 = A_2v_2$, where $A_2$ is the total area of the holes.
+
+    $A_1 = 8.0\times10^{-4}$ m$^2$ and $v_1 = 1.5\ \text{m/min} = 0.025$ m s$^{-1}$. $A_2 = 40\times\pi(0.5\times10^{-3})^2 = 3.14\times10^{-5}$ m$^2$. So
+    $$v_2 = \frac{A_1v_1}{A_2} = \frac{8.0\times10^{-4}\times0.025}{3.14\times10^{-5}} = 0.64\ \text{m s}^{-1}.$$
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Water flows steadily through a pipe that narrows. Where is the water speed greatest?
+  opts: ["in the wide part", "in the narrow part", "equal everywhere", "it depends on the pipe's colour"]
+  ans: 1
+  sol: The volume flowing past every section per second is the same, $Av = $ constant (equation of continuity). A smaller area $A$ forces a larger speed $v$. (Original problem.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Water moves at 2.0 m/s through a pipe of diameter 6.0 cm which then narrows to a diameter of 3.0 cm. Find the speed in the narrow section. (Original problem.)
+  ask: Speed in the narrow section
+  unit: m/s
+  ans: 8
+  tol: 0.05
+  verify: 2.0*(6.0/3.0)**2
+  sol: $A\propto d^2$, so $v_2 = v_1(d_1/d_2)^2 = 2.0\times(6/3)^2 = 8.0$ m/s.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: In the steady flow of a non-viscous liquid through a horizontal pipe, the pressure is lowest where
+  opts: ["the speed is lowest", "the speed is highest", "the pipe is widest", "the liquid is coldest"]
+  ans: 1
+  sol: From Bernoulli's equation at constant height, $P+\tfrac12\rho v^2$ is constant, so the pressure is lowest where $v$ is highest (which is also where the pipe is narrowest). (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A tank is filled with water and open to the air at the top. A small hole is made in its side 1.25 m below the water surface. With what speed does the water leave the hole? Take g = 9.8 m/s². (Original problem.)
+  ask: Speed of efflux
+  unit: m/s
+  ans: 4.95
+  tol: 0.02
+  verify: sqrt(2*9.8*1.25)
+  sol: |
+    Apply Bernoulli between the surface (speed $\approx0$, pressure $P_a$) and the hole (pressure $P_a$): $\rho gh = \tfrac12\rho v^2$, so $v = \sqrt{2gh} = \sqrt{2\times9.8\times1.25} = 4.95$ m/s (Torricelli's theorem). It equals the speed of a body falling freely through $h$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: A strong wind blows over a house with a flat roof. Explain why the roof may be lifted off. (Original problem.)
+  sol: |
+    The wind moving fast over the roof lowers the air pressure just above it (Bernoulli's principle), while the air inside the house is nearly still, at about atmospheric pressure. The pressure difference acts upward on the whole area of the roof, $F = \Delta P\times A$. For a large roof area and a storm wind of 40 m/s, $\Delta P\approx\tfrac12\times1.2\times40^2\approx1000$ Pa, over 100 m$^2$ gives $10^{5}$ N, enough to lift the roof.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: num
+  q: Water flows at 2.0 m/s in a wide horizontal pipe and 8.0 m/s in a narrow part of it. Find the difference in pressure between the two sections. (Original problem.)
+  ask: Pressure difference
+  unit: kPa
+  ans: 30
+  tol: 0.1
+  verify: 0.5*1000*(8.0**2-2.0**2)/1e3
+  sol: At the same height, $P_1-P_2 = \tfrac12\rho(v_2^2-v_1^2) = \tfrac12\times1000\times(64-4) = 3.0\times10^{4}$ Pa $=30$ kPa. The pressure is lower in the narrow, faster section.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A tall open tank stands on the ground, filled with water to a depth of 5.0 m. A small hole is made in its wall at a depth of 1.25 m below the water surface, so it is 3.75 m above the ground. At what horizontal distance from the wall does the jet hit the ground? Take g = 9.8 m/s². (Original problem.)
+  ask: Horizontal range
+  unit: m
+  ans: 4.33
+  tol: 0.02
+  verify: 2*sqrt(1.25*3.75)
+  sol: |
+    Speed of efflux (horizontal): $v = \sqrt{2gh_1}$ with $h_1 = 1.25$ m. Fall time through $h_2 = 3.75$ m: $t = \sqrt{2h_2/g}$. The range is
+    $$x = vt = \sqrt{2gh_1}\sqrt{\frac{2h_2}{g}} = 2\sqrt{h_1h_2} = 2\sqrt{1.25\times3.75} = 4.33\ \text{m}.$$
+    $g$ cancels, and the range is the same for holes at heights that swap $h_1$ and $h_2$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A Venturi meter is a horizontal pipe whose cross-section narrows from 40 cm² to 10 cm². The pressure difference between the wide and narrow sections is measured as 3000 Pa for flowing water. Find the volume flow rate. (Original problem.)
+  ask: Volume flow rate
+  unit: L/s
+  ans: 2.53
+  tol: 0.02
+  verify: 40e-4*sqrt(2*3000/(1000*((40/10)**2-1)))*1e3
+  sol: |
+    Continuity: $A_1v_1 = A_2v_2$, so $v_2 = 4v_1$. Bernoulli at the same height: $P_1-P_2 = \tfrac12\rho(v_2^2-v_1^2) = \tfrac12\rho v_1^2(16-1)$.
+    $$v_1 = \sqrt{\frac{2\times3000}{1000\times15}} = 0.632\ \text{m s}^{-1}.$$
+    Flow rate $Q = A_1v_1 = 40\times10^{-4}\times0.632 = 2.53\times10^{-3}$ m$^3$/s $=2.5$ L/s.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A cylindrical tank of cross-section 0.50 m² is open at the top and holds water to a depth of 1.0 m. A small hole of area 2.0 cm² is opened at the bottom. Treating the efflux speed as $\sqrt{2gh}$ at each instant, find the time to drain the tank completely. Take g = 9.8 m/s². (Original problem.)
+  ask: Time to drain
+  unit: s
+  ans: 1130
+  tol: 3
+  verify: (0.5/2.0e-4)*sqrt(2*1.0/9.8)
+  sol: |
+    With surface speed $v_s = -dh/dt$, continuity gives $A\,v_s = a\sqrt{2gh}$, so $\dfrac{dh}{dt} = -\dfrac{a}{A}\sqrt{2g}\,\sqrt h$. Separate and integrate from $h_0$ to 0:
+    $$t = \frac{A}{a}\sqrt{\frac{2h_0}{g}} = \frac{0.50}{2.0\times10^{-4}}\sqrt{\frac{2\times1.0}{9.8}} = 2500\times0.452 = 1.13\times10^{3}\ \text{s},$$
+    about 19 minutes. This equals $2V/Q_0$, twice the time that the initial flow rate $Q_0 = a\sqrt{2gh_0}$ would take to empty the tank, because the flow slows as the level falls.
+  check: code

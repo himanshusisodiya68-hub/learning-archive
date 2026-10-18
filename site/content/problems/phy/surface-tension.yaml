@@ -1,0 +1,213 @@
+# Surface energy, angle of contact, capillary rise, drops and bubbles. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 9 Mechanical Properties of Fluids: Example 9.10 and Exercises 9.2, 9.17-9.20. keph1an covers Part 1 only, so no NCERT answer key exists for this chapter: every solution is ours (check: code for numeric items, none otherwise). The reprint has no in-text question on this topic beyond the example. Found, board and main problems are original.
+
+- id: ncert11-eg-9-10
+  lvl: ncert-intext
+  num: "XI Ex 9.10"
+  source: NCERT XI Physics · Ch 9 · Example 9.10
+  kind: num
+  q: The lower end of a capillary tube of diameter 2.00 mm is dipped 8.00 cm below the surface of water in a beaker. What is the pressure required in the tube in order to blow a hemispherical bubble at its end in water? The surface tension of water at temperature of the experiments is 7.30 × 10^-2 Nm^-1. 1 atmospheric pressure = 1.01 × 10^5 Pa, density of water = 1000 kg/m^3, g = 9.80 m s^-2. Also calculate the excess pressure.
+  ask: Excess pressure in the bubble
+  unit: Pa
+  ans: 146
+  tol: 0.5
+  verify: 2*7.30e-2/1.00e-3
+  sol: |
+    The bubble is of gas in a liquid, so it has only one liquid surface and the excess pressure is $2S/r$ (for a liquid bubble in air, with two surfaces, it would be $4S/r$). A hemispherical bubble at the end of the capillary has radius $r = 1.00$ mm.
+
+    Pressure outside the bubble: $P_o = 1.01\times10^{5} + 0.08\times1000\times9.80 = 1.01784\times10^{5}$ Pa.
+
+    Excess pressure: $\dfrac{2S}{r} = \dfrac{2\times7.3\times10^{-2}}{10^{-3}} = 146$ Pa.
+
+    Pressure inside (required in the tube): $P_i = P_o + 2S/r = (1.01784+0.00146)\times10^{5} = 1.02\times10^{5}$ Pa.
+  check: code
+
+- id: ncert11-ex-9-2
+  lvl: ncert-ex
+  num: "XI 9.2"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.2
+  kind: text
+  q: |-
+    Explain why
+    (a) The angle of contact of mercury with glass is obtuse, while that of water with glass is acute.
+    (b) Water on a clean glass surface tends to spread out while mercury on the same surface tends to form drops. (Put differently, water wets glass while mercury does not.)
+    (c) Surface tension of a liquid is independent of the area of the surface
+    (d) Water with detergent disolved in it should have small angles of contact.
+    (e) A drop of liquid under no external forces is always spherical in shape
+  sol: |
+    (a), (b) The angle of contact depends on the balance of the adhesive force (liquid-solid attraction) and the cohesive force (liquid-liquid attraction). For water on glass, adhesion exceeds cohesion, so the liquid is drawn up along the glass: the angle is acute and the water spreads (wets the glass). For mercury, cohesion is much stronger than adhesion, so it pulls into a ball, meeting the glass at an obtuse angle, and it does not wet the glass but forms drops.
+
+    (c) Surface tension is the force per unit length across a line in the surface (or the energy per unit area). It comes from the molecular forces at the surface, which do not depend on how much surface there is. Stretching a film only adds more of the same surface, so $S$ stays constant (unlike the force in a spring).
+
+    (d) Detergent molecules lower the surface tension and make the water cling to the solid (greater adhesion). Then $\cos\theta = (S_{sa}-S_{sl})/S_{la}$ is close to 1, so $\theta$ is small. The water spreads and gets into fibres, which helps cleaning.
+
+    (e) With no external force, a liquid minimises its surface energy $S\times$ area. For a given volume the sphere has the least surface area, so the drop is spherical.
+  check: none
+
+- id: ncert11-ex-9-17
+  lvl: ncert-ex
+  num: "XI 9.17"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.17
+  kind: num
+  q: A U-shaped wire is dipped in a soap solution, and removed. The thin soap film formed between the wire and the light slider supports a weight of 1.5 × 10^-2 N (which includes the small weight of the slider). The length of the slider is 30 cm. What is the surface tension of the film ?
+  ask: Surface tension
+  unit: N/m
+  ans: 0.025
+  tol: 0.0005
+  verify: 1.5e-2/(2*0.30)
+  sol: |
+    A soap film has two surfaces (front and back), and each pulls on the slider along its length $l$. So the total upward force is $2Sl$, and in equilibrium $2Sl = W$:
+    $$S = \frac{W}{2l} = \frac{1.5\times10^{-2}}{2\times0.30} = 2.5\times10^{-2}\ \text{N m}^{-1}.$$
+  check: code
+
+- id: ncert11-ex-9-18
+  lvl: ncert-ex
+  num: "XI 9.18"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.18
+  kind: text
+  q: Figure 9.21 (a) shows a thin liquid film supporting a small weight = 4.5 × 10^-2 N. What is the weight supported by a film of the same liquid at the same temperature in Fig. (b) and (c) ? Explain your answer physically.
+  sol: |
+    **4.5 × 10⁻² N in each case.** [Inference] In Fig. 9.21 the three films are of different shapes and areas but each is held by a slider of the same length (40 cm in all three).
+
+    The film pulls on the slider with a force $2Sl$ ($S$ per unit length on each of the two surfaces, $l$ the slider's length). This depends only on the liquid's surface tension (fixed by the liquid and its temperature) and on the length $l$ of the line along which the surface touches the slider, not on the area or shape of the film. With the same $S$ and the same $l$, the supported weight is the same in (a), (b) and (c): $2\times S\times0.40 = 4.5\times10^{-2}$ N.
+  check: none
+
+- id: ncert11-ex-9-19
+  lvl: ncert-ex
+  num: "XI 9.19"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.19
+  kind: num
+  q: What is the pressure inside the drop of mercury of radius 3.00 mm at room temperature ? Surface tension of mercury at that temperature (20 °C) is 4.65 × 10^-1 N m^-1. The atmospheric pressure is 1.01 × 10^5 Pa. Also give the excess pressure inside the drop.
+  ask: Excess pressure
+  unit: Pa
+  ans: 310
+  tol: 1
+  verify: 2*4.65e-1/3.00e-3
+  sol: |
+    A drop has one surface, so the excess pressure is
+    $$\Delta P = \frac{2S}{r} = \frac{2\times4.65\times10^{-1}}{3.00\times10^{-3}} = 310\ \text{Pa}.$$
+    Pressure inside the drop: $P = P_a+\Delta P = 1.01\times10^{5}+310 = 1.0131\times10^{5}$ Pa, i.e. $1.01\times10^{5}$ Pa to three figures.
+  check: code
+
+- id: ncert11-ex-9-20
+  lvl: ncert-ex
+  num: "XI 9.20"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.20
+  kind: num
+  q: What is the excess pressure inside a bubble of soap solution of radius 5.00 mm, given that the surface tension of soap solution at the temperature (20 °C) is 2.50 × 10^-2 N m^-1 ? If an air bubble of the same dimension were formed at depth of 40.0 cm inside a container containing the soap solution (of relative density 1.20), what would be the pressure inside the bubble ? (1 atmospheric pressure is 1.01 × 10^5 Pa).
+  ask: Pressure inside the air bubble at depth, second part
+  unit: 10^5 Pa
+  ans: 1.0571
+  tol: 0.0005
+  verify: (1.01e5+1200*9.8*0.400+2*2.50e-2/5.00e-3)/1e5
+  sol: |
+    **Soap bubble in air.** It has two surfaces (inside and outside the film), so the excess pressure is
+    $$\Delta P = \frac{4S}{r} = \frac{4\times2.50\times10^{-2}}{5.00\times10^{-3}} = 20\ \text{Pa}.$$
+
+    **Air bubble inside the soap solution.** It has one surface only, so its excess pressure is $2S/r = 10$ Pa. The pressure of the liquid at 40.0 cm depth is $P_a+\rho gh = 1.01\times10^{5}+1200\times9.8\times0.400 = 1.01\times10^{5}+4704$ Pa. The pressure inside the bubble is
+    $$P = 1.01\times10^{5}+4704+10 = 1.057\times10^{5}\ \text{Pa}\approx1.06\times10^{5}\ \text{Pa}.$$
+    [Inference] $g = 9.8$ m s$^{-2}$ is assumed, as the question does not give it.
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The SI unit of surface tension is
+  opts: ["N m⁻¹", "N m⁻²", "N m", "N"]
+  ans: 0
+  sol: Surface tension is force per unit length, $S = F/l$, so the unit is N/m (equivalently J/m², energy per unit area). (Original problem.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A soap film of surface tension 0.025 N/m is stretched on a frame with a light slider 8.0 cm long. What force does the film exert on the slider? (Original problem.)
+  ask: Force
+  unit: mN
+  ans: 4
+  tol: 0.02
+  verify: 2*0.025*0.080*1e3
+  sol: The film has two surfaces, so $F = 2Sl = 2\times0.025\times0.080 = 4.0\times10^{-3}$ N $=4.0$ mN.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: Water rises in a clean glass capillary tube because the angle of contact between water and glass is
+  opts: ["acute, so the surface is concave", "obtuse, so the surface is concave", "acute, so the surface is convex", "obtuse, so the surface is convex"]
+  ans: 0
+  sol: For water on clean glass the angle of contact is acute, so the meniscus is concave and the pressure just below it is lower than the atmospheric pressure outside, which makes water climb up the tube. (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Water of surface tension 0.072 N/m and density 1000 kg/m³ rises in a clean glass capillary of radius 0.50 mm. The angle of contact is zero. Find the height of the rise. Take g = 9.8 m/s². (Original problem.)
+  ask: Height of rise
+  unit: cm
+  ans: 2.94
+  tol: 0.02
+  verify: 2*0.072/(1000*9.8*0.50e-3)*100
+  sol: $h = \dfrac{2S\cos\theta}{\rho g r} = \dfrac{2\times0.072\times1}{1000\times9.8\times0.50\times10^{-3}} = 2.94\times10^{-2}$ m $=2.94$ cm.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Find the excess pressure inside a soap bubble of radius 1.0 cm, if the surface tension of the soap solution is 0.030 N/m. (Original problem.)
+  ask: Excess pressure
+  unit: Pa
+  ans: 12
+  tol: 0.05
+  verify: 4*0.030/1.0e-2
+  sol: A soap bubble has two surfaces, so $\Delta P = 4S/r = 4\times0.030/(1.0\times10^{-2}) = 12$ Pa.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: text
+  q: Why does adding a detergent to water help clean oily clothes? Answer using surface tension and angle of contact. (Original problem.)
+  sol: |
+    Detergent lowers the surface tension of water and its angle of contact with the fabric and oily dirt, so the solution spreads and wets the cloth instead of beading up, and it penetrates between the fibres. The detergent molecules also cling to oil on one end and to water on the other, so the dirt is lifted off and carried away in the wash water.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A soap bubble is blown from radius 1.0 cm to radius 2.0 cm. If the surface tension of the soap solution is 0.030 N/m, how much work is done against surface tension? (Original problem.)
+  ask: Work done
+  unit: 10^-4 J
+  ans: 2.262
+  tol: 0.005
+  verify: 0.030*2*4*PI*((2.0e-2)**2-(1.0e-2)**2)*1e4
+  sol: |
+    The bubble has two surfaces, so its surface area is $2\times4\pi r^2$. The work equals $S\,\Delta A$:
+    $$W = S\times2\times4\pi(r_2^2-r_1^2) = 0.030\times8\pi\times(4.0\times10^{-4}-1.0\times10^{-4}) = 2.26\times10^{-4}\ \text{J}.$$
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Mercury (surface tension 0.465 N/m, density 13 600 kg/m³, angle of contact 135°) is in a glass capillary of radius 1.0 mm dipped into a mercury bath. By how much is the mercury level in the tube depressed below the level outside? Take g = 9.8 m/s². (Original problem.)
+  ask: Depression
+  unit: mm
+  ans: 4.93
+  tol: 0.03
+  verify: -2*0.465*cos(rad(135))/(13600*9.8*1.0e-3)*1e3
+  sol: |
+    Use $h = \dfrac{2S\cos\theta}{\rho g r}$. For $\theta = 135^\circ$, $\cos\theta = -0.707$ is negative, so $h$ is negative: the level falls.
+    $$|h| = \frac{2\times0.465\times0.707}{13600\times9.8\times1.0\times10^{-3}} = 4.9\times10^{-3}\ \text{m} = 4.9\ \text{mm}.$$
+    The meniscus is convex (obtuse angle of contact) and the mercury in the tube is pushed down.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: Eight identical water droplets of radius 1.0 mm merge into one large drop. How much surface energy is released? Surface tension of water 0.072 N/m. (Original problem.)
+  ask: Energy released
+  unit: 10^-6 J
+  ans: 3.619
+  tol: 0.01
+  verify: 0.072*4*PI*(8*(1e-3)**2-(2e-3)**2)*1e6
+  sol: |
+    Volume conservation: $\tfrac43\pi R^3 = 8\times\tfrac43\pi r^3$, so $R = 2r = 2.0$ mm. The surface area falls from $8\times4\pi r^2 = 32\pi r^2$ to $4\pi R^2 = 16\pi r^2$, a loss of $16\pi r^2 = 16\pi\times10^{-6} = 5.03\times10^{-5}$ m$^2$. Energy released $=S\,\Delta A = 0.072\times5.03\times10^{-5} = 3.62\times10^{-6}$ J (it appears as a rise in temperature of the drop).
+  check: code

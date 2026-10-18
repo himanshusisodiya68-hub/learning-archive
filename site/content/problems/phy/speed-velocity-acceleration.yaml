@@ -796,3 +796,97 @@
     $$a = \frac{v-u}{t} = \frac{-8-12}{0.02} = -1000\ \text{m s}^{-2}.$$
     The magnitude is $1000$ m s$^{-2}$, about 100 $g$, directed away from the wall. Forgetting the sign change (using 12 − 8) would give the wrong value 200 m s$^{-2}$.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A car covers the first third of a straight road at 20 km/h, the next third at 30 km/h and the last third at 60 km/h. Find its average speed over the whole road. (Original problem.)
+  ask: Average speed
+  unit: km/h
+  ans: 30
+  tol: 0.01
+  verify: 3/(1/20+1/30+1/60)
+  sol: |
+    Let the whole road be $3d$ long, so each third is $d$. The times are $d/20$, $d/30$ and $d/60$, so the total time is
+    $$d\left(\frac1{20}+\frac1{30}+\frac1{60}\right) = d\cdot\frac{3+2+1}{60} = \frac{d}{10}.$$
+    Average speed $= \dfrac{3d}{d/10} = 30$ km/h.
+
+    The simple mean of the three speeds would be 36.7 km/h, which is too high: the car spends the most time at the slowest speed.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: The velocity of a particle moving along a straight line is v = 12t − 3t² (v in m/s, t in s). It starts from the origin at t = 0. Find the total distance it travels in the first 6 s. (Original problem.)
+  ask: Total distance in 6 s
+  unit: m
+  ans: 64
+  tol: 0.01
+  verify: 2*(6*16-64)
+  sol: |
+    The velocity is zero when $12t - 3t^2 = 3t(4-t) = 0$, that is at $t = 4$ s, so the particle turns round at $t = 4$ s.
+
+    Integrate to get the position: $x = 6t^2 - t^3$. Then $x(4) = 96 - 64 = 32$ m and $x(6) = 216 - 216 = 0$.
+
+    The particle goes forward 32 m and returns the same 32 m, so the distance is $32 + 32 = 64$ m.
+
+    Its displacement is 0, so the average velocity over the 6 s is 0, but the average speed is $64/6 = 10.7$ m/s. The average acceleration is $[v(6) - v(0)]/6 = (-36 - 0)/6 = -6$ m/s².
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A particle starts from rest at t = 0 with an acceleration that changes with time as a = 6 − 2t (a in m/s², t in s). Find the largest speed it reaches. (Original problem.)
+  ask: Maximum speed
+  unit: m/s
+  ans: 9
+  tol: 0.01
+  verify: 6*3-3*3
+  sol: |
+    Acceleration is the rate of change of velocity, so the velocity is built up from the acceleration: $v = \int_0^t(6-2t')\,dt' = 6t - t^2$.
+
+    The speed is largest when $dv/dt = a = 0$, that is at $t = 3$ s. Then $v_{\max} = 6(3) - 9 = 9$ m/s.
+
+    After $t = 3$ s the acceleration is negative, so the particle starts to slow down, and it comes to rest again at $t = 6$ s.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A boat is slowed by a drag such that its deceleration is proportional to the square of its speed, a = −kv², with k = 0.02 m⁻¹. Its speed at some moment is 20 m/s. Find its speed after it has travelled a further 50 m. (Original problem.)
+  ask: Speed after 50 m
+  unit: m/s
+  ans: 7.358
+  tol: 0.005
+  verify: 20*exp(-0.02*50)
+  sol: |
+    The acceleration is given in terms of speed and we want the speed as a function of distance, so use $a = v\,\dfrac{dv}{dx}$:
+    $$v\frac{dv}{dx} = -kv^2 \;\Rightarrow\; \frac{dv}{dx} = -kv \;\Rightarrow\; \frac{dv}{v} = -k\,dx.$$
+    Integrating from $v_0$ at $x = 0$: $\ln(v/v_0) = -kx$, so $v = v_0e^{-kx}$.
+
+    With $v_0 = 20$ m/s, $k = 0.02$ m$^{-1}$ and $x = 50$ m: $v = 20e^{-1} = 7.36$ m/s.
+
+    The speed never reaches zero at any finite distance, although it becomes tiny: this drag law makes the boat coast without ever stopping.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: A journey is divided into n stretches of equal length, travelled at constant speeds v₁, v₂, …, vₙ. Show that the average speed for the whole journey is n divided by the sum of 1/vᵢ (the harmonic mean), and prove that it is never larger than the ordinary mean of the speeds, with equality only when all the speeds are equal. (Original problem.)
+  hints:
+    - Let each stretch have length d. How long does stretch i take?
+    - The average speed is the total distance divided by the total time.
+    - Compare with the plain mean using the inequality (v₁ + … + vₙ)(1/v₁ + … + 1/vₙ) ≥ n². Prove it with the Cauchy–Schwarz inequality.
+  sol: |
+    Each stretch has length $d$ and takes $d/v_i$. The total distance is $nd$ and the total time is $d\sum 1/v_i$, so
+    $$\bar v = \frac{nd}{d\sum 1/v_i} = \frac{n}{\sum 1/v_i}.$$
+    This is the harmonic mean of the speeds.
+
+    To compare with the ordinary mean $\dfrac{\sum v_i}{n}$ we need $\dfrac{n}{\sum 1/v_i} \le \dfrac{\sum v_i}{n}$, which rearranges to
+    $$\Big(\sum v_i\Big)\Big(\sum \frac1{v_i}\Big) \ge n^2.$$
+    By the Cauchy–Schwarz inequality, $\left(\sum a_ib_i\right)^2 \le \left(\sum a_i^2\right)\left(\sum b_i^2\right)$. Take $a_i = \sqrt{v_i}$ and $b_i = 1/\sqrt{v_i}$, so $a_ib_i = 1$ and the left side is $n^2$. Hence the product is at least $n^2$.
+
+    Equality holds in Cauchy–Schwarz only when the vectors $(a_i)$ and $(b_i)$ are proportional, i.e. $\sqrt{v_i} \propto 1/\sqrt{v_i}$ for all $i$, which means every $v_i$ is the same.
+
+    (Physical reading: the slow stretches take longer, so they get more weight than the fast ones in the time-weighted average, and the true average is dragged below the plain mean.)
+  check: none

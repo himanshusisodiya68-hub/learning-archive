@@ -589,3 +589,59 @@
     $$\frac{P}{\sin45^\circ} = \frac{Q}{\sin30^\circ} = \frac{F}{\sin105^\circ}.$$
     So $P = 20\times\dfrac{0.7071}{0.9659} = 14.6$ units and $Q = 20\times\dfrac{0.5}{0.9659} = 10.35$ units. (Neither is a projection of $\mathbf F$: when the directions are not perpendicular, the components are *not* $F\cos\theta$.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A particle moves in the xy-plane with x = 4t and y = 3t² (SI units). Find the radius of curvature of its path at t = 0. (Original problem.)
+  ask: Radius of curvature at t = 0
+  unit: m
+  ans: 2.667
+  tol: 0.005
+  verify: 16/6
+  sol: |
+    Differentiate: $\mathbf v = (4,\ 6t)$ and $\mathbf a = (0,\ 6)$. At $t = 0$: $\mathbf v = (4, 0)$ m/s (along $x$) and $\mathbf a = (0, 6)$ m/s² (along $y$).
+
+    The acceleration is perpendicular to the velocity, so it is entirely **normal**: $a_n = 6$ m/s² and $a_t = 0$. The path bends with $a_n = v^2/\rho$, so $\rho = v^2/a_n = 16/6 = 2.67$ m.
+
+    Check with the cross-product form: $\rho = \dfrac{v^3}{|v_x a_y - v_y a_x|} = \dfrac{64}{|4\times6 - 0|} = \dfrac{64}{24} = 2.67$ m. (The path is the parabola $y = 3x^2/16$; at its vertex the curvature is $y'' = 3/8$, so $\rho = 8/3 = 2.67$ m, the same.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: At some instant a particle has velocity $(6\,\hat{\mathbf i} + 8\,\hat{\mathbf j})$ m/s and acceleration $(2\,\hat{\mathbf i} + 1\,\hat{\mathbf j})$ m s⁻². Find the radius of curvature of its path at that instant. (Original problem.)
+  ask: Radius of curvature
+  unit: m
+  ans: 100
+  tol: 0.1
+  verify: 1000/abs(6*1-8*2)
+  sol: |
+    The speed is $|\mathbf v| = 10$ m/s. Split the acceleration along the velocity using the dot product: $a_t = \dfrac{\mathbf v\cdot\mathbf a}{v} = \dfrac{12 + 8}{10} = 2$ m/s², so the speed is rising at 2 m/s².
+
+    The total is $|\mathbf a|^2 = 2^2 + 1^2 = 5$, so the part left over is the normal part: $a_n = \sqrt{5 - 4} = 1$ m/s².
+
+    Then $\rho = v^2/a_n = 100/1 = 100$ m.
+
+    Check: $\rho = \dfrac{v^3}{|v_x a_y - v_y a_x|} = \dfrac{1000}{|6\times1 - 8\times2|} = \dfrac{1000}{10} = 100$ m.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A bead is pushed outwards along a rod so that its distance from the pivot grows at the constant rate 1.5 m/s, while the rod turns at a constant 4 rad/s. At the instant the bead is 2 m from the pivot, find the magnitude of its acceleration. (Original problem.)
+  ask: Magnitude of acceleration
+  unit: m/s²
+  ans: 34.18
+  tol: 0.05
+  verify: sqrt((2*16)**2+(2*1.5*4)**2)
+  sol: |
+    Use polar components, where the unit vectors themselves turn. With $\dot r = 1.5$ m/s (so $\ddot r = 0$) and $\dot\theta = 4$ rad/s (so $\ddot\theta = 0$):
+
+    - Radial: $a_r = \ddot r - r\dot\theta^2 = 0 - 2\times16 = -32$ m/s² (towards the pivot).
+    - Sideways: $a_\theta = r\ddot\theta + 2\dot r\dot\theta = 0 + 2\times1.5\times4 = 12$ m/s².
+
+    The two parts are at right angles, so $|\mathbf a| = \sqrt{32^2 + 12^2} = \sqrt{1168} \approx 34.2$ m/s².
+
+    The sideways part $2\dot r\dot\theta$ (the Coriolis term) is the surprising one: it is there even though the bead has no sideways push from the rod's turning alone. Moving outward into regions that are moving faster sideways costs a sideways acceleration.
+  check: code

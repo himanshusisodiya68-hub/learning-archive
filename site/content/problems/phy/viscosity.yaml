@@ -1,0 +1,187 @@
+# Viscosity, Stokes' law, terminal velocity and Reynolds number. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 9 Mechanical Properties of Fluids: Examples 9.8, 9.9 and Exercises 9.3, 9.13. keph1an covers Part 1 only, so no NCERT answer key exists for this chapter: every solution is ours (check: code for numeric items, none otherwise). Exercise 9.13 uses Poiseuille's formula and the Reynolds number, which the 2026-27 reprint no longer derives; they are standard results and are labelled [Unverified against the reprint]. Found, board and main problems are original.
+
+- id: ncert11-eg-9-8
+  lvl: ncert-intext
+  num: "XI Ex 9.8"
+  source: NCERT XI Physics · Ch 9 · Example 9.8
+  kind: num
+  q: A metal block of area 0.10 m^2 is connected to a 0.010 kg mass via a string that passes over an ideal pulley (considered massless and frictionless), as in Fig. 9.13. A liquid with a film thickness of 0.30 mm is placed between the block and the table. When released the block moves to the right with a constant speed of 0.085 m s^-1. Find the coefficient of viscosity of the liquid.
+  ask: Coefficient of viscosity
+  unit: 10^-3 Pa s
+  ans: 3.46
+  tol: 0.02
+  verify: ((0.010*9.8/0.10)/(0.085/0.30e-3))*1e3
+  sol: |
+    The block moves at constant speed, so the viscous force equals the tension, which equals the weight of the hanging mass: $F = T = mg = 0.010\times9.8 = 9.8\times10^{-2}$ N.
+
+    Shear stress on the liquid $=F/A = 9.8\times10^{-2}/0.10 = 0.98$ N m$^{-2}$. Strain rate $=v/l = 0.085/(0.30\times10^{-3}) = 283$ s$^{-1}$. Therefore
+    $$\eta = \frac{\text{stress}}{\text{strain rate}} = \frac{0.98}{283} = 3.46\times10^{-3}\ \text{Pa s}.$$
+  check: code
+
+- id: ncert11-eg-9-9
+  lvl: ncert-intext
+  num: "XI Ex 9.9"
+  source: NCERT XI Physics · Ch 9 · Example 9.9
+  kind: num
+  q: The terminal velocity of a copper ball of radius 2.0 mm falling through a tank of oil at 20^o C is 6.5 cm s^-1. Compute the viscosity of the oil at 20^o C. Density of oil is 1.5 × 10^3 kg m^-3, density of copper is 8.9 × 10^3 kg m^-3.
+  ask: Viscosity of the oil
+  unit: Pa s
+  ans: 0.99
+  tol: 0.005
+  verify: 2*(2e-3)**2*(8.9e3-1.5e3)*9.8/(9*6.5e-2)
+  sol: |
+    At terminal speed, weight $=$ buoyancy $+$ Stokes drag: $\tfrac43\pi a^3\rho g = \tfrac43\pi a^3\sigma g + 6\pi\eta a v_t$, so
+    $$\eta = \frac{2a^2(\rho-\sigma)g}{9v_t} = \frac{2\times(2\times10^{-3})^2\times(8.9-1.5)\times10^{3}\times9.8}{9\times6.5\times10^{-2}} = 0.99\ \text{kg m}^{-1}\text{s}^{-1}.$$
+  check: code
+
+- id: ncert11-ex-9-3
+  lvl: ncert-ex
+  num: "XI 9.3"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.3
+  kind: text
+  q: |-
+    Fill in the blanks using the word(s) from the list appended with each statement:
+    (a) Surface tension of liquids generally . . . with temperatures (increases / decreases)
+    (b) Viscosity of gases . . . with temperature, whereas viscosity of liquids . . . with temperature (increases / decreases)
+    (c) For solids with elastic modulus of rigidity, the shearing force is proportional to . . . , while for fluids it is proportional to . . . (shear strain / rate of shear strain)
+    (d) For a fluid in a steady flow, the increase in flow speed at a constriction follows (conservation of mass / Bernoulli's principle)
+    (e) For the model of a plane in a wind tunnel, turbulence occurs at a ... speed for turbulence for an actual plane (greater / smaller)
+  sol: |
+    (a) **decreases.** Higher temperature means greater molecular motion and weaker net cohesion at the surface.
+
+    (b) Viscosity of gases **increases** with temperature, whereas viscosity of liquids **decreases** with temperature. In a gas, viscosity comes from momentum carried between layers by faster-moving molecules, which grows with temperature. In a liquid it comes from intermolecular attraction, which weakens as the liquid warms.
+
+    (c) For solids the shearing force is proportional to **shear strain** (the displacement), while for fluids it is proportional to the **rate of shear strain** (a fluid keeps flowing under a steady force).
+
+    (d) **conservation of mass.** The speed-up at a constriction follows from the equation of continuity $A_1v_1 = A_2v_2$; Bernoulli's principle then tells how the pressure changes.
+
+    (e) **greater.** The onset of turbulence is set by the Reynolds number $Re = \rho vd/\eta$ (critical value about 1000 to 2000 for flow in a pipe). The model has a smaller size $d$, so a greater speed is needed to reach the same $Re$. [Unverified against the reprint: the Reynolds number is not discussed in the reprint text.]
+  check: none
+
+- id: ncert11-ex-9-13
+  lvl: ncert-ex
+  num: "XI 9.13"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.13
+  kind: num
+  q: Glycerine flows steadily through a horizontal tube of length 1.5 m and radius 1.0 cm. If the amount of glycerine collected per second at one end is 4.0 × 10^-3 kg s^-1, what is the pressure difference between the two ends of the tube ? (Density of glycerine = 1.3 × 10^3 kg m^-3 and viscosity of glycerine = 0.83 Pa s). [You may also like to check if the assumption of laminar flow in the tube is correct].
+  ask: Pressure difference
+  unit: Pa
+  ans: 975
+  tol: 5
+  verify: 8*0.83*1.5*(4.0e-3/1.3e3)/(PI*0.01**4)
+  sol: |
+    Volume rate of flow $Q = \dfrac{4.0\times10^{-3}}{1.3\times10^{3}} = 3.08\times10^{-6}$ m$^3$ s$^{-1}$.
+
+    Poiseuille's formula $Q = \dfrac{\pi a^4\,\Delta P}{8\eta L}$ gives
+    $$\Delta P = \frac{8\eta LQ}{\pi a^4} = \frac{8\times0.83\times1.5\times3.08\times10^{-6}}{\pi\times(10^{-2})^4} = 9.8\times10^{2}\ \text{Pa}.$$
+
+    Laminar check: mean speed $v = Q/\pi a^2 = 3.08\times10^{-6}/(3.14\times10^{-4}) = 9.8\times10^{-3}$ m s$^{-1}$, and
+    $$Re = \frac{\rho v d}{\eta} = \frac{1.3\times10^{3}\times9.8\times10^{-3}\times2\times10^{-2}}{0.83} = 0.31,$$
+    far below about 1000, so the flow is laminar and the assumption is correct.
+
+    [Unverified against the reprint] Poiseuille's formula and the Reynolds number criterion are not in the 2026-27 reprint text; they are the standard results, and the answer matches the value usually quoted for this exercise.
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The SI unit of the coefficient of viscosity is
+  opts: ["N m⁻²", "Pa s", "N s⁻¹", "kg m⁻³"]
+  ans: 1
+  sol: $\eta = \dfrac{F/A}{v/l}$ has the unit (N m$^{-2}$)/(s$^{-1}$) = N s m$^{-2}$ = Pa s. (Original problem.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A plate of area 0.20 m² slides at 0.50 m/s over a fixed surface, with a 1.0 mm film of oil of viscosity 0.10 Pa s between them. What force is needed to keep it moving steadily? (Original problem.)
+  ask: Force
+  unit: N
+  ans: 10
+  tol: 0.05
+  verify: 0.10*0.20*0.50/1.0e-3
+  sol: $F = \eta A\,\dfrac{v}{l} = 0.10\times0.20\times\dfrac{0.50}{1.0\times10^{-3}} = 10$ N.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: When the temperature of a liquid is raised, its viscosity generally
+  opts: ["increases", "decreases", "stays the same", "becomes zero"]
+  ans: 1
+  sol: |
+    Warming weakens the attraction between molecules of a liquid so layers slide past each other more easily: honey and engine oil flow more readily when warm. (Gases behave the other way.) (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A steel ball of radius 1.0 mm and density 7800 kg/m³ falls through glycerine of density 1260 kg/m³ and viscosity 0.83 Pa s. Find its terminal velocity. Take g = 9.8 m/s². (Original problem.)
+  ask: Terminal velocity
+  unit: mm/s
+  ans: 17.2
+  tol: 0.1
+  verify: 2*(1e-3)**2*(7800-1260)*9.8/(9*0.83)*1e3
+  sol: $v_t = \dfrac{2a^2(\rho-\sigma)g}{9\eta} = \dfrac{2\times(10^{-3})^2\times6540\times9.8}{9\times0.83} = 1.72\times10^{-2}$ m/s $=17$ mm/s.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: A raindrop falls from a cloud 2 km high but reaches the ground at only a few metres per second, not at the 200 m/s of free fall. Explain. (Original problem.)
+  sol: |
+    As the drop speeds up, the viscous drag of air (which grows with speed) increases. Gravity pulls down with a constant force $mg$; once the drag plus the small buoyancy equals $mg$, the net force is zero and the drop falls at a constant terminal velocity. For a small drop the terminal speed is only a few m/s, since the drag is large compared with the weight (the weight goes as $a^3$, the Stokes drag as $a\,v$).
+  check: none
+
+- id: b3
+  lvl: board
+  kind: num
+  q: Water (viscosity 1.0 × 10⁻³ Pa s, density 1000 kg/m³) flows at 0.10 m/s through a pipe of radius 1.0 cm. Find the Reynolds number and say whether the flow is laminar. (Original problem.)
+  ask: Reynolds number
+  unit: ""
+  ans: 2000
+  tol: 5
+  verify: 1000*0.10*0.02/1.0e-3
+  sol: |
+    $Re = \dfrac{\rho vd}{\eta} = \dfrac{1000\times0.10\times0.02}{1.0\times10^{-3}} = 2000$. This is at the upper end of the usual transition range (about 1000 to 2000), so the flow is at the borderline between laminar and turbulent and is likely to be turbulent if disturbed. [Unverified against the reprint: the criterion is the standard textbook one.]
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two spherical raindrops of radii r and 2r fall through still air at their terminal speeds. What is the ratio of the terminal speed of the larger drop to that of the smaller? (Original problem.)
+  ask: Ratio of speeds
+  unit: ""
+  ans: 4
+  tol: 0.01
+  verify: (2*1)**2/1**2
+  sol: $v_t\propto a^2$ (weight $\propto a^3$, Stokes drag $\propto a\,v$), so doubling the radius gives $v_t$ four times as large.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A tube of radius 2.0 mm carries 10 cm³/s of a viscous liquid under a given pressure difference. What flow rate would the same pressure difference drive through a tube of the same length but radius 1.0 mm? (Original problem.)
+  ask: New flow rate
+  unit: cm³/s
+  ans: 0.625
+  tol: 0.005
+  verify: 10*(1.0/2.0)**4
+  sol: |
+    By Poiseuille's law $Q\propto a^4$ at fixed $\Delta P$, $\eta$ and $L$. Halving the radius divides the flow by 16: $Q = 10/16 = 0.625$ cm³/s. This is why a small narrowing of an artery reduces blood flow so much.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A sphere of radius 1.5 mm and density 2700 kg/m³ falls steadily through 20 cm of oil of density 900 kg/m³ in 4.0 s, at its terminal speed. Find the viscosity of the oil. Take g = 9.8 m/s². (Original problem.)
+  ask: Viscosity
+  unit: Pa s
+  ans: 0.176
+  tol: 0.002
+  verify: 2*(1.5e-3)**2*(2700-900)*9.8/(9*(0.20/4.0))
+  sol: |
+    Terminal speed $v_t = 0.20/4.0 = 0.050$ m/s. Then
+    $$\eta = \frac{2a^2(\rho-\sigma)g}{9v_t} = \frac{2\times(1.5\times10^{-3})^2\times1800\times9.8}{9\times0.050} = 0.176\ \text{Pa s}.$$
+    Check: $Re = \sigma v d/\eta = 900\times0.05\times3\times10^{-3}/0.176 = 0.77$, small, so Stokes' law is valid.
+  check: code

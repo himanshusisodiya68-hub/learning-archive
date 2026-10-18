@@ -233,3 +233,79 @@
     Horizontal distance $x = 20\times2.357 = 47.1$ m. The distance along the incline is
     $$\frac{x}{\cos30^\circ} = \frac{47.1}{0.866} = 54.4\ \text{m}.$$
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A ball is thrown from level ground at $45^\circ$ above the horizontal and just clears the top of a wall 5 m high that stands 10 m away horizontally. Find the launch speed. Take $g = 9.8$ m/s². (Original problem.)
+  ask: Launch speed
+  unit: m/s
+  ans: 14
+  tol: 0.05
+  verify: sqrt(9.8*100/(10-5))
+  sol: |
+    Use the equation of the path, obtained by eliminating $t$: $y = x\tan\theta - \dfrac{g\,x^2}{2u^2\cos^2\theta}$.
+
+    At $\theta = 45^\circ$, $\tan\theta = 1$ and $\cos^2\theta = \tfrac12$, so $y = x - \dfrac{g x^2}{u^2}$. With $x = 10$ m and $y = 5$ m: $5 = 10 - \dfrac{9.8\times100}{u^2}$, so $u^2 = \dfrac{980}{5} = 196$ and $u = 14$ m/s.
+
+    The answer is a clean 14 m/s, a sign that the numbers were chosen with $g = 9.8$ in mind.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A gun on a long slope that rises at $30^\circ$ to the horizontal fires a shell with muzzle speed 20 m/s. Taking $g = 10$ m/s² and ignoring air, what is the greatest distance up the slope that the shell can land, for the best choice of angle? (Original problem.)
+  ask: Greatest range up the slope
+  unit: m
+  ans: 26.67
+  tol: 0.05
+  verify: 20*20/(10*(1+sin(rad(30))))
+  sol: |
+    Tilt the axes: take $x$ along the slope and $y$ perpendicular to it. Gravity then has components $g\sin\alpha$ down the slope and $g\cos\alpha$ into it, with $\alpha = 30^\circ$. If the shell leaves at angle $\beta$ to the slope, the time of flight (until $y = 0$ again) is $T = \dfrac{2u\sin\beta}{g\cos\alpha}$.
+
+    The distance along the slope is $R = u\cos\beta\,T - \tfrac12 g\sin\alpha\,T^2 = \dfrac{2u^2\sin\beta\,\cos(\beta+\alpha)}{g\cos^2\alpha}$.
+
+    Use $\sin\beta\cos(\beta+\alpha) = \tfrac12\left[\sin(2\beta+\alpha) - \sin\alpha\right]$, largest when $2\beta + \alpha = 90^\circ$, which gives $\tfrac12(1 - \sin\alpha)$. So $R_{max} = \dfrac{u^2(1-\sin\alpha)}{g\cos^2\alpha} = \dfrac{u^2}{g(1+\sin\alpha)}$.
+
+    With the numbers: $R_{max} = \dfrac{400}{10\times1.5} = 26.7$ m. On level ground ($\alpha = 0$) this reduces to $u^2/g$, the familiar maximum range.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: From the edge of a cliff 20 m above level ground, a stone is thrown with speed 20 m/s at whatever angle you like. Taking $g = 10$ m/s² and ignoring air, what is the greatest horizontal distance from the foot of the cliff at which it can land? (Original problem.)
+  ask: Greatest horizontal range
+  unit: m
+  ans: 56.57
+  tol: 0.05
+  verify: 20/10*sqrt(20*20+2*10*20)
+  sol: |
+    Write the path with $T = \tan\theta$ and use $1/\cos^2\theta = 1 + T^2$: $y = xT - \dfrac{g x^2}{2u^2}(1 + T^2)$. The stone lands where $y = -h = -20$ m. This is a quadratic equation in $T$:
+
+    $$\frac{g x^2}{2u^2}\,T^2 - x\,T + \left(\frac{g x^2}{2u^2} - h\right) = 0.$$
+
+    A launch angle exists only if the roots are real, that is, if the discriminant is not negative. Working it out gives $x^2 \le \dfrac{u^2}{g^2}\,(u^2 + 2gh)$. The largest $x$ is therefore
+
+    $$x_{max} = \frac{u}{g}\sqrt{u^2 + 2gh} = 2\sqrt{400 + 400} = 2\times28.28 = 56.6\ \text{m}.$$
+
+    This happens at $\tan\theta = \dfrac{u}{\sqrt{u^2 + 2gh}} = 0.707$, so $\theta \approx 35^\circ$, below $45^\circ$: from a height the best angle is less than $45^\circ$.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A monkey hangs from a branch 50 m above the ground, at a horizontal distance of 100 m from a hunter. The hunter aims his gun straight at the monkey. At the instant of firing, the monkey lets go and falls freely. Taking $g = 10$ m/s² and ignoring air, what is the least muzzle speed for which the bullet still reaches the monkey before the monkey hits the ground? (Original problem.)
+  ask: Least muzzle speed
+  unit: m/s
+  ans: 35.36
+  tol: 0.05
+  verify: sqrt((100**2+50**2)*10/(2*50))
+  sol: |
+    **The key fact.** With no gravity the bullet would travel straight along the line of sight and hit the monkey wherever the monkey was. With gravity, both the bullet and the monkey fall the same distance $\tfrac12 g t^2$ below where they would have been. So the bullet always meets the monkey on the line of sight, at the moment when the bullet's horizontal travel reaches 100 m.
+
+    The monkey reaches the ground after $t = \sqrt{2h/g} = \sqrt{10} \approx 3.16$ s. The bullet must cover the line-of-sight distance $\sqrt{100^2 + 50^2} = 111.8$ m within this time, so
+
+    $$u_{min} = \frac{\sqrt{d^2 + h^2}}{t} = \sqrt{\frac{(d^2 + h^2)\,g}{2h}} = \sqrt{1250} \approx 35.4\ \text{m/s}.$$
+
+    A slower bullet is still falling towards the monkey's line, but the monkey hits the ground first.
+  check: code
