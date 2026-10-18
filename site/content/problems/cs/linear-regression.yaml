@@ -1,0 +1,95 @@
+# Linear regression and gradient descent. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "A fitted line says price (lakh) = 0.8 x area (m2) + 1. What price does it predict for a 50 m2 flat?"
+  ask: Predicted price
+  unit: lakh
+  ans: 41
+  tol: 0.01
+  verify: 0.8*50+1
+  sol: Multiply the area by the slope and add the intercept, $0.8 \times 50 + 1 = 41$ lakh.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Why does the mean squared error square each gap instead of just adding the gaps?
+  opts: ["So over- and under-predictions cannot cancel each other, and big misses count more", "Because squaring makes every number smaller", "Because computers cannot add negative numbers"]
+  ans: 0
+  sol: Gaps of +5 and -5 would add to 0 and make a bad line look perfect. Squares are never negative, and a gap of 10 costs 100 against 25 for a gap of 5, so large misses are punished more.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "The line price = 0.8 x area is tried on three flats, (40 m2, 32 lakh), (60 m2, 47 lakh) and (90 m2, 70 lakh). What is its mean squared error?"
+  ask: Mean squared error
+  unit: lakh squared
+  ans: 1.667
+  tol: 0.01
+  verify: ((0.8*40-32)**2 + (0.8*60-47)**2 + (0.8*90-70)**2)/3
+  sol: The predictions are 32, 48 and 72, so the errors (predicted minus real) are 0, 1 and 2. Squares 0, 1, 4 add to 5, and $5/3 \approx 1.667$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: "A model $\\hat{y} = w x$ (no intercept) is trained on the points (1, 2), (2, 4), (3, 6) with loss $L = \\frac{1}{3}\\sum (w x_i - y_i)^2$. Starting at $w = 0$ with learning rate 0.05, what is $w$ after one gradient descent step?"
+  ask: w after one step
+  unit: ""
+  ans: 0.9333
+  tol: 0.001
+  verify: 0 - 0.05*2*((0*1-2)*1 + (0*2-4)*2 + (0*3-6)*3)/3
+  sol: |
+    The gradient is $\frac{\partial L}{\partial w} = \frac{2}{n}\sum (w x_i - y_i)x_i$. At $w=0$ the terms are $(-2)(1) = -2$, $(-4)(2) = -8$, $(-6)(3) = -18$, summing to $-28$. So the gradient is $2 \times (-28)/3 = -18.67$. The slope is negative, so $w$ must rise: $w = 0 - 0.05 \times (-18.67) = 0.9333$. (The perfect value is 2; one step moves almost halfway.)
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You train a regression with gradient descent and print the loss every 100 steps, getting 50, 200, 800, 3200. Give two possible causes beyond a bug, and the order in which you would try fixes.
+  sol: |
+    A loss that grows steadily means each step overshoots the bottom of the bowl and lands higher on the other side. Likely causes: (1) the learning rate is too large; (2) the features have very different sizes (for example area in thousands of square feet next to number of rooms), which makes the loss a long thin valley where one learning rate cannot suit every weight.
+
+    Order: first cut the learning rate by a factor of ten and see whether the loss now falls smoothly. If it falls but extremely slowly, scale the features (subtract the mean, divide by the spread) and raise the learning rate again. Finally check the code for a sign error (adding the gradient instead of subtracting it also makes the loss grow).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: "A line fitted to flats between 40 and 110 m2 has slope 0.787 lakh per m2 and intercept 0.59 lakh. A seller asks for a price for a 400 m2 villa and you just read the line. What does the line say, in lakh?"
+  ask: Line's prediction
+  unit: lakh
+  ans: 315.4
+  tol: 0.1
+  verify: 0.787*400+0.59
+  sol: |
+    $0.787 \times 400 + 0.59 = 315.39$ lakh. But 400 m2 is far outside the 40 to 110 m2 the line was fitted on, so this is extrapolation. Large villas depend on land, location and amenities that a straight line from small flats knows nothing about; treat the figure as a guess, not a valuation.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Derive the two gradient formulas for mean squared error with one feature, and use them to explain why, at the best line, the average error is zero and the errors are uncorrelated with the feature.
+  sol: |
+    With $e_i = w x_i + b - y_i$ and $L = \frac{1}{n}\sum e_i^2$, the chain rule gives $\frac{\partial L}{\partial w} = \frac{2}{n}\sum e_i x_i$ and $\frac{\partial L}{\partial b} = \frac{2}{n}\sum e_i$.
+
+    At the bottom of the bowl both slopes are zero. From the second, $\sum e_i = 0$: the errors average to zero, so the line is neither systematically high nor low. From the first, $\sum e_i x_i = 0$: with the mean error already zero, this says that the errors have zero covariance with $x$, i.e. no leftover straight-line trend in the errors. If there were one, tilting the line would reduce the loss further, so the line would not yet be the best.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: "A model $\\hat{y} = w x$ (no intercept) is trained with gradient descent on the loss $L = \\frac{1}{n}\\sum (w x_i - y_i)^2$ using the six scaled areas 0.4, 0.55, 0.6, 0.75, 0.9, 1.1 as $x$. The loss is a parabola in $w$ whose curvature is $2\\cdot\\text{mean}(x^2)$. Gradient descent on a parabola with curvature $c$ converges only if the learning rate is below $2/c$. What is that largest stable learning rate?"
+  ask: Largest stable learning rate
+  unit: ""
+  ans: 1.762
+  tol: 0.005
+  verify: 1/((0.4**2+0.55**2+0.6**2+0.75**2+0.9**2+1.1**2)/6)
+  sol: |
+    One step multiplies the distance from the best $w$ by $(1 - \eta c)$, because the slope of a parabola is $c$ times that distance. The distance shrinks if $|1 - \eta c| < 1$, i.e. $0 < \eta < 2/c$. Here $c = 2\,\text{mean}(x^2)$, so the limit is $\eta < 1/\text{mean}(x^2)$.
+
+    The squares are 0.16, 0.3025, 0.36, 0.5625, 0.81, 1.21, summing to 3.405, so the mean is 0.5675 and the limit is $1/0.5675 \approx 1.762$. (With an intercept as well, as in the lesson, the loss is steeper in some direction, which is why the lesson's rate of 1.0 already diverged; and the unscaled areas 40 to 110 would have needed a rate about ten thousand times smaller.)
+  check: code

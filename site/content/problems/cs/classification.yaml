@@ -1,0 +1,93 @@
+# Classification and evaluation. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Out of 10,000 payments, 100 are fraud. A program says "not fraud" for every payment. What is its accuracy, as a percentage?
+  ask: Accuracy
+  unit: "%"
+  ans: 99
+  tol: 0.01
+  verify: 9900/10000*100
+  sol: It is right on the 9,900 normal payments and wrong on the 100 frauds, so accuracy is $9900/10000 = 99\%$, yet it catches none of the frauds (recall 0%).
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Recall answers which question?
+  opts: ["Of all the real frauds, what share did we catch?", "Of all the payments we flagged, what share were real frauds?", "Of all the payments, what share did we get right?"]
+  ans: 0
+  sol: Recall is $TP/(TP+FN)$, looking at the real frauds. The second option is precision and the third is accuracy.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A fraud model produces TP = 80, FP = 60, FN = 20 and TN = 9,840. What is its precision, as a percentage?
+  ask: Precision
+  unit: "%"
+  ans: 57.14
+  tol: 0.1
+  verify: 80/(80+60)*100
+  sol: Precision is $TP/(TP+FP) = 80/140 \approx 57.1\%$. Recall for the same model is $80/100 = 80\%$ and accuracy is $9920/10000 = 99.2\%$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A logistic regression model computes the weighted sum z = 2 for a payment. What probability of fraud does it output?
+  ask: Probability
+  unit: ""
+  ans: 0.8808
+  tol: 0.001
+  verify: 1/(1+exp(-2))
+  sol: The sigmoid is $1/(1+e^{-z})$. With $z=2$, $e^{-2} \approx 0.1353$, so $p = 1/1.1353 \approx 0.8808$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A missed fraud costs the bank Rs 5,000 and a false alarm costs Rs 50 in staff time. Flagging a payment with fraud probability p is worthwhile when the expected loss avoided exceeds the cost of the alarm, p x 5000 > (1 - p) x 50. What is the smallest probability at which the payment should be flagged?
+  ask: Cut-off probability
+  unit: ""
+  ans: 0.0099
+  tol: 0.0002
+  verify: 50/(5000+50)
+  sol: Solve $5000p > 50(1-p)$, so $5050p > 50$ and $p > 50/5050 \approx 0.0099$. The bank should flag anything above about 1% probability, far below the default 0.5, because a miss is 100 times costlier than a false alarm.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A million payments contain 100 frauds. A model catches all 100 and wrongly flags 1% of the normal payments. What percentage of its flags are real fraud?
+  ask: Precision
+  unit: "%"
+  ans: 0.99
+  tol: 0.01
+  verify: 100/(100+0.01*999900)*100
+  sol: Normal payments number 999,900, so false alarms are $0.01 \times 999900 = 9999$. Flags total $100 + 9999$, and precision is $100/10099 \approx 0.99\%$. A model with a "good" 1% false-alarm rate still produces about a hundred false alarms per real fraud when fraud is this rare.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A fraud model has precision 0.30 and recall 0.90. Operations says there are too many false alarms. List three levers you could pull, and what each costs.
+  sol: |
+    1. **Raise the cut-off.** Fewer payments are flagged, so precision rises, but recall falls: more frauds slip through. Choose the point from the costs of each error.
+    2. **Add better features or a stronger model.** This improves both precision and recall at once (the whole trade-off curve moves up) but costs engineering time and needs data, and must be checked on held-out data.
+    3. **Add a cheap second stage.** Send flagged payments to an automatic check such as an SMS confirmation to the customer, so only a small share reaches human staff. Costs customer friction.
+    Changing class weights or resampling also shifts the trade-off, but it mostly moves the probabilities, so the cut-off must be re-chosen afterwards, and the evaluation must stay on untouched data with the true class mix.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A logistic model has weights w = (2, 1) and bias b = -3 on two features. Its decision boundary at probability 0.5 is the line 2 x1 + x2 - 3 = 0. How far is that line from the origin? (Distance from a point to the line a x + b y + c = 0 is the absolute value of the expression at the point divided by the square root of a squared plus b squared.)
+  ask: Distance
+  unit: ""
+  ans: 1.3416
+  tol: 0.001
+  verify: 3/sqrt(2**2+1**2)
+  sol: At the origin the expression equals $-3$, with absolute value 3. The divisor is $\sqrt{2^2 + 1^2} = \sqrt{5} \approx 2.236$. So the distance is $3/\sqrt5 \approx 1.342$. In general the boundary sits at distance $|b|/\lVert w \rVert$ from the origin, and doubling every weight and the bias leaves the line in place but makes the probabilities more extreme (more confident).
+  check: code

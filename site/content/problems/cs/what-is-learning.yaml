@@ -29,7 +29,7 @@
   unit: ""
   ans: 1
   tol: 0.01
-  verify: 1
+  verify: "[0,1,0,2,5,7,3,8,6,1].filter((c,i) => (c >= 3 ? 1 : 0) !== [0,0,0,0,1,1,0,1,1,0][i]).length"
   sol: With cut-off 3 the rule calls spam the emails with counts 5, 7, 3, 8, 6. The email with count 3 is not spam (label 0), so it is one false alarm. The spam emails (5, 7, 8, 6) are all caught. Total 1 mistake, matching the bar for $t=3$ in the lesson's figure.
   check: code
 
@@ -78,11 +78,11 @@
   q: A spam model labels 1,000 emails. In truth 50 are spam. It flags 40 emails as spam, and 30 of those flags are correct. A team wants a single check that beats the lazy rule "never spam". How many percentage points does the model's accuracy exceed the lazy rule's accuracy?
   ask: Accuracy gain
   unit: percentage points
-  ans: 0.8
+  ans: 2
   tol: 0.01
   verify: ((30 + (950 - 10)) / 1000 - 950 / 1000) * 100
   sol: |
     The model flags 40, of which 30 are right (TP = 30, FP = 10). So 20 spam emails are missed (FN = 20). True negatives: 950 normal emails minus 10 false alarms = 940. Correct answers: $30 + 940 = 970$, accuracy 97.0%.
 
-    The lazy rule "never spam" is right on all 950 normal emails: 95.0%. Gain: 2.0 percentage points. Check the arithmetic in the formula: $(30 + 940)/1000 = 0.97$, minus 0.95, times 100 is 2.0.
+    The lazy rule "never spam" is right on all 950 normal emails: 95.0%. The gain is $97.0 - 95.0 = 2.0$ percentage points, and the lazy rule has caught no spam at all.
   check: code
