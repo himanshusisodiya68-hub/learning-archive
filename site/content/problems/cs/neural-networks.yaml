@@ -1,0 +1,96 @@
+# Neural networks. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A neuron has inputs (2, 1, 3), weights (0.5, -1, 0.4) and bias -0.2. What is its weighted sum before any nonlinearity is applied?
+  ask: Weighted sum
+  unit: ""
+  ans: 1.0
+  tol: 0.01
+  verify: 2*0.5 + 1*(-1) + 3*0.4 - 0.2
+  sol: 'Multiply each input by its weight and add the bias: $2(0.5) + 1(-1) + 3(0.4) - 0.2 = 1 - 1 + 1.2 - 0.2 = 1.0$.'
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Why is a nonlinear function (such as ReLU) applied between the layers of a network?
+  opts: ["Without it, any number of layers is equivalent to one weighted-sum layer", "It makes the numbers smaller so the computer uses less memory", "It stops the network from overfitting"]
+  ans: 0
+  sol: 'A weighted sum followed by another weighted sum is still a single weighted sum, since a product of matrices is one matrix. The nonlinearity is what lets extra layers represent more than one layer can. It does not by itself save memory or prevent overfitting.'
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A network reads 28 by 28 pixel images (784 inputs), has one hidden layer of 128 neurons and 10 output neurons. Every neuron has one weight per input and one bias. How many adjustable numbers does the network have?
+  ask: Parameters
+  unit: ""
+  ans: 101770
+  tol: 0.5
+  verify: 784*128 + 128 + 128*10 + 10
+  sol: 'Hidden layer, $784\times128$ weights plus 128 biases, is $100{,}480$. Output layer, $128\times10$ weights plus 10 biases, is $1{,}290$. Total $101{,}770$.'
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A weight is currently 0.8 and the slope of the loss with respect to it is 0.5. With learning rate 0.1, what is the weight after one gradient-descent step?
+  ask: New weight
+  unit: ""
+  ans: 0.75
+  tol: 0.001
+  verify: 0.8 - 0.1*0.5
+  sol: 'The rule is $w \leftarrow w - \eta\,\partial L/\partial w = 0.8 - 0.1\times0.5 = 0.75$. The slope is positive (raising the weight raises the loss), so the weight decreases.'
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: 'A tiny network computes a = w1·x, then ŷ = w2·a, with loss L = (ŷ − y)². Take x = 1, w1 = 2, w2 = 3 and target y = 5. Using the chain rule, what is the slope of L with respect to w1?'
+  ask: dL/dw1
+  unit: ""
+  ans: 6
+  tol: 0.01
+  verify: 2*(3*2*1 - 5)*3*1
+  sol: |
+    Forward: $a = 2$, $\hat y = 6$, error $\hat y - y = 1$, $L = 1$.
+    Chain rule: $\partial L/\partial w_1 = \partial L/\partial \hat y \cdot \partial \hat y/\partial a \cdot \partial a/\partial w_1 = 2(\hat y - y)\cdot w_2 \cdot x = 2(1)(3)(1) = 6$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: You train a network and the training loss falls steadily to almost zero, but accuracy on a separate test set is poor. Name the problem and give three things you would try.
+  sol: |
+    This is **overfitting**: the network has memorised the training examples (including their noise) instead of learning the general pattern.
+    Things to try, any three: get more (or more varied) training data; make the network smaller; stop training earlier, when the test loss starts to rise; add regularisation such as dropout or weight decay; augment the data (flipped or cropped images); check that the test set is not accidentally different in kind from the training set.
+    A good answer also says what to measure: keep a validation set separate from the final test set, so tuning does not leak into the final score.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A convolution layer has 32 filters of size 3 by 3 and its input has 3 colour channels. Each filter has one bias. How many parameters does the layer have, whatever the image size?
+  ask: Parameters
+  unit: ""
+  ans: 896
+  tol: 0.5
+  verify: (3*3*3 + 1)*32
+  sol: 'Each filter covers a $3\times3$ patch in all 3 channels, so it has $3\times3\times3 = 27$ weights plus 1 bias, 28 numbers. With 32 filters, $28\times32 = 896$. The count does not depend on image size because the same filter is reused at every position.'
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Show that no single neuron that outputs 1 when its weighted sum is above 0, and 0 otherwise, can compute XOR (inputs (0,0)→0, (0,1)→1, (1,0)→1, (1,1)→0). Then say what a hidden layer changes.
+  sol: |
+    Let the neuron compute $z = w_1x_1 + w_2x_2 + b$ and output 1 if $z>0$. The four cases require:
+    - (0,0) → 0, so $b \le 0$.
+    - (0,1) → 1, so $w_2 + b > 0$.
+    - (1,0) → 1, so $w_1 + b > 0$.
+    - (1,1) → 0, so $w_1 + w_2 + b \le 0$.
+    Add the middle two: $w_1 + w_2 + 2b > 0$, so $w_1 + w_2 + b > -b \ge 0$. That contradicts the last condition. So no weights work: the two "1" cases cannot be separated from the two "0" cases by one straight line.
+    A hidden layer fixes this by first re-describing the inputs. For example, one hidden neuron can detect "x1 OR x2" and another "x1 AND x2"; XOR is then "OR but not AND", which a single output neuron can compute from those two. The hidden layer bends the space so that a straight cut now works.
+  check: none

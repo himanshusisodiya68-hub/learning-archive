@@ -1,0 +1,106 @@
+# Reliability, failures and on-call. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A service promises 99.9% availability over a 30-day month. How many minutes of downtime does that allow?
+  ask: Allowed downtime
+  unit: minutes
+  ans: 43.2
+  tol: 0.1
+  verify: 30*24*60*0.001
+  sol: A 30-day month has $30\times24\times60 = 43{,}200$ minutes. The allowed failure share is $1 - 0.999 = 0.001$, so the allowance is $43{,}200 \times 0.001 = 43.2$ minutes.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which of these is an SLO (a target), not an SLI (a measurement)?"
+  opts: ["The share of requests that succeeded last week was 99.93%", "99.9% of requests should succeed over any 30 days", "The error rate is 0.07%"]
+  ans: 1
+  sol: An SLI is a number measured from real traffic. An SLO is the goal set for it. "Should succeed over any 30 days" states a target; the other two report measured values.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A request passes through 5 services in series, each 99.9% available and failing independently. What is the availability of the whole chain, in percent? Give two decimal places.
+  ask: Chain availability
+  unit: "%"
+  ans: 99.5
+  tol: 0.01
+  verify: 0.999**5*100
+  sol: In series all must work, so multiply $A_{\text{series}} = 0.999^5 \approx 0.99501$, about 99.50%. Five dependencies turn three nines into 2.5 nines; the chain can never be better than its weakest link.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A database has two replicas, each 99% available, and either one can serve all requests. If they fail independently, what is the availability of the pair, in percent?
+  ask: Pair availability
+  unit: "%"
+  ans: 99.99
+  tol: 0.001
+  verify: (1-0.01*0.01)*100
+  sol: The pair fails only when both fail. $P(\text{both fail}) = 0.01 \times 0.01 = 0.0001$, so $A = 1 - 0.0001 = 0.9999$, or 99.99%. This holds only if the failures are independent; two replicas running the same buggy release would fail together.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: An SLO is 99.95% of requests succeeding over 28 days, and traffic is 200 million requests in that period. By day 20 there have been 62,000 failed requests. How many failed requests remain in the budget for the rest of the period?
+  ask: Remaining budget
+  unit: requests
+  ans: 38000
+  tol: 1
+  verify: (1-0.9995)*200e6-62000
+  sol: The budget is $(1 - 0.9995)\times 200{,}000{,}000 = 0.0005\times 2\times10^{8} = 100{,}000$ failed requests. Spent so far $62{,}000$, so $38{,}000$ remain. At day 20, 71% of the period has passed but 62% of the budget is spent, so the team is slightly under budget and may still release, with care.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A web server calls service B, which calls service C, which calls a database. Each layer retries a failed call 3 times (4 attempts in total) immediately. The database slows down. What happens to its load, and how would you redesign the retry policy?
+  sol: |
+    **What happens.** Each failed call from the web server turns into up to 4 attempts at B. Each of those turns into up to 4 attempts at C, and each of those into 4 at the database. One user request can therefore cause up to $4\times4\times4 = 64$ database calls. The database is slow because it is overloaded, and the retries add more load exactly when it is weakest. This is a **retry storm**, and it can keep the service down long after the original problem is gone.
+
+    **Redesign.**
+    - Retry at **one layer only** (usually the outermost), so the multiplier is 4, not 64.
+    - Use **exponential backoff with jitter** so retries spread over time.
+    - Add a **retry budget**: retries may not exceed, say, 10% of normal traffic.
+    - Use **timeouts** everywhere, shortest at the deepest layer.
+    - Add a **circuit breaker** at each caller, so that after repeated failures it stops calling for a few seconds.
+    - **Shed load** at the database or its gateway, answering "busy" quickly for low-priority queries.
+    - Only retry **idempotent** operations or those with an idempotency key.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    A service fails on average once every 30 days (MTBF = 720 hours) and each failure takes 2 hours to repair (MTTR = 2 hours). Compute its availability. Then compare two projects, each costing the same: one that doubles MTBF, and one that halves MTTR. Which would you pick, and why?
+  sol: |
+    $A = \dfrac{\text{MTBF}}{\text{MTBF}+\text{MTTR}} = \dfrac{720}{722} \approx 0.99723$, about 99.72%. Unavailability is $2/722 \approx 0.277\%$.
+
+    Doubling MTBF to 1,440 hours: $A = 1440/1442 \approx 0.99861$, unavailability about $0.139\%$.
+    Halving MTTR to 1 hour: $A = 720/721 \approx 0.99861$, the same.
+
+    When MTTR is much smaller than MTBF, unavailability is about $\text{MTTR}/\text{MTBF}$, so both changes halve it. The effects are equal, so the choice depends on cost and certainty. Making a system fail half as often means finding and fixing unknown bugs, which is slow and uncertain. Making repair twice as fast is concrete: better alerts, a tested one-click rollback, runbooks, practice. So choose the MTTR project, unless the cost of each failure is not about time (for example, data loss), in which case reducing the number of failures matters more.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Plan a chaos experiment and a postmortem outline for this scenario: in a news feed system, the cache machine holding 2% of users' timelines is lost. State the hypothesis, the steady-state measures, the blast-radius limits and stop conditions, and what the postmortem should contain if the experiment finds a real problem."
+  sol: |
+    **Hypothesis.** If one timeline cache machine (2% of users) is lost, users on it still get a feed (rebuilt from the post store, maybe plainer), and the feed success rate stays above the SLO, with no other service overloaded.
+
+    **Steady-state measures.** Feed success rate, p99 feed latency, post store read load, cache hit rate, queue depth of fan-out jobs, share of degraded (fallback) responses.
+
+    **Method and limits.**
+    - Run first in a test environment with replayed traffic, then in production on a small slice (for example 0.1% of users) at a quiet hour, with the team watching.
+    - Tell the on-call engineer beforehand.
+    - Stop conditions (automatic): success rate below the budget burn threshold, p99 latency more than 2 times normal, or the post store above 70% of capacity. Restore the machine, which must be a one-command action tested in advance.
+
+    **If a problem is found** (for example, the post store overloads because all 2% of users rebuild at once, a stampede), write a blameless postmortem: summary and impact (budget spent), timeline, how it was detected, causes (no limit on concurrent rebuilds; no replica of timelines; alert set too late), what went well (rollback worked), where we got lucky, and action items with owners and dates (add a rebuild limit per user, add a second copy of hot timelines, add an alert on rebuild rate). Then repeat the experiment to confirm the fix. The point is to find the weakness on a calm afternoon, not at 3 a.m.
+  check: none
