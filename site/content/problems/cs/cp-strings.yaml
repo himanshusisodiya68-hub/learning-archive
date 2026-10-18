@@ -1,0 +1,130 @@
+# String hashing, KMP and Z. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A text has 10 letters and the pattern has 3 letters. At how many different starting positions can the pattern be placed fully inside the text?
+  ask: Starting positions
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: 10-3+1
+  sol: |
+    The first start is position 0 and the last start must leave room for 3 letters, so it is position $10-3 = 7$. The starts are 0 to 7, which is $n - m + 1 = 8$ positions.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: You are asked whether two long words are anagrams of each other. Which method takes time proportional to the length of the words with no sorting?
+  opts: ["Count how many times each letter occurs in both and compare the counts", "Try every rearrangement of the first word", "Compare the words letter by letter in order"]
+  ans: 0
+  sol: |
+    Anagrams are exactly the pairs with equal letter counts, so counting each letter once (O(n)) and comparing the two small tables decides it. Trying every rearrangement is factorial in the length, and comparing in order tests equality, not anagram-ness.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: What is the length of the shortest block that, repeated, builds the string "abcabcabcab" (the last repeat may be cut short)? Use the prefix function to answer.
+  ask: Smallest period
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: "(()=>{const s='abcabcabcab',p=Array(s.length).fill(0);for(let i=1;i<s.length;i++){let k=p[i-1];while(k&&s[i]!==s[k])k=p[k-1];if(s[i]===s[k])k++;p[i]=k}return s.length-p[s.length-1]})()"
+  sol: |
+    The prefix function at the last position is 8, because "abcabcab" is both a prefix and a suffix of the 11-letter string. The smallest period is $n - \pi[n-1] = 11 - 8 = 3$, the block "abc". It does not divide 11, so the string is not an exact repeat, only a cut-short one.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Compute the Z-function of "aabxaab" and give z[4], the number of letters starting at position 4 (0-based) that match the beginning of the string.
+  ask: z[4]
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: "(()=>{const s='aabxaab';let k=0;while(4+k<s.length&&s[k]===s[4+k])k++;return k})()"
+  sol: |
+    From position 4 the string reads "aab", and the beginning of the string is "aab" followed by "x". The first three letters agree, and then the text ends, so $z[4] = 3$. The whole array is 7, 1, 0, 0, 3, 1, 0.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Given a string s of up to a million letters, find the longest proper piece that is both a beginning and an ending of s (a border). Describe the method and its cost, then say what the answer is for "abacabacab".
+  sol: |
+    Compute the prefix function; the longest border has length $\pi[n-1]$. The prefix function costs $O(n)$.
+
+    For "abacabacab" the last value is 6: the first six letters "abacab" equal the last six "abacab" (the string is "abacabacab", the suffix starting at index 4 is "abacab"). No longer proper border exists. If the question also wants all borders, follow the chain $\pi[n-1], \pi[\pi[n-1]-1], \dots$ down to 0.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Decide whether string t is a cyclic rotation of string s (for example, "cdeab" is a rotation of "abcde") for strings of a million letters. Give a linear-time method and justify it.
+  sol: |
+    First check that the lengths are equal. Then search for t inside the doubled string s + s, using KMP or the Z-function. Every rotation of s appears as a window of length $n$ in s + s, and any window of length $n$ in s + s is a rotation of s. So t is a rotation if and only if it occurs in s + s. The cost is $O(n)$ for the search over 2n letters.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A solution hashes 100000 distinct substrings with a single modulus 1000000007 and assumes the hashes behave like random numbers below the modulus. About how many pairs of different substrings are expected to share a hash?
+  ask: Expected colliding pairs
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: (1e5*1e5)/(2*(1e9+7))
+  sol: |
+    There are about $n^2/2 = 5\times10^9$ pairs, and each pair collides with probability about $1/M = 10^{-9}$. The expected number of colliding pairs is $\frac{n^2}{2M} \approx 5$. A collision somewhere is almost certain, so such a solution would be wrong; use a modulus near $2^{61}$ (about $10^{-8}$ expected collisions for the same $n$) or two moduli.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: A dictionary has 100000 words. Then 100000 queries each give a prefix, and you must print how many dictionary words start with it. Compare a trie with sorting the words and using binary search. Which would you choose and why?
+  sol: |
+    A trie with a counter on every node answers a query by walking the prefix, $O(\text{length of prefix})$, independent of the dictionary size. Building costs $O(\text{total letters})$ and its memory is proportional to the total letters.
+
+    Sorting the words and using binary search twice (first word at or after the prefix, first word after all words with the prefix) costs $O(\text{prefix length} \cdot \log n)$ per query but uses far less memory in Python, since a dict-based trie has heavy per-node overhead. Both pass here. Choose the trie for clarity; choose sorted + `bisect` when memory is tight.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: How many different non-empty substrings does the string "mississippi" have? Describe how you would count them for a string of 100000 letters.
+  ask: Distinct substrings
+  unit: ""
+  ans: 53
+  tol: 0.1
+  verify: "(()=>{const s='mississippi',set=new Set();for(let i=0;i<s.length;i++)for(let j=i+1;j<=s.length;j++)set.add(s.slice(i,j));return set.size})()"
+  sol: |
+    By brute force: collect every slice into a set, which gives 53 for "mississippi" (11 letters, 66 slices in all, 13 of them repeats).
+
+    That method is $O(n^2)$ slices of length up to $n$, hopeless for $n = 100000$. A suffix array with the longest-common-prefix array gives the count as $\frac{n(n+1)}{2} - \sum \text{LCP}$ in $O(n \log n)$: each suffix contributes its length minus the part it shares with its sorted neighbour. A suffix automaton gives the same count in $O(n)$. [Unverified: standard results quoted from memory.]
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: For a string s of up to a million letters, report for every length k the number of positions where the first k letters of s occur again as a piece of s (the prefix of length k occurring anywhere). Give an O(n) method.
+  sol: |
+    Compute the prefix function $\pi$. Let `cnt[v]` be the number of positions $i$ with $\pi[i] = v$. A piece that ends at position $i$ and matches a prefix of length $\pi[i]$ also matches every shorter border of it, which are the lengths along the fall-back chain. So propagate counts from long to short:
+
+    for $v = n-1$ down to 1: `cnt[pi[v-1]] += cnt[v]`.
+
+    Then the prefix of length $k$ occurs `cnt[k] + 1` times (the extra one is the prefix itself at position 0). Total cost $O(n)$. The Z-function gives the same answer by counting `z[i] >= k` for all $i$, using a suffix sum over a histogram of Z-values.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Given a string s of up to a million letters, find the fewest letters you must add to the front of s to make the whole a palindrome. Give an O(n) method and explain why it is correct.
+  sol: |
+    The letters we keep unchanged form a prefix of s that is already a palindrome; we only need to mirror the rest. So the answer is $n - L$, where $L$ is the length of the **longest palindromic prefix** of s.
+
+    Build $t = s + \text{sep} + \text{reverse}(s)$ with a separator not in the alphabet, and compute its prefix function. The last value $\pi[|t|-1]$ is the longest piece that is a prefix of $s$ and also a suffix of $\text{reverse}(s)$. A suffix of the reverse is the reverse of a prefix of $s$. A prefix equal to the reverse of itself is a palindrome. So that last value is exactly $L$.
+
+    Example: s = "aacecaaa". The longest palindromic prefix is "aacecaa", length 7, so we add 1 letter ("a"). The separator is vital: without it the match could stretch across the join and overcount. Cost: $O(n)$.
+  check: none

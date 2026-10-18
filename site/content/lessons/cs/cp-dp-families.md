@@ -52,13 +52,13 @@ opener:
     Yet a phone finds the best loop for 12 stops in a fraction of a second. It does not try every order. It notices that many different orders end up in the **same situation**: "these six stops are done, and I am standing at stop 4". What happens next does not care which of the many orders got you there.
 
     So the phone solves each situation once, writes the answer down, and reuses it. That is dynamic programming. The craft of it is knowing *which* situations to write down. It turns out there are only a handful of kinds.
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Twelve delivery stops with a route loop, beside the counts of orders and of remembered situations"><g style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"><circle cx="60" cy="50" r="7"/><circle cx="120" cy="36" r="7"/><circle cx="180" cy="62" r="7"/><circle cx="130" cy="100" r="7"/><circle cx="60" cy="110" r="7"/><circle cx="210" cy="120" r="7"/></g><path d="M60 50 L120 36 L180 62 L210 120 L130 100 L60 110 Z" style="fill:none;stroke:var(--c);stroke-width:1.5;stroke-dasharray:4 3"/><circle cx="60" cy="50" r="7" style="fill:var(--c)"/><text x="72" y="54" style="font-size:10px;fill:var(--ink)">shop</text><rect x="20" y="150" width="130" height="62" rx="8" style="fill:var(--surface);stroke:var(--bad)"/><text x="30" y="172" style="font-size:10px;fill:var(--muted)">orders to try</text><text x="30" y="196" style="font-size:15px;fill:var(--bad)">479,001,600</text><rect x="170" y="150" width="130" height="62" rx="8" style="fill:var(--surface);stroke:var(--c)"/><text x="180" y="172" style="font-size:10px;fill:var(--muted)">situations to remember</text><text x="180" y="196" style="font-size:15px;fill:var(--c)">about 590,000</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Twelve delivery stops with a route loop, beside the counts of orders and of remembered situations"><g style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"><circle cx="60" cy="50" r="7"/><circle cx="120" cy="36" r="7"/><circle cx="180" cy="62" r="7"/><circle cx="130" cy="100" r="7"/><circle cx="60" cy="110" r="7"/><circle cx="210" cy="120" r="7"/></g><path d="M60 50 L120 36 L180 62 L210 120 L130 100 L60 110 Z" style="fill:none;stroke:var(--c);stroke-width:1.5;stroke-dasharray:4 3"/><circle cx="60" cy="50" r="7" style="fill:var(--c)"/><text x="72" y="54" style="font-size:10px;fill:var(--ink)">shop</text><rect x="20" y="150" width="130" height="62" rx="8" style="fill:var(--surface);stroke:var(--bad)"/><text x="30" y="172" style="font-size:10px;fill:var(--muted)">steps trying every order</text><text x="30" y="196" style="font-size:15px;fill:var(--bad)">479,001,600</text><rect x="170" y="150" width="130" height="62" rx="8" style="fill:var(--surface);stroke:var(--c)"/><text x="180" y="172" style="font-size:10px;fill:var(--muted)">steps when remembering</text><text x="180" y="196" style="font-size:15px;fill:var(--c)">about 590,000</text></svg>'
 life:
   - 'Your phone''s map app and delivery apps plan routes by reusing partial answers instead of trying every ordering.'
   - 'The "diff" in Git and the "compare versions" in a document editor use the longest common subsequence idea to show what changed.'
   - 'Spell-checkers and search bars ("did you mean...") rank suggestions by edit distance.'
   - 'Packing a suitcase or a cargo plane with weight limits is a knapsack problem.'
-  - 'Splitting a word-processing paragraph into lines so the right edge looks even is a DP: each state is "the best layout of the words so far".'
+  - 'The typesetting system TeX picks line breaks for a paragraph with a DP: each state is "the best layout of the words so far". [Unverified: from memory]'
 symbols:
   - s: 'dp[i]'
     means: 'the best answer for the first i items, a table entry (same unit as the answer)'
@@ -96,7 +96,7 @@ next:
 ---
 
 :::hook
-q: There are 479 million orders for 12 stops. Roughly how many separate "situations" does a smart route planner need to remember?
+q: There are 479 million orders for 12 stops. Roughly how many steps does a route planner need if it remembers each situation it has solved?
 options: ["479 million, one per order", "About 590 thousand", "Only 12"]
 answer: 1
 right: Right. A situation is "which stops are done" (4,096 subsets of 12 stops) times "where I am standing now" (12), and each is extended 12 ways: about 4,096 × 12 × 12 ≈ 590,000 steps. Different orders that reach the same situation share the work.
@@ -147,7 +147,7 @@ def best_no_neighbours(a):
     return f(0)
 ```
 
-Read it as: either skip item `i` and solve from `i+1`, or take it and solve from `i+2`. For (2, 7, 9, 3, 1) the answer is 12 (7 + 3 + 1... no: 2 + 9 + 1 = 12). The cache makes each `f(i)` run once.
+Read it as: either skip item `i` and solve from `i+1`, or take it and solve from `i+2`. For (2, 7, 9, 3, 1) the answer is 12 (take 2, 9 and 1). The cache makes each `f(i)` run once.
 
 Python's default recursion depth is about 1,000. For states deeper than that, write the same thing **bottom-up** (a loop that fills the table from the base case upwards), or raise the limit with `sys.setrecursionlimit`.
 
@@ -395,7 +395,7 @@ def reachable_sums(nums):
     return bits                   # check sum S with (bits >> S) & 1
 ```
 
-One shift handles every sum at once, which is about 64 times faster in C++ (`std::bitset`) and a large constant factor in Python.
+One shift handles every sum at once. In C++ a `std::bitset` packs 64 sums into each machine word, so it does about 64 times fewer steps than a plain table.
 
 **Cutting states.** If the state space is too large, ask which part of the state is **redundant** (it can be derived from the others) or **monotone** (only the best value matters, so keep one number instead of a list). The $O(n \log n)$ LIS is that move: keep only the smallest tail per length.
 
