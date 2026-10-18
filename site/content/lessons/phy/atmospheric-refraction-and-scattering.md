@@ -1,6 +1,6 @@
 ---
 title: Atmospheric refraction and scattering
-summary: Why stars twinkle and planets do not, why the Sun is seen before it rises, the Tyndall effect, why the sky is blue and sunsets red, Rayleigh's 1/λ⁴ law, and how much the air bends light near the horizon.
+summary: 'Why the sky is blue, sunsets are red, stars twinkle, and the Sun you watch setting has already gone.'
 ncert: ["Class 10 Science · Ch 10 The Human Eye and the Colourful World (§10.5–10.6)"]
 up_to: Olympiad
 builds_on: [Refraction and Snell's law, Prism and dispersion]
@@ -41,14 +41,48 @@ outcomes:
   - 'State and apply Rayleigh''s $1/\lambda^4$ law, and explain why the sky is not violet'
   - 'Explain why skylight is polarised at 90° to the Sun'
   - 'Estimate atmospheric refraction from the layer invariant and the horizon value of about 34 arcminutes'
+opener:
+  story: |
+    Air is see-through. Sunlight is white. So where does a blue sky come from? And why does the very same sunlight, a few hours later, turn the Sun orange and red? Meanwhile clouds stay white, a star flickers at night, and a bright planet next to it burns steady.
+
+    One quiet cause sits behind all of these: the air between you and the Sun. It scatters some of the light sideways and bends the rest, and which colours it scatters depends on how far the light has travelled through it.
+
+    Here is a test of that idea. An astronaut stands on the Moon at midday, with the Sun blazing overhead. The Moon has no air at all.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Sunlight reaching an observer: a short path overhead at noon and a long path through the air at sunset"><rect x="0" y="70" width="320" height="130" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:none"/><rect x="0" y="200" width="320" height="40" style="fill:color-mix(in srgb,var(--muted) 30%,var(--surface));stroke:none"/><circle cx="230" cy="26" r="12" style="fill:var(--chem);stroke:none"/><line x1="230" y1="40" x2="230" y2="196" style="stroke:var(--ink);stroke-width:2"/><circle cx="214" cy="100" r="2.5" style="fill:#3a5fc0"/><circle cx="250" cy="140" r="2.5" style="fill:#3a5fc0"/><circle cx="212" cy="160" r="2.5" style="fill:#3a5fc0"/><circle cx="14" cy="56" r="12" style="fill:var(--chem);stroke:none"/><line x1="24" y1="70" x2="226" y2="198" style="stroke:#b23a3a;stroke-width:2"/><circle cx="230" cy="198" r="5" style="fill:var(--ink)"/><text x="238" y="118" style="font-size:11px;fill:var(--muted)">noon: short path</text><text x="40" y="130" style="font-size:11px;fill:var(--muted)">sunset: long path</text><text x="12" y="226" style="font-size:11px;fill:var(--ink)">long path: blue scattered away, red arrives</text></svg>'
+life:
+  - 'A red-orange sunset or sunrise over the Indian horizon, redder still on a hazy or dusty evening.'
+  - 'A shimmering "puddle" on a hot summer road that vanishes as you reach it: a mirage, where hot air near the ground bends light upward.'
+  - 'Danger signals, traffic stop lights and brake lights are red, because red is scattered least by fog, smoke and dust and so is seen from far away.'
+  - 'Venus and Jupiter shining steadily while the stars around them twinkle.'
+  - 'Polarised sunglasses and photographers'' filters that darken the sky about 90 degrees from the Sun.'
+models:
+  - name: 'A long journey changes what survives'
+    text: 'Light that crosses a long stretch of air arrives with its blue stripped out. A message passed through many people, a signal through a long cable, and a rumour through a long chain all lose some parts more than others, so ask what reaches the end, not only what was sent.'
+  - name: 'One point flickers, a crowd averages out'
+    text: 'A star is a single point, so any shake in the air jolts all of it at once. A planet is a little disc made of many points, whose independent flickers cancel. Spread your risk across many small sources, like a diversified investment or a large survey sample, and the noise averages out.'
+  - name: 'You see the report, not the thing'
+    text: 'At sunset you are looking at an image the air has lifted over the horizon, not at the Sun itself. Whenever something sits between you and the source (air, a newspaper, a social feed), ask how it bends what you receive.'
+links:
+  - leaf: 'phy/refraction-and-snells-law'
+    name: 'Refraction and Snell''s law'
+    same: 'The same law, applied to a medium that changes gradually: air with a refractive index that falls with height bends light continuously, so we see stars and the Sun displaced.'
+    differs: 'In a glass block the bending happens sharply at a surface. In the atmosphere it is spread over many kilometres and keeps fluctuating, which is what makes stars twinkle.'
+  - leaf: 'phy/polarisation'
+    name: 'Polarisation'
+    same: 'Scattering by small particles and polarisation are two sides of one process: light scattered at 90 degrees to the Sun is strongly polarised, and bees use that pattern as a compass.'
+    differs: 'A polaroid sheet picks out one direction of vibration from light that is already travelling, while scattering is what creates the polarised skylight in the first place.'
+next:
+  q: 'Air blurs and bends starlight before it reaches you, yet astronomers still photograph galaxies and doctors see single cells. How can pieces of curved glass bring a faint, far or tiny thing into view, and what sets the limit?'
+  leaf: 'phy/optical-instruments'
+  name: 'Optical instruments'
 ---
 
 :::hook
-q: An astronaut on the Moon looks up during the lunar day, with the Sun shining. What colour is the sky?
+q: So what's your guess: what colour is the sky above an astronaut on the Moon, at midday, with the Sun blazing?
 options: ["Blue, as on Earth", "Black", "White"]
 answer: 1
-right: Right. With no atmosphere there is nothing to scatter sunlight, so the sky is black even in full sunshine. NCERT asks the same about astronauts.
-wrong: The sky's colour comes from sunlight scattered by air. What happens with no air?
+right: Right. With no air there is nothing to scatter the sunlight sideways, so the sky is black even in full sunshine. Our blue sky is sunlight bounced around by the air itself, and NCERT asks the same question about astronauts.
+wrong: The colour of our sky comes from sunlight scattered by air. Take the air away and there is nothing to send blue light into your eyes. What does that leave?
 :::
 
 ## Atmospheric refraction {lvl=1 id=s-refraction}

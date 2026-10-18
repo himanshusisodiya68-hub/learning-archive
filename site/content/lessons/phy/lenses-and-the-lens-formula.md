@@ -1,6 +1,6 @@
 ---
 title: Lenses and the lens formula
-summary: Convex and concave lenses, ray diagrams, the lens formula and magnification, power in dioptres, refraction at a curved surface, the lens maker's formula, lens combinations, the displacement method, silvered lenses and achromatic doublets.
+summary: 'How curved glass gathers light into a picture, and the one rule that tells you exactly where the picture lands.'
 ncert: ["Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.3.3–9.3.6)", "Class 12 Physics · Ch 9 Ray Optics (§9.5)"]
 up_to: Olympiad
 builds_on: [Refraction and Snell's law, Spherical mirrors (sign convention), Similar triangles]
@@ -47,14 +47,48 @@ outcomes:
   - 'Use the lens maker''s formula, including a lens placed in a different medium'
   - 'Find the focal length of lens combinations and of silvered lenses'
   - 'Solve problems on the displacement method, the $4f$ minimum distance and the achromatic doublet'
+opener:
+  story: |
+    Take a magnifying glass out into the sun and hold it over a scrap of paper. Move it up and down until the light shrinks to a tiny, dazzling dot. In a few seconds the paper smokes. The glass itself stays cool. It has not made any heat: it has only gathered the sunlight falling on a hand-sized patch and dropped it all onto one spot.
+
+    Here is the odd part. That bright dot is not just a dot. It is a tiny **picture of the Sun**, drawn by the glass on the paper. The Sun is simply the brightest thing the glass has ever been shown.
+
+    If a lump of glass can draw the Sun, it can draw anything. So walk indoors, hold the same glass up to a window across the room, and put the paper behind it. Slide the paper back and forth until something sharp appears.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A magnifying glass gathers parallel sunlight into a bright dot on a sheet of paper"><line x1="0" y1="110" x2="320" y2="110" style="stroke:var(--muted);stroke-dasharray:4 4;stroke-width:1"/><circle cx="30" cy="110" r="16" style="fill:var(--chem);stroke:none"/><path d="M150 60 Q176 110 150 160 Q124 110 150 60Z" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--c);stroke-width:2"/><polyline points="56,80 150,80 262,110" style="fill:none;stroke:var(--chem);stroke-width:2"/><polyline points="56,110 150,110 262,110" style="fill:none;stroke:var(--chem);stroke-width:2"/><polyline points="56,140 150,140 262,110" style="fill:none;stroke:var(--chem);stroke-width:2"/><rect x="262" y="84" width="8" height="52" rx="2" style="fill:var(--surface);stroke:var(--muted);stroke-width:1.5"/><circle cx="262" cy="110" r="4" style="fill:var(--bad)"/><path d="M258 98 Q252 88 258 78" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><text x="14" y="142" style="font-size:11px;fill:var(--muted)">Sun</text><text x="136" y="180" style="font-size:11px;fill:var(--muted)">glass</text><text x="242" y="154" style="font-size:11px;fill:var(--muted)">paper</text><text x="20" y="214" style="font-size:11px;fill:var(--ink)">the bright dot: a tiny picture of the Sun</text></svg>'
+life:
+  - 'Spectacles and contact lenses: a slice of curved glass or plastic sitting in front of your eye, chosen by its power in dioptres.'
+  - 'The camera in your phone: a stack of tiny lenses draws a sharp picture of the scene on a chip, however small the phone.'
+  - 'A jeweller''s or watch repairer''s loupe, and the magnifier you use to read small print on a medicine strip.'
+  - 'A water drop on a leaf or a round fish bowl: each acts as a lens, which is why a bowl of water can make the world behind it look upside down.'
+  - 'Cinema and classroom projectors: a lens throws a big picture of a small slide onto the wall.'
+models:
+  - name: 'Many small nudges make one big focus'
+    text: 'A lens does not do anything dramatic to any one ray. It nudges each ray a little, more at the edge than at the middle, and the sum of the nudges brings them all to one point. Big results often come from a small, well-chosen adjustment applied everywhere.'
+  - name: 'Carry the sign, not the case'
+    text: 'Pick a sign convention once, and one formula covers every position of the object, near or far, real or virtual. A negative answer is not an error, it is information, just as a negative balance in your account tells you the direction as well as the size.'
+  - name: 'Add the strengths, not the sizes'
+    text: 'Stack two lenses and their powers (1/f) add, not their focal lengths. The same pattern appears whenever two helpers work together: two taps filling a tank add their rates, not their times.'
+links:
+  - leaf: 'phy/spherical-mirrors'
+    name: 'Spherical mirrors'
+    same: 'The same job: gather parallel rays at a focus and draw a picture from the three standard rays. The ray rules and the focus idea carry over almost word for word.'
+    differs: 'A mirror turns light back by reflection; a lens bends it as it passes through glass. So the formula changes sign ($1/v + 1/u$ for mirrors, $1/v - 1/u$ for lenses), and a mirror has no colour fringes.'
+  - leaf: 'phy/resistors-in-series-and-parallel'
+    name: 'Resistors in parallel'
+    same: 'The same reciprocal pattern: lenses in contact add $1/f$, and resistors in parallel add $1/R$. In both, the extra path or extra lens makes the total effect stronger.'
+    differs: 'In the lens case, a positive and a negative power can cancel to give a flat sheet of glass. Resistances never go negative, so extra resistors in parallel can only lower the total resistance.'
+next:
+  q: 'Look closely at a cheap magnifying glass and you may see coloured fringes around bright edges. The light that went in was white, so where do the colours come from?'
+  leaf: 'phy/prism-and-dispersion'
+  name: 'Prism and dispersion'
 ---
 
 :::hook
-q: You hold a magnifying glass close to a page and the letters look bigger. Now hold it at arm's length over a distant window. What do you see?
-options: ["Bigger upright window", "Small upside-down window", "Nothing at all"]
+q: So what's your guess: held at arm's length towards a window across the room, what lands on the paper behind the glass?
+options: ["A bigger, upright window", "A tiny, upside-down window", "Just a blur of light"]
 answer: 1
-right: Right. Objects far beyond the focus form a real, inverted, diminished image. Close objects inside the focus give the virtual, upright, magnified view you use for reading.
-wrong: Try it. Far objects are beyond the lens's focus, which gives a real, inverted, small image.
+right: Right, and now you know the burning dot was the same trick. Anything far beyond the glass's focus lands as a small, upside-down, real picture. Only when you hold the thing close, inside the focus, does the glass magnify it and keep it upright, the way you use it for reading.
+wrong: Try it on any sunny day. Far things are beyond the glass's focus, and they land on the paper as a small, upside-down picture (the burning dot is the Sun's own tiny picture). The big, upright view only appears when the thing is held close.
 :::
 
 ## Words you need {lvl=1 id=s-words}

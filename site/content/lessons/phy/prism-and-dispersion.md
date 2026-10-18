@@ -1,6 +1,6 @@
 ---
 title: Prism and dispersion
-summary: Refraction through a triangular prism, the prism formula and minimum deviation, splitting white light into colours, dispersive power, achromatic prism pairs, and the geometry of the rainbow.
+summary: 'How a triangle of glass turns white light into a rainbow, and what that tells you about what light is made of.'
 ncert: ["Class 10 Science · Ch 10 The Human Eye and the Colourful World (§10.3–10.4)", "Class 12 Physics · Ch 9 Ray Optics (§9.6)"]
 up_to: Olympiad
 builds_on: [Refraction and Snell's law, Total internal reflection, Angles of a triangle]
@@ -46,14 +46,48 @@ outcomes:
   - 'Derive and apply the minimum-deviation formula and the thin-prism result $\delta = (n-1)A$'
   - 'Calculate angular dispersion and dispersive power, and design achromatic and direct-vision prism pairs'
   - 'Find when light cannot emerge from a prism, and derive the primary and secondary rainbow angles'
+opener:
+  story: |
+    A crystal chandelier throws little rainbows across the wall. A plain window pane, made of glass just like it, never does. Same sunlight, same sort of glass. So why do some pieces of glass paint colour on the wall and others leave the light alone?
+
+    In 1666 a student named Isaac Newton had been sent home from Cambridge because of plague. He made a small hole in his window shutter and put a glass triangle in the thin beam of sunlight. On the opposite wall a smear of colours appeared. Most people at the time believed the glass was staining the light, the way a stained-glass window stains it.
+
+    Newton noticed something that did not fit that idea. The colours always came in the same order, red at one end and violet at the other. If the glass were just adding colour, why would it always do it in the same order? Whatever the triangle was doing, it did a different amount to each colour.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A beam of white light enters a glass prism and fans out into a spectrum on a wall"><path d="M150 50 L100 170 L210 170Z" style="fill:color-mix(in srgb,var(--c) 18%,var(--surface));stroke:var(--c);stroke-width:2"/><line x1="10" y1="125" x2="125" y2="110" style="stroke:var(--ink);stroke-width:3"/><line x1="125" y1="110" x2="184" y2="120" style="stroke:var(--ink);stroke-width:1.5;opacity:.6"/><line x1="184" y1="120" x2="296" y2="150" style="stroke:#b23a3a;stroke-width:2.5"/><line x1="184" y1="120" x2="296" y2="165" style="stroke:#d08a1e;stroke-width:2.5"/><line x1="184" y1="120" x2="296" y2="180" style="stroke:#3f8f3a;stroke-width:2.5"/><line x1="184" y1="120" x2="296" y2="195" style="stroke:#3a5fc0;stroke-width:2.5"/><line x1="184" y1="120" x2="296" y2="210" style="stroke:#7a3fb0;stroke-width:2.5"/><rect x="296" y="110" width="6" height="120" rx="2" style="fill:var(--surface);stroke:var(--muted);stroke-width:1.5"/><text x="14" y="112" style="font-size:11px;fill:var(--muted)">white sunlight</text><text x="124" y="190" style="font-size:11px;fill:var(--muted)">glass prism</text><text x="262" y="146" style="font-size:11px;fill:var(--muted)">red</text><text x="252" y="224" style="font-size:11px;fill:var(--muted)">violet</text><text x="40" y="226" style="font-size:11px;fill:var(--ink)">always the same order</text></svg>'
+life:
+  - 'A rainbow after the monsoon shower: every raindrop is a tiny prism-like bender of sunlight, and you must stand with the Sun at your back.'
+  - 'The sparkle of a diamond or a cut-glass bowl: its many tilted faces split white light into flashes of colour, the "fire" jewellers talk about.'
+  - 'Coloured fringes at the edges of a bright object in cheap binoculars or a phone photo, where the lens has split the colours a little.'
+  - 'Spectrometers in labs and observatories: astronomers split starlight into colours to read what a star is made of.'
+  - 'A glass of water or a bevelled mirror edge in morning sunlight throwing a small rainbow patch onto a table.'
+models:
+  - name: 'A sorter reveals what was mixed'
+    text: 'A prism sorts a blend by how each part responds to the same push. Sieves, centrifuges, an exam that separates strong from weak topics, and a bank statement that splits your spending into categories all work the same way: unmix the whole and the parts tell a story the total hides.'
+  - name: 'Test your own explanation with a second experiment'
+    text: 'Newton did not stop at the first prism. He sent one colour through a second prism and found it could not be split further, which ruled out "the glass adds colour". One experiment suggests an idea, a second one tries to break it.'
+  - name: 'Same push, different response'
+    text: 'If two things react differently to the same push, the difference is information. Compare how two products, two students or two markets respond to the same change and you learn what each is made of.'
+links:
+  - leaf: 'phy/electromagnetic-waves'
+    name: 'Electromagnetic waves'
+    same: 'Colour is wavelength. The rainbow is a slice of a much longer spectrum, and radio, microwaves, X-rays and gamma rays are the same kind of wave beyond its two ends.'
+    differs: 'A prism sorts colours only because glass slows different wavelengths by different amounts. In empty space every wavelength travels at the same speed, so nothing is split there.'
+  - leaf: 'phy/lenses-and-the-lens-formula'
+    name: 'Lenses'
+    same: 'A lens is like a ring of tiny prisms, thin at the edge and thick in the middle, bending each ray towards a focus.'
+    differs: 'A prism sends every ray the same way, while a lens bends rays by different amounts to bring them together. Because of dispersion, a simple lens also focuses red and violet at different points.'
+next:
+  q: 'Light has now been bent by lenses and split by a prism. But you carry a living lens in your head. How does it refocus from a page to a mountain in a second, and what goes wrong when it cannot?'
+  leaf: 'phy/the-human-eye'
+  name: 'The human eye'
 ---
 
 :::hook
-q: White light enters a glass prism. Which colour comes out bent the most?
+q: So what's your guess: the glass treats each colour differently. Which colour does it bend the most?
 options: ["Red", "Green", "Violet"]
 answer: 2
-right: Right. Glass has a slightly higher refractive index for violet light, so violet is deviated most and red least.
-wrong: Not quite. Each colour sees a slightly different refractive index; the shortest wavelength, violet, sees the largest.
+right: Right, violet. Glass slows violet light a little more than red, so it bends violet more, and that is why the fan always comes out in the same order. A window pane has parallel faces, so its two bends cancel and the light stays white. The prism's faces are tilted, so its bends add up and the colours spread.
+wrong: Not quite. Each colour sees glass a little differently, and the shortest wavelength, violet, is slowed and bent the most. The order never changes: red is bent least, violet most.
 :::
 
 ## Refraction through a prism {lvl=1 id=s-prism}

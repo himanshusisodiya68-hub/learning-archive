@@ -1,6 +1,6 @@
 ---
 title: Optical instruments
-summary: Angular magnification, the simple magnifier, the compound microscope, refracting and reflecting telescopes, light-gathering power and resolution, and the exit pupil and eye ring.
+summary: 'How two pieces of glass in a tube bring the Moon close and make pollen huge, and why magnifying must stop.'
 ncert: ["Class 12 Physics · Ch 9 Ray Optics and Optical Instruments (§9.7)"]
 up_to: Olympiad
 builds_on: [Lenses and the lens formula, The human eye and its defects, Spherical mirrors]
@@ -46,14 +46,48 @@ outcomes:
   - 'Describe and analyse the compound microscope and the astronomical telescope in normal adjustment'
   - 'Compare refracting and reflecting telescopes'
   - 'Apply light-gathering power $\propto D^2$, the resolution limit $1.22\lambda/D$ and the exit pupil'
+opener:
+  story: |
+    In 1609 Galileo heard about a Dutch toy that made far things look near. He built his own, pointed it at the night sky, and saw four small lights circling Jupiter. A tube with two pieces of glass in it helped overturn the old belief that everything in the sky goes round the Earth.
+
+    Rearrange the same two kinds of glass and the tube looks the other way. A near, tiny thing, such as a grain of pollen or a drop of pond water, becomes huge. A telescope and a microscope are close cousins.
+
+    But here is the strange part. You can't see an ant's legs by simply bringing the ant close to your eye: closer than about 25 centimetres everything blurs. Yet a small glass lens lets you hold the ant just 5 centimetres away and see it sharply.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A telescope tube with a large objective lens and a small eyepiece, aimed at Jupiter and its moons, with an eye at the other end"><circle cx="24" cy="120" r="12" style="fill:color-mix(in srgb,var(--chem) 40%,var(--surface));stroke:var(--chem);stroke-width:1.5"/><circle cx="8" cy="98" r="2" style="fill:var(--ink)"/><circle cx="44" cy="146" r="2" style="fill:var(--ink)"/><circle cx="40" cy="94" r="2" style="fill:var(--ink)"/><rect x="90" y="92" width="150" height="56" rx="4" style="fill:none;stroke:var(--muted);stroke-width:2"/><ellipse cx="100" cy="120" rx="5" ry="26" style="fill:color-mix(in srgb,var(--c) 25%,var(--surface));stroke:var(--c);stroke-width:2"/><ellipse cx="230" cy="120" rx="4" ry="12" style="fill:color-mix(in srgb,var(--c) 25%,var(--surface));stroke:var(--c);stroke-width:2"/><polyline points="56,104 100,104 230,122.3 280,122.3" style="fill:none;stroke:var(--chem);stroke-width:2"/><polyline points="56,136 100,136 230,117.7 280,117.7" style="fill:none;stroke:var(--chem);stroke-width:2"/><ellipse cx="294" cy="120" rx="10" ry="16" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><circle cx="288" cy="120" r="3" style="fill:var(--ink)"/><text x="52" y="76" style="font-size:11px;fill:var(--muted)">big objective</text><text x="196" y="82" style="font-size:11px;fill:var(--muted)">small eyepiece</text><text x="10" y="186" style="font-size:11px;fill:var(--ink)">wide beam in, narrow beam out</text></svg>'
+life:
+  - 'Binoculars at a cricket stadium or a bird sanctuary, with two telescopes side by side.'
+  - 'The zoom on a phone camera, where a lens group moves to change the angle the scene fills.'
+  - 'A school or pathology lab microscope showing blood cells, bacteria or plant cells from a stained slide.'
+  - 'A watchmaker''s loupe and the magnifier that helps read the fine print on a loan document.'
+  - 'Observatories on high mountains such as the Indian Astronomical Observatory at Hanle in Ladakh, where a big mirror gathers faint starlight.'
+models:
+  - name: 'More zoom is not more detail'
+    text: 'Past a point, magnifying only makes the blur bigger. The same thing happens when you enlarge a low-resolution photo or quote an estimate to six decimal places. First ask what limits the sharpness of the input, and stop magnifying where it runs out.'
+  - name: 'Gather first, magnify second'
+    text: 'A telescope''s first job is to collect light, in proportion to the area of the big lens or mirror. Amplifying a weak signal also amplifies the noise, so improve what you collect (more data, a bigger sample) before you amplify it.'
+  - name: 'Two stages multiply'
+    text: 'A microscope gets its power from two modest stages whose effects multiply: objective and eyepiece. Gears, compound interest and a team of specialists each doing one step well all beat a single heroic stage.'
+links:
+  - leaf: 'phy/the-human-eye'
+    name: 'The human eye'
+    same: 'Every instrument is built around the eye, which sets the reference: the 25 cm near point and about one arcminute of resolution. The eye is itself a small lens with a pupil as its aperture.'
+    differs: 'The eye is limited to a few millimetres of aperture and cannot be adjusted beyond a small range. An instrument can have a far bigger aperture, which gathers more light and resolves finer detail.'
+  - leaf: 'phy/diffraction'
+    name: 'Diffraction'
+    same: 'The limit on telescope resolution, $\theta \approx 1.22\lambda/D$, is diffraction at the aperture: the same wave spreading you meet through a narrow slit.'
+    differs: 'A slit gives a pattern of bright and dark bands, while a round telescope aperture gives a central disc with faint rings. Both depend on the ratio of wavelength to opening size.'
+next:
+  q: 'Even a flawless lens cannot show you a single atom, however much it magnifies, because light itself is a wave and waves smear. What does it really mean for light to be a wave, and how does a wave decide where to go next?'
+  leaf: 'phy/huygens-principle'
+  name: 'Huygens'' principle'
 ---
 
 :::hook
-q: Why can't you see a small insect's legs clearly just by bringing it very close to your eye?
-options: ["The insect is too dark", "Closer than about 25 cm the eye cannot focus", "The image becomes inverted"]
+q: So what's your guess: why can't you see a tiny ant's legs clearly just by bringing it right up to your eye?
+options: ["The ant is too dark", "Closer than about 25 cm the eye cannot focus", "The image becomes upside down"]
 answer: 1
-right: Right. Bringing an object closer makes it subtend a larger angle, but closer than the near point the eye cannot focus. A magnifier lets you bring it closer and still see it sharply.
-wrong: Closer objects look bigger, so why not bring it right up to your eye? What limits how close you can focus?
+right: Right. Bringing the ant closer makes it look bigger, but closer than your near point (about 25 cm) the eye's lens cannot get fat enough to focus. A magnifier does the focusing for you, so you can bring the ant much closer and still see it sharp.
+wrong: Closer things look bigger, so why not bring it right against your eye? The catch is what the eye can do at that range: its lens can only get so fat before the picture falls behind the retina and blurs.
 :::
 
 ## What instruments really magnify {lvl=2 id=s-angular label="Class 12"}

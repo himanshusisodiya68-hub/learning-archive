@@ -1,6 +1,6 @@
 ---
 title: The human eye and its defects
-summary: How the eye forms images, accommodation, near and far points, myopia, hypermetropia, presbyopia and cataract, the lens powers that correct them, and the eye's limits of resolution.
+summary: 'How a jelly lens in your head refocuses from book to mountain in a second, and how glasses help when it can''t.'
 ncert: ["Class 10 Science · Ch 10 The Human Eye and the Colourful World (§10.1–10.2)"]
 up_to: Olympiad
 builds_on: [Lenses and the lens formula, Power of a lens]
@@ -42,14 +42,48 @@ outcomes:
   - 'Identify myopia, hypermetropia, presbyopia and cataract, and name the correcting lens for each'
   - 'Calculate the power of the corrective lens from the far point or near point'
   - 'Estimate the eye''s power, accommodation range and resolution limit, and explain blurred underwater vision'
+opener:
+  story: |
+    Hold your thumb out at arm's length and look at it. Your thumb is sharp, but the wall behind it turns into a soft, doubled blur. Now look at the wall. The wall snaps into focus, and your thumb blurs. You can never see both sharp at once, but the switch takes almost no time and no thought.
+
+    A camera has to whirr a motor to slide its lens back and forth before it can do this. Nothing in your eye whirrs, and there is nothing in there that slides like a camera lens. Yet it focuses faster than any camera you have used.
+
+    So what is the eye doing instead?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="An eye looks at a near thumb that is sharp while a far wall is blurred"><circle cx="70" cy="120" r="46" style="fill:color-mix(in srgb,var(--c) 8%,var(--surface));stroke:var(--ink);stroke-width:2"/><path d="M44 82 A46 46 0 0 0 44 158" style="fill:none;stroke:var(--chem);stroke-width:4"/><ellipse cx="92" cy="120" rx="6" ry="16" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><path d="M112 98 Q122 120 112 142" style="fill:none;stroke:var(--ink);stroke-width:2"/><polyline points="170,112 92,106 25,120" style="fill:none;stroke:var(--c);stroke-width:2"/><polyline points="170,128 92,134 25,120" style="fill:none;stroke:var(--c);stroke-width:2"/><rect x="164" y="104" width="14" height="40" rx="7" style="fill:color-mix(in srgb,var(--c) 40%,var(--surface));stroke:var(--c);stroke-width:2"/><rect x="278" y="40" width="10" height="160" rx="3" style="fill:var(--surface);stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 3"/><text x="130" y="168" style="font-size:11px;fill:var(--ink)">thumb: sharp</text><text x="226" y="222" style="font-size:11px;fill:var(--muted)">far wall: blurred</text><text x="14" y="36" style="font-size:11px;fill:var(--muted)">retina (a fixed screen)</text></svg>'
+life:
+  - 'Switching between your phone screen and the road ahead: your eye lens flattens and fattens dozens of times a day without you noticing.'
+  - 'Reading glasses appearing in the forties, when the lens stiffens and "my arms are too short" becomes a common complaint.'
+  - 'Blurred vision underwater without goggles: water almost cancels the cornea''s focusing, and a layer of air in the goggles restores it.'
+  - 'Eye-camp cataract surgery in villages, where a cloudy lens is replaced with a clear artificial one in minutes.'
+  - 'The 20-20-20 habit for screen users: every 20 minutes look at something 20 feet away for 20 seconds, to let the tired focusing muscle relax.'
+models:
+  - name: 'When one thing is fixed, vary another'
+    text: 'The distance from lens to retina cannot change, so the eye changes the focal length instead. When a constraint is stuck, look for another dial that can do the same job: a shop that cannot lower its prices can change pack size.'
+  - name: 'A feedback loop: try, check, adjust'
+    text: 'Focusing is a loop: the eye tries a shape, the brain judges how blurred the result is, and the muscle adjusts until it is sharp. A thermostat, steering a bicycle and adjusting a monthly budget all work the same way.'
+  - name: 'Fix the offset, not the machine'
+    text: 'A short-sighted eye is a working eye whose range is shifted. A spectacle lens shifts it back instead of rebuilding the eye. Many problems are an offset, and an offset is cheaper to correct than a design.'
+links:
+  - leaf: 'phy/lenses-and-the-lens-formula'
+    name: 'Lenses and the lens formula'
+    same: 'The eye is a lens drawing a real, inverted picture on a screen, and the lens formula and power in dioptres apply to it exactly.'
+    differs: 'A camera keeps its focal length and moves the lens to change the image distance. The eye does the opposite: the image distance is fixed and the focal length changes.'
+  - leaf: 'phy/refraction-and-snells-law'
+    name: 'Refraction and Snell''s law'
+    same: 'Most of the eye''s focusing comes from refraction at the curved front surface, the cornea, where light jumps from air into a denser medium.'
+    differs: 'The cornea''s power depends on the jump in refractive index. In water that jump almost vanishes, which is why vision blurs underwater, though a glass lens in air is unaffected.'
+next:
+  q: 'A perfect eye still looks through the air, and the air itself bends and scatters light on the way. Why do stars twinkle while planets do not, and why is the sky blue instead of black?'
+  leaf: 'phy/atmospheric-refraction-and-scattering'
+  name: 'Atmospheric refraction and scattering'
 ---
 
 :::hook
-q: You read a book held close, then look up at a far-away tree, and both look sharp within a second. What changed inside your eye?
+q: So what's your guess: you glance from a book to a far-away tree and both look sharp within a second. What changes inside your eye?
 options: ["The distance from lens to retina", "The shape (focal length) of the eye lens", "The size of the pupil only"]
 answer: 1
-right: Right. The retina cannot move, so the eye changes the curvature, and hence the focal length, of its lens. This is accommodation.
-wrong: The retina is fixed at the back of the eye. Something else must change to focus at different distances.
+right: Right, and the surprise is how it is done. Tiny muscles squeeze a soft, jelly-like lens fatter for near things and let it relax flatter for far ones. The retina cannot move, so the eye changes the lens's focal length instead. That is accommodation.
+wrong: The retina is fixed at the back of the eye, so it cannot slide like a camera's sensor. The pupil only controls how much light enters. Something about the lens itself has to change.
 :::
 
 ## How the eye forms images {lvl=1 id=s-eye}
