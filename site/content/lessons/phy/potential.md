@@ -84,7 +84,7 @@ links:
     name: 'Kinetic and potential energy'
     same: 'Potential is potential energy per unit charge, just as height is gravitational potential energy per kilogram divided by g. Only differences matter and the path does not.'
     differs: 'Gravity always pulls masses downhill; the same electric move can raise or lower the energy depending on the sign of the moving charge.'
-  - leaf: 'phy/heat-and-temperature'
+  - leaf: 'phy/temperature-and-heat'
     name: 'Heat and temperature'
     same: 'Temperature is the "potential" for heat: heat flows from high to low until the levels match, as charge flows until the potentials match.'
     differs: 'Heat flows by random collisions and never reverses by itself; charge is pushed by a field in a direction that depends on its sign. Temperature has a true zero; potential''s zero is chosen freely.'

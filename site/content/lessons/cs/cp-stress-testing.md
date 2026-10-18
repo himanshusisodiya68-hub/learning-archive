@@ -74,7 +74,7 @@ links:
     name: 'Reading constraints'
     same: 'Constraints tell you which solution is fast enough; the same limits tell you what size the brute force may be (tiny).'
     differs: 'Reading constraints chooses the algorithm before you code; stress testing checks the algorithm after you code.'
-  - leaf: 'cs/classical-probability'
+  - leaf: 'mat/classical-probability'
     name: 'Classical probability'
     same: 'Counting how likely a random test is to hit a rare case is a probability question: favourable inputs over all inputs.'
     differs: 'Here the outcome space is a generator you design, so you can raise the probability of the interesting cases on purpose.'

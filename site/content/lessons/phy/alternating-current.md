@@ -68,7 +68,7 @@ models:
   - name: 'Rotation makes oscillation'
     text: 'Spin something steadily and look at it from the side: you see a back-and-forth swing. Many oscillations, from a pendulum to the seasons, are just a steady circle seen edge-on.'
 links:
-  - leaf: 'phy/simple-harmonic-motion'
+  - leaf: 'phy/shm-equation'
     name: 'Simple harmonic motion'
     same: 'Both are sine waves with a period and an amplitude, and both can be seen as the shadow of something turning in a circle. The mathematics of one carries over to the other.'
     differs: 'In SHM a mass swings back and forth in space. In AC the thing that swings is a voltage or a current, and no material moves along the wire.'

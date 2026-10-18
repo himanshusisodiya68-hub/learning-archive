@@ -77,11 +77,11 @@ models:
   - name: 'Count in whole units'
     text: 'Charge comes in whole electrons; nobody owns half an electron. When things come in indivisible units (people, votes, coins) an average such as 2.4 children per family is only a summary, never a real thing.'
 links:
-  - leaf: 'chem/structure-of-atom'
+  - leaf: 'chem/discovering-the-atom'
     name: 'Structure of the atom'
     same: 'Every atom is a balance of positive protons and negative electrons: charge is literally what atoms are made of.'
     differs: 'Chemistry arranges the electrons into shells and orbitals by energy; this lesson only counts the total charge.'
-  - leaf: 'chem/chemical-bonding'
+  - leaf: 'chem/ionic-and-covalent-bonds'
     name: 'Chemical bonding'
     same: 'Ionic bonding is plain attraction between opposite charges, the same push and pull as balloon and wall.'
     differs: 'Covalent bonds are shared electrons and need quantum rules; the simple picture of charges only takes you part of the way.'

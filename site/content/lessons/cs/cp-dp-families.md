@@ -85,7 +85,7 @@ links:
     name: 'Greedy and exchange arguments'
     same: 'Both break a big problem into smaller copies of itself.'
     differs: 'Greedy commits to one choice per step; DP tries all choices and keeps the best, so it stays correct where greedy fails.'
-  - leaf: 'mat/combinatorics'
+  - leaf: 'mat/permutations-and-combinations'
     name: 'Counting and combinatorics'
     same: 'Counting subsets (2^n) versus orders (n!) is exactly the saving that bitmask DP uses.'
     differs: 'Combinatorics counts the objects; DP walks over them smartly without listing them.'
