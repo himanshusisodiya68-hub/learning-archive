@@ -257,9 +257,9 @@ The length of the ladder does not enter: it only fixes the angle. (Check with co
 <line class="ln" x1="60" y1="20" x2="60" y2="200"/><line class="ln" x1="60" y1="200" x2="330" y2="200"/>
 <line class="ln" x1="60" y1="80" x2="200" y2="200" style="stroke-width:4"/>
 <circle class="obj" cx="60" cy="80" r="4"/><circle class="obj" cx="200" cy="200" r="4"/>
-<line class="ray" x1="60" y1="80" x2="60" y2="125" marker-end="url(#crl1)"/><text class="k" x="68" y="124">v_A</text>
+<line class="ray" x1="60" y1="80" x2="60" y2="138" marker-end="url(#crl1)"/><text class="k" x="68" y="137">v_A</text>
 <line class="ray" x1="200" y1="200" x2="250" y2="200" marker-end="url(#crl1)"/><text class="k" x="252" y="195">v_B</text>
-<line class="wf" x1="60" y1="80" x2="87" y2="103" marker-end="url(#crl2)"/>
+<line class="wf" x1="60" y1="80" x2="89" y2="105" marker-end="url(#crl2)"/><line class="wf" x1="200" y1="200" x2="229" y2="225" marker-end="url(#crl2)"/>
 <text x="150" y="150">ladder</text>
 <text x="140" y="190">θ</text>
 <text x="80" y="56">same component along the ladder</text>
