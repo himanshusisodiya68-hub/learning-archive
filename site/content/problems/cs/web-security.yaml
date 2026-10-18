@@ -1,0 +1,87 @@
+# Common attacks and defences. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A comment box on a blog shows each comment to all later visitors, without escaping it. Which attack does this allow?
+  opts: ["SQL injection", "Cross-site scripting (XSS)", "Broken encryption"]
+  ans: 1
+  sol: Unescaped text placed into a page can be run by every visitor's browser as script, which is stored cross-site scripting. SQL injection concerns text pasted into a database command, and the encryption (TLS) has nothing to do with it.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: 'The page is https://shop.in/cart. Which of these five addresses share its origin (same scheme, host and port)? 1) https://shop.in/orders  2) http://shop.in/cart  3) https://api.shop.in/cart  4) https://shop.in:8443/cart  5) https://shop.in/help/faq. How many?'
+  ask: Same-origin addresses
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: 2
+  sol: Only 1 and 5 match. Address 2 changes the scheme (http), 3 changes the host (api.shop.in), and 4 changes the port (8443). Paths do not matter.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: A developer notices that typing an apostrophe into the search box causes a database error. Which fix removes the root cause?
+  opts: ["Delete apostrophes and the word DROP from all input", "Use a parameterised query so the value is never part of the command", "Hide the error message from the user"]
+  ans: 1
+  sol: The apostrophe works because input is glued into the command. Only separating the value from the command (a placeholder) removes that. Deleting characters can be bypassed with other tricks, and hiding the error leaves the hole open, only less visible.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A shop uses sequential invoice numbers from 1 to 250,000, and its invoice page has no ownership check and no rate limit. An attacker's script fetches 20 invoices per second. How many hours does it take to download every invoice?
+  ask: Time to fetch all
+  unit: hours
+  ans: 3.47
+  tol: 0.01
+  verify: 250000 / 20 / 3600
+  sol: |
+    $250{,}000 / 20 = 12{,}500$ seconds, and $12{,}500 / 3600 \approx 3.47$ hours. The real fix is the ownership check; random ids and a rate limit only slow the attack. With random 128-bit ids, guessing would be hopeless, but anyone who found a link could still view it unless the owner is checked.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A small site renders a guestbook with this logic, then stores each entry in a SQL table. Name every vulnerability in the two lines and fix each. `page = "<li>" + entry + "</li>"` and `db.execute("INSERT INTO book VALUES ('" + entry + "')")`.
+  sol: |
+    **Line 1 (XSS):** the entry is placed into HTML unescaped, so a script in an entry runs in every visitor's browser. Fix: escape it for the HTML context (`html.escape(entry)`), or use a template engine that escapes by default. Add a Content Security Policy that disallows inline scripts as a second layer.
+    **Line 2 (SQL injection):** the entry is glued into the command, so a quote in it can end the value and add commands. Fix: `db.execute("INSERT INTO book VALUES (?)", (entry,))`.
+    **Extra layers:** the database account used by the web app should be allowed to insert and read this table only (least privilege), and the form should have a size limit and a rate limit. Note that both bugs share one root cause: untrusted text treated as instructions, once for the database and once for the browser.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A bank's endpoint `POST /transfer` identifies the user only by a session cookie. Explain how an attacker's web page can make a logged-in customer send money, why the same-origin policy does not prevent it, and give three defences.
+  sol: |
+    **Attack:** the attacker's page contains a hidden form (or script) aimed at the bank's `/transfer` address. When a logged-in customer opens the page, their browser sends the request and automatically attaches the bank's cookie. The bank sees a normal authenticated request.
+    **Why the policy does not help:** the same-origin policy stops the attacker's page from **reading** the reply, but sending the request is allowed, and the transfer happens on the server before any reading matters.
+    **Defences:** (1) `SameSite` cookies so the cookie is not sent on requests started from other sites; (2) a per-session anti-forgery token placed in the real form and checked on the server, which the attacker's page cannot read; (3) verify the `Origin` header on state-changing requests. Also re-ask for a second factor on large transfers.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A site protects forms with an anti-forgery token made of 8 random hexadecimal digits (each digit carries 4 bits). The token never changes for a session, and an attacker may make 1,000 guessed requests per second. How many days does it take to reach a 50% chance of guessing the token?
+  ask: Days to 50 percent
+  unit: days
+  ans: 24.9
+  tol: 0.1
+  verify: Math.pow(2, 31) / 1000 / 86400
+  sol: |
+    8 hex digits is 32 bits, so $2^{32} \approx 4.29 \times 10^{9}$ equally likely tokens. Each guess has chance $1/2^{32}$, so after $2^{31}$ guesses the chance is about one half. At 1,000 guesses per second that takes $2^{31}/1000 \approx 2.15 \times 10^{6}$ seconds, or $2.15\times10^6 / 86400 \approx 24.9$ days. Real tokens use 128 bits or more, and servers rate-limit and change tokens, which makes this attack hopeless. A short, fixed token is a weak layer.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A site has an XSS bug on one page. The site also uses HttpOnly session cookies, anti-forgery tokens, and relies on the same-origin policy. Explain why the XSS bug still lets the attacker do almost anything as the victim, and what that tells you about the order in which to fix problems.
+  sol: |
+    Injected script runs **inside the site's own origin**, so the same-origin policy treats it as the site itself. It can read anything on the page, including the **anti-forgery token**, and send fully valid requests with the token included. It can also read the replies, so CSRF defences do not apply.
+    **HttpOnly** stops the script from reading the cookie, but the script does not need to: the browser attaches the cookie to its requests anyway. The attacker cannot take the session away, but can use it live, as long as the page stays open, to change settings, send money or read private data. A script can also draw a fake login form to harvest the password.
+    **Lesson:** XSS undermines the defences that depend on a clean origin, so it deserves first priority. Fix it at the source (escaping, safe templates) and add a Content Security Policy as a second layer, then limit the harm of any remaining bug with least privilege and re-authentication for sensitive actions.
+  check: none
