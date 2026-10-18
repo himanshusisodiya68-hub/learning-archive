@@ -11,7 +11,7 @@ Read a chapter once, then write short notes (order of ideas, key examples, probl
 | Subject | Book | File id |
 |---|---|---|
 | Physics | The Feynman Lectures on Physics, Vol II (electromagnetism) | 1bIC91VQoEWiwA0OUd7IRsfrpLqJnHqwh |
-| Physics | Feynman Lectures, all volumes, free online (preferred for Vol I and III): https://www.feynmanlectures.caltech.edu/ | — |
+| Physics | Feynman Lectures, all volumes, online: https://www.feynmanlectures.caltech.edu/ (blocks automated access from the container as of Oct 2026; use the Vol II PDF above, or ask the owner to upload Vol I and III) | — |
 | Physics | I. E. Irodov, Problems in General Physics | 1NvgcrDx7wlPIv8RUxNnBIIWwIx-u0-KH (tested: text extracts cleanly) |
 | Physics | Resnick & Halliday, Vol 1 and 2 (54 MB) | 1GuELpXLHeuUVXczLE1SMrhGNv8GDUhwW |
 | Physics | H. C. Verma, Concepts of Physics Vol 2 (162 MB; may be scanned images, check pdftotext first) | 1a9l2WZF0Pj83HSXJefuBt7vuOkSO70bS |
