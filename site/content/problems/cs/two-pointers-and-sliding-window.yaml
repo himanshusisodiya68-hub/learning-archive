@@ -1,0 +1,123 @@
+# Two pointers and sliding window. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A server logs one number per minute for a day, which is 1,440 numbers. How many different windows of 60 consecutive minutes are there?
+  ask: Windows
+  unit: ""
+  ans: 1381
+  tol: 0.1
+  verify: 1440-60+1
+  sol: The first window starts at minute 0 and the last must still fit 60 minutes, so it starts at minute $1440-60 = 1380$. That is starts 0 to 1380, which is $1440-60+1 = 1381$ windows.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which condition must hold for the two-pointer method (one pointer at each end) to find a pair with a given sum in O(n)?
+  opts: ["The array is sorted", "The array contains only even numbers", "The array has no duplicates and is short"]
+  ans: 0
+  sol: Sorted order is what makes each move safe. If the total is too small, the left item cannot pair with anything (the right item was its best partner), so we move left up; if too big, we move right down. Without sorted order a total that is too small tells you nothing about which end to move.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Sorted prices are 1, 3, 4, 6, 8, 11, 15 and the target is 14. Using one pointer at each end, you compare the sum of the two pointed-to items with the target each time, moving one pointer after each comparison. How many sums do you compute before finding the pair?
+  ask: Sums computed
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: (function(){ const a=[1,3,4,6,8,11,15], t=14; let i=0,j=a.length-1,c=0; while(i<j){ c++; const s=a[i]+a[j]; if(s===t) return c; if(s<t) i++; else j--; } return -1; })()
+  sol: |
+    Left at 1, right at 15: sum 16 is too big, so move right down (1st sum).
+    Left at 1, right at 11: sum 12 is too small, so move left up (2nd sum).
+    Left at 3, right at 11: sum 14 equals the target (3rd sum). The pair is 3 and 11.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Daily sales (all positive) are 2, 3, 1, 2, 4, 3. What is the length of the shortest stretch of consecutive days whose sales add up to at least 7?
+  ask: Shortest length
+  unit: days
+  ans: 2
+  tol: 0.1
+  verify: (function(){ const a=[2,3,1,2,4,3], t=7; let best=Infinity; for(let i=0;i<a.length;i++){ let s=0; for(let j=i;j<a.length;j++){ s+=a[j]; if(s>=t){ best=Math.min(best,j-i+1); break; } } } return best; })()
+  sol: |
+    Slide a window. Grow right until the total reaches 7, then shrink from the left while it still does.
+    - 2, 3, 1, 2 = 8, enough (length 4). Shrink: 3, 1, 2 = 6, not enough.
+    - Add 4: 3, 1, 2, 4 = 10, enough (length 4). Shrink: 1, 2, 4 = 7, enough (length 3). Shrink: 2, 4 = 6, not enough.
+    - Add 3: 2, 4, 3 = 9 (length 3). Shrink: 4, 3 = 7, enough (length 2). Shrink: 3 = 3, not enough.
+    The shortest is the pair 4, 3, so the answer is 2.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A sorted array of numbers may contain repeats. Remove the repeats in place, using no extra array, and report how many distinct values remain. Explain the two pointers and the cost.
+  sol: |
+    Use a reader and a writer. The reader `r` visits every position. The writer `w` marks where the next distinct value should be stored. When `a[r]` differs from the last value stored (`a[w-1]`), copy it to `a[w]` and advance `w`. Since the array is sorted, equal values are next to each other, so comparing with the last stored value is enough. After the pass, the first `w` positions hold the distinct values.
+    ```python
+    def dedupe(a):
+        w = 0
+        for r in range(len(a)):
+            if w == 0 or a[r] != a[w - 1]:
+                a[w] = a[r]
+                w += 1
+        return w
+    ```
+    Example: [1, 1, 2, 2, 2, 5] becomes [1, 2, 5, ...] with return value 3. Each pointer moves forward only, so the cost is $O(n)$ time and $O(1)$ extra memory.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Several vertical poles stand in a row with given heights. You pick two poles and pour water between them. The water holds an amount equal to the distance between the poles times the height of the shorter pole. Find the best pair in O(n), and explain why moving the shorter pole is safe.
+  sol: |
+    Start with the two outermost poles, giving the widest possible gap. Record the amount. Then move the pointer at the **shorter** pole inward by one and repeat, until the pointers meet.
+    Why safe: suppose the left pole is shorter. Any pair using this left pole and a pole closer than the current right pole has a smaller gap and a height still limited by this shorter pole, so it holds no more than the pair we just measured. So the left pole can never be part of a better pair, and we discard it for good. Moving the taller pole instead could never help, because the shorter pole still caps the height while the gap shrinks.
+    ```python
+    def best_water(h):
+        i, j, best = 0, len(h) - 1, 0
+        while i < j:
+            best = max(best, (j - i) * min(h[i], h[j]))
+            if h[i] < h[j]:
+                i += 1
+            else:
+                j -= 1
+        return best
+    ```
+    Cost: $O(n)$ time, $O(1)$ memory, against $O(n^2)$ for checking every pair.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Daily profit can be negative. Count how many stretches of consecutive days add up to exactly k. Why does the positive-numbers sliding window fail here, and what do you use instead?
+  sol: |
+    The window method needs adding a day to raise the total and removing a day to lower it. With negative days that is false: after reaching a total above k, removing the left day might raise the total or lower it, so we cannot tell which pointer to move without possibly missing answers.
+    Use **prefix sums**. Let $P_j$ be the sum of the first $j$ days (with $P_0 = 0$). The stretch from day $i+1$ to day $j$ sums to $P_j - P_i$. We want $P_j - P_i = k$, i.e. $P_i = P_j - k$. Scan left to right, keep a hash map from prefix value to how many times it has occurred, and for each $j$ add the count of $P_j - k$ before inserting $P_j$.
+    ```python
+    def count_stretches(a, k):
+        seen = {0: 1}
+        total = count = 0
+        for x in a:
+            total += x
+            count += seen.get(total - k, 0)
+            seen[total] = seen.get(total, 0) + 1
+        return count
+    ```
+    Example: a = [1, -1, 1], k = 1 has stretches [1], [1, -1, 1], [1] at the end, so 3. Cost: $O(n)$ time and $O(n)$ memory.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: An API must allow each user at most 100 requests in any rolling 60 seconds. Compare a fixed-minute counter with a sliding window log. Say how large an unfair burst the counter allows, and what the sliding window costs in memory per user.
+  sol: |
+    **Fixed-minute counter.** Count requests in the current clock minute and reset at the start of each minute. It uses one number per user, but a user can send 100 requests in the last second of one minute and 100 more in the first second of the next: 200 requests in about two seconds, twice the intended limit, so the guarantee "100 in any rolling 60 seconds" is broken.
+    **Sliding window log.** Keep a queue of each user's request times. On every request, pop times older than 60 seconds from the front, then accept only if fewer than 100 remain, pushing the new time. Each request is pushed and popped once, so cost per request is amortised $O(1)$, exactly the variable-window argument. Memory is up to 100 timestamps per user: with 8 bytes each that is about 800 bytes plus overhead, so for 10 million active users roughly 8 GB before overhead [Inference: rough arithmetic].
+    **Compromise.** Split the minute into small buckets (say 1 second) and keep 60 counters per user: a sliding window of buckets, with error of at most one bucket's worth. Many real limiters use something of this kind; which one a given company uses is not public. [Inference]
+  check: none

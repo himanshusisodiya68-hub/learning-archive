@@ -1,0 +1,116 @@
+# Searching and binary search. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A friend thinks of a whole number from 1 to 1,000 and answers only "higher", "lower" or "correct". Playing the best strategy, what is the most guesses you might need?
+  ask: Guesses
+  unit: ""
+  ans: 10
+  tol: 0.1
+  verify: ceil(log2(1000))
+  sol: Each answer can halve the numbers left, so we need the smallest $k$ with $2^k \ge 1000$. Since $2^9 = 512 < 1000 \le 1024 = 2^{10}$, the answer is 10.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which condition must hold before binary search on a list can give a correct answer?
+  opts: ["The list has no repeated values", "The list is sorted", "The list has an even number of items", "The list contains only numbers"]
+  ans: 1
+  sol: Binary search discards half the list after comparing with the middle item. That is only valid if everything on one side is smaller and everything on the other is larger, i.e. the list is sorted. Repeats, parity and numeric type do not matter (strings sort too).
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: In the list [2, 4, 4, 4, 7, 9, 12] (positions start at 0), what does lower_bound(a, 4), the first position holding a value of at least 4, return?
+  ask: Index
+  unit: ""
+  ans: 1
+  tol: 0.1
+  verify: "[2,4,4,4,7,9,12].findIndex(v => v >= 4)"
+  sol: The value at position 0 is 2, which is less than 4. Position 1 holds 4, the first value that is at least 4. Binary search reaches the same answer with lo = 0, hi = 7 → mid = 3 (a[3] = 4, not below 4, so hi = 3) → mid = 1 (a[1] = 4, so hi = 1) → mid = 0 (a[0] = 2 is below 4, so lo = 1). Now lo equals hi, so the answer is 1.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Using upper bound minus lower bound, count how many times 3 appears in the sorted list [1, 3, 3, 3, 3, 5, 8, 8, 10, 13].
+  ask: Count
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: "[1,3,3,3,3,5,8,8,10,13].filter(v => v === 3).length"
+  sol: The lower bound of 3 (first position with value at least 3) is 1. The upper bound (first position with value greater than 3) is 5, where the 5 sits. The number of 3s is $5 - 1 = 4$. In Python, `bisect_right(a, 3) - bisect_left(a, 3)`.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A release has n versions numbered 1 to n. Versions up to some unknown k are fine and every version from k + 1 on is bad. You have a function is_bad(v). Find the first bad version using as few calls as possible, say how many calls you need in the worst case for n = 1,000,000, and explain why the invariant keeps the code correct.
+  sol: |
+    The test is monotone (good, good, ..., bad, bad), so this is a lower-bound search over the values 1 to n.
+    ```python
+    def first_bad(n):
+        lo, hi = 1, n                # the first bad version is in [lo, hi]
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if is_bad(mid):
+                hi = mid             # mid may be the first bad one
+            else:
+                lo = mid + 1         # mid and everything before are good
+        return lo
+    ```
+    Invariant: versions before `lo` are good, and version `hi` is bad (the problem guarantees `n` is bad). When `lo == hi`, that version is bad and the one before is good, so it is the first bad. The range halves each time, so for $n = 1{,}000{,}000$ you need $\lceil \log_2 10^6 \rceil = 20$ calls at most, against up to a million for a linear scan.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A sorted list of distinct numbers was rotated, for example [11, 13, 17, 2, 3, 5, 7]. The list is never empty. Describe an O(log n) way to find the smallest value (here 2), and say what changes if the list may contain repeated values.
+  sol: |
+    Compare the middle item with the last item. If `a[mid] > a[-1]`, the break (the minimum) lies strictly to the right of `mid`, so set `lo = mid + 1`. Otherwise the minimum is at `mid` or to its left, so set `hi = mid`. Stop when `lo == hi`.
+    ```python
+    def rotated_min(a):
+        lo, hi = 0, len(a) - 1
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if a[mid] > a[hi]:
+                lo = mid + 1
+            else:
+                hi = mid
+        return a[lo]
+    ```
+    Invariant: the minimum is always inside [lo, hi]. For [11, 13, 17, 2, 3, 5, 7]: mid = 3 (value 2), 2 is not above 7, so hi = 3; mid = 1 (13 > 2), lo = 2; mid = 2 (17 > 2), lo = 3; done, minimum 2.
+    With repeats, `a[mid] == a[hi]` no longer tells you which side holds the break (think [1, 1, 1, 0, 1]). The safe fix is `hi -= 1` in that case, which keeps the invariant but makes the worst case O(n).
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Parcels with weights [3, 2, 2, 4, 1, 4] must be shipped in this order. Each day a truck carries a block of consecutive parcels whose total weight is at most its capacity c. The whole shipment must be finished in 3 days. What is the smallest capacity c that works?
+  ask: Capacity
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: "(() => { const w = [3,2,2,4,1,4]; for (let c = 4; ; c++) { let d = 1, s = 0; for (const x of w) { if (s + x > c) { d++; s = 0; } s += x; } if (d <= 3) return c; } })()"
+  sol: |
+    The test "can we ship in 3 days with capacity c?" is monotone (a bigger truck never hurts), so binary search c between 4 (the heaviest parcel) and 16 (the total weight).
+    For c = 6: day 1 takes 3 + 2 = 5 (adding the next 2 would make 7), day 2 takes 2 + 4 = 6, day 3 takes 1 + 4 = 5. That is 3 days, so c = 6 works.
+    For c = 5: [3, 2], [2], [4, 1], [4] is 4 days, so c = 5 fails.
+    The search over values 4 to 16 needs about 4 tests, each one a pass over six parcels. The smallest working capacity is 6.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: You are handed a sorted stream of numbers that you can read by position (item(0), item(1), ...) but whose length is unknown and effectively endless; reading past the end returns infinity. Find where a target x sits, using a number of reads that is O(log p), where p is the position of x. Explain why this is possible although you cannot start with a known hi.
+  sol: |
+    Use **exponential search**: first find a range that must contain the target, by doubling, then binary-search inside it.
+
+    1. Set `hi = 1`. While `item(hi) < x`, set `hi *= 2`. This takes about $\log_2 p$ doublings, because the loop stops at the first power of two at or beyond $p$, which is less than $2p$.
+    2. The target is now in the range [hi/2, hi]. Run a normal lower-bound binary search there. The range has at most $p$ positions (hi is under $2p$, so hi/2 under $p$ and the width under $p$ again), so it needs about $\log_2 p$ reads.
+
+    Total about $2\log_2 p$ reads, which is O(log p), independent of how long the stream is. The invariant of the second phase is the usual one; the first phase ensures it is true at the start ("item(hi) is at least x, and item(hi/2) is below x"). This is the same idea as how a growing dynamic array doubles: grow geometrically until you pass the target.
+  check: none

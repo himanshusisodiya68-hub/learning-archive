@@ -1,0 +1,104 @@
+# Virtual memory. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A system uses 4096-byte pages. A program reads virtual address 20000. What is the offset of that byte inside its page?
+  ask: Offset
+  unit: bytes
+  ans: 3616
+  tol: 0.1
+  verify: 20000 % 4096
+  sol: The offset is the remainder of the address divided by the page size. $20000 = 4 \times 4096 + 3616$, so the byte is in page 4 at offset 3616.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which statement best describes what virtual memory gives each program?
+  opts: ["A private set of addresses that the system translates to real memory", "A faster copy of the hard disk", "A guarantee that its data is never written to disk"]
+  ans: 0
+  sol: Each program sees its own address space starting from zero. The MMU and the OS translate those virtual addresses to physical frames (or disk) on every access. This provides isolation, a uniform layout and room to exceed RAM. It says nothing about speed of disk and does not prevent swapping.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A 32-bit address space uses 4 KiB pages. How many pages does it contain?
+  ask: Pages
+  unit: ""
+  ans: 1048576
+  tol: 0.5
+  verify: pow(2,32)/pow(2,12)
+  sol: $2^{32}$ bytes divided by $2^{12}$ bytes per page is $2^{20} = 1{,}048{,}576$ pages. With 4 bytes per table entry, a flat page table for one process is 4 MiB.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: "A machine has a TLB lookup time of 1 ns, a memory access time of 100 ns, a 4-level page table, and a TLB hit rate of 99%. On a hit the cost is one TLB lookup plus one memory read. On a miss it is a TLB lookup, then 4 memory reads to walk the table, then one memory read for the data. What is the average access time?"
+  ask: Average access time
+  unit: ns
+  ans: 105
+  tol: 0.1
+  verify: 0.99*(1+100) + 0.01*(1+4*100+100)
+  sol: |
+    - Hit: $1 + 100 = 101$ ns.
+    - Miss: $1 + 4 \times 100 + 100 = 501$ ns.
+    - Average: $0.99 \times 101 + 0.01 \times 501 = 99.99 + 5.01 = 105$ ns.
+
+    Only 5% slower than a raw memory read, because misses are rare.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: In a C program you print the address of a local variable and get the same value every time you run two copies of the program side by side. Do the two copies share that variable? Explain what the printed number is.
+  sol: |
+    No. The printed number is a **virtual address**, an entry in that process's private address list. Each process has its own page table, so the same virtual address in the two copies is translated to different physical frames. Writing to the variable in one copy does not change the other.
+
+    The same effect explains why you cannot pass a pointer from one process to another and expect it to work. (Real systems may randomise the layout between runs for security, in which case the numbers would differ, but the point stands.) Threads of one process, in contrast, share the page table and therefore share variables.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A Linux server with 16 GB of RAM runs a program that successfully allocates 64 GB, then runs happily for an hour, then is killed with "Out of memory". Explain both halves of this story.
+  sol: |
+    **Success at allocation.** Allocating only reserves addresses in the program's virtual map. With overcommit, the OS allows the total of such promises to exceed RAM plus swap, betting that most pages will never be touched. [Unverified: exact default policy differs by system and settings.] No frames are assigned until a page is first used.
+
+    **The kill.** As the program touches more pages, the OS must assign real frames. When RAM and swap are exhausted and nothing can be evicted, the kernel's OOM killer picks a process, often the one using the most memory, and kills it.
+
+    **Lessons.** A successful allocation is not a guarantee. Monitor resident memory, not virtual size, and set memory limits so failures are predictable.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A RAM access takes 100 ns. A page fault that must read from disk costs 8 ms (8,000,000 ns) in total. If the fraction of accesses that fault is p, the average access time is (1 - p) * 100 + p * 8,000,000 ns. For the program to run at most 10% slower than with no faults (average at most 110 ns), what is the largest allowed p, expressed as faults per million accesses?"
+  ask: Faults per million accesses
+  unit: ""
+  ans: 1.25
+  tol: 0.01
+  verify: 10/(8e6-100)*1e6
+  sol: |
+    Set $(1-p)\cdot 100 + p \cdot 8\times10^6 = 110$. That gives $100 + p(8\times10^6 - 100) = 110$, so $p = 10/(8\times10^6 - 100) \approx 1.25\times10^{-6}$.
+
+    That is about 1.25 faults per million accesses, roughly one fault in 800,000. Disk faults must be extraordinarily rare, which is why a working set that does not fit in RAM (thrashing) is catastrophic.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Design question. A database engine's data file is 200 GB and the server has 64 GB of RAM. The team debates two options: (a) memory-map the file and let the OS page it, or (b) build their own buffer pool that reads and writes pages explicitly. Compare them on eviction control, crash safety, performance with many threads, and simplicity. Which would you choose for a transactional database?"
+  sol: |
+    **(a) mmap.** Simplest: the file looks like memory, the OS caches it and handles faults, and there is no copy between page cache and a user buffer. But:
+    - *Eviction control*: the OS decides what to evict, using general heuristics. The database knows better (for example a scan should not flush hot index pages).
+    - *Crash safety*: the OS may write a dirty page to disk at any time, possibly before the matching log record is safe. Write-ahead logging needs the log to reach disk first, which mmap makes hard to guarantee.
+    - *Concurrency*: page faults block the faulting thread, with no chance for the engine to schedule other work, and page-table updates on eviction can stall all threads (TLB shootdowns across cores).
+    - *Errors*: an I/O error arrives as a signal, not a return code.
+
+    **(b) Own buffer pool.** More code and a double-caching risk (the OS page cache plus the pool, avoidable with direct I/O), but the engine controls eviction policy, flush order, prefetching and error handling.
+
+    **Choice.** For a transactional database where durability and predictable latency matter, option (b). Option (a) can be reasonable for read-mostly, mostly-in-memory or embedded stores where simplicity wins. [Inference: this reflects a common view among database engineers; the trade-offs are debated, and the details above come from memory, not a checked source.]
+  check: none

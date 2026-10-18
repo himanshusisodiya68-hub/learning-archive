@@ -1,0 +1,107 @@
+# Divide and conquer. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A million photos are halved repeatedly until every pile holds a single photo. How many rounds of halving does that take at most?
+  ask: Rounds
+  unit: ""
+  ans: 20
+  tol: 0.1
+  verify: ceil(log2(1e6))
+  sol: Each round halves the pile, so we need the smallest $k$ with $2^k \ge 10^6$. Since $2^{19} = 524{,}288$ and $2^{20} = 1{,}048{,}576$, we need $k = 20$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: In merge sort, which step does the real sorting work?
+  opts: ["Splitting the list at the middle", "Merging two sorted halves", "Checking whether the list has one item"]
+  ans: 1
+  sol: Splitting just computes a middle index, and the base case is a length check. The merge is where items are compared and placed in order, and it is the step that costs about $n$ per level.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Two sorted lists have 5 and 7 items, all different. At most how many comparisons does the merge step need to combine them into one sorted list?
+  ask: Comparisons
+  unit: ""
+  ans: 11
+  tol: 0.1
+  verify: 5+7-1
+  sol: Each comparison places one item in its final position. The worst case is when the lists interleave so that neither runs out until the very end. Once 11 items are placed, only one item is left and it needs no comparison, so the worst case is $5 + 7 - 1 = 11$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: "A fast-power function stops at n = 1 and returns x. For larger n it calls itself once on n // 2, squares the result, and multiplies by one extra x when n is odd. Counting only those multiplications (the squaring and the extra x), how many does computing x^1000 take?"
+  ask: Multiplications
+  unit: ""
+  ans: 14
+  tol: 0.1
+  verify: 9+5
+  sol: |
+    The exponents visited are 1000, 500, 250, 125, 62, 31, 15, 7, 3, 1. The calls with $n \ge 2$ each do one squaring: 1000, 500, 250, 125, 62, 31, 15, 7, 3, which is 9 squarings. Of those, the odd exponents are 125, 31, 15, 7 and 3, which is 5 extra multiplications by $x$. The total is $9 + 5 = 14$, against 999 for repeated multiplication.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Count the inversions in a list, meaning pairs of positions $i<j$ with $a_i>a_j$. A brute-force check of all pairs is O(n²). Describe an O(n log n) method.
+  sol: |
+    Use merge sort and count while merging. Split the list into a left half and a right half, and recursively sort each half and count its inversions. Then merge. Whenever the next item taken is from the **right** half, it is smaller than every item still waiting in the left half, so it forms an inversion with each of them. Add the number of items left in the left half.
+    Total inversions = left inversions + right inversions + crossing inversions counted in the merge.
+    ```python
+    def count(xs):
+        if len(xs) <= 1:
+            return xs, 0
+        mid = len(xs) // 2
+        left, a = count(xs[:mid])
+        right, b = count(xs[mid:])
+        out, i, j, c = [], 0, 0, 0
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                out.append(left[i]); i += 1
+            else:
+                out.append(right[j]); j += 1
+                c += len(left) - i
+        return out + left[i:] + right[j:], a + b + c
+    ```
+    Each level is a merge pass of about $n$ steps and there are $\log_2 n$ levels, so the cost is $O(n\log n)$.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Given a list of positive and negative numbers, find the largest sum of any run of consecutive items. Solve it by divide and conquer and give the recurrence.
+  sol: |
+    The best run lies in one of three places: entirely in the left half, entirely in the right half, or crossing the middle.
+    The first two are the same problem on half the size. For the crossing case, the run must include the last item of the left half and the first item of the right half. The best crossing run is therefore (the best sum ending at the middle, going leftwards) plus (the best sum starting just after the middle, going rightwards). Each is found with one scan of at most $n/2$ items, so the combine step costs $O(n)$.
+    The answer is the largest of the three values. The recurrence is $T(n) = 2T(n/2) + n$, so the cost is $O(n\log n)$.
+    A single left-to-right scan that keeps the best sum ending at the current item solves this in $O(n)$. Divide and conquer is not always the best method, but the same crossing-case idea is useful for harder problems where no scan exists.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "Multiplying two 1024-digit numbers with a Karatsuba-style method uses T(n) = 3T(n/2) single-digit multiplications for sizes n above 1, with T(1) = 1. How many single-digit multiplications is that for n = 1024? (The school method needs 1024 × 1024 = 1,048,576.)"
+  ask: Multiplications
+  unit: ""
+  ans: 59049
+  tol: 0.5
+  verify: pow(3,10)
+  sol: |
+    Halving 1024 down to 1 takes 10 steps ($2^{10} = 1024$). Each step triples the number of jobs, so at the bottom there are $3^{10} = 59{,}049$ single-digit multiplications. That is about 18 times fewer than $1024^2 = 1{,}048{,}576$. In general the count is $3^{\log_2 n} = n^{\log_2 3} \approx n^{1.585}$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: In the closest-pair method, d is the smallest distance found inside the left half or inside the right half. Points in the strip within d of the dividing line are sorted by y. Why is it enough to compare each strip point with only the next few points in that order? Give a packing argument.
+  sol: |
+    Take a strip point $p$ and look at the box that extends $d$ above it and has width $2d$ (the strip, $d$ on each side of the line), so the box is $2d$ wide and $d$ tall. Any point that could be closer than $d$ to $p$ and lies above it must sit in this box.
+    Cut the box into 8 small squares of side $d/2$. The diagonal of such a square is $d/\sqrt 2 \approx 0.71d$, which is less than $d$. Two points in the same small square would then be closer than $d$. But the left half has no two points closer than $d$ and neither does the right half, and each small square lies completely in one half, so each small square holds at most one point.
+    So the box holds at most 8 points, including $p$. Since the points are sorted by y, only about the next 7 can lie in $p$'s box. Each strip point needs a constant number of comparisons, so the combine step is $O(n)$ after one sort by y. The total is $O(n\log n)$. (Tighter packing arguments reduce 7 to a smaller constant. [Unverified])
+  check: none

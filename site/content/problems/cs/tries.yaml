@@ -1,0 +1,143 @@
+# Tries. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "Words are inserted into an empty trie in this order: tea, ten, to, inn. Not counting the top node, how many nodes does the trie have?"
+  ask: Nodes
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: 3 + 1 + 1 + 3
+  sol: "Insert tea: three new nodes (t, e, a). Insert ten: it shares t and e, so only n is new (1). Insert to: it shares t, so only o is new (1). Insert inn: nothing is shared, so three new nodes (i, n, n). Total $3 + 1 + 1 + 3 = 8$. Storing the words separately would have used $3 + 3 + 2 + 3 = 11$ letters, so sharing saved 3."
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which question is a trie good at, and a plain hash table bad at?
+  opts: ["Is 'cricket' a stored word?", "Which stored words start with 'cric'?", "How many words are stored in total?"]
+  ans: 1
+  sol: A hash table scatters words by their whole value, so words that share a beginning end up in unrelated places. A trie keeps them together under the node for the shared prefix, so "start with" is a walk to that node and a read of what hangs below. The first and third questions are easy for a hash table.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A trie node stores its children as an array with a slot for each of the 26 letters, and each slot is a pointer of 8 bytes. A trie with one million nodes uses how many megabytes for the child slots alone? (Take 1 MB = 1,000,000 bytes.)
+  ask: Memory
+  unit: MB
+  ans: 208
+  tol: 0.5
+  verify: 26 * 8 * 1e6 / 1e6
+  sol: Each node has $26 \times 8 = 208$ bytes of slots. For $10^6$ nodes that is $208 \times 10^6$ bytes, which is 208 MB. Most of those slots are empty in a real trie, which is why compressed tries and sparse child storage are used.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Extend the trie so that count_prefix(p) tells how many stored words start with p, in O(len(p)) time. What do you store, and how do insert and the query change?
+  sol: |
+    Store an integer `count` in each node: the number of inserted words that pass through that node (including words that end there). In `insert`, add 1 to `count` at every node you step onto. The query walks to the node for `p` and returns its count, or 0 if the path does not exist.
+    ```python
+    class Node:
+        def __init__(self):
+            self.kids, self.end, self.count = {}, False, 0
+
+    def insert(root, word):
+        node = root
+        for ch in word:
+            node = node.kids.setdefault(ch, Node())
+            node.count += 1
+        node.end = True
+
+    def count_prefix(root, p):
+        node = root
+        for ch in p:
+            node = node.kids.get(ch)
+            if node is None:
+                return 0
+        return node.count
+    ```
+    Insert is still $O(m)$ and the query is $O(\text{len}(p))$. Note that this counts repeated inserts of the same word each time; if duplicates must count once, check `end` before incrementing.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A search box must suggest the 3 most popular saved phrases for whatever the user has typed so far. There are 10 million phrases, each with a popularity score. Describe a design based on a trie and say what each key press costs.
+  sol: |
+    Build a trie of all phrases, with the popularity score stored at each phrase's end node. At **every node** also store a small list of the **3 best phrases in its subtree** (phrase and score). Build it once offline: after inserting everything, process the nodes from the bottom up, and each node keeps the best 3 out of its own phrase (if any) and its children's lists (a tiny merge, at most about $3 \times$ the number of children items).
+
+    On each key press, move from the current node to its child for the new letter: that is **one step**, $O(1)$, and the 3 suggestions are already stored in that node, so there is no need to walk below it. The whole box costs $O(m)$ over a phrase of $m$ letters, and one step per key press.
+
+    **Cost of this design:** extra memory (3 entries per node) and the need to rebuild when popularity changes. A common approach is to rebuild the structure periodically (say daily), and handle brand-new trending phrases with a small separate structure checked alongside it. [Inference: this is a typical design; real products' internals are not public.] An alternative with no stored lists is to walk the subtree and keep the best 3 with a min-heap of size 3, which costs time proportional to the subtree size and is too slow for short prefixes like "a".
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A dictionary supports two operations, add(word) and search(pattern), where in a pattern the character "." matches any single letter (so "b.t" matches "bat" and "bit" but not "boat"). Show how to search a trie for such a pattern and discuss the cost.
+  sol: |
+    Walk the pattern one character at a time. For an ordinary letter follow that one child, as before. For a "." you do not know the letter, so **try every child** and succeed if any branch succeeds (recursion). At the end of the pattern, succeed only if the node's end flag is set.
+    ```python
+    def search(node, pattern):
+        if not pattern:
+            return node.end
+        ch, rest = pattern[0], pattern[1:]
+        if ch == ".":
+            return any(search(c, rest) for c in node.kids.values())
+        child = node.kids.get(ch)
+        return child is not None and search(child, rest)
+    ```
+    With no dots the cost is $O(m)$ for a pattern of length $m$. Each dot multiplies the work by the number of children at that level, so the worst case is bounded by the number of nodes in the trie (up to $26^{\text{dots}}$ branches, but never more than the nodes that exist). In practice dots near the end are cheap and dots near the start are costly, because the early levels have the most branching.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Given a list of whole numbers, find the largest value of a XOR b over all pairs a, b in the list. Explain how a trie over the bits of the numbers gives an O(n × B) solution for B-bit numbers, and trace it on [6, 9, 14, 1] using 4 bits.
+  sol: |
+    **Idea.** XOR is 1 at a bit exactly when the two bits differ, and a higher bit is worth more than all lower bits together. So to make a XOR b large, we want b to differ from a at the **highest** bit possible, then at the next one, and so on: a greedy choice, bit by bit from the top.
+
+    **Trie.** Insert every number as a path of $B$ bits (top bit first), so each node has at most 2 children (0 or 1). For each number $a$, walk the trie from the top: at each bit, if the child with the **opposite** bit exists, go there (that bit of the XOR is 1); otherwise follow the same bit (that bit is 0). The path you end on is the best partner for $a$, and the XOR you built along the way is the best value for $a$. Take the maximum over all $a$.
+    ```python
+    def max_xor(nums, B):
+        root = {}
+        for x in nums:
+            node = root
+            for i in range(B - 1, -1, -1):
+                node = node.setdefault((x >> i) & 1, {})
+        best = 0
+        for x in nums:
+            node, cur = root, 0
+            for i in range(B - 1, -1, -1):
+                bit = (x >> i) & 1
+                if 1 - bit in node:
+                    cur |= 1 << i
+                    node = node[1 - bit]
+                else:
+                    node = node[bit]
+            best = max(best, cur)
+        return best
+    ```
+    **Cost.** Each number is inserted once and queried once, $B$ steps each: $O(nB)$ time, against $O(n^2)$ for checking all pairs. Memory is at most $nB$ nodes.
+
+    **Trace** for 6 = 0110, 9 = 1001, 14 = 1110, 1 = 0001. For $a = 6$ (0110): the top bit is 0, and a child with bit 1 exists (9 and 14), so XOR bit = 1 and we go to the 1-branch. Next bit of 6 is 1: among the numbers that start with 1 (1001 and 1110), a 0 exists next (1001), so go there, XOR bit = 1. Next bit of 6 is 1: after 10 the only continuation is 0 (1001), so XOR bit = 1. Last bit of 6 is 0: the only continuation is 1, XOR bit = 1. Result 1111 = 15, which is 6 XOR 9. No XOR of 4-bit numbers can exceed 15, so the answer is 15.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Your company wants autocomplete for a product catalogue of 500 million phrases, serving 50,000 requests per second with replies in a few milliseconds, and the popularity scores change every hour. A single trie does not fit on one machine. Describe a design, say what is stored where, and how you would handle updates and hot prefixes.
+  sol: |
+    **Estimate first.** Even with compression, 500 million phrases of about 20 letters give billions of letters; a plain pointer-based trie at a few hundred bytes per node would need many hundreds of gigabytes. So the structure must be compressed (radix tree or an automaton), stored in compact arrays rather than objects, and **partitioned**.
+
+    **Partitioning.** Split by the first one or two letters of the prefix (or by ranges of the sorted phrase list), so that a request goes to the single shard that owns its prefix. Raw letters are uneven (many more phrases start with "s" than with "x"), so choose the ranges by measured size, not alphabetically. Short prefixes ("a") are the hot ones, so also **precompute and cache** the top suggestions for every prefix of up to 2 or 3 letters in memory at the front end; the long tail of longer prefixes goes to the shards.
+
+    **Serving.** Each shard keeps its compressed trie in memory with, at each node, the top few suggestions (as in the single-machine design), so a request is a short walk and a read. Replicate each shard on several machines for load and failures; a load balancer picks any replica. [Inference: this is a typical design, not any company's documented one.]
+
+    **Hourly updates.** Build a **new** immutable trie for each shard offline from the latest scores, ship it to the replicas, and switch over atomically (build next to the old one, then swap the pointer), so readers never see a half-built tree. Deploy it replica by replica so capacity never drops. Very new items between builds can be held in a small in-memory delta structure that is merged into replies.
+
+    **Trade-offs to mention.** Freshness against build cost; memory against latency (stored top lists make reads trivial but multiply memory); typo tolerance (a plain trie does not forgive "banan"; fuzzy matching needs extra structures and costs more); and personalisation (mix the global top list with a per-user list at the front end).
+  check: none

@@ -1,0 +1,96 @@
+# Processes and threads. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Two threads belong to the same process. Which of these do they share?
+  opts: ["Their heap memory (the process's data)", "Their call stacks", "Their saved registers"]
+  ans: 0
+  sol: Threads of one process share the same address space, so they see the same heap variables and open files. Each thread keeps its own stack (the calls it is in the middle of) and its own registers, otherwise they would overwrite each other's progress.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A phone has 4 cores and 12 CPU-hungry threads that are all ready to run. If the OS shares the cores fairly, how many cores' worth of CPU does each thread get on average?
+  ask: Share per thread
+  unit: cores
+  ans: 0.333
+  tol: 0.01
+  verify: 4/12
+  sol: There are 4 cores of capacity to split among 12 threads, so each gets $4/12 = 1/3$ of a core. Each thread runs about a third of the time, taking turns.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A scheduler gives each thread a 10 ms slice and a context switch takes 20 µs. What percentage of CPU time is lost to switching? (Switch time divided by slice plus switch.)
+  ask: Overhead
+  unit: "%"
+  ans: 0.2
+  tol: 0.01
+  verify: 20e-6/(10e-3+20e-6)*100
+  sol: In seconds, the switch is $20\times10^{-6}$ and the slice is $10\times10^{-3}$. The overhead is $\frac{20\times10^{-6}}{10\times10^{-3}+20\times10^{-6}} \approx 0.00200$, which is about $0.2\%$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A Python program calls os.fork() twice in a row, with no if-statements, so every process runs both calls. Counting the original, how many processes exist after both calls?
+  ask: Processes
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: 2**2
+  sol: The first fork turns 1 process into 2. The second fork is executed by both of them, turning 2 into 4. In general $n$ unconditional forks give $2^n$ processes.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A browser vendor is deciding between running each tab as a thread inside one big process, or as its own process. Give two advantages of each and say which you would choose and why.
+  sol: |
+    **Threads in one process.** (1) Cheaper: less memory per tab, faster to create. (2) Tabs can share data (caches, fonts) directly, with no copying between processes.
+
+    **One process per tab.** (1) Isolation: a crash or memory corruption in one page cannot take down other tabs. (2) Security: pages from different sites cannot read each other's memory, which blocks whole classes of attacks.
+
+    **Choice.** For a browser running untrusted code from the internet, I would choose a process per tab (or per site), accepting more memory use, and share what is safe through controlled channels. Threads suit a program whose parts trust each other.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A web server starts one thread per connection. Each thread reserves about 1 MB of stack. How many GB of stack is reserved for 10,000 simultaneous connections? (Use 1 GB = 1000 MB.)
+  ask: Memory
+  unit: GB
+  ans: 10
+  tol: 0.1
+  verify: 10000*1/1000
+  sol: |
+    $10{,}000 \times 1\text{ MB} = 10{,}000\text{ MB} = 10\text{ GB}$ of address space. Most of it may never be touched, so the real memory used can be lower [Unverified: depends on the OS], but the scheduler must still track and switch among 10,000 threads. A thread pool with a few dozen workers, or an event loop that serves many connections from one thread, avoids this cost. The assumed 1 MB is a modelling choice; real defaults vary.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: You type `ls > out.txt` into a shell. Describe in steps what the shell and the kernel do, naming the system calls (fork, exec, wait, open and so on) and explaining why fork and exec are separate steps.
+  sol: |
+    1. The shell reads the line and calls **fork**: now there are two shell processes.
+    2. In the **child**, before running anything else, the shell **opens** `out.txt` (creating or truncating it) and uses **dup2** to make the file the child's standard output (file descriptor 1).
+    3. The child calls **exec** with `ls`. The kernel replaces the child's code and memory with the `ls` program. File descriptors stay open across exec, so `ls` writes to descriptor 1 and, without knowing, writes into the file.
+    4. The parent shell calls **wait** and sleeps until the child exits, then prints the next prompt.
+
+    Because fork and exec are separate, there is a window where the child is still the shell's code but is about to become a new program. The shell uses that window to set up redirections and pipes. `ls` itself never needs to know about them. A single "spawn" call would need a parameter for every possible rearrangement. [Inference: describes the classic Unix design; some systems offer a combined spawn call for speed]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Hardest stretch. A database process using 10 GB of memory calls fork() to take a snapshot of itself in the child, and the parent keeps serving requests. Explain why fork can return in milliseconds rather than seconds, and what costs and risks appear afterwards.
+  sol: |
+    **Why it is fast.** fork does not copy the 10 GB. Using **copy-on-write**, the kernel copies only the page tables (the maps from addresses to memory pages), marks all pages read-only and lets parent and child share them. Copying page tables is far less data than copying memory, though it still grows with memory size.
+
+    **Afterwards.** Every time the parent writes to a shared page, the CPU faults and the kernel copies that one page (typically 4 KB) so the parent has its own. While the child is slowly saving the snapshot, the parent's writes keep forcing copies, and memory use grows toward as much as double the original if the whole dataset is modified. The first writes after the fork are slower (page faults), so latency spikes are possible.
+
+    **Risks.** A machine that was fine at 10 GB can run out of memory during a snapshot under a heavy write load. The page-table copy itself can pause the parent for a noticeable time on very large memories. Mitigations: schedule snapshots at quiet times, leave memory headroom, or snapshot a replica instead of the primary. [Inference: this is the general behaviour of copy-on-write fork; individual databases document their own details]
+  check: none

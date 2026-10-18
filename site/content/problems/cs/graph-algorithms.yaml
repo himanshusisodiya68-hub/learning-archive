@@ -1,0 +1,112 @@
+# Graph algorithms. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A friendship network has 6 people and 7 friendships. It is stored as an adjacency list, where each person has a list of their friends and a friendship appears in both people's lists. How many names are stored in all the lists together?
+  ask: Names stored
+  unit: ""
+  ans: 14
+  tol: 0.1
+  verify: 2*7
+  sol: Each friendship is an undirected edge, so it is written twice, once in each person's list. With $E = 7$ edges that gives $2E = 14$ entries. This is why BFS and DFS cost $O(V+E)$, not $O(V\times E)$, on an adjacency list.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A metro map where every hop between adjacent stations counts the same. Which method gives the fewest stops from one station to another?
+  opts: ["Breadth-first search", "Depth-first search", "Kruskal's algorithm"]
+  ans: 0
+  sol: BFS finishes places ring by ring, so the first time it reaches a station is by the fewest hops. DFS may find a long winding route first. Kruskal builds a cheapest network, which is a different question.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A town is laid out as a 4 by 4 grid of junctions (16 in all). You may move one junction up, down, left or right, and no road is blocked. What is the fewest moves from the top-left junction to the bottom-right junction?
+  ask: Moves
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: (function(){ const n=4; const d=Array.from({length:n},()=>Array(n).fill(-1)); d[0][0]=0; const q=[[0,0]]; while(q.length){ const [r,c]=q.shift(); for(const [dr,dc] of [[1,0],[-1,0],[0,1],[0,-1]]){ const a=r+dr,b=c+dc; if(a>=0&&b>=0&&a<n&&b<n&&d[a][b]<0){ d[a][b]=d[r][c]+1; q.push([a,b]); } } } return d[n-1][n-1]; })()
+  sol: Each move changes either the row or the column by one. You must go down 3 rows and right 3 columns, so at least $3+3 = 6$ moves, and any order of those moves works. BFS from the top-left corner labels the opposite corner with ring number 6.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Five villages A, B, C, D, E can be joined by these roads with costs (in lakh rupees) A-B 4, A-C 2, B-C 1, B-D 5, C-D 8, C-E 10, D-E 2. What is the lowest total cost of a set of roads that connects all five villages?
+  ask: Total cost
+  unit: lakh rupees
+  ans: 10
+  tol: 0.1
+  verify: (function(){ const e=[[4,0,1],[2,0,2],[1,1,2],[5,1,3],[8,2,3],[10,2,4],[2,3,4]].sort((x,y)=>x[0]-y[0]); const p=[0,1,2,3,4]; const f=x=>p[x]===x?x:(p[x]=f(p[x])); let t=0; for(const [w,u,v] of e){ const a=f(u),b=f(v); if(a!==b){ p[a]=b; t+=w; } } return t; })()
+  sol: |
+    Kruskal sorts the roads cheapest first: B-C 1, A-C 2, D-E 2, A-B 4, B-D 5, C-D 8, C-E 10.
+    - B-C (1): joins B and C. Take it.
+    - A-C (2): joins A to {B, C}. Take it.
+    - D-E (2): joins D and E. Take it.
+    - A-B (4): A and B are already connected through C. Skip, it would make a loop.
+    - B-D (5): joins {A, B, C} with {D, E}. Take it.
+    Four roads connect five villages, so we stop. Total $1+2+2+5 = 10$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A university gives you n courses and a list of prerequisite pairs "X must be taken before Y". Describe how to decide whether all courses can ever be completed, and what the running time is.
+  sol: |
+    Treat each course as a vertex and each pair as an arrow X to Y. All courses can be completed exactly when the graph has no cycle. Run Kahn's algorithm: count each course's unmet prerequisites (in-degree), queue those with zero, and repeatedly take one off the queue, decrement the counts of the courses it unlocks, and queue those that reach zero. If the number of courses taken equals n, an order exists. If some courses never reach zero, they wait on each other in a circle, so it is impossible. Each course and each pair is handled a constant number of times, so the cost is $O(V+E)$ with $V = n$ and $E$ the number of pairs.
+    ```python
+    def can_finish(n, pairs):
+        graph = {i: [] for i in range(n)}
+        indeg = [0] * n
+        for x, y in pairs:
+            graph[x].append(y)
+            indeg[y] += 1
+        q = [i for i in range(n) if indeg[i] == 0]
+        done = 0
+        while q:
+            u = q.pop()
+            done += 1
+            for v in graph[u]:
+                indeg[v] -= 1
+                if indeg[v] == 0:
+                    q.append(v)
+        return done == n
+    ```
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A social app receives a stream of "A and B are now friends" events, and must keep answering "are X and Y in the same friend circle?" after each event. n people, up to a million events. Which structure do you use, and why not rerun a BFS for every question?
+  sol: |
+    Use union-find. Each person starts in their own group. A friendship event calls `union(a, b)`, which merges the two groups, and the question calls `find(x) == find(y)`. With path compression and union by size each call costs almost constant time, so a million events cost roughly a million small steps.
+    Running BFS or DFS for every question costs $O(V+E)$ each, so a million questions on a network of a million people would be around $10^{12}$ steps, far too slow. Union-find is ideal here because friendships are only added, never removed. If friendships could be removed (unfriending), union-find cannot undo a merge cheaply, and a different technique is needed.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Give a graph with three places S, A and B, and one negative-cost road, on which Dijkstra's algorithm returns a wrong shortest distance to A. Say which algorithm you would use instead.
+  sol: |
+    Take roads S to A with cost 2, S to B with cost 5, and B to A with cost -4. The true cheapest cost to A is $5 + (-4) = 1$, going through B.
+    Dijkstra starts at S with 0, then finishes the nearest unfinished place, A at cost 2, and declares it final. It then finishes B at 5. Relaxing the road B to A would give 1, but A is already marked final and is never revisited in the textbook version, so the answer stays 2. The argument "any other route is at least as long" fails because a later road can reduce the total.
+    Use Bellman-Ford, which relaxes every road up to $V-1$ times and handles negative costs in about $O(VE)$ time. It also detects a negative cycle, where no cheapest path exists.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A navigation service holds a road graph with 50 million junctions and 120 million road segments, and must answer thousands of route queries per second across the whole country. Why is plain Dijkstra per query a poor fit, and what would you design instead?
+  sol: |
+    A rough estimate [Inference: order of magnitude only]: a cross-country query may settle a large share of 50 million junctions. At around a hundred nanoseconds to a microsecond per settled junction (heap operations and cache misses), that is on the order of several seconds per query on one core, and thousands of queries per second would need thousands of cores. Latency and cost both fail.
+    A design that fits:
+    1. **Preprocess offline.** Rank junctions by importance and build shortcut edges (a contraction-hierarchy style index) so a query touches a few hundred or thousand junctions. Rebuild periodically as the map changes.
+    2. **Search from both ends** with upward-only edges in the index, so the two searches meet at an important junction.
+    3. **Live traffic.** Costs change every minute, so keep the graph structure fixed and re-weight edges frequently; use an index scheme that can be re-customised quickly with new costs rather than rebuilt from scratch.
+    4. **Scale out.** Partition the map by region across machines, replicate the index for read throughput, and cache popular origin-destination pairs.
+    5. **Trade-off.** Precomputation buys speed at the price of memory and staleness; state which you can afford. What the real services use is not public. [Inference]
+  check: none

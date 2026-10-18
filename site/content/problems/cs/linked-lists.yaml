@@ -1,0 +1,111 @@
+# Linked lists. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A singly linked list has 1,000,000 nodes and you hold only the head. How many pointer hops does it take to reach node number 600,000 (the head is node number 1)?
+  ask: Hops
+  unit: ""
+  ans: 599999
+  tol: 0.1
+  verify: 600000 - 1
+  sol: Node 1 is the head and needs no hop. Each hop moves one node forward, so reaching node 600,000 takes $600000 - 1 = 599{,}999$ hops. This is why reading the k-th item of a linked list is O(k).
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: You hold a pointer to node X in a singly linked list. Which operation takes constant time, however long the list is?
+  opts: ["Inserting a new node right after X", "Reading the node 1,000 places before X", "Finding the last node of the list"]
+  ans: 0
+  sol: Inserting after X changes two pointers (new node to X's old next, X to the new node) and touches nothing else. Going backwards is impossible in a singly linked list, and finding the last node means walking the whole chain unless you keep a tail pointer.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A program stores 1,000,000 numbers in a singly linked list. Each node holds one 8-byte value and one 8-byte pointer, whereas an array stores just the 8-byte values. Ignoring any bookkeeping the memory manager adds, how many extra megabytes does the linked list need? (1 MB = 1,000,000 bytes)
+  ask: Extra memory
+  unit: MB
+  ans: 8
+  tol: 0.1
+  verify: 1e6 * 8 / 1e6
+  sol: |
+    The extra cost is one 8-byte pointer per node, so $10^6 \times 8 = 8\times10^6$ bytes = 8 MB. The real figure is higher because the memory manager keeps its own information for every separately allocated node. [Inference: the exact overhead depends on the system.]
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: To insert new_node after node in a singly linked list, which pair of lines in this order is correct?
+  opts: ["node.next = new_node, then new_node.next = node.next", "new_node.next = node.next, then node.next = new_node", "new_node.next = None, then node.next = new_node"]
+  ans: 1
+  sol: The new node must first take over node's old next, otherwise that address is lost. Option A overwrites node.next first, so the second line makes new_node point to itself and the rest of the list becomes unreachable. Option C cuts the rest of the list off. Option B keeps everything connected.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Reverse a singly linked list in place. Trace your method on the list 1 → 2 → 3 and give its time and memory cost.
+  sol: |
+    Keep `prev` (starts as None) and `head` (the current node). For each node, save its next, point it back at `prev`, and step both names forward.
+    ```python
+    def reverse(head):
+        prev = None
+        while head is not None:
+            nxt = head.next
+            head.next = prev
+            prev, head = head, nxt
+        return prev
+    ```
+    Trace: start prev = None, head = 1. Step 1: nxt = 2, 1 now points to None, prev = 1, head = 2. Step 2: nxt = 3, 2 points to 1, prev = 2, head = 3. Step 3: nxt = None, 3 points to 2, prev = 3, head = None. Return 3, giving 3 → 2 → 1 → None.
+
+    Each node is visited once: O(n) time. Only three names are used: O(1) extra memory. The essential point is saving `next` before overwriting it.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Given the head of a linked list, return its middle node (the second of the two middle nodes if the length is even) in one pass without counting the length first. Then explain how the same idea detects a loop.
+  sol: |
+    Use two pointers, slow moving 1 node per round and fast moving 2.
+    ```python
+    def middle(head):
+        slow = fast = head
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+    ```
+    When fast reaches the end it has covered the whole list while slow has covered half, so slow is at the middle. For 5 nodes slow ends on node 3; for 6 nodes it ends on node 4 (the second middle). One pass, O(n) time, O(1) memory.
+
+    For loop detection, if there is a cycle fast can never reach None; both pointers enter the loop and, inside it, fast gains one node per round on slow, so the gap shrinks by 1 each round until they are on the same node. If you ever see slow is fast, there is a loop. If fast reaches None, there is none.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Design a cache that holds at most k items and supports get(key) and put(key, value), where the least recently used item is discarded when the cache is full. Both operations must be O(1). Name the structures, describe what each is for, and walk through a get that finds its key.
+  sol: |
+    Use a **hash map** from key to a node, plus a **doubly linked list** of nodes ordered from most recently used (front) to least recently used (back). Each node stores its key and value.
+
+    - **Why both:** the map finds a node by key in O(1) but remembers no order; the doubly linked list keeps order and can unlink any node in O(1) once you hold it, but cannot find one fast.
+    - **get(key):** look up the node in the map (O(1)). If absent, report a miss. If present, unlink it (`node.prev.next = node.next`, `node.next.prev = node.prev`), re-link it at the front, and return its value.
+    - **put(key, value):** if the key exists, update the value and move the node to the front. Otherwise create a node and add it at the front and to the map. If the size now exceeds k, unlink the back node and delete its key from the map; the node stores its key precisely so this delete is possible.
+
+    A pair of sentinel (dummy) nodes at both ends removes special cases for empty and one-item lists. Every step is a constant number of pointer changes or map operations, so both operations are O(1). Real caches add locking for threads and expiry times; this sketch leaves them out.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Stretch question. A singly linked list has a loop. You run slow and fast pointers and they first meet at some node. Explain how to find the exact node where the loop begins, using O(1) extra memory, and justify why the method works.
+  sol: |
+    **Method.** After slow and fast first meet, put one pointer back at the head. Move both pointers one step at a time. The node where they meet is where the loop starts.
+
+    **Why.** Let $\mu$ be the number of steps from the head to the loop's first node and $\lambda$ the number of nodes in the loop. When slow and fast first meet, slow has walked $t$ steps and fast has walked $2t$. Both are inside the loop, so their difference, $t$, is a multiple of $\lambda$ (fast has gone round the loop a whole number of extra times).
+
+    Slow has walked $t$ steps in total. Now restart one pointer from the head; walk both $\mu$ steps. The restarted pointer arrives at the loop start after exactly $\mu$ steps. The old slow pointer is $t + \mu$ steps from the head along the path; since $t$ is a multiple of $\lambda$, being $t$ steps further just means going round the loop a whole number of times, so it is also at the loop start after $\mu$ more steps. They arrive together, and not earlier because the restarted pointer enters the loop exactly at that node for the first time.
+
+    Cost: O(n) time, O(1) memory. This is Floyd's tortoise-and-hare method; the name is attached by tradition [Unverified: who first described it].
+  check: none
