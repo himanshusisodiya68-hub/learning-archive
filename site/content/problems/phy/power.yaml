@@ -338,3 +338,88 @@
     The potential energy released per second is $\dfrac{mgh}{t} = 2000\times9.8\times30 = 5.88\times10^5$ W $= 588$ kW. At 70% efficiency,
     $$P = 0.70\times588 = 411.6\ \text{kW}.$$
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A car of mass 1200 kg has an engine that delivers a constant 60 kW to the wheels. The resistive force is $0.60\,v^2$ newtons, where $v$ is the speed in m/s. Find its acceleration when its speed is 20 m/s. (Original problem.)
+  ask: Acceleration at 20 m/s
+  unit: m/s²
+  ans: 2.3
+  tol: 0.01
+  verify: (60000/20-0.6*20**2)/1200
+  sol: |
+    The driving force at speed $v$ is $F = P/v = 60\,000/20 = 3000$ N. The resistive force is $0.60\times20^2 = 240$ N. By Newton's second law,
+    $$a = \frac{F - R}{m} = \frac{3000 - 240}{1200} = 2.3\ \text{m s}^{-2}.$$
+    The top speed is where $P/v = 0.60v^2$, that is $v_{\max} = (P/0.60)^{1/3} = 46\ \text{m s}^{-1}$; at 20 m/s the car is still accelerating hard.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A pump draws water from a well 20 m below ground and discharges it at ground level through a nozzle at a speed of 10 m/s, at the rate of 5.0 kg of water every second. Find the minimum power the pump must deliver to the water. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Minimum power delivered to the water
+  unit: W
+  ans: 1230
+  tol: 1
+  verify: 5*(9.8*20+0.5*10**2)
+  sol: |
+    Each second, 5.0 kg of water gains two kinds of energy. Potential energy: $mgh = 5.0\times9.8\times20 = 980$ J. Kinetic energy: $\tfrac12mv^2 = \tfrac12\times5.0\times10^2 = 250$ J.
+
+    Total energy per second:
+    $$P = 980 + 250 = 1230\ \text{W}.$$
+    Dropping the kinetic term would underestimate the power by 20%. This is the minimum, since friction in the pipe and the pump's own efficiency would add to the required input.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A 1000 kg car with an engine delivering 20 kW climbs a straight road of slope 1 in 20 (that is, $\sin\theta = 0.05$) at constant speed against a constant resistive force of 500 N. Find the speed. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Constant speed up the slope
+  unit: m/s
+  ans: 20.2
+  tol: 0.1
+  verify: 20000/(1000*9.8*0.05+500)
+  sol: |
+    At constant speed the driving force balances the component of weight along the slope plus the resistance:
+    $$F = mg\sin\theta + R = 1000\times9.8\times0.05 + 500 = 490 + 500 = 990\ \text{N}.$$
+    Then from $P = Fv$,
+    $$v = \frac{P}{F} = \frac{20\,000}{990} = 20.2\ \text{m s}^{-1}\ (\approx 73\ \text{km h}^{-1}).$$
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Sand falls vertically at a steady rate of 25 kg/s onto a horizontal conveyor belt that moves at a constant 2.0 m/s. (a) How much extra power must the motor supply to keep the belt at constant speed? (b) At what rate does the sand gain kinetic energy? (c) Where does the rest of the energy go, and does the answer depend on the roughness of the belt? Give the answer to (a). (Original problem.)
+  ask: Extra motor power
+  unit: W
+  ans: 100
+  tol: 0.1
+  verify: 25*2**2
+  sol: |
+    (a) In one second the belt gives 25 kg of sand a speed of 2.0 m/s, so the momentum given per second is $25\times2.0 = 50$ N. The belt needs an extra driving force of 50 N, and the power is $P = Fv = 50\times2.0 = 100$ W $= \mu v^2$.
+
+    (b) The sand's kinetic energy gain per second is $\tfrac12\mu v^2 = \tfrac12\times25\times2.0^2 = 50$ W.
+
+    (c) The other 50 W is dissipated as heat by friction while each grain slips on the belt before it reaches the belt's speed. The result is independent of the roughness: a rougher belt brings the grains up to speed over a shorter slipping distance but with a larger friction force, and the product (force times slipping distance) is always $\tfrac12\Delta m\,v^2$ per unit of sand.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |
+    A truck of mass 5000 kg starts from rest and its engine delivers a constant power of 100 kW. Ignoring all resistance, find its speed after it has travelled 120 m. (Hint: write $P = Fv = mv^2\,dv/dx$.) (Original problem.)
+  ask: Speed after 120 m
+  unit: m/s
+  ans: 19.3
+  tol: 0.05
+  verify: pow(3*100000*120/5000,1/3)
+  sol: |
+    Constant power means $F = P/v$. Express the acceleration through position, $a = v\,dv/dx$, so $F = ma$ gives
+    $$\frac{P}{v} = mv\frac{dv}{dx}\ \Rightarrow\ mv^2\,dv = P\,dx.$$
+    Integrate from rest at $x = 0$:
+    $$\tfrac13mv^3 = Px\ \Rightarrow\ v = \left(\frac{3Px}{m}\right)^{1/3}.$$
+    With $P = 1.0\times10^5$ W, $x = 120$ m and $m = 5000$ kg,
+    $$v = \left(\frac{3\times10^5\times120}{5000}\right)^{1/3} = (7200)^{1/3} = 19.3\ \text{m s}^{-1}.$$
+    Check against the time form: $x = \tfrac23vt$ gives $t = 3x/(2v) = 9.3$ s, and $\tfrac12mv^2 = Pt$ gives $v^2 = 2Pt/m = 372$, $v = 19.3$ m/s, as above.
+  check: code

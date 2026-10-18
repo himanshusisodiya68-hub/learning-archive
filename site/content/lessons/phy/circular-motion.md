@@ -1,7 +1,7 @@
 ---
 title: Circular motion
 summary: 'Why a car turning at steady speed is still accelerating, and the simple rule that gives that hidden acceleration.'
-ncert: ["Class 11 Physics · Ch 3 Motion in a Plane (§3.10 Uniform circular motion)"]
+ncert: ["Class 11 Physics · Ch 3 Motion in a Plane (§3.10 Uniform circular motion)", "Class 9 Science · Ch 4 Describing Motion Around Us (§4.4.1 Uniform circular motion)"]
 up_to: Olympiad
 builds_on: [Speed, velocity, acceleration, Vectors in motion, Differentiation of sin and cos]
 notes_prompt: Explain, with the triangle of velocity vectors, why a body moving round a circle at constant speed has an acceleration, why it points to the centre, and why its size is v²/R.
@@ -47,14 +47,69 @@ outcomes:
   - 'Derive the centripetal acceleration from the velocity triangle and from r(t) = R(cos ωt, sin ωt)'
   - 'Split the acceleration in non-uniform circular motion into tangential and radial parts, and use the constant-α equations'
   - 'Find the radius of curvature of any path from v and a, and use acceleration in polar coordinates'
+opener:
+  story: |
+    Picture your car on a roundabout. The speedometer needle is frozen at 36 km/h: you are not pressing the accelerator or the brake, and the number never moves. Yet your body leans against the door, and the phone on the dashboard slides across to one side. Something is pushing things around, and the speedometer cannot see it.
+
+    Physics has a name for that hidden something: **acceleration**. We usually think of it as "getting faster", but its real meaning is wider: any change of velocity at all. And a velocity is not just a number. It also says which way you are heading.
+
+    Here is a fact to try at a party. The Earth goes round the Sun at nearly the same speed all year, about 30 km/s, and never really speeds up or slows down. Yet it is accelerating towards the Sun every single second, at about 6 mm/s². How can something at constant speed be accelerating, and where does that acceleration point?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Car on a roundabout at constant speed, with velocity along the track and acceleration towards the centre"><circle cx="140" cy="140" r="74" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--c);stroke-width:2"/><circle cx="140" cy="140" r="4" style="fill:var(--ink)"/><rect x="204" y="130" width="22" height="20" rx="5" style="fill:var(--chem)"/><path d="M215 130 L215 84" style="stroke:var(--ink);stroke-width:3;fill:none"/><path d="M215 84 L209 94 M215 84 L221 94" style="stroke:var(--ink);stroke-width:3;fill:none"/><path d="M202 140 L152 140" style="stroke:var(--c);stroke-width:3;stroke-dasharray:6 4;fill:none"/><path d="M152 140 L162 134 M152 140 L162 146" style="stroke:var(--c);stroke-width:3;fill:none"/><text x="222" y="100" style="font-size:11px;fill:var(--ink)">velocity</text><text x="156" y="160" style="font-size:11px;fill:var(--c)">acceleration</text><text x="146" y="134" style="font-size:11px;fill:var(--muted)">centre</text><circle cx="262" cy="52" r="36" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M262 52 L282 30" style="stroke:var(--chem);stroke-width:3;fill:none"/><circle cx="262" cy="52" r="3" style="fill:var(--ink)"/><text x="244" y="82" style="font-size:11px;fill:var(--muted)">36 km/h</text><text x="228" y="102" style="font-size:11px;fill:var(--muted)">needle frozen</text><text x="30" y="232" style="font-size:11px;fill:var(--muted)">constant speed, turning velocity: accelerating</text></svg>'
+symbols:
+  - s: 'v'
+    means: 'speed along the circle (m/s)'
+  - s: 'R'
+    means: 'radius of the circle (m)'
+  - s: '\theta'
+    means: 'angle the radius has turned through, in radians (rad)'
+  - s: '\omega'
+    means: 'angular speed: how fast the angle grows (rad/s)'
+  - s: 'T'
+    means: 'period: time for one full turn (s)'
+  - s: '\nu'
+    means: 'frequency: turns per second (Hz)'
+  - s: 'a_c'
+    means: 'centripetal acceleration, towards the centre (m/s^2)'
+  - s: 'a_t'
+    means: 'tangential acceleration, along the path: the rate the speed changes (m/s^2)'
+  - s: '\alpha'
+    means: 'angular acceleration: how fast the angular speed changes (rad/s^2)'
+  - s: '\rho'
+    means: 'radius of curvature of a path at a point (m)'
+life:
+  - 'A car on a bend or roundabout at steady speed is still accelerating sideways, which is why you lean towards the outside of the turn.'
+  - 'The Earth circles the Sun and the Moon circles the Earth: at near-constant speed, with an acceleration towards the centre the whole time.'
+  - 'A spin dryer or a ceiling fan: every point turns at the same rate, yet points far from the centre move much faster than points near it.'
+  - 'Fighter pilots and roller-coaster riders feel several times their own weight in tight turns, because the sideways acceleration $v^2/R$ grows with the square of the speed.'
+  - 'A stone whirled on a string flies off along a straight tangent the moment the string breaks, like sparks from a grinding wheel.'
+models:
+  - name: 'Steady is not the same as unchanging'
+    text: 'A constant number can hide a changing direction. A company with steady sales growth may still be turning into a different business. Always ask not only how fast something is going but also which way.'
+  - name: 'Zoom in until the curve is straight'
+    text: 'Any smooth curve, seen close enough, is a tiny piece of a circle. The athlete on a polygon track with ever more sides becomes the athlete on a circle. Tiny steps added up is the idea behind calculus, compound interest and every trend line.'
+  - name: 'Same rate, different reach'
+    text: 'Everything on a turntable turns at the same rate, but the outside rim travels farther in the same time. When a group turns together, the ones at the edge have to move faster just to keep up: think of the outer lane on a running track.'
+links:
+  - leaf: 'phy/universal-law-of-gravitation'
+    name: 'Universal law of gravitation'
+    same: 'The Moon''s fall towards the Earth is exactly this centripetal acceleration, $v^2/R$. Newton checked gravity by comparing the Moon''s $v^2/R$ with the apple''s $g$.'
+    differs: 'Here we only describe the acceleration of a circle; gravity says what supplies it, and how it weakens with distance.'
+  - leaf: 'phy/lorentz-force-and-circular-motion'
+    name: 'Lorentz force and circular motion'
+    same: 'A charge in a magnetic field travels on a circle with the same $a = v^2/R$ and the same $\omega$, $T$ and $\nu$.'
+    differs: 'The magnetic force is always at right angles to the velocity, so the speed never changes: perfectly uniform circular motion, with a radius set by the charge, the mass and the field.'
+next:
+  q: 'Cut the string on a whirled stone and it flies off in a straight line. So what would the stone do if nothing at all acted on it: slow down, stop, or keep going for ever? And what does it take to turn it?'
+  leaf: 'phy/inertia-and-the-first-law'
+  name: 'Inertia and the first law'
 ---
 
 :::hook
-q: A car goes round a roundabout with its speedometer fixed at 36 km/h. Is the car accelerating?
+q: So what's your guess? The roundabout car holds a steady 36 km/h. Is it accelerating, and if so, which way?
 options: ["No: its speed is constant, so its acceleration is zero", "Yes, forward along its direction of motion", "Yes, toward the centre of the roundabout", "Yes, outward, away from the centre"]
 answer: 2
-right: Right. Velocity is a vector, and its direction keeps turning toward the centre. On a roundabout of radius 20 m the car's acceleration is (10 m/s)²/20 m = 5 m/s², half of g, all of it sideways.
-wrong: Speed is only the size of the velocity. Its direction keeps changing, so the velocity changes and the car accelerates. The change always points toward the centre, as this lesson shows.
+right: Right, and it surprises almost everyone. Speed is only the size of the velocity, and the direction keeps turning towards the centre. On a roundabout of radius 20 m, the car's acceleration is (10 m/s)²/20 m = 5 m/s², half of g, and all of it sideways. The Earth does the same round the Sun, at 6 mm/s².
+wrong: The speedometer reads only the size of the velocity. But the direction keeps changing, so the velocity changes, and any change of velocity is an acceleration. Which way does the change point? Towards the centre, as the lesson will show.
 :::
 
 ## Steady speed, changing velocity {lvl=1 id=s-ucm label="Class 9"}

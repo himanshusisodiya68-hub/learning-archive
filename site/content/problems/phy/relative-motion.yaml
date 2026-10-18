@@ -192,3 +192,90 @@
     $$d_{\min} = \frac{|\mathbf r\times\mathbf v_{BA}|}{|\mathbf v_{BA}|} = \frac{|0\cdot(-20) - 40\cdot(-15)|}{25} = \frac{600}{25} = 24\ \text{km}.$$
     This occurs at $t = -\dfrac{\mathbf r\cdot\mathbf v_{BA}}{|\mathbf v_{BA}|^2} = \dfrac{800}{625} = 1.28$ h. At that moment A is at $(19.2, 0)$ and B at $(0, 14.4)$, whose separation is $\sqrt{19.2^2 + 14.4^2} = 24$ km. Check.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: From the top of a 100 m tower two stones are thrown at the same instant from the same point. Stone P is thrown vertically upward at 25 m/s and stone Q is thrown horizontally at 20 m/s. Neglect air resistance and take g = 9.8 m/s². Find the distance between the stones 1.5 s after the throw. (Original problem.)
+  ask: Separation after 1.5 s
+  unit: m
+  ans: 48.0
+  tol: 0.1
+  verify: hypot(20,25)*1.5
+  sol: |
+    Both stones have the same acceleration $\mathbf g$, so the acceleration of P as seen from Q is $\mathbf g - \mathbf g = 0$. Their relative velocity is therefore constant and equal to its initial value, and the separation grows steadily.
+
+    Take $x$ horizontal and $y$ upward. Initially $\mathbf v_P = (0, 25)$ and $\mathbf v_Q = (20, 0)$, so
+    $$\mathbf v_{PQ} = \mathbf v_P - \mathbf v_Q = (-20, 25),\qquad |\mathbf v_{PQ}| = \sqrt{20^2 + 25^2} = 32.0\ \text{m/s}.$$
+    After 1.5 s the separation is $32.0 \times 1.5 = 48.0$ m.
+
+    Check by coordinates: P is at $(0,\ 25\times1.5 - 4.9\times1.5^2) = (0, 26.5)$ and Q at $(30,\ -11.0)$, whose separation is $\sqrt{30^2 + 37.5^2} = 48.0$ m. Both are still in the air (the tower is 100 m high), so the result holds.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: An aircraft with an airspeed of 300 km/h flies from town A to town B, 900 km due north of A, and back again. Compare two days. On day 1 a steady wind of 80 km/h blows from the west (a crosswind), and the pilot heads so as to fly exactly along the line AB each way. On day 2 the 80 km/h wind blows from the south, along the line AB. By how many minutes is the round trip longer on day 2 than on day 1? (Original problem.)
+  ask: Extra time on day 2
+  unit: minutes
+  ans: 14.0
+  tol: 0.1
+  verify: (900/380+900/220-1800/sqrt(300**2-80**2))*60
+  sol: |
+    **Day 1 (crosswind).** To fly due north the pilot points the nose upwind so that the sideways part of the airspeed cancels the wind: $300\sin\alpha = 80$. The ground speed is the rest, $\sqrt{300^2 - 80^2} = 289.1$ km/h, in both directions. Round trip: $1800/289.1 = 6.225$ h.
+
+    **Day 2 (wind along the track).** The wind blows north at 80 km/h, so the ground speed is $300 + 80 = 380$ km/h going north and $300 - 80 = 220$ km/h coming back. Round trip: $900/380 + 900/220 = 2.368 + 4.091 = 6.459$ h.
+
+    Difference: $6.459 - 6.225 = 0.234$ h $= 14.0$ minutes. A wind along the route always costs more time than the same wind across it, because the headwind slows the return more than the tailwind speeds the outward leg.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A lift accelerates upward at 1.2 m/s². When its speed is 3 m/s, a bolt falls off the ceiling, which is 2.5 m above the floor. Find the time the bolt takes to reach the floor. Take g = 9.8 m/s². (Original problem.)
+  ask: Time to reach the floor
+  unit: s
+  ans: 0.674
+  tol: 0.005
+  verify: sqrt(2*2.5/(9.8+1.2))
+  sol: |
+    Work in the lift's frame. At the instant the bolt comes off, it moves with the lift, so its velocity relative to the lift is zero. (The 3 m/s does not matter: it is common to both.)
+
+    Upward is positive. The bolt's acceleration is $-9.8$ m/s² and the lift's is $+1.2$ m/s², so the acceleration of the bolt relative to the lift is $-9.8 - 1.2 = -11.0$ m/s²: it falls towards the floor with relative acceleration 11.0 m/s².
+
+    Then $2.5 = \tfrac12 \times 11.0\times t^2$, so $t = \sqrt{5/11} = 0.674$ s.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A patrol boat P that can do 20 km/h in still water wants to intercept a ship S as soon as possible. At this instant S is 30 km due east of P and is sailing due north at 10 km/h. Find the least time to intercept (ignore any current). Also give the heading of P. (Original problem.)
+  ask: Least time to intercept
+  unit: h
+  ans: 1.732
+  tol: 0.005
+  verify: 30/sqrt(20**2-10**2)
+  sol: |
+    Let east and north be the axes. Initially S is at $\mathbf r_0 = (30, 0)$ km and moves with $\mathbf u = (0, 10)$ km/h. If P sails with velocity $\mathbf w$ and they meet after time $t$, then $\mathbf w t = \mathbf r_0 + \mathbf u t$, that is
+    $$\mathbf w = \frac{\mathbf r_0}{t} + \mathbf u = \left(\frac{30}{t},\ 10\right).$$
+    P's speed cannot exceed 20 km/h, so the length of $\mathbf w$ is at most 20, which means $30/t \le \sqrt{20^2 - 10^2}$. The earliest meeting uses full speed, $|\mathbf w| = 20$:
+    $$\left(\frac{30}{t}\right)^2 + 10^2 = 20^2\ \Rightarrow\ \frac{30}{t} = \sqrt{300} = 17.32,\qquad t = \frac{30}{17.32} = 1.732\ \text{h}.$$
+    Heading: $\mathbf w = (17.32, 10)$, so P sails at $\tan^{-1}(10/17.32) = 30^\circ$ north of east. Its northward 10 km/h exactly matches S's drift, and its eastward 17.32 km/h closes the 30 km gap. In S's frame, P sails straight along the line of sight. Check: after 1.732 h, S is at $(30, 17.32)$ km, and P, having sailed $17.32\times1.732 = 30$ km east and $10\times1.732 = 17.32$ km north, is at the same point.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A hunter aims his rifle directly at a monkey sitting on a branch 20 m above the level of the muzzle and 40 m away horizontally. The bullet leaves the muzzle at 100 m/s. At the instant of firing, the monkey lets go and falls freely. Find the time at which the bullet hits the monkey, and show that it hits whatever the muzzle speed (as long as the monkey has not reached the ground, which is at the level of the muzzle). Take g = 9.8 m/s². (Original problem.)
+  ask: Time at which the bullet hits the monkey
+  unit: s
+  ans: 0.447
+  tol: 0.003
+  verify: hypot(40,20)/100
+  sol: |
+    Use the monkey's frame. The monkey falls with acceleration $\mathbf g$, and so does the bullet, so the bullet's acceleration relative to the monkey is $\mathbf g - \mathbf g = 0$. The bullet's initial velocity relative to the monkey is just its muzzle velocity (the monkey is initially at rest), pointing along the line of sight from the muzzle to the monkey.
+
+    So in the monkey's frame the bullet moves in a straight line at constant speed 100 m/s along that line, and the monkey sits on it at distance $\sqrt{40^2 + 20^2} = 44.7$ m. It arrives after
+    $$t = \frac{44.7}{100} = 0.447\ \text{s}.$$
+    This does not depend on $g$, so the hit happens whatever the muzzle speed, provided the monkey is still above the ground, i.e. if the fall $\tfrac12 g t^2 = \tfrac12\times9.8\times0.447^2 = 0.98$ m is less than the 20 m height. Here it is, so the bullet hits the monkey at a height of $20 - 0.98 = 19.0$ m above the muzzle's level. (A slower bullet takes longer and falls farther before hitting; the condition is $\tfrac12 g t^2 < 20$, i.e. $t < 2.0$ s, or a muzzle speed above about 22 m/s.)
+  check: code
