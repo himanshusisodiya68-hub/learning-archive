@@ -1,6 +1,6 @@
 ---
 title: Designing a news feed
-summary: How an app builds your personal list of posts in a blink, and why it does the work when someone posts, not when you look.
+summary: 'How an app builds your personal post list in a blink, doing the work when friends post, not when you look.'
 ncert: []
 up_to: SDE-3
 builds_on: [Caching, Message queues and events, Partitioning (sharding), Hash tables]

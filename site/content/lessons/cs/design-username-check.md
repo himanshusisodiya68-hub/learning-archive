@@ -1,6 +1,6 @@
 ---
 title: Checking a username among a billion
-summary: How a sign-up page answers "taken?" in a blink for two billion names, and how it stops two people from winning the same name.
+summary: 'How a sign-up page answers "taken?" instantly among two billion names, and stops two people winning the same name.'
 ncert: []
 up_to: SDE-3
 builds_on: [Hash tables, Bloom filters, Partitioning (sharding), Caching]
