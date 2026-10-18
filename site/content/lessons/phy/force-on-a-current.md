@@ -1,6 +1,6 @@
 ---
 title: Force on a current-carrying conductor
-summary: 'Why a wire carrying current jumps sideways in a magnet''s field, the push behind every electric motor.'
+summary: 'Why a wire carrying current jumps sideways between magnet poles, the shove that spins every fan, mixer and metro motor.'
 ncert: ["Class 10 Science · Ch 12 Magnetic Effects of Electric Current (§12.3)", "Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.2)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Field lines and compasses, Vectors and the cross product, Newton's laws and friction]
@@ -46,14 +46,52 @@ outcomes:
   - 'Use $\vec F = I\,\vec l\times\vec B$ for a wire of any shape and show that a closed loop has zero net force'
   - 'Solve rod-on-rails, inclined-plane and hanging-wire equilibrium problems'
   - 'Use impulse $Blq$ for a current pulse and tension $T = BIR$ for a flexible current loop'
+opener:
+  story: |
+    Hang a loose aluminium rod between the two poles of a horseshoe magnet, so it can swing freely. Connect a battery, and the rod lurches out of the gap as if someone had flicked it. Reverse the battery and it lurches the other way. Turn the magnet over and it lurches the other way again.
+
+    Here is the odd part. The pole on one side is a north, the pole on the other a south, so you would expect the rod to be pulled towards one of them. It is not. It moves at a right angle to both the field and the wire, which is a direction nothing in daily life prepares you for.
+
+    The same shove spins your ceiling fan, your mixer-grinder and the motors of the metro train. So work it out. **Which way does the wire jump?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A wire carrying current away from you sits between a north pole on the left and a south pole on the right and is pushed downwards"><rect x="16" y="64" width="60" height="100" style="fill:var(--bad);stroke:var(--ink);stroke-width:2"/><rect x="244" y="64" width="60" height="100" style="fill:var(--c);stroke:var(--ink);stroke-width:2"/><text x="46" y="56" style="font-size:11px;fill:var(--muted);text-anchor:middle">N</text><text x="274" y="56" style="font-size:11px;fill:var(--muted);text-anchor:middle">S</text><line x1="84" y1="88" x2="230.0" y2="88.0" style="stroke:var(--muted);stroke-width:1.5"/><polygon points="236,88 230.0,85.0 230.0,91.0" style="fill:var(--muted)"/><line x1="84" y1="114" x2="230.0" y2="114.0" style="stroke:var(--muted);stroke-width:1.5"/><polygon points="236,114 230.0,111.0 230.0,117.0" style="fill:var(--muted)"/><line x1="84" y1="140" x2="230.0" y2="140.0" style="stroke:var(--muted);stroke-width:1.5"/><polygon points="236,140 230.0,137.0 230.0,143.0" style="fill:var(--muted)"/><text x="160" y="80" style="font-size:11px;fill:var(--muted);text-anchor:middle">magnetic field</text><circle cx="160" cy="114" r="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><line x1="154" y1="108" x2="166" y2="120" style="stroke:var(--ink);stroke-width:2"/><line x1="166" y1="108" x2="154" y2="120" style="stroke:var(--ink);stroke-width:2"/><line x1="160" y1="130" x2="160.0" y2="189.0" style="stroke:var(--chem);stroke-width:3"/><polygon points="160,198 164.5,189.0 155.5,189.0" style="fill:var(--chem)"/><text x="176" y="170" style="font-size:11px;fill:var(--muted)">the wire is shoved down</text><text x="160" y="226" style="font-size:11px;fill:var(--muted);text-anchor:middle">current going away from you, into the page</text></svg>'
+life:
+  - 'The motor in a ceiling fan, mixer-grinder or washing machine is coils of current pushed by magnets, turning the shove into rotation.'
+  - 'Electric trains and the Delhi Metro use powerful motors that work on exactly this force.'
+  - 'The bass in a loudspeaker is a coil of wire pushed back and forth by a magnet, which shakes the cone and the air.'
+  - 'An electric two-wheeler runs on a motor whose spinning part is pushed round by magnetic forces on its currents.'
+  - 'Old moving-coil meters deflect their pointer because the current in a small coil is pushed by a magnet.'
+models:
+  - name: 'Push at right angles'
+    text: 'Some influences do not act along the line between cause and effect but across it. Sideways effects need a sideways view: ask which two directions the answer depends on.'
+  - name: 'Reverse one thing, reverse the outcome'
+    text: 'Flip the current or flip the magnet and the push flips; flip both and nothing changes. Check which inputs matter and how they combine before guessing.'
+  - name: 'Many small pushes add up'
+    text: 'Each charge feels a tiny force, but together they shove a heavy rod. Small, steady, aligned contributions in one direction beat large random ones, in physics and in a crowd.'
+links:
+  - leaf: 'phy/electromagnetic-induction'
+    name: 'Electromagnetic induction'
+    same: 'It is the motor effect run backwards: push a wire through a field and you get a current instead of using a current to get a push. The same cross product of direction and field sits behind both.'
+    differs: 'In a motor you supply the current and get motion; in a generator you supply motion and get a current.'
+symbols:
+  - {s: '\vec F', means: 'force on the wire (newton, N)'}
+  - {s: 'I', means: 'current in the wire (ampere, A)'}
+  - {s: '\vec l', means: 'length of wire inside the field, arrow along the current (metres, m)'}
+  - {s: '\vec B', means: 'magnetic field (tesla, T)'}
+  - {s: '\theta', means: 'angle between the wire and the field (degrees or radians)'}
+  - {s: 'q', means: 'charge that flows in a short pulse of current (coulomb, C)'}
+  - {s: 'T', means: 'tension, the pull along a flexible loop of wire (newton, N)'}
+next:
+  q: 'A current is only charges moving along a wire, so the force on the wire must really be a force on each moving charge. What happens to a single charge flying through empty space with no wire: does it bend, and into what shape?'
+  leaf: 'phy/lorentz-force-and-circular-motion'
+  name: 'Lorentz force'
 ---
 
 :::hook
-q: A wire bent into a semicircle of radius 10 cm and a straight wire 20 cm long join the same two points. Each carries 2 A in the same uniform field of 0.5 T, perpendicular to the plane of the wires. Which wire feels the larger total force?
-options: ["The semicircle, since it is longer (31.4 cm)", "The straight wire, since all its pieces push the same way", "They feel exactly the same force", "The semicircle feels zero force"]
+q: So what's your guess? The magnet's field points from the north pole on the left to the south pole on the right, and the current flows away from you. Which way is the wire pushed?
+options: ["Towards the north pole, on the left", "Towards the south pole, on the right", "Straight down (or up), towards neither pole"]
 answer: 2
-right: Right. Both feel 0.2 N, in the same direction. On the semicircle the sideways parts of the pushes cancel in pairs, and what is left adds up to exactly the push on the straight chord. The section on wires of any shape shows why.
-wrong: The semicircle is longer, but its pieces point in different directions, so their pushes partly cancel. What survives is exactly the push on the straight wire joining its ends, 0.2 N in both cases.
+right: Right. The push is at a right angle to both the field and the current. For this arrangement it is straight down; reverse the current or flip the magnet and it goes up. Fleming's left-hand rule gives the direction, and the formula F = BIl gives the size.
+wrong: The poles do not pull the wire at all. The push is at a right angle to both the field (left to right) and the current (away from you), so it points straight down here, and up if you reverse the current or the magnet. Fleming's left-hand rule finds it.
 :::
 
 ## A wire is a crowd of moving charges {lvl=1 id=s-why label="Class 10"}

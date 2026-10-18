@@ -46,14 +46,57 @@ outcomes:
   - 'Calculate the torque, energy and oscillation period of a magnet in a uniform field'
   - 'Use dip, declination and $B_H$, neutral points, and deflection and oscillation magnetometers'
   - 'Write the full dipole field and the $1/x^4$ force between two magnets'
+opener:
+  story: |
+    Take a bar magnet with its north and south ends marked. Snap it in half. You would expect a lone north pole in one hand and a lone south pole in the other.
+
+    You do not get that. You get two smaller magnets, each with its own north and south. Snap one again: same result. Keep going, down to single atoms, and the pairs of poles never separate.
+
+    Electric charge is not like that: you can hold a plus charge all by itself. So **what is a magnet made of, if not poles?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A bar magnet cut in half again and again always gives smaller magnets with two poles each"><rect x="100" y="40" width="60" height="22" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="160" y="40" width="60" height="22" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><text x="110" y="56" style="font-size:11px;fill:var(--muted)">N</text><text x="204" y="56" style="font-size:11px;fill:var(--muted)">S</text><path d="M160 76 L160 98" style="stroke:var(--ink);stroke-width:2;fill:none"/><path d="M155 94 L160 102 L165 94Z" style="fill:var(--ink)"/><path d="M150 64 L170 64" style="stroke:var(--bad);stroke-width:2;stroke-dasharray:4 3;fill:none"/><rect x="60" y="108" width="50" height="22" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="110" y="108" width="50" height="22" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="170" y="108" width="50" height="22" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="220" y="108" width="50" height="22" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><text x="66" y="124" style="font-size:11px;fill:var(--muted)">N</text><text x="144" y="124" style="font-size:11px;fill:var(--muted)">S</text><text x="176" y="124" style="font-size:11px;fill:var(--muted)">N</text><text x="254" y="124" style="font-size:11px;fill:var(--muted)">S</text><path d="M110 144 L110 162" style="stroke:var(--ink);stroke-width:2;fill:none"/><path d="M105 158 L110 166 L115 158Z" style="fill:var(--ink)"/><path d="M220 144 L220 162" style="stroke:var(--ink);stroke-width:2;fill:none"/><path d="M215 158 L220 166 L225 158Z" style="fill:var(--ink)"/><rect x="30" y="172" width="35" height="22" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="65" y="172" width="35" height="22" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="115" y="172" width="35" height="22" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="150" y="172" width="35" height="22" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="200" y="172" width="35" height="22" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="235" y="172" width="35" height="22" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><text x="160" y="22" style="font-size:11px;fill:var(--muted);text-anchor:middle">cut it in half...</text><text x="160" y="226" style="font-size:11px;fill:var(--muted);text-anchor:middle">always two poles, never one</text></svg>'
+symbols:
+  - { s: '\vec m', means: 'magnetic moment of the magnet: its strength and direction, south to north inside ($\text{A m}^2$)' }
+  - { s: '\mu_0', means: 'permeability of free space ($4\pi\times10^{-7}$ T m/A)' }
+  - { s: 'r', means: 'distance from the centre of the magnet (metres, m)' }
+  - { s: 'B', means: 'magnetic field (tesla, T)' }
+  - { s: '\tau', means: 'torque on the magnet in an outside field (N m)' }
+  - { s: 'U', means: 'energy of the magnet in an outside field (joules, J)' }
+  - { s: 'B_H', means: 'horizontal part of the Earth''s field (tesla, T)' }
+  - { s: 'B_V', means: 'vertical part of the Earth''s field (tesla, T)' }
+life:
+  - 'A compass works because the Earth is a giant bar magnet and the needle is a small one that lines up with it.'
+  - 'The Earth''s field forms a shield that bends away charged particles from the Sun; auroras mark where they leak in near the poles.'
+  - 'The magnet in a loudspeaker, a fridge door latch and a bicycle dynamo are all bar-magnet dipoles.'
+  - 'An MRI scanner in a hospital uses a magnet about 30,000 times stronger than the Earth''s field.'
+  - 'Some migrating birds seem to sense the Earth''s field, though how they do it is still debated.'
+models:
+  - name: 'Some things only come in pairs'
+    text: 'North and south poles never separate, like the front and back of a coin. In money, every loan is a debt on one side and an asset on the other: you cannot create one without the other.'
+  - name: 'Zoom out and the details vanish'
+    text: 'From far away any complicated blob of loops looks like one simple dipole. Seen from space a whole city is a glowing dot. Use the simplest picture that fits the distance you are working at.'
+  - name: 'Look for the hidden loops'
+    text: 'What seemed a basic property (a pole) turned out to be currents going round. When something looks fundamental and unexplained, ask what smaller thing could be producing it.'
+links:
+  - leaf: 'phy/electric-field'
+    name: 'Electric field and the electric dipole'
+    same: 'Far from the source, a magnetic dipole has the same field as an electric dipole: axial twice equatorial, both falling as $1/r^3$, with the same torque and energy forms.'
+    differs: 'Electric field lines start and end on charges, which can be isolated. Magnetic field lines are closed loops, because magnetic poles cannot be isolated: $\oint \vec B\cdot d\vec S=0$.'
+  - leaf: 'phy/biot-savart-law'
+    name: 'Biot–Savart law'
+    same: 'The field of a small current loop far away, found from the Biot–Savart law, equals that of a bar magnet with $m=NIA$.'
+    differs: 'A loop is a current you can see and switch off; in a magnet the tiny loops are atomic and cannot be switched off.'
+next:
+  q: 'If a magnet is a crowd of atomic current loops, why does iron grab a magnet while wood and water barely notice? And how can iron remember having been magnetised?'
+  leaf: 'phy/magnetic-materials'
+  name: 'Magnetic materials'
 ---
 
 :::hook
-q: A compass needle sits 10 cm from the centre of a short bar magnet, on the magnet's axis, and feels a field B from the magnet. You move the needle to the magnet's equatorial line (the perpendicular bisector). At what distance from the centre does it feel a field of the same size B?
-options: ["20 cm", "10 cm", "About 7.9 cm", "5 cm"]
+q: So a magnet is a pair with no lone pole. Test that picture: a compass 10 cm from a short bar magnet, on its axis, feels a field B. At what distance along the perpendicular bisector (the equatorial line) will it feel the same B?
+options: ["20 cm", "10 cm", "About 7.9 cm"]
 answer: 2
-right: Right. The equatorial field of a short magnet is half the axial field at the same distance, and both fall as 1/r³. To double the equatorial field you must shrink r by a factor 2^(1/3) ≈ 1.26, giving 10/1.26 ≈ 7.9 cm.
-wrong: At equal distances the equatorial field is only half the axial field, so you must move closer. Both fall as 1/r³, so r must shrink by 2^(1/3) ≈ 1.26: 10 cm/1.26 ≈ 7.9 cm. The section on the dipole analogy shows why.
+right: Right. At the same distance the equatorial field of a short magnet is half the axial field, and both fall as 1/r³. To double the equatorial field you must shrink r by a factor 2^(1/3) ≈ 1.26, giving 10/1.26 ≈ 7.9 cm.
+wrong: At equal distances the equatorial field is only half the axial field, so you must move closer. Both fall as 1/r³, so r must shrink by 2^(1/3) ≈ 1.26: 10/1.26 ≈ 7.9 cm. The dipole picture predicts that number.
 :::
 
 ## Poles that never come alone {lvl=1 id=s-poles label="Class 10"}

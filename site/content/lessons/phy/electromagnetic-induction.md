@@ -48,14 +48,58 @@ outcomes:
   - 'Find the charge that flows and use a search coil to measure $B$'
   - 'Derive the emf of a rotating-coil generator and explain eddy currents'
   - 'Use the induced electric field $\oint\vec E\cdot d\vec l = -d\Phi_B/dt$ for a solenoid and a betatron'
+opener:
+  story: |
+    There is a torch with no battery. You shake it, and the LED lights up. Stop shaking and it dies.
+
+    Inside is a coil of wire around a tube with a magnet loose in it. Shaking slides the magnet back and forth. No chemicals, nothing touches the magnet, no wire runs to it. And a magnet resting still inside the coil does nothing at all.
+
+    So the light needs the *motion* of the magnet. **Where does the electricity come from?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A shake torch: a magnet slides inside a coil and lights an LED"><rect x="40" y="90" width="190" height="60" rx="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M80 86 Q70 120 80 154 M100 86 Q90 120 100 154 M120 86 Q110 120 120 154 M140 86 Q130 120 140 154 M160 86 Q150 120 160 154 M180 86 Q170 120 180 154" style="stroke:var(--chem);stroke-width:2.5;fill:none"/><rect x="96" y="108" width="40" height="24" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><rect x="136" y="108" width="40" height="24" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--ink);stroke-width:1.5"/><text x="110" y="124" style="font-size:11px;fill:var(--muted)">N</text><text x="152" y="124" style="font-size:11px;fill:var(--muted)">S</text><path d="M96 66 L180 66" style="stroke:var(--ink);stroke-width:2;fill:none"/><path d="M104 60 L94 66 L104 72Z M172 60 L182 66 L172 72Z" style="fill:var(--ink)"/><path d="M230 120 L262 120" style="stroke:var(--chem);stroke-width:2.5;fill:none"/><circle cx="276" cy="120" r="12" style="fill:color-mix(in srgb,var(--bad) 30%,var(--surface));stroke:var(--bad);stroke-width:2"/><path d="M276 94 L276 84 M296 100 L304 92 M298 120 L310 120 M296 140 L304 148 M256 100 L248 92" style="stroke:var(--bad);stroke-width:2;fill:none"/><text x="140" y="50" style="font-size:11px;fill:var(--muted);text-anchor:middle">shake</text><text x="140" y="180" style="font-size:11px;fill:var(--muted);text-anchor:middle">no battery inside</text><text x="160" y="230" style="font-size:11px;fill:var(--muted);text-anchor:middle">moving magnet, coil of wire, light</text></svg>'
+symbols:
+  - { s: '\varepsilon', means: 'induced emf, the push on charges around the loop (volts, V)' }
+  - { s: '\Phi_B', means: 'magnetic flux: how much field passes through the loop (weber, Wb = T m$^2$)' }
+  - { s: 'N', means: 'number of turns of the coil (a pure number)' }
+  - { s: 'B', means: 'magnetic field (tesla, T)' }
+  - { s: 'A', means: 'area of the loop (square metres, m$^2$)' }
+  - { s: '\theta', means: 'angle between the field and the loop''s normal (degrees or radians)' }
+  - { s: 't', means: 'time (seconds, s)' }
+  - { s: 'R', means: 'total resistance of the circuit (ohms, $\Omega$)' }
+  - { s: 'q', means: 'charge that flows round the circuit (coulombs, C)' }
+life:
+  - 'Shake torches and bicycle dynamos light a lamp only while something moves.'
+  - 'Power stations, from Bhakra Dam to a thermal plant, spin coils in magnetic fields so that induction makes the electricity that reaches your home.'
+  - 'An induction cooktop heats the pan with currents induced in the metal itself.'
+  - 'A wireless phone charger passes energy across a gap with a changing field.'
+  - 'The Delhi Metro uses regenerative braking: the motors act as generators on slowing down and send energy back to the supply.'
+models:
+  - name: 'Only change makes a signal'
+    text: 'A steady field does nothing; a changing field drives a current. Your senses fade when a smell or sound stays constant, and markets react to news, not to levels. Look for what is changing, not for what is big.'
+  - name: 'Rate matters, not size'
+    text: 'The emf depends on how fast the flux changes, not on how large it is. Speed of change often matters more than the amount: inflation, debt growth, a stock''s momentum.'
+  - name: 'Convert, do not create'
+    text: 'A generator does not make energy; it turns your effort into electrical energy. When something seems to come for free, look for who is paying the cost.'
+links:
+  - leaf: 'phy/motional-emf'
+    name: 'Motional emf'
+    same: 'Moving a conductor through a steady field is another way to change the flux, and Faraday''s law gives the same emf.'
+    differs: 'Here the conductor moves and the field stays put; in the shake torch, the source of the field moves instead, and the two are the same law seen from two viewpoints.'
+  - leaf: 'phy/transformers'
+    name: 'Transformers'
+    same: 'A transformer is Faraday''s law at work: the changing current in one coil makes a changing flux, which drives an emf in the second coil.'
+    differs: 'Nothing moves in a transformer: the flux changes only because the current does, which is why it needs alternating current.'
+next:
+  q: 'The coil''s current has to flow one way or the other. Push the north pole of the magnet towards the coil: does the induced current help the push or fight it?'
+  leaf: 'phy/lenzs-law'
+  name: 'Lenz''s law'
 ---
 
 :::hook
-q: A strong bar magnet sits at rest inside a coil that is connected to a sensitive galvanometer. Nothing moves. What does the galvanometer show?
-options: ["A large steady deflection, because the field inside the coil is strong", "A small steady deflection", "No deflection at all", "A deflection that slowly grows"]
+q: So what's your guess? A strong bar magnet rests perfectly still inside a coil joined to a sensitive meter. What does the meter show?
+options: ["A large steady reading, since the field is strong", "A small steady reading", "Zero"]
 answer: 2
-right: Right. A steady field, however strong, drives no current in a fixed coil. Only a change of the magnetic field through the coil does. That single observation is the whole of this lesson.
-wrong: The galvanometer reads zero. A steady magnetic field, however strong, drives no current in a fixed coil. Push the magnet in or pull it out, and the needle kicks; stop, and it returns to zero. Only change matters.
+right: Right. Only a changing magnetic field through the coil drives a current, however strong the field. That is why the torch needs shaking: motion is what makes the field through the coil change.
+wrong: The meter reads zero. A steady field, however strong, drives no current in a fixed coil. Push the magnet in or pull it out and the needle kicks; stop, and it returns to zero. Only change matters, which is why the torch needs shaking.
 :::
 
 ## How can a magnet make a current without touching the wire? {lvl=1 id=s-why label="Class 10"}

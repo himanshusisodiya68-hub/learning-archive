@@ -48,14 +48,58 @@ outcomes:
   - 'Explain the moving-coil galvanometer and compare current and voltage sensitivity'
   - 'Convert a galvanometer to an ammeter or voltmeter and estimate the loading error'
   - 'Use $U = -\vec m\cdot\vec B$, small oscillations, orbital moments and $\vec F = \nabla(\vec m\cdot\vec B)$'
+opener:
+  story: |
+    Look at an old analogue multimeter, or the needle on a vintage scooter's battery gauge. The needle swings smoothly, settles on a number, and there is no computer behind it.
+
+    Open it up and you find almost nothing: a tiny coil of fine copper wire, free to turn, sitting between the poles of a magnet. A current of a few thousandths of an ampere weighs nothing, yet it drags a needle across the scale.
+
+    The same trick spins your ceiling fan and your mixer-grinder. A loop of current in a magnetic field does not slide away; it **twists**. But if every side of the loop is pushed, why does the loop not simply fly off?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A coil between magnet poles turns a needle across a scale"><rect x="18" y="80" width="60" height="70" rx="4" style="fill:color-mix(in srgb,var(--bad) 22%,var(--surface));stroke:var(--bad);stroke-width:2"/><rect x="242" y="80" width="60" height="70" rx="4" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--c);stroke-width:2"/><text x="48" y="120" style="font-size:11px;fill:var(--muted);text-anchor:middle">N</text><text x="272" y="120" style="font-size:11px;fill:var(--muted);text-anchor:middle">S</text><ellipse cx="160" cy="115" rx="34" ry="44" style="fill:none;stroke:var(--chem);stroke-width:3"/><ellipse cx="160" cy="115" rx="24" ry="44" style="fill:none;stroke:var(--chem);stroke-width:2"/><circle cx="160" cy="115" r="14" style="fill:var(--surface);stroke:var(--muted);stroke-width:2"/><path d="M80 100 L124 100" style="stroke:var(--muted);stroke-dasharray:3 4;fill:none"/><path d="M80 130 L124 130" style="stroke:var(--muted);stroke-dasharray:3 4;fill:none"/><path d="M196 100 L240 100" style="stroke:var(--muted);stroke-dasharray:3 4;fill:none"/><path d="M196 130 L240 130" style="stroke:var(--muted);stroke-dasharray:3 4;fill:none"/><path d="M80 188 A90 90 0 0 1 240 188" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M160 214 L205 150" style="stroke:var(--bad);stroke-width:3;fill:none"/><circle cx="160" cy="214" r="5" style="fill:var(--ink)"/><path d="M96 168 L100 175 M120 150 L123 158 M160 143 L160 152 M200 150 L197 158 M224 168 L220 175" style="stroke:var(--ink);stroke-width:2;fill:none"/><text x="160" y="236" style="font-size:11px;fill:var(--muted);text-anchor:middle">a trickle of current twists the coil</text><text x="160" y="22" style="font-size:11px;fill:var(--muted);text-anchor:middle">coil in the magnet</text></svg>'
+symbols:
+  - { s: 'I', means: 'current in the coil (amperes, A)' }
+  - { s: 'B', means: 'magnetic field (tesla, T)' }
+  - { s: 'N', means: 'number of turns of wire in the coil (a pure number)' }
+  - { s: 'A', means: 'area of one turn (square metres, m$^2$)' }
+  - { s: '\vec m', means: 'magnetic moment of the coil: how strongly it acts like a tiny magnet ($\text{A m}^2$)' }
+  - { s: '\tau', means: 'torque, the twisting effect of a force (newton metres, N m)' }
+  - { s: '\theta', means: 'angle between the coil''s normal (its axis) and the field (degrees or radians)' }
+  - { s: 'U', means: 'energy of the coil in the field (joules, J)' }
+  - { s: 'k', means: 'stiffness of the hairspring: torque per radian of twist (N m/rad)' }
+  - { s: '\phi', means: 'angle the coil has turned, so the needle deflection (radians)' }
+life:
+  - 'Analogue ammeters, voltmeters and multimeters all use a moving coil, with shunt or series resistors to change the range.'
+  - 'Every electric motor, from a ceiling fan to a mixer-grinder to an electric autorickshaw, turns because current loops are twisted by a magnetic field.'
+  - 'A loudspeaker pushes a coil of wire in the field of a magnet, so a changing current becomes sound.'
+  - 'Older ECG machines wrote the heartbeat on paper with a pen driven by a coil galvanometer.'
+models:
+  - name: 'Where two opposing effects balance, you can read a number'
+    text: 'The needle stops where the electric twist equals the spring''s push-back. A thermostat, a price and a weighing scale all work this way: the reading is the balance point.'
+  - name: 'Zero total does not mean nothing happens'
+    text: 'Equal and opposite pushes at different points cancel as a force but make a spin. A balanced budget can hide huge flows; a steering wheel turns with zero net push.'
+  - name: 'Design the environment to make the response simple'
+    text: 'A radial field makes the twist the same at every angle, so the scale is evenly spaced. Engineers often tame a messy response by shaping the setting rather than the object.'
+links:
+  - leaf: 'phy/torque'
+    name: 'Torque'
+    same: 'Torque is force times the perpendicular arm, and a pair of equal and opposite forces gives a pure turning effect, the couple.'
+    differs: 'Here the forces come from a magnetic field on a current, so the torque depends on the current, the field and the angle: $\tau = NIAB\sin\theta$.'
+  - leaf: 'phy/electric-field'
+    name: 'Electric field and the electric dipole'
+    same: 'An electric dipole in a uniform field has the same law: $\tau = pE\sin\theta$ and $U=-pE\cos\theta$, matching $mB\sin\theta$ and $-mB\cos\theta$.'
+    differs: 'An electric dipole is two real separated charges you can pull apart. A current loop is a magnetic dipole with no separable north or south.'
+next:
+  q: 'A loop of current acts like a tiny magnet. So is a bar magnet just a crowd of tiny current loops? And if so, why can you never cut out a single north pole?'
+  leaf: 'phy/magnetic-dipole-and-bar-magnet'
+  name: 'Magnetic dipole and bar magnet'
 ---
 
 :::hook
-q: A rigid loop of wire carrying a steady current sits in a uniform magnetic field. What is the net force on it?
-options: ["Zero, whatever its shape or orientation", "IAB, along the field", "It depends on how the loop is tilted", "It is along the normal to the loop"]
+q: So here is the puzzle. The coil sits in a uniform magnetic field and every side of it is pushed. What is the net force on the whole loop?
+options: ["Zero, whatever its shape or tilt", "IAB, along the field", "It depends on how the loop is tilted"]
 answer: 0
-right: Right. Around a closed loop the vector sum of the elements dl is zero, so ∮I dl × B = I(∮dl) × B = 0 in a uniform field. The forces cancel, but they act along different lines, so they can still twist the loop. That twist is the subject of this lesson.
-wrong: The force on each element is I dl × B. Adding them over a closed loop gives I(∮dl) × B, and ∮dl = 0 because you return to where you started. So the net force is zero. The forces can still form a couple, though, and that turns the loop.
+right: Right. Going round a closed loop, the little pushes cancel in a vector sum: the total force is zero. But they act along different lines, so they form a couple and the coil turns. That twist is what moves the needle.
+wrong: Add up the push on each small piece of wire all the way round and you return to where you started, so the pushes cancel: the net force is zero in a uniform field. The pushes still act along different lines, so they twist the loop. That twist is the needle's engine.
 :::
 
 ## Why a loop in a magnet turns: the motor idea {lvl=1 id=s-why label="Class 10"}

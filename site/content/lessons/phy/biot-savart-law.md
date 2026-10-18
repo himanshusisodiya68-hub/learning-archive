@@ -1,6 +1,6 @@
 ---
 title: The Biot–Savart law
-summary: 'How a tiny piece of current creates magnetism around it, and how adding up pieces gives the field of any wire.'
+summary: 'How every tiny piece of a current-carrying wire adds its own bit of magnetism, and how to add the bits up.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.4–4.5)"]
 up_to: Olympiad
 builds_on: [Coulomb's law, Electric field, Electric current, Vectors and the cross product, Integration by substitution]
@@ -46,14 +46,57 @@ outcomes:
   - 'Find the field at the centre and on the axis of a circular loop'
   - 'Find the field of straight wires, arcs, hairpins and polygon loops by adding contributions'
   - 'Build the solenoid and Helmholtz coils from stacked loops and use the field of a rotating charge'
+opener:
+  story: |
+    Hold a compass 5 cm from a long straight wire carrying a current. The needle swings a little. Now take the same wire, carrying the same current, and bend it into a circle with a radius of 5 cm. Put the compass in the middle. This time the needle swings much harder.
+
+    Nothing changed in the wire: the same metal, the same current, and the compass is still 5 cm from the nearest wire. Yet the push is clearly bigger. So the shape of the wire matters, and not only how much current it carries.
+
+    The reason is that every tiny piece of the wire makes its own small bit of magnetism, and the bits add up. In a circle, every piece is close to the centre and they all help each other. **By how much does the circle beat the straight wire?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Left: a straight wire with a compass beside it swings a little. Right: the same wire bent into a circle has a much stronger field at its centre"><line x1="60" y1="30" x2="60" y2="200" style="stroke:var(--ink);stroke-width:4"/><line x1="60" y1="70" x2="60.0" y2="48.0" style="stroke:var(--chem);stroke-width:3"/><polygon points="60,40 56.0,48.0 64.0,48.0" style="fill:var(--chem)"/><line x1="60" y1="130" x2="112" y2="130" style="stroke:var(--muted);stroke-width:1.5;stroke-dasharray:3 3"/><text x="86" y="122" style="font-size:11px;fill:var(--muted);text-anchor:middle">R</text><circle cx="112" cy="130" r="11" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><line x1="108" y1="136" x2="116" y2="124" style="stroke:var(--bad);stroke-width:3"/><text x="14" y="222" style="font-size:11px;fill:var(--muted)">straight wire: a small swing</text><line x1="160" y1="20" x2="160" y2="205" style="stroke:var(--muted);stroke-width:1;stroke-dasharray:2 4"/><circle cx="245" cy="120" r="54" style="fill:none;stroke:var(--ink);stroke-width:4"/><line x1="235" y1="66" x2="247.0" y2="66.0" style="stroke:var(--chem);stroke-width:3"/><polygon points="255,66 247.0,62.0 247.0,70.0" style="fill:var(--chem)"/><circle cx="245" cy="120" r="9" style="fill:var(--surface);stroke:var(--c);stroke-width:2"/><circle cx="245" cy="120" r="2.5" style="fill:var(--c)"/><line x1="245" y1="120" x2="299" y2="120" style="stroke:var(--muted);stroke-width:1.5;stroke-dasharray:3 3"/><text x="272" y="114" style="font-size:11px;fill:var(--muted);text-anchor:middle">R</text><text x="172" y="222" style="font-size:11px;fill:var(--muted)">same wire as a circle: a big swing</text></svg>'
+life:
+  - 'The coil of an electromagnet in a scrapyard crane, or in an electric bell, has many turns so the small pushes of each bit of wire add up.'
+  - 'Wireless phone chargers use a flat spiral of wire to make a field that reaches the phone.'
+  - 'The loops of wire inside a loudspeaker, a relay and a doorbell are all there because loops add the contribution of every piece of wire.'
+  - 'The metal detector at an airport gate has a large loop of wire carrying a changing current, and its field is what the detector watches.'
+  - 'A pair of loops placed a radius apart gives a very even field in the middle, which labs use to cancel the Earth''s field.'
+models:
+  - name: 'Add up the little pieces'
+    text: 'Break a big, hard thing into tiny pieces you understand, then add. A road trip is a sum of short drives, a bill is a sum of items, a field is a sum of contributions.'
+  - name: 'Geometry can multiply an effect'
+    text: 'Same wire, same current, but arranged so that every piece helps. How you arrange a fixed set of resources can matter as much as how many you have.'
+  - name: 'Closer counts for much more'
+    text: 'The contribution falls as 1/r², so nearby pieces dominate. In influence and attention, the nearest things count most.'
+links:
+  - leaf: 'phy/coulombs-law'
+    name: 'Coulomb''s law'
+    same: 'Both give a field that falls as one over distance squared from a tiny source, and both fields from many sources simply add.'
+    differs: 'A charge makes a field pointing straight away from it; a current element makes a field that circles around it, sideways to both the element and the line to the point.'
+  - leaf: 'phy/universal-law-of-gravitation'
+    name: 'Universal law of gravitation'
+    same: 'Another inverse-square law built from tiny pieces: add the pull of each piece of a body to get the total.'
+    differs: 'Gravity has one sign and points along the line joining the masses; the magnetic contribution points at right angles.'
+symbols:
+  - {s: 'd\vec B', means: 'the tiny bit of magnetic field made by one short piece of wire (tesla, T)'}
+  - {s: '\mu_0', means: 'a fixed number that sets how strongly currents make magnetism (4π×10⁻⁷ T m/A)'}
+  - {s: 'I', means: 'current in the wire (ampere, A)'}
+  - {s: 'd\vec l', means: 'a short piece of the wire, arrow along the current (metres, m)'}
+  - {s: '\vec r', means: 'arrow from that piece to the point where you want the field (metres, m)'}
+  - {s: 'R', means: 'radius of a circular loop, or the distance from a wire (metres, m)'}
+  - {s: 'x', means: 'distance along the axis of a loop from its centre (metres, m)'}
+  - {s: '\theta', means: 'angle that a line from the point to the end of a wire makes with the perpendicular'}
+next:
+  q: 'Adding up every little piece of a wire is slow work, with angles and integrals. For a long straight wire the answer came out beautifully simple. Is there a shortcut that gives the field straight from the symmetry, with no adding up at all?'
+  leaf: 'phy/amp-res-law'
+  name: 'Ampère''s circuital law'
 ---
 
 :::hook
-q: A wire carrying a current I is first stretched out straight, and the field is measured at a point a distance R from it. The same wire is then bent into a circle of radius R, and the field is measured at the centre. How do the two fields compare?
-options: ["They are equal: same current, same distance", "The circle gives π times the field", "The straight wire gives π times the field", "The circle gives zero, because opposite sides cancel"]
+q: So what's your guess? The same current, and the compass the same distance R from the wire. How does the field at the middle of the circle compare with the field beside the straight wire?
+options: ["They are equal, since the current and distance are the same", "The circle gives about 3 times (π times) the field", "The straight wire gives π times the field"]
 answer: 1
-right: "Right. The straight wire gives μ₀I/2πR, the circle μ₀I/2R. In the circle every bit of wire is at the full distance R and every bit pushes the field the same way, while most of a straight wire is far away and sees the point at a slant."
-wrong: "Opposite sides of a loop carry current in opposite directions, so their fields at the centre point the same way and add. Every element of the circle is at distance R and at right angles to the radius, which gives μ₀I/2R, π times the straight wire's μ₀I/2πR."
+right: Right. The straight wire gives μ₀I/2πR and the circle gives μ₀I/2R, a ratio of exactly π. In the circle every bit of wire is at the full distance R and pushes the field the same way, while most of a straight wire is far from the compass.
+wrong: Look at where the wire is. In the circle every bit is exactly R from the middle and all the bits push the field the same way. In a straight wire most of the metal is far away and seen at a slant. The circle gives μ₀I/2R and the straight wire μ₀I/2πR, so the circle wins by a factor of π.
 :::
 
 ## A current makes a magnetic field {lvl=1 id=s-idea label="Class 10"}

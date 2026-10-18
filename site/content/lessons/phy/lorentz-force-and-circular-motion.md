@@ -1,6 +1,6 @@
 ---
 title: Lorentz force and the motion of charges in magnetic fields
-summary: 'Why moving charges bend into circles in a magnetic field, and how that bending sorts particles and powers accelerators.'
+summary: 'How a magnetic field steers charged particles without ever speeding them up, from the polar lights to particle accelerators.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.2–4.3)"]
 up_to: Olympiad
 builds_on: [Uniform circular motion, Vectors and the cross product, Electric field, Electric potential and the electron-volt, Drift velocity of electrons]
@@ -47,14 +47,53 @@ outcomes:
   - 'Analyse helical paths and a velocity selector, and use them for $e/m$ and mass spectrometry'
   - 'Treat a particle entering a field region: chord, exit angle and time spent in the field'
   - 'Explain the Hall effect, the cyclotron limit, and $\vec E\times\vec B$ drift and cycloids'
+opener:
+  story: |
+    The Sun constantly blows a stream of charged particles towards the Earth, moving at hundreds of kilometres per second. Nothing in the sky stops them, yet most never reach us. Near the poles a few get in, and they light up the night as green and red curtains, the polar lights.
+
+    What turns them aside is the Earth's magnetic field. A magnet only ever pushes a moving charge **sideways**, so it can bend a path but can never speed the particle up or slow it down. A sideways push that never changes the speed, like a stone whirled on a string, makes a circle.
+
+    Now picture two identical particles flying into a magnetic field at right angles to it, one moving twice as fast as the other. Both are bent into circles. **Which one finishes its circle first?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Particles from the Sun are turned aside by the Earth magnetic field and spiral down towards the poles, where they make glowing polar lights"><circle cx="160" cy="130" r="38" style="fill:color-mix(in srgb,var(--c) 18%,var(--surface));stroke:var(--c);stroke-width:2"/><path d="M152 94 C70 50 70 210 152 166" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M168 94 C250 50 250 210 168 166" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M156 92 C110 74 108 186 156 168" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M164 92 C210 74 212 186 164 168" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M160 8 q-9 8 0 14 q9 6 0 14 q-9 8 0 14 q9 6 0 12" style="fill:none;stroke:var(--chem);stroke-width:2"/><path d="M132 80 Q160 62 188 80" style="fill:none;stroke:var(--chem);stroke-width:4;opacity:.55"/><path d="M140 88 Q160 74 180 88" style="fill:none;stroke:var(--chem);stroke-width:3;opacity:.4"/><circle cx="22" cy="60" r="12" style="fill:var(--chem);stroke:var(--ink);stroke-width:1.5"/><path d="M38 66 Q96 78 100 124 Q102 150 74 186" style="fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:4 3"/><text x="8" y="86" style="font-size:11px;fill:var(--muted)">Sun</text><text x="196" y="70" style="font-size:11px;fill:var(--muted)">polar lights</text><text x="176" y="24" style="font-size:11px;fill:var(--muted)">particles spiral in</text><text x="160" y="232" style="font-size:11px;fill:var(--muted);text-anchor:middle">the field turns most of them away</text></svg>'
+life:
+  - 'The old picture tubes in television sets steered an electron beam across the screen with magnetic coils.'
+  - 'The polar lights over Norway and Alaska are charged particles spiralling down the Earth''s field.'
+  - 'Hospitals use cyclotron-type machines to make the radioactive tracers that go into PET scans.'
+  - 'Mass spectrometers bend ions into circles to weigh molecules, for example to test drugs, water and food.'
+  - 'The Van Allen belts are rings of trapped charged particles circling the Earth, held there because the field acts like a bottle for charges.'
+models:
+  - name: 'A force that only steers'
+    text: 'A force at right angles to motion changes direction, not speed. Rules, regulations and habits can steer a system without adding energy to it, which is why they are cheap and why they never speed anything up.'
+  - name: 'Find what does not depend on what you changed'
+    text: 'The time for a full circle does not depend on speed. When you vary one thing and an outcome stays fixed, you have found something structural, and you can build a machine on it.'
+  - name: 'Compare before computing'
+    text: 'Doubling the speed doubles the radius and so the path. Scaling arguments often give the answer before any number is substituted.'
+links:
+  - leaf: 'phy/circular-motion'
+    name: 'Circular motion'
+    same: 'Same geometry: a force always at right angles to the velocity, pointing at the centre, so speed stays fixed and the path is a circle with radius set by mass times speed over the force.'
+    differs: 'Gravity or a string acts whether the body moves or not, while the magnetic force exists only if the charge moves, and grows with speed.'
+symbols:
+  - {s: '\vec F', means: 'total force on the charge (newton, N)'}
+  - {s: 'q', means: 'electric charge of the particle (coulomb, C)'}
+  - {s: '\vec E', means: 'electric field (volt per metre, V/m)'}
+  - {s: '\vec v', means: 'velocity of the particle (metres per second, m/s)'}
+  - {s: '\vec B', means: 'magnetic field (tesla, T)'}
+  - {s: 'm', means: 'mass of the particle (kilograms, kg)'}
+  - {s: 'r', means: 'radius of the circle the particle moves on (metres, m)'}
+  - {s: 'T', means: 'time for one full turn, the period (seconds, s)'}
+next:
+  q: 'Magnets bend moving charges, but where does the magnetic field itself come from? If moving charges feel it and moving charges also make it, how much magnetism does each tiny piece of a current produce?'
+  leaf: 'phy/biot-savart-law'
+  name: 'The Biot-Savart law'
 ---
 
 :::hook
-q: A proton and a faster proton are launched together, perpendicular to the same uniform magnetic field. The fast one has twice the speed. Each goes round a circle. Which one comes back to its starting point first?
-options: ["The faster proton, in half the time", "The slower proton", "They return at the same moment", "Neither returns: both spiral away"]
+q: So what's your guess? One proton is twice as fast as the other, and both go round a circle in the same field. Which one gets back to its starting point first?
+options: ["The faster proton, in half the time", "The slower proton, because its circle is smaller", "They come back at exactly the same moment"]
 answer: 2
-right: Right. The faster proton moves on a circle of twice the radius, so its path is twice as long, and it covers it twice as fast. The time for one turn, 2πm/(qB), does not contain the speed at all. This one fact powers the cyclotron.
-wrong: The faster proton does move faster, but on a circle of twice the radius (r = mv/qB). Twice the distance at twice the speed takes the same time. The period 2πm/(qB) does not depend on speed, so they return together.
+right: Right, and it surprises almost everyone. The faster proton runs on a circle of twice the radius, so it has twice the distance to cover at twice the speed. The time for one turn does not contain the speed at all. That one fact is what makes the cyclotron work.
+wrong: The faster proton does go faster, but its circle is twice as wide, so it has twice as far to go. Twice the distance at twice the speed takes the same time. The time for one turn does not depend on the speed, so both are back together.
 :::
 
 ## A force that only steers {lvl=1 id=s-steer label="Class 10"}

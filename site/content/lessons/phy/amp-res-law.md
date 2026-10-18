@@ -1,6 +1,6 @@
 ---
 title: Ampère's circuital law
-summary: 'A clever shortcut that finds the magnetic field around a current by looking at its symmetry instead of doing heavy sums.'
+summary: 'A shortcut that finds the magnetism around a current from its symmetry, with no heavy adding-up at all.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.6–4.7)"]
 up_to: Olympiad
 builds_on: [Biot–Savart law, Field lines and compasses, Gauss's law, Area of a circle and annulus]
@@ -47,14 +47,53 @@ outcomes:
   - 'Derive the fields of a solenoid and a toroid'
   - 'Handle non-uniform currents, hollow conductors, coaxial cables and current sheets'
   - 'Find the field in a cavity by superposition and state where the law fails'
+opener:
+  story: |
+    Wind a long coil of wire, send a current through it, and measure the magnetic field inside. Now wind a second coil that is five times wider, with the same number of turns in every metre and the same current. It has far more wire in it, and its loops are far bigger.
+
+    You would expect the fat coil to have a stronger field, since it has so much more wire. Or perhaps a weaker one, since the wire is farther from the middle. The measurement says something stranger: the field inside is exactly the same, and it is the same at every point inside, near the wall or on the axis.
+
+    Adding up every bit of wire would take pages of algebra. There is a one-line trick that gives the answer from symmetry alone. First, let's see what the field does. **Which coil has the stronger field inside?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A thin long coil and a fat long coil, each with the same turns per metre and the same current, have the same field inside"><text x="160" y="20" style="font-size:11px;fill:var(--muted);text-anchor:middle">same turns per metre, same current in both</text><ellipse cx="30" cy="120" rx="6" ry="22" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="50" cy="120" rx="6" ry="22" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="70" cy="120" rx="6" ry="22" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="90" cy="120" rx="6" ry="22" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="110" cy="120" rx="6" ry="22" style="fill:none;stroke:var(--ink);stroke-width:2"/><line x1="14" y1="120" x2="120.0" y2="120.0" style="stroke:var(--c);stroke-width:2.5"/><polygon points="128,120 120.0,116.0 120.0,124.0" style="fill:var(--c)"/><ellipse cx="180" cy="120" rx="11" ry="60" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="208" cy="120" rx="11" ry="60" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="236" cy="120" rx="11" ry="60" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="264" cy="120" rx="11" ry="60" style="fill:none;stroke:var(--ink);stroke-width:2"/><ellipse cx="292" cy="120" rx="11" ry="60" style="fill:none;stroke:var(--ink);stroke-width:2"/><line x1="166" y1="90" x2="296.0" y2="90.0" style="stroke:var(--c);stroke-width:2.5"/><polygon points="304,90 296.0,86.0 296.0,94.0" style="fill:var(--c)"/><line x1="166" y1="120" x2="296.0" y2="120.0" style="stroke:var(--c);stroke-width:2.5"/><polygon points="304,120 296.0,116.0 296.0,124.0" style="fill:var(--c)"/><line x1="166" y1="150" x2="296.0" y2="150.0" style="stroke:var(--c);stroke-width:2.5"/><polygon points="304,150 296.0,146.0 296.0,154.0" style="fill:var(--c)"/><text x="70" y="206" style="font-size:11px;fill:var(--muted);text-anchor:middle">thin coil</text><text x="236" y="206" style="font-size:11px;fill:var(--muted);text-anchor:middle">fat coil</text><text x="160" y="230" style="font-size:11px;fill:var(--muted);text-anchor:middle">the field inside is the same</text></svg>'
+life:
+  - 'Inside an MRI machine a long coil gives a very even field over the whole space where you lie.'
+  - 'The coil of an electromagnet or a relay is a solenoid: more turns per metre or more current, and the pull rises, with no need to change its width.'
+  - 'The ring-shaped coil of a toroid, used in many electronics circuits, keeps its field almost entirely inside the ring.'
+  - 'A TV cable has its current going one way in the middle wire and back in the outer sheath, so the fields cancel outside and little leaks out.'
+  - 'The long toroidal coils of a fusion experiment keep a hot plasma in a ring using the field inside the coil.'
+models:
+  - name: 'Use the symmetry'
+    text: 'When a problem looks the same from many angles, the answer must too. Symmetry cuts a hard calculation to one line, in physics, in a negotiation and in a design.'
+  - name: 'Count what is inside, not what is outside'
+    text: 'The total at the edge depends only on what is enclosed, not on the shape of the boundary. It is the logic of an audit: look at the closed totals, not every transaction.'
+  - name: 'Things can cancel exactly'
+    text: 'More wire and more distance cancelled exactly. When two effects pull in opposite ways, find the one number they share before assuming one wins.'
+links:
+  - leaf: 'phy/gausss-law'
+    name: 'Gauss''s law'
+    same: 'Same strategy: pick a loop or surface that fits the symmetry, so the field is constant on it, and the total depends only on what is enclosed.'
+    differs: 'Gauss counts charge through a closed surface; Ampère counts current through a closed loop. Gauss''s sum is a flux, Ampère''s a circulation.'
+symbols:
+  - {s: '\oint', means: 'sum round a complete closed loop, ending where you started'}
+  - {s: '\vec B', means: 'magnetic field (tesla, T)'}
+  - {s: 'd\vec l', means: 'a tiny step along the loop (metres, m)'}
+  - {s: '\mu_0', means: 'a fixed number that sets how strongly currents make magnetism (4π×10⁻⁷ T m/A)'}
+  - {s: 'I_{\text{enc}}', means: 'net current passing through the loop (ampere, A)'}
+  - {s: 'n', means: 'turns of wire per metre of a solenoid (turns per metre)'}
+  - {s: 'N', means: 'total number of turns in a coil (a pure number)'}
+  - {s: 'r', means: 'distance from the axis or centre (metres, m)'}
+next:
+  q: 'We can now find the field of a wire anywhere. So put a second wire, carrying its own current, into the field of the first. Each wire carries current and sits in the other''s field: do they pull together, push apart, or ignore each other? And can that define the ampere?'
+  leaf: 'phy/forces-between-parallel-currents'
+  name: 'Forces between parallel currents'
 ---
 
 :::hook
-q: A long straight wire carries 5 A. You add up B·dl round two closed paths, each going once round the wire. Path A is a circle of radius 1 cm centred on the wire. Path B is a lopsided square, 2 m on a side, with the wire near one corner. Which total is larger?
-options: ["Path A, because the field is much stronger close to the wire", "Path B, because it is much longer", "They are exactly equal", "Path B, because the wire is not at its centre"]
+q: So what's your guess? Both coils are long, with 1000 turns per metre and 2 A. One is thin (radius 1 cm), one is fat (radius 5 cm). How do the fields on the axis compare?
+options: ["The fat coil is stronger, because it has much more wire", "The thin coil is stronger, because its wire is closer to the axis", "They are exactly equal"]
 answer: 2
-right: Right. The field falls as 1/r while the path length grows as r, so the two effects cancel exactly; and the parts of a lopsided path that run "radially" add nothing because B is circular. Both totals equal μ₀ × 5 A. That is Ampère's circuital law.
-wrong: On a circle, B falls as 1/r while the circumference grows as r, so B × 2πr is the same for every circle. Any other loop that goes once round the wire gives the same total too, μ₀ × 5 A. That is Ampère's circuital law.
+right: Right. The field is B = μ₀nI, and the radius is not in it. The fat coil has more wire, but each bit is farther away, and the two effects cancel exactly, just as for a circle drawn round a wire. Ampère's law shows why in one line.
+wrong: More wire and a longer distance to it exactly cancel. The field inside a long coil is B = μ₀nI, with n the turns per metre and I the current, and no radius anywhere. So both coils give the same field, and Ampère's law gets this in one line.
 :::
 
 ## Circulation: adding up B round a loop {lvl=2 id=s-circ label="Class 12"}

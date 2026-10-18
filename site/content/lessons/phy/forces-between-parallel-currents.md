@@ -1,6 +1,6 @@
 ---
 title: Forces between parallel currents
-summary: 'Why two wires carrying current pull together or push apart without touching, and how that defines the ampere.'
+summary: 'Why two wires carrying current pull together or push apart without touching, and how that once defined the ampere.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.8)"]
 up_to: Olympiad
 builds_on: [Force on a current, Biot–Savart law, Ampère's law, Coulomb's law]
@@ -45,14 +45,57 @@ outcomes:
   - 'Define the ampere through the force between wires and say why the Earth''s field matters'
   - 'Solve equilibrium problems with several wires and the net force on a loop beside a long wire'
   - 'Compare the magnetic and electric forces between beams of charges ($v^2/c^2$) and describe the pinch effect'
+opener:
+  story: |
+    Hang two long strips of kitchen foil side by side, a finger-width apart. They are not magnets. They carry no net charge. Nothing touches them.
+
+    Now send a big current down both strips, the same way, from one battery. They snap together in a flash. Send the current up one and down the other, and they fly apart instead.
+
+    Here is the odd part: two beams of electrons moving side by side *repel*. Yet two wires full of moving electrons *attract*. **What is going on?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Two strips of foil with currents in the same direction are pulled together"><rect x="60" y="24" width="200" height="8" rx="3" style="fill:var(--ink)"/><rect x="124" y="32" width="14" height="150" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--c);stroke-width:2"/><rect x="182" y="32" width="14" height="150" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--c);stroke-width:2"/><path d="M131 150 L131 70" style="stroke:var(--chem);stroke-width:2.5;fill:none"/><path d="M125 78 L131 66 L137 78Z" style="fill:var(--chem)"/><path d="M189 150 L189 70" style="stroke:var(--chem);stroke-width:2.5;fill:none"/><path d="M183 78 L189 66 L195 78Z" style="fill:var(--chem)"/><path d="M108 108 L120 108" style="stroke:var(--ink);stroke-width:2;fill:none"/><path d="M116 103 L122 108 L116 113Z" style="fill:var(--ink)"/><path d="M212 108 L200 108" style="stroke:var(--ink);stroke-width:2;fill:none"/><path d="M204 103 L198 108 L204 113Z" style="fill:var(--ink)"/><path d="M110 182 L110 210 Q160 226 210 210 L210 182" style="fill:none;stroke:var(--muted);stroke-dasharray:3 4"/><text x="131" y="198" style="font-size:11px;fill:var(--muted);text-anchor:middle">I</text><text x="189" y="198" style="font-size:11px;fill:var(--muted);text-anchor:middle">I</text><text x="160" y="60" style="font-size:11px;fill:var(--muted);text-anchor:middle">no magnet, no charge</text><text x="160" y="236" style="font-size:11px;fill:var(--muted);text-anchor:middle">pulled together by the current alone</text><text x="34" y="112" style="font-size:11px;fill:var(--muted)">pull</text><text x="224" y="112" style="font-size:11px;fill:var(--muted)">pull</text></svg>'
+symbols:
+  - { s: 'I', means: 'current in a wire (amperes, A)' }
+  - { s: 'd', means: 'distance between the two wires (metres, m)' }
+  - { s: '\mu_0', means: 'permeability of free space, how strongly a current makes a field in vacuum ($4\pi\times10^{-7}$ T m/A)' }
+  - { s: 'B', means: 'magnetic field made by one wire at the other (tesla, T)' }
+  - { s: 'L', means: 'length of wire we look at (metres, m)' }
+  - { s: 'F', means: 'magnetic force on that length of wire (newtons, N)' }
+  - { s: '\lambda', means: 'charge per unit length of a line of charge (C/m)' }
+  - { s: 'c', means: 'speed of light (about $3\times10^8$ m/s)' }
+life:
+  - 'Busbars and cables in a power substation are braced with heavy clamps, because in a short circuit the currents are so large that neighbouring conductors would slam together.'
+  - 'A loose coil spring (a Slinky) carrying a big current shrinks: every turn attracts its neighbours, as in the foil.'
+  - 'Before 2019 the ampere itself was defined by this very force between two wires one metre apart, so the "A" on your phone charger was once defined by weighing a pull.'
+  - 'Fusion machines such as the SST-1 tokamak in Gandhinagar squeeze their hot plasma with the same effect, the pinch: parallel currents inside the plasma attract.'
+  - 'A lightning conductor can be squeezed by its own current when a strike sends thousands of amperes through it.'
+models:
+  - name: 'Every push is a two-way street'
+    text: 'Wire A acts on wire B, and wire B acts on wire A, equally and oppositely. In trade, politics and friendships, influence that seems one-way usually comes back: a tariff on your goods taxes me too.'
+  - name: 'Look at the leftover'
+    text: 'Each wire is neutral: its positive and negative charges cancel almost perfectly, and what is left is a small sideways effect that still decides the outcome. In money too, the interesting thing is often the net after big flows cancel.'
+  - name: 'Change your viewpoint'
+    text: 'Magnetism is what an electric force looks like from a moving viewpoint, scaled by $v^2/c^2$. When a problem is stuck, ask what it looks like from another position.'
+links:
+  - leaf: 'phy/coulombs-law'
+    name: 'Coulomb''s law (electric force)'
+    same: 'Both are forces between sources that act without contact, and both obey Newton''s third law: equal and opposite on the two bodies.'
+    differs: 'Like charges repel but like currents attract. And for long straight wires the force falls as $1/d$, not $1/r^2$, because a long wire spreads its field around a circle, not a sphere.'
+  - leaf: 'phy/universal-law-of-gravitation'
+    name: 'Universal law of gravitation'
+    same: 'Two very long parallel lines of mass also pull each other with a force that falls as $1/d$ per unit length, the same shape as for wires.'
+    differs: 'Gravity only attracts, and mass has one sign. Currents can attract or repel depending on direction, and the force is magnetic, not a pull between masses.'
+next:
+  q: 'Each wire felt a push because it sat in the other''s field. Now bend one wire into a loop, so the pushes on opposite sides point opposite ways. Does the loop slide, or does it twist?'
+  leaf: 'phy/current-loop-and-galvanometer'
+  name: 'Torque on a current loop and the moving-coil galvanometer'
 ---
 
 :::hook
-q: Two long straight wires lie side by side on a table, a few centimetres apart. You send a current through both, in the same direction. What happens?
-options: ["They pull towards each other", "They push apart", "Nothing: wires are neutral, so there is no force", "They twist to become perpendicular"]
+q: So what's your guess? Two long wires lie side by side and carry current in the same direction. What do they do?
+options: ["They pull towards each other", "They push apart", "Nothing: the wires are neutral, so there is no force"]
 answer: 0
-right: Right. Each wire sits in the magnetic field of the other, and the force on a current in that field points towards the other wire. Like currents attract, which is the opposite of the rule for charges.
-wrong: The wires are electrically neutral, but each one makes a magnetic field and the other one carries a current in it. For currents in the same direction the force is attractive. Like currents attract, unlike currents repel.
+right: Right, and it matches the foil. Each wire sits in the magnetic field the other one makes, and that field pushes sideways on a current. For currents in the same direction the push is inwards. Like currents attract, the opposite of the rule for charges.
+wrong: The wires are neutral, but neutral does not mean quiet: each carries a current, and each current makes a magnetic field the other one sits in. For currents in the same direction that field pulls the wires together, just as the foil strips snapped shut. Like currents attract; unlike currents repel.
 :::
 
 ## Why two currents act on each other {lvl=2 id=s-why label="Class 12"}

@@ -47,14 +47,57 @@ outcomes:
   - 'Apply Curie''s law and read a hysteresis loop (retentivity, coercivity, loss per cycle)'
   - 'Choose materials for permanent magnets, cores and shielding'
   - 'Find the force on a weak sample in a non-uniform field and the field across a boundary or air gap'
+opener:
+  story: |
+    A magnet grabs a steel nail at once. It ignores a copper coin, a pencil and your finger. So iron is magnetic and the rest of the world is not. Right?
+
+    Wrong. In the 1990s physicists in the Netherlands floated a live frog in mid-air inside a very strong magnet. A frog is mostly water, and water is pushed away by magnets, very weakly. Every substance answers a magnetic field. Iron just shouts, while water whispers back the opposite way.
+
+    And iron has one more trick. Stroke a nail with a magnet and it becomes a magnet that stays one. **Why does iron shout, and why does it remember?**
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A frog floating above a strong magnet while a steel nail is pulled to a small magnet"><rect x="40" y="170" width="120" height="40" rx="4" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--c);stroke-width:2"/><text x="100" y="196" style="font-size:11px;fill:var(--muted);text-anchor:middle">strong magnet</text><ellipse cx="100" cy="100" rx="30" ry="18" style="fill:color-mix(in srgb,var(--chem) 35%,var(--surface));stroke:var(--chem);stroke-width:2"/><circle cx="86" cy="86" r="6" style="fill:var(--surface);stroke:var(--chem);stroke-width:2"/><circle cx="112" cy="86" r="6" style="fill:var(--surface);stroke:var(--chem);stroke-width:2"/><path d="M72 112 L60 126 M128 112 L140 126" style="stroke:var(--chem);stroke-width:2.5;fill:none"/><path d="M100 164 L100 132" style="stroke:var(--bad);stroke-width:2.5;fill:none"/><path d="M94 140 L100 130 L106 140Z" style="fill:var(--bad)"/><text x="100" y="62" style="font-size:11px;fill:var(--muted);text-anchor:middle">frog: pushed away</text><rect x="230" y="150" width="60" height="24" rx="3" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface));stroke:var(--c);stroke-width:2"/><rect x="196" y="156" width="24" height="12" rx="2" style="fill:var(--muted);stroke:var(--ink);stroke-width:1.5"/><path d="M190 162 L172 162" style="stroke:var(--ink);stroke-width:2.5;fill:none"/><path d="M180 156 L170 162 L180 168Z" style="fill:var(--ink)"/><text x="255" y="196" style="font-size:11px;fill:var(--muted);text-anchor:middle">nail: pulled in</text><text x="160" y="236" style="font-size:11px;fill:var(--muted);text-anchor:middle">every material answers a magnet</text></svg>'
+symbols:
+  - { s: '\vec B', means: 'total magnetic field inside the material (tesla, T)' }
+  - { s: '\vec H', means: 'magnetic intensity, the part set by the free current alone (amperes per metre, A/m)' }
+  - { s: '\vec M', means: 'magnetisation: magnetic moment per unit volume (A/m)' }
+  - { s: '\mu_0', means: 'permeability of free space ($4\pi\times10^{-7}$ T m/A)' }
+  - { s: '\chi', means: 'susceptibility: how strongly the material magnetises (a pure number)' }
+  - { s: '\mu_r', means: 'relative permeability: how many times the material multiplies the field (a pure number)' }
+  - { s: 'C', means: 'Curie constant of a paramagnet (kelvin, K)' }
+  - { s: 'T', means: 'absolute temperature (kelvin, K)' }
+  - { s: 'n', means: 'turns per metre of a solenoid (1/m)' }
+life:
+  - 'Scrapyard cranes use an electromagnet with a soft-iron core: switch the current off and the heavy steel drops.'
+  - 'Transformer and motor cores are laminated soft iron that magnetise and demagnetise easily, with little energy lost.'
+  - 'Hard disks, old cassette tapes and the stripe on a card store information as tiny regions of remembered magnetisation.'
+  - 'Heat a magnet red hot, or drop it hard, and it loses its strength: warmth and shocks jumble the atomic magnets.'
+models:
+  - name: 'Memory is history written into the thing'
+    text: 'The state of a ferromagnet depends on the path it took, not only on the field now. A habit, a reputation and a debt are the same: where you are depends on how you got there.'
+  - name: 'Everything responds, only the size differs'
+    text: '"Non-magnetic" really means a response a hundred million times smaller. Before saying nothing happens, ask whether something small is happening.'
+  - name: 'Easy to change or easy to keep, not both'
+    text: 'Soft iron changes quickly and forgets; hard steel keeps its magnetism and resists change. Flexible rules are easy to improve; sticky ones last. Choose which you need.'
+links:
+  - leaf: 'phy/capacitors'
+    name: 'Capacitors and dielectrics'
+    same: 'Putting a dielectric between capacitor plates modifies the field in a way described by $\varepsilon_r$; a magnetic material modifies the field in a way described by $\mu_r$. Same bookkeeping: applied field plus the response of the atoms.'
+    differs: 'A dielectric always weakens the electric field, whereas magnetic materials can weaken it (diamagnets) or strengthen it (para- and ferromagnets).'
+  - leaf: 'phy/lenzs-law'
+    name: 'Lenz''s law'
+    same: 'Diamagnetism is Lenz''s law inside every atom: the change of field makes an atomic current that opposes it.'
+    differs: 'In a wire loop the induced current dies away through resistance, but atomic currents meet none, so the opposing response lasts as long as the field does.'
+next:
+  q: 'Every atom''s loops are steady currents. But what if the magnetic field through a loop of wire changes with time, by pushing a magnet into a coil? Does the coil notice?'
+  leaf: 'phy/electromagnetic-induction'
+  name: 'Electromagnetic induction and Faraday''s law'
 ---
 
 :::hook
-q: A small rod of bismuth hangs from a thread between the poles of a strong electromagnet. The current is switched on. What does the rod do?
-options: ["It is pulled strongly towards a pole", "It is pulled weakly towards the stronger field", "It is pushed weakly away from the stronger field", "Nothing: bismuth is not iron, so it ignores magnets"]
+q: Back to the frog. A small rod of bismuth hangs on a thread between the poles of a strong electromagnet, and the current is switched on. What does the rod do?
+options: ["It is pulled strongly towards a pole, like iron", "It is pulled weakly towards the stronger field", "It is pushed weakly away from the stronger field"]
 answer: 2
-right: Right. Bismuth is diamagnetic. The field induces tiny atomic moments that point against it, so the rod is pushed gently towards weaker field and swings to lie across the gap. Every material responds to a magnetic field; most just respond very weakly.
-wrong: Bismuth is diamagnetic. The field induces atomic moments that point against it (Lenz's law at atomic scale), so the rod is pushed weakly out of the strong field and settles across the gap. Nothing is truly non-magnetic; the effect is just small.
+right: Right, bismuth is diamagnetic, like the frog. The field makes tiny atomic currents that point against it, so the rod is pushed gently towards weaker field and swings across the gap. Everything responds; most things respond weakly.
+wrong: Bismuth is diamagnetic, like the water in the frog. The field induces atomic currents that point against it (Lenz's law at atomic scale), so the rod is pushed weakly out of the strong field and settles across the gap. Nothing is truly non-magnetic; the effect is just small.
 :::
 
 ## Every atom is a tiny current loop {lvl=2 id=s-why label="Class 12"}

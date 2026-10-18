@@ -1,6 +1,6 @@
 ---
 title: Magnetic field, field lines and compasses
-summary: 'Why a compass needle points north, and how to draw the invisible magnetism around magnets and wires.'
+summary: 'Why a compass finds north, and how to see the invisible map of pushes around a magnet or a wire.'
 ncert: ["Class 10 Science · Ch 12 Magnetic Effects of Electric Current (§12.1–12.2)"]
 up_to: Olympiad
 builds_on: [Electric current, Electric field, Field lines, Vectors and the cross product]
@@ -47,14 +47,58 @@ outcomes:
   - 'Explain how a compass needle detects a field, including the Earth''s field and a wire''s field together'
   - 'Locate neutral points by adding fields as vectors'
   - 'State why $\oint\vec B\cdot d\vec S = 0$ and what it says about field lines and monopoles'
+opener:
+  story: |
+    Sprinkle iron filings on a sheet of paper and hold it over a magnet. The filings jump into curved lines that sweep from one end of the magnet round to the other, like the grain in a piece of wood. Nothing touched them. The magnet pushed on them from a distance, and the pattern is the map of that push.
+
+    The same invisible map is at work in your pocket. The compass in your phone finds north because the whole Earth is wrapped in one, and a thin wire with a current in it has its own small map too.
+
+    Now try something. Take a bar magnet with a north end and a south end, and **snap it in half**. Surely one piece must now be all north and the other all south?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A bar magnet with curved field lines running from its north end round to its south end, and a small compass needle following one line"><rect x="110" y="108" width="50" height="26" style="fill:var(--bad);stroke:var(--ink);stroke-width:2"/><rect x="160" y="108" width="50" height="26" style="fill:var(--c);stroke:var(--ink);stroke-width:2"/><text x="135" y="150" style="font-size:11px;fill:var(--muted);text-anchor:middle">N</text><text x="185" y="150" style="font-size:11px;fill:var(--muted);text-anchor:middle">S</text><path d="M110 114 C70 70 250 70 210 114" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M110 112 C40 20 280 20 210 112" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M110 128 C70 172 250 172 210 128" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M110 130 C40 220 280 220 210 130" style="fill:none;stroke:var(--c);stroke-width:2"/><line x1="200" y1="121" x2="124" y2="121" style="stroke:var(--surface);stroke-width:2;stroke-dasharray:4 3"/><circle cx="160" cy="43" r="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><polygon points="151,43 160,40 160,46" style="fill:var(--muted)"/><polygon points="169,43 160,40 160,46" style="fill:var(--bad)"/><line x1="214" y1="56" x2="227.8" y2="69.8" style="stroke:var(--c);stroke-width:2"/><polygon points="232,74 229.9,67.6 225.6,71.9" style="fill:var(--c)"/><text x="36" y="20" style="font-size:11px;fill:var(--muted)">a compass needle lines up with the field</text><text x="160" y="236" style="font-size:11px;fill:var(--muted);text-anchor:middle">outside the magnet the lines run from N to S</text></svg>'
+life:
+  - 'The compass in your phone is a tiny sensor of the Earth''s magnetic field; maps use it to know which way you are facing.'
+  - 'A scrapyard crane lifts whole cars with a coil of wire: switch the current on and it is a giant magnet, switch it off and the car drops.'
+  - 'The rubber seal of a refrigerator door holds the door shut with a strip of weak magnets.'
+  - 'Hospital MRI machines surround you with a very strong field to look inside the body without cutting it.'
+  - 'Many migrating birds are thought to sense the Earth''s field to find their way [Unverified].'
+models:
+  - name: 'An invisible map'
+    text: 'A field is a map that tells you what push would act on something if you put it at that spot, whether or not anything is there. Weather maps, price lists and contour maps work the same way: the influence exists before anyone acts on it.'
+  - name: 'Draw the thing you cannot see'
+    text: 'Iron filings turn an invisible pattern into a visible one. When a system is hidden (a budget, a supply chain, a network), the first job is a picture that makes its shape visible.'
+  - name: 'Some things only ever loop'
+    text: 'Magnetic lines never end, they only close. When you cannot find the source or the sink, look for a loop: in a closed system things circulate rather than start or stop.'
+links:
+  - leaf: 'phy/electric-field'
+    name: 'Electric field and its lines'
+    same: 'Both are invisible maps of pushes drawn as lines: the tangent gives the direction, the crowding gives the strength, and fields from different sources add.'
+    differs: 'Electric lines start on positive charges and end on negative ones. Magnetic lines have no start or end: they always close into loops. And a magnetic push is sideways to the motion, not along it.'
+  - leaf: 'phy/gausss-law'
+    name: 'Gauss''s law'
+    same: 'Counting how many lines go out of a closed surface is the same bookkeeping in both subjects.'
+    differs: 'For electric lines the count equals the charge inside; for magnetic lines the count is always zero, because there is no magnetic charge to count.'
+symbols:
+  - {s: '\vec{B}', means: 'magnetic field: the strength and direction of magnetism at a point (tesla, T)'}
+  - {s: 'I', means: 'electric current: charge flowing past a point each second (ampere, A)'}
+  - {s: 'r', means: 'distance from the wire to the point where you ask for the field (metres, m)'}
+  - {s: '\mu_0', means: 'a fixed number that sets how strongly currents make magnetism (4π×10⁻⁷ T m/A)'}
+  - {s: 'q', means: 'electric charge of a particle (coulomb, C)'}
+  - {s: '\vec{v}', means: 'velocity of the moving charge (metres per second, m/s)'}
+  - {s: '\vec{F}', means: 'force, the push the field exerts on a moving charge (newton, N)'}
+  - {s: 'B_0', means: 'strength of a steady outside field, such as the Earth''s (tesla, T)'}
+  - {s: 'd\vec{S}', means: 'a tiny patch of a closed surface, arrow pointing outwards (square metres, m²)'}
+next:
+  q: 'A current in a wire acts like a magnet on a compass. Newton says pushes come in pairs, so if the wire pushes the magnet, does the magnet push back on the wire? Will the wire move?'
+  leaf: 'phy/force-on-a-current'
+  name: 'Force on a current'
 ---
 
 :::hook
-q: An electron is held at rest in the gap between the poles of a very strong horseshoe magnet. What force does the magnet exert on it?
-options: ["A pull towards the north pole", "A pull towards the south pole", "No force at all", "It depends on whether the electron is positive or negative"]
-answer: 2
-right: Right. A magnet does nothing to a charge at rest. Magnetic forces act only on moving charges, and are made only by moving charges (a magnet is full of them, in its atoms). That one fact runs through this whole branch.
-wrong: A magnetic field exerts no force on a charge at rest, however strong the magnet. It acts only on moving charges, and moving charges are also what make it. This lesson starts from that fact.
+q: So what's your guess? You have two pieces of the snapped magnet in your hands. What are they?
+options: ["One piece with only a north end, one with only a south end", "Two smaller magnets, each with its own north and south end", "Two plain pieces of iron, because the magnetism broke"]
+answer: 1
+right: Right, and nobody has ever found anything different. Cut it again and again, down to single atoms, and every piece still has two ends. That is why magnetic field lines have no loose ends, and always close into loops. The lesson shows how to draw them.
+wrong: Try it with any magnet and you get two smaller magnets, each with a north and a south end. Nobody has ever isolated a lone north end. So the field lines never start or stop anywhere, they always close into loops, and this lesson learns to draw them.
 :::
 
 ## What a magnetic field is, and why this branch exists {lvl=1 id=s-why label="Class 10"}
