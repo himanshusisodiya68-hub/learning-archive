@@ -1,0 +1,89 @@
+# Native vs cross-platform apps. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A food app takes 8 person-months to build natively on one platform. Building natively for both Android and iPhone takes about twice that. How many person-months is that?
+  ask: Total effort
+  unit: person-months
+  ans: 16
+  tol: 0.1
+  verify: 2*8
+  sol: One app per platform means the work is repeated, so $2 \times 8 = 16$ person-months. This is the simple model from the lesson, cost of about $n$ times one app; real projects share designs and the server, so treat it as an estimate.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which approach draws every pixel of the screen with its own engine?
+  opts: ["Flutter", "React Native", "A native Swift app"]
+  ans: 0
+  sol: Flutter ships its own drawing engine. React Native asks the platform to draw real native views, and a Swift app uses the iPhone's own controls.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Using the model "shared cost = one app + glue", a team builds one app in 8 person-months and adds 3 person-months of platform glue and testing for two platforms. By how many person-months does this beat building two native apps (16 person-months)?
+  ask: Saving
+  unit: person-months
+  ans: 5
+  tol: 0.1
+  verify: 16-(8+3)
+  sol: Shared cost is $8 + 3 = 11$ person-months. Saving is $16 - 11 = 5$ person-months, about 31% of the native cost. Note that the model ignores later costs such as plugin bugs and framework upgrades.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Which of these is a real limit of a progressive web app (PWA) compared with a native app?
+  opts: ["It cannot be installed to the home screen", "Some device features and background abilities may be weaker or missing", "It cannot work offline in any way"]
+  ans: 1
+  sol: A PWA can be installed and can work offline through a service worker. The usual limits are device access and background features, which vary between browsers and platforms.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You are asked to choose between native, React Native and Flutter for a bike-sharing app with maps, QR scanning to unlock bikes, payments and a profile screen. The team has 5 engineers. State your choice and the first thing you would prototype.
+  sol: |
+    A reasonable choice is React Native or Flutter with native modules where needed: most screens (map, profile, payments, history) are standard, and a team of 5 benefits from one codebase. The risky feature is the QR scanner, which uses the camera and needs to be fast and reliable in poor light, plus any Bluetooth unlock if the bikes use it.
+
+    Prototype that first: build only the scan-and-unlock flow with the chosen framework on a low-end phone. If the plugin is solid, go ahead; if not, write that one screen as a native module, or reconsider native. State the trade-off: you give up some platform polish and first-day access to new features in return for half the screen code.
+    [Inference: other answers are defensible if the reasons are stated.]
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Your cross-platform app depends on a third-party camera plugin that crashes on one Android version. Users are complaining. List the steps you take, from quick relief to a lasting fix.
+  sol: |
+    1. Contain: check crash reports to confirm the version and device range; use a feature flag or a server message to hide or disable the broken flow for those devices.
+    2. Workaround: pin to a plugin version that works, or add a fallback such as picking a photo from the gallery.
+    3. Fix: report the bug upstream with a small reproduction; if the plugin is unmaintained, write a small native module for the camera in Kotlin and expose it to the shared code.
+    4. Prevent: add that Android version and a low-end phone to your test set; keep an interface between your code and the plugin so it can be replaced; ship the fix by staged rollout.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Explain why a "write once, run anywhere" framework still needs people who know Android and iOS, and give two concrete situations in which that knowledge is needed.
+  sol: |
+    The framework hides platform details in the common case, but the platform still owns permissions, background rules, store policies and new features. When something falls outside the framework's coverage, someone must understand the layer below.
+
+    Situation 1: a new OS release changes notification or background-task rules and breaks the app; you must understand the platform change to fix or work around it. Situation 2: you need a feature the framework lacks, such as a new camera mode or a special payment sheet, which means writing a native module in Kotlin or Swift. Other examples include debugging a crash that happens only inside a plugin, and meeting store review demands.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A company has a successful web app with 1 million users and wants a mobile presence next quarter, with a team of 6 web engineers and no mobile engineers. Compare three plans (PWA, React Native, two native apps with new hires) on cost, risk and reversibility, then recommend one and a way to reduce its biggest risk.
+  sol: |
+    PWA: cheapest and fastest, reuses the web code, instant updates, no store. Risk: weaker device features and discoverability in app stores; easy to reverse because little is thrown away. It suits a first step if the product is mostly forms and content.
+
+    React Native: web engineers can learn it quickly, and the business logic and some code in TypeScript can be shared with the web app. Risk: plugin quality, upgrades, and some native knowledge will still be needed; moderately reversible if logic stays separate from screens.
+
+    Two native apps: best polish and feature access, but needs new hires, takes the longest, and duplicates every feature; expensive to reverse.
+
+    Recommendation for this team and timeline: React Native (or a PWA first if the product permits). The biggest risk is a missing capability discovered late. Reduce it by prototyping the three hardest screens in week one, keeping business logic apart from screens, and hiring one experienced mobile engineer to own native modules and store releases. [Inference: depends on the product; the reasoning, not the verdict, is the point.]
+  check: none
