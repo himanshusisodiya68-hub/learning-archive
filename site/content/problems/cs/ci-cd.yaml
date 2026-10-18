@@ -1,0 +1,93 @@
+# CI/CD, shipping safely. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: What is the main job of continuous integration?
+  opts: ["To deploy to production once a month", "To build and test every merged change automatically, so breaks are found within minutes", "To write the tests for the developers"]
+  ans: 1
+  sol: CI merges small changes often and runs the build and tests on each one, so the cause of a failure is a single recent change.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A service has 2,000,000 users and a canary release goes to 1% of them. How many users are exposed to the new version?
+  ask: Users exposed
+  unit: users
+  ans: 20000
+  tol: 1
+  verify: 0.01*2000000
+  sol: The blast radius is $f \times N = 0.01 \times 2{,}000{,}000 = 20{,}000$ users, instead of two million for an all-at-once release.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: In a pipeline, why do the quick unit tests run before the slow end-to-end tests?
+  opts: ["To make the pipeline look busy", "So a cheap failure is reported in minutes, without waiting for the expensive stages", "Because unit tests are more important"]
+  ans: 1
+  sol: Ordering by cost gives fast feedback. If the cheap checks fail, the slow stages are skipped and the author hears quickly. Importance is not the reason; speed of feedback is.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A canary rollout goes 1%, 5%, 25%, 100%, and each step is held for 20 minutes before widening. How many minutes pass from the start of the 1% step until the release reaches 100%?
+  ask: Minutes
+  unit: min
+  ans: 60
+  tol: 0.1
+  verify: 20*3
+  sol: Three holds of 20 minutes happen before the final widening (at 1%, at 5% and at 25%), so it reaches 100% after $3 \times 20 = 60$ minutes. If you also hold at 100% to watch, count that separately.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A team deploys new code that includes a half-finished search feature. Explain how a feature flag lets them ship the code safely, and name two risks of using flags.
+  sol: |
+    The unfinished search code is deployed but wrapped in `if flags.is_on("new_search", user)`, with the flag off, so no user runs it. It reaches production with the rest of the release, avoiding long-lived branches. Later the team turns the flag on for staff, then 1% of users, then everyone, and switches it off within seconds if there is a problem.
+
+    Risks: (1) every flag multiplies the code paths to test, and combinations of flags can interact in ways nobody tested; (2) stale flags left in the code after the rollout become dead branches and confusing bugs, so each flag needs an owner and a removal date. A further risk is the flag service itself: if it is unreachable, the code needs a safe default.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: You must rename the column phone to mobile_number in a live table that many servers use. Describe a release plan that allows a safe rollback at every step.
+  sol: |
+    Use expand and contract over several releases.
+
+    1. **Expand:** add a new nullable column `mobile_number`. The old code ignores it, so nothing changes for users.
+    2. **Dual write and backfill:** release code that writes to both columns, and copy existing rows from `phone` into `mobile_number` in small batches.
+    3. **Switch reads:** release code that reads `mobile_number`, ideally behind a flag. If anything is wrong, flip the flag or roll back: `phone` is still fully up to date.
+    4. **Stop writing the old column** after a period of stable running.
+    5. **Contract:** drop `phone` in a final, separate release, once you are sure no code or report uses it.
+
+    Each step is compatible with the previous version of the code, which is what makes rollback safe.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A canary receives 1% of traffic. The old version has a 0.2% error rate. The new version has a 0.6% error rate. In the first 10 minutes the whole service receives 3,000,000 requests. How many extra failed requests does the canary cause in that time, compared with the old version doing the same work?
+  ask: Extra failed requests
+  unit: requests
+  ans: 120
+  tol: 0.5
+  verify: 3000000*0.01*(0.006-0.002)
+  sol: The canary handles $3{,}000{,}000 \times 0.01 = 30{,}000$ requests. At 0.6% it fails 180; the old version would have failed 60. The difference is 120 extra failures. Without the canary, all 3,000,000 requests would have hit the bad version, causing 12,000 extra failures, a hundred times more.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Your canary compares error rate. After 10 minutes the canary shows 0.6% errors against 0.2% for the old version, on only 400 requests (so 2 or 3 failures). An engineer says "that is noise, widen the rollout". Another says "roll back now". How should the pipeline decide, and how would you reduce the argument in future?
+  sol: |
+    With 400 requests, 0.6% is about 2 or 3 failures, and 0.2% would be 1. The difference is well inside random variation, so neither "clearly bad" nor "clearly fine" is justified. The real mistake is making a decision on too little data.
+
+    A good pipeline decides by rule: require a minimum sample (for example several thousand requests, or enough that a doubling of the error rate would be detectable), run a statistical comparison between canary and baseline, and treat the result as pass, fail or not enough data. "Not enough data" keeps the canary at its current share and waits, or widens only to a modest step rather than all users. Since the canary is only 1%, waiting costs little, which is the point of a canary.
+
+    To end the argument, agree the thresholds, sample sizes and abort rule in advance, and use more than one signal (error rate, latency percentiles, a business metric such as completed payments) so that one noisy number does not drive the decision.
+  check: none

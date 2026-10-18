@@ -100,7 +100,7 @@ symbols:
 q: Here's the puzzle. Which is safer for users: one release a month with 600 changes, or 50 releases a day with a handful of changes each?
 options: ["One big monthly release: it is tested thoroughly in one go", "Fifty small releases a day", "They are equally risky"]
 answer: 1
-right: Right, surprising as it feels. A small change has few suspects, is easy to understand, and is quick to undo. Research by the DORA group found that teams that deploy more often tend to have fewer failures and faster recovery, not more. [Unverified: exact findings from memory]
+right: Right, surprising as it feels. A small change has few suspects, is easy to understand, and is quick to undo. Research by the DORA group found that teams that deploy more often tend to have fewer failures and faster recovery, not more. [Unverified, findings recalled from memory]
 wrong: Testing everything in one go sounds careful, but when the monthly release breaks, the culprit hides among 600 changes and the fix takes hours. Small, frequent releases shrink every one of those problems.
 :::
 

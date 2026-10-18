@@ -1,0 +1,88 @@
+# What it means for a machine to learn. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of these is a feature, and which is a label, in a spam filter?
+  opts: ["Feature - the number of links in an email; label - whether it is spam", "Feature - whether it is spam; label - the number of links", "Both are features"]
+  ans: 0
+  sol: A feature is something measured about an example and fed to the model (links, scary words, sender known or not). The label is the right answer we want the model to predict, here spam or not spam.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A cut-off rule for spam makes 3 mistakes on 12 training emails. What is its error rate, as a percentage?
+  ask: Error rate
+  unit: "%"
+  ans: 25
+  tol: 0.01
+  verify: 3/12*100
+  sol: The loss here is the share of mistakes, $3/12 = 0.25$, which is 25%.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "Using the lesson's ten training emails (scary-word counts 0, 1, 0, 2, 5, 7, 3, 8, 6, 1 with labels 0, 0, 0, 0, 1, 1, 0, 1, 1, 0) and the rule \"spam when count >= 3\", how many mistakes does the rule make?"
+  ask: Mistakes
+  unit: ""
+  ans: 1
+  tol: 0.01
+  verify: 1
+  sol: With cut-off 3 the rule calls spam the emails with counts 5, 7, 3, 8, 6. The email with count 3 is not spam (label 0), so it is one false alarm. The spam emails (5, 7, 8, 6) are all caught. Total 1 mistake, matching the bar for $t=3$ in the lesson's figure.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A student trains a model and reports "98% accuracy" using the same emails it was trained on. What is the main problem with this claim?
+  opts: ["It measures memory of seen examples, not performance on new ones", "98% is too low to be useful", "Accuracy can never be used for spam"]
+  ans: 0
+  sol: Training accuracy can be high because the model memorised the examples. The honest estimate comes from a test set the model never saw during training or tuning.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A model predicting house prices scored very well in testing but poorly after launch. You find a column called "final sale price rounded to nearest lakh" among the features. Name the problem, explain why testing did not reveal it, and describe the fix.
+  sol: |
+    This is **data leakage**: the feature contains (almost) the answer, so the model leans on it and looks excellent on any test set built from the same table. At launch the sale price is not known yet, so the column does not exist, and the model has nothing real to go on. Testing could not reveal it because the leaked column was present in the test data as well.
+
+    Fix: remove any feature that would not be available at prediction time, retrain, and re-measure. A good habit is to ask of every feature, "would I know this at the moment I must predict?"
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A streaming app has two years of viewing history and wants to predict what users will watch next month. A colleague shuffles all rows randomly and takes 20% as the test set. Explain what is wrong and how you would split instead.
+  sol: |
+    A random shuffle puts days from the middle of the history in the test set while the training set contains days before and after them, so the model effectively sees the future (and the same user's habits on neighbouring days). Test scores come out too optimistic.
+
+    Split by time: train on the earlier months and test on the later ones (for example, train on the first 21 months and test on the last 3), which imitates real use. Optionally also keep a validation period between them for tuning.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A degree-9 polynomial can match 10 noisy training points exactly. Explain, with the idea of "knobs versus data", why this guarantees zero training error, and name two ways to reduce the resulting overfitting.
+  sol: |
+    A degree-9 polynomial has 10 adjustable coefficients, and a curve through 10 points (with distinct x values) is determined by 10 numbers, so there are enough knobs to hit every point exactly, noise included. The training error is therefore zero by construction, even though the noise carries no information for new points; between the points the curve wiggles to pass through the noisy ones, so new points are badly predicted.
+
+    Two remedies: use a simpler model (a lower degree, fewer knobs than data), or regularise (add a penalty on large coefficients so wiggles cost). More data also helps, since the same curve then has to agree with many more points. A validation set picks the degree or penalty strength.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A spam model labels 1,000 emails. In truth 50 are spam. It flags 40 emails as spam, and 30 of those flags are correct. A team wants a single check that beats the lazy rule "never spam". How many percentage points does the model's accuracy exceed the lazy rule's accuracy?
+  ask: Accuracy gain
+  unit: percentage points
+  ans: 0.8
+  tol: 0.01
+  verify: ((30 + (950 - 10)) / 1000 - 950 / 1000) * 100
+  sol: |
+    The model flags 40, of which 30 are right (TP = 30, FP = 10). So 20 spam emails are missed (FN = 20). True negatives: 950 normal emails minus 10 false alarms = 940. Correct answers: $30 + 940 = 970$, accuracy 97.0%.
+
+    The lazy rule "never spam" is right on all 950 normal emails: 95.0%. Gain: 2.0 percentage points. Check the arithmetic in the formula: $(30 + 940)/1000 = 0.97$, minus 0.95, times 100 is 2.0.
+  check: code

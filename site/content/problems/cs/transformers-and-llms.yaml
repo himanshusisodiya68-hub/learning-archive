@@ -1,0 +1,92 @@
+# Transformers and large language models. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: As a rule of thumb, English text averages about 0.75 words per token. Roughly how many tokens is a 3,000-word document?
+  ask: Tokens
+  unit: ""
+  ans: 4000
+  tol: 1
+  verify: 3000/0.75
+  sol: 'If one token is about 0.75 of a word, then $3000 / 0.75 = 4000$ tokens. This is only a rule of thumb; the real count depends on the language and the tokeniser. [Unverified: typical English figure]'
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: What single task is a large language model trained on during pretraining?
+  opts: ["Predicting the next token given the text so far", "Looking up answers in a database of facts", "Translating between languages"]
+  ans: 0
+  sol: 'Pretraining hides the next token in huge amounts of text and trains the model to give it high probability. Question answering, translation and coding are abilities that emerge from doing this well, and are then shaped by fine-tuning.'
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: 'Two token embeddings are a = (1, 2, 2) and b = (2, 0, 1). What is their cosine similarity, a·b divided by the product of their lengths? (Give a decimal.)'
+  ask: Cosine similarity
+  unit: ""
+  ans: 0.596
+  tol: 0.005
+  verify: 4/(3*sqrt(5))
+  sol: 'Dot product: $1\cdot2 + 2\cdot0 + 2\cdot1 = 4$. Lengths: $|a| = \sqrt{1+4+4} = 3$, $|b| = \sqrt{4+0+1} = \sqrt5 \approx 2.236$. So the similarity is $4/(3\times2.236) \approx 0.596$: pointing in broadly the same direction, but not nearly the same.'
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Attention compares every token with every other token. By what factor does the number of scores grow when the context goes from 2,000 to 8,000 tokens?
+  ask: Factor
+  unit: ""
+  ans: 16
+  tol: 0.1
+  verify: (8000/2000)**2
+  sol: 'Scores grow as $n^2$. The context is $8000/2000 = 4$ times longer, so the scores grow $4^2 = 16$ times (4,000,000 to 64,000,000).'
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A model assigns scores (logits) 2, 1 and 0 to three candidate next tokens. After softmax, what probability does the first token get? (Give a decimal.)
+  ask: Probability
+  unit: ""
+  ans: 0.665
+  tol: 0.005
+  verify: exp(2)/(exp(2)+exp(1)+1)
+  sol: 'Softmax gives $e^{2}/(e^{2}+e^{1}+e^{0}) = 7.389/(7.389 + 2.718 + 1) = 7.389/11.107 \approx 0.665$. The other two get about 0.245 and 0.090, and all three add to 1.'
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: 'A company wants a chatbot that answers questions about its own policy documents and must never invent a rule. Describe a design that reduces hallucination, and say what you would still check.'
+  sol: |
+    Use **retrieval**: when a question arrives, search the policy documents for the most relevant passages and put them in the prompt, with an instruction to answer only from them and to say "not found" otherwise. Ask the model to quote or cite the passage it used, and show that to the user so they can check.
+    Reduce risk further: keep the documents current (the model's own memory goes stale), set a low temperature for steadier answers, and refuse or hand over to a human when retrieval finds nothing relevant.
+    Still check: build a test set of real questions with known answers (including ones whose answer is "not in the documents"), run it whenever the prompt, documents or model change, and review failures by hand. Retrieval lowers hallucination but does not remove it: the model can still misread a passage or blend two.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A common estimate gives a transformer about 12·d²·L weights in its blocks (ignoring the embedding table), where d is the width and L the number of blocks. How many weights is that for d = 4096 and L = 32, in billions?
+  ask: Weights
+  unit: billion
+  ans: 6.44
+  tol: 0.02
+  verify: 12*4096**2*32/1e9
+  sol: 'The estimate counts roughly $4d^2$ for the attention projections and $8d^2$ for the per-token network in each block: $12d^2$ per block. So $12\times4096^2\times32 = 12\times16{,}777{,}216\times32 \approx 6.44\times10^9$, about 6.4 billion. [Unverified: this is a back-of-envelope estimate; real models differ.]'
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: 'The memory for the KV cache is about 2 (keys and values) × d × L × bytes per number, per token. For d = 4096, L = 32 and 2 bytes per number (16-bit), how many gigabytes (1 GB = 10^9 bytes) does one conversation of 100,000 tokens need?'
+  ask: Memory
+  unit: GB
+  ans: 52.4
+  tol: 0.5
+  verify: 2*4096*2*32*1e5/1e9
+  sol: 'Per token: $2\times4096\times32\times2 = 524{,}288$ bytes. For $10^5$ tokens: $5.24\times10^{10}$ bytes, about 52 GB. This assumes plain multi-head attention with one key and value per head; many real designs share keys and values across heads to cut this, so the true figure for any product could be much lower. [Inference] The point for an engineer: long contexts times many simultaneous users quickly exhaust a machine''s memory, so context length is a cost decision.'
+  check: code

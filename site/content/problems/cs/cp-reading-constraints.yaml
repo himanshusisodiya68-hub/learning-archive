@@ -1,0 +1,129 @@
+# Reading constraints. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A solution checks every pair of numbers with two nested loops. The input has n = 200,000 numbers. About how many loop steps does it take, in billions (n times n)?
+  ask: Steps
+  unit: billion
+  ans: 40
+  tol: 0.1
+  verify: (2e5)**2/1e9
+  sol: Two nested loops do $n \times n$ steps, which is $(2\times10^5)^2 = 4\times10^{10}$, or 40 billion. At about $10^8$ steps a second that is 400 seconds, far above a 2 second limit.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A statement says n ≤ 20 and asks you to choose the best subset of items. Which approach is intended?
+  opts: ["Try every subset with a bitmask", "Sort and use binary search", "A formula in O(1)"]
+  ans: 0
+  sol: There are $2^{20} \approx 10^6$ subsets, each checked in about $n$ steps, so about $2\times10^7$ steps. That is the signature of "try everything". Sorting and formulas need structure that the statement did not hint at.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Plain Python does about 10^7 simple steps a second. A solution does n × n steps with n = 3,000. About how many seconds does it take?
+  ask: Seconds
+  unit: s
+  ans: 0.9
+  tol: 0.05
+  verify: 3000**2/1e7
+  sol: |
+    $3000^2 = 9\times10^6$ steps, divided by $10^7$ steps a second, is about 0.9 seconds. It fits a 2 second limit, but it is not far from the edge. [Inference: 10^7 steps a second is a rule of thumb.]
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: n ≤ 100,000 and the values are up to 10^9. Which complexity is the intended one?
+  opts: ["O(n log n)", "O(n²)", "O(2^n)"]
+  ans: 0
+  sol: $n^2 = 10^{10}$ is far too slow and $2^n$ is astronomically large. $n\log_2 n \approx 1.7\times10^6$ is tiny, so the intended solution is a sort, a heap, binary search or a similar $O(n \log n)$ idea.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Choosing a subset of n = 40 items by trying all subsets takes 2^40 steps. Meet in the middle splits the items into two halves of 20 and handles each half separately, about 2 · 2^20 steps in total. How many times fewer steps is that?
+  ask: Speed-up factor
+  unit: times
+  ans: 524288
+  tol: 1
+  verify: 2**40/(2*2**20)
+  sol: The ratio is $2^{40} / (2 \cdot 2^{20}) = 2^{19} = 524{,}288$. Splitting turns one impossible search of about $10^{12}$ steps into two searches of about $10^6$ steps each, plus the cost of matching the halves.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A statement has t ≤ 10,000 test cases, each with n ≤ 100,000, and promises that the sum of n over all tests is at most 200,000. Your solution is O(n log n) per test but starts each test with `cnt = [0] * 100001`. Will it pass? What would you change?
+  sol: |
+    The sorting work is fine, since the total of $n \log n$ over all tests is at most about $2\times10^5 \times 18$. The line `cnt = [0] * 100001` is the trap: it costs $10^5$ steps per test, and with $10^4$ tests that is $10^9$ steps, a time limit exceeded.
+
+    Fix: size the array by the test's own $n$ (`[0] * (n + 1)`), or reuse one array and reset only the cells that were touched. Then the total cost is proportional to the sum of $n$.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A salesman must visit n = 9 cities. A brute-force solution tries every order of the 9 cities and costs each tour in n steps. About how many steps in total (9! orders, each costed in 9 steps)?
+  ask: Steps
+  unit: steps
+  ans: 3265920
+  tol: 1
+  verify: 9*(9*8*7*6*5*4*3*2*1)
+  sol: There are $9! = 362{,}880$ orders and each takes 9 steps to cost, so $9 \times 362{,}880 = 3{,}265{,}920$ steps, about 3 million. That is easily within a budget of $10^7$ to $10^8$, so brute force passes at $n=9$. At $n = 15$ the same method would need about $2\times10^{13}$ steps and would fail, and that is why larger versions use bitmask DP.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: You are given n ≤ 100,000 exam marks, each between 0 and 100, and you must count the pairs of students whose marks add up to exactly 100. Quadratic is too slow. What does the statement hide, and what is the method?
+  sol: |
+    The hidden structure is the tiny value range 0 to 100. Count how many students got each mark in an array `cnt` of 101 cells in one pass, $O(n)$.
+
+    Then pairs of marks $(v, 100 - v)$ for $v < 50$ contribute `cnt[v] * cnt[100 - v]` pairs, and mark 50 pairs with itself: `cnt[50] * (cnt[50] - 1) // 2`. The second step takes about 50 operations, so the whole solution is $O(n + 100)$.
+    ```python
+    def pairs_to_100(marks):
+        cnt = [0] * 101
+        for m in marks: cnt[m] += 1
+        total = cnt[50] * (cnt[50] - 1) // 2
+        for v in range(50): total += cnt[v] * cnt[100 - v]
+        return total
+    ```
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: You have n ≤ 100,000 numbers and q ≤ 100,000 questions "how many different values are there between positions l and r?". Scanning the range for each question is O(nq). What does the constraint table suggest, and name one approach that fits?
+  sol: |
+    Scanning costs about $10^5 \times 10^5 = 10^{10}$ steps. Both $n$ and $q$ sit in the $10^5$ row, so the intended cost is about $O((n+q)\log n)$ or $O(n\sqrt q)$.
+
+    Two approaches: (1) **Offline with a Fenwick tree**: sort questions by right end, sweep the array, and keep a 1 only at the latest occurrence of each value; the answer to $(l, r)$ is the sum of marks in $[l, r]$, in $O(\log n)$ per question. (2) **Mo's algorithm**: reorder the questions to move the window gently, about $n\sqrt q \approx 3\times10^7$ steps. Both rely on answering all questions without re-scanning. (The Fenwick tree appears in the range-queries lesson.)
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Floyd–Warshall on n = 400 nodes does n × n × n steps. In plain Python at 10^7 steps a second, about how many seconds is that?
+  ask: Seconds
+  unit: s
+  ans: 6.4
+  tol: 0.1
+  verify: 400**3/1e7
+  sol: |
+    $400^3 = 6.4\times10^7$ steps, divided by $10^7$ a second, is about 6.4 seconds. That fails a 2 second limit in plain Python even though the same code takes about half a second in C++, a reminder to shift the table down a row for Python, or to vectorise the inner loop. [Inference: rule-of-thumb speeds.]
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A statement allows n ≤ 5,000 and you plan a 2D table of n × n integers for a quadratic DP. Time passes, but your Python solution runs out of memory. Estimate the memory and describe how to fix it without changing the idea.
+  sol: |
+    The table has $5000 \times 5000 = 25\times10^6$ cells. A Python list of lists stores a pointer (8 bytes) per cell, so about 200 MB for the pointers alone, and more once the integer objects are counted [Inference: exact figure depends on the Python build and on how many integers are small cached ones].
+
+    Most quadratic DPs only look at the previous row to fill the current one. Keep two rows (or one row updated in place) and memory drops to $O(n)$, about 40 KB. If the answer needs the *path* and not just its value, store only the decisions in a compact form (a `bytearray` has 1 byte a cell, 25 MB), or use the `array` module.
+  check: none

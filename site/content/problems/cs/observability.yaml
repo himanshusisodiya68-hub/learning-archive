@@ -1,0 +1,89 @@
+# Logs, metrics and traces. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: One checkout request crosses five services and took 3 seconds. Which tool shows the time spent in each service for that request?
+  opts: ["A counter metric of total requests", "A distributed trace", "The server's CPU gauge"]
+  ans: 1
+  sol: A trace follows one request by its trace id and records a timed span for each service, so the slow step stands out. A request counter and a CPU gauge describe the system as a whole, not one request's path.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Out of 100 requests, 95 take 80 ms and 5 take 1,000 ms. What is the mean response time?
+  ask: Mean
+  unit: ms
+  ans: 126
+  tol: 0.5
+  verify: (95*80+5*1000)/100
+  sol: The total time is $95 \times 80 + 5 \times 1000 = 7600 + 5000 = 12{,}600$ ms, and dividing by 100 requests gives 126 ms. The median is 80 ms and the p99 is 1,000 ms, so the mean tells neither story.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A request metric has the labels endpoint (25 values), status class (4 values) and region (3 values). A developer adds the label instance, with 50 values. How many time series are stored now?
+  ask: Series
+  unit: series
+  ans: 15000
+  tol: 1
+  verify: 25*4*3*50
+  sol: Series count is the product of the label value counts. Before, it was $25 \times 4 \times 3 = 300$. With 50 instances it is $300 \times 50 = 15{,}000$, fifty times more storage for one label.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Which alert should page an on-call engineer at 3 a.m.?
+  opts: ["Memory use on one server passed 85%", "More than 3% of login requests have failed for the last 5 minutes", "A deploy finished"]
+  ans: 1
+  sol: Only the login failure alert describes harm to users that is happening now. Memory at 85% may be harmless, and a finished deploy needs no human action. Paging on symptoms keeps pages meaningful.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A search page calls 30 backend services in parallel and waits for all of them. Each call is slow (over 1 second) with probability 2%, independently. What percentage of page loads are slow?
+  ask: Share of slow pages
+  unit: "%"
+  ans: 45.5
+  tol: 0.1
+  verify: (1-Math.pow(0.98,30))*100
+  sol: The page is fast only if all 30 calls are fast, with probability $0.98^{30} \approx 0.545$. So it is slow with probability $1 - 0.98^{30} \approx 0.455$, about 45.5%. A 2% problem per call becomes a near coin-flip per page, which is why large services track p99 and p99.9 of each dependency.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Users in one city report that the "my orders" page is sometimes very slow. Describe how you would investigate, naming which of logs, metrics and traces you would use at each step.
+  sol: |
+    1. **Metrics first.** Check p50 and p99 latency for the orders endpoint, broken down by region and by service version. This confirms the problem exists, shows when it began (did it match a deploy?) and whether only that city is affected. The mean alone would hide it.
+    2. **Traces next.** Pick several slow requests (tracing tools can filter by duration and region) and look at their span trees to see which step dominates: the orders service, a database query, or a call to another service.
+    3. **Logs to explain.** Search that service's logs by the trace ids of the slow requests, looking at fields such as query count, cache hit or miss, and errors or retries. This might show, for example, that users with many orders trigger many queries.
+    4. **Confirm and fix.** Form a hypothesis (for example a missing index or an N+1 query), fix it, release gradually, and watch the same p99 graph to confirm it dropped.
+    5. **Prevent.** Add an alert on p99 for this endpoint and a test or lint for the pattern if possible.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A service promises 99.9% success over 30 days. A bug makes 0.5% of requests fail continuously. If nothing is fixed, after how many hours is the whole 30-day error budget used up?
+  ask: Time to exhaust the budget
+  unit: hours
+  ans: 144
+  tol: 0.5
+  verify: 720/(0.005/0.001)
+  sol: The allowed failure rate is $1 - 0.999 = 0.001$. The actual rate is 0.005, so the burn rate is $0.005/0.001 = 5$ times too fast. A 30-day window is 720 hours, so the budget lasts $720/5 = 144$ hours, 6 days. This is the kind of slow burn that deserves a high-priority ticket today, and a page if the burn rate were much higher.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Server A handled 900 requests, of which 5 took over 500 ms. Server B handled 100 requests, of which 10 took over 500 ms. A dashboard shows a "fleet p99" computed by averaging the two servers' p99 values. Explain what is wrong, using these numbers, and say what to compute instead.
+  sol: |
+    A's share over 500 ms is $5/900 \approx 0.56\%$, below 1%, so A's own p99 is under 500 ms. B's share is $10/100 = 10\%$, so B's p99 is above 500 ms. Combined, $(5+10)/1000 = 1.5\%$ of all requests exceed 500 ms, which is more than 1%, so the true fleet p99 is above 500 ms. Averaging an A value below 500 with a B value that is far above gives a number that depends only on those two values, ignoring that A carried nine times the traffic, and it can land on either side of the truth. Percentiles are not additive: they depend on the whole distribution and on how many requests each group carried.
+
+    Compute instead from the merged data: add the histogram bucket counts of all servers (counts add exactly) and read the 99th percentile off the merged histogram, or use a mergeable sketch (such as t-digest or HDR histograms). Choose buckets that include the promise boundary (here 500 ms) so the answer is accurate where it matters. Alerts should also be defined on the merged value, and on the share of requests slower than the target, which is simply a ratio of counters and does add correctly.
+  check: none
