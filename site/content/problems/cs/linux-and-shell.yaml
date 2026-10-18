@@ -15,10 +15,10 @@
 - id: f2
   lvl: found
   kind: mcq
-  q: You run a command and then type echo $?. It prints 0. What does that tell you?
+  q: You run a command and then type `echo $?`. It prints 0. What does that tell you?
   opts: ["The command failed", "The command succeeded", "The command is still running"]
   ans: 1
-  sol: 'Exit code 0 means success; any other number means some kind of failure. $? holds the exit code of the last command.'
+  sol: 'Exit code 0 means success; any other number means some kind of failure. `$?` holds the exit code of the last command.'
   check: none
 
 - id: b1

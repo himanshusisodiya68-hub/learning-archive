@@ -1,0 +1,93 @@
+# Containers and Docker. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which statement about a container and an image is correct?
+  opts: ["A container is a read-only recipe and an image is its running copy", "An image is a read-only package and a container is a running instance of it", "They are two names for the same thing"]
+  ans: 1
+  sol: 'The image is the frozen package of files. Running it creates a container. The relationship is like a class and an object, or a recipe and a meal.'
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Ten virtual machines each carry a 2 GB operating system, so the operating systems alone take 20 GB. Ten containers share the host's kernel and one 0.2 GB base layer. How many GB is the base layer storage for the containers?
+  ask: Storage
+  unit: GB
+  ans: 0.2
+  tol: 0.01
+  verify: 0.2
+  sol: 'Layers are shared. The base layer is stored once, however many containers use it, so it takes 0.2 GB in total, compared with 10 x 2 = 20 GB for ten VMs. (The figures are illustrative.)'
+  check: code
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: A Dockerfile copies the whole project and then runs "pip install -r requirements.txt". Builds are slow after every code change. What is the best fix?
+  opts: ["Copy only requirements.txt, run pip install, then copy the rest of the code", "Use a bigger server", "Run pip install inside the container each time it starts"]
+  ans: 0
+  sol: 'A changed layer invalidates all later layers. If the full copy comes first, every code edit rebuilds the install layer. Copying the dependency list first lets the install layer come from the cache until the dependencies actually change.'
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A Dockerfile has 6 steps, each producing a layer. You change only step 4. How many layers are rebuilt (step 4 and every later one)?
+  ask: Layers rebuilt
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: 6 - 4 + 1
+  sol: 'Steps 1 to 3 are unchanged and come from the cache. Step 4 changed, so steps 4, 5 and 6 are rebuilt: 6 - 4 + 1 = 3 layers.'
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A teammate runs a database in a container, stores customer data inside it, and finds the data gone after redeploying. Explain why, and how to fix it.
+  sol: |
+    A container's writable layer exists only for the life of that container. Redeploying removes the old container and starts a new one from the image, so the data goes with the old one.
+
+    The fix is to keep data outside the container's lifetime, in a **volume** (or a bind mount to a host folder), or better, in a managed database service:
+    ```bash
+    docker run -d -v dbdata:/var/lib/postgresql/data postgres:16
+    ```
+    The volume survives container removal and is attached to the new container. Backups of the volume are still needed, since a volume is not a backup.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: An interviewer asks why containers start faster than virtual machines and use less memory. Give a short answer, and one reason you might still choose a VM.
+  sol: |
+    A VM boots a full operating system with its own kernel on emulated hardware, which takes tens of seconds and gigabytes. A container starts one process on the already-running host kernel, restricted by namespaces and cgroups, so it starts in about a second and needs memory only for the app.
+
+    Reasons to choose a VM: you need a different operating system or kernel than the host, or you need a stronger isolation boundary (for example, running code from untrusted users), since all containers share one kernel.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Inside a container, "ps" shows your app as process 1, but on the host the same program has a large number such as 48213. Explain how both can be true.
+  sol: |
+    The container runs in its own **process-id namespace**. The kernel keeps one real process table, and each process has an id in every namespace that can see it. Inside the container's namespace the first process is numbered 1; from the host's namespace, the same process has an ordinary number (48213).
+
+    So nothing is copied or faked: it is one process with two names, and the namespace decides which name a viewer sees. This is also why a container cannot see or signal processes outside its namespace.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: You are asked to design a safe way to run code that strangers submit to an online coding judge. Would a plain container be enough? Discuss which protections you would add and what risk remains.
+  sol: |
+    A plain container is not enough on its own, because all containers share the host kernel. A kernel bug or a misconfiguration could let hostile code break out and reach the host and other users' data.
+
+    Layers of protection to add:
+    - run as a non-root user with all unneeded Linux capabilities dropped, a read-only file system and a restricted system-call list (a seccomp profile);
+    - cgroup limits on CPU, memory, processes and run time, so loops and fork bombs are cut off;
+    - no network access, and a fresh container per submission, destroyed afterwards;
+    - ideally a stronger boundary: run each container inside a lightweight virtual machine or a user-space kernel sandbox, so a kernel bug does not give access to the host.
+
+    The risk that remains is a flaw in the sandbox itself or the hypervisor; defence in depth lowers the odds but never to zero. [Inference: this is a standard design approach; the best tools change over time.]
+  check: none

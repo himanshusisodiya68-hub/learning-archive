@@ -50,7 +50,7 @@ opener:
     You can't open a folder or double-click anything. All you have is a **text prompt** on your laptop that is somehow connected to that machine. You type a few words, and it types back. Within a minute you find the program that has eaten all the memory and stop it.
 
     How can a plain line of text be enough to see everything a machine is doing, and to change it?
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A laptop terminal connects over a wire to a screenless server in a data centre"><rect x="14" y="40" width="130" height="92" rx="8" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="22" y="48" width="114" height="74" rx="3" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--rule)"/><text x="28" y="66" style="font-size:10px;fill:var(--c)">$ ssh me@server</text><text x="28" y="82" style="font-size:10px;fill:var(--ink)">$ top</text><text x="28" y="98" style="font-size:10px;fill:var(--bad)">app  98% memory</text><text x="28" y="114" style="font-size:10px;fill:var(--ink)">$ kill 4121_</text><path d="M4 140 L154 140 L140 152 L18 152 Z" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><path d="M146 86 C180 86 190 120 220 120" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:5 4"/><text x="158" y="76" style="font-size:10px;fill:var(--muted)">text over the internet</text><g style="fill:var(--surface);stroke:var(--ink);stroke-width:2"><rect x="220" y="60" width="86" height="26" rx="3"/><rect x="220" y="90" width="86" height="26" rx="3"/><rect x="220" y="120" width="86" height="26" rx="3"/><rect x="220" y="150" width="86" height="26" rx="3"/></g><g style="fill:var(--c)"><circle cx="232" cy="73" r="3"/><circle cx="232" cy="103" r="3"/><circle cx="232" cy="133" r="3"/><circle cx="232" cy="163" r="3"/></g><text x="222" y="198" style="font-size:10px;fill:var(--muted)">no screen, no mouse,</text><text x="222" y="212" style="font-size:10px;fill:var(--muted)">only a text prompt</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A laptop terminal connects over a wire to a screenless server in a data centre"><rect x="14" y="40" width="130" height="92" rx="8" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="22" y="48" width="114" height="74" rx="3" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--rule)"/><text x="28" y="66" style="font-size:10px;fill:var(--c)">&#36; ssh me@server</text><text x="28" y="82" style="font-size:10px;fill:var(--ink)">&#36; top</text><text x="28" y="98" style="font-size:10px;fill:var(--bad)">app  98% memory</text><text x="28" y="114" style="font-size:10px;fill:var(--ink)">&#36; kill 4121_</text><path d="M4 140 L154 140 L140 152 L18 152 Z" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><path d="M146 86 C180 86 190 120 220 120" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:5 4"/><text x="158" y="76" style="font-size:10px;fill:var(--muted)">text over the internet</text><g style="fill:var(--surface);stroke:var(--ink);stroke-width:2"><rect x="220" y="60" width="86" height="26" rx="3"/><rect x="220" y="90" width="86" height="26" rx="3"/><rect x="220" y="120" width="86" height="26" rx="3"/><rect x="220" y="150" width="86" height="26" rx="3"/></g><g style="fill:var(--c)"><circle cx="232" cy="73" r="3"/><circle cx="232" cy="103" r="3"/><circle cx="232" cy="133" r="3"/><circle cx="232" cy="163" r="3"/></g><text x="222" y="198" style="font-size:10px;fill:var(--muted)">no screen, no mouse,</text><text x="222" y="212" style="font-size:10px;fill:var(--muted)">only a text prompt</text></svg>'
 life:
   - 'Almost every website, app backend and cloud server you use runs on Linux, and engineers reach it through a shell.'
   - 'Android phones are built on the Linux kernel, so the ideas here are inside your pocket too.'
@@ -86,7 +86,7 @@ symbols:
     means: 'read (4), write (2) and execute (1): the three permission bits of a file'
   - s: '|'
     means: 'pipe: send one command''s output into the next command''s input'
-  - s: '$'
+  - s: '\$'
     means: 'the shell prompt, shown before each command you type (not part of the command)'
   - s: 'PATH'
     means: 'environment variable listing the folders where the shell looks for programs'
@@ -277,7 +277,7 @@ Shell scripts are best for gluing programs together. Once the logic gets complex
 - chmod 777 is a way of hiding a problem, not solving it. Work out who needs what. {lvl=1}
 - rm has no recycle bin. Check the path with ls first, especially with rm -rf and a variable in the path. {lvl=1}
 - kill -9 gives the program no chance to tidy up. Try plain kill first. {lvl=2}
-- Spaces in file names break unquoted variables. Always write "$var". {lvl=3}
+- Spaces in file names break unquoted variables. Always write `"$var"`. {lvl=3}
 - Never put passwords in a command line (they show in process lists and history) or in a script you commit to git. {lvl=2}
 - For an unknown machine: top (CPU and memory), df -h (disk space), tail -f on the log. Look before you change anything. {lvl=2}
 :::

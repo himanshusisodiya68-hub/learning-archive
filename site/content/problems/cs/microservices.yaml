@@ -1,0 +1,121 @@
+# Monoliths and microservices. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A request needs 10 services in a row, each available 99.9 percent of the time. What is the availability of the whole chain, as a percentage?
+  ask: Availability
+  unit: "%"
+  ans: 99.0
+  tol: 0.05
+  verify: 100*Math.pow(0.999,10)
+  sol: The chain works only if every service works, so multiply $0.999^{10} \approx 0.99004$, about 99.0 percent.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which statement about a call to another service over the network is true?
+  opts: ["It always either succeeds or raises an error you can see", "It may fail in a way where you cannot tell whether the other side did the work", "It is as fast as a function call inside the same program"]
+  ans: 1
+  sol: A lost reply, a slow server and a lost request all look the same to the caller, which only sees silence until the timeout. That is why timeouts, idempotent operations and retries matter. Network calls are also thousands of times slower than in-process calls.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: In a three-layer chain (A calls B, B calls C, C calls D), each caller tries a failing call up to 3 times in total. At most how many attempts reach D for a single user request while D is down?
+  ask: Attempts at D
+  unit: attempts
+  ans: 27
+  tol: 0.1
+  verify: Math.pow(3,3)
+  sol: A tries B 3 times. Each of B's attempts tries C 3 times, so C sees up to $3\times3 = 9$ attempts. Each of those tries D 3 times, so D sees up to $3\times3\times3 = 27$. This retry amplification is why retries must be capped and use circuit breakers.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: The orders service and the billing service both read and write the same database tables directly. What is the main problem?
+  opts: ["It is faster, so there is no problem", "A change to a table can break both services, so they cannot change or deploy independently", "The database can only hold one service's data"]
+  ans: 1
+  sol: Shared tables mean shared schema, so each service depends on the other's internals. This produces a distributed monolith. Each service should own its data and expose an API; others should call the API or consume events.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A page makes 30 parallel calls to different services. Each call is slow (over its target time) with probability 1 percent, independently. What is the probability, as a percentage, that at least one call is slow, so the page is slow?
+  ask: Probability
+  unit: "%"
+  ans: 26
+  tol: 0.2
+  verify: 100*(1-Math.pow(0.99,30))
+  sol: The chance that all 30 are fast is $0.99^{30} \approx 0.740$. So the chance that at least one is slow is $1 - 0.740 = 0.260$, about 26 percent. Fan-out turns a rare tail event into a common one.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A team of 6 developers with one product and 2,000 users asks whether to move to microservices. What do you advise, and what evidence would change your mind?
+  sol: |
+    Advise staying with a modular monolith. Six people share a codebase easily, a single deployment is simple, a database transaction covers each operation, and the real boundaries of the product are probably not yet known. Microservices would add pipelines, monitoring, network failures and eventual consistency for no present gain.
+
+    Evidence that would change the advice (a measured pain, not a fashion):
+    - Releases are blocked because many developers or teams collide in one codebase.
+    - One component has very different scaling needs (for example image processing at 50 times the load of everything else).
+    - A component needs stronger isolation: its failure or memory leak keeps taking down unrelated parts.
+    - One part needs a different technology or a much faster release cycle.
+
+    Even then, extract the single most painful piece first (the strangler approach), invest in tracing and timeouts, and then decide whether more splitting is worthwhile.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Write pseudocode or Python for a retry wrapper that retries only safe failures, uses exponential backoff with jitter, and gives up after a total time budget. Explain each choice.
+  sol: |
+    ```python
+    import random, time
+
+    def call_with_retry(fn, tries=4, base=0.2, budget=2.0):
+        start = time.time()
+        for attempt in range(tries):
+            try:
+                return fn()
+            except TemporaryError:                 # only retry safe, transient errors
+                if attempt == tries - 1:
+                    raise
+                wait = random.uniform(0, base * 2 ** attempt)   # backoff with jitter
+                if time.time() - start + wait > budget:
+                    raise                          # respect the total time budget
+                time.sleep(wait)
+    ```
+    - **Only transient errors** (timeouts, 503) are retried; a bad request will fail the same way every time.
+    - **Exponential backoff** (0.2 s, 0.4 s, 0.8 s ...) gives a struggling service room to recover.
+    - **Jitter** (a random wait up to the backoff) stops many callers from retrying in lockstep.
+    - **Attempt cap and total budget** prevent infinite retries and keep the caller's own deadline.
+    - The wrapped call must be **idempotent**, or carry an idempotency key, since a timed-out call may have succeeded.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    A checkout needs three services: reserve stock, charge the card, create the shipment, each with its own database. Design a saga for it, say what happens if the shipment step fails after the charge, and name two properties every step needs.
+  sol: |
+    **Saga steps and compensations**
+    1. Reserve stock. Compensation: release the stock.
+    2. Charge the card. Compensation: refund the charge.
+    3. Create the shipment. Compensation: cancel the shipment.
+
+    A coordinator (or events passed through a queue) runs the steps in order and records progress in a durable table, so it can resume after a crash.
+
+    **If the shipment fails permanently after the charge:** run compensations in reverse order, refund the charge and then release the stock, and mark the order failed. If the failure is temporary, retry the shipment first, with backoff.
+
+    **Properties every step needs**
+    - **Idempotent**: a repeated step or compensation (after a crash or retry) must have no extra effect. Use an id per saga step.
+    - **Retryable and durable compensations**: a refund must eventually succeed, so it is retried until done, and the saga state survives restarts.
+
+    Also note that users may briefly see an order "pending" with the money taken, so the design gives eventual, not instant, consistency. Compensations are not perfect undo (an email already sent cannot be unsent).
+  check: none

@@ -161,7 +161,7 @@ A quick test: when a feature changes, how many services must change and deploy t
 
 :::qc lvl=2
 q: Which split is most likely a good service boundary?
-options: ["A 'validation service' that every other service calls for input checks", "A 'payments service' that owns payment records and exposes a payments API", "Two services that share one database tables for orders"]
+options: ["A 'validation service' that every other service calls for input checks", "A 'payments service' that owns payment records and exposes a payments API", "Two services that read and write the same order tables"]
 answer: 1
 right: Right. A business capability that owns its data can change on its own. The other two make services change and fail together.
 wrong: Look for the option where one team could change its internals and deploy without asking anyone, and no other service reads its tables.
