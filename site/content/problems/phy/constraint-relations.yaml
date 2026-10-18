@@ -1,0 +1,127 @@
+# Constraint relations (string, pulley, rod and wedge constraints that tie the accelerations of connected bodies). No NCERT item belongs to this leaf: the Class XI Laws of Motion exercises on connected bodies (Exercises 4.15 and 4.16) are kept word for word in the leaf "Free-body diagrams". All problems below are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A light inextensible string joins block A and block B over a fixed frictionless pulley. A moves down at 2 m s$^{-1}$. How fast does B move, and in which direction? (Original problem.)
+  opts: ["2 m s⁻¹, up", "2 m s⁻¹, down", "1 m s⁻¹, up", "4 m s⁻¹, up"]
+  ans: 0
+  sol: |
+    The string cannot stretch, so the length of string on A's side that is lost equals the length gained on B's side at every instant. The speeds are equal, $v_B = v_A = 2$ m s$^{-1}$, and since the string goes over the pulley, B goes up while A goes down. The same holds for the accelerations: $a_B = a_A$ in magnitude.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Block A rests on a smooth table and is joined by a string over a pulley at the table edge to block B hanging below the edge. A slides 0.40 m along the table towards the pulley. How far does B fall? (Original problem.)
+  ask: Distance fallen by B
+  unit: m
+  ans: 0.4
+  tol: 0.005
+  verify: 0.40
+  sol: |
+    The string length is fixed: $x_A + y_B = \text{constant}$, where $x_A$ is the length of string along the table and $y_B$ the length hanging. A moves 0.40 m towards the pulley, so $x_A$ decreases by 0.40 m and $y_B$ must increase by 0.40 m. B falls 0.40 m.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: text
+  q: Why can we write $a_1 = a_2$ for two blocks joined by a taut string over a fixed pulley, but not for the block on a movable pulley in Problem m1? Explain in one or two sentences. (Original problem.)
+  sol: |
+    Over a fixed pulley a length $\Delta x$ taken from one side is given to the other, so the two ends move equally. A movable pulley changes the geometry: both parts of the string on either side of it shorten together, so the pulley itself moves only half as far as the free end of the string. A constraint is a statement about the total length, so you must count how many string segments change.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Two masses of 3 kg and 5 kg hang from the ends of a light string passing over a smooth fixed pulley. Find the acceleration of the masses. (Original problem.)
+  ask: Acceleration
+  unit: m s⁻²
+  ans: 2.45
+  tol: 0.01
+  verify: (5-3)*9.8/(5+3)
+  sol: |
+    The constraint gives the same acceleration $a$ for both (the 5 kg mass goes down, the 3 kg mass goes up). Free-body diagrams with the same tension $T$:
+    $5g - T = 5a$ and $T - 3g = 3a$. Adding, $2g = 8a$, so $a = \dfrac{2 \times 9.8}{8} = 2.45$ m s$^{-2}$ and $T = 3(g + a) = 36.75$ N.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A 4 kg block on a smooth horizontal table is joined by a light string over a pulley at the table edge to a 1 kg block hanging freely. Find the tension in the string. (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 7.84
+  tol: 0.02
+  verify: 4*(1*9.8/(4+1))
+  sol: |
+    Constraint: both blocks have the same acceleration $a$. For the 1 kg block: $1\cdot g - T = 1\cdot a$. For the 4 kg block (only the tension acts horizontally): $T = 4a$. Adding, $g = 5a$, so $a = 1.96$ m s$^{-2}$ and $T = 4 \times 1.96 = 7.84$ N, less than the weight 9.8 N of the hanging block.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A 6 kg block rests on a smooth 30° incline and is joined by a light string over a pulley at the top of the incline to a 2 kg block hanging vertically. Find the magnitude of the acceleration of the blocks. (Original problem.)
+  ask: Magnitude of the acceleration
+  unit: m s⁻²
+  ans: 1.23
+  tol: 0.01
+  verify: (6*9.8*sin(rad(30))-2*9.8)/(6+2)
+  sol: |
+    The pull of gravity down the slope on the 6 kg block is $6g\sin 30^\circ = 29.4$ N, larger than the 19.6 N weight of the 2 kg block, so the 6 kg block slides down the slope and the 2 kg block rises, both with the same acceleration $a$ (string constraint). Along the motion: $6g\sin30^\circ - T = 6a$ and $T - 2g = 2a$. Adding, $a = \dfrac{29.4 - 19.6}{8} = 1.225 \approx 1.23$ m s$^{-2}$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A light string is fixed to the ceiling, goes down round a light movable pulley that carries a 4 kg load, then up over a light fixed pulley and down to a 5 kg mass. Find the acceleration of the 5 kg mass when the system is released. (Original problem.)
+  ask: Acceleration of the 5 kg mass
+  unit: m s⁻²
+  ans: 4.9
+  tol: 0.02
+  verify: (2*5-4)*9.8/(2*5+4/2)
+  sol: |
+    **Constraint.** Measure positions downward from the ceiling. The string length is $L = y_p + y_p + y_m + \text{const}$, where $y_p$ is the depth of the movable pulley (two string segments hang from it) and $y_m$ that of the 5 kg mass. So $2\dot y_p + \dot y_m = 0$ and the load moves **half as fast** and in the opposite direction: if the 5 kg mass has acceleration $a$ down, the 4 kg load has $a/2$ up.
+
+    **Free-body diagrams.** The string is light, so the tension $T$ is the same everywhere.
+    - 5 kg mass: $5g - T = 5a$.
+    - Movable pulley with its 4 kg load (two string segments pull up with $T$ each): $2T - 4g = 4\cdot a/2 = 2a$.
+
+    Eliminating $T = 5g - 5a$: $10g - 10a - 4g = 2a$, so $a = \dfrac{6g}{12} = 0.5g = 4.9$ m s$^{-2}$ (down for the 5 kg mass), and the load rises with 2.45 m s$^{-2}$. Then $T = 5(9.8 - 4.9) = 24.5$ N. Check: $2T = 49$ N $= 4g + 4(2.45) = 39.2 + 9.8$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A uniform ladder of length 2.0 m leans against a smooth wall and its top end slides down the wall at 3.0 m s$^{-1}$. At the instant when the ladder makes 30° with the floor, how fast is its foot moving away from the wall? (Original problem.)
+  ask: Speed of the foot of the ladder
+  unit: m s⁻¹
+  ans: 1.73
+  tol: 0.01
+  verify: 3.0*tan(rad(30))
+  sol: |
+    **Constraint (rigid rod).** The length of a rigid ladder cannot change, so the components of the velocities of its two ends along the ladder are equal. The top end moves vertically; the ladder makes 30° with the floor, so it makes 60° with the vertical and the top-end component along the ladder is $v_A\sin30^\circ$. The foot moves horizontally, with component $v_B\cos30^\circ$ along the ladder. Hence
+    $$v_B\cos30^\circ = v_A\sin30^\circ \quad\Rightarrow\quad v_B = v_A\tan30^\circ = 3.0 \times 0.577 = 1.73\ \text{m s}^{-1}.$$
+    The length of the ladder (2.0 m) does not enter; it only fixes the angle. (Check with coordinates: $x^2 + y^2 = L^2$ gives $x\dot x = -y\dot y$, so $\dot x = (y/x)|\dot y| = \tan30^\circ \times 3.0$.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A block of mass 1.0 kg slides down the smooth face of a wedge of mass 4.0 kg and incline 30°. The wedge stands on a smooth horizontal floor and is free to move. Find the acceleration of the wedge while the block slides. (Original problem.)
+  ask: Acceleration of the wedge
+  unit: m s⁻²
+  ans: 0.998
+  tol: 0.005
+  verify: 1.0*9.8*sin(rad(30))*cos(rad(30))/(4.0+1.0*sin(rad(30))**2)
+  sol: |
+    **Constraint.** The block stays on the face, so its acceleration *relative to the wedge* is along the incline. Let the wedge accelerate horizontally by $A$ (away from the block's side) and the block slide down the face with relative acceleration $a_r$; then the block's ground acceleration is $(a_r\cos\theta - A,\ -a_r\sin\theta)$ with $\theta = 30^\circ$.
+
+    **Free-body diagrams.** The normal force $N$ on the block is perpendicular to the face, with horizontal component $N\sin\theta$ and vertical component $N\cos\theta$. The block pushes the wedge back with the same $N$ (third law), so $MA = N\sin\theta$.
+
+    Block, horizontal: $m(a_r\cos\theta - A) = N\sin\theta$.  Block, vertical: $mg - N\cos\theta = m\,a_r\sin\theta$.
+
+    Solving the three equations gives
+    $$N = \frac{mMg\cos\theta}{M + m\sin^2\theta},\qquad A = \frac{N\sin\theta}{M} = \frac{mg\sin\theta\cos\theta}{M + m\sin^2\theta}.$$
+    Numerically $A = \dfrac{1.0 \times 9.8 \times 0.5 \times 0.866}{4.0 + 1.0 \times 0.25} = \dfrac{4.2435}{4.25} = 0.998$ m s$^{-2}$. As a check, $M \to \infty$ gives $A \to 0$ (fixed wedge), and then $a_r = g\sin\theta$.
+  check: code

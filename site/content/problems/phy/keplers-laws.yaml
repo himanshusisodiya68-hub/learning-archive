@@ -1,0 +1,292 @@
+# Kepler's laws. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 7 (Examples 7.1, 7.5, 7.6, 7.7; Exercises 7.3, 7.4, 7.5, 7.8, 7.13, 7.14); the book has no in-text questions. Exercise 7.4 has no printed answer (it asks to show a result). Found, board and main problems are original.
+
+- id: ncert11-eg-7-1
+  lvl: ncert-intext
+  num: "XI Ex 7.1"
+  source: NCERT XI Physics · Ch 7 · Example 7.1
+  kind: text
+  q: Let the speed of the planet at the perihelion P in Fig. 7.1(a) be $v_P$ and the Sun-planet distance SP be $r_P$. Relate $\{r_P, v_P\}$ to the corresponding quantities at the aphelion $\{r_A, v_A\}$. Will the planet take equal times to traverse BAC and CPB ?
+  sol: |
+    At P and at A the velocity is perpendicular to the line joining the planet to the Sun, so the angular momentum has magnitude $L_P = m_pr_Pv_P$ at P and $L_A = m_pr_Av_A$ at A. The gravitational force is central, so angular momentum is conserved:
+    $$m_pr_Pv_P = m_pr_Av_A \;\Rightarrow\; \frac{v_P}{v_A} = \frac{r_A}{r_P}.$$
+    Since $r_A > r_P$, we get $v_P > v_A$: the planet is fastest at perihelion.
+
+    The area SBAC (swept while going B to A to C) is larger than the area SBPC (swept going C to P to B). Kepler's second law says equal areas are swept in equal times, so the planet takes **longer to traverse BAC than CPB**.
+  check: none
+
+- id: ncert11-eg-7-5
+  lvl: ncert-intext
+  num: "XI Ex 7.5"
+  source: NCERT XI Physics · Ch 7 · Example 7.5
+  kind: num
+  q: The planet Mars has two moons, phobos and delmos. (i) phobos has a period 7 hours, 39 minutes and an orbital radius of 9.4 ×10³ km. Calculate the mass of mars. (ii) Assume that earth and mars move in circular orbits around the sun, with the martian orbit being 1.52 times the orbital radius of the earth. What is the length of the martian year in days ?
+  ask: |
+    Part (i): mass of Mars
+  unit: × 10²³ kg
+  ans: 6.482
+  tol: 0.01
+  verify: 4*PI**2*(9.4e6)**3/(6.67e-11*(459*60)**2)/1e23
+  sol: |
+    **(i)** For a moon in a circular orbit, gravity supplies the centripetal force: $GM_mm/R^3 \cdot R = m\omega^2R$, which gives Kepler's third law $T^2 = 4\pi^2R^3/(GM_m)$. So
+    $$M_m = \frac{4\pi^2R^3}{GT^2} = \frac{4\pi^2\,(9.4\times10^{6})^3}{6.67\times10^{-11}\,(459\times60)^2} = 6.48\times10^{23}\ \text{kg},$$
+    using $T = 7\,\text{h}\,39\,\text{min} = 459$ min $= 27540$ s and $R = 9.4\times10^3$ km $= 9.4\times10^6$ m.
+
+    **(ii)** For two planets orbiting the Sun, $T_M^2/T_E^2 = R_{MS}^3/R_{ES}^3$, so
+    $$T_M = (1.52)^{3/2}\times365 = 684\ \text{days}.$$
+    Mars and the Earth both move in nearly circular orbits (the ratio of the semi-minor to semi-major axis for Earth is 0.99986), so using the radius as the semi-major axis is a good approximation.
+  check: code
+
+- id: ncert11-eg-7-6
+  lvl: ncert-intext
+  num: "XI Ex 7.6"
+  source: NCERT XI Physics · Ch 7 · Example 7.6
+  kind: num
+  q: |-
+    Weighing the Earth : You are given the following data: $g = 9.81$ m s⁻², $R_E = 6.37\times10^6$ m, the distance to the moon $R = 3.84\times10^8$ m and the time period of the moon's revolution is 27.3 days. Obtain the mass of the Earth $M_E$ in two different ways.
+  ask: Mass of the Earth from g and R_E (first method)
+  unit: × 10²⁴ kg
+  ans: 5.968
+  tol: 0.01
+  verify: 9.81*(6.37e6)**2/6.67e-11/1e24
+  sol: |
+    **First way, from surface gravity.** $g = GM_E/R_E^2$, so
+    $$M_E = \frac{gR_E^2}{G} = \frac{9.81\times(6.37\times10^6)^2}{6.67\times10^{-11}} = 5.97\times10^{24}\ \text{kg}.$$
+
+    **Second way, from the Moon's orbit.** The Moon is a satellite of the Earth, so $T^2 = 4\pi^2R^3/(GM_E)$ and
+    $$M_E = \frac{4\pi^2R^3}{GT^2} = \frac{4\pi^2\,(3.84\times10^8)^3}{6.67\times10^{-11}\,(27.3\times24\times60\times60)^2} = 6.02\times10^{24}\ \text{kg}.$$
+
+    The two answers differ by less than 1%. (Both use $G = 6.67\times10^{-11}$ N m² kg⁻².)
+  check: code
+
+- id: ncert11-eg-7-7
+  lvl: ncert-intext
+  num: "XI Ex 7.7"
+  source: NCERT XI Physics · Ch 7 · Example 7.7
+  kind: num
+  q: Express the constant $k$ of Eq. (7.38) in days and kilometres. Given $k = 10^{-13}$ s² m⁻³. The moon is at a distance of 3.84 × 10⁵ km from the earth. Obtain its time-period of revolution in days.
+  ask: Period of the Moon
+  unit: days
+  ans: 27.54
+  tol: 0.2
+  verify: sqrt(1e-13/86400**2*1e9*(3.84e5)**3)
+  sol: |
+    Eq. (7.38) is $T^2 = kR^3$ with $k = 4\pi^2/GM_E$. Convert $k = 10^{-13}\ \text{s}^2\text{m}^{-3}$: 1 s $= 1/86400$ d and 1 m $= 10^{-3}$ km, so
+    $$k = 10^{-13}\left(\frac{1}{24\times60\times60}\right)^2\left(\frac{1}{1/1000}\right)^3\ \text{d}^2\text{km}^{-3} = 1.34\times10^{-14}\ \text{d}^2\,\text{km}^{-3}.$$
+    Then $T^2 = 1.34\times10^{-14}\times(3.84\times10^5)^3 = 7.6\times10^2$ d², so $T \approx 27.5$ d.
+
+    [Note] The book prints $k = 1.33\times10^{-14}$ and "$T = 27.3$ d". The printed 27.3 d is the Moon's known period; with $k$ as given, $10^{-13}$ s² m⁻³ rounded from the true value $9.9\times10^{-14}$, the calculation gives 27.4 to 27.5 d. The 0.5% gap comes from rounding $k$.
+  check: code
+
+- id: ncert11-ex-7-3
+  lvl: ncert-ex
+  num: "XI 7.3"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.3
+  kind: num
+  q: Suppose there existed a planet that went around the Sun twice as fast as the earth. What would be its orbital size as compared to that of the earth ?
+  ask: Orbital radius of the planet as a fraction of the Earth's
+  unit: × Earth's orbital radius
+  ans: 0.63
+  tol: 0.005
+  verify: 0.5**(2/3)
+  sol: |
+    "Twice as fast" means the planet's period is half the Earth's: $T_p = T_E/2$. Kepler's third law $T^2 \propto R^3$ gives
+    $$\frac{R_p}{R_E} = \left(\frac{T_p}{T_E}\right)^{2/3} = \left(\tfrac12\right)^{2/3} = 0.63.$$
+    The planet's orbit is smaller, 0.63 times the Earth's orbit (about 0.63 AU).
+  answer_key: Smaller by a factor of 0.63.
+  check: both
+
+- id: ncert11-ex-7-4
+  lvl: ncert-ex
+  num: "XI 7.4"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.4
+  kind: num
+  q: Io, one of the satellites of Jupiter, has an orbital period of 1.769 days and the radius of the orbit is 4.22 × 10⁸ m. Show that the mass of Jupiter is about one-thousandth that of the sun.
+  ask: Mass of Jupiter as a fraction of the Sun's mass
+  unit: × 10⁻³
+  ans: 0.957
+  tol: 0.01
+  verify: (4.22e8/1.496e11)**3*(365.25/1.769)**2*1e3
+  sol: |
+    For any body in a circular orbit, $M = 4\pi^2R^3/(GT^2)$, so for two systems $M_{Jup}/M_{Sun} = (R_{Io}/R_E)^3\,(T_E/T_{Io})^2$, where the Sun's mass is found from the Earth's orbit.
+
+    [Inference] The question gives no data for the Earth, so I use the standard values $R_E = 1.496\times10^{11}$ m and $T_E = 365.25$ d.
+
+    $$\frac{M_J}{M_S} = \left(\frac{4.22\times10^8}{1.496\times10^{11}}\right)^3\left(\frac{365.25}{1.769}\right)^2 = (2.82\times10^{-3})^3\times(206.5)^2 = 2.24\times10^{-8}\times4.26\times10^{4} = 9.6\times10^{-4}.$$
+    That is about $1/1045$ of the Sun's mass, "about one-thousandth". As a check, with $M_S = 2\times10^{30}$ kg, $M_J = 4\pi^2(4.22\times10^8)^3/[6.67\times10^{-11}(1.769\times86400)^2] = 1.9\times10^{27}$ kg, which is the accepted mass of Jupiter.
+  check: code
+
+- id: ncert11-ex-7-5
+  lvl: ncert-ex
+  num: "XI 7.5"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.5
+  kind: num
+  q: Let us assume that our galaxy consists of 2.5 × 10¹¹ stars each of one solar mass. How long will a star at a distance of 50,000 ly from the galactic centre take to complete one revolution ? Take the diameter of the Milky Way to be 10⁵ ly.
+  ask: Period of revolution
+  unit: × 10⁸ years
+  ans: 3.55
+  tol: 0.03
+  verify: 2*PI*sqrt((5e4*9.46e15)**3/(6.67e-11*2.5e11*2e30))/3.156e7/1e8
+  sol: |
+    The star is at the rim of the galaxy (radius = half the diameter = $5\times10^4$ ly), so all the stars inside act as if their mass were at the centre (the shell theorem, taken here as an approximation for a roughly spherical galaxy).
+
+    $M = 2.5\times10^{11}\times2\times10^{30} = 5\times10^{41}$ kg; $r = 5\times10^4\times9.46\times10^{15} = 4.73\times10^{20}$ m.
+
+    From $T^2 = 4\pi^2r^3/(GM)$:
+    $$T = 2\pi\sqrt{\frac{(4.73\times10^{20})^3}{6.67\times10^{-11}\times5\times10^{41}}} = 1.12\times10^{16}\ \text{s} \approx 3.5\times10^{8}\ \text{years}.$$
+    Dividing by $3.156\times10^7$ s per year gives $3.55\times10^8$ years. The key's 3.54 differs only in the last digit, from rounding of the light-year and year values.
+
+    [Inference] The galaxy is not a uniform sphere, so the "all mass at the centre" model is only an estimate.
+  answer_key: 3.54 × 10⁸ years
+  check: both
+
+- id: ncert11-ex-7-8
+  lvl: ncert-ex
+  num: "XI 7.8"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.8
+  kind: text
+  q: A comet orbits the sun in a highly elliptical orbit. Does the comet have a constant (a) linear speed, (b) angular speed, (c) angular momentum, (d) kinetic energy, (e) potential energy, (f) total energy throughout its orbit? Neglect any mass loss of the comet when it comes very close to the Sun.
+  sol: |
+    Only **(c) angular momentum** and **(f) total energy** stay constant.
+
+    - **Angular momentum**: the Sun's force is central, so there is no torque about the Sun (Kepler's second law).
+    - **Total energy**: gravity is conservative and there are no other forces (and the mass loss is neglected).
+    - **(a) linear speed** varies: it is greatest at perihelion and least at aphelion, $v_P/v_A = r_A/r_P$.
+    - **(b) angular speed** $\omega = v_\perp/r = L/(mr^2)$ varies with $r$.
+    - **(d) kinetic energy** varies with the speed; **(e) potential energy** $-GMm/r$ varies with $r$. They exchange energy so that their sum is constant.
+  answer_key: All quantities vary over an orbit except angular momentum and total energy.
+  check: ncert-key
+
+- id: ncert11-ex-7-13
+  lvl: ncert-ex
+  num: "XI 7.13"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.13
+  kind: num
+  q: How will you 'weigh the sun', that is estimate its mass? The mean orbital radius of the earth around the sun is 1.5 × 10⁸ km.
+  ask: Mass of the Sun
+  unit: × 10³⁰ kg
+  ans: 2.006
+  tol: 0.01
+  verify: 4*PI**2*(1.5e11)**3/(6.67e-11*(365.25*86400)**2)/1e30
+  sol: |
+    Use the Earth as a probe. It goes round the Sun in a nearly circular orbit of radius $R = 1.5\times10^{8}$ km $= 1.5\times10^{11}$ m, with period $T = 365.25$ d $= 3.156\times10^7$ s. Gravity supplies the centripetal force, so $T^2 = 4\pi^2R^3/(GM_S)$ and
+    $$M_S = \frac{4\pi^2R^3}{GT^2} = \frac{4\pi^2\,(1.5\times10^{11})^3}{6.67\times10^{-11}\times(3.156\times10^{7})^2} = 2.0\times10^{30}\ \text{kg}.$$
+    [Inference] The period $T$ and $G$ are not given in the question; they are standard values.
+  answer_key: 2.0 × 10³⁰ kg
+  check: both
+
+- id: ncert11-ex-7-14
+  lvl: ncert-ex
+  num: "XI 7.14"
+  source: NCERT XI Physics · Ch 7 · Exercise 7.14
+  kind: num
+  q: A saturn year is 29.5 times the earth year. How far is the saturn from the sun if the earth is 1.50 × 10⁸ km away from the sun ?
+  ask: Distance of Saturn from the Sun
+  unit: × 10¹² m
+  ans: 1.432
+  tol: 0.005
+  verify: 1.5e11*29.5**(2/3)/1e12
+  sol: |
+    Kepler's third law: $R^3 \propto T^2$. So
+    $$R_S = R_E\left(\frac{T_S}{T_E}\right)^{2/3} = 1.50\times10^{8}\ \text{km}\times(29.5)^{2/3} = 1.50\times10^8\times9.55 = 1.43\times10^{9}\ \text{km} = 1.43\times10^{12}\ \text{m}.$$
+  answer_key: 1.43 × 10¹² m
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A planet moves fastest when it is
+  opts: ["at aphelion, farthest from the Sun", "at perihelion, nearest to the Sun", "at the ends of the minor axis"]
+  ans: 1
+  sol: The line from the Sun to the planet sweeps equal areas in equal times. When the line is short (perihelion) the planet must cover more path in the same time, so it moves fastest there.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A planet's orbital radius is four times that of another planet around the same star. Its period is
+  opts: ["2 times", "4 times", "8 times", "16 times"]
+  ans: 2
+  sol: $T^2 \propto R^3$, so $T \propto R^{3/2} = 4^{3/2} = 8$.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: Kepler's second law (equal areas in equal times) is a direct consequence of
+  opts: ["conservation of energy", "conservation of angular momentum, because the force is central", "the inverse-square nature of the force"]
+  ans: 1
+  sol: A central force exerts no torque about the Sun, so angular momentum is conserved, and the areal speed is $L/2m$. The result holds for any central force; the inverse-square law matters for the first and third laws.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A planet orbits the Sun with a semi-major axis of 4 AU. Find its period in years.
+  ask: Period
+  unit: years
+  ans: 8
+  tol: 0.01
+  verify: 4**1.5
+  sol: With $T$ in years and $a$ in AU, Kepler's third law reads $T^2 = a^3$ for the Sun. So $T = 4^{3/2} = 8$ years.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Venus takes 0.615 year to go round the Sun. Find the radius of its orbit, in AU, taking the orbit as circular.
+  ask: Orbital radius
+  unit: AU
+  ans: 0.723
+  tol: 0.002
+  verify: 0.615**(2/3)
+  sol: $a^3 = T^2$ gives $a = T^{2/3} = 0.615^{2/3} = 0.723$ AU.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A comet has its nearest point to the Sun at 0.5 AU and its farthest at 31.5 AU. Find its period in years.
+  ask: Period
+  unit: years
+  ans: 64
+  tol: 0.1
+  verify: ((0.5+31.5)/2)**1.5
+  sol: The major axis is the sum of the nearest and farthest distances, so $2a = 0.5 + 31.5 = 32$ AU and $a = 16$ AU. Then $T = a^{3/2} = 16^{3/2} = 64$ years.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: For the comet of the previous problem (0.5 AU to 31.5 AU), by what factor is its speed greater at the nearest point than at the farthest point?
+  ask: Speed ratio v(nearest) / v(farthest)
+  unit: (ratio)
+  ans: 63
+  tol: 0.1
+  verify: 31.5/0.5
+  sol: At both points the velocity is perpendicular to the radius, so conservation of angular momentum gives $r_Pv_P = r_Av_A$, hence $v_P/v_A = r_A/r_P = 31.5/0.5 = 63$. The comet nearly stops at its far end and whips round the Sun at its nearest point.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A planet moves in a circular orbit of radius 9 times the Earth's orbit around the Sun. Take the Earth's orbital speed as 30 km/s. Find the planet's orbital speed.
+  ask: Orbital speed
+  unit: km/s
+  ans: 10
+  tol: 0.02
+  verify: 30/sqrt(9)
+  sol: |
+    For a circular orbit $v^2 = GM/r$, so $v \propto r^{-1/2}$ and $v = 30/\sqrt9 = 10$ km/s. The farther planet moves more slowly. Check with the periods: $T = 9^{3/2} = 27$ years, and $2\pi(9\ \text{AU})/27\ \text{yr}$ is one third of $2\pi(1\ \text{AU})/1\ \text{yr}$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: The Earth moves in a nearly circular orbit of radius $1.496\times10^{11}$ m with a period of $3.156\times10^{7}$ s. Find the area swept per second by the line joining the Earth to the Sun.
+  ask: Areal speed
+  unit: × 10¹⁵ m²/s
+  ans: 2.228
+  tol: 0.005
+  verify: PI*(1.496e11)**2/3.156e7/1e15
+  sol: The line sweeps the whole circle's area $\pi r^2$ in one period, so $dA/dt = \pi r^2/T = \pi(1.496\times10^{11})^2/(3.156\times10^7) = 2.23\times10^{15}$ m²/s. By Kepler's second law this rate is the same at every point of the orbit, and equals $L/2m$.
+  check: code

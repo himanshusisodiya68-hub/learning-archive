@@ -556,3 +556,98 @@
 
     Total $= 18 + 60 + 12 = 90$ m. The graph is a trapezium with parallel sides 10 s and 5 s and height 12 m/s: $\tfrac12(10+5)\times12 = 90$ m.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A particle starts from rest at t = 0 and moves along a straight line. Its acceleration is a = 2t (SI units) for 0 ≤ t ≤ 3 s and a = 12 − 2t for 3 s ≤ t ≤ 6 s, so the acceleration-time graph is a triangle that rises to 6 m/s² at 3 s and falls back to zero at 6 s. Find the distance it travels in the first 6 s. (Original problem.)
+  ask: Distance in 6 s
+  unit: m
+  ans: 54
+  tol: 0.05
+  verify: 9 + (6*36 - 216/3 - 18*6) - (6*9 - 27/3 - 18*3)
+  sol: |
+    **Velocity from the area of the a–t graph.** For $0 \le t \le 3$: $v = \int_0^t 2t\,dt = t^2$, so $v(3) = 9$ m/s and the distance covered is $\int_0^3 t^2\,dt = 9$ m.
+
+    For $3 \le t \le 6$: $v = 9 + \int_3^t (12 - 2t)\,dt = 12t - t^2 - 18$. Check: $v(6) = 72 - 36 - 18 = 18$ m/s, which equals the whole area of the triangle, $\tfrac12 \times 6 \times 6 = 18$ m/s.
+
+    Distance from 3 s to 6 s: $\int_3^6 (12t - t^2 - 18)\,dt = \left[6t^2 - \tfrac{t^3}{3} - 18t\right]_3^6 = 36 - (-9) = 45$ m.
+
+    Total $= 9 + 45 = 54$ m.
+
+    **Shortcut by symmetry.** The triangle is symmetric about $t = 3$, so the velocity graph is point-symmetric about $(3, 9)$ and its average over the 6 s is the midpoint value, $18/2 = 9$ m/s. Distance $= 9 \times 6 = 54$ m.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A car A travels at 25 m/s on a straight road. At a distance of 40 m ahead, a car B moves in the same direction at a steady 15 m/s. The driver of A brakes at once with a constant retardation. What is the least retardation that just avoids a collision? (Original problem.)
+  ask: Least retardation
+  unit: m/s²
+  ans: 1.25
+  tol: 0.005
+  verify: 10*10/(2*40)
+  sol: |
+    Work in the frame of B: draw both cars on one v–t graph. A's line starts at 25 m/s and falls; B's line is flat at 15 m/s. The gap closes while A is faster, and stops closing when the lines meet, at the instant their speeds are equal. That is the critical moment: the gap has been reduced by the **area between the two lines**, and that area must not exceed 40 m.
+
+    The area between the lines is a triangle of height $25 - 15 = 10$ m/s and base $T$, the time at which A has slowed to 15 m/s. With retardation $a$, $T = 10/a$. Setting the area equal to the gap: $\tfrac12 \times 10 \times \dfrac{10}{a} = 40$, so $a = \dfrac{100}{80} = 1.25$ m/s².
+
+    Equivalently, in B's frame A approaches at 10 m/s and must stop within 40 m: $v^2 = 2ad$ gives $a = 100/80$.
+
+    The time at which the speeds match is $T = 10/1.25 = 8$ s. With any smaller retardation the cars collide.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A particle moves along the x-axis so that its velocity depends on its position as v² = 36 − 4x (SI units, x in metres for x ≤ 9). Find its acceleration. (The particle moves in the positive x-direction.) (Original problem.)
+  ask: Acceleration
+  unit: m/s²
+  ans: -2
+  tol: 0.01
+  verify: 0.5*(-4)
+  sol: |
+    Use $a = v\,\dfrac{dv}{dx} = \dfrac12\,\dfrac{d(v^2)}{dx}$. Here $v^2 = 36 - 4x$, so $\dfrac{d(v^2)}{dx} = -4$ and $a = \tfrac12(-4) = -2$ m/s².
+
+    The acceleration is constant, so the usual equations apply. They agree: $v^2 = u^2 + 2ax$ with $u = 6$ m/s and $a = -2$ m/s² is $v^2 = 36 - 4x$. The particle stops at $x = 9$ m.
+
+    The negative sign says the acceleration points in the negative x-direction, while the velocity is positive, so the particle slows down.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Two stations are 2.4 km apart. A train may accelerate at no more than 1.2 m/s² and brake at no more than 0.8 m/s², and there is no speed limit. What is the shortest time in which it can go from rest at one station to rest at the other? (Original problem.)
+  ask: Shortest time
+  unit: s
+  ans: 100
+  tol: 0.1
+  verify: sqrt(2*2400*(1/1.2+1/0.8))
+  sol: |
+    The distance is the area under the v–t graph, and the graph can never rise faster than slope 1.2 or fall faster than slope 0.8. The graph that gets the most area in the least time stays at these steepest allowed slopes: a **triangle**, with no cruising.
+
+    Let the peak speed be $v_m$. The rising edge takes $v_m/1.2$ and the falling edge takes $v_m/0.8$, so the total time is $T = v_m\left(\dfrac{1}{1.2} + \dfrac{1}{0.8}\right) = \dfrac{25}{12}\,v_m$.
+
+    The area gives $2400 = \tfrac12 v_m T$. Eliminating $v_m = \tfrac{12}{25}T$: $2400 = \tfrac12 \cdot \tfrac{12}{25}\,T^2$, so $T^2 = 10\,000$ and $T = 100$ s.
+
+    The peak speed is $v_m = \tfrac{12}{25}\times100 = 48$ m/s (about 173 km/h). Any trip with lower peak and a cruise would need more time because its graph lies inside the triangle for the same total area.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: The train of the previous problem (stations 2.4 km apart, acceleration at most 1.2 m/s², braking at most 0.8 m/s²) now has a speed limit of 30 m/s on the line. What is the shortest time for the trip? (Original problem.)
+  ask: Shortest time
+  unit: s
+  ans: 111.25
+  tol: 0.05
+  verify: 30/1.2 + 30/0.8 + (2400 - 0.5*30*30/1.2 - 0.5*30*30/0.8)/30
+  sol: |
+    The unrestricted best peak speed was 48 m/s, above the limit, so the triangle's top is cut off and the graph becomes a **trapezium**: accelerate at 1.2 m/s² up to 30 m/s, cruise at 30 m/s, brake at 0.8 m/s².
+
+    - Speeding up: time $30/1.2 = 25$ s, distance $\tfrac12 \times 25 \times 30 = 375$ m.
+    - Braking: time $30/0.8 = 37.5$ s, distance $\tfrac12 \times 37.5 \times 30 = 562.5$ m.
+    - Cruising distance: $2400 - 375 - 562.5 = 1462.5$ m, taking $1462.5/30 = 48.75$ s.
+
+    Total time $= 25 + 37.5 + 48.75 = 111.25$ s. The limit costs the trip about 11 s compared with the unrestricted 100 s.
+  check: code

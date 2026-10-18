@@ -1,0 +1,485 @@
+# Elasticity (stress, strain, Hooke's law, moduli). NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 8 Mechanical Properties of Solids (Examples 8.1-8.5 and Exercises 8.1-8.16). keph1an covers Part 1 only, so no NCERT answer key exists for this chapter: every solution is ours (check: code for numeric items, none otherwise). Values of Y, G and B come from Tables 8.1-8.3 of the reprint; brass is not in the reprint's Table 8.1, so its Young's modulus (0.91 x 10^11 N/m^2) is [Unverified] and taken from the older edition. Found, board and main problems are original.
+
+- id: ncert11-eg-8-1
+  lvl: ncert-intext
+  num: "XI Ex 8.1"
+  source: NCERT XI Physics · Ch 8 · Example 8.1
+  kind: num
+  q: A structural steel rod has a radius of 10 mm and a length of 1.0 m. A 100 kN force stretches it along its length. Calculate (a) stress, (b) elongation, and (c) strain on the rod. Young's modulus, of structural steel is 2.0 × 10^11 N m^-2.
+  ask: Elongation, part (b)
+  unit: mm
+  ans: 1.59
+  tol: 0.01
+  verify: (100e3/(PI*0.01**2))*1.0/2.0e11*1e3
+  sol: |
+    The rod is clamped at one end and the force acts along its length at the other.
+
+    (a) Stress $=F/A = F/\pi r^2 = \dfrac{100\times10^3}{\pi(10^{-2})^2} = 3.18\times10^8\ \text{N m}^{-2}$.
+
+    (b) Elongation $\Delta L = \dfrac{(F/A)L}{Y} = \dfrac{3.18\times10^8\times1}{2\times10^{11}} = 1.59\times10^{-3}$ m $=1.59$ mm.
+
+    (c) Strain $=\Delta L/L = 1.59\times10^{-3}/1 = 1.59\times10^{-3} = 0.16\%$.
+  check: code
+
+- id: ncert11-eg-8-2
+  lvl: ncert-intext
+  num: "XI Ex 8.2"
+  source: NCERT XI Physics · Ch 8 · Example 8.2
+  kind: num
+  q: A copper wire of length 2.2 m and a steel wire of length 1.6 m, both of diameter 3.0 mm, are connected end to end. When stretched by a load, the net elongation is found to be 0.70 mm. Obtain the load applied.
+  ask: Load
+  unit: N
+  ans: 177
+  tol: 3
+  verify: PI*(1.5e-3)**2*1.1e11*(0.7e-3*2.5/3.5)/2.2
+  sol: |
+    The two wires carry the same tension $W$ and have the same cross-section $A$, so $W/A = Y_c(\Delta L_c/L_c) = Y_s(\Delta L_s/L_s)$. Hence
+    $$\frac{\Delta L_c}{\Delta L_s} = \frac{Y_s}{Y_c}\cdot\frac{L_c}{L_s} = \frac{2.0\times10^{11}}{1.1\times10^{11}}\times\frac{2.2}{1.6} = 2.5 .$$
+    With $\Delta L_c+\Delta L_s = 7.0\times10^{-4}$ m this gives $\Delta L_c = 5.0\times10^{-4}$ m and $\Delta L_s = 2.0\times10^{-4}$ m. Then
+    $$W = \frac{A\,Y_c\,\Delta L_c}{L_c} = \pi(1.5\times10^{-3})^2\times\frac{5.0\times10^{-4}\times1.1\times10^{11}}{2.2} = 1.8\times10^{2}\ \text{N}.$$
+    (More precisely 177 N; the book rounds to $1.8\times10^2$ N.) Values used: $Y_c = 1.1\times10^{11}$, $Y_s = 2.0\times10^{11}$ N m$^{-2}$.
+  check: code
+
+- id: ncert11-eg-8-3
+  lvl: ncert-intext
+  num: "XI Ex 8.3"
+  source: NCERT XI Physics · Ch 8 · Example 8.3
+  kind: num
+  q: In a human pyramid in a circus, the entire weight of the balanced group is supported by the legs of a performer who is lying on his back (as shown in Fig. 8.4). The combined mass of all the persons performing the act, and the tables, plaques etc. involved is 280 kg. The mass of the performer lying on his back at the bottom of the pyramid is 60 kg. Each thighbone (femur) of this performer has a length of 50 cm and an effective radius of 2.0 cm. Determine the amount by which each thighbone gets compressed under the extra load.
+  ask: Compression of each thighbone
+  unit: 10^-5 m
+  ans: 4.55
+  tol: 0.05
+  verify: (0.5*(280-60)*9.8)*0.5/(9.4e9*PI*0.02**2)*1e5
+  sol: |
+    Mass supported by the bottom performer's legs $=280-60=220$ kg, weight $=220\times9.8 = 2156$ N, so each thighbone carries $F = 1078$ N.
+
+    For bone, $Y = 9.4\times10^{9}$ N m$^{-2}$ (Table 8.1). $L = 0.5$ m and $A = \pi(2\times10^{-2})^2 = 1.26\times10^{-3}$ m$^2$. Then
+    $$\Delta L = \frac{FL}{YA} = \frac{1078\times0.5}{9.4\times10^{9}\times1.26\times10^{-3}} = 4.55\times10^{-5}\ \text{m}.$$
+    The fractional decrease is $\Delta L/L = 9.1\times10^{-5}$ (0.0091%), a very small change.
+  check: code
+
+- id: ncert11-eg-8-4
+  lvl: ncert-intext
+  num: "XI Ex 8.4"
+  source: NCERT XI Physics · Ch 8 · Example 8.4
+  kind: num
+  q: A square lead slab of side 50 cm and thickness 10 cm is subject to a shearing force (on its narrow face) of 9.0 × 10^4 N. The lower edge is riveted to the floor. How much will the upper edge be displaced?
+  ask: Displacement of the upper edge
+  unit: mm
+  ans: 0.16
+  tol: 0.005
+  verify: (9.0e4/0.05)*0.5/5.6e9*1e3
+  sol: |
+    The force acts parallel to the narrow face, of area $A = 50\text{ cm}\times10\text{ cm} = 0.05$ m$^2$. Shearing stress $=F/A = 9.0\times10^4/0.05 = 1.8\times10^{6}$ N m$^{-2}$.
+
+    Shearing strain $=\Delta x/L = \text{stress}/G$, with $L = 0.5$ m and $G = 5.6\times10^{9}$ N m$^{-2}$ for lead (Table 8.2):
+    $$\Delta x = \frac{1.8\times10^{6}\times0.5}{5.6\times10^{9}} = 1.6\times10^{-4}\ \text{m} = 0.16\ \text{mm}.$$
+    [Note] The printed solution writes the force as $9.4\times10^4$ N, but the question says $9.0\times10^4$ N and the stress $1.80\times10^6$ N m$^{-2}$ it quotes follows from $9.0\times10^4$ N. The "9.4" is a typographical slip.
+  check: code
+
+- id: ncert11-eg-8-5
+  lvl: ncert-intext
+  num: "XI Ex 8.5"
+  source: NCERT XI Physics · Ch 8 · Example 8.5
+  kind: num
+  q: The average depth of Indian Ocean is about 3000 m. Calculate the fractional compression, ∆V/V, of water at the bottom of the ocean, given that the bulk modulus of water is 2.2 × 10^9 N m^-2. (Take g = 10 m s^-2)
+  ask: Fractional compression
+  unit: "%"
+  ans: 1.36
+  tol: 0.01
+  verify: (3000*1000*10/2.2e9)*100
+  sol: |
+    Pressure of the 3000 m water column: $p = h\rho g = 3000\times1000\times10 = 3\times10^{7}$ N m$^{-2}$.
+
+    Fractional compression $\Delta V/V = p/B = \dfrac{3\times10^{7}}{2.2\times10^{9}} = 1.36\times10^{-2} = 1.36\%$.
+  check: code
+
+- id: ncert11-ex-8-1
+  lvl: ncert-ex
+  num: "XI 8.1"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.1
+  kind: num
+  q: A steel wire of length 4.7 m and cross-sectional area 3.0 × 10^-5 m^2 stretches by the same amount as a copper wire of length 3.5 m and cross-sectional area of 4.0 × 10^-5 m^2 under a given load. What is the ratio of the Young's modulus of steel to that of copper?
+  ask: Y(steel)/Y(copper)
+  unit: ""
+  ans: 1.79
+  tol: 0.01
+  verify: (4.7/3.0e-5)/(3.5/4.0e-5)
+  sol: |
+    Same load $F$ and same extension $\Delta L$: $Y = \dfrac{FL}{A\,\Delta L}$, so $Y\propto L/A$. Therefore
+    $$\frac{Y_s}{Y_c} = \frac{L_s/A_s}{L_c/A_c} = \frac{4.7/(3.0\times10^{-5})}{3.5/(4.0\times10^{-5})} = \frac{1.567\times10^{5}}{0.875\times10^{5}} = 1.79 .$$
+    (Check with the table values: $200/110 = 1.8$.)
+  check: code
+
+- id: ncert11-ex-8-2
+  lvl: ncert-ex
+  num: "XI 8.2"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.2
+  kind: num
+  q: Figure 8.9 shows the strain-stress curve for a given material. What are (a) Young's modulus and (b) approximate yield strength for this material?
+  ask: Young's modulus, part (a)
+  unit: 10^10 N/m²
+  ans: 7.5
+  tol: 0.1
+  verify: (150e6/0.002)/1e10
+  sol: |
+    [Inference] Values are read from Fig. 8.9 (stress in $10^6$ N m$^{-2}$ against strain; the graph is a straight line from the origin up to a peak near strain 0.004).
+
+    (a) In the straight part, e.g. at strain $0.002$ the stress is $150\times10^{6}$ N m$^{-2}$, so
+    $$Y = \frac{\text{stress}}{\text{strain}} = \frac{150\times10^{6}}{0.002} = 7.5\times10^{10}\ \text{N m}^{-2}.$$
+    (Same value from the end of the line: $300\times10^6/0.004$.)
+
+    (b) The curve bends over at its peak, near stress $300\times10^{6}$ N m$^{-2}$ (strain about 0.004). The approximate yield strength is therefore $\approx3\times10^{8}$ N m$^{-2}$.
+  check: code
+
+- id: ncert11-ex-8-3
+  lvl: ncert-ex
+  num: "XI 8.3"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.3
+  kind: text
+  q: |-
+    The stress-strain graphs for materials A and B are shown in Fig. 8.10.
+    The graphs are drawn to the same scale.
+    (a) Which of the materials has the greater Young's modulus?
+    (b) Which of the two is the stronger material?
+  sol: |
+    [Inference] Read from Fig. 8.10 (the graphs have no numbers, only shapes).
+
+    (a) **Material A.** Young's modulus is the slope of the initial straight part of the stress-strain curve. On the common scale, A's curve rises more steeply than B's before bending over, so $Y_A > Y_B$.
+
+    (b) **Material A.** Strength is the stress the material can bear before it fails. The curve of A reaches a higher maximum stress than that of B, so A is the stronger material.
+
+    Note that "greater Young's modulus" (stiffer) and "stronger" are different properties; here A happens to have both.
+  check: none
+
+- id: ncert11-ex-8-4
+  lvl: ncert-ex
+  num: "XI 8.4"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.4
+  kind: text
+  q: |-
+    Read the following two statements below carefully and state, with reasons, if it is true or false.
+    (a) The Young's modulus of rubber is greater than that of steel;
+    (b) The stretching of a coil is determined by its shear modulus.
+  sol: |
+    (a) **False.** Young's modulus is stress per unit strain. For a given stress, steel stretches by a tiny strain (about $10^{-3}$ at a few hundred MPa), whereas rubber stretches by a very large strain. So rubber has the much smaller $Y$. The stress-strain curve of an elastomer is also not linear (Fig. 8.3), so a single $Y$ describes it poorly. Steel, $Y = 2\times10^{11}$ N m$^{-2}$, is the more elastic material in the physicist's sense.
+
+    (b) **True.** When a coil (helical spring) is stretched, the wire is mainly twisted, and its length hardly changes. Each small piece of the wire undergoes shear, not tension. So the extension of the coil is governed by the shear modulus (modulus of rigidity) of the wire material.
+  check: none
+
+- id: ncert11-ex-8-5
+  lvl: ncert-ex
+  num: "XI 8.5"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.5
+  kind: num
+  q: Two wires of diameter 0.25 cm, one made of steel and the other made of brass are loaded as shown in Fig. 8.11. The unloaded length of steel wire is 1.5 m and that of brass wire is 1.0 m. Compute the elongations of the steel and the brass wires.
+  ask: Elongation of the steel wire
+  unit: mm
+  ans: 0.15
+  tol: 0.005
+  verify: ((4+6)*9.8*1.5/(PI*0.00125**2*2.0e11))*1e3
+  sol: |
+    From Fig. 8.11: the steel wire (1.5 m) hangs from the ceiling and carries a 4.0 kg mass at its lower end; the brass wire (1.0 m) hangs from that mass and carries 6.0 kg. So the steel wire supports $4.0+6.0 = 10$ kg and the brass wire supports 6.0 kg.
+
+    Area $A = \pi(0.125\times10^{-2})^2 = 4.91\times10^{-6}$ m$^2$. Take $Y_{steel} = 2.0\times10^{11}$ N m$^{-2}$ (Table 8.1) and $Y_{brass} = 0.91\times10^{11}$ N m$^{-2}$.
+
+    Steel: $F = 10\times9.8 = 98$ N, $\Delta L = \dfrac{FL}{AY} = \dfrac{98\times1.5}{4.91\times10^{-6}\times2.0\times10^{11}} = 1.5\times10^{-4}$ m $=0.15$ mm.
+
+    Brass: $F = 6.0\times9.8 = 58.8$ N, $\Delta L = \dfrac{58.8\times1.0}{4.91\times10^{-6}\times0.91\times10^{11}} = 1.3\times10^{-4}$ m $=0.13$ mm.
+
+    [Unverified] Brass is not in the reprint's Table 8.1; $0.91\times10^{11}$ N m$^{-2}$ is the value in the older edition's table. The steel figure uses the reprint's $2.0\times10^{11}$.
+  check: code
+
+- id: ncert11-ex-8-6
+  lvl: ncert-ex
+  num: "XI 8.6"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.6
+  kind: num
+  q: The edge of an aluminium cube is 10 cm long. One face of the cube is firmly fixed to a vertical wall. A mass of 100 kg is then attached to the opposite face of the cube. The shear modulus of aluminium is 25 GPa. What is the vertical deflection of this face?
+  ask: Vertical deflection
+  unit: 10^-7 m
+  ans: 3.92
+  tol: 0.02
+  verify: (100*9.8*0.1/(0.1**2*25e9))*1e7
+  sol: |
+    The weight $F = 100\times9.8 = 980$ N acts parallel to the free face (area $A = 0.1^2 = 10^{-2}$ m$^2$), so it shears the cube. With $G = 25\times10^{9}$ Pa and $L = 0.1$ m,
+    $$\Delta x = \frac{FL}{AG} = \frac{980\times0.1}{10^{-2}\times25\times10^{9}} = 3.9\times10^{-7}\ \text{m}.$$
+  check: code
+
+- id: ncert11-ex-8-7
+  lvl: ncert-ex
+  num: "XI 8.7"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.7
+  kind: num
+  q: Four identical hollow cylindrical columns of mild steel support a big structure of mass 50,000 kg. The inner and outer radii of each column are 30 and 60 cm respectively. Assuming the load distribution to be uniform, calculate the compressional strain of each column.
+  ask: Compressional strain
+  unit: 10^-7
+  ans: 7.22
+  tol: 0.05
+  verify: ((50000*9.8/4)/(PI*(0.6**2-0.3**2))/2.0e11)*1e7
+  sol: |
+    Load on each column $F = \dfrac{50000\times9.8}{4} = 1.225\times10^{5}$ N. Cross-section $A = \pi(R^2-r^2) = \pi(0.6^2-0.3^2) = 0.848$ m$^2$. For mild steel take $Y = 2.0\times10^{11}$ N m$^{-2}$ (Table 8.1, "Steel").
+    $$\text{strain} = \frac{F}{AY} = \frac{1.225\times10^{5}}{0.848\times2.0\times10^{11}} = 7.2\times10^{-7}.$$
+    [Inference] The question gives no $Y$; the value from Table 8.1 is assumed.
+  check: code
+
+- id: ncert11-ex-8-8
+  lvl: ncert-ex
+  num: "XI 8.8"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.8
+  kind: num
+  q: A piece of copper having a rectangular cross-section of 15.2 mm × 19.1 mm is pulled in tension with 44,500 N force, producing only elastic deformation. Calculate the resulting strain?
+  ask: Strain
+  unit: 10^-3
+  ans: 1.39
+  tol: 0.01
+  verify: (44500/(15.2e-3*19.1e-3)/1.1e11)*1e3
+  sol: |
+    $A = 15.2\times10^{-3}\times19.1\times10^{-3} = 2.90\times10^{-4}$ m$^2$. Stress $=F/A = 44500/2.90\times10^{-4} = 1.53\times10^{8}$ N m$^{-2}$. With $Y_{Cu} = 1.1\times10^{11}$ N m$^{-2}$ (Table 8.1),
+    $$\text{strain} = \frac{\text{stress}}{Y} = \frac{1.53\times10^{8}}{1.1\times10^{11}} = 1.4\times10^{-3}.$$
+    [Inference] $Y$ is not given in the question; the table value is used.
+  check: code
+
+- id: ncert11-ex-8-9
+  lvl: ncert-ex
+  num: "XI 8.9"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.9
+  kind: num
+  q: A steel cable with a radius of 1.5 cm supports a chairlift at a ski area. If the maximum stress is not to exceed 10^8 N m^-2, what is the maximum load the cable can support ?
+  ask: Maximum load
+  unit: 10^4 N
+  ans: 7.07
+  tol: 0.02
+  verify: (1e8*PI*0.015**2)/1e4
+  sol: |
+    $F_{max} = \sigma_{max}A = 10^{8}\times\pi(1.5\times10^{-2})^2 = 10^{8}\times7.07\times10^{-4} = 7.07\times10^{4}$ N.
+  check: code
+
+- id: ncert11-ex-8-10
+  lvl: ncert-ex
+  num: "XI 8.10"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.10
+  kind: num
+  q: A rigid bar of mass 15 kg is supported symmetrically by three wires each 2.0 m long. Those at each end are of copper and the middle one is of iron. Determine the ratios of their diameters if each is to have the same tension.
+  ask: d(copper)/d(iron)
+  unit: ""
+  ans: 1.31
+  tol: 0.01
+  verify: sqrt(1.9e11/1.1e11)
+  sol: |
+    The bar is rigid and stays horizontal, so all three wires stretch by the same $\Delta L$; they also have the same length $L$. For each wire the tension is $T = \dfrac{YA\,\Delta L}{L}$. Equal tensions then require $Y_{Cu}A_{Cu} = Y_{Fe}A_{Fe}$, i.e. $Y_{Cu}d_{Cu}^2 = Y_{Fe}d_{Fe}^2$:
+    $$\frac{d_{Cu}}{d_{Fe}} = \sqrt{\frac{Y_{Fe}}{Y_{Cu}}} = \sqrt{\frac{1.9\times10^{11}}{1.1\times10^{11}}} = 1.31 .$$
+    So the copper wires are about 1.31 times as thick as the iron wire (ratio $1.31:1$). The mass of the bar and the common length do not matter. Values: $Y_{Fe} = 1.9\times10^{11}$ (wrought iron, Table 8.1), $Y_{Cu} = 1.1\times10^{11}$ N m$^{-2}$.
+  check: code
+
+- id: ncert11-ex-8-11
+  lvl: ncert-ex
+  num: "XI 8.11"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.11
+  kind: num
+  q: A 14.5 kg mass, fastened to the end of a steel wire of unstretched length 1.0 m, is whirled in a vertical circle with an angular velocity of 2 rev/s at the bottom of the circle. The cross-sectional area of the wire is 0.065 cm^2. Calculate the elongation of the wire when the mass is at the lowest point of its path.
+  ask: Elongation
+  unit: mm
+  ans: 1.87
+  tol: 0.02
+  verify: (14.5*(9.8+(2*2*PI)**2*1.0)*1.0/(2.0e11*0.065e-4))*1e3
+  sol: |
+    At the lowest point the net upward force provides the centripetal force: $T - mg = m\omega^2 L$, with $\omega = 2\ \text{rev/s} = 4\pi$ rad s$^{-1}$ and radius $\approx L = 1.0$ m (the stretch is tiny).
+    $$T = m(g+\omega^2L) = 14.5\,(9.8 + 157.9) = 2.43\times10^{3}\ \text{N}.$$
+    With $A = 0.065\times10^{-4}$ m$^2$ and $Y = 2.0\times10^{11}$ N m$^{-2}$,
+    $$\Delta L = \frac{TL}{AY} = \frac{2.43\times10^{3}\times1.0}{6.5\times10^{-6}\times2.0\times10^{11}} = 1.87\times10^{-3}\ \text{m}.$$
+  check: code
+
+- id: ncert11-ex-8-12
+  lvl: ncert-ex
+  num: "XI 8.12"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.12
+  kind: num
+  q: |
+    Compute the bulk modulus of water from the following data: Initial volume = 100.0 litre, Pressure increase = 100.0 atm (1 atm = 1.013 × 10^5 Pa), Final volume = 100.5 litre. Compare the bulk modulus of water with that of air (at constant temperature). Explain in simple terms why the ratio is so large.
+  ask: Bulk modulus of water
+  unit: 10^9 Pa
+  ans: 2.026
+  tol: 0.005
+  verify: (100*1.013e5/(0.5/100))/1e9
+  sol: |
+    [Inference] The data say the final volume is 100.5 litre, larger than the initial 100.0 litre although the pressure increased. This is evidently a slip in the question: the intended change is a magnitude $|\Delta V| = 0.5$ litre (volume decreasing to 99.5 litre). The numbers below use $|\Delta V| = 0.5$ litre.
+
+    $\Delta p = 100\times1.013\times10^{5} = 1.013\times10^{7}$ Pa and $|\Delta V|/V = 0.5/100 = 5\times10^{-3}$, so
+    $$B_{water} = \frac{\Delta p}{|\Delta V|/V} = \frac{1.013\times10^{7}}{5\times10^{-3}} = 2.03\times10^{9}\ \text{Pa}.$$
+    For a gas at constant temperature $pV = $ constant, which gives $B_{air} = p$. At 1 atm that is $\approx1.0\times10^{5}$ Pa (Table 8.3 lists $1.0\times10^{-4}$ GPa). So
+    $$\frac{B_{water}}{B_{air}} \approx \frac{2.03\times10^{9}}{1.0\times10^{5}} \approx 2\times10^{4}.$$
+    Why so large: in a liquid the molecules are already in contact, held a molecular diameter apart, so squeezing them closer is strongly resisted. In a gas the molecules are far apart (about ten diameters at STP) and mostly empty space, so a small pressure compresses it easily. Water is therefore about $2\times10^4$ times harder to compress.
+  check: code
+
+- id: ncert11-ex-8-13
+  lvl: ncert-ex
+  num: "XI 8.13"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.13
+  kind: num
+  q: What is the density of water at a depth where pressure is 80.0 atm, given that its density at the surface is 1.03 × 10^3 kg m^-3?
+  ask: Density at that depth
+  unit: kg/m³
+  ans: 1034
+  tol: 1
+  verify: 1.03e3/(1-80*1.013e5/2.2e9)
+  sol: |
+    Compression: $\dfrac{|\Delta V|}{V} = \dfrac{\Delta p}{B} = \dfrac{80.0\times1.013\times10^{5}}{2.2\times10^{9}} = 3.68\times10^{-3}$, with $B_{water} = 2.2\times10^{9}$ Pa (Table 8.3). The mass is fixed, so $\rho V = \rho' V'$ and
+    $$\rho' = \frac{\rho}{1 - |\Delta V|/V} = \frac{1.03\times10^{3}}{1-3.68\times10^{-3}} = 1.034\times10^{3}\ \text{kg m}^{-3}.$$
+    The increase is only about 0.4%.
+  check: code
+
+- id: ncert11-ex-8-14
+  lvl: ncert-ex
+  num: "XI 8.14"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.14
+  kind: num
+  q: Compute the fractional change in volume of a glass slab, when subjected to a hydraulic pressure of 10 atm.
+  ask: Fractional change in volume
+  unit: 10^-5
+  ans: 2.74
+  tol: 0.02
+  verify: (10*1.013e5/37e9)*1e5
+  sol: |
+    $\dfrac{|\Delta V|}{V} = \dfrac{p}{B} = \dfrac{10\times1.013\times10^{5}}{37\times10^{9}} = 2.7\times10^{-5}$, using the bulk modulus of glass $B = 37\times10^{9}$ Pa from Table 8.3. The volume decreases by this fraction.
+  check: code
+
+- id: ncert11-ex-8-15
+  lvl: ncert-ex
+  num: "XI 8.15"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.15
+  kind: num
+  q: Determine the volume contraction of a solid copper cube, 10 cm on an edge, when subjected to a hydraulic pressure of 7.0 × 10^6 Pa.
+  ask: Volume contraction
+  unit: 10^-8 m³
+  ans: 5
+  tol: 0.05
+  verify: (7.0e6*1e-3/140e9)*1e8
+  sol: |
+    $V = (0.1)^3 = 10^{-3}$ m$^3$. For copper $B = 140\times10^{9}$ Pa (Table 8.3).
+    $$|\Delta V| = \frac{pV}{B} = \frac{7.0\times10^{6}\times10^{-3}}{1.4\times10^{11}} = 5\times10^{-8}\ \text{m}^3 = 0.05\ \text{cm}^3.$$
+  check: code
+
+- id: ncert11-ex-8-16
+  lvl: ncert-ex
+  num: "XI 8.16"
+  source: NCERT XI Physics · Ch 8 · Exercise 8.16
+  kind: num
+  q: How much should the pressure on a litre of water be changed to compress it by 0.10%?
+  ask: Required increase in pressure
+  unit: 10^6 Pa
+  ans: 2.2
+  tol: 0.01
+  verify: (2.2e9*0.0010)/1e6
+  sol: |
+    $\Delta p = B\,\dfrac{|\Delta V|}{V} = 2.2\times10^{9}\times0.10\times10^{-2} = 2.2\times10^{6}$ Pa, about 22 atmospheres. The one-litre volume is not needed, since only the fractional compression matters.
+
+    [Note] The reprint's page ends this exercise with a stray fragment, "carry one quarter of the load.", which belongs to no question visible in the chapter text (apparently the tail of an item lost in the reprint). It is not treated as a question here.
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of these quantities has no unit?
+  opts: ["stress", "strain", "Young's modulus", "elastic potential energy per unit volume"]
+  ans: 1
+  sol: Strain is a ratio of two lengths (or two volumes), $\Delta L/L$, so it is dimensionless. Stress, Young's modulus and the energy per unit volume all have the unit of pressure, N m$^{-2}$. (Original problem.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A force of 200 N pulls on the end of a wire whose cross-section is 2.0 mm². What is the tensile stress in the wire? (Original problem.)
+  ask: Stress
+  unit: MPa
+  ans: 100
+  tol: 0.5
+  verify: 200/2.0e-6/1e6
+  sol: $\sigma = F/A = 200/(2.0\times10^{-6}) = 1.0\times10^{8}$ N m$^{-2}$ $=100$ MPa. Note that 2.0 mm$^2$ is $2.0\times10^{-6}$ m$^2$.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: Within the elastic limit, the extension of a wire is doubled by doubling the load. This is a statement of
+  opts: ["Pascal's law", "Hooke's law", "Archimedes' principle", "Bernoulli's principle"]
+  ans: 1
+  sol: Hooke's law says stress is proportional to strain (equivalently, extension is proportional to load) within the elastic limit. (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A steel wire of length 2.0 m and diameter 1.0 mm carries a load of 20 kg. Find its elongation. Take $Y = 2.0\times10^{11}$ N/m² and g = 9.8 m/s². (Original problem.)
+  ask: Elongation
+  unit: mm
+  ans: 2.50
+  tol: 0.02
+  verify: (20*9.8*2.0/(PI*(0.5e-3)**2*2.0e11))*1e3
+  sol: |
+    $F = 20\times9.8 = 196$ N, $A = \pi(0.5\times10^{-3})^2 = 7.85\times10^{-7}$ m$^2$.
+    $$\Delta L = \frac{FL}{AY} = \frac{196\times2.0}{7.85\times10^{-7}\times2.0\times10^{11}} = 2.5\times10^{-3}\ \text{m} = 2.5\ \text{mm}.$$
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Find the elastic potential energy stored in the wire of the previous problem (steel, 2.0 m long, 1.0 mm diameter, load 20 kg). (Original problem.)
+  ask: Stored energy
+  unit: mJ
+  ans: 245
+  tol: 2
+  verify: 0.5*(20*9.8)*(20*9.8*2.0/(PI*(0.5e-3)**2*2.0e11))*1e3
+  sol: |
+    Work done in stretching is $\tfrac12F\,\Delta L$ (the force grows from 0 to $F$): $U = \tfrac12\times196\times2.5\times10^{-3} = 0.245$ J $=245$ mJ. Equivalently $U = \tfrac12\times\text{stress}\times\text{strain}\times\text{volume}$.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: text
+  q: Rubber stretches far more than steel under the same load. Which has the larger Young's modulus, and which is called more elastic? Explain. (Original problem.)
+  sol: |
+    Steel has the larger Young's modulus ($\approx2\times10^{11}$ N m$^{-2}$ against $\sim10^{6}$ to $10^{7}$ for rubber). $Y = $ stress/strain, so a material that gives a small strain for a large stress has a large $Y$. In physics, the more elastic material is the one that resists deformation more strongly, and returns to its shape, so steel is the more elastic. Everyday language says the opposite because we call the stretchier material "elastic". (Original problem; compare Point to ponder 6 of the chapter.)
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A copper wire of uniform cross-section hangs vertically from a fixed support. Its density is 8900 kg/m³ and it breaks when the stress at the top reaches 2.5 × 10⁸ N/m². What is the greatest length of wire that can hang without breaking under its own weight? Take g = 9.8 m/s². (Original problem.)
+  ask: Greatest length
+  unit: km
+  ans: 2.87
+  tol: 0.02
+  verify: 2.5e8/(8900*9.8)/1e3
+  sol: |
+    At the top, the tension equals the whole weight, $\rho A L g$, so the stress there is $\sigma = \rho g L$, independent of $A$. Setting $\sigma = 2.5\times10^{8}$:
+    $$L = \frac{\sigma}{\rho g} = \frac{2.5\times10^{8}}{8900\times9.8} = 2.87\times10^{3}\ \text{m}.$$
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A steel rod and a copper rod, identical in length and cross-section, are joined side by side and together carry a total tensile load of 1000 N so that they stretch by the same amount. What load does the steel rod carry? Take $Y_{steel} = 2.0\times10^{11}$ and $Y_{Cu} = 1.1\times10^{11}$ N/m². (Original problem.)
+  ask: Load on steel
+  unit: N
+  ans: 645
+  tol: 1
+  verify: 1000*2.0/(2.0+1.1)
+  sol: |
+    Equal extension, length and area mean the load shares are in the ratio of the Young's moduli: $F = YA\,\Delta L/L$, so $F_s/F_c = Y_s/Y_c = 2.0/1.1$. With $F_s + F_c = 1000$ N,
+    $$F_s = 1000\times\frac{2.0}{3.1} = 645\ \text{N},\qquad F_c = 355\ \text{N}.$$
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A steel rod is held rigidly between two fixed walls with no slack at 20 °C. It is then heated by 50 °C. Find the compressive stress that develops. Take $Y = 2.0\times10^{11}$ N/m² and the coefficient of linear expansion $\alpha = 1.2\times10^{-5}$ per °C. (Original problem.)
+  ask: Stress
+  unit: MPa
+  ans: 120
+  tol: 0.5
+  verify: 2.0e11*1.2e-5*50/1e6
+  sol: |
+    Free expansion would be $\Delta L = \alpha L\,\Delta T$, a strain of $\alpha\,\Delta T = 6\times10^{-4}$. The walls forbid it, so they squeeze the rod back by that same strain, creating a stress $\sigma = Y\alpha\,\Delta T = 2.0\times10^{11}\times6\times10^{-4} = 1.2\times10^{8}$ N m$^{-2}$ $=120$ MPa. It does not depend on the rod's length or area.
+  check: code

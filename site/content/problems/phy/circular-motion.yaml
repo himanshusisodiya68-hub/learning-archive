@@ -1,4 +1,4 @@
-# Circular motion. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 3 (Motion in a Plane; Example 3.9 and Exercises 3.14–3.16). The Grade 9 treatment of uniform circular motion is covered under the Grade 9 chapter files. Found, board and main problems are original.
+# Circular motion. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 3 (Motion in a Plane; Example 3.9 and Exercises 3.14–3.16). NCERT Grade 9 Science Ch 4 §4.4.1 (uniform circular motion) in-text questions and the Activity 4.5 and Journey Beyond questions are copied word for word from the 2026-27 edition; Grade 9 Exercises 4.3 and 4.16 also concern circular motion and are held under speed-velocity-acceleration. Found, board and main problems are original.
 
 - id: ncert11-eg-3-9
   lvl: ncert-intext
@@ -82,6 +82,109 @@
     (c) **True.** Over one full cycle the velocity returns to its initial value, so $\mathbf a_{\text{avg}} = \Delta\mathbf v/T = 0$. Equivalently, the centripetal acceleration vectors point in all directions around the circle in equal measure and sum to zero.
   answer_key: "(a) False (true only for uniform circular motion); (b) True; (c) True."
   check: ncert-key
+
+- id: ncert9-it-4-9
+  lvl: ncert-intext
+  num: "IX 4 · §4.4.1 a"
+  source: NCERT Grade 9 Science · Ch 4 · §4.4.1 Uniform circular motion
+  kind: text
+  q: |-
+    Do you remember learning about circular motion in an earlier grade?
+  sol: |
+    Yes: the margin tag points to Grade 6 (Curiosity), Chapter 5, where motion was sorted into linear, circular and oscillatory kinds. The idea to recall is the book's own sentence: when an object moves in a circular path, its motion is called **circular motion**. A child on a merry-go-round, the tip of a clock's hand and a point on a spinning wheel all move this way.
+  check: none
+
+- id: ncert9-it-4-10
+  lvl: ncert-intext
+  num: "IX 4 · §4.4.1 b"
+  source: NCERT Grade 9 Science · Ch 4 · §4.4.1 Uniform circular motion (Fig. 4.22)
+  kind: text
+  q: |-
+    Suppose a child is sitting on a moving merry-go-around. The child, moving on a circular path, moves from A to B to C as shown in Fig. 4.22. What is the distance travelled by the child? What is their displacement from their original position?
+  sol: |
+    The distance travelled is the length of the curved path ABC, the arc along which the child actually moved. The displacement is the straight line from the starting point A to the end point C (the chord AC), with its direction from A to C.
+
+    The two are not equal: a curve between two points is always longer than the straight line joining them. (This is the book's own answer; Fig. 4.22 gives no numbers, so no value can be computed.)
+  check: none
+
+- id: ncert9-it-4-11
+  lvl: ncert-intext
+  num: "IX 4 · §4.4.1 c"
+  source: NCERT Grade 9 Science · Ch 4 · §4.4.1 Uniform circular motion
+  kind: num
+  q: |-
+    What is the distance travelled by the child in making one revolution (going round the circle once)?
+  ask: Distance for one revolution, as a multiple of the radius R (answer in units of R)
+  unit: R
+  ans: 6.283
+  tol: 0.01
+  verify: 2*PI
+  sol: |
+    One revolution takes the child once round the circle, so the distance is the circumference: $2\pi R$, where $R$ is the radius of the circular path (about $6.28\,R$).
+
+    The displacement for one full revolution is **zero**, because the child comes back to the starting point. So the average speed over one revolution is $v_{av} = 2\pi R/T$ (eq. 4.5), while the average velocity over the same time is zero.
+  check: code
+
+- id: ncert9-it-4-12
+  lvl: ncert-intext
+  num: "IX 4 · §4.4.1 d"
+  source: NCERT Grade 9 Science · Ch 4 · §4.4.1 Uniform circular motion (Fig. 4.23)
+  kind: text
+  q: |-
+    In case of uniform circular motion, the speed is constant but what about the direction of velocity at an instant? Is it changing?
+  sol: |
+    **Yes, the direction keeps changing.** At each instant the velocity points along the tangent to the circle at the object's position, and the tangent turns as the object goes round. Fig. 4.23 shows the idea: a runner on a square track changes direction four times a lap, on a hexagon six times, and on a circle the direction changes at every instant, while the speed stays the same. Since velocity includes direction, the velocity is changing, so uniform circular motion is accelerated motion.
+  check: none
+
+- id: ncert9-it-4-13
+  lvl: ncert-intext
+  num: "IX 4 · §4.4.1 e"
+  source: NCERT Grade 9 Science · Ch 4 · §4.4.1 Uniform circular motion (Fig. 4.23)
+  kind: text
+  q: |-
+    What happens if we go on increasing the number of sides indefinitely?
+  sol: |
+    With more and more sides, each straight side gets shorter and the athlete has to turn more and more often. In the end the track approaches a circle, each side shrinks to a point and the direction of the athlete's velocity changes continuously. A circle is the limit of a polygon with infinitely many tiny sides.
+  check: none
+
+- id: ncert9-it-4-14
+  lvl: ncert-intext
+  num: "IX 4 · Activity 4.5"
+  source: |
+    NCERT Grade 9 Science · Ch 4 · Activity 4.5: Let us investigate (Fig. 4.24)
+  kind: text
+  q: |-
+    Take a ring, such as an adhesive tape ring and one marble. Place the ring flat on a smooth surface and throw the marble inside the ring in a way that it rotates along the inner boundary of the ring (Fig. 4.24). Predict what will happen if you lift the ring while the marble is moving. Now, after one or two complete revolutions of the marble, pick up the ring without disturbing the motion of the marble. What do you observe? Does the marble continue moving in a circular motion? Or does it move in some other manner?
+  sol: |
+    **Prediction and observation:** the marble does not keep circling. As soon as the ring is lifted it rolls off in a **straight line**, along the tangent to the circle at the point where it was released. Repeating the activity gives the same result each time.
+
+    The ring was the thing that kept turning the marble's velocity, pushing it inward at every instant. Without it nothing turns the velocity, so the marble keeps going in the direction it had.
+  check: none
+
+- id: ncert9-it-4-15
+  lvl: ncert-intext
+  num: "IX 4 · Activity 4.5 (why)"
+  source: |
+    NCERT Grade 9 Science · Ch 4 · Activity 4.5: Let us investigate
+  kind: text
+  q: |-
+    When the marble is released by lifting the ring, it moves in a straight line. Why does this happen?
+  sol: |
+    Once the marble is released, it continues to move in the direction it had at the instant the ring was removed, which is along the tangent to the circle at that point. The book says the reason will be given in a later chapter: it is Newton's first law, that a body keeps its velocity unless a net force acts. While the ring touched the marble, it exerted an inward force that bent the path into a circle; with the ring gone, there is no force turning the marble, so the path is straight.
+  check: none
+
+- id: ncert9-it-4-16
+  lvl: ncert-intext
+  num: "IX 4 · Journey Beyond"
+  source: NCERT Grade 9 Science · Ch 4 · The Journey Beyond, first activity (Fig. 4.33)
+  kind: text
+  q: |-
+    Take a cardboard disc (radius ~ 8 cm) (Fig. 4.33). Write numbers 1 to 12 on the outer part (7 cm from the centre) and the letters 'ABCDEF' on the inner part (4 cm from the centre), using the same font size. Spin the disc slowly, then faster, and observe how the numbers and letters appear. Why do the numbers fade or disappear while the letters remain visible? Are the speeds of the numbers and letters the same or different? Justify your answer.
+  sol: |
+    **The speeds are different.** Every point of the disc takes the same time $T$ for one turn, but a point at distance $r$ from the centre goes round a circle of circumference $2\pi r$, so its speed is $v = 2\pi r/T$. The numbers (7 cm) move faster than the letters (4 cm) in the ratio $7:4 = 1.75$.
+
+    The eye holds an image for a fraction of a second (persistence of vision), so anything that moves a long way in that time looks smeared. When the disc spins fast enough, the faster-moving numbers smear into a blur and fade first, while the slower letters near the centre still stay put long enough to be read. [Inference] The book gives no explanation of the eye's part; this is the standard persistence-of-vision account.
+  check: none
 
 - id: f1
   lvl: found

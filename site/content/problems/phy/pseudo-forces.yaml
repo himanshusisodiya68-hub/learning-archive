@@ -1,0 +1,131 @@
+# Pseudo forces (solving problems in an accelerating frame: apparent weight, the tilted pendulum, the rotating frame). No NCERT item belongs to this leaf as a separate item: the Class XI Laws of Motion items that need the idea (Exercises 4.3 and 4.13, Example 4.7) are kept word for word in other leaves of this branch. All problems below are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A car brakes hard, and a passenger seems to be thrown forward. In the frame of the car, the pseudo force on the passenger points (Original problem.)
+  opts: ["forward, in the direction the car was moving", "backward, opposite to the direction the car was moving", "upward", "there is no such force in any frame"]
+  ans: 0
+  sol: |
+    The car's acceleration $\vec a$ points backward (it is slowing down). In a frame with acceleration $\vec a$ the pseudo force on a mass $m$ is $-m\vec a$, which points forward. In the road (inertial) frame there is no such force: the passenger simply keeps moving forward by inertia while the car slows under the passenger.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A 50 kg person stands in a train that is accelerating at 1.5 m s$^{-2}$. What is the magnitude of the pseudo force on the person in the frame of the train? (Original problem.)
+  ask: Pseudo force
+  unit: N
+  ans: 75
+  tol: 0.5
+  verify: 50*1.5
+  sol: |
+    The pseudo force has magnitude $ma = 50 \times 1.5 = 75$ N and points opposite to the train's acceleration, that is backward. (The person is held in place relative to the train by friction from the floor, which is a real force of 75 N forward.)
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: Which of these forces on a body has no other body as its source (it is a pseudo force)? (Original problem.)
+  opts: ["Weight", "Tension in a string", "Friction", "The centrifugal force felt in a rotating frame"]
+  ans: 3
+  sol: |
+    Weight comes from the Earth, tension from the string and friction from the surface in contact. The centrifugal force appears only because the observer is in a rotating (accelerating) frame; no body exerts it, and it has no third-law partner. It is added to the equations in that frame so that $F = ma$ still works there.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A bob hangs from the roof of a bus that is accelerating forward uniformly at 2.0 m s$^{-2}$. At what angle to the vertical does the string hang in equilibrium relative to the bus? (Original problem.)
+  ask: Angle with the vertical
+  unit: °
+  ans: 11.5
+  tol: 0.1
+  verify: deg(atan(2.0/9.8))
+  sol: |
+    In the frame of the bus the bob is at rest under three forces: tension $T$, weight $mg$ and the pseudo force $ma$ backward. Equilibrium gives $T\cos\theta = mg$ and $T\sin\theta = ma$, so $\tan\theta = a/g = 2.0/9.8$ and $\theta = 11.5^\circ$, with the bob displaced backward. (In the road frame the horizontal component of $T$ supplies the bob's acceleration $ma$: same equations, no pseudo force.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A 70 kg person stands on a weighing scale in a lift that accelerates downward at 1.5 m s$^{-2}$. What is the scale's reading in newtons? (Original problem.)
+  ask: Scale reading (normal force)
+  unit: N
+  ans: 581
+  tol: 1
+  verify: 70*(9.8-1.5)
+  sol: |
+    In the lift frame, the forces on the person are the weight $mg$ down, the pseudo force $ma$ up (opposite to the downward acceleration) and the normal force $N$ up. Equilibrium: $N + ma = mg$, so $N = m(g - a) = 70 \times 8.3 = 581$ N. The scale reads 59.3 kg-weight (less than the true 70 kg). In the ground frame: $mg - N = ma$, the same equation.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: Masses of 3 kg and 5 kg are joined by a light string over a smooth pulley fixed to the ceiling of a lift that accelerates upward at 2.0 m s$^{-2}$. Find the tension in the string. (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 44.25
+  tol: 0.2
+  verify: 2*3*5*(9.8+2.0)/(3+5)
+  sol: |
+    In the lift frame every mass feels an extra downward pseudo force $ma$, so gravity is effectively $g' = g + a = 11.8$ m s$^{-2}$. The pulley is a fixed-pulley Atwood machine with this $g'$: acceleration relative to the lift $= \dfrac{(5-3)g'}{8} = 2.95$ m s$^{-2}$ and
+    $$T = \frac{2m_1m_2}{m_1+m_2}\,g' = \frac{2 \times 3 \times 5}{8} \times 11.8 = 44.25\ \text{N}.$$
+    (With the lift at rest the tension would be 36.75 N.)
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A smooth wedge of incline 30° is pushed horizontally with a constant acceleration $a$ so that a small block resting on its inclined face stays at rest relative to the wedge. Find $a$. (Original problem.)
+  ask: Acceleration of the wedge
+  unit: m s⁻²
+  ans: 5.66
+  tol: 0.02
+  verify: 9.8*tan(rad(30))
+  sol: |
+    In the wedge's frame the block is in equilibrium under three forces: weight $mg$ down, the normal force $N$ perpendicular to the face, and the pseudo force $ma$ horizontal and opposite to the wedge's acceleration, pointing so as to push the block up the face. Along the incline: $ma\cos\theta = mg\sin\theta$, hence $a = g\tan\theta = 9.8 \times 0.577 = 5.66$ m s$^{-2}$. (Perpendicular to the face, $N = m(g\cos\theta + a\sin\theta) = mg/\cos\theta$.) In the ground frame, $N\sin\theta = ma$ and $N\cos\theta = mg$ give the same $a$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A small coin lies 0.10 m from the centre of a horizontal turntable. The coefficient of static friction between the coin and the turntable is 0.30. Using the frame that rotates with the turntable, find the largest angular speed for which the coin stays at rest on it. (Original problem.)
+  ask: Maximum angular speed
+  unit: rad s⁻¹
+  ans: 5.42
+  tol: 0.02
+  verify: sqrt(0.30*9.8/0.10)
+  sol: |
+    In the rotating frame the coin is at rest, with three horizontal-plane forces: the pseudo (centrifugal) force $m\omega^2 r$ outward and static friction $f$ inward, with $f \le \mu_s mg$. Equilibrium: $m\omega^2 r = f \le \mu_s mg$, so
+    $$\omega_{max} = \sqrt{\frac{\mu_s g}{r}} = \sqrt{\frac{0.30 \times 9.8}{0.10}} = 5.42\ \text{rad s}^{-1}\ (\approx 52\ \text{rev/min}).$$
+    In the ground frame the same condition reads $f = m\omega^2 r$ as the centripetal force, with no pseudo force. The mass cancels.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A simple pendulum of length 1.0 m is placed in a lift that accelerates upward at 2.0 m s$^{-2}$. Find the period of small oscillations. (Original problem.)
+  ask: Period
+  unit: s
+  ans: 1.83
+  tol: 0.01
+  verify: 2*PI*sqrt(1.0/(9.8+2.0))
+  sol: |
+    In the lift frame there is an extra downward pseudo force $ma$ on the bob, so the effective gravity is $g' = g + a = 11.8$ m s$^{-2}$. The period is $2\pi\sqrt{L/g'} = 2\pi\sqrt{1.0/11.8} = 1.83$ s, shorter than the 2.01 s of the pendulum at rest. In free fall ($a = -g$) $g' = 0$ and the pendulum does not oscillate at all.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A car takes a level circular turn of radius 50 m at a steady 10 m s$^{-1}$. A small ball hangs from the roof on a light string. At what angle to the vertical does the string hang, and which frame makes the problem easier to set up? Give the angle. (Original problem.)
+  ask: Angle with the vertical
+  unit: °
+  ans: 11.5
+  tol: 0.1
+  verify: deg(atan(10**2/(50*9.8)))
+  sol: |
+    Rotating (car) frame: the ball is at rest under tension $T$, weight $mg$ and the centrifugal pseudo force $mv^2/R$ pointing away from the centre. Equilibrium gives $\tan\theta = \dfrac{v^2}{Rg} = \dfrac{100}{50 \times 9.8} = 0.204$, so $\theta = 11.5^\circ$, the ball swinging outward (away from the centre of the turn).
+
+    Ground frame: the horizontal component of $T$ is the centripetal force, $T\sin\theta = mv^2/R$, and $T\cos\theta = mg$; the same $\tan\theta$ without any pseudo force. Both frames give the same answer: the pseudo-force method saves you from writing $a \ne 0$, but you must remember that the force belongs only to the rotating frame and that it has no third-law partner.
+  check: code

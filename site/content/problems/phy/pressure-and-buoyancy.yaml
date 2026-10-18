@@ -1,0 +1,494 @@
+# Pressure, Pascal's law, hydraulic machines, atmospheric pressure, Archimedes and buoyancy. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 9 Mechanical Properties of Fluids (Examples 9.1-9.6; Exercises 9.1, 9.5-9.10) and NCERT Science Grade 8 Curiosity (reprint 2026-27) Ch 6 Pressure, Winds, Storms, and Cyclones (the pressure items only; the weather, storm, cyclone and lightning items are skipped). keph1an covers Part 1 only and Grade 8 has no key, so no NCERT answer key exists for these items: every solution is ours (check: code for numeric items, none otherwise). Figure-dependent Grade 8 items (Q1 i, iv; Q7) are read from the figures by us. Found, board and main problems are original.
+
+- id: ncert8-it-6-1
+  lvl: ncert-intext
+  num: "VIII 6 · in-text"
+  source: NCERT Grade 8 Science · Ch 6 · §6.1 in-text question
+  kind: text
+  q: Suppose you are living on the second floor of a three-storeyed building and an overhead water tank is placed on the top floor. Will you or your friend on the first floor receive a more powerful stream of tap water? Give reasons.
+  sol: |
+    Your friend on the first floor. The pressure of a water column depends on its height (§6.1: "the pressure exerted by a liquid in a vessel depends on the height of its column"). The tap on the first floor is lower, so the water column between the tank and that tap is taller than the column above your second-floor tap. The first-floor tap therefore has the higher pressure and gives the more powerful stream.
+  check: none
+
+- id: ncert8-ex-6-1i
+  lvl: ncert-ex
+  num: "VIII 6 · Q1(i)"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q1(i)
+  kind: mcq
+  q: Choose the correct statement. Look at Fig. 6.21 carefully. Vessel R is filled with water. When pouring of water is stopped, the level of water will be ____________________.
+  opts: ["the highest in vessel P", "the highest in vessel Q", "the highest in vessel R", "equal in all three vessels"]
+  ans: 3
+  sol: |
+    (d). [Inference] In Fig. 6.21 the vessels P, Q and R (two bottles of different shapes and a wide bowl) appear to be joined at the bottom, so water can pass between them. In connected vessels the liquid pressure at the same level must be the same, and since $P = P_a + \rho g h$, the water stands at the same height in all of them, whatever their shape or width.
+  check: none
+
+- id: ncert8-ex-6-1ii
+  lvl: ncert-ex
+  num: "VIII 6 · Q1(ii)"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q1(ii)
+  kind: mcq
+  q: A rubber sucker (M) is pressed on a flat smooth surface and an identical sucker (N) is pressed on a rough surface
+  opts: ["Both M and N will stick to their surfaces.", "Both M and N will not stick to their surfaces.", "M will stick but N will not stick.", "M will not stick but N will stick."]
+  ans: 2
+  sol: |
+    (c). A sucker sticks because pressing it pushes out the air, so the pressure inside is lower than the atmospheric pressure outside. On a flat smooth surface the rim seals, and the outside air pressure holds it on. On a rough surface air leaks in under the rim, the pressure inside rises to the outside value, and the sucker does not stick.
+  check: none
+
+- id: ncert8-ex-6-1iii
+  lvl: ncert-ex
+  num: "VIII 6 · Q1(iii)"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q1(iii)
+  kind: mcq
+  q: A water tank is placed on the roof of a building at a height 'H'. To get water with more pressure on the ground floor, one has to
+  opts: ["increase the height 'H' at which the tank is placed.", "decrease the height 'H' at which the tank is placed.", "replace the tank with another tank of the same height that can hold more water.", "replace the tank with another tank of the same height that can hold less water."]
+  ans: 0
+  sol: |
+    (a). The pressure at the tap is $\rho g H$ (plus atmospheric pressure), so it depends only on the height $H$ of the water column, not on how much water the tank holds. Raising the tank increases the pressure.
+  check: none
+
+- id: ncert8-ex-6-1iv
+  lvl: ncert-ex
+  num: "VIII 6 · Q1(iv)"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q1(iv)
+  kind: mcq
+  q: Two vessels, A and B contain water up to the same level as shown in Fig. 6.22. PA and PB is the pressure at the bottom of the vessels. FA and FB is the force exerted by the water at the bottom of the vessels.
+  opts: ["PA = PB, FA = FB", "PA = PB, FA < FB", "PA < PB, FA = FB", "PA > PB, FA > FB"]
+  ans: 1
+  sol: |
+    (b). [Inference] In Fig. 6.22 the vessels hold water to the same height, and vessel B is wider than A. The pressure at the bottom is $\rho g h$ for both, so $P_A = P_B$. Force $=$ pressure $\times$ base area, and B has the larger base, so $F_A < F_B$.
+  check: none
+
+- id: ncert8-ex-6-2
+  lvl: ncert-ex
+  num: "VIII 6 · Q2"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q2
+  kind: text
+  q: |-
+    State whether the following statements are True [T] or False [F].
+    (i) Air flows from a region of higher pressure to a region of lower pressure. [ ]
+    (ii) Liquids exert pressure only at the bottom of a container. [ ]
+    (iii) Weather is stormy at the eye of a cyclone. [ ]
+    (iv) During a thunderstorm, it is safer to be in a car. [ ]
+  sol: |
+    (i) **True.** Air moves from high to low pressure, which is how winds blow (balloon and straw activity).
+
+    (ii) **False.** Liquids exert pressure in all directions: on the bottom, on the side walls (water spurts sideways from holes in a bottle) and on any object inside.
+
+    (iii) **False.** The eye of a cyclone is a region of calm, clear weather; the strongest winds and rain are in the wall of clouds around it.
+
+    (iv) **True.** A closed metal car acts as a shield: lightning's current flows around the outside metal body into the ground, and the people inside are protected, as long as they do not touch the metal parts.
+  check: none
+
+- id: ncert8-ex-6-3
+  lvl: ncert-ex
+  num: "VIII 6 · Q3"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q3
+  kind: text
+  q: Fig. 6.23 a shows a boy lying horizontally, and Fig. 6.23 b shows the boy standing vertically on a loose sand bed. In which case does the boy sink more in sand? Give reasons.
+  sol: |
+    He sinks more when **standing** (Fig. 6.23 b). His weight is the same in both cases, but pressure $=$ force/area. Standing, the weight acts on the small area of two feet; lying, it is spread over the whole back or front of the body, a much larger area. So the pressure on the sand is much greater when he stands, and loose sand yields more.
+  check: none
+
+- id: ncert8-ex-6-4
+  lvl: ncert-ex
+  num: "VIII 6 · Q4"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q4
+  kind: num
+  q: An elephant stands on four feet. If the area covered by one foot is 0.25 m^2, calculate the pressure exerted by the elephant on the ground if its weight is 20000 N.
+  ask: Pressure
+  unit: Pa
+  ans: 20000
+  tol: 100
+  verify: 20000/(4*0.25)
+  sol: |
+    Total area $=4\times0.25 = 1.0$ m$^2$. Pressure $=\dfrac{F}{A} = \dfrac{20000\ \text{N}}{1.0\ \text{m}^2} = 20000$ N/m$^2$ $=2\times10^{4}$ Pa.
+  check: code
+
+- id: ncert8-ex-6-5
+  lvl: ncert-ex
+  num: "VIII 6 · Q5"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q5
+  kind: num
+  q: There are two boats, A and B. Boat A has a base area of 7 m^2, and 5 persons are seated in it. Boat B has a base area of 3.5 m^2, and 3 persons are seating in it. If each person has a weight of 700 N, find out which boat will experience more pressure on its base and by how much?
+  ask: Extra pressure on boat B
+  unit: Pa
+  ans: 100
+  tol: 0.5
+  verify: 3*700/3.5-5*700/7
+  sol: |
+    Boat A: $F = 5\times700 = 3500$ N, $P_A = 3500/7 = 500$ Pa.
+
+    Boat B: $F = 3\times700 = 2100$ N, $P_B = 2100/3.5 = 600$ Pa.
+
+    Boat B experiences more pressure, by $600-500 = 100$ Pa. (The weight of the boats themselves is ignored, since none is given.)
+  check: code
+
+- id: ncert8-ex-6-7
+  lvl: ncert-ex
+  num: "VIII 6 · Q7"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q7
+  kind: text
+  q: What will happen to the two identical balloons A and B as shown in Fig. 6.24 when water is filled into the bottle up to a certain height. Will both the balloons bulge? If yes, will they bulge equally? Explain your answer.
+  sol: |
+    [Inference] Fig. 6.24 shows a bottle with a balloon stretched over an opening at each side near the base, at the same height.
+
+    Yes, both balloons bulge outward, because the water exerts pressure on the side walls of the container and on the balloons (liquids press in all directions). They bulge **equally**: both openings are at the same depth, and the pressure at a given depth, $\rho g h$, is the same in every direction and at every point at that level.
+  check: none
+
+- id: ncert8-ex-6-10
+  lvl: ncert-ex
+  num: "VIII 6 · Q10"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q10
+  kind: text
+  q: Describe an activity to show that air flows from a region of high pressure to a region of low pressure.
+  sol: |
+    One possible answer (Activity 6.5 of the chapter). Take two balloons and a drinking straw. Tie one end of the straw into the neck of a deflated balloon. Inflate the second balloon, pinch its neck and push the other end of the straw into it, tying it firmly so no air leaks.
+
+    Release your fingers. The inflated balloon (high pressure) shrinks and the other balloon swells as air passes through the straw. The flow stops when both balloons have about the same size, that is, the same pressure. So air moves from the region of high pressure to the region of low pressure until the pressures are equal.
+  check: none
+
+- id: ncert8-ex-6-13
+  lvl: ncert-ex
+  num: "VIII 6 · Q13"
+  source: NCERT Grade 8 Science · Ch 6 · Keep the curiosity alive Q13
+  kind: text
+  q: Explain why holes are made in banners and hoardings.
+  sol: |
+    A strong wind pushing on a large solid sheet creates a large pressure difference between its front (wind pressure) and its back (low pressure behind, where the wind is moving fast). The force is that pressure difference times the area, and it can tear the banner or topple the hoarding. Holes let air pass through, so the pressure on the two sides becomes nearly equal and the net force falls sharply. (Our explanation; the chapter does not state it.)
+  check: none
+
+- id: ncert11-eg-9-1
+  lvl: ncert-intext
+  num: "XI Ex 9.1"
+  source: NCERT XI Physics · Ch 9 · Example 9.1
+  kind: num
+  q: The two thigh bones (femurs), each of cross-sectional area 10 cm^2 support the upper part of a human body of mass 40 kg. Estimate the average pressure sustained by the femurs.
+  ask: Average pressure
+  unit: 10^5 N/m²
+  ans: 2
+  tol: 0.01
+  verify: (40*10/(2*10e-4))/1e5
+  sol: |
+    Total cross-sectional area of the femurs $A = 2\times10\ \text{cm}^2 = 20\times10^{-4}$ m$^2$. The force on them is $F = 40\ \text{kg wt} = 400$ N (taking $g = 10$ m s$^{-2}$), acting vertically down, normal to the femurs. So
+    $$P_{av} = \frac{F}{A} = \frac{400}{20\times10^{-4}} = 2\times10^{5}\ \text{N m}^{-2}.$$
+  check: code
+
+- id: ncert11-eg-9-2
+  lvl: ncert-intext
+  num: "XI Ex 9.2"
+  source: NCERT XI Physics · Ch 9 · Example 9.2
+  kind: num
+  q: What is the pressure on a swimmer 10 m below the surface of a lake?
+  ask: Pressure
+  unit: 10^5 Pa
+  ans: 2.01
+  tol: 0.005
+  verify: (1.01e5+1000*10*10)/1e5
+  sol: |
+    $h = 10$ m, $\rho = 1000$ kg m$^{-3}$, $g = 10$ m s$^{-2}$. Then
+    $$P = P_a + \rho g h = 1.01\times10^{5} + 1000\times10\times10 = 2.01\times10^{5}\ \text{Pa}\approx2\ \text{atm}.$$
+    This is a 100% increase over the surface pressure; at 1 km depth the increase is about 100 atm.
+  check: code
+
+- id: ncert11-eg-9-3
+  lvl: ncert-intext
+  num: "XI Ex 9.3"
+  source: NCERT XI Physics · Ch 9 · Example 9.3
+  kind: num
+  q: The density of the atmosphere at sea level is 1.29 kg/m^3. Assume that it does not change with altitude. Then how high would the atmosphere extend?
+  ask: Height of the atmosphere
+  unit: m
+  ans: 7989
+  tol: 10
+  verify: 1.01e5/(1.29*9.8)
+  sol: |
+    Set $\rho g h = P_a$: $1.29\times9.8\times h = 1.01\times10^{5}$, so
+    $$h = \frac{1.01\times10^{5}}{1.29\times9.8} = 7989\ \text{m}\approx8\ \text{km}.$$
+    In reality the density of air falls with height (and so does $g$), so the atmosphere thins out over more than 100 km.
+  check: code
+
+- id: ncert11-eg-9-4
+  lvl: ncert-intext
+  num: "XI Ex 9.4"
+  source: NCERT XI Physics · Ch 9 · Example 9.4
+  kind: num
+  q: At a depth of 1000 m in an ocean (a) what is the absolute pressure? (b) What is the gauge pressure? (c) Find the force acting on the window of area 20 cm × 20 cm of a submarine at this depth, the interior of which is maintained at sealevel atmospheric pressure. (The density of sea water is 1.03 × 10^3 kg m^-3, g = 10 m s^-2.)
+  ask: Force on the window, part (c)
+  unit: 10^5 N
+  ans: 4.12
+  tol: 0.01
+  verify: (1.03e3*10*1000*0.2*0.2)/1e5
+  sol: |
+    (a) Absolute pressure $P = P_a + \rho g h = 1.01\times10^{5} + 1.03\times10^{3}\times10\times1000 = 104.01\times10^{5}$ Pa $\approx104$ atm.
+
+    (b) Gauge pressure $P_g = \rho g h = 103\times10^{5}$ Pa $\approx103$ atm.
+
+    (c) Outside the window the pressure is $P_a+\rho g h$; inside it is $P_a$, so the net pressure is the gauge pressure. Window area $A = 0.04$ m$^2$:
+    $$F = P_gA = 103\times10^{5}\times0.04 = 4.12\times10^{5}\ \text{N}.$$
+  check: code
+
+- id: ncert11-eg-9-5
+  lvl: ncert-intext
+  num: "XI Ex 9.5"
+  source: NCERT XI Physics · Ch 9 · Example 9.5
+  kind: num
+  q: Two syringes of different cross-sections (without needles) filled with water are connected with a tightly fitted rubber tube filled with water. Diameters of the smaller piston and larger piston are 1.0 cm and 3.0 cm respectively. (a) Find the force exerted on the larger piston when a force of 10 N is applied to the smaller piston. (b) If the smaller piston is pushed in through 6.0 cm, how much does the larger piston move out?
+  ask: Force on the larger piston, part (a)
+  unit: N
+  ans: 90
+  tol: 0.5
+  verify: ((3.0/2)**2/(1.0/2)**2)*10
+  sol: |
+    (a) Pressure is transmitted undiminished through the water, so $F_2/A_2 = F_1/A_1$:
+    $$F_2 = \frac{A_2}{A_1}F_1 = \frac{\pi(3/2\times10^{-2})^2}{\pi(1/2\times10^{-2})^2}\times10 = 9\times10 = 90\ \text{N}.$$
+
+    (b) Water is incompressible, so the volume pushed in equals the volume pushed out: $L_1A_1 = L_2A_2$, giving
+    $$L_2 = L_1\frac{A_1}{A_2} = 6.0\times\frac19 = 0.67\ \text{cm}.$$
+    Atmospheric pressure acts on both pistons and is ignored.
+  check: code
+
+- id: ncert11-eg-9-6
+  lvl: ncert-intext
+  num: "XI Ex 9.6"
+  source: NCERT XI Physics · Ch 9 · Example 9.6
+  kind: num
+  q: In a car lift compressed air exerts a force F1 on a small piston having a radius of 5.0 cm. This pressure is transmitted to a second piston of radius 15 cm (Fig 9.7). If the mass of the car to be lifted is 1350 kg, calculate F1. What is the pressure necessary to accomplish this task? (g = 9.8 ms^-2).
+  ask: Force F1
+  unit: N
+  ans: 1470
+  tol: 5
+  verify: 1350*9.8*(5.0/15)**2
+  sol: |
+    Pressure is transmitted undiminished, so $\dfrac{F_1}{\pi(5\times10^{-2})^2} = \dfrac{1350\times9.8}{\pi(15\times10^{-2})^2}$:
+    $$F_1 = 1350\times9.8\times\frac{25}{225} = 1470\ \text{N}\approx1.5\times10^{3}\ \text{N}.$$
+    The pressure needed is
+    $$P = \frac{F_1}{A_1} = \frac{1470}{\pi(5\times10^{-2})^2} = 1.87\times10^{5}\ \text{Pa},$$
+    almost double the atmospheric pressure.
+  check: code
+
+- id: ncert11-ex-9-1
+  lvl: ncert-ex
+  num: "XI 9.1"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.1
+  kind: text
+  q: |-
+    Explain why
+    (a) The blood pressure in humans is greater at the feet than at the brain
+    (b) Atmospheric pressure at a height of about 6 km decreases to nearly half of its value at the sea level, though the height of the atmosphere is more than 100 km
+    (c) Hydrostatic pressure is a scalar quantity even though pressure is force divided by area.
+  sol: |
+    (a) Blood is a fluid, so its pressure increases with depth: $P = P_0+\rho g h$. The feet are about a metre below the heart and the brain is above it, so the column of blood above the feet is taller and the pressure is greater at the feet.
+
+    (b) Air is compressible, so the atmosphere is densest near the ground and its density falls rapidly with height. The lower layers carry the weight of all the air above them, so pressure drops fastest near the surface; half of the atmosphere's mass lies below about 6 km, hence about half the pressure there. Above that, the little remaining air stretches over more than 100 km.
+
+    (c) A fluid at rest presses on a surface with a force that is always normal to it, whatever the orientation. Pressure at a point is the same in all directions (Pascal's law); no direction can be assigned to it, so it is a scalar. The force is the vector, directed along the normal: $\vec F = P\vec A$ with the direction coming from $\vec A$.
+  check: none
+
+- id: ncert11-ex-9-5
+  lvl: ncert-ex
+  num: "XI 9.5"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.5
+  kind: num
+  q: A 50 kg girl wearing high heel shoes balances on a single heel. The heel is circular with a diameter 1.0 cm. What is the pressure exerted by the heel on the horizontal floor ?
+  ask: Pressure
+  unit: 10^6 Pa
+  ans: 6.24
+  tol: 0.02
+  verify: (50*9.8/(PI*0.005**2))/1e6
+  sol: |
+    $F = mg = 50\times9.8 = 490$ N, $A = \pi(0.5\times10^{-2})^2 = 7.85\times10^{-5}$ m$^2$.
+    $$P = \frac{F}{A} = \frac{490}{7.85\times10^{-5}} = 6.2\times10^{6}\ \text{Pa},$$
+    about 60 atmospheres, far more than an elephant's foot exerts.
+  check: code
+
+- id: ncert11-ex-9-6
+  lvl: ncert-ex
+  num: "XI 9.6"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.6
+  kind: num
+  q: Toricelli's barometer used mercury. Pascal duplicated it using French wine of density 984 kg m^-3. Determine the height of the wine column for normal atmospheric pressure.
+  ask: Height of wine column
+  unit: m
+  ans: 10.5
+  tol: 0.05
+  verify: 1.013e5/(984*9.8)
+  sol: |
+    $P_a = \rho g h$, so
+    $$h = \frac{P_a}{\rho g} = \frac{1.013\times10^{5}}{984\times9.8} = 10.5\ \text{m}.$$
+    The mercury column is only 0.76 m because mercury is 13.6 times denser than water.
+  check: code
+
+- id: ncert11-ex-9-7
+  lvl: ncert-ex
+  num: "XI 9.7"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.7
+  kind: num
+  q: A vertical off-shore structure is built to withstand a maximum stress of 10^9 Pa. Is the structure suitable for putting up on top of an oil well in the ocean ? Take the depth of the ocean to be roughly 3 km, and ignore ocean currents.
+  ask: Pressure of the water at the sea bed
+  unit: MPa
+  ans: 30.3
+  tol: 0.3
+  verify: 1.03e3*9.8*3000/1e6
+  sol: |
+    The structure on the sea bed has to stand the water pressure at 3 km:
+    $$P = \rho g h = 1.03\times10^{3}\times9.8\times3000 = 3.0\times10^{7}\ \text{Pa}$$
+    (the atmospheric $10^5$ Pa adds only 0.3%). This is about 30 times smaller than the allowed $10^{9}$ Pa, so the structure is **suitable**.
+
+    [Inference] The question gives no density; sea water, $1.03\times10^{3}$ kg m$^{-3}$ (as in Example 9.4), is assumed. Using $10^{3}$ kg m$^{-3}$ changes the answer by 3% only.
+  check: code
+
+- id: ncert11-ex-9-8
+  lvl: ncert-ex
+  num: "XI 9.8"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.8
+  kind: num
+  q: A hydraulic automobile lift is designed to lift cars with a maximum mass of 3000 kg. The area of cross-section of the piston carrying the load is 425 cm^2. What maximum pressure would the smaller piston have to bear ?
+  ask: Maximum pressure
+  unit: 10^5 Pa
+  ans: 6.92
+  tol: 0.02
+  verify: (3000*9.8/425e-4)/1e5
+  sol: |
+    The pressure is the same throughout the liquid, so the small piston bears the same pressure as the load piston:
+    $$P = \frac{F}{A} = \frac{3000\times9.8}{425\times10^{-4}} = 6.9\times10^{5}\ \text{Pa}.$$
+  check: code
+
+- id: ncert11-ex-9-9
+  lvl: ncert-ex
+  num: "XI 9.9"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.9
+  kind: num
+  q: A U-tube contains water and methylated spirit separated by mercury. The mercury columns in the two arms are in level with 10.0 cm of water in one arm and 12.5 cm of spirit in the other. What is the specific gravity of spirit ?
+  ask: Specific gravity of spirit
+  unit: ""
+  ans: 0.8
+  tol: 0.005
+  verify: 10.0/12.5
+  sol: |
+    The mercury is at the same level in both arms, so the pressures at that level are equal: $\rho_w g(10.0) = \rho_s g(12.5)$, hence
+    $$\frac{\rho_s}{\rho_w} = \frac{10.0}{12.5} = 0.80 .$$
+  check: code
+
+- id: ncert11-ex-9-10
+  lvl: ncert-ex
+  num: "XI 9.10"
+  source: NCERT XI Physics · Ch 9 · Exercise 9.10
+  kind: num
+  q: In the previous problem, if 15.0 cm of water and spirit each are further poured into the respective arms of the tube, what is the difference in the levels of mercury in the two arms ? (Specific gravity of mercury = 13.6)
+  ask: Difference in mercury levels
+  unit: cm
+  ans: 0.221
+  tol: 0.002
+  verify: (25.0-0.8*27.5)/13.6
+  sol: |
+    Now the water column is $10.0+15.0 = 25.0$ cm and the spirit column is $12.5+15.0 = 27.5$ cm. Water is heavier per unit height than spirit, so the mercury is pushed down on the water side, and the spirit-side mercury surface stands higher by $h$.
+
+    Compare the pressures at the level of the lower (water-side) mercury surface:
+    $$\rho_w(25.0) = \rho_s(27.5) + \rho_{Hg}\,h
+    \;\Rightarrow\; 25.0 = 0.80\times27.5 + 13.6\,h \;\Rightarrow\; h = \frac{25.0-22.0}{13.6} = 0.22\ \text{cm}.$$
+  check: code
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of these has the same unit as pressure?
+  opts: ["newton per square metre", "newton metre", "newton per second", "kilogram per cubic metre"]
+  ans: 0
+  sol: Pressure is force per unit area, so its SI unit is N/m², which is the pascal. (Original problem.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A 60 kg student stands on both feet. The sole of each foot has an area of 150 cm². What pressure does the student exert on the floor? Take g = 9.8 m/s². (Original problem.)
+  ask: Pressure
+  unit: Pa
+  ans: 19600
+  tol: 50
+  verify: 60*9.8/(2*150e-4)
+  sol: $F = 60\times9.8 = 588$ N and $A = 2\times150\times10^{-4} = 0.030$ m². Then $P = 588/0.030 = 1.96\times10^{4}$ Pa.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: Water stands to the same height in a narrow tube and a wide tank joined at the bottom. The pressure at the bottom of the wide tank is
+  opts: ["greater than at the bottom of the narrow tube", "smaller than at the bottom of the narrow tube", "equal to that at the bottom of the narrow tube", "zero"]
+  ans: 2
+  sol: The pressure of a liquid at rest depends only on the depth, $P = P_a+\rho g h$, not on the width or shape of the vessel. Equal depth gives equal pressure. (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: An ice block of density 917 kg/m³ floats in sea water of density 1030 kg/m³. What percentage of its volume is below the surface? (Original problem.)
+  ask: Percentage submerged
+  unit: "%"
+  ans: 89
+  tol: 0.5
+  verify: 917/1030*100
+  sol: |
+    For floating, weight $=$ buoyant force: $\rho_{ice}Vg = \rho_{sea}V_{sub}g$, so $V_{sub}/V = \rho_{ice}/\rho_{sea} = 917/1030 = 0.89$, i.e. 89% is submerged and 11% stands above the water.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In a hydraulic press the small piston has radius 2.0 cm and the large piston has radius 20 cm. What force on the small piston lifts a load of 15 000 N on the large piston? (Original problem.)
+  ask: Force on the small piston
+  unit: N
+  ans: 150
+  tol: 0.5
+  verify: 15000*(2.0/20)**2
+  sol: Pressure is transmitted undiminished, so $F_1 = F_2\,A_1/A_2 = 15\,000\times(2/20)^2 = 15\,000/100 = 150$ N. The force is multiplied 100 times, but the small piston moves 100 times as far, so the work is the same.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: text
+  q: A steel nail sinks in water but a steel ship floats. Explain. (Original problem.)
+  sol: |
+    A body floats when the water it displaces weighs as much as the body itself. The nail is solid steel, about 8 times denser than water, so even fully submerged it displaces only 1/8 of its weight of water and sinks. The ship's hull is hollow and encloses a lot of air, so its *average* density (total mass divided by the whole volume below the waterline) is below that of water. It sinks only until the displaced water weighs as much as the ship, and then floats.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A metal cube of side 10 cm and mass 2.7 kg hangs from a spring balance and is fully immersed in water. What does the balance read? Take g = 9.8 m/s². (Original problem.)
+  ask: Reading of the spring balance
+  unit: N
+  ans: 16.66
+  tol: 0.05
+  verify: 2.7*9.8-1000*9.8*1e-3
+  sol: |
+    Weight $=2.7\times9.8 = 26.46$ N. Volume $=(0.1)^3 = 10^{-3}$ m$^3$, so the buoyant force is $\rho_wVg = 1000\times10^{-3}\times9.8 = 9.8$ N (Archimedes). The balance reads $26.46-9.8 = 16.66$ N (the apparent weight).
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A helium balloon has volume 10 m³. The helium has density 0.18 kg/m³, the surrounding air 1.2 kg/m³, and the balloon fabric and basket have mass 4.0 kg. What is the largest mass it can lift off the ground? (Original problem.)
+  ask: Maximum load
+  unit: kg
+  ans: 6.2
+  tol: 0.05
+  verify: (1.2-0.18)*10-4.0
+  sol: |
+    The buoyant force equals the weight of the displaced air, $\rho_{air}Vg$. The weight pulling down is that of the helium ($\rho_{He}Vg$), the fabric and basket (4.0 kg) and the load $m$. At the limit, $\rho_{air}V = \rho_{He}V + 4.0 + m$:
+    $$m = (1.2-0.18)\times10 - 4.0 = 6.2\ \text{kg}.$$
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A vertical dam wall is 100 m wide and holds back water 20 m deep. Find the total horizontal force of the water on the wall. (Take g = 9.8 m/s²; ignore atmospheric pressure, which acts on both sides.) (Original problem.)
+  ask: Total force
+  unit: 10^8 N
+  ans: 1.96
+  tol: 0.01
+  verify: 0.5*1000*9.8*20*20*100/1e8
+  sol: |
+    The gauge pressure grows linearly from 0 at the surface to $\rho g h$ at the bottom, so the average pressure is $\tfrac12\rho g h$. Force $=$ average pressure $\times$ area:
+    $$F = \tfrac12\rho g h\times(h\,w) = \tfrac12\times1000\times9.8\times20\times(20\times100) = 1.96\times10^{8}\ \text{N}.$$
+    Using the pressure at the bottom ($\rho g h$) would overestimate the force twofold. This is why dams are thicker at the base.
+  check: code

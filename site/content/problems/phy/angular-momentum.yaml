@@ -1,0 +1,310 @@
+# Angular momentum, its conservation, and rotational kinetic energy, work and power. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27), Ch 6 (Examples 6.6 and 6.12; Exercises 6.6, 6.7, 6.11, 6.12, 6.14, 6.17). Found, board and main problems are original.
+
+- id: ncert11-eg-6-6
+  lvl: ncert-intext
+  num: "XI Ex 6.6"
+  source: NCERT XI Physics · Ch 6 · Example 6.6
+  kind: proof
+  q: Show that the angular momentum about any point of a single particle moving with constant velocity remains constant throughout the motion.
+  hints:
+    - Write $\mathbf l=\mathbf r\times m\mathbf v$ and find its magnitude in terms of the perpendicular distance from the point O to the line of motion.
+    - Show that this perpendicular distance does not change as the particle moves.
+    - Argue about the direction of $\mathbf l$.
+  sol: |
+    Let the particle with velocity $\mathbf v$ be at P at some instant and let O be an arbitrary point (Fig. 6.19). Its angular momentum about O is $\mathbf l=\mathbf r\times m\mathbf v$, of magnitude $mvr\sin\theta$, where $\theta$ is the angle between $\mathbf r$ and $\mathbf v$.
+
+    The particle changes position, but the line along which $\mathbf v$ points stays the same (the velocity is constant). The perpendicular distance from O to this line, $OM=r\sin\theta$, is therefore constant, so the magnitude $mv\,(r\sin\theta)$ is constant. The direction of $\mathbf l$ is perpendicular to the plane of $\mathbf r$ and $\mathbf v$, which is the fixed plane containing O and the line of motion, so the direction does not change either (into the page in the book's figure). Hence $\mathbf l$ is constant in magnitude and direction: conserved.
+
+    The book then asks: is there any external torque on the particle? No. With constant velocity there is no net force, so $\boldsymbol\tau=\mathbf r\times\mathbf F=0$ about every point, in agreement with $d\mathbf l/dt=\boldsymbol\tau=0$.
+  check: none
+
+- id: ncert11-eg-6-12
+  lvl: ncert-intext
+  num: "XI Ex 6.12"
+  source: NCERT XI Physics · Ch 6 · Example 6.12
+  kind: num
+  q: |-
+    A cord of negligible mass is wound round the rim of a fly wheel of mass 20 kg and radius 20 cm. A steady pull of 25 N is applied on the cord as shown in Fig. 6.31. The flywheel is mounted on a horizontal axle with frictionless bearings.
+    (a) Compute the angular acceleration of the wheel.
+    (b) Find the work done by the pull, when 2m of the cord is unwound.
+    (c) Find also the kinetic energy of the wheel at this point. Assume that the wheel starts from rest.
+    (d) Compare answers to parts (b) and (c).
+  ask: Kinetic energy of the wheel after 2 m of cord is unwound, part (c)
+  unit: J
+  ans: 50
+  tol: 0.2
+  verify: 0.5*(0.5*20*0.2**2)*(2*(25*0.2/(0.5*20*0.2**2))*(2/0.2))
+  sol: |
+    (a) The torque is $\tau=FR=25\times0.20=5.0$ N m. The moment of inertia of the flywheel (a solid disc, as the book takes it) about its axis is $I=\tfrac12MR^2=\tfrac12(20.0)(0.2)^2=0.4$ kg m$^2$. Then $\alpha=\tau/I=5.0/0.4=12.5$ rad/s$^2$.
+
+    (b) Work done by the pull in unwinding 2 m of cord: $W=25\ \text{N}\times2\ \text{m}=50$ J.
+
+    (c) The angular displacement is $\theta=\dfrac{\text{length of cord}}{R}=\dfrac{2}{0.2}=10$ rad. Starting from rest, $\omega^2=2\alpha\theta=2(12.5)(10.0)=250$ (rad/s)$^2$. The kinetic energy gained is $\tfrac12I\omega^2=\tfrac12(0.4)(250)=50$ J.
+
+    (d) The two answers are equal: the kinetic energy gained by the wheel equals the work done by the force. There is no loss of energy to friction.
+
+    [Note] The statement says "a fly wheel of mass 20 kg" and does not name its shape; the book's solution uses $I=MR^2/2$, a uniform disc, so that is assumed here.
+  check: code
+
+- id: ncert11-ex-6-6
+  lvl: ncert-ex
+  num: "XI 6.6"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.6
+  kind: text
+  q: |-
+    Find the components along the $x$, $y$, $z$ axes of the angular momentum $\mathbf l$ of a particle, whose position vector is $\mathbf r$ with components $x, y, z$ and momentum is $\mathbf p$ with components $p_x$, $p_y$ and $p_z$. Show that if the particle moves only in the $x$-$y$ plane the angular momentum has only a $z$-component.
+  sol: |
+    $\mathbf l=\mathbf r\times\mathbf p$. Using the determinant rule,
+    $$\mathbf l=\begin{vmatrix}\hat{\mathbf i}&\hat{\mathbf j}&\hat{\mathbf k}\\x&y&z\\p_x&p_y&p_z\end{vmatrix}=\hat{\mathbf i}(yp_z-zp_y)+\hat{\mathbf j}(zp_x-xp_z)+\hat{\mathbf k}(xp_y-yp_x).$$
+    So
+    $$l_x=yp_z-zp_y,\qquad l_y=zp_x-xp_z,\qquad l_z=xp_y-yp_x.$$
+
+    If the particle moves only in the $x$-$y$ plane, then $z=0$ and $p_z=0$. Then $l_x=y(0)-0\cdot p_y=0$ and $l_y=0\cdot p_x-x(0)=0$, leaving only $l_z=xp_y-yp_x$. This agrees with the direction rule: $\mathbf r$ and $\mathbf p$ both lie in the $x$-$y$ plane, so $\mathbf r\times\mathbf p$ is perpendicular to that plane, along $z$.
+  answer_key: lz = xpy – ypx, lx = ypz – zpy, ly = zpx – xpz
+  check: ncert-key
+
+- id: ncert11-ex-6-7
+  lvl: ncert-ex
+  num: "XI 6.7"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.7
+  kind: proof
+  q: |-
+    Two particles, each of mass $m$ and speed $v$, travel in opposite directions along parallel lines separated by a distance $d$. Show that the angular momentum vector of the two particle system is the same whatever be the point about which the angular momentum is taken.
+  hints:
+    - Take an arbitrary origin O. Let the particles be at $\mathbf r_1$ and $\mathbf r_2$ with velocities $\mathbf v$ and $-\mathbf v$.
+    - Write the total angular momentum and combine it into a single cross product involving $\mathbf r_1-\mathbf r_2$.
+    - The vector $\mathbf r_1-\mathbf r_2$ is the separation of the two particles. Which component of it matters?
+  sol: |
+    Take an arbitrary point O as the origin. Particle 1 is at $\mathbf r_1$ with velocity $\mathbf v$; particle 2 is at $\mathbf r_2$ with velocity $-\mathbf v$. The total angular momentum about O is
+    $$\mathbf L=\mathbf r_1\times m\mathbf v+\mathbf r_2\times m(-\mathbf v)=m(\mathbf r_1-\mathbf r_2)\times\mathbf v.$$
+    The vector $\mathbf r_1-\mathbf r_2$ is the position of particle 1 relative to particle 2. It does not depend on where O is. So $\mathbf L$ does not depend on O either.
+
+    Its value: $\mathbf r_1-\mathbf r_2$ has a component along $\mathbf v$ (which contributes nothing to the cross product) and a perpendicular component of magnitude $d$. Therefore $|\mathbf L|=mvd$, and $\mathbf L$ is perpendicular to the plane containing the two lines of motion. The pair of equal and opposite momenta is the rotational analogue of a couple, and like the moment of a couple it is the same about every point.
+  check: none
+
+- id: ncert11-ex-6-11
+  lvl: ncert-ex
+  num: "XI 6.11"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.11
+  kind: num
+  q: |-
+    A solid cylinder of mass 20 kg rotates about its axis with angular speed 100 rad s$^{-1}$. The radius of the cylinder is 0.25 m. What is the kinetic energy associated with the rotation of the cylinder? What is the magnitude of angular momentum of the cylinder about its axis?
+  ask: Rotational kinetic energy
+  unit: J
+  ans: 3125
+  tol: 1
+  verify: 0.5*(0.5*20*0.25**2)*100**2
+  sol: |
+    For a solid cylinder about its axis, $I=\tfrac12MR^2=\tfrac12(20)(0.25)^2=0.625$ kg m$^2$.
+
+    Kinetic energy: $K=\tfrac12I\omega^2=\tfrac12(0.625)(100)^2=3125$ J.
+
+    Angular momentum: $L=I\omega=0.625\times100=62.5$ kg m$^2$ s$^{-1}$ ($=62.5$ J s).
+
+    Check: $K=\tfrac12L\omega=\tfrac12(62.5)(100)=3125$ J.
+  answer_key: Kinetic Energy = 3125 J; Angular Momentum = 62.5 J s
+  check: both
+
+- id: ncert11-ex-6-12
+  lvl: ncert-ex
+  num: "XI 6.12"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.12
+  kind: num
+  q: |-
+    (a) A child stands at the centre of a turntable with his two arms outstretched. The turntable is set rotating with an angular speed of 40 rev/min. How much is the angular speed of the child if he folds his hands back and thereby reduces his moment of inertia to 2/5 times the initial value? Assume that the turntable rotates without friction.
+    (b) Show that the child's new kinetic energy of rotation is more than the initial kinetic energy of rotation. How do you account for this increase in kinetic energy?
+  ask: New angular speed, part (a)
+  unit: rev/min
+  ans: 100
+  tol: 0.2
+  verify: 40/(2/5)
+  sol: |
+    (a) There is no external torque about the axis (frictionless turntable), so the angular momentum is conserved: $I_1\omega_1=I_2\omega_2$. With $I_2=\tfrac25I_1$ and $\omega_1=40$ rev/min,
+    $$\omega_2=\frac{I_1}{I_2}\omega_1=\frac52\times40=100\ \text{rev/min}.$$
+
+    (b) Initial kinetic energy $K_1=\tfrac12I_1\omega_1^2$. Final $K_2=\tfrac12I_2\omega_2^2=\tfrac12\left(\tfrac25I_1\right)\left(\tfrac52\omega_1\right)^2=\tfrac12I_1\omega_1^2\times\tfrac25\times\tfrac{25}4=\tfrac52K_1$. So $K_2=2.5K_1$, which is more than $K_1$.
+
+    The extra energy comes from the child. To fold his arms against the outward (centrifugal) tendency of the rotating arms, his muscles do work, and this work is supplied by his internal (chemical) energy. Angular momentum is conserved, but kinetic energy is not, because the child's internal forces do work.
+  answer_key: (a) 100 rev/min (use angular momentum conservation). (b) The new kinetic energy is 2.5 times the initial kinetic energy of rotation. The child uses his internal energy to increase his rotational kinetic energy.
+  check: both
+
+- id: ncert11-ex-6-14
+  lvl: ncert-ex
+  num: "XI 6.14"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.14
+  kind: num
+  q: |-
+    To maintain a rotor at a uniform angular speed of 200 rad s$^{-1}$, an engine needs to transmit a torque of 180 N m. What is the power required by the engine?
+    (Note: uniform angular velocity in the absence of friction implies zero torque. In practice, applied torque is needed to counter frictional torque). Assume that the engine is 100% efficient.
+  ask: Power required
+  unit: kW
+  ans: 36
+  tol: 0.05
+  verify: 180*200/1000
+  sol: |
+    The rate of doing work by a torque is $P=\tau\omega$. Here the torque supplied by the engine just balances the frictional torque, so the rotor keeps a constant speed, and
+    $$P=\tau\omega=180\ \text{N m}\times200\ \text{rad s}^{-1}=36\,000\ \text{W}=36\ \text{kW}.$$
+    For a 100% efficient engine this is the power drawn; all of it is dissipated as heat by friction.
+  answer_key: 36 kW
+  check: both
+
+- id: ncert11-ex-6-17
+  lvl: ncert-ex
+  num: "XI 6.17"
+  source: NCERT XI Physics · Ch 6 · Exercise 6.17
+  kind: num
+  q: |-
+    The oxygen molecule has a mass of $5.30\times10^{-26}$ kg and a moment of inertia of $1.94\times10^{-46}$ kg m$^2$ about an axis through its centre perpendicular to the lines joining the two atoms. Suppose the mean speed of such a molecule in a gas is 500 m/s and that its kinetic energy of rotation is two thirds of its kinetic energy of translation. Find the average angular velocity of the molecule.
+  ask: Average angular velocity
+  unit: rad/s
+  ans: 6750000000000
+  tol: 20000000000
+  verify: sqrt((2/3)*5.30e-26*500**2/1.94e-46)
+  sol: |
+    Translational kinetic energy: $K_t=\tfrac12mv^2=\tfrac12(5.30\times10^{-26})(500)^2=6.625\times10^{-21}$ J. Rotational kinetic energy is two thirds of that: $K_r=\tfrac23K_t=4.417\times10^{-21}$ J.
+
+    With $K_r=\tfrac12I\omega^2$,
+    $$\omega=\sqrt{\frac{2K_r}{I}}=\sqrt{\frac{2\times4.417\times10^{-21}}{1.94\times10^{-46}}}=\sqrt{4.553\times10^{25}}\ \text{rad/s}\approx6.75\times10^{12}\ \text{rad/s}.$$
+    Here "mean speed" has been taken as the speed that enters $K_t=\tfrac12mv^2$, as the answer key does. [Inference] A strict kinetic-theory treatment would use the mean of $v^2$, which is slightly larger than the square of the mean speed; the problem as set intends the simple reading.
+  answer_key: 6.75×10^12 rad s–1
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A rotating wheel has moment of inertia 0.5 kg m$^2$ and angular speed 12 rad/s. Find its angular momentum about the axis. (Original problem.)
+  ask: Angular momentum
+  unit: kg m²/s
+  ans: 6
+  tol: 0.01
+  verify: 0.5*12
+  sol: |
+    $L=I\omega=0.5\times12=6$ kg m$^2$/s. (Original problem.)
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A 0.20 kg stone is whirled on a string in a horizontal circle of radius 0.40 m with a speed of 5.0 m/s. Find its angular momentum about the centre of the circle. (Original problem.)
+  ask: Angular momentum
+  unit: kg m²/s
+  ans: 0.4
+  tol: 0.005
+  verify: 0.2*5*0.4
+  sol: |
+    The velocity is perpendicular to the radius, so $L=mvr\sin90^\circ=0.20\times5.0\times0.40=0.40$ kg m$^2$/s, directed along the axis of the circle. (Original problem.)
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: A skater spinning on ice pulls her arms in. Her angular speed increases because (Original problem)
+  opts: ["her kinetic energy is conserved", "her angular momentum is conserved and her moment of inertia decreases", "her angular momentum increases", "the ice pushes her round"]
+  ans: 1
+  sol: |
+    Frictionless ice means no external torque about the vertical axis, so $L=I\omega$ stays constant. Pulling the arms in reduces $I$, so $\omega$ must increase. Her kinetic energy does not stay constant: it rises, because her muscles do work. (Original problem.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A grinding wheel has moment of inertia 0.8 kg m$^2$ and turns at 30 rad/s. Find its rotational kinetic energy. (Original problem.)
+  ask: Rotational kinetic energy
+  unit: J
+  ans: 360
+  tol: 0.5
+  verify: 0.5*0.8*30**2
+  sol: |
+    $K=\tfrac12I\omega^2=\tfrac12(0.8)(30)^2=360$ J. (Original problem.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A merry-go-round is a uniform disc of mass 200 kg and radius 2.0 m, turning at 1.5 rad/s. A 40 kg child runs up from outside, jumps on at the rim moving radially (no angular momentum about the axis) and stays on it. Find the new angular speed. (Original problem.)
+  ask: New angular speed
+  unit: rad/s
+  ans: 1.07
+  tol: 0.01
+  verify: (0.5*200*2**2*1.5)/(0.5*200*2**2+40*2**2)
+  sol: |
+    There is no external torque about the axis, so the angular momentum is conserved. $I_1=\tfrac12MR^2=\tfrac12(200)(4)=400$ kg m$^2$. After the child lands, $I_2=400+mR^2=400+40(4)=560$ kg m$^2$.
+    $$\omega_2=\frac{I_1\omega_1}{I_2}=\frac{400\times1.5}{560}=1.07\ \text{rad/s}.$$
+    The kinetic energy falls from 450 J to 321 J: the missing energy is dissipated while the child's feet are brought up to speed, by friction. (Original problem.)
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A constant torque of 12 N m acts on a wheel of moment of inertia 3.0 kg m$^2$, starting from rest, for 5.0 s. Find the rotational kinetic energy at the end, and check it against the work done by the torque. (Original problem.)
+  ask: Rotational kinetic energy
+  unit: J
+  ans: 600
+  tol: 0.5
+  verify: 0.5*3*(12/3*5)**2
+  sol: |
+    $\alpha=\tau/I=12/3=4$ rad/s$^2$. After 5.0 s, $\omega=\alpha t=20$ rad/s and $K=\tfrac12I\omega^2=\tfrac12(3)(400)=600$ J. The angle turned is $\theta=\tfrac12\alpha t^2=\tfrac12(4)(25)=50$ rad, and the work is $W=\tau\theta=12\times50=600$ J. They agree: the work done by the torque equals the gain in rotational kinetic energy. (Original problem.)
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A person sits on a stool that can turn freely about a vertical axis, holding a bicycle wheel whose axle is vertical. The wheel has moment of inertia 0.50 kg m$^2$ about its axle and spins at 20 rad/s relative to the person, who is at rest. The moment of inertia of person, stool and wheel taken together about the vertical axis is 3.0 kg m$^2$ (this includes the wheel treated as a rigid body turning with the stool). The person turns the wheel over so that its axle is vertical again but the spin is reversed. Find the angular speed of the person and stool afterwards. (Original problem.)
+  ask: Angular speed of person and stool
+  unit: rad/s
+  ans: 6.667
+  tol: 0.02
+  verify: 2*0.5*20/3
+  sol: |
+    There is no external torque about the vertical axis, so the vertical component of the total angular momentum is conserved. Initially the person and stool are at rest and the wheel carries $L_i=I_w\omega_w=0.50\times20=10$ kg m$^2$/s.
+
+    Afterwards the wheel's spin relative to the person is $-20$ rad/s. Let the person and stool turn at $\omega$. The total is $L_f=I_w(-20)+I_{tot}\,\omega=-10+3.0\,\omega$.
+    $$-10+3.0\omega=10\ \Rightarrow\ \omega=\frac{20}{3.0}=6.67\ \text{rad/s}$$
+    in the direction the wheel used to spin. The person and stool gain $+20$ kg m$^2$/s from the wheel, whose angular momentum changed by $-20$ kg m$^2$/s (twice its original value). [Inference] The wheel's own contribution through the stool's rotation is included in $I_{tot}$, which is how the problem was set. (Original problem.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A skater spins at 2.0 rad/s with moment of inertia 3.0 kg m$^2$. She pulls her arms in until the moment of inertia is 1.2 kg m$^2$. Find the work done by her muscles. (Original problem.)
+  ask: Work done by the skater
+  unit: J
+  ans: 9
+  tol: 0.05
+  verify: 0.5*1.2*(3*2/1.2)**2-0.5*3*2**2
+  sol: |
+    Angular momentum is conserved: $\omega_2=I_1\omega_1/I_2=3.0\times2.0/1.2=5.0$ rad/s. Kinetic energies: $K_1=\tfrac12(3.0)(2.0)^2=6.0$ J and $K_2=\tfrac12(1.2)(5.0)^2=15.0$ J. By the work-energy theorem the work done by her muscles is $W=K_2-K_1=9.0$ J. (Original problem.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A planet moves round a star under the star's gravity. At its closest approach it is $1.0\times10^{11}$ m from the star and moves at $3.0\times10^{4}$ m/s, perpendicular to the line joining them. At its farthest point it is $1.5\times10^{11}$ m from the star. Find its speed there. (Original problem.)
+  ask: Speed at the farthest point
+  unit: m/s
+  ans: 20000
+  tol: 50
+  verify: 1.0e11*3.0e4/1.5e11
+  sol: |
+    Gravity is a central force, so its torque about the star is zero ($\mathbf r\parallel\mathbf F$) and the planet's angular momentum about the star is conserved. At the nearest and farthest points the velocity is perpendicular to the radius, so $L=mvr$ at both:
+    $$v_2=\frac{v_1r_1}{r_2}=\frac{(3.0\times10^4)(1.0\times10^{11})}{1.5\times10^{11}}=2.0\times10^4\ \text{m/s}.$$
+    The planet is slowest when it is farthest away. This is Kepler's second law (equal areas in equal times, $dA/dt=L/2m$) seen as conservation of angular momentum. (Original problem.)
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A uniform rod of mass 2.0 kg and length 1.2 m hangs vertically from a frictionless pivot at its upper end. A 0.050 kg bullet moving horizontally at 200 m/s strikes the lower end and embeds in it. Find the angular speed of the rod and bullet just after the impact. (Original problem.)
+  ask: Angular speed just after the impact
+  unit: rad/s
+  ans: 11.63
+  tol: 0.02
+  verify: 0.05*200*1.2/(2*1.2**2/3+0.05*1.2**2)
+  sol: |
+    During the very short impact the pivot's force and the weights have no moment about the pivot (the pivot force acts at the pivot, and the weights act along the vertical line through it), so the angular momentum about the pivot is conserved. Linear momentum is *not* conserved, because the pivot exerts an impulsive force.
+
+    Before: $L=mvL=0.050\times200\times1.2=12$ kg m$^2$/s.
+    After: $I=\tfrac13ML^2+mL^2=\tfrac13(2.0)(1.44)+0.050(1.44)=0.960+0.072=1.032$ kg m$^2$.
+    $$\omega=\frac LI=\frac{12}{1.032}=11.63\ \text{rad/s}.$$
+    The rod's lower end then moves at $\omega L=13.95$ m/s, much slower than the bullet's 200 m/s, and the kinetic energy afterwards ($\tfrac12I\omega^2=69.8$ J) is only 7% of the bullet's initial 1000 J. The rest is lost in the inelastic collision. (Original problem.)
+  check: code

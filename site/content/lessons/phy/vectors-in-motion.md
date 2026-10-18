@@ -47,14 +47,71 @@ outcomes:
   - 'Write position, velocity and acceleration as vectors and solve constant-acceleration motion in a plane axis by axis'
   - 'Split acceleration into tangential and normal parts with the dot product, and find extreme speeds'
   - 'Find the radius of curvature and use polar components for motion described by rotating unit vectors'
+opener:
+  story: |
+    Your phone's walking map says the market is a 7 km walk: 3 km east along the canal, then 4 km north up the main road. A friend with a drone says the market is only **5 km** from your door. You check. The map is right, and so is the drone.
+
+    How can 3 and 4 add up to 5? Nobody is cheating. Distance, the number your feet count, and the straight-line gap, the number a crow counts, are different things. And the crow's number depends on a thing a plain number cannot hold: **which way** each leg points.
+
+    That one idea (a quantity that carries a direction inside it) is the language in which all of motion, forces, fields and waves are written. Once you can think in arrows, a thrown ball, a boat crossing a river and a plane in a crosswind become the same puzzle.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A walk 3 km east then 4 km north, and the 5 km straight line from start to market"><line x1="40" y1="190" x2="200" y2="190" style="stroke:var(--c);stroke-width:3"/><line x1="200" y1="190" x2="200" y2="60" style="stroke:var(--c);stroke-width:3"/><line x1="40" y1="190" x2="200" y2="60" style="stroke:var(--chem);stroke-width:3;stroke-dasharray:7 5"/><circle cx="40" cy="190" r="6" style="fill:var(--ink)"/><circle cx="200" cy="60" r="7" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="194" y="182" width="12" height="8" style="fill:none;stroke:var(--muted)"/><text x="30" y="212" style="font-size:11px;fill:var(--ink)">your door</text><text x="212" y="64" style="font-size:11px;fill:var(--ink)">market</text><text x="86" y="208" style="font-size:11px;fill:var(--c)">3 km east</text><text x="206" y="130" style="font-size:11px;fill:var(--c)">4 km north</text><text x="60" y="118" style="font-size:11px;fill:var(--chem)">5 km as the crow flies</text><text x="40" y="232" style="font-size:11px;fill:var(--muted)">3 + 4 = 5, when directions differ</text></svg>'
+symbols:
+  - s: '\mathbf{A},\ \mathbf{B}'
+    means: 'two vectors: arrows that have both a size and a direction'
+  - s: 'A,\ B'
+    means: 'the size (magnitude) of each vector, in the quantity''s unit'
+  - s: '\theta'
+    means: 'the angle between two vectors, or between a vector and the x-axis (degrees or radians)'
+  - s: 'R'
+    means: 'size of the resultant: the single vector equal to A and B added'
+  - s: '\hat{\mathbf i},\ \hat{\mathbf j}'
+    means: 'unit vectors: arrows of length 1 pointing along the x and y axes (no unit)'
+  - s: 'A_x,\ A_y'
+    means: 'components: how much of the vector lies along the x and the y axis (same unit as A)'
+  - s: '\mathbf{r}'
+    means: 'position vector: the arrow from the origin to the object (metres, m)'
+  - s: '\mathbf{v}'
+    means: 'velocity vector: how fast and which way the position changes (m/s)'
+  - s: '\mathbf{a}'
+    means: 'acceleration vector: how fast and which way the velocity changes (m/s²)'
+  - s: 't'
+    means: 'time (seconds, s)'
+  - s: '\rho'
+    means: 'radius of curvature: the radius of the circle that best fits the path at a point (m)'
+life:
+  - 'A map app shows two numbers for the same trip, the distance you walk and the straight-line gap; displacement is the second one.'
+  - 'A pilot flying north in a westerly wind must point the plane partly into the wind: the plane''s velocity and the wind''s add as vectors, and the ground track is their sum.'
+  - 'A cricket fielder running to catch a skier adds his own running velocity to the ball''s; judging that sum is what makes a good catch look easy.'
+  - 'Two people pulling a stuck auto-rickshaw with ropes at an angle push less per rope the wider they stand, because only the part of each pull along the road helps.'
+  - 'Drone and rocket controllers handle each axis separately, then combine the three results into one path.'
+models:
+  - name: 'Break the problem into independent axes'
+    text: 'A hard two-way problem becomes two easy one-way problems, if the two directions do not interfere. Budgeting does this too: split spending into categories and handle each on its own, then combine.'
+  - name: 'Direction matters as much as size'
+    text: 'Two efforts of equal size can add, cancel or do something in between, depending on how well aligned they are. In a team, a hundred people pulling in different directions achieve less than ten pulling together.'
+  - name: 'Choose the coordinates that make the problem easy'
+    text: 'The physics is the same whichever axes you pick, but the work is not. Put the x-axis along the slope, along the wind, or along the road, and half the terms vanish.'
+links:
+  - leaf: 'phy/relative-motion'
+    name: 'Relative motion'
+    same: 'The velocity of a boat relative to the bank is the boat''s velocity relative to the water plus the water''s velocity relative to the bank. It is the same triangle rule, used for velocities.'
+    differs: 'Here we add arrows within one frame of reference; there the arrows belong to different observers, and the choice of observer is the whole problem.'
+  - leaf: 'phy/coulombs-law'
+    name: 'Coulomb''s law'
+    same: 'Forces from several charges add as vectors, just like displacements: break each into components, add component by component.'
+    differs: 'Displacements are measured along a path you travelled; forces are measured at one point, and each force depends on where its source sits.'
+next:
+  q: 'If you throw a ball sideways and drop another from the same height at the same instant, which one hits the ground first? And what shape does the thrown ball''s path take?'
+  leaf: 'phy/projectile-motion'
+  name: 'Projectile motion'
 ---
 
 :::hook
-q: Two people pull a heavy box, each with a force of 10 N. Can the net pull on the box be exactly 10 N?
-options: ["No, the net pull is always 20 N", "Yes, if the two ropes are 120° apart", "Yes, if the ropes are at right angles", "No, it can only lie between 10 N and 20 N"]
+q: So take 3 + 4 = 5 seriously. Two people each pull a heavy box with a force of 10 N. Can their combined pull on the box be exactly 10 N?
+options: ["No, the net pull is always 20 N", "Yes, if the two ropes are 120° apart", "Yes, if the two ropes are at right angles", "No, it can only lie between 10 N and 20 N"]
 answer: 1
-right: Right. Forces add by direction as well as by size. At 120° the two 10 N pulls and their resultant form an equilateral triangle, so the resultant is also 10 N. At right angles it would be about 14 N, and with the ropes pulling in opposite directions it would be zero.
-wrong: Forces carry direction, so they do not simply add as numbers. Two 10 N pulls give anything from 0 N (opposite) to 20 N (together); at 120° the three forces form an equilateral triangle, and the resultant is exactly 10 N.
+right: Right, and it is the same trick as the walk. At 120° the two 10 N pulls and their resultant form an equilateral triangle, so the resultant is also 10 N. At right angles it would be about 14 N, and with the ropes pulling in opposite directions it would be zero.
+wrong: Forces carry direction, so they do not simply add as numbers, just like the 3 km and 4 km legs. Two 10 N pulls give anything from 0 N (opposite) to 20 N (together); at 120° the three forces form an equilateral triangle, and the resultant is exactly 10 N.
 :::
 
 ## Why direction matters {lvl=1 id=s-why label="Class 10"}

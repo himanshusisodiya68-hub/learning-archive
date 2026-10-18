@@ -688,3 +688,91 @@
 
     The ball ends 12.8 m above the floor, having started 20 m above it, so its displacement is $20 - 12.8 = 7.2$ m downward.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A particle moves along a straight line with position x = t³ − 6t² + 9t, where x is in metres and t in seconds. Find the total distance it travels from t = 0 to t = 4 s. (Original problem.)
+  ask: Total distance
+  unit: m
+  ans: 12
+  tol: 0.01
+  verify: (4-0)+(4-0)+(4-0)
+  sol: |
+    The velocity is $v = \dfrac{dx}{dt} = 3t^2 - 12t + 9 = 3(t-1)(t-3)$, which is zero at $t = 1$ s and $t = 3$ s. These are the turning points inside the window.
+
+    Positions: $x(0) = 0$, $x(1) = 1 - 6 + 9 = 4$ m, $x(3) = 27 - 54 + 27 = 0$, $x(4) = 64 - 96 + 36 = 4$ m.
+
+    Stretches: $0\to4$ (4 m), $4\to0$ (4 m), $0\to4$ (4 m). Distance $= 12$ m.
+
+    The displacement is only $x(4) - x(0) = 4$ m. (Check with the sign of $v$: positive before 1 s, negative between 1 and 3 s, positive after 3 s, so the body goes forward, back, then forward.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A runner starts at some point of a circular track of radius R and runs three-quarters of the way round it. Find the ratio (distance travelled) / (magnitude of displacement). (Original problem.)
+  ask: Ratio of distance to displacement
+  unit: ""
+  ans: 3.332
+  tol: 0.002
+  verify: (3*PI/2)/sqrt(2)
+  sol: |
+    The distance is three-quarters of the circumference: $\tfrac34\times2\pi R = \tfrac{3\pi R}{2}$.
+
+    The start and finish points are separated by a turn of 270°, which is the same chord as a turn of 90° the other way. A quarter turn gives a chord of $\sqrt{R^2+R^2} = \sqrt2\,R$.
+
+    Ratio $= \dfrac{3\pi R/2}{\sqrt2\,R} = \dfrac{3\pi}{2\sqrt2} \approx 3.33$.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A cyclist rides 6 km east, then 8 km north, then 3 km west, then 4 km south. Find the magnitude of her displacement from the starting point. (Original problem.)
+  ask: Magnitude of displacement
+  unit: km
+  ans: 5
+  tol: 0.01
+  verify: hypot(6-3, 8-4)
+  sol: |
+    Take east and north as positive. East-west total: $+6 - 3 = +3$ km. North-south total: $+8 - 4 = +4$ km.
+
+    The displacement is the diagonal of these two totals: $\sqrt{3^2 + 4^2} = 5$ km, about $53^\circ$ north of east.
+
+    The distance travelled is $6 + 8 + 3 + 4 = 21$ km, more than four times the displacement.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A closed rectangular box measures 3 m × 4 m × 12 m. An ant at one corner wants to reach the diagonally opposite corner, but must stay on the outside surface of the box. Find the length of its shortest path. (The straight-line displacement through the inside would be 13 m.) (Original problem.)
+  ask: Shortest path on the surface
+  unit: m
+  ans: 13.892
+  tol: 0.005
+  verify: sqrt((3+4)**2+12**2)
+  sol: |
+    Cut the box along edges and unfold two neighbouring faces into one flat rectangle; on a flat sheet the shortest path is a straight line. The ant crosses two faces that share an edge. There are three ways to choose the pair of faces, giving a flat rectangle of sides $(a+b)$ and $c$ for the three choices of $c$:
+    $$\sqrt{(3+4)^2+12^2}=\sqrt{193},\quad \sqrt{(3+12)^2+4^2}=\sqrt{241},\quad \sqrt{(4+12)^2+3^2}=\sqrt{265}.$$
+    The smallest is $\sqrt{193} = 13.89$ m (unfold so that the longest edge, 12 m, is the length of the strip).
+
+    Compare: the displacement is the space diagonal $\sqrt{9+16+144} = 13$ m, shorter than every route on the surface, as it must be.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: A walker starts at x = 0 and takes N steps, each of length 1 m, forwards or backwards with equal chance, each step independent of the others. Show that the average value of the square of her final position is N, so her root-mean-square distance from the start is √N metres. (Original problem.)
+  hints:
+    - Write the position after n steps as x_n, and relate x_(n+1) to x_n and the new step s, where s = +1 or −1.
+    - Square the relation and take the average over the two choices of s. What happens to the cross term 2·x_n·s?
+    - Use the result to find how the average of x² grows from one step to the next, then add up N steps.
+  sol: |
+    Let $x_n$ be the position after $n$ steps and let the next step be $s=\pm1$, chosen with equal chance and independent of the past. Then $x_{n+1} = x_n + s$, so
+    $$x_{n+1}^2 = x_n^2 + 2x_n s + s^2 = x_n^2 + 2x_n s + 1.$$
+    Average over the two equally likely values of $s$. Because $s$ is independent of $x_n$ and its average is $\tfrac12(+1)+\tfrac12(-1) = 0$, the cross term averages to zero. Also $s^2=1$ always. So
+    $$\langle x_{n+1}^2\rangle = \langle x_n^2\rangle + 1.$$
+    Starting from $\langle x_0^2\rangle = 0$ and adding 1 at each of $N$ steps gives $\langle x_N^2\rangle = N$, hence $x_{\text{rms}}=\sqrt N$ metres.
+
+    The distance walked is exactly $N$ metres, so the displacement is typically smaller by a factor $\sqrt N$. For $N=10^6$ steps (1000 km of walking) the typical displacement is only 1 km.
+  check: none

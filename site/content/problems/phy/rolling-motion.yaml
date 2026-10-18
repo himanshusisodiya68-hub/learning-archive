@@ -129,11 +129,11 @@
   tol: 0.02
   verify: 5/7*7
   sol: |
-    While the ball slides, kinetic friction at the contact point acts. Take angular momentum about the contact point (a point on the lane): the friction passes through it, and gravity and the normal force have no moment about it (their lines of action pass through the line along which the contact point is measured, parallel to the motion; strictly, the moment arms are along the line of motion), so the angular momentum about the lane's surface line is conserved.
+    While the ball slides, kinetic friction acts at the contact point. Take angular momentum about a fixed point O on the lane, on the line of travel. The friction force is horizontal and acts at the lane surface, so its moment about O is zero. The weight and the normal force are equal, opposite and in the same vertical line, so their moments cancel. Hence the angular momentum about O is conserved.
 
-    Initially: $L=mv_0R$ (the ball's centre moves at $v_0$ at height $R$, no spin). Finally, rolling at $v$ with $\omega=v/R$:
+    Initially the ball's centre moves at $v_0$ at height $R$ with no spin: $L=mv_0R$. Finally, rolling at $v$ with $\omega=v/R$:
     $$mv_0R=mvR+\tfrac25mR^2\,\frac vR=\tfrac75mvR\ \Rightarrow\ v=\tfrac57v_0=5.0\ \text{m/s}.$$
-    This is independent of the friction coefficient. With friction coefficient $\mu$ the time taken is $t=\dfrac{2v_0}{7\mu g}$ (for $\mu=0.20$, about 1.02 s). Energy lost: $\tfrac12m(49-25)-\tfrac12\tfrac25m(25)=12m-5m=7m$ J, so 7 of the original $24.5m$ J... the kinetic energy falls from $24.5m$ to $17.5m$ J. (Original problem.)
+    The answer is independent of the friction coefficient $\mu$; $\mu$ only fixes the time, $t=\dfrac{2v_0}{7\mu g}$ (about 1.02 s for $\mu=0.20$). Kinetic energy is not conserved: it falls from $\tfrac12m(7.0)^2=24.5m$ to $\tfrac7{10}m(5.0)^2=17.5m$ joules, and the difference is heat from sliding friction. (Original problem.)
   check: code
 
 - id: m4
