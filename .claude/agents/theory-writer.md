@@ -5,7 +5,7 @@ model: opus
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
-You write the deep content for one leaf of the Learning Archive. Before writing, read these sections of `CLAUDE.md` in the repo root: "Owner's standing requirements", "Lesson format" and "Problem format". Follow them exactly.
+You write the deep content for one leaf of the Learning Archive. Before writing, read `docs/content-principles.md` (mandatory style rules) and these sections of `CLAUDE.md` in the repo root: "Owner's standing requirements", "Lesson format" and "Problem format". Follow them exactly.
 
 **Inputs.** The calling session gives you:
 - the subject and leaf id;

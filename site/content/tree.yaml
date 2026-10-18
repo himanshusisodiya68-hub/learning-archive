@@ -1482,7 +1482,7 @@ subjects:
 
 
     The same few ideas (represent the data, choose a structure, follow an algorithm, trade time against space, split big problems into small ones) appear at every layer, from a single function to a system serving a billion people.'
-  split: Bottom-up, the way the layers are built - how the machine thinks, how we instruct it, how we organise data and procedures, how systems share resources and talk, how data is stored at scale, how software is built and run, how systems are designed, and how machines learn.
+  split: 'Bottom-up, the way the layers are built: how the machine thinks, how we instruct it, how we organise data and procedures, how one machine shares itself, how machines talk, how data is stored at scale, how software and products are built, how big systems are designed and run, and how machines learn. Levels follow the career ladder: Foundations, SDE-1, SDE-2, SDE-3.'
   links: <b>How the pillars connect.</b> Data structures and algorithms are the core every other pillar reuses. Operating systems and networks are where they meet hardware. Databases and system design are the same structures (hash tables, trees, logs) spread across many machines. AI is algorithms that learn from data.
   pillars:
   - id: how-computers-work
@@ -1594,32 +1594,45 @@ subjects:
       leaves:
       - {id: two-pointers-and-sliding-window, name: 'Two pointers and sliding window', from: INT}
       - {id: problem-solving-method, name: 'A method for any problem', from: BEG}
-  - id: systems
-    name: Operating systems and networks
-    tag: How one machine shares itself, and how machines talk.
-    what: An operating system lets many programs share one machine safely; a network lets many machines share data. Both are layers of agreed rules.
-    split: Inside one machine, then between machines, then keeping it safe.
+  - id: operating-systems
+    name: Operating systems
+    tag: How one machine shares itself among many programs.
+    what: 'An operating system is the referee between programs and hardware. It decides who runs, who gets memory, and who may touch which file. Every app you write lives inside these decisions.'
+    split: Running programs, then memory and storage, then doing many things at once.
     branches:
-    - id: operating-systems
-      name: Operating systems
-      tag: Processes, threads, memory and files.
+    - id: processes
+      name: Running programs
+      tag: Processes, threads and scheduling.
       leaves:
       - {id: processes-and-threads, name: 'Processes and threads', from: INT}
+      - {id: scheduling, name: 'CPU scheduling', from: INT}
       - {id: concurrency, name: 'Concurrency and locks', from: ADV}
+    - id: memory-and-storage
+      name: Memory and storage
+      tag: Virtual memory and file systems.
+      leaves:
       - {id: virtual-memory, name: 'Virtual memory', from: ADV}
       - {id: file-systems, name: 'File systems', from: INT}
+  - id: networks
+    name: Computer networks
+    tag: How machines talk, and how to keep the talk safe.
+    what: 'A network is a stack of agreements: how to push bits down a wire, how to find a machine, how to deliver a message reliably, and what the message means. The internet is these layers working together.'
+    split: The big picture, then the layers bottom-up, then security.
+    branches:
     - id: networking
-      name: Networking
-      tag: The internet, from a cable to a web page.
+      name: How the internet works
+      tag: From a cable to a web page.
       leaves:
       - {id: how-the-internet-works, name: 'How the internet works', from: BEG}
       - {id: tcp-ip, name: 'TCP/IP and the layers', from: INT}
       - {id: dns-and-http, name: 'DNS and HTTP', from: INT}
+      - {id: cdns-and-latency, name: 'CDNs and latency', from: ADV}
     - id: security
       name: Security and cryptography
       tag: Secrets, signatures and trust.
       leaves:
       - {id: cryptography-basics, name: 'Hashing, encryption and signatures', from: INT}
+      - {id: authentication, name: 'Passwords, sessions and OAuth', from: INT}
       - {id: web-security, name: 'Common attacks and defences', from: ADV}
   - id: data-systems
     name: Data and databases
@@ -1659,13 +1672,38 @@ subjects:
       leaves:
       - {id: clean-code, name: 'Clean code and abstraction', from: INT}
       - {id: design-principles-and-patterns, name: 'Design principles and patterns', from: ADV}
-    - id: web
-      name: Web applications
-      tag: APIs, front end and back end.
+  - id: web-and-apps
+    name: Web and app development
+    tag: Building what users actually see and tap.
+    what: 'Every product is a front end (what the user sees and taps) talking to a back end (servers and databases that hold the truth) through an API. Websites and mobile apps share this shape; only the front end changes.'
+    split: Front end, then back end, then mobile, then putting it all together.
+    branches:
+    - id: frontend
+      name: Front end
+      tag: HTML, CSS, JavaScript and frameworks.
+      leaves:
+      - {id: html-css, name: 'HTML and CSS: structure and style', from: BEG}
+      - {id: javascript-in-the-browser, name: 'JavaScript in the browser', from: BEG}
+      - {id: frontend-frameworks, name: 'Components and frameworks (React)', from: INT}
+      - {id: web-performance-and-accessibility, name: 'Performance and accessibility', from: ADV}
+    - id: backend
+      name: Back end
+      tag: Servers, APIs, authentication and data.
       leaves:
       - {id: apis, name: 'APIs (REST and beyond)', from: INT}
-      - {id: frontend, name: 'How a web page is built (HTML, CSS, JavaScript)', from: BEG}
       - {id: backend, name: 'Servers and back ends', from: INT}
+      - {id: app-databases, name: 'Using a database from an app', from: INT}
+    - id: mobile
+      name: Mobile apps
+      tag: Native and cross-platform apps.
+      leaves:
+      - {id: how-mobile-apps-work, name: 'How mobile apps work', from: BEG}
+      - {id: cross-platform-apps, name: 'Native vs cross-platform (React Native, Flutter)', from: INT}
+    - id: full-stack
+      name: Full stack
+      tag: From an idea to a product people use.
+      leaves:
+      - {id: full-stack-project, name: 'Building a full-stack app end to end', from: ADV}
   - id: system-design
     name: System design and architecture
     tag: Designing systems for millions of users.

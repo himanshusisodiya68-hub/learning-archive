@@ -117,7 +117,9 @@ function parseLesson(file) {
   const models = (meta.models || []).map(x => ({ name: mdi(x.name || ''), html: mdi(x.text || '') }));
   const links = (meta.links || []).map(x => ({ leaf: x.leaf || '', name: x.name || '', same: mdi(x.same || ''), differs: mdi(x.differs || '') }));
   const next = meta.next ? { q: mdi(meta.next.q || ''), leaf: meta.next.leaf || '', name: meta.next.name || '' } : null;
-  return { ...meta, life, models, links, next, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
+  const hm = body.match(/^:::hook[^\n]*\n([\s\S]*?)\n:::/m), hookQ = hm ? mdi(parseChoice(hm[1]).q || '') : '';
+  const opener = meta.opener ? { story: md(meta.opener.story || ''), art: meta.opener.art || '' } : null;
+  return { ...meta, hookQ, opener, life, models, links, next, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
     cards: (meta.cards || []).map(c => ({ front: mdi(c.front), back: md(c.back) })) };
 }
 
@@ -169,7 +171,8 @@ for (const s of tree.subjects) {
           const lesson = parseLesson(lf);
           lesson.key = key; lesson.problems = probs.length;
           write(`data/lessons/${s.id}--${l.id}.json`, lesson);
-          l.live = true; liveCount++; l.summary = lesson.summary || ''; l.sections = lesson.sections.length;
+          l.live = true; liveCount++; l.summary = lesson.summary || ''; l.sections = lesson.sections.length; l.ask = lesson.hookQ || ''; l.can = (lesson.outcomes || []).slice(0, 2); l.nextq = lesson.next && lesson.next.leaf ? { q: lesson.next.q, leaf: lesson.next.leaf } : null;
+          l.sparks = [...(lesson.margin || []).filter(m => m.kind !== 'tip').map(m => ({ t: m.title || m.kind, h: m.html })), ...(lesson.models || []).map(m => ({ t: 'Mental model: ' + stripTags(m.name), h: m.html }))];
           search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: l.name, path: `${s.name} › ${p.name} › ${b.name}`, text: lesson.summary || '', go: { lesson: key } });
           lesson.sections.forEach(sec => search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: sec.title, path: `${l.name} · section`, text: sec.text, go: { lesson: key, section: sec.id } }));
         } else {

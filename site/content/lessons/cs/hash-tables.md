@@ -42,6 +42,14 @@ outcomes:
   - 'Reason about load factor, resizing and why the average cost stays O(1)'
   - 'Spot hash-map solutions in interview problems'
   - 'Sketch how a username check could work across many machines'
+opener:
+  story: |
+    You open Instagram, tap **Create account**, and type *himanshu*. Before your thumb even lifts off the screen, a little red line appears: **username taken**.
+
+    Pause on that for a second. Somewhere there is a list of more than two billion names. A computer checked yours against that list in a few hundredths of a second, while millions of other people around the world were typing names too.
+
+    It didn't read the list. It couldn't have; that would take far too long. So what did it do?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A phone checks a username by jumping straight to one slot in a big table"><rect x="16" y="22" width="104" height="196" rx="16" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="30" y="70" width="76" height="22" rx="5" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="36" y="85" style="font-size:11px;fill:var(--ink)">himanshu</text><text x="30" y="108" style="font-size:10px;fill:var(--bad)">✗ username taken</text><text x="30" y="56" style="font-size:10px;fill:var(--muted)">Create account</text><path d="M122 82 C160 82 168 120 196 120" style="fill:none;stroke:var(--c);stroke-width:2"/><text x="128" y="70" style="font-size:10px;fill:var(--c)">h(name) = 17</text><g style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--rule)"><rect x="200" y="30" width="24" height="24"/><rect x="228" y="30" width="24" height="24"/><rect x="256" y="30" width="24" height="24"/><rect x="284" y="30" width="24" height="24"/><rect x="200" y="58" width="24" height="24"/><rect x="228" y="58" width="24" height="24"/><rect x="256" y="58" width="24" height="24"/><rect x="284" y="58" width="24" height="24"/><rect x="200" y="86" width="24" height="24"/><rect x="228" y="86" width="24" height="24"/><rect x="256" y="86" width="24" height="24"/><rect x="284" y="86" width="24" height="24"/><rect x="228" y="114" width="24" height="24"/><rect x="256" y="114" width="24" height="24"/><rect x="284" y="114" width="24" height="24"/><rect x="200" y="142" width="24" height="24"/><rect x="228" y="142" width="24" height="24"/><rect x="256" y="142" width="24" height="24"/><rect x="284" y="142" width="24" height="24"/></g><rect x="200" y="114" width="24" height="24" style="fill:var(--c)"/><text x="204" y="186" style="font-size:10px;fill:var(--muted)">2 billion names,</text><text x="204" y="200" style="font-size:10px;fill:var(--muted)">one place to look</text></svg>'
 life:
   - 'Every Python dict and set, JavaScript object and Map, and Java HashMap is a hash table.'
   - 'Your phone''s contacts search, a browser''s cache of visited pages and a compiler''s table of variable names all use hashing.'
@@ -70,14 +78,14 @@ next:
 ---
 
 :::hook
-q: Instagram has well over a billion accounts. You type a username and it says "taken" almost instantly. Roughly how many stored names did it compare yours with?
-options: ["All of them, very fast", "About 31", "About one or two"]
+q: Here's the puzzle. How many stored names do you think it compared yours with?
+options: ["All two billion, very fast", "About 31", "One or two"]
 answer: 2
 right: Right. With hashing, it computes where your name would be stored and looks there. One or two comparisons, whether there are a thousand names or a billion. (Instagram's actual internals are not public; this is how such a check is typically built. [Inference])
 wrong: Checking every name one by one, even at a billion comparisons a second, takes about a second per keystroke for every user typing at once. There is a much better trick: work out where the name must be.
 :::
 
-## The problem {lvl=1 id=s-problem label="Beginner"}
+## The problem {lvl=1 id=s-problem label="Foundations"}
 
 Imagine the usernames are written in a giant notebook, one per line, in the order people signed up. To check "himanshu", you read line 1, line 2, line 3... With 2 billion lines, a check takes up to 2 billion comparisons. A fast computer does maybe a few hundred million simple comparisons a second, so each keystroke would cost seconds, and millions of people are typing at once. Hopeless.
 
@@ -85,7 +93,7 @@ Better: keep the notebook **sorted**, like a dictionary. Open it in the middle; 
 
 But can we do better than 31? What if we could look **once**?
 
-## The trick: compute where it lives {lvl=1 id=s-trick label="Beginner"}
+## The trick: compute where it lives {lvl=1 id=s-trick label="Foundations"}
 
 Think of a cloakroom with 1,000 numbered hooks. You do not hang coats in arrival order. Instead you take the visitor's name, apply a fixed recipe that turns it into a number between 0 and 999 (say, add up the letters' codes and keep the last three digits), and hang the coat on that hook. When the visitor comes back, you apply the same recipe to their name and walk straight to the hook. You never search.
 
@@ -110,7 +118,7 @@ right: Right. The cost does not grow with the number of names; that is what O(1)
 wrong: Recomputing the slot does not depend on how many names are stored. What changes as the table grows?
 :::
 
-## Collisions {lvl=2 id=s-collisions label="Intermediate"}
+## Collisions {lvl=2 id=s-collisions label="SDE-1"}
 
 There are more possible names than hooks, so two names will sometimes land on the same slot: a **collision**. It is unavoidable (more pigeons than holes). Two standard fixes:
 
@@ -119,13 +127,13 @@ There are more possible names than hooks, so two names will sometimes land on th
 
 Either way, lookups stay fast **as long as each slot holds only a few keys on average**.
 
-## Load factor and resizing {lvl=2 id=s-load label="Intermediate"}
+## Load factor and resizing {lvl=2 id=s-load label="SDE-1"}
 
 The **load factor** $\alpha = n/m$ is keys per slot. With a good hash function the expected work per lookup grows with $\alpha$, not with $n$. So keep $\alpha$ bounded: when it passes a threshold (often about 0.7), allocate an array twice as large and re-insert every key.
 
 A resize is slow, $O(n)$, but it happens rarely: after doubling, you can insert as many keys again before the next one. Spread over all inserts, each costs $O(1)$ on average. This is called **amortised** cost, and it is the same reason a dynamic array's append is $O(1)$.
 
-## What makes a good hash function {lvl=3 id=s-good label="Advanced"}
+## What makes a good hash function {lvl=3 id=s-good label="SDE-2"}
 
 A good hash for a table must be **fast**, **deterministic** (same key, same number, every time) and **spread keys evenly**, so that similar keys ("anna1", "anna2") land far apart. Summing letter codes is a poor choice: "listen" and "silent" collide. Real tables use functions that mix every bit of the key.
 

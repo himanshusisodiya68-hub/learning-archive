@@ -221,12 +221,21 @@
     $('due-text').textContent = dc + dp ? `${dc} cards and ${dp} problems, timed to come back just before you forget them.` : 'Memorise a core idea or rate problems, and they come back here at growing intervals.';
     const solved = Object.values(PG.problems).filter(v => v.r === 'got').length;
     const allLeaves = TREE.subjects.flatMap(s => (s.pillars || []).flatMap(leavesOf));
-    $('stats').innerHTML = [
-      [Object.keys(PG.lessons).length, `of ${live.length} lessons opened`],
-      [solved, 'problems solved'],
-      [streak() + (streak() === 1 ? ' day' : ' days'), 'learning streak'],
-      [litLeaves(), `of ${allLeaves.length} nodes lit`]
-    ].map(([n, t]) => `<div><b>${n}</b><span>${t}</span></div>`).join('');
+    const day = today(), pick = (arr, salt) => arr.length ? arr[(day * 7919 + salt) % arr.length] : null;
+    const opened = live.filter(x => PG.lessons[x.key]);
+    const loops = opened.filter(x => x.l.nextq && !PG.lessons[x.l.nextq.leaf]).map(x => ({ q: x.l.nextq.q, to: x.l.nextq.leaf, from: x.l.name }));
+    const tease = pick(live.filter(x => !PG.lessons[x.key] && x.l.ask), 3);
+    const loopHTML = loops.length ? loops.slice(0, 3).map(o => { const T = leafByKey(o.to), ok = T && T.l.live;
+      return `<button class="loop" ${ok ? `data-open="${o.to}"` : 'disabled'}><span class="loop-q">${o.q}</span><span class="loop-f">left open by ${escHTML(o.from)} · ${ok ? 'close it →' : 'answer coming soon'}</span></button>`; }).join('')
+      : tease ? `<button class="loop" data-open="${tease.key}"><span class="loop-q">${tease.l.ask}</span><span class="loop-f">${escHTML(tease.l.name)} · find out →</span></button>` : '';
+    const sparks = live.flatMap(x => (x.l.sparks || []).map(s2 => ({ ...s2, key: x.key, name: x.l.name })));
+    const sp = pick(sparks, 11), askx = pick(live.filter(x => x.s.id !== 'eng' && x.l.ask && x.l.ask.length > 45 && /\?\s*$/.test(x.l.ask.replace(/<[^>]+>/g, '')) && (!tease || x.key !== tease.key)), 5);
+    const can = opened.flatMap(x => (x.l.can || []).slice(0, 1));
+    $('habits').innerHTML = `
+      <div class="hb loops"><div class="hb-k">${loops.length ? 'Questions you left open' : 'A question worth chasing'}</div><p class="hb-s">${loops.length ? 'Your mind keeps unfinished questions alive. Close one today.' : 'Pick it up, and the answer is one lesson away.'}</p>${loopHTML}</div>
+      <div class="hb spark">${sp ? `<div class="hb-k">Today's spark · ${escHTML(sp.t)}</div><p class="sp-t">${sp.h}</p><button class="hb-link" data-open="${sp.key}">from ${escHTML(sp.name)} →</button>` : ''}${askx ? `<div class="ask"><b>Ask someone today</b><p>${askx.l.ask}</p><button class="hb-link" data-open="${askx.key}">the answer →</button></div>` : ''}</div>
+      <div class="hb can"><div class="hb-k">You can now explain</div>${can.length ? `<ul>${can.slice(-4).reverse().map(c => `<li>${c}</li>`).join('')}</ul><p class="hb-s">${can.length} idea${can.length > 1 ? 's' : ''} you could teach a friend. That is the real measure of progress.</p>` : '<p class="hb-s">Every lesson you finish adds something here you can explain to anyone, at dinner, in an interview, to a curious kid.</p>'}</div>`;
+
     $('live-count').textContent = `${live.length} lessons live`;
     $('subj-list').innerHTML = TREE.subjects.map(s => {
       const ls = (s.pillars || []).flatMap(leavesOf), nLive = countLive(ls), pct = Math.round(avgMastery(s.id, ls) * 100);
@@ -244,6 +253,7 @@
   };
   $('continue').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openLesson(b.dataset.open, b.dataset.tab || 'learn'); });
   $('subj-list').addEventListener('click', e => { const b = e.target.closest('[data-open-subj]'); if (b) go('learn~' + b.dataset.openSubj); });
+  $('habits').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openLesson(b.dataset.open); });
   $('ready').addEventListener('click', e => { const b = e.target.closest('[data-ready]'); if (b) go('learn~' + b.dataset.ready); });
 
   /* ---------- search ---------- */
@@ -288,7 +298,7 @@
 
   /* ================= LEARN ================= */
   /* Two levels only: a subject page (pillar cards) and a pillar page (each branch once, as a numbered learning path). */
-  const TAGS = { OLY: 'Olympiad', JEE: 'JEE', BEG: 'Beginner', INT: 'Intermediate', ADV: 'Advanced', SDE: 'SDE-3', LIFE: 'Everyday' };
+  const TAGS = { OLY: 'Olympiad', JEE: 'JEE', BEG: 'Foundations', INT: 'SDE-1', ADV: 'SDE-2', SDE: 'SDE-3', LIFE: 'Everyday' };
   const lvlTag = l => `<span class="lvl ${l === 'JEE' || l === 'ADV' ? 'jee' : l === 'OLY' || l === 'SDE' ? 'oly' : ''}">${TAGS[l] || 'Class ' + String(l).slice(1)}</span>`;
   const leavesOf = p => p.branches.flatMap(b => b.leaves);
   const countLive = ls => ls.filter(l => l.live).length;
@@ -450,11 +460,11 @@
   };
   const BANDS = {
     sci: { 1: ['Class 10', 'The foundation: every student needs this'], 2: ['Class 12 · JEE Main', 'Stop above this line if you only need Class 10'], 3: ['JEE Advanced · Irodov', 'Same core idea, harder situations'], 4: ['Olympiad', 'The idea at full depth'] },
-    cs: { 1: ['Beginner', 'The idea, from zero'], 2: ['Intermediate', 'How it really works'], 3: ['Advanced', 'Details that matter in practice'], 4: ['SDE-3', 'The idea at the scale of real systems'] },
+    cs: { 1: ['Foundations', 'Anyone can follow this, no coding needed'], 2: ['SDE-1', 'What a junior engineer must know'], 3: ['SDE-2', 'Trade-offs a mid-level engineer weighs'], 4: ['SDE-3', 'Designing at scale and leading the decision'] },
     eng: { 1: ['Foundation', 'Classes 6 to 8: the rule itself'], 2: ['Class 10 board', 'What the board paper tests'], 3: ['Beyond the board', 'Style and nuance'] }
   };
   const ENG_DEPTH = [[1, 'Foundation'], [2, 'Class 10 board'], [3, 'Beyond the board']];
-  const CS_DEPTH = [[1, 'Beginner'], [2, 'Intermediate'], [3, 'Advanced'], [4, 'SDE-3']];
+  const CS_DEPTH = [[1, 'Foundations'], [2, 'SDE-1'], [3, 'SDE-2'], [4, 'SDE-3']];
   let spy = null;
   function buildLesson(root, L, lesson, probs) {
     const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = BANDS[sid] || BANDS.sci, D = isEng ? ENG_DEPTH : sid === 'cs' ? CS_DEPTH : DEPTH;
@@ -470,11 +480,11 @@
       sections += `<div class="band l${sec.lvl}" data-lvl="${sec.lvl}"><span class="band-n">${escHTML(bn)}</span><span class="band-h">${escHTML(bh)}</span></div>`; }
       sections += secHTML(sec); });
     const margin = (lesson.margin || []).map(m => `<div class="mn ${m.kind === 'tip' ? 'tip' : m.kind === 'olympiad' ? 'oly' : ''}"><b>${escHTML(m.title || m.kind)}</b>${m.html}</div>`).join('');
-    const extra = [];
-    if (lesson.life && lesson.life.length) extra.push(`<div class="xcard life"><b>Where you meet this</b><ul>${lesson.life.map(x => `<li>${x}</li>`).join('')}</ul></div>`);
-    if (lesson.models && lesson.models.length) extra.push(`<div class="xcard models"><b>Mental models to keep</b>${lesson.models.map(m => `<p><strong>${m.name}.</strong> ${m.html}</p>`).join('')}</div>`);
-    if (lesson.links && lesson.links.length) extra.push(`<div class="xcard links"><b>Same idea elsewhere</b>${lesson.links.map(x => { const T = x.leaf && leafByKey(x.leaf); return `<div class="lk"><button class="lk-h" ${T && T.l.live ? `data-goto="${x.leaf}"` : 'disabled'}>${escHTML(x.name || (T ? T.l.name : x.leaf))}${T && T.l.live ? ' →' : ''}</button><p><span class="tag same">Common</span> ${x.same}</p><p><span class="tag diff">Different</span> ${x.differs}</p></div>`; }).join('')}</div>`);
-    if (extra.length) sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Beyond the page</span><span class="band-h">Where this idea lives in the real world</span></div><div class="xgrid">${extra.join('')}</div>`;
+    const think = [];
+    if (lesson.models && lesson.models.length) think.push(`<div class="mms">${lesson.models.map(m => `<div class="mm"><div class="mm-k">${ico('bulb')}Mental model</div><b>${m.name}</b><p>${m.html}</p></div>`).join('')}</div>`);
+    if (lesson.links && lesson.links.length) think.push(lesson.links.map(x => { const T = x.leaf && leafByKey(x.leaf), nm = escHTML(x.name || (T ? T.l.name : x.leaf));
+      return `<div class="cmp"><div class="cmp-h"><span>Same idea elsewhere</span>${T && T.l.live ? `<button data-goto="${x.leaf}">${nm} →</button>` : `<b>${nm}</b>`}</div><div class="cmp-g"><div class="cmp-c same"><b>What's common</b><p>${x.same}</p></div><div class="cmp-c diff"><b>What's different</b><p>${x.differs}</p></div></div></div>`; }).join(''));
+    if (think.length) sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Think with it</span><span class="band-h">Ideas to carry outside this subject</span></div>${think.join('')}`;
     if (margin) sections += `<div class="around"><div class="eyebrow">Around this idea</div><div class="around-g">${margin}</div></div>`;
     sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Wrap-up</span><span class="band-h">What to carry in your head</span></div>` + tail.map(secHTML).join('');
     const groups = []; body.forEach(sec => { let g = groups.find(x => x.lvl === sec.lvl); if (!g) groups.push(g = { lvl: sec.lvl, secs: [] }); g.secs.push(sec); });
@@ -489,6 +499,9 @@
         ${c.signHtml ? `<div class="core-w">${ico('alert')}<span>${c.signHtml}</span></div>` : ''}
         <button class="btn quiet sm" data-add-core>${PG.cards[key + '#core'] ? 'In your review cards ✓' : '+ Add to my review cards'}</button>
       </div>` : '';
+    const hasHook = /class="hook"/.test(lesson.introHtml || ''), op = lesson.opener || {};
+    const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}"><div class="op-art">${op.art || coverArt(L)}</div><div class="op-body"><div class="op-k">Start here</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div></div>` : '';
+    const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><b>In real life</b><span>where this idea is quietly at work around you</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl"><span class="rl-n">${i + 1}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
     const outHTML = lesson.outcomes && lesson.outcomes.length ? `<div class="outcomes"><div class="eyebrow">After this lesson you can</div><ol>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ol></div>` : '';
     const mapHTML = `<div class="lmap"><div class="lmap-h"><b>Lesson map</b><span>${lesson.sections.length} sections · about ${mins} min at full depth</span></div>
         <div class="depth"><span>Show depth up to</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div></div>
@@ -510,7 +523,7 @@
       </div>
       <div class="lpane s-${sid}" data-lpane="learn">
         <div class="read"><div class="read-main">
-          <div class="top-grid">${coreHTML}<div class="top-side">${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}</div></div>
+          ${openerHTML}<div class="top-grid">${coreHTML}<div class="top-side">${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}</div></div>${lifeHTML}
           ${mapHTML}
           <div class="prose">${lesson.introHtml ? `<div class="intro">${lesson.introHtml}</div>` : ''}${sections}</div>
           ${lesson.next ? (() => { const T = lesson.next.leaf && leafByKey(lesson.next.leaf); return `<div class="nextq s-${sid}"><div class="eyebrow">The question that leads on</div><p class="nq">${lesson.next.q}</p><div class="nq-f">${T ? `<span>Answered in <b>${escHTML(T.l.name)}</b></span>${T.l.live ? `<button class="btn" data-goto="${lesson.next.leaf}">Find out →</button>` : '<span class="muted">(lesson coming soon)</span>'}` : ''}</div></div>`; })() : ''}
@@ -518,7 +531,7 @@
           ${(() => { const n = lessonNeighbours(key); return (n.prev || n.next) ? `<nav class="lnav" aria-label="Lessons">${n.prev ? lessonCard(n.prev, 'prev', L) : '<span></span>'}${n.next ? lessonCard(n.next, 'next', L) : '<span class="lnav-end">That is the last lesson written so far.</span>'}</nav>` : ''; })()}
         </div>
         <aside class="side"><div class="toc-wrap"><div class="toc-top"><b>On this page</b><span id="read-pct">0%</span></div><div class="readbar"><i id="read-bar"></i></div>
-          <nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Beg', 'Int', 'Adv', 'SDE'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
+          <nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Fnd', 'SDE1', 'SDE2', 'SDE3'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
         </aside></div>
       </div>
       <div class="lpane" data-lpane="practice" hidden>
@@ -533,6 +546,7 @@
         <div style="max-width:760px"><label for="notes" class="lede" style="display:block;margin:0 0 10px">${escHTML(lesson.notes_prompt || 'Explain this idea as if teaching a Class 8 student.')} Putting it in your own words is one of the strongest ways to remember it.</label>
         <textarea id="notes" placeholder="Start writing…"></textarea><p class="note">Saved with your progress.</p></div>
       </div>`;
+    { const hk = root.querySelector('.intro .hook'), slot = $('op-q'); if (hk && slot) { slot.appendChild(hk); const intro = root.querySelector('.intro'); if (intro && !intro.textContent.trim()) intro.remove(); } }
     fillIcons(root);
     mountWidgets(root);
     const notes = $('notes'); notes.value = PG.notes[key] || '';

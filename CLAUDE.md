@@ -18,18 +18,9 @@ Later phases: English (Wren & Martin, literature), a programming/AI foundation, 
 - **Reality filter.** Never present inferred or unverified content as fact; label it [Inference], [Unverified] or [Speculation]. Examples: data missing from a reprinted question, figure values worked backwards from the answer key, discrepancies between question and answer key. State these in the solution.
 - **Share once a pillar is complete**: republish the site and send the link with a short summary of what changed and anything unverified.
 
-## Vision and teaching style (owner's brief, Oct 2026: read before writing any lesson)
+## Content principles (mandatory)
 
-The site is **life first, academic second**: core concepts for daily life, taught the way Feynman taught.
-- **Feynman style** (see *Six Easy Pieces* and feynmanlectures.caltech.edu; read the website, not the PDFs, to save tokens): open with a real-life question that demands the idea; plain words first, notation last (symbols are shorthand for sentences, never a barrier); build up level by level from first principles; a complete novice must get the core.
-- **Interlink fundamentals**: same underlying idea in different places (gravitation ↔ electrostatics, hash table ↔ library index). Say what is common and what differs (`links`). Extract **mental models** that apply to life, economy, polity (`models`). Show **where you meet it** (`life`).
-- **Chain of learning**: every lesson ends with a question answered by the next lesson (`next`). Following a chain lights up a branch of the knowledge tree (the app draws it; leaves glow with mastery).
-- **Make it addictive**: curiosity hooks, quick wins, streaks, glowing nodes, "one more question" endings. The reader should become the most interesting person in the room.
-- **Maths**: real-life problem solving and love of problems (Art of Problem Solving style), "where do I use it?", mental models, strong foundations for programming, fun puzzles to ask people. Pillar `maths-in-life` holds money, estimation and decision maths.
-- **Computer Science** (subject `cs`, 10 pillars, levels `BEG` → `INT` → `ADV` → `SDE` (SDE-3)): each lesson starts from a real system problem (e.g. "how does Instagram check a username among a billion?"). Python to learn, JavaScript/TypeScript for the web. Key reference: *Designing Data-Intensive Applications*.
-- **English**: vocabulary (synonyms, antonyms, idioms, phrasal verbs, one-word substitution, collocations) is its own pillar.
-- **Reference books**: the owner's Google Drive folder https://drive.google.com/drive/folders/1acWIOWLTCwTVJsaBmTg9ElI6NJRPjX5X (Feynman, AoPS, DDIA and others). Copy problems word for word only from these.
-- **Samples to copy the style from**: `content/lessons/phy/universal-law-of-gravitation.md` and `content/lessons/cs/hash-tables.md`.
+**Read `docs/content-principles.md` before writing or revising any lesson.** In short: life first; Feynman style (real-life puzzle, plain words before notation, first principles); every lesson has an illustrated opener card, core idea, In real life, depth sections, Think with it (mental models, same idea elsewhere), wrap-up and a closing question that leads to the next lesson. CS levels follow the career ladder (Foundations, SDE-1, SDE-2, SDE-3). Reference books: the owner's Drive folder and the Feynman Lectures website; save reading notes in `docs/refs/` so books are read once.
 
 ## Keeping cost down
 
@@ -108,6 +99,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 | `cards` | 5–6 `{front, back}` review cards; backslashes doubled inside quotes |
 | `core` | **Required.** The one idea to memorise, shown boxed at the top of the lesson: `idea` (1–2 sentences, exam-ready, may use `$…$`), `formulas` (1–3 items of `{tex, label}`, KaTeX without `$$`; English uses `patterns` of `{text, label}` instead), `conditions` (2–4 ideal conditions or assumptions under which it holds exactly; for English, when to use the form), optional `sign` (the sign convention or the commonest mistake). Use single-quoted YAML strings. |
 | `outcomes` | **Required.** 3–5 verb-first "after this lesson you can" items, ordered basic to advanced. |
+| `opener` | **Required for new lessons.** `{story, art}`: conversational 3-paragraph puzzle (markdown) and an inline SVG illustration; shown as the top card with the `:::hook` question. |
 | `life` | **Required for new lessons.** 3–5 places the reader meets this idea in daily life. |
 | `models` | **Required for new lessons.** 2–3 `{name, text}` mental models that transfer beyond the subject. |
 | `links` | Same idea elsewhere: `{leaf: subj/id, name, same, differs}`. |
