@@ -1,0 +1,116 @@
+# Relational model and SQL. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A customers table has 1,000 rows and an orders table has 5,000 rows. You write a join but forget the ON condition. How many rows does the database return?
+  ask: Rows
+  unit: ""
+  ans: 5000000
+  tol: 1
+  verify: 1000*5000
+  sol: Without a matching condition every customer pairs with every order, a cross product. That is $1000 \times 5000 = 5{,}000{,}000$ rows.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A school keeps a students table. Which column is the best primary key?
+  opts: ["name", "city", "roll_number (different for every student)", "class"]
+  ans: 2
+  sol: A primary key must be different in every row. Names repeat, many students share a city and a class, but a roll number is issued once per student.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: 'Using the shop tables from the lesson (4 customers; 6 orders, with Karan having none), how many rows does "SELECT * FROM customers c LEFT JOIN orders o ON o.customer_id = c.id" return?'
+  ask: Rows
+  unit: ""
+  ans: 7
+  tol: 0.01
+  verify: 6+1
+  sol: Each of the 6 orders matches its customer, giving 6 rows. Karan has no orders but a LEFT JOIN keeps him once, with NULL in the order columns. Total $6 + 1 = 7$. (A plain JOIN would return 6.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: 'Write a query for the total amount ordered per city, using the lesson''s customers(id, name, city) and orders(id, customer_id, amount). What does it return for the lesson''s data?'
+  sol: |
+    Join orders to customers, then group by city and add up the amounts.
+    ```sql
+    SELECT c.city, SUM(o.amount) AS total
+    FROM customers c JOIN orders o ON o.customer_id = c.id
+    GROUP BY c.city;
+    ```
+    Result: Delhi 900 (Ravi's one order), Pune 1250 (Asha 500 + 250, Meera 120 + 80 + 300). Karan adds nothing because he has no orders.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Write a query that lists the customers who have never placed an order. Give two different ways, and say which customer it returns for the lesson's data.
+  sol: |
+    Way 1: LEFT JOIN, then keep the rows where nothing matched.
+    ```sql
+    SELECT c.name FROM customers c
+    LEFT JOIN orders o ON o.customer_id = c.id
+    WHERE o.id IS NULL;
+    ```
+    Way 2: ask directly whether a matching order exists.
+    ```sql
+    SELECT name FROM customers c
+    WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id);
+    ```
+    Both return Karan. Use `IS NULL`, never `= NULL`, because NULL equals nothing. A trap is `WHERE customer_id NOT IN (subquery)` when the subquery can return a NULL: the whole test then becomes unknown and returns no rows.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: For each city, find the customer who spent the most in total, and the amount. Describe your approach step by step, then give the SQL and the result for the lesson's data.
+  sol: |
+    Step 1: total per customer (join, then GROUP BY customer). Step 2: within each city, rank customers by that total. Step 3: keep rank 1.
+    ```sql
+    SELECT city, name, total FROM (
+      SELECT c.city, c.name, SUM(o.amount) AS total,
+             RANK() OVER (PARTITION BY c.city ORDER BY SUM(o.amount) DESC) AS r
+      FROM customers c JOIN orders o ON o.customer_id = c.id
+      GROUP BY c.id)
+    WHERE r = 1;
+    ```
+    Result: Delhi, Ravi, 900; Pune, Asha, 750 (Asha's 750 beats Meera's 500). `RANK` can return ties, which is usually what "top customer" should mean. Window functions need SQLite 3.25 or later, or any modern PostgreSQL or MySQL.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A train-booking site lets one booking carry several passengers, and one passenger appear in many bookings. Design the tables, name the keys, and explain why a single passengers column inside bookings would be a mistake.
+  sol: |
+    This is a many-to-many relationship, which needs three tables.
+    ```sql
+    CREATE TABLE passengers (id INTEGER PRIMARY KEY, name TEXT, phone TEXT);
+    CREATE TABLE bookings   (id INTEGER PRIMARY KEY, train TEXT, travel_date TEXT);
+    CREATE TABLE booking_passengers (
+      booking_id   INTEGER REFERENCES bookings(id),
+      passenger_id INTEGER REFERENCES passengers(id),
+      seat TEXT,
+      PRIMARY KEY (booking_id, passenger_id));
+    ```
+    The third table is a **junction table**: each row says "this passenger is on this booking", and its primary key is the pair, so the same passenger cannot be added twice to one booking. A single `passengers` column in `bookings` (a list such as "Asha, Ravi") breaks the one-fact-one-place rule: a phone number change cannot be applied, you cannot ask "all bookings of Asha" with a simple join, and the number of passengers per booking would be stuck at whatever the column allows.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A naive join compares every customer with every order. There are 1 million customers and 10 million orders, and the machine does 100 million comparisons per second. How many hours does the naive join take? Then explain how a hash join cuts this to a fraction of a second.
+  ask: Hours
+  unit: hours
+  ans: 27.8
+  tol: 0.2
+  verify: 1e6*1e7/1e8/3600
+  sol: |
+    Naive: $10^6 \times 10^7 = 10^{13}$ comparisons. At $10^8$ per second that is $10^5$ s, which is $10^5/3600 \approx 27.8$ hours.
+    Hash join: read the smaller table once and put it in a hash table keyed on the join column (1 million inserts). Then read each of the 10 million orders once and look its customer id up in the table (about one step each). Total about $10^6 + 10^7 = 1.1\times10^7$ steps, or $0.11$ s at the same speed. The product of sizes becomes a sum. This is why the planner chooses a join method by estimating sizes, and why an index on the join column matters: it gives the same effect without building a table each time. (Exact real-world times also depend on memory and disk; this is a model, not a measurement.)
+  check: code

@@ -1,0 +1,93 @@
+# Hashing, encryption and signatures. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: You hash the sentence "Send 100 rupees" with SHA-256, then change the 1 to a 9 and hash again. What do you expect to see?
+  opts: ["Two fingerprints that differ only in a few characters", "Two completely different-looking fingerprints", "Two identical fingerprints, since the length is unchanged"]
+  ans: 1
+  sol: This is the avalanche property. A good cryptographic hash changes about half of its output bits when a single input bit changes, so the two fingerprints look unrelated. That is what lets a fingerprint reveal even the smallest tampering.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A hash function outputs 16 hexadecimal characters. Each hex character stands for 4 bits. How many bits is the fingerprint?
+  ask: Output size
+  unit: bits
+  ans: 64
+  tol: 0.1
+  verify: 16 * 4
+  sol: Each hex digit carries 4 bits ($2^4 = 16$ values), so 16 digits give $16 \times 4 = 64$ bits. (SHA-256 gives 64 hex digits, which is 256 bits.)
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A company of 50 people wants every pair of employees to be able to talk privately using symmetric encryption, with a separate shared key for each pair. How many keys must be created and shared safely?
+  ask: Keys needed
+  unit: ""
+  ans: 1225
+  tol: 0.1
+  verify: 50 * 49 / 2
+  sol: |
+    Each pair needs one key, and the number of pairs among $n$ people is $n(n-1)/2$. With $n = 50$ this is $50 \times 49 / 2 = 1225$. With public-key cryptography each person needs only one key pair (50 pairs in all), because anyone can use a public key without a secret meeting first. That is why the symmetric approach does not scale.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Asha and Ravi use Diffie–Hellman with public values p = 23 and g = 5. Asha's private number is 4 and Ravi's is 3. What shared secret do they both end with?
+  ask: Shared secret
+  unit: ""
+  ans: 18
+  tol: 0.1
+  verify: Math.pow(10, 4) % 23
+  sol: |
+    Asha sends $A = 5^4 \bmod 23 = 625 \bmod 23 = 4$. Ravi sends $B = 5^3 \bmod 23 = 125 \bmod 23 = 10$.
+    Asha computes $B^4 \bmod 23 = 10^4 \bmod 23 = 10000 \bmod 23 = 18$. Ravi computes $A^3 \bmod 23 = 4^3 \bmod 23 = 64 \bmod 23 = 18$. Both get 18, which is $5^{12} \bmod 23$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A download page shows a file and, right beside it, the file's SHA-256 checksum, all served over plain http (no TLS). You download the file, hash it, and the hashes match. How much does that match prove? What would make it meaningful?
+  sol: |
+    It proves little against an attacker. It does catch accidental corruption, such as a broken download, because the file and checksum were read from the same source and must agree.
+    But anyone able to alter the page over plain http (a café Wi-Fi attacker, say) can swap the file and also swap the checksum for the new file's hash, and the match will still succeed. A hash gives integrity only if the hash itself comes by a trusted path.
+    Fixes: serve the page over https so the checksum arrives authenticated, or better, publish a **digital signature** of the file made with the developer's private key and verify it with a public key you obtained earlier from a trustworthy source.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A bank's server signs the text "Pay Asha 500 rupees" with its private key and sends it to a payment gateway, which verifies the signature and pays. An attacker records the signed message in transit and sends it again tomorrow. What happens, which of the three guarantees is missing, and how do you fix it?
+  sol: |
+    The gateway verifies the signature, which is genuine, and pays Asha again. This is a **replay attack**.
+    The signature gives authenticity and integrity of *that text*, but nothing says when the message was meant to be valid or that it may be used only once. Neither secrecy nor signature helps here.
+    Fix: put a unique, fresh value inside the signed data, such as a timestamp with a short validity window, or a one-time **nonce** or sequence number that the gateway remembers. Because the signature covers that value, the attacker cannot change it, and the gateway rejects any message it has already seen or that is too old.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: 'A toy RSA key uses primes 5 and 11, so n = 55 and (5-1)(11-1) = 40. The public exponent is e = 3. The private exponent d is the number between 1 and 39 such that e times d leaves remainder 1 when divided by 40. Find d.'
+  ask: Private exponent d
+  unit: ""
+  ans: 27
+  tol: 0.1
+  verify: "[...Array(40).keys()].find(d => d > 0 && (3 * d) % 40 === 1)"
+  sol: |
+    We need $3d \equiv 1 \pmod{40}$. Try multiples: $3 \times 27 = 81 = 2 \times 40 + 1$, so $d = 27$.
+    Check with a message: encrypt $m = 7$ as $7^3 \bmod 55 = 343 \bmod 55 = 13$. Decrypting, $13^{27} \bmod 55 = 7$, because $e d \equiv 1$ makes the two powers undo each other. Anyone knowing only $n = 55$ and $e = 3$ must first split 55 into 5 and 11 to find $d$; trivial here, hopeless when $n$ has 600 digits.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Two friends chat through a messaging app. Their phones run an unauthenticated Diffie–Hellman exchange through the app's server, then use the shared key for fast symmetric encryption. The server is curious. Show how it can read every message, and describe a practical way for the friends to detect this without trusting the server.
+  sol: |
+    Unauthenticated Diffie–Hellman makes a secret with whoever is on the other end, with no proof of who that is. The server can run a **man-in-the-middle** attack. It does one exchange with Asha (pretending to be Ravi) and a second with Ravi (pretending to be Asha). It now holds two different keys, decrypts each message with one, reads it, and re-encrypts it with the other. Each friend sees a working encrypted chat.
+    Detection: each phone shows a short **fingerprint** (a hash of both public values, often called a safety number). The friends compare it over a channel the server does not control, such as in person or on a phone call. In a genuine chat the two phones computed the same hash. Under attack, each saw a different public value, so the numbers differ.
+    Alternatives: long-term identity keys with signatures, authenticated by this fingerprint comparison the first time ("trust on first use" then warning if it changes). The weakness remains the root of trust: someone must verify a key through a path the server cannot tamper with. [Inference: this is how popular secure messengers generally behave; details vary by app.]
+  check: none

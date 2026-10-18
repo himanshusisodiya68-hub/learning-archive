@@ -1,0 +1,89 @@
+# Document, key-value and graph models. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A shop keeps all its products in one table with 200 columns, one for every detail any product might have. A typical phone fills in only 12 of them. What percentage of that phone's row is empty?
+  ask: Empty share
+  unit: "%"
+  ans: 94
+  tol: 0.1
+  verify: (200-12)/200*100
+  sol: 200 - 12 = 188 columns are empty, and $188/200 = 0.94$, so 94%. This waste (and the confusion of 200 columns) is what the document model avoids by letting each product carry only its own fields.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which sentence describes schema-on-write?
+  opts: ["The database checks the structure of data when it is saved and rejects a bad record", "The reading code decides what the structure means when it reads", "The database has no structure at all"]
+  ans: 0
+  sol: Schema-on-write (relational) enforces the structure at save time. The second option describes schema-on-read. The third is wrong for both, since structure always exists somewhere, in the database or in the code.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: An app only ever asks "give me the profile of user 90412" and never filters or joins. Which model is the most natural fit?
+  opts: ["Key-value or document store, looked up by user id", "Graph database", "A relational database with a join to every other table"]
+  ans: 0
+  sol: Every query is a lookup by one id and reads the whole record, which is what key-value and document stores do cheaply. A graph is for connections and joins are not needed here. A relational database would also work, but nothing in the question uses its strengths.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Orders are stored as documents, and each document holds a copy of the product name. There are 4 million orders, and 0.5% of them contain a product called "Blue kettle". The product is renamed. How many documents need updating to keep every copy correct?
+  ask: Documents
+  unit: ""
+  ans: 20000
+  tol: 1
+  verify: 4e6*0.005
+  sol: $4{,}000{,}000 \times 0.005 = 20{,}000$ documents. In a relational design the name would live in one row of a products table and be joined in when needed, so the rename would touch one row. This is the price of copying data for faster reads.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: An interviewer says "Design the storage for a chat app. Messages are written constantly and read as 'the last 50 messages of this conversation'." Choose a data model and a key, and justify them.
+  sol: |
+    The access pattern is a heavy stream of writes and a range read by conversation and time, so a wide-column (or any store with sorted keys) fits. Use a key such as `conversation_id` followed by a time-ordered message id. All messages of one conversation then sit together, newest last (or reversed to put newest first), and "last 50" is one short range scan, not a search.
+    Reasons: writes are appends, which these stores absorb well; reads are a range inside one conversation, which is one sequential read. What we give up: ad-hoc queries such as "all messages containing a word" need a separate search index.
+    One risk to mention: a conversation with enormous traffic keeps all its writes on one partition. Splitting a conversation into time buckets (conversation id plus month) spreads that out.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Write a short Python function that, given a dict mapping each person to the set of people they follow, returns the people followed by someone you follow whom you don't already follow. Say what query in a graph database it corresponds to.
+  sol: |
+    ```python
+    def suggestions(follows, me):
+        mine = follows.get(me, set())
+        out = set()
+        for f in mine:
+            out |= follows.get(f, set())
+        return out - mine - {me}
+    ```
+    For each person I follow, gather who they follow, then remove people I already follow and myself. It is a two-hop walk from the node `me`: follow every "follows" edge once, then once more. A graph database runs this as a path query of length two, and each extra hop is one more step of the walk, whereas in tables each hop is another self-join of the follows table.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A team moves from a relational schema with orders, order_items, customers and products to one document per order. Name two things that get easier and two that get harder, and one design rule that limits the damage.
+  sol: |
+    Easier: (1) showing an order page is one read with no joins; (2) the order document is a natural unit to write and, in many stores, to update atomically, since everything about one order sits in one record.
+    Harder: (1) data copied into the order (customer address, product name) goes stale or needs mass updates when the original changes; (2) cross-order questions such as "revenue per product this month" need either scans of all documents or a separate reporting store.
+    A limiting rule: copy only data that should be frozen as it was at purchase time, such as price and address (a receipt should not change when the product is repriced), and keep a reference id for everything that should follow the current truth. This turns the copying problem into a feature.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A payments company wants to find rings of accounts that share devices, phone numbers or addresses, up to four hops apart, and also needs exact balances with strict consistency. Propose a design that uses more than one data model and say how the two stay in step.
+  sol: |
+    Keep the balances and transfers in a relational (or other strongly consistent) database as the source of truth, because exactness and transactions matter there. Keep a second store, a graph database, holding accounts, devices, phone numbers and addresses as nodes, with "uses" and "sent money to" as edges, because the question is a walk of up to four hops, which tables answer only with a chain of expensive self-joins.
+    To keep them in step, the relational database emits an event for each committed change (a new account, a new device link, a transfer), and a consumer applies it to the graph. The graph is then a derived copy: slightly behind, fine for fraud scoring that can tolerate seconds of delay, and rebuildable from the event log if it is damaged.
+    Trade-offs to state: the graph may lag, so a decision that needs the very latest link must also check the source of truth; the event pipeline needs retry and de-duplication so events are applied once in effect; and two systems cost more to run than one. [Inference: a typical design pattern, not any company's documented system.]
+  check: none

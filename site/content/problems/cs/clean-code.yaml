@@ -1,0 +1,104 @@
+# Clean code and abstraction. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A variable holds the number of seconds before a login session expires. Which name is best?
+  opts: ["t", "session_timeout_seconds", "data"]
+  ans: 1
+  sol: The best name says what the value is and its unit, so no reader has to guess or open the definition. `t` and `data` could mean anything.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which comment is the most useful?
+  opts: ["# loop over the orders", "# increase i by one", "# Use paise (integers) not rupees (floats) so that 0.1 + 0.2 style rounding errors never reach the bill"]
+  ans: 2
+  sol: The third comment explains why, a reason the code cannot show. The first two only repeat what the code already says, and would go stale if the code changed.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "A function has this structure: 3 `if` statements, 1 `for` loop, 1 `while` loop, and 2 conditions that use `and` or `or`. Using the rule complexity = decision points + 1, what is its complexity count?"
+  ask: Complexity count
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: 3+1+1+2+1
+  sol: Decision points are 3 (if) + 1 (for) + 1 (while) + 2 (and/or) = 7. Adding 1 for the single straight path gives 8. A count this high is a sign the function should be split and that you need roughly 8 test cases to cover its paths.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "A function is declared `def send_report(data, as_pdf=False)` and its body is `if as_pdf: ... else: ...` with completely different code in each branch. Name the smell and show how to fix it."
+  sol: |
+    This is a **flag argument**: the boolean selects between two different jobs, so the function does two things and breaks the "one job, no 'and'" rule. Callers also write unreadable calls such as `send_report(d, True)`.
+
+    Fix: split into two functions whose names say what they do, and share any common steps through a third helper.
+    ```python
+    def send_pdf_report(data):
+        send(render_pdf(summarise(data)))
+
+    def send_text_report(data):
+        send(render_text(summarise(data)))
+    ```
+    Now each is short, testable alone, and every call site reads clearly.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You inherit a 300-line function that calculates invoices. It has no tests, and a new tax rule must be added next week. Describe, in order, how you would proceed.
+  sol: |
+    1. **Pin down behaviour first.** Write characterisation tests: feed the function a spread of realistic and edge inputs (empty invoice, boundary amounts, each tax class) and assert whatever it returns today, even if odd. Note oddities as questions for the owner rather than fixing them silently.
+    2. **Refactor in small steps**, running the tests after each: rename vague variables, replace magic numbers with named constants, extract one block at a time into a named function (for example `tax_for_item`). Commit after each green step.
+    3. **Make the change easy:** once the tax calculation is its own small function, the new rule is a small, separate edit.
+    4. **Add the new rule in a separate commit** with its own tests, so a reviewer can tell refactoring from behaviour change.
+    5. In the pull request, explain the steps and how it was tested.
+    The trap is rewriting from scratch: without tests you cannot show that the new version behaves like the old.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A colleague's pull request has this comment from a reviewer, "This is stupid, why not just use a dict?". Rewrite the comment so it is a good review comment, then say how the author should respond if they disagree.
+  sol: |
+    A better comment targets the code, gives a reason and asks a question: "This chain of `if/elif` checks the same variable six times. A dict mapping each status to its handler would make adding a seventh status a one-line change. Was there a reason to prefer the chain here? (Suggestion, not blocking.)"
+
+    It names the problem, gives the benefit, invites an answer and marks the weight, so the author knows it is not a must-fix.
+
+    If the author disagrees, they reply with reasons (for example, "the branches have different arguments, so a dict would need lambdas that hide them"), not defensiveness. If they still differ, they ask a third teammate or the code owner, or agree to do it in a later change. Decisions rest on reasons about the code, not on who is senior.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Two functions, `shipping_cost_domestic` and `shipping_cost_international`, look 80% identical today. A teammate proposes merging them into one function with an `international` flag. Argue for or against, and say what evidence you would look for.
+  sol: |
+    Against merging, for now. Similar code is not the same as the same reason to change. If the two will diverge (international adds customs duty, volumetric weight, restricted items, currency rounding), the merged function grows `if international:` branches until neither case is readable. That is the **wrong abstraction**, which costs more than duplication.
+
+    Evidence to look for: How often did the two change together in version control history? Are the business owners different (a domestic logistics team versus a customs team)? Will the next planned features touch both equally?
+
+    A middle path: extract only the genuinely shared part (for example `weight_slab(weight)`) into a small function both call, leaving the rest separate. If after three or so cases it is clear the two really vary only in data, merge them using a table of rates. This follows the rule of three: abstract when you know what actually varies.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Hardest stretch: A six-person team keeps shipping bugs that review should have caught, and reviews take three days. Design a short code-review policy (size, turnaround, automation, what humans focus on, how to handle disagreement) and say how you would tell whether it worked."
+  sol: |
+    **Size.** Aim for changes under about 300 changed lines, one purpose each; larger work is split into a chain of small changes (refactor first, feature after).
+
+    **Turnaround.** Agree on a first response within one working day; authors may ping after that. A rota of "reviewer of the day" stops reviews waiting in the corner.
+
+    **Automation.** Formatter, linter and tests run on every change before a human is asked; a red build is never reviewed. This removes style arguments.
+
+    **Human focus.** Correctness (edge cases, errors, security), design (does it fit the rest), tests (do they test behaviour), readability (names, one job). Mark each comment must-fix or nit; only must-fix blocks.
+
+    **Disagreement.** The author and reviewer give reasons; if stuck after two rounds, a third person decides, and the decision is written down.
+
+    **Measuring.** Track median time to first review (target under one day), the share of bugs found in production that touched reviewed code, and the size of changes. Check after a month. Add a short retrospective question: "Did reviews feel useful?" Numbers alone can be gamed, so combine them with feedback. [Inference: these targets are common practice, not measured laws.]
+  check: none

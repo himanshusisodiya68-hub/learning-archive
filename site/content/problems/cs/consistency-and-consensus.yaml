@@ -1,0 +1,102 @@
+# Consistency and consensus. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A cluster has 5 machines that vote on who the leader is. How many votes make a majority?
+  ask: Votes
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: floor(5/2)+1
+  sol: A majority is half rounded down, plus one. $\lfloor 5/2 \rfloor + 1 = 2 + 1 = 3$. Two different candidates cannot both get 3 of 5 votes, because that would need 6 voters.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Priya posts a photo and a minute later her friend still does not see it, but five minutes later everyone does. Which guarantee does this app give?
+  opts: ["Linearizability", "Eventual consistency", "No consistency at all"]
+  ans: 1
+  sol: Copies disagreed for a while and then converged, which is exactly eventual consistency. Under linearizability, once the post was confirmed no one could still see the old state. It is not "none at all", because the copies did end up the same.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A store keeps n = 5 replicas. Writes wait for w = 3 confirmations and reads ask r = 3 replicas. At least how many replicas must a read and the latest write have in common?
+  ask: Replicas in common
+  unit: ""
+  ans: 1
+  tol: 0.1
+  verify: 3+3-5
+  sol: The write group has 3 machines and the read group has 3, out of 5. Their union cannot exceed 5, so they share at least $3 + 3 - 5 = 1$ machine. Since $w + r = 6 > 5$, the overlap is guaranteed and the read sees the newest version.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: During a network partition, which of these should favour availability over consistency?
+  opts: ["Deducting money from a bank account", "Showing the running count of likes on a video", "Reserving the last seat on a train"]
+  ans: 1
+  sol: A like count that is a few seconds stale harms nobody, so answering from a local copy is fine. A balance deduction and the last seat both need a single agreed answer, so they should refuse or wait rather than risk being wrong.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: 'Design the "book the last seat" operation so two users in different cities can never both succeed, even with several servers. Say what happens if the network between data centres breaks.'
+  sol: |
+    Route every booking for one show to a **single leader** for that show (chosen by a consensus group such as Raft, or by hashing the show id to a shard that has one leader).
+
+    1. The server receives the tap and forwards it to the leader.
+    2. The leader runs a **conditional write**: "set seats = seats - 1 only if seats > 0". Because one machine handles the order of these writes, two taps are processed one after the other; the second sees 0 and fails.
+    3. The leader answers "booked" only after a **majority** of replicas hold the write, so a crash of the leader cannot lose a confirmed booking.
+
+    On a partition, the side that holds a majority keeps accepting bookings; the minority side cannot reach a majority and returns "try again". This picks consistency over availability for this operation, which is right because a double-sold seat is costly. Reads of "seats left" for browsing can come from any replica and be slightly stale.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A Raft-style cluster has 6 machines. How many machine failures can it survive and still be able to elect a leader?
+  ask: Failures tolerated
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: 6-(floor(6/2)+1)
+  sol: The majority of 6 is $\lfloor 6/2 \rfloor + 1 = 4$, so at least 4 machines must be alive. That allows $6 - 4 = 2$ failures. A cluster of 5 also tolerates 2 failures, so the sixth machine adds cost without adding fault tolerance.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: 'Two data centres store a shopping cart with "last write wins" using wall-clock timestamps. Server A''s clock runs 80 ms ahead of server B''s. A user removes an item through A at real time 1000 ms and, 30 ms later, adds a different item through B. Show which write survives, and propose a fix that does not rely on clocks.'
+  sol: |
+    Stamps: the removal at A at real time 1000 ms is stamped 1080 ms. The addition at B at real time 1030 ms is stamped 1030 ms (B's clock is correct). Last write wins keeps the larger stamp, 1080, so the **older** operation (the removal) wins and the newer addition is lost, even though the user did the addition last.
+
+    Fixes:
+    - **Version vectors**: each replica counts the writes it has seen. The write at B did not know about the write at A (and vice versa), so the system detects they are **concurrent** and keeps both, then merges them (for a cart, take the union and apply the removal only to the item it names).
+    - Or model the cart as a set that supports "add" and "remove" operations that commute (a CRDT-style design), so order does not matter.
+    - Or route all writes for one cart to the same leader, which orders them with a counter.
+
+    The lesson: wall-clock stamps from different machines say what each machine believes, not what really happened first.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: 'You are designing a ticketing system for an IPL final with data centres in Mumbai, Singapore and Frankfurt (round trips of roughly 60 to 150 ms between them). List the operations (browse, seat hold, payment, cancellation, wallet balance) and choose a consistency level for each. Justify using CAP and PACELC, and say how many replicas and what quorum you would use for the seat inventory.'
+  sol: |
+    **Browse and search**: read from the nearest replica; eventual consistency. A stale "seats left" count only means a user sometimes sees a seat that has just gone and gets a polite error at hold time. PACELC: favour latency (L) on a normal day and availability (A) in a partition.
+
+    **Seat hold** (reserve for 5 minutes): linearizable per seat. Shard inventory by show and block, one Raft group per shard with 5 replicas spread over the three regions (2, 2, 1). Majority is 3, so a whole region can fail and holds still work. Cost: one cross-region round trip, tens to 150 ms, paid only at hold time. Use a conditional write ("hold only if free") and a hold expiry stored with a fencing/version number so a slow server cannot revive an expired hold.
+
+    **Payment**: make it **idempotent** with a unique payment id so a retry never charges twice; the final "seat sold" write goes through the same consensus group as the hold. If payment succeeds but the seat write fails, a background job refunds (a saga, not one distributed lock).
+
+    **Cancellation**: a conditional write that frees the seat; may then be re-advertised to browsing replicas lazily.
+
+    **Wallet balance**: linearizable for deductions (one leader per account), but a displayed balance can come from a replica with a "may be a few seconds old" note.
+
+    **Partition behaviour**: the majority side keeps selling; a minority region shows browsing only and rejects holds (consistency over availability for money and seats). [Inference: a reasonable design, not any real company's documented system. Latency figures are rough.]
+  check: none

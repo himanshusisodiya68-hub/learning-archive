@@ -1,0 +1,88 @@
+# TCP/IP and the layers. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A client starts a TCP connection with a SYN. The round-trip time to the server is 80 ms. After how many milliseconds does the first data byte (sent together with the final ACK of the handshake) reach the server?
+  ask: Time
+  unit: ms
+  ans: 120
+  tol: 0.5
+  verify: 1.5*80
+  sol: The SYN takes half an RTT (40 ms) to reach the server, the SYN-ACK takes another 40 ms to come back, and the ACK with the first data takes 40 ms more to arrive. That is $3 \times 40 = 120$ ms, or 1.5 RTT.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which application is the best fit for UDP?
+  opts: ["Downloading a PDF of your exam result", "A live video call where a late frame is useless", "Sending a bank transfer request"]
+  ans: 1
+  sol: In a live call a frame that arrives late has no value, and waiting for a resend would stall the frames behind it. The PDF and the bank request must arrive complete and in order, which is what TCP guarantees.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A TCP connection has a window of 65,536 bytes and a round-trip time of 100 ms. What is the highest throughput it can reach, in Mbit/s (to two decimals)?
+  ask: Throughput
+  unit: Mbit/s
+  ans: 5.24
+  tol: 0.02
+  verify: 65536*8/0.1/1e6
+  sol: At most one window of data is sent per round trip, so throughput is at most $W/\text{RTT} = 65536 \times 8 \text{ bits} / 0.1 \text{ s} \approx 5.24 \times 10^{6}$ bit/s, whatever the speed of the link.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In slow start a sender begins with a congestion window of 10 segments and doubles it every round trip. After how many round trips does the window first reach at least 640 segments?
+  ask: Round trips
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: ceil(log2(640/10))
+  sol: After $k$ round trips the window is $10 \times 2^{k}$. We need $2^{k} \ge 64$, so $k = 6$ (10, 20, 40, 80, 160, 320, 640).
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A sender transmits three segments covering bytes 1000-1499, 1500-1999 and 2000-2499. The middle one is lost. Describe what the receiver acknowledges after each arrival, and how the sender recovers.
+  sol: |
+    After the first segment arrives, the receiver acknowledges "next byte wanted is 1500". The second is lost, so nothing arrives for it. When the third arrives (bytes 2000-2499), the receiver still has a gap at 1500, so it keeps the data in its buffer and sends the same acknowledgement again, "next byte wanted is 1500". That is a duplicate ACK.
+
+    The sender sees the duplicate ACK (after three of them, in real TCP it does not wait for the timer, which is fast retransmit; otherwise a timeout fires) and sends bytes 1500-1999 again. When that arrives, the receiver can deliver bytes 1500-2499 in order and acknowledges "next byte wanted is 2500".
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A game studio sends player positions 30 times a second. A colleague proposes TCP "so nothing is lost". Argue for or against, and describe a sensible middle path.
+  sol: |
+    Against TCP for this stream. Position updates go stale in a few tens of milliseconds, so a resent old position is useless, and the lost segment blocks all newer positions behind it (head-of-line blocking), which makes the game stutter exactly when the network is bad.
+
+    Use UDP and send the latest state each time; a loss is repaired by the next packet 33 ms later. For the few things that must not be lost (a purchase, a chat message, a player joining) use a separate reliable channel, either a TCP connection or a small reliability layer on top of UDP with sequence numbers and acknowledgements, as many game engines and QUIC do.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A link has a bandwidth of 100 Mbit/s and a round-trip time of 200 ms. How many megabytes must be in flight (the bandwidth-delay product) to keep the link completely busy?
+  ask: Data in flight
+  unit: MB
+  ans: 2.5
+  tol: 0.01
+  verify: 100e6*0.2/8/1e6
+  sol: $\text{BDP} = 100\times10^{6} \text{ bit/s} \times 0.2 \text{ s} = 2\times10^{7}$ bits $= 2.5\times10^{6}$ bytes, that is 2.5 MB. A window smaller than this leaves the link partly idle.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A bulk transfer crosses a path with RTT 200 ms and random loss of 0.1% (p = 0.001), using 1,460-byte segments. Use the approximation throughput ≈ 1.22 × MSS ÷ (RTT × √p) to estimate the TCP throughput, then explain two ways an engineer could do better without changing the physical link.
+  sol: |
+    MSS in bits is $1460 \times 8 = 11\,680$. Then throughput $\approx 1.22 \times 11\,680 / (0.2 \times \sqrt{0.001}) = 14\,250 / (0.2 \times 0.03162) \approx 2.25 \times 10^{6}$ bit/s, about 2.3 Mbit/s, even if the link can carry 1 Gbit/s. [Unverified: the constant 1.22 is quoted from memory; the formula is an approximation for steady-state loss.]
+
+    Ways to do better: (1) put the data closer, with a CDN or regional server, which cuts RTT and so raises throughput in proportion; (2) use several parallel connections, as download managers do, since each gets its own window (taking more than a fair share); (3) use a congestion algorithm that does not treat every random loss as congestion, such as BBR, or a protocol with better loss recovery such as QUIC; (4) reduce the loss itself by fixing the faulty link.
+  check: none

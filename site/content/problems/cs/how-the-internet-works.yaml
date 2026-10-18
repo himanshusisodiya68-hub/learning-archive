@@ -1,0 +1,88 @@
+# How the internet works. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: An IPv4 address has 32 bits. How many different IPv4 addresses are there, in billions (to one decimal place)?
+  ask: Addresses
+  unit: billion
+  ans: 4.3
+  tol: 0.05
+  verify: 2**32/1e9
+  sol: Each of the 32 bits can be 0 or 1, so there are $2^{32} = 4\,294\,967\,296$ different addresses, about 4.3 billion.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which statement about a router is true?
+  opts: ["It reads the destination address and forwards the packet to a neighbour closer to it", "It remembers the whole route of every conversation", "It reads the payload and decides which web page to show"]
+  ans: 0
+  sol: A router only reads the header's destination address, looks it up in its table and forwards the packet. It does not keep conversations in memory and does not interpret the payload.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A 1,000,000-byte file is sent in packets that each carry at most 1,460 bytes of payload. How many packets are needed?
+  ask: Packets
+  unit: ""
+  ans: 685
+  tol: 0.1
+  verify: ceil(1000000/1460)
+  sol: $1\,000\,000 / 1460 \approx 684.9$. A packet cannot be partly sent, so we round up to 685 packets; the last one carries fewer bytes.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Three laptops at home all browse the web at the same time through one home router, yet the outside world sees a single public IP address. What makes this work?
+  opts: ["NAT: the router rewrites addresses and remembers which device asked for what", "Each laptop secretly has the same private address and the websites sort it out", "The packets are sent without any source address"]
+  ans: 0
+  sol: With NAT the router replaces each private source address with its own public one and records a mapping (using port numbers), so replies can be sent back to the right laptop.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: An interviewer asks "What happens when you type a URL and press Enter?" Give a six-step answer at the level of this lesson, naming the layer or protocol involved in each step.
+  sol: |
+    1. **DNS (application)** turns the hostname into an IP address.
+    2. **TCP (transport)** opens a reliable connection to that IP address on port 443, using a handshake.
+    3. **TLS** agrees on keys so the traffic is encrypted and the server is authenticated.
+    4. **HTTP (application)** sends the request "GET /page".
+    5. Each message is cut into **packets** (IP), forwarded hop by hop by routers, and carried over link-layer technology such as Wi-Fi or fibre.
+    6. The server's response comes back the same way; the browser parses the HTML, fetches more files the page needs (often from a CDN) and renders the page.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A traceroute to a website shows round-trip times of 3 ms, 5 ms, 9 ms, 11 ms, 140 ms, 142 ms, 145 ms for hops 1 to 7. What does the jump at hop 5 most likely mean, and what can you not conclude?
+  sol: |
+    The jump of about 130 ms between hops 4 and 5 suggests a long-distance link there, such as a submarine cable between continents, since light in fibre travels only about 200,000 km per second. [Inference]
+
+    You cannot conclude which machine is slow or that anything is broken: delay may be pure distance, and traceroute times for routers can also be inflated because routers handle probe replies at low priority. The return path may differ from the forward path too.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A company is given the address block 10.0.0.0/22 (the first 22 bits are fixed). How many addresses does the block contain?
+  ask: Addresses
+  unit: ""
+  ans: 1024
+  tol: 0.5
+  verify: 2**(32-22)
+  sol: The block fixes 22 of the 32 bits, leaving $32 - 22 = 10$ free bits. These make $2^{10} = 1024$ different addresses.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: You are streaming a match when a router in the middle of the path crashes. Explain why the stream may glitch for a moment and then recover without any human action, and what would be different if the internet used a dedicated wire per connection.
+  sol: |
+    Routers exchange information about which neighbours are alive. When one disappears, its neighbours stop using it and update their tables (a few seconds with a routing protocol such as BGP, often less inside one network). Packets sent in that window are lost, which causes the glitch; the transport layer above (TCP, or the video app's own recovery) notices the missing pieces and resends or skips them. After the tables update, new packets take another route and the stream continues.
+
+    With a dedicated wire per connection (a circuit), the connection is tied to specific equipment. If any piece fails, the call is dropped and must be set up again from scratch. Packet switching trades guaranteed capacity for resilience: nothing in the middle holds the state of your conversation, so nothing in the middle needs to be rebuilt.
+  check: none
