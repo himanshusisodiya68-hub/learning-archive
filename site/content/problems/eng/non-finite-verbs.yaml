@@ -1,0 +1,166 @@
+# Infinitives, gerunds and participles. All problems are original (no NCERT items for this leaf). All answers are model answers written by us for this archive; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: She can ___ the piano very well."
+  opts: ["to play", "playing", "play", "played"]
+  ans: 2
+  sol: |
+    *Can* is a modal verb, and a modal is followed by the bare infinitive (the base verb without to): "She can play the piano very well."
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The children enjoy ___ in the rain."
+  opts: ["to play", "playing", "play", "played"]
+  ans: 1
+  sol: |
+    *Enjoy* is followed by a gerund (the -ing form used as a noun): "The children enjoy playing in the rain." *To play* is the usual mistake.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "In which sentence is the word *swimming* a participle used as an adjective? (a) Swimming is good exercise. (b) The swimming boy waved to us. (c) He likes swimming. (d) She is good at swimming."
+  opts: ["(a)", "(b)", "(c)", "(d)"]
+  ans: 1
+  sol: |
+    In (b), *swimming* describes the noun *boy* ("the boy who is swimming"), so it is a present participle. In (a), (c) and (d) it is a noun: a subject, an object and the object of the preposition *at*, so it is a gerund.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: text
+  q: "Fill each gap with the correct form of the verb in brackets. (a) He hopes (win) the prize. (b) She finished (write) her essay. (c) You must (listen) carefully. (d) I am looking forward to (meet) you."
+  sol: |
+    Model answer: (a) to win, (b) writing, (c) listen, (d) meeting.
+
+    (a) *Hope* looks ahead, so it takes to + base verb.
+    (b) *Finish* takes a gerund.
+    (c) After the modal *must*, the bare infinitive.
+    (d) In "look forward to", *to* is a preposition, so the gerund *meeting* follows.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Each sentence has one error. Find it and correct it. (a) She is fond of to read novels. (b) He made me to wait for an hour. (c) We suggested to start early. (d) Having seen the lion, the gun was fired."
+  sol: |
+    (a) *of to read* should be *of reading*: after a preposition we use a gerund. "She is fond of reading novels."
+
+    (b) *to wait* should be *wait*: after *made* with an object (active voice), the bare infinitive is used. "He made me wait for an hour."
+
+    (c) *to start* should be *starting*: *suggest* takes a gerund. "We suggested starting early."
+
+    (d) The participle *having seen* is dangling, because a gun cannot see. Correct: "Having seen the lion, the hunter fired the gun." (Any sentence that makes the person who saw the lion the subject is acceptable.)
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["I am used to get up early.", "I am used to getting up early.", "I am used to got up early.", "I am used getting up early."]
+  ans: 1
+  sol: |
+    In "be used to" (meaning accustomed to), *to* is a preposition, so the verb that follows is a gerund: *getting*. The others use the base verb, the past form or omit *to*.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Which sentence means that the speaker gave up the habit of smoking?"
+  opts: ["He stopped to smoke.", "He stopped smoking.", "He stopped to smoking.", "He was stopped smoke."]
+  ans: 1
+  sol: |
+    *Stopped smoking* (stop + gerund) means he gave up smoking. *Stopped to smoke* means he paused in order to smoke. The last two options are not correct English.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Combine each pair of sentences into one, using the form shown in brackets. (a) The girl saw the snake. She screamed. (participle) (b) He went to the library. He wanted to borrow a novel. (infinitive) (c) She passed the exam. She was happy about it. (gerund, begin: She was happy about ...)"
+  sol: |
+    (a) *Seeing the snake, the girl screamed.* The same person sees and screams, so the participle does not dangle.
+
+    (b) *He went to the library to borrow a novel.* The infinitive of purpose replaces "He wanted to borrow".
+
+    (c) *She was happy about passing the exam.* After the preposition *about*, a gerund is used.
+
+    [Note] Other correct answers are possible; these are model answers written for this archive.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Rewrite with too ... to: \"The box was so heavy that he could not lift it.\" Choose the correct answer."
+  opts: ["The box was too heavy for him to lift.", "The box was too heavy that he could lift.", "The box was too heavy to he lift it.", "The box was heavy too to lift."]
+  ans: 0
+  sol: |
+    The pattern is *too + adjective + (for + person) + to + base verb*. "The box was too heavy for him to lift" (the pronoun *it* is dropped, because the box is already the subject). The other options break the pattern.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Explain the difference in meaning between the pairs. (a) She remembered to post the letter. / She remembered posting the letter. (b) I tried to open the window. / I tried opening the window. (c) He stopped to talk to her. / He stopped talking to her."
+  sol: |
+    (a) The first means she did not forget: she had a duty and carried it out. The second means she had a memory of the posting, which she did earlier.
+
+    (b) The first means he made an effort to open it (perhaps without success). The second means he opened it as an experiment, maybe to see whether it would cool the room.
+
+    (c) The first means he paused on his way in order to speak to her. The second means he ended a spell of talking to her.
+
+    The rule: the infinitive looks ahead to a purpose or task; the gerund names the activity itself.
+
+    [Note] Model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Each of these sentences contains a dangling participle. Rewrite each one so that it is correct. (a) Climbing the hill, the view was beautiful. (b) Having finished the work, the lights were switched off. (c) Looking out of the window, a rainbow appeared. (d) Being a rainy day, we stayed indoors."
+  sol: |
+    Possible corrections:
+
+    (a) *Climbing the hill, we found the view beautiful.* (The doer of climbing becomes the subject.) Or: *When we climbed the hill, the view was beautiful.*
+
+    (b) *Having finished the work, the staff switched off the lights.*
+
+    (c) *Looking out of the window, she saw a rainbow.*
+
+    (d) *As it was a rainy day, we stayed indoors.* Or the absolute form: *It being a rainy day, we stayed indoors.* The original has no subject for *being*, so it dangles.
+
+    [Note] Model answers written for this archive. Many other correct versions exist.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "Choose the sentence that has NO error."
+  opts: ["Having eaten dinner, the dishes were washed by Tara.", "Having eaten dinner, Tara washed the dishes.", "Having eaten dinner, the dishes Tara washed.", "Eaten dinner, Tara washed the dishes."]
+  ans: 1
+  sol: |
+    In the second option, *having eaten dinner* refers to Tara, who is the subject of the main clause. In the first, the dishes did not eat dinner. The third has a disordered main clause, and the fourth uses the past participle *eaten* where the perfect participle *having eaten* is needed.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Read the passage. Fill each gap with the correct form of the verb in brackets (infinitive, bare infinitive, gerund or participle). Meena was too nervous (1) (speak) at the school function, but her teacher advised her (2) (take) a deep breath. She practised (3) (say) her speech aloud and, after (4) (rehearse) it three times, felt more confident. (5) (Walk) onto the stage, she smiled at the audience and began."
+  sol: |
+    Model answer: (1) to speak, (2) to take, (3) saying, (4) rehearsing, (5) Walking.
+
+    (1) *Too nervous* uses the too ... to pattern: too nervous to speak.
+    (2) *Advise someone* is followed by to + base verb: advised her to take.
+    (3) *Practise* takes a gerund: practised saying.
+    (4) *After* is a preposition, so a gerund follows: after rehearsing.
+    (5) The sentence opens with a participle phrase and the doer is *she*, the subject of the main clause, so *Walking onto the stage* does not dangle. (*After walking* is also correct.)
+
+    [Note] Model answers written for this archive.
+  check: none

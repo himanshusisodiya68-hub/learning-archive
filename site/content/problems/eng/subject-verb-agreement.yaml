@@ -1,0 +1,155 @@
+# Subject-verb agreement. All problems are original (no NCERT items for this leaf). There is no NCERT answer key: every answer is a model answer written for this archive.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The boys in my class ___ very friendly."
+  opts: ["is", "are", "was", "has been"]
+  ans: 1
+  sol: |
+    The subject is *boys*, which is plural, so the verb is *are*. The phrase *in my class* only tells us which boys. *Is*, *was* and *has been* are all singular.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: She ___ not like spicy food."
+  opts: ["do", "does", "are", "have"]
+  ans: 1
+  sol: |
+    *She* is third-person singular, so the helper is *does*: "She does not like spicy food." *Do* goes with I, you, we and they.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Mathematics ___ my favourite subject."
+  opts: ["are", "were", "is", "have been"]
+  ans: 2
+  sol: |
+    *Mathematics* ends in *s* but it names one subject of study, so it takes a singular verb: *is*.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Everyone in the hall ___ clapping."
+  opts: ["were", "are", "was", "have been"]
+  ans: 2
+  sol: |
+    *Everyone* is singular, however many people it stands for, so the verb is *was* ("Everyone in the hall was clapping"). *Were*, *are* and *have been* are plural forms.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Choose the correct form: The teacher, along with her students, ___ going on a trip tomorrow."
+  opts: ["are", "is", "were", "have been"]
+  ans: 1
+  sol: |
+    *Along with* does not join subjects; it starts a side phrase. The subject is *the teacher*, which is singular, so the verb is *is*. Compare "The teacher and her students *are* going".
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the correct form: Neither the manager nor his assistants ___ aware of the change."
+  opts: ["was", "is", "were", "has been"]
+  ans: 2
+  sol: |
+    With *neither ... nor* the verb agrees with the nearer subject. The nearer subject is *assistants*, which is plural, so the verb is *were*.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Choose the correct form: A number of students ___ absent today."
+  opts: ["is", "was", "are", "has been"]
+  ans: 2
+  sol: |
+    *A number of* means "several", so it takes a plural verb: *are*. Compare "The number of students is small", where *the number* is one count and takes *is*.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Each sentence has one agreement error. Find it and correct it. (a) The price of onions have risen sharply. (b) Neither of the answers are correct. (c) There is three apples in the basket. (d) The scissors is on the table."
+  sol: |
+    (a) *have* should be *has*. The subject is *price*, which is singular; *of onions* is a phrase in between. "The price of onions has risen sharply."
+
+    (b) *are* should be *is*. *Neither* is singular. "Neither of the answers is correct."
+
+    (c) *is* should be *are*. The real subject, *three apples*, comes after the verb and is plural. "There are three apples in the basket."
+
+    (d) *is* should be *are*. *Scissors* is plural. "The scissors are on the table." (Or "A pair of scissors is on the table", where the subject is *pair*.)
+
+    [Note] A model answer written for this archive, not an official board key.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Fill each gap with the correct form of the verb in brackets. (1) The news from the villages (be) encouraging. (2) Each of the girls (have) a library card. (3) Either the principal or the teachers (be) going to attend the meeting. (4) Fifty rupees (be) not enough to buy this book. (5) The number of visitors (increase) every year."
+  sol: |
+    Model answer: (1) is, (2) has, (3) are, (4) is, (5) increases.
+
+    (1) *News* is singular in meaning: *is*.
+    (2) *Each* is singular: *has*.
+    (3) With *either ... or*, the nearer subject is *teachers* (plural): *are*.
+    (4) An amount of money taken as one total is singular: *is*.
+    (5) *The number of* is singular: *increases*.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["She is one of those teachers who is always ready to help.", "She is one of those teachers who are always ready to help.", "She is one of those teachers who am always ready to help.", "She is one of those teacher who are always ready to help."]
+  ans: 1
+  sol: |
+    *Who* refers to *teachers*, the plural noun, since the group is "those teachers who are always ready to help" and she belongs to it. So the verb is plural: *are*. The first option uses a singular verb after a plural antecedent, the third uses *am*, and the fourth has the wrong noun form *teacher* after *those*.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: mcq
+  q: "Choose the sentence that is correct."
+  opts: ["The committee have decided its own rules.", "The committee has decided their own rules.", "The committee has decided its own rules.", "The committee are decided its own rules."]
+  ans: 2
+  sol: |
+    The committee acts as one body here, so the verb is singular (*has decided*) and the matching pronoun is singular (*its*). The first option mixes a plural verb with *its*, the second mixes a singular verb with *their*, and the fourth is not grammatical. The plural alternative "The committee have decided their own rules" is also possible when the members are thought of separately, but it is not offered as an option.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Each sentence has one error of agreement. Find and correct it. (a) Bread and butter are my usual breakfast. (b) Many a student have praised the new library. (c) The quality of these mangoes are poor. (d) Beside the river stand a small temple. (e) Ten kilometres are a long way to walk. (f) He is the only one of the boys who play the flute."
+  sol: |
+    (a) *are* should be *is*: bread and butter is one dish, so the idea is singular. (If two separate items were meant, *are* would be right.)
+
+    (b) *have* should be *has*: *many a* takes a singular noun and a singular verb.
+
+    (c) *are* should be *is*: the subject is *quality*, not *mangoes*.
+
+    (d) *stand* should be *stands*: in the inverted sentence the real subject is *temple*, which is singular.
+
+    (e) *are* should be *is*: a distance taken as one total is singular.
+
+    (f) *play* should be *plays*: the subject of the *who* clause is *the only one*, which is singular.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Write a short note of 80 to 100 words on the rule 'the verb agrees with the nearer subject' for either ... or and neither ... nor. Give two examples of your own, one where the nearer subject is singular and one where it is plural."
+  sol: |
+    Model answer (one possible answer):
+
+    When two subjects are joined by *or*, *nor*, *either ... or* or *neither ... nor*, the sentence offers a choice rather than adding the subjects together. Only one of them can be true, so the verb agrees with the subject placed nearer to it. If that subject is singular, the verb is singular; if it is plural, the verb is plural. For example: "Neither the students nor the teacher was late" (teacher is nearest and singular), and "Neither the teacher nor the students were late" (students is nearest and plural). Putting the plural subject last often reads more naturally.
+
+    [Note] This is one possible model answer, about 100 words. Any note that states the rule correctly and gives two correct examples of the two cases would earn full credit.
+  check: none

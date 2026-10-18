@@ -1,0 +1,155 @@
+# Sentence types and clauses. All problems are original (no NCERT items for this leaf). There is no NCERT answer key: every answer is a model answer written by us.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "What type of sentence is this by purpose? \"What a wonderful goal that was!\""
+  opts: ["Declarative", "Interrogative", "Imperative", "Exclamatory"]
+  ans: 3
+  sol: |
+    It expresses strong feeling and begins with *what*, so it is exclamatory. It does not simply state a fact, ask a question or give a command.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which group of words is a clause?"
+  opts: ["under the old bridge", "to reach the station early", "the children were singing", "a bowl of fresh fruit"]
+  ans: 2
+  sol: |
+    *The children were singing* has a subject (the children) and a finite verb (were singing). The other three have no finite verb of their own, so they are phrases.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which of these is a simple sentence?"
+  opts: ["Ravi opened the window and looked outside.", "Ravi opened the window, and he looked outside.", "When Ravi opened the window, he looked outside.", "Ravi opened the window, but nobody looked outside."]
+  ans: 0
+  sol: |
+    Option 1 has one subject (*Ravi*) with two verbs, so it is one clause with a compound predicate: a simple sentence. Option 2 and option 4 each have two main clauses (compound). Option 3 has a subordinate clause (complex).
+  check: none
+
+- id: f4
+  lvl: found
+  kind: text
+  q: "Write one sentence of each type by purpose (declarative, interrogative, imperative, exclamatory) about a school library."
+  sol: |
+    Model answer (any correct sentences are acceptable):
+
+    Declarative: *The library opens at eight o'clock.*
+    Interrogative: *Which shelf holds the science books?*
+    Imperative: *Please keep your voice low.*
+    Exclamatory: *What a quiet place this is!*
+
+    Check each one: the declarative states a fact, the interrogative uses inverted order or a question word and ends with a question mark, the imperative has the understood subject *you*, and the exclamatory shows strong feeling and ends with an exclamation mark. A model answer written for this archive.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Name the structure: \"The match was delayed, but the crowd waited patiently.\""
+  opts: ["Simple", "Compound", "Complex", "Compound-complex"]
+  ans: 1
+  sol: |
+    There are two clauses, *The match was delayed* and *the crowd waited patiently*. Each can stand alone and they are joined by the coordinating conjunction *but*. No clause depends on another, so the sentence is compound.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "In \"I do not know where she has gone\", the clause \"where she has gone\" is a"
+  opts: ["noun clause", "adjective clause", "adverb clause of place", "main clause"]
+  ans: 0
+  sol: |
+    Ask "know what?". The clause is the object of *do not know*, which is a noun's job, so it is a noun clause. It is not an adverb clause of place, because it does not tell where the knowing happens; it names the thing that is not known.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Combine each pair into one sentence using the word in brackets. (a) The bell rang. The students ran out. (as soon as) (b) He is old. He is very active. (although) (c) Pooja was ill. She did not attend the party. (because)"
+  sol: |
+    (a) *As soon as the bell rang, the students ran out.* (adverb clause of time, comma after it)
+    (b) *Although he is old, he is very active.* (adverb clause of contrast; do not add *but*)
+    (c) *Pooja did not attend the party because she was ill.* (adverb clause of reason; *Because Pooja was ill, she did not attend the party* is also correct)
+
+    A model answer written for this archive. Other word orders that keep the meaning are acceptable.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Each sentence has one error in joining or punctuation. Rewrite it correctly and say what the error is. (a) We reached the hall early, the programme had not begun. (b) Although she was tired, but she finished the work. (c) I stayed at home. Because it was raining."
+  sol: |
+    (a) *We reached the hall early, but the programme had not begun.* Error: comma splice (two main clauses joined by a comma only). A semicolon or full stop is also acceptable.
+    (b) *Although she was tired, she finished the work.* (or *She was tired, but she finished the work.*) Error: double conjunction; use only one of *although* and *but*.
+    (c) *I stayed at home because it was raining.* Error: fragment; *Because it was raining* is a subordinate clause and cannot be a sentence on its own.
+
+    A model answer written for this archive.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Which is the compound form of: \"Because of the heavy traffic, we were late.\""
+  opts: ["There was heavy traffic, so we were late.", "We were late because there was heavy traffic.", "Although there was heavy traffic, we were late.", "There was heavy traffic, but we were late."]
+  ans: 0
+  sol: |
+    The original is a simple sentence (a phrase of reason, *Because of the heavy traffic*). The compound version joins two main clauses with *so* (result), which keeps the cause and effect. Option 2 is complex. Option 3 is complex and changes the meaning to contrast. Option 4 is compound but also changes the meaning to contrast.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Underline (write out) each clause in the sentence below, say whether it is main or subordinate, and name the structure of the sentence: \"Neha practised every day, and she won the prize because she had worked hard.\""
+  sol: |
+    Clauses:
+    1. *Neha practised every day* is a main clause.
+    2. *she won the prize* is a main clause (joined to the first by the coordinating conjunction *and*).
+    3. *because she had worked hard* is a subordinate clause, an adverb clause of reason modifying *won the prize*.
+
+    Structure: two main clauses and one subordinate clause, so the sentence is compound-complex.
+
+    A model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Rewrite \"In spite of being injured, he completed the race\" (a) as a compound sentence and (b) as a complex sentence. Keep the meaning."
+  sol: |
+    (a) *He was injured, but he completed the race.* (or *yet he completed the race*)
+    (b) *Although he was injured, he completed the race.* (also *Though* / *Even though*)
+
+    The original is simple: *In spite of being injured* is a phrase. In (a) the idea becomes a main clause joined by a contrast conjunction; in (b) it becomes a subordinate clause of contrast. All three versions say that injury did not stop him.
+
+    A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "Choose the correctly punctuated sentence."
+  opts: ["The shop was closed; however, we found another one nearby.", "The shop was closed, however we found another one nearby.", "The shop was closed however, we found another one nearby.", "The shop was closed, however, we found another one nearby."]
+  ans: 0
+  sol: |
+    *However* is a conjunctive adverb, not a coordinating conjunction, so a comma alone cannot join the two main clauses. A semicolon (or a full stop) comes before *however*, and a comma follows it. The other options either splice with a comma or put the commas in the wrong places.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Write a short paragraph of four sentences about a rainy day, using in order: one simple sentence, one compound sentence, one complex sentence and one compound-complex sentence. Label each."
+  sol: |
+    Model answer (many correct paragraphs are possible):
+
+    1. *The rain began at dawn.* (simple)
+    2. *The streets filled with water, and the buses stopped running.* (compound)
+    3. *When the water reached the gate, we moved the cycles indoors.* (complex)
+    4. *My sister made tea, and we watched the clouds because there was nothing else to do.* (compound-complex)
+
+    Check each sentence: the first has one clause; the second has two main clauses joined by *and*; the third has a subordinate clause (*When the water reached the gate*) with a comma after it; the fourth has two main clauses and one subordinate clause (*because there was nothing else to do*).
+
+    A model answer written for this archive.
+  check: none

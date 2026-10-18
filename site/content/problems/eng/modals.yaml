@@ -1,0 +1,168 @@
+# Modals. All problems are original (no NCERT items for this leaf). All answers are model answers written by us for this archive; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Rohan ___ swim when he was five years old."
+  opts: ["can", "could", "may", "must"]
+  ans: 1
+  sol: |
+    The sentence speaks of general ability in the past, so *could* is the right modal. *Can* is present, *may* means permission or possibility, and *must* means duty.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: ___ I borrow your dictionary, please?"
+  opts: ["May", "Must", "Ought", "Used"]
+  ans: 0
+  sol: |
+    A polite request for permission uses *May I ...?* *Must I* would ask whether it is compulsory, and *ought* and *used* need *to* and do not fit this pattern.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["He can sings very well.", "He can sing very well.", "He cans sing very well.", "He can to sing very well."]
+  ans: 1
+  sol: |
+    After a modal the verb is the bare base form. *Can sing* has no -s, no *to* and no -ing. The other three add an -s to the verb or the modal, or insert *to*.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: You ___ smoke in the hospital. It is strictly forbidden."
+  opts: ["don't have to", "must not", "needn't", "may to"]
+  ans: 1
+  sol: |
+    The sentence says smoking is forbidden, and *must not* expresses prohibition. *Don't have to* and *needn't* mean "it is not necessary", which is a different message. *May to* is not a possible form because *to* never follows a modal like *may*.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Fill each gap with a suitable modal verb. (1) You ___ be tired after such a long journey. (2) ___ you help me carry this bag, please? (3) Students ___ keep their mobile phones switched off during the examination. (4) I ___ run very fast when I was young. (5) The sky is dark. It ___ rain soon."
+  sol: |
+    Model answer: (1) must, (2) Could (or Can), (3) must (or should), (4) could, (5) may (or might).
+
+    (1) A confident guess about the present, nearly certain: *must*.
+    (2) A polite request: *Could* is more polite, *Can* is acceptable and less formal.
+    (3) A rule: *must*; *should* is possible if the sentence is read as a strong instruction.
+    (4) General ability in the past: *could*.
+    (5) A possibility from present evidence: *may* or *might*.
+
+    [Note] Model answers written for this archive. Where two modals fit, either is accepted.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Each sentence has one error with a modal verb. Find it and correct it. (a) She can speaks French fluently. (b) Do you can swim? (c) He must to leave early today. (d) You should to see a doctor about that cough."
+  sol: |
+    (a) *can speaks* should be *can speak*. A modal is followed by the bare base verb, with no -s: "She can speak French fluently."
+
+    (b) *Do you can swim?* should be *Can you swim?* Modals form questions by moving to the front and take no *do*.
+
+    (c) *must to leave* should be *must leave*. No *to* after *must*: "He must leave early today."
+
+    (d) *should to see* should be *should see*. No *to* after *should*: "You should see a doctor about that cough."
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "He said, \"I can drive a car.\" Choose the correct reported form."
+  opts: ["He said that he can drive a car.", "He said that he could drive a car.", "He said that he would drive a car.", "He said that he had can drive a car."]
+  ans: 1
+  sol: |
+    The reporting verb *said* is in the past, so *can* moves one step back to *could*. The first option does not shift, the third changes the meaning from ability to a future intention, and the fourth is not a possible form.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "The lights are off and the car has gone. They ___ already."
+  opts: ["must have left", "must leave", "should leaving", "can have leave"]
+  ans: 0
+  sol: |
+    The speaker is nearly sure about something that happened in the past, based on the evidence. The pattern is *must have + V3*: "They must have left already." *Must leave* is a present or future form, and the other two options are ungrammatical.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Choose the best word for the gap: \"You ___ come with me. I can go alone.\" (There is no need for you to come.)"
+  opts: ["mustn't", "don't have to", "can't", "shouldn't"]
+  ans: 1
+  sol: |
+    The message is "it is not necessary", which is *don't have to* (or *needn't*). *Mustn't* would forbid the person to come, *can't* would say they are unable or not allowed, and *shouldn't* would advise against coming.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Rewrite each sentence using a modal verb, without changing the meaning. (a) It is necessary for every student to carry an identity card. (b) Perhaps she will arrive late. (c) I advise you to rest for a few days. (d) It is not necessary for you to bring a gift. (e) Is it possible for you to lend me a pen?"
+  sol: |
+    (a) *Every student must carry an identity card.* Necessity from a rule: *must*.
+
+    (b) *She may (or might) arrive late.* Possibility: *may* or *might*.
+
+    (c) *You should rest for a few days.* Advice: *should* (*ought to rest* is also acceptable).
+
+    (d) *You needn't bring a gift.* or *You don't have to bring a gift.* No obligation.
+
+    (e) *Could you lend me a pen?* or *Can you lend me a pen?* A polite request; *could* is more polite.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Explain the difference in meaning between the four sentences, and for each give a short situation in which it would be said. (a) He should have called. (b) He needn't have called. (c) He must have called. (d) He can't have called."
+  sol: |
+    (a) *He should have called.* He did not call, and the speaker thinks he ought to have. Situation: "We waited for his news all evening. He should have called."
+
+    (b) *He needn't have called.* He did call, but it was not necessary. Situation: "I was already at the station when he rang to remind me. He needn't have called."
+
+    (c) *He must have called.* The speaker is nearly sure he called, from evidence. Situation: "The phone shows a missed call from his number, so he must have called."
+
+    (d) *He can't have called.* The speaker is nearly sure he did not call. Situation: "He was in the hospital with no phone; he can't have called."
+
+    [Note] Situations are original examples. Model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Report each sentence, using a past reporting verb. (a) The teacher said to us, \"You must submit your files tomorrow.\" (b) She said, \"I may visit you on Sunday.\" (c) He asked, \"Shall I open the window?\" (d) The doctor said to him, \"You should not worry.\" (e) Sana asked, \"Can you speak a little louder?\""
+  sol: |
+    (a) *The teacher told us that we must (or had to) submit our files the next day.* *Tomorrow* becomes *the next day*, *you* becomes *we*, and *must* stays or becomes *had to*.
+
+    (b) *She said that she might visit me on Sunday.* *May* becomes *might*; *you* becomes *me*.
+
+    (c) *He asked whether he should open the window.* *Shall I* becomes *should he* in the reported question, with normal word order.
+
+    (d) *The doctor told him that he should not worry.* *Should* is already a past form of modal and stays the same.
+
+    (e) *Sana asked me whether I could speak a little louder.* or *Sana asked me to speak a little louder.* *Can* becomes *could*; the second version reports it as a request.
+
+    [Note] Model answers written for this archive. Pronoun choices depend on who is being addressed.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "The paragraph has six errors in the use of modals and related forms. Find and correct each. My grandfather used to walking in the park every morning. He says that everyone should to exercise. When he was young he can run very fast, but now he need not to walk far. Yesterday I should have went with him, but I overslept. He said that he will wait for me the next day."
+  sol: |
+    1. *used to walking* should be *used to walk*. *Used to* is followed by the base verb.
+    2. *should to exercise* should be *should exercise*. No *to* after a modal.
+    3. *he can run* should be *he could run*. The sentence is about the past (when he was young), so *could* is needed.
+    4. *need not to walk* should be *need not walk* (modal use) or *does not need to walk* (ordinary verb). Both are acceptable corrections.
+    5. *should have went* should be *should have gone*. After *have* use V3 (the past participle).
+    6. *he will wait* should be *he would wait*. After the past reporting verb *said*, *will* shifts to *would*.
+
+    [Note] Model answer written for this archive.
+  check: none
