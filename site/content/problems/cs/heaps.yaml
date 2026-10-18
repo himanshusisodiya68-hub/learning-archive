@@ -1,0 +1,111 @@
+# Heaps and priority queues. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A binary heap holds 1,000,000 items, stored with no gaps level by level (the top level has 1 item, the next 2, then 4, and so on). How many levels does the tree have?
+  ask: Levels
+  unit: ""
+  ans: 20
+  tol: 0.1
+  verify: floor(log2(1e6)) + 1
+  sol: Levels 1 to $L$ hold $1 + 2 + 4 + \dots + 2^{L-1} = 2^L - 1$ items. Since $2^{19} - 1 = 524{,}287$ is too few and $2^{20} - 1 = 1{,}048{,}575$ is enough, $L = 20$. In formula form, $\lfloor \log_2 10^6 \rfloor + 1 = 19 + 1 = 20$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these questions can a min-heap answer in a single step?
+  opts: ["Which item is the smallest?", "Which item is the largest?", "Is the item with the name 'asha' in the heap?"]
+  ans: 0
+  sol: The parent-beats-child rule puts the smallest item at the top, index 0. The largest is somewhere among the leaves, so finding it means looking at about half the items, and a heap has no way to look up an item by name without scanning.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A heap is stored in an array starting at index 0. What is the index of the parent of the item at index 25?
+  ask: Parent index
+  unit: ""
+  ans: 12
+  tol: 0.1
+  verify: floor((25 - 1) / 2)
+  sol: The parent of index $i$ is $\lfloor (i-1)/2 \rfloor$. For $i = 25$ that is $\lfloor 24/2 \rfloor = 12$. Check the other way round, the children of 12 are $2 \cdot 12 + 1 = 25$ and $26$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: The min-heap stored as the array [2, 5, 3, 9, 6, 4] receives a push of the value 1. What does the array look like afterwards?
+  opts: ["[1, 5, 2, 9, 6, 4, 3]", "[1, 2, 3, 9, 6, 4, 5]", "[2, 5, 3, 9, 6, 4, 1]", "[1, 5, 3, 9, 6, 4, 2]"]
+  ans: 0
+  sol: |
+    Put 1 at the end, index 6 (the array is now [2, 5, 3, 9, 6, 4, 1]). Its parent is at index $\lfloor 5/2 \rfloor = 2$, holding 3. Since 1 < 3, swap, giving [2, 5, 1, 9, 6, 4, 3]. Now 1 is at index 2 and its parent is index 0, holding 2. Since 1 < 2, swap again, giving [1, 5, 2, 9, 6, 4, 3]. At index 0 there is no parent, so we stop. The item moved up two levels, which is at most the height of the tree.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A log file has 2 billion numbers, one per line, and you must find the 100 largest. It does not fit in memory. Describe a method with memory for only about 100 numbers, and give its time complexity.
+  sol: |
+    Read the file once, keeping a **min-heap of size 100** holding the best 100 so far. For each number $x$: if the heap has fewer than 100 items, push $x$; otherwise compare $x$ with the heap's top (the weakest of the best 100) and, if $x$ is larger, replace the top with $x$. At the end, the heap holds the 100 largest.
+    ```python
+    import heapq
+    def top100(lines):
+        h = []
+        for line in lines:
+            x = int(line)
+            if len(h) < 100:
+                heapq.heappush(h, x)
+            elif x > h[0]:
+                heapq.heapreplace(h, x)
+        return sorted(h, reverse=True)
+    ```
+    Each number costs one comparison and at most one $O(\log 100)$ heap fix, so the time is $O(n \log k)$ with $n = 2 \times 10^9$ and $k = 100$, and the memory is $O(k)$. Sorting all the numbers would need $O(n)$ memory (or a slow external sort) and $O(n \log n)$ time.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Numbers arrive one at a time, and after each one you must report the median of everything so far. Explain a method using two heaps that takes O(log n) per number and O(1) to read the median.
+  sol: |
+    Split what you have seen into a **lower half** and an **upper half**. Keep the lower half in a **max-heap** (so its top is the largest of the small numbers) and the upper half in a **min-heap** (its top is the smallest of the big numbers). Every number in the lower half is at most every number in the upper half, and the two sizes differ by at most 1.
+
+    On a new number $x$: push it into the lower half if $x \le$ the lower top, otherwise into the upper half. Then, if one heap has two more items than the other, move its top to the other heap. The median is the top of the larger heap, or the average of the two tops when sizes are equal.
+    ```python
+    import heapq
+    lo, hi = [], []          # lo holds negatives (max-heap)
+    def add(x):
+        if lo and x <= -lo[0]: heapq.heappush(lo, -x)
+        else: heapq.heappush(hi, x)
+        if len(lo) > len(hi) + 1: heapq.heappush(hi, -heapq.heappop(lo))
+        if len(hi) > len(lo) + 1: heapq.heappush(lo, -heapq.heappop(hi))
+    ```
+    Each add does a constant number of heap operations, so it is $O(\log n)$, and the median is read from the tops in $O(1)$.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Building a heap by pushing n items one at a time costs O(n log n). Show that if you instead put all n items in an array and sift down from the middle back to the start (heapify), the total work is O(n).
+  sol: |
+    Count the work by the **height** of each item (how many levels it could sink), not by its depth. In a heap of $n$ items, about $n/2$ are leaves (height 0, no work), about $n/4$ have height 1, about $n/8$ have height 2, and in general about $n/2^{h+1}$ items have height $h$. Sifting down an item of height $h$ takes at most $h$ swaps. So the total number of swaps is at most
+    $$\sum_{h \ge 1} h \cdot \frac{n}{2^{h+1}} = n \sum_{h \ge 1} \frac{h}{2^{h+1}} = n \cdot 1 = n.$$
+    The sum $\sum h / 2^{h+1}$ equals 1 (for example $\tfrac14 + \tfrac28 + \tfrac3{16} + \dots$ tends to 1). Therefore heapify is $O(n)$. The pushing method is slower because it puts the *many* items near the bottom through a long climb (up to $\log n$), while heapify makes the many items near the bottom do almost no work and lets only the few near the top travel far. Intuition: the cost is dominated by where the items are, not by the height of the tree.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Design the "run this job at time T" part of a job scheduler. Millions of jobs are scheduled, new ones are added every second, some are cancelled, and a worker must always learn which job is due next. Describe a design with a heap, how to handle cancellation, and what changes when one machine is not enough.
+  sol: |
+    **Single machine.** Keep a min-heap of `(due_time, job_id)`. A scheduler loop peeks at the top: if the due time is in the future, it sleeps until then (or until a new job with an earlier time arrives, which wakes it up); if it is due, it pops the job and hands it to a worker. Insert and pop are $O(\log n)$, peek is $O(1)$.
+
+    **Cancellation.** A heap cannot find an arbitrary job quickly, so use **lazy deletion**: keep a hash map `job_id -> state`. Cancelling only marks the job cancelled in the map, in $O(1)$. When a cancelled job reaches the top, pop it and skip it. To stop the heap from filling with dead entries, rebuild it (heapify in $O(n)$) when more than about half of its entries are stale.
+
+    **Ties and fairness.** Add a sequence counter, `(due_time, seq, job_id)`, so jobs due at the same time run in arrival order.
+
+    **More than one machine.** Partition the jobs, for example by hashing `job_id` to choose a shard, and give each shard its own heap and scheduler. Persist jobs in a database so that a crash does not lose them, and have a standby take over a shard's schedule by reloading the jobs due soon. Make job execution idempotent (safe to run twice) because after a failover a job may be started again. [Inference: real systems such as cloud schedulers differ in detail and their internals are not all public.]
+
+    **Alternative.** If the due times are on a coarse grid (say whole seconds) and mostly near in the future, a **timer wheel** (an array of buckets indexed by time) gives $O(1)$ insert and expiry, at the cost of precision and memory. A heap is the simpler and more general choice.
+  check: none

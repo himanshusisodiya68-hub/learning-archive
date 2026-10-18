@@ -1,0 +1,106 @@
+# Big-O and growth of cost. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Binary search halves the remaining list at every step. At most how many halvings are needed to narrow a sorted list of 1,000,000 items down to one item?
+  ask: Halvings
+  unit: ""
+  ans: 20
+  tol: 0.1
+  verify: ceil(log2(1e6))
+  sol: We need the smallest $k$ with $2^k \ge 1{,}000{,}000$. Since $2^{19} = 524{,}288$ is too small and $2^{20} = 1{,}048{,}576$ is enough, $k = 20$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which growth rate is the fastest-growing (worst for large n)?
+  opts: ["O(n log n)", "O(n²)", "O(2ⁿ)", "O(n)"]
+  ans: 2
+  sol: Along the ladder O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ), the exponential rung is the steepest. Adding just 1 to n doubles the work.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A program whose cost grows like n² takes 0.1 seconds on 2,000 records. Estimate how many seconds it takes on 8,000 records.
+  ask: Time
+  unit: s
+  ans: 1.6
+  tol: 0.05
+  verify: 0.1*(8000/2000)**2
+  sol: The data grew by a factor of $8000/2000 = 4$. For an $n^2$ cost the work grows by $4^2 = 16$. So the time is $0.1 \times 16 = 1.6$ seconds.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: |
+    What is the Big-O of this function, in terms of n?
+    ```python
+    def f(n):
+        for i in range(n):
+            j = n
+            while j > 1:
+                j //= 2
+    ```
+  opts: ["O(n)", "O(n log n)", "O(n²)", "O(log n)"]
+  ans: 1
+  sol: The outer loop runs $n$ times. The inner loop halves $j$ until it reaches 1, which takes about $\log_2 n$ rounds. Nested loops multiply, so the cost is $O(n \log n)$.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You are given two lists of customer ids, each with n entries, and must decide whether any id appears in both. Give the Big-O time of the brute-force method and then an O(n) average-time method with its extra space cost.
+  sol: |
+    Brute force compares every id in the first list with every id in the second: $n \times n$ comparisons, so $O(n^2)$ time and $O(1)$ extra space.
+
+    Faster: put the first list in a hash set (n inserts, $O(1)$ average each), then check each id of the second list with one lookup ($O(1)$ average each). Total $O(n)$ average time, but the set needs $O(n)$ extra space. This trades memory for time. The worst case of hashing is $O(n^2)$ again if all ids collide, which is why we say "average".
+    ```python
+    def share(a, b):
+        seen = set(a)
+        return any(x in seen for x in b)
+    ```
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |
+    Count the function calls made by this naive recursive Fibonacci when called as fib(20), including the first call.
+    ```python
+    def fib(n):
+        return n if n < 2 else fib(n - 1) + fib(n - 2)
+    ```
+  ask: Calls
+  unit: ""
+  ans: 21891
+  tol: 0.5
+  verify: 2*Math.round(Math.pow((1+Math.sqrt(5))/2,21)/Math.sqrt(5))-1
+  sol: |
+    Let $C(n)$ be the number of calls for fib(n). Then $C(0) = C(1) = 1$ and $C(n) = 1 + C(n-1) + C(n-2)$. Computing: $C(2)=3$, $C(3)=5$, $C(4)=9$, $C(5)=15$, and in general $C(n) = 2F_{n+1} - 1$ where $F$ are the Fibonacci numbers ($F_{21} = 10946$). So $C(20) = 2 \times 10946 - 1 = 21891$. Each step up multiplies the count by about 1.6, so the cost is exponential, roughly $O(1.6^n)$.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A dynamic array starts with capacity 1 and doubles its capacity each time it is full, copying all existing items. How many item copies happen in total while appending 1,048,576 (2²⁰) items one by one?
+  ask: Total copies
+  unit: ""
+  ans: 1048575
+  tol: 0.5
+  verify: pow(2,20)-1
+  sol: Resizes happen when the array holds 1, 2, 4, ..., $2^{19}$ items (the 1,048,576th append fits into capacity $2^{20}$, reached by the last doubling). The copies are $1 + 2 + 4 + \dots + 2^{19} = 2^{20} - 1 = 1{,}048{,}575$. That is about one copy per append, so appending is $O(1)$ amortised even though a single resize costs $O(n)$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A service appends 10 million records to a dynamic array. One resize copies 5 million items and freezes the request that triggered it for about 50 ms, which breaks a 20 ms latency promise. The average cost per append is fine. Explain why the average hides the problem and describe two ways to remove the spike.
+  sol: |
+    Amortised O(1) says the total over many appends is cheap, but it says nothing about one unlucky append. The resize that copies half the data is a single O(n) operation, and the user who triggers it sees the full delay. Averages and worst cases answer different questions, and a latency promise is a worst-case promise.
+
+    Two fixes. (1) **Incremental resizing**: allocate the bigger array, then move a few old items on each later append, so no single operation does the whole copy (the total work is the same, but spread evenly). (2) **Avoid copying**: store the data as a list of fixed-size chunks, or a linked structure of blocks, so growing means adding a new chunk and moving nothing. A third option is to reserve capacity in advance when the final size is roughly known. The price is more complex code, slower indexing or wasted memory. [Inference: these are standard techniques; which one a given system uses varies.]
+  check: none

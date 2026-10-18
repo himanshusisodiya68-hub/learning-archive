@@ -1,0 +1,109 @@
+# Arrays and dynamic arrays. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: An array of 8-byte numbers starts at memory address 1000. At what address does item number 5 (counting from 0) begin?
+  ask: Address
+  unit: ""
+  ans: 1040
+  tol: 0.1
+  verify: 1000 + 5*8
+  sol: The address of item $i$ is $\text{start} + i \times s$. Here $1000 + 5 \times 8 = 1040$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these operations on an array of n items takes the same time whether n is 100 or 100 million?
+  opts: ["Reading the item at index 70", "Inserting a new item at index 0", "Checking whether the value 70 is present"]
+  ans: 0
+  sol: Reading by index is a single address calculation, O(1). Inserting at index 0 shifts all n items, and checking for a value in an unsorted array looks at up to n items, so both grow with n.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A dynamic array starts with capacity 1 and doubles whenever it is full. You append 1,000 items one by one. How many item copies happen in total during all the resizes?
+  ask: Copies
+  unit: ""
+  ans: 1023
+  tol: 0.1
+  verify: Math.pow(2, 10) - 1
+  sol: |
+    A resize happens when the array holds 1, 2, 4, 8, ..., 512 items (the 513th append finds it full at capacity 512). Each resize copies the items it holds, so the total is $1 + 2 + 4 + \dots + 512 = 2^{10} - 1 = 1023$. The final capacity 1024 is enough for all 1,000 items, so there is no further copy. About one copy per append: amortised O(1).
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A list holds 1,000,000 items. Moving one item one place takes about 2 nanoseconds. You insert 1,000 new items, one after another, each at the very front (ignore the occasional resize and treat the list as staying near 1,000,000 items). About how many seconds does this take?
+  ask: Time
+  unit: s
+  ans: 2
+  tol: 0.1
+  verify: 1000 * 1e6 * 2e-9
+  sol: Each front insert shifts about $10^6$ items, costing $10^6 \times 2\text{ ns} = 2$ ms. A thousand of them cost $1000 \times 2\text{ ms} = 2$ s. Appending at the end instead would take microseconds in total, which is why front-heavy work calls for a different structure.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Rotate an array of n numbers to the right by k places in place (so [1,2,3,4,5] with k = 2 becomes [4,5,1,2,3]) using O(n) time and O(1) extra memory. Describe the method and say why it works.
+  sol: |
+    Use three reversals. First reverse the whole array: [5,4,3,2,1]. Then reverse the first $k$ items: [4,5,3,2,1]. Then reverse the remaining $n-k$ items: [4,5,1,2,3]. Reversing the whole array puts the last $k$ items at the front but backwards, and the two smaller reversals put each block back in its original order.
+    ```python
+    def rotate(a, k):
+        n = len(a); k %= n
+        def rev(i, j):
+            while i < j:
+                a[i], a[j] = a[j], a[i]
+                i += 1; j -= 1
+        rev(0, n - 1); rev(0, k - 1); rev(k, n - 1)
+    ```
+    Each item is swapped a constant number of times, so the time is O(n) and only a few index variables are used. The `k %= n` handles k larger than n.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A sorted array may contain repeated values. Remove the duplicates in place so that each value appears once at the front, and return how many distinct values there are. What is the time and memory cost, and how does it work?
+  sol: |
+    Use a read pointer and a write pointer. The write pointer marks the end of the distinct prefix. Because the array is sorted, a new value differs from the last value written.
+    ```python
+    def dedupe(a):
+        if not a:
+            return 0
+        w = 1
+        for r in range(1, len(a)):
+            if a[r] != a[w - 1]:
+                a[w] = a[r]
+                w += 1
+        return w
+    ```
+    One pass: O(n) time, O(1) extra memory. Sortedness is what makes comparing with the single previous written item enough; for an unsorted array you would need a set (extra memory) or a sort first.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Prove that appending n items to a dynamic array that doubles when full costs O(n) in total, so O(1) amortised per append. Then show why growing by a fixed 100 boxes each time does not.
+  sol: |
+    **Doubling.** Suppose the final capacity is $C < 2n$. A resize at capacity $c$ copies $c$ items, and the capacities at which resizes happen are $1, 2, 4, \dots, C/2$. Their sum is $C - 1 < 2n$. Add the $n$ plain stores: total work is below $3n$, so the average per append is below 3, a constant.
+
+    **Fixed step of 100.** Resizes happen at sizes $100, 200, 300, \dots$ up to about $n$, so there are $n/100$ of them, copying $100 + 200 + \dots + n \approx n^2/200$ items. Divide by $n$ appends: about $n/200$ per append, which grows with $n$. The cost per append is O(n), not constant: a million appends cost about five billion copies.
+
+    The general lesson: growing by any constant factor $r > 1$ gives a geometric series with total about $n \cdot r/(r-1)$, always linear; growing by a constant amount gives an arithmetic series, always quadratic.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Stretch question. Amortised O(1) append still allows one very slow append (a full copy). Design a dynamic array whose append is O(1) in the worst case, not just on average, and explain why it never falls behind.
+  sol: |
+    Spread the copy across many appends. When the array of capacity $c$ becomes full, allocate a new array of capacity $2c$ but do not copy yet. Keep both arrays. On each following append, store the new item in the new array and also move **two** items from the old array to the new one (the oldest not yet moved). Reads check which array holds the index.
+
+    Why it finishes in time: the old array holds $c$ items, and moving 2 per append finishes after $c/2$ appends. The new array has room for $c$ more items beyond the $c$ copied ones, so it cannot fill before the copying is done. Once all items have moved, free the old array. Every append now does a constant amount of work (one store and two moves), so the worst case is O(1).
+
+    The price is more complex code, two live arrays for a while (extra memory) and a slightly slower read path. Real-time systems that cannot tolerate a latency spike may pay this price; most software accepts the amortised version.
+  check: none

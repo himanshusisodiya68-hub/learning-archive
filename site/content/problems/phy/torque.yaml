@@ -344,3 +344,76 @@
     $$F(0.40)=mg(0.25)\ \Rightarrow\ F=\frac{30\times9.8\times0.25}{0.40}=183.75\ \text{N}.$$
     For the cube not to slide first, friction must supply $F$ with $N=mg=294$ N: $\mu\ge F/N=0.625$. If $\mu$ is smaller, the cube slides before it tips. A lower point of application raises the needed force, and for a push at the very top ($h=0.50$ m) the force would be $0.5\,mg=147$ N, the least possible. (Original problem.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A uniform ladder of length 4.0 m and mass 12 kg leans against a smooth vertical wall, making an angle of 60$^\circ$ with the horizontal floor. A man of mass 70 kg climbs until he is 3.0 m along the ladder from its foot. What is the least coefficient of static friction between the floor and the ladder that stops it from slipping? (Original problem.)
+  ask: Least coefficient of friction
+  unit: ""
+  ans: 0.412
+  tol: 0.001
+  verify: (12*2+70*3)/(4*tan(rad(60)))/(12+70)
+  sol: |
+    Forces: the wall pushes horizontally ($N_w$, smooth wall, so no friction there); the floor pushes up ($N_f$) and holds the foot with friction $f$. Vertically, $N_f = (12 + 70)g$. Horizontally, $f = N_w$. Take moments about the foot, so that $N_f$ and $f$ drop out. The wall's lever arm is the height $4.0\sin 60^\circ$; the weights act at horizontal distances $2.0\cos 60^\circ$ (ladder) and $3.0\cos 60^\circ$ (man):
+    $$N_w \times 4.0\sin 60^\circ = 12g\times 2.0\cos 60^\circ + 70g\times 3.0\cos 60^\circ.$$
+    So $N_w = \dfrac{(24 + 210)\,g}{4.0\tan 60^\circ} = \dfrac{234 \times 9.8}{6.93} = 331$ N. Then $\mu_{\min} = f/N_f = 331/(82\times 9.8) = 0.41$. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A uniform plank of length 6.0 m and mass 20 kg rests on a horizontal platform with 2.0 m of it sticking out over the edge. A person of mass 40 kg walks out along the projecting part. How far beyond the edge of the platform can the person go before the plank starts to tip? (Original problem.)
+  ask: Distance beyond the edge
+  unit: m
+  ans: 0.5
+  tol: 0.001
+  verify: 20*(6/2-2)/40
+  sol: |
+    At the point of tipping the plank pivots about the platform edge and the platform's push acts there. Take moments about the edge. The plank's centre of mass is 3.0 m from either end, which is $3.0 - 2.0 = 1.0$ m back from the edge on the platform side. Its moment, $20g\times 1.0$, holds the plank down. The person at distance $x$ beyond the edge gives $40g\times x$ the other way. Tipping starts when $40x = 20 \times 1.0$, so $x = 0.5$ m. (Original problem.)
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A force $\mathbf F = (2\hat{\mathbf i} - \hat{\mathbf j} + 3\hat{\mathbf k})$ N acts at the point with position vector $\mathbf r = (\hat{\mathbf i} + 2\hat{\mathbf j} - \hat{\mathbf k})$ m. Find the magnitude of its torque about the origin. (Original problem.)
+  ask: Magnitude of the torque
+  unit: N m
+  ans: 8.66
+  tol: 0.01
+  verify: sqrt((2*3-(-1)*(-1))**2+((-1)*2-1*3)**2+(1*(-1)-2*2)**2)
+  sol: |
+    With $\mathbf r = (x, y, z) = (1, 2, -1)$ and $\mathbf F = (F_x, F_y, F_z) = (2, -1, 3)$:
+    $\tau_x = yF_z - zF_y = 2\times3 - (-1)(-1) = 5$,
+    $\tau_y = zF_x - xF_z = (-1)(2) - 1\times3 = -5$,
+    $\tau_z = xF_y - yF_x = 1\times(-1) - 2\times2 = -5$.
+    So $\boldsymbol\tau = (5, -5, -5)$ N m and $|\boldsymbol\tau| = \sqrt{75} = 8.66$ N m. As a check, $\boldsymbol\tau\cdot\mathbf r = 5 - 10 + 5 = 0$ and $\boldsymbol\tau\cdot\mathbf F = 10 + 5 - 15 = 0$: the torque is perpendicular to both. (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Four identical uniform bricks, each 0.20 m long, are stacked one on top of another on a table, each shifted horizontally from the one below so that the overhang of the whole pile beyond the table edge is as large as possible without the pile toppling. What is the greatest horizontal distance of the top brick's far end beyond the edge of the table? (Original problem.)
+  ask: Greatest overhang
+  unit: m
+  ans: 0.208
+  tol: 0.001
+  verify: 0.2*0.5*(1+1/2+1/3+1/4)
+  sol: |
+    Work from the top. The top $n-1$ bricks, balanced at the edge of brick $n$, have their common centre of mass over that edge. Brick $n$'s own centre is $L/2$ inside the edge, so the centre of mass of $n$ bricks is $L/(2n)$ inside the edge of brick $n$. Brick $n$ can therefore stick out by $L/(2n)$ beyond the support below it. The total overhang for 4 bricks is
+    $$\frac{L}{2}\left(1+\frac12+\frac13+\frac14\right) = 0.10\times\frac{25}{12} = 0.208\ \text{m},$$
+    just over one brick length (0.20 m): the top brick lies completely beyond the edge. (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A uniform rectangular block 0.30 m wide and 0.90 m tall rests on a rough plane that is slowly tilted. The friction is large enough that the block does not slide. At what angle of inclination does the block begin to topple? (Original problem.)
+  ask: Angle of the plane
+  unit: degrees
+  ans: 18.4
+  tol: 0.1
+  verify: deg(atan(0.3/0.9))
+  sol: |
+    The block topples about its lower edge when the vertical line through its centre of gravity passes through that edge. The centre of gravity is at the middle, 0.15 m from the lower side face along the plane and 0.45 m above the plane. The line from the lower edge to the centre makes an angle $\arctan(0.15/0.45)$ with the normal to the plane. Toppling starts when the plane is tilted by this angle: $\tan\varphi = (\text{width}/2)/(\text{height}/2) = 0.30/0.90 = 1/3$, so $\varphi = 18.4^\circ$. This needs $\mu \ge \tan 18.4^\circ = 1/3$ so that it does not slide first. (Original problem.)
+  check: code
