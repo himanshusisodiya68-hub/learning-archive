@@ -326,7 +326,7 @@ The work is about the number of nodes visited times the work per node. For a tre
 | Subsets of $n$ items | $2^n$ | copy a path, up to $n$ | $n \cdot 2^n$ |
 | Orderings of $n$ items | $n!$ | copy a path, $n$ | $n \cdot n!$ |
 | $k$ of $n$ | $\binom{n}{k}$ | $k$ | $k \binom{n}{k}$ |
-| Word search, word length $L$ | up to $4 \cdot 3^{L-1}$ per start cell | 1 | exponential in $L$ |
+| Word search, word length $L$ | about $3^{L}$ per start cell | 1 | exponential in $L$ |
 
 Read the first row aloud: "two choices for each of $n$ items, and each answer costs up to $n$ to copy". The output itself is that large, so no method can do better when you must list everything.
 

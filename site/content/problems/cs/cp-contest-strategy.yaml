@@ -1,0 +1,143 @@
+# Contest strategy and rating growth. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: In ICPC-style scoring you solve three problems at minutes 10, 35 and 70. The second took 2 wrong tries before it was accepted, and the others took none. Each wrong try adds 20 minutes. What is your penalty in minutes?
+  ask: Penalty
+  unit: min
+  ans: 155
+  tol: 0.5
+  verify: "10+(35+20*2)+70"
+  sol: Add the solve times and 20 minutes for each wrong try on a solved problem. $10 + (35 + 40) + 70 = 155$ minutes.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: What is the best use of the first ten minutes of a contest?
+  opts: ["Start typing the first problem as fast as possible", "Read all the statements and constraints, then start with the problem you are surest of", "Wait for others to post solutions"]
+  ans: 1
+  sol: Reading everything costs little and gives you the whole map, so you start with a sure problem and avoid sinking time into one that is too hard. Typing the first problem blindly risks exactly that trap.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Contestant A has rating 1600 and contestant B has rating 1400. A contestant with rating R has chance 1 / (1 + 10^((S - R)/400)) of ranking above an opponent with rating S. What is the chance that B ranks above A? Give a number between 0 and 1.
+  ask: Chance that B wins
+  unit: probability
+  ans: 0.24
+  tol: 0.005
+  verify: "1/(1+10**((1600-1400)/400))"
+  sol: The formula gives the chance for a contestant with rating $R$ against an opponent with rating $S$. For B, take $R = 1400$ and $S = 1600$. The gap against B is 200, so the chance is $1/(1 + 10^{200/400}) = 1/(1 + 3.162) \approx 0.24$. The stronger player is favoured about 3 to 1 but not certain.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: You have spent 25 minutes on problem C with no new idea, while the problem you estimated at 15 minutes. Four other problems are unread beyond the statement. What is the best move?
+  opts: ["Keep going, since you are sure to crack it soon", "Note what you tried and switch to the next problem you are sure of", "Submit your best guess and see the verdict"]
+  ans: 1
+  sol: Your time box has expired with no progress, so the future chance of success is low and other problems offer better points per minute. The minutes already spent are gone either way. Submitting a guess costs penalty and gives little information.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Three problems take 10, 20 and 50 minutes with no mistakes. How many more penalty minutes does the order 50, 20, 10 give than the order 10, 20, 50?
+  ask: Extra penalty
+  unit: min
+  ans: 80
+  tol: 0.5
+  verify: "(50+70+80)-(10+30+80)"
+  sol: Shortest first gives solve times 10, 30 and 80, penalty 120. The reverse order gives 50, 70 and 80, penalty 200. The difference is $200 - 120 = 80$ minutes. This is the exchange argument for shortest job first.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Problem A takes 30 minutes, has 90 percent chance of success and gives 500 points. Problem B takes 60 minutes, has 50 percent chance and gives 800 points. How many times larger are A's expected points per minute than B's?
+  ask: Ratio
+  unit: times
+  ans: 2.25
+  tol: 0.01
+  verify: "(0.9*500/30)/(0.5*800/60)"
+  sol: A gives $0.9 \times 500 / 30 = 15$ points per minute. B gives $0.5 \times 800 / 60 \approx 6.67$. The ratio is $15 / 6.67 = 2.25$. Under these honest estimates, A is the better use of the minutes even though B has more points.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: text
+  q: Describe a good upsolving routine for a problem you could not solve in the contest. Say how long you try before reading the editorial and what you do afterwards.
+  sol: |
+    1. **Try again with a time box** (for example 30 to 60 minutes, longer for hard problems), before opening the editorial. Re-read the statement and constraints, try small cases by hand, and note ideas.
+    2. **If still stuck, read only a hint**, not the whole editorial. If there are no hints, read the idea but not the code.
+    3. **Close the editorial and write the solution yourself.** If you cannot, you did not understand it.
+    4. **Stress test it** against a brute force, to confirm you understand the edge cases.
+    5. **Record** the pattern and the cause of failure in your log (no idea, misread, bug).
+    6. **Repeat the problem a week later from a blank page**, which is when learning sticks.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: mcq
+  q: In ICPC-style scoring you get wrong answer on test 3 at minute 55. The code looks right to you. Which next step is wisest?
+  opts: ["Change a comparison sign and resubmit at once", "Write a small brute force and a random generator, find a failing case, then resubmit", "Resubmit the same code in case the judge was wrong"]
+  ans: 1
+  sol: A blind resubmission costs 20 penalty minutes if it fails again and teaches nothing. A short stress test usually finds the failing case in a few minutes and removes the guessing. The judge is almost never wrong.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Under ICPC-style scoring, a team solves problems at minutes 15, 40, 65, 90 and 130, with 0, 1, 0, 3 and 2 wrong tries respectively before each was accepted. What is its penalty in minutes?
+  ask: Penalty
+  unit: min
+  ans: 460
+  tol: 0.5
+  verify: "15+(40+20)+65+(90+60)+(130+40)"
+  sol: Compute each term as solve time plus 20 times wrong tries. $15 + 60 + 65 + 150 + 170 = 460$ minutes. A team with the same five solved problems and a penalty below 460 ranks above it.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: You are in a contest with 50 minutes left and cannot finish everything. Compare how your strategy changes between an ICPC-style contest and an IOI-style contest with subtasks, when your best unsolved problem is only half-understood.
+  sol: |
+    **ICPC-style.** Only fully accepted problems count, so a half-idea earns nothing and wrong tries add penalty. With 50 minutes left, finish only a problem you can complete and test within the time; if none, use the time to stress test nearly-finished solutions or attempt the shortest remaining one. Do not start a long problem you cannot finish.
+
+    **IOI-style.** Partial credit counts, so a brute force that solves the small subtasks is worth real points. With a half-understood problem, write the brute force at once and submit it for the first subtasks; then improve to the next subtask if time remains. Several partial submissions are fine since only the best score counts.
+
+    The difference is how the scoring rule values partial work and wrong tries, and this decides whether to aim for completeness or for spreading effort.
+  check: none
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: With 50 minutes left you may attempt X (20 min, 80 percent chance of success), Y (30 min, 60 percent) or Z (45 min, 90 percent). Problems are attempted one after another and each takes exactly its stated time, with independent outcomes. What is the largest expected number of solved problems you can reach?
+  ask: Expected solves
+  unit: problems
+  ans: 1.4
+  tol: 0.001
+  verify: "0.8+0.6"
+  sol: The subsets that fit in 50 minutes are X alone (0.8), Y alone (0.6), Z alone (0.9), and X plus Y, which takes exactly 50 minutes and gives $0.8 + 0.6 = 1.4$. X plus Z needs 65 minutes and does not fit. So the best is X then Y, expected 1.4 solves, despite Z having the best single chance. This uses the assumptions stated in the question (exact times, independence), which are optimistic in real contests.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Your rating has not improved over six months although you take part in every contest. Using a failure log, design a diagnosis and a four-week plan, and say what evidence would tell you the plan is working.
+  sol: |
+    **Diagnosis.** For each problem you failed in the last 20 contests, record the cause: misread, no idea (missing pattern), wrong complexity, bug, slow implementation, or panic. Count them. The biggest category is the bottleneck. [This is a method, not a guaranteed result.]
+
+    **Plan by cause.**
+    - Misreads: scan more slowly, restate each problem in one line, and always run the sample by hand.
+    - No idea: study one pattern family per week from the catalogues, solve 5 problems of that family, then upsolve misses.
+    - Bugs: stress test every solution before submitting, practise edge-case checklists, and write shorter functions.
+    - Slow implementation: retype three solved problems per week from memory.
+
+    **Weekly shape.** Two virtual contests (to train the contest loop), upsolving within 24 hours, and about 5 problems just above your level, on the weak area.
+
+    **Evidence.** Within four weeks, the share of the dominant cause in the log should fall; the number of wrong tries per solved problem should fall; time to first accepted problem in virtual contests should drop. A rating change comes later and is noisy, so judge progress by these leading signs and not by one contest.
+  check: none

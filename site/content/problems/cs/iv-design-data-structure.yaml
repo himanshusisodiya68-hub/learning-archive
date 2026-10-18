@@ -1,0 +1,118 @@
+# Design a data structure. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A design needs "is this key present?" and "give me its value" in constant time. Which plain structure fits?
+  opts: ["Hash map", "Sorted array", "Singly linked list"]
+  ans: 0
+  sol: A hash map computes where the key lives, so membership and lookup take $O(1)$ on average. A sorted array needs binary search ($O(\log n)$) and a linked list needs a scan ($O(n)$).
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: An LRU cache of capacity 3 receives put 1, put 2, put 3, get 1, put 4, put 5. After the last put, which key was evicted by it?
+  opts: ["1", "2", "3", "4"]
+  ans: 2
+  sol: |
+    Order, newest first. After put 1, 2, 3 it is 3, 2, 1. get 1 gives 1, 3, 2. put 4 evicts 2 and gives 4, 1, 3. put 5 evicts the oldest, 3, and gives 5, 4, 1. So the last put evicts key 3.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A min-stack receives push 5, push 3, push 7, push 3, push 8, then pop, pop. What does get_min return?
+  ask: Minimum
+  unit: ""
+  ans: 3
+  tol: 0.01
+  verify: Math.min(5, 3, 7)
+  sol: After the two pops (8, then the second 3) the stack holds 5, 3, 7. Each entry stores the minimum at or below it, and the top entry (7) stores min(5, 3, 7) = 3.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A hit counter keeps hits from the last 300 seconds (a hit at time t counts at time T if t > T - 300). Hits arrive at times 1, 2, 3, 300 and 301. How many hits does count(301) report?
+  ask: Hits
+  unit: ""
+  ans: 4
+  tol: 0.01
+  verify: "[1, 2, 3, 300, 301].filter(t => t > 301 - 300).length"
+  sol: The cut-off is 301 - 300 = 1. The hit at time 1 is not greater than 1, so it has expired; the hits at 2, 3, 300 and 301 remain, giving 4.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Design a set with add, remove and pick-a-uniformly-random-item, all in O(1) average time. Why does removal swap with the last element, and what is the bug people forget?
+  sol: |
+    Keep an array of the items and a hash map from item to its index. add appends to the array and records the index. pick chooses a random index of the array.
+
+    Deleting from the middle of an array shifts everything after it, costing O(n). Order does not matter in a set, so overwrite the deleted slot with the last item and pop the last slot: O(1).
+
+    The bug: the moved item's index in the map must be updated to the vacated slot. Another bug: when the item to delete is itself the last one, there is nothing to move, so skip the move and just remove it from the map.
+    ```python
+    def remove(self, x):
+        i, last = self.pos.pop(x), self.a.pop()
+        if i < len(self.a):
+            self.a[i] = last; self.pos[last] = i
+    ```
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A time-based key-value store has set(key, value, time) and get(key, time), which returns the value with the latest timestamp that is at most time. Give the structure, the cost of each call, and what changes if writes can arrive with older timestamps than earlier writes.
+  sol: |
+    Use a map from each key to two parallel lists, times and values. If writes arrive in increasing time order, set appends in O(1) and each list stays sorted. get binary-searches the times for the number of entries at or below the query time (bisect_right) and returns the value just before that position, or an empty result if there is none: $O(\log n)$ for that key's history.
+
+    If writes can arrive out of order, appending breaks the sorted order. Insert at the right place with insort (O(n) per write because of the shift) or keep each history in a balanced tree or skip list for $O(\log n)$ writes. State this assumption before coding.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A fixed-window rate limiter allows 100 requests per minute, with windows that reset on the clock minute. A client sends as many requests as it can just before and just after a boundary. What is the largest number of requests it can get through within those two seconds?
+  ask: Requests
+  unit: ""
+  ans: 200
+  tol: 0.01
+  verify: 2 * 100
+  sol: The client sends 100 requests in the last second of the old window, all allowed, and 100 more in the first second of the new window, also allowed because the counter has reset. That is 200 in two seconds, twice the intended rate. A token bucket or a sliding-window log prevents it.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Design an LFU cache with O(1) get and put, breaking ties between equally frequent keys by evicting the least recently used among them. Say exactly what you track, and what happens to the minimum count when a new key is inserted.
+  sol: |
+    Track three things: a map from key to (value, count); for each count, an ordered collection of keys in order of use (oldest first), for example an OrderedDict; and the smallest count present, minf.
+
+    Using a key removes it from bucket f and appends it to bucket f+1, which keeps within-count order by recency. If bucket f becomes empty and f equals minf, increase minf by one.
+
+    To insert a new key into a full cache, pop the oldest key of bucket minf (the least frequently used, and among those the least recently used) and delete it from the map. The new key has count 1, so it joins bucket 1 and minf is set to 1, whatever it was before. Every step is a hash operation or a pointer change: O(1).
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: Your LRU cache is now used by 32 threads on one machine. Describe a correct but simple approach, why it is slow, and a better one.
+  sol: |
+    Simple: one lock around get and put. It is correct, because every operation, including the list reordering, is a multi-step update that must not interleave. It is slow because even reads write (they move a node to the front), so all 32 threads queue on one lock.
+
+    Better: split the cache into several independent shards, each a small LRU with its own lock; choose the shard by hash of the key. Threads touching different shards no longer wait for one another. The price is that eviction is only approximately global: a shard evicts its own oldest item even if another shard holds an older one. Other options are to batch recency updates and apply them under the lock later, or to sample a few items and evict the oldest of them. [Inference: production caches commonly use such approximations; details vary.]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Stretch. Extend the randomised set so that each item has a positive integer weight and pick returns an item with probability proportional to its weight. Add, remove and change-weight may be O(log n). Describe the structure.
+  sol: |
+    Keep items in an array and a map from item to index, as before, and add a Fenwick tree (binary indexed tree) over the array positions holding the weights. The total weight is the sum of all positions.
+
+    To pick, draw a random integer $r$ in $[1, \text{total}]$ and find the smallest position whose prefix sum is at least $r$. A Fenwick tree finds it by a binary descent over its bits in $O(\log n)$. That position's item is returned, and each item is chosen with probability weight divided by total.
+
+    Changing a weight adds the difference at that position in $O(\log n)$. Removal swaps the item with the last position as before: move the last item's weight into the vacated slot (update the tree for both positions) and shrink the array. The array and map keep the O(1) index lookup; the tree adds the O(log n) weighted pick.
+  check: none

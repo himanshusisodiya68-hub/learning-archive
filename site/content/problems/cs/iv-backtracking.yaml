@@ -1,0 +1,177 @@
+# Backtracking. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A list has 10 distinct items. How many subsets does it have, counting the empty subset and the whole list?
+  ask: Subsets
+  unit: ""
+  ans: 1024
+  tol: 0.1
+  verify: pow(2,10)
+  sol: |
+    Each of the 10 items is either in or out, two choices each, so the number of subsets is $2 \times 2 \times \dots = 2^{10} = 1024$. This is the number of leaves of the take-or-skip tree.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: In the backtracking template, what is the job of the line path.pop() after the recursive call?
+  opts: ["It deletes the answer that was just found", "It undoes the choice so the next option starts from the same state", "It stops the recursion early"]
+  ans: 1
+  sol: |
+    The loop tries several options at one level. Each option is added to the shared path before exploring. Removing it afterwards restores the path to what it was when the loop began, so the next option is tried from a clean state. Skipping this line is the most common backtracking bug.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Using the combinations template with a start index, how many different groups of 3 numbers can be chosen from the numbers 1 to 7 (order inside a group does not matter)?
+  ask: Groups
+  unit: ""
+  ans: 35
+  tol: 0.1
+  verify: 7*6*5/(3*2*1)
+  sol: |
+    Choosing in order gives $7 \times 6 \times 5 = 210$ sequences. Each group of 3 appears in $3! = 6$ different orders, and the start index keeps only one of them, so the number of groups is $210 / 6 = 35$, which is $\binom{7}{3}$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Using the target-sum template that allows reuse and sorts first, trace the call for the numbers [2, 3, 6, 7] with target 7. List the answers found and say where the loop breaks early.
+  sol: |
+    Sorted list is already [2, 3, 6, 7]. Start with left = 7.
+    - Take 2 (left 5). Take 2 again (left 3). Take 2 again would leave 1; then every number is bigger than 1, so the loop breaks. Back at left = 3, take 3 gives left 0, so **[2, 2, 3]** is saved. At left = 3 the next number 6 is bigger than 3, so the loop breaks (7 is bigger too).
+    - Back at left = 5 (path [2]), take 3 (left 2): the numbers 3, 6 and 7 are all bigger than 2, so break. Then 6 is bigger than 5, so break.
+    - Back at the top, take 3 (left 4), then 3 again would leave 1, which breaks; 6 is bigger than 4, so break.
+    - Take 6 (left 1): nothing fits, break.
+    - Take 7 (left 0): **[7]** is saved.
+
+    Answers: [2, 2, 3] and [7]. The `break` fires whenever the current number exceeds what is left, because the list is sorted.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Given a list that may contain repeated values, such as [1, 2, 2], return every distinct subset exactly once. Describe the method, give the six answers, and write the code.
+  sol: |
+    Sort the list, then build subsets by looping from a start index, recording the path at every node. At each level skip a value equal to the one just before it **at the same level** (`i > start`). This stops [2] from being generated twice (once from each 2), yet still allows [2, 2], because the second 2 is chosen one level deeper.
+
+    ```python
+    def subsets_unique(nums):
+        nums.sort()
+        out, path = [], []
+        def go(start):
+            out.append(path[:])
+            for i in range(start, len(nums)):
+                if i > start and nums[i] == nums[i - 1]:
+                    continue
+                path.append(nums[i]); go(i + 1); path.pop()
+        go(0)
+        return out
+    ```
+    For [1, 2, 2] the answers are [], [1], [1, 2], [1, 2, 2], [2], [2, 2]. The cost is at most $n \cdot 2^n$.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: List every string made of n pairs of round brackets in which each opening bracket is closed correctly (for example, for n = 2, "(())" and "()()"). Describe the choice and the pruning rule, and give the answers for n = 3.
+  sol: |
+    One choice per position: write an opening or a closing bracket. Keep two counters, how many openings used and how many closings used. Rules that prune:
+    - you may open only while openings used is below $n$;
+    - you may close only while closings used is below openings used (never close what is not open).
+    The path is complete when its length is $2n$.
+
+    ```python
+    def brackets(n):
+        out, path = [], []
+        def go(opened, closed):
+            if len(path) == 2 * n:
+                out.append("".join(path)); return
+            if opened < n:
+                path.append("("); go(opened + 1, closed); path.pop()
+            if closed < opened:
+                path.append(")"); go(opened, closed + 1); path.pop()
+        go(0, 0)
+        return out
+    ```
+    For $n = 3$ there are 5 strings: ((())), (()()), (())(), ()(()), ()()(). Because the rules stop an invalid string before it grows, no wasted work is done: every branch leads to at least one answer.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: How many distinct strings can be made by rearranging all the letters of AABBC? (A backtracking search with a sorted skip rule would list each exactly once.)
+  ask: Distinct arrangements
+  unit: ""
+  ans: 30
+  tol: 0.1
+  verify: 120/(2*2)
+  sol: |
+    With five distinct letters there would be $5! = 120$ orderings. Swapping the two As gives the same string, and so does swapping the two Bs, so each distinct string is counted $2 \times 2 = 4$ times. Therefore $120 / 4 = 30$. The search lists these 30 by sorting the letters and skipping a letter equal to its unused twin at the same level.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: Cut a string into pieces so that every piece reads the same forwards and backwards, and list every way to do it. Describe the choice, the check and the cost, and give the answers for "aab".
+  sol: |
+    The choice is where the next piece ends. From position `start`, try every end position, take the piece, and continue only if the piece is a palindrome (this is the pruning). When `start` reaches the end of the string, save a copy of the pieces.
+
+    ```python
+    def cuts(s):
+        out, path = [], []
+        def go(start):
+            if start == len(s):
+                out.append(path[:]); return
+            for end in range(start + 1, len(s) + 1):
+                piece = s[start:end]
+                if piece == piece[::-1]:
+                    path.append(piece); go(end); path.pop()
+        go(0)
+        return out
+    ```
+    For "aab": [a, a, b] and [aa, b]. In the worst case (all letters equal) every cut pattern is valid: $2^{n-1}$ patterns, each checked and copied in $O(n)$, so about $n \cdot 2^n$.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Run the n-queens template for n = 8 (one queen per row, columns and both diagonals tracked) and count every call to go(r), including the first call, the calls that reach a full board and the calls that later find no free column. How many calls are there?
+  ask: Calls to go
+  unit: ""
+  ans: 2057
+  tol: 0.1
+  verify: '(()=>{let n=0;const C=new Set(),A=new Set(),B=new Set();const go=r=>{n++;if(r==8)return;for(let c=0;c<8;c++){if(C.has(c)||A.has(r-c)||B.has(r+c))continue;C.add(c);A.add(r-c);B.add(r+c);go(r+1);C.delete(c);A.delete(r-c);B.delete(r+c)}};go(0);return n})()'
+  sol: |
+    The count is found by running the template, not by a formula. The search tree has 2,057 nodes, of which 92 are complete boards. Compare it with the unpruned alternatives: choosing any 8 of 64 squares gives $\binom{64}{8} = 4{,}426{,}165{,}368$, and one queen per row with every column allowed gives $8^8 = 16{,}777{,}216$ boards. Pruning by clashes shrinks the tree by a factor of about 8,000 against even the second figure.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: A plain sudoku solver scans for the first empty cell and tries digits 1 to 9. Give two changes that make it much faster on hard puzzles, and explain why each helps in terms of the search tree.
+  sol: |
+    1. **Pick the most constrained cell, not the first.** Keep for every empty cell the set of digits still allowed (using sets or bitmasks per row, column and box). Always branch on the cell with the fewest options. A cell with zero options means an immediate dead end, and a cell with one option means a forced move with no branching. A smaller branching factor $b$ at the top of the tree shrinks $b^d$ drastically, because early levels multiply everything below them.
+    2. **Maintain the allowed sets incrementally.** Instead of scanning row, column and box (27 cells) for each candidate digit, update the sets when you place or erase a digit. Each legality check becomes $O(1)$, so each node is cheaper. Combine with propagation: after placing a digit, if some other cell now has a single option, fill it immediately (and undo it on backtrack).
+
+    The first change reduces the number of nodes; the second reduces the cost per node. [Inference: the size of the gain depends on the puzzle; hard puzzles can still need thousands of nodes.]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Given n positive whole numbers and a number k, decide whether they can be split into k groups that all have the same total. Describe a backtracking method with at least two prunings, then explain how a different approach changes the cost for n up to about 20.
+  sol: |
+    **Setup.** If the sum is not divisible by $k$, answer no. Let the target be $T = \text{sum}/k$. If any number exceeds $T$, answer no.
+
+    **Backtracking.** Sort the numbers in decreasing order. Keep `groups[0..k-1]`, the running totals. For each number in turn, try putting it in each group whose total plus the number stays at most $T$ (the choice), recurse, then take it out (unchoose). Prunings:
+    - skip a group whose total equals one already tried for this number (identical groups give identical subtrees);
+    - if a number placed in an empty group fails, stop trying other empty groups, since they are all the same;
+    - placing big numbers first makes failures appear early.
+    The worst case is about $k^n$ nodes.
+
+    **Different approach.** Think of the set of numbers used so far as a bit mask of $n$ bits. Let `fill[mask]` be the amount in the current, unfinished group when exactly the numbers in `mask` are used, or "impossible". Add one number at a time: from `mask`, adding number $i$ is legal if `fill[mask] + nums[i]` is at most $T$, and the new fill is that sum modulo $T$. The answer is yes if the full mask is reachable. There are $2^n$ states with $n$ transitions each, so $O(n \cdot 2^n)$, about 20 million steps for $n = 20$, which is steady where $k^n$ can be astronomically large. The state (which numbers are used) repeats along many paths, which is exactly the situation where remembering beats trying again.
+  check: none

@@ -1,0 +1,147 @@
+# Trees and recursion. All problems are original.
+# Tree T used in several problems: root 1; 1 has left child 2 and right child 3; 2 has left child 4 and right child 5; 3 has only a right child 6; 6 has only a left child 7.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    Tree T: root 1; node 1 has left child 2 and right child 3; node 2 has left child 4 and right child 5; node 3 has only a right child 6; node 6 has only a left child 7. What is the height of T, counted in nodes along the longest chain from the root down?
+  ask: Height
+  unit: nodes
+  ans: 4
+  tol: 0.1
+  verify: '(() => { const t = [1, [2, [4], [5]], [3, null, [6, [7]]]]; const h = n => !n ? 0 : 1 + Math.max(h(n[1]), h(n[2])); return h(t); })()'
+  sol: |
+    The longest chain is 1, 3, 6, 7, which has 4 nodes. The chain 1, 2, 4 has only 3. So the height is 4. With the recursive rule, height(7) = 1, height(6) = 2, height(3) = 3, height(2) = 2, and height(1) = 1 + max(2, 3) = 4.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which traversal of a binary search tree visits the keys in increasing order?
+  opts: ["Preorder", "Inorder", "Postorder"]
+  ans: 1
+  sol: |
+    Inorder (left, node, right). Every key in the left subtree is smaller than the node and every key in the right subtree is larger, so visiting left first, then the node, then right gives sorted order at every level of the tree.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    In tree T (root 1; 1 has children 2 and 3; 2 has children 4 and 5; 3 has only a right child 6; 6 has only a left child 7), what is the diameter, meaning the number of edges on the longest path between any two nodes?
+  ask: Diameter
+  unit: edges
+  ans: 5
+  tol: 0.1
+  verify: '(() => { const t = [1, [2, [4], [5]], [3, null, [6, [7]]]]; let best = 0; const d = n => { if (!n) return 0; const l = d(n[1]), r = d(n[2]); best = Math.max(best, l + r); return 1 + Math.max(l, r); }; d(t); return best; })()'
+  sol: |
+    The longest path is 4, 2, 1, 3, 6, 7. It has 6 nodes and so 5 edges. At node 1 the left depth is 2 (nodes 2 and 4) and the right depth is 3 (nodes 3, 6, 7), and 2 + 3 = 5. No other bend point beats that.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: For tree T (root 1; 1 has children 2 and 3; 2 has children 4 and 5; 3 has only a right child 6; 6 has only a left child 7), which list is the postorder walk?
+  opts: ["4 5 2 7 6 3 1", "1 2 4 5 3 6 7", "4 2 5 1 3 7 6"]
+  ans: 0
+  sol: |
+    Postorder is left subtree, right subtree, then the node. The left subtree of 1 gives 4 5 2. The right subtree gives 3's left (nothing), then 6's left (7), then 6, then 3, so 7 6 3. Then 1 itself. Result 4 5 2 7 6 3 1. The second option is preorder and the third is inorder.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: |
+    A teammate checks whether a binary tree is a search tree by testing, at each node, that its left child is smaller and its right child is larger. Give a small tree that passes this check but is not a valid search tree, and describe the corrected check.
+  sol: |
+    Take root 10 with left child 5 and right child 15, and give 15 a left child 6. Each parent and child pair passes: 5 < 10, 15 > 10, and 6 < 15. But 6 lies in the right subtree of 10 and is smaller than 10, which breaks the rule that everything on the right of a node is larger than it.
+
+    The correct check passes an open range down. Start with (-infinity, +infinity). At a node with value v, require lo < v < hi; then check the left child with (lo, v) and the right child with (v, hi). For the node 6 the range is (10, 15), so 6 fails. An alternative that also works: walk inorder and check that the values are strictly increasing. Time O(n), extra space O(h).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |
+    Keys 50, 30, 70, 20, 40, 60, 80, 35, 45 are inserted, in this order, into an empty binary search tree (smaller keys go left, larger go right). What is the key of the lowest common ancestor of the nodes 35 and 45?
+  ask: LCA key
+  unit: ""
+  ans: 40
+  tol: 0.1
+  verify: '(() => { const ins = (n, v) => !n ? { v } : (v < n.v ? (n.l = ins(n.l, v), n) : (n.r = ins(n.r, v), n)); let r = null; for (const v of [50, 30, 70, 20, 40, 60, 80, 35, 45]) r = ins(r, v); let c = r; while (true) { if (35 < c.v && 45 < c.v) c = c.l; else if (35 > c.v && 45 > c.v) c = c.r; else return c.v; } })()'
+  sol: |
+    The tree has root 50; left child 30 (children 20 and 40); right child 70 (children 60 and 80). Key 40 gets the children 35 (left) and 45 (right). Start at 50: both 35 and 45 are smaller, go left to 30. Both are larger than 30, go right to 40. Now 35 is smaller and 45 is larger, so 40 splits them. The LCA is 40.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |
+    Tree T has 7 nodes (root 1; 1 has children 2 and 3; 2 has children 4 and 5; 3 has only a right child 6; 6 has only a left child 7). It is serialised with preorder, writing a # for every missing child. How many tokens are in the output string?
+  ask: Tokens
+  unit: ""
+  ans: 15
+  tol: 0.1
+  verify: '(() => { const t = [1, [2, [4], [5]], [3, null, [6, [7]]]]; const s = n => !n ? 1 : 1 + s(n[1]) + s(n[2]); return s(t); })()'
+  sol: |
+    The string is 1,2,4,#,#,5,#,#,3,#,6,7,#,#,#. Count: 7 values and 8 markers, 15 in all. In general a binary tree with n nodes has n + 1 empty child slots, so the output always has 2n + 1 tokens: 2 x 7 + 1 = 15.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |
+    A tree has node values (some negative). Root 1; left child -4 whose children are 2 and 3; right child 5 whose left child is -1 and right child is 8. A path is any chain of connected nodes (it may start and end anywhere and may bend at one node, using each node at most once). What is the largest possible sum of values on a path?
+  ask: Best path sum
+  unit: ""
+  ans: 14
+  tol: 0.1
+  verify: '(() => { const t = [1, [-4, [2], [3]], [5, [-1], [8]]]; let b = -Infinity; const g = n => { if (!n) return 0; const l = Math.max(0, g(n[1])), r = Math.max(0, g(n[2])); b = Math.max(b, n[0] + l + r); return n[0] + Math.max(l, r); }; g(t); return b; })()'
+  sol: |
+    Use the "return info up" template. The helper returns the best downward chain starting at a node, ignoring any negative contribution (take 0 instead). At each node record node + left + right as a candidate answer.
+
+    Node 5: left chain from -1 is dropped (0), right chain 8, so candidate 5 + 0 + 8 = 13, returning 13 upward. At the root: the left chain from -4 is at most -4 + 3 = -1, which is dropped (0), the right chain is 13, so the candidate is 1 + 0 + 13 = 14. Other candidates are smaller (3 alone is 3, 8 alone is 8, 3 - 4 + 2 is 1). The answer is 14, the path 1, 5, 8.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    You are given the preorder walk and the inorder walk of a binary tree whose values are all different. Describe how to rebuild the tree and give the time cost. Why is the inorder walk needed in addition to the preorder one?
+  sol: |
+    The first value of the preorder list is the root. Find that value in the inorder list: everything to its left is the left subtree, everything to its right is the right subtree. The sizes found this way tell you how to split the rest of the preorder list as well (the next L values are the left subtree's preorder, the remainder is the right's). Recurse on both halves.
+
+    Searching for the root each time costs O(n) and gives O(n²) on a skewed tree. Build a hash map from value to inorder index once, then each lookup is O(1) and the total time is O(n), with O(n) extra space for the map.
+
+    Preorder alone is not enough: the tree with root 1 and only a left child 2 and the tree with root 1 and only a right child 2 have the same preorder, 1 2. The inorder list is what shows which side the later values belong to. (With distinct values, preorder plus inorder identify the tree uniquely.)
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |
+    How many structurally different binary search trees can be built from the five distinct keys 1, 2, 3, 4, 5, using each key exactly once?
+  ask: Trees
+  unit: ""
+  ans: 42
+  tol: 0.1
+  verify: '(() => { const c = [1]; for (let n = 1; n <= 5; n++) { c[n] = 0; for (let i = 0; i < n; i++) c[n] += c[i] * c[n - 1 - i]; } return c[5]; })()'
+  sol: |
+    Choose which key is the root. If key i is the root (the i-th smallest), then i - 1 keys go left and n - i go right, and the two sides are built independently. Let c(n) be the count for n keys, with c(0) = 1. Then c(n) is the sum over i of c(i - 1) x c(n - i).
+
+    c(1) = 1, c(2) = 2, c(3) = 5, c(4) = 14, and c(5) = c0c4 + c1c3 + c2c2 + c3c1 + c4c0 = 14 + 5 + 4 + 5 + 14 = 42. These are the Catalan numbers.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    Hardest stretch. A binary tree has integer values. Find the size of the largest subtree (a node together with all its descendants) that is itself a valid binary search tree, in O(n) time. Explain what each call returns and how the parent combines the answers.
+  sol: |
+    Use "tuple up". Each call returns for its subtree: whether it is a valid search tree (ok), its number of nodes (size), its smallest value (low) and its largest value (high). An empty tree returns (True, 0, +infinity, -infinity), so that it never blocks a parent's comparison.
+
+    At a node with value v and children results L and R: the subtree is a valid search tree exactly when L.ok and R.ok and L.high < v < R.low. If so, return (True, L.size + R.size + 1, min(L.low, v), max(R.high, v)) and update the global best with that size. If not, return (False, 0, -infinity, +infinity), which makes every ancestor fail too, while the best found deeper stays recorded.
+
+    Each node is visited once with constant work, so the time is O(n) and the stack is O(h). The tempting alternative of running a full validity check at every node is O(n²) on a skewed tree.
+  check: none
