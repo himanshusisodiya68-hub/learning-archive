@@ -1,0 +1,99 @@
+# Logic gates and Boolean algebra. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A gate has 3 input wires, each 0 or 1. How many rows does its full truth table have?
+  ask: Rows
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: 2**3
+  sol: Each input has 2 possible values and the inputs are independent, so the rows number $2 \times 2 \times 2 = 2^3 = 8$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which gate outputs 1 only when its two inputs are different?
+  opts: ["AND", "OR", "XOR"]
+  ans: 2
+  sol: XOR (exclusive or) is 1 when exactly one input is 1. AND needs both to be 1, and OR is also 1 when both are 1.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A ripple-carry adder adds the 4-bit numbers 0111 and 0101. What is the result, written in decimal?
+  ask: Sum
+  unit: ""
+  ans: 12
+  tol: 0.1
+  verify: parseInt("0111", 2) + parseInt("0101", 2)
+  sol: 0111 is 7 and 0101 is 5, so the sum is 12, which is 1100 in binary. The rightmost column adds 1+1, giving sum 0 and carry 1, and the carry ripples through the next two columns.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: By De Morgan's law, NOT (A AND B) is the same as which expression?
+  opts: ["(NOT A) AND (NOT B)", "(NOT A) OR (NOT B)", "A OR B"]
+  ans: 1
+  sol: "NOT(A AND B) is 1 unless both A and B are 1, that is, whenever at least one of them is 0. That is (NOT A) OR (NOT B). Check the row A = 1, B = 0: the left side is NOT(0) = 1, and the right side is 0 OR 1 = 1."
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Using only NAND gates, build an OR gate. Say how many gates you use and why it works.
+  sol: |
+    Use three NAND gates. Two of them, each with both inputs tied to one of the inputs, give NOT A and NOT B. A third NAND takes those two as inputs.
+
+    Why it works: $\text{NAND}(\lnot A, \lnot B) = \lnot(\lnot A \land \lnot B)$. By De Morgan's law this equals $A \lor B$. Check by truth table: the output is 0 only when both $\lnot A$ and $\lnot B$ are 1, that is only when A = B = 0.
+    ```python
+    def NAND(a, b): return 1 - (a & b)
+    def OR(a, b):   return NAND(NAND(a, a), NAND(b, b))
+    ```
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: In a 32-bit ripple-carry adder, suppose each full adder passes its carry to the next in 2 gate delays. About how many gate delays does the carry take to travel through all 32 columns?
+  ask: Gate delays
+  unit: ""
+  ans: 64
+  tol: 0.1
+  verify: 32*2
+  sol: The carry passes through 32 full adders in turn, each costing 2 gate delays, so the path is about $32 \times 2 = 64$ delays. The result is ready only after the slowest path, which is why wide ripple adders are slow and carry-lookahead was invented.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Show that XOR can be built from four NAND gates. Give the wiring and verify it on the row A = 1, B = 0.
+  sol: |
+    Let $n = \text{NAND}(A, B)$. Then compute $p = \text{NAND}(A, n)$ and $q = \text{NAND}(B, n)$, and output $\text{NAND}(p, q)$. That is four gates.
+
+    Check A = 1, B = 0. Then $n = \text{NAND}(1,0) = 1$. $p = \text{NAND}(1,1) = 0$ and $q = \text{NAND}(0,1) = 1$. The output is $\text{NAND}(0,1) = 1$, which matches XOR(1, 0) = 1.
+
+    Check A = 1, B = 1: $n = 0$, so $p = q = 1$, and the output is $\text{NAND}(1,1) = 0$, matching XOR(1, 1) = 0. The rows 0,0 and 0,1 check the same way.
+    ```python
+    def NAND(a, b): return 1 - (a & b)
+    def XOR(a, b):
+        n = NAND(a, b)
+        return NAND(NAND(a, n), NAND(b, n))
+    ```
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Show that you cannot build a NOT gate out of AND gates and OR gates alone, however many you use. (Assume you may also feed in constant 0 and 1.)
+  sol: |
+    Look at what AND and OR do to a change in the input: they are **monotone**. If you switch any input from 0 to 1, the output can only stay the same or go from 0 to 1; it never goes from 1 to 0. Check: AND(a, b) and OR(a, b) never decrease when an input rises.
+
+    A circuit built from monotone gates is monotone too, because each gate passes along a non-decreasing change and a chain of non-decreasing steps is non-decreasing. Constants do not change this.
+
+    But NOT is not monotone: raising x from 0 to 1 drops the output from 1 to 0. So no circuit of AND and OR gates, with constants, can equal NOT. Some gate with an inverting action (NOT, NAND or NOR) is essential, which is why NAND on its own is universal.
+  check: none

@@ -150,3 +150,82 @@
     $$\frac Jm=\frac{Jh}{\tfrac25mR^2}\,R\ \Rightarrow\ h=\tfrac25R=\tfrac25(2.8\ \text{cm})=1.12\ \text{cm}.$$
     Strike lower and the ball slides with backspin; strike higher and it has topspin and the table's friction drives it forward. The result is independent of the ball's mass. (Original problem.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A thin hoop rolls without slipping along a level floor and then up a smooth-surfaced but rough ramp, rising to a vertical height of 0.90 m before it momentarily stops. Find its speed on the level floor. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Speed on the floor
+  unit: m/s
+  ans: 2.97
+  tol: 0.02
+  verify: sqrt(9.8*0.9)
+  sol: |
+    Rolling without slipping, the friction does no work, so mechanical energy is conserved. For a hoop $k=1$, so the kinetic energy on the floor is $\tfrac12mv^2(1+1)=mv^2$. At the top it has stopped and all of it has become $mgh$. Hence $mv^2=mgh$ and $v=\sqrt{gh}=\sqrt{9.8\times0.90}=2.97$ m/s.
+
+    A sliding block would need only $\sqrt{2gh}=4.2$ m/s, because it has no spin energy to supply. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A yo-yo is modelled as a uniform solid disc of mass 3.0 kg and radius 0.20 m, with a light string wound round its rim. The free end of the string is tied to the ceiling and the disc is released. Find the tension in the string while the disc falls. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 9.8
+  tol: 0.05
+  verify: 3*9.8/3
+  sol: |
+    Let the centre fall with acceleration $a$ and the disc spin with $\alpha=a/R$ (the string does not slip on the rim, so the top of the disc where the string leaves is at rest, as in rolling). Along the vertical, $mg-T=ma$. About the centre only the tension has a torque: $TR=I\alpha=\tfrac12mR^2\cdot a/R$, so $T=\tfrac12ma$.
+
+    Then $mg-\tfrac12ma=ma$ gives $a=\tfrac23g=6.5$ m/s$^2$, and $T=\tfrac12m\cdot\tfrac23g=\tfrac13mg=\tfrac13\times3.0\times9.8=9.8$ N. The yo-yo falls at two thirds of free fall, and the string carries one third of the weight. (Original problem.)
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A wheel rolls without slipping with its centre moving at 4.0 m/s. A point on the rim is at the position where its radius makes an angle of 60° with the upward vertical (the top of the wheel is at 0°). Find the speed of that point relative to the road. (Original problem.)
+  ask: Speed of the point
+  unit: m/s
+  ans: 6.93
+  tol: 0.02
+  verify: 2*4.0*cos(rad(30))
+  sol: |
+    At each instant the wheel turns about the contact point, so the speed of a point is $\omega$ times its distance from the contact point. The top is $2R$ away; a rim point at angle $\phi$ from the top is $2R\cos(\phi/2)$ away (by the right angle in a semicircle, the chord from the contact point to the rim point has this length). Its speed is $\omega\cdot2R\cos(\phi/2)=2v\cos(\phi/2)$.
+
+    With $\phi=60^\circ$ and $v=4.0$ m/s: $2\times4.0\times\cos30^\circ=6.93$ m/s. (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A spool has an outer radius $R=0.10$ m and an axle of radius $r=0.060$ m. A string leaves the bottom of the axle and is pulled with a force at an angle $\theta$ above the horizontal, on a rough table, so that the spool does not slip. Find the angle at which the spool neither rolls towards nor away from the person pulling. (Original problem.)
+  ask: Critical angle
+  unit: degrees
+  ans: 53.13
+  tol: 0.05
+  verify: deg(acos(0.06/0.10))
+  sol: |
+    Take torques about the contact point $C$ of the spool with the table. The weight acts through the centre, which is directly above $C$, and the normal force and friction act at $C$ itself, so none of them has a torque about $C$. Only the string's force $F$ has a torque, equal to $F$ times the perpendicular distance from $C$ to the string.
+
+    The string leaves the lower side of the axle, so it is a tangent to the axle circle (centre $O$ at height $R$ above $C$, radius $r$). The line makes angle $\theta$ with the horizontal; the distance from $O$ to it is $r$, and the distance from $C$ to it is $R\cos\theta-r$. The torque vanishes, and the spool stays put, when $R\cos\theta=r$:
+    $$\theta=\cos^{-1}\frac rR=\cos^{-1}0.60=53.1^\circ.$$
+    Below this angle the spool rolls towards the puller, above it away. (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A uniform solid sphere of radius $R$ is launched along a rough horizontal floor with a forward speed of 4.0 m/s and a backspin, whose rim speed $\omega_0R$ is 7.0 m/s. Friction acts until the sphere rolls without slipping. Find its final speed and say which way it is moving (give the final speed as positive if it moves forward, negative if backward). (Original problem.)
+  ask: Final velocity (forward positive)
+  unit: m/s
+  ans: 0.857
+  tol: 0.005
+  verify: (4.0-0.4*7.0)/1.4
+  sol: |
+    Take angular momentum about a point on the floor beneath the centre. Friction acts along the floor, so it has no torque about that point, and gravity and the normal force cancel. So that angular momentum is conserved.
+
+    Initially the centre moves forward at $v_0=4.0$ m/s, giving $mv_0R$ (clockwise, say, for a ball moving to the right). Backspin turns the ball the other way, giving $-I\omega_0=-\tfrac25mR^2\omega_0$, so $L_i=mR\,(v_0-\tfrac25\omega_0R)$. Finally, rolling forward at $v$, $L_f=mvR+\tfrac25mR^2(v/R)=\tfrac75mvR$. Equating:
+    $$v=\frac{v_0-\tfrac25\omega_0R}{1+\tfrac25}=\frac{4.0-2.8}{1.4}=0.857\ \text{m/s}.$$
+    It ends up rolling slowly forward. Had the backspin been larger ($\omega_0R>10$ m/s) the answer would be negative: the ball would turn round and come back, as a well-struck "draw" shot in billiards does. (Original problem.)
+  check: code

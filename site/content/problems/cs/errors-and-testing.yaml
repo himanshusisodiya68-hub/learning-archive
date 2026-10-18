@@ -1,0 +1,133 @@
+# Errors and testing. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "What does this print? try: int('x') / except ValueError: print('A') / else: print('B') / finally: print('C')"
+  opts: ["A then C", "B then C", "A then B then C"]
+  ans: 0
+  sol: int('x') raises ValueError, so the except block runs and prints A. The else block runs only when try succeeds, so B is skipped. The finally block always runs, so C prints last.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A suite has 2000 tests. Each one that calls a real server takes 2 seconds. How many minutes would the whole suite take, to one decimal place?
+  ask: Minutes
+  unit: min
+  ans: 66.7
+  tol: 0.1
+  verify: 2000*2/60
+  sol: $2000 \times 2 = 4000$ seconds, and $4000 / 60 \approx 66.7$ minutes. Nobody runs a suite that slow on every change, which is why tests use fast fakes instead of real servers.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A pytest test is decorated with two stacked parametrize decorators, one with 3 values and one with 4 values. pytest runs every combination. How many test runs result?
+  ask: Test runs
+  unit: ""
+  ans: 12
+  tol: 0.1
+  verify: 3*4
+  sol: Stacked parametrize decorators form the full cross product, so $3 \times 4 = 12$ runs. Beware how quickly this grows when you add a third decorator.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "A function receives a user's date of birth typed into a form. A future date arrives. Which handling is right?"
+  opts: ["assert dob <= today", "raise ValueError('date of birth is in the future')", "Silently replace it with today's date"]
+  ans: 1
+  sol: A user mistyping is something a correct program must expect, so it is a case for raise, which also works when assertions are switched off with -O. Assert is for conditions that only a bug can break; silently replacing the value hides the problem.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "You are asked to write second_largest(nums), returning the second-largest distinct value of a list. Before writing any code, list the test cases you would write, and say how the function should behave for each unusual one."
+  sol: |
+    Edge cases first, then the ordinary ones:
+
+    - **Empty list**: no answer exists; raise `ValueError("need at least two distinct values")`.
+    - **One item**, e.g. `[7]`: same error.
+    - **All equal**, e.g. `[5, 5, 5]`: there is no second distinct value; same error. (State the assumption "distinct" aloud; if the interviewer means "second in sorted order including duplicates", the answer is 5.)
+    - **Two items**, `[3, 9]`: returns 3.
+    - **Duplicated maximum**, `[9, 9, 4]`: returns 4 (a classic bug is returning 9).
+    - **Negatives**, `[-3, -1, -2]`: returns -2.
+    - **Unsorted ordinary**, `[4, 1, 8, 6]`: returns 6.
+    - **Very large input**: the function should be O(n), a single pass, not a sort of a million items for no reason.
+
+    Writing these first (red), then the code (green), is the test-driven way: the cases define the behaviour.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A teammate wrote this. What can go wrong, and how would you fix it? def load_price(text): try: return float(text) / except: return 0"
+  sol: |
+    The bare `except` catches every error, including bugs and even Ctrl-C (a bare `except:` also catches KeyboardInterrupt), and returns 0. A mistyped price "12O" would silently become 0, and an item would be sold for free, with no trace of why.
+
+    Fix: catch only the failure you expect and either raise a clearer error or return a deliberate marker.
+    ```python
+    def load_price(text):
+        try:
+            return float(text)
+        except ValueError as e:
+            raise ValueError(f"bad price: {text!r}") from e
+    ```
+    Now the caller that knows how to recover (show a message, skip the row) catches `ValueError`; everything else still surfaces. Add tests for a good price, a bad price (`pytest.raises`), and an empty string.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: "Write pay_with_retry(bank, amount, tries=3), which retries bank.debit on TimeoutError and re-raises the error after the last try. Then write a test, with a fake bank and no real waiting, showing it succeeds when the first two attempts time out."
+  sol: |
+    Use a loop, and re-raise only on the final attempt.
+    ```python
+    def pay_with_retry(bank, amount, tries=3):
+        for attempt in range(tries):
+            try:
+                return bank.debit(amount)
+            except TimeoutError:
+                if attempt == tries - 1:
+                    raise
+    ```
+    The fake fails a chosen number of times, then succeeds, and counts calls.
+    ```python
+    class FlakyBank:
+        def __init__(self, failures):
+            self.failures, self.calls = failures, 0
+
+        def debit(self, amount):
+            self.calls += 1
+            if self.calls <= self.failures:
+                raise TimeoutError()
+            return "ok"
+
+    def test_succeeds_on_third_try():
+        bank = FlakyBank(2)
+        assert pay_with_retry(bank, 100) == "ok"
+        assert bank.calls == 3
+    ```
+    Add a second test with `FlakyBank(3)` and `pytest.raises(TimeoutError)` to check that it gives up. In real code you would also wait between tries (growing delays) and, crucially, make the debit idempotent, because a timeout does not tell you whether the bank already took the money.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "A user taps Pay, the request times out, and the user taps again. How can the system avoid charging twice, and which tests would you write to prove it? This is the hardest question in the set; a sketch is enough."
+  sol: |
+    The timeout is ambiguous: the bank may or may not have processed the first request, so a blind retry can charge twice.
+
+    **Idempotency key.** The app generates one unique id per payment attempt (for example when the user opens the pay screen) and sends it with every request. The server stores the result of the first request under that id. A repeated request with the same id returns the stored result instead of charging again. [Inference: a common design, widely used by payment providers; exact details vary.]
+
+    **Tests:**
+    1. Send the same request id twice to a fake server; assert exactly one debit was recorded and both responses match.
+    2. Send two different ids with the same amount; assert two debits (do not over-deduplicate).
+    3. Fake a timeout *after* the server has recorded the debit, then retry; assert still one debit.
+    4. Run the two requests concurrently; assert one debit (needs a unique constraint or lock on the id).
+
+    The lesson: error handling that is safe for one machine (try again) becomes dangerous across a network unless the operation itself is designed to be repeatable.
+  check: none

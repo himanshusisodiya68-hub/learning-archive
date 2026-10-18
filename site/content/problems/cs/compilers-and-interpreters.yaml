@@ -1,0 +1,107 @@
+# Compilers and interpreters. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    The line `total = price * 3 + tax` is cut into tokens (names, numbers, operators). Spaces are discarded. How many tokens does it have?
+  ask: Tokens
+  unit: ""
+  ans: 7
+  tol: 0.1
+  verify: "['total','=','price','*','3','+','tax'].length"
+  sol: The tokens are `total`, `=`, `price`, `*`, `3`, `+`, `tax`, which is 7.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these runs by first compiling to bytecode and then having a virtual machine execute that bytecode?
+  opts: ["A C program compiled with an optimising compiler", "A Java program", "A recipe written on paper"]
+  ans: 1
+  sol: Java source is compiled to bytecode for the Java Virtual Machine, which runs it (often compiling the hot parts to machine code with a JIT). CPython does something similar. A C program is normally compiled straight to machine code.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    A loop runs 100 million times. In CPython each pass takes about 80 nanoseconds. How many seconds does the loop take?
+  ask: Time
+  unit: s
+  ans: 8
+  tol: 0.01
+  verify: 1e8*80e-9
+  sol: $10^8 \times 80\times10^{-9}\ \text{s} = 8$ seconds. (The 80 ns per pass is an assumed round figure; real values depend on the machine, the version and the loop body. [Inference])
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    A program compiled ahead of time takes 30 seconds to compile once, then 0.5 s per run. Interpreted, it takes 4 s per run with no compile step. What is the smallest number of runs for which compiling gives the lower total time?
+  ask: Runs
+  unit: ""
+  ans: 9
+  tol: 0.1
+  verify: ceil(30/(4-0.5))
+  sol: |
+    Compiled total after $n$ runs is $30 + 0.5n$; interpreted is $4n$. Compiling is better when $30 + 0.5n < 4n$, so $n > 30/3.5 \approx 8.57$. The smallest whole number is $n = 9$ (34.5 s against 36 s; at 8 runs it is 34 s against 32 s).
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: |
+    A simple stack-based virtual machine has instructions LOAD name, ADD, MUL and SUB (each of the last three takes the top two values off the stack and pushes the result). Write the instruction list for the expression `(a + b) * c - d`.
+  sol: |
+    Walk the syntax tree, visiting the operands before the operator (post-order):
+    ```text
+    LOAD a
+    LOAD b
+    ADD          # a + b
+    LOAD c
+    MUL          # (a + b) * c
+    LOAD d
+    SUB          # ((a + b) * c) - d
+    ```
+    Brackets and precedence have disappeared: the order of the instructions carries the grammar. This is why the tree stage exists, and CPython's bytecode is built the same way.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A colleague says, "Our Python service is slow, so let's rewrite it in C++." List the questions you would ask and the cheaper options you would try first.
+  sol: |
+    Questions: Where does the time go (profile)? Is the code CPU-bound or waiting on I/O? Is the algorithm sound (is something $O(n^2)$ that could be $O(n \log n)$)? How often does this code change, and who will maintain C++?
+    Cheaper options, in order: (1) fix the algorithm or data structure; (2) cache repeated work; (3) use vectorised libraries such as NumPy that run the loop in compiled code; (4) try an implementation with a JIT, or compile only the hot function (Cython, Numba); (5) only then rewrite a small, stable, CPU-bound component. A rewrite lowers the cost per operation, but the number of operations is usually where the biggest wins are.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A JIT compiler sees a function called 10,000 times, always with integer arguments, and compiles a fast integer version. On call 10,001 a string arrives. Describe what the system must do and what this shows about the JIT's design.
+  sol: |
+    The compiled code starts with a **guard** that checks the assumption "both arguments are integers". On call 10,001 the guard fails, so the system abandons the specialised machine code for this call (**deoptimisation**) and resumes in the slower general path (interpreter or less specialised code), which handles strings correctly. If this happens repeatedly it may recompile a more general version.
+    This shows that a JIT works by making **bets from observed behaviour**, protected by cheap guards and a safe fallback. The bet is what lets it beat code compiled without that knowledge; the guard and fallback keep it correct. The costs are warm-up time, the memory used by the compiler, and run-to-run variation.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Write a Python function evaluate(text) that computes strings such as "2 + 3 * 4" (whole numbers, only + and *, spaces between tokens) with multiplication before addition, without using eval. Explain which of the pipeline stages your code performs.
+  sol: |
+    ```python
+    def evaluate(text):
+        tokens = text.split()                  # stage 1: tokens
+        total, i = 0, 0
+        while i < len(tokens):                 # stage 2: group into terms
+            product = int(tokens[i]); i += 1
+            while i < len(tokens) and tokens[i] == "*":
+                product *= int(tokens[i + 1]); i += 2
+            total += product                   # stage 4: run
+            i += 1                             # skip the '+'
+        return total
+    ```
+    `evaluate("2 + 3 * 4")` gives 14. Splitting on spaces is the token stage. The inner loop groups each run of `*` into a **term** (the lower level of the tree), and the outer loop adds the terms (the top level), so precedence is built into the structure of the loops rather than a stored tree. A full implementation would build an explicit tree, then compile it to stack instructions as in problem m1.
+  check: none

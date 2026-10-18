@@ -1,0 +1,101 @@
+# Objects and classes. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A Batter object has runs = 45 and balls = 30. Its strike_rate method returns runs per 100 balls. What does it return?
+  ask: Strike rate
+  unit: ""
+  ans: 150
+  tol: 0.01
+  verify: 100*45/30
+  sol: The strike rate is $100 \times \text{runs} / \text{balls} = 100 \times 45 / 30 = 150$. The method reads the object's own state through self, so the caller does not pass runs or balls in.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Inside the method def score(self, runs): ... what does self refer to?"
+  opts: ["The class Batter itself", "The particular object the method was called on", "The value of runs"]
+  ans: 1
+  sol: When you write asha.score(4), Python calls Batter.score with self set to asha. That is why asha and ravi can share one blueprint but keep separate state.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A game has 5 kinds of weapon and 6 kinds of armour. If every weapon-and-armour pairing were its own subclass, how many more classes would you write than if weapon and armour were 5 and 6 separate parts that a Player holds?
+  ask: Extra classes
+  unit: ""
+  ans: 19
+  tol: 0.1
+  verify: 5*6-(5+6)
+  sol: Subclass per pairing gives $5 \times 6 = 30$ classes. Composition needs one class per weapon and one per armour, $5 + 6 = 11$. The difference is $30 - 11 = 19$, and it grows with every kind you add.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "A class stores self._balance and exposes only deposit(amount) and withdraw(amount). Why is this safer than a public balance attribute?"
+  opts: ["It uses less memory", "The no-overdraft rule is checked in one place, because every change must pass through withdraw", "Python then makes it impossible to read the balance"]
+  ans: 1
+  sol: Funnelling every change through methods lets the object enforce its invariant (balance never negative) once. It costs no memory saving, and Python's underscore is only a convention, so the balance can still be read (and, if someone ignores the convention, written).
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "An interviewer says 'Design a parking lot.' List the main classes, one piece of state and one method for each, and say what you would model with composition."
+  sol: |
+    Start from the nouns. A reasonable answer:
+
+    - `Vehicle`: state `plate`, `size` (bike, car, bus); method `fits(spot)`.
+    - `Spot`: state `size`, `occupied_by`; methods `park(vehicle)`, `free()`.
+    - `Level`: holds many `Spot` objects; method `find_spot(vehicle)`.
+    - `Lot`: holds many `Level` objects, a `Pricing` object and an active-tickets table; methods `enter(vehicle)`, `exit(ticket)`.
+    - `Ticket`: state `plate`, `entry_time`, `spot`.
+    - `Pricing`: method `fee(duration)`.
+
+    Composition: a `Lot` has `Level`s, a `Level` has `Spot`s, and a `Lot` has a `Pricing` object. Because pricing is a separate part, hourly, flat and weekend rates can be swapped without touching `Lot`. Inheritance is not needed except possibly for vehicle kinds, and even there a `size` field is simpler. Say the invariant aloud: a spot holds at most one vehicle.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "This class has a bug. Two carts created with no arguments end up sharing items. Find and fix it. class Cart: def __init__(self, items=[]): self.items = items"
+  sol: |
+    A default value is created once, when the function is defined, so every call that omits the argument receives the same list object. Both carts point at one list.
+
+    Fix: use `None` as the default and make a fresh list inside.
+    ```python
+    class Cart:
+        def __init__(self, items=None):
+            self.items = list(items) if items else []
+    ```
+    Copying with `list(items)` also stops the cart from sharing a list with its caller.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: "A class Square inherits from Rectangle, which has set_width and set_height. Explain why this violates the Liskov substitution principle, and what you would do instead."
+  sol: |
+    Code written against `Rectangle` may assume that setting the width does not change the height. A `Square` must keep both equal, so `set_width(5)` also changes the height. A function that sets width 5 and height 2 and expects area 10 gets 4 with a `Square`: the child surprises code that was correct for the parent.
+
+    Instead, do not use inheritance. Either make shapes immutable values that each know their own `area()` (a `Square(side)` and a `Rectangle(w, h)` with no setters), or give both a common behaviour (`area()`) through duck typing. The mistake was treating "a square is a kind of rectangle" in maths as "a Square class behaves like a Rectangle class" in code; behaviour with mutation is what counts.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Two Account objects. transfer(a, b, amount) calls a.withdraw(amount) and then b.deposit(amount). Suppose deposit raises an error after withdraw has succeeded. What invariant is broken, and how would you redesign so it holds? This is the hardest question in the set; a sketch is enough."
+  sol: |
+    The broken invariant is conservation of money: the total across all accounts should not change in a transfer. Here the amount has left `a` and never reached `b`; it has vanished.
+
+    Redesigns, from simple to strong:
+    1. **Undo on failure:** wrap the deposit in a try block; if it fails, put the money back with `a.deposit(amount)` before re-raising. (This itself can fail, so it only narrows the gap.)
+    2. **Check first, then act:** validate everything that can fail (is `b` open, is the amount valid) before touching either balance, so that the two updates are as unlikely to fail as possible.
+    3. **Make it one indivisible step:** a database transaction that either applies both changes or neither (atomicity), and a lock or version check so two transfers cannot interleave.
+
+    The lesson for objects: encapsulating each account protects each account's own rule, but a rule that spans two objects needs an owner too, such as a `Bank` or a transaction. How errors are signalled and handled is the subject of the next lesson.
+  check: none

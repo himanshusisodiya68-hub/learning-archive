@@ -1,0 +1,108 @@
+# Variables and memory. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "Python code: `a = [1, 2, 3]`, then `b = a`, then `b.append(4)`, then `b.append(5)`. What is `len(a)` at the end?"
+  ask: len(a)
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: 3+1+1
+  sol: "`b = a` makes a second name for the same list, so both appends change the one list that `a` also points at. It started with 3 items and gained 2, so `len(a)` is 5."
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these Python values can be changed in place after it is created?
+  opts: ["A tuple like (1, 2)", "A dictionary like {'x': 1}", "A piece of text like 'hello'"]
+  ans: 1
+  sol: Dictionaries are mutable, so `d['y'] = 2` changes the same object. Tuples and text are immutable, so any "change" builds a new object.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "Python code: `grid = [[0] * 3] * 4`, then `grid[2][1] = 7`. How many cells of `grid` now hold the value 7?"
+  ask: Cells equal to 7
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: 4
+  sol: "`[[0] * 3] * 4` repeats the pointer to one inner list four times, so there is only one row and four names for it. Setting `grid[2][1]` changes that one row, and the 7 shows in all 4 rows. The grid has 4 rows with one 7 in each, so 4 cells are 7. The safe version is `[[0] * 3 for _ in range(4)]`."
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "After `a = [1, 2, 3]` and `b = [1, 2, 3]` (typed separately), what do `a == b` and `a is b` give?"
+  opts: ["True and True", "True and False", "False and False"]
+  ans: 1
+  sol: "`==` compares contents, which are equal, so it is `True`. `is` asks whether the two names point at the same object. Two separate list expressions build two objects, so it is `False`."
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "A teammate writes `def add_item(item, cart=[]): cart.append(item); return cart`. Two different customers each call `add_item('pen')` with no cart, and the second customer sees two pens. Explain what happened and fix the function."
+  sol: |
+    **What happened.** The default value `[]` is created once, when the `def` line runs, and stored with the function. Every call that omits `cart` receives the same list. The first customer's pen was appended to that shared list, so the second call appends to the list that already holds a pen.
+
+    **Fix.** Use `None` as the default and make a fresh list inside the call:
+
+    ```python
+    def add_item(item, cart=None):
+        if cart is None:
+            cart = []
+        cart.append(item)
+        return cart
+    ```
+
+    Now each call without a cart gets its own new list. Using `is None` (not `if not cart`) matters, because an empty list passed by the caller is a valid cart and must not be replaced.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A function `normalise(scores)` is documented as 'returns the scores sorted from high to low, and never changes the caller's list', but the body is `scores.sort(reverse=True); return scores`. Show the bug with an example, give two fixes, and say what `list.sort()` returns."
+  sol: |
+    **The bug.** `scores.sort(...)` mutates the very list the caller passed in, because the parameter is just a second name for the caller's list. Example: with `data = [3, 9, 5]`, calling `normalise(data)` leaves `data` equal to `[9, 5, 3]`, which breaks the promise.
+
+    **Fixes.**
+    1. `return sorted(scores, reverse=True)`, since `sorted` builds a new list.
+    2. Or copy first: `result = scores.copy(); result.sort(reverse=True); return result`.
+
+    **Return value.** `list.sort()` returns `None`, by design, to signal that it changed the list in place. A common bug is `scores = scores.sort()`, which sets `scores` to `None`.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "Python code: `x = [0] * 3`, then `y = [x] * 2`, then `z = [x[:], x]`. Counting `x`, `y`, `z` and every list created by the slice, how many distinct list objects exist? (The three zeros are integers, not lists.)"
+  ask: Distinct list objects
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: 1+1+1+1
+  sol: |
+    - `x` is one list (1 object).
+    - `y = [x] * 2` makes one new outer list holding two pointers to `x` (1 more object, and no copy of `x`).
+    - `x[:]` makes a copy of `x`, a new list (1 more).
+    - `z` is a new outer list holding the copy and `x` itself (1 more).
+
+    Total $1 + 1 + 1 + 1 = 4$ distinct lists. Note that `y[0] is y[1]` and `z[1] is x`, but `z[0] is x` is `False`.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "A web service keeps a dictionary `sessions` mapping user id to a session object, and each session also holds a pointer to a `Connection` object that in turn points back at the session. Memory use climbs steadily over days even though old users log out. Give at least three distinct reasons this can happen in a garbage-collected language, and how you would fix or find each."
+  sol: |
+    1. **The dictionary never lets go.** Logging out may not delete the entry, so a name (the dict) still points at the session and it can never be freed. Fix: `sessions.pop(user_id, None)` on logout, plus expiry for sessions that were abandoned. Find it by counting `len(sessions)` over time.
+    2. **A cycle that is slow to be cleaned.** Session and Connection point at each other, so reference counts never reach zero by themselves. CPython's cyclic collector will eventually free them, but only when it runs, and objects that define cleanup hooks or that live in older generations may linger. Fix: break the cycle on close (`conn.session = None`) or make the back-pointer a `weakref`.
+    3. **An unbounded cache or log.** A list or dict that only grows (recent requests, memoised results) keeps everything alive. Fix: bound it (a size-limited LRU cache), or hold values through `weakref.WeakValueDictionary` so unused entries can vanish.
+    4. **Closures and callbacks.** A registered callback (an event handler, a timer) keeps its captured variables, and through them large objects, alive. Fix: unregister handlers on close.
+
+    **Finding it in practice.** Take two snapshots of object counts by type (the `gc` module, or `tracemalloc` for allocation sites) a few hours apart and compare: the type whose count only rises is the leak, and the referrers of one instance show who holds it. [Inference] The exact collector behaviour depends on the Python version.
+  check: none

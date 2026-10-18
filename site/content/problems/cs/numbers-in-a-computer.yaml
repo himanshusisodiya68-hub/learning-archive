@@ -1,0 +1,99 @@
+# How computers store numbers. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: What is the largest whole number an 8-bit signed (two's complement) box can hold?
+  ask: Largest value
+  unit: ""
+  ans: 127
+  tol: 0.1
+  verify: 2**7-1
+  sol: With 8 bits the signed range is $-2^{7}$ to $2^{7}-1$, that is $-128$ to $127$. The top bit is spent on the sign, leaving 7 bits for the size of positive numbers.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: In 8-bit two's complement, which pattern stands for -1?
+  opts: ["10000001", "11111111", "10000000"]
+  ans: 1
+  sol: One step back from 00000000 is 11111111, so that is -1. Check with place values -128+64+32+16+8+4+2+1 = -1. The pattern 10000001 is -127 and 10000000 is -128.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A 32-bit signed integer counts seconds since 1 January 1970. For how many years can it count before it passes its largest value? Use 1 year = 365.25 days.
+  ask: Years
+  unit: years
+  ans: 68.05
+  tol: 0.1
+  verify: 2**31/(365.25*24*3600)
+  sol: The largest value is $2^{31}-1 \approx 2.147\times10^9$ seconds. One year is $365.25\times24\times3600 = 31{,}557{,}600$ seconds, so the counter lasts $2^{31}/31{,}557{,}600 \approx 68.05$ years. From 1970 that ends in January 2038.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In an 8-bit box, the number -20 is stored as a pattern of bits. If that same pattern is read as an ordinary unsigned whole number, what value is it?
+  ask: Unsigned value
+  unit: ""
+  ans: 236
+  tol: 0.1
+  verify: 256-20
+  sol: A negative number $-x$ in $n$ bits has the unsigned value $2^n - x$. So $-20$ is $256-20 = 236$. Check by flip and add 1, since 20 is 00010100 and flipping gives 11101011 and adding 1 gives 11101100, which is $128+64+32+8+4 = 236$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A colleague's billing program adds up item prices as floats and a test `total == 0.3` fails after adding 0.1 and 0.2. Explain the cause in two or three sentences and give two fixes that would suit a billing system.
+  sol: |
+    One tenth and one fifth are repeating fractions in binary (like one third in decimal), so a double stores each as the nearest number it can, a tiny bit off. Adding the two stored values gives 0.30000000000000004, which is one step away from the double stored for 0.3, so `==` says False.
+
+    Fixes: (1) store amounts as integers in the smallest unit (paise), add integers, and divide only when displaying; (2) use a decimal type (Python's `decimal.Decimal` built from strings), which keeps base-10 digits exactly. If floats must be compared, use a tolerance such as `math.isclose`. Equality on floats should not be used for money.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Binary search on a sorted array of 32-bit signed integers uses mid = (lo + hi) // 2. Describe an input where this goes wrong in a language whose integers wrap at 32 bits, and give the safe form.
+  sol: |
+    Take an array of about 2.1 billion entries and a search that has narrowed to lo = 1,500,000,000 and hi = 2,000,000,000. The sum is 3,500,000,000, above the 32-bit maximum of 2,147,483,647, so it wraps to a negative number (3,500,000,000 - 4,294,967,296 = -794,967,296) and mid becomes negative, giving a crash or an endless loop. (Arrays this large are rare, but the bug is real in principle. [Unverified: a similar bug is often credited to a widely used library, from memory.])
+
+    The safe form is `mid = lo + (hi - lo) // 2`. The difference `hi - lo` is never bigger than `hi`, so no sum can leave the range, and the result is the same number.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A double has 52 stored fraction bits plus an implicit leading 1, so 53 significant bits. Find the whole number N such that every whole number from 0 to N is exactly storable, but N + 1 is not.
+  ask: N
+  unit: ""
+  ans: 9007199254740992
+  tol: 0.5
+  verify: Math.pow(2, 53)
+  sol: With 53 significant bits, every integer up to $2^{53}$ can be written exactly. Above $2^{53}$ the spacing between neighbouring doubles is 2, so odd numbers are skipped, and $2^{53}+1$ rounds back to $2^{53}$. That is why `2.0**53 + 1 == 2.0**53` is True, and N = $2^{53}$. $2^{53} = 9{,}007{,}199{,}254{,}740{,}992$, which is why JavaScript, whose numbers are all doubles, warns about integers larger than this.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Adding 0.1 ten times in a plain loop gives 0.9999999999999999, and a million times gives about 100000.00000133288. Explain why the error grows, and write Kahan summation, which keeps the total accurate. (Use an explicit loop for the plain sum; some recent Python versions make the built-in sum() more accurate.)
+  sol: |
+    Each addition rounds to the nearest double, and the stored 0.1 is itself slightly too big. As the running total grows, the gap between neighbouring doubles grows too, so the low bits of each new 0.1 are cut off more and more; the rounding errors of a million additions accumulate, mostly in one direction.
+
+    Kahan summation keeps a second variable, `c`, holding the part of each addition that was lost, and feeds it back into the next one.
+    ```python
+    def kahan(xs):
+        total = c = 0.0
+        for x in xs:
+            y = x - c            # correct x by the lost part
+            t = total + y        # big + small: low bits of y are lost
+            c = (t - total) - y  # recover exactly what was lost
+            total = t
+        return total
+    ```
+    For a million copies of 0.1 it returns 100000.0. The cost is a few extra operations per item and the error no longer depends on the number of items to first order. `math.fsum` goes further and returns the correctly rounded sum.
+  check: none

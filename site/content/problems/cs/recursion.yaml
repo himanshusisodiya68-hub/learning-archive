@@ -1,0 +1,130 @@
+# Recursion. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: 'Using factorial(n) = n * factorial(n - 1) with factorial(1) = 1, what is factorial(6)?'
+  ask: Value
+  unit: ""
+  ans: 720
+  tol: 0.1
+  verify: 6*5*4*3*2*1
+  sol: $6! = 6 \times 5! = 6 \times 120 = 720$. Unwinding the calls gives 1, 2, 6, 24, 120, 720.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A recursive function has no base case. What will Python do when it is called?
+  opts: ["Return None", "Raise RecursionError after about 1000 nested calls", "Run forever using no extra memory"]
+  ans: 1
+  sol: Each call makes another call, so frames pile up on the call stack. Python stops at its recursion limit (about 1000 by default) with a RecursionError. The stack would not use "no memory"; every frame takes some.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: 'The naive fib(n) (with fib(0) = 0, fib(1) = 1) makes T(n) calls, where T(0) = T(1) = 1 and T(n) = 1 + T(n-1) + T(n-2). How many calls does fib(6) make in total?'
+  ask: Calls
+  unit: ""
+  ans: 25
+  tol: 0.1
+  verify: 2*13 - 1
+  sol: |
+    Build the table: $T(0)=1, T(1)=1, T(2)=3, T(3)=5, T(4)=9, T(5)=15, T(6)=1+15+9=25$.
+    (Check with the shortcut $T(n) = 2F(n+1) - 1$ where $F(7) = 13$: $2 \times 13 - 1 = 25$.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: 'A recursive function f(n) returns immediately when n is 1, and otherwise calls f(n // 2) once (integer halving). Starting with n = 1024, how many calls are made in total, counting the first?'
+  ask: Calls
+  unit: ""
+  ans: 11
+  tol: 0.1
+  verify: log2(1024) + 1
+  sol: The arguments are 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1. That is $\log_2 1024 + 1 = 10 + 1 = 11$ calls. Halving each time gives a depth of $O(\log n)$, as in binary search.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Write a recursive function is_palindrome(s) that returns True if the string reads the same forwards and backwards. State the base case and say what the recursive step shrinks.
+  sol: |
+    A string is a palindrome if its two end letters match and the part between them is also a palindrome.
+    ```python
+    def is_palindrome(s):
+        if len(s) <= 1:          # base case: empty or one letter
+            return True
+        if s[0] != s[-1]:
+            return False
+        return is_palindrome(s[1:-1])
+    ```
+    The base case is a string of length 0 or 1, which always reads the same both ways. Each call removes two letters, so the length shrinks by 2 and the base case is reached. The depth is about n / 2. Slicing copies the string each time, so the total work is $O(n^2)$ in the worst case; an index-based two-pointer loop does the same job in $O(n)$ time and $O(1)$ space.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A staircase has n steps and you may climb 1 or 2 steps at a time. Write a recursive function ways(n) that counts the different ways to reach the top. How does the cost of the plain version compare with a memoised one?
+  sol: |
+    To arrive at step n, the last move was either 1 step from step n-1 or 2 steps from step n-2, so $\text{ways}(n) = \text{ways}(n-1) + \text{ways}(n-2)$, with base cases ways(0) = 1 (do nothing) and ways(1) = 1.
+    ```python
+    from functools import cache
+
+    @cache
+    def ways(n):
+        if n <= 1:
+            return 1
+        return ways(n - 1) + ways(n - 2)
+    ```
+    Without `@cache` this is the same shape as naive Fibonacci: two calls on smaller sizes, so an exponential number of calls (about $1.6^n$) because the same sub-problems repeat. With the cache each value of n is computed once, so there are $n + 1$ real calls and the cost is $O(n)$ time and $O(n)$ space (including the recursion depth). A loop that keeps only the last two values runs in $O(n)$ time and $O(1)$ space.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: 'Write a function flatten(x) that turns a list nested to any depth, such as [1, [2, [3, 4]], 5], into one flat list [1, 2, 3, 4, 5]. Then explain what goes wrong on a list nested 5000 levels deep and how to fix it.'
+  sol: |
+    Recursive version. An item that is a list is flattened with the same rule; anything else is a single value.
+    ```python
+    def flatten(x):
+        out = []
+        for item in x:
+            if isinstance(item, list):
+                out.extend(flatten(item))
+            else:
+                out.append(item)
+        return out
+    ```
+    The base case is hidden: a list with no inner lists makes no recursive call. On a list nested 5000 deep, the recursion is 5000 frames deep and Python raises RecursionError (default limit about 1000). The fix is to use your own stack in a loop, which lives on the heap and has no such limit:
+    ```python
+    def flatten_iter(x):
+        out, stack = [], [iter(x)]
+        while stack:
+            for item in stack[-1]:
+                if isinstance(item, list):
+                    stack.append(iter(item))
+                    break
+                out.append(item)
+            else:
+                stack.pop()
+        return out
+    ```
+    Raising the recursion limit with sys.setrecursionlimit is possible but risks crashing the interpreter, since the real machine stack is finite.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Prove by induction that the number of calls T(n) made by naive fib(n), where T(0) = T(1) = 1 and T(n) = 1 + T(n-1) + T(n-2), equals 2F(n+1) - 1, where F is the Fibonacci sequence with F(1) = F(2) = 1. What does the result say about how fast the cost grows?
+  sol: |
+    **Base cases.** $T(0) = 1$ and $2F(1) - 1 = 2 - 1 = 1$. $T(1) = 1$ and $2F(2) - 1 = 1$. Both hold.
+
+    **Step.** Assume the formula holds for $n-1$ and $n-2$ (with $n \ge 2$). Then
+    $T(n) = 1 + T(n-1) + T(n-2) = 1 + (2F(n) - 1) + (2F(n-1) - 1) = 2(F(n) + F(n-1)) - 1 = 2F(n+1) - 1.$
+    So the formula holds for $n$, and by induction for every $n \ge 0$.
+
+    **Growth.** Fibonacci numbers grow like $\varphi^n$ with $\varphi = (1+\sqrt 5)/2 \approx 1.618$ (a standard result). So $T(n)$ grows like $\varphi^n$ as well: each increase of n by one multiplies the number of calls by about 1.6. For $n = 30$ this is 2,692,537 calls, matching the formula $2F(31) - 1 = 2 \times 1346269 - 1$. The recursion is a perfect case for induction: its structure is already "base case plus step".
+  check: none

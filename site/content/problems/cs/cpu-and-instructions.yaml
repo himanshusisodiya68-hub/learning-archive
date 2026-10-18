@@ -1,0 +1,92 @@
+# How a CPU runs a program. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A CPU's clock runs at 3 GHz. How long does one clock cycle last, in nanoseconds?
+  ask: Cycle time
+  unit: ns
+  ans: 0.333
+  tol: 0.005
+  verify: 1/3
+  sol: Frequency is ticks per second, so one tick lasts $1/f = 1/(3\times10^9)$ s $= 0.333\times10^{-9}$ s $= 0.333$ ns.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which register holds the address of the next instruction to fetch?
+  opts: ["The program counter", "The accumulator in the adder", "The clock"]
+  ans: 0
+  sol: The program counter (PC) points at the next instruction. The clock is not a register but the beat that drives the circuits, and a jump instruction works by overwriting the PC.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "The toy CPU of the lesson runs this program: LOAD r0, 0; LOAD r1, 5; then a loop of ADD r0, r1; SUBI r1, 1; JNZ r1 back to the ADD; and finally HALT. How many instructions does it execute in total, counting HALT?"
+  ask: Instructions
+  unit: ""
+  ans: 18
+  tol: 0.1
+  verify: 2 + 3*5 + 1
+  sol: 'Two LOAD instructions run once. The loop body (ADD, SUBI, JNZ) is three instructions and runs once per value of the counter, which takes the values 5, 4, 3, 2, 1, so five times: 15 instructions. HALT runs once. The total is $2 + 15 + 1 = 18$, and the register r0 ends as $5+4+3+2+1 = 15$.'
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A pipeline has 5 stages and handles one instruction per cycle once full, with no stalls. How many cycles does it need to complete 100 instructions?
+  ask: Cycles
+  unit: ""
+  ans: 104
+  tol: 0.1
+  verify: 5 + 100 - 1
+  sol: The first instruction needs 5 cycles to pass through all the stages. After that, one more instruction finishes each cycle, so the other 99 take 99 more cycles. The total is $5 + 99 = 104$, compared with $5 \times 100 = 500$ with no overlap.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A program executes 2 billion instructions with an average of 1.5 cycles per instruction on a 3 GHz processor. How many seconds does it take?
+  ask: Run time
+  unit: s
+  ans: 1
+  tol: 0.01
+  verify: 2e9*1.5/3e9
+  sol: Total cycles are $2\times10^9 \times 1.5 = 3\times10^9$. At $3\times10^9$ cycles per second this takes exactly 1 second, from $T = N \times \text{CPI} / f$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Explain why a conditional branch can slow down a pipelined CPU, and how a branch predictor reduces the damage.
+  sol: |
+    A pipeline fetches the next instruction every cycle, but a branch decides which instruction comes next only when it is executed, several stages later. By then the CPU has already fetched instructions after the branch. If the jump is taken, those are the wrong ones and must be thrown away, wasting the cycles they used. That wasted time is the misprediction penalty, often tens of cycles on deep pipelines [Unverified figure].
+
+    A branch predictor guesses the outcome from the branch's history (for example, a loop's jump back is nearly always taken), and the CPU fetches down the guessed path. If the guess is right, no time is lost. Accurate prediction means the penalty is paid rarely, so the average cycles per instruction stays close to 1.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A pipelined CPU finishes one instruction per cycle when there are no problems. One instruction in 5 is a branch, the predictor is wrong 10% of the time, and each wrong guess wastes 15 cycles. What is the average cycles per instruction?
+  ask: Average CPI
+  unit: cycles
+  ans: 1.3
+  tol: 0.01
+  verify: 1 + 0.2*0.1*15
+  sol: 'Each instruction costs 1 cycle. On top of that, 0.2 of instructions are branches, 0.1 of those are mispredicted, and each costs 15 extra cycles: $0.2 \times 0.1 \times 15 = 0.3$. So CPI = 1.3. If the predictor were perfect the CPI would be 1; at 10% misses the program takes 30% longer. Halving the miss rate to 5% would cut the extra to 0.15.'
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Chip makers could in principle raise the clock from 3 GHz to 30 GHz. Give two reasons why it is much harder than it sounds, and say what they did instead to keep making CPUs faster."
+  sol: |
+    First, **power and heat**. A chip's switching power rises roughly in proportion to the clock frequency and to the square of the supply voltage, and higher clocks usually need higher voltage as well, so power rises faster than speed. A 10 times faster clock could mean far more than 10 times the heat, which a small chip cannot shed [Unverified: the exact scaling depends on the process].
+
+    Second, **time per tick**. Each tick must be long enough for the slowest chain of gates and the wires to settle (the gate delay of the previous lesson). At 30 GHz a tick is 33 picoseconds, and a signal in a wire covers only a few millimetres in that time, less than the width of the chip.
+
+    So designers stopped pushing the clock and raised throughput another way: more work per tick (wider, out-of-order cores), better prediction and larger caches to cut waiting, and more cores in parallel. This is why clock speeds have stayed around a few GHz for many years [Unverified].
+  check: none

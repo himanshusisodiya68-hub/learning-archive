@@ -1,0 +1,101 @@
+# Values and types. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A shop bill is ₹249.75. The app stores money as a whole number of paise. What whole number does it store?
+  ask: Stored value
+  unit: paise
+  ans: 24975
+  tol: 0.5
+  verify: round(249.75*100)
+  sol: One rupee is 100 paise, so $249.75 \times 100 = 24975$. Whole numbers add and compare exactly, which is why payment systems prefer them to binary floats.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: What is the type of the value of `10 / 5` in Python?
+  opts: ["int, since 10 and 5 are whole numbers", "float, since / is true division and always gives a float", "str"]
+  ans: 1
+  sol: In Python 3 the `/` operator always returns a float, so `10 / 5` is `2.0`, not `2`. Use `//` when you want a whole number.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: What does `-17 % 5` give in Python?
+  ask: Value
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: ((-17 % 5) + 5) % 5
+  sol: Python floors the division, so `-17 // 5` is `-4`. The remainder is whatever rebuilds the number, $-17 = (-4)\times 5 + r$, so $r = 3$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Which of these four values is false when used as a condition in Python?
+  opts: ["[0]", "\"0\"", "0.0", "\"False\""]
+  ans: 2
+  sol: "`0.0` is a zero number, so it counts as false. `[0]` is a non-empty list, `\"0\"` is non-empty text and `\"False\"` is non-empty text, so all three count as true. Truthiness checks emptiness or zero, not meaning."
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A teammate computes an invoice total by adding float prices such as 19.99, 5.49 and 0.10 and then compares the total with an expected value using `==`. The check fails occasionally. Explain why, and say how you would redesign the calculation.
+  sol: |
+    **Why.** Prices like 19.99 or 0.10 have no exact binary form, so each is stored as a nearby value. The tiny errors can accumulate, and an `==` check demands the exact same stored value, so it fails for some inputs and passes for others, which makes the bug look random.
+
+    **Redesign.**
+    1. Store every price as a whole number of paise (1999, 549, 10). Sums of whole numbers are exact, and `==` is safe.
+    2. Convert to rupees only when showing the amount to a person.
+    3. For percentages (GST at 18%), decide the rounding rule once, for example `(paise * 18 + 50) // 100` to round half up, and apply it in one place.
+    4. If decimals are unavoidable, use `Decimal` with an explicit rounding mode. For measurements, compare with `math.isclose` and a tolerance chosen from the business meaning.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Write a Python function `to_paise(s)` that turns a price string such as "1,299.50", "7" or "7.5" into a whole number of paise without using floats. Say what it does with more than two decimal places.
+  sol: |
+    ```python
+    def to_paise(s):
+        s = s.replace(",", "")
+        rupees, _, paise = s.partition(".")
+        paise = (paise + "00")[:2]
+        return int(rupees) * 100 + int(paise)
+    ```
+    `to_paise("1,299.50")` is `129950`, `to_paise("7")` is `700` and `to_paise("7.5")` is `750`. The text is split at the dot, so no float ever appears. Padding with `"00"` and keeping two digits handles missing decimals. With more than two decimals (`"7.559"`) this version silently truncates to 755, which is a policy choice; a real system would reject the input or round by a stated rule. Negative amounts and non-digit characters would also need handling, since `int("")` or `int("x")` raises `ValueError`, which is acceptable for bad input.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A float stores whole numbers exactly up to a limit of the form $2^k$. Past that limit, adding 1 to the float can leave it unchanged. What is $k$ for Python's float (a 64-bit IEEE 754 double with 53 binary digits of precision)?
+  ask: Exponent k
+  unit: ""
+  ans: 53
+  tol: 0.1
+  verify: log2(2**53)
+  sol: |
+    A double keeps 53 significant binary digits. Every whole number up to $2^{53}$ fits, since each needs at most 53 digits. Above $2^{53}$ the spacing between neighbouring floats is 2, so $2^{53}+1$ lies exactly halfway between two floats and rounds to the even one, $2^{53}$ itself. Hence `float(2**53) + 1 == float(2**53)` is `True`, and $k=53$. [Unverified: stated from the IEEE 754 double format, not run on every platform; on mainstream hardware it holds.]
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: In Python, `(0.1 + 0.2) + 0.3` gives `0.6000000000000001` but `0.1 + (0.2 + 0.3)` gives `0.6`. Floating-point addition is therefore not associative. Explain why in terms of rounding, and say how you would sum a very long list of floats of mixed sizes as accurately as you can.
+  sol: |
+    **Why.** Each addition computes the exact sum of the two stored values and then rounds to the nearest float. The two groupings round at different moments: `0.1 + 0.2` is rounded first in one order, `0.2 + 0.3` first in the other, and the rounding errors differ, so the final answers can differ in the last digit. Ordinary algebra assumes exact arithmetic, where grouping cannot matter; rounding breaks that.
+
+    **A worse case.** `1e16 + 1 + 1` stays `1e+16`, because each `+ 1` is smaller than half the gap between floats near 1e16 and is lost. But `1e16 + (1 + 1)` gives `1.0000000000000002e+16`, because the 2 is large enough to register.
+
+    **Summing accurately.**
+    1. Add the smallest numbers first (sort by absolute value ascending), so small terms accumulate before meeting a huge one.
+    2. Use `math.fsum`, which tracks the lost low-order parts and returns a correctly rounded sum.
+    3. Or use compensated (Kahan) summation, which carries a running correction term.
+    4. If the values are money, avoid the problem: use whole paise or `Decimal`.
+  check: none

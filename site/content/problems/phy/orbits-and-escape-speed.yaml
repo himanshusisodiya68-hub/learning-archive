@@ -224,3 +224,80 @@
   verify: (sqrt(2)-1)*sqrt(9.8*6.4e6)/1000
   sol: The circular speed is $v_c = \sqrt{gR} = 7.92$ km/s and the escape speed is $v_e = \sqrt{2gR} = \sqrt2\,v_c = 11.2$ km/s, so the extra speed needed is $(\sqrt2 - 1)v_c = 0.414\times7.92 = 3.28$ km/s. In any circular orbit, the escape speed is always $\sqrt2$ times the orbital speed there.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A 1000 kg satellite is in a circular orbit just above the Earth's surface (take the radius as $R = 6.4\times10^6$ m). How much energy must be supplied to move it to a circular orbit of radius $2R$? Take $g = 9.8$ m/s². (Original problem.)
+  ask: Energy to be supplied
+  unit: × 10¹⁰ J
+  ans: 1.568
+  tol: 0.005
+  verify: 1000*9.8*6.4e6/4/1e10
+  sol: |
+    For a circular orbit $E = -GMm/2r$. The energy needed is the change in $E$:
+    $$\Delta E = \frac{GMm}{2}\left(\frac1R - \frac1{2R}\right) = \frac{GMm}{4R} = \frac{mgR}{4},$$
+    using $GM = gR^2$. So $\Delta E = 1000\times9.8\times6.4\times10^6/4 = 1.57\times10^{10}$ J. This is the *net* change in mechanical energy; a real rocket also needs extra to lift its own fuel and to round off the orbit.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A stone is thrown vertically upwards from the surface of the Earth with a speed equal to half the escape speed. Ignoring air drag and the Earth's rotation, how high above the surface does it rise? Take $g = 9.8$ m/s² and $R = 6.4\times10^6$ m. (Original problem.)
+  ask: Maximum height above the surface
+  unit: km
+  ans: 2133
+  tol: 2
+  verify: 6.4e6/3/1e3
+  sol: |
+    Conserve energy from the surface to the top, where the speed is zero. With $v = v_e/2$, $\tfrac12v^2 = \tfrac12\cdot\tfrac{v_e^2}{4} = \dfrac{GM}{4R}$. So
+    $$\frac{GM}{4R} - \frac{GM}{R} = -\frac{GM}{R+h}\;\Rightarrow\;\frac{3}{4R} = \frac1{R+h}\;\Rightarrow\;R + h = \frac{4R}{3},$$
+    so $h = R/3 = 2.13\times10^6$ m $= 2133$ km. The school shortcut $v^2/2g$ with $v = 5.6$ km/s gives only 1600 km: it wrongly keeps $g$ constant all the way up.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A spacecraft passes its nearest point to the Earth at a distance of $7.0\times10^6$ m from the Earth's centre with a speed of 9.0 km/s, moving at right angles to the radius. Using $GM_E = 3.986\times10^{14}$ m³/s², find the distance of its farthest point from the Earth's centre. (Original problem.)
+  ask: Farthest distance from the centre
+  unit: km
+  ans: 17241
+  tol: 20
+  verify: 7e6/(2*3.986e14/(7e6*9e3**2)-1)/1e3
+  sol: |
+    At the nearest and farthest points the velocity is perpendicular to the radius. Conserve angular momentum, $v_ar_a = v_pr_p$, and energy,
+    $$\tfrac12v_p^2 - \frac{GM}{r_p} = \tfrac12v_a^2 - \frac{GM}{r_a}.$$
+    Put $x = r_p/r_a$, so $v_a = xv_p$. The energy equation becomes $\tfrac12v_p^2(1 - x^2) = \dfrac{GM}{r_p}(1 - x)$. Cancelling the factor $(1-x)$ (the other root, $x = 1$, is the trivial point itself),
+    $$\tfrac12v_p^2(1+x) = \frac{GM}{r_p}\;\Rightarrow\;x = \frac{2GM}{r_pv_p^2} - 1 = \frac{2\times3.986\times10^{14}}{7.0\times10^6\times(9.0\times10^3)^2} - 1 = 0.406.$$
+    So $r_a = r_p/x = 7.0\times10^6/0.406 = 1.72\times10^7$ m $= 17{,}240$ km. At 9.0 km/s the craft is below the local escape speed (10.7 km/s), so the orbit is a closed ellipse, as the answer confirms.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Two stars, each of mass $2.0\times10^{30}$ kg, move on circular orbits about their common centre of mass. Their separation is $1.5\times10^{11}$ m. Find the orbital period in days. Take $G = 6.674\times10^{-11}$ N m²/kg². (Original problem.)
+  ask: Period
+  unit: days
+  ans: 258.6
+  tol: 0.5
+  verify: 2*PI*sqrt(1.5e11**3/(2*6.674e-11*2.0e30))/86400
+  sol: |
+    By symmetry the centre of mass is midway, so each star moves on a circle of radius $d/2$. The only force on each is the pull of the other, a distance $d$ away (not $d/2$):
+    $$\frac{GM^2}{d^2} = M\,\omega^2\,\frac d2\;\Rightarrow\;\omega^2 = \frac{2GM}{d^3}.$$
+    So $T = 2\pi\sqrt{\dfrac{d^3}{2GM}} = 2\pi\sqrt{\dfrac{(1.5\times10^{11})^3}{2\times6.674\times10^{-11}\times2.0\times10^{30}}} = 2.23\times10^{7}$ s $=258.6$ days. In general $T^2 = 4\pi^2d^3/G(M_1+M_2)$: Kepler's law with the total mass.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A satellite is in a circular geostationary orbit of radius $4.22\times10^{7}$ m. An accident suddenly halves its speed without changing its direction. Find the closest distance from the Earth's centre that it will reach in its new orbit, and so decide whether it hits the Earth (radius $6.38\times10^6$ m). (Original problem.)
+  ask: Closest distance from the Earth's centre
+  unit: km
+  ans: 6028.6
+  tol: 5
+  verify: 4.22e7*0.25/1.75/1e3
+  sol: |
+    The new speed at the burn point is $v = kv_c$ with $k = 0.5$ and $v_c^2 = GM/r$. That point is now the *farthest* point (the orbit lies inside the old circle). Conserving angular momentum and energy between it and the closest point $r_p = yr$:
+    $$\tfrac12v^2\left(1 - \frac1{y^2}\right) = \frac{GM}{r}\left(1 - \frac1y\right)\;\Rightarrow\;\tfrac12k^2\left(1 + \frac1y\right) = 1\;\Rightarrow\;y = \frac{k^2}{2 - k^2}.$$
+    With $k = 0.5$: $y = 0.25/1.75 = 1/7$, so $r_p = 4.22\times10^7/7 = 6.03\times10^6$ m $=6029$ km. That is less than the Earth's radius of 6378 km, so the satellite hits the Earth (in fact it would already have met the thick air before this). Check: this is the vis-viva result with semi-major axis $a = (r + r_p)/2$.
+  check: code

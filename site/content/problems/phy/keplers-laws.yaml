@@ -290,3 +290,74 @@
   verify: PI*(1.496e11)**2/3.156e7/1e15
   sol: The line sweeps the whole circle's area $\pi r^2$ in one period, so $dA/dt = \pi r^2/T = \pi(1.496\times10^{11})^2/(3.156\times10^7) = 2.23\times10^{15}$ m²/s. By Kepler's second law this rate is the same at every point of the orbit, and equals $L/2m$.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Two stars, each of mass $2.0\times10^{30}$ kg, circle their common midpoint, always on opposite sides of it, with a constant separation of $3.0\times10^{11}$ m. Find the period of their motion in years. Take $G=6.674\times10^{-11}$ N m$^2$ kg$^{-2}$ and one year $=3.156\times10^{7}$ s. (Original problem.)
+  ask: Period
+  unit: years
+  ans: 2.002
+  tol: 0.01
+  verify: 2*PI*sqrt((3e11)**3/(2*6.674e-11*2e30))/3.156e7
+  sol: |
+    Each star moves on a circle of radius $d/2$ about the midpoint, held there by the pull of the other: $\dfrac{GM^2}{d^2}=M\omega^2\dfrac d2$, so $\omega^2=\dfrac{2GM}{d^3}$ and $T=2\pi\sqrt{\dfrac{d^3}{2GM}}$. (This is Kepler's law with the total mass $2M$ and the separation $d$.)
+
+    $d^3=2.7\times10^{34}$ m$^3$ and $2GM=2.67\times10^{20}$, so $T=2\pi\sqrt{1.01\times10^{14}}=6.32\times10^{7}$ s $=2.0$ years. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A moon takes 4.0 days to go once round a planet in a nearly circular orbit of radius $5.0\times10^{8}$ m. Find the mass of the planet. Take $G=6.674\times10^{-11}$ N m$^2$ kg$^{-2}$. (Original problem.)
+  ask: Mass of the planet
+  unit: × 10²⁶ kg
+  ans: 6.19
+  tol: 0.03
+  verify: 4*PI**2*(5e8)**3/(6.674e-11*(4*86400)**2)/1e26
+  sol: |
+    The planet's pull supplies the centripetal force, so $M=\dfrac{4\pi^2a^3}{GT^2}$. With $a=5.0\times10^{8}$ m and $T=4.0\times86400=3.456\times10^{5}$ s: $a^3=1.25\times10^{26}$, $T^2=1.194\times10^{11}$, so $M=\dfrac{39.48\times1.25\times10^{26}}{6.674\times10^{-11}\times1.194\times10^{11}}=6.2\times10^{26}$ kg. The moon's own mass does not appear, since it cancels. (Original problem.)
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A satellite is launched into an elliptical orbit round the Earth whose lowest point is 7000 km and highest point 42 000 km from the Earth's centre. Find its period in hours. Take $GM_E=3.986\times10^{14}$ m$^3$ s$^{-2}$. (Original problem.)
+  ask: Period
+  unit: hours
+  ans: 10.6
+  tol: 0.05
+  verify: 2*PI*sqrt((2.45e7)**3/3.986e14)/3600
+  sol: |
+    The long axis is $7000+42\,000=49\,000$ km, so the semi-major axis is $a=24\,500$ km $=2.45\times10^{7}$ m. The period depends only on $a$: $T=2\pi\sqrt{a^3/GM}=2\pi\sqrt{\dfrac{(2.45\times10^{7})^3}{3.986\times10^{14}}}=3.82\times10^{4}$ s $=10.6$ hours.
+
+    Compare a satellite on a circle of 42 000 km, which takes about 27 hours: the ellipse is far quicker, because its average distance is smaller. (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: Suppose the Earth were suddenly stopped in its orbit at 1 AU from the Sun and then allowed to fall straight towards the Sun under the Sun's gravity alone (treat both as points). Using Kepler's third law, find how many days it would take to reach the Sun. The Earth's year is 365.25 days. (Original problem.)
+  ask: Time to fall to the Sun
+  unit: days
+  ans: 64.57
+  tol: 0.1
+  verify: 0.5*0.5**1.5*365.25
+  sol: |
+    A body released from rest moves along a straight line towards the Sun. Think of this as the limit of a very thin ellipse, with the Sun at one focus, which has its long axis equal to the line from the Sun to the starting point, 1 AU. The semi-major axis is therefore $a=0.5$ AU. By the third law the period of that thin orbit is $T=a^{3/2}=0.5^{3/2}=0.354$ years. The body travels from the far end to the Sun in half of that (the other half is the return journey, in the limit where it swings round the Sun), so $t=\tfrac12T=0.177$ years $=64.6$ days. [Inference: that the third law holds in this limiting case is the standard argument; it follows from the period depending only on $a$.] (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A planet moves on an ellipse about its star with semi-major axis 2.0 AU and eccentricity 0.60. A planet on a circular orbit at 1.0 AU round the same star moves at 29.8 km/s. Find the speed of the elliptical planet at its closest approach to the star. (Original problem.)
+  ask: Speed at perihelion
+  unit: km/s
+  ans: 42.14
+  tol: 0.1
+  verify: 29.8*sqrt((1/2.0)*(1.6/0.4))
+  sol: |
+    For the circular orbit at 1.0 AU, $v_E^2=GM/(1\ \text{AU})$. For the ellipse, the speed at perihelion is $v_p^2=\dfrac{GM}{a}\cdot\dfrac{1+e}{1-e}$ (from energy $-GMm/2a$ and $r_p=a(1-e)$, or from $r_pv_p=r_av_a$ together with the energy). Then
+    $$\frac{v_p^2}{v_E^2}=\frac{1\ \text{AU}}{a}\cdot\frac{1+e}{1-e}=\frac1{2.0}\cdot\frac{1.60}{0.40}=2,$$
+    so $v_p=\sqrt2\times29.8=42.1$ km/s. (Original problem.)
+  check: code

@@ -1,0 +1,134 @@
+# Lists, dictionaries and sets. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: 'With runs = [4, 0, 1, 6, 2, 0], what is the sum of the slice runs[1:4]?'
+  ask: Sum
+  unit: ""
+  ans: 7
+  tol: 0.01
+  verify: 0 + 1 + 6
+  sol: A slice runs[1:4] takes positions 1, 2 and 3 (the end position 4 is excluded), which are 0, 1 and 6. Their sum is 7.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these can be used as a dictionary key in Python?
+  opts: ["[1, 2]", "(1, 2)", "{1, 2}"]
+  ans: 1
+  sol: A key must be hashable, meaning it cannot change after it is stored. The tuple (1, 2) qualifies. A list and a set can both be changed, so Python raises TypeError (unhashable type).
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: 'An empty list receives 50,000 items, each inserted at the front with insert(0, x). When an item is inserted, every item already in the list moves one place. How many item moves happen in total?'
+  ask: Moves
+  unit: ""
+  ans: 1249975000
+  tol: 1
+  verify: 50000*49999/2
+  sol: 'The k-th insert (k from 0) moves k items, so the total is $0 + 1 + 2 + \dots + 49999 = \frac{50000 \times 49999}{2} = 1{,}249{,}975{,}000$. About 1.25 billion moves for 50,000 items: the O(n²) cost of front inserts. A deque does the same in 50,000 steps.'
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: |
+    What does this print?
+    ```python
+    a = [1, 2, 3]
+    b = a
+    b.append(4)
+    print(a)
+    ```
+  opts: ["[1, 2, 3]", "[1, 2, 3, 4]", "[4]"]
+  ans: 1
+  sol: b = a makes a second name for the same list; nothing is copied. Appending through b changes the one list that a also names. To keep a unchanged, write b = a.copy().
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: 'Given a list of n integers, return True if any value appears twice. Give a method that takes O(n) time on average, and say why the obvious nested-loop method is slower.'
+  sol: |
+    Walk through the list once, keeping a set of the values seen so far. If a value is already in the set, return True; otherwise add it. Membership tests and adds on a set are O(1) on average, so the pass is O(n) time and O(n) extra space.
+    ```python
+    def has_duplicate(nums):
+        seen = set()
+        for x in nums:
+            if x in seen:
+                return True
+            seen.add(x)
+        return False
+    ```
+    The nested-loop method compares every pair, about $n^2/2$ comparisons, so it is O(n²). A one-liner alternative is `len(set(nums)) < len(nums)`. If memory is tight, sorting first and comparing neighbours gives O(n log n) time and O(1) extra space (when sorting in place).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: 'Given a list of words, group together the words that are anagrams of each other (same letters, different order), for example "listen", "silent", "enlist" go together. Describe a method and its cost.'
+  sol: |
+    Two words are anagrams exactly when their sorted letters are equal, so use the sorted letters as a dict key (as a string or tuple, which are hashable) and collect the words under it.
+    ```python
+    from collections import defaultdict
+
+    def group_anagrams(words):
+        groups = defaultdict(list)
+        for w in words:
+            groups["".join(sorted(w))].append(w)
+        return list(groups.values())
+    ```
+    For $n$ words of length at most $k$ the cost is $O(n \cdot k \log k)$: sorting each word costs $k \log k$ and the dict operations are O(1) on average. Comparing every pair of words instead would be $O(n^2 k)$.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: mcq
+  q: |
+    What does this print?
+    ```python
+    grid = [[0] * 3] * 3
+    grid[0][0] = 1
+    print(grid)
+    ```
+  opts: ["[[1, 0, 0], [0, 0, 0], [0, 0, 0]]", "[[1, 0, 0], [1, 0, 0], [1, 0, 0]]", "[[1, 1, 1], [0, 0, 0], [0, 0, 0]]"]
+  ans: 1
+  sol: The outer multiplication repeats a reference to the one inner list [0, 0, 0] three times, so all three rows are the same list. Changing grid[0][0] changes that shared row, and all rows show it. Build separate rows with [[0] * 3 for _ in range(3)].
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: 'Design a collection that supports three operations, each in O(1) average time: insert(x) (ignore if present), delete(x), and get_random() (return one stored value, each equally likely). Explain why neither a plain list nor a plain set is enough.'
+  sol: |
+    A plain **list** gives a random element in O(1) (pick a random index), but finding x to delete takes O(n). A plain **set** finds and deletes x in O(1), but cannot pick a random member without going through it, which is O(n).
+
+    Combine them: keep a list `items` of the values and a dict `pos` mapping each value to its index in the list.
+    ```python
+    import random
+
+    class RandomSet:
+        def __init__(self):
+            self.items, self.pos = [], {}
+
+        def insert(self, x):
+            if x not in self.pos:
+                self.pos[x] = len(self.items)
+                self.items.append(x)
+
+        def delete(self, x):
+            if x in self.pos:
+                i, last = self.pos.pop(x), self.items.pop()
+                if i < len(self.items):    # x was not the last item
+                    self.items[i] = last
+                    self.pos[last] = i
+
+        def get_random(self):
+            return random.choice(self.items)
+    ```
+    The key trick in delete is to **swap the removed item with the last one**, so the list only ever loses its tail, which is O(1), rather than shifting everything. The dict is updated to point at the moved item's new place. Each operation touches a constant number of dict and list operations, so all three are O(1) on average, at the price of storing every value twice.
+  check: none

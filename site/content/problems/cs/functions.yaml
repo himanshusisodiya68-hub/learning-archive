@@ -1,0 +1,126 @@
+# Functions. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: 'A delivery rule is free within 2 km and otherwise costs 15 rupees plus 8 rupees for each extra km. What does delivery_fee(7) return?'
+  ask: Fee
+  unit: rupees
+  ans: 55
+  tol: 0.01
+  verify: 15 + 8*(7-2)
+  sol: 7 km is 5 km beyond the free 2 km. The fee is $15 + 8 \times 5 = 55$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: |
+    What does this code print?
+    ```python
+    def double(x):
+        x * 2
+
+    print(double(4))
+    ```
+  opts: ["8", "None", "4"]
+  ans: 1
+  sol: The function computes x * 2 but never returns it, so the call evaluates to None, and print shows None. Adding return before x * 2 fixes it.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: 'Using fee(distance_km, surge=1.0, free_within=2) from the lesson (fee is (15 + 8 * (distance_km - free_within)) * surge beyond the free distance), what is fee(6, surge=1.5)?'
+  ask: Fee
+  unit: rupees
+  ans: 70.5
+  tol: 0.01
+  verify: (15 + 8*(6-2))*1.5
+  sol: 6 km is 4 km beyond the free 2. Base fee $15 + 8 \times 4 = 47$. Multiply by the surge, $47 \times 1.5 = 70.5$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: |
+    What does the last line print?
+    ```python
+    def add_one(items):
+        items.append(1)
+
+    data = [5]
+    add_one(data)
+    print(data)
+    ```
+  opts: ["[5]", "[5, 1]", "None"]
+  ans: 1
+  sol: The parameter items is another name for the caller's list, not a copy. append changes that one list, so data becomes [5, 1]. The function returns None, but the side effect is visible through data.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: 'A colleague wrote def log_event(event, history=[]): history.append(event); return history. In testing, the first call returns one item but the second call returns two even though it was given a different event. Explain why and write the fix.'
+  sol: |
+    The default list is created once, when the `def` statement runs, and every call that omits `history` shares it. The first call appends to that shared list, and the second call appends to the same one, so it returns both events.
+
+    Fix: use `None` as the default and create a fresh list inside the call.
+    ```python
+    def log_event(event, history=None):
+        if history is None:
+            history = []
+        history.append(event)
+        return history
+    ```
+    Now each call without an argument gets its own new list.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: 'Rewrite normalise(scores), which divides every score in the caller''s list by the maximum score by changing the list in place, as a pure function. Then say when the in-place version might still be the better choice.'
+  sol: |
+    The pure version builds and returns a new list and leaves the input untouched.
+    ```python
+    def normalise(scores):
+        top = max(scores)
+        return [s / top for s in scores]
+    ```
+    The caller keeps the original scores and can call it again safely, and it is easy to test. The in-place version can be the better choice when the list is huge and memory matters, or when a library documents that it works that way (like `list.sort`), because it avoids building a copy. In that case the function name and docstring should say that it modifies its input.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: mcq
+  q: |
+    What does this print?
+    ```python
+    def make_counter():
+        count = 0
+        def step():
+            nonlocal count
+            count += 1
+            return count
+        return step
+
+    a = make_counter()
+    b = make_counter()
+    print(a(), a(), b(), a())
+    ```
+  opts: ["1 2 3 4", "1 2 1 3", "1 1 1 1"]
+  ans: 1
+  sol: Each call to make_counter creates its own private count, remembered by that call's step function (a closure). So a counts 1, 2, then 3, while b has its own count and returns 1 in between. The output is 1 2 1 3.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: 'A payment function charge(order_id, amount) is called by an app; when the network times out, the app cannot tell whether the charge happened, so it wants to retry. Explain why a naive retry is dangerous and how you would redesign charge so that retrying is safe. Which pure-function idea are you borrowing?'
+  sol: |
+    If the first request did reach the server and only the reply was lost, a naive retry charges the customer twice. The function has a side effect (moving money) and is not safe to repeat.
+
+    Redesign: make the operation **idempotent**, so that doing it twice has the same effect as doing it once. The caller sends a unique id for the intended charge (here `order_id`, or a separate idempotency key). The server records each id it has processed together with the result. On a repeat request with an id it has already seen, it returns the stored result and does not charge again. The record and the check must be done atomically, for example with a unique constraint in the database, so two simultaneous retries cannot both pass the check.
+
+    The idea borrowed is that of a pure function: the same input gives the same observable outcome no matter how many times it is applied. The result becomes a function of the order id alone, not of how many requests arrived. [Inference: a typical design pattern, not any named company's implementation]
+  check: none

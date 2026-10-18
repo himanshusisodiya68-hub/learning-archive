@@ -483,3 +483,84 @@
   sol: |
     Free expansion would be $\Delta L = \alpha L\,\Delta T$, a strain of $\alpha\,\Delta T = 6\times10^{-4}$. The walls forbid it, so they squeeze the rod back by that same strain, creating a stress $\sigma = Y\alpha\,\Delta T = 2.0\times10^{11}\times6\times10^{-4} = 1.2\times10^{8}$ N m$^{-2}$ $=120$ MPa. It does not depend on the rod's length or area.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A steel wire of uniform cross-section hangs vertically from a fixed support. Its length is 200 m. By how much does it stretch under its own weight alone? The density of steel is 7800 kg/m³, $Y = 2.0\times10^{11}$ N/m² and $g = 9.8$ m/s². (Original problem.)
+  ask: Extension under its own weight
+  unit: mm
+  ans: 7.644
+  tol: 0.02
+  verify: 7800*9.8*200**2/(2*2.0e11)*1e3
+  sol: |
+    At a distance $x$ above the free end, the wire carries the weight of the length $x$ below it, so the stress is $\rho gx$ and the strain is $\rho gx/Y$. A small piece $dx$ stretches by $(\rho gx/Y)\,dx$. Adding all pieces from $x = 0$ to $L$:
+    $$\Delta L = \int_0^L\frac{\rho gx}{Y}\,dx = \frac{\rho gL^2}{2Y} = \frac{7800\times9.8\times200^2}{2\times2.0\times10^{11}} = 7.64\times10^{-3}\ \text{m}.$$
+    This is half of what a *light* wire of the same length would stretch under a load equal to its total weight, because the stress falls steadily from the top to zero at the bottom. The area cancels, so the thickness does not matter.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A steel wire of length 1.0 m and diameter 1.0 mm is fixed at the top and carries a mass of 2.0 kg at the bottom. If the mass is pulled down slightly and released, it oscillates up and down. Treating the wire as a spring obeying Hooke's law and ignoring the wire's own mass, find the frequency. Take $Y = 2.0\times10^{11}$ N/m². (Original problem.)
+  ask: Frequency of vertical oscillation
+  unit: Hz
+  ans: 44.6
+  tol: 0.2
+  verify: sqrt(2.0e11*PI*(0.5e-3)**2/1.0/2.0)/(2*PI)
+  sol: |
+    Pulling the mass down by a small $x$ stretches the wire by $x$ more, so the restoring force is $F = (YA/L)\,x$: the wire is a spring with $k = YA/L$.
+    $$k = \frac{2.0\times10^{11}\times\pi(0.5\times10^{-3})^2}{1.0} = 1.57\times10^{5}\ \text{N/m}.$$
+    A mass on a spring oscillates with $\nu = \dfrac1{2\pi}\sqrt{k/m}$, so
+    $$\nu = \frac{1}{2\pi}\sqrt{\frac{1.57\times10^{5}}{2.0}} = 44.6\ \text{Hz}.$$
+    The static stretch under the 2 kg weight is only $19.6/1.57\times10^5 = 0.125$ mm, so the oscillations are tiny and quick. The period of a mass on a spring is derived in the leaf on springs and pendulums.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A steel wire of length 3.0 m and cross-section 1.0 mm² is stretched until it stores 0.90 J of elastic energy, still within the elastic limit. By how much has it been stretched? Take $Y = 2.0\times10^{11}$ N/m². (Original problem.)
+  ask: Extension
+  unit: mm
+  ans: 5.196
+  tol: 0.02
+  verify: sqrt(2*0.9*3.0/(2.0e11*1.0e-6))*1e3
+  sol: |
+    The wire behaves as a spring of constant $k = YA/L = 2.0\times10^{11}\times1.0\times10^{-6}/3.0 = 6.67\times10^{4}$ N/m, and stores $U = \tfrac12k\,\Delta L^2$. So
+    $$\Delta L = \sqrt{\frac{2U}{k}} = \sqrt{\frac{2\times0.90\times3.0}{2.0\times10^{11}\times1.0\times10^{-6}}} = 5.2\times10^{-3}\ \text{m}.$$
+    Check: the force is $k\,\Delta L = 346$ N, the stress is $3.5\times10^{8}$ N/m², just below the breaking stress of ordinary steel ($\sim4\times10^8$) and above its usual elastic limit, so in practice 0.90 J is already close to the most this wire could store.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A solid cone of steel, of height 100 m, hangs with its flat base fixed to a ceiling and its tip pointing down. Find how much longer it becomes under its own weight. Compare with a cylinder of the same height. Density of steel 7800 kg/m³, $Y = 2.0\times10^{11}$ N/m², $g = 9.8$ m/s². (Original problem.)
+  ask: Elongation of the cone
+  unit: mm
+  ans: 0.637
+  tol: 0.005
+  verify: 7800*9.8*100**2/(6*2.0e11)*1e3
+  sol: |
+    Measure $x$ from the tip. The part of the cone below a section at $x$ is a smaller cone of volume $\tfrac13A(x)\,x$, where $A(x)$ is the section area there, so the stress at that section is
+    $$\sigma(x) = \frac{\rho g\cdot\tfrac13A(x)\,x}{A(x)} = \frac{\rho gx}{3}.$$
+    The area cancels, as it did for the uniform wire. A slice $dx$ stretches by $\sigma\,dx/Y$, so
+    $$\Delta L = \int_0^L\frac{\rho gx}{3Y}\,dx = \frac{\rho gL^2}{6Y} = \frac{7800\times9.8\times100^2}{6\times2.0\times10^{11}} = 6.4\times10^{-4}\ \text{m}.$$
+    The cylinder of the same height stretches by $\rho gL^2/2Y$, three times as much. A cone has only a third of the mass of the cylinder, and the weight below any section is a third as well.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A thin steel ring spins in its own plane about its centre. Show that the tensile stress in the ring is $\rho v^2$, where $v$ is the speed of the rim, and find the greatest rim speed before the ring breaks if steel fails at a stress of $5.0\times10^8$ N/m² and has density 7800 kg/m³. Ignore any other forces. (Original problem.)
+  ask: Greatest rim speed
+  unit: m/s
+  ans: 253.2
+  tol: 0.5
+  verify: sqrt(5.0e8/7800)
+  sol: |
+    Take a small arc of the ring subtending an angle $\Delta\theta$ at the centre. Its mass is $\Delta m = \rho A r\,\Delta\theta$ ($A$ = cross-section area of the wire of the ring, $r$ = radius). The tensions $T$ at its two ends are each at an angle $\Delta\theta/2$ from the line to the centre, so their inward resultant is $2T\sin(\Delta\theta/2)\approx T\,\Delta\theta$. That must supply the centripetal force:
+    $$T\,\Delta\theta = \Delta m\,\omega^2r = \rho Ar\,\Delta\theta\,\omega^2r\;\Rightarrow\;T = \rho A\omega^2r^2 = \rho Av^2.$$
+    The stress is $T/A = \rho v^2$, independent of the ring's size and of its thickness. Setting $\rho v^2 = 5.0\times10^{8}$:
+    $$v_{\max} = \sqrt{\frac{5.0\times10^{8}}{7800}} = 253\ \text{m/s}.$$
+    This is why flywheels and turbine rotors are limited by rim speed, and why strong, light materials such as carbon fibre (large strength divided by density) allow faster ones.
+  check: code

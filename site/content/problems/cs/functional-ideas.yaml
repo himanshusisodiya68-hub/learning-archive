@@ -1,0 +1,116 @@
+# Functional programming ideas. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "prices = [120, 80, 450, 60]. What does reduce(lambda a, b: a + b, prices, 0) return?"
+  ask: Result
+  unit: ""
+  ans: 710
+  tol: 0.01
+  verify: 120+80+450+60
+  sol: reduce starts from 0 and adds each price in turn, $0 + 120 = 120$, then $200$, $650$, $710$. The built-in sum(prices) does the same.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "What does [x * 2 for x in [1, 2, 3, 4] if x % 2 == 0] give?"
+  opts: ["[4, 8]", "[2, 4, 6, 8]", "[2, 6]"]
+  ans: 0
+  sol: The if part filters first, keeping only the even numbers 2 and 4. Then each kept item is doubled, giving [4, 8].
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Machine A processed 2 matches averaging 10 runs. Machine B processed 8 matches averaging 20 runs. What is the true average over all 10 matches?
+  ask: Average runs per match
+  unit: runs
+  ans: 18
+  tol: 0.01
+  verify: (2*10+8*20)/10
+  sol: The totals are $2 \times 10 = 20$ and $8 \times 20 = 160$ runs, so 180 runs in 10 matches, an average of 18. Averaging the two averages gives 15, which treats a machine with 2 matches the same as one with 8.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Which function is pure?"
+  opts: ["def f(xs): xs.append(0); return xs", "def f(xs): return xs + [0]", "def f(xs): print(len(xs)); return len(xs)"]
+  ans: 1
+  sol: The second builds and returns a new list and touches nothing else. The first changes its argument; the third prints, which is a side effect outside the function. A pure function's output depends only on its inputs and it changes nothing outside.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "orders is a list of dictionaries such as {'amount': 250, 'status': 'done'}. In one expression, find the total of the amounts of completed orders above 100 rupees, after adding 18% tax to each. Say which parts are the filter, the map and the reduce."
+  sol: |
+    ```python
+    total = sum(o["amount"] * 1.18
+                for o in orders
+                if o["status"] == "done" and o["amount"] > 100)
+    ```
+    - **Filter**: `if o["status"] == "done" and o["amount"] > 100`.
+    - **Map**: `o["amount"] * 1.18`.
+    - **Reduce**: `sum`, a ready-made fold with neutral value 0, so an empty result gives 0 rather than an error.
+
+    The generator expression is lazy, so it works even if `orders` is far larger than memory (if it is itself read lazily). For real money, use whole paise or `Decimal`, not floats; that is a precision issue, not a style one.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "What does this print, and why? funcs = [lambda x: x * i for i in range(3)] / print([f(10) for f in funcs]). Give a fix."
+  sol: |
+    It prints `[20, 20, 20]`, not `[0, 10, 20]`.
+
+    A closure remembers the **variable** `i`, not its value at the time the lambda was made. By the time the functions are called, the loop has finished and `i` is 2, so each lambda computes `x * 2`.
+
+    Fix by binding the value at creation, using a default argument or a factory:
+    ```python
+    funcs = [lambda x, i=i: x * i for i in range(3)]      # [0, 10, 20]
+
+    def make(i):
+        return lambda x: x * i
+    funcs = [make(i) for i in range(3)]                   # also [0, 10, 20]
+    ```
+    Lesson: closures capture variables, so be careful when making functions in a loop.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: "Design a combine function so that one parallel reduce computes the count, sum, minimum and maximum of a huge list of numbers at once. State the neutral starting value and argue that your combine is associative."
+  sol: |
+    Let each partial result be a tuple `(count, total, low, high)`. A single number $x$ maps to `(1, x, x, x)`.
+
+    ```python
+    def combine(a, b):
+        return (a[0] + b[0], a[1] + b[1], min(a[2], b[2]), max(a[3], b[3]))
+
+    NEUTRAL = (0, 0, float("inf"), float("-inf"))
+    ```
+    **Neutral value:** combining with `NEUTRAL` changes nothing: adding 0 to the count and total, and min with infinity or max with negative infinity leave the other value as it is. It is also the answer for an empty chunk.
+
+    **Associativity:** each of the four components is combined with an associative operation (addition, addition, min, max), and the components do not interact, so the tuple combine is associative component by component. Hence each machine can fold its chunk, and the partial tuples can be merged in any grouping.
+
+    Afterwards the mean is `total / count`, a division done once at the end, which is the trick that fixes the average problem.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "The median of a huge list split across machines: why is it not a simple associative reduce like the sum, and how would you still compute it? This is the hardest question in the set; a sketch is enough."
+  sol: |
+    **Why it fails.** The median of the whole list is not determined by the medians of the pieces. For pieces `[1, 2, 100]` and `[3, 4, 5, 6, 7]` the medians are 2 and 5, but the median of everything is 4.5. The pieces' medians simply do not carry enough information, so "median of medians" is wrong as an exact answer. (Compare: the average needed (sum, count); the median needs far more.)
+
+    **Ways to compute it:**
+    1. **Gather and sort** if the data fits on one machine (simple, memory-hungry).
+    2. **Merge sorted pieces:** each machine sorts its chunk; a k-way merge streams the global order, and you stop at the middle position. The partial results are whole sorted lists, so this is associative but expensive.
+    3. **Histogram, then refine:** bucket values into a count table (a combinable partial result, since counts add). Find which bucket holds the middle rank, then do a second pass over only that bucket. Two passes, small partial results.
+    4. **Approximate:** quantile sketches give a median within a guaranteed error using tiny, mergeable summaries. [Inference: methods named from general knowledge, not a specific system's implementation.]
+
+    The principle: a reduce can be split only if the partial results are small and can be merged without losing information. Finding a good partial summary is the real design work.
+  check: none

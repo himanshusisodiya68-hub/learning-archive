@@ -1,0 +1,118 @@
+# Bits and binary. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: One byte is 8 bits. How many different patterns can one byte hold?
+  ask: Patterns
+  unit: ""
+  ans: 256
+  tol: 0.1
+  verify: 2**8
+  sol: Each bit doubles the number of patterns, so 8 bits give $2^8 = 256$. These are the numbers 0 to 255 if the byte is read as a plain whole number.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: What is the binary number 110101 in ordinary decimal?
+  opts: ["43", "53", "63"]
+  ans: 1
+  sol: The place values from the right are 1, 2, 4, 8, 16, 32. The bits 110101 switch on 32, 16, 4 and 1, and $32 + 16 + 4 + 1 = 53$.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A city wants to give every one of its 1,000,000 buses and cars a different binary ID. What is the smallest number of bits that is enough?
+  ask: Bits
+  unit: bits
+  ans: 20
+  tol: 0.1
+  verify: ceil(log2(1e6))
+  sol: We need the smallest $n$ with $2^n \ge 1{,}000{,}000$. Since $2^{19} = 524{,}288$ is too small and $2^{20} = 1{,}048{,}576$ is enough, $n = 20$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: An IPv4 network uses the first 20 of the 32 address bits to name the network, and the remaining bits to name devices inside it. How many different addresses (in total, counting every pattern of the remaining bits) does the network contain?
+  ask: Addresses
+  unit: ""
+  ans: 4096
+  tol: 0.1
+  verify: 2**(32-20)
+  sol: |
+    12 bits are left over for devices, and 12 bits give $2^{12} = 4096$ patterns. (In practice two of those addresses are reserved, one for the network itself and one for broadcast, so 4,094 are usable for devices. [Unverified: this is the usual convention for ordinary subnets.])
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Write a function that says whether a positive integer is a power of two, using one bit operation and no loop. Explain why it works.
+  sol: |
+    A power of two in binary is a single 1 followed by zeros (1, 10, 100, 1000, ...). Subtracting 1 turns that single 1 into 0 and every zero below it into 1, so the two numbers share no 1 bit and their AND is 0. For any other number, subtracting 1 only changes the lowest 1 and the zeros below it, so the higher 1 bits survive and the AND is not 0. Zero must be excluded separately, because 0 AND (0 - 1) is also 0.
+    ```python
+    def is_power_of_two(n):
+        return n > 0 and (n & (n - 1)) == 0
+    ```
+    It takes constant time, whatever the size of $n$.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A list holds 2n + 1 whole numbers. Every value appears exactly twice except one value that appears once. Find the single value in O(n) time and O(1) extra memory, and explain why it works.
+  sol: |
+    XOR all the numbers together. XOR has three properties: $x \oplus x = 0$, $x \oplus 0 = x$, and the order of operands does not matter. So every pair cancels to 0 wherever it sits in the list, and what is left is the single value XOR 0, the single value itself.
+    ```python
+    def single(nums):
+        out = 0
+        for x in nums:
+            out ^= x
+        return out
+    ```
+    One pass gives O(n) time; only the variable `out` is stored, so the extra memory is O(1). A hash map or a sort would also work but would need O(n) memory or O(n log n) time.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A game stores up to 20 yes/no settings for each of 10 million players. Compare the memory of a bitset (one integer per player, one bit per setting) with a list of 20 separate booleans per player stored one byte each. Then show how to turn setting number k on, off and test it, using one integer.
+  sol: |
+    Bitset: 20 bits fit in one 32-bit integer (4 bytes), so $10^7 \times 4 = 40$ MB. Byte per setting: $10^7 \times 20 = 200$ MB. The bitset is 5 times smaller here (8 times smaller if you pack to the exact 20 bits). [Inference: actual overhead in a real language or database adds a little to both.]
+
+    With `flags` the integer and `k` the setting number from 0:
+    ```python
+    flags |= (1 << k)         # turn on
+    flags &= ~(1 << k)        # turn off
+    on = (flags >> k) & 1     # test: 1 if on
+    ```
+    `1 << k` builds a mask with only bit k set. OR with the mask forces that bit to 1, AND with the inverted mask forces it to 0, and shifting right then ANDing with 1 reads it, with all other bits untouched.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    A list of 2n + 2 whole numbers has two different values that appear once each; every other value appears exactly twice. Find both values in O(n) time and O(1) memory. (Hint: what does the XOR of everything tell you about the two unknowns?)
+  sol: |
+    Let the two lonely values be $a$ and $b$. XOR-ing the whole list cancels all pairs, leaving $t = a \oplus b$. Since $a \ne b$, $t \ne 0$, so $t$ has at least one bit set, and at that bit $a$ and $b$ differ: one has a 1 there and the other a 0.
+
+    Pick the lowest set bit of $t$: `low = t & -t`. Split the list into two groups, numbers with that bit set and numbers without it. Each pair of equal numbers lands in the same group (equal numbers have equal bits), so pairs still cancel inside each group, while $a$ and $b$ land in different groups. XOR-ing each group separately leaves $a$ in one and $b$ in the other.
+    ```python
+    def two_singles(nums):
+        t = 0
+        for x in nums:
+            t ^= x
+        low = t & -t
+        a = b = 0
+        for x in nums:
+            if x & low:
+                a ^= x
+            else:
+                b ^= x
+        return a, b
+    ```
+    Two passes, O(n) time, O(1) memory. (The expression `t & -t` isolates the lowest 1 bit because negating a number flips every bit above its lowest 1; this relies on two's complement, which the next lesson explains.)
+  check: none

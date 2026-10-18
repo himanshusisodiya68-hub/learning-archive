@@ -308,3 +308,78 @@
     $$\omega=\frac LI=\frac{12}{1.032}=11.63\ \text{rad/s}.$$
     The rod's lower end then moves at $\omega L=13.95$ m/s, much slower than the bullet's 200 m/s, and the kinetic energy afterwards ($\tfrac12I\omega^2=69.8$ J) is only 7% of the bullet's initial 1000 J. The rest is lost in the inelastic collision. (Original problem.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A person of mass 50 kg stands at the rim of a horizontal uniform disc platform of mass 100 kg and radius 2.0 m, which turns freely about its vertical axis at 2.0 rad/s. The person walks slowly to the centre. Treat the person as a point mass. Find the angular speed of the platform when the person is at the centre. (Original problem.)
+  ask: Final angular speed
+  unit: rad/s
+  ans: 4.0
+  tol: 0.02
+  verify: 2*(0.5*100*4+50*4)/(0.5*100*4)
+  sol: |
+    There is no external torque about the vertical axis, so $L$ is conserved. At the start the moment of inertia is that of the disc plus the person at the rim: $I_1=\tfrac12(100)(2.0)^2+50(2.0)^2=200+200=400$ kg m$^2$, so $L=400\times2.0=800$ kg m$^2$/s. At the end the person is on the axis and adds nothing: $I_2=200$ kg m$^2$. Then $\omega_2=800/200=4.0$ rad/s.
+
+    The kinetic energy has doubled, from $\tfrac12(400)(4)=800$ J to $\tfrac12(200)(16)=1600$ J: the person's muscles did 800 J of work walking inwards against the rotation. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A uniform disc of mass 2.0 kg and radius 0.50 m is free to turn about a fixed vertical axis through its centre, initially at rest. A 20 g bullet moving horizontally at 300 m/s, along a line tangent to the rim, hits the disc at the rim and sticks. Find the total kinetic energy of the disc and bullet just after the impact. (Original problem.)
+  ask: Kinetic energy just after impact
+  unit: J
+  ans: 17.65
+  tol: 0.02
+  verify: (0.02*300*0.5)**2/(2*(0.5*2*0.5**2+0.02*0.5**2))
+  sol: |
+    Angular momentum about the axis is conserved through the impact (the axle's force has no torque about the axis). Before: $L=mvR=0.020\times300\times0.50=3.0$ kg m$^2$/s. After: $I=\tfrac12MR^2+mR^2=\tfrac12(2.0)(0.25)+0.020(0.25)=0.25+0.005=0.255$ kg m$^2$, so $\omega=L/I=11.8$ rad/s.
+
+    Then $K=\tfrac12I\omega^2=L^2/2I=9.0/(2\times0.255)=17.6$ J. The bullet had $\tfrac12(0.020)(300)^2=900$ J before, so about 98% of its energy has gone into heat and deformation. (Original problem.)
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A uniform rod of length 1.5 m and mass $m$ is hinged at one end and released from rest in a horizontal position. Find its angular speed when it passes through the vertical. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Angular speed at the vertical
+  unit: rad/s
+  ans: 4.43
+  tol: 0.02
+  verify: sqrt(3*9.8/1.5)
+  sol: |
+    The hinge does no work, so energy is conserved. The centre of mass falls by $L/2$: $mg\,\dfrac L2=\tfrac12I\omega^2$ with $I=\tfrac13mL^2$ about the hinge. Then $\omega^2=\dfrac{mgL}{(1/3)mL^2}=\dfrac{3g}{L}$, so $\omega=\sqrt{3g/L}=\sqrt{3\times9.8/1.5}=4.43$ rad/s.
+
+    Check by work: the gravitational torque is $mg(L/2)\cos\phi$ at angle $\phi$ below the horizontal, and its work from 0 to 90° is $mg(L/2)\int_0^{\pi/2}\cos\phi\,d\phi=mgL/2$, the same. (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A uniform rod of length 1.2 m and mass $M$ lies on a smooth horizontal table. It is struck by a short horizontal impulse, at right angles to the rod, at one of its ends. Immediately afterwards, one point of the rod is instantaneously at rest. How far from the centre of the rod is that point? (Original problem.)
+  ask: Distance of the point at rest from the centre
+  unit: m
+  ans: 0.2
+  tol: 0.005
+  verify: 1.2/6
+  sol: |
+    Let the impulse be $J$, applied at distance $x=L/2$ from the centre. Linear: $Mv_{cm}=J$. About the centre of mass, angular momentum equals the moment of the impulse: $I_{cm}\omega=Jx$ with $I_{cm}=\tfrac1{12}ML^2$, so $\omega=\dfrac{12Jx}{ML^2}$.
+
+    A point on the opposite side of the centre, at distance $d$, moves at $v_{cm}-\omega d$ (the spin carries it backwards). It is at rest when $d=\dfrac{v_{cm}}{\omega}=\dfrac{J/M}{12Jx/ML^2}=\dfrac{L^2}{12x}$. With $x=L/2$: $d=L/6=1.2/6=0.20$ m, on the side opposite the blow. This point is the instantaneous centre of rotation; for a pivot placed there the hand feels no jolt, the "centre of percussion" idea. (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A toy gyroscope has a wheel of moment of inertia 0.020 kg m$^2$ about its axle, spinning at 300 rad/s. The axle is horizontal and pivoted at one end. The total mass is 1.2 kg and the centre of mass is 0.15 m from the pivot. Find the angular speed at which the axle precesses about the vertical. Take $g=9.8$ m/s$^2$ and assume the spin is much faster than the precession. (Original problem.)
+  ask: Precession rate
+  unit: rad/s
+  ans: 0.294
+  tol: 0.003
+  verify: 1.2*9.8*0.15/(0.02*300)
+  sol: |
+    The weight acts at the centre of mass, a distance $r=0.15$ m from the pivot, so its torque about the pivot is $\tau=mgr=1.2\times9.8\times0.15=1.76$ N m, horizontal and perpendicular to the axle. The spin angular momentum is $L=I\omega=0.020\times300=6.0$ kg m$^2$/s, along the axle.
+
+    The torque turns the direction of $\vec L$ without changing its size: in a short time $dt$ the tip of $\vec L$ moves by $\tau\,dt$, a turn of $d\phi=\tau\,dt/L$. So the precession rate is $\Omega=\dfrac{\tau}{L}=\dfrac{mgr}{I\omega}=\dfrac{1.76}{6.0}=0.294$ rad/s, about one turn in 21 s. This is valid when $\omega\gg\Omega$ (here 300 against 0.29). [Standard result; the neglected extra term from the precession's own angular momentum is small in this limit.] (Original problem.)
+  check: code

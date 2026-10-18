@@ -1,0 +1,92 @@
+# Git and the command line. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which command takes a snapshot of the changes you have staged?
+  opts: ["git add", "git commit", "git push"]
+  ans: 1
+  sol: "`git add` only places changes in the staging area, and `git push` uploads existing commits. `git commit` creates the snapshot."
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Git often shows a commit by its first 7 hexadecimal digits (each digit is 0 to 9 or a to f). How many different 7-digit names exist?
+  ask: Possible short names
+  unit: ""
+  ans: 268435456
+  tol: 1
+  verify: 16**7
+  sol: Each of the 7 positions has 16 choices, so there are $16^7 = 268{,}435{,}456$ names. That is plenty for most projects, though very large repositories need longer abbreviations to avoid clashes.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A project has 200 files of 1 MB each. Each of 10 commits changes exactly 3 files (3 new versions of 1 MB each); unchanged files are shared between commits. Ignoring compression, how much storage in total do the 10 commits need, counting the first commit's 200 MB?
+  ask: Total storage
+  unit: MB
+  ans: 227
+  tol: 0.5
+  verify: 200 + 9*3
+  sol: The first commit stores all 200 MB. Each of the other 9 commits adds only the 3 changed files, or 3 MB. Total $200 + 9 \times 3 = 227$ MB, instead of $10 \times 200 = 2000$ MB if each commit were a full copy.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Which of these should never be committed to a shared repository?
+  opts: ["A README file", "A file containing the database password", "The unit tests"]
+  ans: 1
+  sol: Git keeps history forever, so a committed secret stays retrievable even after you delete the file. Put secrets in environment variables or a secrets manager, and list local config files in .gitignore. If one leaks, change the password; deleting it from history is not enough.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You merge a branch and git reports a conflict in greeting.py, where both branches changed the same line. Describe, step by step, what you do.
+  sol: |
+    1. Run `git status` to see which files are in conflict.
+    2. Open the file. It contains the two versions between markers: `<<<<<<< HEAD`, your side, `=======`, the other side, `>>>>>>> feature`.
+    3. Decide the correct text (one side, the other, or a combination), delete the three marker lines, and save.
+    4. Run the program or tests, because a textually clean merge can still be wrong.
+    5. Stage and finish:
+    ```bash
+    git add greeting.py
+    git commit          # completes the merge
+    ```
+    If it goes badly, `git merge --abort` returns you to the state before the merge.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Explain merge versus rebase for bringing the latest main into your feature branch. When would you choose each?
+  sol: |
+    **Merge** adds a merge commit with two parents, so history shows exactly what happened. It rewrites nothing and is always safe, including on branches shared with others, but history can become a tangle of merge commits.
+    **Rebase** takes your branch's commits and replays them one by one on top of the latest main. History becomes a straight line that is easy to read, but your commits are recreated with new hashes, so anyone who already pulled the old ones will diverge from you.
+    Rule of thumb: rebase your **own, unshared** feature branch to tidy it before review; merge when the branch is shared or when you want the true history. Never rebase commits that others have built on.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Each git commit's name is a hash of its contents, and those contents include the hash of its parent commit. Explain what this implies for (a) tampering with an old commit and (b) why rebasing changes commit names.
+  sol: |
+    (a) If someone alters an old commit (its files, message or author), its hash changes. The next commit contains the old hash, so its own hash changes, and so on down the chain. Everyone comparing the latest commit name would see a different value, so silent tampering is detectable: the latest hash vouches for the entire history before it.
+    (b) A rebased commit has a **new parent** (the tip of main), and the parent is part of the contents that are hashed. So even if the changes in the files are identical, the commit gets a new name, and so does every commit after it. That is why rebased commits are "new" commits as far as other copies of the repository are concerned.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Using only the idea of a hash table (names mapped to stored objects), sketch how a tool like git could store snapshots of a project cheaply. What kinds of objects do you need, and what makes branches nearly free?
+  sol: |
+    Keep one big hash table whose **key is the hash of an object's content** and whose value is the content.
+    - A **blob** object holds the bytes of one file. Identical files hash to the same key, so they are stored once however many commits contain them.
+    - A **tree** object holds a folder: a list of (name, hash of blob or sub-tree). Changing one file changes only that blob and the trees on its path up to the root; all other subtrees keep the same hashes and are shared.
+    - A **commit** object holds the hash of the root tree, the hash of its parent commit(s), the author and the message.
+    - A **branch** is a second small table from a name to a commit hash. Creating a branch is writing one entry; committing moves the entry forward.
+    Because objects are named by content and never modified, old snapshots stay intact, and checking an object's integrity is just re-hashing it. This is the design of git's object store as it is publicly documented in Pro Git; details such as packfiles and compression are omitted here. [Unverified: from memory]
+  check: none

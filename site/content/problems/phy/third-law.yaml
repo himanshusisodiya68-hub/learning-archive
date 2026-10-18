@@ -236,3 +236,68 @@
   sol: |
     The tension is the same at both ends (light rope), so by the third law each skater feels 35 N towards the other. Accelerations: $a_1 = 35/50 = 0.70$ m s$^{-2}$ for the 50 kg skater and $a_2 = 35/70 = 0.50$ m s$^{-2}$ for the 70 kg skater. They meet when $\tfrac12 a_1 t^2 + \tfrac12 a_2 t^2 = 10$, so the lighter skater covers the fraction $a_1/(a_1+a_2) = 0.70/1.20$ of the 10 m: $5.83$ m. (This is the position of the centre of mass, which does not move since there is no external force.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A beaker of water stands on a kitchen scale that reads 1.500 kg. A finger of volume 35 cm$^3$ is lowered into the water, without touching the beaker, until it is fully submerged. What does the scale now read? Take the density of water as 1000 kg m$^{-3}$. (Original problem.)
+  ask: New reading
+  unit: kg
+  ans: 1.535
+  tol: 0.0005
+  verify: 1.5+1000*35e-6
+  sol: |
+    Draw the boundary round the beaker, the water and the finger's submerged part. The water pushes the finger up with the buoyant force $\rho V g$. By the third law the finger pushes the water down with the same force, and that push goes to the scale through the beaker. The scale therefore reads extra mass $\rho V = 1000 \times 35\times10^{-6} = 0.035$ kg, i.e. the mass of the water that the finger displaces. New reading: $1.500 + 0.035 = 1.535$ kg. The result does not depend on $g$ or on how deep the finger goes, as long as it is fully under and does not touch the glass. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A uniform rope of mass 6.0 kg and length 3.0 m is tied to the back of a 4.0 kg block lying on a smooth horizontal table. The free end of the rope is pulled horizontally with a force of 50 N. Find the tension in the rope at a point 1.0 m from the block. (Original problem.)
+  ask: Tension at 1.0 m from the block
+  unit: N
+  ans: 30
+  tol: 0.01
+  verify: (4+(6/3)*1)*(50/(4+6))
+  sol: |
+    Block and rope move together with $a = 50/(4+6) = 5$ m s$^{-2}$. The tension at a point is the force needed to accelerate everything on the block's side of that point. Between the block and the point there is a rope piece of length 1.0 m, which has mass $(6/3)\times 1.0 = 2.0$ kg. So $T = (4 + 2.0) \times 5 = 30$ N. Check from the other side: the rope beyond the point has mass 4.0 kg and is pulled by 50 N while being pulled back by $T$: $50 - T = 4.0 \times 5$, giving $T = 30$ N. (Original problem.)
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A man of mass 80 kg stands on a platform of mass 25 kg. A light rope passes over a smooth pulley fixed to the ceiling; one end is tied to the platform and the man holds the other end. He pulls so that the platform with him stays at rest. Find the force with which he presses on the platform. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Force of the man on the platform
+  unit: N
+  ans: 269.5
+  tol: 0.1
+  verify: 80*9.8-(80+25)*9.8/2
+  sol: |
+    Take man and platform as one system. The rope pulls up on it at two places, on the platform and on his hands, each with tension $T$. At rest, $2T = (80+25)\times 9.8 = 1029$ N, so $T = 514.5$ N. For the man alone, $T + N = 80\times 9.8 = 784$ N, so the platform pushes him up with $N = 784 - 514.5 = 269.5$ N. By the third law he presses on the platform with 269.5 N. Check on the platform: $T = 25\times 9.8 + N = 245 + 269.5 = 514.5$ N. ✓ (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A monkey of mass 8.0 kg holds one end of a light rope that passes over a smooth pulley; a weight of mass 8.0 kg hangs on the other end. Starting from rest, the monkey climbs the rope so that he accelerates upward at 1.0 m s$^{-2}$ relative to the ground. Find the tension in the rope. Take $g = 9.8$ m s$^{-2}$. (What does the weight do?) (Original problem.)
+  ask: Tension in the rope
+  unit: N
+  ans: 86.4
+  tol: 0.05
+  verify: 8*(9.8+1)
+  sol: |
+    The monkey has two forces on him: the rope pulls up with $T$ (his hands push down on the rope with $T$, by the third law) and gravity pulls down. So $T - mg = ma$ and $T = 8.0\,(9.8 + 1.0) = 86.4$ N. The weight has the same mass and the same rope tension, so $T - mg = m a_w$ gives $a_w = 1.0$ m s$^{-2}$ upward as well. The monkey cannot get away from the weight: the rope force on both is the same, so both rise together, however hard he climbs. He changes only how fast the rope slides through his hands. Whether he climbs fast or slow relative to the rope, only his acceleration relative to the ground determines the tension. (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A balloon of mass 200 kg (basket and gas included) hovers motionless in still air. A rope ladder hangs from it with a man of mass 80 kg at the bottom. The man climbs 10 m up the ladder, measured relative to the balloon. Ignoring air drag, how far does the balloon move down? (Original problem.)
+  ask: Downward shift of the balloon
+  unit: m
+  ans: 2.857
+  tol: 0.01
+  verify: 80*10/(80+200)
+  sol: |
+    The man and the balloon push each other with an equal and opposite pair of forces, and the outside forces (gravity and buoyancy) balance. So the centre of mass of man plus balloon does not move. Let the balloon sink by $x$. Relative to the ground the man rises by $10 - x$. Then $80\,(10 - x) = 200\,x$, so $800 = 280\,x$ and $x = 2.857$ m. The man ends 7.14 m above where he began, and the balloon 2.86 m below. (Original problem.)
+  check: code

@@ -1,0 +1,93 @@
+# The language landscape. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of these is checked for type mistakes before the program runs?
+  opts: ["Plain Python without any type checker", "A Java program", "A JavaScript function called from a web page"]
+  ans: 1
+  sol: Java is statically typed, so the compiler rejects a type mistake before the program starts. Plain Python and JavaScript check types while running (Python has optional hints that separate tools can check).
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which language is best known for enforcing memory safety through ownership rules checked by the compiler, with no garbage collector?
+  opts: ["Java", "Rust", "Python"]
+  ans: 1
+  sol: Rust gives each value one owner and the compiler inserts the cleanup when the owner goes out of scope. Java and Python use garbage collection.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    A data-cleaning script can be written in two ways. Version X takes 2 hours to write and runs in 6 seconds. Version Y takes 10 hours to write and runs in 0.1 seconds. The script will be run 1000 times in total. How many hours does choosing X save overall (writing time plus total running time)?
+  ask: Hours saved by X
+  unit: hours
+  ans: 6.36
+  tol: 0.01
+  verify: (10 + 1000*0.1/3600) - (2 + 1000*6/3600)
+  sol: |
+    Total for X: $2 + 1000 \times 6 / 3600 = 2 + 1.667 = 3.667$ hours.
+    Total for Y: $10 + 1000 \times 0.1 / 3600 = 10 + 0.028 = 10.028$ hours.
+    Difference: $10.028 - 3.667 \approx 6.36$ hours. At 1000 runs, the faster-to-write version wins; with many million runs, the answer would flip. This is the "total cost" formula in action.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: In JavaScript, "2" + 3 gives "23", while in Python "2" + 3 raises an error. What does this difference show?
+  opts: ["Python is slower", "Python is stricter about mixing types (stronger typing); JavaScript converts silently", "JavaScript is compiled and Python is not"]
+  ans: 1
+  sol: Both are dynamically typed, but they differ in strength. Python refuses to mix a string and a number; JavaScript converts the number to text. Strength (how much silent conversion) is a separate axis from static versus dynamic.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |
+    A Python service spends 90% of its running time in one numeric function. You move that function to compiled code that runs 50 times faster; the rest is unchanged. By what factor does the whole service speed up?
+  ask: Overall speed-up
+  unit: times
+  ans: 8.47
+  tol: 0.05
+  verify: 1/(0.1 + 0.9/50)
+  sol: |
+    New time as a fraction of the old: $0.1 + 0.9/50 = 0.1 + 0.018 = 0.118$. The speed-up is $1/0.118 \approx 8.47$. Even an infinitely fast function would give only $1/0.1 = 10$ times: the untouched 10% sets the ceiling. This is Amdahl's law, and it is why you profile before you rewrite.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A startup needs (a) a prototype web app in two weeks, (b) firmware for a medical device that must never run out of memory unexpectedly, and (c) an analysis notebook for one-off experiments. Choose a language for each and justify it using the three questions (typing, memory, how it runs).
+  sol: |
+    Several answers are defensible. One good set:
+    (a) **TypeScript or Python.** The prototype changes daily; writing speed and a large library ecosystem matter most; garbage collection removes memory worries; runtime speed is secondary.
+    (b) **C, C++ or Rust.** The device needs predictable memory: no garbage-collector pauses, tight control, compiled ahead of time. Rust adds compile-time checking of ownership, which removes many memory bugs, but toolchain support for a given chip must be checked. [Inference: depends on the target hardware]
+    (c) **Python.** Dynamic typing and an interactive notebook give the shortest edit-and-run loop, and the heavy numeric work is done by libraries written in C.
+    The point is to justify each choice by the trade-off, not to name the "right" language.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Explain the "use after free" bug and describe how C, Python and Rust each deal with it.
+  sol: |
+    A **use-after-free** happens when memory has been handed back but some part of the program still holds a reference to it and reads or writes it. The result can be a crash, wrong data or a security hole.
+    - **C:** nothing stops you. `free(p)` returns the memory, and a later use of `p` is undefined behaviour. Defence is discipline, tools and review.
+    - **Python (garbage collection):** memory is freed only when nothing refers to the value, so a live reference keeps it alive and the bug cannot occur. The cost is the collector's work and a possible memory build-up if you keep references you no longer need.
+    - **Rust (ownership):** when the owner goes out of scope the value is dropped, and the compiler refuses to compile any code that uses a reference past that point. The bug is ruled out before the program runs, at the price of learning the rules.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A video-sharing company's Python back end is working but its cloud bill is rising. Someone proposes rewriting everything in Go or Rust. Outline how you would decide, what you would measure, and what you would not rewrite.
+  sol: |
+    1. **Measure first.** Profile production to see where CPU and memory go. Typically a small number of endpoints or functions dominate the time; the rest is waiting on databases or networks, where a faster language gives no gain.
+    2. **Try cheap fixes.** A better algorithm, caching, a database index, vectorised library calls or more workers often deliver most of the saving for a fraction of the cost of a rewrite.
+    3. **Move only the hot spot.** If one function is CPU-bound, rewrite just that as a separate service or an extension in Go, Rust or C. Calculate the best possible gain with Amdahl's law: if it is 30% of the time, the ceiling is about $1/0.7 \approx 1.4$ times.
+    4. **Count the full cost.** Rewrites take months, introduce new bugs, split the team across two languages and slow the roadmap. Compare engineer-months against the monthly cloud saving.
+    5. **Do not rewrite** code that changes weekly, rarely runs or is I/O bound. A rewrite is justified when profiling proves a large, stable, CPU-bound component. [Inference: no real company is being described]
+  check: none
