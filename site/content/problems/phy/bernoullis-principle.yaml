@@ -279,7 +279,7 @@
   sol: |
     Let the hole be a depth $h$ below the surface. The speed is $\sqrt{2gh}$. The hole is at height $(2.0 - h) + 1.5 = 3.5 - h$ above the floor, so the fall time is $\sqrt{2(3.5 - h)/g}$ and the range is
     $$x = 2\sqrt{h\,(3.5 - h)}.$$
-    The product $h(3.5 - h)$ of two numbers with a fixed sum is greatest when they are equal: $h = 1.75$ m, which is allowed since the water is 2.0 m deep. Then $x_{\max} = 2\times1.75 = 3.5$ m, equal to the total height of the water surface above the floor. If the platform were lower than the water depth allows (a hole at depth $h > $ the depth of the water is impossible) the best hole would be the lowest one, but not here.
+    The product $h(3.5 - h)$ of two numbers with a fixed sum is greatest when they are equal: $h = 1.75$ m, which is allowed since the water is 2.0 m deep. Then $x_{\max} = 2\times1.75 = 3.5$ m, equal to the total height of the water surface above the floor. (Had the best $h$ come out larger than the water depth, the best hole would have been the lowest one.)
   check: code
 
 - id: o2
