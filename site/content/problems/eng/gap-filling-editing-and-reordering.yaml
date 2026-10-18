@@ -1,0 +1,201 @@
+# Gap filling, editing and reordering. All problems are original (no NCERT items for this leaf). The board has no published key for these; every answer is a model answer written by us for this archive.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Choose the word that fits the gap: Mohan is taller ___ his brother."
+  opts: ["than", "then", "that", "from"]
+  ans: 0
+  sol: |
+    A comparative adjective (*taller*) is followed by *than*. *Then* is about time, *that* is a pronoun or conjunction, and *different from* (not *taller from*) is a separate pattern.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Find the part with the error: She is (a) one of (b) the best (c) player (d) in the school."
+  opts: ["(a) one of", "(b) the best", "(c) player", "(d) in the school"]
+  ans: 2
+  sol: |
+    After *one of the best*, the noun is plural: *players*. The correct sentence is "She is one of the best players in the school." Parts (a), (b) and (d) are right.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which order of the jumbled parts makes a correct sentence? (P) to school (Q) walks (R) every day (S) Rina"
+  opts: ["SQPR", "SPQR", "QSPR", "RSQP"]
+  ans: 0
+  sol: |
+    Subject first (S, Rina), then the verb (Q, walks), then the place phrase (P, to school), then the time phrase (R, every day): "Rina walks to school every day." The other orders break the subject, verb, object backbone.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: text
+  q: |
+    Fill each blank with one suitable word.
+    Meena lives (1) ___ a small town (2) ___ the bank of (3) ___ river.
+  sol: |
+    Model answer: (1) in, (2) on, (3) a (or the, if a particular river is meant).
+
+    (1) A place inside a town takes *in*. (2) *On the bank of* is the fixed phrase. (3) The river has not been named earlier, so *a* is the natural article; *the* is also acceptable if the river is known to the reader.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: |
+    Fill each blank with one suitable word.
+    Rohan woke up late (1) ___ Monday morning. He had set the alarm, but it (2) ___ not ring because the battery had died. By the time he reached the bus stop, the bus (3) ___ already left. He decided to walk, (4) ___ it was only two kilometres. When he arrived, the assembly (5) ___ over.
+  sol: |
+    Model answer: (1) on, (2) did, (3) had, (4) because (or since, as), (5) was.
+
+    (1) A day takes *on*. (2) The sentence is past simple negative, so *did not ring*. (3) The bus left before Rohan reached the stop, so the past perfect *had left*. (4) The second clause gives the reason for walking, so a connector of cause: *because*. (5) The state at the time of arrival: *was over*.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Neither of the two answers ___ correct."
+  opts: ["are", "were", "is", "have been"]
+  ans: 2
+  sol: |
+    *Neither* (of two) is singular, so the verb is singular. The present tense matches the simple statement: *is*. *Are* and *have been* are plural. *Were* is a plural past form.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: |
+    Each line below has one error. Write the faulty word and its correction.
+    1. Every morning, Sunita goes for a walk in park near her house.
+    2. She find the air fresh and the birds' songs soothing.
+    3. Yesterday she noticed a injured puppy under a bench.
+    4. She took it home and gave it some milk, but it didn't drank.
+    5. Her mother suggested taking it at the vet nearby.
+    6. The puppy has been living with them since two weeks.
+  sol: |
+    1. *in park* should be *in the park*. A particular park, known to the reader, takes *the*.
+    2. *find* should be *finds*. The subject *she* needs the -s form in the present simple.
+    3. *a* should be *an*. *Injured* begins with a vowel sound.
+    4. *drank* should be *drink*. After *didn't* the verb is the base form.
+    5. *at* should be *to*. One takes a pet *to* the vet.
+    6. *since* should be *for*. *Two weeks* is a length of time, and *since* needs a point in time.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: |
+    Rearrange each set of words into a meaningful sentence.
+    (a) was / the / poem / written / by / a / famous / poet
+    (b) had / reached / the / we / before / started / rain / home
+    (c) what / asked / he / me / was / I / doing
+    (d) never / has / such / seen / she / a / beautiful / sight
+  sol: |
+    (a) The poem was written by a famous poet.
+    (b) We had reached home before the rain started.
+    (c) He asked me what I was doing.
+    (d) She has never seen such a beautiful sight.
+
+    In each, the subject comes first, then the verb with its helpers, then the rest. In (c) the reported question keeps statement order (*what I was doing*), not question order. In (d), *such* goes before *a*.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Choose the connector that fits: He worked very hard; ___, he did not pass."
+  opts: ["therefore", "moreover", "however", "so"]
+  ans: 2
+  sol: |
+    The two ideas contrast: effort, but no success. A word of contrast is needed: *however*. *Therefore* and *so* show a result, and *moreover* adds a point.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: |
+    Choose the correct option for each gap.
+    Water scarcity is (1) ___ serious problem in many parts of India. In (2) ___ villages, women walk long distances (3) ___ fetch water. If we (4) ___ rainwater, we (5) ___ solve much of the problem.
+    (1) a / an / the / some
+    (2) much / many / an / each
+    (3) for / to / so / that
+    (4) collect / collected / will collect / collecting
+    (5) can / could / had / would have
+  sol: |
+    Model answer: (1) a, (2) many, (3) to, (4) collect, (5) can.
+
+    (1) *Serious* begins with a consonant sound and the noun is singular and not specific: *a*. (2) *Villages* is plural countable, so *many*; *each* would need a singular noun. (3) A purpose, followed by a base verb: *to fetch*. (4) The if clause of a likely future condition uses the present simple: *collect*. (5) The main clause gives an ability or possibility in the present or future: *can solve*.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: |
+    Each line below has one word missing. Write the missing word, and the words before and after it.
+    (a) The museum is open all days except Monday.
+    (b) Visitors are requested not touch the exhibits.
+    (c) Children below twelve years must be accompanied an adult.
+    (d) We were surprised to see museum so crowded on a weekday.
+  sol: |
+    (a) **on**: before *open*, after *all* (open on all days).
+    (b) **to**: before *not*, after *touch* (requested not to touch).
+    (c) **by**: before *accompanied*, after *an* (accompanied by an adult).
+    (d) **the**: before *see*, after *museum* (see the museum). A particular museum known to the speaker takes *the*.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: |
+    Arrange the sentences in the correct order to make a paragraph.
+    P. By the evening, the clouds had cleared and the whole village came out to celebrate.
+    Q. The monsoon was late that year, and the farmers of Rampur waited anxiously.
+    R. Then, one afternoon, the sky darkened and the first heavy drops fell.
+    S. Day after day they looked at the empty sky for a sign of rain.
+  sol: |
+    Model answer: Q, S, R, P.
+
+    Q opens the paragraph: it introduces the late monsoon and the farmers. S follows with what they did (*they* refers to the farmers, so it must come after Q). R comes next: *Then, one afternoon* marks a change after the waiting. P ends the paragraph: *By the evening* is later than the afternoon, and the celebration is the result.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: |
+    Each line below has one error. Write the faulty word and its correction.
+    1. Yesterday our class goes on a picnic to the lake.
+    2. We started early because the bus was waiting in the school gate.
+    3. Everyone were excited, and the songs began at once.
+    4. When we reached, we found that someone has forgotten the lunch boxes.
+    5. The teacher was angry, but she did not shout to us.
+    6. Ravi, who knew the route, told Imran and I about a shortcut.
+    7. It was one of the most enjoyable day of my school life.
+    8. I am looking forward for the next picnic.
+  sol: |
+    1. *goes* should be *went*. "Yesterday" makes the line past.
+    2. *in* should be *at*. We say *at the gate*.
+    3. *were* should be *was*. *Everyone* is singular.
+    4. *has forgotten* should be *had forgotten*. The forgetting came before the finding.
+    5. *to* should be *at*. We say *shout at* someone.
+    6. *I* should be *me*. After a verb (*told*) the object form is used.
+    7. *day* should be *days*. After *one of the most*, the noun is plural.
+    8. *for* should be *to*. The fixed phrase is *look forward to*.
+
+    [Note] The eight errors cover tense (1, 4), preposition (2, 5, 8), agreement (3), pronoun (6) and number (7). A model answer written for this archive.
+  check: none
