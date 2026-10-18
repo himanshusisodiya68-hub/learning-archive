@@ -1,0 +1,106 @@
+# Balanced trees and B-trees. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A perfectly balanced binary tree must hold 1,000,000,000 keys. What is the smallest number of levels it needs?
+  ask: Levels
+  unit: ""
+  ans: 30
+  tol: 0.1
+  verify: ceil(log2(1e9+1))
+  sol: A tree with $h$ full levels holds $2^h - 1$ keys. Since $2^{29} - 1 \approx 5.4\times10^8$ is too small and $2^{30} - 1 \approx 1.07\times10^9$ is enough, 30 levels are needed.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: What does a rotation in a search tree preserve?
+  opts: ["The left-to-right sorted order of the keys", "The depth of every node", "Which key is the root"]
+  ans: 0
+  sol: A rotation moves nodes around locally, which changes depths and often the root of that piece, but the in-order sequence of keys stays exactly the same, so the tree remains a valid search tree.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A B-tree stores 2,000,000 keys and every node has 100 children (fan-out 100). What is the smallest number of levels it needs, using the rule that a tree with h levels reaches about 100^h keys?
+  ask: Levels
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: ceil(log10(2e6)/log10(100))
+  sol: $100^3 = 10^6$ is less than $2\times10^6$, while $100^4 = 10^8$ is more than enough. So 4 levels are needed, which is 4 page reads at most for a lookup.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: In an AVL tree, an insert leaves one node with a left subtree that is two levels taller than its right subtree, and the new key went into the left child's left subtree. What repairs it?
+  opts: ["A single right rotation at that node", "A single left rotation at that node", "Recolouring the node red"]
+  ans: 0
+  sol: The extra height is on the outside-left, so lifting the left child up and letting the node drop to its right, a single right rotation, evens out the heights. A left rotation would make things worse, and colours belong to red-black trees, not AVL.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Write the code for a right rotation in a binary search tree, and explain why the in-order sequence of keys is unchanged.
+  sol: |
+    ```python
+    def rotate_right(y):
+        x = y.left
+        y.left = x.right
+        x.right = y
+        return x
+    ```
+
+    Here `y` is the node being rotated down and `x` is its left child, which becomes the new top; the caller links the returned node where `y` used to hang.
+
+    Call the subtrees $A = x.left$, $B = x.right$, $C = y.right$. Before the rotation, the in-order sequence is A, x, B, y, C. After it, $x$ has A on its left and $y$ on its right, and $y$ has B on its left and C on its right, so the in-order sequence is again A, x, B, y, C. B still lies between $x$ and $y$, which is exactly where "larger than x and smaller than y" belongs. It takes O(1) time.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A database table has 100 million rows and an index on the column `age`. A query asks for everyone aged between 25 and 30. Explain why a B+ tree index handles this well, and why a hash index could not.
+  sol: |
+    A B+ tree keeps its keys in sorted order and links the leaf pages in a chain. The query descends from the root to the leaf holding age 25 (3 to 4 page reads for 100 million rows), then walks along the chain of leaves, reading pages one after another until it passes 30. The cost is about the descent plus the number of pages that actually contain matching rows.
+
+    A hash index scatters keys by their hash value, so ages 25 and 26 are in unrelated places. It can answer "age = 27" in one step but has no notion of "between", so a range would need one lookup for every possible value in the range, or a full scan of the table.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A red-black tree holds 1,048,575 keys (that is 2^20 - 1). Using the bound h <= 2 log2(n + 1), what is the largest height it can have?
+  ask: Maximum height
+  unit: levels
+  ans: 40
+  tol: 0.1
+  verify: 2*log2(1048575+1)
+  sol: $n + 1 = 2^{20}$, so $\log_2(n+1) = 20$ and the bound is $2 \times 20 = 40$ levels. A perfectly balanced tree would need only 20, so the red-black tree is at most twice as tall as the ideal.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A B-tree allows at most 3 keys per node. A node holding 4 keys after an insert splits at the middle (the third smallest key moves up; the two smaller stay on the left, the rest go right). Insert 10, 20, 30, ..., 130 in this order into an empty tree. Draw the final tree and say how many levels it has.
+  sol: |
+    - Insert 10, 20, 30: one node [10 20 30].
+    - Insert 40: [10 20 30 40] splits, 30 goes up. Root [30], leaves [10 20] and [40].
+    - Insert 50, 60: right leaf [40 50 60].
+    - Insert 70: [40 50 60 70] splits, 60 goes up. Root [30 60], leaves [10 20], [40 50], [70].
+    - Insert 80, 90: right leaf [70 80 90].
+    - Insert 100: [70 80 90 100] splits, 90 goes up. Root [30 60 90], leaves [10 20], [40 50], [70 80], [100].
+    - Insert 110, 120: last leaf [100 110 120].
+    - Insert 130: [100 110 120 130] splits, 120 goes up, so the root would hold [30 60 90 120], which is 4 keys, so the root splits too. Its third key, 90, moves up into a new root.
+
+    Final tree, **3 levels**:
+
+    - Root: [90]
+    - Left child [30 60], with leaves [10 20], [40 50], [70 80]
+    - Right child [120], with leaves [100 110], [130]
+
+    The tree grew taller only at the moment the root split, and all leaves are at the same depth (3). That is how a B-tree keeps its balance without rotations.
+  check: none

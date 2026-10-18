@@ -1,0 +1,115 @@
+# Sorting. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Insertion sort is run on 10 cards that start in exactly reverse order. How many times does a card have to be shifted one place to the right in total?
+  ask: Shifts
+  unit: ""
+  ans: 45
+  tol: 0.1
+  verify: 10*9/2
+  sol: The second card shifts past 1 card, the third past 2, and so on up to the tenth past 9. The total is $1 + 2 + \dots + 9 = 9 \times 10 / 2 = 45$. In general, $n(n-1)/2$ shifts, which is why the worst case is $O(n^2)$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A stable sort is one that
+  opts: ["always runs in O(n log n)", "keeps equal items in the same relative order as in the input", "never uses extra memory", "sorts without comparing items"]
+  ans: 1
+  sol: Stability is about ties only. Items that compare equal come out in the order they went in. It says nothing about speed, memory or whether comparisons are used.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Insertion sort (cost growing like n²) takes 0.5 seconds on 5,000 random items. Estimate its time on 20,000 random items.
+  ask: Time
+  unit: s
+  ans: 8
+  tol: 0.2
+  verify: 0.5*(20000/5000)**2
+  sol: The input is 4 times larger. A cost that grows like $n^2$ is $4^2 = 16$ times larger, so the time is $0.5 \times 16 = 8$ seconds.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: |
+    What does this program print?
+    ```python
+    a = [3, 1, 2]
+    b = a.sort()
+    print(b)
+    ```
+  opts: ["[1, 2, 3]", "[3, 1, 2]", "None", "It raises an error"]
+  ans: 2
+  sol: '`list.sort()` sorts the list in place and returns `None`. So `a` becomes [1, 2, 3] but `b` is `None`. To get a new sorted list and leave the original alone, use `b = sorted(a)`.'
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You are given n meetings as (start, end) pairs, in no particular order. Merge all overlapping meetings into the smallest set of blocks and give the cost. For example [(1,3), (8,10), (2,6), (15,18), (6,7)] becomes [(1,7), (8,10), (15,18)] (meetings that touch at 6 count as overlapping).
+  sol: |
+    Sort by start time. After sorting, any meeting that overlaps the current block must start no later than the block's end, so one pass is enough.
+    ```python
+    def merge(meetings):
+        meetings.sort()                      # by start time
+        blocks = [list(meetings[0])]
+        for s, e in meetings[1:]:
+            if s <= blocks[-1][1]:           # overlaps or touches
+                blocks[-1][1] = max(blocks[-1][1], e)
+            else:
+                blocks.append([s, e])
+        return blocks
+    ```
+    Trace: sorted is (1,3), (2,6), (6,7), (8,10), (15,18). Block (1,3) absorbs (2,6) to give (1,6), then (6,7) to give (1,7); (8,10) starts a new block; (15,18) starts another. The result is [(1,7), (8,10), (15,18)].
+    Cost: sorting is $O(n \log n)$ and the pass is $O(n)$, so $O(n \log n)$ overall. Without sorting, comparing every pair would be $O(n^2)$. This is the standard "sort first, then one pass" pattern.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Records are (name, marks). Produce the list ordered by marks from highest to lowest, with students of equal marks in alphabetical order. Give two correct Python ways, and explain why the order of the two sorts matters in the first.
+  sol: |
+    **Way 1: two stable sorts.** Sort by the minor key first, then by the major key last.
+    ```python
+    records.sort(key=lambda r: r[0])                    # by name
+    records.sort(key=lambda r: r[1], reverse=True)      # by marks, high first
+    ```
+    Python's sort is stable, so records with equal marks stay in the name order left by the first sort. If you did them in the other order, the final sort by name would throw away the marks order. The last sort always decides the main order.
+
+    **Way 2: one sort with a tuple key.** Negate marks so that larger marks sort first, then name breaks ties.
+    ```python
+    records.sort(key=lambda r: (-r[1], r[0]))
+    ```
+    Both cost $O(n \log n)$ per sort. (Way 2 needs numeric marks to negate; way 1 works for any comparable key.)
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: Using the decision-tree argument, what is the smallest number of comparisons that could ever be enough to sort any 5 distinct items? (Give the lower bound given by counting orderings.)
+  ask: Comparisons
+  unit: ""
+  ans: 7
+  tol: 0.1
+  verify: ceil(log2(120))
+  sol: Five items have $5! = 120$ possible orderings. After $k$ comparisons you can tell apart at most $2^k$ cases, so we need $2^k \ge 120$. Since $2^6 = 64 < 120 \le 128 = 2^7$, the bound is $k = 7$. (It is known that 7 comparisons are in fact enough for 5 items, with a clever method.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: You must sort one million non-negative 32-bit integers. Describe how radix sort with base 256 does this, say how many passes it needs and why each pass must be stable, and compare its cost with an n log n sort.
+  sol: |
+    A 32-bit number is four bytes, so treat each number as four base-256 digits. Do four passes, from the least significant byte to the most significant. In each pass, run a **counting sort** on that one byte: count how many numbers have each byte value 0 to 255, turn the counts into starting positions (running totals), then place every number at its position, in input order.
+
+    Each pass costs $O(n + 256)$, so four passes cost about $4 \times (10^6 + 256) \approx 4$ million steps, against roughly $10^6 \times 20 = 20$ million comparisons for an $n\log n$ sort.
+
+    Each pass must be **stable**. When we sort by the second byte, numbers with the same second byte must stay in the order the first pass gave them (by first byte); otherwise the earlier work is lost. The final pass by the top byte then leaves ties ordered by the lower bytes, which gives the full numeric order. This is the same "minor key first, major key last" idea as sorting by several keys.
+
+    Radix sort beats the $\log_2(n!)$ floor because it never compares two numbers with each other; it reads the digits. The floor only applies to comparison sorts. The cost is that it needs fixed-size digits and extra memory for the output, and it does not suit arbitrary objects with only a comparison function. [Inference: in practice the speed gain depends on cache behaviour; for a million items the difference from a good comparison sort is usually a small factor, not 5x.]
+  check: none

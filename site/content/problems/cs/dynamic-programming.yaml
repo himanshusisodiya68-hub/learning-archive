@@ -1,0 +1,105 @@
+# Dynamic programming. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "Define fib(0) = 0, fib(1) = 1 and fib(n) = fib(n-1) + fib(n-2). A plain recursive function with no memory computes fib(30). The number of calls it makes, counting the first one, equals 2 × fib(31) − 1, and fib(31) = 1,346,269. How many calls is that?"
+  ask: Calls
+  unit: ""
+  ans: 2692537
+  tol: 0.5
+  verify: 2*1346269-1
+  sol: Plugging in, the number of calls is $2 \times 1{,}346{,}269 - 1 = 2{,}692{,}537$. With a cache, the same answer needs only about 31 calls that do real work, one per distinct value from 0 to 30.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which problem has overlapping sub-problems, so that remembering answers pays off?
+  opts: ["Merge sort of a list", "Fibonacci by plain recursion", "Binary search in a sorted list"]
+  ans: 1
+  sol: In plain Fibonacci recursion, fib(n-2) is needed by both fib(n) and fib(n-1), so the same sub-problem is solved many times. Merge sort's two halves are separate pieces, and binary search follows a single path.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A child climbs a staircase of 10 steps, taking 1 or 2 steps at a time. In how many different ways can the child reach the top?
+  ask: Ways
+  unit: ""
+  ans: 89
+  tol: 0.1
+  verify: 89
+  sol: |
+    Let $w(n)$ be the number of ways to reach step $n$. The last move was a 1-step from step $n-1$ or a 2-step from step $n-2$, so $w(n) = w(n-1) + w(n-2)$, with $w(1) = 1$ and $w(2) = 2$. Then $w$ is 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 for $n = 1$ to $10$. So there are 89 ways.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Coins are 1, 4 and 6. What is the fewest number of coins that make 8?
+  ask: Coins
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: 8/4
+  sol: |
+    Let $b[a]$ be the fewest coins for amount $a$. Then $b$ is 0, 1, 2, 3, 1, 2, 1, 2, 2 for amounts 0 to 8. For 8, try the last coin: coin 1 gives $b[7]+1 = 3$, coin 4 gives $b[4]+1 = 2$, coin 6 gives $b[2]+1 = 3$. The smallest is 2, from 4 + 4. Greedy would take 6, 1, 1, which is 3 coins.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Find the length of the longest common subsequence (letters in order, not necessarily next to each other) of ABCBDAB and BDCABA. State the recurrence and the answer.
+  sol: |
+    Let $d[i][j]$ be the length of the longest common subsequence of the first $i$ letters of the first string and the first $j$ letters of the second. If the last letters match, $d[i][j] = d[i-1][j-1] + 1$; otherwise $d[i][j] = \max(d[i-1][j],\, d[i][j-1])$. The first row and column are 0.
+    ```python
+    def lcs(a, b):
+        d = [[0] * (len(b) + 1) for _ in range(len(a) + 1)]
+        for i in range(1, len(a) + 1):
+            for j in range(1, len(b) + 1):
+                if a[i - 1] == b[j - 1]:
+                    d[i][j] = d[i - 1][j - 1] + 1
+                else:
+                    d[i][j] = max(d[i - 1][j], d[i][j - 1])
+        return d[-1][-1]
+    ```
+    For these strings the answer is 4, for example BCBA. The cost is $O(m\cdot n)$ for lengths $m$ and $n$, here 7 × 6 = 42 cells.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Items have (weight, value): (1, 1), (3, 4), (4, 5), (5, 7). Each can be taken at most once and the bag holds 7 kg. Find the best total value, and say what the table state is."
+  sol: |
+    The state is $\text{best}[c]$, the best value using the items considered so far with room $c$ kg. For each item, loop $c$ downwards from 7 and set $\text{best}[c] = \max(\text{best}[c],\, \text{best}[c-w] + v)$.
+    Checking the sets that fit in 7 kg: (3, 4) weighs 7 and is worth $4 + 5 = 9$; (1, 5) weighs 6 and is worth $1 + 7 = 8$; (1, 3) is worth 5; (1, 4) is worth 6; (3, 5) weighs 8 and does not fit. The best is **9**, from the items of weight 3 and 4. The cost is $O(n\cdot W)$, here $4 \times 7 = 28$ updates.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A robot moves only right or down on a 4 × 4 grid from the top-left cell to the bottom-right cell. The cell in row 2, column 2 is blocked. How many different paths are there?
+  ask: Paths
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: 20-2*6
+  sol: |
+    Let $p[r][c]$ be the number of paths to a cell, which is $p[r-1][c] + p[r][c-1]$, and 0 for the blocked cell. The rows are
+    row 1: 1 1 1 1;
+    row 2: 1 0 1 2;
+    row 3: 1 1 2 4;
+    row 4: 1 2 4 8.
+    The bottom-right cell holds 8. Check by counting: with no block there are $\binom{6}{3} = 20$ paths; those through the blocked cell number $\binom{2}{1}\cdot\binom{4}{2} = 2 \times 6 = 12$, so $20 - 12 = 8$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: The knapsack programme runs in O(n × W) time, yet knapsack is a famously hard problem for which no fast general method is known. Is this a contradiction? Explain what "pseudo-polynomial" means.
+  sol: |
+    There is no contradiction. The running time of an algorithm is judged against the **length of the input in bits**. The number $W$ is written with about $\log_2 W$ bits, so a capacity such as $2^{40}$ needs only 40 bits. But the table has $W+1$ entries per item, which is about a trillion for $W = 2^{40}$. In terms of bits $k = \log_2 W$, the cost is $n \cdot 2^{k}$, which is exponential in the input length.
+    An algorithm whose time is polynomial in the numeric **values** in the input (like $W$) but exponential in their bit length is called **pseudo-polynomial**. It is fast when $W$ is modest (a few thousand) and hopeless when $W$ has dozens of bits. Hardness results are statements about bit length, so they are consistent with this method.
+    Practical consequences: if capacities are small, use the table; if they are huge, use other methods (approximation schemes or branch and bound). [Unverified: the existence of such approximation schemes is stated from memory]
+  check: none

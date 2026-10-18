@@ -95,5 +95,5 @@
 
     Check with numbers: 10 bits per key gives $k \approx 7$ and $p \approx 2^{-7} = 0.78\%$, close to the 0.82% from the exact formula (which uses rounded $k = 7$ rather than 6.93).
 
-    Reading it the other way: each extra hash function halves $p$, and each extra hash function costs $\ln 2$ more... in fact it needs $1/\ln 2 \approx 1.44$ more bits per key, because $k = 1.44 \cdot \log_2$ ... which is why each factor of 10 costs about 4.8 bits per key ($\log_2 10 \times 1.44 = 4.79$).
+    Reading it the other way: $p = 2^{-k}$ means $k = \log_2(1/p)$, and $m/n = k/\ln 2 \approx 1.44k$. So bits per key $\approx 1.44\log_2(1/p)$. Making $p$ ten times smaller adds $\log_2 10 \approx 3.32$ to $k$, which costs $1.44 \times 3.32 \approx 4.8$ bits per key.
   check: none
