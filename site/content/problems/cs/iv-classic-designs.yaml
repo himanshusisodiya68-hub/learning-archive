@@ -1,0 +1,105 @@
+# Classic designs. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A chat app has 200 million active users. Each sends 40 messages a day on average. What is the average number of messages per second (a day has 86,400 seconds)? Assume nothing else.
+  ask: Average messages
+  unit: per second
+  ans: 92593
+  tol: 5
+  verify: 200e6*40/86400
+  sol: Messages per day $= 200\times10^{6}\times 40 = 8\times10^{9}$. Divide by 86,400 seconds, about $92{,}593$ per second. Traffic is uneven, so the peak may be two to four times this; that factor is an assumption. [Inference]
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which pair correctly matches a prompt with its hard problem?
+  opts: ["Rate limiter and transcoding huge videos", "Payment system and never charging twice when a call times out", "Search autocomplete and electing a driver for a rider", "Chat app and choosing between 301 and 302 redirects"]
+  ans: 1
+  sol: A timeout leaves the caller not knowing whether the charge happened, so retries must be safe (idempotency keys). The other pairs mix up prompts, for example transcoding belongs to video streaming, and 301 versus 302 belongs to the URL shortener.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A URL shortener receives 100 million new links every month. Each stored record is about 500 bytes. How many terabytes (1 TB = 10^12 bytes) are needed to keep five years of records, ignoring replicas and indexes?
+  ask: Storage
+  unit: TB
+  ans: 3
+  tol: 0.01
+  verify: 100e6*60*500/1e12
+  sol: Five years is 60 months, so $100\times10^{6}\times 60 = 6\times10^{9}$ records. Times 500 bytes is $3\times10^{12}$ bytes, which is 3 TB. Replicas (say three copies) and indexes would multiply this, but 3 TB shows it fits on a handful of machines, so storage is not the hard problem; read traffic and unique codes are. The record size is an assumption. [Inference]
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A URL shortener uses a permanent redirect (301). The product team later asks for per-link click counts. What goes wrong?
+  opts: ["Nothing; the server always sees every click", "Browsers cache a 301 and skip the server on repeat visits, so repeat clicks are not counted", "Short codes stop being unique", "The database runs out of space"]
+  ans: 1
+  sol: A 301 tells browsers to remember the target and go there directly next time, so the server never sees repeat clicks. A temporary redirect (302) keeps every click flowing through the server, at the price of more traffic and no browser caching. This is the trade-off the interviewer probes for this row.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Ride matching. Drivers send their location every 4 seconds, and a rider asks for the nearest 10 available drivers within 3 km. Describe a data structure that answers this quickly and what you do about drivers near a cell boundary.
+  sol: |
+    **Index.** Divide the map into grid cells (a geohash or a fixed square grid, say 1 km on a side). Keep, for each cell, the set of available drivers in it. A location update moves a driver from the old cell's set to the new one, a cheap in-memory operation.
+
+    **Query.** Find the rider's cell, then read that cell and its 8 neighbours. If fewer than 10 drivers are found, widen to the next ring of cells. Compute true distance only for these candidates and take the closest 10.
+
+    **Boundary.** A driver 50 m away may be in the next cell, which is exactly why you read the neighbours too. Do not search only the rider's own cell.
+
+    **Scale.** One city's drivers fit in memory on one machine; partition the index by city or by top-level cell. Updates are write-heavy, so keep the index in memory and treat it as rebuildable from the next round of updates (stale by a few seconds is acceptable). A quadtree is the alternative: it splits dense areas finer than sparse ones, at the cost of more complex updates. [Inference: common approaches, not any company's documented design.]
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A notification system must send a "your order shipped" message through a push provider that sometimes times out. Describe how to avoid both lost and duplicate messages as far as is practical.
+  sol: |
+    **Queue first.** The order service publishes an event to a queue and returns at once. Workers read the queue, so spikes and provider slowness do not block the order service.
+
+    **Retries.** If the provider call fails or times out, the worker retries with growing delays (backoff) up to a limit, then puts the event in a dead-letter queue for inspection. This prevents loss.
+
+    **Duplicates.** A timeout may hide a success, so a retry can send twice. Give each notification a unique id built from the event (order id plus event type). Workers record ids already sent (in a fast store with an expiry) and skip repeats. If the provider supports an idempotency or collapse key, pass the same id so that it removes duplicates too.
+
+    **Honest limit.** You cannot get perfect exactly-once delivery to a phone. The aim is at-least-once delivery with deduplication, so duplicates are rare and nothing is lost silently. Also respect the user's preferences and quiet hours, and the provider's own rate limit.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Two retries of the same payment request, carrying the same idempotency key, arrive on two servers within a millisecond of each other. The code checks "have I seen this key?" and then charges. Explain what can go wrong and give two ways to fix it.
+  sol: |
+    **The race.** Both servers check at the same moment, both see "not seen yet", and both charge. The customer pays twice, even though the code looks correct on one machine. The check and the save are two steps, and another request can slip between them.
+
+    **Fix 1: a unique constraint.** Insert the key into a table that has a unique index on it, before charging. Only one insert succeeds; the other fails and returns the saved result (or "in progress"). The database makes the check-and-claim a single atomic step.
+
+    **Fix 2: an atomic claim in a shared store**, such as a "set if not exists" operation with a short lease. The winner proceeds; the loser waits or returns "in progress". The lease must outlive the charge, or be renewed, and the result must still be saved durably.
+
+    **Also.** Mark the record as "in progress", then "succeeded" or "failed", so a crash mid-way can be reconciled later rather than silently retried. A nightly reconciliation against the bank statement catches whatever still slips through. [Inference: standard practice.]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: You are asked to design a food delivery app (restaurants, riders, customers) in 45 minutes. Show how you would decompose it, which part you would go deep on and why, and what you would say about its weakest point.
+  sol: |
+    **Requirements first (3 min).** Browse restaurants, place an order and pay, track the rider live, get updates. Ask about scale (say 5 million orders a day in a country) and whether delivery partners are the company's own.
+
+    **Decompose into shapes.**
+    - Restaurant discovery and search: read-heavy lookup plus autocomplete.
+    - Checkout and payment: the payment shape; money must not be lost or doubled.
+    - Rider assignment and live tracking: ride matching plus a location stream.
+    - Order updates: the notification shape.
+
+    **Rank by risk.** A wrong charge or a lost order costs trust and money; slow search only annoys. So go deep on checkout, with an order state machine (placed, paid, accepted, picked up, delivered), idempotent payment calls and a ledger, and on rider assignment, where one order must get exactly one rider.
+
+    **Spend the time.** Perhaps 5 minutes on the overall picture, 15 on checkout and the order state machine, 12 on assignment, 5 on the rest, 5 on questions and failure scenarios.
+
+    **Weak point, said plainly.** "Dinner rush is a hot spot: a few restaurants and one neighbourhood take most of the load. I would partition by city, cache menus, and queue notifications. The part I am least sure of is rider assignment quality under surge; I would measure the share of orders reassigned and iterate." Naming the weak point and how you would measure it is the senior move.
+  check: none

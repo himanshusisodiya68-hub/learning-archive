@@ -142,7 +142,7 @@ One row per prompt. Read the columns left to right: what is hard, what you draw,
 | Search autocomplete | Suggest completions in about 100 ms for each keystroke | Prefix index (trie), precomputed top suggestions per prefix, periodic rebuild | Freshness versus latency and cost; personalised versus global suggestions |
 | Payment system | Never charge twice, never lose money, despite timeouts | Idempotency keys, double-entry ledger, state machine, reconciliation job | Consistency over availability; retries must be safe; exactly-once is built from at-least-once plus idempotency |
 
-A cached lesson sits behind many rows. The **username check** lesson shows how a hash table, a Bloom filter and a sharded database combine. The **tries** lesson is the data structure inside autocomplete. The **message queues** lesson underlies chat, notifications and payments.
+Other lessons sit behind many rows. The **username check** lesson shows how a hash table, a Bloom filter and a sharded database combine. The **tries** lesson is the data structure inside autocomplete. The **message queues** lesson underlies chat, notifications and payments.
 
 :::qc lvl=2
 q: A candidate designs a notification system and sends each event straight to an email provider with no queue. What is the biggest risk?
