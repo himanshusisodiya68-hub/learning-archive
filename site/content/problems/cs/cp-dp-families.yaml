@@ -80,7 +80,8 @@
   tol: 0.1
   verify: '(() => { const a="garden", b="danger"; let prev=[...Array(b.length+1).keys()]; for (let i=1;i<=a.length;i++){ const cur=[i]; for (let j=1;j<=b.length;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]!==b[j-1]?1:0)); prev=cur; } return prev[b.length]; })()'
   sol: |
-    `dp[i][j]` is the fewest edits to turn the first $i$ letters of "garden" into the first $j$ of "danger". The three options are delete (cell above plus 1), insert (cell on the left plus 1) and replace or keep (diagonal plus 0 or 1). The final cell is 4. One way: garden to darden (replace g), delete r to get daden, replace e... in fact the table gives a minimum of 4, and a 3-edit route does not exist because the common subsequence "an" or "den"... is too short to save more.
+    `dp[i][j]` is the fewest edits to turn the first $i$ letters of "garden" into the first $j$ of "danger". The three options are delete (cell above plus 1), insert (cell on the left plus 1) and replace or keep (diagonal plus 1 or 0). The final cell is 4.
+    One script with 4 edits: replace g by d, keep a, replace r by n, replace d by g, keep e, replace n by r. The table shows no script with 3 edits exists.
   check: code
 
 - id: m3
@@ -93,7 +94,8 @@
   tol: 0.1
   verify: '(() => { const p=[0,1,3,4,5,7]; const n=p.length; const dp=Array.from({length:n},()=>Array(n).fill(0)); for (let g=2; g<n; g++) for (let i=0;i+g<n;i++){ const j=i+g; let b=Infinity; for (let k=i+1;k<j;k++) b=Math.min(b,dp[i][k]+dp[k][j]); dp[i][j]=p[j]-p[i]+b; } return dp[0][n-1]; })()'
   sol: |
-    Interval DP over the points 0, 1, 3, 4, 5, 7. `dp[i][j]` is the cheapest way to make every cut between points $i$ and $j$: the first cut at point $k$ costs the piece length $p_j - p_i$, then the two pieces are independent. Filling short intervals first gives `dp[0][5] = 16`. One optimal order is to cut at 3 first (cost 7), then the left piece of length 3 at 1 (cost 3), and the right piece of length 4, from 3 to 7, at 4 (cost 4) and then 5 (cost 3): total 7 + 3 + 4 + 3 = 17? The table shows that cutting at 4 first is better: 7 + (pieces 0..4 and 4..7): the left piece of length 4 is cut at 1 and 3 for 4 + 3 = 7, and the right piece of length 3 is cut at 5 for 3, so 7 + 7 + 3 = 17 again. The best is cutting at 3, then 5, then 1 and 4: 7 + 4 + 3 + 2 = 16.
+    Interval DP over the points 0, 1, 3, 4, 5, 7. `dp[i][j]` is the cheapest way to make every cut strictly between points $i$ and $j$: the first cut at point $k$ costs the piece length $p_j - p_i$, and then the two pieces are independent. Filling short intervals first gives `dp[0][5] = 16`.
+    An optimal order: cut at 3 first (the whole stick, cost 7), then at 1 in the piece 0 to 3 (cost 3), then at 5 in the piece 3 to 7 (cost 4), then at 4 in the piece 3 to 5 (cost 2). Total 7 + 3 + 4 + 2 = 16.
   check: code
 
 - id: m4
@@ -106,7 +108,13 @@
   tol: 0.1
   verify: '(() => { const g=[[3,1,4,2],[2,8,1,5],[6,2,3,1],[4,7,2,2]]; for (let r=0;r<4;r++) for (let c=0;c<4;c++){ if(r===0&&c===0) continue; const up=r?g[r-1][c]:Infinity, left=c?g[r][c-1]:Infinity; g[r][c]+=Math.min(up,left); } return g[3][3]; })()'
   sol: |
-    Each cell's best cost is its own cost plus the smaller of the best costs of the cell above and the cell on the left. The first row becomes 3, 4, 8, 10; the first column 3, 5, 11, 15. The interior fills as (row 1) 5, 13, 9, 14; (row 2) 11, 7, 10, 11; (row 3) 15, 14, 12, 13... and the final cell is 15 as recomputed by the checker. One cheapest path is 3, 1, 4, 1, 3, 1, 2... see the table: the minimum is 15.
+    Each cell's best cost is its own cost plus the smaller of the best costs of the cell above and the cell on the left. The filled table is
+    - row 0: 3, 4, 8, 10
+    - row 1: 5, 12, 9, 14
+    - row 2: 11, 13, 12, 13
+    - row 3: 15, 20, 14, 15
+
+    The corner holds 15. Walking back from it (always to the smaller neighbour) gives the path right, right, down, down, right, down, with costs 3, 1, 4, 1, 3, 1, 2, which add up to 15.
   check: code
 
 - id: m5

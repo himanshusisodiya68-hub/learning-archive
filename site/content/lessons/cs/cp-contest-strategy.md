@@ -69,7 +69,7 @@ links:
     name: 'Greedy and exchange arguments'
     same: 'Ordering problems by shortest solve time to minimise total penalty is a proof by exchange: swapping a longer problem ahead of a shorter one only adds delay.'
     differs: 'The greedy lesson proves optimality on exact data; in a contest your estimates are guesses, so the rule is a guide, not a theorem.'
-  - leaf: 'cs/expected-value'
+  - leaf: 'mat/expected-value'
     name: 'Expected value'
     same: 'Choosing which problem to attempt means comparing expected points per minute: chance of success times points, divided by time.'
     differs: 'Textbook expected value uses known probabilities; in a contest the probabilities come from your honest guess and the scoreboard.'

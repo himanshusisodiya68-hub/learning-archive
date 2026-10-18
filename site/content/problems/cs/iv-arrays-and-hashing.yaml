@@ -1,0 +1,157 @@
+# Arrays and hashing patterns. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    A shop logs the product codes scanned at a till today: 4, 7, 4, 9, 7, 1, 9, 4. How many different codes were scanned?
+  ask: Different codes
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: 'new Set([4,7,4,9,7,1,9,4]).size'
+  sol: |
+    Add each code to a set; a set keeps one copy of each value. After the eight scans the set holds {4, 7, 9, 1}, so the answer is 4. Time is one pass, O(n).
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: |
+    You must count how many times each word occurs in an essay of one million words. Which structure is the natural fit?
+  opts: ["A set of words", "A dict from word to count", "A sorted list of words"]
+  ans: 1
+  sol: |
+    A dict (frequency map) from word to count: for each word, add one to its entry. A set only remembers presence, not how many times. A sorted list could be made to work, but sorting costs more than the single pass the dict needs.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    In the list [2, 7, 11, 15, 3, 6], how many pairs of different positions (i before j) have values that add up to 9?
+  ask: Pairs
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: '(() => { const a=[2,7,11,15,3,6]; let c=0; for (let i=0;i<a.length;i++) for (let j=i+1;j<a.length;j++) if (a[i]+a[j]===9) c++; return c; })()'
+  sol: |
+    The complement of each value is 9 minus the value: 2 needs 7, 7 needs 2, 11 needs -2, 15 needs -6, 3 needs 6, 6 needs 3. The pairs are (2, 7) and (3, 6). That is 2 pairs. A one-pass map finds the first pair it meets; counting every pair needs a count per value.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    How many subarrays (blocks of neighbouring items) of [1, 2, 3, -3, 3] have total exactly 3?
+  ask: Subarrays
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: '(() => { const a=[1,2,3,-3,3]; let c=0; for (let i=0;i<a.length;i++) { let s=0; for (let j=i;j<a.length;j++) { s+=a[j]; if (s===3) c++; } } return c; })()'
+  sol: |
+    Use prefix sums with a map seeded with {0: 1}. The running totals are 1, 3, 6, 3, 6.
+    - run = 1: look for -2, none. Map {0:1, 1:1}.
+    - run = 3: look for 0, found once, total 1. Map adds 3:1.
+    - run = 6: look for 3, found once, total 2. Map adds 6:1.
+    - run = 3: look for 0, found once, total 3. Map now has 3:2.
+    - run = 6: look for 3, found twice, total 5.
+    The five subarrays are [1,2], [3], [1,2,3,-3], [3,-3,3] and the last [3].
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |
+    A row of switches reads 0, 1, 1, 0, 1, 1, 1, 0. What is the length of the longest stretch of neighbouring switches that contains equal numbers of 0s and 1s?
+  ask: Length
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: '(() => { const a=[0,1,1,0,1,1,1,0]; let best=0; for (let i=0;i<a.length;i++) { let z=0,o=0; for (let j=i;j<a.length;j++) { if (a[j]) o++; else z++; if (z===o) best=Math.max(best,j-i+1); } } return best; })()'
+  sol: |
+    Treat each 0 as -1 and each 1 as +1, so a balanced stretch is one with total 0. Keep the first index at which each running balance appeared, starting with balance 0 at index -1.
+    Balances after each switch: -1, 0, 1, 0, 1, 2, 3, 2. Balance 0 first appears at index -1 and again at index 3, giving length 3 - (-1) = 4. Balance 1 repeats (indices 2 and 4) for length 2, balance 2 (indices 5 and 7) for length 2. The best is 4, the stretch 0, 1, 1, 0.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: |
+    To group words that are rearrangements of each other, one design uses the sorted letters of each word as the dict key. Another uses a tuple of 26 letter counts. Compare them for 100,000 words of length up to L, and say which you would choose for long words and why.
+  sol: |
+    Sorted-letters key: each word costs O(L log L) to sort, so the total is about n times L log L. Count-tuple key: each word costs O(L) to count plus O(26) to build the tuple, so about n times (L + 26).
+    For short words the difference is small and sorting is simpler to write. For long words (say L in the thousands) counting is faster because it avoids the log factor. Note the tuple has a fixed size of 26 only for lowercase English letters; for larger alphabets, use a dict of counts converted to a sorted tuple of pairs.
+    Either key must be hashable: a list cannot be used, so convert the counts to a tuple. Both keys rely on the same idea: items that are "the same" must map to the same label, and different items to different labels.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |
+    How many subarrays of [4, 5, 0, -2, -3, 1] have a total divisible by 5? (Zero counts as divisible.)
+  ask: Subarrays
+  unit: ""
+  ans: 7
+  tol: 0.1
+  verify: '(() => { const a=[4,5,0,-2,-3,1]; let c=0; for (let i=0;i<a.length;i++) { let s=0; for (let j=i;j<a.length;j++) { s+=a[j]; if (s%5===0) c++; } } return c; })()'
+  sol: |
+    Two prefixes with the same remainder mod 5 differ by a multiple of 5, so the stretch between them is divisible. Key a map by the prefix remainder, seeded with {0: 1}.
+    Prefix totals: 4, 9, 9, 7, 4, 5. Remainders mod 5: 4, 4, 4, 2, 4, 0.
+    Walking through: remainder 4 (first time, add 0), 4 (seen once, add 1), 4 (seen twice, add 2), 2 (add 0), 4 (seen three times, add 3), 0 (seen once from the empty prefix, add 1). Total 0 + 1 + 2 + 0 + 3 + 1 = 7.
+    In Python, `%` already gives a non-negative remainder for a positive divisor; in languages where it can be negative, add the divisor and take the remainder again.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |
+    In the longest-consecutive-run template (put all values in a set, start counting only where x - 1 is missing), run it on [10, 11, 12, 5, 6, 20, 3]. How many times in total does the line y += 1 execute?
+  ask: Increments
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(() => { const a=[10,11,12,5,6,20,3]; const s=new Set(a); let c=0; for (const x of s) if (!s.has(x-1)) { let y=x; while (s.has(y+1)) { y++; c++; } } return c; })()'
+  sol: |
+    Run starts (x - 1 absent) are 10, 5, 20 and 3. From 10 the loop moves to 11 and 12: 2 increments. From 5 it moves to 6: 1 increment. From 20 and 3 it does not move. Total 3.
+    The insight: every value that is not a run start is stepped onto exactly once, so total increments = n - (number of runs) = 7 - 4 = 3. That is why the nested loop is O(n) overall.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    Trace the swap-into-place method for the smallest missing positive number on [3, 4, -1, 1], and explain why it runs in O(n) time even though it has a while loop inside a for loop.
+  sol: |
+    Rule: put value x at index x - 1 when 1 <= x <= n (here n = 4).
+    - i = 0: value 3 belongs at index 2. Swap with -1: [-1, 4, 3, 1]. Now index 0 holds -1, out of range, so move on.
+    - i = 1: value 4 belongs at index 3. Swap with 1: [-1, 1, 3, 4]. Index 1 now holds 1, which belongs at index 0. Swap with -1: [1, -1, 3, 4]. Index 1 holds -1, move on.
+    - i = 2: value 3 is already at index 2. i = 3: value 4 is already at index 3.
+    Scan: index 0 holds 1 (correct), index 1 holds -1, which is not 2. Answer: 2.
+    Why O(n): each swap places one value at its final index, where the check nums[nums[i]-1] != nums[i] will stop it from ever being moved again. At most n values can be placed, so there are at most n swaps in total across all iterations of the for loop. Total work is n for the loop plus n for the swaps plus n for the scan. Memory is O(1) extra.
+    Duplicate values do not loop forever: if the target slot already holds the same value, the condition fails and the while loop ends.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: |
+    A learner proposes a sliding window to count subarrays with sum exactly k: move the right end forward, and while the total is at least k, count it if equal and move the left end forward. Show a short list with negatives where this misses a valid subarray, and say what to use instead.
+  sol: |
+    Counterexample: nums = [3, -3, 3], k = 3. The right end adds 3: total 3 equals k, so count it (1) and shrink: the window empties. Right end adds -3: total -3. Right end adds 3: total 0. The window never counted [3, -3, 3] and the last [3] either, because the left end had already moved past the start. The true answer is 3 subarrays: [3], [3, -3, 3] and the last [3].
+    The reason: the window method assumes adding an item never lowers the total and removing never raises it. With negatives both assumptions fail, so there is no safe rule for moving either end.
+    Use prefix sums with a map from prefix value to count, seeded with {0: 1}. For each running total, add the count of earlier prefixes equal to run - k. This is O(n) and does not care about signs.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    A list of n + 1 whole numbers each lies between 1 and n, so at least one value repeats. You may not change the list and may use only O(1) extra memory. Find a repeated value in O(n log n) time, and say why a set or a swap trick is not allowed here.
+  sol: |
+    A set needs O(n) memory, and swapping values into place modifies the list; both are forbidden. Use the pigeonhole principle on value ranges.
+    Binary search on the value, not on positions. Pick mid = (lo + hi) // 2 with lo = 1, hi = n. Count how many items in the list are in the range lo to mid. If the count is greater than mid - lo + 1, there are more items than values in that range, so a repeat lies there: set hi = mid. Otherwise the repeat lies in mid + 1 to hi: set lo = mid + 1. Stop when lo equals hi; that value is repeated.
+    Why it works: if every value in lo..mid appeared at most once, at most mid - lo + 1 items could lie there. A larger count forces a repeat inside (pigeonhole). If the left range is not overfull, then since the whole list is overfull, the right half must be.
+    Cost: each step scans the list once (O(n)) and there are about log2 n steps, so O(n log n) time and O(1) memory.
+    A faster O(n) answer treats each value as a pointer to the position with that number and finds the start of a loop; that is the fast-and-slow pointer idea of the linked-list lesson in this pillar.
+  check: none
