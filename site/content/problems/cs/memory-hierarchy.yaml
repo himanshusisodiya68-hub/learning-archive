@@ -1,0 +1,94 @@
+# Memory hierarchy and caches. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: On a scale where 1 nanosecond is stretched to 1 second, a typical SSD read of 100 microseconds takes how many days? (Use 100 microseconds = 100,000 ns.)
+  ask: Days
+  unit: days
+  ans: 1.16
+  tol: 0.02
+  verify: 1e5/86400
+  sol: 100 microseconds is $100\,000$ ns, which on the scale is $100\,000$ seconds. One day is $86\,400$ seconds, so this is $100\,000/86\,400 \approx 1.16$ days. The hit from a fast cache would take 1 second on the same scale.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these loses its contents when the power is switched off?
+  opts: ["SSD", "RAM", "Hard disk"]
+  ans: 1
+  sol: RAM (and CPU caches) are volatile. SSDs and hard disks are persistent storage, which is why files survive a shutdown.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A cache has a hit time of 1 ns, a miss rate of 5% and a miss penalty of 100 ns. What is the average memory access time?
+  ask: AMAT
+  unit: ns
+  ans: 6
+  tol: 0.01
+  verify: 1 + 0.05*100
+  sol: $\text{AMAT} = t_{\text{hit}} + m \times t_{\text{miss}} = 1 + 0.05 \times 100 = 6$ ns. A 5% miss rate makes the average six times the hit time, because a miss is 100 times slower.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A program scans an array of 8-byte numbers sequentially. The cache line is 64 bytes. What percentage of the accesses miss?
+  ask: Miss rate
+  unit: "%"
+  ans: 12.5
+  tol: 0.1
+  verify: 8/64*100
+  sol: A line holds $64/8 = 8$ elements. The first access to a line misses and the next seven hit, so the miss rate is $1/8 = 12.5\%$, which equals $s/L = 8/64$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A two-level cache has an L1 hit time of 1 ns and an L1 miss rate of 10%. An L1 miss goes to L2, which takes 5 ns and itself misses 20% of the time, sending the access to RAM at 100 ns. What is the average access time in ns?
+  ask: AMAT
+  unit: ns
+  ans: 3.5
+  tol: 0.01
+  verify: 1 + 0.1*(5 + 0.2*100)
+  sol: 'Work from the inside. An L1 miss costs on average $5 + 0.2 \times 100 = 25$ ns (L2 time plus the RAM time that 20% of them need). Only 10% of accesses pay that: $0.1 \times 25 = 2.5$. Add the L1 hit time: $1 + 2.5 = 3.5$ ns.'
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A 2D array is stored in memory row after row. Explain why summing it row by row is usually faster than summing it column by column, even though both do the same number of additions.
+  sol: |
+    Memory is fetched in cache lines of about 64 bytes. Row by row, consecutive accesses are neighbours in memory, so one miss brings in several elements that the next accesses use: spatial locality, with a miss only about once per line.
+
+    Column by column, consecutive accesses are a whole row apart in memory. If a row is longer than a cache line, each access lands on a different line, so almost every access misses and most of each fetched line is unused. By the time the loop returns to the same line for the next column, it may already have been evicted from the cache.
+
+    So the work is the same but the number of cache misses, and so the time waiting for memory, is far higher for the column order. The fix is to loop in storage order or to process the array in small blocks (tiles).
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: An array of one million 8-byte numbers is summed once. Assume a 64-byte line, a 100 ns penalty per line fetched from RAM, no prefetching and nothing cached beforehand. About how many milliseconds does the memory waiting take?
+  ask: Waiting time
+  unit: ms
+  ans: 12.5
+  tol: 0.1
+  verify: (1e6*8/64)*100/1e6
+  sol: 'The data is $10^6 \times 8$ bytes $= 8$ MB, which is $8\times10^6/64 = 125\,000$ lines. Each costs 100 ns, giving $125\,000 \times 100$ ns $= 12.5\times10^6$ ns $= 12.5$ ms. A linked list with every node on its own line could need up to $10^6$ line fetches, or up to 100 ms, eight times as much. Real hardware prefetches sequential data, so the true array figure is lower [Inference].'
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Two threads on two cores each run a loop that adds 1 to their own private counter 100 million times. The counters are two adjacent 8-byte values in one array. The code is correct, yet it runs several times slower than when the counters are far apart in memory. Explain why, and how to fix it.
+  sol: |
+    The two counters sit in the same 64-byte cache line. Each core keeps its own copy of the line in its cache. When core A writes its counter, the coherence protocol must invalidate core B's copy; when B writes, it invalidates A's. The line is therefore passed back and forth between the cores on nearly every write, and each hand-over costs far more than an ordinary cache hit. This is **false sharing**: the threads share no data, but they share a line.
+
+    The result stays correct, since each counter is updated by one thread only, so only speed suffers.
+
+    Fixes: pad each counter so it sits on its own line (for example, spacing them at least 64 bytes apart), or give each thread a local variable and combine them after the loop. [Inference: the size of the penalty depends on the processor; line size 64 bytes is typical but not universal.]
+  check: none

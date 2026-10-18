@@ -358,7 +358,7 @@ $$\cos\theta = \frac{g}{\omega^2 R}.$$
 
 This is a conical pendulum with $L = R$. If $\omega^2 < g/R$ there is no solution, and the bead stays at the bottom: it must spin fast enough before the bead lifts at all.
 
-**The funnel.** A marble circling on the inside of a smooth cone whose surface makes an angle $\alpha$ with the vertical: $N\cos\alpha = mg$ and $N\sin\alpha = mv^2/r$, so $v^2 = rg\tan\alpha$. Again the mass drops out, and a bigger circle needs more speed. This is the coin-funnel at science museums, where a coin spirals in as friction takes its speed away.
+**The funnel.** A marble circling on the inside of a smooth cone whose surface makes an angle $\beta$ with the horizontal. It is a banked road bent into a full circle: $N\cos\beta = mg$ and $N\sin\beta = mv^2/r$, so $v^2 = rg\tan\beta$. Again the mass drops out, and a bigger circle needs more speed. This is the coin-funnel at science museums, where a coin spirals in as friction takes its speed away.
 
 ## Key ideas to remember {lvl=1 id=s-keys}
 

@@ -214,7 +214,7 @@ where $h_1$ is the depth of the hole. Read this as: "twice the geometric mean of
 
 The same equation explains a lot of everyday things.
 
-- **Roofs and cyclones.** A strong wind over a flat roof lowers the pressure above it by about $\tfrac12\rho v^2$. For 40 m/s and air density 1.2 kg/m$^3$ this is about 1000 Pa; across a roof of 100 m$^2$ it is $10^5$ N, as much as the weight of ten tonnes. (Houses are sometimes built with openings so that the pressure inside falls too.)
+- **Roofs and cyclones.** A strong wind over a flat roof lowers the pressure above it by about $\tfrac12\rho v^2$. For 40 m/s and air density 1.2 kg/m$^3$ this is about 1000 Pa; across a roof of 100 m$^2$ it is $10^5$ N, as much as the weight of ten tonnes.
 - **Atomisers and burners.** Air blown fast across the top of a thin tube lowers the pressure there; liquid is pushed up the tube by the higher pressure below and sprayed out. A Bunsen burner and a gas stove draw air in through side holes in the same way.
 - **Venturi meter.** Fit two gauges to a pipe, one in the wide part and one in a narrow throat. Continuity gives $v_2 = (A_1/A_2)v_1$, and Bernoulli gives $P_1 - P_2 = \tfrac12\rho(v_2^2 - v_1^2)$, so
 $$Q = A_1v_1 = A_1A_2\sqrt{\frac{2(P_1 - P_2)}{\rho\,(A_1^2 - A_2^2)}}.$$
@@ -249,16 +249,16 @@ For $A = 0.50$ m$^2$, $a = 2.0$ cm$^2$ and $h_0 = 1.0$ m this is $2500\times0.45
 **When the equation fails.** Bernoulli's equation needs steady, non-viscous, non-turbulent flow. It fails in river rapids, where the flow is turbulent and unsteady, and in long pipes, where viscosity makes the pressure fall steadily along the flow even though the speed does not change. For air it also fails near the speed of sound, when the density itself changes. Remember also that it links points on a single streamline, the path a fluid parcel follows; in a smooth, irrotational flow the constant is the same on all streamlines.
 
 :::qc lvl=3
-q: Water flows from a wide tank through a short horizontal tube. In the tube, whose area is half that of the outlet's, the water speed is
-options: ["twice the outlet speed", "the same as at the outlet", "half the outlet speed"]
-answer: 0
-right: Right, by continuity: half the area, twice the speed. (In a real horizontal tube of uniform area the speed is the same all along; this was a tube with a narrower part.)
-wrong: Apply A₁v₁ = A₂v₂. If the tube area is half the outlet area, then what happens to the speed?
+q: In a siphon, the crest of the tube is raised a little higher above the water surface, with the outlet unchanged and the crest still well below 10 m. The speed of water leaving the outlet
+options: ["increases", "decreases", "stays the same"]
+answer: 2
+right: Right. Bernoulli between the surface and the outlet involves only the drop in height to the outlet, not the crest. A higher crest just lowers the pressure at the top (until air or vapour breaks the flow).
+wrong: Apply the equation between the open surface and the outlet only. Which height difference appears in it?
 :::
 
 ## A jet pushes back, and energy gets lost {lvl=4 id=s-oly label="Olympiad"}
 
-**The recoil of a leaking tank.** A jet of speed $v = \sqrt{2gh}$ and area $a$ carries momentum away at the rate $\rho av\cdot v = \rho av^2 = 2\rho gha$. By Newton's third law the tank is pushed back with that force: *twice* the hydrostatic force $\rho gha$ you would expect from the missing pressure on the hole. For a hole of area 1.0 cm$^2$ at a depth of 1.25 m the recoil is 2.45 N. Where does the other half come from? Near the hole the water on the inside is already moving towards it, so by Bernoulli the pressure on the wall around the hole is lower than hydrostatic; the force that was holding the tank back is partly gone as well. A rocket works on the same momentum principle, with the jet speed set by a combustion chamber instead of a column of water.
+**The recoil of a leaking tank.** A jet of speed $v = \sqrt{2gh}$ and area $a$ carries momentum away at the rate $\rho av\cdot v = \rho av^2 = 2\rho gha$. By Newton's third law the tank is pushed back with that force: *twice* the hydrostatic force $\rho gha$ you would expect from the missing pressure on the hole. For a hole of area 1.0 cm$^2$ at a depth of 1.25 m the recoil is 2.45 N. Where does the other half come from? Near the hole the water on the inside is already moving towards it, so by Bernoulli the pressure on the wall around the hole is lower than hydrostatic; that is the other half of the recoil (this is one standard account of the factor 2). A rocket works on the same momentum principle, with the jet speed set by a combustion chamber instead of a column of water.
 
 **Where Bernoulli's equation fails: the sudden widening.** Let water at speed $v_1$ in a narrow pipe of area $A_1$ run into a wide pipe of area $A_2$ and slow to $v_2 = v_1A_1/A_2$. Bernoulli predicts a pressure rise $\tfrac12\rho(v_1^2 - v_2^2)$. But the water leaving a sharp-edged pipe forms a jet that mixes violently (eddies) before it settles. Here is the momentum argument instead: take the water between a section just before the step and one well after. The net force on it is $(P_1 - P_2)A_2$ (assuming the pressure over the step equals $P_1$), and the rate of change of its momentum is $\rho Q(v_2 - v_1)$ with $Q = A_2v_2$. So
 

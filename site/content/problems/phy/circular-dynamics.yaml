@@ -299,12 +299,12 @@
 - id: o2
   lvl: oly
   kind: num
-  q: A small marble circles on the inner surface of a smooth funnel whose wall makes an angle of 30$^\circ$ with the vertical. It moves in a horizontal circle of radius 0.20 m. Find its speed. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  q: A small marble circles on the inner surface of a smooth funnel whose wall makes an angle of 30$^\circ$ with the horizontal. It moves in a horizontal circle of radius 0.20 m. Find its speed. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
   ask: Speed of the marble
   unit: m s⁻¹
   ans: 1.06
   tol: 0.01
   verify: sqrt(0.2*9.8*tan(rad(30)))
   sol: |
-    The wall is inclined at $30^\circ$ to the vertical, so the normal to it makes $30^\circ$ with the horizontal and points up and towards the axis. Vertically: $N\cos 30^\circ = mg$. Horizontally, towards the axis: $N\sin 30^\circ = mv^2/r$. Dividing gives $v^2 = rg\tan 30^\circ = 0.20 \times 9.8 \times 0.5774 = 1.13$, so $v = 1.06$ m s$^{-1}$. A larger circle needs a greater speed; the mass cancels. (Original problem.)
+    The wall is inclined at $30^\circ$ to the horizontal, so the normal to it makes $30^\circ$ with the vertical and points up and towards the axis (the funnel is a banked road bent into a circle). Vertically: $N\cos 30^\circ = mg$. Horizontally, towards the axis: $N\sin 30^\circ = mv^2/r$. Dividing gives $v^2 = rg\tan 30^\circ = 0.20 \times 9.8 \times 0.5774 = 1.13$, so $v = 1.06$ m s$^{-1}$. A larger circle needs a greater speed; the mass cancels. (Original problem.)
   check: code
