@@ -260,7 +260,8 @@
   kind: num
   q: |-
     Two identical billiard balls strike a rigid wall with the same speed but at different angles, and get reflected without any change in speed, as shown in Fig. 4.6. What is (i) the direction of the force on the wall due to each ball? (ii) the ratio of the magnitudes of impulses imparted to the balls by the wall?
-  ask: Ratio of impulses, case (a) : case (b)
+  ask: |
+    Ratio of impulses, case (a) : case (b)
   unit: ""
   ans: 1.15
   tol: 0.01
@@ -438,7 +439,8 @@
     $t = 25$ s: $x = ut + \tfrac12 a t^2 = 10 \times 25 - 10 \times 625 = -6000$ m $= -6$ km.
 
     $t = 100$ s: for the first 30 s, $x_1 = 10 \times 30 - 10 \times 900 = -8700$ m and the velocity at 30 s is $v = 10 - 20 \times 30 = -590$ m s$^{-1}$. The force then stops, so the body moves uniformly for 70 s: $x_2 = -590 \times 70 = -41\,300$ m. Total $x = x_1 + x_2 = -50\,000$ m $= -50$ km (50 km south of the starting point).
-  answer_key: a = −20 m s⁻², 0 ≤ t ≤ 30 s. t = −5 s: x = ut = −10 × 5 = −50 m. t = 25 s: x = ut + (1/2)at² = (10 × 25 − 10 × 625) m = −6 km. t = 100 s: x₁ = 10 × 30 − 10 × 900 = −8700 m; at t = 30 s, v = 10 − 20 × 30 = −590 m s⁻¹; x₂ = −590 × 70 = −41300 m; x = x₁ + x₂ = −50 km.
+  answer_key: |
+    a = −20 m s⁻², 0 ≤ t ≤ 30 s. t = −5 s: x = ut = −10 × 5 = −50 m. t = 25 s: x = ut + (1/2)at² = (10 × 25 − 10 × 625) m = −6 km. t = 100 s: x₁ = 10 × 30 − 10 × 900 = −8700 m; at t = 30 s, v = 10 − 20 × 30 = −590 m s⁻¹; x₂ = −590 × 70 = −41300 m; x = x₁ + x₂ = −50 km.
   check: both
 
 - id: ncert11-ex-4-14
@@ -508,7 +510,8 @@
   verify: 0.020*80/100*100
   sol: |
     Gun and shell start at rest, so the total momentum is zero both before and after the firing: $100\,v + 0.020 \times 80 = 0$ in magnitude, $v = 0.020 \times 80/100 = 0.016$ m s$^{-1}$ $= 1.6$ cm s$^{-1}$, opposite to the shell's motion.
-  answer_key: Use momentum conservation: 100 v = 0.02 × 80, v = 0.016 m s⁻¹ = 1.6 cm s⁻¹
+  answer_key: |
+    Use momentum conservation: 100 v = 0.02 × 80, v = 0.016 m s⁻¹ = 1.6 cm s⁻¹
   check: both
 
 - id: ncert11-ex-4-20

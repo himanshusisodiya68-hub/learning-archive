@@ -583,6 +583,21 @@
     The average of the velocities at the ends is $(10+20)/2 = 15$ m s$^{-1}$, the same value, because the velocity here changes uniformly with time.
   check: code
 
+- id: ncert11-it-2-2
+  lvl: ncert-intext
+  num: "XI 2 · §2.2"
+  source: NCERT XI Physics · Ch 2 · §2.2 Instantaneous velocity and speed
+  kind: text
+  q: |-
+    It should be noted that though average speed over a finite interval of time is greater or equal to the magnitude of the average velocity, instantaneous speed at an instant is equal to the magnitude of the instantaneous velocity at that instant. Why so?
+  sol: |
+    Over a finite interval the particle may turn back, so the path length $\Delta s$ can exceed $|\Delta x|$ and average speed $\Delta s/\Delta t \ge |\Delta x|/\Delta t$.
+
+    As $\Delta t \to 0$ the particle cannot turn back inside the interval, so the path length equals the magnitude of the displacement, $\Delta s = |\Delta x|$. Hence
+    $$\lim_{\Delta t\to0}\frac{\Delta s}{\Delta t} = \lim_{\Delta t\to0}\frac{|\Delta x|}{\Delta t} = \left|\frac{dx}{dt}\right|,$$
+    so instantaneous speed equals the magnitude of instantaneous velocity.
+  check: none
+
 - id: ncert11-ex-2-7
   lvl: ncert-ex
   num: "XI 2.7"

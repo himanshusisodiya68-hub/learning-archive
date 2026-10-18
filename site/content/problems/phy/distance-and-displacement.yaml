@@ -363,6 +363,17 @@
     Use only these conversions: 1 km = 1000 m, 1 m = 100 cm, 1 cm = 10 mm. Add harder pairs such as 0.35 m and 350 mm for a second round.
   check: none
 
+- id: ncert9-it-4-2b
+  lvl: ncert-intext
+  num: "IX 4 · §4.1.2"
+  source: NCERT Grade 9 Science · Ch 4 · §4.1.2 Distance travelled and displacement
+  kind: text
+  q: |-
+    We find that between these two instants, the total distance travelled and the magnitude of displacement are not equal. Can these quantities ever be equal?
+  sol: |
+    Yes. The magnitude of displacement is the straight-line separation of the end points, and the distance is the length of the path actually followed. They are equal when the object moves along a straight line without turning back, that is, when it keeps moving in one direction (the book's margin note says the same). If the object ever reverses or curves, the path is longer than the straight-line separation, so distance exceeds the magnitude of displacement.
+  check: none
+
 - id: ncert9-it-4-3
   lvl: ncert-intext
   num: "IX 4 · Activity 4.1"
