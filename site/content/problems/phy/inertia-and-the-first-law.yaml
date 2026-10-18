@@ -499,3 +499,94 @@
 
     As $\theta$ is reduced, $d$ grows without limit: when the second plane is horizontal the ball would never reach the height it started from and would travel for ever at constant velocity. This is Galileo's argument for the law of inertia: with no unbalanced force, motion needs no cause to continue.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |-
+    A 4 kg lamp hangs from the ceiling by a string. A horizontal string pulls it sideways until the upper string makes an angle $\theta$ with the vertical, where $\tan\theta = 3/4$. The lamp is at rest. Find the tension in the upper string. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension in the upper string
+  unit: N
+  ans: 49
+  tol: 0.05
+  verify: 4*9.8/0.8
+  sol: |
+    The lamp is in equilibrium, so the forces add to zero along each axis. Since $\tan\theta = 3/4$, we have $\cos\theta = 0.8$ and $\sin\theta = 0.6$.
+
+    Vertical: the upper string's upward pull $T\cos\theta$ must balance the weight, $T\cos\theta = mg = 4 \times 9.8 = 39.2$ N. So $T = 39.2/0.8 = 49$ N.
+
+    Horizontal (for completeness): the sideways string pulls with $T\sin\theta = 49 \times 0.6 = 29.4$ N, which equals $mg\tan\theta = 39.2 \times 0.75$. The upper string carries more than the weight because it also supports the sideways pull.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |-
+    A uniform rope of mass 6 kg hangs between two supports at the same height. At each support the rope makes an angle of $30^\circ$ with the horizontal. Find the tension in the rope at its lowest point. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension at the lowest point
+  unit: N
+  ans: 50.9
+  tol: 0.1
+  verify: 3*9.8/tan(rad(30))
+  sol: |
+    Cut the rope at its lowest point and consider the right-hand half, of mass 3 kg. Three forces act on it: its weight $3 \times 9.8 = 29.4$ N, the pull $T_e$ of the support along the rope at $30^\circ$ above horizontal, and the horizontal pull $T_0$ of the left half at the lowest point (the tension there is horizontal because, by symmetry, the rope is level).
+
+    Vertical balance: $T_e \sin 30^\circ = 29.4$, so $T_e = 58.8$ N.
+    Horizontal balance: $T_0 = T_e\cos 30^\circ = 58.8 \times 0.866 = 50.9$ N.
+
+    Equivalently $T_0 = 29.4/\tan 30^\circ = 50.9$ N. The tension is largest at the supports and smallest at the bottom.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |-
+    A 5 kg ball hangs from the ceiling by string A. A second string B is tied to the bottom of the ball. Each string breaks when its tension reaches 100 N. String B is pulled vertically downward with a force that increases slowly from zero. At what value of the pull does a string break, and which one? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Pull at which a string breaks
+  unit: N
+  ans: 51
+  tol: 0.05
+  verify: 100-5*9.8
+  sol: |
+    With a slow pull the ball is always in equilibrium. String B carries the pull $F$, so its tension is $F$. String A must hold the weight and the pull: $T_A = mg + F = 49 + F$.
+
+    $T_A$ reaches 100 N when $F = 100 - 49 = 51$ N, long before $T_B = F$ reaches 100 N. So the **upper** string A breaks, at a pull of 51 N.
+
+    If instead B is jerked sharply, the ball's inertia keeps it from moving at once, so A hardly stretches and its tension barely changes, while B stretches and its tension shoots to 100 N: then **B** breaks. This is the classic demonstration of inertia with two strings.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: |-
+    A helium balloon is tied by a light string to the floor of a closed car. When the car is at rest the string is vertical. The car then accelerates forward on a level road at a constant 2.0 m s$^{-2}$. In the steady state, find the angle the string makes with the vertical. Ignore the mass of the balloon and the helium compared with the air it displaces, and take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Angle of the string from the vertical
+  unit: degrees
+  ans: 11.5
+  tol: 0.1
+  verify: deg(atan(2/9.8))
+  sol: |
+    Pick a small parcel of air of volume $V$ and density $\rho$, sitting in the car. The air in the car accelerates forward at $a = 2.0$ m s$^{-2}$ with the car, so the surrounding air must push it with a net force $\rho V a$ forward, apart from cancelling its own weight. The pressure force on the parcel is therefore
+    $$\vec F_p = \rho V\,(g\,\hat y + a\,\hat x),$$
+    that is, upward by $\rho Vg$ (the usual buoyancy) and forward by $\rho V a$ (the push that accelerates the air).
+
+    A balloon of negligible mass in the same place feels the same pressure force. With negligible weight, the only other force on it is the string tension, so the tension must be exactly opposite: it pulls the balloon back and down along the string, which means the balloon sits forward of and above its anchor, with
+    $$\tan\theta = \frac{\rho V a}{\rho V g} = \frac{a}{g} = \frac{2.0}{9.8}, \qquad \theta = 11.5^\circ.$$
+    The balloon leans **forward**, the opposite way to a hanging weight, which would lean backward by the same angle. The air is heavy and lags backwards; the high pressure at the rear pushes the light balloon forward.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: proof
+  q: |-
+    Frame S is inertial. Frame S$'$ moves relative to S with a constant velocity $\vec u$. Show that the first law also holds in S$'$. Then show that it fails in a frame S$''$ that moves with constant acceleration $\vec a_0$ relative to S, and find the apparent acceleration of a force-free body in S$''$. (Original problem.)
+  hints:
+    - A force-free body has a constant velocity $\vec v$ in S. Write its velocity as seen from S$'$ (subtract the frame's velocity).
+    - In S$''$ the frame's velocity is $\vec u(t) = \vec u_0 + \vec a_0 t$. Differentiate the relative velocity.
+  sol: |
+    **Constant velocity frame.** A body with no net force moves in S with constant velocity $\vec v$. In S$'$ its velocity is $\vec v' = \vec v - \vec u$. Both $\vec v$ and $\vec u$ are constant, so $\vec v'$ is constant: the body still moves in a straight line at constant speed. The first law holds in S$'$, so S$'$ is also an inertial frame. Any frame moving uniformly relative to an inertial frame is inertial (this is Galileo's relativity).
+
+    **Accelerating frame.** In S$''$ the frame has velocity $\vec u(t) = \vec u_0 + \vec a_0 t$, so the force-free body has velocity $\vec v'' = \vec v - \vec u_0 - \vec a_0 t$. This changes with time. The apparent acceleration is
+    $$\vec a'' = \frac{d\vec v''}{dt} = -\vec a_0.$$
+    A body with no force on it appears to accelerate, at $-\vec a_0$, so the first law fails in S$''$. This is exactly the lurch of a passenger in a braking bus. To keep $F = ma$ usable in S$''$ one adds a pseudo force $-m\vec a_0$.
+  check: none

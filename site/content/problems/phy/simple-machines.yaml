@@ -258,3 +258,81 @@
     $$s = 4\times0.50 = 2.0\ \text{m}.$$
     Check with work: $250\times2.0 = 500$ J $= 1000\times0.50$ J. The machine saves force, not work. With friction, more effort than 250 N is needed.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A 50 kg crate is pushed at constant speed up a rough plane inclined at $30^\circ$ to the horizontal, with the effort applied parallel to the plane. The coefficient of friction between crate and plane is 0.20. Find the efficiency of the plane as a machine, as a percentage. (Original problem.)
+  ask: Efficiency
+  unit: "%"
+  ans: 74.3
+  tol: 0.1
+  verify: 0.5/(0.5+0.2*cos(rad(30)))*100
+  sol: |
+    At constant speed the effort along the plane balances the component of weight down the plane and the friction: $F = mg\sin\theta + \mu mg\cos\theta$. The useful work for a distance $L$ along the plane is $mg\sin\theta\,L$ (the gain in potential energy), and the work put in is $FL$. Hence
+    $$\eta = \frac{\sin\theta}{\sin\theta + \mu\cos\theta} = \frac{0.5}{0.5 + 0.20\times0.866} = 0.743 = 74.3\%.$$
+    The mass cancels. For $m = 50$ kg: $F = 245 + 85 = 330$ N (using $g = 9.8$), while an ideal plane would need only 245 N.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A uniform crowbar 1.50 m long and of mass 3.0 kg is used to lift a heavy block. Its fulcrum is 0.15 m from the end that is under the block, and the block presses down on that end of the bar with a force of 600 N. The effort is applied vertically downward at the other end. Taking the weight of the crowbar into account, find the effort needed just to start lifting. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.) Give the effort in newtons.
+  ask: Effort at the far end
+  unit: N
+  ans: 53.6
+  tol: 0.1
+  verify: (600*0.15-3*9.8*0.60)/1.35
+  sol: |
+    Take turning effects about the fulcrum. The block's 600 N pushes down on the short side at 0.15 m. On the long side, the crowbar's own weight acts at its centre, 0.75 m from the end, which is $0.75 - 0.15 = 0.60$ m from the fulcrum, and the effort acts at $1.50 - 0.15 = 1.35$ m. Weight and effort both press down on the long side, so
+    $$F\times1.35 + (3.0\times9.8)\times0.60 = 600\times0.15$$
+    $$F\times1.35 = 90 - 17.64 = 72.36\ \Rightarrow\ F = 53.6\ \text{N}.$$
+    Ignoring the crowbar's weight would give $90/1.35 = 66.7$ N; the bar's own weight helps by about 13 N.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A block and tackle has four rope strands supporting the lower block. The lower block weighs 40 N. A load of 760 N hangs from it. Ignoring friction and the weight of the rope, what effort is needed to raise the load at constant speed? (Original problem.)
+  ask: Effort
+  unit: N
+  ans: 200
+  tol: 0.5
+  verify: (760+40)/4
+  sol: |
+    At constant speed the net force on the lower block (with the load) is zero. Four strands each carry the rope tension, which equals the effort $F$, so $4F = 760 + 40$, and
+    $$F = \frac{800}{4} = 200\ \text{N}.$$
+    The lower block's own weight must be lifted too, so the effort is higher than the $760/4 = 190$ N that the load alone would need. The effective mechanical advantage with respect to the load alone is $760/200 = 3.8$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: In a differential pulley, the two rigidly joined grooves of the upper wheel have radii $R = 10$ cm and $r = 9$ cm. A 1000 N load is to be raised, and friction makes the efficiency of the machine only 40%. (a) What is the ideal mechanical advantage? (b) What effort is needed? (c) Will the load run back when the effort is removed? Give the effort for (b). (Original problem.)
+  ask: Effort needed
+  unit: N
+  ans: 125
+  tol: 0.5
+  verify: 1000/(0.4*2*10/(10-9))
+  sol: |
+    (a) By virtual work, turning the upper wheel through $\theta$ moves the effort end by $R\theta$ and the load by $\tfrac12(R-r)\theta$, so the ideal MA is $\dfrac{2R}{R-r} = \dfrac{20}{1} = 20$.
+
+    (b) Actual MA $= \eta\times$ ideal MA $= 0.40\times20 = 8$, so the effort is $1000/8 = 125$ N. (An ideal machine would need 50 N.)
+
+    (c) The efficiency is below 50%, so the machine is self-locking: when released, the load alone cannot drive friction backwards and it stays where it is. [Inference] This holds as long as the stated efficiency of 40% applies in both directions of motion; in a real chain the friction can differ.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A block rests on a plane of inclination $\theta$ with coefficient of static friction $\mu = 0.30$. The plane is used as a machine to raise the block by pushing it up along the plane. Find the largest angle $\theta$ for which the machine is self-locking, meaning the block stays put when the push is removed, and state the efficiency of the plane at that angle. Give the angle in degrees. (Original problem.)
+  ask: Largest self-locking angle
+  unit: deg
+  ans: 16.7
+  tol: 0.05
+  verify: deg(atan(0.3))
+  sol: |
+    Without a push the block stays at rest if the weight component along the plane is no greater than the maximum friction: $mg\sin\theta \le \mu mg\cos\theta$, which gives $\tan\theta \le \mu$. So
+    $$\theta_{\max} = \tan^{-1}(0.30) = 16.7^\circ.$$
+    At this angle the efficiency of the plane for pushing the block up is $\eta = \dfrac{\tan\theta}{\tan\theta + \mu} = \dfrac{0.30}{0.30+0.30} = 0.50$. So the self-locking limit corresponds to an efficiency of exactly 50%: any steeper and the efficiency is above 50% and the block slides back.
+  check: code

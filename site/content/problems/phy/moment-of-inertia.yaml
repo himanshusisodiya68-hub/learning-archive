@@ -214,3 +214,91 @@
     $$\alpha=\frac\tau I=\frac{MgL/2}{ML^2/3}=\frac{3g}{2L}=\frac{3(9.8)}{2(1.5)}=9.8\ \text{rad/s}^2.$$
     The free end has tangential acceleration $a=\alpha L=14.7\ \text{m/s}^2=1.5g$, larger than $g$. At that instant the rod is still at rest, so there is no centripetal term. A small object resting on the free end would lose contact with the rod. (Original problem.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A uniform circular disc of mass 8.0 kg (before any cutting) and radius 0.40 m has a circular hole of radius 0.20 m cut out. The centre of the hole is 0.20 m from the centre of the disc. Find the moment of inertia of the remaining plate about the axis through the original centre of the disc, perpendicular to its plane. (Original problem.)
+  ask: Moment of inertia of the plate
+  unit: kg m²
+  ans: 0.52
+  tol: 0.003
+  verify: 0.5*8*0.4**2-(0.5*2*0.2**2+2*0.2**2)
+  sol: |
+    Use the subtraction trick: the plate is the full disc minus the disc that was cut out, both about the same axis.
+
+    Full disc: $I_{full}=\tfrac12MR^2=\tfrac12(8.0)(0.40)^2=0.64$ kg m$^2$.
+
+    The hole has radius $R/2$, so its area is a quarter of the disc's and its mass (same material) is $m=M/4=2.0$ kg. Its own centre is $d=0.20$ m from the axis, so by the parallel axes theorem
+    $$I_{hole}=\tfrac12m\left(\tfrac R2\right)^2+md^2=\tfrac12(2.0)(0.20)^2+(2.0)(0.20)^2=0.04+0.08=0.12\ \text{kg m}^2.$$
+
+    Remaining plate: $I=0.64-0.12=0.52$ kg m$^2$. In symbols $I=\tfrac{13}{32}MR^2$. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A uniform square plate of mass 6.0 kg and side 0.50 m lies in a horizontal plane. Using the perpendicular axes theorem, find its moment of inertia about a diagonal. (Original problem.)
+  ask: Moment of inertia about a diagonal
+  unit: kg m²
+  ans: 0.125
+  tol: 0.001
+  verify: 6*0.5**2/12
+  sol: |
+    Take axes through the centre. About an axis in the plane parallel to a side, a square plate is like a rod of length $a$ squeezed into the plate, and the standard result is $I=\tfrac1{12}Ma^2$. By the perpendicular axes theorem the moment about the axis through the centre perpendicular to the plate is $I_z=I_x+I_y=\tfrac16Ma^2=\tfrac16(6.0)(0.25)=0.25$ kg m$^2$.
+
+    The two diagonals are also perpendicular axes in the plane through the same point, and by the symmetry of the square they have equal moments. So $I_{diag}+I_{diag}=I_z$ and
+    $$I_{diag}=\tfrac12I_z=\tfrac1{12}Ma^2=\frac{6.0(0.50)^2}{12}=0.125\ \text{kg m}^2.$$
+    The diagonal and the axis parallel to a side give the same value, a result that looks surprising until you see the symmetry. (Original problem.)
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: Two blocks of mass 5.0 kg and 3.0 kg hang from the two ends of a light string that passes over a solid disc pulley of mass 4.0 kg and radius 0.20 m. The pulley turns on a frictionless axle and the string does not slip on it. Find the acceleration of the blocks. Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Acceleration of the blocks
+  unit: m/s²
+  ans: 1.96
+  tol: 0.01
+  verify: 2*9.8/(5+3+4/2)
+  sol: |
+    Because the pulley has mass, the tensions on the two sides differ: $T_1$ on the 5 kg side, $T_2$ on the 3 kg side. Take $a$ as the common acceleration, 5 kg going down.
+
+    Heavy block: $5g-T_1=5a$. Light block: $T_2-3g=3a$. Pulley: net torque $(T_1-T_2)R=I\alpha=\tfrac12MR^2\,(a/R)$, so $T_1-T_2=\tfrac12Ma=2a$.
+
+    Add the first two equations: $2g-(T_1-T_2)=8a$. Insert $T_1-T_2=2a$: $2g=10a$, so
+    $$a=\frac{(m_1-m_2)g}{m_1+m_2+M/2}=\frac{2(9.8)}{5+3+2}=1.96\ \text{m/s}^2.$$
+    Then $T_1=5(9.8-1.96)=39.2$ N and $T_2=3(9.8+1.96)=35.3$ N: unequal, and the difference 3.9 N is exactly what spins the pulley up. A massless pulley would give $a=2.45$ m/s$^2$. (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A uniform solid cube of mass 12 kg and edge 0.50 m turns about a body diagonal (the line joining two opposite corners). Find its moment of inertia about that line. You may use the fact that a cube has the same moment of inertia about every axis through its centre. (Original problem.)
+  ask: Moment of inertia about the body diagonal
+  unit: kg m²
+  ans: 0.5
+  tol: 0.003
+  verify: 12*0.5**2/6
+  sol: |
+    Since the cube has the same $I$ about every axis through its centre, the body diagonal gives the same value as the axis through the centres of two opposite faces. That axis is perpendicular to a square face, so by the formula for a square slab (a cube of side $a$ is a stack of such slabs, each with $I=\tfrac16m_{slab}a^2$) the cube has
+    $$I=\tfrac16Ma^2=\frac{12(0.50)^2}{6}=0.50\ \text{kg m}^2.$$
+    A direct check by the three-axes trick: $I_x+I_y+I_z=2\sum mr^2$, with $\sum mr^2=M\cdot3\cdot\tfrac{a^2}{12}=\tfrac14Ma^2$, so each of the three equal moments is $\tfrac23\cdot\tfrac14Ma^2=\tfrac16Ma^2$. [Inference: that the moment is equal about every axis through the centre, not only about the three face axes, rests on the products of inertia vanishing for the cube; it is the standard result and is given in the problem.] (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A uniform rod of length 1.00 m is hung from a nail through a small hole, at a distance $x$ from its centre, and swings through small angles in a vertical plane as a pendulum. For small angles the restoring torque about the nail is $Mgx\theta$. Find the value of $x$ that makes the period shortest. (Original problem.)
+  ask: Distance x from the centre
+  unit: m
+  ans: 0.2887
+  tol: 0.0005
+  verify: 1/sqrt(12)
+  sol: |
+    About the nail the moment of inertia is, by the parallel axes theorem, $I=\dfrac{ML^2}{12}+Mx^2$. With restoring torque $-Mgx\theta$, the law $\tau=I\alpha$ gives $\alpha=-\dfrac{Mgx}{I}\theta$, which is simple harmonic with
+    $$\omega^2=\frac{Mgx}{I}=\frac{gx}{L^2/12+x^2},\qquad T=2\pi\sqrt{\frac{L^2/12+x^2}{gx}}.$$
+    The period is shortest when $\dfrac{L^2/12+x^2}{x}=\dfrac{L^2}{12x}+x$ is smallest. Setting the derivative to zero: $-\dfrac{L^2}{12x^2}+1=0$, so $x=\dfrac{L}{\sqrt{12}}=0.2887$ m.
+
+    The shortest period is then $T=2\pi\sqrt{\dfrac{2x}{g}}\ (\text{with }L^2/12=x^2)=2\pi\sqrt{2(0.2887)/9.8}=1.53$ s. Moving the nail either closer to the centre or farther out makes the swing slower. (Original problem.)
+  check: code

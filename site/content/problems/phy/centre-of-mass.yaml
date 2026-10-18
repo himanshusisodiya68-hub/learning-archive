@@ -279,3 +279,79 @@
     $$a_{cm}=\frac{m_1a-m_2a}{m_1+m_2}=\frac{(3-2)(1.96)}{5}=0.392\ \text{m/s}^2\ \text{(downwards)}.$$
     Check with Newton's second law for the system, $M a_{cm}=F_{ext}$. Tension in the string: $T=m_1(g-a)=3(9.8-1.96)=23.52$ N. The external forces on the system are the weights $5g=49$ N (down) and the pull of the pulley support, $2T=47.04$ N (up). Net $=49-47.04=1.96$ N, down, and $1.96/5=0.392$ m/s$^2$. The pulley support is an external force; without it the CM would accelerate at $g$. The centre of mass accelerates even though the string tension is internal. (Original problem.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A shell is fired from level ground at 50 m/s at 60° above the horizontal. At the top of its flight it explodes into two equal pieces. One piece falls vertically downwards, starting from rest just after the explosion. How far from the gun does the other piece land? Take $g=9.8$ m/s$^2$ and neglect air resistance. (Original problem.)
+  ask: Landing distance of the second piece
+  unit: m
+  ans: 331.4
+  tol: 0.5
+  verify: 1.5*50**2*sin(rad(120))/9.8
+  sol: |
+    **Where would the unbroken shell land?** The range is $R=\dfrac{u^2\sin2\theta}{g}=\dfrac{2500\times\sin120^\circ}{9.8}=220.9$ m. The top of the flight is at $R/2=110.5$ m.
+
+    **After the burst.** Just before it, the shell moves horizontally at $u\cos60^\circ=25$ m/s and has no vertical speed. The burst forces are internal, so the horizontal momentum is unchanged: $2m(25)=m(0)+mv_2$, giving $v_2=50$ m/s, horizontal. Both pieces start from the same height with zero vertical speed, so both reach the ground at the same instant.
+
+    **Use the centre of mass.** While both are in the air the centre of mass follows the original parabola, so when both land it is at $R=220.9$ m:
+    $$\frac{110.5+x_2}{2}=220.9\ \Rightarrow\ x_2=331.4\ \text{m}=\tfrac32R.$$
+
+    Check directly: the top is at height $H=(u\sin60^\circ)^2/2g=95.7$ m, the fall takes $t=\sqrt{2H/g}=4.42$ s, and the second piece travels $50\times4.42=221$ m beyond $110.5$ m, which gives $331$ m. (Original problem.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A uniform rod of length 2.0 m stands vertically on a perfectly smooth horizontal floor and is released from rest at a slight tilt, so that it falls. When the rod makes 60° with the floor, how far has its lower end slid along the floor from its starting point? (Original problem.)
+  ask: Distance slid by the lower end
+  unit: m
+  ans: 0.5
+  tol: 0.005
+  verify: 1.0*cos(rad(60))
+  sol: |
+    The floor is smooth, so the only outside forces are gravity and the vertical normal reaction. There is **no horizontal outside force**, and the rod starts at rest, so the centre of mass does not move sideways: it falls straight down.
+
+    At the start the lower end is directly below the centre of mass. When the rod makes angle $\theta$ with the floor, the lower end is at horizontal distance $\dfrac L2\cos\theta$ from the vertical line through the centre of mass. That distance is how far the end has slid:
+    $$s=\frac L2\cos\theta=1.0\times\cos60^\circ=0.50\ \text{m}.$$
+
+    When the rod finally lies flat ($\theta=0$), the end has slid $L/2=1.0$ m. The upper end traces a quarter of an ellipse. (Original problem.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A uniform chain of mass 0.60 kg and length 1.2 m hangs from a hand with its lowest link just touching the pan of a scale. The hand lets go and the chain falls freely onto the pan, link by link, piling up at rest. At the instant when a length 0.40 m of the chain has landed, what does the scale read, as a force? Take $g=9.8$ m/s$^2$. (Original problem.)
+  ask: Force on the scale pan
+  unit: N
+  ans: 5.88
+  tol: 0.02
+  verify: 3*(0.4/1.2)*0.6*9.8
+  sol: |
+    Let $\lambda=M/L=0.5$ kg/m, and let $x$ be the length already landed ($x=0.40$ m).
+
+    **Speed of the arriving link.** The whole chain is in free fall, so the link reaching the pan has fallen a height $x$ and arrives at $v=\sqrt{2gx}$.
+
+    **Push needed to stop the stream.** The chain lands at the rate $dx/dt=v$, so the mass arriving per second is $\lambda v$, and stopping it takes a force (mass per second) × (speed) $=\lambda v^2=2\lambda gx$.
+
+    **Weight of the part already on the pan:** $\lambda xg$.
+
+    $$N=2\lambda gx+\lambda gx=3\lambda gx=3\left(\frac xL\right)Mg=3\times\frac13\times0.60\times9.8=5.88\ \text{N}.$$
+
+    The reading is three times the weight of the chain already on the pan. At the end ($x=L$) the peak reading is $3Mg$, 17.6 N. (Original problem.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Two blocks of masses 1.0 kg and 3.0 kg are joined by a light spring of stiffness 300 N/m and lie on a smooth horizontal table. They are pulled apart a little and released. Find the angular frequency of their oscillation, as seen from the centre of mass. (Original problem.)
+  ask: Angular frequency of oscillation
+  unit: rad/s
+  ans: 20
+  tol: 0.05
+  verify: sqrt(300/(1*3/(1+3)))
+  sol: |
+    The spring force is internal, so the centre of mass moves uniformly (or stays still); only the stretch $x$ of the spring changes. With the spring pulling each block towards the other, $m_1a_1=kx$ and $m_2a_2=-kx$. Subtracting, the relative acceleration is
+    $$\ddot x=a_2-a_1=-kx\left(\frac1{m_1}+\frac1{m_2}\right)=-\frac k\mu\,x,\qquad \mu=\frac{m_1m_2}{m_1+m_2}=\frac{3}{4}\ \text{kg}.$$
+    This is simple harmonic motion with $\omega=\sqrt{k/\mu}=\sqrt{300/0.75}=\sqrt{400}=20$ rad/s, a period of $2\pi/20=0.31$ s. Using the 3 kg mass alone would give the wrong answer $\sqrt{100}=10$ rad/s. (Original problem.)
+  check: code
