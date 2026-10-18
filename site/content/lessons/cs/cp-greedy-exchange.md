@@ -377,5 +377,5 @@ Described in our own words; each is a variant above.
 - Decide whether touching intervals clash before writing `>` or `>=`. {lvl=2}
 - Python's `heapq` is a min-heap; for a max-heap, push negated values. {lvl=2}
 - Use `sorted` when you must preserve the input order; `.sort()` changes the list. {lvl=2}
-- Coin systems such as 1, 3, 4 defeat greedy; the Indian currency denominations happen to be safe. [Inference] {lvl=3}
+- Coin systems such as 1, 3, 4 defeat greedy; the rupee denominations 1, 2, 5, 10, 20, 50, 100, 200, 500 do not (checked against DP for every amount below 2000). {lvl=3}
 :::

@@ -1,0 +1,140 @@
+# Prefix sums and difference arrays. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: 'The array is [3, 1, 4, 1, 5, 9, 2, 6], counted from position 0. What is the sum of the numbers from position 2 to position 5, both included?'
+  ask: Sum
+  unit: ""
+  ans: 19
+  tol: 0.01
+  verify: '[3,1,4,1,5,9,2,6].slice(2,6).reduce((x,y)=>x+y,0)'
+  sol: The prefix array is $P = [0, 3, 4, 8, 9, 14, 23, 25, 31]$. The sum from 2 to 5 is $P_6 - P_2 = 23 - 4 = 19$. Check by hand $4 + 1 + 5 + 9 = 19$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: For the array [2, 5, 1, 3] the prefix array (with a leading zero) is [0, 2, 7, 8, 11]. Which expression gives the sum of the 2nd and 3rd numbers (5 and 1)?
+  opts: ["P[3] - P[1]", "P[3] - P[2]", "P[2] - P[0]"]
+  ans: 0
+  sol: Counting from 0, the 2nd and 3rd numbers sit at positions 1 and 2, so $l = 1$ and $r = 2$ and the sum is $P_{r+1} - P_l = P_3 - P_1 = 8 - 2 = 6 = 5 + 1$.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: 'A difference array is used on 8 cells (positions 0 to 7), all starting at 0. First we add 5 to positions 2 to 5, then we add 3 to positions 4 to 7. What is the final value at position 4?'
+  ask: Value
+  unit: ""
+  ans: 8
+  tol: 0.01
+  verify: '(()=>{const a=Array(8).fill(0);for(let i=2;i<=5;i++)a[i]+=5;for(let i=4;i<=7;i++)a[i]+=3;return a[4]})()'
+  sol: 'The difference array gets d[2] += 5, d[6] -= 5, d[4] += 3 and d[8] -= 3 (the last write is outside the 8 cells, which is why the array needs 9 cells). Its running total gives [0, 0, 5, 5, 8, 8, 3, 3], so position 4 holds 8 (position 4 is inside both stretches: 5 + 3).'
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Using a 2D prefix array P with a leading row and column of zeros, which formula gives the sum of the rectangle with rows r1 to r2 and columns c1 to c2 (all included, 0-based)?
+  opts: ["P[r2+1][c2+1] - P[r1][c2+1] - P[r2+1][c1] + P[r1][c1]", "P[r2][c2] - P[r1][c1]", "P[r2+1][c2+1] - P[r1][c1]"]
+  ans: 0
+  sol: The big corner rectangle $P[r_2+1][c_2+1]$ contains the wanted rectangle plus a strip above and a strip to the left. Remove both strips, but the corner shared by the two strips was removed twice, so add it back once, $P[r_1][c_1]$.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: 'How many contiguous stretches of [3, 4, 7, 2, -3, 1, 4, 2] have a sum of exactly 7?'
+  ask: Number of stretches
+  unit: ""
+  ans: 4
+  tol: 0.01
+  verify: '(()=>{const a=[3,4,7,2,-3,1,4,2];let c=0;for(let i=0;i<a.length;i++){let s=0;for(let j=i;j<a.length;j++){s+=a[j];if(s===7)c++}}return c})()'
+  sol: |
+    The stretches are $[3, 4]$, $[7]$, $[7, 2, -3, 1]$ and $[1, 4, 2]$. With prefix sums and a hash map the walk is: the running total goes 3, 7, 14, 16, 13, 14, 18, 20; at each step add the count of earlier totals equal to (current total - 7), then record the current total. The additions happen at totals 7 (finds 0), 14 (finds 7), 14 (finds 7), and 20 (finds 13), which gives 4.
+    ```python
+    count_sum_k([3, 4, 7, 2, -3, 1, 4, 2], 7)   # 4
+    ```
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A list contains only 0s and 1s. Find the length of the longest contiguous stretch that has the same number of 0s and 1s. Describe an O(n) method.
+  sol: |
+    Replace every 0 by $-1$. A stretch with equally many 0s and 1s now has sum 0, which means two equal prefix sums enclose it. Walk with a running total and a dictionary `first` mapping each total to the first index at which it occurred, starting with `first[0] = -1`. At each index $i$, if the total was seen before at $j$, the stretch $j+1..i$ is balanced and has length $i - j$; keep the largest. Never overwrite `first` (we want the earliest index).
+    ```python
+    def longest_balanced(bits):
+        first = {0: -1}
+        s = best = 0
+        for i, b in enumerate(bits):
+            s += 1 if b else -1
+            if s in first: best = max(best, i - first[s])
+            else: first[s] = i
+        return best
+    ```
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: 'How many contiguous stretches of [4, 5, 0, -2, -3, 1, 10, 5] have a sum divisible by 5 (a sum of 0 counts)?'
+  ask: Number of stretches
+  unit: ""
+  ans: 12
+  tol: 0.01
+  verify: '(()=>{const a=[4,5,0,-2,-3,1,10,5];let c=0;for(let i=0;i<a.length;i++){let s=0;for(let j=i;j<a.length;j++){s+=a[j];if(s%5===0)c++}}return c})()'
+  sol: |
+    Prefix remainders mod 5 (with the leading 0) are 0, 4, 4, 4, 2, 4, 0, 0, 0. Two equal remainders enclose a stretch whose sum is a multiple of 5, so count pairs inside each group: remainder 0 occurs 4 times, giving $\binom{4}{2} = 6$; remainder 4 occurs 4 times, giving 6; remainder 2 occurs once, giving 0. Total $6 + 6 = 12$.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: There are 100,000 meetings, each with a start minute and an end minute (end not included), all between 0 and 1,440 in one day. How do you find the largest number of meetings that overlap at any moment, in about O(n + 1440)?
+  sol: |
+    Use a difference array over the minutes: for each meeting do `d[start] += 1` and `d[end] -= 1`. A prefix sum of `d` gives, for every minute, the number of meetings running at that minute; the answer is the maximum of that running total. Building `d` is $O(n)$ and the sweep is $O(1440)$.
+    ```python
+    def busiest(meetings, T=1441):
+        d = [0] * (T + 1)
+        for s, e in meetings:
+            d[s] += 1; d[e] -= 1
+        cur = best = 0
+        for x in d:
+            cur += x; best = max(best, cur)
+        return best
+    ```
+    If the times were huge (up to $10^9$), sort the $2n$ start and end events instead: same idea in $O(n \log n)$.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A grid has R rows and C columns of integers, possibly negative, with R, C ≤ 300. Count the sub-rectangles whose sum is exactly k. A fourfold loop is too slow. Give an O(R² · C) method.
+  sol: |
+    Fix a top row $t$ and a bottom row $b$ ($O(R^2)$ choices). Add the rows $t..b$ column by column to get a 1D array `col[j]`. A sub-rectangle with those top and bottom rows is now just a stretch of `col`, so the number of such rectangles with sum $k$ is `count_sum_k(col, k)` (prefix sums plus hash map, $O(C)$). Summing over all $(t, b)$ gives $O(R^2 C)$, about $2.7\times10^7$ for 300, which is heavy for Python and fine for C++. Maintain `col` incrementally while $b$ grows, so that squashing costs $O(C)$ per $(t, b)$, not $O(RC)$.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: 'How many contiguous stretches of [5, 1, 4, 2, 3, 6, 7, 1] have a xor of 0?'
+  ask: Number of stretches
+  unit: ""
+  ans: 4
+  tol: 0.01
+  verify: '(()=>{const a=[5,1,4,2,3,6,7,1];let c=0;for(let i=0;i<a.length;i++){let s=0;for(let j=i;j<a.length;j++){s^=a[j];if(s===0)c++}}return c})()'
+  sol: |
+    Prefix xors (with the leading 0) are 0, 5, 4, 0, 2, 1, 7, 0, 1. A stretch has xor 0 exactly when two prefix xors are equal. The value 0 appears 3 times, giving 3 pairs, and the value 1 appears 2 times, giving 1 pair; every other value appears once. Total 4: the stretches are $[5,1,4]$, $[2,3,6,7]$... no wait, check each pair: $[5,1,4]$ (positions 0-2), $[5,1,4,2,3,6,7]$ (0-6), $[2,3,6,7]$ (3-6) and $[1,4,2,3,6,7,1]$... the last needs prefix indices 5 and 8 whose xors are both 1, which is positions 5-7, $[6,7,1]$. The brute-force check confirms the count 4.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Updates "add v to every cell from l to r" and questions "what is the sum from l to r?" are now mixed in any order, with 100,000 of each. Why do plain prefix sums and plain difference arrays both fail, and what can you say about the structure that does work?
+  sol: |
+    A prefix array answers sums in $O(1)$ but a single update changes up to $n$ of its cells, so $10^5$ updates cost about $10^{10}$. A difference array applies an update in $O(1)$ but a sum question then needs a full rebuild, $O(n)$ each. Both are fast at one half of the job and slow at the other.
+
+    The way out is a structure that makes both operations $O(\log n)$: a **segment tree with lazy propagation**, or two Fenwick trees. The Fenwick version rests on this identity: if $d$ is the difference array, the prefix sum of the array up to $i$ equals $(i+1)\sum_{j \le i} d_j - \sum_{j \le i} j\, d_j$, so two Fenwick trees (one over $d_j$, one over $j\,d_j$) support range update and range sum. This is the subject of the range-queries lesson.
+  check: none

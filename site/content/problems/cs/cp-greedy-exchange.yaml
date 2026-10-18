@@ -1,0 +1,174 @@
+# Greedy and exchange arguments. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    A hall receives five booking requests (start, end): (1, 3), (2, 5), (4, 7), (6, 9), (8, 10). A booking that ends at time t does not clash with one starting at t. What is the largest number of bookings that can be accepted?
+  ask: Bookings
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(() => { const iv=[[1,3],[2,5],[4,7],[6,9],[8,10]].sort((a,b)=>a[1]-b[1]); let c=0,l=-Infinity; for (const [s,e] of iv) if (s>=l){c++;l=e;} return c; })()'
+  sol: |
+    Sort by finish time: (1,3), (2,5), (4,7), (6,9), (8,10). Take (1,3). Skip (2,5), which starts before 3. Take (4,7). Skip (6,9), which starts before 7. Take (8,10). That is 3 bookings, and the exchange argument says no set can be larger.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which rule always gives the largest set of non-overlapping meetings?
+  opts: ["Shortest meeting first", "Earliest start first", "Earliest finish first"]
+  ans: 2
+  sol: |
+    Earliest finish first. Counterexample for shortest-first: A = 0 to 5, B = 4 to 6, C = 5 to 10. B is the shortest, but it overlaps both A and C, so shortest-first gets one meeting while A and C make two. Counterexample for earliest-start-first: one meeting from 0 to 100 starts first and blocks ten tiny meetings between 1 and 20.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Coins of 1, 3 and 4 are available and the target is 6. The greedy rule takes the largest coin that still fits, repeatedly. How many more coins does greedy use than the best possible answer?
+  ask: Extra coins
+  unit: ""
+  ans: 1
+  tol: 0.1
+  verify: '(() => { const c=[1,3,4], t=6; let g=0,r=t; for (const x of [4,3,1]) { g+=Math.floor(r/x); r%=x; } const d=[0]; for (let i=1;i<=t;i++){ d[i]=Infinity; for (const x of c) if (x<=i) d[i]=Math.min(d[i],d[i-x]+1);} return g-d[t]; })()'
+  sol: |
+    Greedy takes 4, then 1, then 1: three coins. The best is 3 + 3: two coins. Greedy uses 1 extra. The 4 blocked the better pair, so no exchange argument can rescue the rule, and this problem needs dynamic programming.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    Balloons lie along a line, each covering an interval of positions: (1, 4), (2, 6), (5, 8), (7, 9), (10, 12). One arrow at position x bursts every balloon whose interval contains x. What is the fewest arrows needed to burst all of them?
+  ask: Arrows
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(() => { const iv=[[1,4],[2,6],[5,8],[7,9],[10,12]].sort((a,b)=>a[1]-b[1]); let p=0,l=-Infinity; for (const [s,e] of iv) if (s>l){p++;l=e;} return p; })()'
+  sol: |
+    Sort by right end (already sorted). The first balloon (1, 4) needs an arrow, and the best place is its right end, 4, which also bursts (2, 6). The next unburst balloon is (5, 8): shoot at 8, which also bursts (7, 9). Then (10, 12) needs shooting at 12. Three arrows.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Five jobs each take one unit of time, one job at a time. Each is written as (deadline, profit), and a job earns its profit only if it finishes by its deadline, counting time from 0. The jobs are (2, 100), (1, 19), (2, 27), (1, 25), (3, 15). What is the largest total profit?
+  ask: Profit
+  unit: ""
+  ans: 142
+  tol: 0.1
+  verify: '(() => { const J=[[2,100],[1,19],[2,27],[1,25],[3,15]]; let best=0; for (let m=0;m<32;m++){ const ch=J.filter((_,i)=>m>>i&1).sort((a,b)=>a[0]-b[0]); if (ch.every((j,i)=>i+1<=j[0])) best=Math.max(best,ch.reduce((s,j)=>s+j[1],0)); } return best; })()'
+  sol: |
+    Sort by deadline: (1,19), (1,25), (2,27), (2,100), (3,15). Walk with a min-heap of profits, dropping the smallest when the heap grows larger than the current deadline.
+    ```python
+    import heapq
+    def max_profit(jobs):
+        heap = []
+        for d, p in sorted(jobs):
+            heapq.heappush(heap, p)
+            if len(heap) > d:
+                heapq.heappop(heap)
+        return sum(heap)
+    ```
+    The heap after each job: {19}; {19,25} too big for deadline 1, drop 19 giving {25}; add 27 giving {25,27}; add 100 giving {25,27,100}, too big for deadline 2, drop 25 giving {27,100}; add 15 giving {15,27,100}, allowed for deadline 3. Total 15 + 27 + 100 = 142. (A brute force over all 32 subsets agrees.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Four ropes have lengths 4, 3, 2 and 6. Joining two ropes costs the sum of their lengths, and the joined rope can be joined again. What is the least total cost to make one rope?
+  ask: Total cost
+  unit: ""
+  ans: 29
+  tol: 0.1
+  verify: '(() => { const a=[4,3,2,6]; let cost=0; while(a.length>1){ a.sort((x,y)=>x-y); const s=a.shift()+a.shift(); cost+=s; a.push(s);} return cost; })()'
+  sol: |
+    Always join the two shortest. 2 + 3 = 5 (cost 5), leaving 4, 5, 6. Join 4 + 5 = 9 (cost 9), leaving 6, 9. Join 6 + 9 = 15 (cost 15). Total 5 + 9 + 15 = 29. Reason (exchange argument): the two shortest ropes can be assumed to be joined first and deepest, since every rope pays its length once for each join it sits inside, so the shortest ropes should sit inside the most joins. A min-heap does each step in $O(\log n)$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: Join the numbers 3, 30, 34, 5 and 9, each used once, written one after the other, to make the largest possible number. What is it?
+  ask: Largest number
+  unit: ""
+  ans: 9534330
+  tol: 0.1
+  verify: Number([3,30,34,5,9].map(String).sort((a,b)=>(b+a)-(a+b)).join(''))
+  sol: |
+    Compare two pieces $a$ and $b$ by which of "a then b" and "b then a" is bigger; this comes from the exchange argument on two neighbours. Sorting by that rule gives 9, 5, 34, 3, 30. For example 3 comes before 30 because 330 beats 303, and 34 before 3 because 343 beats 334. Joined: 9534330. Plain alphabetical sorting would be wrong because "3" and "30" need the pairwise comparison.
+    ```python
+    from functools import cmp_to_key
+    s = sorted(map(str, nums), key=cmp_to_key(lambda a, b: -1 if a+b > b+a else 1))
+    ```
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A truck must travel 100 km and starts with fuel for 10 km. One unit of fuel is one km. Fuel pumps stand at the km marks 10, 20, 30 and 60, holding 60, 30, 30 and 40 units of fuel respectively; stopping at a pump lets the truck take all of its fuel. What is the fewest stops needed to reach 100 km?
+  ask: Stops
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: '(() => { const P=[[10,60],[20,30],[30,30],[60,40]]; let f=10,i=0,stops=0; const h=[]; while(f<100){ while(i<P.length&&P[i][0]<=f) h.push(P[i++][1]); if(!h.length) return -1; h.sort((a,b)=>a-b); f+=h.pop(); stops++; } return stops; })()'
+  sol: |
+    Drive as far as the current fuel allows, remembering every pump passed in a max-heap. When fuel runs out before the goal, take the largest pump from the heap (as if we had stopped there) and count one stop. Start with reach 10: pump at 10 (60) is in the heap. Take it, reach 70, one stop. Now the pumps at 20, 30 and 60 have been passed, holding 30, 30 and 40. Take the 40, reach 110, two stops. Done.
+    ```python
+    import heapq
+    def stops(target, fuel, pumps):
+        heap, i, n = [], 0, 0
+        while fuel < target:
+            while i < len(pumps) and pumps[i][0] <= fuel:
+                heapq.heappush(heap, -pumps[i][1]); i += 1
+            if not heap: return -1
+            fuel += -heapq.heappop(heap); n += 1
+        return n
+    ```
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: proof
+  q: "Several jobs must all be run one after another with no idle time. Job i takes t_i and has a deadline d_i; its lateness is max(0, finish time minus d_i). Prove that running the jobs in order of increasing deadline minimises the largest lateness."
+  hints: ["Look at two neighbouring jobs in the wrong order and swap them.", "Which jobs' finishing times change when you swap two neighbours?", "Argue that any order other than sorted-by-deadline has such a neighbouring pair."]
+  sol: |
+    Call two adjacent jobs an inversion if job i is immediately before job j but $d_i > d_j$. Suppose a schedule has an inversion, and let $S$ be the time at which the pair starts. Swap them.
+
+    Only the two jobs' finishing times change; the pair as a whole still ends at $S + t_i + t_j$, so every other job finishes exactly when it did.
+
+    Before the swap: $i$ finishes at $S + t_i$, $j$ at $S + t_i + t_j$, so job $j$ had lateness $L_j = S + t_i + t_j - d_j$ (or 0 if negative).
+    After the swap: $j$ finishes at $S + t_j$, earlier than before, so its lateness did not grow. Job $i$ now finishes at $S + t_i + t_j$ and has lateness $S + t_i + t_j - d_i$, which is **smaller** than $L_j$'s expression because $d_i > d_j$.
+
+    So both new lateness values are at most the old lateness of $j$, which was at most the old maximum. The largest lateness did not rise.
+
+    Finally, any order that is not sorted by deadline contains an adjacent inversion (otherwise each neighbour pair would already be in order, which means the whole list is sorted). Starting from an optimal order and swapping away inversions one at a time, the maximum lateness never rises, until we reach the order sorted by deadline. Jobs with equal deadlines can be in any order, since swapping them changes nothing. So the sorted order is optimal. This is the classic exchange argument.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A bag holds weight 50. The items, as (weight, value), are (10, 60), (20, 100) and (30, 120), and each can be taken whole or left. The greedy rule takes items by highest value per unit weight while they fit. By how much does the best possible total value exceed the greedy total?
+  ask: Value gap
+  unit: ""
+  ans: 60
+  tol: 0.1
+  verify: '(() => { const I=[[10,60],[20,100],[30,120]]; let best=0; for (let m=0;m<8;m++){ let w=0,v=0; I.forEach((x,i)=>{ if(m>>i&1){w+=x[0];v+=x[1];} }); if (w<=50) best=Math.max(best,v); } let gw=0,gv=0; for (const x of [...I].sort((a,b)=>b[1]/b[0]-a[1]/a[0])) if (gw+x[0]<=50){gw+=x[0];gv+=x[1];} return best-gv; })()'
+  sol: |
+    Value per weight is 6, 5 and 4. Greedy takes (10, 60) then (20, 100), total weight 30; the third item (30) no longer fits. Greedy total: 160. The best choice is the last two items: weight 50, value 220. The gap is 60. (If items could be split, the ratio rule would add two-thirds of the third item for a total of 240, and be exactly right.) Whole items and a hard capacity break the exchange argument, so use a DP over capacity.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: proof
+  q: "Jobs with durations t_i and weights w_i run back to back, and the cost is the sum over jobs of w_i times its finish time. Show that the best order sorts jobs by t_i / w_i increasing, and compute the best cost for the jobs (t, w) = (3, 1), (2, 2), (1, 3)."
+  hints: ["Swap two neighbours and compute the change in cost; the rest of the schedule is untouched.", "i first beats j first exactly when w_j t_i < w_i t_j."]
+  sol: |
+    Take two neighbouring jobs $i$ then $j$, starting at time $S$. Their cost is $w_i (S + t_i) + w_j (S + t_i + t_j)$. In the other order it is $w_j (S + t_j) + w_i (S + t_j + t_i)$. The difference (i first minus j first) is $w_j t_i - w_i t_j$. Every other job finishes at the same time in both orders.
+
+    So $i$ first is better exactly when $w_j t_i < w_i t_j$, that is, when $t_i / w_i < t_j / w_j$. Any order with a neighbouring pair that violates this can be improved (or kept equal) by swapping it, and an order with no such pair is sorted by the ratio, so the sorted order is optimal. This is the same exchange argument as for lateness.
+
+    Example: the ratios are $3/1 = 3$, $2/2 = 1$, $1/3 \approx 0.33$, so the order is job 3, job 2, job 1. Finish times: 1, 3, 6. Cost: $3\cdot 1 + 2\cdot 3 + 1\cdot 6 = 15$. All six orders were checked by brute force: the costs are 15, 19, 19, 27, 27 and 31, so 15 is the minimum.
+  check: none
