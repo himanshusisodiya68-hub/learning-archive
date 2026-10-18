@@ -1,6 +1,6 @@
 ---
 title: Self and mutual inductance
-summary: 'Why a coil resists any sudden change in its own current, and how one coil can send energy to another.'
+summary: 'Why a coil has a kind of inertia for current, and how a 1.5-volt cell can give you a sharp kick.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.7)"]
 up_to: Olympiad
 builds_on: [Electromagnetic induction, Lenz's law, Ampère's circuital law, Capacitors, Kirchhoff's rules]
@@ -47,14 +47,61 @@ outcomes:
   - 'Find the energy stored in an inductor and the energy density $B^2/2\mu_0$ of the field'
   - 'Solve L–R growth and decay with $\tau = L/R$ and explain the spark on breaking a circuit'
   - 'Combine inductors and prove reciprocity and $|M|\le\sqrt{L_1L_2}$ from energy'
+opener:
+  story: |
+    A 1.5 volt cell cannot hurt you. You can hold both ends and feel nothing. Now connect the cell to a big coil of wire, hold the two ends of the coil, and break the circuit. The instant you do, you get a sharp kick, as if the voltage had suddenly jumped far above 1.5 volts. (This is a standard classroom demonstration.)
+
+    You may have seen the same thing at home: pull the plug of a running fan or mixer out of the wall and a small spark leaps between the pin and the socket. The appliance was drawing a steady current, so why does it spark at the moment you cut it off?
+
+    The coil is behaving as though the current had *momentum*. It wants to keep flowing, and when you cut the path, it pushes charge across a gap of air to do so. That odd stubbornness is the subject of this lesson.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A circuit with a cell, a coil and a switch gap where a spark jumps when the circuit is broken"><path d="M60 128 V70 H100" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M100 70 c0 -28 20 -28 20 0 c0 -28 20 -28 20 0 c0 -28 20 -28 20 0 c0 -28 20 -28 20 0 c0 -28 20 -28 20 0 c0 -28 20 -28 20 0" style="fill:none;stroke:var(--c);stroke-width:3"/><path d="M220 70 H260 V100" style="fill:none;stroke:var(--ink);stroke-width:2"/><polyline points="260,100 268,108 254,118 268,124 260,132" style="fill:none;stroke:var(--chem);stroke-width:3"/><path d="M260 132 V190 H60 V150" style="fill:none;stroke:var(--ink);stroke-width:2"/><line x1="46" y1="150" x2="74" y2="150" style="stroke:var(--ink);stroke-width:3"/><line x1="52" y1="138" x2="68" y2="138" style="stroke:var(--ink);stroke-width:3"/><line x1="60" y1="138" x2="60" y2="128" style="stroke:var(--ink);stroke-width:2"/><text x="146" y="36" style="font-size:11px;fill:var(--c)">big coil</text><text x="72" y="148" style="font-size:11px;fill:var(--muted)">1.5 V cell</text><text x="274" y="122" style="font-size:11px;fill:var(--chem)">spark!</text><text x="96" y="216" style="font-size:11px;fill:var(--muted)">the current refuses to stop</text></svg>'
+life:
+  - 'The spark when you unplug a running fan, mixer or charger is a coil''s current refusing to stop.'
+  - 'Phone wireless chargers and electric-toothbrush chargers send energy from one coil to another through the air: mutual inductance at work.'
+  - 'The ignition coil of a petrol engine turns a 12-volt battery into thousands of volts for the spark plug by breaking a current fast.'
+  - 'The metal detector at a mall or airport is a coil whose inductance changes when metal comes near.'
+  - 'The tiny black cylinders on laptop and phone charger cables are inductors that smooth out sudden changes in current.'
+models:
+  - name: 'Inertia has an electrical twin'
+    text: 'A coil does for current what mass does for motion: it resists change, stores energy ($\tfrac12 LI^2$ versus $\tfrac12 mv^2$), and costs nothing to keep going once it is steady. Many things have this trait: habits, institutions, a big ship.'
+  - name: 'Smooth the jolts'
+    text: 'An inductor does not stop current, it slows its change. Shock absorbers, savings buffers and notice periods do the same job: they let you absorb a sudden jolt gradually rather than all at once.'
+  - name: 'Cutting off sharply costs you'
+    text: 'The danger is in stopping fast. The faster you break a coil''s current, the larger the voltage it throws. Sudden stops, whether of a current, a loan or a project, tend to release trouble stored up in them.'
+links:
+  - leaf: 'phy/momentum-and-the-second-law'
+    name: 'Momentum and the second law'
+    same: 'Same shape of equation: voltage across a coil $= L\,dI/dt$ matches force $= m\,dv/dt$, so $L$ plays the part of mass, current the part of velocity, and energy $\tfrac12LI^2$ matches $\tfrac12mv^2$.'
+    differs: 'Mass is a fixed property of a body, but $L$ depends on shape, turns and what is inside the coil, and it can be raised many times by an iron core.'
+  - leaf: 'phy/capacitors'
+    name: 'Capacitors'
+    same: 'A capacitor stores energy in an electric field ($\tfrac12CV^2$) and an inductor stores it in a magnetic field ($\tfrac12LI^2$). Both depend only on geometry, and both give an exponential rise and fall with a time constant.'
+    differs: 'A capacitor resists a change of voltage; an inductor resists a change of current. Where one is large the other is small, which is the key to resonance.'
+symbols:
+  - { s: 'N', means: 'number of turns in the coil' }
+  - { s: '\Phi', means: 'magnetic flux through one turn (weber, Wb)' }
+  - { s: 'I', means: 'current in the coil (amperes, A)' }
+  - { s: 'L', means: 'self-inductance: flux linkage per ampere in the coil''s own current (henry, H)' }
+  - { s: 'M', means: 'mutual inductance: flux linkage in one coil per ampere in the other (henry, H)' }
+  - { s: '\varepsilon', means: 'induced emf, the back push on the current (volts, V)' }
+  - { s: 'U', means: 'energy stored in the inductor (joules, J)' }
+  - { s: '\tau', means: 'time constant L/R of a coil with a resistor (seconds)' }
+  - { s: '\mu_0', means: 'permeability of free space: how easily a field forms in vacuum (T m/A)' }
+  - { s: 'n', means: 'number of turns per metre of a solenoid' }
+  - { s: 'A', means: 'cross-section area of the coil (square metres)' }
+  - { s: 'k', means: 'coupling coefficient of two coils: 1 means all flux is shared, 0 none' }
+next:
+  q: 'A coil resists any change in its current. A power station''s spinning coil makes a current that reverses direction 50 times every second. What is the supply in the wall then, and what does the label 220 V really mean?'
+  leaf: 'phy/alternating-current'
+  name: 'Alternating current and the AC generator'
 ---
 
 :::hook
-q: A bulb is connected through a switch to a battery, with a large coil of thick copper wire in series. The coil's resistance is tiny. What happens to the bulb's brightness when the switch is closed?
-options: ["It lights fully at once, because the coil has almost no resistance", "It brightens gradually over a moment, then stays bright", "It never lights, because the coil blocks current", "It flashes brightly, then goes dim"]
+q: So what's your guess? Now put a bulb in series with a big coil of thick copper wire, whose resistance is tiny, and close the switch. What does the bulb do?
+options: ["It lights fully at once, since the coil has almost no resistance", "It brightens gradually over a moment, then stays bright", "It flashes brightly, then goes dim"]
 answer: 1
-right: Right. The rising current makes a changing flux in the coil, and the coil induces an emf that opposes the rise. The current creeps up to its final value. Once it is steady there is no more opposition, and the coil behaves like a plain wire.
-wrong: The coil does not block a steady current; its resistance is tiny. But while the current is rising, the coil's own changing flux induces an emf that opposes the rise (Lenz's law). So the bulb brightens gradually, then stays bright.
+right: "Right. As the current rises, the coil's own field and flux rise too, so the coil induces an emf that opposes the rise. The current creeps up to its final value. Once it is steady there is nothing left to oppose, and the coil acts like a plain wire. That same stubbornness gives the spark when you break the circuit."
+wrong: "The coil does not block a steady current, since its resistance is tiny. But while the current is rising, the coil's own changing flux induces an emf that opposes the rise (Lenz's law). So the bulb brightens gradually, then stays bright. That same stubbornness gives the spark when you break the circuit."
 :::
 
 ## Flux linkage and inductance {lvl=2 id=s-def label="Class 12"}

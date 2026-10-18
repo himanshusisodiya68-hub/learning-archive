@@ -1,6 +1,6 @@
 ---
 title: Motional emf
-summary: 'How simply moving a wire through a magnetic field turns it into a battery, and how big that battery is.'
+summary: 'A jumbo jet makes a voltage across its wings from nothing but its own motion: how a moving wire becomes a battery.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.6)"]
 up_to: Olympiad
 builds_on: [Lorentz force and circular motion, Force on a current-carrying conductor, Electromagnetic induction, Lenz's law, Ohm's law]
@@ -48,14 +48,61 @@ outcomes:
   - 'Calculate the emf of a rotating rod or disc and of conductors in the Earth''s field'
   - 'Solve terminal-speed, coasting and loop-crossing-a-field-edge problems'
   - 'Treat rods with a battery, capacitor or inductor and explain why the magnetic force does no net work'
+opener:
+  story: |
+    A jumbo jet cruising at 250 metres per second has no battery between its wing tips. Yet if you could fit a sensitive voltmeter across its 60-metre span, it would read a voltage, roughly half a volt.
+
+    Where does it come from? Nobody built a generator into the wings. The engines simply push the plane along. The only ingredients are a long metal wing and the Earth's own magnetic field, the same field that swings a compass needle.
+
+    So the voltage is real, and it comes from nothing more than a piece of metal moving through a magnetic field. But here is the strange part: the passengers cannot use it.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="An aeroplane seen from above flying up the page, with a plus sign at one wing tip, a minus sign at the other, and field marks pointing into the page"><path d="M160 24 C172 40 172 150 164 196 L160 206 L156 196 C148 150 148 40 160 24Z" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><polygon points="150,100 28,150 28,162 151,140" style="fill:color-mix(in srgb,var(--c) 18%,var(--surface));stroke:var(--c);stroke-width:2"/><polygon points="170,100 292,150 292,162 169,140" style="fill:color-mix(in srgb,var(--c) 18%,var(--surface));stroke:var(--c);stroke-width:2"/><polygon points="152,188 118,208 118,214 153,204" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><polygon points="168,188 202,208 202,214 167,204" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><circle cx="22" cy="156" r="10" style="fill:var(--surface);stroke:var(--chem);stroke-width:2"/><text x="17" y="161" style="font-size:14px;fill:var(--chem)">+</text><circle cx="298" cy="156" r="10" style="fill:var(--surface);stroke:var(--bad);stroke-width:2"/><text x="294" y="161" style="font-size:14px;fill:var(--bad)">&#8722;</text><line x1="250" y1="70" x2="250" y2="38" style="stroke:var(--ink);stroke-width:2"/><polygon points="245,42 250,30 255,42" style="fill:var(--ink)"/><text x="258" y="56" style="font-size:11px;fill:var(--muted)">flying</text><g style="stroke:var(--muted);stroke-width:1.5;fill:none"><circle cx="60" cy="60" r="6"/><line x1="56" y1="56" x2="64" y2="64"/><line x1="64" y1="56" x2="56" y2="64"/><circle cx="90" cy="100" r="6"/><line x1="86" y1="96" x2="94" y2="104"/><line x1="94" y1="96" x2="86" y2="104"/><circle cx="240" cy="110" r="6"/><line x1="236" y1="106" x2="244" y2="114"/><line x1="244" y1="106" x2="236" y2="114"/><circle cx="270" cy="200" r="6"/><line x1="266" y1="196" x2="274" y2="204"/><line x1="274" y1="196" x2="266" y2="204"/></g><text x="30" y="40" style="font-size:11px;fill:var(--muted)">Earth&#39;s field, into the page</text><text x="84" y="232" style="font-size:11px;fill:var(--muted)">about half a volt, tip to tip</text></svg>'
+life:
+  - 'A bicycle dynamo (the little wheel rubbing the tyre) spins a magnet past a coil, and the moving magnet lights the lamp.'
+  - 'A hydro or thermal power station turns a huge coil past magnets: the same motional emf, scaled up to power a city.'
+  - 'Metro trains and electric cars with regenerative braking turn their motors into generators that pull the speed down.'
+  - 'The fine voltage across a long ship or a river flowing through the Earth''s field is measured by oceanographers to track currents. [Unverified: from memory.]'
+  - 'A moving-coil microphone: your voice moves a coil in a magnet''s field, and the induced voltage is the sound signal.'
+models:
+  - name: 'Same effect, two descriptions'
+    text: 'The emf in a moving rod can be explained as a force on charges or as a change of flux. When two quite different stories give the same number, trust the number and enjoy choosing the easier story.'
+  - name: 'A cancellation is not a paradox'
+    text: 'The wing has a voltage but the loop does not, because the pushes cancel round the circuit. Many puzzles in money and policy are like this: a gain in one place is exactly offset elsewhere in the loop.'
+  - name: 'Speed buys you drag'
+    text: 'The faster the rod moves, the bigger the emf, the bigger the current and the bigger the braking force. Anything where extra effort calls up proportionally extra opposition, such as wading in water or a heavy workload, is a drag of this kind and has a top speed.'
+links:
+  - leaf: 'phy/lorentz-force-and-circular-motion'
+    name: 'Lorentz force'
+    same: 'The whole emf comes from the sideways push $qvB$ on each moving charge. A moving rod is just a long row of charges all being pushed the same way.'
+    differs: 'In the Lorentz-force lesson a free charge is bent into a circle. In a rod the charges cannot leave, so the push piles them up at the ends instead and makes a voltage.'
+  - leaf: 'phy/viscosity'
+    name: 'Viscosity and terminal speed'
+    same: 'Magnetic drag grows with speed, like fluid drag, so a falling rod reaches a steady terminal speed where drag equals weight.'
+    differs: 'Viscous drag is friction between fluid layers and turns into heat in the fluid. Magnetic drag is non-contact, and its energy goes to heat in the wires.'
+symbols:
+  - { s: '\varepsilon', means: 'motional emf: the push per unit charge along the rod, in volts (V)' }
+  - { s: 'B', means: 'magnetic field (tesla, T)' }
+  - { s: 'l', means: 'length of the rod (metres)' }
+  - { s: 'v', means: 'speed of the rod across the field (metres per second)' }
+  - { s: 'E', means: 'electric field that builds up inside the rod and balances the magnetic push (V/m)' }
+  - { s: 'I', means: 'current in the circuit (amperes, A)' }
+  - { s: 'R', means: 'total resistance of the circuit (ohms)' }
+  - { s: 'F', means: 'magnetic drag on the moving rod (newtons, N)' }
+  - { s: '\omega', means: 'angular speed of a rotating rod (radians per second)' }
+  - { s: 'm', means: 'mass of the rod (kilograms)' }
+  - { s: '\tau', means: 'time constant: the time scale on which the rod''s speed settles (seconds)' }
+  - { s: 'Q', means: 'charge that flows round the circuit (coulombs, C)' }
+next:
+  q: 'A moving rod needs motion to make an emf. But a coil sitting perfectly still still pushes back when you try to change the current in it. What is that push, and how can a coil have a kind of inertia?'
+  leaf: 'phy/self-and-mutual-inductance'
+  name: 'Self and mutual inductance'
 ---
 
 :::hook
-q: An aeroplane flies level through the Earth's magnetic field, and an emf of about half a volt appears between its wing tips. A passenger runs a wire from one wing tip to the other through a bulb. Does the bulb glow?
-options: ["Yes, the emf drives a current through it", "Yes, but only when the plane turns", "No: the wire to the bulb moves with the plane and has the same emf, which cancels", "No: half a volt can never light a bulb"]
-answer: 2
-right: Right. The connecting wire crosses the same field lines at the same speed as the wing, so it has the same emf pushing the other way round the loop. Equivalently, the flux through a loop carried along with the plane does not change. The rest of this lesson builds that picture.
-wrong: The connecting wire travels with the plane, so its charges feel exactly the same magnetic push as those in the wing. Round the closed loop the two emfs cancel and no current flows. Equivalently, the flux through a loop carried along rigidly does not change.
+q: So what's your guess? A passenger runs a wire from one wing tip to the other, through a small bulb. Does the bulb light?
+options: ["Yes, the half volt drives a current through it", "No: the wire moves with the plane and has the same emf, which cancels", "No: half a volt can never light a bulb"]
+answer: 1
+right: "Right, and that surprises most people. The wire to the bulb crosses the same field lines at the same speed as the wing, so it has the same emf pushing round the loop the other way. The two cancel. Equivalently, the flux through a loop carried along with the plane does not change. The rest of this lesson builds that picture."
+wrong: "The connecting wire travels with the plane, so its charges feel exactly the same magnetic push as those in the wing. Round the closed loop the two emfs cancel and no current flows. Equivalently, the flux through a loop carried along rigidly does not change."
 :::
 
 ## A moving rod is a battery {lvl=2 id=s-lorentz label="Class 12"}

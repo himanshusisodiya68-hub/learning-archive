@@ -1,6 +1,6 @@
 ---
 title: Lenz's law
-summary: 'Nature always fights a change in magnetism; learn the simple rule that tells you which way the current flows.'
+summary: 'A magnet dropped down a copper pipe drifts down like a feather: the rule that explains the invisible brake.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.5)"]
 up_to: Olympiad
 builds_on: [Magnetic flux, "Faraday's law of induction", Right-hand rule for a current loop, Force on a current-carrying conductor, Heating effect and power]
@@ -47,14 +47,60 @@ outcomes:
   - 'Calculate the force on a loop entering a field and equate $Fv$ to $\varepsilon^2/R$'
   - 'Explain eddy-current braking and a magnet falling through a ring or a tube'
   - 'Analyse the jumping ring and the flux frozen in a superconducting ring'
+opener:
+  story: |
+    Take a strong magnet and a copper pipe, held upright. First drop a plain steel bolt of the same size down the pipe. It shoots straight through and is out of the bottom in the blink of an eye.
+
+    Now drop the magnet. It does not fall. It *drifts*, like a leaf sinking in honey, and takes several seconds to come out of the bottom. Copper is not magnetic: a fridge magnet will not stick to it. Nothing touches the magnet, and no air is trapped under it.
+
+    Yet something is plainly holding it back, and the faster it tries to fall, the harder it holds. Where does this invisible brake come from?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A steel bolt drops fast through a copper pipe while a magnet drifts slowly down another, with dashed current rings in the pipe wall"><rect x="40" y="36" width="80" height="170" rx="4" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--muted);stroke-width:2"/><rect x="190" y="36" width="80" height="170" rx="4" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--muted);stroke-width:2"/><rect x="72" y="150" width="16" height="32" rx="3" style="fill:var(--muted)"/><line x1="80" y1="60" x2="80" y2="140" style="stroke:var(--ink);stroke-width:2"/><polygon points="75,138 80,148 85,138" style="fill:var(--ink)"/><rect x="222" y="92" width="16" height="18" style="fill:var(--chem)"/><rect x="222" y="110" width="16" height="18" style="fill:var(--bad)"/><ellipse cx="230" cy="70" rx="38" ry="7" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:4 3"/><ellipse cx="230" cy="150" rx="38" ry="7" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:4 3"/><line x1="290" y1="96" x2="290" y2="116" style="stroke:var(--ink);stroke-width:2"/><polygon points="286,114 290,122 294,114" style="fill:var(--ink)"/><text x="40" y="26" style="font-size:11px;fill:var(--muted)">steel bolt: under 0.5 s</text><text x="190" y="26" style="font-size:11px;fill:var(--muted)">magnet: seconds</text><text x="194" y="176" style="font-size:11px;fill:var(--muted)">currents it stirs up</text><text x="46" y="224" style="font-size:11px;fill:var(--muted)">copper pipe</text><text x="196" y="224" style="font-size:11px;fill:var(--muted)">copper pipe</text></svg>'
+life:
+  - 'The hum of an induction cooktop and the way its pan heats: changing flux stirs up currents in the metal, and Lenz''s law fixes their direction.'
+  - 'Eddy-current brakes on some trains and roller coasters slow the vehicle with no brake pads to wear out.'
+  - 'The needle of an old electricity meter at home damps to a steady reading, because a metal disc moving through magnets feels this very drag.'
+  - 'Wireless phone charging and the metal detectors at airports and malls rely on induced currents that push back on their cause.'
+  - 'Regenerative braking in metro trains and electric cars: the motor runs as a generator, and the opposition you feel is the braking.'
+models:
+  - name: 'Systems push back against change'
+    text: 'Lenz''s law is a physical case of a very general pattern: a stable system resists a disturbance, and it resists the change, not the state. A thermostat, a market that rebalances after a shock and a body keeping its temperature all work like this.'
+  - name: 'The brake is paid for by the push'
+    text: 'The opposition is not free. Whatever you spend to overcome it comes out as heat. If nature opposed with the wrong sign, you would get energy for nothing. When a rule has a minus sign, ask what bookkeeping it protects.'
+  - name: 'Resist the change, not the thing'
+    text: 'A flywheel does not resist being in motion; it resists being sped up or slowed down. Separating the level from its rate of change clears up many muddles in physics, money and politics.'
+links:
+  - leaf: 'phy/inertia-and-the-first-law'
+    name: 'Inertia (first law of motion)'
+    same: 'Both are resistance to change: a heavy body resists a change of velocity, and a loop resists a change of flux. Neither resists the steady state, only the change.'
+    differs: 'Inertia is a property of matter that holds at every instant. The flux resistance exists only while a current can flow, and only a superconducting ring resists the change completely.'
+  - leaf: 'chem/chemical-equilibrium'
+    name: 'Chemical equilibrium (Le Chatelier)'
+    same: 'Both say: disturb a system and it shifts to oppose the disturbance, partly undoing it.'
+    differs: 'Lenz''s law is an exact statement about the sign of the induced emf. Le Chatelier''s principle is a rule of thumb for direction only, and it can say nothing about size.'
+symbols:
+  - { s: '\varepsilon', means: 'emf induced in the loop: the push on charges round it (volts, V)' }
+  - { s: '\Phi_B', means: 'magnetic flux: how much magnetic field passes through the loop (weber, Wb)' }
+  - { s: 't', means: 'time (seconds, s)' }
+  - { s: 'B', means: 'magnetic field (tesla, T)' }
+  - { s: 'I', means: 'induced current in the loop (amperes, A)' }
+  - { s: 'R', means: 'resistance of the loop (ohms)' }
+  - { s: 'L', means: 'side of the square loop (metres); in the last section, self-inductance of the ring (henry, H)' }
+  - { s: 'v', means: 'speed of the loop or magnet (metres per second)' }
+  - { s: 'F', means: 'magnetic drag force that opposes the motion (newtons, N)' }
+  - { s: 'M', means: 'mass of the falling magnet (kilograms)' }
+  - { s: 'v_t', means: 'terminal speed: the steady speed at which the brake balances the weight (m/s)' }
+next:
+  q: 'Lenz''s law says the induced current always fights whatever moves the wire. So when you push a straight wire through a magnetic field, exactly how big a voltage do you make, and where inside the metal does it come from?'
+  leaf: 'phy/motional-emf'
+  name: 'Motional emf'
 ---
 
 :::hook
-q: A bar magnet is dropped, north pole down, through a horizontal copper ring. When the magnet has passed through and is falling away below the ring, what does the ring do to it?
-options: ["Pushes it downward, speeding it up", "Pulls it upward, slowing it down", "Nothing: the magnet is already past the ring", "Pushes it sideways"]
+q: So what's your guess? What is braking the magnet inside the copper pipe?
+options: ["A cushion of air trapped under it", "Currents the falling magnet itself stirs up in the copper", "The copper is secretly magnetic and grabs it"]
 answer: 1
-right: Right. As the magnet leaves, the flux through the ring falls. The induced current tries to keep the flux, which means attracting the magnet back. The ring slows the magnet on the way in (by repelling it) and on the way out (by attracting it).
-wrong: The ring pulls it upward. As the magnet leaves, the flux through the ring is falling, and the induced current tries to keep that flux by attracting the magnet back. On the way in, the ring repelled it. Either way the force opposes the motion.
+right: "Right, and the magnet is braked by its own wake. As it falls, the field through every ring of the pipe changes, so circling currents spring up in the copper. By Lenz's rule each current pushes back against the change that made it. The magnet settles at the speed where that brake exactly balances its weight."
+wrong: "Not quite. The steel bolt of the same size dropped straight through, so it is not the air, and copper is not magnetic. The brake comes from currents the falling magnet itself stirs up in the pipe. They always oppose the change that creates them (Lenz's law), so the magnet is held back by its own wake."
 :::
 
 ## Opposing the change, not the field {lvl=2 id=s-change label="Class 12"}

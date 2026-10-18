@@ -1,6 +1,6 @@
 ---
 title: Alternating current and the AC generator
-summary: 'Why the socket in your wall alternates, how a spinning coil makes it, and what "230 volts" really means.'
+summary: 'The voltage in your wall socket swings above and below zero 50 times a second: what ''220 volts'' really means.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.8)", "Class 12 Physics · Ch 7 Alternating Current (§7.1–7.3)"]
 up_to: Olympiad
 builds_on: [Electromagnetic induction, Heating effect and power, Ohm's law]
@@ -46,14 +46,61 @@ outcomes:
   - 'Calculate the average power in a resistor using rms values'
   - 'Find the rms value of other waveforms (rectified, square, triangular, offset) and the reading of AC meters'
   - 'Add sinusoids as phasors and use $\overline{ab} = \tfrac12AB\cos\varphi$; outline three-phase supply'
+opener:
+  story: |
+    Hold a pencil in front of a tube light and wave it quickly side to side. You see not one pencil but a row of sharp ghost pencils. The light is not shining steadily: it is flickering, about 100 times a second, too fast for your eye to notice.
+
+    That flicker is the supply itself. The voltage at the wall is not steady like a battery's. It rises, falls through zero, goes negative, and comes back, 50 times every second. Averaged over a whole cycle, the voltage is exactly zero.
+
+    A battery whose average was zero would be dead, yet this supply heats a kettle fiercely. So when the label on the socket says 220 volts, which 220 does it mean?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A sine wave of mains voltage with dashed lines at 220 volts and a question mark above where the peak is"><line x1="24" y1="120" x2="304" y2="120" style="stroke:var(--muted);stroke-width:1.5"/><line x1="30" y1="28" x2="30" y2="212" style="stroke:var(--muted);stroke-width:1.5"/><line x1="30" y1="63.4" x2="300" y2="63.4" style="stroke:var(--chem);stroke-width:1.5;stroke-dasharray:5 4"/><line x1="30" y1="176.6" x2="300" y2="176.6" style="stroke:var(--chem);stroke-width:1.5;stroke-dasharray:5 4"/><polyline points="30.0,120.0 32.5,110.7 35.0,101.6 37.5,92.6 40.0,84.1 42.5,76.0 45.0,68.6 47.5,61.8 50.0,55.8 52.5,50.7 55.0,46.5 57.5,43.4 60.0,41.2 62.5,40.1 65.0,40.1 67.5,41.2 70.0,43.4 72.5,46.5 75.0,50.7 77.5,55.8 80.0,61.8 82.5,68.6 85.0,76.0 87.5,84.1 90.0,92.6 92.5,101.6 95.0,110.7 97.5,120.0 100.0,129.3 102.5,138.4 105.0,147.4 107.5,155.9 110.0,164.0 112.5,171.4 115.0,178.2 117.5,184.2 120.0,189.3 122.5,193.5 125.0,196.6 127.5,198.8 130.0,199.9 132.5,199.9 135.0,198.8 137.5,196.6 140.0,193.5 142.5,189.3 145.0,184.2 147.5,178.2 150.0,171.4 152.5,164.0 155.0,155.9 157.5,147.4 160.0,138.4 162.5,129.3 165.0,120.0 167.5,110.7 170.0,101.6 172.5,92.6 175.0,84.1 177.5,76.0 180.0,68.6 182.5,61.8 185.0,55.8 187.5,50.7 190.0,46.5 192.5,43.4 195.0,41.2 197.5,40.1 200.0,40.1 202.5,41.2 205.0,43.4 207.5,46.5 210.0,50.7 212.5,55.8 215.0,61.8 217.5,68.6 220.0,76.0 222.5,84.1 225.0,92.6 227.5,101.6 230.0,110.7 232.5,120.0 235.0,129.3 237.5,138.4 240.0,147.4 242.5,155.9 245.0,164.0 247.5,171.4 250.0,178.2 252.5,184.2 255.0,189.3 257.5,193.5 260.0,196.6 262.5,198.8 265.0,199.9 267.5,199.9 270.0,198.8 272.5,196.6 275.0,193.5 277.5,189.3 280.0,184.2 282.5,178.2 285.0,171.4 287.5,164.0 290.0,155.9 292.5,147.4 295.0,138.4 297.5,129.3 300.0,120.0" style="fill:none;stroke:var(--c);stroke-width:3"/><text x="36" y="58" style="font-size:11px;fill:var(--chem)">220 V (the label)</text><text x="236" y="40" style="font-size:16px;fill:var(--bad)">?</text><text x="120" y="22" style="font-size:11px;fill:var(--muted)">how high does it really go?</text><text x="34" y="232" style="font-size:11px;fill:var(--muted)">20 ms per cycle, 50 cycles every second</text><text x="270" y="136" style="font-size:11px;fill:var(--muted)">0 V</text></svg>'
+life:
+  - 'Every mains socket, fan, light and kettle at home runs on AC that changes direction 50 times a second in India.'
+  - 'The long wires and transformer stations along a highway carry AC at very high voltage to waste less energy, then step it down for your street.'
+  - 'A tube light and an old CRT screen flicker at twice the mains frequency; a phone camera filming one shows dark bands.'
+  - 'A bicycle dynamo and a wind turbine make AC directly, because a spinning coil naturally makes a swinging voltage.'
+  - 'The ''rms'' on a power-strip or multimeter label tells you the DC-equivalent value of the swinging supply, not its peak.'
+models:
+  - name: 'Averages can hide the story'
+    text: 'The average of an AC voltage is zero, but it still heats a kettle. Whenever the sign does not matter, such as in heating, error or risk, you need a measure like the root mean square, not the plain average.'
+  - name: 'Pick the measure that matches the question'
+    text: 'Peak, average and rms are three honest answers to different questions. Peak tells you what insulation must survive, rms what heating you get. Asking ''what am I using this number for?'' decides which one is right.'
+  - name: 'Rotation makes oscillation'
+    text: 'Spin something steadily and look at it from the side: you see a back-and-forth swing. Many oscillations, from a pendulum to the seasons, are just a steady circle seen edge-on.'
+links:
+  - leaf: 'phy/simple-harmonic-motion'
+    name: 'Simple harmonic motion'
+    same: 'Both are sine waves with a period and an amplitude, and both can be seen as the shadow of something turning in a circle. The mathematics of one carries over to the other.'
+    differs: 'In SHM a mass swings back and forth in space. In AC the thing that swings is a voltage or a current, and no material moves along the wire.'
+  - leaf: 'phy/heating-effect-and-power'
+    name: 'Heating effect of a current'
+    same: 'The heating in a resistor is $I^2R$ for DC. For AC the same law holds, only now you average the squared current, and this gives the rms value.'
+    differs: 'For DC the heating is steady; for AC it pulses at twice the supply frequency and only its average is useful.'
+symbols:
+  - { s: '\varepsilon', means: 'emf of the generator at a given instant (volts, V)' }
+  - { s: 'N', means: 'number of turns in the coil' }
+  - { s: 'B', means: 'magnetic field between the poles (tesla, T)' }
+  - { s: 'A', means: 'area of the coil (square metres)' }
+  - { s: '\omega', means: 'angular speed of the coil: how fast it turns (radians per second)' }
+  - { s: 'f', means: 'frequency: number of complete cycles per second (hertz, Hz)' }
+  - { s: 'T', means: 'period: time of one cycle (seconds, s)' }
+  - { s: 'V_0', means: 'peak voltage: the top of the wave (volts)' }
+  - { s: 'I_0', means: 'peak current (amperes, A)' }
+  - { s: 'V_{rms}', means: 'rms voltage: the steady DC voltage that gives the same heating (volts)' }
+  - { s: '\bar P', means: 'average power delivered to the load (watts, W)' }
+  - { s: 'R', means: 'resistance of the load (ohms)' }
+next:
+  q: 'A kettle simply heats on AC, so voltage and current rise and fall together. What happens when the same supply meets a coil or a capacitor instead? Does the current still keep step with the voltage?'
+  leaf: 'phy/ac-through-r-l-and-c'
+  name: 'AC through R, L and C'
 ---
 
 :::hook
-q: An Indian wall socket is labelled 220 V. Roughly what is the largest voltage between its two pins during each cycle?
-options: ["220 V", "311 V", "440 V", "156 V"]
+q: So what's your guess? The label says 220 V. Roughly how high does the voltage between the two pins climb at its peak?
+options: ["220 V", "311 V", "156 V"]
 answer: 1
-right: Right. 220 V is the rms value. The voltage swings between +311 V and −311 V, since $220\sqrt2 \approx 311$. A 220 V DC supply would heat a kettle at the same rate, which is why the rms value is the one printed on the label.
-wrong: The 220 V on the label is the rms value: the steady voltage that would heat a resistor equally fast. The sinusoid actually peaks at $220\sqrt2 \approx 311$ V, and also reaches −311 V half a cycle later.
+right: "Right. 220 V is the rms value, the steady voltage that would heat a kettle equally fast. The voltage actually swings between +311 V and -311 V, since $220\\sqrt2 \\approx 311$, and spends only brief moments near the top."
+wrong: "The 220 V on the label is the rms value: the steady voltage that would heat a resistor equally fast. The wave actually peaks at $220\\sqrt2 \\approx 311$ V, and reaches -311 V half a cycle later."
 :::
 
 ## What "alternating" means, and why mains uses it {lvl=1 id=s-why label="Class 10"}
