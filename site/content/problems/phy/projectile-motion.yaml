@@ -1,0 +1,235 @@
+# Projectile motion. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 3 (Motion in a Plane; Examples 3.6–3.8 and Exercises 3.12–3.13). Found, board and main problems are original.
+
+- id: ncert11-eg-3-6
+  lvl: ncert-intext
+  num: "XI Ex 3.6"
+  source: NCERT XI Physics · Ch 3 · Example 3.6
+  kind: proof
+  q: |-
+    Galileo, in his book *Two new sciences*, stated that "for elevations which exceed or fall short of 45° by equal amounts, the ranges are equal". Prove this statement.
+  hints:
+    - Start from R = v₀² sin 2θ₀ / g.
+    - Write the two angles as 45° + α and 45° − α, so that 2θ₀ is 90° + 2α and 90° − 2α.
+    - Use sin(90° + x) = sin(90° − x) = cos x.
+  sol: |
+    For a projectile launched with speed $v_0$ at angle $\theta_0$ to the horizontal on level ground, the range is
+    $$R = \frac{v_0^2\sin2\theta_0}{g}.$$
+    For elevations $45^\circ + \alpha$ and $45^\circ - \alpha$, the doubled angles are $2\theta_0 = 90^\circ + 2\alpha$ and $90^\circ - 2\alpha$. Since
+    $$\sin(90^\circ + 2\alpha) = \sin(90^\circ - 2\alpha) = \cos2\alpha,$$
+    both give $R = \dfrac{v_0^2\cos2\alpha}{g}$. Hence the ranges are equal for elevations that exceed or fall short of $45^\circ$ by equal amounts $\alpha$. The two angles are complementary ($\theta_0 + \theta_0' = 90^\circ$), and the maximum range $v_0^2/g$ occurs at $\alpha = 0$.
+
+    The statement assumes the same launch speed, the same level for launch and landing, and negligible air resistance.
+  check: none
+
+- id: ncert11-eg-3-7
+  lvl: ncert-intext
+  num: "XI Ex 3.7"
+  source: NCERT XI Physics · Ch 3 · Example 3.7
+  kind: num
+  q: |-
+    A hiker stands on the edge of a cliff 490 m above the ground and throws a stone horizontally with an initial speed of 15 m s⁻¹. Neglecting air resistance, find the time taken by the stone to reach the ground, and the speed with which it hits the ground. (Take $g = 9.8$ m s⁻²).
+  ask: Speed with which the stone hits the ground
+  unit: m/s
+  ans: 99
+  tol: 0.5
+  verify: sqrt(15**2+(9.8*sqrt(2*490/9.8))**2)
+  sol: |
+    Choose the origin at the cliff edge, $t = 0$ when the stone is thrown, $+x$ along the initial velocity and $+y$ vertically upward. The components move independently: $x = v_{0x}t$ with $v_{0x} = 15$ m s⁻¹ and $v_{0y} = 0$, and $y = -\tfrac12 g t^2$.
+
+    The stone reaches the ground when $y = -490$ m:
+    $$-490 = -\tfrac12(9.8)t^2 \Rightarrow t = \sqrt{\frac{2\times490}{9.8}} = 10\ \text{s}.$$
+
+    At that instant $v_x = 15$ m s⁻¹ and $v_y = 0 - 9.8\times10 = -98$ m s⁻¹, so
+    $$v = \sqrt{15^2 + 98^2} = \sqrt{9829} \approx 99\ \text{m s}^{-1},$$
+    directed at $\tan^{-1}(98/15) \approx 81^\circ$ below the horizontal. The stone lands $15\times10 = 150$ m from the foot of the cliff.
+  answer_key: "t = 10 s; speed ≈ 99 m s⁻¹ (printed in the example)"
+  check: both
+
+- id: ncert11-eg-3-8
+  lvl: ncert-intext
+  num: "XI Ex 3.8"
+  source: NCERT XI Physics · Ch 3 · Example 3.8
+  kind: num
+  q: |-
+    A cricket ball is thrown at a speed of 28 m s⁻¹ in a direction $30^\circ$ above the horizontal. Calculate (a) the maximum height, (b) the time taken by the ball to return to the same level, and (c) the distance from the thrower to the point where the ball returns to the same level.
+  ask: Distance from the thrower to where the ball returns to the same level, part (c)
+  unit: m
+  ans: 69
+  tol: 0.5
+  verify: 28*28*sin(rad(60))/9.8
+  sol: |
+    With $v_0 = 28$ m s⁻¹, $\theta_0 = 30^\circ$, $g = 9.8$ m s⁻²:
+
+    (a) $h_m = \dfrac{(v_0\sin\theta_0)^2}{2g} = \dfrac{(28\sin30^\circ)^2}{2(9.8)} = \dfrac{14^2}{19.6} = 10.0$ m.
+
+    (b) $T_f = \dfrac{2v_0\sin\theta_0}{g} = \dfrac{2\times28\times0.5}{9.8} = \dfrac{28}{9.8} = 2.9$ s.
+
+    (c) $R = \dfrac{v_0^2\sin2\theta_0}{g} = \dfrac{28\times28\times\sin60^\circ}{9.8} = 69$ m. (Check: $v_0\cos30^\circ\times T_f = 24.25\times2.857 = 69.3$ m.)
+  answer_key: "(a) 10.0 m; (b) 2.9 s; (c) 69 m (printed in the example)"
+  check: both
+
+- id: ncert11-ex-3-12
+  lvl: ncert-ex
+  num: "XI 3.12"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.12
+  kind: num
+  q: |-
+    The ceiling of a long hall is 25 m high. What is the maximum horizontal distance that a ball thrown with a speed of 40 m s⁻¹ can go without hitting the ceiling of the hall?
+  ask: Maximum horizontal distance
+  unit: m
+  ans: 150.5
+  tol: 0.5
+  verify: 2*sqrt(40**2-2*9.8*25)*sqrt(2*9.8*25)/9.8
+  sol: |
+    [Inference] The ball is assumed to be thrown from floor level with $g = 9.8$ m s⁻²; the problem does not state either, but the key's 150.5 m follows from them.
+
+    The ball must not rise above 25 m, so $\dfrac{(v_0\sin\theta)^2}{2g} \le 25$. The range $R = \dfrac{v_0^2\sin2\theta}{g}$ grows with $\theta$ up to $45^\circ$, but at $45^\circ$ the height would be $\dfrac{40^2\times\frac12}{19.6} = 40.8$ m, above the ceiling. So the best throw is the steepest one that just grazes the ceiling:
+    $$v_0\sin\theta = \sqrt{2\times9.8\times25} = 22.14\ \text{m s}^{-1}\Rightarrow \sin\theta = 0.553,\ \theta = 33.6^\circ.$$
+    Then $v_0\cos\theta = \sqrt{40^2 - 22.14^2} = 33.32$ m s⁻¹, and
+    $$R = \frac{2(v_0\cos\theta)(v_0\sin\theta)}{g} = \frac{2\times33.32\times22.14}{9.8} = 150.5\ \text{m}.$$
+    The unconstrained maximum range would be $v_0^2/g = 163$ m; the ceiling costs about 13 m.
+  answer_key: "150.5 m"
+  check: both
+
+- id: ncert11-ex-3-13
+  lvl: ncert-ex
+  num: "XI 3.13"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.13
+  kind: num
+  q: |-
+    A cricketer can throw a ball to a maximum horizontal distance of 100 m. How much high above the ground can the cricketer throw the same ball?
+  ask: Maximum height
+  unit: m
+  ans: 50
+  tol: 0.1
+  verify: 100/2
+  sol: |
+    The maximum range comes from a $45^\circ$ throw: $R_{\max} = v_0^2/g = 100$ m, so $v_0^2 = 100g$.
+
+    The highest throw is vertical, giving
+    $$h_{\max} = \frac{v_0^2}{2g} = \frac{100g}{2g} = 50\ \text{m}.$$
+    The answer does not depend on the value of $g$, and assumes the cricketer can throw at the same speed at any angle.
+  answer_key: "50 m"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: At the highest point of its flight, a projectile (no air resistance) has zero
+  opts: ["acceleration", "horizontal component of velocity", "vertical component of velocity", "speed"]
+  ans: 2
+  sol: At the top, $v_y = v_0\sin\theta - gt = 0$. The horizontal component $v_0\cos\theta$ never changes, so the speed there is $v_0\cos\theta$ (not zero for $\theta<90^\circ$), and the acceleration is still $g$ downward. (Original problem.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A ball is thrown from the ground with a speed of 20 m/s at $30^\circ$ above the horizontal. Find its time of flight (take $g = 9.8$ m/s²). (Original problem.)
+  ask: Time of flight
+  unit: s
+  ans: 2.04
+  tol: 0.01
+  verify: 2*20*sin(rad(30))/9.8
+  sol: $T = \dfrac{2v_0\sin\theta_0}{g} = \dfrac{2\times20\times0.5}{9.8} = 2.04$ s.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A marble rolls off a table 0.80 m high with a horizontal speed of 3.0 m/s. How far from the foot of the table does it land (take $g = 9.8$ m/s²)? (Original problem.)
+  ask: Horizontal distance from the table
+  unit: m
+  ans: 1.21
+  tol: 0.01
+  verify: 3.0*sqrt(2*0.80/9.8)
+  sol: |
+    Fall time from $0.80 = \tfrac12(9.8)t^2$: $t = \sqrt{1.6/9.8} = 0.404$ s. Horizontal distance $= 3.0\times0.404 = 1.21$ m. The fall time does not depend on the horizontal speed.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A football is kicked with a speed of 20 m/s at $45^\circ$ above the horizontal. Find the maximum height it reaches (take $g = 9.8$ m/s²). (The range is also asked in the solution.) (Original problem.)
+  ask: Maximum height
+  unit: m
+  ans: 10.2
+  tol: 0.05
+  verify: (20*sin(rad(45)))**2/(2*9.8)
+  sol: |
+    $h_m = \dfrac{(v_0\sin\theta)^2}{2g} = \dfrac{(20\times0.7071)^2}{19.6} = \dfrac{200}{19.6} = 10.2$ m.
+
+    The range is $R = \dfrac{v_0^2\sin90^\circ}{g} = \dfrac{400}{9.8} = 40.8$ m.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: An aircraft flying horizontally at 100 m/s at a height of 500 m releases a packet of supplies. At what horizontal distance before the target must the packet be released so that it lands on the target (take $g = 9.8$ m/s², ignore air resistance)? (Original problem.)
+  ask: Horizontal distance
+  unit: m
+  ans: 1010
+  tol: 5
+  verify: 100*sqrt(2*500/9.8)
+  sol: |
+    The packet leaves with the aircraft's horizontal velocity of 100 m/s and zero vertical velocity. Fall time: $500 = \tfrac12(9.8)t^2 \Rightarrow t = \sqrt{1000/9.8} = 10.1$ s. In that time it travels $100\times10.1 \approx 1010$ m horizontally. The aircraft keeps moving at the same horizontal speed, so it is directly above the packet all the way down (ignoring air resistance).
+  check: code
+
+- id: b3
+  lvl: board
+  kind: proof
+  q: Show that for a projectile launched at angle $\theta$ on level ground, the maximum height $H$ and the range $R$ are related by $H = \dfrac{R\tan\theta}{4}$. (Original problem.)
+  hints:
+    - Write H = (v sin θ)²/2g and R = v² sin θ cos θ · 2/g.
+    - Divide H by R.
+  sol: |
+    $$H = \frac{v^2\sin^2\theta}{2g},\qquad R = \frac{2v^2\sin\theta\cos\theta}{g}.$$
+    Dividing,
+    $$\frac{H}{R} = \frac{v^2\sin^2\theta/(2g)}{2v^2\sin\theta\cos\theta/g} = \frac{\sin\theta}{4\cos\theta} = \frac{\tan\theta}{4}.$$
+    So $H = R\tan\theta/4$. At $\theta = 45^\circ$, $H = R/4$; and $R = 4H$ exactly when $\theta = 45^\circ$.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A projectile is launched on level ground so that its range equals four times its maximum height. At what angle to the horizontal was it launched? (Original problem.)
+  ask: Angle of projection
+  unit: degrees
+  ans: 45
+  tol: 0.1
+  verify: deg(atan(1))
+  sol: |
+    From $H = \dfrac{R\tan\theta}{4}$ (see problem b3), $R = 4H$ gives $\tan\theta = 1$, so $\theta = 45^\circ$. Directly: $R = 4H$ means $\dfrac{2v^2\sin\theta\cos\theta}{g} = \dfrac{4v^2\sin^2\theta}{2g}$, i.e. $\cos\theta = \sin\theta$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A ball is projected from level ground with speed 30 m/s at $60^\circ$ above the horizontal. At what time after projection (while rising) does its velocity make an angle of $45^\circ$ with the horizontal? Take $g = 9.8$ m/s². (Original problem.)
+  ask: Time while rising
+  unit: s
+  ans: 1.12
+  tol: 0.01
+  verify: (30*sin(rad(60))-30*cos(rad(60)))/9.8
+  sol: |
+    $v_x = 30\cos60^\circ = 15$ m/s is constant. The velocity makes $45^\circ$ with the horizontal when $|v_y| = v_x = 15$ m/s.
+
+    While rising, $v_y = 30\sin60^\circ - 9.8t = 25.98 - 9.8t = +15$, so $t = \dfrac{10.98}{9.8} = 1.12$ s.
+
+    (On the way down, $v_y = -15$ gives $t = 40.98/9.8 = 4.18$ s; the ball lands at $T = 2\times25.98/9.8 = 5.30$ s.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A ball is thrown horizontally with speed 20 m/s from a point on a long smooth incline that makes $30^\circ$ with the horizontal, and it lands on the incline further down the slope. How far from the point of projection, measured along the incline, does it land? Take $g = 9.8$ m/s². (Original problem.)
+  ask: Distance along the incline
+  unit: m
+  ans: 54.4
+  tol: 0.1
+  verify: 20*(2*20*tan(rad(30))/9.8)/cos(rad(30))
+  sol: |
+    Take $x$ horizontal (along the throw) and $y$ vertically downward from the launch point. Then $x = 20t$ and $y = \tfrac12 gt^2$. The ball lands on the incline when $y/x = \tan30^\circ$:
+    $$\frac{\tfrac12gt^2}{20t} = \tan30^\circ \Rightarrow t = \frac{2\times20\tan30^\circ}{g} = \frac{40\times0.5774}{9.8} = 2.357\ \text{s}.$$
+    Horizontal distance $x = 20\times2.357 = 47.1$ m. The distance along the incline is
+    $$\frac{x}{\cos30^\circ} = \frac{47.1}{0.866} = 54.4\ \text{m}.$$
+  check: code

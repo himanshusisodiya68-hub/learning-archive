@@ -1,0 +1,194 @@
+# Relative motion. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27): Ch 2 (Motion in a Straight Line; Exercise 2.14, relative velocity in one dimension) and Ch 3 (Motion in a Plane; Examples 3.1 and 3.3, velocities that add as vectors: rain and wind, boat and current). Found, board and main problems are original.
+
+- id: ncert11-eg-3-1
+  lvl: ncert-intext
+  num: "XI Ex 3.1"
+  source: NCERT XI Physics · Ch 3 · Example 3.1
+  kind: num
+  q: |-
+    Rain is falling vertically with a speed of 35 m s⁻¹. Winds starts blowing after sometime with a speed of 12 m s⁻¹ in east to west direction. In which direction should a boy waiting at a bus stop hold his umbrella?
+  ask: Angle of the umbrella with the vertical
+  unit: degrees
+  ans: 19
+  tol: 0.5
+  verify: deg(atan(12/35))
+  sol: |
+    Let $\mathbf v_r$ be the velocity of the rain (35 m s⁻¹, vertically downward) and $\mathbf v_w$ that of the wind (12 m s⁻¹, east to west). Once the wind blows, the rain moves with the resultant
+    $$\mathbf R = \mathbf v_r + \mathbf v_w,\qquad R = \sqrt{35^2 + 12^2} = \sqrt{1369} = 37\ \text{m s}^{-1}.$$
+    It makes an angle $\theta$ with the vertical given by
+    $$\tan\theta = \frac{v_w}{v_r} = \frac{12}{35} = 0.343,\qquad \theta = \tan^{-1}0.343 \approx 19^\circ.$$
+    The rain comes down slanting toward the west, so it falls on the boy from the east side. He should hold the umbrella in the vertical east-west plane, tilted about $19^\circ$ from the vertical **toward the east**, so that the umbrella's axis points into the oncoming rain.
+  answer_key: "About 19° with the vertical towards the east (printed in the example)"
+  check: both
+
+- id: ncert11-eg-3-3
+  lvl: ncert-intext
+  num: "XI Ex 3.3"
+  source: NCERT XI Physics · Ch 3 · Example 3.3
+  kind: num
+  q: |-
+    A motorboat is racing towards north at 25 km/h and the water current in that region is 10 km/h in the direction of $60^\circ$ east of south. Find the resultant velocity of the boat.
+  ask: Magnitude of the resultant velocity
+  unit: km/h
+  ans: 21.8
+  tol: 0.2
+  verify: sqrt(25**2+10**2+2*25*10*cos(rad(120)))
+  sol: |
+    Let $\mathbf v_b$ be the velocity of the boat in still water (25 km/h north) and $\mathbf v_c$ that of the current (10 km/h, $60^\circ$ east of south). The angle between $\mathbf v_b$ (north) and $\mathbf v_c$ is $180^\circ - 60^\circ = 120^\circ$. By the law of cosines,
+    $$R = \sqrt{v_b^2 + v_c^2 + 2v_bv_c\cos120^\circ} = \sqrt{25^2 + 10^2 + 2\times25\times10\times(-\tfrac12)} = \sqrt{475} \approx 22\ \text{km/h}.$$
+    Direction: by the law of sines, $\dfrac{R}{\sin120^\circ} = \dfrac{v_c}{\sin\phi}$, so
+    $$\sin\phi = \frac{10\sin120^\circ}{21.8} = 0.397,\qquad \phi \approx 23.4^\circ,$$
+    where $\phi$ is the angle the resultant makes with the north direction (toward the east, as in Fig. 3.11).
+
+    Check by components (east, north): $\mathbf v_b = (0, 25)$ and $\mathbf v_c = (10\sin60^\circ, -10\cos60^\circ) = (8.66, -5)$, so $\mathbf R = (8.66, 20)$, $|\mathbf R| = 21.8$ km/h, $\tan\phi = 8.66/20$, $\phi = 23.4^\circ$.
+  answer_key: "R ≈ 22 km/h, φ ≈ 23.4° from north toward east (printed in the example)"
+  check: both
+
+- id: ncert11-ex-2-14
+  lvl: ncert-ex
+  num: "XI 2.14"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.14
+  kind: num
+  q: |-
+    A police van moving on a highway with a speed of 30 km h⁻¹ fires a bullet at a thief's car speeding away in the same direction with a speed of 192 km h⁻¹. If the muzzle speed of the bullet is 150 m s⁻¹, with what speed does the bullet hit the thief's car? (Note: Obtain that speed which is relevant for damaging the thief's car).
+  ask: Speed with which the bullet hits the car
+  unit: m/s
+  ans: 105
+  tol: 0.5
+  verify: 150+30/3.6-192/3.6
+  sol: |
+    Convert to m s⁻¹: van $= 30/3.6 = 8.33$ m s⁻¹; thief's car $= 192/3.6 = 53.33$ m s⁻¹.
+
+    The muzzle speed is measured relative to the gun (and hence to the van), so the bullet's velocity relative to the ground is $150 + 8.33 = 158.33$ m s⁻¹ in the direction of travel.
+
+    The damage depends on the speed of the bullet **relative to the car**:
+    $$v_{\text{rel}} = v_{\text{bullet}} - v_{\text{car}} = 158.33 - 53.33 = 105\ \text{m s}^{-1}.$$
+    (Equivalently, $150 + 8.33 - 53.33 = 105$.) The bullet closes on the car at 105 m s⁻¹.
+  answer_key: "105 m s⁻¹"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Two trains approach each other on parallel tracks, one at 60 km/h and the other at 40 km/h. With what speed does one train appear to move as seen by a passenger in the other? (Original problem.)
+  ask: Relative speed
+  unit: km/h
+  ans: 100
+  tol: 0.1
+  verify: 60+40
+  sol: Take the direction of the first train as positive. Then $v_1 = +60$ and $v_2 = -40$ km/h, so the velocity of train 2 relative to train 1 is $v_{21} = v_2 - v_1 = -40 - 60 = -100$ km/h. The relative speed is 100 km/h. If they moved in the same direction, it would be $60 - 40 = 20$ km/h.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A passenger sits in a train moving at constant velocity and drops a coin. In the frame of the train, the coin falls
+  opts: ["along a parabola", "vertically downward along a straight line", "backward in a curve", "forward in a curve"]
+  ans: 1
+  sol: In the train's frame (inertial, since the train moves at constant velocity) the coin has no initial horizontal velocity, so it falls straight down. Seen from the ground, it follows a parabola, because it keeps the train's forward speed. The shape of the path depends on the frame. (Original problem.)
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: Rain falls vertically at 8 m/s. A boy runs at 6 m/s on level ground. Find the speed of the rain relative to the boy. (Original problem.)
+  ask: Speed of the rain relative to the boy
+  unit: m/s
+  ans: 10
+  tol: 0.05
+  verify: hypot(8,6)
+  sol: |
+    $\mathbf v_{rb} = \mathbf v_r - \mathbf v_b$: the rain's velocity is 8 m/s down and the boy's is 6 m/s horizontal, so the relative velocity has components 8 m/s down and 6 m/s backward. Its magnitude is $\sqrt{8^2 + 6^2} = 10$ m/s, slanting forward toward him at $\tan^{-1}(6/8) = 37^\circ$ from the vertical.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A boat that can move at 5 m/s in still water is steered straight across a river 200 m wide, flowing at 3 m/s. How long does it take to cross? (The drift downstream is also asked in the solution.) (Original problem.)
+  ask: Time to cross
+  unit: s
+  ans: 40
+  tol: 0.1
+  verify: 200/5
+  sol: |
+    The component of the boat's velocity across the river is 5 m/s, and the current has no component across, so $t = \dfrac{200}{5} = 40$ s.
+
+    In that time the current carries the boat downstream by $3\times40 = 120$ m. The boat's velocity relative to the ground is $\sqrt{5^2+3^2} = 5.83$ m/s at $\tan^{-1}(3/5) = 31^\circ$ to the line across.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: In the situation of the previous question (boat speed 5 m/s in still water, river flowing at 3 m/s), at what angle to the upstream bank should the boat be steered so that it travels straight across? Measure the angle between the boat's heading and the line straight across the river. (Original problem.)
+  ask: Angle between heading and the line straight across, toward upstream
+  unit: degrees
+  ans: 36.9
+  tol: 0.1
+  verify: deg(asin(3/5))
+  sol: |
+    To go straight across, the upstream component of the boat's velocity must cancel the current: $5\sin\theta = 3$, so $\sin\theta = 0.6$ and $\theta = 36.9^\circ$ (upstream of the perpendicular). The speed across is then $5\cos\theta = 4$ m/s, so the crossing takes $200/4 = 50$ s, which is longer than the 40 s of the fastest crossing.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A pilot steers an aircraft whose airspeed is 200 km/h due north. A steady wind blows from the west at 50 km/h. What is the speed of the aircraft relative to the ground? (Original problem.)
+  ask: Ground speed
+  unit: km/h
+  ans: 206
+  tol: 0.5
+  verify: hypot(200,50)
+  sol: |
+    The wind blows toward the east at 50 km/h. The velocity relative to the ground is the vector sum of 200 km/h north and 50 km/h east:
+    $$v = \sqrt{200^2 + 50^2} = 206\ \text{km/h},$$
+    pointing $\tan^{-1}(50/200) = 14^\circ$ east of north. The pilot would have to head $14^\circ$ west of north (airspeed component $200\sin\alpha = 50$, so $\alpha = 14.5^\circ$ for a flight due north) to fly a track due north.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A swimmer can swim at 3 m/s in still water. A river 60 m wide flows at 5 m/s. The swimmer wants to minimise the distance she is carried downstream while crossing. Find that minimum downstream drift. (Original problem.)
+  ask: Minimum drift
+  unit: m
+  ans: 80
+  tol: 0.1
+  verify: 60*sqrt(5**2-3**2)/3
+  sol: |
+    Since the swimmer is slower than the current (3 < 5), she cannot go straight across. Use the velocity triangle. The ground velocity is $\mathbf v_{\text{river}} + \mathbf u$ where $|\mathbf u| = 3$. As the heading varies, the tip of $\mathbf u$ moves on a circle of radius 3 centred on the tip of $\mathbf v_{\text{river}}$. The ground-velocity vector that is closest to the line straight across (smallest drift per unit crossing) is the tangent from the origin to that circle.
+
+    For that tangent, $\mathbf u \perp \mathbf v_{\text{ground}}$, and the ground speed is $\sqrt{5^2 - 3^2} = 4$ m/s, making an angle $\beta$ with the bank where $\sin\beta = 3/5$. The velocity component across the river is $4\sin\beta = 4\times0.6 = 2.4$ m/s and that along the bank is $4\cos\beta = 3.2$ m/s. Crossing time $= 60/2.4 = 25$ s, drift $= 3.2\times25 = 80$ m.
+
+    Equivalently, drift $= \dfrac{d\sqrt{v^2 - u^2}}{u} = \dfrac{60\times4}{3} = 80$ m. The swimmer should head upstream at $\cos\alpha = u/v = 0.6$ to the bank, i.e. $53^\circ$ to the upstream bank.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A man running at 6 km/h in rain finds that the rain appears to fall at $30^\circ$ from the vertical. He now doubles his speed. At what angle from the vertical does the rain appear to fall? Take the rain to fall vertically relative to the ground. (Original problem.)
+  ask: New apparent angle from the vertical
+  unit: degrees
+  ans: 49.1
+  tol: 0.2
+  verify: deg(atan(12/(6/tan(rad(30)))))
+  sol: |
+    Relative to the man, the rain has a horizontal component equal to his speed (backward) and a vertical component equal to the rain speed $v_r$ (downward). So $\tan\theta = u/v_r$.
+
+    First case: $\tan30^\circ = 6/v_r \Rightarrow v_r = 6/0.5774 = 10.39$ km/h.
+
+    Second case: $\tan\theta = 12/10.39 = 1.155 \Rightarrow \theta = 49.1^\circ$. Doubling his speed does not double the angle: the tangent doubles.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: Ship A is at the origin and moves due east at 15 km/h. Ship B is 40 km due north of A at this instant and moves due south at 20 km/h. Find the least distance between the two ships during their motion. (Original problem.)
+  ask: Least distance
+  unit: km
+  ans: 24
+  tol: 0.05
+  verify: 40*15/sqrt(15**2+20**2)
+  sol: |
+    Work in A's frame. B's velocity relative to A is $\mathbf v_{BA} = (0, -20) - (15, 0) = (-15, -20)$ km/h, of magnitude 25 km/h. B starts at relative position $\mathbf r = (0, 40)$ km and moves in a straight line along $\mathbf v_{BA}$. The least separation is the perpendicular distance from A (the origin) to this line:
+    $$d_{\min} = \frac{|\mathbf r\times\mathbf v_{BA}|}{|\mathbf v_{BA}|} = \frac{|0\cdot(-20) - 40\cdot(-15)|}{25} = \frac{600}{25} = 24\ \text{km}.$$
+    This occurs at $t = -\dfrac{\mathbf r\cdot\mathbf v_{BA}}{|\mathbf v_{BA}|^2} = \dfrac{800}{625} = 1.28$ h. At that moment A is at $(19.2, 0)$ and B at $(0, 14.4)$, whose separation is $\sqrt{19.2^2 + 14.4^2} = 24$ km. Check.
+  check: code

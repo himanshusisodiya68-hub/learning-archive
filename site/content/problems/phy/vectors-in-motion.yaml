@@ -1,0 +1,591 @@
+# Vectors in motion. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 3 (Motion in a Plane; Examples 3.2, 3.4, 3.5 and Exercises 3.1–3.11, 3.17–3.22). Examples 3.1 and 3.3 (velocity addition) are filed under relative-motion; Exercises 3.12–3.13 under projectile-motion; Exercises 3.14–3.16 under circular-motion. Found, board and main problems are original.
+
+- id: ncert11-eg-3-2
+  lvl: ncert-intext
+  num: "XI Ex 3.2"
+  source: NCERT XI Physics · Ch 3 · Example 3.2
+  kind: proof
+  q: |-
+    Find the magnitude and direction of the resultant of two vectors $\mathbf{A}$ and $\mathbf{B}$ in terms of their magnitudes and angle $\theta$ between them.
+  hints:
+    - Place the tail of B at the head of A (or complete the parallelogram) and drop a perpendicular from the head of R onto the line of A.
+    - The horizontal and vertical parts of R are A + B cos θ and B sin θ.
+    - Use Pythagoras for the magnitude and tan α = (vertical part)/(horizontal part) for the direction.
+  sol: |
+    Let $OP$ and $OQ$ represent $\mathbf A$ and $\mathbf B$ with angle $\theta$ between them. In the parallelogram $OPSQ$ the diagonal $OS$ is the resultant $\mathbf R = \mathbf A + \mathbf B$. Drop $SN$ perpendicular to the line $OP$ extended. Then
+    $$ON = OP + PN = A + B\cos\theta,\qquad SN = B\sin\theta .$$
+    By Pythagoras in triangle $OSN$,
+    $$R^2 = (A + B\cos\theta)^2 + (B\sin\theta)^2 = A^2 + B^2 + 2AB\cos\theta,$$
+    $$R = \sqrt{A^2 + B^2 + 2AB\cos\theta}\qquad\text{(law of cosines)}.$$
+    If $\alpha$ is the angle $R$ makes with $\mathbf A$, then
+    $$\tan\alpha = \frac{SN}{ON} = \frac{B\sin\theta}{A + B\cos\theta}.$$
+    Equivalently, the law of sines in the triangle gives $\dfrac{R}{\sin\theta} = \dfrac{A}{\sin\beta} = \dfrac{B}{\sin\alpha}$, where $\beta$ is the angle $R$ makes with $\mathbf B$ (so $\alpha+\beta=\theta$).
+
+    Checks: $\theta = 0$ gives $R = A + B$ (largest); $\theta = 90^\circ$ gives $R = \sqrt{A^2+B^2}$; $\theta = 180^\circ$ gives $R = |A - B|$ (smallest).
+  check: none
+
+- id: ncert11-eg-3-4
+  lvl: ncert-intext
+  num: "XI Ex 3.4"
+  source: NCERT XI Physics · Ch 3 · Example 3.4
+  kind: num
+  q: |-
+    The position of a particle is given by
+    $$\mathbf r = 3.0t\,\hat{\mathbf i} + 2.0t^2\,\hat{\mathbf j} + 5.0\,\hat{\mathbf k}$$
+    where $t$ is in seconds and the coefficients have the proper units for $\mathbf r$ to be in metres. (a) Find $\mathbf v(t)$ and $\mathbf a(t)$ of the particle. (b) Find the magnitude and direction of $\mathbf v(t)$ at $t = 1.0$ s.
+  ask: Magnitude of the velocity at t = 1.0 s, part (b)
+  unit: m/s
+  ans: 5.0
+  tol: 0.05
+  verify: sqrt(3.0**2+(4.0*1.0)**2)
+  sol: |
+    (a) Differentiate the position vector with respect to time:
+    $$\mathbf v(t) = \frac{d\mathbf r}{dt} = 3.0\,\hat{\mathbf i} + 4.0t\,\hat{\mathbf j},\qquad \mathbf a(t) = \frac{d\mathbf v}{dt} = 4.0\,\hat{\mathbf j}.$$
+    The acceleration is constant, $4.0\ \text{m s}^{-2}$ along the $y$-direction. The constant $5.0\,\hat{\mathbf k}$ term does not change with time, so it contributes nothing to $\mathbf v$ or $\mathbf a$.
+
+    (b) At $t = 1.0$ s, $\mathbf v = 3.0\,\hat{\mathbf i} + 4.0\,\hat{\mathbf j}$. Its magnitude is $v = \sqrt{3^2 + 4^2} = 5.0\ \text{m s}^{-1}$, and its direction is $\theta = \tan^{-1}(v_y/v_x) = \tan^{-1}(4/3) \approx 53^\circ$ with the $x$-axis.
+  answer_key: "v(t) = 3.0 i + 4.0 t j, a = 4.0 m s⁻² along y-direction; at t = 1.0 s, v = 5.0 m s⁻¹, θ ≈ 53° with the x-axis (printed in the example)"
+  check: both
+
+- id: ncert11-eg-3-5
+  lvl: ncert-intext
+  num: "XI Ex 3.5"
+  source: NCERT XI Physics · Ch 3 · Example 3.5
+  kind: num
+  q: |-
+    A particle starts from origin at $t = 0$ with a velocity $5.0\,\hat{\mathbf i}$ m/s and moves in $x$-$y$ plane under action of a force which produces a constant acceleration of $(3.0\,\hat{\mathbf i} + 2.0\,\hat{\mathbf j})$ m/s². (a) What is the $y$-coordinate of the particle at the instant its $x$-coordinate is 84 m? (b) What is the speed of the particle at this time?
+  ask: y-coordinate when x = 84 m, part (a)
+  unit: m
+  ans: 36
+  tol: 0.1
+  verify: (()=>{const t=(-5+sqrt(25+4*1.5*84))/(2*1.5); return 1.0*t*t;})()
+  sol: |
+    With $\mathbf r_0 = 0$,
+    $$\mathbf r(t) = \mathbf v_0 t + \tfrac12\mathbf a t^2 = 5.0\,t\,\hat{\mathbf i} + \tfrac12(3.0\,\hat{\mathbf i} + 2.0\,\hat{\mathbf j})t^2 = (5.0t + 1.5t^2)\,\hat{\mathbf i} + 1.0t^2\,\hat{\mathbf j}.$$
+    So $x(t) = 5.0t + 1.5t^2$ and $y(t) = 1.0t^2$.
+
+    (a) Setting $x = 84$: $1.5t^2 + 5.0t - 84 = 0$, so $t = \dfrac{-5 + \sqrt{25 + 504}}{3} = \dfrac{-5+23}{3} = 6$ s (the negative root is rejected). Then $y = 1.0\times 6^2 = 36.0$ m.
+
+    (b) $\mathbf v = \dfrac{d\mathbf r}{dt} = (5.0 + 3.0t)\,\hat{\mathbf i} + 2.0t\,\hat{\mathbf j}$. At $t = 6$ s, $\mathbf v = 23.0\,\hat{\mathbf i} + 12.0\,\hat{\mathbf j}$, so the speed is $\sqrt{23^2 + 12^2} = \sqrt{673} \approx 26\ \text{m s}^{-1}$.
+  answer_key: "(a) y = 36.0 m at t = 6 s; (b) speed ≈ 26 m s⁻¹ (printed in the example)"
+  check: both
+
+- id: ncert11-ex-3-1
+  lvl: ncert-ex
+  num: "XI 3.1"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.1
+  kind: text
+  q: |-
+    State, for each of the following physical quantities, if it is a scalar or a vector: volume, mass, speed, acceleration, density, number of moles, velocity, angular frequency, displacement, angular velocity.
+  sol: |
+    A scalar is fully described by a magnitude (and unit) and has the same value in every orientation of the axes. A vector also has a direction and adds by the triangle/parallelogram rule.
+
+    - **Scalars:** volume, mass, speed, density, number of moles, angular frequency.
+    - **Vectors:** acceleration, velocity, displacement, angular velocity.
+
+    Angular frequency $\omega$ is only the magnitude of the rotation rate (a scalar), whereas angular velocity also carries the direction of the axis of rotation (given by the right-hand rule). Strictly, angular velocity is an axial vector; for rotation about a fixed axis it behaves as an ordinary vector.
+  answer_key: "Volume, mass, speed, density, number of moles, angular frequency are scalars; the rest are vectors."
+  check: ncert-key
+
+- id: ncert11-ex-3-2
+  lvl: ncert-ex
+  num: "XI 3.2"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.2
+  kind: text
+  q: |-
+    Pick out the two scalar quantities in the following list: force, angular momentum, work, current, linear momentum, electric field, average velocity, magnetic moment, relative velocity.
+  sol: |
+    The two scalars are **work** and **current**.
+
+    - Work $W = \mathbf F\cdot\mathbf d$ is a dot product of two vectors, which is a scalar.
+    - Electric current is drawn with an arrow in circuit diagrams, but currents add algebraically (Kirchhoff's junction rule is a sum of numbers), not by the parallelogram law, so current is a scalar.
+
+    All the others obey vector addition: force, linear momentum, electric field, average velocity and relative velocity are polar vectors, while angular momentum and magnetic moment are axial vectors.
+  answer_key: "Work, current"
+  check: ncert-key
+
+- id: ncert11-ex-3-3
+  lvl: ncert-ex
+  num: "XI 3.3"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.3
+  kind: text
+  q: |-
+    Pick out the only vector quantity in the following list: Temperature, pressure, impulse, time, power, total path length, energy, gravitational potential, coefficient of friction, charge.
+  sol: |
+    The only vector is **impulse**. Impulse $\mathbf J = \mathbf F\,\Delta t = \Delta\mathbf p$ is a force (a vector) multiplied by a scalar time interval, and it equals the change in the momentum vector.
+
+    Pressure is force per unit area but is a scalar: it acts equally in all directions on a surface, and the "direction" belongs to the surface, not to the pressure. Temperature, time, power, total path length, energy, gravitational potential, coefficient of friction and charge are all scalars.
+  answer_key: "Impulse"
+  check: ncert-key
+
+- id: ncert11-ex-3-4
+  lvl: ncert-ex
+  num: "XI 3.4"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.4
+  kind: text
+  q: |-
+    State with reasons, whether the following algebraic operations with scalar and vector physical quantities are meaningful: (a) adding any two scalars, (b) adding a scalar to a vector of the same dimensions, (c) multiplying any vector by any scalar, (d) multiplying any two scalars, (e) adding any two vectors, (f) adding a component of a vector to the same vector.
+  sol: |
+    Only **(c)** and **(d)** are meaningful.
+
+    - (a) Not meaningful for *any* two scalars: only scalars of the same physical kind can be added (a mass of 2 kg cannot be added to a time of 3 s).
+    - (b) Not meaningful: a scalar has no direction, so it cannot be added to a vector, even if the dimensions match.
+    - (c) Meaningful: it scales the magnitude (and reverses the direction if the scalar is negative). Example: $\mathbf p = m\mathbf v$.
+    - (d) Meaningful: any two scalars can be multiplied and give a new physical quantity. Example: $E = Pt$.
+    - (e) Not meaningful for *any* two vectors: only vectors of the same kind add (a force and a velocity cannot be added).
+    - (f) Not meaningful in the sense intended: the component $A_x$ is a number that depends on the choice of axes, and a number cannot be added to a vector.
+
+    [Note] The key's verdict on (f) reads "component" as the signed number $A_x$. If it meant the component vector $A_x\hat{\mathbf i}$, the sum would be a legitimate vector, but it would have no physical meaning in a problem.
+  answer_key: "Only (c) and (d) are permissible"
+  check: ncert-key
+
+- id: ncert11-ex-3-5
+  lvl: ncert-ex
+  num: "XI 3.5"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.5
+  kind: text
+  q: |-
+    Read each statement below carefully and state with reasons, if it is true or false: (a) The magnitude of a vector is always a scalar, (b) each component of a vector is always a scalar, (c) the total path length is always equal to the magnitude of the displacement vector of a particle, (d) the average speed of a particle (defined as total path length divided by the time taken to cover the path) is either greater or equal to the magnitude of average velocity of the particle over the same interval of time, (e) Three vectors not lying in a plane can never add up to give a null vector.
+  sol: |
+    (a) **True.** $|\mathbf A| = \sqrt{A_x^2 + A_y^2 + A_z^2}$ is a non-negative number that does not change when the axes are rotated.
+
+    (b) **False.** A scalar has the same value for every orientation of the axes. The components $A_x, A_y, A_z$ change when the axes are rotated (a vector along $x$ has $A_y = 0$ in one frame but not in a rotated one), so they are not scalars. (Each component *vector*, such as $A_x\hat{\mathbf i}$, is of course a vector.)
+
+    (c) **False.** Path length is measured along the actual path; the displacement is the straight line from start to end. They are equal only if the particle moves along a straight line without turning back; otherwise path length $>$ $|\Delta\mathbf r|$.
+
+    (d) **True.** Average speed $= s/\Delta t$ and $|\text{average velocity}| = |\Delta\mathbf r|/\Delta t$, and $s \ge |\Delta\mathbf r|$ always. They are equal for straight-line motion in one direction.
+
+    (e) **True.** If $\mathbf a + \mathbf b + \mathbf c = 0$ then $\mathbf c = -(\mathbf a + \mathbf b)$ lies in the plane of $\mathbf a$ and $\mathbf b$. So three vectors that do not lie in one plane cannot sum to zero.
+
+    [Note] The statement of (b) is open to a second reading: the book's own text calls $A_x$ "a real number". The key's "False" rests on the invariance argument above, which is the one consistent with Exercise 3.21(e).
+  answer_key: "(a) T, (b) F, (c) F, (d) T, (e) T"
+  check: ncert-key
+
+- id: ncert11-ex-3-6
+  lvl: ncert-ex
+  num: "XI 3.6"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.6
+  kind: proof
+  q: |-
+    Establish the following vector inequalities geometrically or otherwise:
+    (a) $|\mathbf a + \mathbf b| \le |\mathbf a| + |\mathbf b|$
+    (b) $|\mathbf a + \mathbf b| \ge \big||\mathbf a| - |\mathbf b|\big|$
+    (c) $|\mathbf a - \mathbf b| \le |\mathbf a| + |\mathbf b|$
+    (d) $|\mathbf a - \mathbf b| \ge \big||\mathbf a| - |\mathbf b|\big|$
+    When does the equality sign above apply?
+  hints:
+    - Draw a and b head to tail; the three vectors a, b and a + b form a triangle.
+    - In any triangle, each side is no longer than the sum of the other two and no shorter than their difference.
+    - For a − b, write a + (−b) and apply the same triangle with −b in place of b.
+  sol: |
+    [Inference] The printed text of this exercise shows the signs as underlined "<" and ">" (that is, $\le$ and $\ge$); the text layer lost the underline. They are written as $\le$ and $\ge$ here, which is also what the answer key's mention of equality for collinear vectors requires.
+
+    Draw $\mathbf a$ and then $\mathbf b$ from its head. The resultant $\mathbf a + \mathbf b$ closes the triangle, with sides $|\mathbf a|$, $|\mathbf b|$, $|\mathbf a+\mathbf b|$. In any triangle, one side is less than the sum of the other two and greater than their difference:
+    $$\big||\mathbf a|-|\mathbf b|\big| < |\mathbf a+\mathbf b| < |\mathbf a|+|\mathbf b| .$$
+    This gives (a) and (b). For a degenerate triangle (collinear vectors) the strict inequalities become equalities.
+
+    Algebraic check: with $\theta$ the angle between $\mathbf a$ and $\mathbf b$,
+    $$|\mathbf a+\mathbf b|^2 = a^2 + b^2 + 2ab\cos\theta .$$
+    Since $-1 \le \cos\theta \le 1$, this lies between $a^2 + b^2 - 2ab = (a-b)^2$ and $a^2+b^2+2ab = (a+b)^2$. Taking square roots gives (a) and (b).
+
+    (c) and (d): $\mathbf a - \mathbf b = \mathbf a + (-\mathbf b)$ and $|-\mathbf b| = |\mathbf b|$, so substituting $-\mathbf b$ for $\mathbf b$ in (a) and (b) gives (c) and (d). Here $|\mathbf a - \mathbf b|^2 = a^2 + b^2 - 2ab\cos\theta$.
+
+    **Equality:**
+    - (a) holds with equality when $\theta = 0^\circ$ (parallel, same direction).
+    - (b) holds with equality when $\theta = 180^\circ$ (antiparallel).
+    - (c) holds with equality when $\theta = 180^\circ$.
+    - (d) holds with equality when $\theta = 0^\circ$.
+    In every case the vectors are collinear.
+  answer_key: "Hint: The sum (difference) of any two sides of a triangle is never less (greater) than the third side. Equality holds for collinear vectors."
+  check: ncert-key
+
+- id: ncert11-ex-3-7
+  lvl: ncert-ex
+  num: "XI 3.7"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.7
+  kind: text
+  q: |-
+    Given $\mathbf a + \mathbf b + \mathbf c + \mathbf d = \mathbf 0$, which of the following statements are correct: (a) $\mathbf a$, $\mathbf b$, $\mathbf c$, and $\mathbf d$ must each be a null vector, (b) The magnitude of $(\mathbf a + \mathbf c)$ equals the magnitude of $(\mathbf b + \mathbf d)$, (c) The magnitude of $\mathbf a$ can never be greater than the sum of the magnitudes of $\mathbf b$, $\mathbf c$, and $\mathbf d$, (d) $\mathbf b + \mathbf c$ must lie in the plane of $\mathbf a$ and $\mathbf d$ if $\mathbf a$ and $\mathbf d$ are not collinear, and in the line of $\mathbf a$ and $\mathbf d$, if they are collinear?
+  sol: |
+    All statements except (a) are correct.
+
+    (a) **Incorrect.** Four non-zero vectors forming a closed quadrilateral sum to zero (for example, the four sides of a square taken in order).
+
+    (b) **Correct.** $\mathbf a + \mathbf c = -(\mathbf b + \mathbf d)$, so the two sums are equal in magnitude and opposite in direction.
+
+    (c) **Correct.** $\mathbf a = -(\mathbf b + \mathbf c + \mathbf d)$, so by the triangle inequality $|\mathbf a| = |\mathbf b + \mathbf c + \mathbf d| \le |\mathbf b| + |\mathbf c| + |\mathbf d|$.
+
+    (d) **Correct.** $\mathbf b + \mathbf c = -(\mathbf a + \mathbf d)$. The sum $\mathbf a + \mathbf d$ lies in the plane of $\mathbf a$ and $\mathbf d$ (in their common line if they are collinear), so $\mathbf b + \mathbf c$ does too.
+  answer_key: "All statements except (a) are correct"
+  check: ncert-key
+
+- id: ncert11-ex-3-8
+  lvl: ncert-ex
+  num: "XI 3.8"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.8 (Fig. 3.19)
+  kind: num
+  q: |-
+    Three girls skating on a circular ice ground of radius 200 m start from a point $P$ on the edge of the ground and reach a point $Q$ diametrically opposite to $P$ following different paths as shown in Fig. 3.19. What is the magnitude of the displacement vector for each? For which girl is this equal to the actual length of path skate?
+  ask: Magnitude of the displacement for each girl
+  unit: m
+  ans: 400
+  tol: 1
+  verify: 2*200
+  sol: |
+    Figure 3.19 shows three paths from $P$ to $Q$: a curve A bulging to the left, the straight diameter B, and a third, unlabelled curve that wanders to the right of the diameter.
+
+    Displacement depends only on the end points. $PQ$ is a diameter, so for all three girls
+    $$|\Delta\mathbf r| = PQ = 2R = 2\times 200 = 400\ \text{m},$$
+    directed from $P$ to $Q$.
+
+    The path length equals the displacement only when the path is a straight line without reversal. That is the case for **girl B**, who skates along the diameter; the other two paths are longer than 400 m.
+  answer_key: "400 m for each; B"
+  check: both
+
+- id: ncert11-ex-3-9
+  lvl: ncert-ex
+  num: "XI 3.9"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.9 (Fig. 3.20)
+  kind: num
+  q: |-
+    A cyclist starts from the centre $O$ of a circular park of radius 1 km, reaches the edge $P$ of the park, then cycles along the circumference, and returns to the centre along $QO$ as shown in Fig. 3.20. If the round trip takes 10 min, what is the (a) net displacement, (b) average velocity, and (c) average speed of the cyclist?
+  ask: Average speed, part (c)
+  unit: km/h
+  ans: 21.4
+  tol: 0.1
+  verify: (1+1+PI/2)/(10/60)
+  sol: |
+    In Fig. 3.20, $OP$ is a radius to the right, the cyclist then goes along the circumference from $P$ to $Q$, and $QO$ is the radius straight down from the top of the circle. $OP \perp OQ$, so the arc $PQ$ is a quarter of the circumference.
+
+    (a) The cyclist ends where he began, so the **net displacement is zero**.
+
+    (b) Average velocity $=$ displacement $/$ time $= 0$.
+
+    (c) Path length $= OP + \text{arc } PQ + QO = 1 + \tfrac14(2\pi\times 1) + 1 = 2 + \tfrac{\pi}{2} = 3.57$ km. Time $= 10$ min $= \tfrac16$ h, so
+    $$\text{average speed} = \frac{3.57}{1/6} = 21.4\ \text{km h}^{-1}\ (\approx 5.95\ \text{m s}^{-1}).$$
+
+    [Inference] The quarter-circle arc is read from Fig. 3.20, where $P$ and $Q$ are drawn at right angles; the text of the question does not state the angle.
+  answer_key: "(a) O; (b) O; (c) 21.4 km h⁻¹"
+  check: both
+
+- id: ncert11-ex-3-10
+  lvl: ncert-ex
+  num: "XI 3.10"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.10
+  kind: num
+  q: |-
+    On an open ground, a motorist follows a track that turns to his left by an angle of $60^\circ$ after every 500 m. Starting from a given turn, specify the displacement of the motorist at the third, sixth and eighth turn. Compare the magnitude of the displacement with the total path length covered by the motorist in each case.
+  ask: Magnitude of displacement at the eighth turn
+  unit: m
+  ans: 866
+  tol: 1
+  verify: hypot(500*(1+cos(rad(60))), 500*sin(rad(60)))
+  sol: |
+    Each 500 m leg is a side of a regular hexagon (the exterior angle is $60^\circ$). Take the first leg along $+x$; leg $k$ points at $(k-1)\times 60^\circ$ to it.
+
+    **Third turn** (three legs, directions $0^\circ, 60^\circ, 120^\circ$):
+    $$\mathbf d = 500\,[(1 + \cos60^\circ + \cos120^\circ),\ (\sin60^\circ + \sin120^\circ)] = (500,\ 866)\ \text{m}.$$
+    $|\mathbf d| = 1000$ m $= 1$ km, at $60^\circ$ to the initial direction. Path length $= 1500$ m $= 1.5$ km. Ratio $|\mathbf d|/s = 2/3$. (Three sides of a hexagon span its long diagonal, which is twice a side.)
+
+    **Sixth turn:** six legs close the hexagon, so $\mathbf d = \mathbf 0$ and $|\mathbf d| = 0$, while the path length is $6\times 500 = 3000$ m $= 3$ km.
+
+    **Eighth turn:** the first six legs cancel, so the displacement is that of legs 7 and 8 (directions $0^\circ$ and $60^\circ$):
+    $$\mathbf d = 500\,[(1 + \cos60^\circ),\ \sin60^\circ] = (750,\ 433)\ \text{m}.$$
+    $|\mathbf d| = \sqrt{750^2 + 433^2} = 866$ m, at $\tan^{-1}(433/750) = 30^\circ$ to the initial direction. Path length $= 4000$ m $= 4$ km. Ratio $\approx 0.22$.
+  answer_key: "Displacement of magnitude 1 km and direction 60° with the initial direction; total path length = 1.5 km (third turn); null displacement vector; path length = 3 km (sixth turn); 866 m, 30°, 4 km (eighth turn)"
+  check: both
+
+- id: ncert11-ex-3-11
+  lvl: ncert-ex
+  num: "XI 3.11"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.11
+  kind: num
+  q: |-
+    A passenger arriving in a new town wishes to go from the station to a hotel located 10 km away on a straight road from the station. A dishonest cabman takes him along a circuitous path 23 km long and reaches the hotel in 28 min. What is (a) the average speed of the taxi, (b) the magnitude of average velocity? Are the two equal?
+  ask: Magnitude of average velocity, part (b)
+  unit: km/h
+  ans: 21.4
+  tol: 0.1
+  verify: 10/(28/60)
+  sol: |
+    Time $= 28\ \text{min} = \tfrac{28}{60}$ h $= 0.467$ h.
+
+    (a) Average speed $=$ path length $/$ time $= 23/0.467 = 49.3\ \text{km h}^{-1}$.
+
+    (b) Average velocity has magnitude $=$ displacement $/$ time $= 10/0.467 = 21.4\ \text{km h}^{-1}$, directed from the station to the hotel.
+
+    The two are **not equal**: the average speed is larger because the path (23 km) is longer than the straight-line displacement (10 km). They would be equal only for motion along a straight line without reversing.
+  answer_key: "(a) 49.3 km h⁻¹; (b) 21.4 km h⁻¹. No, the average speed equals average velocity magnitude only for a straight path."
+  check: both
+
+- id: ncert11-ex-3-17
+  lvl: ncert-ex
+  num: "XI 3.17"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.17
+  kind: num
+  q: |-
+    The position of a particle is given by
+    $$\mathbf r = 3.0t\,\hat{\mathbf i} - 2.0t^2\,\hat{\mathbf j} + 4.0\,\hat{\mathbf k}\ \text{m}$$
+    where $t$ is in seconds and the coefficients have the proper units for $\mathbf r$ to be in metres. (a) Find the $\mathbf v$ and $\mathbf a$ of the particle? (b) What is the magnitude and direction of velocity of the particle at $t = 2.0$ s?
+  ask: Speed at t = 2.0 s, part (b)
+  unit: m/s
+  ans: 8.54
+  tol: 0.02
+  verify: sqrt(3.0**2+(4.0*2.0)**2)
+  sol: |
+    (a) Differentiating,
+    $$\mathbf v(t) = \frac{d\mathbf r}{dt} = (3.0\,\hat{\mathbf i} - 4.0t\,\hat{\mathbf j})\ \text{m s}^{-1},\qquad \mathbf a(t) = \frac{d\mathbf v}{dt} = -4.0\,\hat{\mathbf j}\ \text{m s}^{-2}.$$
+
+    (b) At $t = 2.0$ s, $\mathbf v = 3.0\,\hat{\mathbf i} - 8.0\,\hat{\mathbf j}$, so
+    $$|\mathbf v| = \sqrt{3.0^2 + 8.0^2} = \sqrt{73} = 8.54\ \text{m s}^{-1}.$$
+    The direction is $\theta = \tan^{-1}(v_y/v_x) = \tan^{-1}(-8.0/3.0) = -69.4^\circ$.
+
+    [Note] The key prints "70° with x-axis". The angle is about $70^\circ$ in magnitude, but it is measured **below** the $+x$ axis (toward $-y$), since $v_y < 0$.
+  answer_key: "(a) v(t) = (3.0 i − 4.0 t j), a(t) = −4.0 j; (b) 8.54 m s⁻¹, 70° with x-axis."
+  check: both
+
+- id: ncert11-ex-3-18
+  lvl: ncert-ex
+  num: "XI 3.18"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.18
+  kind: num
+  q: |-
+    A particle starts from the origin at $t = 0$ s with a velocity of $10.0\,\hat{\mathbf j}$ m/s and moves in the $x$-$y$ plane with a constant acceleration of $(8.0\,\hat{\mathbf i} + 2.0\,\hat{\mathbf j})$ m s⁻². (a) At what time is the $x$-coordinate of the particle 16 m? What is the $y$-coordinate of the particle at that time? (b) What is the speed of the particle at the time?
+  ask: y-coordinate when x = 16 m, part (a)
+  unit: m
+  ans: 24
+  tol: 0.1
+  verify: 10*sqrt(2*16/8)+0.5*2*(2*16/8)
+  sol: |
+    With $\mathbf r_0 = 0$ and $\mathbf v_0 = 10.0\,\hat{\mathbf j}$, $\mathbf r = \mathbf v_0 t + \tfrac12\mathbf a t^2$ gives
+    $$x = \tfrac12(8.0)t^2 = 4.0t^2,\qquad y = 10.0t + \tfrac12(2.0)t^2 = 10.0t + t^2 .$$
+
+    (a) $x = 16$: $4.0t^2 = 16$, so $t = 2.0$ s. Then $y = 10.0(2) + 2^2 = 24$ m.
+
+    (b) $\mathbf v = \mathbf v_0 + \mathbf a t$: $v_x = 8.0t = 16$ m/s and $v_y = 10.0 + 2.0t = 14$ m/s at $t = 2$ s. So
+    $$v = \sqrt{16^2 + 14^2} = \sqrt{452} = 21.26\ \text{m s}^{-1}.$$
+  answer_key: "(a) 2 s, 24 m, (b) 21.26 m s⁻¹"
+  check: both
+
+- id: ncert11-ex-3-19
+  lvl: ncert-ex
+  num: "XI 3.19"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.19
+  kind: num
+  q: |-
+    $\hat{\mathbf i}$ and $\hat{\mathbf j}$ are unit vectors along $x$- and $y$-axis respectively. What is the magnitude and direction of the vectors $\hat{\mathbf i} + \hat{\mathbf j}$, and $\hat{\mathbf i} - \hat{\mathbf j}$? What are the components of a vector $\mathbf A = 2\hat{\mathbf i} + 3\hat{\mathbf j}$ along the directions of $\hat{\mathbf i} + \hat{\mathbf j}$ and $\hat{\mathbf i} - \hat{\mathbf j}$? [You may use graphical method]
+  ask: Component of A along the direction of i + j
+  unit: units of A
+  ans: 3.54
+  tol: 0.02
+  verify: 5/sqrt(2)
+  sol: |
+    **Magnitudes and directions.**
+    - $|\hat{\mathbf i} + \hat{\mathbf j}| = \sqrt{1^2 + 1^2} = \sqrt2$, at $\tan^{-1}(1/1) = 45^\circ$ with the $x$-axis.
+    - $|\hat{\mathbf i} - \hat{\mathbf j}| = \sqrt2$, at $\tan^{-1}(-1/1) = -45^\circ$ with the $x$-axis.
+
+    **Components of $\mathbf A$.** The unit vectors along the two directions are $\hat{\mathbf n}_1 = (\hat{\mathbf i}+\hat{\mathbf j})/\sqrt2$ and $\hat{\mathbf n}_2 = (\hat{\mathbf i}-\hat{\mathbf j})/\sqrt2$. They are perpendicular, so the components are projections:
+    $$A_1 = \mathbf A\cdot\hat{\mathbf n}_1 = \frac{2 + 3}{\sqrt2} = \frac{5}{\sqrt2} \approx 3.54,\qquad A_2 = \mathbf A\cdot\hat{\mathbf n}_2 = \frac{2 - 3}{\sqrt2} = -\frac{1}{\sqrt2} \approx -0.71 .$$
+    As vectors these are $\tfrac52(\hat{\mathbf i}+\hat{\mathbf j})$ and $-\tfrac12(\hat{\mathbf i}-\hat{\mathbf j})$, and they add back to $2\hat{\mathbf i}+3\hat{\mathbf j}$. Check: $A_1^2 + A_2^2 = 25/2 + 1/2 = 13 = |\mathbf A|^2$.
+  answer_key: "√2, 45° with the x-axis; √2, −45° with the x-axis, 5/√2, −1/√2."
+  check: both
+
+- id: ncert11-ex-3-20
+  lvl: ncert-ex
+  num: "XI 3.20"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.20
+  kind: text
+  q: |-
+    For any arbitrary motion in space, which of the following relations are true:
+    (a) $\mathbf v_{\text{average}} = (1/2)\,(\mathbf v(t_1) + \mathbf v(t_2))$
+    (b) $\mathbf v_{\text{average}} = [\mathbf r(t_2) - \mathbf r(t_1)]/(t_2 - t_1)$
+    (c) $\mathbf v(t) = \mathbf v(0) + \mathbf a\,t$
+    (d) $\mathbf r(t) = \mathbf r(0) + \mathbf v(0)\,t + (1/2)\,\mathbf a\,t^2$
+    (e) $\mathbf a_{\text{average}} = [\mathbf v(t_2) - \mathbf v(t_1)]/(t_2 - t_1)$
+    (The 'average' stands for average of the quantity over the time interval $t_1$ to $t_2$.)
+  sol: |
+    Only **(b)** and **(e)** are true.
+
+    - (b) and (e) are the *definitions* of average velocity (displacement per unit time) and average acceleration (change of velocity per unit time). They hold for any motion.
+    - (a) is true only if the acceleration is constant (then the velocity changes linearly with time and its mean is the average of the end values). For arbitrary motion it is false. Example: a car that accelerates hard for 1 s from rest to 20 m/s and then cruises at 20 m/s for 9 s has $\mathbf v_{\text{avg}} \approx 19$ m/s over the 10 s, not the mean of the end values, $\tfrac12(0 + 20) = 10$ m/s.
+    - (c) and (d) are the kinematic equations, derived assuming a **constant** acceleration $\mathbf a$. They fail when $\mathbf a$ varies (for instance in uniform circular motion, where the direction of $\mathbf a$ changes constantly).
+  answer_key: "(b) and (e)"
+  check: ncert-key
+
+- id: ncert11-ex-3-21
+  lvl: ncert-ex
+  num: "XI 3.21"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.21
+  kind: text
+  q: |-
+    Read each statement below carefully and state, with reasons and examples, if it is true or false:
+    A scalar quantity is one that
+    (a) is conserved in a process
+    (b) can never take negative values
+    (c) must be dimensionless
+    (d) does not vary from one point to another in space
+    (e) has the same value for observers with different orientations of axes.
+  sol: |
+    Only **(e)** is true.
+
+    (a) **False.** Many scalars are not conserved. Example: the kinetic energy of two colliding clay lumps (a scalar) drops in an inelastic collision.
+
+    (b) **False.** Scalars can be negative. Examples: temperature in °C (below freezing), electric charge, potential energy, work done by a retarding force.
+
+    (c) **False.** Scalars generally have dimensions: mass, time, energy and charge are scalars with dimensions.
+
+    (d) **False.** A scalar can vary from point to point. Examples: temperature or gravitational potential differ from place to place.
+
+    (e) **True.** This is the defining property of a scalar: it is unchanged when the coordinate axes are rotated (unlike the components of a vector).
+  answer_key: "Only (e) is true"
+  check: ncert-key
+
+- id: ncert11-ex-3-22
+  lvl: ncert-ex
+  num: "XI 3.22"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.22
+  kind: num
+  q: |-
+    An aircraft is flying at a height of 3400 m above the ground. If the angle subtended at a ground observation point by the aircraft positions 10.0 s apart is $30^\circ$, what is the speed of the aircraft?
+  ask: Speed of the aircraft
+  unit: m/s
+  ans: 182
+  tol: 1
+  verify: 2*3400*tan(rad(15))/10.0
+  sol: |
+    [Inference] The printed question has two typing slips ("a part", "wat"); they are read as "apart" and "what". The problem also does not say where the aircraft is relative to the observer. The key's answer follows only if the two positions are placed **symmetrically** about the vertical through the observer, so that the line from the observer to the point on the flight path directly below him bisects the $30^\circ$ angle. This assumption is not stated in the problem.
+
+    Let the observer be at $O$, the point on the flight path directly overhead be $M$ ($OM = 3400$ m), and the two positions be $A$ and $B$ with $M$ the midpoint of $AB$. Then $\angle AOM = 15^\circ$ and
+    $$AM = OM\tan 15^\circ = 3400\times 0.2679 = 911\ \text{m},\qquad AB = 2AM = 1822\ \text{m}.$$
+    Speed $= AB/t = 1822/10.0 = 182\ \text{m s}^{-1}$ ($\approx 656$ km/h).
+  answer_key: "182 m s⁻¹"
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of the following **cannot** be the magnitude of the resultant of two vectors of magnitudes 3 and 4? (Original problem.)
+  opts: ["1", "5", "7", "8"]
+  ans: 3
+  sol: The resultant of vectors of magnitudes $a$ and $b$ lies between $|a-b|$ and $a+b$, here between 1 and 7. So 1 (antiparallel), 5 (perpendicular) and 7 (parallel) are possible, but 8 is not.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A vector of magnitude 10 units makes an angle of $30^\circ$ with the positive $x$-axis. Find its $x$-component. (Original problem.)
+  ask: x-component
+  unit: units
+  ans: 8.66
+  tol: 0.01
+  verify: 10*cos(rad(30))
+  sol: $A_x = A\cos\theta = 10\cos30^\circ = 10\times 0.866 = 8.66$ units. (The $y$-component is $10\sin30^\circ = 5$.)
+  check: code
+
+- id: f3
+  lvl: found
+  kind: num
+  q: Two forces of 6 N and 8 N act on a body at right angles to each other. What is the magnitude of the resultant force? (Original problem.)
+  ask: Resultant force
+  unit: N
+  ans: 10
+  tol: 0.01
+  verify: hypot(6,8)
+  sol: For perpendicular vectors, $R = \sqrt{6^2 + 8^2} = \sqrt{100} = 10$ N. It makes $\tan^{-1}(8/6) = 53^\circ$ with the 6 N force.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A walker goes 3 km due east and then 4 km due north, taking 30 minutes in all. Find the magnitude of his average velocity. (The average speed is also asked in the solution.) (Original problem.)
+  ask: Magnitude of average velocity
+  unit: km/h
+  ans: 10
+  tol: 0.05
+  verify: hypot(3,4)/0.5
+  sol: |
+    Displacement $= \sqrt{3^2 + 4^2} = 5$ km, at $\tan^{-1}(4/3) = 53^\circ$ north of east. Time $= 0.5$ h, so $|\mathbf v_{\text{avg}}| = 5/0.5 = 10\ \text{km h}^{-1}$.
+
+    The path length is $3 + 4 = 7$ km, so the average speed is $7/0.5 = 14\ \text{km h}^{-1}$, which is larger than $|\mathbf v_{\text{avg}}|$ because the path is not straight.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Two forces of 5 N and 7 N act at a point with an angle of $60^\circ$ between them. Find the magnitude of the resultant. (Its direction with respect to the 5 N force is also asked in the solution.) (Original problem.)
+  ask: Resultant
+  unit: N
+  ans: 10.4
+  tol: 0.05
+  verify: sqrt(5**2+7**2+2*5*7*cos(rad(60)))
+  sol: |
+    $R = \sqrt{A^2 + B^2 + 2AB\cos\theta} = \sqrt{25 + 49 + 2(5)(7)(0.5)} = \sqrt{109} = 10.4$ N.
+
+    Direction: $\tan\alpha = \dfrac{B\sin\theta}{A + B\cos\theta} = \dfrac{7\sin60^\circ}{5 + 7\cos60^\circ} = \dfrac{6.06}{8.5} = 0.713$, so $\alpha = 35.5^\circ$ from the 5 N force toward the 7 N force.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: The position of a particle moving in a plane is $\mathbf r = (2t^2)\,\hat{\mathbf i} + (3t - 1)\,\hat{\mathbf j}$ metres, with $t$ in seconds. Find the speed of the particle at $t = 1.5$ s. (Original problem.)
+  ask: Speed at t = 1.5 s
+  unit: m/s
+  ans: 6.71
+  tol: 0.02
+  verify: hypot(4*1.5, 3)
+  sol: |
+    $\mathbf v = \dfrac{d\mathbf r}{dt} = 4t\,\hat{\mathbf i} + 3\,\hat{\mathbf j}$ and $\mathbf a = 4\,\hat{\mathbf i}$ m s⁻². At $t = 1.5$ s, $\mathbf v = 6\,\hat{\mathbf i} + 3\,\hat{\mathbf j}$, so
+    $$v = \sqrt{6^2 + 3^2} = \sqrt{45} = 6.71\ \text{m s}^{-1}.$$
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two vectors $\mathbf A$ and $\mathbf B$ have equal magnitude. The magnitude of $\mathbf A + \mathbf B$ is equal to the magnitude of $\mathbf A$. Find the angle between $\mathbf A$ and $\mathbf B$. (Original problem.)
+  ask: Angle between A and B
+  unit: degrees
+  ans: 120
+  tol: 0.5
+  verify: deg(acos(-0.5))
+  sol: |
+    Let $|\mathbf A| = |\mathbf B| = a$. Then
+    $$|\mathbf A + \mathbf B|^2 = a^2 + a^2 + 2a^2\cos\theta = 2a^2(1 + \cos\theta).$$
+    Setting this equal to $a^2$ gives $1 + \cos\theta = \tfrac12$, so $\cos\theta = -\tfrac12$ and $\theta = 120^\circ$. The three vectors $\mathbf A$, $\mathbf B$ and $-(\mathbf A+\mathbf B)$ then form an equilateral triangle.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A particle has initial velocity $(8\,\hat{\mathbf i} + 6\,\hat{\mathbf j})$ m/s and a constant acceleration $(-3\,\hat{\mathbf i} + 1\,\hat{\mathbf j})$ m s⁻². What is the least speed the particle reaches? (Original problem.)
+  ask: Least speed
+  unit: m/s
+  ans: 8.22
+  tol: 0.02
+  verify: hypot(8-3*1.8, 6+1.8)
+  sol: |
+    The velocity is $\mathbf v = (8 - 3t)\,\hat{\mathbf i} + (6 + t)\,\hat{\mathbf j}$, so
+    $$v^2 = (8-3t)^2 + (6+t)^2 .$$
+    The speed is least when $\dfrac{d(v^2)}{dt} = 0$, which is the same as $\mathbf v\cdot\mathbf a = 0$ (velocity perpendicular to acceleration, so the speed is neither rising nor falling):
+    $$-6(8 - 3t) + 2(6 + t) = 0 \Rightarrow 20t = 36 \Rightarrow t = 1.8\ \text{s}.$$
+    Then $\mathbf v = 2.6\,\hat{\mathbf i} + 7.8\,\hat{\mathbf j}$ and $v_{\min} = \sqrt{2.6^2 + 7.8^2} = \sqrt{67.6} = 8.22\ \text{m s}^{-1}$. (The initial speed is 10 m/s.) The minimum speed is **not zero** because $\mathbf a$ is not antiparallel to $\mathbf v$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A vector $\mathbf F$ of magnitude 20 units is to be resolved into two components along two directions that are not perpendicular. One direction makes $30^\circ$ with $\mathbf F$ on one side, the other makes $45^\circ$ with $\mathbf F$ on the other side. Find the magnitude of the component along the $30^\circ$ direction. (Original problem.)
+  ask: Component along the 30° direction
+  unit: units
+  ans: 14.6
+  tol: 0.05
+  verify: 20*sin(rad(45))/sin(rad(105))
+  sol: |
+    Complete the parallelogram with $\mathbf F$ as the diagonal. The component $P$ along the $30^\circ$ direction and the component $Q$ along the $45^\circ$ direction, together with $\mathbf F$, form a triangle. Its angles are:
+    - opposite $Q$: $30^\circ$ (the angle between $P$ and $F$),
+    - opposite $P$: $45^\circ$ (the angle between $Q$ and $F$),
+    - opposite $F$: $180^\circ - 75^\circ = 105^\circ$.
+
+    By the law of sines,
+    $$\frac{P}{\sin45^\circ} = \frac{Q}{\sin30^\circ} = \frac{F}{\sin105^\circ}.$$
+    So $P = 20\times\dfrac{0.7071}{0.9659} = 14.6$ units and $Q = 20\times\dfrac{0.5}{0.9659} = 10.35$ units. (Neither is a projection of $\mathbf F$: when the directions are not perpendicular, the components are *not* $F\cos\theta$.)
+  check: code

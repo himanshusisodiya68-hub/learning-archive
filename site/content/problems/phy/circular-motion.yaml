@@ -1,0 +1,208 @@
+# Circular motion. NCERT questions copied word for word from NCERT Physics Class XI (reprint 2026-27) Ch 3 (Motion in a Plane; Example 3.9 and Exercises 3.14–3.16). The Grade 9 treatment of uniform circular motion is covered under the Grade 9 chapter files. Found, board and main problems are original.
+
+- id: ncert11-eg-3-9
+  lvl: ncert-intext
+  num: "XI Ex 3.9"
+  source: NCERT XI Physics · Ch 3 · Example 3.9
+  kind: num
+  q: |-
+    An insect trapped in a circular groove of radius 12 cm moves along the groove steadily and completes 7 revolutions in 100 s. (a) What is the angular speed, and the linear speed of the motion? (b) Is the acceleration vector a constant vector? What is its magnitude?
+  ask: Magnitude of the acceleration, part (b)
+  unit: cm/s²
+  ans: 2.3
+  tol: 0.05
+  verify: (2*PI*7/100)**2*12
+  sol: |
+    This is uniform circular motion with $R = 12$ cm. The period is $T = 100/7$ s.
+
+    (a) Angular speed: $\omega = \dfrac{2\pi}{T} = \dfrac{2\pi\times7}{100} = 0.44\ \text{rad s}^{-1}$.
+    Linear speed: $v = \omega R = 0.44\times12 = 5.3\ \text{cm s}^{-1}$, directed along the tangent to the groove at every point.
+
+    (b) The acceleration points toward the centre of the circle, and this direction changes continuously, so the acceleration is **not** a constant vector. Its magnitude is constant:
+    $$a = \omega^2R = (0.44)^2\times12 = 2.3\ \text{cm s}^{-2}.$$
+    (Check: $v^2/R = 5.3^2/12 = 2.3$ cm s⁻².)
+  answer_key: "ω = 0.44 rad/s, v = 5.3 cm s⁻¹; a is not constant in direction; magnitude 2.3 cm s⁻² (printed in the example)"
+  check: both
+
+- id: ncert11-ex-3-14
+  lvl: ncert-ex
+  num: "XI 3.14"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.14
+  kind: num
+  q: |-
+    A stone tied to the end of a string 80 cm long is whirled in a horizontal circle with a constant speed. If the stone makes 14 revolutions in 25 s, what is the magnitude and direction of acceleration of the stone?
+  ask: Magnitude of the acceleration
+  unit: m/s²
+  ans: 9.9
+  tol: 0.1
+  verify: (2*PI*14/25)**2*0.80
+  sol: |
+    Radius $R = 80\ \text{cm} = 0.80$ m. Frequency $\nu = 14/25 = 0.56\ \text{s}^{-1}$, so $\omega = 2\pi\nu = 3.52\ \text{rad s}^{-1}$ and the speed is $v = \omega R = 2.81\ \text{m s}^{-1}$.
+
+    The acceleration is centripetal:
+    $$a_c = \omega^2R = (3.52)^2\times0.80 = 9.9\ \text{m s}^{-2}\quad\Big(=\frac{v^2}{R} = \frac{2.81^2}{0.80}\Big).$$
+    Its direction is **along the radius, toward the centre of the circle, at every point** of the motion.
+  answer_key: "9.9 m s⁻², along the radius at every point towards the centre."
+  check: both
+
+- id: ncert11-ex-3-15
+  lvl: ncert-ex
+  num: "XI 3.15"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.15
+  kind: num
+  q: |-
+    An aircraft executes a horizontal loop of radius 1.00 km with a steady speed of 900 km/h. Compare its centripetal acceleration with the acceleration due to gravity.
+  ask: Centripetal acceleration as a multiple of g
+  unit: g
+  ans: 6.4
+  tol: 0.05
+  verify: (900/3.6)**2/1000/9.8
+  sol: |
+    $v = 900\ \text{km/h} = 900/3.6 = 250\ \text{m s}^{-1}$ and $R = 1000$ m. Then
+    $$a_c = \frac{v^2}{R} = \frac{250^2}{1000} = 62.5\ \text{m s}^{-2}.$$
+    With $g = 9.8$ m s⁻², $a_c/g = 62.5/9.8 = 6.4$, so the centripetal acceleration is about **6.4 times** the acceleration due to gravity ($a_c \approx 6.4\,g$).
+  answer_key: "6.4 g"
+  check: both
+
+- id: ncert11-ex-3-16
+  lvl: ncert-ex
+  num: "XI 3.16"
+  source: NCERT XI Physics · Ch 3 · Exercise 3.16
+  kind: text
+  q: |-
+    Read each statement below carefully and state, with reasons, if it is true or false:
+    (a) The net acceleration of a particle in circular motion is always along the radius of the circle towards the centre
+    (b) The velocity vector of a particle at a point is always along the tangent to the path of the particle at that point
+    (c) The acceleration vector of a particle in uniform circular motion averaged over one cycle is a null vector
+  sol: |
+    (a) **False.** The net acceleration points to the centre only in *uniform* circular motion. If the speed changes, there is also a tangential component $a_t = dv/dt$ along the tangent, and the net acceleration $\sqrt{a_c^2 + a_t^2}$ points inside the circle but not through the centre.
+
+    (b) **True.** The velocity is $d\mathbf r/dt$, the limit of $\Delta\mathbf r/\Delta t$ as the chord $\Delta\mathbf r$ shrinks onto the curve, which is the tangent direction. This holds for any path.
+
+    (c) **True.** Over one full cycle the velocity returns to its initial value, so $\mathbf a_{\text{avg}} = \Delta\mathbf v/T = 0$. Equivalently, the centripetal acceleration vectors point in all directions around the circle in equal measure and sum to zero.
+  answer_key: "(a) False (true only for uniform circular motion); (b) True; (c) True."
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A stone is whirled in a horizontal circle at constant speed. The direction of its acceleration is
+  opts: ["along the velocity", "opposite to the velocity", "toward the centre of the circle", "away from the centre of the circle"]
+  ans: 2
+  sol: In uniform circular motion the speed is constant but the direction of the velocity keeps changing, so there is an acceleration $v^2/R$ perpendicular to the velocity, always toward the centre. (Original problem.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A turntable rotates at 120 revolutions per minute. Find its angular speed in rad/s. (Original problem.)
+  ask: Angular speed
+  unit: rad/s
+  ans: 12.57
+  tol: 0.02
+  verify: 2*PI*120/60
+  sol: 120 rev/min $= 2$ rev/s, so $\omega = 2\pi\nu = 2\pi\times2 = 12.57$ rad/s. The period is $T = 0.5$ s.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A particle moves in a circle of radius 0.50 m at a constant speed of 3.0 m/s. Find the magnitude of its acceleration. (Original problem.)
+  ask: Centripetal acceleration
+  unit: m/s²
+  ans: 18
+  tol: 0.05
+  verify: 3.0**2/0.50
+  sol: $a_c = \dfrac{v^2}{R} = \dfrac{3.0^2}{0.50} = 18\ \text{m s}^{-2}$, directed toward the centre.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: The Moon goes round the Earth in a nearly circular orbit of radius $3.84\times10^8$ m with a period of 27.3 days. Find its centripetal acceleration. (Original problem.)
+  ask: Centripetal acceleration of the Moon
+  unit: m/s²
+  ans: 0.00272
+  tol: 0.00003
+  verify: 4*PI**2*3.84e8/(27.3*86400)**2
+  sol: |
+    $T = 27.3\times86400 = 2.36\times10^6$ s. Then
+    $$a_c = \frac{4\pi^2R}{T^2} = \frac{4\pi^2\times3.84\times10^8}{(2.36\times10^6)^2} = 2.72\times10^{-3}\ \text{m s}^{-2}.$$
+    This is about $1/3600$ of $g$ at the Earth's surface, as expected from the inverse-square law because the Moon is about 60 Earth radii away ($60^2 = 3600$).
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A car goes round a bend of radius 50 m at a steady 36 km/h. Find its centripetal acceleration. (Original problem.)
+  ask: Centripetal acceleration
+  unit: m/s²
+  ans: 2
+  tol: 0.01
+  verify: (36/3.6)**2/50
+  sol: $v = 36\ \text{km/h} = 10$ m/s. $a_c = v^2/R = 100/50 = 2.0\ \text{m s}^{-2}$, directed toward the centre of the bend. (The friction between the tyres and the road must supply the force $ma_c$.)
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A point on the equator takes part in the Earth's rotation. Taking the Earth's radius as $6.4\times10^6$ m and the period of rotation as 24 h, find the centripetal acceleration of the point. (Original problem.)
+  ask: Centripetal acceleration at the equator
+  unit: m/s²
+  ans: 0.0337
+  tol: 0.0003
+  verify: (2*PI/86400)**2*6.4e6
+  sol: |
+    $\omega = \dfrac{2\pi}{86400} = 7.27\times10^{-5}\ \text{rad s}^{-1}$. Then $a_c = \omega^2R = (7.27\times10^{-5})^2\times6.4\times10^6 = 0.0338\ \text{m s}^{-2}$, about $0.3\%$ of $g$, directed toward the Earth's axis. This is why the apparent weight at the equator is slightly less than at the poles.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: The tip of a clock's second hand of length 12 cm and the tip of its minute hand of length 10 cm move in circles. Find the ratio of the centripetal acceleration of the second hand's tip to that of the minute hand's tip. (Original problem.)
+  ask: |
+    Ratio of accelerations (second hand : minute hand)
+  unit: ratio
+  ans: 4320
+  tol: 1
+  verify: (60**2)*(12/10)
+  sol: |
+    $a_c = \omega^2R$. The second hand turns once in 60 s and the minute hand once in 3600 s, so $\omega_s/\omega_m = 60$. Then
+    $$\frac{a_s}{a_m} = \left(\frac{\omega_s}{\omega_m}\right)^2\frac{R_s}{R_m} = 60^2\times\frac{12}{10} = 3600\times1.2 = 4320.$$
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A particle moves on a circle of radius 2.0 m with speed $v = 3t$ (in m/s, with $t$ in seconds). Find the magnitude of its total acceleration at $t = 2.0$ s. (Original problem.)
+  ask: Magnitude of total acceleration at t = 2.0 s
+  unit: m/s²
+  ans: 18.2
+  tol: 0.1
+  verify: hypot(3, (3*2.0)**2/2.0)
+  sol: |
+    The speed changes, so the motion is not uniform and the acceleration has two perpendicular parts.
+
+    Tangential: $a_t = \dfrac{dv}{dt} = 3.0\ \text{m s}^{-2}$ (along the velocity).
+
+    Radial (centripetal): at $t = 2$ s, $v = 6$ m/s, so $a_c = \dfrac{v^2}{R} = \dfrac{36}{2.0} = 18\ \text{m s}^{-2}$ (toward the centre).
+
+    Magnitude: $a = \sqrt{a_t^2 + a_c^2} = \sqrt{3^2 + 18^2} = \sqrt{333} = 18.2\ \text{m s}^{-2}$, at $\tan^{-1}(a_t/a_c) = 9.5^\circ$ from the radius toward the direction of motion. It does not point at the centre (compare Exercise 3.16(a)).
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A particle moves in a circle of radius 5.0 m at a constant speed of 10 m/s. Find the magnitude of its average acceleration over one quarter of a revolution. (Original problem.)
+  ask: Magnitude of average acceleration over a quarter turn
+  unit: m/s²
+  ans: 18
+  tol: 0.1
+  verify: 10*sqrt(2)/(2*PI*5.0/10/4)
+  sol: |
+    Over a quarter turn the velocity vector turns through $90^\circ$ while keeping its magnitude, so
+    $$|\Delta\mathbf v| = \sqrt{v^2 + v^2} = v\sqrt2 = 14.14\ \text{m/s}.$$
+    The period is $T = \dfrac{2\pi R}{v} = \dfrac{2\pi\times5.0}{10} = 3.14$ s, so a quarter of a revolution takes $\Delta t = T/4 = 0.785$ s. Then
+    $$|\mathbf a_{\text{avg}}| = \frac{14.14}{0.785} = 18.0\ \text{m s}^{-2}.$$
+    The instantaneous centripetal acceleration is $v^2/R = 20$ m s⁻², larger by the factor $\pi/(2\sqrt2) \approx 1.11$. Average and instantaneous accelerations differ here because the direction of $\mathbf a$ changes during the interval; over a full revolution the average is zero.
+  check: code
