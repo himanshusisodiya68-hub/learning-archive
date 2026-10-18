@@ -1,6 +1,6 @@
 ---
 title: Huygens' principle
-summary: Light as a wave. Wavefronts and rays, Huygens' construction, reflection and refraction from wavelets, what changes at a boundary, optical path, the Doppler shift of light and Fresnel zones.
+summary: 'Why ocean waves swing round to face the shore, and how the same trick makes light bend in glass.'
 ncert: ["Class 12 Physics · Ch 10 Wave Optics (§10.1–10.3)"]
 up_to: Olympiad
 builds_on: [Refraction and Snell's law, Waves (wavelength, frequency, speed)]
@@ -44,14 +44,47 @@ outcomes:
   - 'Explain why the frequency stays fixed while speed and wavelength change at a boundary'
   - 'Use optical path length to find phase differences, and apply the Doppler shift $\Delta\lambda/\lambda = v/c$'
   - 'Describe Fresnel zones, zone plates and the bright spot in a disc''s shadow'
+opener:
+  story: |
+    Stand on a beach and watch the waves arrive. Out at sea they may come in at any angle, yet by the time they reach the sand the crests have swung round and are almost parallel to the shore. Look at a photo of any coastline from above and you will see the crests curving to line up with the beach.
+
+    Why do they turn? Out in deep water a wave runs fast; in the shallows it slows down. The end of a crest that reaches the shallows first slows first, while the rest keeps running ahead. The whole crest pivots, like a marching line where one end hits mud and the soldiers there fall behind.
+
+    Now dip a pencil in a glass of water: it looks bent at the surface. Light also runs slower in water than in air. **Could light be bending for the same reason the beach waves do?** That one guess started the wave theory of light.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Wave crests turning to line up with the shore as they enter shallow water"><rect x="0" y="0" width="320" height="172" style="fill:color-mix(in srgb,var(--c) 12%,var(--surface))"/><rect x="0" y="172" width="320" height="68" style="fill:color-mix(in srgb,var(--chem) 25%,var(--surface))"/><path d="M0 172 Q80 164 160 170 T320 168" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><path d="M30 44 L170 8" style="fill:none;stroke:var(--c);stroke-width:3"/><path d="M16 96 Q110 84 230 42" style="fill:none;stroke:var(--c);stroke-width:3"/><path d="M8 142 Q150 138 310 104" style="fill:none;stroke:var(--c);stroke-width:3"/><path d="M8 162 Q160 162 312 154" style="fill:none;stroke:var(--c);stroke-width:3"/><path d="M262 20 L246 74" style="fill:none;stroke:var(--ink);stroke-width:1.6"/><path d="M246 74 L245 63 M246 74 L254 66" style="fill:none;stroke:var(--ink);stroke-width:1.6"/><text x="196" y="14" style="font-size:11px;fill:var(--muted)">deep water: fast</text><text x="14" y="190" style="font-size:11px;fill:var(--muted)">shallows: slow</text><text x="206" y="222" style="font-size:11px;fill:var(--muted)">the shore</text><text x="20" y="232" style="font-size:11px;fill:var(--muted)">crests line up</text></svg>'
+life:
+  - 'Ocean waves arrive almost parallel to a beach because the shallow end of each crest slows first.'
+  - 'A pencil in a glass of water looks bent: light is slower in water, so wavefronts swing round at the surface.'
+  - 'Spectacle and camera lenses delay the middle of a wavefront more than the edge, which bends it to a focus.'
+  - 'Astronomers find how fast a galaxy is moving from the shift in the colour of its light.'
+models:
+  - name: 'The slow side steers'
+    text: 'Slow down one end of a moving line and the whole line turns towards that end: a car whose one wheel hits mud, a march where one end meets a slow patch. When something turns unexpectedly, look for which part got slowed.'
+  - name: 'Local rules, global shape'
+    text: 'Huygens needed no master plan: each point of the wavefront only makes its own small wavelets, and a smooth new front appears from the sum. Big orderly patterns often come from simple local rules, as in a crowd or a market.'
+  - name: 'Find what the source fixes'
+    text: 'The source sets the frequency; the surroundings set the speed and wavelength. When a system changes, ask which quantity is fixed from outside and which one adjusts.'
+links:
+  - leaf: 'phy/refraction-and-snells-law'
+    name: 'Refraction and Snell''s law'
+    same: 'The ray lesson used $\sin i/\sin r = n$ as a rule of thumb. Huygens'' wavelets explain **why** it holds: the ratio of the two speeds sets the bend.'
+    differs: 'Rays only say how the direction changes. Wavefronts also tell you what happens to wavelength and frequency, and they prepare the ground for interference.'
+  - leaf: 'phy/sound-as-a-wave'
+    name: 'Sound as a wave'
+    same: 'Sound spreads in wavefronts too, and bends when its speed changes, for example when it crosses from warm to cool air.'
+    differs: 'Sound is a push-and-pull along the direction of travel and needs a medium. Light needs none, and its wiggle is sideways.'
+next:
+  q: 'Huygens says every point of a wavefront sends out its own little wavelets. So what happens where wavelets from two different places meet: can light plus light ever make darkness?'
+  leaf: 'phy/interference-and-youngs-experiment'
+  name: 'Interference and Young''s experiment'
 ---
 
 :::hook
-q: Light slows down when it enters glass. Does its colour (frequency) change too?
-options: ["Yes, it becomes bluer", "No, the frequency stays the same", "Yes, it becomes redder"]
+q: So what's your guess? Light slows down as it enters glass. Does its colour (its frequency) change too?
+options: ["Yes, it turns bluer", "No, the same number of crests per second still go through", "Yes, it turns redder"]
 answer: 1
-right: Right. Wave crests arrive at the boundary at one rate and must leave at the same rate, so the frequency (and colour) is unchanged. The wavelength shrinks instead.
-wrong: Crests reaching the boundary every second must leave it every second, or they would pile up. What does that say about frequency?
+right: Right, and the beach shows why. Crests reach the boundary at some rate and must leave at the same rate, or they would pile up. The wave just slows and its crests bunch closer together, so the wavelength shrinks and the colour stays.
+wrong: Think of the beach. Crests arriving at the shallows must leave the shallows at the same rate, or they would pile up there. So what stays fixed, and what shrinks?
 :::
 
 ## Light as a wave {lvl=2 id=s-wave label="Class 12"}

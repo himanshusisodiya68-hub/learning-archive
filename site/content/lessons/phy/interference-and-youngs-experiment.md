@@ -1,6 +1,6 @@
 ---
 title: Interference and Young's experiment
-summary: Superposition of light waves, coherence, constructive and destructive interference, Young's double slit and its fringe width, intensity with unequal beams, shifting fringes with a glass sheet, white-light fringes, and coherence length.
+summary: 'How two beams of light can add up to darkness, and how that lets us measure light itself.'
 ncert: ["Class 12 Physics · Ch 10 Wave Optics (§10.4–10.5)"]
 up_to: Olympiad
 builds_on: [Huygens' principle, Superposition of waves]
@@ -47,14 +47,47 @@ outcomes:
   - 'Derive fringe positions and fringe width in Young''s experiment, and predict how they change with $\lambda$, $d$, $D$ and the medium'
   - 'Handle unequal beams, visibility, a sheet over one slit and white-light fringes'
   - 'Analyse biprism, Lloyd''s mirror and Michelson set-ups, and the limits set by coherence length and source size'
+opener:
+  story: |
+    Put two speakers a metre apart, both playing the same steady note, and walk slowly in front of them. The sound swells, nearly vanishes, then swells again. With two speakers there are places where you hear **less** than with one. Your living room has dead spots.
+
+    Try the same trick with light. Shine two torches on a wall and you get a brighter patch, plain and even, never stripes. Everyone who has tried it agrees: light just adds up. For a hundred years that was one reason to think light was not a wave.
+
+    Then in 1801 Thomas Young put a card with two thin slits in a beam of sunlight and saw dark stripes on the wall behind it. **Where two beams were supposed to make more light, there was darkness.** What did he do that two torches cannot?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Two sources send out overlapping circular waves onto a wall with bright and dark stripes"><circle cx="50" cy="95" r="4" style="fill:var(--ink)"/><circle cx="50" cy="145" r="4" style="fill:var(--ink)"/><circle cx="50" cy="95" r="25" style="fill:none;stroke:var(--c);stroke-width:1.3"/><circle cx="50" cy="95" r="50" style="fill:none;stroke:var(--c);stroke-width:1.3"/><circle cx="50" cy="95" r="75" style="fill:none;stroke:var(--c);stroke-width:1.3"/><circle cx="50" cy="95" r="100" style="fill:none;stroke:var(--c);stroke-width:1.3"/><circle cx="50" cy="145" r="25" style="fill:none;stroke:var(--chem);stroke-width:1.3"/><circle cx="50" cy="145" r="50" style="fill:none;stroke:var(--chem);stroke-width:1.3"/><circle cx="50" cy="145" r="75" style="fill:none;stroke:var(--chem);stroke-width:1.3"/><circle cx="50" cy="145" r="100" style="fill:none;stroke:var(--chem);stroke-width:1.3"/><rect x="238" y="20" width="10" height="200" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><rect x="254" y="30" width="30" height="22" style="fill:var(--c)"/><rect x="254" y="76" width="30" height="22" style="fill:var(--c)"/><rect x="254" y="122" width="30" height="22" style="fill:var(--c)"/><rect x="254" y="168" width="30" height="22" style="fill:var(--c)"/><text x="288" y="45" style="font-size:11px;fill:var(--muted)">bright</text><text x="288" y="91" style="font-size:11px;fill:var(--muted)">bright</text><text x="288" y="64" style="font-size:11px;fill:var(--muted)">dark</text><text x="14" y="62" style="font-size:11px;fill:var(--muted)">two sources</text><text x="116" y="232" style="font-size:11px;fill:var(--muted)">stripes on the wall</text></svg>'
+life:
+  - 'Noise-cancelling headphones play a copy of the noise flipped upside down, so the two sounds cancel inside your ear.'
+  - 'Loud spots and dead spots in a hall with two speakers.'
+  - 'Wi-Fi and mobile signal can change within one step across a room, because the direct wave and the bounced waves add or cancel.'
+  - 'The LIGO detectors catch ripples of space itself by watching a laser interference pattern change by a tiny fraction of a wavelength.'
+models:
+  - name: 'In step or out of step'
+    text: 'Two efforts reinforce when they are aligned and cancel when they oppose, and the total can be far more or far less than the sum of the parts. A team pulling together, or a team pulling against itself, behaves just like two waves.'
+  - name: 'Add the cause, then judge the effect'
+    text: 'Light adds as a field, and brightness is the square of the total. So $1 + 1$ can be 4 or 0, not just 2. When a result depends on a combined quantity, add that quantity first.'
+  - name: 'Magnify a tiny difference'
+    text: 'Young turned a path difference of a few hundred nanometres into stripes millimetres wide, big enough to see. Good instruments, and good experiments, find a way to make a small difference loud.'
+links:
+  - leaf: 'phy/beats'
+    name: 'Beats'
+    same: 'Both come from adding two waves. Where they are in step the result is big, where out of step it is small.'
+    differs: 'Beats mix two **frequencies** at one place and swell and fade in **time**. Young''s fringes mix two beams of the same frequency and show bright and dark in **space**.'
+  - leaf: 'phy/standing-waves'
+    name: 'Standing waves'
+    same: 'Two waves overlapping with a fixed relationship give fixed places of full strength (antinodes) and places of zero (nodes).'
+    differs: 'A standing wave is two waves travelling in opposite directions along one line. Young''s fringes come from two beams crossing at an angle in a plane.'
+next:
+  q: 'If light is a wave, a single narrow slit should behave like a whole crowd of tiny sources all interfering. So what happens to a beam of light when you squeeze the slit narrower and narrower?'
+  leaf: 'phy/diffraction'
+  name: 'Diffraction'
 ---
 
 :::hook
-q: Two identical lamps each light a wall with intensity I. With both on, what intensity do you see?
-options: ["4I at some places and 0 at others", "2I everywhere", "I everywhere"]
+q: So what's your guess? Two identical torches each light a wall with brightness I. Switch both on and look at the wall. What do you see?
+options: ["Stripes, 4I in some places and 0 in others", "Plain brightness 2I everywhere", "Plain brightness I, no change"]
 answer: 1
-right: Right. Separate lamps are incoherent, so their intensities simply add. Bright and dark fringes need light from one source split into two.
-wrong: For a stable pattern of 4I and 0, the phase difference between the lamps would have to stay fixed. Does it, for two separate lamps?
+right: Right. Two separate torches simply add, giving 2I with no stripes. Their light keeps jumping out of step with each other, so any stripes would shift billions of times a second and blur away. Young had to split light from one source in two, so the two beams stay in step.
+wrong: For steady stripes the two beams would have to keep the same step with each other. Two separate torches have atoms firing independently, so do they?
 :::
 
 ## Superposition: waves add, intensities need not {lvl=2 id=s-superpose label="Class 12"}

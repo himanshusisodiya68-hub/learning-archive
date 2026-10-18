@@ -1,6 +1,6 @@
 ---
 title: Polarisation
-summary: Light is a transverse wave. Polarised and unpolarised light, polaroids and Malus' law, the rotating middle polaroid (NCERT Example 10.2), polarisation by reflection (Brewster's law) and by scattering, and birefringence and wave plates.
+summary: 'The hidden direction in which light wiggles, why polarised sunglasses kill glare, and why a third filter can let light through.'
 ncert: ["Class 12 Physics · Ch 10 Wave Optics (§10.7)"]
 up_to: Olympiad
 builds_on: [Interference and Young's experiment, Atmospheric refraction and scattering]
@@ -46,14 +46,48 @@ outcomes:
   - 'State and apply Malus'' law, including problems with several polaroids'
   - 'Derive and apply Brewster''s law, and explain polarisation by scattering'
   - 'Describe birefringence, quarter-wave and half-wave plates, photoelasticity and optical activity'
+opener:
+  story: |
+    Put on a pair of polarised sunglasses and look at your phone. Now tilt your head sideways. On many screens, though not all, the picture fades to black. Tilt back and it returns. The phone did not change, and the glasses are just clear tinted plastic.
+
+    Look at a wet road or a lake on a bright day with the same glasses and the blinding glare disappears, while the rest of the scene stays. Something about that reflected light is different from ordinary light, and your eye cannot tell.
+
+    **Light has a hidden direction, and the glasses are picky about it.** Sound has no such thing, and neither do water ripples. So what is light doing that they cannot?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A phone looks bright through a polarising lens held one way and black when the lens is turned"><rect x="50" y="26" width="46" height="88" rx="6" style="fill:color-mix(in srgb,var(--c) 40%,var(--surface));stroke:var(--ink);stroke-width:2"/><circle cx="73" cy="70" r="40" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M63 40 L63 100 M73 32 L73 108 M83 40 L83 100" style="fill:none;stroke:var(--muted);stroke-width:1.6"/><text x="40" y="136" style="font-size:11px;fill:var(--muted)">head upright: bright</text><rect x="214" y="26" width="46" height="88" rx="6" style="fill:var(--ink);stroke:var(--ink);stroke-width:2"/><circle cx="237" cy="70" r="40" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M215 60 L259 60 M207 70 L267 70 M215 80 L259 80" style="fill:none;stroke:var(--muted);stroke-width:1.6"/><text x="196" y="136" style="font-size:11px;fill:var(--muted)">head tilted: black</text><path d="M20 190 L120 190" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><path d="M60 175 L60 205 M70 178 L70 202 M80 182 L80 198" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="130" y="194" style="font-size:11px;fill:var(--muted)">light wiggles sideways to its path</text><text x="20" y="226" style="font-size:11px;fill:var(--muted)">the lens lines show its pass direction</text></svg>'
+life:
+  - 'Polarised sunglasses cut glare from wet roads, car bonnets and water, because reflected glare is polarised.'
+  - 'Many phone and laptop screens give out polarised light, so they go dark through polarised glasses at the wrong tilt.'
+  - '3D cinema glasses send a different picture to each eye by using two different polarisations.'
+  - 'A photographer''s polarising filter darkens a blue sky and removes reflections from glass.'
+  - 'A clear plastic ruler between two crossed polaroids shows coloured stress patterns, which engineers use to find weak spots.'
+models:
+  - name: 'Hidden properties'
+    text: 'Two beams can look identical and differ in a property your eyes cannot see, until the right filter reveals it. Look for the property you are not measuring.'
+  - name: 'Stepping stones beat one jump'
+    text: 'Crossed sheets block all the light, but a sheet at 45 degrees between them lets some through. A gentle sequence of small turns can get you where one big turn cannot, as in learning or in careers.'
+  - name: 'Rule out a model with one test'
+    text: 'Sound cannot be polarised, light can. One experiment that only a sideways wave can pass shows that light is a sideways wave. Good tests are ones one model can pass and another cannot.'
+links:
+  - leaf: 'phy/atmospheric-refraction-and-scattering'
+    name: 'Atmospheric refraction and scattering'
+    same: 'The same scattering that makes the sky blue also polarises it. Look at the sky at a right angle to the Sun through a polaroid and it darkens.'
+    differs: 'The scattering lesson cared about how much light and what colour. Polarisation cares about which way the wiggle points.'
+  - leaf: 'phy/sound-as-a-wave'
+    name: 'Sound as a wave'
+    same: 'Both carry energy as waves, and both show interference and diffraction.'
+    differs: 'Sound is a push-and-pull along its path (longitudinal) and has no sideways direction, so it cannot be polarised. Light wiggles across its path.'
+next:
+  q: 'Light reflecting from glass or water comes back partly polarised, so a reflection has hidden rules. What happens when light reflects from both the front and back of a layer thinner than a hair? Why does a soap bubble show colour?'
+  leaf: 'phy/thin-films'
+  name: 'Thin films'
 ---
 
 :::hook
-q: Two polaroid sheets are crossed, so no light gets through. You slide a third sheet between them, at 45°. What happens?
-options: ["Still dark: adding a filter can only block more", "Light gets through", "It depends on the colour"]
+q: So what's your guess? Two polaroid sheets are crossed, so no light gets through. You slide a third sheet between them, at 45°. What happens?
+options: ["Still dark, since adding a filter can only block more", "Light gets through", "It depends on the colour"]
 answer: 1
-right: Right, and it surprises almost everyone. The middle sheet turns the polarisation halfway, so each sheet passes part of the light. A quarter of what left the first sheet comes out.
-wrong: Each polaroid passes the component of the field along its own axis. Follow the field direction through all three sheets.
+right: Right, and it surprises almost everyone, because an extra filter let light through. The middle sheet turns the polarisation halfway, so each sheet passes part of the light. A quarter of what left the first sheet comes out.
+wrong: Each polaroid passes the component of the field along its own axis. Follow the field direction through all three sheets, one at a time.
 :::
 
 ## Transverse waves can be polarised {lvl=2 id=s-transverse label="Class 12"}

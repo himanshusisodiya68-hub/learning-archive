@@ -1,6 +1,6 @@
 ---
 title: Diffraction
-summary: Light bending around edges and spreading from slits. Single-slit minima and the central maximum, why the pattern looks that way, Fresnel distance and the limit of ray optics, resolving power, the double slit's diffraction envelope, and the diffraction grating.
+summary: 'Why you can hear round a corner but not see round it, and what light does in a very narrow gap.'
 ncert: ["Class 12 Physics · Ch 10 Wave Optics (§10.6)"]
 up_to: Olympiad
 builds_on: [Huygens' principle, Interference and Young's experiment]
@@ -47,14 +47,47 @@ outcomes:
   - 'Use the intensity curve $(\sin\beta/\beta)^2$ and combine it with the double-slit pattern, including missing orders'
   - 'Use the Fresnel distance $a^2/\lambda$ to say when ray optics holds, and the Rayleigh criterion for resolving power'
   - 'Apply the grating equation $d\sin\theta = n\lambda$, its dispersion and its resolving power $nN$'
+opener:
+  story: |
+    Stand in a corridor beside an open door. You can hear people talking in the room, clearly, yet you cannot see them. Sound has bent round the corner. Light, which is also a wave, went straight and was stopped by the wall.
+
+    So why do the two behave so differently? And is it true that light never bends round corners? Try this: hold two fingers almost touching, in front of one eye, and look through the thin gap at a bright window. You will see dark lines inside the gap, though nothing is there.
+
+    **Light does bend round edges. It just does it by a tiny amount.** Whether a wave visibly bends or goes straight depends on one comparison. What is being compared with what?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Long waves spread widely after a narrow gap while short waves hardly spread"><rect x="150" y="10" width="14" height="95" style="fill:var(--ink)"/><rect x="150" y="135" width="14" height="95" style="fill:var(--ink)"/><path d="M40 20 L40 220 M70 20 L70 220 M100 20 L100 220 M130 20 L130 220" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M164 94 Q196 120 164 146" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M164 70 Q225 120 164 170" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M164 46 Q254 120 164 194" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M164 22 Q283 120 164 218" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M164 120 L310 120" style="fill:none;stroke:var(--chem);stroke-width:2;stroke-dasharray:5 4"/><text x="14" y="236" style="font-size:11px;fill:var(--muted)">long waves (sound)</text><text x="196" y="236" style="font-size:11px;fill:var(--muted)">fans out wide</text><text x="190" y="112" style="font-size:11px;fill:var(--chem)">short waves (light)</text><text x="190" y="138" style="font-size:11px;fill:var(--chem)">hardly spread</text></svg>'
+life:
+  - 'You hear music from the next room through an open door even though you cannot see the speakers.'
+  - 'The rainbow colours on a CD or DVD come from its fine tracks spreading light by different amounts for different colours.'
+  - 'A telescope or phone camera cannot show detail finer than its opening allows, however good the lens.'
+  - 'Long radio waves such as AM follow hills better than the short waves of mobile phones, so phones lose signal behind hills and in tunnels.'
+models:
+  - name: 'Compared with what?'
+    text: 'Whether a wave bends is not about the wavelength alone or the gap alone, only about their ratio. Many things matter only relative to something else: a Rs 500 gift to a student or to a company.'
+  - name: 'Squeeze one thing and another spreads'
+    text: 'Pin the beam down to a narrow slit and its direction becomes fuzzy. Expect trade-offs: tightening one thing often loosens another.'
+  - name: 'Many small voices'
+    text: 'The smooth pattern comes from adding the tiny contributions of every point across the opening. A crowd cheer or an election result is also a sum of many small voices.'
+links:
+  - leaf: 'phy/interference-and-youngs-experiment'
+    name: 'Interference and Young''s experiment'
+    same: 'Diffraction is interference. Feynman put it bluntly: nobody has ever found a real difference between them.'
+    differs: 'Interference usually means two or a few sources. Diffraction means a huge number of wavelets across one opening, which gives a bright centre and fading side bands.'
+  - leaf: 'phy/matter-waves'
+    name: 'Matter waves'
+    same: 'Electrons, shot at a thin crystal, make diffraction rings. That is how we learnt they behave as waves too.'
+    differs: 'For light the spread is set by $\lambda/a$ with $\lambda$ about 500 nm. For electrons it uses the much shorter de Broglie wavelength, which is why electron microscopes see far finer detail.'
+next:
+  q: 'Interference and diffraction work for sound and water waves too. Is there anything light can do that those waves cannot, a sign that it wiggles in a different way?'
+  leaf: 'phy/polarisation'
+  name: 'Polarisation'
 ---
 
 :::hook
-q: You make a slit narrower and narrower. What happens to the patch of light on a distant screen?
+q: So what's your guess? You squeeze a slit narrower and narrower. What happens to the patch of light on a far wall?
 options: ["It shrinks to a thin line", "It spreads out wider", "It stays the same size but gets dimmer"]
 answer: 1
-right: Right. Below a certain width the slit behaves as a new source and the light fans out; the narrower the slit, the wider the spread. Ray optics would predict a thinner line.
-wrong: Ray optics would say a thinner line, but light is a wave. When an opening is comparable to the wavelength, what does a wave do after passing through?
+right: Right, and your ear already knows it at a doorway. A narrow gap acts like a small new source, so the light fans out, and the narrower the gap, the wider the fan. A ray picture would wrongly predict a thinner and thinner line.
+wrong: A ray picture says a thinner line, but think of the doorway and the voices. When a gap is small compared with the wave, what does the wave do after passing through?
 :::
 
 ## Waves bend around obstacles {lvl=2 id=s-what label="Class 12"}

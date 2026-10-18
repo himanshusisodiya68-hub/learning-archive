@@ -1,6 +1,6 @@
 ---
 title: Laws of reflection
-summary: How light bounces off a surface, why plane mirrors form the images they do, and the shortest-path idea behind the law.
+summary: 'Why your reflection sits exactly as far behind the mirror as you stand in front, and why light takes the shortest route.'
 ncert: ["Class 7 Curiosity · Ch 11 Light: Shadows and Reflections", "Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.1)", "Class 12 Physics · Ch 9 Ray Optics"]
 up_to: Olympiad
 builds_on: [Rectilinear propagation, Angles and parallel lines]
@@ -32,7 +32,7 @@ core:
     - tex: '\hat{\mathbf{r}} = \hat{\mathbf{i}} - 2(\hat{\mathbf{i}}\cdot\hat{\mathbf{n}})\,\hat{\mathbf{n}}'
       label: 'Vector form of the law'
     - tex: '\delta = 360^\circ - 2\theta'
-      label: 'Total deviation after one reflection from each of two mirrors inclined at $	heta$'
+      label: 'Total deviation after one reflection from each of two mirrors inclined at $\theta$'
   conditions:
     - 'The surface is smooth on the scale of the wavelength (regular reflection); a rough surface scatters but still obeys the law patch by patch'
     - 'At a curved surface the law applies at each point, using the local normal'
@@ -44,14 +44,48 @@ outcomes:
   - 'Find the minimum mirror height needed to see a full-length image'
   - 'Solve problems on rotating mirrors, inclined mirrors and the number of images'
   - 'Use the vector form of reflection, and Heron''s shortest-path argument, for corner reflectors and moving mirrors'
+opener:
+  story: |
+    Hold up your right hand in front of a mirror. The person in the mirror holds up what looks like their left hand. So a mirror swaps left and right. Everybody says so.
+
+    But then why doesn't it swap up and down? Your head is still at the top of your reflection, your feet at the bottom. The mirror has no idea which of your sides is the left one, and no idea which way is up. It treats both exactly alike.
+
+    So the mirror is doing something to you, but it is not what we say it is doing. There is one direction it truly reverses, and it is neither of these.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A person and their mirror image face each other across a mirror, equally far away"><line x1="160" y1="30" x2="160" y2="205" style="stroke:var(--ink);stroke-width:3"/><circle cx="90" cy="90" r="14" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><path d="M104 88 L112 92 L104 96Z" style="fill:var(--ink)"/><path d="M90 104 L90 160 M90 160 L78 200 M90 160 L102 200 M90 115 L66 95 M90 115 L108 140" style="fill:none;stroke:var(--c);stroke-width:3;stroke-linecap:round"/><circle cx="230" cy="90" r="14" style="fill:var(--surface);stroke:var(--chem);stroke-width:1.5;stroke-dasharray:4 3"/><path d="M216 88 L208 92 L216 96Z" style="fill:var(--chem)"/><path d="M230 104 L230 160 M230 160 L242 200 M230 160 L218 200 M230 115 L254 95 M230 115 L212 140" style="fill:none;stroke:var(--chem);stroke-width:3;stroke-linecap:round;stroke-dasharray:4 4"/><line x1="90" y1="214" x2="230" y2="214" style="stroke:var(--muted);stroke-dasharray:2 4"/><text x="76" y="62" style="font-size:11px;fill:var(--muted)">you</text><text x="206" y="62" style="font-size:11px;fill:var(--muted)">your image</text><text x="136" y="24" style="font-size:11px;fill:var(--muted)">mirror</text><text x="94" y="232" style="font-size:11px;fill:var(--muted)">same distance each side</text></svg>'
+life:
+  - 'The word AMBULANCE is painted backwards on the front of the vehicle so drivers ahead read it correctly in their rear-view mirror.'
+  - 'A bathroom mirror only needs to be half your height for you to see your whole self, however far you stand.'
+  - 'A barber holds a second mirror behind your head so you can see the back of it: two reflections in a row.'
+  - 'Bicycle and road-sign reflectors glow back at a car''s headlights because they send light straight back where it came from.'
+  - 'A calm lake at sunrise gives a perfect copy of the hills; ripples break the copy because each patch of water tilts the normal a different way.'
+models:
+  - name: 'Reflect the problem'
+    text: 'Instead of tracing a bouncing path, remove the mirror and put a copy of the target behind it, and the bounce becomes a straight line. Mirroring a hard problem into an easy one is a trick that works far beyond optics.'
+  - name: 'Nature takes the shortest route'
+    text: 'Light gets from A to B by the quickest path available. When many options exist, ask what is being minimised (time, cost, effort); it often predicts the choice.'
+  - name: 'Name what really changed'
+    text: 'The mirror seems to swap left and right but only reverses front and back. When something looks like a paradox, ask which single thing actually changed, and you often find it was mislabelled.'
+links:
+  - leaf: 'phy/huygens-principle'
+    name: 'Huygens'' principle'
+    same: 'Reflection also drops out of wavefronts: every point on the surface sends a little wavelet, and the reflected front is their envelope, with the equal-angle law as a result.'
+    differs: 'The ray picture follows one line and cannot show spreading or interference; the wave picture can, but is harder to draw.'
+  - leaf: 'phy/sound-as-a-wave'
+    name: 'Sound as a wave'
+    same: 'An echo is reflection: sound bounces off a cliff or hall wall at equal angles, just as light does off a mirror.'
+    differs: 'A surface is smooth or rough compared with the wavelength. Sound waves are about a million times longer than light waves, so a brick wall that scatters light reflects sound almost like a mirror.'
+next:
+  q: 'A flat mirror gives a perfect same-size copy of you. But a steel spoon gives a tiny upside-down face on one side and a smaller upright one on the other. What changes when the mirror curves?'
+  leaf: 'phy/spherical-mirrors'
+  name: 'Spherical mirrors'
 ---
 
 :::hook
-q: You stand 2 m in front of a large mirror and walk 0.5 m towards it. By how much does the distance between you and your image shrink?
-options: ["0.5 m", "1 m", "2 m"]
-answer: 1
-right: Right. The image always sits as far behind the mirror as you are in front, so the gap is twice your distance from the mirror. Moving 0.5 m closer shrinks the gap by 1 m.
-wrong: Not quite. Your image is always as far behind the mirror as you are in front of it. Work out the gap before and after.
+q: So what's your guess? Which direction does a mirror really reverse?
+options: ["Left and right", "Up and down", "Front and back"]
+answer: 2
+right: Right. A mirror flips only the direction that points into it. Your image faces you, so its right hand ends up on your left, exactly as it would if a twin stood facing you. The left-right swap is a side effect of that single front-back flip, and the lesson below shows why.
+wrong: Test it. Step towards the mirror and your image steps towards you, so front and back have swapped. Up stays up, and left and right on the glass stay put. Only one direction is reversed, and it is the one pointing into the mirror.
 :::
 
 ## The two laws {lvl=1 id=s-laws}

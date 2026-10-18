@@ -1,6 +1,6 @@
 ---
 title: Spherical mirrors
-summary: Concave and convex mirrors, the rules for drawing their images, the sign convention, the mirror formula and its derivation, and what happens beyond the paraxial approximation.
+summary: 'Why one side of a spoon shows you upside down and the other upright, and how a curved mirror starts fires.'
 ncert: ["Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.2)", "Class 12 Physics · Ch 9 Ray Optics (§9.2)"]
 up_to: Olympiad
 builds_on: [Laws of reflection, Similar triangles, Reciprocals and fractions]
@@ -46,14 +46,48 @@ outcomes:
   - 'Apply the mirror formula and $m = -v/u$ with the New Cartesian sign convention'
   - 'Explain spherical aberration and why parabolic mirrors are used for telescopes and dishes'
   - 'Use longitudinal magnification $-m^2$, Newton''s form $xx'' = f^2$ and the $1/v$ against $1/u$ graph'
+opener:
+  story: |
+    Pick up a steel spoon and look into the hollow side from arm's length. There you are: tiny, and upside down.
+
+    Now flip the spoon and look at the bulging back. You are upright again, and a little smaller, as if seen from far away. Same spoon, same shiny metal, same you.
+
+    A flat mirror never does this. It always gives an upright, same-size copy. So what does a curve do to light that a flat surface cannot?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A spoon: the hollow side shows a small upside-down face, the bulging side an upright one"><ellipse cx="90" cy="92" rx="44" ry="58" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:2"/><rect x="84" y="148" width="12" height="62" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:2"/><circle cx="90" cy="92" r="14" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><circle cx="85" cy="98" r="1.8" style="fill:var(--ink)"/><circle cx="95" cy="98" r="1.8" style="fill:var(--ink)"/><path d="M83 84 Q90 78 97 84" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><ellipse cx="230" cy="92" rx="44" ry="58" style="fill:color-mix(in srgb,var(--c) 6%,var(--surface));stroke:var(--c);stroke-width:2"/><rect x="224" y="148" width="12" height="62" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:2"/><circle cx="230" cy="92" r="9" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><circle cx="226" cy="89" r="1.4" style="fill:var(--ink)"/><circle cx="234" cy="89" r="1.4" style="fill:var(--ink)"/><path d="M225 96 Q230 101 235 96" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><text x="46" y="28" style="font-size:11px;fill:var(--muted)">hollow side</text><text x="170" y="28" style="font-size:11px;fill:var(--muted)">bulging back</text><text x="40" y="232" style="font-size:11px;fill:var(--muted)">upside down</text><text x="176" y="232" style="font-size:11px;fill:var(--muted)">upright, smaller</text></svg>'
+life:
+  - 'Torch, scooter and car headlights put the bulb at the focus of a concave reflector to throw a straight, parallel beam.'
+  - 'A shaving or make-up mirror is concave: held close, it shows an upright, enlarged face.'
+  - 'A dentist''s small mirror enlarges the tooth the dentist is looking at.'
+  - 'Rear-view and side mirrors on cars and buses are convex: they show a wide view, which is why they warn that objects are closer than they appear.'
+  - 'Solar cookers and satellite dishes gather parallel rays (sunlight, TV signals) to a single focus.'
+models:
+  - name: 'Every benefit has a price'
+    text: 'A convex mirror buys a wide field of view by giving up true size and distance. A wide-angle phone lens, a one-page summary and a cheap flight all trade something away, so always ask what you paid.'
+  - name: 'Gather and focus'
+    text: 'Collecting something spread out into one spot makes it powerful: sunlight into a burning point, a week of effort into one hard problem, small savings into one investment. The concentration does the work.'
+  - name: 'Fix the sign rules first'
+    text: 'Before solving, pick one consistent rule for which distances are positive and which are negative. Accountants do the same with credit and debit; the discipline prevents most errors.'
+links:
+  - leaf: 'phy/lenses-and-the-lens-formula'
+    name: 'Lenses and the lens formula'
+    same: 'The lens formula is nearly the mirror formula in new clothes. A concave mirror and a convex lens both bring rays from one object point to one image point, so the same four ray-drawing rules and the same similar-triangle proof cover both.'
+    differs: 'A mirror bounces light back on the same side; a lens sends it through the glass, bending it twice. That flips where the image appears and the signs of $f$ and $v$.'
+  - leaf: 'phy/electromagnetic-waves'
+    name: 'Electromagnetic waves'
+    same: 'A satellite dish or radio telescope is a parabolic mirror for radio waves: rays arriving in parallel are all sent to one focus, exactly as in this lesson.'
+    differs: 'Radio waves are metres to centimetres long, far longer than light, so a dish can be a coarse wire mesh, and diffraction limits its sharpness far more.'
+next:
+  q: 'A mirror turns light back by bouncing it. But a magnifying glass lets light pass straight through and still bends it. Why does light change direction just by entering water or glass? Why does a straw look broken in a glass of water?'
+  leaf: 'phy/refraction-and-snells-law'
+  name: 'Refraction and Snell''s law'
 ---
 
 :::hook
-q: Look into the back of a shiny steel spoon from arm's length, then the front. Which side shows you upside down?
+q: So what's your guess? Which side of the spoon turns you upside down?
 options: ["The back (bulging side)", "The front (hollow side)", "Neither"]
 answer: 1
-right: Right. The hollow side is a concave mirror. Beyond its focus it forms a real, inverted image. The bulging back is a convex mirror and always shows you upright and small.
-wrong: Try it with a real spoon. The hollow side behaves as a concave mirror, which inverts objects placed beyond its focus.
+right: Right, the hollow side. It acts as a concave mirror that gathers light towards a focus. Beyond the focus the rays have crossed over, and crossed rays mean an upside-down image. The bulging side spreads the rays out so they never cross, which is why it always shows you upright.
+wrong: Try it with a real spoon. The hollow side is a concave mirror, and it inverts anything placed beyond its focus. The bulging back is a convex mirror, which spreads rays out and always shows you upright and small.
 :::
 
 ## Words you need {lvl=1 id=s-words}

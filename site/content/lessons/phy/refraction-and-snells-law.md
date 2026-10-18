@@ -1,6 +1,6 @@
 ---
 title: Refraction and Snell's law
-summary: Why light bends when it changes medium, Snell's law from wavefronts and from least time, refractive index, apparent depth, slabs, total internal reflection and curved rays in graded media.
+summary: 'Why a straw looks broken in a glass of water, and the simple rule that tells you exactly how much light bends.'
 ncert: ["Class 8 Curiosity · Ch 10 Light: Mirrors and Lenses", "Class 10 Science · Ch 9 Light – Reflection and Refraction (§9.3)", "Class 12 Physics · Ch 9 Ray Optics (§9.3–9.4)"]
 up_to: Olympiad
 builds_on: [Laws of reflection, Speed of light, Sine of an angle, Vectors (JEE level), Derivatives and maxima (Olympiad level)]
@@ -47,14 +47,48 @@ outcomes:
   - 'Calculate apparent depth, and show that frequency stays fixed while speed and wavelength change'
   - 'Use the invariant $n\sin\theta$ through stacks of layers and the vector form of Snell''s law'
   - 'Derive Snell''s law from Fermat''s principle and trace rays in graded-index media'
+opener:
+  story: |
+    Put a straw in a glass of water and look from the side. It seems to snap at the surface, as if the part underwater had slid sideways and shrunk.
+
+    Nothing broke. Lift the straw out and it is perfectly straight. Look at your legs in a swimming pool and they seem short and stubby. Look at a coin at the bottom of a bucket and it floats higher than it really is.
+
+    Light is playing a trick on you, and it plays it by a rule so exact that you can calculate every trick in advance. So what is light doing at the surface of the water?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A straw in water seems to bend and shorten at the surface"><rect x="90" y="40" width="140" height="170" rx="6" style="fill:none;stroke:var(--ink);stroke-width:2"/><rect x="92" y="120" width="136" height="88" style="fill:color-mix(in srgb,var(--c) 22%,var(--surface))"/><line x1="92" y1="120" x2="228" y2="120" style="stroke:var(--c);stroke-width:2"/><line x1="200" y1="20" x2="158" y2="120" style="stroke:var(--ink);stroke-width:4;stroke-linecap:round"/><line x1="158" y1="120" x2="120" y2="200" style="stroke:var(--muted);stroke-width:4;stroke-dasharray:5 5;stroke-linecap:round"/><line x1="158" y1="120" x2="145" y2="168" style="stroke:var(--chem);stroke-width:4;stroke-linecap:round"/><text x="240" y="118" style="font-size:11px;fill:var(--muted)">water surface</text><text x="238" y="170" style="font-size:11px;fill:var(--chem)">what you see</text><text x="238" y="190" style="font-size:11px;fill:var(--muted)">where it really is</text></svg>'
+life:
+  - 'A swimming pool looks shallower than it is, so the deep end can surprise you.'
+  - 'Spear fishermen aim below where the fish appears to be, because the fish is deeper than it looks.'
+  - 'Spectacles, cameras, binoculars and your own eye all work by bending light at curved glass or tissue surfaces.'
+  - 'A glass rod seems to vanish in a liquid with nearly the same refractive index as glass.'
+  - 'The shimmering pool of water on a hot summer road is light bending through layers of air of different temperature.'
+models:
+  - name: 'When one edge slows first, the whole front turns'
+    text: 'A marching column swings round when one end hits mud first. A change that reaches part of a group first can redirect the whole group, as one division meeting a new market can pivot a company.'
+  - name: 'Find what cannot change'
+    text: 'Across the boundary the frequency stays fixed, and so does $n\sin\theta$. In a hard problem, first find the quantity that stays put, then let everything else adjust around it.'
+  - name: 'Quickest is not shortest'
+    text: 'Light takes the path of least time, not least distance, like a lifeguard who runs further along the sand before swimming. Optimise what really matters, which is often not the obvious measure.'
+links:
+  - leaf: 'phy/huygens-principle'
+    name: 'Huygens'' principle'
+    same: 'Wavefronts give Snell''s law directly: the part of the front that enters the slower medium lags behind, so the whole front swings round, just as a marching column does.'
+    differs: 'Snell''s law tells you the angle; Huygens tells you why, and goes on to explain diffraction and interference, where the ray picture is silent.'
+  - leaf: 'mat/applications-of-derivatives'
+    name: 'Applications of derivatives'
+    same: 'Finding the quickest route across two media is a minimising problem: set the derivative of the travel time to zero and Snell''s law appears. It is the same method as finding the cheapest price or the biggest box.'
+    differs: 'In a maths exercise you choose what to minimise; light just does it, and strictly the time is stationary, not always a minimum.'
+next:
+  q: 'Going into glass, light bends towards the normal; coming out, it bends away. But if it hits the surface steeply enough from inside glass or water, there is no more bending room left. What does the light do then?'
+  leaf: 'phy/total-internal-reflection'
+  name: 'Total internal reflection'
 ---
 
 :::hook
-q: A coin lies at the bottom of a bucket filled with water to a depth of 40 cm. Looking straight down, how deep does the coin seem to be?
+q: So what's your guess? A coin lies at the bottom of a bucket with water 40 cm deep. Looking straight down, how deep does it seem?
 options: ["40 cm", "about 30 cm", "about 53 cm"]
 answer: 1
-right: Right. Light from the coin bends away from the normal as it leaves the water, so your eye traces it back to a shallower point: 40 ÷ 1.33 ≈ 30 cm. The lesson below explains why.
-wrong: Not quite. Water makes things look *shallower*. Try again, or read on and come back.
+right: Right. Light from the coin bends away from the vertical as it leaves the water, so your eye traces it back to a shallower point: 40 ÷ 1.33 ≈ 30 cm. The same bending snaps the straw and shortens your legs in a pool. The exact rule behind it is below.
+wrong: Not quite. Water always makes things look shallower, which is why a pool is deeper than it looks and a straw seems to bend. The rule below tells you exactly how much.
 :::
 
 ## The idea {lvl=1 id=s-idea}

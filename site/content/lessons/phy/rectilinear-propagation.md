@@ -1,6 +1,6 @@
 ---
 title: Rectilinear propagation
-summary: Light travels in straight lines. Luminous and non-luminous bodies, shadows, the pinhole camera, umbra and penumbra, eclipses, the speed of light, brightness and the inverse-square law, and where the straight-line picture breaks down.
+summary: 'Why the Sun makes crescent-shaped spots under a tree during an eclipse, and how a hole in a box paints the world.'
 ncert: ["Class 7 Curiosity · Ch 11 Light: Shadows and Reflections", "Class 10 Science · Ch 9 (introduction)"]
 up_to: Olympiad
 builds_on: [Straight lines and similar triangles]
@@ -42,14 +42,48 @@ outcomes:
   - 'Distinguish umbra from penumbra and explain solar and lunar eclipses'
   - 'Apply the inverse-square and cosine laws to find the illuminance on a surface'
   - 'Explain why a smaller pinhole can give a worse image, and estimate the best size from diffraction'
+opener:
+  story: |
+    Next time you stand under a leafy tree on a sunny day, look at the ground. It is dotted with bright coins of light. Not squares, not triangles, not the zigzag shapes of the gaps between the leaves. Round coins, nearly all of them.
+
+    Now the strange part. During a partial solar eclipse, every one of those coins turns into a tiny crescent, copying the bitten Sun in the sky. Nobody told the leaves about the eclipse.
+
+    The shape of the gap seems not to matter at all. So what is drawing a picture of the Sun on the ground, when there is no lens anywhere in sight?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Sunlight through a small gap in the leaves makes a round picture of the Sun on the ground"><circle cx="160" cy="30" r="14" style="fill:var(--chem)"/><text x="182" y="26" style="font-size:11px;fill:var(--muted)">the Sun</text><line x1="146" y1="30" x2="189" y2="200" style="stroke:var(--chem);stroke-width:1.5"/><line x1="174" y1="30" x2="131" y2="200" style="stroke:var(--chem);stroke-width:1.5"/><ellipse cx="140" cy="86" rx="112" ry="20" style="fill:color-mix(in srgb,var(--c) 25%,var(--surface));stroke:var(--c);stroke-width:2"/><circle cx="160" cy="86" r="3" style="fill:var(--surface)"/><line x1="10" y1="200" x2="310" y2="200" style="stroke:var(--muted);stroke-width:2"/><ellipse cx="160" cy="200" rx="29" ry="6" style="fill:var(--chem);opacity:.85"/><ellipse cx="64" cy="200" rx="29" ry="6" style="fill:var(--chem);opacity:.85"/><ellipse cx="256" cy="200" rx="29" ry="6" style="fill:var(--chem);opacity:.85"/><line x1="64" y1="86" x2="64" y2="196" style="stroke:var(--muted);stroke-dasharray:2 4"/><text x="176" y="120" style="font-size:11px;fill:var(--muted)">a tiny gap in the leaves</text><text x="68" y="226" style="font-size:11px;fill:var(--muted)">round pictures of the Sun</text></svg>'
+life:
+  - 'Round coins of light under a tree, and crescents of them during an eclipse, are pinhole pictures of the Sun.'
+  - 'Shadows grow long in the evening and shrink at noon, which is how the stone gnomons at Jaipur''s Jantar Mantar read the time.'
+  - 'Sunbeams through monsoon clouds, or a torch beam in a dusty room, look like straight rods because light really does go straight.'
+  - 'Move your study lamp twice as far away and the page gets only a quarter of the light.'
+  - 'A solar eclipse is the Moon''s shadow sweeping across the Earth; people travel to stand inside its narrow darkest strip.'
+models:
+  - name: 'Start with the simplest model'
+    text: 'Assume light goes straight and you explain shadows, cameras and eclipses. Then learn exactly where the model fails (tiny holes, where waves spread). Every good model comes with a stated range.'
+  - name: 'A fixed amount spread wider is thinner'
+    text: 'The same light is shared over a bigger and bigger sphere, so each patch gets less. A teacher''s time over a larger class, or a fixed budget over more projects, thins out the same way.'
+  - name: 'There is a sweet spot, not a more-is-better'
+    text: 'A smaller pinhole is sharper by geometry but blurrier by diffraction, so the best size sits in the middle. Study hours versus sleep, speed versus accuracy: look for the optimum, not the extreme.'
+links:
+  - leaf: 'phy/universal-law-of-gravitation'
+    name: 'Universal law of gravitation'
+    same: 'Both weaken as $1/r^2$, because whatever spreads out evenly from a point is shared over a sphere of area $4\pi r^2$. Light, gravity and the electric force all obey this.'
+    differs: 'Gravity cannot be blocked by anything and has no tilt factor; light is stopped by any opaque body, and a tilted surface catches less of it (the $\cos\theta$ factor).'
+  - leaf: 'mat/similar-triangles'
+    name: 'Similar triangles'
+    same: 'A pinhole camera is nothing but similar triangles: image size over object size equals the ratio of the two distances. The same ratio finds the length of an umbra or the height of a tree from its shadow.'
+    differs: 'On paper the triangles are drawn by you; here nature draws them with light, and the straight-line rule is itself only an approximation.'
+next:
+  q: 'Light travels straight until something stops it. When it meets a smooth, shiny surface it does not stop: it bounces. But which way does it go, and why does your face seem to float behind the glass?'
+  leaf: 'phy/laws-of-reflection'
+  name: 'Laws of reflection'
 ---
 
 :::hook
-q: Four children look into four bent and straight pipes joined to a candle. Only one pipe runs in a straight line to the flame. Who can see the candle?
-options: ["Everyone, light fills the pipes", "Only the child at the straight pipe", "Nobody, pipes block light"]
+q: So what's your guess? What is each little bright coin of light on the ground?
+options: ["The shadow of a leaf", "A small upside-down picture of the Sun", "Sunlight bouncing off the leaves"]
 answer: 1
-right: Right. Light travels in straight lines, so it reaches the eye only along an unbroken straight path. A bent pipe blocks it.
-wrong: Not quite. Light goes in straight lines, so only a straight, unbroken pipe lets it through to the eye.
+right: Right. Every gap between the leaves works as a pinhole. Light travels in straight lines, so the rays cross over in the gap and paint a small, upside-down picture of the Sun on the ground. That is why the coins are round, and why they turn into crescents in a partial eclipse. The higher the gap, the bigger the coin: about 1/108 of its height, so a gap 5 m up makes a coin about 5 cm wide.
+wrong: Not quite. A leaf shadow or a reflection would copy the shape of the gap or the leaf, and these coins copy the Sun. Each gap acts as a pinhole: rays cross in it and draw a little upside-down picture of the Sun, round normally and a crescent in an eclipse.
 :::
 
 ## Light travels in straight lines {lvl=1 id=s-straight}

@@ -1,6 +1,6 @@
 ---
 title: Thin films
-summary: Colours of soap bubbles and oil slicks. Interference by division of amplitude, the half-wave phase change on reflection, the thin-film conditions, wedge fringes, Newton's rings, anti-reflection coatings and multilayer mirrors.
+summary: 'Why a soap bubble is rainbow-coloured though soap is colourless, and why it goes black just before it pops.'
 ncert: []
 up_to: Olympiad
 builds_on: [Interference and Young's experiment, Refraction and Snell's law]
@@ -46,13 +46,46 @@ outcomes:
   - 'Find the thinnest film that looks bright or dark for a given wavelength'
   - 'Analyse air-wedge fringes and use them to measure thickness or test flatness'
   - 'Derive Newton''s ring radii, quarter-wave anti-reflection coatings and multilayer mirrors'
+opener:
+  story: |
+    Blow a soap bubble. Soap and water are both colourless, yet the bubble swirls with pink, green and blue. The colours slide and swirl as the film drains, and then, just before it pops, a patch at the top turns **black**.
+
+    You see the same colours in a drop of petrol on a wet road, and in a peacock's feather. There is no dye in any of them. Wipe the soap away and the colour goes with it.
+
+    **So where does the colour come from, if it is not in the material?** The clue is how thin a bubble gets: far thinner than a hair, thinner even than one wavelength of light.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A soap bubble with colour bands and a black patch at the top just before it pops"><defs><clipPath id="bub"><circle cx="160" cy="124" r="92"/></clipPath></defs><circle cx="160" cy="124" r="92" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><g clip-path="url(#bub)"><path d="M60 98 Q160 74 260 98" style="fill:none;stroke:var(--chem);stroke-width:12"/><path d="M60 124 Q160 100 260 124" style="fill:none;stroke:var(--c);stroke-width:12"/><path d="M60 150 Q160 126 260 150" style="fill:none;stroke:var(--bad);stroke-width:12"/><path d="M60 176 Q160 152 260 176" style="fill:none;stroke:var(--chem);stroke-width:12"/><path d="M60 202 Q160 178 260 202" style="fill:none;stroke:var(--c);stroke-width:12"/><circle cx="160" cy="54" r="22" style="fill:var(--ink)"/></g><circle cx="160" cy="124" r="92" style="fill:none;stroke:var(--ink);stroke-width:2"/><text x="14" y="34" style="font-size:11px;fill:var(--muted)">black patch, thinnest part</text><path d="M110 38 L136 50" style="fill:none;stroke:var(--muted);stroke-width:1.3"/><text x="150" y="236" style="font-size:11px;fill:var(--muted)">colour bands drift as it thins</text></svg>'
+life:
+  - 'Soap bubbles, and the rainbow swirls from a drop of petrol on a wet road.'
+  - 'The faint purple tint of spectacle and camera lenses is an anti-reflection coating that cancels reflections.'
+  - 'Peacock feathers and butterfly wings get much of their colour from thin layers, not from dye.'
+  - 'Workshops check that a glass surface is flat by laying another glass on it and counting the colour fringes.'
+models:
+  - name: 'Count the flips first'
+    text: 'A hidden sign change, such as a flip at one reflection, swaps bright for dark. Before doing arithmetic, check the conventions and signs. A missing minus sign flips your whole answer.'
+  - name: 'Structure makes properties'
+    text: 'Soap and water have no colour, yet a film of the right thickness does. What something is made of matters less than how it is arranged: a team, a network or a city is more than its members.'
+  - name: 'Test the extreme case'
+    text: 'When the film thickness goes to zero, only the flip is left and the result is black. Checking a formula against an extreme case where you already know the answer catches mistakes fast.'
+links:
+  - leaf: 'phy/interference-and-youngs-experiment'
+    name: 'Interference and Young''s experiment'
+    same: 'The same rule decides everything: a path difference of whole wavelengths adds, half wavelengths cancel.'
+    differs: 'Young splits the **wavefront** sideways with two slits. A film splits the **amplitude**, by partial reflection from two surfaces, so it works with broad sources like the sky.'
+  - leaf: 'phy/standing-waves'
+    name: 'Standing waves'
+    same: 'A wave reflected from a heavy end comes back flipped, and from a free end comes back upright. That is exactly the half-wave flip in a film.'
+    differs: 'On a string the flip decides where the nodes sit. In a film it decides whether the reflected light is bright or dark.'
+next:
+  q: 'All through these lessons we have called light a wave, but a wave of what? Water waves move water and sound moves air. What is waving when light crosses empty space from the Sun?'
+  leaf: 'phy/electromagnetic-waves'
+  name: 'Electromagnetic waves'
 ---
 
 :::hook
-q: A soap film turns black just before it bursts, when it is far thinner than a wavelength. Why black, not bright?
+q: So what's your guess? Just before it pops, a bubble's film is far thinner than a wavelength of light. Why does it look black and not bright?
 options: ["It has stopped reflecting light at all", "The two reflected waves cancel because one is flipped by half a wave", "The soap absorbs all the light"]
 answer: 1
-right: Right. Reflection from the front face (air to soap) flips the wave by half a cycle; reflection from the back face (soap to air) does not. With no extra path, the two reflections arrive exactly out of step and cancel.
+right: Right. The front surface flips the reflected wave by half a cycle and the back surface does not. With almost no extra path, the two reflections arrive exactly out of step and cancel, so the thinnest part of the bubble is the darkest.
 wrong: When the film is very thin, the two reflected waves travel almost the same path. So whether they cancel depends on something that happens at each reflection. What could that be?
 :::
 

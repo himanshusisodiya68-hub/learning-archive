@@ -1,6 +1,6 @@
 ---
 title: Total internal reflection
-summary: When light inside a denser medium cannot get out. Critical angle, why diamonds sparkle, totally reflecting prisms, optical fibres and their acceptance angle, Snell's window, and frustrated total internal reflection.
+summary: 'Why a diamond sparkles, and why the surface of a pool becomes a perfect mirror when you look up from below.'
 ncert: ["Class 12 Physics · Ch 9 Ray Optics (§9.4)"]
 up_to: Olympiad
 builds_on: [Refraction and Snell's law, Sine of an angle]
@@ -45,14 +45,48 @@ outcomes:
   - 'Find the lit area for a submerged lamp and the view through Snell''s window'
   - 'Derive the acceptance angle and numerical aperture of a fibre, and the modal-dispersion delay'
   - 'Describe the evanescent wave and frustrated total internal reflection'
+opener:
+  story: |
+    Put a real diamond and a piece of glass cut in exactly the same shape side by side in daylight. The diamond throws back bright fire from every facet. The glass looks much duller. Same shape, same polish.
+
+    The difference is not colour and not hardness. It is what happens to the light once it is inside the stone.
+
+    Light slips into a diamond easily. Getting back out is the hard part. Most of it is trapped, bounces around the inside, and escapes only through the top, straight into your eye.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A ray entering a diamond is trapped and bounced inside, then leaves through the top"><path d="M110 70 L210 70 L250 105 L160 205 L70 105Z" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:2"/><path d="M110 70 L70 105 M210 70 L250 105 M70 105 L250 105" style="fill:none;stroke:var(--c);stroke-width:1;opacity:.5"/><polyline points="205,28 205,155 123,164 143,70 152,28" style="fill:none;stroke:var(--chem);stroke-width:2.5"/><path d="M199 40 L205 52 L211 40" style="fill:none;stroke:var(--chem);stroke-width:2"/><path d="M146 40 L152 28 L158 40" style="fill:none;stroke:var(--chem);stroke-width:2"/><text x="214" y="30" style="font-size:11px;fill:var(--muted)">light in</text><text x="40" y="26" style="font-size:11px;fill:var(--muted)">light out (sparkle)</text><text x="76" y="228" style="font-size:11px;fill:var(--muted)">trapped, bouncing inside</text></svg>'
+life:
+  - 'A well-cut diamond sparkles because light trapped inside bounces off the lower faces and leaves through the top.'
+  - 'Most of the internet between India and the rest of the world travels as flashes of light along hair-thin glass fibres under the sea.'
+  - 'Doctors use bundles of glass fibre as endoscopes to look inside the body without opening it.'
+  - 'Binoculars and periscopes use glass prisms instead of mirrors, because total reflection loses no light and never tarnishes.'
+  - 'A mirage on a hot road is light turned upward by layers of hot air, so the sky seems to lie on the tarmac.'
+models:
+  - name: 'A threshold flips the outcome'
+    text: 'Below the critical angle most of the light escapes; past it, none does. Many systems have a tipping point where a small push changes everything, as in a bank run or a rumour going viral.'
+  - name: 'Easy in, hard out'
+    text: 'Light enters a diamond easily and leaves with difficulty, so it stays and sparkles. Anything designed with easy entry and slow exit, from an app to a habit, keeps what it catches.'
+  - name: 'Check which way the flow goes'
+    text: 'The same boundary traps light going from glass to air but never from air to glass. Before applying a rule, check the direction it was made for.'
+links:
+  - leaf: 'phy/matter-waves'
+    name: 'Matter waves'
+    same: 'In total internal reflection the light still leaks a tiny distance into the forbidden side, and a second surface held close can catch it. A quantum particle leaks through a barrier in the same way, which is tunnelling.'
+    differs: 'The light version is a classical electromagnetic effect you can build with two prisms; quantum tunnelling is about the probability of finding a particle on the far side.'
+  - leaf: 'cs/how-the-internet-works'
+    name: 'How the internet works'
+    same: 'Optical fibre is the bottom layer of the internet: total internal reflection carries a pattern of light flashes, the bits, across oceans.'
+    differs: 'Physics keeps the light inside the glass; protocols decide what the flashes mean and resend the ones that get lost.'
+next:
+  q: 'We now know how light behaves at a flat surface. But a piece of curved glass, thick in the middle, makes a magnifying glass that focuses the Sun to a burning point. How does curved glass bring many rays to one point?'
+  leaf: 'phy/lenses-and-the-lens-formula'
+  name: 'Lenses and the lens formula'
 ---
 
 :::hook
-q: You look up from the bottom of a swimming pool at the flat water surface, away from the vertical. What do you see far from straight overhead?
+q: So what's your guess? Water traps light too, just less strongly than diamond. From the bottom of a pool you look up at the flat surface, far from straight overhead. What do you see?
 options: ["The sky, everywhere", "A silvery mirror reflecting the pool floor", "Darkness"]
 answer: 1
-right: Right. Beyond about 49° from the vertical, light from the pool floor is totally reflected at the surface, so it acts as a perfect mirror. The sky appears only inside a bright circle overhead.
-wrong: Next time you swim, look up at an angle. Light inside water hitting the surface steeply enough cannot get out, so the surface acts as a mirror.
+right: Right. Beyond about 49° from the vertical, light from the pool floor cannot get out and is totally reflected, so the surface becomes a perfect mirror. Diamond traps light from far more angles, since its limit is only 24°, and that trapped light is the sparkle.
+wrong: Next time you swim, look up at a slant. Light inside water that hits the surface steeply enough cannot escape, so the surface acts as a mirror. Diamond does the same from even more angles, and that is its sparkle.
 :::
 
 ## When light cannot get out {lvl=2 id=s-tir label="Class 12"}
