@@ -1,0 +1,92 @@
+# Components and frameworks. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "In the idea UI = f(state), what is the usual way to make the screen show something different?"
+  opts: ["Edit the page elements directly", "Change the state and let the page be recomputed", "Reload the browser"]
+  ans: 1
+  sol: The function turns state into UI. Change the input (the state) and the library calls it again and applies the difference. Editing elements directly is the manual approach this idea replaces.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A booking page has 5 dependent parts (seat map, price, badge, Pay button, summary) and 4 actions (select, deselect, clear all, apply coupon). If every action updates every part by hand, how many places must the programmer get right?
+  ask: Update sites
+  unit: ""
+  ans: 20
+  tol: 0.1
+  verify: 5 * 4
+  sol: Each of the 4 actions touches each of the 5 parts, giving $4 \times 5 = 20$ update sites. With UI = f(state), each action only changes the state, and the 5 parts are written once each.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "A React component keeps `items` in state and runs `items.push(x); setItems(items);`. Why may the screen not update?"
+  opts: ["push cannot be used on arrays", "The same array object is passed, so React sees no change", "setItems only accepts strings"]
+  ans: 1
+  sol: React decides whether state changed by comparing the new value with the old one by identity. After `push` the array is the same object. Use `setItems([...items, x])` to pass a new array.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Which direction does data travel between components in a standard React tree?"
+  opts: ["Props flow down from parent to child; changes flow up through callbacks the parent passed down", "Children write directly into the parent's state", "Siblings share variables through the DOM"]
+  ans: 0
+  sol: A parent passes data as props and may pass a function (a callback). The child calls the function to ask for a change and the parent updates its state. This one-way flow keeps data movement predictable.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A search page component renders one parent and 50 child rows. The user types 8 characters and the parent re-renders after each one, re-running every child with no memoisation. How many component function calls happen in total?
+  ask: Component calls
+  unit: ""
+  ans: 408
+  tol: 0.1
+  verify: 8 * (1 + 50)
+  sol: Each keystroke runs the parent once and each of 50 children once, so 51 calls. Over 8 keystrokes, $8 \times 51 = 408$. Cheap functions make this fine; if rows are costly, memoise them or move the typing state into a smaller component. The real DOM is touched only for rows whose output changed.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Interview question: this component loops forever, sending requests. Why, and how do you fix it? `useEffect(() => { fetch('/api/items').then(r => r.json()).then(setItems); });`"
+  sol: |
+    With no dependency list, the effect runs after **every** render. The effect calls `setItems`, which causes a re-render, which runs the effect again, which fetches again, forever.
+
+    Fix: pass a dependency list. To fetch once on mount, use an empty list:
+
+    ```js
+    useEffect(() => {
+      fetch("/api/items").then(r => r.json()).then(setItems);
+    }, []);
+    ```
+
+    If the fetch depends on a value such as a page number, put that value in the list so the effect re-runs only when it changes. Also handle errors and ignore a stale response if the value can change quickly.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A to-do list renders rows with `key={index}`, and each row has a text input. The user types into row 2 and then deletes row 1. What do they see, and what is the fix?
+  sol: |
+    The library matches old and new elements by key. After deleting row 1, the old row at index 1 becomes index 0, and so on, so React reuses the elements by position. The typed text lives in the input element, which stays at its old position, so it ends up under a different item's data (the text typed for item 2 appears next to item 3's label, or the wrong row shows the text).
+
+    Fix: give each item a stable, unique id when it is created (for example a number from a counter or a UUID) and use `key={item.id}`. Now deleting a row removes exactly that element and leaves the others, with their text, untouched. Index keys are only acceptable when the list never reorders, inserts or deletes.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A two-person team is building a marketing site with a contact form and one image carousel. A colleague says "we must use React". Argue for or against, say what would change your mind, and name the costs you are weighing.
+  sol: |
+    **Against, by default.** The page is mostly static content with two small interactions that share no state. Plain HTML and CSS, plus about 30 lines of JavaScript for the carousel and form validation, will load faster (no framework download), need no build step, be easy for search engines and screen readers, and avoid upgrade work.
+
+    **Costs of a framework:** bundle size (more to download and parse, which hurts slow phones), a build pipeline, concepts to learn, and dependency upgrades. The benefit, keeping many parts consistent with shared state, does not apply here.
+
+    **What would change my mind:** the site grows into an app (login, dashboard, many screens with shared data), the team grows and wants a shared component library, or the same components are needed in a mobile app (React Native). Even then, a framework with server rendering may suit a content site better than a client-only app. [Inference: general engineering judgement, not a measured result]
+  check: none
