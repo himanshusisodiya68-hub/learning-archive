@@ -1,6 +1,6 @@
 ---
 title: Ohm's law
-summary: 'Push harder on a wire and more current flows, in a perfectly steady ratio; discover why, and when it breaks.'
+summary: 'Why doubling the push on a wire doubles the flow, and how a light bulb quietly breaks that rule.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.4)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Proportionality and straight-line graphs]
@@ -47,14 +47,61 @@ outcomes:
   - 'Explain Ohms law from drift velocity and collisions, and recognise non-ohmic devices'
   - 'Apply V = E − Ir to find EMF and internal resistance, and allow for meter loading error'
   - 'Solve potential-divider and load-line problems'
+opener:
+  story: |
+    Have you noticed when a bulb blows? Almost never while it has been glowing quietly for hours. It goes *pop* at the moment you flip the switch. Old tube lights flicker and die the same way.
+
+    Think about that. The mains is a steady 230 volts before and after the click. If the bulb simply drew the same current all the time, the switch-on moment would be no different from any other. Something about the bulb must change in the first fraction of a second.
+
+    To catch the culprit we need a rule for how much current a given push produces. A German schoolteacher named Ohm found one in 1827, and it is so tidy that for a long time people took it for granted. Today you will see why it works for a plain wire, and what the bulb does to break it.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A bulb and a graph of current against time showing a big spike at switch-on that settles to a steady value"><circle cx="74" cy="92" r="34" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--ink);stroke-width:2"/><path d="M60 112 L66 90 L74 108 L82 90 L88 112" style="fill:none;stroke:var(--c);stroke-width:2"/><rect x="62" y="126" width="24" height="16" rx="2" style="fill:var(--muted)"/><line x1="74" y1="142" x2="74" y2="170" style="stroke:var(--ink);stroke-width:2"/><path d="M40 56 L28 44 M74 46 L74 30 M108 56 L120 44" style="fill:none;stroke:var(--chem);stroke-width:2"/><rect x="40" y="184" width="68" height="20" rx="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><circle cx="52" cy="194" r="6" style="fill:var(--ink)"/><text x="40" y="224" style="font-size:11px;fill:var(--muted)">switch on: click</text><line x1="170" y1="200" x2="304" y2="200" style="stroke:var(--ink);stroke-width:2"/><line x1="170" y1="200" x2="170" y2="30" style="stroke:var(--ink);stroke-width:2"/><path d="M172 44 C 178 120, 196 168, 300 176" style="fill:none;stroke:var(--bad);stroke-width:3"/><line x1="170" y1="176" x2="304" y2="176" style="stroke:var(--muted);stroke-dasharray:4 4"/><text x="176" y="40" style="font-size:11px;fill:var(--bad)">cold: big surge</text><text x="214" y="168" style="font-size:11px;fill:var(--muted)">hot: steady 0.26 A</text><text x="176" y="216" style="font-size:11px;fill:var(--muted)">time after switching on</text><text x="148" y="24" style="font-size:11px;fill:var(--muted)">current</text></svg>'
+life:
+  - 'A bulb that blows at the instant you switch it on: the cold filament lets a big surge of current through before it heats up.'
+  - 'A fan regulator or dimmer changes how much current reaches the motor or bulb by adding or removing resistance.'
+  - 'A phone charger label says 5 V and 2 A: the cable and phone together set the resistance, so the current follows from the voltage.'
+  - 'A mobile touchscreen or volume knob often works as a variable resistor, a rheostat in disguise.'
+  - 'A fuse or an MCB trips when a fault drops the resistance and Ohms law demands a huge current from the same 230 V.'
+models:
+  - name: 'Output proportional to input'
+    text: 'Some systems answer a push in strict proportion: double the push, double the response. Spotting where this proportionality holds (a wage per hour, a spring for small stretches, a wire) and where it breaks (a bulb, a crowded road) is half of good estimation.'
+  - name: 'The rule has a condition'
+    text: 'Ohms law only holds while the wire stays at one temperature. Many everyday rules ("more effort, more result") only hold under hidden conditions. Always ask: what must stay unchanged for this rule to be true?'
+  - name: 'Resistance is what you measure, not what you push'
+    text: 'Resistance is the ratio you get after you apply a push and see the flow. Do the experiment, plot the points, and read the rule off the graph, rather than assuming it.'
+links:
+  - leaf: 'phy/viscosity'
+    name: 'Viscosity'
+    same: 'Same shape of law: in a thick fluid the drag on a slowly moving object is proportional to its speed, just as the current is proportional to the voltage. Push harder, move faster, in a fixed ratio.'
+    differs: 'Drag comes from molecules rubbing past each other in a fluid; electrical resistance comes from electrons colliding with the lattice. The size of the constant and its temperature behaviour differ.'
+  - leaf: 'phy/conduction-convection-radiation'
+    name: 'Conduction of heat'
+    same: 'Fouriers law for heat flow has the same form: the heat current is proportional to the temperature difference across a slab. Temperature difference is the push; heat flow is the current.'
+    differs: 'Heat flows from hot to cold with no cell needed and no loop to close; and it is energy that flows, not charge.'
+symbols:
+  - { s: 'V', means: 'potential difference across the wire (volt, V)' }
+  - { s: 'I', means: 'current through the wire (ampere, A)' }
+  - { s: 'R', means: 'resistance: volts needed per ampere (ohm, Ω)' }
+  - { s: 'E', means: 'electric field inside the wire (V/m); for a cell, its EMF in volts' }
+  - { s: 'e', means: 'charge on an electron (C)' }
+  - { s: 'm', means: 'mass of an electron (kg)' }
+  - { s: '\tau', means: 'average time between collisions of an electron (s)' }
+  - { s: 'v_d', means: 'drift speed of the electrons (m/s)' }
+  - { s: 'J', means: 'current density: current per unit area (A/m²)' }
+  - { s: '\sigma', means: 'conductivity of the material (siemens per metre, S/m)' }
+  - { s: '\rho', means: 'resistivity of the material (ohm metre, Ω m)' }
+  - { s: 'r', means: 'internal resistance of a cell (Ω)' }
+next:
+  q: 'A thick copper cable and a thin tungsten filament both obey Ohms law, yet their resistances are wildly different. What decides how much a piece of wire resists?'
+  leaf: 'phy/resistance-and-resistivity'
+  name: 'Resistance and resistivity'
 ---
 
 :::hook
-q: A 230 V, 60 W filament bulb draws about 0.26 A once it is glowing. In the first instant after you switch it on, while the filament is still cold, the current is
+q: So what's your guess? A 230 V, 60 W filament bulb draws about 0.26 A once it is glowing. In the very first instant after you switch it on, with the filament still cold, the current is
 options: ["about the same, 0.26 A", "much larger, a few amperes", "much smaller, almost zero"]
 answer: 1
-right: Right. Cold tungsten has roughly a tenth of the resistance of white-hot tungsten, so the switch-on current is several times the running current. That surge is why bulbs usually fail at the moment they are switched on.
-wrong: The supply voltage is the same, but a cold filament has far less resistance than a hot one. So the current at switch-on is several times larger, and it falls as the filament heats up.
+right: Right. Cold tungsten has roughly a tenth of the resistance of white-hot tungsten, so the switch-on surge is several times the running current. That is why bulbs so often die the moment you flip the switch.
+wrong: The supply voltage is the same, but a cold filament lets current through far more easily than a hot one. So the current at switch-on is several times larger, and it falls as the filament heats up.
 :::
 
 ## What Ohm found {lvl=1 id=s-law label="Class 10"}

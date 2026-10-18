@@ -1,6 +1,6 @@
 ---
 title: Resistors in series and parallel
-summary: 'Why adding a bulb to a circuit can dim the others or leave them bright, depending on how you connect it.'
+summary: 'Why one dead bulb darkens a whole string of festival lights, yet your house keeps glowing when a bulb blows.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.6)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Ohm's law, Resistance and resistivity]
@@ -46,14 +46,61 @@ outcomes:
   - 'Reduce nested networks step by step and apply voltage and current dividers'
   - 'Use equipotential points, symmetry, balanced bridges, the cube and infinite ladders on harder networks'
   - 'Apply delta–star transformation, superposition and Fosters theorem to networks with no series or parallel structure'
+opener:
+  story: |
+    Every Diwali you have probably met this one. A string of little lights goes dark, all of them, because **one** bulb somewhere has burnt out. You spend ten minutes poking along the wire, testing bulbs one by one to find the culprit.
+
+    Now look at your home. A bulb blows in the bedroom and the fan, the TV and the kitchen light do not even flicker. Same electricity, same kind of bulbs, completely different behaviour.
+
+    The only difference is the **way the bulbs are connected**. One way makes them share a single road, so a roadblock stops everyone. The other gives each its own road. Learning those two ways, and what they do to the total resistance, is how you read every circuit from a torch to a phone.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A string of lights in series with one dead bulb, and house bulbs in parallel with one dead bulb while the others stay lit"><path d="M20 60 L300 60" style="fill:none;stroke:var(--ink);stroke-width:2"/><circle cx="60" cy="60" r="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><circle cx="110" cy="60" r="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><circle cx="160" cy="60" r="12" style="fill:var(--surface);stroke:var(--bad);stroke-width:2"/><line x1="152" y1="52" x2="168" y2="68" style="stroke:var(--bad);stroke-width:2"/><line x1="168" y1="52" x2="152" y2="68" style="stroke:var(--bad);stroke-width:2"/><circle cx="210" cy="60" r="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><circle cx="260" cy="60" r="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="20" y="32" style="font-size:11px;fill:var(--muted)">festival string: one dead, all dark</text><line x1="40" y1="130" x2="280" y2="130" style="stroke:var(--ink);stroke-width:2"/><line x1="40" y1="220" x2="280" y2="220" style="stroke:var(--ink);stroke-width:2"/><line x1="90" y1="130" x2="90" y2="220" style="stroke:var(--ink);stroke-width:2"/><line x1="160" y1="130" x2="160" y2="220" style="stroke:var(--ink);stroke-width:2"/><line x1="230" y1="130" x2="230" y2="220" style="stroke:var(--ink);stroke-width:2"/><circle cx="90" cy="175" r="12" style="fill:color-mix(in srgb,var(--chem) 40%,var(--surface));stroke:var(--ink);stroke-width:2"/><circle cx="160" cy="175" r="12" style="fill:var(--surface);stroke:var(--bad);stroke-width:2"/><line x1="152" y1="167" x2="168" y2="183" style="stroke:var(--bad);stroke-width:2"/><line x1="168" y1="167" x2="152" y2="183" style="stroke:var(--bad);stroke-width:2"/><circle cx="230" cy="175" r="12" style="fill:color-mix(in srgb,var(--chem) 40%,var(--surface));stroke:var(--ink);stroke-width:2"/><text x="20" y="108" style="font-size:11px;fill:var(--muted)">house wiring: the others stay lit</text></svg>'
+life:
+  - 'The string of festival lights that dies when one bulb goes, versus the rooms of your home that carry on, show series versus parallel wiring.'
+  - 'The batteries in a torch or TV remote are stacked in series: the voltages add to give 3 V from two 1.5 V cells.'
+  - 'Plugging a kettle into a multi-plug that already runs a heater adds a parallel branch: the total current from the wall rises.'
+  - 'A power bank or a phone battery pack puts cells in parallel to last longer and in series to reach the voltage the phone needs.'
+  - 'The two headlights of a scooter are in parallel, so one can fail and the other still shows the road.'
+models:
+  - name: 'One road or many roads'
+    text: 'When everything must pass through one chain (series), the weakest link sets the result and any failure stops the lot. When there are alternative routes (parallel), the system is more robust. This is the heart of reliable design in electronics, supply chains and organisations.'
+  - name: 'Add the obstacles, add the openings'
+    text: 'Obstacles in a row add (waiting at three counters, one after another). Openings side by side add (three counters open at once). Total delay and total capacity combine differently, so ask which you are dealing with.'
+  - name: 'More options never hurt'
+    text: 'Adding a path can only help the flow and never hinder it: adding a road to a network cannot make the total journey harder. This is the idea behind redundancy and the reason cutting one link of a network can only raise the total resistance, never lower it.'
+links:
+  - leaf: 'phy/kirchhoffs-rules'
+    name: 'Kirchhoffs rules'
+    same: 'Series and parallel are just two special cases of the two rules: current in equals current out at a junction, and the voltages around any loop add to zero.'
+    differs: 'Kirchhoffs rules handle any network, including tangled ones where nothing is simply in series or parallel.'
+  - leaf: 'phy/capacitors'
+    name: 'Capacitors in series and parallel'
+    same: 'Exactly the same two connections, but the formulas swap: capacitances add in parallel and their reciprocals add in series, the opposite of resistors.'
+    differs: 'A capacitor stores charge and has no continuing current in steady state; a resistor wastes energy as heat all the time.'
+symbols:
+  - { s: 'R_1', means: 'resistance of the first resistor (ohm, Ω); R_2, R_3 for the others' }
+  - { s: 'I', means: 'current from the battery (A)' }
+  - { s: 'V', means: 'potential difference across the whole group (V)' }
+  - { s: 'R_s', means: 'equivalent resistance of resistors joined in series (Ω)' }
+  - { s: 'R_p', means: 'equivalent resistance of resistors joined in parallel (Ω)' }
+  - { s: 'V_k', means: 'share of the voltage across the k-th resistor (V)' }
+  - { s: 'I_1', means: 'current in the first branch (A)' }
+  - { s: 'P', means: 'power: heat produced each second (watt, W)' }
+  - { s: 'G', means: 'conductance, the inverse of resistance (siemens, S)' }
+  - { s: 'R', means: 'one of several equal resistors (Ω)' }
+  - { s: 'r', means: 'resistance of the series rail in a ladder (Ω)' }
+  - { s: 'R_\infty', means: 'resistance of an endless ladder (Ω)' }
+next:
+  q: 'Plug in a heater, a kettle and a geyser on one board and the wire gets warm. Where does the electrical energy go, and how much heat does a given current produce?'
+  leaf: 'phy/heating-effect-and-power'
+  name: 'Heating effect and power'
 ---
 
 :::hook
-q: A 10 Ω resistor is connected across a battery. You now connect a second resistor, of 1000 Ω, directly across the first one (in parallel). What happens to the current drawn from the battery?
+q: So what's your guess? Back on the workbench, a 10 Ω resistor sits across a battery. You connect a second resistor of 1000 Ω directly across the first, so charge has a new path. What happens to the current drawn from the battery?
 options: ["It falls, because there is now more resistance in the circuit", "It rises slightly", "It stays exactly the same"]
 answer: 1
-right: Right. The 10 Ω resistor still has the full battery voltage and carries the same current as before. The new resistor opens an extra path and adds its own small current, so the total goes up and the combined resistance goes down, to about 9.9 Ω.
-wrong: More resistors do not always mean more resistance. In parallel, the new resistor adds a second path for charge, so the battery has to supply more current, not less.
+right: Right, and it is the same trick your house uses. The 10 Ω resistor still has the full battery voltage and carries the same current as before. The new path adds its own small current, so the total goes up and the combined resistance goes down, to about 9.9 Ω.
+wrong: More resistors do not always mean more resistance. In parallel, the new resistor opens a second path for charge, so the battery has to supply more current, not less.
 :::
 
 ## Two ways to join resistors {lvl=1 id=s-two label="Class 10"}

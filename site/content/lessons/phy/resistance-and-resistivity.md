@@ -1,6 +1,6 @@
 ---
 title: Resistance and resistivity
-summary: 'Why a long thin wire fights current more than a short thick one, and how the material itself matters.'
+summary: 'Why a long thin wire fights the current harder than a short thick one, and how stretching it multiplies the fight.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.5)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Ohm's law, Resistors in series and parallel, Area of a circle]
@@ -47,14 +47,61 @@ outcomes:
   - 'Use conductivity and the local form J = σE'
   - 'Apply the temperature coefficient to metals, alloys and semiconductors'
   - 'Integrate to find the resistance of tapered conductors and of radial flow between spheres or cylinders'
+opener:
+  story: |
+    Take a ball of clay and roll it into a thick, short snake. Now stretch the same clay into a rope twice as long. Notice what happened: it got longer *and* thinner. You cannot make it longer without making it thinner, because the clay has to go somewhere.
+
+    A copper wire drawn out in a factory behaves the same way. The metal is conserved, so a longer wire is automatically a thinner one.
+
+    Now ask what electric current thinks about this. A long wire gives electrons a longer road. A thin wire gives them a narrower road. Both seem like bad news, but how bad? Let us find out whether the two penalties add, or multiply.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A short thick rod of metal and a rod twice as long and half as thick with the same amount of metal"><rect x="40" y="50" width="100" height="40" rx="6" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><text x="52" y="75" style="font-size:11px;fill:var(--ink)">10 Ω</text><path d="M160 70 L196 70" style="fill:none;stroke:var(--muted);stroke-width:2"/><path d="M190 64 L200 70 L190 76Z" style="fill:var(--muted)"/><text x="206" y="66" style="font-size:11px;fill:var(--muted)">pull it out</text><rect x="40" y="140" width="200" height="20" rx="6" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><text x="52" y="155" style="font-size:11px;fill:var(--ink)">? Ω</text><path d="M40 108 L140 108" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><text x="60" y="122" style="font-size:11px;fill:var(--muted)">length l</text><path d="M40 184 L240 184" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><text x="102" y="200" style="font-size:11px;fill:var(--muted)">length 2l, half as thick</text><circle cx="262" cy="150" r="16" style="fill:var(--surface);stroke:var(--bad);stroke-width:2"/><text x="256" y="155" style="font-size:16px;fill:var(--bad)">?</text><text x="40" y="224" style="font-size:11px;fill:var(--muted)">same amount of metal in both</text></svg>'
+life:
+  - 'Long extension cords with thin wire get warm under a heavy load: more length and less thickness mean more resistance.'
+  - 'A geyser or an AC is wired with thick cable and a toaster or iron has a thin coil of a high-resistance alloy: the thin coil is meant to fight the current and glow.'
+  - 'Earthing pits are packed with salt and charcoal to lower the resistance of the soil that the fault current must cross.'
+  - 'A bulb filament is a tungsten thread thinner than a hair, coiled up, so its resistance is large enough to heat it white-hot.'
+  - 'Strain gauges on bridges and kitchen weighing scales use a wire whose resistance rises when it is stretched, to sense tiny bends.'
+models:
+  - name: 'Slices in series, strands in parallel'
+    text: 'Any flow through a thing can be seen as many slices one after another (they add) or many lanes side by side (they share). A long road is a sum of short ones; a wide road is many lanes. This picture works for traffic, queues in a bank and water in pipes.'
+  - name: 'Conserved quantity links two changes'
+    text: 'When you stretch a wire, length and thickness are tied together by the fixed volume of metal. Many puzzles hide such a link between two quantities. Find the thing that is conserved and the double effect is no surprise.'
+  - name: 'Material versus shape'
+    text: 'Resistivity belongs to the material; resistance belongs to the particular object. Separating "what it is made of" from "how it is built" is a habit that clarifies materials, teams and organisations.'
+links:
+  - leaf: 'phy/conduction-convection-radiation'
+    name: 'Heat conduction'
+    same: 'Same shape: the thermal resistance of a rod is length divided by conductivity times area, so a long thin rod resists heat flow in exactly the same way a long thin wire resists current.'
+    differs: 'Heat leaks sideways into the air and electric current stays in the wire unless the insulation fails; the carriers and the material constants also differ.'
+  - leaf: 'phy/viscosity'
+    name: 'Viscosity and pipe flow'
+    same: 'Resistance to flow of a fluid through a narrow pipe rises with length and falls steeply with the radius (as the fourth power in Poiseuille flow), which echoes how a drawn wires resistance goes as 1/d⁴.'
+    differs: 'Fluid flow is driven by pressure and carries matter; electric current is driven by potential difference and carries charge.'
+symbols:
+  - { s: 'R', means: 'resistance of the wire (ohm, Ω)' }
+  - { s: 'l', means: 'length of the wire (m)' }
+  - { s: 'A', means: 'area of the cross-section (m²)' }
+  - { s: '\rho', means: 'resistivity: resistance of a 1 m cube between opposite faces (Ω m)' }
+  - { s: 'd', means: 'diameter of the wire (m)' }
+  - { s: 'V', means: 'volume of metal (m³) in the stretching section; elsewhere the voltage (V)' }
+  - { s: 'J', means: 'current density: current per unit area (A/m²)' }
+  - { s: 'E', means: 'electric field inside the conductor (V/m)' }
+  - { s: '\sigma', means: 'conductivity, the inverse of resistivity (S/m)' }
+  - { s: '\alpha', means: 'temperature coefficient of resistivity (per kelvin, K⁻¹)' }
+  - { s: 'T', means: 'temperature (kelvin, K)' }
+  - { s: '\tau', means: 'average time between electron collisions (s)' }
+next:
+  q: 'A real circuit has many resistors, joined end to end in some places and side by side in others. Does adding a resistor always make the total resistance bigger?'
+  leaf: 'phy/resistors-in-series-and-parallel'
+  name: 'Resistors in series and parallel'
 ---
 
 :::hook
-q: A wire has resistance 10 Ω. You pull it through a die so that it becomes twice as long, without losing any metal. What is its resistance now?
+q: So what's your guess? A wire has resistance 10 Ω. You pull it through a die so it becomes twice as long, with no metal lost. What is its resistance now?
 options: ["10 Ω", "20 Ω", "40 Ω", "5 Ω"]
 answer: 2
-right: Right. Twice the length doubles the resistance, and because the same metal is spread over twice the length, the wire is half as thick, which doubles it again. 10 × 2 × 2 = 40 Ω.
-wrong: Longer means more resistance, but that is only half the story. The same volume of metal now has half the cross-section, and a thinner wire also resists more. The answer is 40 Ω.
+right: Right. Twice the length doubles the resistance, and because the same metal is now spread over twice the length, the wire is half as thick, which doubles it again. 10 × 2 × 2 = 40 Ω. The clay rope in the picture has the same lesson.
+wrong: Longer means more resistance, but that is only half the story. The same metal now has half the cross-section, and a thinner wire resists more too. The two effects multiply: the answer is 40 Ω.
 :::
 
 ## What sets the resistance of a wire {lvl=1 id=s-factors label="Class 10"}

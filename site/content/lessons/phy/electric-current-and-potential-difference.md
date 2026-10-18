@@ -1,6 +1,6 @@
 ---
 title: Electric current and potential difference
-summary: 'What actually flows in a wire, what pushes it along, and how to measure both with a simple battery and bulb.'
+summary: 'Why a bulb lights the instant you flick the switch, though the electrons in the wire crawl slower than a snail.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.1–11.3)"]
 up_to: Olympiad
 builds_on: [Electric charge, Coulomb's law, Potential]
@@ -46,14 +46,61 @@ outcomes:
   - 'Connect ammeters and voltmeters correctly and read circuit symbols'
   - 'Use I = nAv_d e to find drift speed, and explain why a bulb lights instantly'
   - 'Apply EMF, terminal voltage and internal resistance, and explain energy flow by the Poynting vector'
+opener:
+  story: |
+    Flick a switch and the room lights up. Not after a moment, not after a second: *now*. It feels as if tiny electrons raced from the switch to the bulb carrying the light with them.
+
+    Here is the awkward fact. In the thin copper wire of a torch, an electron makes progress at about 0.04 millimetres every second. A snail overtakes it without trying. Ten centimetres of wire would take a single electron more than half an hour.
+
+    So **how can the bulb light instantly if nothing in the wire is moving fast?** The answer changes how you picture every electric circuit, and the picture has a "push" and a "flow" in it that you will learn to tell apart.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A snail crawling on a wire while the bulb at the end is already lit"><rect x="40" y="150" width="190" height="10" rx="4" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><line x1="20" y1="140" x2="20" y2="170" style="stroke:var(--ink);stroke-width:2"/><line x1="29" y1="146" x2="29" y2="164" style="stroke:var(--ink);stroke-width:5"/><line x1="29" y1="155" x2="40" y2="155" style="stroke:var(--ink);stroke-width:2"/><circle cx="262" cy="126" r="22" style="fill:color-mix(in srgb,var(--chem) 35%,var(--surface));stroke:var(--ink);stroke-width:2"/><path d="M252 134 L257 120 L262 134 L267 120 L272 134" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><rect x="252" y="148" width="20" height="10" style="fill:var(--muted)"/><line x1="230" y1="155" x2="252" y2="155" style="stroke:var(--c);stroke-width:2"/><line x1="262" y1="88" x2="262" y2="76" style="stroke:var(--chem);stroke-width:2"/><line x1="236" y1="100" x2="228" y2="92" style="stroke:var(--chem);stroke-width:2"/><line x1="288" y1="100" x2="296" y2="92" style="stroke:var(--chem);stroke-width:2"/><ellipse cx="108" cy="146" rx="22" ry="5" style="fill:var(--muted)"/><circle cx="112" cy="134" r="11" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M112 134 m-5 0 a5 5 0 1 1 5 5" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><line x1="90" y1="142" x2="86" y2="130" style="stroke:var(--ink);stroke-width:1.5"/><circle cx="85" cy="128" r="2" style="fill:var(--ink)"/><circle cx="150" cy="148" r="4" style="fill:var(--chem)"/><text x="40" y="192" style="font-size:11px;fill:var(--muted)">electron: 0.04 mm/s</text><text x="60" y="124" style="font-size:11px;fill:var(--muted)">snail</text><path d="M44 60 L250 60" style="fill:none;stroke:var(--bad);stroke-width:2;stroke-dasharray:6 4"/><path d="M250 54 L262 60 L250 66Z" style="fill:var(--bad)"/><text x="64" y="50" style="font-size:11px;fill:var(--bad)">the push arrives almost at once</text></svg>'
+life:
+  - 'The instant a phone charger lights up when you plug it in: the push reaches it at once, yet no electron has travelled from the socket.'
+  - 'A bulb, fan or tube light comes on the moment you press the wall switch, even in a room 20 m of wiring away from the board.'
+  - 'A torch or a mobile battery rated in ampere-hours (mAh) is just a store of charge you can count: 2000 mAh is 7200 coulombs.'
+  - 'The 1.5 V printed on a cell versus the 230 V in a wall socket tells you how much energy each coulomb carries, which is why the socket is dangerous and the cell is not.'
+  - 'Electricians fit thicker wire for heavy loads such as geysers and ACs so the same current does not squeeze through a thin path.'
+models:
+  - name: 'Signal versus carrier'
+    text: 'The thing that moves fast is not always the thing that carries the stuff. A rumour, a stock-price change or a traffic jam spreads quickly through people or cars that each move slowly. Ask: what is actually travelling, the message or the material?'
+  - name: 'Flow equals density times speed times width'
+    text: 'Current is just carriers per volume, times how fast they go, times the width of the path. The same pattern gives traffic on a road, water in a pipe and customers through a door. Many slow carriers can still make a large flow.'
+  - name: 'Push and flow are different things'
+    text: 'Potential difference is the push; current is the flow it causes. A tall water tank with a closed tap has plenty of push and no flow. Do not confuse pressure with throughput in a team, a budget or a pipe.'
+links:
+  - leaf: 'phy/potential'
+    name: 'Electric potential'
+    same: 'Same idea of energy per unit: gravitational potential is energy per kilogram (gh), electric potential is energy per coulomb. A potential difference is a height difference for charge.'
+    differs: 'Charge comes in two signs and a battery can keep a difference going while charge flows round a loop; a falling stone just ends up on the floor.'
+  - leaf: 'phy/kirchhoffs-rules'
+    name: 'Kirchhoffs rules'
+    same: 'The steady-current rule that the same charge enters and leaves every point is exactly the junction rule, applied to a single wire.'
+    differs: 'Kirchhoff turns it into a method for whole networks with many loops and junctions.'
+symbols:
+  - { s: 'I', means: 'electric current: charge passing a point each second (ampere, A)' }
+  - { s: 'Q', means: 'electric charge (coulomb, C)' }
+  - { s: 't', means: 'time (second, s)' }
+  - { s: 'V', means: 'potential difference: energy given to each coulomb (volt, V)' }
+  - { s: 'W', means: 'work or energy transferred (joule, J)' }
+  - { s: 'P', means: 'power: energy per second (watt, W)' }
+  - { s: 'n', means: 'number of free carriers in each cubic metre (per m³)' }
+  - { s: 'A', means: 'area of the wire cross-section (m²)' }
+  - { s: 'v_d', means: 'drift speed: the slow average speed of the carriers along the wire (m/s)' }
+  - { s: 'e', means: 'charge on one electron, 1.6 × 10⁻¹⁹ C' }
+  - { s: '\varepsilon', means: 'EMF: energy a cell gives each coulomb it pushes through (V)' }
+  - { s: 'r', means: 'internal resistance of the cell (ohm, Ω)' }
+next:
+  q: 'If you push twice as hard, does the current double, treble or do something stranger? Is there a fixed rule linking the push to the flow?'
+  leaf: 'phy/ohms-law'
+  name: 'Ohms law'
 ---
 
 :::hook
-q: A torch bulb is 10 cm of copper wire away from its cell. The current is 0.3 A in a wire of cross-section 0.5 mm². How long does one particular electron take to travel from the cell to the bulb?
+q: So what's your guess? One particular electron starts at the cell and heads for a bulb 10 cm away along a copper wire (0.3 A, cross-section 0.5 mm²). How long does it take to get there?
 options: ["About a billionth of a second", "About one second", "More than half an hour"]
 answer: 2
-right: Right. The electrons drift at only about 0.04 mm/s, so 10 cm takes roughly 38 minutes. Yet the bulb lights at once. This lesson explains both facts.
-wrong: Surprisingly, it is more than half an hour. The electrons drift at only about 0.04 mm/s. The bulb lights at once for a different reason, which this lesson explains.
+right: Right, and that is the twist. The electrons drift at only about 0.04 mm/s, so 10 cm takes roughly 38 minutes. The bulb lit at once because it was never waiting for that electron; this lesson shows what actually travels.
+wrong: It feels like it must be quick, but it is more than half an hour. The electrons drift at only about 0.04 mm/s. The bulb lights at once for a different reason, which this lesson explains.
 :::
 
 ## What flows: electric current {lvl=1 id=s-current label="Class 10"}
