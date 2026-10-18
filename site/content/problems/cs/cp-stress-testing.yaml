@@ -1,0 +1,143 @@
+# Stress testing and edge cases. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A generator makes arrays of length 1 to 5, each element 1, 2 or 3. How many different arrays can it produce in total?
+  ask: Number of arrays
+  unit: arrays
+  ans: 363
+  tol: 0.5
+  verify: "[1,2,3,4,5].reduce((s,l)=>s+3**l,0)"
+  sol: For each length L there are $3^L$ arrays (three choices for each place). Add them up, $3+9+27+81+243 = 363$. Small ranges mean the generator can in fact cover every shape, which is the point of testing tiny.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which solution makes the best oracle (brute force) in a stress test?
+  opts: ["A clever O(n) solution you wrote yesterday", "Trying every possibility in the plainest way, even if it takes O(n^2) or more", "A copy of the solution under test with the comparison changed"]
+  ans: 1
+  sol: The oracle must be obviously correct; speed does not matter because inputs are tiny. A clever solution can share the same misunderstanding as the one under test, and a copy shares its bug.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Running one random test (generate, brute force, fast solution, compare) takes 2 milliseconds. How many seconds do 20,000 tests take?
+  ask: Seconds
+  unit: s
+  ans: 40
+  tol: 0.1
+  verify: "20000*2/1000"
+  sol: $20000 \times 2$ ms is 40,000 ms, which is 40 seconds. This is why tests must be tiny, and why you can often run several thousand while thinking.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A problem says "print any valid ordering". Your fast output and the brute force output differ on a test, but both look valid. What should the stress test do?
+  opts: ["Report a failure and stop", "Use a checker that verifies each output is valid and has the right quality", "Only run the brute force"]
+  ans: 1
+  sol: With many valid answers, text equality gives false failures. A checker takes the input and one output and checks validity, plus optimality when the problem asks for it, so only truly wrong answers are flagged.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: mcq
+  q: A solution to "largest sum of a consecutive run of at least one number" starts with best = 0. Which smallest failing array would a stress test shrink to?
+  opts: ["[1]", "[-1]", "[0]", "[1, -1]"]
+  ans: 1
+  sol: With one element, the true answer is that element. For [-1] the solution returns 0 because best never goes below its start, but the true answer is -1. The others give correct answers, since 0 or a positive value is already the right result. Shrinking to [-1] points straight at the initial value.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A random failing test has 30 elements. Describe a shrinking procedure that reaches a small failing test, and say how you know when to stop.
+  sol: |
+    Define bad(a) as "brute and fast disagree on a". Repeat the following until a full pass changes nothing.
+
+    1. For each position, try deleting that element. Keep the deletion if the array is still non-empty and bad still holds.
+    2. For each element, try replacing it by a smaller value (half of it, or 0, or 1). Keep the change if bad still holds.
+
+    Stop when a complete pass makes no change: no single deletion or reduction preserves the failure, so the case is locally minimal. It is not necessarily the smallest possible, but it is usually 1 to 4 elements, small enough to trace by hand. Try the removal of blocks first (halves, quarters) if the array is very long, for speed.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A solution sums up to 200,000 values, each up to 10^9. In a language with 32-bit signed integers (largest value 2^31 - 1), the biggest possible sum is about how many thousand times larger than that limit?
+  ask: Times larger
+  unit: thousand
+  ans: 93.13
+  tol: 0.1
+  verify: "2e14/(2**31-1)/1e3"
+  sol: The biggest sum is $2\times10^5 \times 10^9 = 2\times10^{14}$. The limit is $2^{31}-1 \approx 2.147\times10^9$. The ratio is about $9.31\times10^4$, which is 93.13 thousand. Python hides this, but a port to a 32-bit type would overflow, so such solutions need 64-bit integers.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: A solution fails only when two neighbouring elements are equal and both are the maximum of the array. Design generator parameters so that this appears often, and explain your reasoning with numbers.
+  sol: |
+    Take n between 2 and 6 and values between 0 and 2. With 3 possible values, any two neighbours are equal with probability 1/3, and they are both the maximum often enough: for n = 3 the chance of this specific shape is roughly 10 to 15 percent. So about 1 test in 8 triggers it, and 200 tests make a miss very unlikely.
+
+    With values up to 10^9 the same event has chance about $10^{-9}$ per neighbour pair, so it would effectively never occur in a lifetime of tests. The lesson is that the generator range controls how rare the bug is. To be safe, run several generator modes: tiny range, all equal, sorted, random large, chosen at random per test.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A bug triggers only when a length-3 array has all three elements equal, and elements are drawn uniformly from 1 to 10. How many random tests are needed to catch it with at least 99 percent probability? (Use the smallest whole number.)
+  ask: Tests needed
+  unit: tests
+  ans: 459
+  tol: 0.5
+  verify: "Math.ceil(Math.log(0.01)/Math.log(0.99))"
+  sol: |
+    There are $10^3$ arrays, of which 10 have all three equal, so $p = 10/1000 = 0.01$. The chance that $T$ tests all miss is $(1-p)^T = 0.99^T$. We need $0.99^T \le 0.01$, so $T \ge \ln 0.01 / \ln 0.99 \approx 458.2$. The smallest whole number is 459. A biased generator that forces equal elements half the time would need only about 7 tests.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: Your fast solution and brute force disagree on a shrunk case, and when you hand-compute the answer from the statement, it matches neither. List the steps you take and one way to reduce the chance it happens again.
+  sol: |
+    1. Re-read the statement slowly, looking for strict versus non-strict, inclusive versus exclusive ranges, 0-based versus 1-based, and what happens for empty or repeated input.
+    2. Recompute the shrunk case by hand again, explaining each step in writing, and compare to both programs line by line to find where each diverges from your hand computation.
+    3. Write a second brute force a different way (for example recursion instead of loops, or all subsets instead of all intervals) and see whether it matches your hand answer.
+    4. Add assertions of invariants (answer within known bounds) to both programs.
+    5. If the statement remains ambiguous, the samples are the only authority: test the programs on every sample first.
+
+    To prevent a repeat: test the brute force against the statement's samples before using it as an oracle, and keep a list of past misreadings.
+  check: none
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A solution is correct but takes 3 seconds on its worst case, while the limit is 2 seconds. The worst case is a sorted array of 200,000 numbers that makes a naive approach quadratic in a hidden step. If randomly shuffling the input first brings the cost down by a factor of 4, how many seconds does it take then?
+  ask: Seconds
+  unit: s
+  ans: 0.75
+  tol: 0.01
+  verify: "3/4"
+  sol: A factor of 4 less than 3 seconds is $3/4 = 0.75$ seconds, safely inside the limit. The point is that a random stress test never produces a sorted array of maximum size, so only a worst-case generator reveals this problem. Shuffling before processing removes the adversarial order.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    You must stress test a solution to a graph problem, "find a shortest path from vertex 1 to vertex n in a weighted graph" (any shortest path is accepted). Design the full test: generator, oracle, checker and shrinking. Say which edge cases the generator must be able to produce.
+  sol: |
+    **Generator.** Pick n from 2 to 6 and edge count from 0 to 10. Random edges with weights 0 to 3 (small, so ties are common), allowing repeated edges and self-loops with some probability; sometimes force a path graph, a complete graph, and a graph where vertex n is unreachable.
+
+    **Oracle.** Try every simple path from 1 to n with a recursive search (tiny n), tracking the best total weight; also report unreachable. This is plainly correct and costs at most a few hundred steps.
+
+    **Checker.** Given the contestant's output (a path), check that it starts at 1 and ends at n, that every consecutive pair is joined by an edge, that the total weight equals the oracle's best, and that unreachable cases print the agreed marker. Never compare paths as text, since several are valid.
+
+    **Shrinking.** Try deleting each edge, then each vertex (relabelling the rest so n is still the last vertex), then reducing weights toward 0 or 1, keeping any change after which the checker still fails. Stop when no single change works.
+
+    **Edge cases required:** n = 2, no edges, unreachable target, zero-weight edges, parallel edges with different weights, self-loops, two shortest paths of equal weight, and a graph where the shortest path has more edges than a heavier one.
+  check: none

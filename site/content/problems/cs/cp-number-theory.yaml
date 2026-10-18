@@ -1,0 +1,129 @@
+# Modular arithmetic, sieves and combinatorics. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: What is the last digit of 7 multiplied by itself 2026 times (7 to the power 2026)?
+  ask: Last digit
+  unit: ""
+  ans: 9
+  tol: 0.1
+  verify: "[7,9,3,1][(2026-1)%4]"
+  sol: |
+    The last digit of a number is its remainder mod 10. Powers of 7 end in 7, 9, 3, 1, 7, 9, 3, 1, ... a cycle of length 4. Power number $k$ ends in the entry at position $(k-1) \bmod 4$ of $[7, 9, 3, 1]$. For $k = 2026$: $2025 \bmod 4 = 1$, which is the entry 9.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which operation cannot be done by simply working on the remainders and taking the remainder again at the end?
+  opts: ["Adding two numbers", "Multiplying two numbers", "Dividing one number by another", "Subtracting one number from another"]
+  ans: 2
+  sol: |
+    Add, subtract and multiply all commute with taking the remainder. Division does not: 6 divided by 3 is 2, but with remainders mod 5 we would be dividing 1 by 3, which is not a whole number. We must multiply by a modular inverse instead.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A floor is 1071 cm long and 462 cm wide. What is the side, in cm, of the largest square tile that covers it exactly with no cutting?
+  ask: Tile side
+  unit: cm
+  ans: 21
+  tol: 0.1
+  verify: (function g(a,b){return b?g(b,a%b):a})(1071,462)
+  sol: |
+    The side must divide both lengths, so the largest is the gcd. Euclid: $\gcd(1071, 462) = \gcd(462, 147) = \gcd(147, 21) = \gcd(21, 0) = 21$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: How many prime numbers are there below 100? A sieve finds them by crossing out multiples of 2, 3, 5 and 7 only. Why those four, and what is the count?
+  ask: Primes below 100
+  unit: ""
+  ans: 25
+  tol: 0.1
+  verify: "(()=>{const s=Array(100).fill(1);s[0]=0;s[1]=0;for(let i=2;i*i<100;i++)if(s[i])for(let j=i*i;j<100;j+=i)s[j]=0;return s.reduce((a,b)=>a+b)})()"
+  sol: |
+    Any composite number below 100 has a prime factor of at most $\sqrt{100} = 10$, so crossing out multiples of 2, 3, 5 and 7 removes every composite. The survivors are 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97: 25 primes.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You get q = 100000 queries, each giving two numbers x and y, and must print x divided by y modulo 1000000007 (the answer is the residue r with r times y leaving remainder x). Describe the method, its cost, and the one input where it fails.
+  sol: |
+    Since 1000000007 is prime, the inverse of $y$ is $y^{p-2} \bmod p$, found by fast power in about 30 squarings. Each query is `x * pow(y, MOD-2, MOD) % MOD`: $O(\log p)$ per query, about $3\times10^6$ steps in total.
+
+    It fails when $y$ is a multiple of the modulus (for example $y = 0$): then $y \equiv 0$ and no inverse exists, so the quotient is undefined and the problem statement usually promises it will not happen. If the same $y$ repeats, cache its inverse.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Compute the number of ways to choose 500 of 1000 items, written C(1000, 500), modulo 1000000007. Describe how a program does this with tables for many queries, and give the value.
+  ask: C(1000,500) mod 1000000007
+  unit: ""
+  ans: 159835829
+  tol: 0.1
+  verify: "(()=>{let r=1n;for(let i=1n;i<=500n;i++){r=r*(500n+i)/i}return Number(r%1000000007n)})()"
+  sol: |
+    Precompute `fact[i]` = $i! \bmod p$ and `inv[i]` = the inverse of $i!$, using one modular power for `inv[N]` and `inv[i-1] = inv[i]*i` after that. Then $\binom{n}{r} = \text{fact}[n]\cdot\text{inv}[r]\cdot\text{inv}[n-r] \bmod p$, one lookup trio per query. For $n = 1000$, $r = 500$ the value is 159835829. This was computed with a program, not by hand, and cross-checked with Python's `math.comb(1000, 500) % (10**9 + 7)`.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: text
+  q: A task gives 100000 numbers, each up to 1000000, and asks for the number of divisors of each. Say which structure you build once, how you get each answer, and the total cost compared with trial division.
+  sol: |
+    Build a smallest-prime-factor sieve up to $10^6$ once (about $10^6 \log\log 10^6$ steps). For each number, peel off its smallest prime factor repeatedly to get the exponents $e_1, e_2, \dots$; the divisor count is $(e_1+1)(e_2+1)\cdots$. Each number takes at most about 20 steps (since $2^{20} > 10^6$), so about $2\times10^6$ steps for all queries.
+
+    Trial division up to $\sqrt x$ takes up to 1000 steps per number, about $10^8$ in total: borderline in Python, comfortable in C++. The sieve wins by a factor of fifty.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: num
+  q: How many divisors does 720720 have? It equals 2^4 times 3^2 times 5 times 7 times 11 times 13.
+  ask: Number of divisors
+  unit: ""
+  ans: 240
+  tol: 0.1
+  verify: "(()=>{let c=0;for(let i=1;i<=720720;i++)if(720720%i===0)c++;return c})()"
+  sol: |
+    Each divisor chooses an exponent for every prime independently: 0 to 4 for the 2s (5 choices), 0 to 2 for the 3s (3 choices), and 0 or 1 for each of 5, 7, 11, 13 (2 choices each). The count is $5 \cdot 3 \cdot 2 \cdot 2 \cdot 2 \cdot 2 = 240$. The verification loop counts divisors by brute force.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: How many whole numbers from 1 to 1000000 are divisible by at least one of 2, 3, 5 or 7? Use the idea that the numbers coprime to 210 form a repeating pattern, then give the count.
+  ask: Count
+  unit: ""
+  ans: 771429
+  tol: 0.1
+  verify: "(()=>{let c=0;for(let i=1;i<=1000000;i++)if(i%2===0||i%3===0||i%5===0||i%7===0)c++;return c})()"
+  sol: |
+    Count the complement instead: numbers sharing no factor with $210 = 2\cdot3\cdot5\cdot7$. In every block of 210 consecutive numbers exactly $\varphi(210) = 1\cdot2\cdot4\cdot6 = 48$ are coprime to 210. Since $1000000 = 4761 \cdot 210 + 190$, we get $4761 \cdot 48 = 228528$ in the full blocks plus the coprime numbers among the last 190, which are 43, so 228571 coprime numbers in all. The answer is $1000000 - 228571 = 771429$. (The 43 comes from a direct count; inclusion-exclusion gives the same total, and the verify expression checks it by brute force.)
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: A problem asks for division modulo a composite number m = 1000000 (not prime). Explain why the power p minus 2 trick breaks, how to find an inverse that works, and when no inverse exists.
+  sol: |
+    Fermat's little theorem needs a prime modulus. With a composite $m$ the number $b^{m-2}$ is generally not an inverse. For example, mod 10 the inverse of 3 is 7 (since 21 leaves 1), but $3^{8} = 6561 \equiv 1$, not 7.
+
+    The inverse of $b$ mod $m$ exists exactly when $\gcd(b, m) = 1$. Then the extended Euclid algorithm returns integers $x, y$ with $bx + my = 1$, so $x \bmod m$ is the inverse. In Python, `pow(b, -1, m)` does this and raises `ValueError` when the gcd is more than 1 (for example no inverse of 2 mod 10). When there is no inverse, divide out the common factor before reducing, or track the exponent of the offending prime separately.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: The numbers 1, 2, 3, ..., 2026 are written on a board. You repeatedly erase any two numbers a and b and write their difference |a - b| in their place, until one number remains. Can the last number be 0? Prove your answer without any search.
+  sol: |
+    No. Look at the parity of the **sum** of the numbers on the board. Replacing $a$ and $b$ by $|a-b|$ changes the sum by $a + b - |a-b|$, which is either $2b$ or $2a$, an even number. So the parity of the sum never changes.
+
+    At the start the sum is $1 + 2 + \dots + 2026 = \tfrac{2026 \cdot 2027}{2} = 1013 \cdot 2027$, a product of two odd numbers, so odd. The final single number equals the final sum, so it must be odd, and therefore it cannot be 0. The invariant (the parity of the sum) rules out the answer without exploring any sequence of moves.
+  check: none

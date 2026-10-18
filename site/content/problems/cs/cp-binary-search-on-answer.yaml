@@ -1,0 +1,129 @@
+# Binary search on the answer. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: 'The answer is a whole number between 1 and 1,000,000,000 and a yes-or-no test flips once. At most how many tests does binary search need?'
+  ask: Tests
+  unit: ""
+  ans: 30
+  tol: 0.01
+  verify: ceil(log2(1e9))
+  sol: Each test halves the range, so we need the smallest $k$ with $2^k \ge 10^9$. Since $2^{29} \approx 5.4\times10^8$ and $2^{30} \approx 1.07\times10^9$, $k = 30$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: 'Which yes-or-no test is monotone in x (it flips at most once as x grows)?'
+  opts: ["A truck of capacity x can deliver all parcels in at most 5 trips", "x divides the total weight exactly", "x is a prime number"]
+  ans: 0
+  sol: A bigger truck can copy any plan of a smaller one, so "works" stays true as capacity grows. Being a divisor or a prime goes back and forth (6 divides 12, 7 does not, 8 does not, 12 does), so halving would be misled.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: 'Parcels of 1, 2, 3, ..., 10 kg must be carried in this order, a trip takes whatever fits, and only 5 trips are allowed. What is the smallest truck capacity in kg?'
+  ask: Capacity
+  unit: kg
+  ans: 15
+  tol: 0.01
+  verify: '(()=>{const w=[1,2,3,4,5,6,7,8,9,10],D=5;const ok=c=>{let d=1,l=0;for(const x of w){if(l+x>c){d++;l=0}l+=x}return d<=D};let c=Math.max(...w);while(!ok(c))c++;return c})()'
+  sol: |
+    With capacity 15 the trips are $\{1,2,3,4,5\}=15$, $\{6,7\}=13$, $\{8\}$, $\{9\}$, $\{10\}$, which is 5 trips. With 14 the first trip is $\{1,2,3,4\}$ = 10, then $\{5,6\}$ = 11, $\{7\}$ (adding 8 gives 15, too much), $\{8\}$, $\{9\}$, $\{10\}$, which is 6 trips, too many. So the switch is at 15. Binary search finds it in $\lceil\log_2(55 - 10 + 1)\rceil = 6$ tests.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: 'Stalls stand at positions 1, 2, 4, 8, 9 and 3 cows must be placed so that the smallest distance between any two cows is as large as possible. What is that largest smallest distance?'
+  ask: Distance
+  unit: ""
+  ans: 3
+  tol: 0.01
+  verify: '(()=>{const p=[1,2,4,8,9],k=3;let best=0;for(let d=0;d<=8;d++){let c=1,last=p[0];for(const q of p.slice(1)){if(q-last>=d){c++;last=q}}if(c>=k)best=d}return best})()'
+  sol: With distance 3 the greedy walk places cows at stalls 1, 4 and 8. With distance 4 it places cows at 1 and 8, and no stall is at least 4 after 8, so only 2 cows fit. The test is Yes up to 3 and No from 4, so the answer is 3.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: 'Piles of 30, 11, 23, 4 and 20 bananas must all be eaten within 6 hours. Each hour you pick one pile and eat up to s bananas from it (if the pile has fewer, you finish it and waste the rest of the hour). What is the smallest whole s that works?'
+  ask: Speed
+  unit: bananas per hour
+  ans: 23
+  tol: 0.01
+  verify: '(()=>{const a=[30,11,23,4,20],h=6;let s=1;while(a.reduce((t,x)=>t+Math.ceil(x/s),0)>h)s++;return s})()'
+  sol: |
+    The hours needed at speed $s$ are $\sum \lceil a_i / s \rceil$. At $s = 23$ they are $2 + 1 + 1 + 1 + 1 = 6$, which fits. At $s = 22$ they are $2 + 1 + 2 + 1 + 1 = 7$, which does not. The count never increases as $s$ grows, so the test is monotone and the answer is 23.
+    ```python
+    first_true(1, max(a), lambda s: sum(-(-x // s) for x in a) <= 6)   # 23
+    ```
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: 'The array [7, 2, 5, 10, 8] must be cut into 2 non-empty consecutive parts. What is the smallest possible value of the larger part-sum?'
+  ask: Largest part-sum
+  unit: ""
+  ans: 18
+  tol: 0.01
+  verify: '(()=>{const a=[7,2,5,10,8],m=2;const ok=c=>{let d=1,l=0;for(const x of a){if(l+x>c){d++;l=0}l+=x}return d<=m};let c=Math.max(...a);while(!ok(c))c++;return c})()'
+  sol: The best cut is $[7, 2, 5]$ and $[10, 8]$, with sums 14 and 18, so the larger is 18. Cut as $[7,2,5,10]$ and $[8]$ gives 24, and $[7,2]$ and $[5,10,8]$ gives 23. This is the parcel problem in disguise, with "capacity" as the largest part-sum, and the same check works. The search runs over $[10, 32]$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: 'A multiplication table has 4 rows and 5 columns (entries i × j for i from 1 to 4, j from 1 to 5, 20 entries in all). What is the 10th smallest entry, counting repeats?'
+  ask: Entry
+  unit: ""
+  ans: 6
+  tol: 0.01
+  verify: '(()=>{const v=[];for(let i=1;i<=4;i++)for(let j=1;j<=5;j++)v.push(i*j);v.sort((a,b)=>a-b);return v[9]})()'
+  sol: For $x = 5$ the count of entries $\le x$ is $\min(5,5)+\min(5,2)+\min(5,1)+\min(5,1) = 5+2+1+1 = 9$, which is less than 10. For $x = 6$ it is $5+3+2+1 = 11 \ge 10$. So the smallest $x$ with count $\ge 10$ is 6.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: You are given n numbers and a length k. Find the largest average among all stretches of at least k consecutive numbers, to 6 decimals, in O(n log(range)). Which pattern is this, and how does the check work?
+  sol: |
+    Binary search on the answer with real values. Test: "is there a stretch of length at least $k$ with average at least $x$?" Subtract $x$ from every number: the question becomes whether some stretch of length $\ge k$ has sum $\ge 0$. With the prefix sums $P$ of the shifted numbers, scan $r$ from $k$ up and keep the smallest $P_l$ for $l \le r - k$; if $P_r - \min P_l \ge 0$ the answer is yes.
+
+    The test is monotone: if some stretch has average at least $x$, it also has average at least any smaller number. Search $x$ between the minimum and maximum of the numbers with 50 to 100 halvings. Each check is $O(n)$, so the total is $O(n \cdot 100)$.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: There are n ≤ 100,000 numbers. Find the k-th smallest of the absolute differences |a_i - a_j| over all pairs i < j, without listing the n(n-1)/2 pairs. Give the method and its cost.
+  sol: |
+    Sort the numbers. Binary search on the distance $x$ between 0 and $\max - \min$. Test: "at least $k$ pairs have distance $\le x$". Count the pairs with two pointers: for each right index $j$, advance the left pointer $i$ while $a_j - a_i > x$; then $j - i$ pairs end at $j$. The count is monotone in $x$, and the smallest $x$ with count $\ge k$ is the $k$-th smallest distance.
+
+    Cost: sorting $O(n \log n)$ plus about 30 tests of $O(n)$, so $O(n \log n + n \log W)$ where $W$ is the largest difference. Listing the pairs would need about $5\times10^9$ entries.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: 'Stalls stand at positions 2, 3, 7, 11, 15, 22, 30 and 4 cows must be placed. What is the largest possible smallest distance between two cows?'
+  ask: Distance
+  unit: ""
+  ans: 8
+  tol: 0.01
+  verify: '(()=>{const p=[2,3,7,11,15,22,30],k=4;let best=0;for(let d=0;d<=28;d++){let c=1,last=p[0];for(const q of p.slice(1)){if(q-last>=d){c++;last=q}}if(c>=k)best=d}return best})()'
+  sol: With distance 8 the greedy walk picks 2, 11 (the first stall at least 8 after 2), 22 (at least 8 after 11) and 30, which is 4 cows, so it works. With distance 9 the walk picks 2, 11, 22 and then needs a stall at 31 or more, so only 3 cows fit. The test is Yes up to 8 and No from 9, so the answer is 8. Binary search over $[0, 28]$ needs 5 tests.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: 'Parcels are n = 50,000 with weights up to 500, and D days are allowed. (a) Prove that the check "capacity c is enough" is monotone. (b) Estimate the number of steps of the binary-search solution and compare with a DP over splits that costs about n² · D.'
+  sol: |
+    (a) Suppose some plan ships all parcels in at most $D$ trips using capacity $c$. The same plan is still valid with capacity $c' > c$, because every trip that fit in $c$ also fits in $c'$. So "enough" at $c$ implies "enough" at $c'$: the answers are No then Yes. (The greedy check finds a plan with the fewest trips for a given capacity, because taking as many parcels as possible in each trip never forces more trips later: that is an exchange argument, the topic of the next lesson.)
+
+    (b) The total weight is at most $50{,}000 \times 500 = 2.5\times10^7$, so the search range has about $2.5\times10^7$ values and needs $\lceil\log_2 (2.5\times10^7)\rceil = 25$ tests. Each test is one pass of $n = 5\times10^4$ steps: about $1.25\times10^6$ steps in all. The DP would need about $n^2 D$, which for $D = 10$ is $2.5\times10^{10}$, thousands of times more.
+  check: none
