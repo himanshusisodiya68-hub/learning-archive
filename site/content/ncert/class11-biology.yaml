@@ -1,0 +1,101 @@
+# NCERT Biology, Class 11 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 11
+subject: bio
+name: Biology
+code: kebo1
+chapters:
+- n: 1
+  title: The Living World
+  pdf: kebo101
+  leaves:
+  - bio/the-living-world
+- n: 2
+  title: Biological Classification
+  pdf: kebo102
+  leaves:
+  - bio/biological-classification
+- n: 3
+  title: Plant Kingdom
+  pdf: kebo103
+  leaves:
+  - bio/plant-kingdom
+- n: 4
+  title: Animal Kingdom
+  pdf: kebo104
+  leaves:
+  - bio/animal-kingdom
+- n: 5
+  title: Morphology of Flowering Plants
+  pdf: kebo105
+  leaves:
+  - bio/morphology-of-flowering-plants
+- n: 6
+  title: Anatomy of Flowering Plants
+  pdf: kebo106
+  leaves:
+  - bio/anatomy-of-flowering-plants
+- n: 7
+  title: Structural Organisation in Animals
+  pdf: kebo107
+  leaves:
+  - bio/tissues
+- n: 8
+  title: 'Cell: The Unit of Life'
+  pdf: kebo108
+  leaves:
+  - bio/cell-the-unit-of-life
+- n: 9
+  title: Biomolecules
+  pdf: kebo109
+  leaves:
+  - bio/biomolecules
+- n: 10
+  title: Cell Cycle and Cell Division
+  pdf: kebo110
+  leaves:
+  - bio/cell-cycle-and-division
+- n: 11
+  title: Photosynthesis in Higher Plants
+  pdf: kebo111
+  leaves:
+  - bio/photosynthesis
+- n: 12
+  title: Respiration in Plants
+  pdf: kebo112
+  leaves:
+  - bio/respiration-in-plants
+- n: 13
+  title: Plant Growth and Development
+  pdf: kebo113
+  leaves:
+  - bio/plant-growth
+- n: 14
+  title: Breathing and Exchange of Gases
+  pdf: kebo114
+  leaves:
+  - bio/breathing
+- n: 15
+  title: Body Fluids and Circulation
+  pdf: kebo115
+  leaves:
+  - bio/circulation
+- n: 16
+  title: Excretory Products and their Elimination
+  pdf: kebo116
+  leaves:
+  - bio/excretion
+- n: 17
+  title: Locomotion and Movement
+  pdf: kebo117
+  leaves:
+  - bio/locomotion
+- n: 18
+  title: Neural Control and Coordination
+  pdf: kebo118
+  leaves:
+  - bio/neural-control
+- n: 19
+  title: Chemical Coordination and Integration
+  pdf: kebo119
+  leaves:
+  - bio/chemical-coordination

@@ -1,0 +1,48 @@
+# NCERT Mathematics, Class 11 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 11
+subject: mat
+name: Mathematics
+code: kemh1
+chapters:
+- n: 1
+  title: Sets
+  pdf: kemh101
+- n: 2
+  title: Relations and Functions
+  pdf: kemh102
+- n: 3
+  title: Trigonometric Functions
+  pdf: kemh103
+- n: 4
+  title: Complex Numbers and Quadratic Equations
+  pdf: kemh104
+- n: 5
+  title: Linear Inequalities
+  pdf: kemh105
+- n: 6
+  title: Permutations and Combinations
+  pdf: kemh106
+- n: 7
+  title: Binomial Theorem
+  pdf: kemh107
+- n: 8
+  title: Sequences and Series
+  pdf: kemh108
+- n: 9
+  title: Straight Lines
+  pdf: kemh109
+- n: 10
+  title: Conic Sections
+  pdf: kemh110
+- n: 11
+  title: Introduction to Three Dimensional Geometry
+  pdf: kemh111
+- n: 12
+  title: Limits and Derivatives
+  pdf: kemh112
+- n: 13
+  title: Statistics
+  pdf: kemh113
+- n: 14
+  title: Probability
+  pdf: kemh114

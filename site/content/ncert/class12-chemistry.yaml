@@ -1,0 +1,57 @@
+# NCERT Chemistry (Parts 1 and 2), Class 12 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 12
+subject: chem
+name: Chemistry (Parts 1 and 2)
+code: lech
+chapters:
+- n: 1
+  title: Solutions
+  pdf: lech101
+  leaves:
+  - chem/solutions
+- n: 2
+  title: Electrochemistry
+  pdf: lech102
+  leaves:
+  - chem/electrochemistry
+- n: 3
+  title: Chemical Kinetics
+  pdf: lech103
+  leaves:
+  - chem/rate-laws
+  - chem/activation-energy
+- n: 4
+  title: The d- and f-Block Elements
+  pdf: lech104
+  leaves:
+  - chem/d-and-f-block
+- n: 5
+  title: Coordination Compounds
+  pdf: lech105
+  leaves:
+  - chem/coordination-compounds
+- n: 6
+  title: Haloalkanes and Haloarenes
+  pdf: lech201
+  leaves:
+  - chem/haloalkanes
+- n: 7
+  title: Alcohols, Phenols and Ethers
+  pdf: lech202
+  leaves:
+  - chem/alcohols-phenols-ethers
+- n: 8
+  title: Aldehydes, Ketones and Carboxylic Acids
+  pdf: lech203
+  leaves:
+  - chem/carbonyl-compounds
+- n: 9
+  title: Amines
+  pdf: lech204
+  leaves:
+  - chem/amines
+- n: 10
+  title: Biomolecules
+  pdf: lech205
+  leaves:
+  - chem/biomolecules-chem

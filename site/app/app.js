@@ -37,11 +37,12 @@
     chapter: '<path d="M5 3h12a2 2 0 0 1 2 2v16l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2z"/>',
     bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
     alert: '<path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5v.01"/>',
+    code: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
     chev: '<path d="M9 5l7 7-7 7"/>'
   };
   const ico = (name, cls = '') => `<svg viewBox="0 0 24 24" class="ic ${cls}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.lesson}</svg>`;
   const fillIcons = (root = document) => root.querySelectorAll('[data-icon]').forEach(el => { if (!el.firstElementChild) el.innerHTML = ico(el.dataset.icon); });
-  const SUBJ_ICON = { phy: 'atom', mat: 'pi', chem: 'flask', bio: 'leaf', eng: 'book' };
+  const SUBJ_ICON = { phy: 'atom', mat: 'pi', chem: 'flask', bio: 'leaf', eng: 'book', cs: 'code' };
   const SHORT = { 'Oscillations and waves': 'Waves', 'Thermal physics': 'Thermal', 'Electricity and magnetism': 'E & M', 'Modern physics': 'Modern', 'Tools of the trade': 'Tools', 'Data and chance': 'Data', 'Olympiad toolkit': 'Olympiad', 'Trigonometry': 'Trig' };
   const RING = { phy: 'Dashed ring: energy conservation runs through every pillar.', mat: 'Dashed ring: proof from definitions links every pillar.' };
 
@@ -56,6 +57,8 @@
     oly: ['Olympiad', 'NSEP, INPhO and beyond', 'oly']
   };
   const LVL_ORDER = Object.keys(LEVELS);
+  const CS_LEVELS = { found: ['Warm-up', 'Check the idea itself', 'found'], board: ['Practice', 'Apply it once', 'board'], main: ['Interview', 'Typical coding-interview level', 'main'], adv: ['Advanced', 'Several ideas combined', 'adv'], oly: ['System design', 'SDE-3 level: design at scale', 'oly'] };
+  const lvInfo = (lv, sid) => (sid === 'cs' && CS_LEVELS[lv]) || LEVELS[lv];
   const DEPTH = [[1, 'Class 10'], [2, 'Class 12 · JEE Main'], [3, 'JEE Adv. · Irodov'], [4, 'Olympiad']];
   const LV_SHORT = { 1: 'C10', 2: 'C12', 3: 'Adv', 4: 'Oly' };
 
@@ -93,11 +96,11 @@
   /* ================= PROGRESS (db per viewer, browser copy as fallback) ================= */
   const LS = 'la-progress-v1';
   const today = () => Math.floor(Date.now() / 86400000);
-  let PG = { v: 1, updated: 0, problems: {}, cards: {}, notes: {}, lessons: {}, last: null };
+  let PG = { v: 1, updated: 0, problems: {}, cards: {}, notes: {}, lessons: {}, last: null, days: {} };
   try { const raw = localStorage.getItem(LS); if (raw) PG = Object.assign(PG, JSON.parse(raw)); } catch (e) {}
   let dbDoc = null, saveTimer = null, saving = false, pendingSave = false;
   function touch() {
-    PG.updated = Date.now();
+    PG.updated = Date.now(); PG.days = PG.days || {}; PG.days[today()] = (PG.days[today()] || 0) + 1;
     try { localStorage.setItem(LS, JSON.stringify(PG)); } catch (e) {}
     clearTimeout(saveTimer); saveTimer = setTimeout(pushRemote, 1500);
     updateBadge();
@@ -158,6 +161,8 @@
     if (PG.lessons[key]) return .25;
     return 0;
   }
+  const streak = () => { const d = PG.days || {}; let n = 0, t = today(); if (!d[t]) t--; while (d[t]) { n++; t--; } return n; };
+  const litLeaves = () => TREE.subjects.reduce((a, s) => a + (s.pillars || []).reduce((b, p) => b + p.branches.reduce((c, br) => c + br.leaves.filter(l => mastery(`${s.id}/${l.id}`) >= .5).length, 0), 0), 0);
   const branchMastery = b => { const ls = b.leaves; return ls.reduce((s, l, i) => s + mastery(`${b._sid}/${l.id}`), 0) / ls.length; };
   const pillarMastery = p => { const bs = p.branches; return bs.reduce((s, b) => s + branchMastery(b), 0) / bs.length; };
 
@@ -219,8 +224,8 @@
     $('stats').innerHTML = [
       [Object.keys(PG.lessons).length, `of ${live.length} lessons opened`],
       [solved, 'problems solved'],
-      [Object.keys(PG.cards).length, 'ideas memorised'],
-      [allLeaves.length, 'ideas mapped so far']
+      [streak() + (streak() === 1 ? ' day' : ' days'), 'learning streak'],
+      [litLeaves(), `of ${allLeaves.length} nodes lit`]
     ].map(([n, t]) => `<div><b>${n}</b><span>${t}</span></div>`).join('');
     $('live-count').textContent = `${live.length} lessons live`;
     $('subj-list').innerHTML = TREE.subjects.map(s => {
@@ -283,7 +288,8 @@
 
   /* ================= LEARN ================= */
   /* Two levels only: a subject page (pillar cards) and a pillar page (each branch once, as a numbered learning path). */
-  const lvlTag = l => `<span class="lvl ${l === 'JEE' ? 'jee' : l === 'OLY' ? 'oly' : ''}">${l === 'OLY' ? 'Olympiad' : l === 'JEE' ? 'JEE' : 'Class ' + String(l).slice(1)}</span>`;
+  const TAGS = { OLY: 'Olympiad', JEE: 'JEE', BEG: 'Beginner', INT: 'Intermediate', ADV: 'Advanced', SDE: 'SDE-3', LIFE: 'Everyday' };
+  const lvlTag = l => `<span class="lvl ${l === 'JEE' || l === 'ADV' ? 'jee' : l === 'OLY' || l === 'SDE' ? 'oly' : ''}">${TAGS[l] || 'Class ' + String(l).slice(1)}</span>`;
   const leavesOf = p => p.branches.flatMap(b => b.leaves);
   const countLive = ls => ls.filter(l => l.live).length;
   const avgMastery = (sid, ls) => ls.length ? ls.reduce((a, l) => a + mastery(`${sid}/${l.id}`), 0) / ls.length : 0;
@@ -332,6 +338,7 @@
           <div class="more-grid"><div><div class="what">${rest}</div>${s.split ? `<p class="split"><b>How it splits.</b> ${escHTML(s.split)}</p>` : ''}${s.linksHtml ? `<div class="links">${s.linksHtml}</div>` : ''}</div>${mapSVG(s)}</div></details></div>
       <div class="tv-stats">${ring(pct, 76)}<div><b>${live}</b> of ${all.length} lessons written</div><div class="muted">${s.pillars.length} pillars · ${s.pillars.reduce((a, p) => a + p.branches.length, 0)} branches</div></div>
     </div>
+    ${treeViz(s)}
     <div class="sec-title">Pillars <span class="eyebrow">open one to see its learning path</span></div>
     <div class="pil-grid">${s.pillars.map(p => { const ls = leavesOf(p), n = countLive(ls), m = Math.round(avgMastery(s.id, ls) * 100);
       return `<button class="pil-card s-${s.id} ${n ? '' : 'soon'}" data-goto-pillar="${p.id}">
@@ -339,6 +346,31 @@
         <span class="pc-name">${escHTML(p.name)}</span><span class="pc-tag">${escHTML(p.tag || '')}</span>
         <span class="pc-br">${p.branches.map(b => `<span class="${countLive(b.leaves) ? 'on' : ''}">${escHTML(b.name)}</span>`).join('')}</span>
         <span class="pc-foot"><span class="meter"><i style="width:${m}%"></i></span><span>${m}%</span></span></button>`; }).join('')}</div>`;
+  }
+  /* Knowledge tree: trunk = subject, limbs = pillars, twigs = branches, dots = leaves (lessons). A leaf glows with mastery; a twig lights up when all its lessons are mastered. */
+  function treeViz(s) {
+    const W = 800, O = [400, 410], P = s.pillars, nb = P.reduce((a, p) => a + p.branches.length, 0), span = 168 * Math.PI / 180;
+    const pt = (r, a) => [O[0] + r * Math.sin(a), O[1] - r * Math.cos(a)], f = n => n.toFixed(1);
+    let k = 0, g = '', leaves = '', labels = '', litB = 0;
+    P.forEach((p, pi) => {
+      const a0 = -span / 2 + span * k / nb, a1 = -span / 2 + span * (k + p.branches.length) / nb, ap = (a0 + a1) / 2, F = pt(120, ap);
+      const pLit = p.branches.every(b => b.leaves.every(l => mastery(`${s.id}/${l.id}`) >= .75));
+      g += `<path class="tz-limb ${pLit ? 'lit' : ''}" d="M${O[0]} ${O[1] - 60} Q${f(pt(70, ap * .6)[0])} ${f(pt(70, ap * .6)[1])} ${f(F[0])} ${f(F[1])}"/>`;
+      const L = pt(132, ap); labels += `<text class="tz-pl" x="${f(L[0])}" y="${f(L[1] - 6)}" text-anchor="middle" data-goto-pillar="${p.id}">${escHTML(SHORT[p.name] || p.name)}</text>`;
+      p.branches.forEach(b => {
+        const ab = -span / 2 + span * (k + .5) / nb, T = pt(390, ab), M = pt(255, ab); k++;
+        const ms = b.leaves.map(l => mastery(`${s.id}/${l.id}`)), lit = ms.length && ms.every(m => m >= .75); if (lit) litB++;
+        g += `<path class="tz-twig ${lit ? 'lit' : ''}" d="M${f(F[0])} ${f(F[1])} Q${f(M[0])} ${f(M[1])} ${f(T[0])} ${f(T[1])}"><title>${escHTML(p.name)} › ${escHTML(b.name)}</title></path>`;
+        b.leaves.forEach((l, i) => {
+          const t = .3 + .7 * (i + 1) / b.leaves.length, r = 120 + (390 - 120) * t, side = i % 2 ? 1 : -1, c = pt(r, ab);
+          const x = c[0] + side * 7 * Math.cos(ab), y = c[1] + side * 7 * Math.sin(ab), m = mastery(`${s.id}/${l.id}`);
+          leaves += `<circle class="tz-leaf ${l.live ? 'live' : ''} ${m >= .75 ? 'lit' : m > 0 ? 'warm' : ''}" cx="${f(x)}" cy="${f(y)}" r="${l.live ? 5 : 3.5}" ${l.live ? `data-open-leaf="${s.id}/${l.id}"` : ''}><title>${escHTML(l.name)}${l.live ? '' : ' (not written yet)'}</title></circle>`;
+        });
+      });
+    });
+    return `<div class="tz s-${s.id}"><div class="tz-h"><b>Your knowledge tree</b><span>${litB} of ${nb} branches lit · a branch lights up when every lesson on it is mastered</span></div>
+      <svg viewBox="0 0 ${W} 420" role="img" aria-label="Knowledge tree of ${escHTML(s.name)}"><path class="tz-trunk" d="M${O[0] - 10} ${O[1] + 10} Q${O[0] - 4} ${O[1] - 30} ${O[0]} ${O[1] - 60} Q${O[0] + 4} ${O[1] - 30} ${O[0] + 10} ${O[1] + 10}Z"/>${g}${leaves}${labels}</svg>
+      <div class="tz-key"><span><i class="k0"></i>not written</span><span><i class="k1"></i>lesson ready</span><span><i class="k2"></i>started</span><span><i class="k3"></i>mastered</span></div></div>`;
   }
   function pillarPage(s, PL) {
     const ls = leavesOf(PL), pct = Math.round(avgMastery(s.id, ls) * 100);
@@ -418,12 +450,14 @@
   };
   const BANDS = {
     sci: { 1: ['Class 10', 'The foundation: every student needs this'], 2: ['Class 12 · JEE Main', 'Stop above this line if you only need Class 10'], 3: ['JEE Advanced · Irodov', 'Same core idea, harder situations'], 4: ['Olympiad', 'The idea at full depth'] },
+    cs: { 1: ['Beginner', 'The idea, from zero'], 2: ['Intermediate', 'How it really works'], 3: ['Advanced', 'Details that matter in practice'], 4: ['SDE-3', 'The idea at the scale of real systems'] },
     eng: { 1: ['Foundation', 'Classes 6 to 8: the rule itself'], 2: ['Class 10 board', 'What the board paper tests'], 3: ['Beyond the board', 'Style and nuance'] }
   };
   const ENG_DEPTH = [[1, 'Foundation'], [2, 'Class 10 board'], [3, 'Beyond the board']];
+  const CS_DEPTH = [[1, 'Beginner'], [2, 'Intermediate'], [3, 'Advanced'], [4, 'SDE-3']];
   let spy = null;
   function buildLesson(root, L, lesson, probs) {
-    const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = isEng ? BANDS.eng : BANDS.sci, D = isEng ? ENG_DEPTH : DEPTH;
+    const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = BANDS[sid] || BANDS.sci, D = isEng ? ENG_DEPTH : sid === 'cs' ? CS_DEPTH : DEPTH;
     const wrap = ['s-keys', 's-traps'];
     const body = lesson.sections.filter(x => !wrap.includes(x.id)), tail = lesson.sections.filter(x => wrap.includes(x.id));
     const words = lesson.sections.reduce((a, x) => a + (x.text || '').split(/\s+/).length, 0), mins = Math.max(5, Math.round(words / 180 / 5) * 5);
@@ -436,6 +470,11 @@
       sections += `<div class="band l${sec.lvl}" data-lvl="${sec.lvl}"><span class="band-n">${escHTML(bn)}</span><span class="band-h">${escHTML(bh)}</span></div>`; }
       sections += secHTML(sec); });
     const margin = (lesson.margin || []).map(m => `<div class="mn ${m.kind === 'tip' ? 'tip' : m.kind === 'olympiad' ? 'oly' : ''}"><b>${escHTML(m.title || m.kind)}</b>${m.html}</div>`).join('');
+    const extra = [];
+    if (lesson.life && lesson.life.length) extra.push(`<div class="xcard life"><b>Where you meet this</b><ul>${lesson.life.map(x => `<li>${x}</li>`).join('')}</ul></div>`);
+    if (lesson.models && lesson.models.length) extra.push(`<div class="xcard models"><b>Mental models to keep</b>${lesson.models.map(m => `<p><strong>${m.name}.</strong> ${m.html}</p>`).join('')}</div>`);
+    if (lesson.links && lesson.links.length) extra.push(`<div class="xcard links"><b>Same idea elsewhere</b>${lesson.links.map(x => { const T = x.leaf && leafByKey(x.leaf); return `<div class="lk"><button class="lk-h" ${T && T.l.live ? `data-goto="${x.leaf}"` : 'disabled'}>${escHTML(x.name || (T ? T.l.name : x.leaf))}${T && T.l.live ? ' →' : ''}</button><p><span class="tag same">Common</span> ${x.same}</p><p><span class="tag diff">Different</span> ${x.differs}</p></div>`; }).join('')}</div>`);
+    if (extra.length) sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Beyond the page</span><span class="band-h">Where this idea lives in the real world</span></div><div class="xgrid">${extra.join('')}</div>`;
     if (margin) sections += `<div class="around"><div class="eyebrow">Around this idea</div><div class="around-g">${margin}</div></div>`;
     sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Wrap-up</span><span class="band-h">What to carry in your head</span></div>` + tail.map(secHTML).join('');
     const groups = []; body.forEach(sec => { let g = groups.find(x => x.lvl === sec.lvl); if (!g) groups.push(g = { lvl: sec.lvl, secs: [] }); g.secs.push(sec); });
@@ -474,11 +513,12 @@
           <div class="top-grid">${coreHTML}<div class="top-side">${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}</div></div>
           ${mapHTML}
           <div class="prose">${lesson.introHtml ? `<div class="intro">${lesson.introHtml}</div>` : ''}${sections}</div>
+          ${lesson.next ? (() => { const T = lesson.next.leaf && leafByKey(lesson.next.leaf); return `<div class="nextq s-${sid}"><div class="eyebrow">The question that leads on</div><p class="nq">${lesson.next.q}</p><div class="nq-f">${T ? `<span>Answered in <b>${escHTML(T.l.name)}</b></span>${T.l.live ? `<button class="btn" data-goto="${lesson.next.leaf}">Find out →</button>` : '<span class="muted">(lesson coming soon)</span>'}` : ''}</div></div>`; })() : ''}
           <div class="next-step"><div><b>That's the lesson.</b><span>Now test it: ${probs.length} problems, from NCERT to Olympiad.</span></div><button class="btn" data-ltab-go="practice">Go to practice</button></div>
           ${(() => { const n = lessonNeighbours(key); return (n.prev || n.next) ? `<nav class="lnav" aria-label="Lessons">${n.prev ? lessonCard(n.prev, 'prev', L) : '<span></span>'}${n.next ? lessonCard(n.next, 'next', L) : '<span class="lnav-end">That is the last lesson written so far.</span>'}</nav>` : ''; })()}
         </div>
         <aside class="side"><div class="toc-wrap"><div class="toc-top"><b>On this page</b><span id="read-pct">0%</span></div><div class="readbar"><i id="read-bar"></i></div>
-          <nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
+          <nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Beg', 'Int', 'Adv', 'SDE'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
         </aside></div>
       </div>
       <div class="lpane" data-lpane="practice" hidden>
@@ -529,7 +569,7 @@
     const el = $('ladder'); if (!el) return;
     el.innerHTML = LVL_ORDER.map(lv => {
       const ps = probs.map((p, i) => [p, i]).filter(([p]) => p.lvl === lv); if (!ps.length) return '';
-      const [name, desc, cls] = LEVELS[lv];
+      const [name, desc, cls] = lvInfo(lv, key.split('/')[0]);
       const done = ps.filter(([p]) => (PG.problems[pk(key, p.id)] || {}).r === 'got').length;
       return `<div class="rung"><div class="rung-h"><span class="tier ${cls}">${name}</span><div><p>${desc}</p></div><span class="src">${done}/${ps.length} solved</span></div>
         <ol>${ps.map(([p, i]) => `<li><button data-open-p="${i}"><span class="num">${p.num || i + 1}</span><span class="preview">${escHTML(p.plain)}</span>${stateDot(key, p.id)}</button></li>`).join('')}</ol></div>`;
@@ -943,7 +983,7 @@
       <div class="play-top"><button class="back" data-act="exit" style="margin:0">← ${escHTML(S.setName)}</button><span class="count">${S.idx + 1} / ${S.set.length}</span></div>
       <div class="dots">${S.set.map((q, i) => `<button aria-label="Problem ${i + 1}" data-jump="${i}" class="${i === S.idx ? 'cur' : ((PG.problems[pid(q)] || {}).r || '')}"></button>`).join('')}</div>
       <article class="pcard s-${L ? L.s.id : 'phy'}">
-        <div class="pmeta"><span class="tier ${LEVELS[p.lvl][2]}">${LEVELS[p.lvl][0]}</span><span class="src ${p.lvl.startsWith('ncert') ? 'src-ncert' : ''}">${escHTML(p.source || (L ? L.l.name : ''))}</span>${ver}</div>
+        <div class="pmeta"><span class="tier ${LEVELS[p.lvl][2]}">${lvInfo(p.lvl, String(S.lessonKey || '').split('/')[0])[0]}</span><span class="src ${p.lvl.startsWith('ncert') ? 'src-ncert' : ''}">${escHTML(p.source || (L ? L.l.name : ''))}</span>${ver}</div>
         <div class="stmt">${p.q}</div>${body}${hints}${helps}${solution}${rate}
       </article>
       <div class="play-nav"><button class="btn ghost" data-act="prev" ${S.idx === 0 ? 'disabled' : ''}>← Previous</button><button class="btn ghost" data-act="next">${S.idx === S.set.length - 1 ? 'Finish' : 'Skip →'}</button></div>`;

@@ -1,0 +1,557 @@
+# Motion graphs. NCERT questions copied word for word from NCERT Science Grade 9 (Exploration, 2026-27) Ch 4 and NCERT Physics Class XI (reprint 2026-27) Ch 2. Grade 9 has no printed answer key, so those solutions are ours; Class XI answers are checked against the printed key. Where a solution reads values off a printed figure, it says so. Found, board and main problems are original.
+
+- id: ncert9-eg-4-5
+  lvl: ncert-intext
+  num: "IX Ex 4.5"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.5
+  kind: text
+  q: |-
+    For a vehicle starting from rest and speeding up, the data for position and time are given in Table 4.4. Plot the position-time graph corresponding to it.
+
+    | Time | 0 s | 2 s | 4 s | 6 s | 8 s | 10 s | 12 s |
+    |---|---|---|---|---|---|---|---|
+    | Position | 0 m | 1 m | 4 m | 9 m | 16 m | 25 m | 36 m |
+  sol: |
+    Put time on the X-axis and position on the Y-axis. A convenient scale is 5 divisions = 2 s on the X-axis and 5 divisions = 5 m on the Y-axis. Plot the seven points $(0,0), (2,1), (4,4), (6,9), (8,16), (10,25), (12,36)$.
+
+    The points do **not** lie on a straight line. Join them with a smooth curve that starts flat at the origin and gets steeper and steeper (Fig. 4.12). A curved position-time graph means the velocity is changing, so the motion is accelerated.
+
+    The data fit $x = t^2/4$ (in m, with $t$ in s): at $t = 6$ s, $36/4 = 9$ m and at $t = 12$ s, $144/4 = 36$ m. This is the parabola $x = \tfrac12at^2$ with $a = 0.5$ m s$^{-2}$ for motion from rest. (This formula is our observation about the data, not part of the book's example.)
+  check: none
+
+- id: ncert9-eg-4-6
+  lvl: ncert-intext
+  num: "IX Ex 4.6"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.6
+  kind: text
+  q: |-
+    What does the graph shown in Fig. 4.15 indicate about the nature of motion of the vehicle?
+  sol: |
+    Fig. 4.15 is a position-time graph in which the line is horizontal at a position of 40 m. The position of the vehicle is 40 m from the origin and is **not changing with time**, so the vehicle is **at rest** at 40 m from the origin. A straight line parallel to the time axis on a position-time graph represents a stationary object. (Here the graph is a position-time graph, not a distance-time graph: a distance-time graph of a body at rest would start from zero or stay at whatever distance has been travelled.)
+  check: none
+
+- id: ncert9-eg-4-7
+  lvl: ncert-intext
+  num: "IX Ex 4.7"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.7
+  kind: text
+  q: |-
+    The position-time graphs of two objects A and B are given in Fig. 4.16a. The magnitude of average velocity of which object is higher?
+  sol: |
+    Draw lines parallel to the axes from points on the two graphs (Fig. 4.16b). For the same time interval $t$, the displacement of B is larger than that of A, so $\text{velocity} = \text{displacement}/t$ is larger for B. Equivalently, the slope of the line for B is steeper than the slope for A, and the slope of a position-time graph is the velocity. So **object B has the higher velocity**.
+  check: none
+
+- id: ncert9-ex-4-6
+  lvl: ncert-ex
+  num: "IX 4 · Q6"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q6
+  kind: text
+  q: |-
+    Fig. 4.27 shows a position-time graph of two objects A and B that are moving along the parallel tracks in the same direction. Do objects A and B ever have equal velocity? Justify your answer.
+  sol: |
+    **No.** In Fig. 4.27 both position-time graphs are straight lines, so each object moves with a constant velocity equal to the slope of its line. A starts at the origin and its line is steeper; B starts from a positive position and its line is less steep. The two lines cross at $t = 5$ s, which means the objects are at the same position then (A overtakes B), but their slopes are different, so their velocities are different at every instant. Equal velocity would need parallel lines.
+
+    [Inference] The slopes are judged by eye from the printed figure; the figure has no numerical scale on the position axis.
+  check: none
+
+- id: ncert9-ex-4-7
+  lvl: ncert-ex
+  num: "IX 4 · Q7"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q7
+  kind: text
+  q: |-
+    A graph in Fig. 4.28 shows the change in position with time for two objects A and B moving in a straight line from 0 to 10 seconds. Choose the correct option(s).
+    (i) The average velocity of both over the 10 s time interval is equal since they have the same initial and final positions.
+    (ii) The average speeds of both over the 10 s time interval are equal since both cover equal distance in equal time.
+    (iii) The average speed of A over the 10 s time interval is lower than that of B since it covers a shorter distance than B in 10 seconds.
+    (iv) The average speed of A over the 10 s time interval is greater than that of B since B's speed is lower than A's in some segments.
+  sol: |
+    **Correct: (i) and (ii).**
+
+    In Fig. 4.28 both graphs start at the origin and end at the same position at $t = 10$ s, so their displacements and their average velocities are equal: (i) is correct.
+
+    A's graph is a straight line sloping upward. B's graph is made of three straight pieces that are all sloping upward (slow, then faster, then fastest): B is not in uniform motion, but it never goes back. For an object that never reverses, the distance travelled equals the displacement, so both A and B cover the same distance in the same 10 s, and their average speeds are equal: (ii) is correct.
+
+    (iii) is wrong because A does not cover a shorter distance than B. (iv) is wrong because the average speed depends on the total distance and total time, not on whether B is slower than A in some segments; B makes up for it by being faster in others.
+  check: none
+
+- id: ncert9-ex-4-12
+  lvl: ncert-ex
+  num: "IX 4 · Q12"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q12
+  kind: num
+  q: |-
+    The velocity-time graph from 0 s to 120 s for a cyclist is shown in Fig. 4.30. Shade the areas (in different colours) representing the displacement of the cyclist
+    (i) while cyclist is moving with constant velocity.
+    (ii) when the velocity of cyclist is decreasing.
+    Also, calculate the displacement and average acceleration in the 120 s time interval.
+  ask: Displacement in the 120 s interval
+  unit: m
+  ans: 320
+  tol: 0.5
+  verify: 0.5*20*3+3*80+0.5*(3+2)*20
+  sol: |
+    [Inference] The corners of Fig. 4.30 are read from the printed graph: $(0, 0)$, $(20\ \text{s}, 3\ \text{m s}^{-1})$, $(100\ \text{s}, 3\ \text{m s}^{-1})$ and $(120\ \text{s}, 2\ \text{m s}^{-1})$.
+
+    **Shading.** (i) Constant velocity: the rectangle under the horizontal part from 20 s to 100 s. (ii) Decreasing velocity: the trapezium under the sloping line from 100 s to 120 s.
+
+    **Displacement** is the area under the whole graph.
+    - 0 to 20 s (triangle): $\tfrac12\times20\times3 = 30$ m.
+    - 20 to 100 s (rectangle, part i): $80\times3 = 240$ m.
+    - 100 to 120 s (trapezium, part ii): $\tfrac12(3+2)\times20 = 50$ m.
+
+    Total $= 30 + 240 + 50 = 320$ m.
+
+    **Average acceleration** over the 120 s: $\dfrac{v_{final} - v_{initial}}{t} = \dfrac{2 - 0}{120} = 0.0167$ m s$^{-2}$ (about $1.7\times10^{-2}$ m s$^{-2}$). The cyclist starts from rest and ends at 2 m/s, so the average acceleration is small even though the velocity changed during the ride.
+  check: code
+
+- id: ncert9-ex-4-13
+  lvl: ncert-ex
+  num: "IX 4 · Q13"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q13
+  kind: num
+  q: |-
+    A girl is preparing for her first marathon by running on a straight road. She uses a smartwatch to calculate her running speed at different intervals. The graph (Fig. 4.31) depicts her velocity versus time. Estimate the distance she ran based on the graph.
+  ask: Estimated distance
+  unit: km
+  ans: 46.8
+  tol: 1.5
+  verify: 0.5*7+1.1*7.25+1.4*7.5+1.6*7.25+1.0*6.75+1.0*6.5
+  sol: |
+    The distance is the area under the velocity-time graph. The axes are time in hours and velocity in km h$^{-1}$, so the area is in km.
+
+    [Inference] The corners are read from the printed figure: $(0, 7.0)$, $(0.5, 7.0)$, $(1.6, 7.5)$, $(3.0, 7.5)$, $(4.6, 7.0)$, $(5.6, 6.5)$ and $(6.6, 6.5)$, with time in h and velocity in km h$^{-1}$. Splitting into trapeziums (width × average height):
+
+    | Interval (h) | Width (h) | Mean velocity (km/h) | Area (km) |
+    |---|---|---|---|
+    | 0 – 0.5 | 0.5 | 7.0 | 3.5 |
+    | 0.5 – 1.6 | 1.1 | 7.25 | 7.98 |
+    | 1.6 – 3.0 | 1.4 | 7.5 | 10.5 |
+    | 3.0 – 4.6 | 1.6 | 7.25 | 11.6 |
+    | 4.6 – 5.6 | 1.0 | 6.75 | 6.75 |
+    | 5.6 – 6.6 | 1.0 | 6.5 | 6.5 |
+
+    Total $\approx 46.8$ km, so she ran **about 47 km**. The value depends on how closely the corners are read from the figure (the answer is good to about $\pm1$ km). As a cross-check, the average velocity is close to 7 km/h over 6.6 h, which gives $7\times6.6 = 46$ km.
+  check: code
+
+- id: ncert9-ex-4-14
+  lvl: ncert-ex
+  num: "IX 4 · Q14"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q14
+  kind: num
+  q: |-
+    On entering a state highway, a car continues to move with a constant velocity of 6 m s⁻¹ for 2 minutes and then accelerates with a constant acceleration 1 m s⁻² for 6 seconds. Find the displacement of the car on the state highway in the 2 min 6 s time interval by drawing a velocity-time graph for its motion.
+  ask: Displacement in 2 min 6 s
+  unit: m
+  ans: 774
+  tol: 0.5
+  verify: 6*120+(6*6+0.5*1*36)
+  sol: |
+    **Graph.** Time (s) along X, velocity (m s$^{-1}$) along Y. From $t = 0$ to 120 s the graph is a horizontal line at 6 m/s. From 120 s to 126 s the velocity rises uniformly with slope 1 m s$^{-2}$, from 6 to $6 + 1\times6 = 12$ m/s, so the line goes from $(120, 6)$ to $(126, 12)$.
+
+    **Displacement = area under the graph.**
+    - Rectangle, 0 to 120 s: $6\times120 = 720$ m.
+    - Trapezium, 120 to 126 s: $\tfrac12(6+12)\times6 = 54$ m (a rectangle $6\times6 = 36$ m plus a triangle $\tfrac12\times6\times6 = 18$ m).
+
+    Total $= 720 + 54 = 774$ m.
+
+    Check with $s = ut + \tfrac12at^2$ for the second stage: $6(6) + \tfrac12(1)(36) = 54$ m.
+  check: code
+
+- id: ncert9-ex-4-15
+  lvl: ncert-ex
+  num: "IX 4 · Q15"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q15
+  kind: num
+  q: |-
+    Two cars A and B start moving with a constant acceleration from rest, in a straight line. Car A attains a velocity of 5 m s⁻¹ in 5 s. Car B attains a velocity of 3 m s⁻¹ in 10 s. Plot the velocity-time graphs for both the cars in the same graph. Using the graph, calculate the displacement in the two time intervals mentioned (Hint: Calculate the acceleration in both cases. Then calculate their velocities at five instants of time to plot the graph).
+  ask: Displacement of car B in its 10 s
+  unit: m
+  ans: 15
+  tol: 0.05
+  verify: 0.5*3*10
+  sol: |
+    **Accelerations.** Car A: $a_A = 5/5 = 1$ m s$^{-2}$. Car B: $a_B = 3/10 = 0.3$ m s$^{-2}$.
+
+    **Velocities at five instants** ($v = at$):
+
+    | Time (s) | 0 | 2.5 | 5 | 7.5 | 10 |
+    |---|---|---|---|---|---|
+    | Car A (m/s) | 0 | 2.5 | 5 | 7.5 | 10 |
+    | Car B (m/s) | 0 | 0.75 | 1.5 | 2.25 | 3 |
+
+    Both graphs are straight lines through the origin; A's is steeper because its acceleration is larger. (Car A's line is only needed up to 5 s, where it reaches 5 m/s; the extension to 10 s is for comparison.)
+
+    **Displacements (area under each line).**
+    - Car A, 0 to 5 s: triangle $\tfrac12\times5\times5 = 12.5$ m.
+    - Car B, 0 to 10 s: triangle $\tfrac12\times10\times3 = 15$ m.
+
+    Car B covers more distance only because its interval is twice as long. Over the same 10 s, car A would have covered $\tfrac12(1)(100) = 50$ m.
+  check: code
+
+- id: ncert11-it-2-1
+  lvl: ncert-intext
+  num: "XI 2.3 · Think!"
+  source: NCERT XI Physics · Ch 2 · §2.3 (after Fig. 2.4)
+  kind: text
+  q: |-
+    How come in this case an area is equal to a distance? Think! Note the dimensions of quantities on the two coordinate axes, and you will arrive at the answer.
+  sol: |
+    The area of a rectangle on a graph is (height) × (base), and it carries the **units of both axes multiplied together**. On a velocity-time graph the height is a velocity (m s$^{-1}$) and the base is a time (s), so the area has units $\text{m s}^{-1}\times\text{s} = \text{m}$, which is a length. So "area equals distance" is not a mismatch of dimensions: the area under a $v$-$t$ graph is not a geometrical area in m$^2$ but the product velocity × time, which is displacement. On a graph with different axes, the area stands for a different quantity (for an acceleration-time graph it is a change in velocity).
+  check: none
+
+- id: ncert11-ex-2-2
+  lvl: ncert-ex
+  num: "XI 2.2"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.2
+  kind: text
+  q: |-
+    The position-time (x-t) graphs for two children A and B returning from their school O to their homes P and Q respectively are shown in Fig. 2.9. Choose the correct entries in the brackets below ;
+    (a) (A/B) lives closer to the school than (B/A)
+    (b) (A/B) starts from the school earlier than (B/A)
+    (c) (A/B) walks faster than (B/A)
+    (d) A and B reach home at the (same/different) time
+    (e) (A/B) overtakes (B/A) on the road (once/twice).
+  sol: |
+    Fig. 2.9 shows two straight lines: A starts at the origin (time zero, position zero); B starts later (on the time axis at a positive time) and is steeper. P is lower than Q on the position axis.
+
+    (a) **A** lives closer to the school than **B**: P is nearer the origin than Q.
+
+    (b) **A** starts from the school earlier than **B**: A's line starts at $t = 0$, B's later.
+
+    (c) **B** walks faster than **A**: B's line has the larger slope.
+
+    (d) **Same** (the printed answer key).
+
+    (e) **B** overtakes **A** on the road **once**: the lines cross once, and since B is steeper it goes ahead after the crossing.
+
+    [Note] As printed, the line for B seems to end at the level of Q at an earlier time than A's line ends at the level of P, which would suggest different arrival times. The printed answer key gives "same" for (d), and we have copied the key; the discrepancy may come from the ends of the lines being only drawn approximately. [Unverified]
+  answer_key: "(a) A....B, (b) A....B, (c) B....A, (d) Same, (e) B....A....once."
+  check: ncert-key
+
+- id: ncert11-ex-2-3
+  lvl: ncert-ex
+  num: "XI 2.3"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.3
+  kind: num
+  q: |-
+    A woman starts from her home at 9.00 am, walks with a speed of 5 km h⁻¹ on a straight road up to her office 2.5 km away, stays at the office up to 5.00 pm, and returns home by an auto with a speed of 25 km h⁻¹. Choose suitable scales and plot the x-t graph of her motion.
+  ask: Time taken on the return journey
+  unit: min
+  ans: 6
+  tol: 0.05
+  verify: 2.5/25*60
+  sol: |
+    Take time along X (from 9:00 am, one division = 30 min is convenient) and position $x$ (distance from home) along Y, with 1 cm = 0.5 km.
+
+    - **Going to the office:** $t = 2.5/5 = 0.5$ h $= 30$ min, so she is at the office at 9:30 am. The graph is a straight line from $(9{:}00, 0)$ to $(9{:}30, 2.5\ \text{km})$.
+    - **At the office:** a horizontal line at $x = 2.5$ km from 9:30 am to 5:00 pm (slope zero: she is at rest).
+    - **Returning:** $t = 2.5/25 = 0.1$ h $= 6$ min, so she is home at 5:06 pm. A straight line from $(5{:}00\ \text{pm}, 2.5\ \text{km})$ to $(5{:}06\ \text{pm}, 0)$, steep and sloping downward.
+
+    The three corner points are $(9{:}00, 0)$, $(9{:}30, 2.5)$, $(17{:}00, 2.5)$ and $(17{:}06, 0)$. The return leg looks almost vertical on this scale because it is five times faster than the walk.
+  check: code
+
+- id: ncert11-ex-2-4
+  lvl: ncert-ex
+  num: "XI 2.4"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.4
+  kind: num
+  q: |-
+    A drunkard walking in a narrow lane takes 5 steps forward and 3 steps backward, followed again by 5 steps forward and 3 steps backward, and so on. Each step is 1 m long and requires 1 s. Plot the x-t graph of his motion. Determine graphically and otherwise how long the drunkard takes to fall in a pit 13 m away from the start.
+  ask: Time to fall into the pit
+  unit: s
+  ans: 37
+  tol: 0.01
+  verify: 4*8+5
+  sol: |
+    **Graph.** Each step takes 1 s and moves 1 m, so the graph is a zigzag: up 5 m in 5 s, down 3 m in 3 s, and so on. Positions at the end of each stage:
+
+    | t (s) | 0 | 5 | 8 | 13 | 16 | 21 | 24 | 29 | 32 | 37 |
+    |---|---|---|---|---|---|---|---|---|---|---|
+    | x (m) | 0 | 5 | 2 | 7 | 4 | 9 | 6 | 11 | 8 | 13 |
+
+    The graph first reaches the level $x = 13$ m at $t = 37$ s (draw a horizontal line at 13 m and see where the zigzag first touches it).
+
+    **Otherwise.** In every full cycle of 8 steps (8 s) he gains $5 - 3 = 2$ m. After 4 cycles (32 s) he is at 8 m. Then 5 more forward steps (5 s) take him to $8 + 5 = 13$ m, into the pit. Total $= 32 + 5 = 37$ s. (After 3 cycles he is at 6 m, and the next forward run reaches only 11 m, which is short of the pit.)
+  answer_key: 37 s
+  check: both
+
+- id: ncert11-ex-2-8
+  lvl: ncert-ex
+  num: "XI 2.8"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.8
+  kind: text
+  q: |-
+    A ball is dropped from a height of 90 m on a floor. At each collision with the floor, the ball loses one tenth of its speed. Plot the speed-time graph of its motion between t = 0 to 12 s.
+  sol: |
+    The question does not state $g$; we take $g = 9.8$ m s$^{-2}$ and neglect air resistance.
+
+    **First fall.** From rest: $90 = \tfrac12(9.8)t^2$ gives $t_1 = \sqrt{180/9.8} = 4.29$ s. The speed on reaching the floor is $v_1 = 9.8\times4.29 = 42.0$ m s$^{-1}$.
+
+    **First rebound.** The ball loses one tenth of its speed, so it leaves the floor at $0.9\times42.0 = 37.8$ m s$^{-1}$. It decelerates at 9.8 m s$^{-2}$ and stops momentarily at the top after $37.8/9.8 = 3.86$ s, then falls back and reaches the floor again after another $3.86$ s. Second collision at $t = 4.29 + 7.71 = 12.0$ s, with speed 37.8 m s$^{-1}$ just before impact.
+
+    **The speed-time graph** (speed is the magnitude of velocity, so it is never negative):
+
+    | Stage | Time (s) | Speed (m/s) |
+    |---|---|---|
+    | falls from rest | 0 to 4.29 | rises in a straight line from 0 to 42.0 |
+    | collision | 4.29 | jumps down from 42.0 to 37.8 |
+    | rises to top | 4.29 to 8.14 | falls in a straight line from 37.8 to 0 |
+    | falls back | 8.14 to 12.0 | rises in a straight line from 0 to 37.8 |
+
+    All the slanted lines have the same slope in magnitude, $g = 9.8$ m s$^{-2}$. The graph is a "V"-shaped dip and then a rise, with a sudden vertical drop at the collision.
+
+    [Note] The numbers 4.29 s and 12.0 s come out exactly as $30/7$ s and $12$ s for $g = 9.8$ m s$^{-2}$, so the second collision falls exactly at the end of the 12 s window the question asks about.
+  check: none
+
+- id: ncert11-ex-2-12
+  lvl: ncert-ex
+  num: "XI 2.12"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.12
+  kind: text
+  q: |-
+    Look at the graphs (a) to (d) (Fig. 2.10) carefully and state, with reasons, which of these cannot possibly represent one-dimensional motion of a particle.
+  sol: |
+    **All four are impossible** as graphs of one-dimensional motion (the arrows drawn on the curves are meaningless).
+
+    (a) An $x$-$t$ graph in which the curve loops back so that a vertical line cuts it at more than one point: a particle cannot be at two different positions at the same time.
+
+    (b) A $v$-$t$ graph that is a closed circle: at one instant the particle would have two different velocities at the same time, which is impossible.
+
+    (c) A speed-time graph that goes below the time axis: speed is the magnitude of velocity and can never be negative.
+
+    (d) A graph of total path length against time that decreases in places: the total path length can never decrease with time.
+  answer_key: All the four graphs are impossible. (a) a particle cannot have two different positions at the same time; (b) a particle cannot have velocity in opposite directions at the same time; (c) speed is always non-negative; (d) total path length of a particle can never decrease with time. (Note, the arrows on the graphs are meaningless).
+  check: ncert-key
+
+- id: ncert11-ex-2-13
+  lvl: ncert-ex
+  num: "XI 2.13"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.13
+  kind: text
+  q: |-
+    Figure 2.11 shows the x-t plot of one-dimensional motion of a particle. Is it correct to say from the graph that the particle moves in a straight line for t < 0 and on a parabolic path for t >0 ? If not, suggest a suitable physical context for this graph.
+  sol: |
+    **No, it is not correct.** An $x$-$t$ graph shows how the position changes with time; it is not a picture of the path (trajectory). The motion is one-dimensional, along a straight line, for all times. The graph is flat for $t < 0$ (the particle is at rest at $x = 0$) and a parabola $x \propto t^2$ for $t > 0$ (uniform acceleration from rest).
+
+    A suitable context: a body is released (dropped) from a tower at $x = 0$ at $t = 0$, with $x$ measured downward. Before $t = 0$ it is held at rest; after release it falls with $x = \tfrac12gt^2$.
+  answer_key: No, wrong. x- t plot does not show the trajectory of a particle. Context: A body is dropped from a tower (x = 0) at t = 0.
+  check: ncert-key
+
+- id: ncert11-ex-2-15
+  lvl: ncert-ex
+  num: "XI 2.15"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.15
+  kind: text
+  q: |-
+    Suggest a suitable physical situation for each of the following graphs (Fig 2.12):
+  sol: |
+    Suggested situations (many answers are possible; these are the printed ones).
+
+    **(a)** An $x$-$t$ graph that is flat, then rises, then falls past zero and goes flat at a negative position: a ball at rest on a smooth floor is kicked, it moves to the wall and rebounds with reduced speed, and moves to the opposite wall, which stops it.
+
+    **(b)** A $v$-$t$ graph in which the velocity jumps from positive to negative and decreases in magnitude with each straight piece: a ball thrown up with some initial velocity rebounds from the floor with reduced speed after each hit.
+
+    **(c)** An $a$-$t$ graph that is zero except for a short, sharp pulse: a uniformly moving cricket ball is turned back by hitting it with a bat for a very short time interval.
+  answer_key: "(a) A ball at rest on a smooth floor is kicked, it rebounds from a wall with reduced speed and moves to the opposite wall which stops it; (b) A ball thrown up with some initial velocity rebounding from the floor with reduced speed after each hit; (c) A uniformly moving cricket ball turned back by hitting it with a bat for a very short time-interval."
+  check: ncert-key
+
+- id: ncert11-ex-2-16
+  lvl: ncert-ex
+  num: "XI 2.16"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.16
+  kind: text
+  q: |-
+    Figure 2.13 gives the x-t plot of a particle executing one-dimensional simple harmonic motion. (You will learn about this motion in more detail in Chapter13). Give the signs of position, velocity and acceleration variables of the particle at t = 0.3 s, 1.2 s, – 1.2 s.
+  sol: |
+    In Fig. 2.13 the curve crosses the axis at $t = 0$ going **downward** (it is negative between $t = 0$ and $t = 1$ s, positive between 1 s and 2 s, and so on, with period 2 s). In simple harmonic motion the acceleration always points towards the mean position: $a$ has the sign opposite to $x$. The velocity is the slope of the graph.
+
+    | Time | Position $x$ | Velocity $v$ (slope) | Acceleration $a$ |
+    |---|---|---|---|
+    | $t = 0.3$ s | $x < 0$ (curve below the axis) | $v < 0$ (curve still going down) | $a > 0$ (opposite sign to $x$) |
+    | $t = 1.2$ s | $x > 0$ (curve above the axis) | $v > 0$ (curve still rising towards its peak at 1.5 s) | $a < 0$ |
+    | $t = -1.2$ s | $x < 0$ (between $-2$ s and $-1$ s the curve is below the axis) | $v > 0$ (curve rising towards the axis at $-1$ s) | $a > 0$ |
+
+    [Inference] The zero-crossings and the peaks are read from the printed figure.
+  answer_key: x < 0, v < 0, a > 0; x > 0, v > 0, a < 0; x < 0, v > 0, a > 0.
+  check: ncert-key
+
+- id: ncert11-ex-2-17
+  lvl: ncert-ex
+  num: "XI 2.17"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.17
+  kind: text
+  q: |-
+    Figure 2.14 gives the x-t plot of a particle in one-dimensional motion. Three different equal intervals of time are shown. In which interval is the average speed greatest, and in which is it the least ? Give the sign of average velocity for each interval.
+  sol: |
+    The average velocity over an interval is the slope of the chord joining the two end points of the $x$-$t$ curve in that interval; the average speed is the magnitude of the slope (the particle moves in one direction in each of these small intervals, so path length equals the size of the displacement).
+
+    - **Interval 1:** the curve rises gently: small positive slope, so $v > 0$.
+    - **Interval 2:** the curve is nearly flat at the top (a maximum): the slope is nearly zero, so the average speed is **least** here; the slope is positive, so $v > 0$.
+    - **Interval 3:** the curve falls very steeply: a large negative slope, so the average speed is **greatest** here, and $v < 0$.
+
+    **Greatest in interval 3, least in interval 2; $v > 0$ in intervals 1 and 2, $v < 0$ in interval 3.**
+  answer_key: Greatest in 3, least in 2; v > 0 in 1 and 2, v < 0 in 3.
+  check: ncert-key
+
+- id: ncert11-ex-2-18
+  lvl: ncert-ex
+  num: "XI 2.18"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.18
+  kind: text
+  q: |-
+    Figure 2.15 gives a speed-time graph of a particle in motion along a constant direction. Three equal intervals of time are shown. In which interval is the average acceleration greatest in magnitude? In which interval is the average speed greatest ? Choosing the positive direction as the constant direction of motion, give the signs of v and a in the three intervals. What are the accelerations at the points A, B, C and D ?
+  sol: |
+    The particle moves along a constant direction, so the speed on this graph is the same as the velocity along the positive direction. The acceleration is the slope of the graph, and the average speed in an interval is the average height of the curve there.
+
+    - **Average acceleration is greatest in magnitude in interval 2.** The curve falls steeply there, so the slope (the average slope over the interval) is largest in magnitude.
+    - **Average speed is greatest in interval 3.** The curve is highest there (near the peak D).
+    - **Signs of $v$.** The positive direction is the direction of motion, so $v > 0$ in all three intervals.
+    - **Signs of $a$.** In interval 1 the speed is increasing, so $a > 0$. In interval 2 the speed is decreasing, so $a < 0$. In interval 3 the speed is increasing on average (the interval is on the rising side of the peak), so $a > 0$.
+    - **At A, B, C and D** the curve has a horizontal tangent (A is a start of a flat portion, B and D are maxima, C is a minimum), so the slope is zero and **$a = 0$ at each point**.
+  answer_key: Acceleration magnitude greatest in 2; speed greatest in 3; v > 0 in 1, 2 and 3; a > 0 in 1 and 3, a < 0 in 2; a = 0 at A, B, C, D.
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: On a position-time graph, a straight line parallel to the time axis shows that the object is (Original problem.)
+  opts: ["moving with constant velocity", "at rest", "moving with constant acceleration", "moving with increasing speed"]
+  ans: 1
+  sol: |
+    A line parallel to the time axis means the position does not change as time passes, so the slope (the velocity) is zero and the object is **at rest**.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: On a position-time graph an object is at 10 m at t = 2 s and at 30 m at t = 6 s, and the graph between these points is a straight line. What is the velocity of the object? (Original problem.)
+  ask: Velocity
+  unit: m/s
+  ans: 5
+  tol: 0.01
+  verify: (30-10)/(6-2)
+  sol: |
+    The velocity is the slope of the position-time graph: $\dfrac{30 - 10}{6 - 2} = \dfrac{20}{4} = 5$ m/s. The positive sign means the motion is in the positive direction.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: num
+  q: The velocity-time graph of a car is a straight line from (0 s, 0 m/s) to (10 s, 20 m/s). Find the distance covered in these 10 s using the graph. (Original problem.)
+  ask: Distance covered
+  unit: m
+  ans: 100
+  tol: 0.05
+  verify: 0.5*10*20
+  sol: |
+    The distance is the area under the line, a triangle with base 10 s and height 20 m/s: $\tfrac12\times10\times20 = 100$ m.
+
+    The slope of the line is the acceleration, $20/10 = 2$ m s$^{-2}$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A car speeds up uniformly from rest to 12 m/s in 6 s, moves at 12 m/s for the next 10 s, and then slows down uniformly to rest in 4 s. Draw its velocity-time graph and find the total distance travelled. (Original problem.)
+  ask: Total distance travelled
+  unit: m
+  ans: 180
+  tol: 0.1
+  verify: 0.5*6*12+12*10+0.5*4*12
+  sol: |
+    The graph is a trapezium: a rising line from $(0, 0)$ to $(6, 12)$, a flat line to $(16, 12)$, and a falling line to $(20, 0)$.
+
+    - Speeding up: $\tfrac12\times6\times12 = 36$ m
+    - Constant velocity: $12\times10 = 120$ m
+    - Slowing down: $\tfrac12\times4\times12 = 24$ m
+
+    Total $= 36 + 120 + 24 = 180$ m. (Check with the trapezium formula: $\tfrac12(20 + 10)\times12 = 180$ m.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: On a position-time graph an object goes in a straight line from x = 0 at t = 0 to x = 20 m at t = 5 s, stays at rest until t = 8 s, then returns to x = 0 at t = 12 s. Find its average speed over the 12 s. (Original problem.)
+  ask: Average speed
+  unit: m/s
+  ans: 3.333
+  tol: 0.005
+  verify: (20+20)/12
+  sol: |
+    The slopes of the three parts give the velocities: $+20/5 = +4$ m/s (0 to 5 s), 0 (5 to 8 s), and $-20/4 = -5$ m/s (8 to 12 s).
+
+    Total distance $= 20 + 0 + 20 = 40$ m, so average speed $= 40/12 = 3.33$ m/s.
+
+    The object ends where it started, so its displacement is zero and its average velocity is zero.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: The velocity-time graph of a ball thrown vertically upwards at 14.7 m/s is a straight line of slope −9.8 m/s² (upward taken positive). Use the area under the graph above the time axis to find the maximum height reached. (Original problem.)
+  ask: Maximum height
+  unit: m
+  ans: 11.025
+  tol: 0.01
+  verify: 0.5*(14.7/9.8)*14.7
+  sol: |
+    The line starts at $(0, 14.7)$ and falls to zero velocity when $t = 14.7/9.8 = 1.5$ s. The ball rises while the line is above the axis, and the area of that triangle is the height: $\tfrac12\times1.5\times14.7 = 11.0$ m.
+
+    After 1.5 s the line goes below the axis (velocity downward) and the area below the axis counts as downward displacement. At $t = 3$ s the two areas are equal and cancel, so the ball is back at the starting height.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A car A starts from rest at t = 0 and speeds up uniformly at 2 m/s². At the same instant it is passed by a car B that moves at a constant 10 m/s along the same straight road. At what time does A catch up with B? Use areas under the velocity-time graphs. (Original problem.)
+  ask: Time at which A catches B
+  unit: s
+  ans: 10
+  tol: 0.01
+  verify: 2*10/2
+  sol: |
+    A catches B when the two have covered the same distance, that is, when the areas under their velocity-time graphs are equal.
+
+    Car B: a horizontal line at 10 m/s, area $= 10t$. Car A: a line $v = 2t$, whose area up to time $t$ is the triangle $\tfrac12\times t\times2t = t^2$.
+
+    Setting $t^2 = 10t$ gives $t = 10$ s (the root $t = 0$ is the start). At that time each has gone 100 m, and A's speed is 20 m/s, twice that of B, so A passes B.
+
+    On the graph, the lines cross at $t = 5$ s (when $2t = 10$): this is when the two have the same speed and the gap between them is largest (25 m), not when A catches up.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A particle moving in a straight line has a velocity-time graph that is a triangle. The velocity rises uniformly from zero to a maximum in 8 s and then falls uniformly to zero in 12 s. The total distance covered is 200 m. Find the maximum velocity. (Original problem.)
+  ask: Maximum velocity
+  unit: m/s
+  ans: 20
+  tol: 0.02
+  verify: 2*200/(8+12)
+  sol: |
+    The area of the triangle is the distance: $\tfrac12\times(\text{base})\times(\text{height})$, with base $8 + 12 = 20$ s and height $v_{max}$.
+
+    $200 = \tfrac12\times20\times v_{max}$, so $v_{max} = 20$ m/s.
+
+    Accelerations: $20/8 = 2.5$ m s$^{-2}$ in the first part and $-20/12 = -1.67$ m s$^{-2}$ in the second.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A particle starts from rest on a straight line. Its acceleration is +4 m/s² for the first 3 s, zero for the next 5 s, and −6 m/s² until it stops. Find the total distance it travels. (Original problem.)
+  ask: Total distance
+  unit: m
+  ans: 90
+  tol: 0.1
+  verify: 0.5*4*9+12*5+12*12/(2*6)
+  sol: |
+    Turn the acceleration-time information into a velocity-time graph.
+
+    - **0 to 3 s:** $v = 4t$, reaching $12$ m/s. Distance $= \tfrac12\times3\times12 = 18$ m.
+    - **3 to 8 s:** constant $12$ m/s. Distance $= 12\times5 = 60$ m.
+    - **From 8 s:** $a = -6$ m/s², so it stops after $12/6 = 2$ s (at $t = 10$ s). Distance $= \tfrac12\times2\times12 = 12$ m.
+
+    Total $= 18 + 60 + 12 = 90$ m. The graph is a trapezium with parallel sides 10 s and 5 s and height 12 m/s: $\tfrac12(10+5)\times12 = 90$ m.
+  check: code

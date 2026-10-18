@@ -1,0 +1,260 @@
+# Simple machines. NCERT questions copied word for word from NCERT Exploration Grade 9 Science (2026-27) Ch 7 §7.6 (pulley, inclined plane, lever) and its Revise, Reflect, Refine. The Class XI chapter has no simple-machine items. The Grade 9 chapter has no efficiency question; efficiency appears only in the original problems. Found, board and main problems are original.
+
+- id: ncert9-eg-7-12
+  lvl: ncert-intext
+  num: "IX Ex 7.12"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.12
+  kind: num
+  q: A person uses an inclined ramp to raise an object over a step 30 cm high. The ramp has a width of 40 cm. What is the mechanical advantage of the ramp that helps the person achieve the task?
+  ask: Mechanical advantage
+  unit: ""
+  ans: 1.67
+  tol: 0.01
+  verify: sqrt(30**2+40**2)/30
+  sol: |
+    In Fig. 7.29 the height is $AB = 30$ cm and the width (horizontal base) is $BC = 40$ cm, so by the right-angled triangle property the length of the ramp is $AC = \sqrt{30^2 + 40^2} = 50$ cm. For an inclined plane,
+    $$\text{mechanical advantage} = \frac{L}{h} = \frac{50\ \text{cm}}{30\ \text{cm}} = 1.67.$$
+    The effort needed along the ramp is about $1/1.67 = 60\%$ of the weight (ignoring friction), applied over a distance 1.67 times the height.
+  check: code
+
+- id: ncert9-eg-7-13
+  lvl: ncert-intext
+  num: "IX Ex 7.13"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.13
+  kind: num
+  q: For a seesaw having four seats A, B, D, E and fulcrum at C (Fig. 7.34), AC = EC = 2 m and BC = DC = 1 m. On which seats should children of masses 15 kg and 30 kg sit to make the seesaw balanced?
+  ask: Distance of the 30 kg child from the fulcrum
+  unit: m
+  ans: 1
+  tol: 0.001
+  verify: 15*2/30
+  sol: |
+    Seats A and B are on one side of the fulcrum C, and D and E on the other. Suppose the 15 kg child sits on seat A, 2 m from C, and the 30 kg child sits at a distance $L$ from C on the other side. The seesaw balances when effort $\times$ effort arm = load $\times$ load arm:
+    $$15\ \text{kg}\times2\ \text{m} = 30\ \text{kg}\times L\ \Rightarrow\ L = 1\ \text{m}.$$
+    So the 30 kg child should sit on **seat D** (1 m from the fulcrum), with the 15 kg child on A. Equally well, the 15 kg child on B (1 m) and the 30 kg child at 0.5 m would balance, but there is no seat there; the other balanced option is both children at the same arm... which is impossible for unequal masses.
+  check: code
+
+- id: ncert9-it-7-9
+  lvl: ncert-intext
+  num: "IX 7 · P9"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 9
+  kind: text
+  q: Explain why roads on hills are built to wind around in gentle slopes rather than going straight up (Fig. 4.26)?
+  sol: |
+    A road is an inclined plane. To gain a given height $h$, a vehicle (or a walker) does the same work against gravity, $mgh$, whatever the route. A longer, gentler road has a larger length $L$, so the force needed along the road is smaller:
+    $$F' = \frac{mgh}{L},\qquad \text{mechanical advantage} = \frac{L}{h}.$$
+    A winding road is much longer than a straight, steep one for the same climb, so the engine needs a smaller force (and brakes and tyres are less strained), at the cost of covering a longer distance.
+  check: none
+
+- id: ncert9-it-7-10
+  lvl: ncert-intext
+  num: "IX 7 · P10"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 10
+  kind: text
+  q: To reach a higher floor, we find climbing an inclined ladder easier in comparison to climbing a vertical ladder (Fig. 7.30). Explain why.
+  sol: |
+    Both climbs raise us through the same height $h$, so the gain in potential energy $mgh$ is the same. On an inclined ladder the path length $L$ is greater than $h$, so the effort force needed along the path is smaller ($F' = mgh/L$), as for any inclined plane. A leaning ladder also lets the legs, rather than the arms, carry most of the weight, so each step takes less force. A vertical ladder is the steepest incline (mechanical advantage 1) and needs a force equal to the whole weight.
+  check: none
+
+- id: ncert9-it-7-11
+  lvl: ncert-intext
+  num: "IX 7 · P11"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 11
+  kind: text
+  q: Why is it easier to open the lid of a can by using a spoon as shown in Fig. 7.35?
+  sol: |
+    The spoon acts as a **lever**. Its tip is under the lid's rim (load), the edge of the can acts as the fulcrum, and the hand pushes on the far end of the handle (effort). The effort arm (from the can's rim to the hand) is much longer than the load arm (rim to the tip under the lid), so
+    $$\text{mechanical advantage} = \frac{\text{effort arm}}{\text{load arm}} > 1,$$
+    and a small force from the hand produces a large force on the lid. The hand moves a larger distance than the tip, so the work done is the same (ignoring friction).
+  check: none
+
+- id: ncert9-it-7-12
+  lvl: ncert-intext
+  num: "IX 7 · P12"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 12
+  kind: text
+  q: Why do you push an object closer to scissors fulcrum when you want to cut an object which is hard?
+  sol: |
+    Scissors are a lever of the first class with the pivot as fulcrum. The hand (effort) is applied at the handles, far from the pivot, and the object (load) is cut by the blades. Moving the object closer to the fulcrum **reduces the load arm** while the effort arm stays the same, so the mechanical advantage $\dfrac{\text{effort arm}}{\text{load arm}}$ increases. The same effort then produces a larger cutting force on the object, which is what a hard material needs.
+  check: none
+
+- id: ncert9-ex-7-7
+  lvl: ncert-ex
+  num: "IX 7 · Q7"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q7
+  kind: text
+  q: Which factors determine the energy required to raise a flag from the ground to the top of a tall flagpole using a pulley? Does raising the flag slowly or quickly change the amount of work done? If the speed at which the flag is raised is doubled, how does the power requirement change? Explain your answers.
+  sol: |
+    **Factors.** The energy needed is the gain in gravitational potential energy, $mgh$: it depends on the **mass of the flag** (with the rope part that is lifted) and the **height of the pole**, and on $g$. A fixed pulley only changes the direction of the force; its mechanical advantage is 1, so it does not reduce the energy needed. Friction in the pulley and the rope adds a little extra work.
+
+    **Slow or quick.** The work done does not change. Raising the flag steadily through the same height needs the same force ($= mg$) over the same distance, so $W = mgh$ either way. (Raising it quickly only adds the small kinetic energy needed to reach that speed.)
+
+    **Doubling the speed.** Power is the rate of doing work, $P = Fv$ with $F = mg$ fixed. Doubling $v$ halves the time for the same work, so the power requirement **doubles**.
+  check: none
+
+- id: ncert9-ex-7-9
+  lvl: ncert-ex
+  num: "IX 7 · Q9"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q9
+  kind: text
+  q: On a seesaw with sliding seats, a child is sitting on one side and an adult on the other side. The adult weighs twice that of the child. The seesaw however is balanced. Draw a figure which depicts this situation showing the distances from the fulcrum where the child and the adult are seated.
+  sol: |
+    Balance requires effort $\times$ effort arm = load $\times$ load arm. With $W_{\text{adult}} = 2W_{\text{child}}$, the arms must be in the inverse ratio: $d_{\text{child}} = 2\,d_{\text{adult}}$. So the **child sits twice as far from the fulcrum as the adult.**
+
+    ```
+        child (W)                        adult (2W)
+           o                                 O
+    =======|======================^==========|=====
+           |<------- 2d ---------->|<--- d -->|
+                              fulcrum
+    ```
+
+    For example, if the adult sits 1 m from the fulcrum, the child sits 2 m from it on the other side. (A sketch showing these distances, with the fulcrum at the middle, is the required figure.)
+  check: none
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A lever has an effort arm of 60 cm and a load arm of 15 cm. What is its mechanical advantage? (Original problem.)
+  ask: Mechanical advantage
+  unit: ""
+  ans: 4
+  tol: 0.01
+  verify: 60/15
+  sol: |
+    $\text{mechanical advantage} = \dfrac{\text{effort arm}}{\text{load arm}} = \dfrac{60}{15} = 4$. A 100 N effort can overcome a 400 N load (ignoring friction).
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: The mechanical advantage of a single fixed pulley is (Original problem.)
+  opts: ["0.5", "1", "2", "it depends on the load"]
+  ans: 1
+  sol: |
+    **1.** The rope's tension is the same on both sides, so the effort equals the load and the mechanical advantage (load/effort) is 1. A fixed pulley only changes the direction of the force, making it easier to pull down than to lift up.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A 4 m long smooth ramp rises 1 m. What minimum force along the ramp is needed to push an 80 kg box up it at constant speed? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Force along the ramp
+  unit: N
+  ans: 196
+  tol: 0.5
+  verify: 80*9.8*1/4
+  sol: |
+    $F' L = mgh$, so $F' = mgh/L = 80\times9.8\times1/4 = 196$ N. The mechanical advantage is $L/h = 4$, so the effort is a quarter of the weight (784 N).
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A crowbar is used to lift a load of 1200 N with an effort of 200 N applied 1.5 m from the fulcrum. How far from the fulcrum is the load? Give the load arm in cm. (Original problem.)
+  ask: Load arm
+  unit: cm
+  ans: 25
+  tol: 0.1
+  verify: 150/(1200/200)
+  sol: |
+    Mechanical advantage $= \dfrac{\text{load}}{\text{effort}} = \dfrac{1200}{200} = 6$, and also $= \dfrac{\text{effort arm}}{\text{load arm}}$. Hence
+    $$\text{load arm} = \frac{150\ \text{cm}}{6} = 25\ \text{cm}.$$
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A 100 kg drum is rolled up a smooth 5.0 m long plank into a truck whose bed is 1.2 m above the ground. What effort force is needed along the plank (ignore friction)? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Effort
+  unit: N
+  ans: 235.2
+  tol: 0.5
+  verify: 100*9.8*1.2/5
+  sol: |
+    The work done by the effort equals the potential energy gained: $F' L = mgh$.
+    $$F' = \frac{100\times9.8\times1.2}{5.0} = 235\ \text{N}.$$
+    Lifting it straight up would need 980 N, so the plank gives a mechanical advantage of $5.0/1.2 = 4.2$.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A lever lifts a 500 N load through 0.10 m using an effort of 100 N. Ignoring friction, through what distance must the effort end move? How much work do you do? Give the distance. (Original problem.)
+  ask: Distance moved by the effort end
+  unit: m
+  ans: 0.5
+  tol: 0.001
+  verify: 500*0.10/100
+  sol: |
+    The work put in equals the work got out: $F_1d_1 = F_2d_2$, so
+    $$d_1 = \frac{500\times0.10}{100} = 0.50\ \text{m}.$$
+    The work done is $100\times0.50 = 50$ J, the same as the work done on the load ($500\times0.10 = 50$ J). The lever trades force for distance; it does not save work.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A 6.0 m long ramp is used to raise a 90 kg crate through 1.5 m. The effort needed along the ramp is actually 300 N because of friction. Find the efficiency of the ramp, that is (useful work output) / (work input), as a percentage. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Efficiency
+  unit: "%"
+  ans: 73.5
+  tol: 0.1
+  verify: 90*9.8*1.5/(300*6)*100
+  sol: |
+    Useful work (the potential energy gained): $mgh = 90\times9.8\times1.5 = 1323$ J.
+
+    Work input: $F'L = 300\times6.0 = 1800$ J.
+
+    $$\text{efficiency} = \frac{1323}{1800} = 0.735 = 73.5\%.$$
+    The remaining 477 J is the work done against friction. The *actual* mechanical advantage is $882/300 = 2.94$, below the ideal value $L/h = 4$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A wheelbarrow carries a load of 600 N whose line of action is 0.40 m from the axle of the wheel (the fulcrum). The handles are held 1.2 m from the axle. What upward force must the gardener apply to the handles to just lift the load? (Original problem.)
+  ask: Effort
+  unit: N
+  ans: 200
+  tol: 0.5
+  verify: 600*0.40/1.2
+  sol: |
+    This is a class II lever: the load lies between the fulcrum and the effort. Balance requires effort $\times$ effort arm = load $\times$ load arm:
+    $$F\times1.2 = 600\times0.40\ \Rightarrow\ F = 200\ \text{N}.$$
+    The mechanical advantage is $1.2/0.40 = 3$, so the gardener lifts one third of the load's weight.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A uniform plank 4.0 m long and of mass 20 kg is pivoted at a point 1.0 m from one end A. A child of mass 30 kg sits at A. Where, measured from the pivot on the long side, must a second child of mass 20 kg sit to balance the plank? (Original problem.)
+  ask: Distance of the 20 kg child from the pivot
+  unit: m
+  ans: 0.5
+  tol: 0.001
+  verify: (30*1-20*1)/20
+  sol: |
+    The weight of a uniform plank acts at its centre, 2.0 m from A, which is $2.0 - 1.0 = 1.0$ m from the pivot on the long side. Balance about the pivot (load $\times$ arm on each side; $g$ cancels):
+
+    - on the short side: child at A, $30\times1.0 = 30$ kg m;
+    - on the long side: plank, $20\times1.0 = 20$ kg m, and the second child, $20\times x$.
+
+    $$30 = 20 + 20x\ \Rightarrow\ x = 0.5\ \text{m}.$$
+    The second child sits 0.50 m from the pivot, on the side away from A.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A pulley system (block and tackle) has an ideal mechanical advantage of 4. To raise a load of 1000 N through 0.50 m, how long a length of rope must be pulled, and what effort is needed ideally? Give the length of rope pulled. (Original problem.)
+  ask: Length of rope pulled
+  unit: m
+  ans: 2
+  tol: 0.001
+  verify: 4*0.50
+  sol: |
+    With an ideal mechanical advantage of 4, the effort is $1000/4 = 250$ N, and the rope must be pulled 4 times as far as the load rises:
+    $$s = 4\times0.50 = 2.0\ \text{m}.$$
+    Check with work: $250\times2.0 = 500$ J $= 1000\times0.50$ J. The machine saves force, not work. With friction, more effort than 250 N is needed.
+  check: code

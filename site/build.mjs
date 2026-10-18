@@ -113,7 +113,11 @@ function parseLesson(file) {
     conditions: (co.conditions || []).map(c => mdi(c)),
     signHtml: co.sign ? mdi(co.sign) : ''
   } : null;
-  return { ...meta, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
+  const life = (meta.life || []).map(x => mdi(x));
+  const models = (meta.models || []).map(x => ({ name: mdi(x.name || ''), html: mdi(x.text || '') }));
+  const links = (meta.links || []).map(x => ({ leaf: x.leaf || '', name: x.name || '', same: mdi(x.same || ''), differs: mdi(x.differs || '') }));
+  const next = meta.next ? { q: mdi(meta.next.q || ''), leaf: meta.next.leaf || '', name: meta.next.name || '' } : null;
+  return { ...meta, life, models, links, next, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
     cards: (meta.cards || []).map(c => ({ front: mdi(c.front), back: md(c.back) })) };
 }
 

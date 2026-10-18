@@ -1,0 +1,288 @@
+# Free-body diagrams (isolating a body and listing every force on it). NCERT questions copied word for word from NCERT Science Grade 8 (Curiosity, reprint 2026-27) Ch 5, and NCERT Physics Class XI (reprint 2026-27) Ch 4. Grade 8 has no answer key, so those solutions are ours. Found, board and main problems are original.
+
+- id: ncert8-it-5-1
+  lvl: ncert-intext
+  num: "VIII 5 · Probe"
+  source: NCERT Grade 8 Science · Ch 5 · Probe and ponder 1
+  kind: text
+  q: |-
+    Why does it feel harder to pedal a bicycle going uphill than on flat ground?
+  sol: |
+    Draw the forces on the cycle and rider. On flat ground the weight is balanced by the road's normal force, and you push only against friction and air drag. On a slope of angle $\theta$ the weight $mg$ has a component $mg\sin\theta$ pointing down the slope. This extra backward force acts on top of friction and drag, so to keep going at the same speed the forward force from the road (friction on the driving wheel, which you create by pedalling) must be larger. The steeper the slope, the larger $\sin\theta$ and the harder it is.
+  check: none
+
+- id: ncert8-ex-5-4
+  lvl: ncert-ex
+  num: "VIII 5 · Q4"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q4
+  kind: text
+  q: |-
+    When you drop a coin in a glass of water, it sinks, but when you place a bigger wooden block in water, it floats. Explain.
+  sol: |
+    Two forces act on each object: its weight downward and the upthrust (buoyant force) of the water upward. The upthrust equals the weight of the water displaced. The coin is made of a material denser than water, so even when it is completely under water, the upthrust is less than its weight: the net force is downward and it sinks. The wooden block is less dense than water, so it only needs to sink partly to displace water equal to its own weight; there the upthrust equals the weight and the block floats. What matters is the material (density), not the size.
+  check: none
+
+- id: ncert8-ex-5-5
+  lvl: ncert-ex
+  num: "VIII 5 · Q5"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q5
+  kind: text
+  q: |-
+    If a ball is thrown upwards, it slows down, stops momentarily, and then falls back to the ground. Name the forces acting on the ball and specify their directions.
+    (i) During its upward motion
+    (ii) During its downward motion
+    (iii) At its topmost position
+  sol: |
+    After the ball leaves the hand only two forces can act on it:
+
+    (i) Upward motion: the gravitational force (weight), vertically downward, and a small air resistance (friction with the air), which opposes the motion and so acts downward as well. The hand's push is gone once the ball is released.
+
+    (ii) Downward motion: the weight, downward, and the air resistance, now upward (opposite to the motion), which is small.
+
+    (iii) At the top: the weight, downward. The air resistance is zero at that instant (the ball is momentarily at rest). The ball is at rest only for an instant; the net force is still its weight, which is why it starts falling.
+
+    If air resistance is neglected, the only force in all three cases is the weight, downward.
+  check: none
+
+- id: ncert8-ex-5-10
+  lvl: ncert-ex
+  num: "VIII 5 · Q10"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q10
+  kind: mcq
+  q: |-
+    Three objects 1, 2, and 3 of the same size and shape but made of different materials are placed in the water. They dip to different depths as shown in Fig. 5.17. If the weights of the three objects 1, 2, and 3 are $w_1$, $w_2$, and $w_3$, respectively, then
+  opts: ["w1 = w2 = w3", "w1 > w2 > w3", "w2 > w3 > w1", "w3 > w1 > w2"]
+  ans: 1
+  sol: |
+    [Inference] Reading the figure: object 1 is immersed deepest, object 2 less, object 3 the least.
+
+    Each object floats at rest, so its weight equals the upthrust, which equals the weight of the water displaced. The objects have the same size and shape, so the volume displaced is proportional to the depth of immersion. The deepest one displaces the most water and therefore weighs the most: $w_1 > w_2 > w_3$, option (ii).
+  check: none
+
+- id: ncert11-eg-4-6
+  lvl: ncert-intext
+  num: "XI Ex 4.6"
+  source: NCERT XI Physics · Ch 4 · Example 4.6
+  kind: num
+  q: |-
+    See Fig. 4.8. A mass of 6 kg is suspended by a rope of length 2 m from the ceiling. A force of 50 N in the horizontal direction is applied at the mid-point P of the rope, as shown. What is the angle the rope makes with the vertical in equilibrium ? (Take $g$ = 10 m s$^{-2}$). Neglect the mass of the rope.
+  ask: Angle of the upper rope with the vertical
+  unit: °
+  ans: 40
+  tol: 0.5
+  verify: deg(atan(5/6))
+  sol: |
+    Free-body diagram of the weight W: tension $T_2$ (the lower half of the rope) upward and $mg = 60$ N downward. In equilibrium $T_2 = 6 \times 10 = 60$ N.
+
+    Free-body diagram of the point P: three forces, $T_1$ along the upper half of the rope at angle $\theta$ to the vertical, $T_2 = 60$ N pulling down, and the 50 N horizontal force. The horizontal and vertical components must vanish separately:
+    $T_1\cos\theta = T_2 = 60$ N and $T_1\sin\theta = 50$ N.
+
+    Dividing, $\tan\theta = 5/6$, so $\theta = \tan^{-1}(5/6) = 39.8^\circ \approx 40^\circ$. Also $T_1 = \sqrt{60^2 + 50^2} = 78$ N. The answer does not depend on the length of the rope (taken massless) or on where along it the horizontal force is applied.
+  answer_key: θ = tan⁻¹(5/6) = 40° (worked answer of Example 4.6).
+  check: both
+
+- id: ncert11-eg-4-12
+  lvl: ncert-intext
+  num: "XI Ex 4.12"
+  source: NCERT XI Physics · Ch 4 · Example 4.12
+  kind: num
+  q: |-
+    See Fig. 4.15. A wooden block of mass 2 kg rests on a soft horizontal floor. When an iron cylinder of mass 25 kg is placed on top of the block, the floor yields steadily and the block and the cylinder together go down with an acceleration of 0.1 m s$^{-2}$. What is the action of the block on the floor (a) before and (b) after the floor yields ? Take $g$ = 10 m s$^{-2}$. Identify the action-reaction pairs in the problem.
+  ask: Force of the block and cylinder on the floor in case (b)
+  unit: N
+  ans: 267.3
+  tol: 0.1
+  verify: 27*10-27*0.1
+  sol: |
+    (a) The block alone is at rest. Free-body diagram: its weight $2 \times 10 = 20$ N downward and the normal force $R$ of the floor upward. By the first law $R = 20$ N. By the third law the block pushes down on the floor with 20 N.
+
+    (b) Take block plus cylinder as the system (mass 27 kg). The free-body diagram shows only external forces: the weight $270$ N downward and the normal force $R'$ from the floor upward. The forces between block and cylinder are internal and do not appear. Taking downward as positive, $270 - R' = 27 \times 0.1$, so $R' = 267.3$ N. By the third law the system pushes down on the floor with 267.3 N.
+
+    Action-reaction pairs. For (a): (i) force of gravity on the block by the Earth (20 N) and the force of gravity on the Earth by the block (20 N, upward); (ii) the force on the floor by the block and the force on the block by the floor. For (b): (i) the force of gravity on the system by the Earth (270 N) and on the Earth by the system; (ii) the force on the floor by the system and on the system by the floor; (iii) the force on the block by the cylinder and on the cylinder by the block.
+
+    The weight and the normal force on the same body are not an action-reaction pair. They happen to be equal in (a) because the body is at rest, but not in (b): the weight is 270 N while the normal force is 267.3 N.
+  answer_key: (a) R = 20 N; the action of the block on the floor is 20 N directed vertically downwards. (b) R′ = 267.3 N; the action of the system on the floor is 267.3 N vertically downward (worked answer of Example 4.12).
+  check: both
+
+- id: ncert11-ex-4-13
+  lvl: ncert-ex
+  num: "XI 4.13"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.13
+  kind: num
+  q: |-
+    A man of mass 70 kg stands on a weighing scale in a lift which is moving
+    (a) upwards with a uniform speed of 10 m s$^{-1}$,
+    (b) downwards with a uniform acceleration of 5 m s$^{-2}$,
+    (c) upwards with a uniform acceleration of 5 m s$^{-2}$.
+    What would be the readings on the scale in each case?
+    (d) What would be the reading if the lift mechanism failed and it hurtled down freely under gravity ?
+  ask: Scale reading in case (c)
+  unit: kg
+  ans: 105
+  tol: 0.5
+  verify: 70*(10+5)/10
+  sol: |
+    The scale reads the force the man exerts on it, which by the third law equals the normal force $N$ on the man by the scale. Take $g = 10$ m s$^{-2}$ (as the exercise says), and quote the reading as mass $= N/g$, as the book's key does.
+
+    (a) Uniform speed: $a = 0$, so $N = mg = 700$ N. Reading 70 kg.
+
+    (b) Accelerating downward at 5 m s$^{-2}$: $mg - N = ma$, so $N = 70(10 - 5) = 350$ N. Reading 35 kg.
+
+    (c) Accelerating upward at 5 m s$^{-2}$: $N - mg = ma$, so $N = 70(10 + 5) = 1050$ N. Reading 105 kg.
+
+    (d) Free fall: $a = g$, so $N = m(g - g) = 0$. The scale reads zero.
+  answer_key: (a) N = 70 × 10 = 700 N; Reading is 70 kg. (b) 70 × 10 − N = 70 × 5; Reading is 35 kg. (c) N − 70 × 10 = 70 × 5; Reading is 105 kg. (d) 70 × 10 − N = 70 × 10; Reading would be zero; the scale would read zero.
+  check: both
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: |-
+    How many forces act on a book that lies at rest on a horizontal table (ignore air)? Which are they? (Original problem.)
+  opts: ["One: its weight.", "Two: its weight and the normal force of the table.", "Three: its weight, the normal force and its inertia.", "Two: its weight and the force of the book on the table."]
+  ans: 1
+  sol: |
+    Only forces on the book count in its free-body diagram: its weight (Earth on book) and the normal force (table on book). They are equal and opposite because the book is at rest. "Inertia" is not a force, and the force of the book on the table acts on the table, not on the book.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: |-
+    An 8 kg block hangs at rest from a single rope. What is the tension in the rope? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 78.4
+  tol: 0.1
+  verify: 8*9.8
+  sol: |
+    Free-body diagram: tension $T$ upward and weight $mg$ downward. At rest, $T = mg = 8 \times 9.8 = 78.4$ N.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: text
+  q: |-
+    A ball rolls down a smooth inclined plane at angle $\theta$. Describe the free-body diagram of the ball and write the equation of motion along the plane. (Original problem.)
+  sol: |
+    Two forces act on the ball: its weight $mg$, vertically downward, and the normal force $N$ of the plane, perpendicular to the plane and away from it (the surface is smooth, so there is no friction). Choose axes along and perpendicular to the plane and resolve the weight into $mg\sin\theta$ along the plane (down the slope) and $mg\cos\theta$ into the plane.
+
+    Perpendicular to the plane there is no acceleration: $N = mg\cos\theta$. Along the plane: $mg\sin\theta = ma$, so $a = g\sin\theta$ down the slope, independent of the mass.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    A block of mass 10 kg slides down a smooth plane inclined at $30^\circ$ to the horizontal. Find the normal force on it. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Normal force
+  unit: N
+  ans: 84.9
+  tol: 0.1
+  verify: 10*9.8*cos(rad(30))
+  sol: |
+    There is no acceleration perpendicular to the plane, so $N = mg\cos 30^\circ = 10 \times 9.8 \times 0.866 = 84.9$ N. (The acceleration along the plane is $g\sin 30^\circ = 4.9$ m s$^{-2}$.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |-
+    A 60 kg person stands on a weighing scale in a lift accelerating upward at 1.5 m s$^{-2}$. What force does the scale show? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Normal force on the person
+  unit: N
+  ans: 678
+  tol: 0.5
+  verify: 60*(9.8+1.5)
+  sol: |
+    Free-body diagram of the person: normal force $N$ upward, weight $mg$ downward. Taking up as positive, $N - mg = ma$, so $N = m(g + a) = 60 \times 11.3 = 678$ N. The scale shows 678 N, which is more than the true weight of 588 N.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    A 3 kg lamp hangs from the ceiling by two identical light ropes, each making $30^\circ$ with the horizontal. Find the tension in each rope. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension in each rope
+  unit: N
+  ans: 29.4
+  tol: 0.1
+  verify: 3*9.8/(2*sin(rad(30)))
+  sol: |
+    By symmetry the two tensions are equal. The horizontal components cancel. Vertically, $2T\sin 30^\circ = mg$, so $T = mg/(2\sin 30^\circ) = mg = 3 \times 9.8 = 29.4$ N.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: text
+  q: |-
+    A man stands on a scale in a lift. Draw (describe) the free-body diagram of the man and state, with reasons, whether the scale reading is larger than, equal to or smaller than his true weight when the lift (a) moves up at constant speed, (b) speeds up while going up, (c) speeds up while going down, (d) is in free fall. (Original problem.)
+  sol: |
+    Only two forces act on the man: weight $mg$ downward and the normal force $N$ upward from the scale, and the reading is $N$. Taking up as positive, $N - mg = ma$.
+
+    (a) Constant speed: $a = 0$, so $N = mg$: equal.
+
+    (b) Speeding up while going up: $a > 0$, so $N = m(g + a) > mg$: larger.
+
+    (c) Speeding up while going down: $a < 0$, so $N = m(g - |a|) < mg$: smaller.
+
+    (d) Free fall: $a = -g$, so $N = 0$: the scale reads zero (apparent weightlessness), though the Earth's pull on the man is unchanged.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |-
+    A 2 kg block is held at rest on a smooth plane inclined at $30^\circ$ by a horizontal force $F$ pushing it into the slope. Find $F$. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Horizontal force F
+  unit: N
+  ans: 11.3
+  tol: 0.05
+  verify: 2*9.8*tan(rad(30))
+  sol: |
+    Three forces: weight $mg$ (down), normal force $N$ (perpendicular to the plane) and $F$ (horizontal). Resolve along and perpendicular to the plane. Along the plane, there is no acceleration: $F\cos 30^\circ = mg\sin 30^\circ$, so $F = mg\tan 30^\circ = 2 \times 9.8 \times 0.577 = 11.3$ N. (Perpendicular to the plane, $N = mg\cos 30^\circ + F\sin 30^\circ = 22.6$ N.)
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |-
+    A 5 kg mass hangs from a knot O. The knot is held by two light strings: one is horizontal, the other makes $60^\circ$ with the vertical. Find the tension in the inclined string. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension in the inclined string
+  unit: N
+  ans: 98
+  tol: 0.2
+  verify: 5*9.8/cos(rad(60))
+  sol: |
+    Free-body diagram of the knot O: $T_2$ pulling down (equal to the weight $mg = 49$ N, as the mass hangs at rest), $T_1$ along the inclined string, $T_h$ along the horizontal string. Vertical balance: $T_1\cos 60^\circ = mg = 49$ N, so $T_1 = 49/0.5 = 98$ N. Horizontal balance: $T_h = T_1\sin 60^\circ = 84.9$ N.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |-
+    A 3 kg block sits on a 5 kg block, which sits on a table. A downward push of 20 N is applied on the top block. Find the normal force the table exerts on the lower block. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Normal force of the table
+  unit: N
+  ans: 98.4
+  tol: 0.1
+  verify: (3+5)*9.8+20
+  sol: |
+    Take both blocks as the system. External forces: weights $(3+5) \times 9.8 = 78.4$ N down, the push 20 N down and the table's normal force $N$ up. Equilibrium: $N = 78.4 + 20 = 98.4$ N. (Forces between the blocks are internal and drop out; for the top block alone, the lower block pushes up with $3 \times 9.8 + 20 = 49.4$ N, and by the third law the top block pushes down on the lower one with 49.4 N.)
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |-
+    A man of mass 70 kg sits on a chair of mass 10 kg hung from a light rope that passes over a fixed pulley; the other end of the rope is in his hands. He pulls the rope with a force of 500 N. Find the force the chair exerts on him. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Force of the chair on the man
+  unit: N
+  ans: 375
+  tol: 0.5
+  verify: 70*(9.8+(2*500-80*9.8)/80)-500
+  sol: |
+    System: man plus chair (80 kg). The rope pulls up on the chair with $T = 500$ N and on the man's hands with $T = 500$ N. So $2T - (70+10)g = 80a$: $1000 - 784 = 80a$, $a = 2.7$ m s$^{-2}$ upward.
+
+    Free-body diagram of the man alone: rope force $T = 500$ N up on his hands, normal force $N$ up from the chair, weight $mg$ down. $T + N - mg = ma$ gives $N = 70(9.8 + 2.7) - 500 = 875 - 500 = 375$ N. (Third law: the man pushes down on the chair with 375 N.)
+  check: code

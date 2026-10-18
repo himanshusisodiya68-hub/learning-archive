@@ -1,0 +1,45 @@
+# NCERT Mathematics (Parts 1 and 2), Class 12 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 12
+subject: mat
+name: Mathematics (Parts 1 and 2)
+code: lemh
+chapters:
+- n: 1
+  title: Relations and Functions
+  pdf: lemh101
+- n: 2
+  title: Inverse Trigonometric Functions
+  pdf: lemh102
+- n: 3
+  title: Matrices
+  pdf: lemh103
+- n: 4
+  title: Determinants
+  pdf: lemh104
+- n: 5
+  title: Continuity and Differentiability
+  pdf: lemh105
+- n: 6
+  title: Application of Derivatives
+  pdf: lemh106
+- n: 7
+  title: Integrals
+  pdf: lemh201
+- n: 8
+  title: Application of Integrals
+  pdf: lemh202
+- n: 9
+  title: Differential Equations
+  pdf: lemh203
+- n: 10
+  title: Vector Algebra
+  pdf: lemh204
+- n: 11
+  title: Three Dimensional Geometry
+  pdf: lemh205
+- n: 12
+  title: Linear Programming
+  pdf: lemh206
+- n: 13
+  title: Probability
+  pdf: lemh207

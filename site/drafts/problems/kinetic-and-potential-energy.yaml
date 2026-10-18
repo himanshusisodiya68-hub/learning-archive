@@ -1,0 +1,324 @@
+# Kinetic and potential energy. NCERT questions copied word for word from NCERT Exploration Grade 9 Science (2026-27) Ch 7 §7.2-7.4 and NCERT Physics Class XI (reprint 2026-27) Ch 5 (§5.4 and Exercise 5.12). Found, board and main problems are original.
+
+- id: ncert9-eg-7-4
+  lvl: ncert-intext
+  num: "IX Ex 7.4"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.4
+  kind: num
+  q: If the velocity of a vehicle doubles in magnitude, what will its kinetic energy be compared to its original value?
+  ask: New kinetic energy as a multiple of the original
+  unit: times
+  ans: 4
+  tol: 0.01
+  verify: 0.5*2**2/0.5
+  sol: |
+    Let the mass be $m$ and the initial speed $v$, so $K_1 = \tfrac12 mv^2$. At speed $2v$,
+    $$K_2 = \tfrac12 m(2v)^2 = 4\times\tfrac12 mv^2 = 4K_1.$$
+    Kinetic energy goes as the *square* of the speed, so doubling the speed makes it **4 times** as large.
+  check: code
+
+- id: ncert9-eg-7-5
+  lvl: ncert-intext
+  num: "IX Ex 7.5"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.5
+  kind: num
+  q: In one of their fastest deliveries, an Indian cricketer bowled a cricket ball with an approximate mass of 0.2 kg at a velocity of about 154.8 km h$^{-1}$. Calculate the kinetic energy of the ball at the time of its delivery.
+  ask: Kinetic energy
+  unit: J
+  ans: 184.9
+  tol: 0.2
+  verify: 0.5*0.2*(154.8/3.6)**2
+  sol: |
+    $v = 154.8\ \text{km h}^{-1} = 154.8/3.6 = 43\ \text{m s}^{-1}$. Then
+    $$K = \tfrac12 mv^2 = \tfrac12\times0.2\times43^2 = 184.9\ \text{J}.$$
+  check: code
+
+- id: ncert9-eg-7-7
+  lvl: ncert-intext
+  num: "IX Ex 7.7"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.7
+  kind: num
+  q: After taking a catch, a fielder threw the cricket ball of mass 200 g high up in the air about 10 m above the ground in celebration. How much potential energy does the ball have when the ball reaches its maximum height? Assume $g = 10\ \text{m s}^{-2}$.
+  ask: Potential energy at maximum height
+  unit: J
+  ans: 20
+  tol: 0.1
+  verify: 0.2*10*10
+  sol: |
+    With the ground as the zero of potential energy,
+    $$U = mgh = 0.2\ \text{kg}\times10\ \text{m s}^{-2}\times10\ \text{m} = 20\ \text{J}.$$
+    At the top the ball is momentarily at rest, so all of its mechanical energy is potential.
+  check: code
+
+- id: ncert9-it-7-4
+  lvl: ncert-intext
+  num: "IX 7 · P4"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 4
+  kind: num
+  q: Two objects A and B of mass $m$ and $4m$ have the same kinetic energy. What is the ratio of the magnitude of velocities of A and B?
+  ask: |
+    Ratio $v_A : v_B$ (value of $v_A/v_B$)
+  unit: ""
+  ans: 2
+  tol: 0.01
+  verify: sqrt(4)
+  sol: |
+    $\tfrac12 m v_A^2 = \tfrac12 (4m)v_B^2$, so $v_A^2 = 4v_B^2$ and $v_A/v_B = 2$. The ratio $v_A : v_B = 2 : 1$: the lighter object moves twice as fast.
+  check: code
+
+- id: ncert9-it-7-5
+  lvl: ncert-intext
+  num: "IX 7 · P5"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 5
+  kind: text
+  q: Does the kinetic energy of an object which moves with constant velocity change with its position?
+  sol: |
+    No. Kinetic energy $\tfrac12 mv^2$ depends only on mass and speed. If the velocity is constant, $K$ is constant wherever the object is. (By the work-energy theorem, the net work done on it is zero.)
+  check: none
+
+- id: ncert9-it-7-6
+  lvl: ncert-intext
+  num: "IX 7 · P6"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 6
+  kind: text
+  q: Does the potential energy of an object near the surface of the Earth change if it moves with constant velocity in the horizontal direction? What if the object is gradually raised in the vertical direction?
+  sol: |
+    **Horizontal motion at constant velocity:** no change. $U = mgh$ depends on height only, and $h$ stays constant.
+
+    **Gradually raised vertically:** yes, $U$ increases by $mg\,\Delta h$. The work done by the lifting force against gravity is stored as potential energy.
+  check: none
+
+- id: ncert9-ex-7-3
+  lvl: ncert-ex
+  num: "IX 7 · Q3"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q3
+  kind: text
+  q: |-
+    When a ball thrown upwards reaches its highest point, tick which of the following statement(s) are correct?
+    (i) The force acting on the ball is zero.
+    (ii) The acceleration of the ball is zero.
+    (iii) Its kinetic energy is zero.
+    (iv) Its potential energy is maximum.
+  sol: |
+    **(iii) and (iv) are correct.**
+
+    (i) False. Gravity ($mg$) acts on the ball at every instant, including the top. (ii) False: $a = g$ downward throughout the flight, including at the top. (iii) True: the velocity is momentarily zero. (iv) True: the ball is at its greatest height, and the mechanical energy there is all potential.
+  check: none
+
+- id: ncert9-ex-7-4
+  lvl: ncert-ex
+  num: "IX 7 · Q4"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q4
+  kind: text
+  q: |-
+    For each of the following situations, identify the energy transformation that takes place: (i) a truck moving uphill, (ii) unwinding of a watch spring, (iii) photosynthesis in green leaves, (iv) water flowing from a dam, (v) burning of a matchstick, (vi) explosion of a fire cracker, (vii) speaking into a microphone, (viii) a glowing electric bulb, and (ix) a solar panel.
+  sol: |
+    | Situation | Transformation |
+    |---|---|
+    | (i) truck moving uphill | chemical energy of fuel $\to$ kinetic energy and gravitational potential energy (and heat) |
+    | (ii) unwinding of a watch spring | elastic potential energy $\to$ kinetic energy of the gears and hands |
+    | (iii) photosynthesis | light energy $\to$ chemical energy |
+    | (iv) water flowing from a dam | gravitational potential energy $\to$ kinetic energy |
+    | (v) burning of a matchstick | chemical energy $\to$ heat and light |
+    | (vi) explosion of a fire cracker | chemical energy $\to$ heat, light, sound and kinetic energy |
+    | (vii) speaking into a microphone | sound energy $\to$ electrical energy |
+    | (viii) glowing electric bulb | electrical energy $\to$ light and heat |
+    | (ix) solar panel | light energy $\to$ electrical energy |
+  check: none
+
+- id: ncert9-ex-7-8
+  lvl: ncert-ex
+  num: "IX 7 · Q8"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q8
+  kind: num
+  q: A man of mass 60 kg rides a scooter of mass 100 kg. He accelerates the scooter to a velocity $v$. The next day, his son with a mass of 40 kg joins him as a passenger. If the scooter reaches the same speed on both days in the same time interval, what is the ratio of the fuel of the tank used on the two days? Assume that the energy transfer to the scooter happens entirely due to fuel, and no other losses occur due to air resistance and friction.
+  ask: Fuel used on day 1 divided by fuel used on day 2
+  unit: ""
+  ans: 0.8
+  tol: 0.005
+  verify: (60+100)/(60+100+40)
+  sol: |
+    All the fuel energy becomes kinetic energy, $K = \tfrac12 Mv^2$, where $M$ is the total moving mass.
+
+    Day 1: $M_1 = 60 + 100 = 160$ kg. Day 2: $M_2 = 160 + 40 = 200$ kg. The speed $v$ is the same, so the fuel used is proportional to the mass:
+    $$\frac{\text{fuel}_1}{\text{fuel}_2} = \frac{M_1}{M_2} = \frac{160}{200} = \frac45 = 0.8.$$
+    The ratio is $4 : 5$. The time interval is irrelevant here because no losses are assumed.
+  check: code
+
+- id: ncert11-eg-5-4
+  lvl: ncert-intext
+  num: "XI Ex 5.4"
+  source: NCERT XI Physics · Ch 5 · Example 5.4
+  kind: num
+  q: In a ballistics demonstration a police officer fires a bullet of mass 50.0 g with speed 200 m s$^{-1}$ (see Table 5.2) on soft plywood of thickness 2.00 cm. The bullet emerges with only 10% of its initial kinetic energy. What is the emergent speed of the bullet ?
+  ask: Emergent speed
+  unit: m/s
+  ans: 63.2
+  tol: 0.1
+  verify: sqrt(2*0.1*(0.5*0.05*200**2)/0.05)
+  sol: |
+    The initial kinetic energy is $\tfrac12 mv^2 = \tfrac12(0.05)(200)^2 = 1000$ J. The final kinetic energy is $0.1\times1000 = 100$ J. If $v_f$ is the emergent speed,
+    $$\tfrac12 mv_f^2 = 100\ \text{J}\ \Rightarrow\ v_f = \sqrt{\frac{2\times100}{0.05}} = 63.2\ \text{m s}^{-1}.$$
+    The speed falls by only about 68%, not 90%, because kinetic energy goes as $v^2$: $v_f/v_i = \sqrt{0.1} = 0.316$.
+
+    The average force of the plywood on the bullet follows from the work-energy theorem: $F = 900\ \text{J}/0.02\ \text{m} = 4.5\times10^4$ N.
+  check: code
+
+- id: ncert11-ex-5-12
+  lvl: ncert-ex
+  num: "XI 5.12"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.12
+  kind: num
+  q: An electron and a proton are detected in a cosmic ray experiment, the first with kinetic energy 10 keV, and the second with 100 keV. Which is faster, the electron or the proton ? Obtain the ratio of their speeds. (electron mass = $9.11\times10^{-31}$ kg, proton mass = $1.67\times10^{-27}$ kg, 1 eV = $1.60\times10^{-19}$ J).
+  ask: Ratio of speeds $v_e/v_p$
+  unit: ""
+  ans: 13.5
+  tol: 0.1
+  verify: sqrt((10e3*1.6e-19/9.11e-31)/(100e3*1.6e-19/1.67e-27))
+  sol: |
+    From $K = \tfrac12 mv^2$, $v = \sqrt{2K/m}$.
+
+    Electron: $K = 10\ \text{keV} = 1.6\times10^{-15}$ J, so $v_e = \sqrt{\dfrac{2\times1.6\times10^{-15}}{9.11\times10^{-31}}} = 5.93\times10^{7}\ \text{m s}^{-1}$.
+
+    Proton: $K = 100\ \text{keV} = 1.6\times10^{-14}$ J, so $v_p = \sqrt{\dfrac{2\times1.6\times10^{-14}}{1.67\times10^{-27}}} = 4.38\times10^{6}\ \text{m s}^{-1}$.
+
+    $$\frac{v_e}{v_p} = \sqrt{\frac{K_e}{K_p}\cdot\frac{m_p}{m_e}} = \sqrt{0.1\times1833} \approx 13.5.$$
+    The **electron is faster**, by a factor of about 13.5.
+
+    [Note] A 10 keV electron moves at about 0.2 c, so the non-relativistic formula overestimates its speed by roughly 1%. NCERT ignores this and so does the answer key.
+  answer_key: The electron is faster, ve / vp = 13.5
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A car of mass 1000 kg moves at 20 m/s. Find its kinetic energy. (Original problem.)
+  ask: Kinetic energy
+  unit: J
+  ans: 200000
+  tol: 100
+  verify: 0.5*1000*20**2
+  sol: |
+    $K = \tfrac12 mv^2 = \tfrac12\times1000\times20^2 = 2.0\times10^5$ J.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A body's mass is doubled and its speed is halved. Its kinetic energy then (Original problem.)
+  opts: ["doubles", "is halved", "is unchanged", "becomes one-quarter"]
+  ans: 1
+  sol: |
+    $K' = \tfrac12(2m)(v/2)^2 = \tfrac12\cdot\tfrac{2}{4}mv^2 = \tfrac12\left(\tfrac12 mv^2\right)$, so the kinetic energy is **halved**. The factor 2 from the mass is beaten by the factor $\tfrac14$ from the squared speed.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: Find the gain in gravitational potential energy of a 5 kg bag lifted 2 m above the floor. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Gain in potential energy
+  unit: J
+  ans: 98
+  tol: 0.5
+  verify: 5*9.8*2
+  sol: |
+    $\Delta U = mgh = 5\times9.8\times2 = 98$ J.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A 60 kg student runs up a staircase and rises 4.5 m in the process. Find her gain in gravitational potential energy. Take $g = 9.8\ \text{m s}^{-2}$. Does the answer depend on how quickly she runs? (Original problem.)
+  ask: Gain in potential energy
+  unit: J
+  ans: 2646
+  tol: 2
+  verify: 60*9.8*4.5
+  sol: |
+    $\Delta U = mgh = 60\times9.8\times4.5 = 2646$ J ($\approx 2.6$ kJ).
+
+    No. The gain in potential energy depends only on the mass and the change in height. Running faster changes the *power* she needs, not the energy gained.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A car of mass 1000 kg speeds up from 36 km/h to 72 km/h. By how much does its kinetic energy increase, and by what factor? Give the increase in joules. (Original problem.)
+  ask: Increase in kinetic energy
+  unit: J
+  ans: 150000
+  tol: 100
+  verify: 0.5*1000*(20**2-10**2)
+  sol: |
+    36 km/h = 10 m/s and 72 km/h = 20 m/s.
+    $$K_i = \tfrac12(1000)(10)^2 = 5.0\times10^4\ \text{J},\qquad K_f = \tfrac12(1000)(20)^2 = 2.0\times10^5\ \text{J}.$$
+    The increase is $1.5\times10^5$ J. The kinetic energy becomes **4 times** as large for a doubled speed. Note the second 10 m/s costs three times as much energy as the first.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: text
+  q: Why is kinetic energy never negative, while potential energy can be negative? (Original problem.)
+  sol: |
+    Kinetic energy $\tfrac12mv^2$ is a product of a positive mass and a squared speed, so it can never be below zero; zero means the body is at rest.
+
+    Potential energy is measured *from a reference position that we choose*, and only its changes have physical meaning. If we set $U = 0$ at the ground, an object in a well below ground level has $U = mgh < 0$ with $h$ negative. Likewise, for a spring $U = \tfrac12kx^2$ is zero at the natural length by choice. A negative $U$ simply means the energy is lower than at the reference position.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two bodies A and B of masses $m$ and $4m$ have the same linear momentum. Find the ratio $K_A/K_B$ of their kinetic energies. (Original problem.)
+  ask: $K_A/K_B$
+  unit: ""
+  ans: 4
+  tol: 0.01
+  verify: (1/1)/(1/4)
+  sol: |
+    Write $K$ in terms of momentum $p = mv$: $K = \dfrac{p^2}{2m}$. For equal $p$, $K \propto 1/m$, so
+    $$\frac{K_A}{K_B} = \frac{4m}{m} = 4.$$
+    The lighter body has 4 times the kinetic energy for the same momentum.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A 1.5 kg book sits on a shelf 2.0 m above the floor. A table top is 0.8 m above the floor. Find the change in the book's gravitational potential energy when it is moved from the shelf to the table. Take $g = 9.8\ \text{m s}^{-2}$, and comment on how the answer changes if the reference level is moved to the table top. (Original problem.)
+  ask: Change in potential energy (shelf to table)
+  unit: J
+  ans: -17.64
+  tol: 0.05
+  verify: -1.5*9.8*(2.0-0.8)
+  sol: |
+    The height falls by $2.0 - 0.8 = 1.2$ m, so
+    $$\Delta U = -mg\,\Delta h = -1.5\times9.8\times1.2 = -17.6\ \text{J}.$$
+    With the floor as reference, $U_{\text{shelf}} = 29.4$ J and $U_{\text{table}} = 11.8$ J. With the table top as reference, $U_{\text{shelf}} = 17.6$ J and $U_{\text{table}} = 0$. The values of $U$ change with the reference, but the *difference*, $-17.6$ J, does not. Only differences of potential energy are physical.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: The kinetic energy of a particle is increased by 44%. By what percentage does the magnitude of its momentum increase? (Original problem.)
+  ask: Percentage increase in momentum
+  unit: "%"
+  ans: 20
+  tol: 0.05
+  verify: (sqrt(1.44)-1)*100
+  sol: |
+    $p = \sqrt{2mK}$, so $p \propto \sqrt K$. If $K' = 1.44K$ then $p'/p = \sqrt{1.44} = 1.2$, an increase of **20%**.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: From what height must a car be dropped from rest to have the same kinetic energy it has when moving at 72 km/h? Take $g = 9.8\ \text{m s}^{-2}$ and ignore air resistance. (Original problem.)
+  ask: Height
+  unit: m
+  ans: 20.4
+  tol: 0.1
+  verify: 20**2/(2*9.8)
+  sol: |
+    72 km/h = 20 m/s. Equating $mgh = \tfrac12mv^2$, the mass cancels:
+    $$h = \frac{v^2}{2g} = \frac{20^2}{2\times9.8} = 20.4\ \text{m}.$$
+    This is about a six-storey building, which makes the danger of a 72 km/h crash easy to picture.
+  check: code

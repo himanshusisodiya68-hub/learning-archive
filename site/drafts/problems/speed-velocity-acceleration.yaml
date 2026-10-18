@@ -1,0 +1,781 @@
+# Speed, velocity and acceleration. NCERT questions copied word for word from NCERT Science Grade 7 (Curiosity, reprint 2026-27) Ch 8, NCERT Science Grade 9 (Exploration, 2026-27) Ch 4 and NCERT Physics Class XI (reprint 2026-27) Ch 2. Grades 7 and 9 have no printed answer key, so those solutions are ours; Class XI answers are checked against the printed key. Found, board and main problems are original.
+
+- id: ncert7-it-8-1
+  lvl: ncert-intext
+  num: "VII 8 · §8.1"
+  source: NCERT Grade 7 Science · Ch 8 · §8.1 Measurement of Time
+  kind: text
+  q: |-
+    How was time measured when there were no clocks and watches?
+  sol: |
+    People used events in nature that repeat after definite intervals: the rising and setting of the Sun (a day), the phases of the Moon, the changing seasons. Calendars came from these cycles.
+
+    For shorter intervals within a day they built devices: **sundials** (the moving shadow of an object), **water clocks** (water flowing out of or into a vessel, or a floating bowl with a hole that fills and sinks), **hourglasses** (sand flowing from one bulb to another) and **candle clocks** (marked candles that burn at a steady rate). In each case something happens at a steady rate or repeats, and equal amounts of it are counted as equal intervals of time.
+  check: none
+
+- id: ncert7-it-8-2
+  lvl: ncert-intext
+  num: "VII 8 · §8.1.1"
+  source: NCERT Grade 7 Science · Ch 8 · §8.1.1 A simple pendulum
+  kind: text
+  q: |-
+    Is the pendulum similar to that?
+  sol: |
+    The question compares the simple pendulum with the eraser hung on a thread in the Grade 6 chapter. Yes: both are an object hung from a thread that moves to and fro about a fixed (mean) position when pulled to the side and released. Both show **oscillatory motion**, and because the path repeats after a fixed interval, the motion is also periodic.
+  check: none
+
+- id: ncert7-it-8-3
+  lvl: ncert-intext
+  num: "VII 8 · Activity 8.2"
+  source: NCERT Grade 7 Science · Ch 8 · Activity 8.2: Let us experiment
+  kind: text
+  q: |-
+    Is the time period of your pendulum almost the same every time? What do you conclude from this observation?
+  sol: |
+    Time 10 oscillations with a stopwatch, repeat 3 or 4 times, and divide each by 10. For a 100 cm string the time period comes out near 2 s each time (our estimate: $T = 2\pi\sqrt{L/g} = 2\pi\sqrt{1.00/9.8} \approx 2.0$ s), with only small differences from reaction time.
+
+    **Conclusion:** the time period of a simple pendulum of a given length is almost the same every time, however long it has been swinging. This steadiness is why a pendulum can be used to measure time.
+  check: none
+
+- id: ncert7-it-8-4
+  lvl: ncert-intext
+  num: "VII 8 · Think like a scientist"
+  source: NCERT Grade 7 Science · Ch 8 · Think like a Scientist!
+  kind: text
+  q: |-
+    Suppose you were Galileo experimenting with pendulums, what all would you investigate? What questions could you ask? Would all pendulums have the same time period? How would you test this?
+  sol: |
+    Questions to investigate: Does the time period depend on the length of the string? On the mass of the bob? On how far the bob is pulled aside (within a small angle)?
+
+    Method: change **one thing at a time**. Keep the same bob and use strings of several lengths, timing 10 oscillations for each. Then fix the length and use bobs of different masses.
+
+    Result given in the book: the time period depends on the **length** (longer pendulum, longer time period) but **not on the mass of the bob**. All pendulums of the same length have the same time period at a given place. So not all pendulums have the same time period: only those with equal lengths do.
+  check: none
+
+- id: ncert7-it-8-5
+  lvl: ncert-intext
+  num: "VII 8 · Activity 8.3"
+  source: NCERT Grade 7 Science · Ch 8 · Activity 8.3: Let us identify
+  kind: text
+  q: |-
+    Look at the wall clock shown in Fig. 8.9 carefully. What is the smallest interval of time you can measure with it?
+  sol: |
+    **One second.** The smallest interval you can measure with a clock is the gap between two neighbouring ticks of its fastest hand; the book states that for this clock it is 1 second. A stopwatch that reads hundredths of a second can measure much shorter intervals.
+  check: none
+
+- id: ncert7-it-8-6
+  lvl: ncert-intext
+  num: "VII 8 · §8.1.2"
+  source: NCERT Grade 7 Science · Ch 8 · §8.1.2 (speech bubble)
+  kind: text
+  q: |-
+    For races covering the same distance, we can tell who was faster by measuring time. But how can we tell that when comparing races for different distances?
+  sol: |
+    Time alone is not enough when the distances differ. Compare **distance covered in unit time**, that is, the speed $\dfrac{\text{distance}}{\text{time}}$. For example, 100 m in 12 s gives $100/12 = 8.3$ m/s and 200 m in 25 s gives $200/25 = 8$ m/s, so the first runner is the faster one even though the races are of different lengths.
+  check: none
+
+- id: ncert7-it-8-7
+  lvl: ncert-intext
+  num: "VII 8 · §8.2"
+  source: NCERT Grade 7 Science · Ch 8 · §8.2 Slow or Fast
+  kind: text
+  q: |-
+    How do you decide who is running faster amongst them?
+  sol: |
+    Look at who has covered more distance in the same time. All players start together; after the same time, the one who is ahead has covered more distance and is running faster. So the runner who covers more distance in the same time interval (the one with the higher speed) is the fastest.
+  check: none
+
+- id: ncert7-eg-8-1
+  lvl: ncert-intext
+  num: "VII Ex 8.1"
+  source: NCERT Grade 7 Science · Ch 8 · Example 8.1
+  kind: num
+  q: |-
+    Swati's school is 3.6 km from her house. It took her 15 min to reach her school riding on her bicycle. Calculate the speed of the bicycle in m/s.
+  ask: Speed of the bicycle
+  unit: m/s
+  ans: 4
+  tol: 0.01
+  verify: 3.6*1000/(15*60)
+  sol: |
+    $$\text{speed} = \frac{\text{distance}}{\text{time}} = \frac{3.6\times1000\ \text{m}}{15\times60\ \text{s}} = \frac{3600}{900} = 4\ \text{m/s}.$$
+  check: code
+
+- id: ncert7-eg-8-2
+  lvl: ncert-intext
+  num: "VII Ex 8.2"
+  source: NCERT Grade 7 Science · Ch 8 · Example 8.2
+  kind: num
+  q: |-
+    Raghav is going to a neighbouring city in a bus moving at a speed of 50 km/h. If it takes him 2 h to reach that city, how far is that city?
+  ask: Distance to the city
+  unit: km
+  ans: 100
+  tol: 0.1
+  verify: 50*2
+  sol: |
+    Distance = speed × time $= 50\ \text{km/h}\times2\ \text{h} = 100$ km.
+  check: code
+
+- id: ncert7-eg-8-3
+  lvl: ncert-intext
+  num: "VII Ex 8.3"
+  source: NCERT Grade 7 Science · Ch 8 · Example 8.3
+  kind: num
+  q: |-
+    A train is travelling at a speed of 90 km/h. How much time will it take to cover a distance of 360 km?
+  ask: Time taken
+  unit: h
+  ans: 4
+  tol: 0.01
+  verify: 360/90
+  sol: |
+    Time = distance / speed $= \dfrac{360\ \text{km}}{90\ \text{km/h}} = 4$ h.
+  check: code
+
+- id: ncert7-it-8-8
+  lvl: ncert-intext
+  num: "VII 8 · §8.4"
+  source: NCERT Grade 7 Science · Ch 8 · §8.4 Uniform and Non-uniform Linear Motion
+  kind: text
+  q: |-
+    I once watched a part of marathon on a straight road stretch. I noticed that some people seemed to be running at the same speed during that distance while some people would speed up or slow down. How were their motion different?
+  sol: |
+    The runners who kept the same speed throughout were in **uniform linear motion**: they covered equal distances in equal intervals of time. The runners who sped up or slowed down were in **non-uniform linear motion**: they covered unequal distances in equal intervals of time.
+  check: none
+
+- id: ncert7-it-8-9
+  lvl: ncert-intext
+  num: "VII 8 · Table 8.3"
+  source: NCERT Grade 7 Science · Ch 8 · §8.4 Uniform and Non-uniform Linear Motion (Table 8.3)
+  kind: text
+  q: |-
+    Which of the two trains is in uniform linear motion between 10:00 AM and 11:00 AM?
+
+    Table 8.3: Distances travelled by two trains in equal time intervals of 10 minutes
+
+    | Time (AM) | Train X position (km) | Train X distance (km) | Train Y position (km) | Train Y distance (km) |
+    |---|---|---|---|---|
+    | 10:00 | 0 | 0 | 0 | 0 |
+    | 10:10 | 20 | 20 | 20 | 20 |
+    | 10:20 | 40 | 20 | 35 | 15 |
+    | 10:30 | 60 | 20 | 50 | 15 |
+    | 10:40 | 80 | 20 | 75 | 25 |
+    | 10:50 | 100 | 20 | 95 | 20 |
+    | 11:00 | 120 | 20 | 120 | 25 |
+  sol: |
+    Train X covers 20 km in every 10-minute interval, so it covers equal distances in equal intervals of time: it is in **uniform linear motion** at $20/(10/60) = 120$ km/h.
+
+    Train Y covers 20, 15, 15, 25, 20 and 25 km in successive 10-minute intervals. These are unequal, so Train Y is in non-uniform linear motion. Both trains cover 120 km in the hour, so they have the same average speed of 120 km/h.
+  check: none
+
+- id: ncert7-ex-8-1
+  lvl: ncert-ex
+  num: "VII 8 · Q1"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q1
+  kind: num
+  q: |-
+    Calculate the speed of a car that travels 150 metres in 10 seconds. Express your answer in km/h.
+  ask: Speed of the car
+  unit: km/h
+  ans: 54
+  tol: 0.05
+  verify: 150/10*3.6
+  sol: |
+    Speed $= 150/10 = 15$ m/s. To convert m/s to km/h, multiply by $3600/1000 = 3.6$: $15\times3.6 = 54$ km/h.
+  check: code
+
+- id: ncert7-ex-8-2
+  lvl: ncert-ex
+  num: "VII 8 · Q2"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q2
+  kind: num
+  q: |-
+    A runner completes 400 metres in 50 seconds. Another runner completes the same distance in 45 seconds. Who has a greater speed and by how much?
+  ask: How much greater the faster speed is
+  unit: m/s
+  ans: 0.89
+  tol: 0.01
+  verify: 400/45-400/50
+  sol: |
+    First runner: $400/50 = 8$ m/s. Second runner: $400/45 = 8.89$ m/s.
+
+    The **second runner** (45 s) has the greater speed, by $8.89 - 8 = 0.89$ m/s (about 3.2 km/h).
+  check: code
+
+- id: ncert7-ex-8-3
+  lvl: ncert-ex
+  num: "VII 8 · Q3"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q3
+  kind: num
+  q: |-
+    A train travels at a speed of 25 m/s and covers a distance of 360 km. How much time does it take?
+  ask: Time taken
+  unit: h
+  ans: 4
+  tol: 0.01
+  verify: 360*1000/25/3600
+  sol: |
+    Convert the distance: 360 km = 360 000 m. Time = distance / speed $= 360\,000/25 = 14\,400$ s. In hours: $14\,400/3600 = 4$ h.
+
+    (Check in km/h: $25\times3.6 = 90$ km/h and $360/90 = 4$ h.)
+  check: code
+
+- id: ncert7-ex-8-4
+  lvl: ncert-ex
+  num: "VII 8 · Q4"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q4
+  kind: num
+  q: |-
+    A train travels 180 km in 3 h. Find its speed in:
+    (i) km/h
+    (ii) m/s
+    (iii) What distance will it travel in 4 h if it maintains the same speed throughout the journey?
+  ask: Speed in m/s, part (ii)
+  unit: m/s
+  ans: 16.67
+  tol: 0.01
+  verify: 180/3/3.6
+  sol: |
+    (i) $180\ \text{km}/3\ \text{h} = 60$ km/h.
+
+    (ii) $60$ km/h $= 60\times\dfrac{1000}{3600}$ m/s $= 16.67$ m/s.
+
+    (iii) At the same speed, distance in 4 h $= 60\times4 = 240$ km.
+  check: code
+
+- id: ncert7-ex-8-5
+  lvl: ncert-ex
+  num: "VII 8 · Q5"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q5
+  kind: num
+  q: |-
+    The fastest galloping horse can reach the speed of approximately 18 m/s. How does this compare to the speed of a train moving at 72 km/h?
+  ask: How much faster the train is
+  unit: m/s
+  ans: 2
+  tol: 0.01
+  verify: 72/3.6-18
+  sol: |
+    Put both in the same unit. The train: $72$ km/h $= 72/3.6 = 20$ m/s. The horse: 18 m/s ($= 64.8$ km/h).
+
+    The train is faster by 2 m/s (7.2 km/h): its speed is about 1.1 times the horse's speed.
+  check: code
+
+- id: ncert7-ex-8-6
+  lvl: ncert-ex
+  num: "VII 8 · Q6"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q6
+  kind: text
+  q: |-
+    Distinguish between uniform and non-uniform motion using the example of a car moving on a straight highway with no traffic and a car moving in city traffic.
+  sol: |
+    | | Car on a straight highway with no traffic | Car in city traffic |
+    |---|---|---|
+    | Speed | nearly constant | keeps changing (speeds up, slows down, stops) |
+    | Distance in equal time intervals | equal | unequal |
+    | Type of motion | **uniform** (approximately) | **non-uniform** |
+
+    An object in uniform linear motion covers equal distances in equal intervals of time. In non-uniform motion the distances in equal intervals differ. Uniform motion over a long time is an idealisation; even the highway car varies a little.
+  check: none
+
+- id: ncert7-ex-8-7
+  lvl: ncert-ex
+  num: "VII 8 · Q7"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q7
+  kind: num
+  q: |-
+    Data for an object covering distances in different intervals of time are given in the following table. If the object is in uniform motion, fill in the gaps in the table.
+
+    | Time (s) | 0 | 10 | 20 | 30 |  | 50 |  | 70 |
+    |---|---|---|---|---|---|---|---|---|
+    | Distance (m) | 0 | 8 |  | 24 | 32 | 40 |  | 56 |
+  ask: Distance covered at 20 s
+  unit: m
+  ans: 16
+  tol: 0.01
+  verify: 8/10*20
+  sol: |
+    In uniform motion the speed is constant: $8\ \text{m}/10\ \text{s} = 0.8$ m/s (check: $24/30 = 0.8$, $40/50 = 0.8$, $56/70 = 0.8$).
+
+    - at 20 s: $0.8\times20 = 16$ m
+    - the column with 32 m: $t = 32/0.8 = 40$ s
+    - the empty column between 50 s and 70 s: $t = 60$ s, distance $= 0.8\times60 = 48$ m
+
+    [Inference] The printed table has two gaps in the time row (after 30 s and after 50 s); we read the second one as 60 s because the times are in steps of 10 s.
+  check: code
+
+- id: ncert7-ex-8-8
+  lvl: ncert-ex
+  num: "VII 8 · Q8"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q8
+  kind: num
+  q: |-
+    A car covers 60 km in the first hour, 70 km in the second hour, and 50 km in the third hour. Is the motion uniform? Justify your answer. Find the average speed of the car.
+  ask: Average speed
+  unit: km/h
+  ans: 60
+  tol: 0.05
+  verify: (60+70+50)/3
+  sol: |
+    The distances in equal intervals of 1 h (60, 70 and 50 km) are not equal, so the motion is **not uniform**.
+
+    Average speed $= \dfrac{\text{total distance}}{\text{total time}} = \dfrac{60+70+50}{3} = \dfrac{180}{3} = 60$ km/h.
+  check: code
+
+- id: ncert7-ex-8-9
+  lvl: ncert-ex
+  num: "VII 8 · Q9"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q9
+  kind: text
+  q: |-
+    Which type of motion is more common in daily life—uniform or non-uniform? Provide three examples from your experience to support your answer.
+  sol: |
+    **Non-uniform motion** is far more common. Almost every real motion starts from rest, speeds up, and slows down to stop, so the speed rarely stays constant. Examples:
+
+    1. A bus or auto in town: it starts, stops at signals, and slows for turns.
+    2. A person walking to school: speed varies with crowd, road and tiredness.
+    3. A ball rolling on the ground, or a swing: speed changes continuously until it stops.
+
+    Uniform motion, such as a train running steadily on a long straight stretch, is only an approximation that holds for a short time.
+  check: none
+
+- id: ncert7-ex-8-10
+  lvl: ncert-ex
+  num: "VII 8 · Q10"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q10
+  kind: num
+  q: |-
+    Data for the motion of an object are given in the following table. State whether the speed of the object is uniform or non-uniform. Find the average speed.
+
+    | Time (s) | 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 |
+    |---|---|---|---|---|---|---|---|---|---|---|---|
+    | Distance (m) | 0 | 6 | 10 | 16 | 21 | 29 | 35 | 42 | 45 | 55 | 60 |
+  ask: Average speed
+  unit: m/s
+  ans: 0.6
+  tol: 0.005
+  verify: 60/100
+  sol: |
+    The distances covered in successive 10 s intervals are 6, 4, 6, 5, 8, 6, 7, 3, 10 and 5 m. They are not equal, so the speed is **non-uniform**.
+
+    Average speed $= \dfrac{60\ \text{m}}{100\ \text{s}} = 0.6$ m/s.
+  check: code
+
+- id: ncert7-ex-8-11
+  lvl: ncert-ex
+  num: "VII 8 · Q11"
+  source: NCERT Grade 7 Science · Ch 8 · Let Us Enhance Our Learning Q11
+  kind: num
+  q: |-
+    A vehicle moves along a straight line and covers a distance of 2 km. In the first 500 m, it moves with a speed of 10 m/s and in the next 500 m, it moves with a speed of 5 m/s. With what speed should it move the remaining distance so that the journey is complete in 200 s? What is the average speed of the vehicle for the entire journey?
+  ask: Speed needed for the remaining distance
+  unit: m/s
+  ans: 20
+  tol: 0.05
+  verify: (2000-1000)/(200-500/10-500/5)
+  sol: |
+    Time for the first 500 m: $500/10 = 50$ s. Time for the next 500 m: $500/5 = 100$ s. Time used so far: 150 s, distance covered: 1000 m.
+
+    Remaining: $2000 - 1000 = 1000$ m in $200 - 150 = 50$ s, so the required speed is $1000/50 = 20$ m/s.
+
+    Average speed for the whole journey $= \dfrac{2000\ \text{m}}{200\ \text{s}} = 10$ m/s.
+
+    (Note that this is not the mean of 10, 5 and 20 m/s: the vehicle spends different times at each speed.)
+  check: code
+
+- id: ncert9-it-4-7
+  lvl: ncert-intext
+  num: "IX 4 · Pause 4"
+  source: NCERT Grade 9 Science · Ch 4 · Pause and Ponder Q4
+  kind: num
+  q: |-
+    During a family road trip, you drive 200 km north in three hours. Afterwards, you drive 200 km south in two hours. Find the average speed and average velocity for your entire trip.
+  ask: Average speed
+  unit: km/h
+  ans: 80
+  tol: 0.05
+  verify: (200+200)/(3+2)
+  sol: |
+    Total distance $= 200 + 200 = 400$ km, total time $= 3 + 2 = 5$ h.
+
+    Average speed $= 400/5 = 80$ km/h.
+
+    The car ends where it started, so the displacement is 0 and the **average velocity is 0**.
+  check: code
+
+- id: ncert9-it-4-8
+  lvl: ncert-intext
+  num: "IX 4 · Pause 5"
+  source: NCERT Grade 9 Science · Ch 4 · Pause and Ponder Q5
+  kind: text
+  q: |-
+    Under what condition(s) is the
+    (i) magnitude of average velocity of an object equal to its average speed?
+    (ii) magnitude of average velocity of an object zero while its average speed is not zero?
+  sol: |
+    (i) The magnitude of average velocity equals the average speed when the **distance travelled equals the magnitude of displacement**, that is, when the object moves along a straight line **without changing direction** during the interval.
+
+    (ii) The average velocity has zero magnitude when the displacement is zero: the object is back at its starting point at the end of the interval. Its average speed is non-zero if it moved at all in between, since the distance is then non-zero. Example: a runner completing one lap of a track.
+  check: none
+
+- id: ncert9-eg-4-1
+  lvl: ncert-intext
+  num: "IX Ex 4.1"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.1
+  kind: num
+  q: |-
+    Consider two postmen. They start walking towards each other from a distance of 210 yojanas (Yojana is a unit of distance used in ancient India). One travels 9 yojanas per day and the other covers 5 yojanas per day. Can you determine in how many days they will meet each other?
+  ask: Days until they meet
+  unit: days
+  ans: 15
+  tol: 0.01
+  verify: 210/(9+5)
+  sol: |
+    Each day the gap between them closes by $9 + 5 = 14$ yojanas. To close 210 yojanas takes $210/14 = 15$ days.
+
+    In 15 days the first postman has covered $9\times15 = 135$ yojanas and the second $5\times15 = 75$ yojanas, and $135 + 75 = 210$.
+  check: code
+
+- id: ncert9-eg-4-2
+  lvl: ncert-intext
+  num: "IX Ex 4.2"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.2
+  kind: num
+  q: |-
+    Sarang takes 50 seconds to swim from one end to the other end and back in the swimming pool shown in Fig. 4.7. Find his average speed and average velocity within the time interval of 50 s.
+  ask: Average speed
+  unit: m/s
+  ans: 1
+  tol: 0.005
+  verify: (25+25)/50
+  sol: |
+    The pool is 25 m long (Fig. 4.7). He swims 25 m to the far end and 25 m back, so the total distance is 50 m, and he ends where he began, so the displacement is 0.
+
+    Average speed $= 50/50 = 1$ m s$^{-1}$. Average velocity $= 0/50 = 0$ m s$^{-1}$.
+  check: code
+
+- id: ncert9-eg-4-3
+  lvl: ncert-intext
+  num: "IX Ex 4.3"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.3
+  kind: num
+  q: |-
+    A bus is moving on a long straight highway (Fig. 4.9) with a velocity of 36 km h⁻¹. The driver presses the accelerator for a time interval of 10 s and velocity of the bus increases to 54 km h⁻¹. For some time, the bus moves at a constant velocity. Then, the driver notices an obstacle on the road ahead and presses the brake. The bus comes to a stop in a time interval of 5 s. Find the average acceleration in the two time intervals, (i) when the accelerator was pressed, and (ii) when the brakes were pressed.
+  ask: Average acceleration while braking, part (ii)
+  unit: m/s²
+  ans: -3
+  tol: 0.01
+  verify: (0-54/3.6)/5
+  sol: |
+    (i) $u = 36$ km/h $= 10$ m/s, $v = 54$ km/h $= 15$ m/s, $t = 10$ s.
+    $$a = \frac{v-u}{t} = \frac{15-10}{10} = 0.5\ \text{m s}^{-2}.$$
+    The speed is increasing, so the acceleration is in the direction of velocity.
+
+    (ii) $u = 54$ km/h $= 15$ m/s, $v = 0$, $t = 5$ s.
+    $$a = \frac{0-15}{5} = -3\ \text{m s}^{-2}.$$
+    The minus sign shows that the acceleration is opposite to the direction of velocity (the bus slows down).
+  check: code
+
+- id: ncert9-eg-4-4
+  lvl: ncert-intext
+  num: "IX Ex 4.4"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.4
+  kind: num
+  q: |-
+    As we learnt earlier, when an object is dropped from a height, it takes a straight vertical path downwards before touching the ground. While coming down, the velocity of the object increases as shown in Fig. 4.10 at different instants. Find the magnitude of the average acceleration of the object in every successive interval of a second. Is the average acceleration constant across all intervals? What is the direction of this average acceleration?
+  ask: Magnitude of average acceleration between 1 s and 2 s
+  unit: m/s²
+  ans: 9.8
+  tol: 0.01
+  verify: (19.6-9.8)/(2-1)
+  sol: |
+    From Fig. 4.10 the velocities are 0, 9.8, 19.6, 29.4 and 39.2 m/s at $t = 0, 1, 2, 3$ and 4 s. In each successive second the velocity rises by 9.8 m/s:
+
+    | Interval | Change in velocity | Average acceleration |
+    |---|---|---|
+    | 0 to 1 s | 9.8 m/s | 9.8 m s$^{-2}$ |
+    | 1 to 2 s | 9.8 m/s | 9.8 m s$^{-2}$ |
+    | 2 to 3 s | 9.8 m/s | 9.8 m s$^{-2}$ |
+    | 3 to 4 s | 9.8 m/s | 9.8 m s$^{-2}$ |
+
+    The average acceleration is **constant**, 9.8 m s$^{-2}$. The velocity increases in the direction of motion, so the acceleration is in the direction of motion (downward). This is the acceleration due to gravity, $g$.
+  check: code
+
+- id: ncert9-ex-4-3
+  lvl: ncert-ex
+  num: "IX 4 · Q3"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q3
+  kind: text
+  q: |-
+    A girl is riding her scooter and finds that its speedometer reading is constant. Is it possible for her scooter to be accelerating and if so, how?
+  sol: |
+    **Yes.** The speedometer shows only the speed (the magnitude of velocity). Acceleration is the rate of change of velocity, and velocity has direction as well as magnitude. If the scooter goes round a bend or a circular track at constant speed, the direction of its velocity keeps changing, so its velocity changes and it is accelerating even though the speedometer reading stays constant. (If it moved in a straight line at constant speed, the acceleration would be zero.)
+  check: none
+
+- id: ncert9-ex-4-16
+  lvl: ncert-ex
+  num: "IX 4 · Q16"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q16
+  kind: num
+  q: |-
+    Rohan studies science from 6 PM to 7:30 PM at home. Consider the tip of the minute's hand of the wall clock. During the given time interval, what is its:
+    (i) distance travelled,
+    (ii) displacement,
+    (iii) speed, and
+    (iv) velocity.
+    The length of the minute's hand is 7 cm (Fig. 4.32).
+  ask: Distance travelled by the tip, part (i)
+  unit: cm
+  ans: 65.97
+  tol: 0.05
+  verify: 1.5*2*PI*7
+  sol: |
+    From 6:00 to 7:30 is 90 minutes, and the minute hand turns once in 60 minutes, so it makes 1.5 revolutions. Its tip moves on a circle of radius 7 cm.
+
+    (i) Distance $= 1.5\times2\pi r = 1.5\times2\pi\times7 = 21\pi = 66.0$ cm.
+
+    (ii) At 6:00 the tip points to 12; at 7:30 it points to 6, the opposite end of the diameter. Displacement $= 2r = 14$ cm, directed from the 12 mark towards the 6 mark.
+
+    (iii) (Average) speed $= \dfrac{66.0\ \text{cm}}{90\ \text{min}} = 0.733$ cm/min $= 1.2\times10^{-2}$ cm/s.
+
+    (iv) (Average) velocity $= \dfrac{14\ \text{cm}}{90\ \text{min}} = 0.156$ cm/min $= 2.6\times10^{-3}$ cm/s, directed from the 12 mark towards the 6 mark.
+
+    The speed is about 4.7 times the magnitude of the average velocity because the path is curved.
+  check: code
+
+- id: ncert9-ex-4-18
+  lvl: ncert-ex
+  num: "IX 4 · Journey Beyond"
+  source: NCERT Grade 9 Science · Ch 4 · The Journey Beyond (first bullet)
+  kind: text
+  q: |-
+    Take a cardboard disc (radius ~ 8 cm) (Fig. 4.33). Write numbers 1 to 12 on the outer part (7 cm from the centre) and the letters 'ABCDEF' on the inner part (4 cm from the centre), using the same font size. Spin the disc slowly, then faster, and observe how the numbers and letters appear. Why do the numbers fade or disappear while the letters remain visible? Are the speeds of the numbers and letters the same or different? Justify your answer.
+  sol: |
+    The numbers are at a larger radius (7 cm) than the letters (4 cm). In one revolution of period $T$ a point at radius $r$ travels $2\pi r$, so its speed is $v = 2\pi r/T$. Both rings turn through one revolution in the same time, so the **outer numbers move faster** than the inner letters, in the ratio $7:4$.
+
+    The eye needs a short time to register a shape. A faster-moving mark sweeps across a larger distance during that time and so smears out into a blur; the slower letters smear less and stay readable at a spin rate where the numbers have already faded.
+
+    [Inference] The explanation of why smearing causes fading rests on the eye's persistence of vision, which the chapter does not explain; the speed comparison itself follows directly from the formula for the circular path.
+  check: none
+
+- id: ncert11-eg-2-1
+  lvl: ncert-intext
+  num: "XI Ex 2.1"
+  source: NCERT XI Physics · Ch 2 · Example 2.1
+  kind: num
+  q: |-
+    The position of an object moving along x-axis is given by x = a + bt² where a = 8.5 m, b = 2.5 m s⁻² and t is measured in seconds. What is its velocity at t = 0 s and t = 2.0 s. What is the average velocity between t = 2.0 s and t = 4.0 s ?
+  ask: Average velocity between t = 2.0 s and t = 4.0 s
+  unit: m/s
+  ans: 15
+  tol: 0.05
+  verify: ((8.5+2.5*16)-(8.5+2.5*4))/(4-2)
+  sol: |
+    The velocity is the derivative of the position:
+    $$v = \frac{dx}{dt} = \frac{d}{dt}\left(a + bt^2\right) = 2bt = 5.0\,t\ \text{m s}^{-1}.$$
+    At $t = 0$: $v = 0$. At $t = 2.0$ s: $v = 10$ m s$^{-1}$.
+
+    Average velocity between 2.0 s and 4.0 s:
+    $$\bar v = \frac{x(4.0)-x(2.0)}{4.0-2.0} = \frac{(a+16b)-(a+4b)}{2.0} = 6.0\,b = 6.0\times2.5 = 15\ \text{m s}^{-1}.$$
+    The average of the velocities at the ends is $(10+20)/2 = 15$ m s$^{-1}$, the same value, because the velocity here changes uniformly with time.
+  check: code
+
+- id: ncert11-ex-2-7
+  lvl: ncert-ex
+  num: "XI 2.7"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.7
+  kind: text
+  q: |-
+    Read each statement below carefully and state with reasons and examples, if it is true or false ;
+    A particle in one-dimensional motion
+    (a) with zero speed at an instant may have non-zero acceleration at that instant
+    (b) with zero speed may have non-zero velocity,
+    (c) with constant speed must have zero acceleration,
+    (d) with positive value of acceleration must be speeding up.
+  sol: |
+    **(a) True.** At the top of its flight a ball thrown upward has zero speed for an instant, but its acceleration is still $g$ downward.
+
+    **(b) False.** Speed is the magnitude of velocity. If the speed is zero, the velocity is zero.
+
+    **(c) True.** For one-dimensional motion the direction cannot change except by reversing, and a reversal at constant speed would need an instant jump from $+v$ to $-v$, which needs infinite acceleration and is unphysical. So in one dimension, constant speed means constant velocity and zero acceleration. (If the particle rebounds instantly with the same speed, the acceleration at the rebound would be infinite; the printed answer calls that unphysical.)
+
+    **(d) False.** A positive acceleration speeds the particle up only if the velocity is also positive. If the particle is moving in the negative direction, a positive acceleration slows it down. The statement is true only when the chosen positive direction is along the direction of motion.
+  answer_key: (a) True; (b) False; (c) True (if the particle rebounds instantly with the same speed, it implies infinite acceleration which is unphysical); (d) False (true only when the chosen positive direction is along the direction of motion)
+  check: ncert-key
+
+- id: ncert11-ex-2-10
+  lvl: ncert-ex
+  num: "XI 2.10"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.10
+  kind: num
+  q: |-
+    A man walks on a straight road from his home to a market 2.5 km away with a speed of 5 km h⁻¹. Finding the market closed, he instantly turns and walks back home with a speed of 7.5 km h⁻¹. What is the
+    (a) magnitude of average velocity, and
+    (b) average speed of the man over the interval of time (i) 0 to 30 min, (ii) 0 to 50 min, (iii) 0 to 40 min ?
+    [Note: You will appreciate from this exercise why it is better to define average speed as total path length divided by time, and not as magnitude of average velocity. You would not like to tell the tired man on his return home that his average speed was zero !]
+  ask: Average speed over 0 to 40 min, part (b)(iii)
+  unit: km/h
+  ans: 5.625
+  tol: 0.01
+  verify: (2.5+7.5*(10/60))/(40/60)
+  sol: |
+    Going out takes $2.5/5 = 0.5$ h = 30 min. Coming back at 7.5 km h$^{-1}$ takes $2.5/7.5 = \tfrac13$ h = 20 min. So he is at the market at 30 min and back home at 50 min.
+
+    **(i) 0 to 30 min:** he walks 2.5 km from home to the market. Displacement 2.5 km, path 2.5 km, time 0.5 h.
+    (a) $|\bar v| = 2.5/0.5 = 5$ km h$^{-1}$. (b) average speed $= 2.5/0.5 = 5$ km h$^{-1}$.
+
+    **(ii) 0 to 50 min:** he has returned home, so the displacement is zero and the path is 5 km, time $5/6$ h.
+    (a) $|\bar v| = 0$. (b) average speed $= 5/(5/6) = 6$ km h$^{-1}$.
+
+    **(iii) 0 to 40 min:** he has walked back for 10 min at 7.5 km h$^{-1}$, which is $7.5\times\tfrac16 = 1.25$ km. He is 1.25 km from home, having covered $2.5 + 1.25 = 3.75$ km. Time $= 2/3$ h.
+    (a) $|\bar v| = \dfrac{1.25}{2/3} = \dfrac{15}{8} = 1.875$ km h$^{-1}$. (b) average speed $= \dfrac{3.75}{2/3} = \dfrac{45}{8} = 5.625$ km h$^{-1}$.
+
+    [Note] The printed answer key labels the three intervals (a), (b), (c) instead of (i), (ii), (iii); its entries agree with the values above.
+  answer_key: "(a) 5 km h⁻¹, 5 km h⁻¹; (b) 0, 6 km h⁻¹; (c) 15/8 km h⁻¹, 45/8 km h⁻¹"
+  check: both
+
+- id: ncert11-ex-2-11
+  lvl: ncert-ex
+  num: "XI 2.11"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.11
+  kind: text
+  q: |-
+    In Exercises 2.9 and 2.10, we have carefully distinguished between average speed and magnitude of average velocity. No such distinction is necessary when we consider instantaneous speed and magnitude of velocity. The instantaneous speed is always equal to the magnitude of instantaneous velocity. Why?
+  sol: |
+    Instantaneous velocity is the limit $v = \lim_{\Delta t\to0}\Delta x/\Delta t$. For an extremely small interval $\Delta t$ the particle cannot turn back within the interval, so the magnitude of the displacement $|\Delta x|$ equals the path length $\Delta s$ covered in that interval. Then
+
+    $$\text{instantaneous speed} = \lim_{\Delta t\to0}\frac{\Delta s}{\Delta t} = \lim_{\Delta t\to0}\frac{|\Delta x|}{\Delta t} = \left|\frac{dx}{dt}\right|.$$
+
+    Over a finite interval the particle can go out and back, so path length exceeds displacement and the two averages differ; over an infinitesimal interval that cannot happen.
+  answer_key: Because, for an arbitrarily small interval of time, the magnitude of displacement is equal to the length of the path.
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A car is moving at 72 km/h. Express its speed in m/s. (Original problem.)
+  ask: Speed
+  unit: m/s
+  ans: 20
+  tol: 0.01
+  verify: 72/3.6
+  sol: |
+    $72\ \text{km/h} = 72\times\dfrac{1000\ \text{m}}{3600\ \text{s}} = 72/3.6 = 20$ m/s.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A sprinter runs 100 m in 12.5 s at a steady pace. What is her speed? (Original problem.)
+  ask: Speed
+  unit: m/s
+  ans: 8
+  tol: 0.01
+  verify: 100/12.5
+  sol: |
+    Speed = distance / time $= 100/12.5 = 8$ m/s (= 28.8 km/h).
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: A car completes one lap of a circular track in 40 s at a steady speed. For the whole lap, its average velocity is (Original problem.)
+  opts: ["equal to its speed", "half of its speed", "zero", "double its speed"]
+  ans: 2
+  sol: |
+    After one full lap the car is back at the starting point, so its displacement is zero, and average velocity = displacement / time = 0. Its average speed is non-zero (circumference / 40 s).
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A bus travels 30 km in the first 30 minutes and 60 km in the next 1 hour. Find its average speed for the whole journey. (Original problem.)
+  ask: Average speed
+  unit: km/h
+  ans: 60
+  tol: 0.05
+  verify: (30+60)/(0.5+1)
+  sol: |
+    Total distance $= 30 + 60 = 90$ km. Total time $= 0.5 + 1 = 1.5$ h.
+
+    Average speed $= 90/1.5 = 60$ km/h. (The simple mean of 60 km/h and 60 km/h would also give 60 here, but the correct method is always total distance / total time.)
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A car increases its speed from 18 km/h to 90 km/h in 8 s along a straight road. Find its average acceleration in m/s². (Original problem.)
+  ask: Average acceleration
+  unit: m/s²
+  ans: 2.5
+  tol: 0.01
+  verify: (90/3.6-18/3.6)/8
+  sol: |
+    $u = 18$ km/h $= 5$ m/s, $v = 90$ km/h $= 25$ m/s. Then
+    $$a = \frac{v-u}{t} = \frac{25-5}{8} = 2.5\ \text{m s}^{-2}.$$
+    The acceleration is in the direction of motion because the speed is increasing.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A man walks 600 m from his house to a shop at 1.5 m/s and returns along the same path at 2.5 m/s. Find his average speed for the whole trip. (Original problem.)
+  ask: Average speed
+  unit: m/s
+  ans: 1.875
+  tol: 0.005
+  verify: 1200/(600/1.5+600/2.5)
+  sol: |
+    Going: $600/1.5 = 400$ s. Returning: $600/2.5 = 240$ s. Total time $= 640$ s, total distance $= 1200$ m.
+
+    Average speed $= 1200/640 = 1.875$ m/s. This is not the simple mean of 1.5 and 2.5 (which is 2.0 m/s), because he spends longer at the slower speed. His average velocity over the whole trip is zero.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: The position of a particle is x = 2t² + 3t (x in metres, t in seconds). Find its average velocity between t = 1 s and t = 3 s. (Original problem.)
+  ask: Average velocity
+  unit: m/s
+  ans: 11
+  tol: 0.01
+  verify: ((2*9+3*3)-(2*1+3*1))/(3-1)
+  sol: |
+    $x(1) = 2 + 3 = 5$ m and $x(3) = 18 + 9 = 27$ m. Average velocity $= \dfrac{27-5}{3-1} = 11$ m/s.
+
+    Check against the instantaneous velocity $v = dx/dt = 4t + 3$: at the midpoint $t = 2$ s, $v = 11$ m/s. For motion with constant acceleration the average velocity over an interval equals the instantaneous velocity at its midpoint.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A car covers the first half of a journey (by distance) at 40 km/h and the second half at 60 km/h. Find its average speed for the whole journey. (Original problem.)
+  ask: Average speed
+  unit: km/h
+  ans: 48
+  tol: 0.05
+  verify: 2*40*60/(40+60)
+  sol: |
+    Let the total distance be $2d$. Time for the first half $= d/40$, for the second half $= d/60$. Total time $= d\left(\tfrac1{40}+\tfrac1{60}\right) = d\cdot\dfrac{5}{120} = \dfrac{d}{24}$.
+
+    Average speed $= \dfrac{2d}{d/24} = 48$ km/h.
+
+    In general, $\dfrac{2v_1v_2}{v_1+v_2}$ (the harmonic mean), which is less than the simple mean 50 km/h because more time is spent at the lower speed.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A ball hits a wall horizontally at 12 m/s and rebounds along the same line at 8 m/s. The contact lasts 0.02 s. Find the magnitude of its average acceleration during contact. (Original problem.)
+  ask: Magnitude of average acceleration
+  unit: m/s²
+  ans: 1000
+  tol: 0.5
+  verify: (8+12)/0.02
+  sol: |
+    Take the initial direction as positive. Then $u = +12$ m/s and $v = -8$ m/s, because the ball reverses.
+
+    $$a = \frac{v-u}{t} = \frac{-8-12}{0.02} = -1000\ \text{m s}^{-2}.$$
+    The magnitude is $1000$ m s$^{-2}$, about 100 $g$, directed away from the wall. Forgetting the sign change (using 12 − 8) would give the wrong value 200 m s$^{-2}$.
+  check: code

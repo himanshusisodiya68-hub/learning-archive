@@ -887,6 +887,30 @@ subjects:
       - id: random-variables
         name: Random variables
         from: C12
+  - id: maths-in-life
+    name: Maths in life
+    tag: Money, risk, estimation and decisions.
+    what: Most maths you will use as an adult is about money, chance, growth and estimation. These leaves take ideas from the other pillars and point them at real decisions.
+    split: Money first, then estimation, then chance and data in decisions.
+    branches:
+    - id: money
+      name: Money maths
+      tag: Percentages, interest, EMIs and inflation.
+      leaves:
+      - {id: percentages-in-life, name: 'Percentages in life', from: C8}
+      - {id: compound-interest-and-emis, name: 'Compound interest, EMIs and inflation', from: LIFE}
+    - id: estimation
+      name: Estimation and growth
+      tag: Fermi problems and exponential growth.
+      leaves:
+      - {id: fermi-estimation, name: 'Fermi estimation', from: LIFE}
+      - {id: exponential-growth, name: 'Exponential growth and doubling', from: LIFE}
+    - id: decisions
+      name: Chance and decisions
+      tag: Expected value, risk and misleading statistics.
+      leaves:
+      - {id: expected-value, name: 'Expected value and decisions', from: LIFE}
+      - {id: misleading-statistics, name: 'How statistics mislead', from: LIFE}
   - id: olympiad-toolkit
     name: Olympiad toolkit
     tag: Problem-solving techniques beyond the syllabus.
@@ -927,8 +951,294 @@ subjects:
         from: OLY
 - id: chem
   name: Chemistry
+  what: 'Chemistry asks why substances are what they are, and how one substance turns into another. Everything you touch is a few kinds of atoms joined in different patterns; change the pattern and you change the stuff: wood into ash, food into energy, sand into a phone screen.
+
+
+    Physics tells you the rules for charges and energy; chemistry uses those rules to explain cooking, medicine, batteries, fuels and life itself.'
+  split: First count and describe matter, then look inside the atom and at how atoms join, then ask which changes happen and how fast, then meet the families of elements, then carbon, the element of life, and finally chemistry in daily life.
+  links: <b>How the pillars connect.</b> The atom's structure explains bonding; bonding explains properties; energy explains which reactions go; carbon chemistry is the same rules applied to one very flexible atom.
+  pillars:
+  - id: matter-and-measurement
+    name: Matter and measurement
+    tag: What stuff is made of, and how chemists count atoms.
+    what: Before explaining matter we must describe it, separate it into pure substances, and count its particles. The mole lets us count atoms by weighing.
+    split: Describe, then separate, then count.
+    branches:
+    - id: states-and-mixtures
+      name: States and mixtures
+      tag: Solids, liquids, gases; pure substances and how to separate mixtures.
+      leaves:
+      - {id: states-of-matter, name: 'States of matter', from: C6}
+      - {id: mixtures-and-separation, name: 'Mixtures and their separation', from: C6}
+      - {id: elements-compounds-mixtures, name: 'Elements, compounds and mixtures', from: C8}
+    - id: counting-atoms
+      name: Counting atoms
+      tag: The mole, formulas and balanced equations.
+      leaves:
+      - {id: atoms-and-molecules, name: 'Atoms and molecules', from: C9}
+      - {id: the-mole, name: 'The mole and molar mass', from: C11}
+      - {id: stoichiometry, name: 'Stoichiometry and limiting reagent', from: C11}
+      - {id: concentration, name: 'Concentration of solutions', from: C11}
+  - id: atoms-and-bonding
+    name: Atoms and bonding
+    tag: Inside the atom, the periodic table, and why atoms stick together.
+    what: All of chemistry follows from electrons arranged around a nucleus. Their arrangement explains the periodic table, and their sharing or transfer explains every bond.
+    split: The atom, then its pattern across elements, then bonds and shapes.
+    branches:
+    - id: structure-of-atom
+      name: Structure of the atom
+      tag: Electrons, protons, neutrons and quantum shells.
+      leaves:
+      - {id: discovering-the-atom, name: 'Discovering the atom', from: C9}
+      - {id: bohr-model, name: 'Bohr model and spectra', from: C11}
+      - {id: quantum-model, name: 'Orbitals and quantum numbers', from: C11}
+      - {id: electron-configuration, name: 'Electron configuration', from: C11}
+    - id: periodic-table
+      name: The periodic table
+      tag: Why elements repeat their behaviour.
+      leaves:
+      - {id: periodic-classification, name: 'Periodic classification', from: C10}
+      - {id: periodic-trends, name: 'Periodic trends', from: C11}
+    - id: chemical-bonding
+      name: Chemical bonding
+      tag: Ionic, covalent and metallic bonds; molecular shapes.
+      leaves:
+      - {id: ionic-and-covalent-bonds, name: 'Ionic and covalent bonds', from: C10}
+      - {id: vsepr-and-shapes, name: 'VSEPR and molecular shapes', from: C11}
+      - {id: hybridisation, name: 'Hybridisation', from: C11}
+      - {id: molecular-orbitals, name: 'Molecular orbital theory', from: C11}
+      - {id: intermolecular-forces, name: 'Intermolecular forces and hydrogen bonds', from: C11}
+  - id: energy-and-change
+    name: Energy and change
+    tag: Which reactions happen, how far, and how fast.
+    what: A reaction goes if it lowers the free energy of the universe, stops at equilibrium, and takes as long as its slowest step. These three ideas, energy, equilibrium and rate, decide every chemical change.
+    split: Describe reactions, then ask if they go (energy), how far (equilibrium), how fast (kinetics), and how to run them with electricity.
+    branches:
+    - id: reactions
+      name: Chemical reactions
+      tag: Types of reactions and redox.
+      leaves:
+      - {id: physical-and-chemical-changes, name: 'Physical and chemical changes', from: C7}
+      - {id: chemical-reactions-and-equations, name: 'Chemical reactions and equations', from: C10}
+      - {id: redox-reactions, name: 'Redox reactions', from: C11}
+    - id: chemical-thermodynamics
+      name: Chemical thermodynamics
+      tag: Enthalpy, entropy and Gibbs energy.
+      leaves:
+      - {id: enthalpy, name: 'Enthalpy and Hess''s law', from: C11}
+      - {id: entropy-and-gibbs, name: 'Entropy and Gibbs energy', from: C11}
+    - id: equilibrium
+      name: Equilibrium
+      tag: Reactions that stop halfway, and acids and bases.
+      leaves:
+      - {id: chemical-equilibrium, name: 'Chemical equilibrium', from: C11}
+      - {id: acids-bases-and-salts, name: 'Acids, bases and salts', from: C7}
+      - {id: ionic-equilibrium, name: 'pH, buffers and ionic equilibrium', from: C11}
+    - id: solutions-and-electrochemistry
+      name: Solutions and electrochemistry
+      tag: Dissolving, cells and batteries.
+      leaves:
+      - {id: solutions, name: 'Solutions and colligative properties', from: C12}
+      - {id: electrochemistry, name: 'Electrochemical cells and batteries', from: C12}
+    - id: kinetics
+      name: Chemical kinetics
+      tag: How fast reactions go, and why heat speeds them up.
+      leaves:
+      - {id: rate-laws, name: 'Rate laws and order', from: C12}
+      - {id: activation-energy, name: 'Activation energy and catalysts', from: C12}
+  - id: elements-and-families
+    name: Elements and their families
+    tag: Metals, non-metals and the blocks of the periodic table.
+    what: Elements in the same group behave alike because their outer electrons match. Knowing the family tells you most of an element's chemistry.
+    split: Metals and non-metals first, then each block of the table, then complexes of transition metals.
+    branches:
+    - id: metals-nonmetals
+      name: Metals and non-metals
+      tag: Properties, reactivity and extraction.
+      leaves:
+      - {id: metals-and-non-metals, name: 'Metals and non-metals', from: C7}
+      - {id: extraction-of-metals, name: 'Extraction of metals', from: C10}
+    - id: blocks
+      name: The blocks
+      tag: s, p, d and f block elements.
+      leaves:
+      - {id: s-block, name: 's-block elements', from: C11}
+      - {id: p-block, name: 'p-block elements', from: C11}
+      - {id: d-and-f-block, name: 'd- and f-block elements', from: C12}
+      - {id: coordination-compounds, name: 'Coordination compounds', from: C12}
+  - id: carbon-chemistry
+    name: Carbon chemistry
+    tag: The chemistry of life, fuels and plastics.
+    what: Carbon forms four strong bonds and long chains, so it builds millions of compounds. Organic chemistry is learning a few reaction patterns that repeat across all of them.
+    split: Basic principles, then hydrocarbons, then each functional group, then the molecules of life and of industry.
+    branches:
+    - id: organic-basics
+      name: Organic basics
+      tag: Naming, isomers and reaction mechanisms.
+      leaves:
+      - {id: carbon-and-its-compounds, name: 'Carbon and its compounds', from: C10}
+      - {id: iupac-naming, name: 'Naming organic compounds', from: C11}
+      - {id: isomerism, name: 'Isomerism', from: C11}
+      - {id: electron-movement, name: 'Inductive, resonance and reaction mechanisms', from: C11}
+    - id: functional-groups
+      name: Functional groups
+      tag: Hydrocarbons to amines.
+      leaves:
+      - {id: hydrocarbons, name: 'Hydrocarbons', from: C11}
+      - {id: haloalkanes, name: 'Haloalkanes and haloarenes', from: C12}
+      - {id: alcohols-phenols-ethers, name: 'Alcohols, phenols and ethers', from: C12}
+      - {id: carbonyl-compounds, name: 'Aldehydes, ketones and carboxylic acids', from: C12}
+      - {id: amines, name: 'Amines', from: C12}
+    - id: molecules-of-life
+      name: Molecules of life and industry
+      tag: Biomolecules and polymers.
+      leaves:
+      - {id: biomolecules-chem, name: 'Biomolecules', from: C12}
+      - {id: polymers, name: 'Polymers and plastics', from: C12}
+  - id: chemistry-in-life
+    name: Chemistry in daily life
+    tag: Kitchen, medicine cabinet and environment.
+    what: The same reactions run in your kitchen, your body and the atmosphere. This pillar applies the others to choices you make every day.
+    split: Home, body, planet.
+    branches:
+    - id: everyday-chemistry
+      name: Everyday chemistry
+      tag: Soaps, food, medicines and fuels.
+      leaves:
+      - {id: soaps-and-detergents, name: 'Soaps and detergents', from: C10}
+      - {id: food-and-cooking-chemistry, name: 'Food and cooking chemistry', from: LIFE}
+      - {id: medicines-and-drugs, name: 'How medicines work', from: LIFE}
+      - {id: fuels-and-combustion, name: 'Fuels and combustion', from: C8}
+    - id: environmental-chemistry
+      name: Environmental chemistry
+      tag: Air, water and climate.
+      leaves:
+      - {id: air-and-water-pollution, name: 'Air and water pollution', from: C8}
+      - {id: greenhouse-and-ozone, name: 'Greenhouse effect and ozone', from: LIFE}
 - id: bio
   name: Biology
+  what: 'Biology asks what makes something alive, and how living things work, grow, reproduce and change. Every living thing is made of cells, runs on chemistry, stores its instructions in DNA, and has been shaped by evolution.
+
+
+    Understanding biology means understanding your own body, your food, your health, and the planet you live on.'
+  split: Start with the cell, then the variety of life, then how plants and animals work, then how life is passed on, then life and human welfare, then life together in ecosystems.
+  links: <b>How the pillars connect.</b> The cell is the unit of every pillar; DNA links reproduction to evolution; energy flows from photosynthesis through every food chain; evolution explains why the diversity pillar looks the way it does.
+  pillars:
+  - id: cells-and-molecules
+    name: Cells and molecules
+    tag: The unit of life and the molecules it runs on.
+    what: Every living thing is one cell or many. A cell is a bag of chemistry that copies itself; understanding it explains every other pillar.
+    split: Cell structure, then its molecules, then how it divides.
+    branches:
+    - id: the-cell
+      name: The cell
+      tag: Structure and organelles.
+      leaves:
+      - {id: cell-the-unit-of-life, name: 'Cell: the unit of life', from: C8}
+      - {id: tissues, name: 'Tissues', from: C9}
+      - {id: biomolecules, name: 'Biomolecules and enzymes', from: C11}
+      - {id: cell-cycle-and-division, name: 'Cell cycle and cell division', from: C11}
+  - id: diversity-of-life
+    name: Diversity of life
+    tag: Naming and grouping millions of species.
+    what: There are millions of species. Classification groups them by shared ancestry, so knowing one member tells you a lot about the rest.
+    split: Principles, then kingdoms, then plants and animals.
+    branches:
+    - id: classification
+      name: Classification
+      tag: The living world and its kingdoms.
+      leaves:
+      - {id: the-living-world, name: 'The living world', from: C11}
+      - {id: biological-classification, name: 'Biological classification', from: C11}
+      - {id: plant-kingdom, name: 'Plant kingdom', from: C11}
+      - {id: animal-kingdom, name: 'Animal kingdom', from: C11}
+  - id: how-plants-work
+    name: How plants work
+    tag: Structure, food-making and growth.
+    what: Plants make their own food from light, water and air. Their structure, from roots to leaves, is designed around that one job.
+    split: Structure, then energy, then growth.
+    branches:
+    - id: plant-structure
+      name: Plant structure
+      tag: Morphology and anatomy.
+      leaves:
+      - {id: morphology-of-flowering-plants, name: 'Morphology of flowering plants', from: C11}
+      - {id: anatomy-of-flowering-plants, name: 'Anatomy of flowering plants', from: C11}
+    - id: plant-physiology
+      name: Plant physiology
+      tag: Photosynthesis, respiration, transport and growth.
+      leaves:
+      - {id: photosynthesis, name: 'Photosynthesis', from: C7}
+      - {id: respiration-in-plants, name: 'Respiration in plants', from: C11}
+      - {id: plant-growth, name: 'Plant growth and development', from: C11}
+  - id: human-body
+    name: How the human body works
+    tag: Organ systems, from food to thought.
+    what: Your body is about 37 trillion cells cooperating. Organ systems deliver food and oxygen, remove waste, move you, and coordinate it all.
+    split: Supply (food, air, blood), then waste, then movement, then control.
+    branches:
+    - id: life-processes
+      name: Life processes
+      tag: Nutrition, breathing, circulation and excretion.
+      leaves:
+      - {id: nutrition, name: 'Nutrition and digestion', from: C7}
+      - {id: breathing, name: 'Breathing and exchange of gases', from: C11}
+      - {id: circulation, name: 'Body fluids and circulation', from: C11}
+      - {id: excretion, name: 'Excretion', from: C11}
+    - id: movement-and-control
+      name: Movement and control
+      tag: Muscles, nerves and hormones.
+      leaves:
+      - {id: locomotion, name: 'Locomotion and movement', from: C11}
+      - {id: neural-control, name: 'Neural control and coordination', from: C10}
+      - {id: chemical-coordination, name: 'Hormones and chemical coordination', from: C10}
+  - id: reproduction-and-heredity
+    name: Reproduction and heredity
+    tag: How life copies itself and changes over time.
+    what: Living things make copies of themselves, and the copies differ slightly. Heredity explains the copying; variation plus selection explains evolution.
+    split: Reproduction, then inheritance, then DNA, then evolution.
+    branches:
+    - id: reproduction
+      name: Reproduction
+      tag: In plants and humans.
+      leaves:
+      - {id: reproduction-in-plants, name: 'Sexual reproduction in flowering plants', from: C12}
+      - {id: human-reproduction, name: 'Human reproduction', from: C12}
+      - {id: reproductive-health, name: 'Reproductive health', from: C12}
+    - id: genetics-and-evolution
+      name: Genetics and evolution
+      tag: Mendel, DNA and natural selection.
+      leaves:
+      - {id: inheritance-and-variation, name: 'Principles of inheritance and variation', from: C10}
+      - {id: molecular-basis-of-inheritance, name: 'Molecular basis of inheritance', from: C12}
+      - {id: evolution, name: 'Evolution', from: C12}
+  - id: life-and-welfare
+    name: Life and human welfare
+    tag: Health, microbes and biotechnology.
+    what: 'Biology becomes power when we use it: to fight disease, grow food and make medicines.'
+    split: Health, then microbes, then biotechnology.
+    branches:
+    - id: health
+      name: Health and biotechnology
+      tag: Disease, microbes and gene technology.
+      leaves:
+      - {id: human-health-and-disease, name: 'Human health and disease', from: C12}
+      - {id: microbes-in-human-welfare, name: 'Microbes in human welfare', from: C12}
+      - {id: biotechnology-principles, name: 'Biotechnology: principles and processes', from: C12}
+      - {id: biotechnology-applications, name: 'Biotechnology and its applications', from: C12}
+  - id: ecology
+    name: Ecology
+    tag: Living things together, and with their environment.
+    what: No organism lives alone. Ecology studies populations, food webs and the flow of energy, and why biodiversity matters.
+    split: Populations, then ecosystems, then conservation.
+    branches:
+    - id: ecosystems
+      name: Ecosystems
+      tag: Populations, energy flow and biodiversity.
+      leaves:
+      - {id: organisms-and-populations, name: 'Organisms and populations', from: C12}
+      - {id: ecosystem, name: 'Ecosystem', from: C12}
+      - {id: biodiversity-and-conservation, name: 'Biodiversity and conservation', from: C12}
 - id: eng
   name: English
   what: 'English is the tool you use to understand everything else you will study, and to be understood. It has four jobs: take in meaning (reading), put meaning out (writing), obey the rules that make a sentence clear (grammar), and learn from other minds (literature).\n\nSo the pillars follow the jobs. Grammar comes first because writing and reading both depend on it. Writing and reading are the two directions of one skill. Literature is where all three are used on real texts.'
@@ -1009,6 +1319,37 @@ subjects:
       - id: gap-filling-editing-and-reordering
         name: Gap filling, editing and reordering
         from: C10
+  - id: vocabulary
+    name: Vocabulary
+    tag: Words, their relations, and the phrases built from them.
+    what: Grammar is the skeleton of a sentence; vocabulary is its flesh. Knowing how words relate (same meaning, opposite meaning, built from the same root) and the fixed phrases people actually use lets you understand faster and say exactly what you mean.
+    split: Relations between words first (synonyms, antonyms), then how words are built, then fixed phrases (idioms, phrasal verbs), then precision.
+    branches:
+    - id: word-relations
+      name: Word relations
+      tag: Synonyms, antonyms and look-alike words.
+      leaves:
+      - {id: synonyms, name: 'Synonyms and shades of meaning', from: C6}
+      - {id: antonyms, name: 'Antonyms', from: C6}
+      - {id: homonyms-and-homophones, name: 'Homonyms, homophones and confusables', from: C7}
+    - id: word-building
+      name: Word building
+      tag: Roots, prefixes and suffixes.
+      leaves:
+      - {id: roots-prefixes-suffixes, name: 'Roots, prefixes and suffixes', from: C8}
+    - id: fixed-phrases
+      name: Idioms and phrases
+      tag: Expressions whose meaning is more than their words.
+      leaves:
+      - {id: idioms, name: 'Idioms', from: C8}
+      - {id: phrasal-verbs, name: 'Phrasal verbs', from: C8}
+      - {id: proverbs, name: 'Proverbs', from: C8}
+    - id: precision
+      name: Precision
+      tag: The exact word for the job.
+      leaves:
+      - {id: one-word-substitution, name: 'One-word substitution', from: C9}
+      - {id: collocations, name: 'Collocations', from: C10}
   - id: writing
     name: Writing
     tag: Putting meaning out clearly.
@@ -1135,3 +1476,252 @@ subjects:
       - id: fp-the-book-that-saved-the-earth
         name: The Book That Saved the Earth
         from: C10
+- id: cs
+  name: Computer Science
+  what: 'Computer science asks what can be computed and how to do it well. A computer is a machine that follows very simple instructions extremely fast; everything from a calculator to Instagram is built by stacking simple ideas into layers, each hiding the details of the one below.
+
+
+    The same few ideas (represent the data, choose a structure, follow an algorithm, trade time against space, split big problems into small ones) appear at every layer, from a single function to a system serving a billion people.'
+  split: Bottom-up, the way the layers are built - how the machine thinks, how we instruct it, how we organise data and procedures, how systems share resources and talk, how data is stored at scale, how software is built and run, how systems are designed, and how machines learn.
+  links: <b>How the pillars connect.</b> Data structures and algorithms are the core every other pillar reuses. Operating systems and networks are where they meet hardware. Databases and system design are the same structures (hash tables, trees, logs) spread across many machines. AI is algorithms that learn from data.
+  pillars:
+  - id: how-computers-work
+    name: How computers work
+    tag: Bits, logic and the machine that runs your code.
+    what: Everything a computer stores is a pattern of bits, and everything it does is built from a few logic operations. Understanding this layer removes the magic from every layer above.
+    split: Represent information, then compute with logic, then the machine that executes programs.
+    branches:
+    - id: information
+      name: Representing information
+      tag: Binary, numbers, text and images as bits.
+      leaves:
+      - {id: bits-and-binary, name: 'Bits and binary', from: BEG}
+      - {id: numbers-in-a-computer, name: 'How computers store numbers', from: BEG}
+      - {id: text-images-sound, name: 'Text, images and sound as bits', from: BEG}
+    - id: machine
+      name: The machine
+      tag: Logic gates, the CPU and memory.
+      leaves:
+      - {id: logic-gates, name: 'Logic gates and Boolean algebra', from: BEG}
+      - {id: cpu-and-instructions, name: 'How a CPU runs a program', from: INT}
+      - {id: memory-hierarchy, name: 'Memory hierarchy and caches', from: INT}
+  - id: programming
+    name: Programming fundamentals
+    tag: The ideas every language shares.
+    what: All programming languages express the same handful of ideas - values, names, decisions, repetition, functions and data. Learn them once and every language is a new spelling of the same thoughts. We use Python to learn (closest to plain English) and JavaScript/TypeScript for the web.
+    split: Core ideas, then organising programs, then languages and tools.
+    branches:
+    - id: core-ideas
+      name: Core ideas
+      tag: Values, variables, decisions, loops and functions.
+      leaves:
+      - {id: values-and-types, name: 'Values and types', from: BEG}
+      - {id: variables-and-memory, name: 'Variables and memory', from: BEG}
+      - {id: control-flow, name: 'Decisions and loops', from: BEG}
+      - {id: functions, name: 'Functions', from: BEG}
+      - {id: recursion, name: 'Recursion', from: INT}
+    - id: organising-programs
+      name: Organising programs
+      tag: Collections, objects, errors and modules.
+      leaves:
+      - {id: collections, name: 'Lists, dictionaries and sets', from: BEG}
+      - {id: objects-and-classes, name: 'Objects and classes', from: INT}
+      - {id: errors-and-testing, name: 'Errors and testing', from: INT}
+      - {id: functional-ideas, name: 'Functional programming ideas', from: INT}
+    - id: languages
+      name: Languages and tools
+      tag: How languages differ, compile and run.
+      leaves:
+      - {id: language-landscape, name: 'The language landscape (Python, JavaScript, Java, C++, Go)', from: BEG}
+      - {id: compilers-and-interpreters, name: 'Compilers and interpreters', from: INT}
+      - {id: git-and-the-command-line, name: 'Git and the command line', from: BEG}
+  - id: data-structures
+    name: Data structures
+    tag: Ways to organise data so the right questions are fast.
+    what: A data structure is a way to arrange data so that some operations are fast. Every structure is a trade-off - fast lookup costs memory, fast insertion costs order. Choosing well is most of engineering.
+    split: Linear structures, then key-based lookup, then hierarchies, then networks, then probabilistic tricks.
+    branches:
+    - id: linear
+      name: Linear structures
+      tag: Arrays, linked lists, stacks and queues.
+      leaves:
+      - {id: arrays, name: 'Arrays and dynamic arrays', from: BEG}
+      - {id: linked-lists, name: 'Linked lists', from: INT}
+      - {id: stacks-and-queues, name: 'Stacks and queues', from: INT}
+    - id: lookup
+      name: Fast lookup
+      tag: Hash tables and probabilistic structures.
+      leaves:
+      - {id: hash-tables, name: 'Hash tables', from: INT}
+      - {id: bloom-filters, name: 'Bloom filters', from: ADV}
+    - id: hierarchies
+      name: Trees and heaps
+      tag: Hierarchical data and priorities.
+      leaves:
+      - {id: trees, name: 'Trees and binary search trees', from: INT}
+      - {id: balanced-trees-and-b-trees, name: 'Balanced trees and B-trees', from: ADV}
+      - {id: heaps, name: 'Heaps and priority queues', from: INT}
+      - {id: tries, name: 'Tries', from: ADV}
+    - id: networks
+      name: Graphs
+      tag: Things connected to things.
+      leaves:
+      - {id: graphs, name: 'Graphs and their representations', from: INT}
+  - id: algorithms
+    name: Algorithms and problem solving
+    tag: Step-by-step methods, and how to judge them.
+    what: An algorithm is a precise recipe. We judge recipes by how their cost grows with the input, because a method that is fine for 100 items can be hopeless for a billion.
+    split: Measuring cost, then classic techniques, then problem-solving patterns.
+    branches:
+    - id: analysis
+      name: Measuring algorithms
+      tag: Big-O, time and space.
+      leaves:
+      - {id: big-o, name: 'Big-O and growth of cost', from: BEG}
+    - id: techniques
+      name: Classic techniques
+      tag: Searching, sorting and paradigms.
+      leaves:
+      - {id: searching-and-binary-search, name: 'Searching and binary search', from: BEG}
+      - {id: sorting, name: 'Sorting', from: INT}
+      - {id: divide-and-conquer, name: 'Divide and conquer', from: INT}
+      - {id: greedy, name: 'Greedy algorithms', from: INT}
+      - {id: dynamic-programming, name: 'Dynamic programming', from: ADV}
+      - {id: graph-algorithms, name: 'Graph algorithms: BFS, DFS, shortest paths', from: ADV}
+    - id: patterns
+      name: Problem-solving patterns
+      tag: The moves behind most interview and real problems.
+      leaves:
+      - {id: two-pointers-and-sliding-window, name: 'Two pointers and sliding window', from: INT}
+      - {id: problem-solving-method, name: 'A method for any problem', from: BEG}
+  - id: systems
+    name: Operating systems and networks
+    tag: How one machine shares itself, and how machines talk.
+    what: An operating system lets many programs share one machine safely; a network lets many machines share data. Both are layers of agreed rules.
+    split: Inside one machine, then between machines, then keeping it safe.
+    branches:
+    - id: operating-systems
+      name: Operating systems
+      tag: Processes, threads, memory and files.
+      leaves:
+      - {id: processes-and-threads, name: 'Processes and threads', from: INT}
+      - {id: concurrency, name: 'Concurrency and locks', from: ADV}
+      - {id: virtual-memory, name: 'Virtual memory', from: ADV}
+      - {id: file-systems, name: 'File systems', from: INT}
+    - id: networking
+      name: Networking
+      tag: The internet, from a cable to a web page.
+      leaves:
+      - {id: how-the-internet-works, name: 'How the internet works', from: BEG}
+      - {id: tcp-ip, name: 'TCP/IP and the layers', from: INT}
+      - {id: dns-and-http, name: 'DNS and HTTP', from: INT}
+    - id: security
+      name: Security and cryptography
+      tag: Secrets, signatures and trust.
+      leaves:
+      - {id: cryptography-basics, name: 'Hashing, encryption and signatures', from: INT}
+      - {id: web-security, name: 'Common attacks and defences', from: ADV}
+  - id: data-systems
+    name: Data and databases
+    tag: Storing data reliably, from one disk to many data centres.
+    what: Data outlives code. Databases are data structures (logs, hash indexes, B-trees) made durable, shared and spread across machines - the subject of Designing Data-Intensive Applications.
+    split: One database, then many machines, then data in motion.
+    branches:
+    - id: databases
+      name: Databases
+      tag: Relational model, SQL, indexes and transactions.
+      leaves:
+      - {id: relational-model-and-sql, name: 'Relational model and SQL', from: BEG}
+      - {id: indexes, name: 'Indexes: hash, B-tree and LSM-tree', from: INT}
+      - {id: transactions, name: 'Transactions and isolation', from: ADV}
+      - {id: nosql-and-data-models, name: 'Document, key-value and graph models', from: INT}
+    - id: distributed-data
+      name: Distributed data
+      tag: Replication, partitioning and consistency.
+      leaves:
+      - {id: replication, name: 'Replication', from: ADV}
+      - {id: partitioning, name: 'Partitioning and sharding', from: ADV}
+      - {id: consistency-and-consensus, name: 'Consistency and consensus', from: SDE}
+    - id: data-in-motion
+      name: Data in motion
+      tag: Batch and stream processing.
+      leaves:
+      - {id: batch-and-stream, name: 'Batch and stream processing', from: ADV}
+  - id: software-engineering
+    name: Building software
+    tag: Turning code into products people rely on.
+    what: Real software is written by teams, changes for years and must not break. Engineering is the set of habits that make that possible.
+    split: Design the code, then the interfaces, then the front and back ends.
+    branches:
+    - id: design
+      name: Software design
+      tag: Clean code, principles and patterns.
+      leaves:
+      - {id: clean-code, name: 'Clean code and abstraction', from: INT}
+      - {id: design-principles-and-patterns, name: 'Design principles and patterns', from: ADV}
+    - id: web
+      name: Web applications
+      tag: APIs, front end and back end.
+      leaves:
+      - {id: apis, name: 'APIs (REST and beyond)', from: INT}
+      - {id: frontend, name: 'How a web page is built (HTML, CSS, JavaScript)', from: BEG}
+      - {id: backend, name: 'Servers and back ends', from: INT}
+  - id: system-design
+    name: System design and architecture
+    tag: Designing systems for millions of users.
+    what: At scale, the problem is no longer one algorithm but many machines that fail, disagree and wait for each other. System design is choosing structures and trade-offs so the whole stays fast and reliable.
+    split: Building blocks, then trade-offs, then real case studies.
+    branches:
+    - id: building-blocks
+      name: Building blocks
+      tag: Load balancers, caches, queues and services.
+      leaves:
+      - {id: scalability, name: 'Scaling up and scaling out', from: INT}
+      - {id: caching, name: 'Caching', from: INT}
+      - {id: load-balancing, name: 'Load balancing', from: INT}
+      - {id: message-queues, name: 'Message queues and events', from: ADV}
+      - {id: microservices, name: 'Monoliths and microservices', from: ADV}
+    - id: case-studies
+      name: Case studies
+      tag: How real systems are built.
+      leaves:
+      - {id: design-url-shortener, name: 'Designing a URL shortener', from: ADV}
+      - {id: design-username-check, name: 'Checking a username among a billion', from: ADV}
+      - {id: design-news-feed, name: 'Designing a news feed', from: SDE}
+      - {id: reliability-and-sre, name: 'Reliability, failures and on-call', from: SDE}
+  - id: cloud-devops
+    name: Cloud and DevOps
+    tag: Where software runs, and how it gets there.
+    what: Code is useless until it runs somewhere reliably. Cloud and DevOps are how software is packaged, shipped, scaled and watched.
+    split: The machine (Linux), then packaging, then the cloud, then shipping and watching.
+    branches:
+    - id: running-software
+      name: Running software
+      tag: Linux, containers, cloud and CI/CD.
+      leaves:
+      - {id: linux-and-shell, name: 'Linux and the shell', from: BEG}
+      - {id: containers, name: 'Containers and Docker', from: INT}
+      - {id: kubernetes, name: 'Orchestration and Kubernetes', from: ADV}
+      - {id: cloud-basics, name: 'The cloud: compute, storage, networking', from: INT}
+      - {id: ci-cd, name: 'CI/CD and deployment', from: INT}
+      - {id: observability, name: 'Logs, metrics and tracing', from: ADV}
+  - id: ai
+    name: AI and machine learning
+    tag: Programs that learn from data.
+    what: Instead of writing rules, we show a program examples and let it adjust millions of numbers until its answers are good. That one idea, learning by reducing error, powers everything from spam filters to large language models.
+    split: What learning means, then classic models, then neural networks, then LLMs and using AI well.
+    branches:
+    - id: learning-basics
+      name: Learning from data
+      tag: Regression, classification and gradient descent.
+      leaves:
+      - {id: what-is-learning, name: 'What it means for a machine to learn', from: BEG}
+      - {id: linear-regression, name: 'Linear regression and gradient descent', from: INT}
+      - {id: classification, name: 'Classification and evaluation', from: INT}
+    - id: deep-learning
+      name: Deep learning
+      tag: Neural networks to transformers.
+      leaves:
+      - {id: neural-networks, name: 'Neural networks', from: ADV}
+      - {id: transformers-and-llms, name: 'Transformers and large language models', from: ADV}
+      - {id: using-ai-well, name: 'Using AI tools well (prompts, agents, limits)', from: BEG}

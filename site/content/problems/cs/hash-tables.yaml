@@ -1,0 +1,58 @@
+# Hash tables. Sample lesson; all problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A sorted list holds 2 billion usernames. At most how many comparisons does binary search need to decide whether a name is present?
+  ask: Comparisons
+  unit: ""
+  ans: 31
+  tol: 0.1
+  verify: ceil(log2(2e9))
+  sol: Each comparison halves what is left, so we need the smallest $k$ with $2^k \ge 2\times10^9$. Since $2^{30} \approx 1.07\times10^9$ and $2^{31} \approx 2.15\times10^9$, $k = 31$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which question can a plain hash table answer fast?
+  opts: ["Is the username 'asha_92' taken?", "Which usernames start with 'ash'?", "What is the alphabetically next username after 'asha'?"]
+  ans: 0
+  sol: Hashing scatters keys, so only exact-match questions are fast. Prefix and ordering questions need sorted structures such as tries or trees.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A hash table has 16 slots and resizes (doubles) when the load factor would exceed 0.75. How many keys can it hold before its first resize?
+  ask: Keys
+  unit: ""
+  ans: 12
+  tol: 0.1
+  verify: 16*0.75
+  sol: The load factor is $n/m$; $n/16 \le 0.75$ gives $n \le 12$. The 13th insert triggers doubling to 32 slots.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Given a list of numbers and a target, decide whether any two of them add up to the target. Describe an O(n) method.
+  sol: |
+    Walk through the list once, keeping a hash set of numbers seen so far. For each number $x$, check whether $\text{target} - x$ is already in the set; if yes, you have found a pair. Otherwise add $x$ to the set. Each check and insert is O(1) on average, so the whole pass is O(n), compared with O(n²) for checking every pair.
+    ```python
+    def has_pair(nums, target):
+        seen = set()
+        for x in nums:
+            if target - x in seen:
+                return True
+            seen.add(x)
+        return False
+    ```
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Usernames are spread over 100 database machines by shard = hash(username) mod 100. You add a 101st machine. Roughly what fraction of usernames must move, and how does consistent hashing change that?
+  sol: With $\text{hash} \bmod 100 \to \text{hash} \bmod 101$, a key stays put only if both remainders agree, which happens for roughly 1 key in 101; about 99% of keys move. Consistent hashing places machines and keys on a ring and assigns each key to the next machine clockwise, so a new machine takes over only the keys between it and its predecessor, about $1/101 \approx 1\%$ of them.
+  check: none

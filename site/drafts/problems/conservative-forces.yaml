@@ -1,0 +1,456 @@
+# Conservative forces and conservation of mechanical energy. NCERT questions copied word for word from NCERT Exploration Grade 9 Science (2026-27) Ch 7 (Think It Over, §7.4.3, Pause and Ponder, Revise, Reflect, Refine) and NCERT Physics Class XI (reprint 2026-27) Ch 5 (§5.7-5.9 and Exercises). Figure-based items were checked against the page images; values read from figures are marked [Inference]. Found, board and main problems are original.
+
+- id: ncert9-it-7-t1
+  lvl: ncert-intext
+  num: "IX 7 · Think 1"
+  source: NCERT Grade 9 Science · Ch 7 · Think It Over (chapter opening), first question
+  kind: text
+  q: What will be the magnitude of velocity of the child at the bottom of the blue slide?
+  sol: |
+    The question has no numbers, so the answer is a formula. If friction is neglected, the child's gravitational potential energy $mgh$ at the top becomes kinetic energy $\tfrac12mv^2$ at the bottom, where $h$ is the vertical height of the top of the slide above its bottom:
+    $$v = \sqrt{2gh}.$$
+    The shape of the slide, including the spiral of the blue one, does not matter (see Example 7.8). With real friction the child reaches the bottom more slowly.
+  check: none
+
+- id: ncert9-it-7-t2
+  lvl: ncert-intext
+  num: "IX 7 · Think 2"
+  source: NCERT Grade 9 Science · Ch 7 · Think It Over (chapter opening), second question
+  kind: text
+  q: Will two children of different masses reach the bottom of the same slide with the same velocity?
+  sol: |
+    If friction is negligible, **yes**. Equating $mgh = \tfrac12mv^2$, the mass $m$ cancels and $v = \sqrt{2gh}$ depends only on the height $h$ of the slide. This is the same reason heavy and light objects fall together in free fall. If there is friction, the answer can change, since friction acts with different effect on different bodies.
+  check: none
+
+- id: ncert9-it-7-t3
+  lvl: ncert-intext
+  num: "IX 7 · Think 3"
+  source: NCERT Grade 9 Science · Ch 7 · Think It Over (chapter opening), third question
+  kind: text
+  q: Which of the slides will result in the largest magnitude of velocity for the child at its bottom?
+  sol: |
+    Since $v = \sqrt{2gh}$ (friction neglected), the slide with the **greatest vertical drop $h$** from the starting point to the bottom gives the largest speed. The length or the number of turns of the slide does not matter.
+
+    [Inference] The three slides in the chapter-opening picture have no heights marked, so which one it is cannot be settled from the figure alone; compare the heights of the starting platforms above the ground.
+  check: none
+
+- id: ncert9-eg-7-8
+  lvl: ncert-intext
+  num: "IX Ex 7.8"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.8
+  kind: text
+  q: What will be the magnitude of velocity of the child on reaching the bottom of the slide of height $h$ ?
+  sol: |
+    At the top of the slide, the child's potential energy is $mgh$ (kinetic energy zero). At the bottom, taking the potential energy as zero, the kinetic energy is $\tfrac12mv^2$. Neglecting friction, the potential energy is converted entirely into kinetic energy:
+    $$\tfrac12mv^2 = mgh\ \Rightarrow\ v = \sqrt{2gh}.$$
+    The speed depends only on the height $h$, so the shape of the slide and the mass of the child do not matter. For $h = 3$ m this gives $v = \sqrt{2\times9.8\times3} = 7.7\ \text{m s}^{-1}$.
+  check: none
+
+- id: ncert9-it-7-7
+  lvl: ncert-intext
+  num: "IX 7 · P7"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 7
+  kind: text
+  q: For the situation depicted in Fig. 7.19, calculate the mechanical energy of the ball just before it hits the ground and show that even at this position, it is $mgh$.
+  sol: |
+    Fig. 7.19 shows a ball of mass $m$ dropped from rest at height $h$. Just before it hits the ground it has fallen a distance $h$, so from $v^2 = u^2 + 2as$ with $u = 0$, $a = g$, $s = h$:
+    $$v^2 = 2gh.$$
+    Kinetic energy: $\tfrac12mv^2 = \tfrac12m(2gh) = mgh$.
+
+    Potential energy at the ground (the zero level): $mg\times0 = 0$.
+
+    Mechanical energy: $mgh + 0 = mgh$, the same value as at the start (where it was $0 + mgh$). Mechanical energy is conserved throughout the fall.
+  check: none
+
+- id: ncert9-it-7-8
+  lvl: ncert-intext
+  num: "IX 7 · P8"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 8
+  kind: text
+  q: You may have seen an exhibit like that in Fig. 7.22 in a science park, where a ball is released from the highest point. Describe how the kinetic energy and potential energy change at points A, B and C. Why do subsequent points, such as C, D and E, usually have lower heights compared to the previous ones? Could it have anything to do with the energy lost due to friction?
+  sol: |
+    **At A**, the highest point, the ball is released from rest: the kinetic energy is zero and the potential energy is maximum.
+
+    **Between A and B**, the ball goes down the track, so its potential energy decreases and its kinetic energy increases. At the lowest part of the track the potential energy is least and the kinetic energy greatest.
+
+    **At C**, the ball has climbed to a crest lower than A: some potential energy is regained at the expense of kinetic energy. Since the ball is still moving, the kinetic energy at C is not zero and the potential energy is less than at A.
+
+    **Why the crests get lower.** If there were no friction, the ball would rise to exactly the height of A each time, since mechanical energy would be conserved. Friction with the track, the ball rolling, and air resistance convert part of the mechanical energy into thermal energy (and a little sound) on every stretch, so the total mechanical energy falls. A ball with less total energy cannot rise as high, so C, D and E are progressively lower. Yes, it has to do with the energy lost to friction.
+  check: none
+
+- id: ncert9-it-7-13
+  lvl: ncert-intext
+  num: "IX 7 · P13"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 13
+  kind: text
+  q: Throughout history, many designs of perpetual machines (using wheels, weights or magnets) have been proposed but none actually work. Why do all real machines eventually slow down and stop? Explain in terms of work and energy.
+  sol: |
+    A perpetual motion machine would have to keep doing useful work without any fuel or electricity, so its mechanical energy would have to be constant while it kept delivering energy.
+
+    Every real machine has friction (at bearings, between gears, with air). Friction is a non-conservative force: it does negative work whatever the direction of motion, and the lost mechanical energy becomes thermal energy, which is scattered into the surroundings and cannot be fully turned back into motion. So the mechanical energy keeps falling until the machine stops.
+
+    Also, if a machine does useful work on a load, that work has to come from somewhere: a machine cannot give out more energy than it takes in (conservation of energy). With no energy supply, the machine runs down.
+  check: none
+
+- id: ncert9-ex-7-5
+  lvl: ncert-ex
+  num: "IX 7 · Q5"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q5
+  kind: num
+  q: |-
+    A student is slowly lifted straight up in an elevator from the ground level to the top floor of a building. Later, the same student climbs the staircase, all the way to the top. Given that the height of the building is $h = 72.5$ m, acceleration due to gravity is $g = 10\ \text{m s}^{-2}$, and student's mass is $m = 50$ kg.
+    (i) Find the gain in the potential energy if the student is lifted straight up to the top.
+    (ii) Find the gain in the potential energy when the student climbs the stairs to the same top.
+    (iii) What do you conclude about the dependence of the potential energy on the path taken?
+  ask: Gain in potential energy (part i)
+  unit: J
+  ans: 36250
+  tol: 10
+  verify: 50*10*72.5
+  sol: |
+    (i) $\Delta U = mgh = 50\times10\times72.5 = 36\,250$ J.
+
+    (ii) The student ends at the same height, so again $\Delta U = mgh = 36\,250$ J.
+
+    (iii) The gain in gravitational potential energy depends only on the initial and final positions (the height difference), not on the path taken, whether straight up in the lift or along a long staircase. This is the mark of a conservative force: the work done by gravity between two points is path-independent. (The *effort* the student's body spends is greater on the stairs, but that energy goes largely into body heat, not into potential energy.)
+  check: code
+
+- id: ncert9-ex-7-12
+  lvl: ncert-ex
+  num: "IX 7 · Q12"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q12
+  kind: num
+  q: The gravitational attraction on the surface of the Moon (lunar surface) is about $\dfrac16$th of that on the surface of the Earth. An astronaut can throw a ball up to a height of 8 m from the surface of the Earth. How far up will the ball thrown with the same upward velocity travel from the surface of the Moon?
+  ask: Height reached on the Moon
+  unit: m
+  ans: 48
+  tol: 0.1
+  verify: 8*6
+  sol: |
+    The ball leaves with the same speed $u$, so its initial kinetic energy $\tfrac12mu^2$ is the same on both bodies. At the top, all of this is potential energy $mgh$, so $h = u^2/2g$ and $h \propto 1/g$.
+
+    $$h_{\text{Moon}} = h_{\text{Earth}}\times\frac{g_{\text{Earth}}}{g_{\text{Moon}}} = 8\times6 = 48\ \text{m}.$$
+    The ball goes six times higher. (We assume the astronaut's throwing speed is unaffected by the spacesuit and gravity.)
+  check: code
+
+- id: ncert9-ex-7-14
+  lvl: ncert-ex
+  num: "IX 7 · Q14"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q14
+  kind: num
+  q: The potential energy-displacement graph of a 0.5 kg ball moving along a frictionless track is shown in Fig. 7.39. At O, the velocity of the ball is 0 m s$^{-1}$ and potential energy is 30 J. Calculate the velocity of the ball at P, Q and R.
+  ask: Speed of the ball at P
+  unit: m/s
+  ans: 6.32
+  tol: 0.02
+  verify: sqrt(2*(30-20)/0.5)
+  sol: |
+    [Inference] From the dashed lines in Fig. 7.39, the potential energies are $U_O = 30$ J, $U_P = 20$ J, $U_Q = 30$ J and $U_R = 40$ J.
+
+    The track is frictionless, so the total mechanical energy is constant: $E = K + U = 0 + 30 = 30$ J. At any point, $K = 30 - U$ and $v = \sqrt{2K/m}$.
+
+    **At P:** $K = 30 - 20 = 10$ J, so $v_P = \sqrt{2\times10/0.5} = \sqrt{40} = 6.32\ \text{m s}^{-1}$.
+
+    **At Q:** $U = 30$ J, so $K = 0$ and $v_Q = 0$. The ball is momentarily at rest here, at a turning point.
+
+    **At R:** $U = 40$ J would need $K = 30 - 40 = -10$ J, which is impossible. The ball **never reaches R**; it turns back at Q (it would need a total energy of at least 40 J).
+
+    [Note] The question asks for the velocity at R, but with a total energy of 30 J that point is not reachable, so no real velocity exists there.
+  check: code
+
+- id: ncert11-eg-5-7
+  lvl: ncert-intext
+  num: "XI Ex 5.7"
+  source: NCERT XI Physics · Ch 5 · Example 5.7
+  kind: num
+  q: A bob of mass $m$ is suspended by a light string of length $L$. It is imparted a horizontal velocity $v_0$ at the lowest point A such that it completes a semi-circular trajectory in the vertical plane with the string becoming slack only on reaching the topmost point, C. This is shown in Fig. 5.6. Obtain an expression for (i) $v_0$; (ii) the speeds at points B and C; (iii) the ratio of the kinetic energies ($K_B/K_C$) at B and C. Comment on the nature of the trajectory of the bob after it reaches the point C.
+  ask: Ratio $K_B/K_C$ (part iii)
+  unit: ""
+  ans: 3
+  tol: 0.01
+  verify: (0.5*(3*9.8*2))/(0.5*(9.8*2))
+  sol: |
+    (i) Two external forces act on the bob: gravity and the tension $T$ in the string. The tension does no work, since the bob's displacement is always along the circle, normal to the string. So the mechanical energy $E$ is conserved. Take the potential energy to be zero at the lowest point A:
+    $$E = \tfrac12mv_0^2\quad\text{(at A)}.$$
+    At the highest point C the string just slackens, so the tension $T_C = 0$ and gravity alone supplies the centripetal force:
+    $$mg = \frac{mv_C^2}{L}\ \Rightarrow\ v_C^2 = gL.$$
+    Energy at C: $E = \tfrac12mv_C^2 + 2mgL = \tfrac12mgL + 2mgL = \tfrac52mgL$. Equating to the energy at A:
+    $$\tfrac12mv_0^2 = \tfrac52mgL\ \Rightarrow\ v_0 = \sqrt{5gL}.$$
+
+    (ii) From above, $v_C = \sqrt{gL}$. At B, at height $L$,
+    $$\tfrac12mv_B^2 + mgL = \tfrac52mgL\ \Rightarrow\ v_B = \sqrt{3gL}.$$
+
+    (iii) $\dfrac{K_B}{K_C} = \dfrac{\tfrac12mv_B^2}{\tfrac12mv_C^2} = \dfrac{3gL}{gL} = 3.$
+
+    **Trajectory after C.** At C the string is slack and the velocity is horizontal. If the string were cut at this instant, the bob would follow a projectile motion with horizontal projection, like a rock kicked horizontally off a cliff edge. Otherwise the bob continues on its circular path and completes the revolution.
+  check: code
+
+- id: ncert11-eg-5-8
+  lvl: ncert-intext
+  num: "XI Ex 5.8"
+  source: NCERT XI Physics · Ch 5 · Example 5.8
+  kind: num
+  q: To simulate car accidents, auto manufacturers study the collisions of moving cars with mounted springs of different spring constants. Consider a typical simulation with a car of mass 1000 kg moving with a speed 18.0 km/h on a smooth road and colliding with a horizontally mounted spring of spring constant $5.25\times10^3$ N m$^{-1}$. What is the maximum compression of the spring ?
+  ask: Maximum compression of the spring
+  unit: m
+  ans: 2.18
+  tol: 0.01
+  verify: sqrt(1000*5**2/5.25e3)
+  sol: |
+    At maximum compression the car's kinetic energy has become the spring's potential energy. With $18\ \text{km h}^{-1} = 5\ \text{m s}^{-1}$ (remember $36\ \text{km h}^{-1} = 10\ \text{m s}^{-1}$),
+    $$K = \tfrac12mv^2 = \tfrac12\times10^3\times5\times5 = 1.25\times10^4\ \text{J}.$$
+    Conservation of mechanical energy: $\tfrac12kx_m^2 = K$, so
+    $$x_m = \sqrt{\frac{2K}{k}} = \sqrt{\frac{2\times1.25\times10^4}{5.25\times10^3}} = 2.18\ \text{m}.$$
+
+    [Note] The reprint prints $x_m = 2.00$ m. That value is obtained with $k = 6.25\times10^3$ N m$^{-1}$, which is what earlier editions of this example use; with the printed $5.25\times10^3$ the answer is 2.18 m. The printed constant looks like a typographical slip. The idealisations are a massless spring and a frictionless road.
+  check: code
+
+- id: ncert11-eg-5-9
+  lvl: ncert-intext
+  num: "XI Ex 5.9"
+  source: NCERT XI Physics · Ch 5 · Example 5.9
+  kind: num
+  q: Consider Example 5.8 taking the coefficient of friction, $\mu$, to be 0.5 and calculate the maximum compression of the spring.
+  ask: Maximum compression of the spring
+  unit: m
+  ans: 1.43
+  tol: 0.01
+  verify: (-2*0.5*1000*10+sqrt((2*0.5*1000*10)**2+4*5.25e3*1000*5**2))/(2*5.25e3)
+  sol: |
+    With friction, both the spring force and friction oppose the compression, so mechanical energy is not conserved; use the work-energy theorem instead. The change in kinetic energy is $\Delta K = 0 - \tfrac12mv^2$. The work done by the net force is
+    $$W = -\tfrac12kx_m^2 - \mu mgx_m.$$
+    Equating, $\tfrac12mv^2 = \tfrac12kx_m^2 + \mu mgx_m$, which rearranges to the quadratic
+    $$kx_m^2 + 2\mu mg\,x_m - mv^2 = 0.$$
+    With $g = 10.0\ \text{m s}^{-2}$, $\mu mg = 0.5\times10^3\times10 = 5\times10^3$ N, $k = 5.25\times10^3$ N/m and $mv^2 = 2.5\times10^4$ J:
+    $$5250\,x_m^2 + 10\,000\,x_m - 25\,000 = 0\ \Rightarrow\ x_m = \frac{-10\,000 + \sqrt{10^8 + 5.25\times10^8}}{10\,500} = 1.43\ \text{m},$$
+    taking the positive root. As expected, it is less than the frictionless result of Example 5.8.
+
+    [Note] The reprint prints $x_m = 1.35$ m, which corresponds to $k = 6.25\times10^3$ N m$^{-1}$ (see the note under Example 5.8); with the printed constant the answer is 1.43 m.
+
+    In general, for a conservative force $F_c$ and a non-conservative force $F_{nc}$, $\Delta(K+V) = W_{nc}$, and $W_{nc}$ depends on the path.
+  check: code
+
+- id: ncert11-ex-5-3
+  lvl: ncert-ex
+  num: "XI 5.3"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.3
+  kind: text
+  q: Given in Fig. 5.11 are examples of some potential energy functions in one dimension. The total energy of the particle is indicated by a cross on the ordinate axis. In each case, specify the regions, if any, in which the particle cannot be found for the given energy. Also, indicate the minimum total energy the particle must have in each case. Think of simple physical contexts for which these potential energy shapes are relevant.
+  sol: |
+    The kinetic energy $K = E - V(x)$ cannot be negative, so the particle can only be where $V(x) \le E$. The total energy can never be less than the lowest value of $V$.
+
+    Reading Fig. 5.11 (four panels, taken in the order they appear on the page):
+
+    **(a)** $V = 0$ for $x < a$ and $V = V_0$ for $x > a$, with $0 < E < V_0$. The particle **cannot be found for $x > a$**. Minimum total energy: **0**. Context: a ball rolling towards a rigid wall, or a particle in a one-sided box.
+
+    **(b)** A staircase of rising steps; the potential on the far left ($x<0$) is a small constant above $E$ and everything to the right is higher. Here $V > E$ everywhere, so the particle **cannot be found anywhere** ($-\infty < x < \infty$ is forbidden). The minimum total energy is the lowest level of the potential, called $V_1$ in the answer key. Context: a charged particle meeting a series of retarding electrode grids.
+
+    **(c)** $V = V_0$ for $x<a$ and $x>b$, and $V = -V_1$ for $a<x<b$, with $E < V_0$. The particle **cannot be found for $x < a$ or $x > b$**; it is trapped in $a<x<b$. Minimum total energy: **$-V_1$**. Context: a ball in a pit, or an electron in a finite potential well.
+
+    **(d)** A well at the centre ($-a/2<x<a/2$, depth $-V_1$) surrounded by barriers that rise to $V_0$ at $|x| = a/2$ and fall away outside. Where $V > E$, namely **$-b/2 < x < -a/2$ and $a/2 < x < b/2$**, the particle cannot be found. Minimum total energy: **$-V_1$**. Context: an alpha particle near a nucleus, with the attractive well inside and the Coulomb repulsion outside.
+
+    [Inference] The vertical levels in panel (b) and the label $V_1$ are read from the figure and the answer key; panel (b) does not print $V_1$ itself. The answer key lists the parts in the order (a), (c), (b), (d) but the content matches the above.
+  answer_key: "(a) x > a ; 0. (c) x < a, x > b ; – V1. (b) –∞ < x < ∞ ; V1. (d) – b/2 < x < – a/2, a/2 < x < b/2 ; – V1"
+  check: ncert-key
+
+- id: ncert11-ex-5-4
+  lvl: ncert-ex
+  num: "XI 5.4"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.4
+  kind: num
+  q: The potential energy function for a particle executing linear simple harmonic motion is given by $V(x) = kx^2/2$, where $k$ is the force constant of the oscillator. For $k = 0.5$ N m$^{-1}$, the graph of $V(x)$ versus $x$ is shown in Fig. 5.12. Show that a particle of total energy 1 J moving under this potential must 'turn back' when it reaches $x = \pm2$ m.
+  ask: Turning point $x$ (positive value)
+  unit: m
+  ans: 2
+  tol: 0.001
+  verify: sqrt(2*1/0.5)
+  sol: |
+    A particle turns back where its kinetic energy becomes zero, that is, where $E = V(x)$:
+    $$1 = \tfrac12(0.5)x^2 = 0.25x^2\ \Rightarrow\ x^2 = 4\ \Rightarrow\ x = \pm2\ \text{m}.$$
+    For $|x| > 2$ m we would have $V > E$ and so $K = E - V < 0$, which is impossible. So the particle cannot go beyond $\pm2$ m: it stops there, the restoring force $-kx$ pushes it back, and it oscillates between $x = -2$ m and $x = +2$ m.
+  check: code
+
+- id: ncert11-ex-5-5
+  lvl: ncert-ex
+  num: "XI 5.5"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.5
+  kind: text
+  q: |-
+    Answer the following :
+    (a) The casing of a rocket in flight burns up due to friction. At whose expense is the heat energy required for burning obtained? The rocket or the atmosphere?
+    (b) Comets move around the sun in highly elliptical orbits. The gravitational force on the comet due to the sun is not normal to the comet's velocity in general. Yet the work done by the gravitational force over every complete orbit of the comet is zero. Why ?
+    (c) An artificial satellite orbiting the earth in very thin atmosphere loses its energy gradually due to dissipation against atmospheric resistance, however small. Why then does its speed increase progressively as it comes closer and closer to the earth ?
+    (d) In Fig. 5.13(i) the man walks 2 m carrying a mass of 15 kg on his hands. In Fig. 5.13(ii), he walks the same distance pulling the rope behind him. The rope goes over a pulley, and a mass of 15 kg hangs at its other end. In which case is the work done greater ?
+  sol: |
+    (a) **At the expense of the rocket.** The rocket does work against the air's frictional drag, and the energy lost from the rocket's kinetic energy appears as heat in the casing and the air. The atmosphere supplies no energy; it only exerts the resisting force.
+
+    (b) Gravity is a **conservative force**: the work it does between two points equals the decrease in potential energy, $W = -\Delta V$, and depends only on the end points. Over a complete orbit the comet returns to its starting point, so $\Delta V = 0$ and the net work is zero, even though the work done in each small step is non-zero. (Kinetic energy at the end of the orbit equals that at the start.)
+
+    (c) For a circular orbit of radius $r$, $K = \dfrac{GMm}{2r}$ and $V = -\dfrac{GMm}{r}$, so the total energy is $E = -\dfrac{GMm}{2r}$. Air resistance makes $E$ decrease, which means $r$ decreases. As $r$ falls, $K$ **increases** (and $V$ decreases even faster), so the speed increases while the sum $K+V$ falls because of dissipation. In the spiral path the gravitational pull has a component along the velocity that does more positive work than the drag's negative work.
+
+    (d) In case (i), the force the man exerts on the mass is vertical (to support it) and the displacement is horizontal, so the work done by him on the mass is **zero**. In case (ii), the man pulls the rope along his displacement against the weight of the hanging mass (tension $= mg$), doing work $mg\times2 = 15\times9.8\times2 \approx 294$ J, since the mass rises 2 m. So the work done is **greater in the second case**.
+
+    [Note] The part (c) result uses the circular-orbit energy formulae from the chapter on Gravitation; the NCERT key only says that the kinetic energy increases while the potential energy decreases and the sum decreases.
+  answer_key: "(a) rocket; (b) For a conservative force work done over a path is minus of change in potential energy. Over a complete orbit, there is no change in potential energy; (c) K.E. increases, but P.E. decreases, and the sum decreases due to dissipation against friction; (d) in the second case."
+  check: ncert-key
+
+- id: ncert11-ex-5-18
+  lvl: ncert-ex
+  num: "XI 5.18"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.18
+  kind: num
+  q: The bob of a pendulum is released from a horizontal position. If the length of the pendulum is 1.5 m, what is the speed with which the bob arrives at the lowermost point, given that it dissipated 5% of its initial energy against air resistance ?
+  ask: Speed at the lowest point
+  unit: m/s
+  ans: 5.27
+  tol: 0.02
+  verify: sqrt(2*9.8*1.5*0.95)
+  sol: |
+    Released from the horizontal position, the bob falls through a height equal to the length, $h = L = 1.5$ m. Its initial energy is $mgL$. Only 95% of this becomes kinetic energy at the bottom:
+    $$\tfrac12mv^2 = 0.95\,mgL\ \Rightarrow\ v = \sqrt{2\times0.95\times9.8\times1.5} = 5.27\ \text{m s}^{-1}.$$
+    Without the loss it would be $\sqrt{2gL} = 5.42\ \text{m s}^{-1}$. The tension in the string does no work, and the mass cancels.
+  answer_key: 5.3 m s-1
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A 2 kg ball is dropped from a height of 5 m. Using conservation of mechanical energy, find its speed just before it hits the ground. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Speed just before impact
+  unit: m/s
+  ans: 9.9
+  tol: 0.05
+  verify: sqrt(2*9.8*5)
+  sol: |
+    $mgh = \tfrac12mv^2$ gives $v = \sqrt{2gh} = \sqrt{2\times9.8\times5} = 9.9\ \text{m s}^{-1}$. The mass cancels.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of the following forces is NOT conservative? (Original problem.)
+  opts: ["the weight of a body near the Earth's surface", "the force of a stretched ideal spring", "kinetic friction between two surfaces", "the electrostatic force between two fixed charges"]
+  ans: 2
+  sol: |
+    **Kinetic friction.** The work it does depends on the path (a longer path means more negative work), and the work around a closed loop is not zero. The other three forces have a potential energy function, so the work they do depends only on the end points.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: An ideal spring of force constant 200 N/m is stretched by 0.10 m. How much elastic potential energy is stored in it? (Original problem.)
+  ask: Stored energy
+  unit: J
+  ans: 1
+  tol: 0.01
+  verify: 0.5*200*0.10**2
+  sol: |
+    $U = \tfrac12kx^2 = \tfrac12\times200\times(0.10)^2 = 1.0$ J.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A spring of force constant 400 N/m is compressed by 5.0 cm and then released to push a 0.10 kg ball along a smooth horizontal surface. Find the speed of the ball when it leaves the spring. (Original problem.)
+  ask: Speed of the ball
+  unit: m/s
+  ans: 3.16
+  tol: 0.02
+  verify: sqrt(400*0.05**2/0.10)
+  sol: |
+    The stored energy $\tfrac12kx^2 = \tfrac12(400)(0.05)^2 = 0.50$ J becomes the ball's kinetic energy: $\tfrac12(0.10)v^2 = 0.50$, so
+    $$v = \sqrt{10} = 3.16\ \text{m s}^{-1}.$$
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A pendulum bob on a string 1.0 m long is released from rest when the string makes $60^\circ$ with the vertical. Find the speed of the bob at the lowest point. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Speed at the lowest point
+  unit: m/s
+  ans: 3.13
+  tol: 0.02
+  verify: sqrt(2*9.8*1.0*(1-cos(rad(60))))
+  sol: |
+    The bob is lower at the bottom by $h = L(1-\cos60^\circ) = 1.0\times0.5 = 0.50$ m. The tension does no work, so
+    $$v = \sqrt{2gh} = \sqrt{2\times9.8\times0.50} = 3.13\ \text{m s}^{-1}.$$
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A roller-coaster car is released from rest at a point 25 m above the ground on a frictionless track. What is its speed at a point 5 m above the ground? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Speed at the 5 m point
+  unit: m/s
+  ans: 19.8
+  tol: 0.1
+  verify: sqrt(2*9.8*(25-5))
+  sol: |
+    Only the height *difference* matters: $h = 25 - 5 = 20$ m. Then
+    $$v = \sqrt{2gh} = \sqrt{2\times9.8\times20} = 19.8\ \text{m s}^{-1}.$$
+    The shape of the track, and the mass of the car, are irrelevant when friction is negligible.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A 2 kg block slides from rest down a rough incline whose top is 3.0 m above its bottom, and it reaches the bottom with a speed of 6.0 m/s. How much work does friction do on it? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Work done by friction
+  unit: J
+  ans: -22.8
+  tol: 0.1
+  verify: 0.5*2*6**2-2*9.8*3
+  sol: |
+    Gravity gives $W_g = mgh = 2\times9.8\times3.0 = 58.8$ J (a conservative force, depends only on height). The kinetic energy gained is $\tfrac12(2)(6)^2 = 36$ J. With $\Delta K = W_g + W_f$,
+    $$W_f = 36 - 58.8 = -22.8\ \text{J}.$$
+    So 22.8 J of mechanical energy became thermal energy; $\Delta E_{\text{mech}} = W_{nc} = -22.8$ J.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A small ball is attached to a light string of length 0.80 m and moves in a vertical circle. What is the minimum speed it must have at the lowest point to just complete the circle with the string remaining taut? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Minimum speed at the bottom
+  unit: m/s
+  ans: 6.26
+  tol: 0.02
+  verify: sqrt(5*9.8*0.80)
+  sol: |
+    At the top, the string is just taut when the tension is zero and gravity alone gives the centripetal force: $mg = mv_T^2/L$, so $v_T^2 = gL$.
+
+    Energy conservation from bottom to top (rise $2L$): $\tfrac12mv_B^2 = \tfrac12mv_T^2 + mg(2L)$, giving
+    $$v_B^2 = gL + 4gL = 5gL,\qquad v_B = \sqrt{5\times9.8\times0.80} = 6.26\ \text{m s}^{-1}.$$
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A 1.0 kg block is released from rest 0.50 m above the free end of a vertical spring of force constant 400 N/m, which stands on the floor. Find the maximum compression of the spring. Take $g = 9.8\ \text{m s}^{-2}$ and ignore friction. (Original problem.)
+  ask: Maximum compression
+  unit: m
+  ans: 0.183
+  tol: 0.001
+  verify: (9.8+sqrt(9.8**2+4*200*9.8*0.5))/400
+  sol: |
+    The block falls $0.50 + x$ in total before it momentarily stops at the maximum compression $x$. Energy conservation (gravity and spring, both conservative):
+    $$mg(0.50 + x) = \tfrac12kx^2$$
+    $$200x^2 - 9.8x - 4.9 = 0.$$
+    Taking the positive root,
+    $$x = \frac{9.8 + \sqrt{9.8^2 + 4(200)(4.9)}}{400} = \frac{9.8 + 63.4}{400} = 0.183\ \text{m}.$$
+    Note that the block falls an extra $x$ while the spring is compressing, so ignoring that term (using $x = \sqrt{2mgh/k} = 0.157$ m) would underestimate the compression by about 15%.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A 1.0 kg block is pushed slowly once around a square loop of side 1.0 m on a rough horizontal table, with coefficient of kinetic friction 0.20. Find the work done by friction in one complete loop and decide whether friction is conservative. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Work done by friction around the loop
+  unit: J
+  ans: -7.84
+  tol: 0.02
+  verify: -0.2*1*9.8*4
+  sol: |
+    Friction has magnitude $\mu mg = 0.20\times1.0\times9.8 = 1.96$ N and always opposes the motion. Around the loop (path length 4.0 m),
+    $$W_f = -1.96\times4.0 = -7.84\ \text{J}.$$
+    The block returns to its starting point, yet the work is not zero. For a conservative force the work around any closed path is zero, so **friction is not conservative**: the work depends on the path length, and no potential energy can be defined for it.
+  check: code

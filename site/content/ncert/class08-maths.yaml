@@ -1,0 +1,48 @@
+# NCERT Mathematics (Ganita Prakash, Parts 1 and 2), Class 8 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 8
+subject: mat
+name: Mathematics (Ganita Prakash, Parts 1 and 2)
+code: hegp
+chapters:
+- n: 1
+  title: A Square and a Cube
+  pdf: hegp101
+- n: 2
+  title: Power Play
+  pdf: hegp102
+- n: 3
+  title: A Story of Numbers
+  pdf: hegp103
+- n: 4
+  title: Quadrilaterals
+  pdf: hegp104
+- n: 5
+  title: Number Play
+  pdf: hegp105
+- n: 6
+  title: We Distribute, Yet Things Multiply
+  pdf: hegp106
+- n: 7
+  title: Proportional Reasoning-1
+  pdf: hegp107
+- n: 8
+  title: Fractions in Disguise
+  pdf: hegp201
+- n: 9
+  title: The Baudhāyana-Pythagoras Theorem
+  pdf: hegp202
+- n: 10
+  title: Proportional Reasoning-2
+  pdf: hegp203
+- n: 11
+  title: Exploring Some Geometric Themes
+  pdf: hegp204
+- n: 12
+  title: Tales by Dots and Lines
+  pdf: hegp205
+- n: 13
+  title: Algebra Play
+  pdf: hegp206
+- n: 14
+  title: Area
+  pdf: hegp207

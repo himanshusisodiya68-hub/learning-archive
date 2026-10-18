@@ -1,0 +1,444 @@
+# Work-energy theorem. NCERT questions copied word for word from NCERT Exploration Grade 9 Science (2026-27) Ch 7 §7.2, §7.4 and Revise, Reflect, Refine, and NCERT Physics Class XI (reprint 2026-27) Ch 5 (§5.2, §5.6 and Exercises). Found, board and main problems are original.
+
+- id: ncert9-eg-7-3
+  lvl: ncert-intext
+  num: "IX Ex 7.3"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.3
+  kind: text
+  q: In a game of carrom, a player played the shot shown in Fig. 7.9 to pocket the black coin. Identify who does work, and the changes in energy that occur at each collision.
+  sol: |
+    The striker hits the white coin, which then hits the black coin.
+
+    - **Striker and white coin.** The striker pushes the white coin in the direction the coin moves, so the striker does **positive** work on the white coin and its energy increases. By Newton's third law the white coin pushes back on the striker, opposite to the striker's motion, so the white coin does **negative** work on the striker and the striker's energy decreases.
+    - **White coin and black coin.** In the same way the white coin does positive work on the black coin (raising its energy), and the black coin does negative work on the white coin (lowering its energy).
+
+    Kinetic energy is passed along the chain, with some lost as heat and sound. The player's hand is the original source: it did positive work on the striker.
+  check: none
+
+- id: ncert9-eg-7-6
+  lvl: ncert-intext
+  num: "IX Ex 7.6"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.6
+  kind: num
+  q: A jet aircraft of mass 15000 kg lands on the deck of an aircraft carrier (Fig. 7.12). To stop the aircraft within the short length of the deck a hook on the aircraft's tail is caught in a wire stretched across the deck. The wire exerts an approximately constant backward force of 367500 N and stops the jet within 100 m. What was the velocity of the aircraft just before the wire caught the hook?
+  ask: Velocity of the aircraft before the hook was caught
+  unit: m/s
+  ans: 70
+  tol: 0.1
+  verify: sqrt(2*367500*100/15000)
+  sol: |
+    Let the speed be $v$. The change in kinetic energy equals the work done by the wire. The wire's force is opposite to the displacement, so its work is negative:
+    $$0 - \tfrac12(15000)v^2 = -(367500)(100)$$
+    $$v^2 = \frac{2\times367500\times100}{15000} = 4900\ \text{m}^2\text{s}^{-2},\qquad v = 70\ \text{m s}^{-1} = 252\ \text{km h}^{-1}.$$
+    The aircraft was moving towards the aircraft carrier at 252 km/h.
+  check: code
+
+- id: ncert9-eg-7-9
+  lvl: ncert-intext
+  num: "IX Ex 7.9"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.9
+  kind: num
+  q: |
+    Escape ramps (Fig. 7.21) are inclined planes filled with sand or gravel that help stop trucks when their brakes fail on a highway. A truck of mass 10000 kg is moving at 72 km h$^{-1}$ when its brakes fail. The driver steers it onto an escape ramp inclined at $30^\circ$, where the truck comes to a rest. If the sand exerts a force of 50000 N opposite to truck's motion, what is the minimum length of the ramp to be able to stop such a truck? Take $g = 10\ \text{m s}^{-2}$ (Hint: For a $30^\circ$ incline, the truck rises 1 m vertically for every 2 m it travels along the ramp).
+  ask: Minimum length of the ramp
+  unit: m
+  ans: 20
+  tol: 0.05
+  verify: (0.5*10000*20**2)/(50000+10000*10*0.5)
+  sol: |
+    $v = 72\ \text{km h}^{-1} = 20\ \text{m s}^{-1}$, so the initial kinetic energy is $\tfrac12(10000)(20)^2 = 2\times10^6$ J, and the initial potential energy is taken as 0.
+
+    If the truck travels $d$ along the ramp, it rises $d/2$, so the final potential energy is $mg\,d/2 = 50000\,d$ (in J, with $d$ in m), and the final kinetic energy is 0.
+
+    The sand does work $-50000\,d$ on the truck. By the work-energy theorem (work done = change in total energy):
+    $$-50000\,d = 50000\,d - 2\,000\,000$$
+    $$d = \frac{2\,000\,000}{100\,000} = 20\ \text{m}.$$
+    Equivalently: the kinetic energy is used up by the sand's force (50000 N) and by gravity's component along the ramp ($mg\sin30^\circ = 50000$ N), a total retarding force of 100000 N over $d$.
+  check: code
+
+- id: ncert9-it-7-3
+  lvl: ncert-intext
+  num: "IX 7 · P3"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 3
+  kind: text
+  q: When you pedal a bicycle on a flat road, your muscles supply energy. In what forms does this muscular energy appear as you ride?
+  sol: |
+    The chemical energy of food, converted by the muscles, ends up as:
+
+    - **kinetic energy** of you and the bicycle as you speed up;
+    - **thermal energy** from friction at the wheel bearings, chain and tyres, and from the work done against air resistance, which warms the air and the road;
+    - **heat in the body itself**, because muscles are not perfectly efficient; this is why you feel warm while cycling;
+    - a little **sound** from the chain and tyres.
+
+    At a steady speed on a flat road the kinetic energy does not change, so the muscular work goes almost entirely into overcoming friction and air resistance, and ends up as thermal energy.
+  check: none
+
+- id: ncert9-ex-7-10
+  lvl: ncert-ex
+  num: "IX 7 · Q10"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q10
+  kind: num
+  q: |-
+    A ball of mass 2 kg is thrown up with a velocity of 20 m s$^{-1}$.
+    (i) Identify the sign of the work done by gravity on the ball during its upward motion and its downward motion.
+    (ii) If the ball reaches a height of 19.4 m, how much work was done by air resistance (assume $g = 10\ \text{m s}^{-2}$).
+  ask: Work done by air resistance (part ii)
+  unit: J
+  ans: -12
+  tol: 0.1
+  verify: (0-0.5*2*20**2)-(-2*10*19.4)
+  sol: |
+    (i) **Upward motion:** gravity acts down, the ball moves up, so the work done by gravity is **negative**. **Downward motion:** gravity and displacement are both downward, so the work is **positive**.
+
+    (ii) Over the upward trip the ball goes from $K_i = \tfrac12(2)(20)^2 = 400$ J to $K_f = 0$ at the top, so $\Delta K = -400$ J. Gravity does $W_g = -mgh = -2\times10\times19.4 = -388$ J. By the work-energy theorem, $\Delta K = W_g + W_{\text{air}}$:
+    $$W_{\text{air}} = -400 - (-388) = -12\ \text{J}.$$
+    Air resistance does $-12$ J of work on the way up. Without it the ball would rise to $v^2/2g = 20$ m.
+  check: code
+
+- id: ncert9-ex-7-11
+  lvl: ncert-ex
+  num: "IX 7 · Q11"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q11
+  kind: num
+  q: A 10.0 kg block is moving on horizontal floor with negligible friction. As shown in the Fig. 7.37, a variable force is applied on the block in its direction of motion from its position at 0 m till 4 m. If the block had a kinetic energy of 180 J when it was at 0 m, find the block's speed (i) at 0 m, and (ii) at 4 m. Does the block have negative acceleration in any portion of its motion?
+  ask: Speed at 4 m (part ii)
+  unit: m/s
+  ans: 8.12
+  tol: 0.01
+  verify: sqrt(2*(180+0.5*(4+2)*50)/10)
+  sol: |
+    Reading Fig. 7.37: the force rises linearly from 0 at 0 m to 50 N at 1 m, stays at 50 N from 1 m to 3 m, then falls linearly to 0 at 4 m.
+
+    (i) $K = \tfrac12mv^2 = 180$ J gives $v_0 = \sqrt{2\times180/10} = 6\ \text{m s}^{-1}$.
+
+    (ii) The work done is the area under the graph, a trapezium of parallel sides 4 m and 2 m and height 50 N:
+    $$W = \tfrac12(4+2)(50) = 150\ \text{J}\quad(=25+100+25).$$
+    By the work-energy theorem $K_f = 180 + 150 = 330$ J, so
+    $$v = \sqrt{\frac{2\times330}{10}} = \sqrt{66} = 8.12\ \text{m s}^{-1}.$$
+
+    **Negative acceleration?** No. The force is in the direction of motion over the whole 4 m, so the acceleration $a = F/m$ is never negative (it is zero only at the two end points, where $F = 0$). The block speeds up throughout, most rapidly between 1 m and 3 m.
+
+    [Inference] The graph values (50 N, 1 m, 3 m, 4 m) were read from the figure; the book gives no answer key for this exercise.
+  check: code
+
+- id: ncert9-ex-7-13
+  lvl: ncert-ex
+  num: "IX 7 · Q13"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q13
+  kind: num
+  q: |-
+    A 1000 kg car is moving along a road at a constant speed. Suddenly, the driver notices some obstruction ahead and applies the brakes to come to a complete stop. The graphical representation of motion of the car starting from the instant the driver spots the traffic ahead is shown in Fig. 7.38.
+    (i) Describe how the car moves between positions A and B.
+    (ii) Calculate the kinetic energy of the car at A.
+    (iii) State the work done by the brakes in bringing the car to a halt between B and C.
+    (iv) What does the kinetic energy of the car transform into?
+  ask: Kinetic energy of the car at A (part ii)
+  unit: J
+  ans: 612500
+  tol: 100
+  verify: 0.5*1000*35**2
+  sol: |
+    From Fig. 7.38 the speed is 35 m s$^{-1}$ from $t = 0$ to 1 s (A to B), then falls uniformly to 0 at $t = 3$ s (B to C).
+
+    (i) Between A and B the speed stays at 35 m/s: the car moves with **constant velocity** (zero acceleration) during the driver's reaction time, covering $35\times1 = 35$ m.
+
+    (ii) $K_A = \tfrac12(1000)(35)^2 = 6.125\times10^5$ J.
+
+    (iii) The car stops, so by the work-energy theorem the brakes do $W = \Delta K = 0 - 6.125\times10^5 = -6.125\times10^5$ J (negative, because the braking force opposes the motion). The car's deceleration is $35/2 = 17.5\ \text{m s}^{-2}$ and the braking distance is $\tfrac12\times35\times2 = 35$ m, so the average braking force is $6.125\times10^5/35 = 17\,500$ N.
+
+    (iv) The kinetic energy becomes **thermal energy** (the brakes, tyres and road heat up), with a little sound.
+
+    [Inference] Graph values (35 m/s, 1 s, 3 s) were read from the figure.
+  check: code
+
+- id: ncert9-ex-7-15
+  lvl: ncert-ex
+  num: "IX 7 · Q15"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q15
+  kind: num
+  q: |-
+    A coconut of mass 1.5 kg falls from the top of a coconut tree onto the wet sand on a beach. The height of the tree is 10 m. On impact, the coconut comes to rest by making a depression in the sand.
+    (i) Calculate the velocity of the coconut just before it hits the sand.
+    (ii) Assume that the average resistive force of sand is 3000 N and all of the coconut's energy is used to create the depression in the sand. Calculate the depth of the depression the coconut makes in the sand. Assume $g = 10\ \text{m s}^{-2}$.
+  ask: Depth of the depression (part ii)
+  unit: cm
+  ans: 5
+  tol: 0.05
+  verify: 1.5*10*10/3000*100
+  sol: |
+    (i) Mechanical energy is conserved during the fall: $mgh = \tfrac12mv^2$, so
+    $$v = \sqrt{2gh} = \sqrt{2\times10\times10} = 14.1\ \text{m s}^{-1}.$$
+
+    (ii) "All the coconut's energy" is its kinetic energy on arrival, $mgh = 1.5\times10\times10 = 150$ J. The sand's force does work $-F d$ and brings the coconut to rest:
+    $$150 = 3000\,d\ \Rightarrow\ d = 0.05\ \text{m} = 5\ \text{cm}.$$
+
+    [Note] Strictly, gravity keeps doing work $mg\,d$ during the penetration, so $150 + 15d = 3000d$ gives $d = 5.03$ cm. The difference is negligible, and the problem's wording points to the 5 cm result.
+  check: code
+
+- id: ncert11-eg-5-2
+  lvl: ncert-intext
+  num: "XI Ex 5.2"
+  source: NCERT XI Physics · Ch 5 · Example 5.2
+  kind: num
+  q: It is well known that a raindrop falls under the influence of the downward gravitational force and the opposing resistive force. The latter is known to be proportional to the speed of the drop but is otherwise undetermined. Consider a drop of mass 1.00 g falling from a height 1.00 km. It hits the ground with a speed of 50.0 m s$^{-1}$. (a) What is the work done by the gravitational force ? What is the work done by the unknown resistive force?
+  ask: Work done by the resistive force
+  unit: J
+  ans: -8.75
+  tol: 0.01
+  verify: 0.5*1e-3*50*50-1e-3*10*1e3
+  sol: |
+    (a) The change in kinetic energy, taking the drop to start from rest, is
+    $$\Delta K = \tfrac12mv^2 - 0 = \tfrac12\times10^{-3}\times50\times50 = 1.25\ \text{J}.$$
+    With $g = 10\ \text{m s}^{-2}$ taken as constant, the work done by gravity is
+    $$W_g = mgh = 10^{-3}\times10\times10^3 = 10.0\ \text{J}.$$
+    By the work-energy theorem, $\Delta K = W_g + W_r$, so
+    $$W_r = \Delta K - W_g = 1.25 - 10 = -8.75\ \text{J}.$$
+    The resistive force does negative work: most of the 10 J of gravitational work is carried away as heat in the air. We could find this without knowing the form of the resistive force.
+  check: code
+
+- id: ncert11-eg-5-6
+  lvl: ncert-intext
+  num: "XI Ex 5.6"
+  source: NCERT XI Physics · Ch 5 · Example 5.6
+  kind: num
+  q: A block of mass $m = 1$ kg, moving on a horizontal surface with speed $v_i = 2$ m s$^{-1}$ enters a rough patch ranging from $x = 0.10$ m to $x = 2.01$ m. The retarding force $F_r$ on the block in this range is inversely proportional to $x$ over this range, $F_r = -k/x$ for $0.1 < x < 2.01$ m $= 0$ for $x < 0.1$ m and $x > 2.01$ m where $k = 0.5$ J. What is the final kinetic energy and speed $v_f$ of the block as it crosses this patch ?
+  ask: Final kinetic energy
+  unit: J
+  ans: 0.5
+  tol: 0.01
+  verify: 0.5*1*2**2-0.5*log(2.01/0.1)
+  sol: |
+    The force varies with position, so integrate: from $K_f - K_i = \int F\,dx$,
+    $$K_f = K_i + \int_{0.1}^{2.01}\left(-\frac{k}{x}\right)dx = \tfrac12mv_i^2 - k\ln x\Big|_{0.1}^{2.01} = \tfrac12mv_i^2 - k\ln\frac{2.01}{0.1}.$$
+    $$K_f = 2 - 0.5\ln(20.1) = 2 - 1.5 = 0.5\ \text{J}.$$
+    $$v_f = \sqrt{2K_f/m} = 1\ \text{m s}^{-1}.$$
+    Here $\ln$ is the natural logarithm ($\ln X = 2.303\log_{10}X$). The retarding force is largest (5 N) at the start of the patch and weakens along it.
+  check: code
+
+- id: ncert11-ex-5-2
+  lvl: ncert-ex
+  num: "XI 5.2"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.2
+  kind: num
+  q: |-
+    A body of mass 2 kg initially at rest moves under the action of an applied horizontal force of 7 N on a table with coefficient of kinetic friction = 0.1. Compute the
+    (a) work done by the applied force in 10 s,
+    (b) work done by friction in 10 s,
+    (c) work done by the net force on the body in 10 s,
+    (d) change in kinetic energy of the body in 10 s,
+    and interpret your results.
+  ask: Work done by the net force in 10 s (part c)
+  unit: J
+  ans: 635
+  tol: 0.5
+  verify: (7-0.1*2*9.8)*(0.5*((7-0.1*2*9.8)/2)*10**2)
+  sol: |
+    Friction: $f = \mu mg = 0.1\times2\times9.8 = 1.96$ N. Net force: $7 - 1.96 = 5.04$ N. Acceleration: $a = 5.04/2 = 2.52\ \text{m s}^{-2}$.
+
+    Distance in 10 s: $s = \tfrac12at^2 = \tfrac12(2.52)(100) = 126$ m.
+
+    (a) $W_{\text{applied}} = 7\times126 = 882$ J.
+
+    (b) $W_{\text{friction}} = -1.96\times126 = -247$ J.
+
+    (c) $W_{\text{net}} = 882 - 247 = 635$ J (equivalently $5.04\times126$).
+
+    (d) $v = at = 25.2$ m/s, so $\Delta K = \tfrac12(2)(25.2)^2 = 635$ J.
+
+    **Interpretation.** The work done by the net force equals the change in kinetic energy (work-energy theorem). The applied force does 882 J, but 247 J of it is lost to friction (as heat), so only 635 J appears as kinetic energy.
+  answer_key: "(a) 882 J ; (b) –247 J; (c) 635 J ; (d) 635 J; Work done by the net force on a body equals change in its kinetic energy."
+  check: both
+
+- id: ncert11-ex-5-13
+  lvl: ncert-ex
+  num: "XI 5.13"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.13
+  kind: num
+  q: A rain drop of radius 2 mm falls from a height of 500 m above the ground. It falls with decreasing acceleration (due to viscous resistance of the air) until at half its original height, it attains its maximum (terminal) speed, and moves with uniform speed thereafter. What is the work done by the gravitational force on the drop in the first and second half of its journey ? What is the work done by the resistive force in the entire journey if its speed on reaching the ground is 10 m s$^{-1}$ ?
+  ask: Work done by the resistive force over the whole journey
+  unit: J
+  ans: -0.163
+  tol: 0.001
+  verify: 0.5*(1000*4/3*PI*0.002**3)*10**2-(1000*4/3*PI*0.002**3)*9.8*500
+  sol: |
+    [Inference] The density of water, $1000\ \text{kg m}^{-3}$, is assumed for the drop; the question does not state it.
+
+    Mass: $m = \tfrac43\pi r^3\rho = \tfrac43\pi(2\times10^{-3})^3(1000) = 3.35\times10^{-5}$ kg.
+
+    **Gravity.** In each half the drop falls 250 m, so
+    $$W_g = mgh = 3.35\times10^{-5}\times9.8\times250 = 0.082\ \text{J}$$
+    in **each half**. (Gravity's work depends only on the height fallen, not on the acceleration.)
+
+    **Resistive force, whole journey.** The drop starts from rest and ends at $10\ \text{m s}^{-1}$, so $\Delta K = \tfrac12(3.35\times10^{-5})(10)^2 = 1.68\times10^{-3}$ J. By the work-energy theorem, $\Delta K = W_g + W_r$ with $W_g = 0.164$ J in total:
+    $$W_r = 1.68\times10^{-3} - 0.164 = -0.163\ \text{J}.$$
+    Nearly all the gravitational work is dissipated: in the second half the drop moves at constant speed, so there the resistive force exactly balances the weight, and does $-0.082$ J.
+  answer_key: 0.082 J in each half ; – 0.163 J
+  check: both
+
+- id: ncert11-ex-5-20
+  lvl: ncert-ex
+  num: "XI 5.20"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.20
+  kind: num
+  q: A body of mass 0.5 kg travels in a straight line with velocity $v = ax^{3/2}$ where $a = 5\ \text{m}^{-1/2}\text{s}^{-1}$. What is the work done by the net force during its displacement from $x = 0$ to $x = 2$ m?
+  ask: Work done by the net force
+  unit: J
+  ans: 50
+  tol: 0.1
+  verify: 0.5*0.5*(5*2**1.5)**2-0
+  sol: |
+    By the work-energy theorem, the work done by the net force is the change in kinetic energy; there is no need to find the force.
+
+    At $x = 0$: $v = 0$, so $K_i = 0$. At $x = 2$ m: $v = 5\times2^{3/2} = 14.14\ \text{m s}^{-1}$, so $v^2 = a^2x^3 = 25\times8 = 200$.
+    $$W = K_f - K_i = \tfrac12(0.5)(200) - 0 = 50\ \text{J}.$$
+  answer_key: 50 J
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: How much work must be done on a 2 kg body at rest to give it a speed of 5 m/s? (Original problem.)
+  ask: Work done
+  unit: J
+  ans: 25
+  tol: 0.1
+  verify: 0.5*2*5**2
+  sol: |
+    By the work-energy theorem, $W = \Delta K = \tfrac12(2)(5)^2 - 0 = 25$ J.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A moving car is brought to rest by its brakes. The work done by the braking force is (Original problem.)
+  opts: ["positive and equal to the initial kinetic energy", "negative and equal in magnitude to the initial kinetic energy", "zero, since the car ends at rest", "negative and equal in magnitude to the final kinetic energy"]
+  ans: 1
+  sol: |
+    The braking force opposes the motion, so its work is negative. The work-energy theorem gives $W = K_f - K_i = 0 - K_i = -K_i$, so the work is negative with magnitude equal to the initial kinetic energy.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A constant net force of 10 N acts on a 2 kg body, initially at rest, over a distance of 4 m. What is its final speed? (Original problem.)
+  ask: Final speed
+  unit: m/s
+  ans: 6.32
+  tol: 0.02
+  verify: sqrt(2*10*4/2)
+  sol: |
+    $W = Fs = 10\times4 = 40$ J $= \tfrac12mv^2 = \tfrac12(2)v^2 = v^2$, so $v = \sqrt{40} = 6.32\ \text{m s}^{-1}$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A car of mass 1200 kg moving at 15 m/s is brought to rest in 30 m by constant braking. Find the braking force. (Original problem.)
+  ask: Braking force
+  unit: N
+  ans: 4500
+  tol: 5
+  verify: 0.5*1200*15**2/30
+  sol: |
+    The braking force does work $-Fs$, which equals the change in kinetic energy:
+    $$-F\times30 = 0 - \tfrac12(1200)(15)^2 = -135\,000\ \text{J}\ \Rightarrow\ F = 4500\ \text{N}.$$
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A 0.5 kg hammer moving at 8 m/s strikes a nail and drives it 1.0 cm into a wooden plank, coming to rest. Find the average force the nail exerts on the hammer. (Original problem.)
+  ask: Average force on the hammer
+  unit: N
+  ans: 1600
+  tol: 2
+  verify: 0.5*0.5*8**2/0.01
+  sol: |
+    All of the hammer's kinetic energy, $\tfrac12(0.5)(8)^2 = 16$ J, is removed over 1.0 cm:
+    $$F\times0.01 = 16\ \Rightarrow\ F = 1600\ \text{N}.$$
+    This is about 330 times the hammer's weight, which is why a hammer drives a nail even though it is light.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: text
+  q: Two bodies of different masses have equal kinetic energies and are brought to rest by the same constant retarding force. Which one travels the greater distance before stopping? Explain. (Original problem.)
+  sol: |
+    Neither: they stop in the **same distance**. By the work-energy theorem, $F\,d = K$, so $d = K/F$. The kinetic energy and the force are the same for both, so the distance is the same, whatever the masses. (The lighter body is faster and stops sooner in time; the heavier one is slower and takes longer, but the distance is equal.)
+  check: none
+
+- id: b4
+  lvl: board
+  kind: num
+  q: A car travelling at 36 km/h can be stopped by its brakes in 8 m. In what minimum distance can it be stopped when it travels at 72 km/h, with the same braking force? (Original problem.)
+  ask: Stopping distance at 72 km/h
+  unit: m
+  ans: 32
+  tol: 0.1
+  verify: 8*(72/36)**2
+  sol: |
+    $Fd = \tfrac12mv^2$, so $d \propto v^2$ for the same force and mass. Doubling the speed multiplies the stopping distance by 4:
+    $$d = 8\times4 = 32\ \text{m}.$$
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A 4 kg block at rest on a rough floor is pushed by a constant horizontal force of 20 N through 5 m. The coefficient of kinetic friction is 0.25. Find its final speed. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Final speed
+  unit: m/s
+  ans: 5.05
+  tol: 0.02
+  verify: sqrt(2*(20-0.25*4*9.8)*5/4)
+  sol: |
+    Friction: $f = \mu mg = 0.25\times4\times9.8 = 9.8$ N. Net force: $20 - 9.8 = 10.2$ N.
+
+    Net work: $W = 10.2\times5 = 51$ J. By the work-energy theorem, $\tfrac12(4)v^2 = 51$, so
+    $$v = \sqrt{25.5} = 5.05\ \text{m s}^{-1}.$$
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A 2 kg block moving at 3 m/s on a smooth surface enters a region where it feels a retarding force $F = -2x$ N, where $x$ is the distance in metres into the region. Find its speed after it has moved 2 m in the region. (Original problem.)
+  ask: Speed at $x = 2$ m
+  unit: m/s
+  ans: 2.24
+  tol: 0.01
+  verify: sqrt(2*(0.5*2*3**2-2**2)/2)
+  sol: |
+    The work done by the variable force is
+    $$W = \int_0^2(-2x)\,dx = -x^2\Big|_0^2 = -4\ \text{J}.$$
+    $K_i = \tfrac12(2)(3)^2 = 9$ J, so $K_f = 9 - 4 = 5$ J. Then $\tfrac12(2)v^2 = 5$, giving $v = \sqrt5 = 2.24\ \text{m s}^{-1}$.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A raindrop of mass 2.0 g falls from a cloud 1.5 km above the ground and reaches the ground at 20 m/s. How much work does the air resistance do on it? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Work done by air resistance
+  unit: J
+  ans: -29
+  tol: 0.05
+  verify: 0.5*0.002*20**2-0.002*9.8*1500
+  sol: |
+    $\Delta K = \tfrac12(0.002)(20)^2 - 0 = 0.4$ J and $W_g = mgh = 0.002\times9.8\times1500 = 29.4$ J. With $\Delta K = W_g + W_{\text{air}}$,
+    $$W_{\text{air}} = 0.4 - 29.4 = -29.0\ \text{J}.$$
+    Over 98% of the energy given by gravity is lost to the air. Without drag the drop would hit at $\sqrt{2gh} = 171$ m/s, far faster than rain really does.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A 3 kg particle starts from rest at $x = 0$ under a force $F = (12 - 3x)$ N along the x-axis ($x$ in metres). Find its speed at $x = 4$ m. (Original problem.)
+  ask: Speed at $x = 4$ m
+  unit: m/s
+  ans: 4
+  tol: 0.01
+  verify: sqrt(2*(12*4-1.5*4**2)/3)
+  sol: |
+    $$W = \int_0^4(12-3x)\,dx = \Big[12x - \tfrac32x^2\Big]_0^4 = 48 - 24 = 24\ \text{J}.$$
+    By the work-energy theorem $\tfrac12(3)v^2 = 24$, so $v^2 = 16$ and $v = 4\ \text{m s}^{-1}$.
+
+    The same work is the area of the triangle under the $F$-$x$ graph (base 4 m, height 12 N): $\tfrac12\times4\times12 = 24$ J. The force falls to zero at $x = 4$ m, so the particle has gained as much speed as it can.
+  check: code

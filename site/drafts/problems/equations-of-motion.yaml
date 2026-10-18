@@ -1,0 +1,481 @@
+# Equations of motion. NCERT questions copied word for word from NCERT Science Grade 9 (Exploration, 2026-27) Ch 4 and NCERT Physics Class XI (reprint 2026-27) Ch 2. Grade 9 has no printed answer key, so those solutions are ours; Class XI numeric answers are checked against the printed key. Found, board and main problems are original.
+
+- id: ncert9-it-4-1
+  lvl: ncert-intext
+  num: "IX 4 · Think It Over 1"
+  source: NCERT Grade 9 Science · Ch 4 · Think It Over (chapter opening)
+  kind: text
+  q: |-
+    How much distance should we maintain from the truck ahead to avoid a collision if it suddenly applies the brakes?
+  sol: |
+    We should keep at least the **stopping distance** of our own vehicle. After the driver sees the truck's brake lights there are two stages:
+
+    1. **Reaction time:** the vehicle keeps moving at its initial speed $u$ for the driver's reaction time $t_r$, covering $u\,t_r$.
+    2. **Braking:** with constant deceleration $a$ the vehicle stops after a further distance $\dfrac{u^2}{2a}$ (from $v^2 = u^2 + 2as$ with $v = 0$).
+
+    So the gap should be at least $u\,t_r + \dfrac{u^2}{2a}$. The truck is also still moving for a while after its brakes go on, which gives some extra margin, but a safe driver should not count on it. Numbers depend on the speed, the road surface and the braking capacity (see Ex 4.8 and Revise, Reflect, Refine Q10 for worked cases).
+  check: none
+
+- id: ncert9-it-4-2
+  lvl: ncert-intext
+  num: "IX 4 · Think It Over 2"
+  source: NCERT Grade 9 Science · Ch 4 · Think It Over (chapter opening)
+  kind: text
+  q: |-
+    Does this distance depend upon the speed with which we are moving?
+  sol: |
+    **Yes**, strongly. Reaction distance $u\,t_r$ grows in proportion to the speed $u$, and braking distance $u^2/2a$ grows with the **square** of the speed. Doubling the speed doubles the reaction distance but multiplies the braking distance by 4. This is why the safe gap must be larger at higher speed, and why speed limits are lower in school zones.
+  check: none
+
+- id: ncert9-eg-4-8
+  lvl: ncert-intext
+  num: "IX Ex 4.8"
+  source: NCERT Grade 9 Science · Ch 4 · Example 4.8
+  kind: num
+  q: |-
+    Suppose a car is moving on a highway and brakes are applied, which cause an acceleration of −4 m s⁻². How much will be the distance travelled by the car before coming to a stop, if the car was moving with a velocity of (i) 54 km h⁻¹, and (ii) 108 km h⁻¹ when the brakes were applied?
+  ask: Stopping distance from 54 km/h, part (i)
+  unit: m
+  ans: 28.1
+  tol: 0.05
+  verify: 15*15/8
+  sol: |
+    $a = -4$ m s$^{-2}$ and the final velocity $v = 0$. Use $v^2 = u^2 + 2as$: $0 = u^2 - 8s$, so $s = u^2/8$.
+
+    (i) $u = 54$ km/h $= 15$ m/s, so $s = 225/8 = 28.1$ m.
+
+    (ii) $u = 108$ km/h $= 30$ m/s, so $s = 900/8 = 112.5$ m.
+
+    The speed doubled and the stopping distance became four times larger: $s\propto u^2$.
+  check: code
+
+- id: ncert9-ex-4-4
+  lvl: ncert-ex
+  num: "IX 4 · Q4"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q4
+  kind: num
+  q: |-
+    A car starts from rest and its velocity reaches 24 m s⁻¹ in 6 s. Find the average acceleration and the distance travelled in these 6 s.
+  ask: Distance travelled
+  unit: m
+  ans: 72
+  tol: 0.1
+  verify: 0.5*(24/6)*6*6
+  sol: |
+    $u = 0$, $v = 24$ m s$^{-1}$, $t = 6$ s.
+
+    Average acceleration: $a = \dfrac{v-u}{t} = \dfrac{24}{6} = 4$ m s$^{-2}$.
+
+    Distance: $s = ut + \tfrac12 at^2 = 0 + \tfrac12(4)(6)^2 = 72$ m.
+
+    Check with the average velocity: $\tfrac{0+24}{2}\times6 = 72$ m.
+  check: code
+
+- id: ncert9-ex-4-5
+  lvl: ncert-ex
+  num: "IX 4 · Q5"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q5
+  kind: num
+  q: |-
+    A motorbike moving with initial velocity 28 m s⁻¹ and constant acceleration stops after travelling 98 m. Find the acceleration of the motorbike and the time taken to come to a stop.
+  ask: Acceleration of the motorbike
+  unit: m/s²
+  ans: -4
+  tol: 0.01
+  verify: -(28*28)/(2*98)
+  sol: |
+    $u = 28$ m s$^{-1}$, $v = 0$, $s = 98$ m.
+
+    From $v^2 = u^2 + 2as$: $0 = 784 + 2a(98)$, so $a = -784/196 = -4$ m s$^{-2}$. The minus sign shows it is a retardation (opposite to the velocity).
+
+    From $v = u + at$: $0 = 28 - 4t$, so $t = 7$ s.
+  check: code
+
+- id: ncert9-ex-4-8
+  lvl: ncert-ex
+  num: "IX 4 · Q8"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q8
+  kind: num
+  q: |-
+    A truck driver driving at the speed of 54 km h⁻¹ notices a road sign with a speed limit of 40 km h⁻¹ (Fig. 4.29) for trucks. He slows down to 36 km h⁻¹ in 36 s. What was the distance travelled by him during this time? Assume the acceleration to be constant while slowing down.
+  ask: Distance travelled while slowing down
+  unit: m
+  ans: 450
+  tol: 0.5
+  verify: (54/3.6+36/3.6)/2*36
+  sol: |
+    $u = 54$ km/h $= 15$ m/s, $v = 36$ km/h $= 10$ m/s, $t = 36$ s.
+
+    Acceleration: $a = \dfrac{10-15}{36} = -\dfrac{5}{36}$ m s$^{-2}$ (about $-0.14$).
+
+    Distance: $s = ut + \tfrac12at^2 = 15(36) + \tfrac12\left(-\tfrac{5}{36}\right)(36)^2 = 540 - 90 = 450$ m.
+
+    Check with the average velocity for constant acceleration: $\dfrac{15+10}{2}\times36 = 450$ m.
+  check: code
+
+- id: ncert9-ex-4-9
+  lvl: ncert-ex
+  num: "IX 4 · Q9"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q9
+  kind: num
+  q: |-
+    A car starts from rest and accelerates uniformly to 20 m s⁻¹ in 5 seconds. It then travels at 20 m s⁻¹ for 10 seconds and finally applies the brake (with uniform acceleration) to stop in 6 seconds. Find the total distance travelled.
+  ask: Total distance travelled
+  unit: m
+  ans: 310
+  tol: 0.5
+  verify: 0.5*20*5+20*10+0.5*20*6
+  sol: |
+    Split the motion into three stages; each has constant acceleration (or zero).
+
+    1. Speeding up: $s_1 = \tfrac{0+20}{2}\times5 = 50$ m.
+    2. Constant velocity: $s_2 = 20\times10 = 200$ m.
+    3. Braking to rest: $s_3 = \tfrac{20+0}{2}\times6 = 60$ m.
+
+    Total $= 50 + 200 + 60 = 310$ m.
+
+    This is the area under the velocity-time graph, a trapezium with parallel sides 21 s and 10 s and height 20 m s$^{-1}$: $\tfrac12(21+10)\times20 = 310$ m.
+  check: code
+
+- id: ncert9-ex-4-10
+  lvl: ncert-ex
+  num: "IX 4 · Q10"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q10
+  kind: num
+  q: |-
+    A bus is travelling at 36 km h⁻¹ when the driver sees an obstacle 30 m ahead. The driver takes 0.5 seconds to react before pressing the brake. Once the brake is applied, the velocity of the bus reduces with constant acceleration of 2.5 m s⁻². Will the bus be able to stop before reaching the obstacle?
+  ask: Total distance covered before the bus stops
+  unit: m
+  ans: 25
+  tol: 0.05
+  verify: 10*0.5+10*10/(2*2.5)
+  sol: |
+    $u = 36$ km/h $= 10$ m/s.
+
+    **Reaction stage:** the bus continues at 10 m/s for 0.5 s: $s_1 = 10\times0.5 = 5$ m.
+
+    **Braking stage:** deceleration $2.5$ m s$^{-2}$ to rest: $s_2 = \dfrac{u^2}{2a} = \dfrac{100}{5} = 20$ m.
+
+    Total $= 5 + 20 = 25$ m, which is less than 30 m. **Yes**, the bus stops 5 m short of the obstacle. If the reaction time had been 1 s the total would be 30 m and the bus would just reach the obstacle.
+  check: code
+
+- id: ncert9-ex-4-17
+  lvl: ncert-ex
+  num: "IX 4 · Journey Beyond"
+  source: NCERT Grade 9 Science · Ch 4 · The Journey Beyond (third bullet)
+  kind: proof
+  q: |-
+    For motion in a straight line with constant acceleration, we derived two primary equations given by Eq. (4.4a) and (4.4b). Using these two equations, three more equations can be derived, out of which we derived one given in Eq. (4.4c). Derive the remaining two equations given below
+    $$s = vt - \tfrac12 at^2 \qquad s = \tfrac12(u+v)\,t$$
+    In mathematics, you have learnt the formula for calculating the area of a trapezium. Using that formula, derive the second equation given above.
+  hints: ["Start from v = u + at and s = ut + ½at². To get the first, eliminate u using u = v − at.", "For the second, the area under the v-t line from 0 to t is a trapezium with parallel sides u and v and width t.", "Area of a trapezium = ½ × (sum of parallel sides) × distance between them."]
+  sol: |
+    The two primary equations are $v = u + at$ (4.4a) and $s = ut + \tfrac12at^2$ (4.4b).
+
+    **First equation, $s = vt - \tfrac12at^2$.** From (4.4a), $u = v - at$. Substitute in (4.4b):
+    $$s = (v - at)t + \tfrac12at^2 = vt - at^2 + \tfrac12at^2 = vt - \tfrac12at^2.$$
+
+    **Second equation, $s = \tfrac12(u+v)t$.** The displacement is the area under the velocity-time graph (Fig. 4.19). From time 0 to $t$ the graph is a straight line rising from $u$ to $v$, so the area is a trapezium with parallel sides $u$ and $v$ and width $t$:
+    $$s = \tfrac12(\text{sum of parallel sides})\times\text{width} = \tfrac12(u+v)\,t.$$
+    (Algebraic check: with $v = u + at$, $\tfrac12(u + u + at)t = ut + \tfrac12at^2$, which is (4.4b).)
+  check: none
+
+- id: ncert11-eg-2-2
+  lvl: ncert-intext
+  num: "XI Ex 2.2"
+  source: NCERT XI Physics · Ch 2 · Example 2.2
+  kind: proof
+  q: |-
+    Obtain equations of motion for constant acceleration using method of calculus.
+  hints: ["Write a = dv/dt, so dv = a dt, and integrate from t = 0 to t.", "Write v = dx/dt, substitute v = v₀ + at, and integrate again.", "For the third equation, write a = dv/dt = (dv/dx)(dx/dt) = v dv/dx and integrate over x."]
+  sol: |
+    By definition $a = \dfrac{dv}{dt}$, so $dv = a\,dt$. Integrating from the start (velocity $v_0$ at $t = 0$) to time $t$, with $a$ constant:
+    $$\int_{v_0}^{v}dv = a\int_0^t dt \;\Rightarrow\; v - v_0 = at \;\Rightarrow\; v = v_0 + at.$$
+
+    Next $v = \dfrac{dx}{dt}$, so $dx = v\,dt = (v_0 + at)\,dt$. Integrating from $x_0$ at $t = 0$ to $x$ at $t$:
+    $$x - x_0 = \int_0^t (v_0 + at)\,dt = v_0t + \tfrac12at^2 \;\Rightarrow\; x = x_0 + v_0t + \tfrac12at^2.$$
+
+    For the third relation, write $a = \dfrac{dv}{dt} = \dfrac{dv}{dx}\dfrac{dx}{dt} = v\dfrac{dv}{dx}$, so $v\,dv = a\,dx$. Integrating:
+    $$\int_{v_0}^{v}v\,dv = a\int_{x_0}^{x}dx \;\Rightarrow\; \frac{v^2 - v_0^2}{2} = a(x - x_0) \;\Rightarrow\; v^2 = v_0^2 + 2a(x - x_0).$$
+
+    The last method works also when $a$ is not constant but known as a function of $x$.
+  check: none
+
+- id: ncert11-eg-2-3
+  lvl: ncert-intext
+  num: "XI Ex 2.3"
+  source: NCERT XI Physics · Ch 2 · Example 2.3
+  kind: num
+  q: |-
+    A ball is thrown vertically upwards with a velocity of 20 m s⁻¹ from the top of a multistorey building. The height of the point from where the ball is thrown is 25.0 m from the ground. (a) How high will the ball rise ? and (b) how long will it be before the ball hits the ground? Take g = 10 m s⁻².
+  ask: Time before the ball hits the ground, part (b)
+  unit: s
+  ans: 5
+  tol: 0.01
+  verify: (20+sqrt(20*20+4*5*25))/(2*5)
+  sol: |
+    Take the y-axis vertically upward with zero at the ground. Then $v_0 = +20$ m s$^{-1}$, $a = -g = -10$ m s$^{-2}$, and the launch point is $y_0 = 25$ m.
+
+    **(a)** At the highest point $v = 0$. From $v^2 = v_0^2 + 2a(y - y_0)$: $0 = 400 + 2(-10)(y - y_0)$, so $y - y_0 = 20$ m. The ball rises **20 m** above the launch point (45 m above the ground).
+
+    **(b)** *First method (two parts).* Up: $v = v_0 + at$ gives $0 = 20 - 10t_1$, so $t_1 = 2$ s. Down from $y_0 = 45$ m with $v_0 = 0$: $0 = 45 - \tfrac12(10)t_2^2$, so $t_2 = 3$ s. Total $= 2 + 3 = 5$ s.
+
+    *Second method (whole path at once).* With $y = 0$, $y_0 = 25$ m:
+    $$0 = 25 + 20t - \tfrac12(10)t^2 \;\Rightarrow\; 5t^2 - 20t - 25 = 0 \;\Rightarrow\; t = 5\ \text{s}\ \text{(the other root, } -1\text{ s, is rejected).}$$
+
+    The second method is better since we need not worry about the path: the motion is under constant acceleration all the way.
+  answer_key: 5 s (text of the example)
+  check: code
+
+- id: ncert11-eg-2-4
+  lvl: ncert-intext
+  num: "XI Ex 2.4"
+  source: NCERT XI Physics · Ch 2 · Example 2.4
+  kind: text
+  q: |-
+    Free-fall : Discuss the motion of an object under free fall. Neglect air resistance.
+  sol: |
+    An object released near the Earth's surface accelerates downward because of gravity, with magnitude $g$. If air resistance is neglected the object is in **free fall**. If the height of fall is small compared with the Earth's radius, $g$ can be taken as constant, $9.8$ m s$^{-2}$. So free fall is motion with uniform acceleration.
+
+    Take the motion along the $y$-axis with upward positive. Then $a = -g = -9.8$ m s$^{-2}$. For an object released from rest at $y = 0$ ($v_0 = 0$) the equations become
+    $$v = -gt = -9.8\,t\ \text{m s}^{-1},\qquad y = -\tfrac12gt^2 = -4.9\,t^2\ \text{m},\qquad v^2 = -2gy = -19.6\,y\ \text{m}^2\text{s}^{-2}.$$
+
+    They give the velocity and the distance fallen as functions of time, and the variation of velocity with distance. The graphs are: $a$ against $t$ a horizontal line at $-g$; $v$ against $t$ a straight line with slope $-g$; $y$ against $t$ a parabola bending downward (Fig. 2.7).
+  check: none
+
+- id: ncert11-eg-2-5
+  lvl: ncert-intext
+  num: "XI Ex 2.5"
+  source: NCERT XI Physics · Ch 2 · Example 2.5
+  kind: proof
+  q: |-
+    Galileo's law of odd numbers : "The distances traversed, during equal intervals of time, by a body falling from rest, stand to one another in the same ratio as the odd numbers beginning with unity [namely, 1: 3: 5: 7…...]." Prove it.
+  hints: ["Divide the time into equal intervals τ and write the position at times τ, 2τ, 3τ, … using y = −½gt².", "Subtract consecutive positions to get the distance in each interval.", "Factor out ½gτ²."]
+  sol: |
+    Divide the motion into equal intervals $\tau$. Starting from rest, the distance fallen after time $t$ is $\tfrac12gt^2$. At times $0, \tau, 2\tau, 3\tau, \dots, n\tau$ the distances fallen are
+    $$0,\ \tfrac12g\tau^2,\ \tfrac12g(2\tau)^2,\ \tfrac12g(3\tau)^2,\ \dots,\ \tfrac12g(n\tau)^2.$$
+    In units of $y_0 = \tfrac12g\tau^2$ these are $0, 1, 4, 9, \dots, n^2$.
+
+    The distance covered in the $n$th interval is the difference of consecutive entries:
+    $$\tfrac12g\tau^2\left[n^2 - (n-1)^2\right] = \tfrac12g\tau^2\,(2n-1).$$
+    For $n = 1, 2, 3, 4, 5, \dots$ the factor $(2n-1)$ is $1, 3, 5, 7, 9, \dots$, so the distances in successive equal intervals are in the ratio $1:3:5:7:9:\dots$. (Table 2.2 of the book lists exactly these numbers.)
+  check: none
+
+- id: ncert11-eg-2-6
+  lvl: ncert-intext
+  num: "XI Ex 2.6"
+  source: NCERT XI Physics · Ch 2 · Example 2.6
+  kind: proof
+  q: |-
+    Stopping distance of vehicles : When brakes are applied to a moving vehicle, the distance it travels before stopping is called stopping distance. It is an important factor for road safety and depends on the initial velocity (v₀) and the braking capacity, or deceleration, −a that is caused by the braking. Derive an expression for stopping distance of a vehicle in terms of v₀ and a.
+  hints: ["Use v² = v₀² + 2ax with v = 0 at the stopping point.", "The acceleration in the formula is −a (a deceleration), so treat the sign carefully."]
+  sol: |
+    Let the stopping distance be $d_s$. The vehicle ends at rest, so $v = 0$. Taking the braking deceleration as $-a$ (so $a > 0$ is the magnitude) in $v^2 = v_0^2 + 2(\text{acceleration})\,x$:
+    $$0 = v_0^2 - 2a\,d_s \;\Rightarrow\; d_s = \frac{v_0^2}{2a}.$$
+    (The book writes $d_s = -v_0^2/2a$ with $a$ as the signed acceleration, which is negative for braking, so $d_s$ is positive.)
+
+    The stopping distance is proportional to the **square** of the initial speed: doubling $v_0$ makes it four times as large for the same deceleration. The book's data for one car, 10, 20, 34 and 50 m at 11, 15, 20 and 25 m/s, are nearly consistent with this: $v_0^2/2a$ with $a \approx 6$ m s$^{-2}$ gives 10, 19, 33 and 52 m (our check).
+  check: none
+
+- id: ncert11-eg-2-7
+  lvl: ncert-intext
+  num: "XI Ex 2.7"
+  source: NCERT XI Physics · Ch 2 · Example 2.7
+  kind: num
+  q: |-
+    Reaction time : When a situation demands our immediate action, it takes some time before we really respond. Reaction time is the time a person takes to observe, think and act. For example, if a person is driving and suddenly a boy appears on the road, then the time elapsed before he slams the brakes of the car is the reaction time. Reaction time depends on complexity of the situation and on an individual.
+    You can measure your reaction time by a simple experiment. Take a ruler and ask your friend to drop it vertically through the gap between your thumb and forefinger (Fig. 2.8). After you catch it, find the distance d travelled by the ruler. In a particular case, d was found to be 21.0 cm. Estimate reaction time.
+  ask: Reaction time
+  unit: s
+  ans: 0.207
+  tol: 0.002
+  verify: sqrt(2*0.21/9.8)
+  sol: |
+    The ruler falls freely: $v_0 = 0$, $a = -g = -9.8$ m s$^{-2}$. The distance fallen $d$ and the reaction time $t_r$ are related by $d = \tfrac12 g t_r^2$, so
+    $$t_r = \sqrt{\frac{2d}{g}} = \sqrt{\frac{2\times0.210}{9.8}} = 0.207\ \text{s} \approx 0.2\ \text{s}.$$
+  check: code
+
+- id: ncert11-ex-2-5
+  lvl: ncert-ex
+  num: "XI 2.5"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.5
+  kind: num
+  q: |-
+    A car moving along a straight highway with speed of 126 km h⁻¹ is brought to a stop within a distance of 200 m. What is the retardation of the car (assumed uniform), and how long does it take for the car to stop ?
+  ask: Retardation of the car
+  unit: m/s²
+  ans: 3.06
+  tol: 0.01
+  verify: (126/3.6)*(126/3.6)/(2*200)
+  sol: |
+    $u = 126$ km h$^{-1}$ $= 126\times\tfrac{1000}{3600} = 35$ m s$^{-1}$, $v = 0$, $s = 200$ m.
+
+    From $v^2 = u^2 + 2as$: $0 = 35^2 + 2a(200)$, so $a = -\dfrac{1225}{400} = -3.06$ m s$^{-2}$. The retardation is **3.06 m s$^{-2}$**.
+
+    From $v = u + at$: $t = \dfrac{0 - 35}{-3.06} = 11.4$ s.
+
+    Check with the average velocity: $\tfrac{35}{2}\times11.43 = 200$ m.
+  answer_key: 3.06 m s⁻² ; 11.4 s
+  check: both
+
+- id: ncert11-ex-2-6
+  lvl: ncert-ex
+  num: "XI 2.6"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.6
+  kind: num
+  q: |-
+    A player throws a ball upwards with an initial speed of 29.4 m s⁻¹.
+    (a) What is the direction of acceleration during the upward motion of the ball ?
+    (b) What are the velocity and acceleration of the ball at the highest point of its motion ?
+    (c) Choose the x = 0 m and t = 0 s to be the location and time of the ball at its highest point, vertically downward direction to be the positive direction of x-axis, and give the signs of position, velocity and acceleration of the ball during its upward, and downward motion.
+    (d) To what height does the ball rise and after how long does the ball return to the player's hands ? (Take g = 9.8 m s⁻² and neglect air resistance).
+  ask: Height to which the ball rises, part (d)
+  unit: m
+  ans: 44.1
+  tol: 0.05
+  verify: 29.4*29.4/(2*9.8)
+  sol: |
+    **(a)** The acceleration is that due to gravity, $g = 9.8$ m s$^{-2}$, **vertically downward** during the whole motion, including the upward part.
+
+    **(b)** At the highest point the velocity is **zero** and the acceleration is still $9.8$ m s$^{-2}$ **downward**. (Zero velocity at an instant does not mean zero acceleration.)
+
+    **(c)** Origin at the highest point, downward positive, $t = 0$ at the top. During the whole motion the ball is below the top, so $x > 0$ for both the upward motion (before $t = 0$) and the downward motion (after $t = 0$). Upward motion is opposite to the positive direction, so $v < 0$; downward motion has $v > 0$. The acceleration is downward, which is the positive direction, so $a > 0$ throughout.
+
+    **(d)** Taking upward as positive, $u = 29.4$ m s$^{-1}$, $a = -9.8$ m s$^{-2}$, $v = 0$ at the top:
+    $$h = \frac{u^2}{2g} = \frac{29.4^2}{2\times9.8} = 44.1\ \text{m}.$$
+    Time to the top: $t_1 = u/g = 29.4/9.8 = 3$ s. The fall from the top takes the same time, so the ball returns to the player's hands after $2\times3 = 6$ s.
+  answer_key: "(a) Vertically downwards; (b) zero velocity, acceleration of 9.8 m s⁻² downwards; (c) x > 0 (upward and downward motion); v < 0 (upward), v > 0 (downward), a > 0 throughout; (d) 44.1 m, 6 s."
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A car starts from rest and accelerates uniformly at 3 m/s² for 6 s. What is its velocity at the end of this time? (Original problem.)
+  ask: Final velocity
+  unit: m/s
+  ans: 18
+  tol: 0.01
+  verify: 0+3*6
+  sol: |
+    $v = u + at = 0 + 3\times6 = 18$ m/s (64.8 km/h).
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A cyclist moving at 4 m/s speeds up uniformly at 2 m/s² for 5 s. How far does she travel in these 5 s? (Original problem.)
+  ask: Distance travelled
+  unit: m
+  ans: 45
+  tol: 0.05
+  verify: 4*5+0.5*2*25
+  sol: |
+    $s = ut + \tfrac12at^2 = 4(5) + \tfrac12(2)(5)^2 = 20 + 25 = 45$ m.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: A bus slows uniformly from a known speed to rest, and you know the braking acceleration but not the time. Which equation gives the stopping distance directly? (Original problem.)
+  opts: ["v = u + at", "s = ut + ½at²", "v² = u² + 2as", "s = ½(u + v)t"]
+  ans: 2
+  sol: |
+    The equation $v^2 = u^2 + 2as$ links $u$, $v$, $a$ and $s$ with no time in it. With $v = 0$ it gives $s = -u^2/2a$ straight away. The other three all contain $t$, which is unknown.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A train travelling at 90 km/h is brought to rest uniformly in a distance of 500 m. Find the magnitude of its retardation. (Original problem.)
+  ask: Retardation
+  unit: m/s²
+  ans: 0.625
+  tol: 0.002
+  verify: (90/3.6)*(90/3.6)/(2*500)
+  sol: |
+    $u = 90$ km/h $= 25$ m/s, $v = 0$, $s = 500$ m. From $v^2 = u^2 + 2as$: $0 = 625 + 1000a$, so $a = -0.625$ m s$^{-2}$.
+
+    The retardation is $0.625$ m s$^{-2}$. The time to stop is $t = u/|a| = 25/0.625 = 40$ s.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A stone is dropped from a bridge and hits the water after 3 s. Taking g = 9.8 m/s² and neglecting air resistance, find the height of the bridge above the water. (Original problem.)
+  ask: Height of the bridge
+  unit: m
+  ans: 44.1
+  tol: 0.05
+  verify: 0.5*9.8*9
+  sol: |
+    Falling from rest, $h = \tfrac12gt^2 = \tfrac12(9.8)(3)^2 = 44.1$ m.
+
+    Its speed on hitting the water is $v = gt = 29.4$ m/s.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A ball is thrown vertically upwards at 19.6 m/s. Taking g = 9.8 m/s², find the maximum height it reaches above the point of projection. (Original problem.)
+  ask: Maximum height
+  unit: m
+  ans: 19.6
+  tol: 0.05
+  verify: 19.6*19.6/(2*9.8)
+  sol: |
+    At the top $v = 0$, with $a = -g$. Then $0 = u^2 - 2gh$, so $h = \dfrac{u^2}{2g} = \dfrac{19.6^2}{19.6} = 19.6$ m.
+
+    The time to rise is $u/g = 2$ s, so the ball is back in the hand after 4 s.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A car starts from rest and accelerates uniformly at 2 m/s² until it reaches 20 m/s. It then travels at this speed for 30 s and finally decelerates uniformly at 4 m/s² to rest. Find the total distance covered. (Original problem.)
+  ask: Total distance
+  unit: m
+  ans: 750
+  tol: 0.5
+  verify: 20*20/(2*2)+20*30+20*20/(2*4)
+  sol: |
+    Stage 1 (speeding up): $s_1 = \dfrac{v^2}{2a} = \dfrac{400}{4} = 100$ m, taking $t_1 = 20/2 = 10$ s.
+
+    Stage 2 (uniform): $s_2 = 20\times30 = 600$ m.
+
+    Stage 3 (braking): $s_3 = \dfrac{400}{2\times4} = 50$ m, taking $t_3 = 20/4 = 5$ s.
+
+    Total distance $= 100 + 600 + 50 = 750$ m in $10 + 30 + 5 = 45$ s. The average speed is $750/45 = 16.7$ m/s.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A body starts from rest and moves with constant acceleration. It covers 14 m during the 4th second of its motion. Find the acceleration. (Original problem.)
+  ask: Acceleration
+  unit: m/s²
+  ans: 4
+  tol: 0.01
+  verify: 14/(0.5*(16-9))
+  sol: |
+    The distance in the 4th second is the distance in 4 s minus the distance in 3 s:
+    $$s_4 - s_3 = \tfrac12a(4^2) - \tfrac12a(3^2) = \tfrac12a(16-9) = \tfrac72a.$$
+    Setting $\tfrac72a = 14$ gives $a = 4$ m s$^{-2}$.
+
+    (General result for a start from rest: the distance in the $n$th second is $\tfrac12a(2n-1)$, the same odd-number pattern as Galileo's law.) In the first 6 s the body covers $\tfrac12(4)(36) = 72$ m.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A ball is thrown vertically upwards from the edge of a cliff 30 m high with speed u. It misses the cliff on the way down and reaches the ground at the foot of the cliff 5 s after being thrown. Take g = 10 m/s² and neglect air resistance. Find u. (Original problem.)
+  ask: Initial speed u
+  unit: m/s
+  ans: 19
+  tol: 0.02
+  verify: (0.5*10*25-30)/5
+  sol: |
+    Take upward as positive with the origin at the edge. The ground is at $y = -30$ m. Then
+    $$y = ut - \tfrac12gt^2 \;\Rightarrow\; -30 = 5u - \tfrac12(10)(25) = 5u - 125 \;\Rightarrow\; u = 19\ \text{m/s}.$$
+
+    Check: the ball rises $u^2/2g = 361/20 = 18.05$ m, taking $1.9$ s; the fall from $18.05 + 30 = 48.05$ m takes $\sqrt{2(48.05)/10} = 3.1$ s; total $5.0$ s.
+  check: code

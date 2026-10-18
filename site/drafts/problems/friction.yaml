@@ -1,0 +1,291 @@
+# Friction (static, kinetic, angle of repose). NCERT questions copied word for word from NCERT Science Grade 8 (Curiosity, reprint 2026-27) Ch 5, NCERT Science Grade 9 (Exploration, 2026-27) Ch 6 and NCERT Physics Class XI (reprint 2026-27) Ch 4. Grades 8 and 9 have no answer key, so those solutions are ours. Found, board and main problems are original.
+
+- id: ncert8-it-5-2
+  lvl: ncert-intext
+  num: "VIII 5 · Probe"
+  source: NCERT Grade 8 Science · Ch 5 · Probe and ponder 2
+  kind: text
+  q: |-
+    Why is it easier to slip on a wet surface?
+  sol: |
+    Friction between the sole and the floor is what stops your foot sliding backwards when you walk. Water forms a thin film between the surfaces and fills the small irregularities, so the surfaces lock together much less: the coefficient of friction, and hence the maximum friction $\mu N$, falls. When the friction needed for your step is more than this lower maximum, the foot slips.
+  check: none
+
+- id: ncert8-it-5-7
+  lvl: ncert-intext
+  num: "VIII 5 · Think"
+  source: NCERT Grade 8 Science · Ch 5 · §5.4.1 in-text question
+  kind: text
+  q: |-
+    Does this mean that the force of friction will be greater if the surfaces are rough?
+  sol: |
+    Yes, for the same pair of bodies pressed together equally: friction arises from the irregularities of the two surfaces locking into each other, and rougher surfaces have more of them, so the force needed to make one slide over the other is greater (a larger coefficient of friction). The Class XI treatment adds that the maximum friction also depends on how hard the surfaces are pressed together (the normal force), $f_{\max} = \mu N$.
+  check: none
+
+- id: ncert8-ex-5-6
+  lvl: ncert-ex
+  num: "VIII 5 · Q6"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q6
+  kind: text
+  q: |-
+    A ball is released from the point P and moves along an inclined plane and then along a horizontal surface as shown in the Fig. 5.16. It comes to stop at the point A on the horizontal surface. Think of a way so that when the ball is released from the same point P, it stops (i) before the point A (ii) after crossing the point A.
+  sol: |
+    The ball stops where friction has taken away all its kinetic energy, so the stopping distance depends on how large the friction is.
+
+    (i) To stop before A, increase friction on the horizontal surface: for example spread sand or cover it with a rough cloth. The ball then slows down faster.
+
+    (ii) To stop after crossing A, reduce friction: for example polish the surface, spread oil or powder on it, or use a glass or tile surface. The ball then slows down more gradually and travels further.
+
+    (Another way is to release it from a different point on the incline: higher up gives a larger speed at the bottom and so a longer run; lower down gives a shorter run. The question, however, asks for release from the same point P.)
+  check: none
+
+- id: ncert8-ex-5-7
+  lvl: ncert-ex
+  num: "VIII 5 · Q7"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q7
+  kind: text
+  q: |-
+    Why do we sometimes slip on smooth surfaces like ice or polished floors? Explain.
+  sol: |
+    To walk we push the ground backwards and friction pushes us forwards. On ice or a polished floor the surfaces have very few irregularities to interlock, so the friction available is small (a very low coefficient of friction). If the push needed for a step is larger than this small friction, the foot slides backwards and we slip.
+  check: none
+
+- id: ncert9-it-6-wi
+  lvl: ncert-intext
+  num: "IX 6 · What if"
+  source: NCERT Grade 9 Science · Ch 6 · §6.3 What if ...
+  kind: text
+  q: |-
+    What if the force of friction disappears in the world? How will the motion of objects be impacted?
+  sol: |
+    Moving objects would never slow down by themselves: by the first law a rolling ball or a sliding box would go on for ever at constant velocity unless some other force stopped it. We could not walk, since the ground could not push us forward; vehicles could not start, turn or brake because tyres would slip; nails, screws, knots and the grip of our hands would not hold. Anything pushed would keep sliding when pushed.
+  check: none
+
+- id: ncert9-ex-6-14
+  lvl: ncert-ex
+  num: "IX 6 · Q14"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q14
+  kind: num
+  q: |-
+    An object of mass 2 kg moving with a constant velocity of 10 m s$^{-1}$ encounters a rough patch where the force of friction on the object is 7 N. At the same time, an additional constant force of 3 N opposing the motion is applied on the object. After entering the rough patch, how much distance does the object travel before coming to rest?
+  ask: Stopping distance
+  unit: m
+  ans: 10
+  tol: 0.05
+  verify: 10**2/(2*(7+3)/2)
+  sol: |
+    Both forces oppose the motion, so the net retarding force is $7 + 3 = 10$ N and the deceleration is $a = 10/2 = 5$ m s$^{-2}$. From $v^2 = u^2 - 2as$ with $v = 0$: $s = u^2/(2a) = 100/10 = 10$ m.
+  check: code
+
+- id: ncert11-eg-4-7
+  lvl: ncert-intext
+  num: "XI Ex 4.7"
+  source: NCERT XI Physics · Ch 4 · Example 4.7
+  kind: num
+  q: |-
+    Determine the maximum acceleration of the train in which a box lying on its floor will remain stationary, given that the co-efficient of static friction between the box and the train's floor is 0.15.
+  ask: Maximum acceleration
+  unit: m s⁻²
+  ans: 1.5
+  tol: 0.01
+  verify: 0.15*10
+  sol: |
+    The box stays stationary relative to the train only if it accelerates with the train. The only horizontal force on it is static friction, so $ma = f_s \le \mu_s N = \mu_s mg$. Hence $a \le \mu_s g$ and $a_{\max} = \mu_s g = 0.15 \times 10 = 1.5$ m s$^{-2}$ (taking $g = 10$ m s$^{-2}$, as the book does). The mass cancels out.
+  answer_key: a_max = μs g = 0.15 × 10 m s⁻² = 1.5 m s⁻² (worked answer of Example 4.7).
+  check: both
+
+- id: ncert11-eg-4-8
+  lvl: ncert-intext
+  num: "XI Ex 4.8"
+  source: NCERT XI Physics · Ch 4 · Example 4.8
+  kind: num
+  q: |-
+    See Fig. 4.11. A mass of 4 kg rests on a horizontal plane. The plane is gradually inclined until at an angle $\theta$ = 15° with the horizontal, the mass just begins to slide. What is the coefficient of static friction between the block and the surface ?
+  ask: Coefficient of static friction
+  unit: ""
+  ans: 0.27
+  tol: 0.005
+  verify: tan(rad(15))
+  sol: |
+    Forces on the block: weight $mg$, normal force $N$ and static friction $f_s$ up the slope. Resolving along and perpendicular to the plane, in equilibrium: $mg\sin\theta = f_s$ and $mg\cos\theta = N$. As $\theta$ increases, $f_s$ grows until at $\theta_{\max}$ it reaches its limit $\mu_s N$. Then $\tan\theta_{\max} = \mu_s$. With $\theta_{\max} = 15^\circ$, $\mu_s = \tan 15^\circ = 0.27$. The angle does not depend on the mass of the block.
+  answer_key: μs = tan 15° = 0.27 (worked answer of Example 4.8).
+  check: both
+
+- id: ncert11-eg-4-9
+  lvl: ncert-intext
+  num: "XI Ex 4.9"
+  source: NCERT XI Physics · Ch 4 · Example 4.9
+  kind: num
+  q: |-
+    What is the acceleration of the block and trolley system shown in a Fig. 4.12(a), if the coefficient of kinetic friction between the trolley and the surface is 0.04? What is the tension in the string? (Take $g$ = 10 m s$^{-2}$). Neglect the mass of the string.
+  ask: Acceleration of the system
+  unit: m s⁻²
+  ans: 0.96
+  tol: 0.005
+  verify: (30-0.04*200)/(3+20)
+  sol: |
+    [Inference] The figure is not in the extracted text; the masses are taken from the book's solution: a 20 kg trolley on the horizontal surface, joined by a string over a smooth pulley to a hanging 3 kg block (weight 30 N).
+
+    The string is inextensible and the pulley smooth, so block and trolley have the same acceleration $a$ and the same tension $T$.
+
+    Block (down is positive): $30 - T = 3a$.
+
+    Trolley: $T - f_k = 20a$ with $f_k = \mu_k N = 0.04 \times 20 \times 10 = 8$ N, so $T - 8 = 20a$.
+
+    Adding: $22 = 23a$, $a = 22/23 = 0.96$ m s$^{-2}$. Then $T = 8 + 20a = 27.1$ N.
+  answer_key: a = 22/23 m s⁻² = 0.96 m s⁻² and T = 27.1 N (worked answer of Example 4.9).
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |-
+    A 10 kg box rests on a floor with $\mu_s = 0.4$ and $\mu_k = 0.3$. A horizontal push of 30 N is applied. What is the friction force on the box? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Friction force
+  unit: N
+  ans: 30
+  tol: 0.1
+  verify: 30
+  sol: |
+    The maximum static friction is $\mu_s N = 0.4 \times 10 \times 9.8 = 39.2$ N. The push (30 N) is below this, so the box does not move, and static friction is self-adjusting: it equals the push, $f_s = 30$ N, opposite to the push. (It would be wrong to put $f = \mu_s N = 39.2$ N here.)
+  check: code
+
+- id: f2
+  lvl: found
+  kind: num
+  q: |-
+    For the same 10 kg box ($\mu_s = 0.4$, $\mu_k = 0.3$), what is the smallest horizontal force that will start it moving? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Smallest force to start it moving
+  unit: N
+  ans: 39.2
+  tol: 0.1
+  verify: 0.4*10*9.8
+  sol: |
+    The box starts to move when the push exceeds the maximum static friction: $f_{s,\max} = \mu_s N = \mu_s mg = 0.4 \times 10 \times 9.8 = 39.2$ N. Once it slides, the friction drops to $\mu_k N = 29.4$ N, which is why it is easier to keep a box sliding than to start it.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: |-
+    When you walk forward on a level road, the friction force of the road on your shoe is (Original problem.)
+  opts: ["backward, opposing your motion", "forward, in the direction of your motion", "zero, because your foot is at rest on the ground", "upward"]
+  ans: 1
+  sol: |
+    Your shoe pushes the ground backwards, so the shoe would slip backwards. Friction opposes that relative motion (it opposes relative sliding, not motion in general), so the ground's friction on your shoe is forward. This forward force is the external force that accelerates you.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    A 5 kg block moving at 6 m s$^{-1}$ on a rough horizontal floor comes to rest. The coefficient of kinetic friction is 0.2. How far does it slide? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Sliding distance
+  unit: m
+  ans: 9.18
+  tol: 0.02
+  verify: 6**2/(2*0.2*9.8)
+  sol: |
+    The only horizontal force is kinetic friction $f_k = \mu_k mg$, so the deceleration is $a = \mu_k g = 0.2 \times 9.8 = 1.96$ m s$^{-2}$. Then $s = u^2/(2a) = 36/3.92 = 9.18$ m. The mass cancels.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |-
+    A block just starts to slide when a plane is tilted. Find this angle if the coefficient of static friction is 0.5. (Original problem.)
+  ask: Angle of the plane
+  unit: °
+  ans: 26.6
+  tol: 0.05
+  verify: deg(atan(0.5))
+  sol: |
+    At the point of sliding, $mg\sin\theta = \mu_s mg\cos\theta$, so $\tan\theta = \mu_s = 0.5$ and $\theta = \tan^{-1}0.5 = 26.6^\circ$. The block would stay on any slope less steep than this (the angle of repose).
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    A 20 kg roller is moved along the ground by a force of 80 N applied along its handle at $30^\circ$ to the horizontal. The coefficient of static friction is 0.3. What is the maximum friction force when the roller is pushed (handle pointing down at $30^\circ$)? How does it compare with pulling (handle pointing up at $30^\circ$)? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Maximum friction when pushing
+  unit: N
+  ans: 70.8
+  tol: 0.1
+  verify: 0.3*(20*9.8+80*sin(rad(30)))
+  sol: |
+    Pushing: the force has a downward component $80\sin 30^\circ = 40$ N, so $N = mg + 40 = 196 + 40 = 236$ N and $f_{\max} = 0.3 \times 236 = 70.8$ N.
+
+    Pulling: the force has an upward component 40 N, so $N = 196 - 40 = 156$ N and $f_{\max} = 0.3 \times 156 = 46.8$ N.
+
+    Pushing needs 24 N more to overcome friction, which is why a roller or mower is easier to pull than to push.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: text
+  q: |-
+    State the laws of friction. Why is the kinetic friction on a sliding body usually less than the maximum static friction? Is static friction always equal to $\mu_s N$? (Original problem.)
+  sol: |
+    Laws: friction opposes the (impending) relative motion of the surfaces; the maximum static friction $f_{s,\max} = \mu_s N$ and the kinetic friction $f_k = \mu_k N$ are proportional to the normal force and nearly independent of the area of contact; $f_k$ is nearly independent of the speed; $\mu_k < \mu_s$ for a given pair of surfaces. These are approximate empirical rules.
+
+    Once sliding has started, the surface irregularities no longer have time to settle and interlock as they do at rest, so a smaller force is needed to keep them sliding, hence $\mu_k < \mu_s$.
+
+    No. Static friction is self-adjusting: it is just as large as the force needed to keep the body at rest, up to the limit $\mu_s N$, so $f_s \le \mu_s N$. Only when the body is about to slip is $f_s = \mu_s N$.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |-
+    A block slides down a rough plane inclined at $30^\circ$ with $\mu_k = 0.2$. Find its acceleration. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Acceleration down the slope
+  unit: m s⁻²
+  ans: 3.2
+  tol: 0.02
+  verify: 9.8*(sin(rad(30))-0.2*cos(rad(30)))
+  sol: |
+    Along the plane: $mg\sin\theta - f_k = ma$, with $f_k = \mu_k N = \mu_k mg\cos\theta$ (perpendicular to the plane, $N = mg\cos\theta$). So $a = g(\sin\theta - \mu_k\cos\theta) = 9.8(0.5 - 0.2 \times 0.866) = 9.8 \times 0.3268 = 3.2$ m s$^{-2}$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |-
+    A 4 kg block lies on a 6 kg block. The coefficient of static friction between them is 0.3. The 6 kg block rests on a smooth floor and is pulled by a horizontal force $F$. What is the largest $F$ for which the 4 kg block does not slip on the 6 kg block? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Largest force F
+  unit: N
+  ans: 29.4
+  tol: 0.1
+  verify: (4+6)*0.3*9.8
+  sol: |
+    The top block is accelerated only by static friction, so its largest possible acceleration is $a_{\max} = \mu_s g = 0.3 \times 9.8 = 2.94$ m s$^{-2}$. If it does not slip, both blocks have the same acceleration, and the floor is smooth, so $F = (4 + 6)a$. At the limit $F_{\max} = 10 \times 2.94 = 29.4$ N.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |-
+    A car on a level road has tyres with $\mu_s = 0.8$. Find the shortest distance in which it can stop from 72 km/h without skidding (assume the wheels roll without slipping and static friction is maximal). Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Shortest stopping distance
+  unit: m
+  ans: 25.5
+  tol: 0.1
+  verify: 20**2/(2*0.8*9.8)
+  sol: |
+    $72$ km/h $= 20$ m s$^{-1}$. The only horizontal force on the car is the road's static friction, at most $\mu_s mg$, so the greatest deceleration is $a = \mu_s g = 7.84$ m s$^{-2}$. $s = u^2/(2a) = 400/15.68 = 25.5$ m. (If the wheels lock and skid, the smaller $\mu_k$ applies and the distance is longer.)
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |-
+    A 2 kg block is pressed against a vertical wall by a horizontal force of 50 N. The coefficient of static friction is 0.4. What is the friction force on the block? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Friction force
+  unit: N
+  ans: 19.6
+  tol: 0.1
+  verify: 2*9.8
+  sol: |
+    The normal force from the wall is 50 N, so the maximum static friction is $\mu_s N = 0.4 \times 50 = 20$ N. The weight is $2 \times 9.8 = 19.6$ N, which is less than 20 N, so the block stays at rest. Vertically there is no acceleration, so static friction is exactly equal to the weight: 19.6 N, upward. (Not 20 N: static friction takes only the value needed.)
+  check: code

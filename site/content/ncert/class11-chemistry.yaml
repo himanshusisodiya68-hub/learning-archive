@@ -1,0 +1,62 @@
+# NCERT Chemistry (Parts 1 and 2), Class 11 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 11
+subject: chem
+name: Chemistry (Parts 1 and 2)
+code: kech
+chapters:
+- n: 1
+  title: Some Basic Concepts of Chemistry
+  pdf: kech101
+  leaves:
+  - chem/the-mole
+  - chem/stoichiometry
+  - chem/concentration
+- n: 2
+  title: Structure of Atom
+  pdf: kech102
+  leaves:
+  - chem/bohr-model
+  - chem/quantum-model
+  - chem/electron-configuration
+- n: 3
+  title: Classification of Elements and Periodicity in Properties
+  pdf: kech103
+  leaves:
+  - chem/periodic-trends
+- n: 4
+  title: Chemical Bonding and Molecular Structure
+  pdf: kech104
+  leaves:
+  - chem/vsepr-and-shapes
+  - chem/hybridisation
+  - chem/molecular-orbitals
+  - chem/intermolecular-forces
+- n: 5
+  title: Thermodynamics
+  pdf: kech105
+  leaves:
+  - chem/enthalpy
+  - chem/entropy-and-gibbs
+- n: 6
+  title: Equilibrium
+  pdf: kech106
+  leaves:
+  - chem/chemical-equilibrium
+  - chem/ionic-equilibrium
+- n: 7
+  title: Redox Reactions
+  pdf: kech201
+  leaves:
+  - chem/redox-reactions
+- n: 8
+  title: 'Organic Chemistry: Some Basic Principles and Techniques'
+  pdf: kech202
+  leaves:
+  - chem/iupac-naming
+  - chem/isomerism
+  - chem/electron-movement
+- n: 9
+  title: Hydrocarbons
+  pdf: kech203
+  leaves:
+  - chem/hydrocarbons

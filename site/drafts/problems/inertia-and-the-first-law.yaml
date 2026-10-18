@@ -1,0 +1,501 @@
+# Inertia and the first law. NCERT questions copied word for word from NCERT Science Grade 8 (Curiosity, reprint 2026-27) Ch 5, NCERT Science Grade 9 (Exploration, 2026-27) Ch 6 and NCERT Physics Class XI (reprint 2026-27) Ch 4. Grades 8 and 9 have no answer key, so those solutions are ours. Found, board and main problems are original.
+
+- id: ncert8-it-5-4
+  lvl: ncert-intext
+  num: "VIII 5 · Think"
+  source: NCERT Grade 8 Science · Ch 5 · §5.2 in-text question
+  kind: text
+  q: |-
+    What do you conclude from these examples? Does a force cause a moving object to stop? Can it change speed, or direction of motion, or change the shape of an object?
+  sol: |
+    Yes to all three. A force can bring a moving object to rest (a hand holding a moving bicycle), change its speed (brakes), change its direction (a bat hitting a ball) and change its shape (pressing a balloon, stretching a rubber band). A force can also set a body at rest into motion. These are the four effects of a force listed in the chapter.
+  check: none
+
+- id: ncert8-it-5-5
+  lvl: ncert-intext
+  num: "VIII 5 · Think"
+  source: NCERT Grade 8 Science · Ch 5 · §5.2 in-text question
+  kind: text
+  q: |-
+    Does this mean that whenever there is a change in speed or direction, or change in shape, a force is acting on the object?
+  sol: |
+    Yes. A change in speed or direction is a change in velocity, that is, an acceleration, and by the first law a body that is not accelerating has no net force on it. So a changing velocity always signals a net force. A change of shape needs a push or pull as well (to squeeze a balloon you must press on it). The book's own reply is: "Yes, none of these take place without the action of force."
+  check: none
+
+- id: ncert8-it-5-6
+  lvl: ncert-intext
+  num: "VIII 5 · A step further"
+  source: NCERT Grade 8 Science · Ch 5 · §5.2 in-text question
+  kind: text
+  q: |-
+    Suppose an object is at rest. Does it mean that no force is acting on this object?
+  sol: |
+    No. An object at rest may have several forces acting on it that cancel one another. A book lying on a table feels its weight downward and the table's upward push, equal in size, so the net force is zero. "At rest" tells us the net force is zero, not that every force is absent.
+  check: none
+
+- id: ncert8-ex-5-1
+  lvl: ncert-ex
+  num: "VIII 5 · Q1"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q1
+  kind: text
+  q: |-
+    Match items in Column A with the items in Column B.
+    Column A (Type of force): (i) Muscular force; (ii) Magnetic force; (iii) Frictional force; (iv) Gravitational force; (v) Electrostatic force.
+    Column B (Example): (a) A cricket ball stopping on its own just before touching the boundary line; (b) A child lifting a school bag; (c) A fruit falling from a tree; (d) Balloon rubbed on woollen cloth attracting hair strands; (e) A compass needle pointing North.
+  sol: |
+    (i) Muscular force matches (b): the child's muscles lift the bag.
+    (ii) Magnetic force matches (e): the Earth's magnetism turns the compass needle.
+    (iii) Frictional force matches (a): the ground slows the rolling ball.
+    (iv) Gravitational force matches (c): the Earth pulls the fruit down.
+    (v) Electrostatic force matches (d): the rubbed balloon is charged and attracts hair.
+  check: none
+
+- id: ncert8-ex-5-2
+  lvl: ncert-ex
+  num: "VIII 5 · Q2"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q2
+  kind: text
+  q: |-
+    State whether the following statements are True or False.
+    (i) A force is always required to change the speed of motion of an object.
+    (ii) Due to friction, the speed of the ball rolling on a flat ground increases.
+    (iii) There is no force between two charged objects placed at a small distance apart.
+  sol: |
+    (i) True. A change of speed is an acceleration, and an acceleration needs a net force.
+
+    (ii) False. Friction acts opposite to the motion, so it makes the ball slow down.
+
+    (iii) False. Charged objects exert electrostatic forces on each other even without touching: attraction for unlike charges, repulsion for like charges.
+  check: none
+
+- id: ncert8-ex-5-3
+  lvl: ncert-ex
+  num: "VIII 5 · Q3"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q3
+  kind: text
+  q: |-
+    Two balloons rubbed with a woollen cloth are brought near each other. What would happen and why?
+  sol: |
+    The balloons move apart. Rubbing with the same cloth gives both balloons the same kind of electric charge, and like charges repel. This repulsion is an electrostatic force, a non-contact force, so the balloons push each other away without touching.
+  check: none
+
+- id: ncert8-ex-5-8
+  lvl: ncert-ex
+  num: "VIII 5 · Q8"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q8
+  kind: text
+  q: |-
+    Is any force being applied to an object in a non-uniform motion?
+  sol: |
+    Yes. Non-uniform motion means the speed, the direction or both are changing, so the velocity changes and the object accelerates. A body that is not accelerating has zero net force (first law), so an accelerating body must have a net force acting on it.
+  check: none
+
+- id: ncert8-ex-5-9
+  lvl: ncert-ex
+  num: "VIII 5 · Q9"
+  source: NCERT Grade 8 Science · Ch 5 · Keep the curiosity alive Q9
+  kind: text
+  q: |-
+    The weight of an object on the Moon becomes one-sixth of its weight on the Earth. What causes this change? Does the mass of the object also become one-sixth of its mass on the Earth?
+  sol: |
+    Weight is the gravitational force a planet exerts on the object, $W = mg$. The Moon's pull at its surface is about one-sixth of the Earth's, so the weight becomes about one-sixth. The mass is the amount of matter in the object and does not depend on where it is, so it stays the same. Mass is also the measure of the object's inertia, which is why it cannot change just because the object moves to the Moon.
+  check: none
+
+- id: ncert9-it-6-1
+  lvl: ncert-intext
+  num: "IX 6 · PP1"
+  source: NCERT Grade 9 Science · Ch 6 · Pause and Ponder 1
+  kind: text
+  q: |-
+    A weightlifter lifts a barbell (Fig. 6.8). List two forces that are acting on the barbell. Are these forces balanced if the weightlifter keeps the barbell steady?
+  sol: |
+    The two forces are the weight of the barbell, acting downwards (the Earth's pull), and the upward force exerted by the weightlifter's hands. If the weightlifter holds the barbell steady, its velocity stays zero, so its acceleration is zero and the net force is zero: the two forces are equal and opposite, that is, balanced.
+  check: none
+
+- id: ncert9-it-6-2
+  lvl: ncert-intext
+  num: "IX 6 · PP2"
+  source: NCERT Grade 9 Science · Ch 6 · Pause and Ponder 2
+  kind: text
+  q: |-
+    Two players R and S are participating in an arm-wrestling match (Fig. 6.9). At the instant, when the arms tilt to the front direction (out of the page towards you), are the forces exerted by the players balanced? If not, which player exerted the larger force?
+  sol: |
+    The arms are moving, so their velocity is changing: the forces on the arms are not balanced, there is a net force in the direction of the tilt.
+
+    [Unverified] The picture is a front view with R on the left and S on the right, and the tilt is out of the page, so it does not show which hand is being pushed back. The question cannot be answered from the figure alone; the intended reading is that the player whose arm is pushing the other's arm over is exerting the larger force.
+
+    [Note] Do not confuse this with Newton's third law, met later in the chapter: the two hands always exert equal and opposite forces on each other at every instant. The unbalanced force is on each arm, from all the forces acting on it (the other hand, the muscles, the shoulder), not between the two hands.
+  check: none
+
+- id: ncert9-it-6-ts1
+  lvl: ncert-intext
+  num: "IX 6 · Think as a Scientist"
+  source: NCERT Grade 9 Science · Ch 6 · §6.3 Think as a Scientist
+  kind: text
+  q: |-
+    Suppose, you find an object and a horizontal floor having such smooth surfaces that the force of friction between them is zero. Imagine, what will happen if you repeat steps 3 and 4 of Activity 6.1 with such an object and a horizontal floor? Will the velocity of the object decrease? Will the object ever come to rest or continue moving forever?
+  sol: |
+    Once the stack of coins leaves the rubber band there would be no horizontal force on it: friction is zero and the weight is balanced by the normal force. With zero net force the velocity cannot change, so the object would keep moving in a straight line at constant velocity for ever. This is Galileo's thought experiment, and it leads to Newton's first law.
+  check: none
+
+- id: ncert9-eg-6-1
+  lvl: ncert-intext
+  num: "IX Ex 6.1"
+  source: NCERT Grade 9 Science · Ch 6 · Example 6.1
+  kind: num
+  q: |-
+    Two forces of 10 N and 6 N are acting on a block lying on the table as shown in Fig. 6.6. What is the magnitude and the direction of the net force acting on the block in each case?
+  ask: Net force in case (a)
+  unit: N
+  ans: 16
+  tol: 0.1
+  verify: 10+6
+  sol: |
+    [Inference] The figure is not reproduced in the extracted text; the directions below are the ones implied by the book's own answers.
+
+    (a) The two forces point the same way, so they add: $10 + 6 = 16$ N, towards the right.
+
+    (b) The forces are opposite, so the net force is the difference, $10 - 6 = 4$ N, in the direction of the larger force (to the right).
+
+    (c) Again opposite, with the 10 N force the other way round: $10 - 6 = 4$ N, towards the left.
+  check: code
+
+- id: ncert9-eg-6-2
+  lvl: ncert-intext
+  num: "IX Ex 6.2"
+  source: NCERT Grade 9 Science · Ch 6 · Example 6.2
+  kind: text
+  q: |-
+    A person is exerting a force on a moving box in the forward direction which is equal to the force of friction acting between the bottom surface of the box and the floor. Will the box continue moving or will it come to rest after some time?
+  sol: |
+    Friction acts on the box backwards. The person's forward force is equal to it, so the two are balanced and the net force is zero. By the first law the box keeps moving with constant velocity; it does not come to rest.
+  check: none
+
+- id: ncert9-eg-6-3
+  lvl: ncert-intext
+  num: "IX Ex 6.3"
+  source: NCERT Grade 9 Science · Ch 6 · Example 6.3
+  kind: text
+  q: |-
+    Draw (i) position-time, and (ii) velocity-time graphs for an object on which no net force is acting.
+  sol: |
+    With no net force the object is either at rest or moves with constant velocity.
+
+    At rest: the position-time graph is a horizontal straight line (position does not change); the velocity-time graph is a horizontal line lying on the time axis ($v = 0$).
+
+    Constant velocity: the position-time graph is a straight line sloping upwards (or downwards for negative velocity), whose slope is the velocity; the velocity-time graph is a horizontal straight line at the height $v$.
+  check: none
+
+- id: ncert9-it-6-3
+  lvl: ncert-intext
+  num: "IX 6 · PP3"
+  source: NCERT Grade 9 Science · Ch 6 · Pause and Ponder 3
+  kind: text
+  q: |-
+    An object is moving with a constant velocity. Is there a net force acting upon it?
+  sol: |
+    No. Constant velocity means zero acceleration, so by the first law the net force is zero. Individual forces may still act (for example a push and an equal friction), but they add up to zero.
+  check: none
+
+- id: ncert9-it-6-4
+  lvl: ncert-intext
+  num: "IX 6 · PP4"
+  source: NCERT Grade 9 Science · Ch 6 · Pause and Ponder 4
+  kind: text
+  q: |-
+    Suppose, no net force is acting on an object. Which of the following situations are possible?
+    (i) Object remains at rest if at rest.
+    (ii) Object keeps moving with a constant velocity if already moving.
+    (iii) Object is moving with a constant acceleration.
+  sol: |
+    (i) and (ii) are possible; (iii) is not. With zero net force the acceleration is zero, so a body at rest stays at rest and a moving body keeps its velocity. A constant non-zero acceleration would need a constant net force.
+  check: none
+
+- id: ncert9-it-6-5
+  lvl: ncert-intext
+  num: "IX 6 · PP5"
+  source: NCERT Grade 9 Science · Ch 6 · Pause and Ponder 5
+  kind: text
+  q: |-
+    In the real world, it is difficult to find a situation where no forces are acting on an object. But by applying additional forces, a condition can be achieved where the net force on the object is zero. Explain with the help of an example.
+  sol: |
+    Take a box being pushed along a floor. Friction acts on it backwards, so with no push it slows down. If the person pushes forward with a force equal to the friction, the two forces cancel: the net force is zero and the box moves at constant velocity, as if no force acted. Other examples: a book on a table (weight balanced by the table's push), or a parachutist falling at constant speed (weight balanced by air resistance).
+  check: none
+
+- id: ncert9-ex-6-1
+  lvl: ncert-ex
+  num: "IX 6 · Q1"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q1
+  kind: text
+  q: |-
+    Using a horizontal force F, a table is moved across the floor at a constant velocity. How much is the frictional force exerted by the floor on the table?
+  sol: |
+    Constant velocity means zero acceleration, so the net horizontal force on the table is zero. The pushing force $F$ is balanced by friction, so the frictional force has magnitude $F$ and acts opposite to the motion.
+  check: none
+
+- id: ncert9-ex-6-2
+  lvl: ncert-ex
+  num: "IX 6 · Q2"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q2
+  kind: text
+  q: |-
+    For a ball moving on a smooth frictionless surface, choose the appropriate option that will make the following statements physically correct.
+    (i) If no net force is applied on the ball, the velocity of the ball will remain the same/increase/decrease.
+    (ii) If a net force is applied on the ball in the direction of its motion, the magnitude of the velocity of the ball will remain the same/increase/decrease.
+    (iii) If a net force is applied on the ball in a direction opposite to the direction of its motion, the magnitude of the velocity of the ball will remain the same/increase/decrease.
+  sol: |
+    (i) remain the same (first law).
+
+    (ii) increase: the acceleration is along the velocity, so the speed grows.
+
+    (iii) decrease: the acceleration is opposite to the velocity, so the speed falls.
+  check: none
+
+- id: ncert9-ex-6-3
+  lvl: ncert-ex
+  num: "IX 6 · Q3"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q3
+  kind: mcq
+  q: |-
+    Two blocks P and Q on a smooth horizontal surface are shown in Fig. 6.36a and Fig. 6.36b. Two forces of magnitudes 4 N and 5 N are acting in opposite directions on block P, while block Q is moving with a constant velocity.
+    Which of the following statement is correct?
+  opts: ["P experiences a net force and Q does not experience a net force.", "P does not experience a net force and Q experiences a net force.", "Both P and Q experience a net force.", "Neither P nor Q experiences a net force."]
+  ans: 0
+  sol: |
+    On P the forces are unequal and opposite: the net force is $5 - 4 = 1$ N, so P accelerates. Q moves with constant velocity, so its acceleration is zero and the net force is zero. Option (i) is correct.
+  check: none
+
+- id: ncert9-ex-6-4
+  lvl: ncert-ex
+  num: "IX 6 · Q4"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q4
+  kind: num
+  q: |-
+    While practising for the snake boat race (Vallum kalli in Kerala), 100 oarsmen are rowing a boat together. Out of these, 95 row backwards to propel the boat forward. But by mistake, 5 oarsmen row in the opposite direction. If each oarsman applies a horizontal force of 200 N, what is the net force on the snake boat? (Ignore drag forces, air friction, etc.)
+  ask: Net force on the boat
+  unit: N
+  ans: 18000
+  tol: 1
+  verify: (95-5)*200
+  sol: |
+    Forward force: $95 \times 200 = 19\,000$ N. Backward force: $5 \times 200 = 1000$ N. Net force $= 19\,000 - 1000 = 18\,000$ N in the forward direction.
+  check: code
+
+- id: ncert9-ex-6-6
+  lvl: ncert-ex
+  num: "IX 6 · Q6"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q6
+  kind: mcq
+  q: |-
+    The position-time graph for four objects A, B, C and D moving along a straight line are given in Fig. 6.37. A net force acts on:
+  opts: ["Object A", "Object B", "Object C", "Object D"]
+  ans: 2
+  sol: |
+    In the figure, A is a straight sloping line (constant velocity), B is a horizontal line (at rest), C is a curve that gets steeper (its slope, the velocity, is increasing) and D is a straight line sloping downwards (constant velocity, in the negative direction). A net force is needed only when the velocity changes, so a net force acts on object C, option (iii).
+  check: none
+
+- id: ncert11-eg-4-1
+  lvl: ncert-intext
+  num: "XI Ex 4.1"
+  source: NCERT XI Physics · Ch 4 · Example 4.1
+  kind: num
+  q: |-
+    An astronaut accidentally gets separated out of his small spaceship accelerating in inter stellar space at a constant rate of 100 m s$^{-2}$. What is the acceleration of the astronaut the instant after he is outside the spaceship? (Assume that there are no nearby stars to exert gravitational force on him.)
+  ask: Acceleration of the astronaut
+  unit: m s⁻²
+  ans: 0
+  tol: 0.001
+  verify: "0"
+  sol: |
+    Once outside, the astronaut has no force on him: no stars are nearby and the small spaceship's gravity is negligible. By the first law his acceleration is zero. He keeps the velocity he had at that instant, so he moves on in a straight line at constant velocity while the spaceship, still accelerating, leaves him behind.
+  answer_key: Acceleration of the astronaut is zero (worked answer of Example 4.1).
+  check: both
+
+- id: ncert11-ex-4-1
+  lvl: ncert-ex
+  num: "XI 4.1"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.1
+  kind: text
+  q: |-
+    Give the magnitude and direction of the net force acting on
+    (a) a drop of rain falling down with a constant speed,
+    (b) a cork of mass 10 g floating on water,
+    (c) a kite skillfully held stationary in the sky,
+    (d) a car moving with a constant velocity of 30 km/h on a rough road,
+    (e) a high-speed electron in space far from all material objects, and free of electric and magnetic fields.
+  sol: |
+    In (a) to (d) the body is not accelerating (constant velocity or at rest), so the net force is zero by the first law. The separate forces cancel:
+
+    (a) weight downward balanced by air drag upward;
+
+    (b) weight $0.010 \times 10 = 0.1$ N balanced by the buoyant force 0.1 N;
+
+    (c) weight and air drag/lift balanced by the tension in the string;
+
+    (d) the engine's forward force balanced by friction and air drag.
+
+    (e) The electron has no force on it at all, since it is far from every gravitating or charged body and there are no fields: the net force is zero and it moves with constant velocity.
+
+    So the answer is zero net force in every case.
+  answer_key: (a) to (d) No net force according to the First Law. (e) No force, since it is far away from all material agencies producing electromagnetic and gravitational forces.
+  check: ncert-key
+
+- id: ncert11-ex-4-11
+  lvl: ncert-ex
+  num: "XI 4.11"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.11
+  kind: num
+  q: |-
+    A truck starts from rest and accelerates uniformly at 2.0 m s$^{-2}$. At $t$ = 10 s, a stone is dropped by a person standing on the top of the truck (6 m high from the ground). What are the (a) velocity, and (b) acceleration of the stone at $t$ = 11 s? (Neglect air resistance.)
+  ask: Speed of the stone at t = 11 s
+  unit: m s⁻¹
+  ans: 22.4
+  tol: 0.1
+  verify: sqrt(20**2+(10*1)**2)
+  sol: |
+    At $t = 10$ s the truck's speed is $v = 2.0 \times 10 = 20$ m s$^{-1}$, so the stone leaves the hand with horizontal velocity 20 m s$^{-1}$.
+
+    (a) Once released, the only force on the stone is its weight (no air resistance), which is vertical. By the first law, the horizontal velocity stays 20 m s$^{-1}$. The vertical velocity after 1 s is $v_y = g t = 10 \times 1 = 10$ m s$^{-1}$ downward. Speed $= \sqrt{20^2 + 10^2} = \sqrt{500} = 22.4$ m s$^{-1}$, at an angle $\tan^{-1}(10/20) = \tan^{-1}(1/2) \approx 26.6^\circ$ below the horizontal, in the direction of the truck's motion.
+
+    (b) Acceleration is $g = 10$ m s$^{-2}$ vertically downward; the horizontal acceleration is zero because there is no horizontal force on the stone after release, although the truck keeps accelerating.
+
+    Check that the stone is still in the air at $t = 11$ s: the fall time from 6 m is $\sqrt{2 \times 6/10} = 1.1$ s, which is more than 1 s, so it has not yet landed.
+  answer_key: (a) 22.4 m s⁻¹ at an angle of tan⁻¹(1/2) with the horizontal. (b) 10 m s⁻² vertically downwards.
+  check: both
+
+- id: ncert11-ex-4-12
+  lvl: ncert-ex
+  num: "XI 4.12"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.12
+  kind: text
+  q: |-
+    A bob of mass 0.1 kg hung from the ceiling of a room by a string 2 m long is set into oscillation. The speed of the bob at its mean position is 1 m s$^{-1}$. What is the trajectory of the bob if the string is cut when the bob is (a) at one of its extreme positions, (b) at its mean position.
+  sol: |
+    When the string is cut, the only force left is gravity, vertical. The bob keeps whatever horizontal velocity it had (first law) and accelerates downward.
+
+    (a) At an extreme position the bob is momentarily at rest, so its velocity is zero. It falls vertically downwards in a straight line.
+
+    (b) At the mean position the velocity is 1 m s$^{-1}$ horizontal. The bob keeps that horizontal motion while falling under gravity, so its path is a parabola (a horizontal projectile).
+  answer_key: (a) At the extreme position, the speed of the bob is zero. If the string is cut, it will fall vertically downwards. (b) At the mean position, the bob has a horizontal velocity. If the string is cut, it will fall along a parabolic path.
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: |-
+    A coin rests on a card laid across the top of a glass. The card is flicked sharply sideways and the coin drops into the glass. Which statement explains this best? (Original problem.)
+  opts: ["The coin has inertia, so it tends to stay at rest while the card is pulled away.", "The card pushes the coin downward as it leaves.", "Gravity acts on the coin only after the card is removed.", "Air pushes the coin down into the glass."]
+  ans: 0
+  sol: |
+    The card slides away quickly, so friction between card and coin acts for only a very short time and gives the coin almost no horizontal velocity. The coin therefore stays (almost) where it was horizontally, by inertia, and when the card is gone gravity pulls it into the glass.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: |-
+    A car of mass 1500 kg travels at a steady 20 m s$^{-1}$ along a straight level road. The engine drives it forward with a force of 900 N. What is the total resistive force (friction plus air drag) on the car? (Original problem.)
+  ask: Resistive force
+  unit: N
+  ans: 900
+  tol: 1
+  verify: 900
+  sol: |
+    Steady velocity in a straight line means zero acceleration, so by the first law the net force is zero. The resistive force is equal and opposite to the 900 N driving force: 900 N, backwards. The mass of 1500 kg and the speed do not matter.
+  check: code
+
+- id: f3
+  lvl: found
+  kind: text
+  q: |-
+    A passenger standing in a stationary bus is thrown backwards when the driver starts suddenly. Explain this using inertia and friction. (Original problem.)
+  sol: |
+    The bus floor drags the passenger's feet forward by friction, so the feet accelerate with the bus. The rest of the body is not directly driven and, by inertia, tends to stay at rest, so relative to the bus it appears thrown backwards. Muscular forces on the body (through the feet) then bring it along with the bus. With no friction (a very slippery floor) the feet would slide and the passenger would stay at rest relative to the ground while the bus moved forward under him.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    A lift of mass 500 kg moves upward at a constant speed of 2 m s$^{-1}$. Find the tension in the cable. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension in the cable
+  unit: N
+  ans: 4900
+  tol: 5
+  verify: 500*9.8
+  sol: |
+    Constant velocity means zero acceleration, so the net force is zero: $T - mg = 0$ and $T = mg = 500 \times 9.8 = 4900$ N. The speed of 2 m s$^{-1}$ plays no part, because only a change in velocity needs a net force.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: |-
+    (a) State Newton's first law of motion. (b) What is inertia? (c) A 10 kg trolley and a 2 kg trolley are at rest on a level floor. Which has more inertia, and how would you show it by pushing them? (Original problem.)
+  sol: |
+    (a) Every body continues in its state of rest or of uniform motion in a straight line unless a net external force acts on it.
+
+    (b) Inertia is the property of a body by which it resists any change in its state of rest or of uniform straight-line motion. Its measure is the mass.
+
+    (c) The 10 kg trolley has more inertia since it has the greater mass. For the same push for the same time the 2 kg trolley picks up five times the speed; to bring both to the same speed in the same time you need a five times larger force on the 10 kg trolley.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    A particle is in equilibrium under three forces in a horizontal plane. One is 6 N towards the east and another is 8 N towards the north. Find the magnitude of the third force. (Original problem.)
+  ask: Third force
+  unit: N
+  ans: 10
+  tol: 0.05
+  verify: sqrt(6**2+8**2)
+  sol: |
+    In equilibrium the three forces add up to zero, so the third force is equal and opposite to the resultant of the other two. The resultant is $\sqrt{6^2 + 8^2} = 10$ N, so the third force has magnitude 10 N. It points towards the south-west, at $\tan^{-1}(8/6) = 53^\circ$ south of west.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |-
+    A particle moves with constant velocity under three forces (in newton) $\vec F_1 = 3\hat i + 4\hat j$, $\vec F_2 = -7\hat i + 2\hat j$ and an unknown $\vec F_3$. Find the magnitude of $\vec F_3$. (Original problem.)
+  ask: Magnitude of the third force
+  unit: N
+  ans: 7.21
+  tol: 0.02
+  verify: sqrt(4**2+6**2)
+  sol: |
+    Constant velocity means zero acceleration, so $\vec F_1 + \vec F_2 + \vec F_3 = 0$. Then $\vec F_3 = -(\vec F_1 + \vec F_2) = -(-4\hat i + 6\hat j) = 4\hat i - 6\hat j$. Its magnitude is $\sqrt{16 + 36} = \sqrt{52} = 7.21$ N.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |-
+    A train moves along a straight level track at a constant 20 m s$^{-1}$. A passenger throws a ball straight up, at 5 m s$^{-1}$ relative to the train, and catches it at the same height. Take $g = 10$ m s$^{-2}$ and ignore air resistance. How far does the ball move horizontally, as seen from the ground, while it is in the air? Where does it land relative to the passenger? (Original problem.)
+  ask: Horizontal distance moved relative to the ground
+  unit: m
+  ans: 20
+  tol: 0.1
+  verify: 20*(2*5/10)
+  sol: |
+    The ball's time of flight is $t = 2u/g = 2 \times 5/10 = 1$ s. After release there is no horizontal force on the ball (air resistance neglected), so by the first law it keeps the 20 m s$^{-1}$ horizontal velocity it shared with the train. As seen from the ground it moves $20 \times 1 = 20$ m horizontally.
+
+    The train, being at constant velocity, also moves 20 m in that time, so the ball lands back in the passenger's hand: relative to the passenger it goes straight up and down. (This is why constant-velocity motion is indistinguishable from rest in mechanics.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |-
+    Galileo's double incline: a smooth ball is released from rest at a height of 0.5 m on one smooth incline and rolls onto a second smooth incline of angle $\theta$. Ignoring friction, how far along the second incline does it travel before stopping when $\theta = 5^\circ$? What does the pattern tell you about the limit $\theta \to 0$? (Original problem.)
+  ask: Distance along the second incline for θ = 5°
+  unit: m
+  ans: 5.74
+  tol: 0.02
+  verify: 0.5/sin(rad(5))
+  sol: |
+    Without friction the ball rises to its starting height, $h = 0.5$ m, whatever the slope. The distance along the incline is $d = h/\sin\theta$. For $\theta = 5^\circ$, $d = 0.5/\sin 5^\circ = 0.5/0.0872 = 5.74$ m. For $\theta = 30^\circ$ it would be only $1.0$ m.
+
+    As $\theta$ is reduced, $d$ grows without limit: when the second plane is horizontal the ball would never reach the height it started from and would travel for ever at constant velocity. This is Galileo's argument for the law of inertia: with no unbalanced force, motion needs no cause to continue.
+  check: code

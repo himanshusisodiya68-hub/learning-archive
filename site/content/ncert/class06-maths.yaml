@@ -1,0 +1,36 @@
+# NCERT Mathematics (Ganita Prakash), Class 6 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 6
+subject: mat
+name: Mathematics (Ganita Prakash)
+code: fegp1
+chapters:
+- n: 1
+  title: Patterns in Mathematics
+  pdf: fegp101
+- n: 2
+  title: Lines and Angles
+  pdf: fegp102
+- n: 3
+  title: Number Play
+  pdf: fegp103
+- n: 4
+  title: Data Handling and Presentation
+  pdf: fegp104
+- n: 5
+  title: Prime Time
+  pdf: fegp105
+- n: 6
+  title: Perimeter and Area
+  pdf: fegp106
+- n: 7
+  title: Fractions
+  pdf: fegp107
+- n: 8
+  title: Playing with Constructions
+  pdf: fegp108
+- n: 9
+  title: Symmetry
+  pdf: fegp109
+- n: 10
+  title: The Other Side of Zero
+  pdf: fegp110

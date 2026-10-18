@@ -1,0 +1,678 @@
+# Distance and displacement. NCERT questions copied word for word from NCERT Science Grade 6 (Curiosity, reprint 2026-27) Ch 5, NCERT Science Grade 9 (Exploration, 2026-27) Ch 4 and NCERT Physics Class XI (reprint 2026-27) Ch 2. Grades 6 and 9 have no printed answer key, so those solutions are ours. Found, board and main problems are original.
+
+- id: ncert6-it-5-1
+  lvl: ncert-intext
+  num: "VI 5 · Intro"
+  source: NCERT Grade 6 Science · Ch 5 · Chapter opening questions
+  kind: text
+  q: |-
+    Are the tape and rod similar to the scale that the elder sister has in her geometry box? What did mother mean by char angula?
+  sol: |
+    All three are length-measuring devices: each has equally spaced markings and is laid against the object, so they work on the same idea. They differ in size and material. The shopkeeper's metal rod and the geometry-box scale are rigid; the tailor's tape is flexible so that it can go round the body.
+
+    *Char angula* means "four angulas". The **angula** is an old Indian unit of length, the width of a finger, so *char angula* is the width of four fingers. The mother is asking the tailor to lengthen the uniform by about four finger-widths.
+
+    [Note] A finger-width differs from person to person, which is exactly the weakness of body-part units that the chapter goes on to discuss.
+  check: none
+
+- id: ncert6-it-5-2
+  lvl: ncert-intext
+  num: "VI 5 · §5.1"
+  source: NCERT Grade 6 Science · Ch 5 · §5.1 How do we Measure?
+  kind: text
+  q: |-
+    But why should the number be different?
+  sol: |
+    Hardeep asks this after the five friends measure the same table with their own handspans and get slightly different counts (Table 5.1: 13, 14, between 13 and 14, and so on).
+
+    The table has one fixed length, but each friend's handspan is a different length. A bigger handspan fits fewer times along the table and a smaller one fits more times. The number of units depends on the size of the unit, and here the unit differs from person to person. This is why a standard unit and a common scale are needed.
+  check: none
+
+- id: ncert6-it-5-3
+  lvl: ncert-intext
+  num: "VI 5 · §5.2"
+  source: NCERT Grade 6 Science · Ch 5 · §5.2 Standard Units
+  kind: text
+  q: |-
+    Would it be convenient to use the unit metre to measure larger lengths, such as the length of a railway track between two cities, or to measure smaller lengths, such as the thickness of a page of a book?
+  sol: |
+    No, not for either. A railway track between two cities is hundreds of thousands of metres long, so the number would be huge and awkward. The thickness of a page is a tiny fraction of a metre, so the number would be a long decimal. It is more convenient to choose a unit close to the size being measured: the **kilometre** (1 km = 1000 m) for the track and the **millimetre** (1 mm = 0.1 cm) for the page.
+  check: none
+
+- id: ncert6-it-5-4
+  lvl: ncert-intext
+  num: "VI 5 · §5.3"
+  source: NCERT Grade 6 Science · Ch 5 · §5.2 (speech bubble)
+  kind: text
+  q: |-
+    Suppose we all measure the length of the table again, but this time using a metre scale. Will the results still be different?
+  sol: |
+    The results will agree far more closely than with handspans, because everyone is now using the same unit with the same markings. Small differences can still remain, for example from placing the scale a little crookedly, from reading it with the eye off the correct position, or from the smallest division being 1 mm. The big disagreement caused by different units disappears.
+  check: none
+
+- id: ncert6-it-5-5
+  lvl: ncert-intext
+  num: "VI 5 · §5.3"
+  source: NCERT Grade 6 Science · Ch 5 · §5.3 Correct Way of Measuring Length
+  kind: text
+  q: |-
+    Why are some length measuring devices made up of flexible materials?
+  sol: |
+    Some things cannot be measured with a rigid straight scale: the girth of a tree, the size of a chest, a curved line. A flexible material such as the cloth or plastic of a tailor's tape can bend to follow the curve, while a rigid metre scale cannot. The material must still not stretch, or the markings would no longer be equally spaced.
+  check: none
+
+- id: ncert6-it-5-6
+  lvl: ncert-intext
+  num: "VI 5 · §5.4"
+  source: NCERT Grade 6 Science · Ch 5 · §5.4 Measuring the length of a curved line
+  kind: text
+  q: |-
+    How would they have measured the required length of string lights?
+  sol: |
+    The lights hang along curved arches, so a straight scale will not do. Either use a **flexible measuring tape** laid along the curve, or lay a **thread** along the curved line, mark its two ends, straighten it and measure that length with a metre scale (Fig. 5.8).
+  check: none
+
+- id: ncert6-it-5-7
+  lvl: ncert-intext
+  num: "VI 5 · §5.5"
+  source: NCERT Grade 6 Science · Ch 5 · §5.5 Describing Position
+  kind: text
+  q: |-
+    Who do you think is correct?
+  sol: |
+    The question follows the argument among Deepa, Anish, Hardeep, Tasneem and Padma about whether the garden is closer than the school (Fig. 5.9). The book's answer is that **all of them are correct**. Each child is comparing distances from his or her own house, and the houses are in different places. If everyone measured from the same point, say the bus stand, they would all agree.
+  check: none
+
+- id: ncert6-it-5-8
+  lvl: ncert-intext
+  num: "VI 5 · §5.5"
+  source: NCERT Grade 6 Science · Ch 5 · §5.5 Describing Position (kilometre stone)
+  kind: text
+  q: |-
+    What do such kilometre stones indicate? How could Padma conclude that she was getting closer to her destination?
+  sol: |
+    A kilometre stone such as "Delhi 70 km" states the **distance of that spot from Delhi**; Delhi is the reference point. Padma first read 70 km and then 60 km. The number written on the stone, her distance from the reference point, was decreasing, so she was getting closer to her grandparents' house.
+  check: none
+
+- id: ncert6-it-5-9
+  lvl: ncert-intext
+  num: "VI 5 · §5.5"
+  source: NCERT Grade 6 Science · Ch 5 · §5.5 Describing Position
+  kind: text
+  q: |-
+    Does this mean that the position of Padma, with respect to the reference point, is changing with time? When does the position of an object change with respect to a reference point? Does it change when an object is moving?
+  sol: |
+    Yes. Her distance from Delhi changed from 70 km to 60 km as time passed, so her position with respect to the reference point (Delhi) is changing with time.
+
+    The position of an object changes with respect to a reference point when the object **moves**. If it is not moving, its distance and direction from the reference point stay the same.
+  check: none
+
+- id: ncert6-it-5-10
+  lvl: ncert-intext
+  num: "VI 5 · §5.6"
+  source: NCERT Grade 6 Science · Ch 5 · §5.6 Moving Things (after Activity 5.2)
+  kind: text
+  q: |-
+    Compare and analyse your justifications. How can one decide if an object is in motion or at rest?
+  sol: |
+    Pick a **reference point**, then watch whether the object's position with respect to it changes with time. If the position changes, the object is in motion; if it does not, the object is at rest. For example, a grazing cow keeps changing its position relative to the fence over the day (in motion), while a tree stays at the same distance and direction from the fence (at rest).
+  check: none
+
+- id: ncert6-it-5-11
+  lvl: ncert-intext
+  num: "VI 5 · Think it over!"
+  source: NCERT Grade 6 Science · Ch 5 · §5.6 Moving Things, Think it over!
+  kind: text
+  q: |-
+    Suppose you are travelling on a ship which is moving at a constant speed along a straight line on a calm sea. Suppose there is no window on the ship. Is there any way that you can determine whether the ship is moving or is stationary?
+  sol: |
+    Inside a closed cabin you cannot tell. Everything in the cabin, including you, moves with the ship, so your position with respect to the walls, the floor and the objects around you does not change either way. Only a reference point outside the ship (the shore, a star, a passing ship) can show whether the ship is moving.
+
+    This is the idea that rest and motion depend on the reference point. [Inference] Physics later turns this into the statement that no experiment inside a room moving steadily in a straight line can show that it moves; the book only hints at this idea here.
+  check: none
+
+- id: ncert6-ex-5-1
+  lvl: ncert-ex
+  num: "VI 5 · Q1"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q1
+  kind: text
+  q: |-
+    Some lengths are given in Column I of Table 5.5. Some units are given in Column II. Match the lengths with the units suitable for measuring those lengths.
+
+    | Column I | Column II |
+    |---|---|
+    | Distance between Delhi and Lucknow | centimetre |
+    | Thickness of a coin | kilometre |
+    | Length of an eraser | metre |
+    | Length of school ground | millimetre |
+  sol: |
+    Choose the unit closest in size to the length being measured.
+
+    | Column I | Suitable unit |
+    |---|---|
+    | Distance between Delhi and Lucknow | kilometre |
+    | Thickness of a coin | millimetre |
+    | Length of an eraser | centimetre |
+    | Length of school ground | metre |
+  check: none
+
+- id: ncert6-ex-5-2
+  lvl: ncert-ex
+  num: "VI 5 · Q2"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q2
+  kind: text
+  q: |-
+    Read the following statements and mark True (T) or False (F) against each.
+    (i) The motion of a car moving on a straight road is an example of linear motion.
+    (ii) Any object which is changing its position with respect to a reference point with time is said to be in motion.
+    (iii) 1 km = 100 cm
+  sol: |
+    (i) **True.** Motion along a straight line is linear motion.
+
+    (ii) **True.** This is the definition of motion in the chapter.
+
+    (iii) **False.** 1 km = 1000 m and 1 m = 100 cm, so 1 km = 1000 × 100 cm = 100 000 cm.
+  check: none
+
+- id: ncert6-ex-5-3
+  lvl: ncert-ex
+  num: "VI 5 · Q3"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q3
+  kind: mcq
+  q: |-
+    Which of the following is not a standard unit of measuring length?
+  opts: ["millimetre", "centimetre", "kilometre", "handspan"]
+  ans: 3
+  sol: |
+    The **handspan** is not a standard unit, because its size differs from person to person. Millimetre, centimetre and kilometre are all fixed multiples or fractions of the SI unit, the metre.
+  check: none
+
+- id: ncert6-ex-5-4
+  lvl: ncert-ex
+  num: "VI 5 · Q4"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q4
+  kind: text
+  q: |-
+    Search for the different scales or measuring tapes at your home and school. Find out the smallest value that can be measured using each of these scales. Record your observations in a tabular form.
+  sol: |
+    This is a hands-on task, so your table will depend on what you find. The smallest value a scale can measure is the length between two neighbouring marks (its **least count**). A typical table:
+
+    | Scale or tape | Unit marked | Smallest value it can measure |
+    |---|---|---|
+    | 15-cm geometry-box scale | cm and mm | 1 mm (0.1 cm) |
+    | Metre scale (wooden or steel) | cm and mm | 1 mm |
+    | Tailor's tape | cm (and inches) | usually 1 mm or 0.5 cm |
+    | Carpenter's steel tape | cm and mm | 1 mm |
+
+    The values in this table are typical, not taken from the book; check against the scales you actually have. Look at the markings on each one and count how many divisions fit between two numbered marks.
+  check: none
+
+- id: ncert6-ex-5-5
+  lvl: ncert-ex
+  num: "VI 5 · Q5"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q5
+  kind: num
+  q: |-
+    Suppose the distance between your school and home is 1.5 km. Express it in metres.
+  ask: Distance in metres
+  unit: m
+  ans: 1500
+  tol: 0.5
+  verify: 1.5*1000
+  sol: |
+    1 km = 1000 m, so $1.5\ \text{km} = 1.5\times1000\ \text{m} = 1500$ m.
+  check: code
+
+- id: ncert6-ex-5-6
+  lvl: ncert-ex
+  num: "VI 5 · Q6"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q6
+  kind: text
+  q: |-
+    Take a tumbler or a bottle. Measure the length of the curved part of the base of glass or bottle and record it.
+  sol: |
+    The base is curved, so a straight scale cannot follow it. Method (Fig. 5.8): wrap a thread once round the curved part of the base, mark the point where it meets itself, straighten the thread and measure it against a metre scale or 15-cm scale. Or wrap a flexible measuring tape round it.
+
+    Record the result as a number with a unit, with a space between them, for example "22.0 cm". Your value depends on your tumbler or bottle.
+
+    Check: the curved length of a circular base is the circumference $= \pi d$. For a base of diameter 7 cm it would be about $3.14\times7 = 22$ cm. (This example value is ours, not from the book.)
+  check: none
+
+- id: ncert6-ex-5-7
+  lvl: ncert-ex
+  num: "VI 5 · Q7"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q7
+  kind: text
+  q: |-
+    Measure the height of your friend and express it in (i) metres (ii) centimetres and (iii) millimetres.
+  sol: |
+    Stand your friend straight against a wall, mark the top of the head, and measure from the floor to the mark. Then convert using 1 m = 100 cm and 1 cm = 10 mm.
+
+    Worked pattern (the height 1.45 m is an example of ours, not the book's):
+
+    (i) 1.45 m
+    (ii) $1.45\times100 = 145$ cm
+    (iii) $145\times10 = 1450$ mm
+
+    The same height, three numbers: the smaller the unit, the larger the number.
+  check: none
+
+- id: ncert6-ex-5-8
+  lvl: ncert-ex
+  num: "VI 5 · Q8"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q8
+  kind: text
+  q: |-
+    You are given a coin. Estimate how many coins are required to be placed one after the other lengthwise, without leaving any gap between them, to cover the whole length of the chosen side of a notebook. Verify your estimate by measuring the same side of the notebook and the size of the coin using a 15-cm scale.
+  sol: |
+    **Estimate:** lay a coin on the notebook edge and judge how many such widths fit, say about 8.
+
+    **Verify:** measure the side of the notebook (it may be longer than 15 cm, so measure it in two steps using a mark, or use a metre scale), and measure the diameter of the coin. Then
+
+    $$\text{number of coins} = \frac{\text{length of the side}}{\text{diameter of one coin}}.$$
+
+    Example with numbers of ours (not the book's): side 21.0 cm, coin diameter 2.5 cm, so $21.0/2.5 = 8.4$, about 8 coins with a small gap left over. Your values will differ.
+  check: none
+
+- id: ncert6-ex-5-9
+  lvl: ncert-ex
+  num: "VI 5 · Q9"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q9
+  kind: text
+  q: |-
+    Give two examples each for linear, circular and oscillatory motion.
+  sol: |
+    | Type | Meaning | Examples |
+    |---|---|---|
+    | Linear | along a straight line | a car on a straight road; an apple falling straight down |
+    | Circular | along a circular path | the tip of a clock's hand; a merry-go-round |
+    | Oscillatory | to and fro about a fixed position | a swing; a pendulum bob |
+
+    Both circular and oscillatory motion are also **periodic**: they repeat after a fixed interval of time.
+  check: none
+
+- id: ncert6-ex-5-10
+  lvl: ncert-ex
+  num: "VI 5 · Q10"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q10
+  kind: text
+  q: |-
+    Observe different objects around you. It is easier to express the lengths of some objects in mm, some in cm and some in m. Make a list of three objects in each category and enter them in the Table 5.6.
+
+    | Size | Objects |
+    |---|---|
+    | mm |  |
+    | cm |  |
+    | m |  |
+  sol: |
+    One possible table (many answers are correct):
+
+    | Size | Objects |
+    |---|---|
+    | mm | thickness of a coin; thickness of a page; diameter of a pencil lead |
+    | cm | length of a pencil; width of a notebook; length of a pen |
+    | m | height of a door; length of a classroom; height of a table |
+
+    Rule of thumb: use the unit that gives a number between about 1 and 100.
+  check: none
+
+- id: ncert6-ex-5-11
+  lvl: ncert-ex
+  num: "VI 5 · Q11"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q11
+  kind: text
+  q: |-
+    A rollercoaster track is made in the shape shown in Fig. 5.19. A ball starts from point A and escapes through point F. Identify the types of motion of the ball on the rollercoaster and corresponding portions of the track.
+  sol: |
+    [Inference] The figure shows a straight sloping track from A down to the bottom (B, C), a circular loop with D at the top and E on the way out of the loop, and a straight stretch to F. Reading the figure this way:
+
+    | Portion of the track | Type of motion |
+    |---|---|
+    | A down the slope to the bottom (A to B/C) | linear |
+    | around the loop (C, through D, to E) | circular |
+    | from the loop to the exit (E to F) | linear |
+
+    The book gives no answer key for this question, so the exact boundaries of the portions are our reading of the figure.
+  check: none
+
+- id: ncert6-ex-5-12
+  lvl: ncert-ex
+  num: "VI 5 · Q12"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q12
+  kind: text
+  q: |-
+    Tasneem wants to make a metre scale by herself. She considers the following materials for it—plywood, paper, cloth, stretchable rubber and steel. Which of these should she not use and why?
+  sol: |
+    She should not use **stretchable rubber**. It stretches when pulled or even when handled, so the distance between two marks would change from one measurement to the next and the readings would not be reliable. (Cloth and paper also stretch or sag a little and tear easily, so they are poor choices for a long-lasting rigid metre scale, but rubber is the clear failure.) Plywood and steel hold their length and keep their markings.
+  check: none
+
+- id: ncert6-ex-5-13
+  lvl: ncert-ex
+  num: "VI 5 · Q13"
+  source: NCERT Grade 6 Science · Ch 5 · Let us enhance our learning Q13
+  kind: text
+  q: |-
+    Think, design and develop a card game on conversion of units of length to play with your friends.
+  sol: |
+    This is a design task with no single answer. One simple design:
+
+    - Make cards in pairs: one card shows a length such as "2.5 km", its partner shows the same length in another unit, "2500 m".
+    - Mix the cards face down. Players turn over two cards in turn; if they show the same length, the player keeps the pair, otherwise both go back.
+    - The player with most pairs wins.
+
+    Use only these conversions: 1 km = 1000 m, 1 m = 100 cm, 1 cm = 10 mm. Add harder pairs such as 0.35 m and 350 mm for a second round.
+  check: none
+
+- id: ncert9-it-4-3
+  lvl: ncert-intext
+  num: "IX 4 · Activity 4.1"
+  source: NCERT Grade 9 Science · Ch 4 · Activity 4.1: Let us analyse
+  kind: mcq
+  q: |-
+    As shown in Fig. 4.5, a ball is thrown vertically upwards from O. It moves up straight till B and then falls back to O. Can this be considered a motion in a straight line? For this motion, fill up the values in Table 4.1. Analyse the data filled in Table 4.1 and choose which of the following is true for displacement:
+    (i) It is never zero.
+    (ii) Its magnitude can be greater than the total distance travelled.
+    (iii) Its magnitude is less than or equal to the total distance travelled.
+    (iv) Its magnitude is less than the total distance travelled in all cases.
+  opts: ["It is never zero.", "Its magnitude can be greater than the total distance travelled.", "Its magnitude is less than or equal to the total distance travelled.", "Its magnitude is less than the total distance travelled in all cases."]
+  ans: 2
+  sol: |
+    Yes, the ball goes up and comes back along the same straight line, so this is motion in a straight line.
+
+    From Fig. 4.5 the points are O at 0 cm, A at 40 cm, C at 80 cm and B at 140 cm (the top). Table 4.1:
+
+    | Position | Total distance travelled from O | Displacement from O |
+    |---|---|---|
+    | O | 0 cm | 0 cm |
+    | A (going up) | 40 cm | 40 cm upward |
+    | B | 140 cm | 140 cm upward |
+    | C (coming down) | 140 + 60 = 200 cm | 80 cm upward |
+    | O (back) | 140 + 140 = 280 cm | 0 cm |
+
+    Look at the rows. At A (going up) the magnitude of displacement equals the distance, which kills (iv). At O (back) the displacement is zero, which kills (i). Distance is never smaller than the magnitude of displacement, which kills (ii). So **(iii)** is true: the magnitude of displacement is less than or equal to the distance, with equality only when the object does not turn back.
+  check: none
+
+- id: ncert9-it-4-4
+  lvl: ncert-intext
+  num: "IX 4 · Pause 1"
+  source: NCERT Grade 9 Science · Ch 4 · Pause and Ponder Q1
+  kind: text
+  q: |-
+    In the example of an athlete running back and forth on a straight track (Fig. 4.4), when will the displacement of the athlete be zero? What will be the total distance travelled in that case?
+  sol: |
+    The displacement is zero whenever the athlete is back at her starting position O, because displacement is the net change in position. If she runs from O to A (100 m) and back to O, the total distance travelled is $100 + 100 = 200$ m while the displacement is 0.
+
+    In general, if she makes any number of trips and ends at O, the distance travelled is a positive number (here 200 m, 400 m, ...) but the displacement is zero.
+  check: none
+
+- id: ncert9-it-4-5
+  lvl: ncert-intext
+  num: "IX 4 · Pause 2"
+  source: NCERT Grade 9 Science · Ch 4 · Pause and Ponder Q2
+  kind: mcq
+  q: |-
+    Fuel used up in a vehicle depends on which of the following? Justify your answer.
+    (i) Total distance travelled
+    (ii) Displacement
+  opts: ["Total distance travelled", "Displacement"]
+  ans: 0
+  sol: |
+    **(i) Total distance travelled.** The engine burns fuel all along the path actually driven, whatever its shape. A car that goes 20 km out and 20 km back has a displacement of zero, yet it has used fuel for 40 km. The odometer reading (distance) is what matters, not the net change in position.
+  check: none
+
+- id: ncert9-it-4-6
+  lvl: ncert-intext
+  num: "IX 4 · Pause 3"
+  source: NCERT Grade 9 Science · Ch 4 · Pause and Ponder Q3
+  kind: text
+  q: |-
+    A ball rolls down an inclined track as shown in Fig. 4.6. Is its motion, a straight line motion? Assuming the starting point of the ball (O) to be the origin, can its motion from O to D be depicted using a horizontal line as shown in Fig. 4.3? Are the values of total distance travelled and magnitude of displacement from O equal or different at positions A, B, C and D?
+  sol: |
+    The track is a straight (sloping) line, so the ball moves in a straight line. Yes, its position can be shown on a straight number line like Fig. 4.3: only the distance along the track from O matters, so the slope does not need to be drawn.
+
+    From Fig. 4.6 the ball's positions are A at 40 cm, B at 50 cm (10 cm further), C at 70 cm (20 cm further) and D at 100 cm (30 cm further) along the track from O. The ball never turns back, so at every one of A, B, C and D the **total distance travelled equals the magnitude of displacement**: 40 cm, 50 cm, 70 cm and 100 cm respectively.
+
+    [Inference] The segment lengths 40, 10, 20 and 30 cm are read from the printed figure.
+  check: none
+
+- id: ncert9-ex-4-1
+  lvl: ncert-ex
+  num: "IX 4 · Q1"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q1
+  kind: num
+  q: |-
+    My father went to a shop from home which is located at a distance of 250 m on a straight road. On reaching there, he discovered that he forgot to carry a cloth bag. He came home to take it, went to the shop again, bought provisions and came back home. How much was the total distance travelled by him? What was his displacement from home?
+  ask: Total distance travelled
+  unit: m
+  ans: 1000
+  tol: 1
+  verify: 4*250
+  sol: |
+    The journey has four legs, each 250 m: home to shop, shop to home, home to shop, shop to home.
+
+    Total distance $= 4\times250 = 1000$ m.
+
+    He ends at the place where he started, so his net change in position is zero: **displacement = 0**.
+  check: code
+
+- id: ncert9-ex-4-2
+  lvl: ncert-ex
+  num: "IX 4 · Q2"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q2
+  kind: num
+  q: |-
+    A student runs from the ground floor to the fourth floor of a school building to collect a book and then comes down to their classroom on the second floor. If the height of each floor is 3 m, find:
+    (i) the total vertical distance travelled, and
+    (ii) their displacement from the starting point.
+  ask: Total vertical distance travelled
+  unit: m
+  ans: 18
+  tol: 0.1
+  verify: 4*3+2*3
+  sol: |
+    Take upward as positive, origin at the ground floor.
+
+    (i) Up to the fourth floor: $4\times3 = 12$ m. Down to the second floor: $2\times3 = 6$ m. Total distance $= 12 + 6 = 18$ m.
+
+    (ii) The student ends at the second floor, which is 6 m above the start. Displacement $= +6$ m, that is **6 m upward**.
+  check: code
+
+- id: ncert9-ex-4-11
+  lvl: ncert-ex
+  num: "IX 4 · Q11"
+  source: NCERT Grade 9 Science · Ch 4 · Revise, Reflect, Refine Q11
+  kind: text
+  q: |-
+    A student said, "The Earth moves around the Sun". In this context, discuss whether an object kept on the Earth can be considered to be at rest.
+  sol: |
+    Rest or motion depends on the reference point. Take the surface of the Earth (a table, the classroom) as the reference: an object kept on the Earth does not change its position with respect to it, so it is **at rest** relative to the Earth.
+
+    Take the Sun as the reference: the Earth moves around the Sun, and the object moves with it, so its position with respect to the Sun keeps changing and it is **in motion**.
+
+    So an object on the Earth is at rest relative to the Earth and in motion relative to the Sun. Neither statement is wrong; they use different reference points. There is no reference point that is "really" at rest.
+  check: none
+
+- id: ncert11-ex-2-1
+  lvl: ncert-ex
+  num: "XI 2.1"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.1
+  kind: text
+  q: |-
+    In which of the following examples of motion, can the body be considered approximately a point object:
+    (a) a railway carriage moving without jerks between two stations.
+    (b) a monkey sitting on top of a man cycling smoothly on a circular track.
+    (c) a spinning cricket ball that turns sharply on hitting the ground.
+    (d) a tumbling beaker that has slipped off the edge of a table.
+  sol: |
+    A body can be treated as a point object when its size is much smaller than the distance it moves, and when we do not care about how it turns or spins.
+
+    (a) **Yes.** A carriage a few tens of metres long between stations that are many kilometres apart: its size is negligible compared with the distance, and it moves without jerks.
+
+    (b) **Yes.** The monkey moves with the cyclist along a smooth circular track much larger than the monkey.
+
+    (c) **No.** The ball's spin and its sharp turn on hitting the ground depend on its extended size and rotation; its motion cannot be described by one point.
+
+    (d) **No.** A tumbling beaker rotates as it falls, and different parts of it move differently, so one point does not describe it.
+
+    **Answer: (a) and (b).**
+  answer_key: (a), (b)
+  check: ncert-key
+
+- id: ncert11-ex-2-9
+  lvl: ncert-ex
+  num: "XI 2.9"
+  source: NCERT XI Physics · Ch 2 · Exercise 2.9
+  kind: text
+  q: |-
+    Explain clearly, with examples, the distinction between :
+    (a) magnitude of displacement (sometimes called distance) over an interval of time, and the total length of path covered by a particle over the same interval;
+    (b) magnitude of average velocity over an interval of time, and the average speed over the same interval. [Average speed of a particle over an interval of time is defined as the total path length divided by the time interval]. Show in both (a) and (b) that the second quantity is either greater than or equal to the first. When is the equality sign true ? [For simplicity, consider one-dimensional motion only].
+  sol: |
+    **(a)** The **magnitude of displacement** is the straight-line gap $|x_2 - x_1|$ between the final and initial positions, and it ignores what happened in between. The **total path length** is the sum of the lengths of all the pieces of the path, however the particle moved. Example: a particle goes from $x = 0$ to $x = 5$ m and back to $x = 2$ m. The magnitude of displacement is $|2 - 0| = 2$ m, the path length is $5 + 3 = 8$ m.
+
+    In one dimension the path is broken into pieces $|\Delta x_1|, |\Delta x_2|, \dots$, and the displacement is the algebraic sum $\Delta x_1 + \Delta x_2 + \dots$. By the triangle inequality
+    $$\left|\sum \Delta x_i\right| \le \sum |\Delta x_i|,$$
+    so **path length $\ge$ magnitude of displacement**. Equality holds when all the $\Delta x_i$ have the same sign, that is, when the particle never turns back (it moves in one direction only).
+
+    **(b)** The **magnitude of average velocity** is $\dfrac{|\text{displacement}|}{\Delta t}$ and the **average speed** is $\dfrac{\text{path length}}{\Delta t}$. Both share the same $\Delta t > 0$, so dividing the inequality in (a) by $\Delta t$ gives
+    $$\text{average speed} \ge |\text{average velocity}|.$$
+    Equality again holds only when the particle moves in one direction without turning back.
+
+    Example: the particle above takes 4 s. Average velocity magnitude $= 2/4 = 0.5$ m s$^{-1}$, average speed $= 8/4 = 2$ m s$^{-1}$. A particle that goes once round a closed track has average velocity 0 but a non-zero average speed.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A particle on the x-axis moves from x = +2 m to x = +9 m, and then from x = +9 m to x = −3 m. Find the total distance it travels. (Original problem.)
+  ask: Total distance travelled
+  unit: m
+  ans: 19
+  tol: 0.01
+  verify: Math.abs(9-2)+Math.abs(-3-9)
+  sol: |
+    Distance adds up every piece of the path, whichever way it goes: $|9-2| + |-3-9| = 7 + 12 = 19$ m.
+
+    For comparison, the displacement is final minus initial position, $-3 - 2 = -5$ m: 5 m in the negative direction. The distance (19 m) is larger because the particle turned back.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A body moves along a straight line. Which statement is always true? (Original problem.)
+  opts: ["The magnitude of its displacement is equal to the distance it travels.", "The distance it travels is never less than the magnitude of its displacement.", "Its displacement is zero whenever the distance it has travelled is zero, and only then.", "Its displacement is never zero if it is moving."]
+  ans: 1
+  sol: |
+    The distance is the total path length and the displacement is the straight-line gap between start and end, so **distance ≥ |displacement|** always (second option).
+
+    The first option holds only if the body never turns back. The third is wrong: a body can return to its start (displacement zero) after travelling a lot of distance. The fourth is wrong for the same reason: a moving body that comes back to its start has zero displacement.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: The 0 cm end of a metre scale is broken, so you align one end of a pencil with the 2.0 cm mark and find the other end at the 11.7 cm mark. What is the length of the pencil? (Original problem.)
+  ask: Length of the pencil
+  unit: cm
+  ans: 9.7
+  tol: 0.01
+  verify: 11.7-2.0
+  sol: |
+    When the end of the scale is damaged, any other clear mark can serve as the zero. The length is the difference of the two readings: $11.7 - 2.0 = 9.7$ cm.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A ball is thrown vertically upwards from a point 2 m above the ground. It rises 8 m, comes back down, passes the starting point and lands on the ground. Find the total distance it travels. (Original problem.)
+  ask: Total distance travelled
+  unit: m
+  ans: 18
+  tol: 0.01
+  verify: 8+(8+2)
+  sol: |
+    Up from the starting point: 8 m. Down to the starting point: 8 m, and then a further 2 m to the ground. Total distance $= 8 + 8 + 2 = 18$ m.
+
+    Displacement from the starting point: the ball ends 2 m below it, so the displacement is 2 m downward. The distance (18 m) is much larger than the magnitude of displacement (2 m).
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: The wheel of a bicycle has a circumference of 2.1 m. A counter shows that it turns 500 times between two lamp posts on a straight road. What is the distance between the posts? (Original problem.)
+  ask: Distance between the posts
+  unit: m
+  ans: 1050
+  tol: 0.5
+  verify: 2.1*500
+  sol: |
+    Each turn moves the bicycle forward by one circumference, so $\text{distance} = 500\times2.1 = 1050$ m $= 1.05$ km. This is the idea of the bicycle-wheel distance meter at the end of the Class 6 chapter.
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A runner runs half a lap round a circular track of radius 35 m, from one end of a diameter to the other. Find the distance run. Also state the magnitude of her displacement. (Original problem.)
+  ask: Distance run
+  unit: m
+  ans: 109.96
+  tol: 0.05
+  verify: PI*35
+  sol: |
+    Half the circumference: $\pi r = \pi\times35 = 109.96 \approx 110$ m.
+
+    The displacement is the straight line joining her start to her finish, which is a diameter: $2r = 70$ m. The distance (110 m) is larger than the magnitude of displacement (70 m) because the path is curved.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A child on a merry-go-round of radius R moves through one quarter of a revolution. Find the ratio (distance travelled) / (magnitude of displacement). (Original problem.)
+  ask: Ratio of distance to displacement
+  unit: ""
+  ans: 1.1107
+  tol: 0.001
+  verify: (PI/2)/sqrt(2)
+  sol: |
+    Distance: one quarter of the circumference, $\tfrac14(2\pi R) = \pi R/2$.
+
+    Displacement: the chord joining two points a quarter-turn apart. These two points and the centre form a right triangle with two sides $R$, so the chord is $\sqrt{R^2+R^2} = \sqrt2\,R$.
+
+    Ratio $= \dfrac{\pi R/2}{\sqrt2 R} = \dfrac{\pi}{2\sqrt2} = 1.11$. It does not depend on $R$.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A particle moves along the x-axis with position x (in metres) given by x = t² − 6t + 5, where t is in seconds. Find the total distance it travels from t = 0 to t = 5 s. (Original problem.)
+  ask: Total distance travelled
+  unit: m
+  ans: 13
+  tol: 0.01
+  verify: Math.abs(-4-5)+Math.abs(0-(-4))
+  sol: |
+    Positions: $x(0) = 5$ m, $x(5) = 25 - 30 + 5 = 0$ m. But the particle turns back in between, so we need the turning point.
+
+    The graph of $x$ against $t$ is a parabola, which turns at its lowest point, $t = -(-6)/(2\times1) = 3$ s, where $x(3) = 9 - 18 + 5 = -4$ m.
+
+    From $t = 0$ to $3$ s it goes from 5 m to $-4$ m: a distance of 9 m. From $t = 3$ s to $5$ s it goes from $-4$ m to 0 m: a distance of 4 m. Total distance $= 9 + 4 = 13$ m.
+
+    The displacement is $0 - 5 = -5$ m, so only 5 m in magnitude. Using only the end positions would give the wrong distance.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A ball is dropped from a height of 20 m. After each bounce it rises to 80% of the height from which it last fell. It is caught at the top of its second bounce. Find the total distance it has travelled. (Original problem.)
+  ask: Total distance travelled
+  unit: m
+  ans: 64.8
+  tol: 0.05
+  verify: 20+2*16+12.8
+  sol: |
+    First fall: 20 m. First bounce rises to $0.8\times20 = 16$ m and falls 16 m. Second bounce rises to $0.8\times16 = 12.8$ m, where the ball is caught.
+
+    Total distance $= 20 + 16 + 16 + 12.8 = 64.8$ m.
+
+    The ball ends 12.8 m above the floor, having started 20 m above it, so its displacement is $20 - 12.8 = 7.2$ m downward.
+  check: code

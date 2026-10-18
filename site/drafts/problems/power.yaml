@@ -1,0 +1,340 @@
+# Power. NCERT questions copied word for word from NCERT Exploration Grade 9 Science (2026-27) Ch 7 §7.5 and Revise, Reflect, Refine, and NCERT Physics Class XI (reprint 2026-27) Ch 5 (§5.10 and Exercises). Found, board and main problems are original.
+
+- id: ncert9-eg-7-10
+  lvl: ncert-intext
+  num: "IX Ex 7.10"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.10
+  kind: num
+  q: A weightlifter lifts a 75 kg mass by 2 m in 5 seconds. How much power would she require for this task?
+  ask: Power required
+  unit: W
+  ans: 300
+  tol: 0.5
+  verify: 75*10*2/5
+  sol: |
+    Taking $g = 10\ \text{m s}^{-2}$, the work done is $mgh = 75\times10\times2 = 1500$ J. The power is
+    $$P = \frac{W}{t} = \frac{1500}{5} = 300\ \text{W}.$$
+  check: code
+
+- id: ncert9-eg-7-11
+  lvl: ncert-intext
+  num: "IX Ex 7.11"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.11
+  kind: num
+  q: A car of mass 1000 kg starts from rest and reaches a speed of 72 km h$^{-1}$ in 10 seconds. Calculate the power of the engine required to achieve this start.
+  ask: Power of the engine
+  unit: W
+  ans: 20000
+  tol: 10
+  verify: (0.5*1000*20**2)/10
+  sol: |
+    $v = 72\ \text{km h}^{-1} = 20\ \text{m s}^{-1}$, $u = 0$. By the work-energy theorem the work done by the engine in 10 s equals the gain in kinetic energy:
+    $$W = \tfrac12(1000)(20)^2 - 0 = 200\,000\ \text{J}.$$
+    $$P = \frac{W}{t} = \frac{200\,000}{10} = 20\,000\ \text{W} = 20\ \text{kW}.$$
+    This is the *average* power. The power needed at the end, when $v = 20$ m/s, is higher if the acceleration is constant (here, $F v = 2000\times20 = 40$ kW).
+  check: code
+
+- id: ncert9-ex-7-6
+  lvl: ncert-ex
+  num: "IX 7 · Q6"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q6
+  kind: text
+  q: A crane lifts a mass $m$ to the 10th floor of a building in a certain time. It then raises the same mass to the 20th floor of the same building in double the time. How much more energy and power are required? Assume that the height of all floors is equal.
+  sol: |
+    Let each floor be of height $a$, and the first lift take time $t$.
+
+    **Energy.** The potential energy gained is $mgh$ with $h$ proportional to the number of floors. Lifting to the 20th floor needs $mg(20a)$, which is **twice** the $mg(10a)$ needed for the 10th floor. So twice the energy is required (that is, $10mga$ more).
+
+    **Power.** For the first lift $P_1 = \dfrac{10mga}{t}$. For the second, $P_2 = \dfrac{20mga}{2t} = \dfrac{10mga}{t}$. The power is the **same**; no more power is required. The work doubles, but so does the time.
+
+    [Inference] Both lifts are taken to start from the ground floor; if the second lift only covered the 10 floors from the 10th to the 20th, the energy would equal that of the first lift and the power would be half, but the wording ("raises the same mass to the 20th floor") points to a fresh lift from the ground.
+  check: none
+
+- id: ncert11-eg-5-10
+  lvl: ncert-intext
+  num: "XI Ex 5.10"
+  source: NCERT XI Physics · Ch 5 · Example 5.10
+  kind: num
+  q: An elevator can carry a maximum load of 1800 kg (elevator + passengers) is moving up with a constant speed of 2 m s$^{-1}$. The frictional force opposing the motion is 4000 N. Determine the minimum power delivered by the motor to the elevator in watts as well as in horse power.
+  ask: Minimum power delivered by the motor
+  unit: W
+  ans: 44000
+  tol: 50
+  verify: (1800*10+4000)*2
+  sol: |
+    The elevator moves at constant speed, so the net force on it is zero. The motor's pull must balance the weight and the friction. The downward force on the elevator is
+    $$F = mg + F_f = (1800\times10) + 4000 = 22\,000\ \text{N}.$$
+    The power is
+    $$P = \mathbf F\cdot\mathbf v = 22\,000\times2 = 44\,000\ \text{W} = \frac{44\,000}{746}\ \text{hp} \approx 59\ \text{hp}.$$
+    (Taking $g = 10\ \text{m s}^{-2}$ as the book does; 1 hp = 746 W.)
+  check: code
+
+- id: ncert11-ex-5-9
+  lvl: ncert-ex
+  num: "XI 5.9"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.9
+  kind: mcq
+  q: A body is initially at rest. It undergoes one-dimensional motion with constant acceleration. The power delivered to it at time $t$ is proportional to
+  opts: ["$t^{1/2}$", "$t$", "$t^{3/2}$", "$t^2$"]
+  ans: 1
+  sol: |
+    With constant acceleration $a$ from rest, $v = at$ and the force $F = ma$ is constant. The instantaneous power is
+    $$P = Fv = (ma)(at) = ma^2t \ \propto\ t.$$
+    The answer is **(ii) $t$**.
+  answer_key: (b) t
+  check: ncert-key
+
+- id: ncert11-ex-5-10
+  lvl: ncert-ex
+  num: "XI 5.10"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.10
+  kind: mcq
+  q: A body is moving unidirectionally under the influence of a source of constant power. Its displacement in time $t$ is proportional to
+  opts: ["$t^{1/2}$", "$t$", "$t^{3/2}$", "$t^2$"]
+  ans: 2
+  sol: |
+    Constant power $P$ means $P = Fv = mv\,\dfrac{dv}{dt}$, so $\dfrac{d}{dt}\left(\tfrac12mv^2\right) = P$ and, starting from rest, $\tfrac12mv^2 = Pt$, i.e. $v = \sqrt{2P/m}\;t^{1/2}$.
+
+    The displacement is $x = \int v\,dt = \sqrt{2P/m}\int t^{1/2}dt = \tfrac23\sqrt{2P/m}\;t^{3/2}$, so $x \propto t^{3/2}$. The answer is **(iii) $t^{3/2}$**.
+
+    [Inference] The body is taken to start from rest; the question does not say so, but without it the proportionality does not hold.
+  answer_key: (c) t3/2
+  check: ncert-key
+
+- id: ncert11-ex-5-15
+  lvl: ncert-ex
+  num: "XI 5.15"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.15
+  kind: num
+  q: A pump on the ground floor of a building can pump up water to fill a tank of volume 30 m$^3$ in 15 min. If the tank is 40 m above the ground, and the efficiency of the pump is 30%, how much electric power is consumed by the pump ?
+  ask: Electric power consumed
+  unit: kW
+  ans: 43.6
+  tol: 0.1
+  verify: 30*1000*9.8*40/900/0.3/1000
+  sol: |
+    Mass of water: $m = 30\ \text{m}^3\times1000\ \text{kg m}^{-3} = 3\times10^4$ kg (assuming the density of water, 1000 kg m$^{-3}$).
+
+    Work done against gravity: $W = mgh = 3\times10^4\times9.8\times40 = 1.176\times10^7$ J.
+
+    Useful (output) power: $P_{out} = W/t = \dfrac{1.176\times10^7}{900} = 1.307\times10^4$ W.
+
+    The efficiency is $0.30 = P_{out}/P_{in}$, so
+    $$P_{in} = \frac{1.307\times10^4}{0.30} = 4.36\times10^4\ \text{W} = 43.6\ \text{kW}.$$
+  answer_key: 43.6 kW
+  check: both
+
+- id: ncert11-ex-5-21
+  lvl: ncert-ex
+  num: "XI 5.21"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.21
+  kind: num
+  q: The blades of a windmill sweep out a circle of area $A$. (a) If the wind flows at a velocity $v$ perpendicular to the circle, what is the mass of the air passing through it in time $t$ ? (b) What is the kinetic energy of the air ? (c) Assume that the windmill converts 25% of the wind's energy into electrical energy, and that $A = 30\ \text{m}^2$, $v = 36$ km/h and the density of air is 1.2 kg m$^{-3}$. What is the electrical power produced ?
+  ask: Electrical power produced (part c)
+  unit: W
+  ans: 4500
+  tol: 5
+  verify: 0.25*0.5*1.2*30*(36/3.6)**3
+  sol: |
+    (a) In time $t$ the air that passes through the circle fills a cylinder of base area $A$ and length $vt$, so its volume is $Avt$ and its mass is
+    $$m = \rho A v t.$$
+
+    (b) All of this air moves with speed $v$, so
+    $$K = \tfrac12mv^2 = \tfrac12\rho A v^3 t.$$
+
+    (c) The wind's power is $K/t = \tfrac12\rho Av^3$. With $v = 36\ \text{km/h} = 10\ \text{m s}^{-1}$:
+    $$\tfrac12(1.2)(30)(10)^3 = 1.8\times10^4\ \text{W}.$$
+    At 25% conversion the electrical power is $P = 0.25\times1.8\times10^4 = 4.5\times10^3\ \text{W} = 4.5$ kW.
+
+    Note the $v^3$ dependence: doubling the wind speed gives 8 times the power.
+  answer_key: "(a) m = ρ A v t (b) K = ρ A v³ t / 2 (c) P = 4.5 kW"
+  check: both
+
+- id: ncert11-ex-5-22
+  lvl: ncert-ex
+  num: "XI 5.22"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.22
+  kind: num
+  q: A person trying to lose weight (dieter) lifts a 10 kg mass, one thousand times, to a height of 0.5 m each time. Assume that the potential energy lost each time she lowers the mass is dissipated. (a) How much work does she do against the gravitational force ? (b) Fat supplies $3.8\times10^7$ J of energy per kilogram which is converted to mechanical energy with a 20% efficiency rate. How much fat will the dieter use up?
+  ask: Fat used up (part b)
+  unit: g
+  ans: 6.45
+  tol: 0.01
+  verify: 1000*10*9.8*0.5/0.2/3.8e7*1000
+  sol: |
+    (a) Each lift does $mgh = 10\times9.8\times0.5 = 49$ J, so for 1000 lifts
+    $$W = 1000\times49 = 4.9\times10^4\ \text{J}.$$
+    (The potential energy lost on lowering is dissipated, so it is not recovered.)
+
+    (b) Fat provides $3.8\times10^7$ J/kg but only 20% of it becomes mechanical energy, so the chemical energy needed is
+    $$\frac{4.9\times10^4}{0.20} = 2.45\times10^5\ \text{J}.$$
+    Mass of fat: $\dfrac{2.45\times10^5}{3.8\times10^7} = 6.45\times10^{-3}\ \text{kg} = 6.45\ \text{g}.$
+  answer_key: "(a) 49,000 J (b) 6.45 × 10-3 kg"
+  check: both
+
+- id: ncert11-ex-5-23
+  lvl: ncert-ex
+  num: "XI 5.23"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.23
+  kind: num
+  q: A family uses 8 kW of power. (a) Direct solar energy is incident on the horizontal surface at an average rate of 200 W per square meter. If 20% of this energy can be converted to useful electrical energy, how large an area is needed to supply 8 kW? (b) Compare this area to that of the roof of a typical house.
+  ask: Area needed (part a)
+  unit: m²
+  ans: 200
+  tol: 0.5
+  verify: 8000/(0.2*200)
+  sol: |
+    (a) Useful electrical power per square metre: $0.20\times200 = 40\ \text{W m}^{-2}$. The area needed is
+    $$A = \frac{8000}{40} = 200\ \text{m}^2.$$
+
+    (b) This is about the size of the roof of a large house, say $14\ \text{m}\times14\ \text{m} = 196\ \text{m}^2$. So in principle the solar energy falling on a roof of that size could supply the family's needs, though the sun does not shine at night and the average rate varies with weather and season.
+  answer_key: "(a) 200 m² (b) comparable to the roof of a large house of dimension 14m × 14m."
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A motor does 4000 J of work in 8 s. What is its power? (Original problem.)
+  ask: Power
+  unit: W
+  ans: 500
+  tol: 0.5
+  verify: 4000/8
+  sol: |
+    $P = W/t = 4000/8 = 500$ W.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: The kilowatt-hour (kWh) is a unit of (Original problem.)
+  opts: ["power", "energy", "force", "momentum"]
+  ans: 1
+  sol: |
+    **Energy.** A kilowatt is a power; multiplying power by time gives energy, $1\ \text{kWh} = 1000\ \text{W}\times3600\ \text{s} = 3.6\times10^6$ J. The electricity bill charges for energy used, not for power.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A 60 W bulb is used for 5 hours a day. How many units (kWh) of electrical energy does it use in 30 days? (Original problem.)
+  ask: Energy used
+  unit: kWh
+  ans: 9
+  tol: 0.01
+  verify: 0.060*5*30
+  sol: |
+    Energy $= P\,t = 0.060\ \text{kW}\times(5\times30)\ \text{h} = 9$ kWh, that is 9 units.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A boy of mass 40 kg runs up a staircase with a vertical rise of 3.0 m in 5.0 s. Find the average power he develops against gravity. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Average power
+  unit: W
+  ans: 235.2
+  tol: 0.5
+  verify: 40*9.8*3/5
+  sol: |
+    The work done against gravity is $mgh = 40\times9.8\times3.0 = 1176$ J, so
+    $$P = \frac{W}{t} = \frac{1176}{5.0} = 235\ \text{W}.$$
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A crane with a power output of 20 kW lifts a 500 kg load at constant speed. How fast does the load rise? Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Speed of the load
+  unit: m/s
+  ans: 4.08
+  tol: 0.02
+  verify: 20000/(500*9.8)
+  sol: |
+    At constant speed the pull equals the weight, $F = mg = 500\times9.8 = 4900$ N. Using $P = Fv$,
+    $$v = \frac{P}{F} = \frac{20\,000}{4900} = 4.08\ \text{m s}^{-1}.$$
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A car moves at a constant speed of 20 m/s on a level road against a total resistive force of 800 N. What power must the engine deliver? (Original problem.)
+  ask: Engine power
+  unit: kW
+  ans: 16
+  tol: 0.05
+  verify: 800*20/1000
+  sol: |
+    At constant speed the driving force equals the resistive force, $F = 800$ N. Then $P = Fv = 800\times20 = 16\,000$ W $= 16$ kW.
+  check: code
+
+- id: b4
+  lvl: board
+  kind: num
+  q: An electric heater of rating 2 kW is used for 3 hours a day. If the electricity costs ₹8 per unit (kWh), find the cost of running it for one day. (Original problem.)
+  ask: Cost for one day
+  unit: ₹
+  ans: 48
+  tol: 0.01
+  verify: 2*3*8
+  sol: |
+    Energy used $= 2\ \text{kW}\times3\ \text{h} = 6$ kWh $= 6$ units. Cost $= 6\times8 = ₹48$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A 2.0 kW motor of efficiency 60% is used to lift water from a well 15 m deep. What mass of water can it lift in one minute? Take $g = 9.8\ \text{m s}^{-2}$ and ignore the kinetic energy of the water. (Original problem.)
+  ask: Mass of water lifted per minute
+  unit: kg
+  ans: 490
+  tol: 1
+  verify: 2000*0.6*60/(9.8*15)
+  sol: |
+    Useful power $= 0.60\times2000 = 1200$ W, so in 60 s the useful work is $1200\times60 = 72\,000$ J. This equals $mgh$:
+    $$m = \frac{72\,000}{9.8\times15} = 490\ \text{kg}.$$
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A car of mass 1200 kg accelerates from rest with a constant engine power of 30 kW. Ignoring all resistive forces, how long does it take to reach 20 m/s? (Original problem.)
+  ask: Time to reach 20 m/s
+  unit: s
+  ans: 8
+  tol: 0.01
+  verify: 0.5*1200*20**2/30000
+  sol: |
+    With constant power and no resistance, the work done in time $t$ is $Pt$, which equals the kinetic energy gained:
+    $$Pt = \tfrac12mv^2\ \Rightarrow\ t = \frac{\tfrac12(1200)(20)^2}{30\,000} = \frac{240\,000}{30\,000} = 8\ \text{s}.$$
+    (The acceleration is not constant here: it is very large at the start, when $v$ is small, because $F = P/v$.)
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A constant force of 10 N acts on a 5 kg body, initially at rest. Find the instantaneous power delivered by the force at $t = 3.0$ s. What is the average power over these 3.0 s? (Original problem.)
+  ask: Instantaneous power at t = 3 s
+  unit: W
+  ans: 60
+  tol: 0.1
+  verify: 10*(10/5*3)
+  sol: |
+    $a = F/m = 10/5 = 2\ \text{m s}^{-2}$, so at $t = 3$ s the speed is $v = at = 6\ \text{m s}^{-1}$ and
+    $$P = Fv = 10\times6 = 60\ \text{W}.$$
+    The distance covered is $\tfrac12at^2 = 9$ m, so the work done is $90$ J and the average power is $90/3 = 30$ W, half the final instantaneous value (since $P$ grows linearly with time).
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: Water flows over a small dam at 2000 kg per second and falls 30 m onto a turbine. If the overall efficiency of the power station is 70%, find the electrical power generated. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Electrical power
+  unit: kW
+  ans: 411.6
+  tol: 0.5
+  verify: 2000*9.8*30*0.7/1000
+  sol: |
+    The potential energy released per second is $\dfrac{mgh}{t} = 2000\times9.8\times30 = 5.88\times10^5$ W $= 588$ kW. At 70% efficiency,
+    $$P = 0.70\times588 = 411.6\ \text{kW}.$$
+  check: code

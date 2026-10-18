@@ -1,0 +1,71 @@
+# NCERT Biology, Class 12 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 12
+subject: bio
+name: Biology
+code: lebo1
+chapters:
+- n: 1
+  title: Sexual Reproduction in Flowering Plants
+  pdf: lebo101
+  leaves:
+  - bio/reproduction-in-plants
+- n: 2
+  title: Human Reproduction
+  pdf: lebo102
+  leaves:
+  - bio/human-reproduction
+- n: 3
+  title: Reproductive Health
+  pdf: lebo103
+  leaves:
+  - bio/reproductive-health
+- n: 4
+  title: Principles of Inheritance and Variation
+  pdf: lebo104
+  leaves:
+  - bio/inheritance-and-variation
+- n: 5
+  title: Molecular Basis of Inheritance
+  pdf: lebo105
+  leaves:
+  - bio/molecular-basis-of-inheritance
+- n: 6
+  title: Evolution
+  pdf: lebo106
+  leaves:
+  - bio/evolution
+- n: 7
+  title: Human Health and Disease
+  pdf: lebo107
+  leaves:
+  - bio/human-health-and-disease
+- n: 8
+  title: Microbes in Human Welfare
+  pdf: lebo108
+  leaves:
+  - bio/microbes-in-human-welfare
+- n: 9
+  title: 'Biotechnology: Principles and Processes'
+  pdf: lebo109
+  leaves:
+  - bio/biotechnology-principles
+- n: 10
+  title: Biotechnology and its Applications
+  pdf: lebo110
+  leaves:
+  - bio/biotechnology-applications
+- n: 11
+  title: Organisms and Populations
+  pdf: lebo111
+  leaves:
+  - bio/organisms-and-populations
+- n: 12
+  title: Ecosystem
+  pdf: lebo112
+  leaves:
+  - bio/ecosystem
+- n: 13
+  title: Biodiversity and Conservation
+  pdf: lebo113
+  leaves:
+  - bio/biodiversity-and-conservation

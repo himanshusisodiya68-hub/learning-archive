@@ -1,0 +1,55 @@
+# Universal law of gravitation. Sample lesson; all problems are original. NCERT Class XI Ch 7 items will be added when the Gravitation branch is built.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The distance between two bodies is tripled. The gravitational force between them becomes
+  opts: ["one third", "one ninth", "three times"]
+  ans: 1
+  sol: $F \propto 1/r^2$, so tripling $r$ divides the force by $3^2 = 9$.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Why do astronauts float inside the International Space Station?
+  opts: ["There is no gravity at that height", "They and the station are falling freely together", "The station's engines push them up"]
+  ans: 1
+  sol: At 400 km, gravity is still about 90% of its surface value. Astronaut and station fall together around the Earth, so nothing presses them against the floor.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Find the gravitational force between two 50 kg students sitting 1 m apart.
+  ask: Force
+  unit: × 10⁻⁷ N
+  ans: 1.6675
+  tol: 0.002
+  verify: 6.67e-11*50*50/1/1e-7
+  sol: $F = 6.67\times10^{-11}\times50\times50/1^2 = 1.67\times10^{-7}$ N, about the weight of a grain of dust.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Using g = 9.8 m/s² and R = 6.37 × 10⁶ m, find the mass of the Earth.
+  ask: Mass
+  unit: × 10²⁴ kg
+  ans: 5.96
+  tol: 0.02
+  verify: 9.8*(6.37e6)**2/6.67e-11/1e24
+  sol: $M = gR^2/G = 9.8\times(6.37\times10^6)^2/6.67\times10^{-11} = 5.96\times10^{24}$ kg.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: The Moon's mass is 1/81 of the Earth's and the centre-to-centre distance is 3.84 × 10⁵ km. How far from the Earth's centre is the point where their pulls on a spacecraft balance?
+  ask: Distance from the Earth's centre
+  unit: × 10⁵ km
+  ans: 3.456
+  tol: 0.003
+  verify: 3.84*9/10
+  sol: Balance needs $M/x^2 = (M/81)/(d - x)^2$, so $d - x = x/9$ and $x = 9d/10 = 3.46\times10^5$ km, 90% of the way to the Moon.
+  check: code

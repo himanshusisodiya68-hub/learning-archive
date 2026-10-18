@@ -1,0 +1,362 @@
+# Work done by a force. NCERT questions copied word for word from NCERT Exploration Grade 9 Science (2026-27) Ch 7 §7.1 and NCERT Physics Class XI (reprint 2026-27) Ch 5 (§5.1 scalar product, §5.3, §5.5 and Exercises). Found, board and main problems are original.
+
+- id: ncert9-eg-7-1
+  lvl: ncert-intext
+  num: "IX Ex 7.1"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.1
+  kind: text
+  q: While exercising, a girl lifts a dumbbell and slowly lowers it down. Identify when the girl does positive work on the dumbbell and when she does negative work on it.
+  sol: |
+    The force the girl applies on the dumbbell is upward and equal to its weight, because she moves it slowly (no acceleration).
+
+    - **Lifting:** the dumbbell moves up, in the direction of her force, so $W = F\,s > 0$. She does **positive** work.
+    - **Lowering:** the dumbbell moves down while her force is still upward, so force and displacement are opposite and $W = F\,s < 0$. She does **negative** work.
+
+    Gravity does the opposite in each case: negative work while the dumbbell rises, positive while it falls. Over the full up-and-down trip the net work done on the dumbbell by the girl is zero, since it returns to the starting height at rest.
+  check: none
+
+- id: ncert9-eg-7-2
+  lvl: ncert-intext
+  num: "IX Ex 7.2"
+  source: NCERT Grade 9 Science · Ch 7 · Example 7.2
+  kind: num
+  q: While saving a goal (Fig. 7.7b), a goalkeeper's hand moved back by 15 cm as she stopped a ball while applying a force of 200 N. How much work did the goalkeeper do on the ball in stopping it?
+  ask: Work done by the goalkeeper on the ball
+  unit: J
+  ans: -30
+  tol: 0.1
+  verify: 200*(-0.15)
+  sol: |
+    The goalkeeper's force on the ball acts opposite to the ball's motion, so the work she does on the ball is negative. The ball moves back by 15 cm, which is opposite to the direction of her force, so take the displacement along the force as negative:
+    $$W = F \times s = 200\ \text{N} \times (-0.15\ \text{m}) = -30\ \text{J}.$$
+    The ball loses 30 J of energy, which is what stopping it means (the figure gives only the situation; the numbers are in the question).
+  check: code
+
+- id: ncert9-it-7-1
+  lvl: ncert-intext
+  num: "IX 7 · P1"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 1
+  kind: text
+  q: In the previous chapter, a weightlifter is shown holding a barbell steady in her hands (Fig. 6.8). Is she doing any work on the barbell while holding it steady?
+  sol: |
+    No. She applies an upward force equal to the barbell's weight, but the barbell does not move, so the displacement is zero and $W = F \times s = 0$. Her muscles still tire, because holding a load uses up internal energy of the body even when no work is done on the load.
+  check: none
+
+- id: ncert9-it-7-2
+  lvl: ncert-intext
+  num: "IX 7 · P2"
+  source: NCERT Grade 9 Science · Ch 7 · Pause and Ponder 2
+  kind: text
+  q: Is the work done by friction on the stack of coins that travels on a rough surface (Fig. 6.13c) — positive, negative or zero?
+  sol: |
+    **Negative.** Friction on a sliding object acts opposite to its motion. Force and displacement point in opposite directions, so the work done by friction on the coins is negative, and the coins lose kinetic energy until they stop.
+
+    [Inference] Fig. 6.13c is in Chapter 6 and was not part of the extracted text; this answer assumes it shows the coins sliding along the surface, which is how the question describes it.
+  check: none
+
+- id: ncert9-ex-7-1
+  lvl: ncert-ex
+  num: "IX 7 · Q1"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q1
+  kind: text
+  q: |-
+    State whether True or False.
+    (i) Work is said to be done when a force is applied, even if the object does not move.
+    (ii) Lifting a bucket vertically upward results in positive work done on the bucket.
+    (iii) The SI unit for both work and energy is joule (J).
+    (iv) A motionless stretched rubber band has kinetic energy.
+    (v) Energy can change from one form to another.
+  sol: |
+    (i) **False.** Work needs a displacement in the direction of the force; with no motion, $s = 0$ and $W = 0$.
+
+    (ii) **True.** The lifting force and the displacement are both upward.
+
+    (iii) **True.** Work and energy are measured in joule, $1\ \text{J} = 1\ \text{N m} = 1\ \text{kg m}^2\,\text{s}^{-2}$.
+
+    (iv) **False.** It is not moving, so its kinetic energy is zero. It stores *potential* energy because of its deformed shape.
+
+    (v) **True.** For example, a bulb turns electrical energy into light and heat.
+  check: none
+
+- id: ncert9-ex-7-2
+  lvl: ncert-ex
+  num: "IX 7 · Q2"
+  source: NCERT Grade 9 Science · Ch 7 · Revise, Reflect, Refine Q2
+  kind: text
+  q: |-
+    Fill in the blanks.
+    (i) Work done = ______ × ______ (in the direction of force).
+    (ii) 1 joule of work is done when a force of ______ newton displaces an object by 1 metre in the direction of the force.
+    (iii) The expression for kinetic energy of a body of mass m and velocity v is ______.
+    (iv) The potential energy of an object of mass m at a small height h from the Earth's surface is ______.
+    (v) Power is defined as the ______ at which work is done.
+  sol: |
+    (i) Work done = **force** × **displacement** (in the direction of force).
+
+    (ii) 1 joule of work is done when a force of **1** newton displaces an object by 1 metre in the direction of the force.
+
+    (iii) $K = \tfrac12 mv^2$.
+
+    (iv) $U = mgh$.
+
+    (v) Power is defined as the **rate** at which work is done.
+  check: none
+
+- id: ncert11-eg-5-1
+  lvl: ncert-intext
+  num: "XI Ex 5.1"
+  source: NCERT XI Physics · Ch 5 · Example 5.1
+  kind: num
+  q: Find the angle between force $\mathbf F = (3\hat i + 4\hat j - 5\hat k)$ unit and displacement $\mathbf d = (5\hat i + 4\hat j + 3\hat k)$ unit. Also find the projection of $\mathbf F$ on $\mathbf d$.
+  ask: Angle between F and d
+  unit: °
+  ans: 71.3
+  tol: 0.1
+  verify: deg(acos((3*5+4*4-5*3)/(sqrt(9+16+25)*sqrt(25+16+9))))
+  sol: |
+    $\mathbf F\cdot\mathbf d = F_xd_x + F_yd_y + F_zd_z = 3(5) + 4(4) + (-5)(3) = 16$ unit.
+
+    $\mathbf F\cdot\mathbf F = F^2 = 9 + 16 + 25 = 50$ and $\mathbf d\cdot\mathbf d = d^2 = 25 + 16 + 9 = 50$, so $F = d = \sqrt{50}$.
+
+    From $\mathbf F\cdot\mathbf d = Fd\cos\theta$:
+    $$\cos\theta = \frac{16}{\sqrt{50}\,\sqrt{50}} = 0.32,\qquad \theta = \cos^{-1}0.32 \approx 71.3^\circ.$$
+
+    The projection of $\mathbf F$ on $\mathbf d$ is
+    $$F\cos\theta = \frac{\mathbf F\cdot\mathbf d}{d} = \frac{16}{\sqrt{50}} \approx 2.26\ \text{unit}.$$
+  check: code
+
+- id: ncert11-eg-5-3
+  lvl: ncert-intext
+  num: "XI Ex 5.3"
+  source: NCERT XI Physics · Ch 5 · Example 5.3
+  kind: num
+  q: A cyclist comes to a skidding stop in 10 m. During this process, the force on the cycle due to the road is 200 N and is directly opposed to the motion. (a) How much work does the road do on the cycle ? (b) How much work does the cycle do on the road ?
+  ask: Work done by the road on the cycle, part (a)
+  unit: J
+  ans: -2000
+  tol: 1
+  verify: 200*10*cos(PI)
+  sol: |
+    (a) The stopping (frictional) force and the displacement make an angle of $180^\circ$ ($\pi$ rad), so
+    $$W_r = Fd\cos\theta = 200\times10\times\cos\pi = -2000\ \text{J}.$$
+    This negative work brings the cycle to a halt, in accordance with the work-energy theorem.
+
+    (b) By Newton's third law an equal and opposite force of 200 N acts on the road due to the cycle, but the road undergoes no displacement. So the work done by the cycle on the road is **zero**.
+
+    The lesson: the forces on A due to B and on B due to A are equal and opposite, but the *work* done on A by B is not necessarily equal and opposite to the work done on B by A.
+  check: code
+
+- id: ncert11-eg-5-5
+  lvl: ncert-intext
+  num: "XI Ex 5.5"
+  source: NCERT XI Physics · Ch 5 · Example 5.5
+  kind: num
+  q: A woman pushes a trunk on a railway platform which has a rough surface. She applies a force of 100 N over a distance of 10 m. Thereafter, she gets progressively tired and her applied force reduces linearly with distance to 50 N. The total distance through which the trunk has been moved is 20 m. Plot the force applied by the woman and the frictional force, which is 50 N versus displacement. Calculate the work done by the two forces over 20 m.
+  ask: Work done by the woman over 20 m
+  unit: J
+  ans: 1750
+  tol: 1
+  verify: 100*10+0.5*(100+50)*10
+  sol: |
+    **Plot.** Draw $F$ on the vertical axis against $x$ on the horizontal axis. The applied force is a horizontal line at 100 N from $x = 0$ to 10 m, then a straight line falling to 50 N at $x = 20$ m (it does not reach zero). The friction force of 50 N opposes the motion, so it is a horizontal line at $-50$ N on the negative side of the force axis from $x=0$ to 20 m.
+
+    **Work by the woman** = area under her graph = rectangle + trapezium:
+    $$W_F = 100\times10 + \tfrac12(100+50)\times10 = 1000 + 750 = 1750\ \text{J}.$$
+
+    **Work by friction** = area of the rectangle on the negative side:
+    $$W_f = (-50)\times20 = -1000\ \text{J}.$$
+    The net work, 750 J, is the gain in kinetic energy of the trunk.
+  check: code
+
+- id: ncert11-ex-5-1
+  lvl: ncert-ex
+  num: "XI 5.1"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.1
+  kind: text
+  q: |-
+    The sign of work done by a force on a body is important to understand. State carefully if the following quantities are positive or negative:
+    (a) work done by a man in lifting a bucket out of a well by means of a rope tied to the bucket.
+    (b) work done by gravitational force in the above case,
+    (c) work done by friction on a body sliding down an inclined plane,
+    (d) work done by an applied force on a body moving on a rough horizontal plane with uniform velocity,
+    (e) work done by the resistive force of air on a vibrating pendulum in bringing it to rest.
+  sol: |
+    The sign of $W = \mathbf F\cdot\mathbf d$ depends on the angle between force and displacement: positive below $90^\circ$, negative above.
+
+    (a) **Positive.** The man's pull on the bucket is upward, and the bucket moves upward.
+
+    (b) **Negative.** Gravity acts downward while the bucket moves up.
+
+    (c) **Negative.** Friction acts up the incline, opposite to the body's motion down it.
+
+    (d) **Positive.** The applied force is along the motion. (At uniform velocity the net force is zero, so the friction does an equal negative amount and the total work is zero.)
+
+    (e) **Negative.** Air resistance always opposes the bob's velocity, which is why the pendulum comes to rest.
+  answer_key: "(a) +ve (b) –ve (c) –ve (d) + ve (e) – ve"
+  check: ncert-key
+
+- id: ncert11-ex-5-11
+  lvl: ncert-ex
+  num: "XI 5.11"
+  source: NCERT XI Physics · Ch 5 · Exercise 5.11
+  kind: num
+  q: |-
+    A body constrained to move along the z-axis of a coordinate system is subject to a constant force $\mathbf F$ given by
+    $$\mathbf F = -\hat i + 2\hat j + 3\hat k\ \text{N}$$
+    where $\hat i, \hat j, \hat k$ are unit vectors along the x-, y- and z-axis of the system respectively. What is the work done by this force in moving the body a distance of 4 m along the z-axis ?
+  ask: Work done by the force
+  unit: J
+  ans: 12
+  tol: 0.05
+  verify: 3*4
+  sol: |
+    The displacement is $\mathbf d = 4\hat k$ m, so
+    $$W = \mathbf F\cdot\mathbf d = (-1)(0) + (2)(0) + (3)(4) = 12\ \text{J}.$$
+    Only the $z$-component of the force does work, because the body can only move along $z$. [Inference] The direction of motion along $+z$ is assumed, as the answer key does; moving 4 m along $-z$ would give $-12$ J.
+  answer_key: 12 J
+  check: both
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A force of 20 N pulls a box 5 m along a level floor, in the same direction as the force. How much work does the force do? (Original problem.)
+  ask: Work done
+  unit: J
+  ans: 100
+  tol: 0.5
+  verify: 20*5
+  sol: |
+    Force and displacement are in the same direction, so $W = F\,s = 20\times5 = 100$ J.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A porter carries a 20 kg suitcase at constant speed along a level platform. The work done on the suitcase by the porter's upward supporting force is (Original problem.)
+  opts: ["positive", "negative", "zero", "positive only if he walks faster"]
+  ans: 2
+  sol: |
+    **Zero.** The supporting force is vertical, the suitcase moves horizontally, so the angle between force and displacement is $90^\circ$ and $\cos 90^\circ = 0$. Speed does not matter as long as the motion stays horizontal.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A force of 10 N acts on a block at $60^\circ$ above the horizontal, and the block moves 4 m along the horizontal floor. Find the work done by this force. (Original problem.)
+  ask: Work done
+  unit: J
+  ans: 20
+  tol: 0.1
+  verify: 10*4*cos(rad(60))
+  sol: |
+    Only the component of the force along the displacement does work:
+    $$W = Fs\cos\theta = 10\times4\times\cos60^\circ = 40\times0.5 = 20\ \text{J}.$$
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A boy pulls a sled with a rope that makes $30^\circ$ with the horizontal ground. The tension in the rope is 80 N and the sled moves 25 m. How much work does the rope do on the sled? (Original problem.)
+  ask: Work done by the rope
+  unit: J
+  ans: 1732
+  tol: 1
+  verify: 80*25*cos(rad(30))
+  sol: |
+    $$W = T\,s\cos30^\circ = 80\times25\times0.866 = 1732\ \text{J}\ (\approx 1.73\ \text{kJ}).$$
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A labourer lifts a 12 kg bag of rice slowly through 1.5 m. Find the work done by gravity on the bag, and state its sign. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Work done by gravity
+  unit: J
+  ans: -176.4
+  tol: 0.5
+  verify: -12*9.8*1.5
+  sol: |
+    Gravity acts downward and the bag moves up, so the work is negative:
+    $$W_g = -mgh = -12\times9.8\times1.5 = -176.4\ \text{J}.$$
+    The labourer does $+176.4$ J on the bag, so the net work is zero and the bag gains no kinetic energy (it moves slowly).
+  check: code
+
+- id: b3
+  lvl: board
+  kind: num
+  q: A force on an object rises uniformly from 0 to 30 N over the first 0.6 m of displacement, then stays constant at 30 N for the next 0.4 m. Find the total work done over the 1.0 m. (Original problem.)
+  ask: Total work done
+  unit: J
+  ans: 21
+  tol: 0.1
+  verify: 0.5*0.6*30+30*0.4
+  sol: |
+    Work is the area under the force-displacement graph. The graph is a triangle then a rectangle:
+    $$W = \tfrac12(0.6)(30) + (30)(0.4) = 9 + 12 = 21\ \text{J}.$$
+  check: code
+
+- id: b4
+  lvl: board
+  kind: text
+  q: A crate rests on the flat bed of a truck that is speeding up along a straight road, and the crate does not slip. Does friction do positive, negative or zero work on the crate, as seen from the road? Explain. (Original problem.)
+  sol: |
+    **Positive.** The only horizontal force on the crate is static friction from the truck bed. The crate speeds up with the truck, so its acceleration, and therefore the friction force, points forward, in the direction of the crate's displacement (as seen from the road). Force and displacement are parallel, so the work is positive, and it equals the gain in the crate's kinetic energy. So friction does not always do negative work.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A particle moves from the point (1, 2, 0) m to the point (4, −2, 3) m under a constant force $\mathbf F = (2\hat i - \hat j + 4\hat k)$ N. Find the work done by the force. (Original problem.)
+  ask: Work done
+  unit: J
+  ans: 22
+  tol: 0.1
+  verify: 2*(4-1)+(-1)*(-2-2)+4*(3-0)
+  sol: |
+    The displacement is $\mathbf d = (4-1,\,-2-2,\,3-0) = (3,-4,3)$ m. Then
+    $$W = \mathbf F\cdot\mathbf d = 2(3) + (-1)(-4) + 4(3) = 6 + 4 + 12 = 22\ \text{J}.$$
+    For a constant force only the end points matter, not the path taken.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A force $F(x) = (3x^2 + 2)$ N, with $x$ in metres, acts on a particle moving along the x-axis. Find the work done as the particle moves from $x = 1$ m to $x = 3$ m. (Original problem.)
+  ask: Work done
+  unit: J
+  ans: 30
+  tol: 0.1
+  verify: (27+6)-(1+2)
+  sol: |
+    For a variable force, $W = \int_{x_i}^{x_f}F\,dx$:
+    $$W = \int_1^3(3x^2+2)\,dx = \Big[x^3 + 2x\Big]_1^3 = (27+6) - (1+2) = 30\ \text{J}.$$
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A 2 kg block slides 4 m down a rough incline of angle $30^\circ$. The coefficient of kinetic friction is 0.2. Find the work done by friction on the block. Take $g = 9.8\ \text{m s}^{-2}$. (Original problem.)
+  ask: Work done by friction
+  unit: J
+  ans: -13.58
+  tol: 0.05
+  verify: -0.2*2*9.8*cos(rad(30))*4
+  sol: |
+    The normal force is $N = mg\cos30^\circ$, so the kinetic friction is
+    $$f = \mu mg\cos30^\circ = 0.2\times2\times9.8\times0.866 = 3.395\ \text{N},$$
+    directed up the incline, opposite to the 4 m displacement. Hence
+    $$W_f = -f\,s = -3.395\times4 = -13.6\ \text{J}.$$
+    For comparison, gravity does $+mg\sin30^\circ\times4 = +39.2$ J, so the net work is $+25.6$ J.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: A student says, "The normal force never does work." Give a situation where the normal force on an object does non-zero work, and say whether it is positive or negative. (Original problem.)
+  sol: |
+    The student is right only when the surface is at rest and the object slides along it, since then the normal force is perpendicular to the displacement. In general it is wrong.
+
+    **Example.** A person stands in a lift that is accelerating upward. The normal force from the floor on the person is upward, and the person moves upward, so this force does **positive** work: it is what raises the person's kinetic and potential energy. When the lift decelerates while moving up, the normal force (now smaller than $mg$) still points up but the person's speed falls, so it still does positive work while gravity does a larger negative amount. If the lift moves down, the normal force does negative work.
+
+    Another case: a block on a wedge that is pushed sideways, so that the wedge's normal force on the block has a component along the block's displacement.
+  check: none

@@ -1,0 +1,51 @@
+# NCERT Mathematics (Ganita Prakash, Parts 1 and 2), Class 7 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 7
+subject: mat
+name: Mathematics (Ganita Prakash, Parts 1 and 2)
+code: gegp
+chapters:
+- n: 1
+  title: Large Numbers Around Us
+  pdf: gegp101
+- n: 2
+  title: Arithmetic Expressions
+  pdf: gegp102
+- n: 3
+  title: A Peek Beyond the Point
+  pdf: gegp103
+- n: 4
+  title: Expressions using Letter-Numbers
+  pdf: gegp104
+- n: 5
+  title: Parallel and Intersecting Lines
+  pdf: gegp105
+- n: 6
+  title: Number Play
+  pdf: gegp106
+- n: 7
+  title: A Tale of Three Intersecting Lines
+  pdf: gegp107
+- n: 8
+  title: Working with Fractions
+  pdf: gegp108
+- n: 9
+  title: Geometric Twins
+  pdf: gegp201
+- n: 10
+  title: Operations with Integers
+  pdf: gegp202
+- n: 11
+  title: Finding Common Ground
+  pdf: gegp203
+- n: 12
+  title: Another Peek Beyond the Point
+  pdf: gegp204
+- n: 13
+  title: Connecting the Dots…
+  pdf: gegp205
+- n: 14
+  title: Constructions and Tilings
+  pdf: gegp206
+- n: 15
+  title: Finding the Unknown
+  pdf: gegp207

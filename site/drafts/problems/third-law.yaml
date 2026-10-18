@@ -1,0 +1,226 @@
+# Third law. NCERT questions copied word for word from NCERT Science Grade 9 (Exploration, 2026-27) Ch 6 and NCERT Physics Class XI (reprint 2026-27) Ch 4 (Exercise 4.23). Grade 9 has no answer key, so those solutions are ours. Found, board and main problems are original. Impulse and momentum-conservation items of Class XI Ch 4 are in the leaf "Momentum and the second law".
+
+- id: ncert9-it-6-9
+  lvl: ncert-intext
+  num: "IX 6 · PP9"
+  source: NCERT Grade 9 Science · Ch 6 · Pause and Ponder 9
+  kind: text
+  q: |-
+    Why does a fireperson sometimes struggle when holding the pipe issuing water?
+  sol: |
+    The hose pushes the water forward at high speed. By Newton's third law the water pushes back on the hose (and on the fireperson holding it) with an equal and opposite force. This backward force can be large when the water leaves fast and in large quantity, so the fireperson has to brace hard against it to stop the pipe from being pushed back.
+  check: none
+
+- id: ncert9-it-6-10
+  lvl: ncert-intext
+  num: "IX 6 · PP10"
+  source: NCERT Grade 9 Science · Ch 6 · Pause and Ponder 10
+  kind: text
+  q: |-
+    Suppose a spacecraft is moving in a region of space where the gravitational force acting upon it is negligible. Suggest how can it change its velocity.
+  sol: |
+    By firing its engine so that it expels gas in the opposite direction to the change of velocity that it wants. The gas is pushed one way, and by the third law the gas pushes the spacecraft the other way with an equal force. Firing the exhaust backwards speeds the craft up; firing it forwards (as the Chandrayaan-3 lander did) slows it down; firing sideways turns it. Nothing else in empty space can push on it.
+  check: none
+
+- id: ncert9-eg-6-7
+  lvl: ncert-intext
+  num: "IX Ex 6.7"
+  source: NCERT Grade 9 Science · Ch 6 · Example 6.7
+  kind: text
+  q: |-
+    As shown in Fig. 6.33, the Earth and the fruit apply equal and opposite gravitational forces on each other. Then why does the fruit move towards the Earth while the Earth doesn't seem to move towards the fruit?
+  sol: |
+    The two forces are equal in magnitude, but the accelerations are $a = F/m$. The Earth's mass is enormously larger than the fruit's, so the Earth's acceleration is tiny, far too small to notice, while the fruit's acceleration is about 9.8 m s$^{-2}$. Equal forces do not mean equal accelerations when the masses differ.
+  check: none
+
+- id: ncert9-eg-6-8
+  lvl: ncert-intext
+  num: "IX Ex 6.8"
+  source: NCERT Grade 9 Science · Ch 6 · Example 6.8
+  kind: num
+  q: |-
+    When a 0.1 kg bullet is fired from a 5 kg gun with a force of 2 N, the gun recoils. What are the magnitudes of initial accelerations of the bullet and the gun?
+  ask: Initial acceleration of the gun
+  unit: m s⁻²
+  ans: 0.4
+  tol: 0.005
+  verify: 2/5
+  sol: |
+    By the third law the force on the gun (the recoil force) is also 2 N, opposite to the force on the bullet.
+
+    Gun: $a = F/m = 2/5 = 0.4$ m s$^{-2}$.
+
+    Bullet: $a = F/m = 2/0.1 = 20$ m s$^{-2}$.
+
+    The forces are equal but the accelerations are not, because the masses differ; the lighter bullet accelerates 50 times more.
+  check: code
+
+- id: ncert9-ex-6-7
+  lvl: ncert-ex
+  num: "IX 6 · Q7"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q7
+  kind: text
+  q: |-
+    A sailor jumps out from a small boat to the shore (Fig. 6.38). As the sailor jumps forward, will the boat move? If yes, in which direction and why.
+  sol: |
+    Yes, the boat moves backwards, away from the shore. To jump forward the sailor pushes the boat backwards with his feet; by Newton's third law the boat pushes him forward with an equal and opposite force. That force on the sailor launches him; the force on the boat, being unopposed (the water offers little resistance) sets the boat moving backwards.
+  check: none
+
+- id: ncert9-ex-6-9
+  lvl: ncert-ex
+  num: "IX 6 · Q9"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q9
+  kind: mcq
+  q: |-
+    A hand cart loaded with vegetables collides with an identical but empty hand cart. During the collision:
+  opts: ["the loaded cart exerts a force of larger magnitude on the empty cart.", "the empty cart exerts a force of larger magnitude on the loaded cart.", "neither cart exerts a force on the other.", "the loaded cart and the empty cart, both exert an equal magnitude of force on each other."]
+  ans: 3
+  sol: |
+    The two carts form an action-reaction pair. By the third law the forces are equal in magnitude and opposite in direction at every instant, whatever the masses. Option (iv). (The lighter cart suffers the larger change of velocity, because its acceleration $F/m$ is larger.)
+  check: none
+
+- id: ncert9-ex-6-16
+  lvl: ncert-ex
+  num: "IX 6 · Q16"
+  source: NCERT Grade 9 Science · Ch 6 · Revise, Reflect, Refine Q16
+  kind: text
+  q: |-
+    When the pole of a bar magnet is brought close to a magnetic compass, the bar magnet and the compass needle (which is also a magnet) exert a magnetic force on each other. As per Newton's third law of motion, both the forces are equal in magnitude and opposite in direction. However, the compass needle moves, whereas the bar magnet does not move (Fig. 6.42). Explain why.
+  sol: |
+    The forces are equal and opposite, but they act on different bodies and produce accelerations $a = F/m$. The compass needle is very light and free to turn on its pivot, so the force gives it a large acceleration and it swings visibly. The bar magnet has a much greater mass (and is usually resting on a surface where friction holds it), so the same force gives it an acceleration too small to see. Both forces exist, but only the effect on the light needle is noticeable.
+  check: none
+
+- id: ncert11-ex-4-23
+  lvl: ncert-ex
+  num: "XI 4.23"
+  source: NCERT XI Physics · Ch 4 · Exercise 4.23
+  kind: text
+  q: |-
+    Explain why
+    (a) a horse cannot pull a cart and run in empty space,
+    (b) passengers are thrown forward from their seats when a speeding bus stops suddenly,
+    (c) it is easier to pull a lawn mower than to push it,
+    (d) a cricketer moves his hands backwards while holding a catch.
+  sol: |
+    (a) To accelerate, the horse-cart system needs an external force along the ground. In empty space there is none: the horse pushes the cart and the cart pushes the horse back with an equal force (third law), and these internal forces cancel for the system. On the ground the horse pushes the ground backwards with its hooves, and the ground's friction on the horse (an external force) pushes the system forward.
+
+    (b) Inertia. The bus stops because friction and the brakes stop the floor and the seat; the passenger's body, not directly stopped, tends to continue forward with its original velocity, so the passenger is thrown forward relative to the bus.
+
+    (c) A mower is pushed or pulled by a force at an angle to the ground. When you push, the force has a downward component, so the normal force $N$ must be greater than the weight, which increases friction ($f \propto N$) and so the force needed. When you pull, the force has an upward component, which reduces $N$ and the friction.
+
+    (d) Drawing the hands back lengthens the time over which the ball's momentum is brought to zero, which reduces the rate of change of momentum and hence the force that the hands must exert (and feel), $F = \Delta p/\Delta t$.
+  answer_key: (a) The horse-cart system has no external force in empty space. The mutual forces between the horse and the cart cancel (Third Law). On the ground, the contact force between the system and the ground (friction) causes their motion from rest. (b) Due to inertia of the body not directly in contact with the seat. (c) A lawn mower is pulled or pushed by applying force at an angle. When you push, the normal force (N) must be more than its weight, for equilibrium in the vertical direction. This results in greater friction f (f ∝ N) and, therefore, a greater applied force to move. Just the opposite happens while pulling. (d) To reduce the rate of change of momentum and hence to reduce the force necessary to stop the ball.
+  check: ncert-key
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: |-
+    A book rests on a table. Which force is the third-law partner of the book's weight (the Earth's pull on the book)? (Original problem.)
+  opts: ["The upward normal force of the table on the book.", "The downward force of the book on the table.", "The pull of the book on the Earth.", "The friction of the table on the book."]
+  ans: 2
+  sol: |
+    A third-law pair has the same type of force, acts on two different bodies and is equal and opposite. The book's weight is the force on the book by the Earth, so its partner is the force on the Earth by the book (the book's gravitational pull on the Earth). The normal force and the weight act on the same body, so they are not a third-law pair: they are equal only because the book is in equilibrium.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: text
+  q: |-
+    A swimmer pushes off from the wall of a pool and glides away. Name the force that accelerates the swimmer and state its third-law partner. (Original problem.)
+  sol: |
+    The accelerating force is the force on the swimmer by the wall (the wall pushes her away from it). Its third-law partner is the force on the wall by the swimmer's feet, equal in magnitude and opposite in direction, acting on the wall (which, being fixed to the Earth, does not visibly move).
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: |-
+    On smooth ice a 60 kg skater pushes a 40 kg skater with a force of 120 N for 0.5 s. What is the speed gained by the 40 kg skater? (Original problem.)
+  ask: Speed of the 40 kg skater
+  unit: m s⁻¹
+  ans: 1.5
+  tol: 0.01
+  verify: 120/40*0.5
+  sol: |
+    The 60 kg skater is pushed back by an equal 120 N (third law), but the question asks about the 40 kg skater: $a = 120/40 = 3$ m s$^{-2}$, and $v = at = 3 \times 0.5 = 1.5$ m s$^{-1}$. (The heavier skater gets $a = 2$ m s$^{-2}$, $v = 1.0$ m s$^{-1}$, in the opposite direction.)
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    A gun of mass 5 kg fires a 50 g bullet with a muzzle speed of 100 m s$^{-1}$. What is the recoil speed of the gun? (Original problem.)
+  ask: Recoil speed
+  unit: m s⁻¹
+  ans: 1
+  tol: 0.005
+  verify: 0.05*100/5
+  sol: |
+    The force on the bullet and the recoil force on the gun are equal and opposite and act for the same time, so the momenta gained are equal and opposite: $M v_g = m v_b$, giving $v_g = 0.05 \times 100/5 = 1$ m s$^{-1}$, in the direction opposite to the bullet.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: |-
+    A horse pulls a cart with a force $F$ and, by the third law, the cart pulls the horse back with an equal force. Then how can the cart ever move? Answer using free-body reasoning. (Original problem.)
+  sol: |
+    The two forces of the third-law pair act on different bodies: $F$ on the cart and $-F$ on the horse. They cannot be added to give zero net force on one body. For the cart alone, the forward pull of the horse (together with a small backward friction) gives a net forward force, so the cart accelerates. For the horse alone, what moves it forward is the push of the ground on its hooves: the horse pushes the ground backwards and the ground (by friction) pushes the horse forward, more than the cart's pull backward. The system moves because the ground exerts a net external forward force.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    A 0.2 kg apple falls freely with $g = 9.8$ m s$^{-2}$. Find the force the apple exerts on the Earth and the Earth's acceleration. Mass of the Earth: $5.97 \times 10^{24}$ kg. (Original problem.)
+  ask: Earth's acceleration, in units of 10⁻²⁵ m s⁻²
+  unit: ×10⁻²⁵ m s⁻²
+  ans: 3.28
+  tol: 0.02
+  verify: 0.2*9.8/5.97e24*1e25
+  sol: |
+    The force on the apple is $mg = 0.2 \times 9.8 = 1.96$ N. By the third law the apple pulls on the Earth with an equal force of 1.96 N, upward. The Earth's acceleration is $a = F/M = 1.96/(5.97 \times 10^{24}) = 3.28 \times 10^{-25}$ m s$^{-2}$, which is utterly negligible.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |-
+    Two blocks of 2 kg and 3 kg touch each other on a smooth table. A horizontal force of 10 N pushes the 2 kg block towards the 3 kg block. What is the force that the 2 kg block exerts on the 3 kg block? (Original problem.)
+  ask: Contact force between the blocks
+  unit: N
+  ans: 6
+  tol: 0.01
+  verify: 3*10/(2+3)
+  sol: |
+    Both blocks move together, so the acceleration of the pair is $a = 10/(2+3) = 2$ m s$^{-2}$. The 3 kg block is accelerated only by the contact force from the 2 kg block: $N = 3 \times 2 = 6$ N. By the third law the 3 kg block pushes back on the 2 kg block with 6 N, so the net force on the 2 kg block is $10 - 6 = 4$ N $= 2 \times 2$, which is consistent.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |-
+    A rocket of mass 10 000 kg expels 100 kg of gas per second at 2000 m s$^{-1}$ relative to the rocket. Find its acceleration at lift-off. Take $g = 9.8$ m s$^{-2}$ and treat the mass as constant over the instant. (Original problem.)
+  ask: Acceleration at lift-off
+  unit: m s⁻²
+  ans: 10.2
+  tol: 0.05
+  verify: (100*2000-10000*9.8)/10000
+  sol: |
+    In one second the rocket gives 100 kg of gas a speed of 2000 m s$^{-1}$, so the force on the gas is $100 \times 2000 = 2.0 \times 10^5$ N downward. By the third law the gas pushes the rocket upward with a thrust of $2.0 \times 10^5$ N. Weight $= 10\,000 \times 9.8 = 9.8 \times 10^4$ N. Net force $= 2.0 \times 10^5 - 0.98 \times 10^5 = 1.02 \times 10^5$ N, so $a = 1.02 \times 10^5/10^4 = 10.2$ m s$^{-2}$ upward.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |-
+    Two skaters of masses 50 kg and 70 kg stand 10 m apart on frictionless ice, joined by a light rope. The lighter skater pulls on the rope with a constant 35 N. How far from the starting point of the lighter skater do they meet? (Original problem.)
+  ask: Distance from the lighter skater's starting point
+  unit: m
+  ans: 5.83
+  tol: 0.02
+  verify: 10*(35/50)/((35/50)+(35/70))
+  sol: |
+    The tension is the same at both ends (light rope), so by the third law each skater feels 35 N towards the other. Accelerations: $a_1 = 35/50 = 0.70$ m s$^{-2}$ for the 50 kg skater and $a_2 = 35/70 = 0.50$ m s$^{-2}$ for the 70 kg skater. They meet when $\tfrac12 a_1 t^2 + \tfrac12 a_2 t^2 = 10$, so the lighter skater covers the fraction $a_1/(a_1+a_2) = 0.70/1.20$ of the 10 m: $5.83$ m. (This is the position of the centre of mass, which does not move since there is no external force.)
+  check: code
