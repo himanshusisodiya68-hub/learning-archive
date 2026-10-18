@@ -1,0 +1,98 @@
+# Text, images and sound as bits. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A full-HD video frame is 1920 pixels wide and 1080 pixels tall, with 3 bytes per pixel. How many megabytes (1 MB = 1,000,000 bytes) is one raw frame?
+  ask: Size
+  unit: MB
+  ans: 6.22
+  tol: 0.01
+  verify: 1920*1080*3/1e6
+  sol: The frame has $1920 \times 1080 = 2{,}073{,}600$ pixels, and each takes 3 bytes, so $2{,}073{,}600 \times 3 = 6{,}220{,}800$ bytes, which is about 6.22 MB.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: In ASCII, the letter A is number 65. What is the number of the letter C?
+  opts: ["66", "67", "68"]
+  ans: 1
+  sol: Letters are numbered in alphabetical order, so B is 66 and C is 67. (In Python, `ord("C")` gives 67.)
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: CD-quality sound has 44,100 samples per second, 16 bits per sample and 2 channels. How many kilobits per second (1 kilobit = 1000 bits) is that?
+  ask: Data rate
+  unit: kbit/s
+  ans: 1411.2
+  tol: 0.1
+  verify: 44100*16*2/1000
+  sol: Multiply samples per second, bits per sample and channels, $44{,}100 \times 16 \times 2 = 1{,}411{,}200$ bits per second, which is 1411.2 kilobits per second. A 128 kbit/s MP3 is therefore about 11 times smaller.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: Each Devanagari letter in the Hindi word नमस्ते (six code points) takes 3 bytes in UTF-8. How many bytes does the word occupy?
+  ask: Bytes
+  unit: bytes
+  ans: 18
+  tol: 0.1
+  verify: 6*3
+  sol: The word has 6 code points, न, म, स, ्, त and े, all in the range U+0800 to U+FFFF, so each takes 3 bytes in UTF-8, giving $6 \times 3 = 18$ bytes. Python's `len` gives 6 for the string, but `len(s.encode("utf-8"))` gives 18.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Write a function that run-length encodes a string, so "aaabccdddd" becomes "a3b1c2d4". For what kind of input is the output longer than the input?
+  sol: |
+    Walk along the string, counting how long each run of equal characters is, and append the character followed by the count.
+    ```python
+    def encode(s):
+        out, i = [], 0
+        while i < len(s):
+            j = i
+            while j < len(s) and s[j] == s[i]:
+                j += 1
+            out.append(s[i] + str(j - i))
+            i = j
+        return "".join(out)
+    ```
+    Time is O(n), one pass, and the extra memory is the output. The result is longer when runs are short: a string of all different characters, like "abc", becomes "a1b1c1", twice as long. A run of length 1 costs two characters (the letter and "1"), so the output only shrinks when runs of length 3 or more are common. (A real decoder also needs to cope with digits inside the text, which this simple format cannot do unambiguously.)
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A website's database stores the name José correctly, but the web page shows JosÃ©. Diagnose the cause and say where the fix belongs.
+  sol: |
+    José contains é, U+00E9, which UTF-8 stores as two bytes, `c3 a9`. The page shows `Ã©`, which is exactly what you get when those two bytes are read as two separate characters in a single-byte encoding such as Latin-1 (`c3` is Ã and `a9` is ©). So the data is fine; the bytes were *decoded* with the wrong encoding somewhere between database and screen.
+
+    The fix is to make every stage agree on UTF-8: declare it in the HTTP header (`Content-Type: text/html; charset=utf-8`) and in the page, set the database connection to UTF-8, and read files with an explicit encoding. Do not "repair" the stored data by converting it again; that would corrupt a correct column.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A source sends four symbols with probabilities 1/2, 1/4, 1/8 and 1/8. A prefix code gives them the codewords 0, 10, 110 and 111. What is the average number of bits per symbol?
+  ask: Average length
+  unit: bits
+  ans: 1.75
+  tol: 0.001
+  verify: 0.5*1+0.25*2+0.125*3+0.125*3
+  sol: The average is each codeword's length times its probability, added up, $\tfrac12\cdot1 + \tfrac14\cdot2 + \tfrac18\cdot3 + \tfrac18\cdot3 = 0.5 + 0.5 + 0.375 + 0.375 = 1.75$ bits. A fixed-length code would need 2 bits per symbol. The entropy $-\sum p_i\log_2 p_i$ is also exactly 1.75 bits, so no code can do better.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Prove that no lossless compression method can make every file shorter. State what must happen to some files instead.
+  sol: |
+    Consider all files of exactly $n$ bits. There are $2^n$ of them. A lossless method must map different files to different outputs, otherwise two files could not both be recovered. If every one of them became strictly shorter, each output would have at most $n - 1$ bits. The number of bit strings of length 0, 1, ..., $n-1$ is $1 + 2 + \dots + 2^{n-1} = 2^n - 1$, which is fewer than $2^n$. By the pigeonhole principle two different files would share an output, a contradiction.
+
+    So for any lossless method, if some files shrink, others must stay the same size or grow. Compressors work because real files are not random: text, code and uncompressed images have patterns, and the method shortens those at the cost of making unusual files slightly longer. It also explains why compressing a file twice gains almost nothing: the first pass has already removed the patterns.
+  check: none
