@@ -201,7 +201,7 @@ A stretch sum is `prefix(r) - prefix(l)`. For $n = 100{,}000$ each call is at mo
 q: In a Fenwick tree with n = 16 (cells 1 to 16), which cells are updated when item 5 changes?
 options: ["5, 6, 8, 16", "5, 6, 7, 8", "1, 2, 4, 8"]
 answer: 0
-right: Right. From 5 add the lowest set bit (1) to get 6, then 2 to get 8, then 8 to get 16. Four cells, since 5 = 101 in binary has few climbs.
+right: Right. From 5 add the lowest set bit (1) to get 6, then 2 to get 8, then 8 to get 16. Four cells, and each hop at least doubles the lowest set bit, so there are never more than about log n of them.
 wrong: Start at 5 and repeatedly add the lowest set bit: 5 plus 1, then that result plus its lowest set bit, until you pass 16.
 :::
 
@@ -288,7 +288,7 @@ In our own words, each mapped to a variant.
 - Using a sparse table for sums, so overlapping blocks double count.
 - Wrong identity in a segment tree (0 for max of negatives, 0 for min).
 - Non-commutative combine with the left and right results swapped.
-- Recursive lazy trees sized `n` instead of `4n`, or recursion in Python at depth near a thousand on a degenerate tree. (A balanced tree has depth about 17, so the recursion is fine.)
+- Recursive lazy trees sized `n` instead of `4n`: some nodes then have no slot and the program crashes with an index error.
 - Forgetting to update the parent after changing a child in a lazy tree.
 
 ## Lazy propagation: range updates {lvl=4 id=s-lazy label="SDE-3"}

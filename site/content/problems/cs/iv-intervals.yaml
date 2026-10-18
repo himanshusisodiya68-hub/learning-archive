@@ -1,0 +1,154 @@
+# Intervals. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Meeting P runs from 2 to 5 and meeting Q from 5 to 7, and a room is free the moment a meeting ends. Can P and Q share one room?
+  opts: ["Yes, P ends exactly when Q starts", "No, they both use the time 5", "Only if Q is shorter than P"]
+  ans: 0
+  sol: |
+    Reading each meeting as the half-open stretch from start up to but not including end, P is [2, 5) and Q is [5, 7). They overlap only if 2 < 7 and 5 < 5; the second part is false, so they do not. One room is enough. If a statement says that touching counts as a clash, use less-than-or-equal instead.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: The intervals [1, 4], [3, 7] and [10, 12] are merged into disjoint blocks. What is the total length covered by the blocks (end minus start, added up)?
+  ask: Total length
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: (7-1)+(12-10)
+  sol: |
+    Sorted by start, [1, 4] and [3, 7] overlap (3 is not past 4), so they merge into [1, 7], whose end is the larger of 4 and 7. [10, 12] starts after 7, so it is a separate block. Lengths: $(7 - 1) + (12 - 10) = 6 + 2 = 8$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Five meetings run (in hours) 9 to 10, 9.5 to 11, 10 to 12, 10.5 to 11.5 and 12 to 13. A room is free the instant its meeting ends. How many rooms are needed?
+  ask: Rooms
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(()=>{const iv=[[9,10],[9.5,11],[10,12],[10.5,11.5],[12,13]];const ev=[];iv.forEach(([s,e])=>{ev.push([s,1]);ev.push([e,-1])});ev.sort((a,b)=>a[0]-b[0]||a[1]-b[1]);let cur=0,best=0;for(const [,d] of ev){cur+=d;best=Math.max(best,cur)}return best})()'
+  sol: |
+    Sweep line with ends processed before starts at equal times. Between 10.5 and 11 the meetings 9.5 to 11, 10 to 12 and 10.5 to 11.5 are all on (the first meeting ended at 10), so three are active. At 11 the meeting 9.5 to 11 ends before anything new starts, so the total never exceeds 3. Three rooms are enough, and three are needed.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: A sorted list of disjoint intervals is [1, 2], [3, 5], [6, 7], [8, 10], [12, 16]. Insert [4, 9] using the three-phase method and give the result. Which interval is copied in each phase?
+  sol: |
+    Treat touching as overlap (closed intervals, as the list uses numbers).
+    - **Wholly before** (end less than 4): [1, 2]. Copy it.
+    - **Absorb** (start at most 9): [3, 5] gives [3, 9]; [6, 7] changes nothing; [8, 10] gives [3, 10]. The next interval [12, 16] starts at 12, which is past 9, so stop.
+    - **Wholly after**: [12, 16]. Copy it.
+
+    Result: [1, 2], [3, 10], [12, 16].
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Balloons float in a row, and each balloon is a horizontal stretch from a left x-value to a right x-value. One arrow fired straight up at some x bursts every balloon whose stretch contains that x. Describe how to find the fewest arrows, say which family it belongs to, and run it on the stretches [1, 6], [2, 8], [7, 12], [10, 16].
+  sol: |
+    This is the **max kept** family in disguise. Sort the stretches by right end. Fire an arrow at the right end of the first one; it bursts every balloon whose left end is at or before that x. Skip them, and when you meet a balloon whose left end is past the arrow, fire a new arrow at its right end.
+
+    ```python
+    def fewest_arrows(spans):
+        spans.sort(key=lambda x: x[1])
+        arrows, x = 0, float('-inf')
+        for l, r in spans:
+            if l > x:
+                arrows += 1
+                x = r
+        return arrows
+    ```
+    On the example, sorted by right end: [1, 6], [2, 8], [7, 12], [10, 16]. The first arrow at x = 6 bursts [1, 6] and [2, 8] (left ends 1 and 2 are at most 6). [7, 12] has left end 7 which is past 6, so a second arrow at 12 bursts [7, 12] and [10, 16]. Answer: 2. Cost $O(n \log n)$. Why end order is right: an arrow at the earliest right end is as far right as possible without missing the first balloon, so it reaches the most others.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A club has booked sessions [1, 2], [2, 3], [3, 4] and [1, 3] (a session ending at 3 leaves the room free at 3). What is the fewest number of sessions to cancel so that none overlap? Give the method and the answer.
+  sol: |
+    The fewest cancellations equal the total minus the most sessions that can stay. To find the most that can stay, sort by end and take greedily: sorted by end the order is [1, 2], [2, 3], [1, 3], [3, 4] (ties broken arbitrarily). Take [1, 2] (last end 2). [2, 3] starts at 2, which is at least 2, so take it (last end 3). [1, 3] starts at 1, less than 3, skip. [3, 4] starts at 3, take it. Three stay, so cancel $4 - 3 = 1$ session: [1, 3].
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: Eleven activities have the (start, end) times (1,4), (3,5), (0,6), (5,7), (3,9), (5,9), (6,10), (8,11), (8,12), (2,14), (12,16). One person can do one activity at a time and may start one the moment another ends. What is the largest number of activities that can be done?
+  ask: Activities
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: '(()=>{const iv=[[1,4],[3,5],[0,6],[5,7],[3,9],[5,9],[6,10],[8,11],[8,12],[2,14],[12,16]].sort((a,b)=>a[1]-b[1]);let c=0,last=-Infinity;for(const [s,e] of iv){if(s>=last){c++;last=e}}return c})()'
+  sol: |
+    Sort by end time: (1,4), (3,5), (0,6), (5,7), (3,9), (5,9), (6,10), (8,11), (8,12), (2,14), (12,16). Take (1,4); skip (3,5) and (0,6), which start before 4; take (5,7); skip (3,9), (5,9), (6,10); take (8,11); skip (8,12) and (2,14); take (12,16). That is 4 activities: (1,4), (5,7), (8,11), (12,16).
+  check: code
+
+- id: m4
+  lvl: main
+  kind: text
+  q: Three employees each have a sorted list of busy intervals. Find every time when all three are free. Describe the method, its cost, and which variant it uses.
+  sol: |
+    Variant: **merge, then gaps**. Put all busy intervals from all employees into one list (size $n$), sort by start, and merge overlapping or touching ones. The merged blocks are the times when at least one person is busy. Anyone-busy is the opposite of everyone-free, so the free times are the gaps between consecutive merged blocks (plus, if wanted, the times before the first and after the last).
+
+    ```python
+    def common_free(lists):
+        busy = sorted(iv for person in lists for iv in person)
+        merged = []
+        for s, e in busy:
+            if merged and s <= merged[-1][1]:
+                merged[-1][1] = max(merged[-1][1], e)
+            else:
+                merged.append([s, e])
+        return [[merged[i][1], merged[i+1][0]] for i in range(len(merged) - 1)]
+    ```
+    Cost $O(n \log n)$ for the sort. Since each list is already sorted, a $k$-way merge with a heap would give the same order in $O(n \log k)$.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Design a calendar that accepts a booking request [s, e) only if it overlaps no existing booking, and answers many such requests online (one at a time). Give a method with fast checks and say what limits its speed in Python.
+  sol: |
+    Keep the booked intervals in a list sorted by start. For a new request [s, e), binary-search (with `bisect`) for the position where it would be inserted. It can only clash with its **two neighbours**: the interval just before (clash if that one's end is greater than s) and the interval just after (clash if that one's start is less than e). Since existing bookings are disjoint and sorted, no interval further away can overlap. If both checks pass, insert it.
+
+    Finding the neighbours costs $O(\log n)$. A Python list insert shifts elements, so inserting costs $O(n)$, although with a very fast constant. For millions of bookings use a balanced tree or a skip list (for example a sorted container library, or a tree map in other languages) to make both the check and the insert $O(\log n)$. [Unverified: names of library types vary by language]
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: Given a target span from 0 to T and a list of intervals, find the fewest intervals that together cover every point of the span, or report that it is impossible. Describe the greedy rule, why it is correct, and its cost.
+  sol: |
+    Sort by start. Keep `reach`, the farthest point covered so far (initially 0). While `reach` is below T: among all intervals with start at most `reach`, pick the one with the largest end. If that end is not greater than `reach`, no interval extends the cover, so answer impossible. Otherwise take it, set `reach` to its end and count it.
+
+    **Why correct (exchange argument):** any solution must cover the point just beyond `reach` with some interval that starts at or before `reach`. Replacing it by the one that goes farthest cannot uncover anything and gives at least as much reach for the next step, so the greedy choice is never worse.
+
+    **Cost:** one sort, $O(n \log n)$, then a single left-to-right scan in which the pointer into the sorted list only moves forward, $O(n)$.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: There are n closed intervals and q query numbers, with n and q both up to 200,000. For each query x, report how many intervals contain x (start at most x and end at least x). A loop over all intervals for each query is too slow. Give a method with a cost of about (n + q) log n and justify it.
+  sol: |
+    Count by complement. The intervals that contain $x$ are those that have started by $x$ (start at most $x$) minus those that have already ended **before** $x$ (end less than $x$). Every interval that ended before $x$ also started by $x$, so subtracting is valid and no interval is counted twice or missed.
+
+    So sort the starts into one array and the ends into another. For a query $x$:
+    $$\text{count}(x) = \#\{\text{starts} \le x\} - \#\{\text{ends} < x\}.$$
+    Read it as: "how many have begun, minus how many are over".
+    ```python
+    from bisect import bisect_left, bisect_right
+    def counts(intervals, queries):
+        starts = sorted(s for s, e in intervals)
+        ends = sorted(e for s, e in intervals)
+        return [bisect_right(starts, x) - bisect_left(ends, x) for x in queries]
+    ```
+    `bisect_right(starts, x)` counts starts at most $x$; `bisect_left(ends, x)` counts ends strictly less than $x$. Two sorts cost $O(n \log n)$; each query is two binary searches, $O(\log n)$, so the total is $O((n + q) \log n)$. This is the sweep line answered at arbitrary moments instead of only at event times.
+  check: none

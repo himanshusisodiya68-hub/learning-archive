@@ -1,0 +1,132 @@
+# Segment trees and Fenwick trees. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "A list is 3, 1, 4, 1, 5, 9, 2, 6 (positions numbered from 0). Using prefix sums, what is the sum of the items at positions 2 to 5, both included?"
+  ask: Sum
+  unit: ""
+  ans: 19
+  tol: 0.1
+  verify: (3+1+4+1+5+9)-(3+1)
+  sol: |
+    The prefix totals are 0, 3, 4, 8, 9, 14, 23, 25, 31 (the total of the first 0, 1, 2, ... items). The stretch from position 2 up to and including 5 is the total of the first 6 items minus the total of the first 2: $23 - 4 = 19$. Check: $4 + 1 + 5 + 9 = 19$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A log of one million temperatures never changes. You must answer a million questions of the form "what is the lowest temperature between day l and day r". Which structure gives each answer in constant time?
+  opts: ["A sparse table", "A Fenwick tree", "Prefix sums", "Rescanning the stretch"]
+  ans: 0
+  sol: |
+    A sparse table stores the minimum of blocks whose length is a power of two, so any stretch is covered by two overlapping blocks and the answer is one comparison. Prefix sums cannot undo a minimum, a Fenwick tree is for sums and takes $O(\log n)$, and rescanning is $O(n)$ per question.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A Fenwick tree has 16 cells numbered 1 to 16. A change to item 5 must update the cell for item 5 and then every cell whose block contains item 5, found by repeatedly adding the lowest set bit. How many cells are updated in all?
+  ask: Cells updated
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: "(()=>{let i=5,c=0;while(i<=16){c++;i+=i&-i}return c})()"
+  sol: |
+    Start at 5 (binary 101): lowest set bit 1, so the next is 6. Cell 6 (110) has lowest set bit 2, so the next is 8. Cell 8 (1000) has lowest set bit 8, giving 16. Cell 16 plus 16 is 32, which is beyond the end. The cells are 5, 6, 8, 16: four updates.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A sparse table for a list of 100000 numbers stores one level per power of two up to the length, floor(log2 n) + 1 levels. If it is drawn as a full table of n cells per level, how many cells in all?
+  ask: Cells
+  unit: cells
+  ans: 1700000
+  tol: 1
+  verify: 100000*(floor(log2(100000))+1)
+  sol: |
+    $\log_2 100000 \approx 16.6$, so $\lfloor\log_2 n\rfloor + 1 = 17$ levels. At $n$ cells per level (an upper bound, the real tables are slightly shorter) that is $17 \times 100000 = 1{,}700{,}000$ cells. This is why sparse tables are fine at $10^5$ and heavy at $10^7$.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Count the pairs of positions (i, j) with i before j and a[i] larger than a[j] in a list of 200000 numbers (the number of inversions). Describe an O(n log n) method with a Fenwick tree.
+  sol: |
+    Replace each value by its rank among the distinct values (coordinate compression), so ranks lie in $1..m$. Scan the list from left to right with a Fenwick tree over ranks, initially all zero. For each item with rank $x$: the number of earlier items that are larger is `(items inserted so far) - prefix(x)`, where `prefix(x)` counts earlier items with rank at most $x$. Add that to the answer, then add 1 at rank $x$.
+
+    Each item costs two $O(\log n)$ Fenwick calls, so the total is $O(n \log n)$. The answer can reach about $2\times10^{10}$ for $n = 200000$, which overflows a 32-bit integer in other languages (Python is safe).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A multiset of numbers (values up to 1000000) changes by inserts and deletes, and you are asked, many times, for the k-th smallest value currently present. Design a structure with O(log n) per operation.
+  sol: |
+    Keep a Fenwick tree over the values, where cell $v$ holds how many copies of $v$ are present. Insert or delete adds +1 or -1 at $v$.
+
+    To find the k-th smallest, do a **binary descent**: let `pos = 0` and, for step sizes $2^{19}, 2^{18}, \dots, 1$ (the largest power of two at most the size), if `pos + step` is within the tree and `t[pos + step] < k`, then move `pos += step` and subtract `t[pos]` from $k$. At the end, `pos + 1` is the answer. Each step uses the stored block sums, so the search is $O(\log n)$ with no repeated queries. A segment tree storing counts can do the same by walking left or right at each node.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: A fixed list of 100000 numbers is given, followed by 100000 queries "how many different values are there between positions l and r". Describe an offline method, its cost, and why sorting the queries is allowed.
+  sol: |
+    All queries are known, so answer them in order of right end. Sweep a pointer $j$ from left to right. At each step, if the value $a_j$ occurred earlier at position $p$, subtract 1 at position $p$ in a Fenwick tree; then add 1 at position $j$ and remember $j$ as the last occurrence. When the sweep reaches the right end $r$ of a query, answer it as the Fenwick sum over positions $l..r$. Each distinct value contributes exactly one 1, at its last occurrence not past $r$, so the sum counts distinct values.
+
+    Cost: $O((n+q)\log n)$. Sorting is allowed because the answers do not depend on the order in which they are computed, only on the stretch; we store each answer by its original query number and print in the original order.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A solution performs 200000 operations on a bottom-up segment tree over 100000 items. Each operation walks about ceil(log2 n) levels. About how many tree-level steps are taken in all?
+  ask: Steps
+  unit: steps
+  ans: 3400000
+  tol: 1
+  verify: 200000*ceil(log2(100000))
+  sol: |
+    $\lceil\log_2 100000\rceil = 17$ because $2^{16} = 65536$ is too small and $2^{17} = 131072$ is enough. Each operation walks about 17 levels, so $200000 \times 17 = 3{,}400{,}000$ steps. A query visits up to about two nodes per level, so real work is a small constant factor above this, still a few million and fast. The naive method would cost up to $2\times10^{10}$.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: You need to add a value v to every item in a range l to r, and ask for the sum of any range, both repeatedly, on a list of 100000 items. Show how two Fenwick trees can do it without lazy propagation.
+  sol: |
+    Work with the difference array $d$, where $d_i$ is the change between item $i-1$ and item $i$, so that item $i$ is $d_1 + \dots + d_i$. A range add of $v$ over $l..r$ is $d_l \mathrel{+}= v$ and $d_{r+1} \mathrel{-}= v$.
+
+    The sum of the first $i$ items is $\sum_{k \le i} d_k\,(i - k + 1) = (i+1)\sum_{k\le i} d_k - \sum_{k \le i} k\,d_k$. So keep two Fenwick trees: one over $d_k$ and one over $k \cdot d_k$. A range add updates both at two positions; the prefix sum of the items is $(i+1)\cdot \text{query}_1(i) - \text{query}_2(i)$, and a range sum is a difference of two prefix sums. Everything is $O(\log n)$, with less code and memory than a lazy segment tree. It only works for sums, not for min.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Mo's algorithm answers n = q = 100000 range queries by moving a window one step at a time, and its total pointer moves are about n times sqrt(q). About how many single steps is that?
+  ask: Pointer moves
+  unit: steps
+  ans: 31600000
+  tol: 100000
+  verify: 100000*sqrt(100000)
+  sol: |
+    With block size about $\sqrt n$, the left pointer moves at most about $\sqrt n$ per query (total $q\sqrt n$) and the right pointer sweeps at most $n$ per block over $\sqrt n$ blocks (total $n\sqrt n$). Both are $10^5 \times 316 \approx 3.16\times10^7$, so about 32 million single steps in all (a constant factor of about 2 above that in practice). It is useful when the statistic cannot be merged by a tree, but each step must be $O(1)$.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A list of numbers (some negative) changes one item at a time, and you must answer "what is the largest sum of a block of consecutive items between positions l and r" many times. Design the node of a segment tree and prove the merge is associative in spirit, then note the cost.
+  sol: |
+    Store four numbers per node for the range it covers: `total`, `best_prefix` (best sum of a block that starts at the left end), `best_suffix` (best block ending at the right end) and `best` (best block anywhere, not empty). A leaf with value $x$ is $(x, x, x, x)$.
+
+    To merge a left node $L$ and a right node $R$:
+    total = $L.t + R.t$;
+    prefix = max($L.p$, $L.t + R.p$);
+    suffix = max($R.q$, $R.t + L.q$);
+    best = max($L.b$, $R.b$, $L.q + R.p$).
+
+    The last term is the block that crosses the middle: it ends at the end of $L$ (best suffix) and starts at the start of $R$ (best prefix). Any block in the combined range lies entirely in $L$, entirely in $R$, or crosses, so no case is missed. The merge is associative because it computes the same four quantities for the concatenation regardless of grouping, so a query can combine the $O(\log n)$ tiling nodes left to right (order matters, since the merge is not commutative). Update and query cost $O(\log n)$. The merge was cross-checked against brute force on random small lists.
+  check: none

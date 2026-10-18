@@ -1,0 +1,166 @@
+# Graphs and grids. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    A map grid has land (1) and water (0), with rows
+    11000
+    10011
+    00100
+    00001
+    Land cells join an island only through up, down, left or right neighbours (not diagonals). How many islands are there?
+  ask: Islands
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: '(() => { const g = ["11000", "10011", "00100", "00001"]; const R = 4, C = 5; const s = new Set(); let k = 0; for (let r = 0; r < R; r++) for (let c = 0; c < C; c++) { if (g[r][c] === "1" && !s.has(r * C + c)) { k++; const st = [[r, c]]; s.add(r * C + c); while (st.length) { const [y, x] = st.pop(); for (const [dy, dx] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const a = y + dy, b = x + dx; if (a >= 0 && a < R && b >= 0 && b < C && g[a][b] === "1" && !s.has(a * C + b)) { s.add(a * C + b); st.push([a, b]); } } } } } return k; })()'
+  sol: |
+    Reading the grid by (row, column): the group (0,0), (0,1), (1,0) is one island. The cells (1,3) and (1,4) form a second. The single cell (2,2) has no land above, below, left or right, so it is a third. The cell (3,4) has water above it at (2,4), so it is a fourth. That is 4 islands. (If diagonals counted, (2,2) would join (1,3) and the answer would be 3.)
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Every move through a maze costs the same. Which walk is guaranteed to give the fewest moves from start to exit?
+  opts: ["Depth-first search with a stack", "Breadth-first search with a queue", "Visiting cells in random order"]
+  ans: 1
+  sol: |
+    Breadth-first search. It finishes every cell one move away before any cell two moves away, so the first time it reaches the exit is by a shortest route. Depth-first search may reach the exit by a long winding path first.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    A maze has open cells (.), walls (#), a start S in the top-left and a goal G in the bottom-right:
+    S..#
+    ##.#
+    ....
+    .##G
+    Moves go up, down, left or right into an open cell. What is the fewest number of moves from S to G?
+  ask: Moves
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: '(() => { const g = ["S..#", "##.#", "....", ".##G"]; const R = 4, C = 4; const d = { "0,0": 0 }; const q = [[0, 0]]; while (q.length) { const [y, x] = q.shift(); if (g[y][x] === "G") return d[y + "," + x]; for (const [dy, dx] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const a = y + dy, b = x + dx; if (a >= 0 && a < R && b >= 0 && b < C && g[a][b] !== "#" && !((a + "," + b) in d)) { d[a + "," + b] = d[y + "," + x] + 1; q.push([a, b]); } } } return -1; })()'
+  sol: |
+    Number the cells (row, column) from (0,0). Row 1 is walled except column 2, so every route must pass through (1,2). The route is (0,0), (0,1), (0,2), (1,2), (2,2), (2,3), (3,3): six moves. The other way down from row 2 leads to (3,0), which is a dead end because (3,1) and (3,2) are walls. BFS confirms nothing shorter exists.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    A student has six courses, numbered 0 to 5. The rules are: course 1 must come before 2, course 2 before 3, course 3 before 1, course 0 before 1, and course 4 before 5. A course can be taken only after every course that must come before it has been taken. How many courses can the student actually complete?
+  ask: Courses
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(() => { const e = [[1, 2], [2, 3], [3, 1], [0, 1], [4, 5]]; const n = 6; const ind = Array(n).fill(0); for (const [b, a] of e) ind[a]++; const q = []; for (let i = 0; i < n; i++) if (ind[i] === 0) q.push(i); let c = 0; while (q.length) { const u = q.shift(); c++; for (const [b, a] of e) if (b === u) { ind[a]--; if (ind[a] === 0) q.push(a); } } return c; })()'
+  sol: |
+    Count unmet prerequisites. Courses 0 and 4 have none, so they can be taken now. Taking 4 unlocks 5. Taking 0 removes one requirement from course 1, but 1 still needs 3. Courses 1, 2 and 3 wait on each other in a loop (1 before 2 before 3 before 1), so none can ever start. The student completes 0, 4 and 5: 3 courses. A topological sort that ends with fewer than six courses ordered has found a cycle.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |
+    Eight people are numbered 0 to 7. Friendships are added one at a time: 0-1, 2-3, 1-3, 4-5, 6-7, 5-7, 0-2. After all seven are added, how many separate friend groups are there?
+  ask: Groups
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: '(() => { const p = [0, 1, 2, 3, 4, 5, 6, 7]; const f = x => p[x] === x ? x : (p[x] = f(p[x])); let k = 8; for (const [a, b] of [[0, 1], [2, 3], [1, 3], [4, 5], [6, 7], [5, 7], [0, 2]]) { const ra = f(a), rb = f(b); if (ra !== rb) { p[ra] = rb; k--; } } return k; })()'
+  sol: |
+    Start with 8 groups. Each friendship that joins two different groups reduces the count by one. 0-1 gives 7, 2-3 gives 6, 1-3 merges {0,1} with {2,3} to give 5, 4-5 gives 4, 6-7 gives 3, 5-7 merges {4,5} with {6,7} to give 2. The last friendship, 0-2, connects two people already in the same group, so union-find reports a failed union (a redundant link, closing a cycle) and the count stays 2: the groups {0,1,2,3} and {4,5,6,7}.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |
+    Five towns A, B, C, D, E are joined by two-way roads with these travel times in minutes: A-B 4, A-C 1, C-B 2, B-D 5, C-D 8, D-E 3. What is the least total time from A to E?
+  ask: Time
+  unit: min
+  ans: 11
+  tol: 0.1
+  verify: '(() => { const E = [["A", "B", 4], ["A", "C", 1], ["C", "B", 2], ["B", "D", 5], ["C", "D", 8], ["D", "E", 3]]; const d = { A: 0, B: 1e9, C: 1e9, D: 1e9, E: 1e9 }; for (let i = 0; i < 6; i++) for (const [u, v, w] of E) { if (d[u] + w < d[v]) d[v] = d[u] + w; if (d[v] + w < d[u]) d[u] = d[v] + w; } return d.E; })()'
+  sol: |
+    Roads have different times, so use Dijkstra. From A: C costs 1, B costs 4. Expand C (1): B improves to 1 + 2 = 3, D becomes 1 + 8 = 9. Expand B (3): D improves to 3 + 5 = 8. Expand D (8): E becomes 8 + 3 = 11. The best route is A, C, B, D, E for 1 + 2 + 5 + 3 = 11 minutes. BFS would have chosen A, C, D, E (three roads) at 12 minutes, the wrong answer here, because it counts roads and not minutes.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: text
+  q: |
+    You are asked to deep-copy a connected graph in which each node holds a value and a list of neighbour nodes, and the graph contains cycles. Why does a plain recursive "copy this node, then copy its neighbours" loop forever, and what is the fix?
+  sol: |
+    In a cycle (A is a neighbour of B and B is a neighbour of A), copying A starts copying B, which starts copying A again, with no end. The recursion never learns that A already has a copy.
+
+    The fix is a dictionary from original node to its copy. Before copying a node, look in the dictionary: if it is there, reuse that copy instead of making another. The new node goes into the dictionary the moment it is created, before its neighbours are processed. That one structure does two jobs: it is the "seen" set that stops the loop, and it lets each new edge point to the right new node, so the copy has the same shape and no sharing with the original. Time and space are O(V + E).
+  check: none
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |
+    A grid of fruit has 2 for rotten, 1 for fresh and 0 for empty:
+    2 1 1
+    1 1 0
+    0 1 1
+    Each minute, every fresh fruit that touches a rotten one (up, down, left or right) becomes rotten. After how many minutes is every fruit rotten?
+  ask: Minutes
+  unit: min
+  ans: 4
+  tol: 0.1
+  verify: '(() => { const g = [[2, 1, 1], [1, 1, 0], [0, 1, 1]]; const q = []; let fresh = 0; g.forEach((row, r) => row.forEach((v, c) => { if (v === 2) q.push([r, c, 0]); if (v === 1) fresh++; })); let t = 0; while (q.length) { const [r, c, d] = q.shift(); t = d; for (const [dr, dc] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const a = r + dr, b = c + dc; if (a >= 0 && a < 3 && b >= 0 && b < 3 && g[a][b] === 1) { g[a][b] = 2; fresh--; q.push([a, b, d + 1]); } } } return fresh === 0 ? t : -1; })()'
+  sol: |
+    This is multi-source BFS, with the rotten cells as the starting ring at time 0. Minute 1: (0,1) and (1,0) rot. Minute 2: (0,2) and (1,1) rot. Minute 3: (2,1) rots. Minute 4: (2,2) rots. All 6 fresh fruits are gone after 4 minutes. If some fresh fruit could not be reached, the answer would be impossible (for example, -1).
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    A teammate says "Dijkstra's algorithm works for any weights, because it always picks the cheapest node". Give a tiny graph with a negative edge where treating each popped node as final gives the wrong answer, and say what to use instead.
+  sol: |
+    Let there be three nodes S, B, C with directed edges S to B of cost 4, S to C of cost 5, and C to B of cost -3. The true cheapest cost from S to B is 5 + (-3) = 2. Dijkstra pops S, sets B = 4 and C = 5, pops B (cost 4, the cheapest) and declares it final, then pops C and sees the improved route to B, which it is too late to use if popped nodes are treated as final. It reports 4 instead of 2.
+
+    The promise "the first time a node is taken out its cost is final" relies on every later path being at least as long. A negative edge can make a later path shorter.
+
+    Use Bellman-Ford instead: relax every edge V - 1 times, O(V x E). One more pass that still improves something proves a negative cycle exists, in which case no cheapest route exists at all. Some versions of Dijkstra that re-push improved nodes can recover the right answer on this small example, but they lose the efficiency guarantee, so do not rely on them. [Inference: standard interview expectation.]
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |
+    In a 3 by 3 grid, the centre cell is a wall and every other cell is open:
+    ...
+    .#.
+    ...
+    You move up, down, left or right. How many different shortest routes are there from the top-left cell to the bottom-right cell?
+  ask: Routes
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: '(() => { const g = ["...", ".#.", "..."]; const d = { "0,0": 0 }, w = { "0,0": 1 }; const q = [[0, 0]]; while (q.length) { const [y, x] = q.shift(); for (const [dy, dx] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const a = y + dy, b = x + dx; if (a < 0 || a > 2 || b < 0 || b > 2 || g[a][b] === "#") continue; const k = a + "," + b, u = y + "," + x; if (!(k in d)) { d[k] = d[u] + 1; w[k] = w[u]; q.push([a, b]); } else if (d[k] === d[u] + 1) w[k] += w[u]; } } return w["2,2"]; })()'
+  sol: |
+    Extend BFS to count routes: store, for each cell, its distance and the number of shortest routes reaching it. When a neighbour is found at the next distance, add the current cell's count to its count. The shortest length is 4 moves. Without the wall there would be 6 such routes (choose which 2 of the 4 moves go right). The wall at the centre removes those through the centre, leaving the two routes round the border: along the top row then down the right column, or down the left column then along the bottom row. The answer is 2.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    Hardest stretch. You are given a list of words that is sorted according to an unknown alphabet (the letters are the usual ones, but their order is not a to z). Describe how to recover a valid order of the letters, which situations make it impossible, and the cost.
+  sol: |
+    Each pair of neighbouring words gives at most one fact. Scan the two words from the left for the first position where their letters differ; if the letter in the first word is x and in the second is y, then x must come before y. Add a directed edge from x to y. Only that first difference counts, because the later letters were not used to decide the order of the words.
+
+    Then run a topological sort on the letter graph: the order it produces is a valid alphabet. Letters that never appear in a fact can go anywhere, so the answer is not unique.
+
+    Impossible cases: (1) the edges contain a cycle (x before y and y before x), which the sort detects because fewer letters come out than were put in; (2) a longer word comes before its own prefix (for example "abc" before "ab"), which no alphabet can explain, so it must be checked while scanning pairs.
+
+    With W words of total length L and an alphabet of A letters, building edges costs O(L) and the sort O(A + number of edges), at most O(L + A) overall.
+  check: none

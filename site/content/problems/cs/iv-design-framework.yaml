@@ -1,0 +1,114 @@
+# A framework for any design question. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: An interviewer says "Design a food-delivery app" and nothing else. What should you do first?
+  opts: ["Draw the database schema", "Ask clarifying questions about features, scale and targets", "Pick a message queue"]
+  ans: 1
+  sol: The prompt is vague on purpose. Clarifying features (ordering, tracking, payments?), scale (how many orders a day?) and targets (how fast, how reliable?) turns it into a specification that every later choice depends on.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these is a non-functional requirement?
+  opts: ["Users can track their order on a map", "99.9% of order requests complete within 300 ms", "Restaurants can edit their menu"]
+  ans: 1
+  sol: Non-functional requirements say how well the system must perform (speed, availability, scale, consistency, cost). The other two say what the system does, which makes them functional.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: In a 45-minute round you plan 5 minutes to clarify, 5 to estimate, 4 for the API, 5 for the data model, 10 for the high-level diagram and 5 for bottlenecks and trade-offs. How many minutes remain for deep dives?
+  ask: Minutes
+  unit: min
+  ans: 11
+  tol: 0.01
+  verify: 45 - (5 + 5 + 4 + 5 + 10 + 5)
+  sol: The planned steps add up to 5 + 5 + 4 + 5 + 10 + 5 = 34 minutes. That leaves 45 - 34 = 11 minutes for deep dives, the largest single block.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A service gets 5 million new items a day, and each item is read 20 times a day on average. How many reads per second on average? (Use 86,400 seconds in a day.)
+  ask: Average reads per second
+  unit: per s
+  ans: 1157
+  tol: 5
+  verify: 5e6 * 20 / 86400
+  sol: Reads a day are 5,000,000 x 20 = 100,000,000. Dividing by 86,400 seconds gives about 1,157 reads a second on average. Peak traffic would be a few times higher.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: The prompt is "Design a chat application". List six clarifying questions and say what design decision each one affects.
+  sol: |
+    1. One-to-one only, or groups? Group chat needs a fan-out of each message to many recipients.
+    2. How many users and messages per day? This sets the estimates and whether one database is enough.
+    3. Must messages arrive in real time? Real time suggests a persistent connection (WebSocket) rather than polling.
+    4. Is history stored forever, and searchable? This drives storage size and the need for a search index.
+    5. Must the order of messages always be exact, and may a message ever be lost or duplicated? This sets consistency and delivery guarantees.
+    6. Do we need delivery and read receipts, media, or offline delivery to phones? Each adds components (object storage, push notifications, a per-user inbox).
+    Good answers also state what is out of scope, such as end-to-end encryption or voice calls, unless the interviewer wants them.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Design the API and data model for a "like" button on posts (like and unlike, and show the number of likes). Then name one trade-off in how the count is kept.
+  sol: |
+    API: `PUT /posts/{id}/like` and `DELETE /posts/{id}/like` (idempotent, so repeating the call does nothing new), and `GET /posts/{id}` returning the post with its like count.
+
+    Data model: a likes table with (post_id, user_id) as the primary key, so a user cannot like twice and "did I like this?" is one lookup; and a like_count column on the post.
+
+    Trade-off: keeping like_count updated on every like makes reads fast, but a very popular post becomes a hot row that every like must update, limiting write speed. Alternatives are counting rows in the likes table on read (exact but slow for popular posts) or batching increments through a queue or cache and applying them every few seconds (fast, but the count is briefly stale). A like count rarely needs to be exact at every instant, so eventual consistency is an acceptable choice. [Inference: common practice, not a rule.]
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: Your design serves a snippet-sharing site with about 12 writes and 120 reads per second, using one database. A teammate proposes sharding the database across 16 machines "to be ready for growth". Respond as you would in a design round.
+  sol: |
+    Tie the decision to the numbers. 120 reads and 12 writes a second are far below what one ordinary database server handles; sharding would add cross-shard complexity, operational cost and more things to fail, with no present benefit.
+
+    Offer what is cheap and useful instead: a read replica or standby for availability, and a cache for popular snippets. Then state the trigger: if write rate or data size grows past what one machine handles (for example sustained writes in the thousands per second, or data approaching the disk size), we would partition by the snippet id, and the id scheme should be chosen now so that this stays possible. That shows foresight without paying for it today.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    Write two trade-off statements in the form "X gives us A, costs us B, accepted because C": one for adding a cache in front of a read-heavy database, one for choosing eventual over strong consistency for like counts.
+  sol: |
+    Cache: "A cache gives us fast reads and a much lighter load on the database, costs us stale data after updates and the work of invalidating entries, and we accept it because reads outnumber writes ten to one and a few seconds of staleness is fine for this content."
+
+    Consistency: "Eventual consistency for like counts gives us fast, always-available writes and avoids a hot row, costs us a count that may be a few seconds behind or differ slightly between users, and we accept it because nobody makes a decision that depends on the exact instantaneous count."
+
+    A weak answer names only the gain. The cost and the requirement that justifies it are what the interviewer is listening for.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: Halfway through, the interviewer says "traffic will be 1000 times larger". Describe how you respond, step by step.
+  sol: |
+    Do not defend the old design or add boxes at random. First re-estimate: multiply the requests per second, storage and bandwidth by 1000 and write the new numbers. Then find the first component to break at that load. For the 12 writes and 120 reads a second example that becomes 12,000 writes and 120,000 reads: one database cannot take the writes, and the reads need a cache and replicas.
+
+    Fix the first break only: partition the data by id across several machines for writes, put a cache in front for reads, add replicas for read capacity. For each, say what it costs (cross-shard queries, stale reads, replica lag). Then check the next bottleneck (the load balancer, network bandwidth, object storage) and say what you would watch to know that the growth is happening. Finish by saying what you would do in what order, since 1000 times does not arrive overnight.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Mid-interview a new requirement arrives. The snippet site must serve users in the EU and in India from regional data centres, and legal rules require that a user's data stays in their own region. Re-plan the design at SDE-3 level.
+  sol: |
+    Clarify first: does data residency apply to every snippet or only to accounts? May a link made in one region be read in the other, and where does the data then live? What happens if a region fails: may it fail over to another region, which could break the residency rule?
+
+    Design: run an independent stack (app servers, database, object storage) per region. Route users to their region by DNS or by the region encoded in the snippet id, so the id tells any server where the data lives. A global front layer reads the id and forwards cross-region reads to the home region (or redirects), accepting extra latency for those reads rather than copying the data. Replicate within a region across availability zones for durability, but not across the legal boundary.
+
+    Trade-offs and operations: cross-region reads are slower and the home region becoming unavailable makes its snippets unavailable, which must be stated and agreed because failover would break the rule. Features that need global views (analytics, abuse detection, search) must run per region or work on anonymised data. Cost doubles for the second stack, and deployment, monitoring and migration of existing data become a rollout plan: ship region by region, migrate existing data with a copy-verify-switch process, and keep a runbook for regional failure. [Inference: this is one reasonable design; legal details depend on the actual laws and are not covered here.]
+  check: none
