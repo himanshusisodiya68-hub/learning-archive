@@ -846,3 +846,13 @@ details.inside .needs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom:
 .sym-g { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 14px; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; }
 .sym { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 8px; align-items: baseline; font-size: 13.5px; line-height: 1.45; }
 .sym-s { font-size: 17px; text-align: center; color: var(--c); }
+
+details.tz > summary { color: var(--ink); font-size: 15px; }
+details.tz > summary span { font-weight: 400; font-size: 12.5px; color: var(--muted); margin-left: 10px; }
+.tz-how { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.tz-box { position: relative; }
+.tz-tip { position: absolute; z-index: 3; pointer-events: none; max-width: 260px; background: var(--ink); color: var(--surface); font-size: 12px; line-height: 1.4; padding: 6px 9px; border-radius: 7px; box-shadow: 0 6px 16px -8px #000; }
+.tz-twig { stroke-width: 4; cursor: help; }
+.tz svg:has(.tz-p:hover) .tz-p:not(:hover) { opacity: .2; }
+.tz-p { transition: opacity .15s; }
+.tz-p:hover .tz-limb, .tz-p:hover .tz-twig { stroke: color-mix(in srgb, var(--c) 60%, var(--muted)); }

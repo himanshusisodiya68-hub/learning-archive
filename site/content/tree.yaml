@@ -1763,3 +1763,66 @@ subjects:
       - {id: neural-networks, name: 'Neural networks', from: ADV}
       - {id: transformers-and-llms, name: 'Transformers and large language models', from: ADV}
       - {id: using-ai-well, name: 'Using AI tools well (prompts, agents, limits)', from: BEG}
+  - id: competitive-programming
+    name: Competitive programming
+    tag: 'Contest problems, solved by recognising the pattern.'
+    what: 'Experts are fast because they have seen the problem before, in disguise. This pillar catalogues the patterns behind most contest problems; each lesson is one idea, with the family of problems it solves and the clues that reveal it.'
+    split: 'Read the constraints, then the pattern families from simplest to deepest, then contest craft.'
+    branches:
+    - id: cp-foundations
+      name: Constraints and complexity
+      tag: 'What the input size tells you about the solution.'
+      leaves:
+      - {id: cp-reading-constraints, name: 'Reading constraints: n tells you the algorithm', from: INT}
+      - {id: cp-prefix-sums, name: 'Prefix sums and difference arrays', from: INT}
+      - {id: cp-binary-search-on-answer, name: 'Binary search on the answer', from: ADV}
+    - id: cp-patterns
+      name: Pattern families
+      tag: 'Greedy, DP, graphs, maths, strings and range queries.'
+      leaves:
+      - {id: cp-greedy-exchange, name: 'Greedy and exchange arguments', from: ADV}
+      - {id: cp-dp-families, name: 'DP families: knapsack, LIS, intervals, bitmask, digits', from: ADV}
+      - {id: cp-graph-patterns, name: 'Graph patterns: BFS grids, Dijkstra, union-find, topological order', from: ADV}
+      - {id: cp-number-theory, name: 'Modular arithmetic, sieves and combinatorics', from: ADV}
+      - {id: cp-strings, name: 'String hashing, KMP and Z', from: SDE}
+      - {id: cp-range-queries, name: 'Segment trees and Fenwick trees', from: SDE}
+    - id: cp-craft
+      name: Contest craft
+      tag: 'Testing, debugging and strategy under time pressure.'
+      leaves:
+      - {id: cp-stress-testing, name: 'Stress testing and edge cases', from: INT}
+      - {id: cp-contest-strategy, name: 'Contest strategy and rating growth', from: ADV}
+  - id: interviews
+    name: Interviews
+    tag: 'Cracking coding, design and behavioural rounds.'
+    what: 'Interview problems repeat in families. A candidate who has seen each family once recognises a new problem as an old friend. This pillar catalogues the families, the clues that reveal them and a template for each, then the design and behavioural rounds at each level, SDE-1 to SDE-3.'
+    split: 'Coding patterns first, then system design rounds, then the behavioural and career side.'
+    branches:
+    - id: coding-patterns
+      name: Coding interview patterns
+      tag: 'The families most coding questions belong to.'
+      leaves:
+      - {id: iv-arrays-and-hashing, name: 'Arrays and hashing', from: BEG}
+      - {id: iv-two-pointers-window, name: 'Two pointers and sliding window', from: INT}
+      - {id: iv-linked-list-tricks, name: 'Linked list tricks', from: INT}
+      - {id: iv-trees-recursion, name: 'Trees and recursion', from: INT}
+      - {id: iv-graphs, name: 'Graphs and grids', from: INT}
+      - {id: iv-heaps-top-k, name: 'Heaps and top-k', from: INT}
+      - {id: iv-backtracking, name: 'Backtracking', from: ADV}
+      - {id: iv-intervals, name: 'Intervals', from: INT}
+      - {id: iv-dynamic-programming, name: 'Dynamic programming patterns', from: ADV}
+      - {id: iv-design-data-structure, name: 'Design a data structure (LRU cache and friends)', from: ADV}
+    - id: design-rounds
+      name: System design rounds
+      tag: 'A framework, estimation and classic designs.'
+      leaves:
+      - {id: iv-design-framework, name: 'A framework for any design question', from: ADV}
+      - {id: iv-back-of-envelope, name: 'Back-of-the-envelope estimation', from: ADV}
+      - {id: iv-classic-designs, name: 'Classic designs: feed, chat, ride-hailing, storage', from: SDE}
+    - id: behavioural
+      name: Behavioural and career
+      tag: 'Stories, levels and offers.'
+      leaves:
+      - {id: iv-star-stories, name: 'Telling your stories (STAR)', from: BEG}
+      - {id: iv-levels, name: 'What SDE-1, SDE-2 and SDE-3 are judged on', from: INT}
+      - {id: iv-offers, name: 'Offers and negotiation', from: INT}

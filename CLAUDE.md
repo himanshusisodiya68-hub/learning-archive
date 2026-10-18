@@ -226,6 +226,8 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 - Still to write: lessons for every other leaf of the three branches (theory-writer), in the new Feynman style with `life`, `models`, `links`, `next`.
 - NCERT sources: Class 6 Ch 5 (fecu105), Class 7 Ch 8 (gecu108), Class 8 Ch 5 (hecu105), Class 9 new book Ch 4, 6, 7 (iesc104, iesc106, iesc107), Class 11 Ch 2–5 (keph102–105, answers keph1an).
 
+**Owner's direction (Oct 2026):** build Physics and Maths fully first (see `docs/content-principles.md` §0); CS gains Competitive programming and Interviews pillars as pattern catalogues.
+
 **Next, in order:**
 1. Finish Mechanics 1–3, then the owner chooses: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).

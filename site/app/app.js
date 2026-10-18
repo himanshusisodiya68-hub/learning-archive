@@ -379,26 +379,30 @@
   function treeViz(s) {
     const W = 800, O = [400, 410], P = s.pillars, nb = P.reduce((a, p) => a + p.branches.length, 0), span = 168 * Math.PI / 180;
     const pt = (r, a) => [O[0] + r * Math.sin(a), O[1] - r * Math.cos(a)], f = n => n.toFixed(1);
-    let k = 0, g = '', leaves = '', labels = '', litB = 0;
-    P.forEach((p, pi) => {
+    const st = m => m >= .75 ? 'mastered' : m > 0 ? 'started' : 'not started yet';
+    let k = 0, groups = '', litB = 0, litL = 0, total = 0;
+    P.forEach(p => {
       const a0 = -span / 2 + span * k / nb, a1 = -span / 2 + span * (k + p.branches.length) / nb, ap = (a0 + a1) / 2, F = pt(120, ap);
-      const pLit = p.branches.every(b => b.leaves.every(l => mastery(`${s.id}/${l.id}`) >= .75));
-      g += `<path class="tz-limb ${pLit ? 'lit' : ''}" d="M${O[0]} ${O[1] - 60} Q${f(pt(70, ap * .6)[0])} ${f(pt(70, ap * .6)[1])} ${f(F[0])} ${f(F[1])}"/>`;
-      const L = pt(132, ap); labels += `<text class="tz-pl" x="${f(L[0])}" y="${f(L[1] - 6)}" text-anchor="middle" data-goto-pillar="${p.id}">${escHTML(SHORT[p.name] || p.name)}</text>`;
+      const pl = leavesOf(p);
+      let g = `<path class="tz-limb" d="M${O[0]} ${O[1] - 60} Q${f(pt(70, ap * .6)[0])} ${f(pt(70, ap * .6)[1])} ${f(F[0])} ${f(F[1])}"/>`, lv = '';
       p.branches.forEach(b => {
         const ab = -span / 2 + span * (k + .5) / nb, T = pt(390, ab), M = pt(255, ab); k++;
         const ms = b.leaves.map(l => mastery(`${s.id}/${l.id}`)), lit = ms.length && ms.every(m => m >= .75); if (lit) litB++;
-        g += `<path class="tz-twig ${lit ? 'lit' : ''}" d="M${f(F[0])} ${f(F[1])} Q${f(M[0])} ${f(M[1])} ${f(T[0])} ${f(T[1])}"><title>${escHTML(p.name)} › ${escHTML(b.name)}</title></path>`;
+        g += `<path class="tz-twig ${lit ? 'lit' : ''}" data-tip="${escHTML(p.name)} › ${escHTML(b.name)}: ${countLive(b.leaves)} of ${b.leaves.length} lessons written${lit ? ', all mastered' : ''}" d="M${f(F[0])} ${f(F[1])} Q${f(M[0])} ${f(M[1])} ${f(T[0])} ${f(T[1])}"/>`;
         b.leaves.forEach((l, i) => {
-          const t = .3 + .7 * (i + 1) / b.leaves.length, r = 120 + (390 - 120) * t, side = i % 2 ? 1 : -1, c = pt(r, ab);
-          const x = c[0] + side * 7 * Math.cos(ab), y = c[1] + side * 7 * Math.sin(ab), m = mastery(`${s.id}/${l.id}`);
-          leaves += `<circle class="tz-leaf ${l.live ? 'live' : ''} ${m >= .75 ? 'lit' : m > 0 ? 'warm' : ''}" cx="${f(x)}" cy="${f(y)}" r="${l.live ? 5 : 3.5}" ${l.live ? `data-open-leaf="${s.id}/${l.id}"` : ''}><title>${escHTML(l.name)}${l.live ? '' : ' (not written yet)'}</title></circle>`;
+          total++; const t = .3 + .7 * (i + 1) / b.leaves.length, r = 120 + 270 * t, side = i % 2 ? 1 : -1, c = pt(r, ab), m = mastery(`${s.id}/${l.id}`); if (m >= .75) litL++;
+          const x = c[0] + side * 7 * Math.cos(ab), y = c[1] + side * 7 * Math.sin(ab);
+          lv += `<circle class="tz-leaf ${l.live ? 'live' : ''} ${m >= .75 ? 'lit' : m > 0 ? 'warm' : ''}" cx="${f(x)}" cy="${f(y)}" r="${l.live ? 5.5 : 3.5}" ${l.live ? `data-open-leaf="${s.id}/${l.id}"` : ''} data-tip="${i + 1}. ${escHTML(l.name)} (${escHTML(b.name)}): ${l.live ? st(m) + ' · click to open' : 'not written yet'}"/>`;
         });
       });
+      const L = pt(132, ap);
+      groups += `<g class="tz-p">${g}${lv}<text class="tz-pl" x="${f(L[0])}" y="${f(L[1] - 6)}" text-anchor="middle" data-goto-pillar="${p.id}" data-tip="${escHTML(p.name)}: ${countLive(pl)} of ${pl.length} lessons written · click for its learning path">${escHTML(SHORT[p.name] || p.name)}</text></g>`;
     });
-    return `<div class="tz s-${s.id}"><div class="tz-h"><b>Your knowledge tree</b><span>${litB} of ${nb} branches lit · a branch lights up when every lesson on it is mastered</span></div>
-      <svg viewBox="0 0 ${W} 420" role="img" aria-label="Knowledge tree of ${escHTML(s.name)}"><path class="tz-trunk" d="M${O[0] - 10} ${O[1] + 10} Q${O[0] - 4} ${O[1] - 30} ${O[0]} ${O[1] - 60} Q${O[0] + 4} ${O[1] - 30} ${O[0] + 10} ${O[1] + 10}Z"/>${g}${leaves}${labels}</svg>
-      <div class="tz-key"><span><i class="k0"></i>not written</span><span><i class="k1"></i>lesson ready</span><span><i class="k2"></i>started</span><span><i class="k3"></i>mastered</span></div></div>`;
+    let open = false; try { open = localStorage.getItem('la-tree-open') === '1'; } catch (e) {}
+    return `<details class="tz s-${s.id}" ${open ? 'open' : ''}><summary>Your knowledge tree<span>${litL} of ${total} lessons mastered · ${litB} of ${nb} branches lit</span></summary>
+      <p class="tz-how">Each limb is a pillar, each twig a branch, each dot one lesson, numbered in reading order from the trunk outwards. Hover anything to see what it is; click a dot to open the lesson. Master every lesson on a twig and the twig lights up.</p>
+      <div class="tz-box"><svg viewBox="0 0 ${W} 420" role="img" aria-label="Knowledge tree of ${escHTML(s.name)}"><path class="tz-trunk" d="M${O[0] - 10} ${O[1] + 10} Q${O[0] - 4} ${O[1] - 30} ${O[0]} ${O[1] - 60} Q${O[0] + 4} ${O[1] - 30} ${O[0] + 10} ${O[1] + 10}Z"/>${groups}</svg><div class="tz-tip" hidden></div></div>
+      <div class="tz-key"><span><i class="k0"></i>not written</span><span><i class="k1"></i>ready to read</span><span><i class="k2"></i>started</span><span><i class="k3"></i>mastered</span></div></details>`;
   }
   function pillarPage(s, PL) {
     const ls = leavesOf(PL), pct = Math.round(avgMastery(s.id, ls) * 100);
@@ -430,6 +434,11 @@
     const el = $(t.dataset.toBranch); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   $('tree-view').addEventListener('keydown', e => { const n = e.target.closest('.node'); if (n && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go(`learn~${S.subj}~${n.dataset.gotoPillar}`); } });
+  $('tree-view').addEventListener('mousemove', e => { const box = e.target.closest('.tz-box'); if (!box) return; const tip = box.querySelector('.tz-tip'), t = e.target.closest('[data-tip]');
+    if (!t) { tip.hidden = true; return; } const r = box.getBoundingClientRect(); tip.textContent = t.dataset.tip; tip.hidden = false;
+    tip.style.left = Math.min(e.clientX - r.left + 14, r.width - 270) + 'px'; tip.style.top = (e.clientY - r.top + 14) + 'px'; });
+  $('tree-view').addEventListener('mouseleave', () => document.querySelectorAll('.tz-tip').forEach(t => t.hidden = true), true);
+  $('tree-view').addEventListener('toggle', e => { if (e.target.matches('details.tz')) try { localStorage.setItem('la-tree-open', e.target.open ? '1' : '0'); } catch (x) {} }, true);
   $('crumbs').addEventListener('click', e => { const b = e.target.closest('[data-goto-subj]'); if (b) go('learn~' + b.dataset.gotoSubj); });
   $('mode-seg').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { S.mode = b.dataset.mode; if (S.mode === 'class') go('learn'); RENDER.learn(); } });
   $('subj-seg').addEventListener('click', e => { const b = e.target.closest('[data-subj]'); if (b) go('learn~' + b.dataset.subj); });

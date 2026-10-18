@@ -2,6 +2,11 @@
 
 Owner's brief, October 2026. Read this before writing or editing any lesson. When a rule here conflicts with older lessons, this file wins.
 
+## 0. Current direction (owner, Oct 2026)
+- **Build Physics and Maths first, in full glorious form**, then the rest. Rewriting existing lessons is allowed whenever it makes them better.
+- **Physics sources**: the Feynman Lectures website (style, order of ideas) and Resnick & Halliday (coverage, worked examples), plus these principles. **Do not go too complex**: the aim is to understand and enjoy JEE-level problems, see the world around us simply and clearly, and have conversation starters for a party of smart people.
+- **CS**: two extra pillars, Competitive programming and Interviews, built as a **pattern catalogue**: experts differ from beginners mainly in how many problem families they have already seen. Each lesson is one underlying idea: the clues that reveal it, a template, and the catalogue of well-known problems it solves, so a new problem is recognised as an old one.
+
 ## 1. Who we write for, and why
 - **Life first, academic second.** The goal is understanding the world and daily life clearly; NCERT, JEE and Olympiad coverage stay, but they sit on top of real understanding, never instead of it.
 - **The reader is a curious novice** who will drop out the moment a sentence assumes something unexplained. If a complete beginner cannot follow the core, the lesson has failed.
