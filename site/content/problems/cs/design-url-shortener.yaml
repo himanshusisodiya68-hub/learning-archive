@@ -1,0 +1,101 @@
+# Designing a URL shortener. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A short code uses 7 characters, each one of 62 symbols (a-z, A-Z, 0-9). How many different codes exist, in trillions?
+  ask: Codes
+  unit: trillion
+  ans: 3.52
+  tol: 0.02
+  verify: Math.pow(62,7)/1e12
+  sol: Each of the 7 positions has 62 choices, so there are $62^7 \approx 3.52\times10^{12}$ codes, about 3.5 trillion.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which redirect status lets a browser remember the target and skip your server on later clicks?
+  opts: ["301 Moved Permanently", "302 Found", "404 Not Found"]
+  ans: 0
+  sol: A 301 says the move is permanent, so browsers and caches may store it. A 302 is temporary and is asked for again each time. A 404 means the code does not exist.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A service creates 100 million links a month (a month is 30 days, a day is 86,400 seconds). How many links is that per second on average? Give the nearest whole number.
+  ask: Writes per second
+  unit: per second
+  ans: 39
+  tol: 0.6
+  verify: 100e6/(30*86400)
+  sol: One month is $30 \times 86{,}400 = 2{,}592{,}000$ seconds. $100{,}000{,}000 / 2{,}592{,}000 \approx 38.6$, about 39 writes a second.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: How many base62 characters (the smallest whole number) are needed to give each of 6 billion links its own code?
+  ask: Characters
+  unit: characters
+  ans: 6
+  tol: 0.1
+  verify: ceil(Math.log(6e9)/Math.log(62))
+  sol: We need $62^k \ge 6\times10^9$. $62^5 \approx 9.2\times10^8$ is too small and $62^6 \approx 5.7\times10^{10}$ is enough, so $k = 6$. In practice 7 characters are used to leave room for random-code collisions and growth.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Each stored link takes 500 bytes (code, long URL, dates, owner) and the service keeps 6 billion links. How many terabytes of raw data is that, before replicas and indexes?
+  ask: Storage
+  unit: TB
+  ans: 3
+  tol: 0.05
+  verify: 6e9*500/1e12
+  sol: |
+    $6\times10^9 \times 500 = 3\times10^{12}$ bytes, which is 3 terabytes. With 3 copies for safety and indexes, plan for roughly 10 TB. [Inference: overhead depends on the database.]
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A random 7-character base62 code is drawn and inserted. When the table holds 6 billion links, what is the chance that one new draw collides, and how should the system handle it?
+  sol: |
+    There are $62^7 \approx 3.52\times10^{12}$ equally likely codes and $6\times10^9$ are taken, so the chance a new draw collides is $6\times10^9 / 3.52\times10^{12} \approx 0.0017$, about 0.17 percent, or 1 in about 590.
+
+    Handle it with a **unique constraint** (primary key) on the code, so the database rejects a duplicate insert. On that error, draw a new code and retry. The expected number of tries is about $1/(1-0.0017) \approx 1.002$, so the cost is negligible. Checking "does it exist?" first and then inserting is not enough, since two servers can pass the check at the same time; only the constraint is safe.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Marketing wants exact click counts per link per hour, while redirects must stay under 50 ms at 40,000 requests a second. Design the analytics path and name what accuracy you give up.
+  sol: |
+    Keep the redirect path free of analytics writes. The app server replies with a 302 immediately and, as a separate step that does not block the reply, puts a click event (link code, timestamp, country, device, a unique event id) onto a message queue or log.
+
+    A stream consumer reads the events, groups them by code and hour, adds them up and writes the totals to an analytics store (a column or time-series database). Dashboards read the totals, not raw events.
+
+    **What you give up**
+    - **Freshness:** totals lag by seconds to minutes.
+    - **Exactness under failure:** if the app server crashes after replying and before enqueueing, the click is lost; if the consumer crashes before acknowledging, the click may be counted twice. De-duplicate with the event id (idempotent consumer) and accept a very small loss rate, or enqueue before replying at the price of a few milliseconds.
+    - Bots, prefetches and repeated clicks need a separate filtering rule to count "real" clicks.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Peak load is 40,000 redirects a second, and a single celebrity link gets 100,000 of them in one second at some moment, concentrating on one cache node. Describe how the system detects and survives this hot key, and what trade-offs you accept.
+  sol: |
+    **Why it happens:** the cache is sharded by code, so every request for one link goes to one node, whose capacity (say 50,000-100,000 simple lookups a second) is exceeded, however many nodes exist.
+
+    **Detect:** each cache node or app server counts requests per key over a short window (a small counting structure keeps this cheap) and flags keys above a threshold, such as 1,000 a second.
+
+    **Survive**
+    - **Local in-process cache** on every app server for flagged keys, with a short TTL (a second or a few). The app tier is large, so the load spreads over all servers and the cache node sees only one request per server per TTL.
+    - **Replicate the key** across several cache nodes (for example key suffixes `code#1..#8` chosen at random) so reads spread.
+    - **Edge caching:** serve from a CDN with a short TTL, if a 301/302 can be cached there.
+
+    **Trade-offs:** a short TTL means a changed or deleted link keeps working for a few seconds longer; replicas need all copies invalidated; edge caching hides some clicks from analytics unless the CDN logs are used too. Protect the database against a herd of misses with request coalescing (one fetch, many waiters).
+  check: none

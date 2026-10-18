@@ -1,0 +1,88 @@
+# The cloud, computers on rent. All problems are original. Prices are illustrative round numbers.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which statement about "serverless" is true?
+  opts: ["There are no servers at all", "Servers exist but the provider runs them and you pay per call", "It is the same as buying your own servers"]
+  ans: 1
+  sol: Serverless means you do not manage or even see the servers. Your function runs on the provider's machines when called, and billing follows calls and run time.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A rented machine costs 0.10 dollars per hour. What is the cost of leaving it on for a 30-day month?
+  ask: Cost
+  unit: dollars
+  ans: 72
+  tol: 0.5
+  verify: 0.10*24*30
+  sol: There are $24 \times 30 = 720$ hours in 30 days, so the cost is $0.10 \times 720 = 72$ dollars.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: A team stores 5 million customer photos that are written once and read often, and never edited. Which storage fits best?
+  opts: ["Block storage attached to one server", "Object storage", "A shared file system"]
+  ans: 1
+  sol: Object storage is cheap, very durable and scales without limit, and whole-file reads over HTTP suit photos. Block storage ties the data to one machine, and a shared file system costs more for no benefit here.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A test machine costing 0.10 dollars per hour is needed 8 hours a day on weekdays only, 22 days a month, and is switched off otherwise. How many dollars is the monthly cost?
+  ask: Cost
+  unit: dollars
+  ans: 17.6
+  tol: 0.05
+  verify: 0.10*8*22
+  sol: Hours used are $8 \times 22 = 176$, so the cost is $0.10 \times 176 = 17.6$ dollars. Leaving it on all month (730 hours) would be 73 dollars.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Each copy of a service is available 99% of the time. You run three copies in three independent zones behind a load balancer. What availability does the system have, as a percentage?
+  ask: Availability
+  unit: "%"
+  ans: 99.9999
+  tol: 0.0001
+  verify: (1-Math.pow(0.01,3))*100
+  sol: All three are down together with probability $0.01^3 = 10^{-6}$, so $A = 1 - 10^{-6} = 0.999999$, i.e. 99.9999%. This assumes truly independent failures; a shared database or a shared bad release would make the real figure much lower.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: An interviewer asks, "Your web service runs in one zone of one region. What would you change to survive a zone outage, and what new problems appear?" Give a short answer.
+  sol: |
+    Run at least two (better three) copies of the stateless web tier in different zones behind a load balancer that health-checks each copy and stops sending traffic to a failed one. Put the data in a database that replicates across zones (a primary with a synchronous or near-synchronous standby, or a managed multi-zone setup), and keep files in object storage, which spreads copies over zones already.
+
+    New problems: replicas must be kept in step, so writes may be slower or a failover may lose the last few writes depending on how replication is configured; cross-zone traffic can add small delay and cost; capacity must be enough that the remaining zones carry the full load when one fails (with three zones, run each below about two-thirds load); and you must test the failover, because an untested failover is a guess.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A serverless function costs 0.20 dollars per million calls plus 0.00001667 dollars per second of run time, and each call runs 0.5 seconds. A rented machine costs 72 dollars a month and can do the same work for up to 40 calls per second. At how many million calls per month does the function cost as much as the machine?
+  ask: Break-even calls
+  unit: million calls
+  ans: 8.4
+  tol: 0.1
+  verify: 72/(0.20+0.5*0.00001667*1e6)
+  sol: |
+    One million calls cost $0.20 + 0.5 \times 0.00001667 \times 10^6 = 0.20 + 8.335 = 8.535$ dollars. Setting $8.535\,N = 72$ gives $N \approx 8.4$ million calls per month, which is only about 3 calls per second averaged over the month ($8.4\times10^6 / 2.6\times10^6\ \text{s}$). Above that steady rate the machine is cheaper, provided you can keep it busy; below it, or for spiky traffic, the function wins.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Your system keeps its database in one region but runs web servers in three zones, each zone's servers 99.9% available. Your manager claims the system is "six nines" because 1 - (0.001)^3 is 0.999999. Explain what is wrong and give a better estimate approach.
+  sol: |
+    The formula $1-(1-a)^k$ only covers the web tier, and only if the zones fail independently. The database is a single point of failure: the whole system is up only if the web tier is up **and** the database is up, so availability is roughly the product, $A_{\text{web}} \times A_{\text{db}}$. If the database is 99.9% available, the total cannot exceed 99.9%, about 8.8 hours of downtime a year, however many web servers you add.
+
+    A better approach: draw the request path, list every component it must pass through, and multiply availabilities of components in series (all needed) while using $1-(1-a)^k$ only for parallel, independent copies. Then ask what is shared (a deployment pipeline, a configuration service, DNS, a certificate, one region) because shared causes make failures correlated, and measure real availability from outage history rather than trusting the formula.
+  check: none

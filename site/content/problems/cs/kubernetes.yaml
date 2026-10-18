@@ -1,0 +1,85 @@
+# Orchestration and Kubernetes. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: In Kubernetes, what is the "desired state"?
+  opts: ["The list of commands an engineer typed last", "What you declared you want, such as 3 replicas, which controllers keep trying to make true", "The current CPU use of each server"]
+  ans: 1
+  sol: 'You declare the outcome, not the steps. Controllers compare it with the actual state and act on the difference. The commands typed and the current load are not the desired state.'
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A Deployment asks for 6 replicas, but only 4 pods are running. How many pods does the controller start?
+  ask: Pods started
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: 6 - 4
+  sol: 'The gap between desired and actual is 6 - 4 = 2, so the controller starts 2 pods.'
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A horizontal autoscaler has a CPU target of 50%. Currently 5 pods run at an average of 80% CPU. Using desired = ceil(current pods x current metric / target metric), how many pods will it ask for?
+  ask: Pods
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: ceil(5 * 80 / 50)
+  sol: '$\lceil 5 \times 80/50 \rceil = \lceil 8 \rceil = 8$ pods. The load is 1.6 times the target, so the count goes up by 1.6 times.'
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Why can clients not simply connect to a pod's own IP address?
+  opts: ["Pods have no IP address", "Pods are temporary and their addresses change when they are replaced, so a Service provides a stable address", "Only the scheduler is allowed to contact pods"]
+  ans: 1
+  sol: 'A replaced pod is a new pod with a new address. A Service gives clients one stable name and sends traffic to whichever pods currently match its label selector.'
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A Deployment has 10 replicas with maxSurge 25% and maxUnavailable 25%. Surge rounds up and unavailable rounds down. What is the largest number of pods that may exist at once during a rolling update?
+  ask: Max pods
+  unit: ""
+  ans: 13
+  tol: 0.1
+  verify: 10 + ceil(10 * 0.25)
+  sol: 'Surge is 25% of 10 = 2.5, rounded up to 3, so at most 10 + 3 = 13 pods exist. Unavailable is 2.5, rounded down to 2, so at least 8 pods stay ready throughout.'
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A node dies at night and takes 4 of your 12 pods with it. Walk through what happens, naming the components, and say what a person has to do.
+  sol: |
+    The node stops reporting, and after a timeout the control plane marks it not ready. The Deployment's controller (through its ReplicaSet) counts 8 running pods against a desired 12. It creates 4 new pods. The scheduler assigns each to a healthy node with enough free CPU and memory, and the kubelets there pull the image and start the containers. When their readiness probes pass, the Service adds them to its list of endpoints. Meanwhile the Service had already stopped sending traffic to the dead pods.
+
+    A person does not have to do anything for the service to recover. They should still check that the remaining nodes have the capacity for 12 pods, find out why the node died, and replace it. Pods with state in local storage on that node would lose it, which is why state belongs in volumes or a database.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A new version of your app crashes 10 seconds after start. You apply it as a rolling update on a Deployment with a readiness probe. What do users see, and what do you do?
+  sol: |
+    The new pods start, but each fails its readiness check (or crashes) before it is ready, so the Service never sends them traffic. The rolling update will not retire old pods beyond the maxUnavailable limit, so the old, working version keeps serving. The rollout stalls and the pods may show as CrashLoopBackOff. Users see little or no impact, which is the main point of readiness probes and rolling updates.
+
+    You inspect the failure with `kubectl rollout status` and `kubectl logs` on the new pods, then either fix the bug, or run `kubectl rollout undo deployment/web` to go back to the last good version. Without a readiness probe, Kubernetes would treat a starting container as ready and the broken version could take traffic.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A startup with three engineers and one web app (2 services, one database) is told by a friend to "move everything to Kubernetes". Argue for or against, with the costs and the conditions that would change your answer.
+  sol: |
+    A sensible answer is **against, for now**. Costs of Kubernetes: time to learn it, a cluster to pay for and keep upgraded (even a managed one has a base fee), YAML and tooling to maintain, and a new class of failures (networking, resource limits, rollouts). A team of three has no one whose job it is. Two services and a database on one or two servers (or a platform that runs containers for you) deliver most of the benefit, namely repeatable deployment through containers, with far less overhead. Use a managed database rather than running one in the cluster.
+
+    What would change the answer: many more services or teams, sharp traffic swings that need autoscaling, a requirement for zero-downtime rolling releases and fast recovery that simple setups cannot meet, or a need to run the same platform across several clouds or data centres. Then the orchestrator saves more effort than it costs. The decision is a judgement, not a formula. [Inference]
+  check: none
