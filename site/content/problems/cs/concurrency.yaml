@@ -1,0 +1,100 @@
+# Concurrency and locks. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Why can two threads running `count += 1` lose an update?
+  opts: ["The operation is really read, add, write, and the threads can interleave between those steps", "Python cannot add numbers in threads", "Computers can only count to 100,000"]
+  ans: 0
+  sol: Adding 1 to a variable takes three steps. If both threads read the same old value before either writes, both write the same new value, so one increment disappears. This is a race condition.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Every request must hold a lock for 2 ms while it updates shared data. What is the greatest number of requests per second the system can complete, however many cores it has?
+  ask: Max throughput
+  unit: requests/s
+  ans: 500
+  tol: 0.1
+  verify: 1000/2
+  sol: The lock lets one request through at a time. Each takes 2 ms, so in 1000 ms at most $1000/2 = 500$ requests can pass. More cores do not help, because they all queue at the same lock.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: Thread 1 locks A and then B. Thread 2 locks B and then A. Which change reliably prevents a deadlock?
+  opts: ["Make both threads lock A first, then B", "Run each thread twice", "Lock B for a shorter time in thread 2 only"]
+  ans: 0
+  sol: With a single global order, a thread that holds A can always get B eventually, since no one holding B ever waits for A. A circular wait cannot form. Shortening a lock's hold time lowers the chance of deadlock but does not remove it.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A job is 20% serial (it must run on one core) and 80% parallel. Using Amdahl's law, what is the speedup on 8 cores?
+  ask: Speedup
+  unit: times
+  ans: 3.33
+  tol: 0.01
+  verify: 1/(0.2+0.8/8)
+  sol: With $p = 0.8$ and $k = 8$, $S = \frac{1}{(1-p)+p/k} = \frac{1}{0.2+0.1} = 3.33$. Even with unlimited cores, the best is $1/0.2 = 5$ times, because the serial part never shrinks.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Write a thread-safe transfer(a, b, amount) for two bank accounts that never loses an update and never deadlocks, even when one thread transfers A to B while another transfers B to A.
+  sol: |
+    Each account has its own lock. To avoid deadlock, always take the two locks in the same order, for example by account id, regardless of which is the source:
+
+    ```python
+    def transfer(a, b, amount):
+        first, second = sorted((a, b), key=lambda x: x.id)
+        with first.lock, second.lock:
+            if a.balance >= amount:
+                a.balance -= amount
+                b.balance += amount
+    ```
+
+    The check of the balance and the two changes are inside one critical section, so no other transfer can slip in between (no check-then-act race). Because both threads lock the lower-id account first, no circle of waiting can form. This assumes a and b are different accounts; transferring an account to itself would need a guard (otherwise it locks the same non-reentrant lock twice).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A script must call 500 slow web APIs and then resize the 500 images it received, in pure Python. Choose threads, async or processes for each stage, and justify.
+  sol: |
+    **Stage 1, the API calls.** This is almost all waiting for the network, so use async (a single event loop with hundreds of concurrent requests) or a thread pool. Both overlap the waits. Async uses less memory per request; threads are simpler if the library is not async-aware. The GIL is released while a thread waits for the network, so threads work.
+
+    **Stage 2, the resizing.** This is CPU-heavy. In standard CPython only one thread runs Python bytecode at a time, so threads or async give no speedup. Use a process pool with about one process per core. (If the resizing library does its work in native code that releases the GIL, threads might work too; measure.)
+
+    **Care.** Do not block the event loop with CPU work; send images between processes in a batch rather than one at a time, since passing data between processes costs time.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A Python 3 programmer says "I use a dict counter shared by threads, and the GIL makes `counts[word] = counts.get(word, 0) + 1` safe." Explain why this is wrong and give two fixes.
+  sol: |
+    The line is a read (`get`), an add, and a write (the assignment): three separate steps, not one. The GIL guarantees that only one thread executes Python bytecode at a time, but the interpreter may switch threads between those steps. Two threads can both read the old count and both write count+1, losing an update. The GIL protects the interpreter's own data structures, not your multi-step logic.
+
+    **Fix 1:** guard the line with a `threading.Lock` (`with lock: ...`), so the read-modify-write is one critical section.
+
+    **Fix 2:** avoid sharing. Give each thread its own dict (or `Counter`), then merge them after the threads finish. This needs no lock during the hot loop. A queue feeding a single counting thread also works.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Hardest stretch. Sixty-four threads on a 64-core machine each add to one shared event counter millions of times per second. Compare (1) one mutex around the counter, (2) one atomic fetch-and-add, (3) one counter slot per thread, summed on demand. Which scales best, and why does (2) still not scale perfectly?
+  sol: |
+    **(1) Mutex.** Every increment takes the lock, so the threads queue. Throughput is capped near $1/t_{\text{lock}}$, and waking sleeping waiters adds further cost. It scales worst.
+
+    **(2) Atomic fetch-and-add.** No waiting queue and no sleeping, so it is much faster than a mutex. But all cores write to the same memory location, which sits in one cache line. The line must be passed from core to core on every increment (**cache-line bouncing**), and each core stalls while it waits for the line. Throughput stops growing and may even fall with more cores. [Inference: general behaviour of cache-coherent hardware; measure on your machine]
+
+    **(3) One slot per thread.** Each thread increments its own slot with no sharing and no contention, so it scales almost linearly. The cost is that reading the total means summing 64 slots, which is slower and gives a value that is only approximately current (fine for statistics, not for a limit that must be exact). Slots should be padded apart so two threads' slots do not share a cache line (**false sharing**).
+
+    **Conclusion.** (3) scales best. The general lesson: contention on shared memory is the real cost, so reduce sharing rather than make the sharing faster. Use (3) for metrics, (2) for exact small counters, and (1) when an invariant spans several variables that must change together.
+  check: none

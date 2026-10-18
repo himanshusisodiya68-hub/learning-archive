@@ -72,7 +72,7 @@ links:
     same: 'Both avoid looking at every item, so both crush a linear scan on large data.'
     differs: 'Binary search needs sorted data and takes about log₂ n steps (31 for 2 billion) but supports "nearest" and range queries; hashing takes about 1 step but only answers exact matches.'
 next:
-  q: 'Most usernames people type are already taken. Could the system answer "definitely available" or "probably taken" without even touching the database, using just a few megabytes of memory per billion names?'
+  q: 'Most usernames people type are already taken. Could the system answer "definitely available" or "probably taken" without even touching the database, using about one byte of memory per name, far less than storing the names themselves?'
   leaf: 'cs/bloom-filters'
   name: 'Bloom filters'
 symbols:
