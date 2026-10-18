@@ -348,3 +348,79 @@
 
     Free-body diagram of the man alone: rope force $T = 500$ N up on his hands, normal force $N$ up from the chair, weight $mg$ down. $T + N - mg = ma$ gives $N = 70(9.8 + 2.7) - 500 = 875 - 500 = 375$ N. (Third law: the man pushes down on the chair with 375 N.)
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A block of mass $m$ rests on a smooth wedge whose inclined face makes $30^\circ$ with the horizontal. The wedge is pushed horizontally on a smooth floor, towards the side the incline faces away from (so that the block is pushed up the slope), with an acceleration $a$ chosen so that the block stays at rest relative to the wedge. Find $a$. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Acceleration of the wedge
+  unit: m s⁻²
+  ans: 5.66
+  tol: 0.02
+  verify: 9.8*tan(rad(30))
+  sol: |
+    The block must accelerate horizontally with the wedge, at $a$. Only two forces act on it: its weight $mg$ downward and the normal force $N$, perpendicular to the smooth face, tilted by $30^\circ$ from the vertical.
+    Vertical: $N\cos\theta = mg$. Horizontal: $N\sin\theta = ma$. Dividing, $a = g\tan\theta = 9.8\times\tan30^\circ = 5.66$ m s$^{-2}$.
+    Also $N = mg/\cos\theta$, larger than $mg$: the wedge has to push the block both up and sideways. If the wedge accelerated more slowly the block would slide down the face; faster, and it would climb.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Masses 3 kg and 5 kg hang from the two ends of a light string over a smooth pulley fixed to the ceiling of a lift. The lift accelerates upward at 2.0 m s$^{-2}$. Find the tension in the string. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 44.25
+  tol: 0.1
+  verify: 2*3*5*(9.8+2.0)/(3+5)
+  sol: |
+    Let the masses accelerate, relative to the lift, by $b$ (the 5 kg one down, the 3 kg one up). Their accelerations relative to the ground (upward positive) are $A - b$ for the 5 kg mass and $A + b$ for the 3 kg mass, with $A = 2.0$ m s$^{-2}$.
+    Free-body diagrams give $T - 5g = 5(A - b)$ and $T - 3g = 3(A + b)$.
+    Rewrite them as $T = 5(g + A - b)$ and $T = 3(g + A + b)$ and eliminate $b$: multiply the first by 3, the second by 5, and add. $8T = 30(g + A)$ gives $T = \dfrac{2m_1m_2(g + A)}{m_1 + m_2}$ with $g + A = 11.8$:
+    $$T = \frac{2\times3\times5\times11.8}{8} = 44.25\ \text{N}.$$
+    This is the usual Atwood answer with $g$ replaced by $g + A$: upward acceleration of the lift acts like a stronger gravity.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A uniform rope of mass 4.0 kg and length 2.0 m lies on a smooth horizontal table. A horizontal force of 20 N pulls one end along the rope. What is the tension in the rope at a point 0.5 m from the far, free end? (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 5
+  tol: 0.01
+  verify: 20*0.5/2.0
+  sol: |
+    The whole rope accelerates at $a = F/M = 20/4.0 = 5.0$ m s$^{-2}$. The piece of rope between the free end and the point has length 0.5 m, so mass $4.0\times0.5/2.0 = 1.0$ kg. The only horizontal force on that piece is the tension at the point, so $T = 1.0\times5.0 = 5$ N.
+    In general $T(x) = Fx/L$: the tension rises in a straight line from 0 at the free end to $F$ at the pulled end.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A uniform rope of mass 2.0 kg and length 4.0 m hangs from a fixed point on a vertical line, and a 3.0 kg block is tied to its lower end. The upper end is pulled up so that the whole system accelerates upward at 2.0 m s$^{-2}$. Find the tension in the rope at a point 1.0 m below the upper end. Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Tension
+  unit: N
+  ans: 53.1
+  tol: 0.1
+  verify: (3.0+2.0*3.0/4.0)*(9.8+2.0)
+  sol: |
+    Cut the rope at the point and draw everything below the cut as one body: the block (3.0 kg) and the rope below the cut. That rope is 3.0 m long, so its mass is $2.0\times3.0/4.0 = 1.5$ kg. The total mass below is 4.5 kg.
+    The forces on this body are the tension $T$ upward at the cut and its weight downward. It accelerates upward at 2.0 m s$^{-2}$: $T - 4.5g = 4.5\times2.0$, so $T = 4.5\times(9.8 + 2.0) = 53.1$ N.
+    The tension is largest at the top and falls to $m(g + a)$ = 35.4 N at the block. Every such problem reduces to one question: what is below the cut?
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Masses 2.0 kg and 3.0 kg hang from the ends of a light string over a light smooth pulley, and the pulley hangs from a spring balance. The masses are released and move freely. What does the balance read while they move? Take $g = 9.8$ m s$^{-2}$. (Original problem.)
+  ask: Balance reading
+  unit: N
+  ans: 47.04
+  tol: 0.1
+  verify: 4*2.0*3.0*9.8/(2.0+3.0)
+  sol: |
+    For the two masses, $a = \dfrac{(m_2 - m_1)g}{m_1 + m_2} = \dfrac{1.0\times9.8}{5.0} = 1.96$ m s$^{-2}$, and $T = m_1(g + a) = 2.0\times11.76 = 23.52$ N.
+    The pulley is light, so the forces on it must add to zero: the string pulls down with $T$ on each side, a total of $2T$, and the balance pulls up with the same $2T$. The reading is $2T = 47.04$ N.
+    Compare with the weight of the two masses, $5.0\times9.8 = 49$ N: the balance reads slightly less, because the heavier mass accelerates down faster than the lighter one accelerates up, so the pair's centre of mass accelerates downward.
+  check: code

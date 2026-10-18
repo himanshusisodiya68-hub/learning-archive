@@ -309,3 +309,95 @@
     $$|\mathbf a_{\text{avg}}| = \frac{14.14}{0.785} = 18.0\ \text{m s}^{-2}.$$
     The instantaneous centripetal acceleration is $v^2/R = 20$ m s⁻², larger by the factor $\pi/(2\sqrt2) \approx 1.11$. Average and instantaneous accelerations differ here because the direction of $\mathbf a$ changes during the interval; over a full revolution the average is zero.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A particle starts from rest on a circle of radius R and speeds up with a constant tangential acceleration. At the end of the first complete revolution, find the angle between its total acceleration and its velocity. (Original problem.)
+  ask: Angle between total acceleration and velocity
+  unit: degrees
+  ans: 85.5
+  tol: 0.1
+  verify: deg(atan(4*PI))
+  sol: |
+    Let the tangential acceleration be $a_t$. After one revolution the arc travelled is $s = 2\pi R$. From rest, $v^2 = 2a_ts = 4\pi a_tR$, so the centripetal part of the acceleration is
+    $$a_c = \frac{v^2}{R} = 4\pi a_t.$$
+    The tangential part lies along the velocity and the centripetal part is perpendicular to it, so the angle $\varphi$ between the total acceleration and the velocity satisfies
+    $$\tan\varphi = \frac{a_c}{a_t} = 4\pi = 12.57,\qquad \varphi = 85.5^\circ.$$
+    The answer does not depend on $R$ or on $a_t$: after one lap the acceleration points almost at the centre.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: A projectile is launched from level ground with speed 25 m/s at an angle above the horizontal whose cosine is 0.6 (so the horizontal component of the velocity is 15 m/s). Find the ratio of the radius of curvature of its path at the instant of launch to its radius of curvature at the highest point. Neglect air resistance. (Original problem.)
+  ask: Ratio of radius of curvature, launch to top
+  unit: ratio
+  ans: 4.63
+  tol: 0.01
+  verify: 25**2/(0.6*15**2)
+  sol: |
+    The radius of curvature is $\rho = v^2/a_n$, where $a_n$ is the part of the acceleration at right angles to the velocity.
+
+    At launch the speed is 25 m/s and the velocity makes an angle $\theta$ with the horizontal, $\cos\theta = 0.6$. The acceleration is $g$ downward, and its component perpendicular to the velocity is $g\cos\theta$. So $\rho_1 = \dfrac{25^2}{g\times0.6}$.
+
+    At the top the velocity is horizontal, 15 m/s, and the whole of $g$ is perpendicular to it: $\rho_2 = \dfrac{15^2}{g}$.
+
+    The ratio is
+    $$\frac{\rho_1}{\rho_2} = \frac{25^2}{0.6\times15^2} = \frac{625}{135} = 4.63,$$
+    the same for any $g$. (With $g = 9.8$: $\rho_1 = 106$ m and $\rho_2 = 23.0$ m.) The path is flattest at the top and most sharply bent at the ends of the flight.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A satellite moves in a circular orbit above the equator, eastward, once round the Earth in 90 minutes. The Earth turns eastward once in 24 hours. How long is it between two successive passes of the satellite directly over a given point on the equator? (Original problem.)
+  ask: Time between successive overhead passes
+  unit: minutes
+  ans: 96
+  tol: 0.1
+  verify: 1/(1/90-1/1440)
+  sol: |
+    Think in angles. The satellite turns at $2\pi/90$ rad per minute and the ground point at $2\pi/1440$ rad per minute, in the same direction. Seen from the ground point, the satellite gains on it at the difference of the two angular speeds,
+    $$\omega_{\text{rel}} = 2\pi\left(\frac1{90} - \frac1{1440}\right) = 2\pi\times\frac{15}{1440} = \frac{2\pi}{96}\ \text{rad/min}.$$
+    It is overhead again when it has gained one full turn on the ground point, which takes $2\pi/\omega_{\text{rel}} = 96$ minutes.
+
+    (This is why the gap is a little longer than the orbital period of 90 minutes: the ground has moved on in the meantime. For an orbit going westward the gap would be $1/(1/90 + 1/1440) = 84.7$ minutes.)
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A wheel of radius 0.30 m rolls without slipping along a straight road, with its centre moving at a constant 5.0 m/s. Find the radius of curvature of the path of a point on the rim at the instant when the point is at the top of the wheel. (Original problem.)
+  ask: Radius of curvature of the rim point's path at the top
+  unit: m
+  ans: 1.2
+  tol: 0.01
+  verify: (2*5.0)**2/(5.0**2/0.30)
+  sol: |
+    **Velocity.** The wheel's centre moves at $v = 5.0$ m/s. Relative to the centre, a rim point goes round a circle of radius $R = 0.30$ m at the same speed $v$ (rolling without slipping). At the top, the point's velocity relative to the centre is forward, $v$, so its velocity relative to the road is $v + v = 2v = 10$ m/s.
+
+    **Acceleration.** The centre moves with no acceleration (constant velocity), so the point's acceleration relative to the road equals its acceleration relative to the centre: $v^2/R$, directed toward the centre, that is straight down at the top. That is exactly perpendicular to the velocity, so the whole of it is normal acceleration:
+    $$a_n = \frac{v^2}{R} = \frac{25}{0.30} = 83.3\ \text{m s}^{-2}.$$
+
+    **Curvature.** $\rho = \dfrac{(2v)^2}{a_n} = \dfrac{4v^2}{v^2/R} = 4R = 1.2$ m. This is the famous cycloid result: at its top the curve bends like a circle of four times the wheel's radius. (At the bottom, where the point touches the road, the speed is zero but the acceleration is not; the path has a sharp cusp there, with $\rho = 0$.)
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: Four bugs sit at the corners of a square of side 1.0 m. At the same instant each starts to crawl at a constant speed of 0.20 m/s directly towards the bug at the next corner (anticlockwise). They stay on the corners of a shrinking, turning square. Find the magnitude of a bug's acceleration at the moment its distance from the centre of the square is 0.25 m. The time to meet and the path length are also asked for in the solution. (Original problem.)
+  ask: Magnitude of acceleration at 0.25 m from the centre
+  unit: m/s²
+  ans: 0.113
+  tol: 0.001
+  verify: 0.20**2/(sqrt(2)*0.25)
+  sol: |
+    By symmetry the bugs always form a square, centred on the middle of the original one. Let $r$ be the distance of a bug from the centre. Each bug's velocity points towards its neighbour, whose direction makes $45^\circ$ with the line from the bug to the centre. So the velocity has a part $v\cos45^\circ = v/\sqrt2$ towards the centre and a part $v/\sqrt2$ along the circle round the centre.
+
+    **Time to meet.** The distance to the centre shrinks at the constant rate $v/\sqrt2$, from $0.5\sqrt2 = 0.707$ m, so the time is $0.707/(0.2/\sqrt2) = 5.0$ s, that is $a/v$ with side $a$. Path length: $vt = 0.20\times5.0 = 1.0$ m. (Each bug's approach speed to its neighbour is $v$, because the neighbour moves perpendicular to the line joining them, so it takes $1.0/0.2 = 5.0$ s.)
+
+    **Acceleration.** The speed is constant, so the acceleration is purely the turning of the velocity: $a = v\,\omega_v$, where $\omega_v$ is the rate at which the direction of the velocity turns. The velocity keeps a fixed $45^\circ$ to the line to the centre, so it turns at the same rate as that line: the angular speed about the centre, $\omega = \dfrac{v/\sqrt2}{r}$. Then
+    $$a = v\omega = \frac{v^2}{\sqrt2\,r} = \frac{0.04}{1.414\times0.25} = 0.113\ \text{m s}^{-2}.$$
+    The radius of curvature is $\rho = v^2/a = \sqrt2\,r$. As $r \to 0$ the acceleration grows without limit; the bugs circle the centre infinitely many times in the last moments, though the path is only 1.0 m long.
+  check: code

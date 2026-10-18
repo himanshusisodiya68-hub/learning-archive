@@ -97,9 +97,9 @@ links:
     same: 'What you measure depends on the relative motion of source and observer, not on either alone. The pitch of a passing siren is a relative-velocity fact.'
     differs: 'Sound travels in air, so the air is a special frame and it matters whether the source or the listener moves. For plain velocities, any uniformly moving frame is as good as any other.'
 next:
-  q: 'In a bus that suddenly brakes you lurch forward, though nobody pushed you. Yet in a smoothly moving bus you feel nothing at all. So which observers are allowed to say "nothing pushed it, so nothing happened"?'
-  leaf: 'phy/inertia-and-the-first-law'
-  name: 'Inertia and the first law'
+  q: 'A cyclist in a velodrome rides at a steady 40 km/h, yet the coach says she is accelerating the whole lap. How can speed stay fixed while velocity keeps changing, and which way does that acceleration point?'
+  leaf: 'phy/circular-motion'
+  name: 'Circular motion'
 ---
 
 :::hook
