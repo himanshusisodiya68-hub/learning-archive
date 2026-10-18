@@ -1,6 +1,6 @@
 ---
 title: The LCR circuit and resonance
-summary: 'How a coil, a capacitor and a resistor together can "pick" one frequency, the trick behind tuning a radio.'
+summary: 'How a coil, a capacitor and a resistor pick out one frequency, the trick that lets a radio choose one station.'
 ncert: ["Class 12 Physics · Ch 7 Alternating Current (§7.6–7.7)"]
 up_to: Olympiad
 builds_on: [Alternating current, AC through R, L and C, Self and mutual inductance, Capacitors, Kirchhoff's rules, Simple harmonic motion]
@@ -47,14 +47,73 @@ outcomes:
   - 'Calculate bandwidth and quality factor from the shape of the resonance curve'
   - 'Calculate average power, power factor and the capacitor that corrects it'
   - 'Treat free and damped LC oscillations, the true peak of $V_C$ and parallel anti-resonance'
+opener:
+  story: |
+    Right now the air around you is full of radio signals from dozens of stations, all hitting your radio's antenna at once. Every one of them pushes a tiny voltage into the wire. Yet when you turn the dial, you hear one station and nothing else.
+
+    How can a simple circuit, with no brain and no list of stations, ignore almost everything and respond to just one? Think of a child on a swing. Push at random and nothing much happens. Push once per swing, in rhythm, and a small shove soon builds a huge motion.
+
+    Your radio does the electrical version of this. A coil and a capacitor have a rhythm of their own, and the dial changes it. At the matching rhythm something striking happens: the voltage across the capacitor can become far bigger than the voltage of the signal that drives it.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A radio with a tuning dial next to a resonance curve with one tall peak at the tuned station"><rect x="20" y="120" width="130" height="80" rx="8" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><circle cx="58" cy="160" r="22" style="fill:none;stroke:var(--muted);stroke-width:2"/><circle cx="58" cy="160" r="12" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><rect x="92" y="132" width="48" height="14" rx="3" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><path d="M118 134 V144" style="stroke:var(--bad);stroke-width:2"/><circle cx="116" cy="172" r="11" style="fill:var(--surface);stroke:var(--c);stroke-width:2"/><path d="M116 164 V172" style="stroke:var(--c);stroke-width:2"/><path d="M140 120 L170 40" style="stroke:var(--ink);stroke-width:2"/><circle cx="170" cy="40" r="3" style="fill:var(--ink)"/><path d="M185 28 Q196 40 185 52 M196 22 Q212 40 196 58 M207 16 Q228 40 207 64" style="fill:none;stroke:var(--chem);stroke-width:1.5"/><text x="212" y="86" style="font-size:11px;fill:var(--muted)">many stations</text><path d="M170 215 H310" style="stroke:var(--ink);stroke-width:1.5"/><path d="M170 215 C190 215 205 214 216 200 C226 178 230 130 238 130 C246 130 250 178 260 200 C271 214 286 215 306 215" style="fill:none;stroke:var(--c);stroke-width:2.5"/><path d="M238 130 V215" style="stroke:var(--muted);stroke-dasharray:3 4"/><text x="196" y="122" style="font-size:11px;fill:var(--c)">your station</text><text x="170" y="232" style="font-size:11px;fill:var(--muted)">frequency</text><text x="26" y="218" style="font-size:11px;fill:var(--muted)">turn the dial</text><text x="26" y="112" style="font-size:11px;fill:var(--muted)">radio</text></svg>'
+life:
+  - 'Tuning a radio or TV: turning the knob changes the capacitor, so the circuit''s own rhythm matches one station.'
+  - 'The airport metal detector and the tap-to-pay card or UPI-linked NFC tag use coils tuned to one frequency to send and pick up signals.'
+  - 'Factories fit banks of capacitors at the supply so the lagging current of their motors is cancelled, which cuts the electricity bill.'
+  - 'A swing, a wine glass singing under a finger and a bridge swaying under marching feet are the same resonance in mechanical form.'
+  - 'Wireless phone charging pads rely on two coils tuned to the same frequency so that energy passes across the gap efficiently.'
+models:
+  - name: 'The right rhythm beats the big shove'
+    text: 'A small push repeated at exactly the right timing adds up to a large effect, while a larger push at the wrong timing does nothing. A product launch, a joke or a request often lands because of its timing, not its force.'
+  - name: 'Sharp tuning has a price'
+    text: 'A very selective circuit (high Q) responds strongly to one frequency but takes a long time to build up and to die away. Specialising brings the same trade-off: great at one thing, slow to change to another.'
+  - name: 'Big swings are not free energy'
+    text: 'Across the capacitor the voltage can be a hundred times the source, yet the energy comes steadily from the source and the resistor wastes some of it every cycle. Leverage in finance is similar: swings grow far bigger than what you put in, and the losses keep arriving.'
+links:
+  - leaf: 'phy/damped-and-forced-oscillations'
+    name: 'Damped and forced oscillations'
+    same: 'Exactly the same equation as a mass on a spring with drag, driven by a force: map $L$ to mass, $R$ to drag and $1/C$ to the spring constant, and every result about resonance, damping and width carries over.'
+    differs: 'Here the ''position'' is the charge on the capacitor, and the oscillating energy is shared between a magnetic and an electric field instead of kinetic and spring energy.'
+  - leaf: 'phy/standing-waves'
+    name: 'Standing waves'
+    same: 'A string or an air column also picks out particular frequencies from a mixture, by resonance, and responds strongly only near them.'
+    differs: 'One LCR circuit has a single resonant frequency; a string has a whole ladder of them, because it is made of many coupled oscillating pieces.'
+symbols:
+  - s: 'R'
+    means: 'resistance of the circuit (ohms, Ω)'
+  - s: 'L'
+    means: 'inductance of the coil (henries, H)'
+  - s: 'C'
+    means: 'capacitance of the capacitor (farads, F)'
+  - s: '\omega'
+    means: 'angular frequency of the source, $2\pi$ times the frequency (rad/s)'
+  - s: 'X_L'
+    means: 'inductive reactance, $\omega L$ (ohms, Ω)'
+  - s: 'X_C'
+    means: 'capacitive reactance, $1/\omega C$ (ohms, Ω)'
+  - s: 'Z'
+    means: 'impedance, the total opposition to AC, $\sqrt{R^2+(X_L-X_C)^2}$ (Ω)'
+  - s: '\phi'
+    means: 'phase angle by which the voltage leads the current (radians or degrees)'
+  - s: '\omega_0'
+    means: 'resonant angular frequency, $1/\sqrt{LC}$ (rad/s)'
+  - s: 'Q'
+    means: 'quality factor, how sharp the resonance is (a pure number)'
+  - s: '\Delta\omega'
+    means: 'bandwidth, the width of the resonance peak between half-power points (rad/s)'
+  - s: '\cos\phi'
+    means: 'power factor, the fraction of $VI$ that is really used (a pure number)'
+next:
+  q: 'An LCR circuit swaps energy back and forth inside one loop. Can energy also jump from one coil to a second, completely separate coil, and change its voltage on the way?'
+  leaf: 'phy/transformers'
+  name: 'Transformers and power transmission'
 ---
 
 :::hook
-q: A series circuit has R = 10 Ω, L = 0.1 H and C = 10 µF, driven at 1000 rad/s by a source of 10 V rms. What rms voltage does a voltmeter read across the capacitor alone?
-options: ["Less than 10 V, since the capacitor shares the source voltage with R and L", "Exactly 10 V", "About 100 V", "Zero, because the reactances cancel"]
+q: So what's your guess? A circuit has R = 10 Ω, L = 0.1 H and C = 10 µF, driven at 1000 rad/s by a source of 10 V rms. What does a voltmeter read across the capacitor alone?
+options: ["Less than 10 V, since the capacitor shares the source voltage", "About 10 V", "About 100 V, ten times the source"]
 answer: 2
-right: Right. At 1000 rad/s the circuit is at resonance. The current is 10 V / 10 Ω = 1 A, and the capacitor's reactance is 100 Ω, so it carries 100 V. The inductor carries another 100 V, exactly out of phase, and the two cancel in the loop.
-wrong: At 1000 rad/s, X_L = X_C = 100 Ω, so only R limits the current, 1 A. The capacitor then has 1 A × 100 Ω = 100 V across it, ten times the source. The inductor's 100 V is opposite in phase and cancels it in the loop sum.
+right: Right, and that is the swing story in electrical form. At 1000 rad/s the circuit is at resonance. The current is 10 V / 10 Ω = 1 A, and the capacitor's reactance is 100 Ω, so it carries 100 V. The coil carries another 100 V, exactly out of phase, and the two cancel in the loop.
+wrong: At 1000 rad/s, X_L = X_C = 100 Ω, so only R limits the current, 1 A. The capacitor then has 1 A × 100 Ω = 100 V across it, ten times the source. The coil's 100 V is opposite in phase and cancels it in the loop sum, so Kirchhoff's rule still holds.
 :::
 
 ## One current, three voltages {lvl=2 id=s-loop label="Class 12"}

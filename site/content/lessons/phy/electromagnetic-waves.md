@@ -1,6 +1,6 @@
 ---
 title: Electromagnetic waves
-summary: 'How electricity and magnetism chase each other through empty space as light, radio and Wi-Fi, all at one speed.'
+summary: 'How electric and magnetic fields chase each other across empty space as light, radio and Wi-Fi, all at one speed.'
 ncert: ["Class 12 Physics · Ch 8 Electromagnetic Waves (§8.3–8.4)"]
 up_to: Olympiad
 builds_on: [Displacement current, Electromagnetic induction, Ampère's circuital law, Gauss's law, Polarisation]
@@ -48,13 +48,72 @@ outcomes:
   - 'Place the types of radiation in the electromagnetic spectrum by wavelength, source and use'
   - 'Calculate energy density, intensity, momentum and radiation pressure'
   - 'Derive the wave equation from Maxwell''s equations and explain why accelerated charges radiate (Larmor)'
+opener:
+  story: |
+    Sunlight takes about eight minutes to reach you. Between the Sun and your face there is almost nothing: no air, no water, no rope to carry the push. Sound cannot cross that gap, because sound needs something to shake. Yet light crosses it, warms your skin, and does it every single day.
+
+    The same goes for the radio waves that bring cricket commentary, the Wi-Fi in your room, the X-rays at the hospital and the signals from a spacecraft near Mars. They look nothing alike. A radio wave can be as long as a building, an X-ray a billion times shorter than a hair is thick.
+
+    So here is a question for a party. If a burst of radio waves and a burst of X-rays leave a distant star at the same moment, crossing the empty space towards us, which one reaches Earth first?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="The Sun on the left and the Earth on the right with an electric and a magnetic wave travelling between them through empty space"><circle cx="40" cy="120" r="24" style="fill:color-mix(in srgb,var(--chem) 40%,var(--surface));stroke:var(--chem);stroke-width:2"/><path d="M40 88 V82 M40 152 V158 M8 120 H2 M72 120 H78 M17 97 L12 92 M63 97 L68 92 M17 143 L12 148 M63 143 L68 148" style="stroke:var(--chem);stroke-width:2"/><circle cx="292" cy="120" r="14" style="fill:color-mix(in srgb,var(--phy) 35%,var(--surface));stroke:var(--phy);stroke-width:2"/><path d="M78 120 q15 -40 30 0 t30 0 t30 0 t30 0 t30 0 H278" style="fill:none;stroke:var(--c);stroke-width:2.5"/><path d="M78 120 q15 -18 30 0 t30 0 t30 0 t30 0 t30 0" style="fill:none;stroke:var(--bad);stroke-width:2;stroke-dasharray:4 3"/><text x="86" y="64" style="font-size:11px;fill:var(--c)">electric field swings up and down</text><text x="86" y="182" style="font-size:11px;fill:var(--bad)">magnetic field swings at right angles</text><text x="28" y="164" style="font-size:11px;fill:var(--muted)">Sun</text><text x="276" y="148" style="font-size:11px;fill:var(--muted)">you</text><text x="160" y="214" style="font-size:11px;fill:var(--muted);text-anchor:middle">eight minutes through empty space</text></svg>'
+life:
+  - 'Wi-Fi, mobile signals, FM radio and TV are all electromagnetic waves, differing only in frequency and in how they are made and caught.'
+  - 'A microwave oven fills its box with 2.45 GHz waves that shake the water molecules in food and warm it.'
+  - 'A TV remote sends infrared, the sunburn on a summer afternoon comes from ultraviolet and the hospital X-ray uses a much shorter wavelength still.'
+  - 'Radio signals from a spacecraft near Mars take several minutes each way, so ISRO controllers cannot steer it live; they must send instructions and wait.'
+  - 'Fibre-optic internet cables carry light pulses, and GPS satellites send radio signals whose travel time tells your phone where it is.'
+models:
+  - name: 'Two things keeping each other going'
+    text: 'Each field''s change makes the other, so the wave carries itself without any outside support. Feedback loops of this kind, a rumour spreading, a market moving, keep running on their own once started.'
+  - name: 'One thing on a dial'
+    text: 'Radio, light and X-rays are the same wave at different frequencies. Our names for them reflect the instruments and uses we have, not different nature. Many categories in life, such as forms of money, are one thing seen through different tools.'
+  - name: 'Spreading thins out'
+    text: 'Anything radiating evenly from a point, such as light, Wi-Fi or sound, weakens as one over the distance squared, because the same amount is shared over a sphere. Move twice as far from the router and you get a quarter of the signal.'
+links:
+  - leaf: 'phy/wave-equation'
+    name: 'The wave equation'
+    same: 'Light obeys the same wave equation as every other wave: speed equals frequency times wavelength, and the same ideas of crests, interference and diffraction apply.'
+    differs: 'Sound and water waves need a medium to shake; electromagnetic waves need none, and they are transverse with two coupled fields, an electric and a magnetic one, instead of one displacement.'
+  - leaf: 'phy/universal-law-of-gravitation'
+    name: 'Universal law of gravitation'
+    same: 'Both give an inverse-square law: the intensity of light falls as $1/r^2$ just as the pull of gravity does, because both spread over a sphere.'
+    differs: 'Gravity is a steady pull that needs no energy to maintain; a wave carries energy and momentum away at the finite speed $c$.'
+symbols:
+  - s: '\vec E'
+    means: 'electric field, the force per unit charge (volts per metre, V/m)'
+  - s: '\vec B'
+    means: 'magnetic field (tesla, T)'
+  - s: 'c'
+    means: 'speed of light in vacuum, $3.00\times10^8$ m/s'
+  - s: '\mu_0'
+    means: 'permeability of free space, $4\pi\times10^{-7}$ T m/A'
+  - s: '\varepsilon_0'
+    means: 'permittivity of free space, $8.85\times10^{-12}$ F/m'
+  - s: '\lambda'
+    means: 'wavelength, the distance between two crests (metres, m)'
+  - s: '\nu'
+    means: 'frequency, the number of waves per second (hertz, Hz)'
+  - s: '\omega'
+    means: 'angular frequency, $2\pi\nu$ (radians per second)'
+  - s: 'k'
+    means: 'wave number, $2\pi/\lambda$ (radians per metre)'
+  - s: 'E_0'
+    means: 'peak value of the electric field (V/m)'
+  - s: 'B_0'
+    means: 'peak value of the magnetic field (T)'
+  - s: 'I'
+    means: 'intensity, the power crossing each square metre (W/m²)'
+next:
+  q: 'Light is an electromagnetic wave, so how does a wave travel and bend? Why does a wave squeezing through a gap spread out, and how can we predict where it goes next?'
+  leaf: 'phy/huygens-principle'
+  name: 'Huygens'' principle'
 ---
 
 :::hook
-q: A burst of radio waves and a burst of X-rays leave a distant star at the same moment and cross empty space towards us. Which arrives first?
-options: ["The X-rays: they carry far more energy", "The radio waves: long waves slip through space more easily", "They arrive together"]
+q: So what's your guess? A burst of radio waves and a burst of X-rays leave a distant star at the same moment and cross empty space towards us. Which arrives first?
+options: ["The X-rays, since they carry far more energy", "The radio waves, since long waves slip through space more easily", "They arrive together"]
 answer: 2
-right: Right. Radio waves, light and X-rays are the same kind of wave, a travelling pattern of electric and magnetic fields, and in vacuum every one of them moves at c = 3 × 10⁸ m/s whatever its wavelength or energy.
+right: Right, and that is the surprise Maxwell found. Radio waves, light and X-rays are the same kind of wave, a travelling pattern of electric and magnetic fields, and in vacuum every one of them moves at c = 3 × 10⁸ m/s whatever its wavelength or energy.
 wrong: Energy and wavelength differ hugely, but the speed in vacuum is set only by two constants of nature, ε₀ and μ₀. Every electromagnetic wave travels at c.
 :::
 

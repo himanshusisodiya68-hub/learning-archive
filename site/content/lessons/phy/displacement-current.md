@@ -1,6 +1,6 @@
 ---
 title: Displacement current and Maxwell's equations
-summary: 'A missing piece in the laws of magnetism, and the bold idea that fixed it and pointed towards light itself.'
+summary: 'A missing piece in the laws of magnetism, and the bold fix that led to the discovery that light is a wave.'
 ncert: ["Class 12 Physics · Ch 8 Electromagnetic Waves (§8.1–8.2)"]
 up_to: Olympiad
 builds_on: [Ampère's circuital law, Gauss's law, Capacitors, Electromagnetic induction]
@@ -45,13 +45,66 @@ outcomes:
   - 'State Maxwell''s four equations in integral form and what each says'
   - 'Compare conduction and displacement current in matter using $\sigma/\omega\varepsilon$'
   - 'Derive the displacement term from charge conservation and show energy enters the capacitor through its rim'
+opener:
+  story: |
+    Hold a compass near a wire carrying a current and the needle swings. A current makes a magnetic field that circles around it. That is one of the first things you learn about magnetism.
+
+    Now cut the wire and put a capacitor in the gap: two plates facing each other with nothing between them. Current flows along the wire, piles charge onto one plate and draws it off the other. But nothing crosses the empty gap. Charge cannot leap through air, so inside the gap there is no current at all.
+
+    So here is the puzzle that bothered James Clerk Maxwell in the 1860s. If a magnetic field needs a current, then there should be no magnetic field in the gap. Yet draw a loop round the wire just before the plate, and another of the same size round the gap just after it. Should the magnetic field suddenly vanish?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A capacitor in a wire: current in the wire, a growing electric field in the gap, and a loop drawn round the wire and round the gap"><path d="M15 120 H118 M152 120 H305" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M118 82 V158 M152 82 V158" style="stroke:var(--c);stroke-width:4"/><path d="M122 100 h26 m-5 -3 l5 3 l-5 3 M122 120 h26 m-5 -3 l5 3 l-5 3 M122 140 h26 m-5 -3 l5 3 l-5 3" style="fill:none;stroke:var(--bad);stroke-width:1.5"/><ellipse cx="62" cy="120" rx="8" ry="32" style="fill:none;stroke:var(--chem);stroke-width:2;stroke-dasharray:4 3"/><ellipse cx="135" cy="120" rx="8" ry="32" style="fill:none;stroke:var(--chem);stroke-width:2;stroke-dasharray:4 3"/><path d="M26 108 h24 m-6 -4 l6 4 l-6 4" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><text x="24" y="100" style="font-size:11px;fill:var(--ink)">current</text><text x="30" y="176" style="font-size:11px;fill:var(--chem)">loop round the wire</text><text x="104" y="68" style="font-size:11px;fill:var(--chem)">loop round the gap?</text><text x="106" y="192" style="font-size:11px;fill:var(--bad)">electric field growing</text><text x="168" y="214" style="font-size:11px;fill:var(--muted)">no charge crosses the gap</text></svg>'
+life:
+  - 'A camera flash charges a capacitor: current fills it through the wires while nothing crosses the gap between its plates.'
+  - 'Every capacitor in your phone and charger passes AC although no charge ever crosses it; the changing field in the gap completes the circuit.'
+  - 'A touch screen senses your finger by the tiny AC current its plates and your finger exchange, the same gap-completing effect.'
+  - 'The idea behind radio, Wi-Fi and mobile signals: changing fields in empty space can make each other, with no wires at all, which the next lesson explores.'
+  - 'Maxwell''s equations, built from this one correction, underlie every motor, generator, antenna and optical fibre.'
+models:
+  - name: 'When two reliable rules disagree, one is incomplete'
+    text: 'Maxwell trusted Ampère''s law and charge conservation, found they clashed for a charging capacitor, and repaired the law rather than throwing either away. When two things you trust collide, look for the missing piece.'
+  - name: 'Use a conservation law as a compass'
+    text: 'Charge cannot vanish. Demanding that the books balance told Maxwell exactly what the missing term had to be. A budget, a ledger and a sanity check all work the same way: what goes in must be accounted for.'
+  - name: 'Same effect, different cause'
+    text: 'A changing electric field makes a magnetic field exactly as a flow of charge does, so for that purpose they count as one. Cash and a card payment differ in mechanism but do the same job for the shop.'
+links:
+  - leaf: 'phy/electromagnetic-induction'
+    name: 'Electromagnetic induction'
+    same: 'Beautiful symmetry: a changing magnetic field makes an electric field (Faraday), and a changing electric field makes a magnetic field (Maxwell). The two together are the engine of light.'
+    differs: 'The constant $\mu_0\varepsilon_0$ is so tiny that the second effect is invisible unless the field changes very fast, which is why Faraday''s effect was found sixty years before Maxwell''s, and there is no minus sign in the Ampère–Maxwell law the way Lenz''s law has one.'
+  - leaf: 'phy/gausss-law'
+    name: 'Gauss''s law'
+    same: 'Gauss''s law gives the electric flux through the gap as $\Phi_E = Q/\varepsilon_0$, and differentiating it shows at once that $i_d = i_c$.'
+    differs: 'Gauss''s law is about the field at one instant; the displacement term is about how fast it is changing.'
+symbols:
+  - s: 'i_c'
+    means: 'conduction current, the flow of real charge in a wire (amperes, A)'
+  - s: 'i_d'
+    means: 'displacement current, the changing electric flux acting like a current (amperes, A)'
+  - s: '\vec E'
+    means: 'electric field (volts per metre, V/m)'
+  - s: '\Phi_E'
+    means: 'electric flux, the amount of electric field through a surface (V m)'
+  - s: '\varepsilon_0'
+    means: 'permittivity of free space, $8.85\times10^{-12}$ F/m'
+  - s: '\vec B'
+    means: 'magnetic field (tesla, T)'
+  - s: '\mu_0'
+    means: 'permeability of free space, $4\pi\times10^{-7}$ T m/A'
+  - s: '\oint \vec B\cdot d\vec l'
+    means: 'add up the magnetic field along a closed loop (T m)'
+  - s: 'r'
+    means: 'distance from the axis of the capacitor (metres, m)'
+next:
+  q: 'If a changing magnetic field makes an electric field, and a changing electric field makes a magnetic field, could the two keep each other going by themselves, with no wires and no charges? How fast would such a thing travel?'
+  leaf: 'phy/electromagnetic-waves'
+  name: 'Electromagnetic waves'
 ---
 
 :::hook
-q: A capacitor with circular plates is charged by a steady current of 1 A. No charge crosses the empty gap between the plates. Is there a magnetic field in the gap region?
-options: ["No: no current flows there", "Yes, and just outside the plates it equals the field around the wire at the same distance", "Only near the edges of the plates", "Only if a dielectric fills the gap"]
+q: So what's your guess? A capacitor with circular plates is charged by a steady current of 1 A. No charge crosses the empty gap. Is there a magnetic field in the gap region?
+options: ["No: no current flows there", "Yes, and just outside the plates it equals the field of the wire at the same distance", "Only near the edges of the plates"]
 answer: 1
-right: Right. The electric field in the gap is growing, and a growing electric field makes a magnetic field just as a current does. Outside the plate edge the field is exactly what a 1 A wire would give at that distance. This lesson explains why.
+right: Right, and Maxwell's guess was bold. The electric field in the gap is growing, and a growing electric field makes a magnetic field just as a current does. Outside the plate edge the field is exactly what a 1 A wire would give at that distance. This lesson explains why.
 wrong: There is a magnetic field. The electric field in the gap is growing, and Maxwell showed that a changing electric field produces a magnetic field exactly as a current does. Just outside the plate edge it equals the field of the 1 A wire at the same distance.
 :::
 

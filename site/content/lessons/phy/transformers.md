@@ -1,6 +1,6 @@
 ---
 title: Transformers and power transmission
-summary: 'How a transformer changes voltage with no moving parts, and why the power lines to your home run at huge voltages.'
+summary: 'How iron and two coils change a voltage with no moving parts, and why power lines run at enormous voltages.'
 ncert: ["Class 12 Physics · Ch 7 Alternating Current (§7.8)"]
 up_to: Olympiad
 builds_on: [Self and mutual inductance, Alternating current, Magnetic materials, Heating effect and power, Resistance and resistivity]
@@ -46,14 +46,69 @@ outcomes:
   - 'Account for copper, eddy, hysteresis and flux losses and calculate efficiency'
   - 'Show why power is transmitted at high voltage using $P_{loss} = P^2R/V^2$'
   - 'Use reflected impedance for matching and find the load at which efficiency is greatest'
+opener:
+  story: |
+    Open up a phone charger and you will find, inside, a coil of thin copper wire wound on an iron core. Its wire is so thin and short that its resistance is only about an ohm. Plug it into the 230 V mains and Ohm's law shouts a warning: 230 volts across 1 ohm should be 230 amperes, enough to melt the wire in moments.
+
+    Nothing melts. The charger just sits there, cool, with a faint hum. And it gives you a neat 5 V on the other side, from a second coil that is not joined to the first by any wire at all.
+
+    How does energy cross between two coils that never touch, why does the first coil refuse to draw a huge current, and why does the same trick also decide how electricity gets from a power station to your house?
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A transformer: two coils on one iron ring, many turns on the left and few on the right, linked by shared magnetic flux"><text x="160" y="34" style="font-size:11px;fill:var(--muted);text-anchor:middle">a charger brick, opened up</text><path d="M110 70 H210 V170 H110 Z M135 95 H185 V145 H135 Z" style="fill:none;stroke:var(--muted);stroke-width:3;fill-rule:evenodd"/><path d="M110 70 H210 V170 H110 Z" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--ink);stroke-width:2"/><path d="M135 95 H185 V145 H135 Z" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M104 84 H141 M104 92 H141 M104 100 H141 M104 108 H141 M104 116 H141 M104 124 H141 M104 132 H141 M104 140 H141" style="stroke:var(--chem);stroke-width:3"/><path d="M179 100 H216 M179 114 H216 M179 128 H216 M179 142 H216" style="stroke:var(--bad);stroke-width:3"/><path d="M104 84 H50 V140 H104" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M216 100 H270 V142 H216" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M122 82 H198 V158 H122 Z" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:5 4"/><text x="160" y="124" style="font-size:11px;fill:var(--c);text-anchor:middle">shared</text><text x="160" y="137" style="font-size:11px;fill:var(--c);text-anchor:middle">flux</text><text x="14" y="116" style="font-size:11px;fill:var(--ink)">230 V</text><text x="278" y="124" style="font-size:11px;fill:var(--ink)">5 V</text><text x="40" y="186" style="font-size:11px;fill:var(--muted)">many turns</text><text x="226" y="186" style="font-size:11px;fill:var(--muted)">few turns</text><text x="160" y="216" style="font-size:11px;fill:var(--muted);text-anchor:middle">no wire joins the two coils</text></svg>'
+life:
+  - 'Pylons and substations: power leaves the power station at tens or hundreds of thousands of volts, and the transformer on the pole near your house steps it down to 230 V.'
+  - 'Every phone and laptop charger steps the mains down to a few volts before it is rectified to DC.'
+  - 'The inverter at home steps a 12 V battery up to 230 V so a fan and lights can run during a power cut.'
+  - 'A microwave oven steps the mains up to thousands of volts for the part that makes the microwaves.'
+  - 'A transformer hums and warms up under load, which is a sign of its small losses, and it burns out if fed steady DC.'
+models:
+  - name: 'Trade one thing for another, the total stays fixed'
+    text: 'A transformer raises voltage only by lowering current by the same factor, like a lever that trades force for distance or a gear that trades speed for strength. You can exchange the form of what you have, but not make more of it.'
+  - name: 'Squares make a big lever'
+    text: 'Heat lost in the line grows as the current squared, so halving the current quarters the loss. Whenever a cost grows with the square, a modest change in the right quantity has a very large effect, in electricity, in fuel use at higher speed and in compounding.'
+  - name: 'The system answers change, not steadiness'
+    text: 'A transformer passes only a changing current and ignores a steady one. Many systems, from nerves to markets, respond to news and surprises and settle into silence when nothing changes.'
+links:
+  - leaf: 'phy/simple-machines'
+    name: 'Simple machines'
+    same: 'A lever, a gear train and a transformer all trade one quantity for another while the power in equals the power out: force for distance, torque for speed, voltage for current.'
+    differs: 'A lever moves, and friction at its pivot wastes energy; a transformer has no moving parts and needs a changing current, and can lose energy through heating of the wire and core.'
+  - leaf: 'phy/lenzs-law'
+    name: 'Lenz''s law'
+    same: 'When the secondary draws current it tries to cancel the flux change that makes it, exactly as Lenz''s law says, so the primary must draw extra current to keep the flux fixed.'
+    differs: 'In a transformer both coils sit on one core and the opposition is made useful, as a way of passing power across, rather than being a brake.'
+symbols:
+  - s: 'N_p'
+    means: 'number of turns on the primary coil, the one connected to the supply (a count)'
+  - s: 'N_s'
+    means: 'number of turns on the secondary coil, the one connected to the load (a count)'
+  - s: 'V_p'
+    means: 'voltage across the primary (volts, V)'
+  - s: 'V_s'
+    means: 'voltage across the secondary (volts, V)'
+  - s: 'I_p'
+    means: 'current in the primary (amperes, A)'
+  - s: 'I_s'
+    means: 'current in the secondary (amperes, A)'
+  - s: '\Phi'
+    means: 'magnetic flux through the core, the amount of field passing through it (webers, Wb)'
+  - s: 'P'
+    means: 'power, the energy delivered per second (watts, W)'
+  - s: 'R'
+    means: 'resistance of the transmission line or of the load (ohms, Ω)'
+  - s: 'P_{loss}'
+    means: 'power lost as heat in the line (watts, W)'
+next:
+  q: 'A changing flux in one coil makes a voltage in a coil it never touches. Is there a mirror image of this: can a changing electric field make a magnetic field, even in the gap of a capacitor where no charge flows?'
+  leaf: 'phy/displacement-current'
+  name: 'Displacement current and Maxwell''s equations'
 ---
 
 :::hook
-q: The primary winding of a transformer has a resistance of only 1 Ω. You connect it to the 230 V ac mains and leave the secondary open. About how much current does it draw?
-options: ["About 230 A, from Ohm's law", "Well under 1 A, because the changing flux induces a back-emf almost equal to 230 V", "Exactly zero, because the secondary is open", "About 230 A for an instant, then zero"]
+q: So what's your guess? The primary winding of a transformer has a resistance of only 1 Ω. You connect it to the 230 V AC mains and leave the secondary open. About how much current does it draw?
+options: ["About 230 A, from Ohm's law", "Well under 1 A, since the winding pushes back against itself", "Exactly zero, since the secondary is open"]
 answer: 1
-right: Right. The winding sits on an iron core, so it is a large inductor. The alternating current sets up an alternating flux, and that flux induces an emf in the primary itself that almost cancels the supply. Only the small current needed to keep the flux going flows.
-wrong: Ohm's law with 1 Ω would give 230 A, and that is exactly what happens on dc (and the winding burns). On ac, the changing core flux induces a back-emf in the primary almost equal to the supply voltage, so only a small magnetising current flows, typically well under 1 A.
+right: Right, and that is why the charger stays cool. The winding sits on an iron core, so it is a large coil. The alternating current sets up an alternating flux, and that flux induces an emf in the primary itself that almost cancels the supply. Only the small current needed to keep the flux going flows.
+wrong: Ohm's law with 1 Ω would give 230 A, and that is exactly what happens on DC, where the winding burns. On AC, the changing core flux induces a back-emf in the primary almost equal to the supply voltage, so only a small magnetising current flows, typically well under 1 A.
 :::
 
 ## Why change voltages at all? {lvl=2 id=s-why label="Class 12"}

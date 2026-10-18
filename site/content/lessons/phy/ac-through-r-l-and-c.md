@@ -1,6 +1,6 @@
 ---
 title: AC through a resistor, an inductor and a capacitor
-summary: 'Why a coil and a capacitor make current and voltage fall out of step, while a plain resistor never does.'
+summary: 'Why a lamp glows through a gap in the circuit on the mains, not on a battery, and why coils tire AC.'
 ncert: ["Class 12 Physics · Ch 7 Alternating Current (§7.2–7.5)"]
 up_to: Olympiad
 builds_on: [Alternating current, Self and mutual inductance, Capacitors, Ohm's law, Heating effect and power]
@@ -45,14 +45,73 @@ outcomes:
   - 'Represent voltages and currents as phasors and as complex impedances'
   - 'Analyse a real coil, parallel branches and RC or RL low-pass and high-pass filters'
   - 'Explain the switch-on offset of an inductor and treat non-sinusoidal drives harmonic by harmonic'
+opener:
+  story: |
+    Take a small lamp, a battery and a capacitor, which is just two metal plates with a gap of air between them. Join them in a loop. The lamp stays dark, and no wonder: the circuit has a gap in it, and charge cannot jump across air.
+
+    Now swap the battery for a supply whose push reverses fifty times a second, like the mains in your home. Same lamp, same gap. This time the lamp **glows**. Nothing crossed the gap, yet the current is there.
+
+    Now try a coil of wire in place of the capacitor. On a battery it lets a big current through and gets warm. On the mains the very same coil lets far less through. Same wire, same voltage, different behaviour. Something about a push that keeps changing direction is treated differently by a plain wire, a coil and a capacitor.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A lamp and capacitor on a battery stays dark; on an alternating supply the lamp glows"><path d="M50 30 H148 M172 30 H270 M270 30 V50 M270 58 V80 M50 80 H270 M50 30 V50 M50 58 V80" style="fill:none;stroke:var(--ink);stroke-width:2"/><path d="M42 50 H58 M46 58 H54" style="stroke:var(--c);stroke-width:3"/><path d="M260 50 H280 M260 58 H280" style="stroke:var(--c);stroke-width:3"/><circle cx="160" cy="30" r="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M152 22 L168 38 M168 22 L152 38" style="stroke:var(--muted);stroke-width:1.5"/><text x="62" y="58" style="font-size:11px;fill:var(--muted)">battery</text><text x="205" y="58" style="font-size:11px;fill:var(--muted)">capacitor</text><text x="22" y="104" style="font-size:11px;fill:var(--muted)">battery: the gap blocks it, lamp dark</text><path d="M50 140 V153 M50 177 V190 M50 140 H148 M172 140 H270 M270 140 V160 M270 168 V190 M50 190 H270" style="fill:none;stroke:var(--ink);stroke-width:2"/><circle cx="50" cy="165" r="12" style="fill:var(--surface);stroke:var(--c);stroke-width:2"/><path d="M43 165 q3.5 -8 7 0 t7 0" style="fill:none;stroke:var(--c);stroke-width:1.5"/><path d="M260 160 H280 M260 168 H280" style="stroke:var(--c);stroke-width:3"/><circle cx="160" cy="140" r="12" style="fill:color-mix(in srgb,var(--chem) 45%,var(--surface));stroke:var(--ink);stroke-width:2"/><path d="M160 118 V124 M160 156 V162 M138 140 H144 M176 140 H182 M144 124 L148 128 M176 124 L172 128 M144 156 L148 152 M176 156 L172 152" style="stroke:var(--chem);stroke-width:2"/><text x="205" y="168" style="font-size:11px;fill:var(--muted)">capacitor</text><text x="64" y="162" style="font-size:11px;fill:var(--muted)">AC supply</text><text x="22" y="214" style="font-size:11px;fill:var(--muted)">AC: charge sloshes to and fro, lamp glows</text></svg>'
+life:
+  - 'Tube-light chokes and old ceiling-fan regulators drop the voltage with a coil, which wastes almost no power as heat.'
+  - 'The small capacitor on a ceiling fan lets the AC through and shifts its timing, which is how the motor gets started turning.'
+  - 'A capacitor in front of a speaker''s tweeter passes the high notes and blocks the deep bass, so each speaker gets only the sounds it is good at.'
+  - 'Phone chargers and the power supply of a TV use a coil and a capacitor to smooth out the 100 Hz ripple left after the mains is converted to DC.'
+  - 'A capacitor between two amplifier stages passes the music signal but blocks the steady DC bias of the stage before.'
+models:
+  - name: 'Resistance to size, inertia to change'
+    text: 'A plain resistor cares only how big the push is right now. A coil resists change itself, like inertia, and a capacitor resists staying the same, because its plates fill. People, habits and institutions work the same way: some resist the size of a demand, many resist the change.'
+  - name: 'Busy but not spent'
+    text: 'A pure coil or capacitor swaps energy back and forth every quarter cycle and keeps none, so its average power is zero though the current is large. A shop that buys and sells the same stock all day has big turnover and no profit. Large flows do not always mean real gain.'
+  - name: 'Sort things by how fast they change'
+    text: 'Because opposition depends on frequency, a coil and a capacitor act as filters: slow changes pass one way, quick changes the other. A moving average of prices is the same idea, a low-pass filter that hides the daily wiggle and keeps the trend.'
+links:
+  - leaf: 'phy/inertia-and-the-first-law'
+    name: 'Inertia and the first law'
+    same: 'An inductor resists a change of current as a mass resists a change of velocity: the inductance $L$ plays the part of mass, and the energy $\tfrac12Li^2$ plays the part of kinetic energy $\tfrac12mv^2$.'
+    differs: 'Mass resists changes of motion in a body; the coil resists changes of current through a magnetic field, and a real coil also has resistance, which no ideal mass has.'
+  - leaf: 'phy/shm-equation'
+    name: 'The equation of simple harmonic motion'
+    same: 'A capacitor stores energy $\tfrac12Cv^2$ like a spring stores $\tfrac12kx^2$, and a coil and a capacitor together swap energy like a mass and a spring. This is the seed of the next two lessons.'
+    differs: 'Here a supply drives the circuit at its own rhythm; a free swing at its own natural frequency needs both L and C in the same loop.'
+symbols:
+  - s: 'v'
+    means: 'voltage at one instant, the electrical push (volts, V)'
+  - s: 'i'
+    means: 'current at one instant, the flow of charge (amperes, A)'
+  - s: 'R'
+    means: 'resistance, how strongly a wire turns current into heat (ohms, Ω)'
+  - s: 'L'
+    means: 'inductance of a coil, how strongly it resists a change of current (henries, H)'
+  - s: 'C'
+    means: 'capacitance, how much charge the plates hold per volt (farads, F)'
+  - s: '\omega'
+    means: 'angular frequency of the supply, $2\pi$ times the frequency (radians per second)'
+  - s: 'X_L'
+    means: 'inductive reactance, the opposition of a coil, $\omega L$ (ohms, Ω)'
+  - s: 'X_C'
+    means: 'capacitive reactance, the opposition of a capacitor, $1/\omega C$ (ohms, Ω)'
+  - s: 'Z'
+    means: 'impedance, the total opposition of a circuit to AC (ohms, Ω)'
+  - s: '\varphi'
+    means: 'phase angle, how far the current is out of step with the voltage (radians or degrees)'
+  - s: 'I'
+    means: 'rms current, the steady value that heats as much as the AC does (A)'
+  - s: 'V'
+    means: 'rms voltage, the steady value that heats as much as the AC does (V)'
+next:
+  q: 'A coil pushes the current late and a capacitor pushes it early, in opposite directions. What happens if you put both in the same loop with a resistor: can they cancel, and could the result pick out one special frequency?'
+  leaf: 'phy/lcr-circuit-and-resonance'
+  name: 'The LCR circuit and resonance'
 ---
 
 :::hook
-q: A coil passes 2 A when connected to a 12 V battery. The same coil is connected to a 12 V (rms) supply at 50 Hz. The rms current is
-options: ["more than 2 A, since AC pushes harder at its peaks", "exactly 2 A, since 12 V is 12 V", "less than 2 A", "zero, since a coil blocks AC"]
+q: So what's your guess? A coil passes 2 A from a 12 V battery. You connect the same coil to a 12 V AC supply at 50 Hz (12 V here is the rms value, which heats a lamp as much as 12 V DC would). What current flows now?
+options: ["More than 2 A, since AC pushes harder at its peaks", "Exactly 2 A, since 12 V is 12 V", "Less than 2 A, since the coil fights every swing"]
 answer: 2
-right: Right. On DC only the coil's resistance limits the current. On AC the coil also fights every change of current with a back-EMF, so a second kind of opposition, the reactance ωL, adds to the resistance.
-wrong: The battery current tells you only the coil's resistance. On AC the current keeps changing, and the coil answers every change with a back-EMF. That extra opposition (reactance) makes the AC current smaller than 2 A, though not zero.
+right: Right, and now you can see the mystery of the two circuits. On DC only the coil's wire limits the current. On AC the coil also answers every change of current with a back-EMF, so a second kind of opposition, the reactance ωL, joins the resistance. The capacitor does the opposite trick with its plates.
+wrong: The battery current tells you only the wire's resistance. On AC the current keeps changing, and the coil answers every change with a back-EMF. That extra opposition (reactance) makes the AC current smaller than 2 A, though not zero.
 :::
 
 ## Three ways to oppose a current {lvl=1 id=s-why label="Class 10"}
