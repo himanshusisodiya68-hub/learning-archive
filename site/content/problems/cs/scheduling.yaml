@@ -1,0 +1,100 @@
+# CPU scheduling. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Three jobs of 6, 3 and 1 minutes all arrive at time 0 and run under FIFO in that order. What is the average waiting time?
+  ask: Average wait
+  unit: minutes
+  ans: 5
+  tol: 0.01
+  verify: (0+6+9)/3
+  sol: The first job waits 0. The second waits for the first, 6. The third waits for both, $6+3 = 9$. The average is $(0+6+9)/3 = 5$ minutes.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: A job that has been ready for a very long time but never runs because higher-priority jobs keep arriving is suffering from what?
+  opts: ["Starvation", "A context switch", "Convoy effect"]
+  ans: 0
+  sol: This is starvation. The cure is aging, which gradually raises the priority of jobs that keep waiting. The convoy effect is different, it is short jobs stuck behind one long job in FIFO.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Four jobs with burst times 8, 4, 2 and 6 minutes all arrive at time 0. Under shortest job first, what is the average waiting time?
+  ask: Average wait
+  unit: minutes
+  ans: 5
+  tol: 0.01
+  verify: (0+2+6+12)/4
+  sol: The order is 2, 4, 6, 8. The waits are 0, 2, $2+4 = 6$, and $2+4+6 = 12$. The average is $(0+2+6+12)/4 = 5$ minutes.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A round-robin scheduler uses a 4 ms quantum, and each context switch costs 0.5 ms. When every job uses its whole quantum, what percentage of CPU time is lost to switching?
+  ask: Overhead
+  unit: "%"
+  ans: 11.1
+  tol: 0.1
+  verify: 0.5/(4+0.5)*100
+  sol: Each round is 4 ms of work plus 0.5 ms of switching, 4.5 ms in all. The lost share is $0.5/4.5 \approx 0.111$, about $11.1\%$. A longer quantum reduces this but delays response.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A server runs one long batch job that uses the CPU all night, and thousands of short interactive requests during the day. Explain how priorities, a time quantum and aging could keep the requests fast without starving the batch job.
+  sol: |
+    Give interactive requests a higher priority than the batch job, so when a request arrives it runs ahead of the batch work. Use a modest quantum (a few ms) so that a request needing a short burst finishes quickly instead of waiting for a long slice.
+
+    Starvation: if requests came constantly, the batch job would never run. Aging fixes that. Each time the batch job waits a while, its priority is raised, until it is picked for a turn. After it runs, its priority returns to its base level. A multi-level feedback queue can do the same automatically: jobs that use whole slices (batch) sink to a lower queue, those that wake and sleep stay high, and a periodic boost lets the batch job run.
+
+    Result: requests see short latency, the batch job still makes steady progress, and nothing waits forever.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Five CPU-bound threads sit in a round-robin queue with a 10 ms quantum. A sixth thread wakes up after waiting for the network and joins the back of the queue. In the worst case, how many ms must it wait before it first runs?
+  ask: Worst-case wait
+  unit: ms
+  ans: 50
+  tol: 0.1
+  verify: 5*10
+  sol: |
+    The five threads ahead each take a full 10 ms quantum, so the new thread waits $5 \times 10 = 50$ ms. That is long enough for a user to notice. Real schedulers fix this by moving a thread that has just woken up toward the front, because it has used little CPU recently. [Inference: the general idea behind many interactive schedulers]
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A high-priority task H needs a lock held by a low-priority task L. A medium-priority task M is ready and does not use the lock. Explain what goes wrong on a single core and how priority inheritance fixes it.
+  sol: |
+    **What goes wrong.** L holds the lock. H becomes ready, runs, needs the lock and blocks. Now the ready tasks are L and M. M has higher priority than L, so M runs and L, which must run to release the lock, gets no CPU. H cannot proceed until L releases the lock, so effectively M, which has lower priority than H, runs ahead of H. This is **priority inversion**, and it can last as long as M wants the CPU.
+
+    **Priority inheritance.** When H blocks on a lock held by L, L temporarily takes H's priority. Now L outranks M, so L runs, finishes its critical section and releases the lock. Its priority falls back, and H (still the highest) runs at once. The inversion is bounded by the length of L's critical section.
+
+    A related approach is the priority ceiling protocol, which gives a lock a ceiling priority; the details are beyond this question. [Unverified: standard real-time textbook material]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Hardest stretch. All jobs arrive at time 0 with known burst times and run without interruption. Show that running them in order of increasing burst time minimises the average waiting time (hint, an exchange argument).
+  sol: |
+    Take any order in which two neighbouring jobs $X$ then $Y$ have $B_X > B_Y$ (a longer job runs just before a shorter one). Let $S$ be the time when $X$ starts.
+
+    - Before the swap: $X$ waits $S$ and $Y$ waits $S + B_X$. Together $2S + B_X$.
+    - After swapping them: $Y$ waits $S$ and $X$ waits $S + B_Y$. Together $2S + B_Y$.
+
+    Since $B_Y < B_X$, the swap reduces the total of these two waits. Every other job is unaffected: jobs before the pair start at the same time, and jobs after the pair start after the same total work $B_X + B_Y$.
+
+    So any order containing a longer job directly before a shorter one can be improved. Repeating swaps (the process must stop, since each swap reduces the number of out-of-order pairs) arrives at the order of non-decreasing burst times, and the argument shows that no other order is better. Hence shortest job first minimises the average waiting time (ties give equal results).
+
+    **Limits.** The proof assumes known burst times, all arrivals at time 0 and no preemption. With arrivals over time or unknown lengths, SJF is not directly usable.
+  check: none

@@ -1,0 +1,125 @@
+# File systems. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A file system uses 4096-byte blocks. How many blocks does a file of 10,000 bytes occupy?
+  ask: Blocks
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: ceil(10000/4096)
+  sol: The file needs $10000/4096 \approx 2.44$ blocks. A partly used block still belongs to the file, so round up to 3 blocks (12,288 bytes reserved).
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: What does a directory entry contain?
+  opts: ["A name and the number of the file's inode", "The file's bytes", "The file's permissions and size"]
+  ans: 0
+  sol: A directory is a table that maps names to inode numbers. Permissions, size and block pointers live in the inode, and the bytes live in data blocks. That is why renaming only edits the directory and does not move the data.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: An inode has 12 direct pointers and one single-indirect pointer. Blocks are 4096 bytes and each pointer is 4 bytes. What is the largest file size, in KiB, reachable with these pointers?
+  ask: Largest file size
+  unit: KiB
+  ans: 4144
+  tol: 0.5
+  verify: (12+4096/4)*4
+  sol: |
+    One indirect block holds $4096/4 = 1024$ pointers. Total data blocks reachable: $12 + 1024 = 1036$. Each block is 4 KiB, so the limit is $1036 \times 4 = 4144$ KiB, about 4.05 MiB. A double-indirect pointer would add $1024 \times 1024$ blocks (4 GiB) more.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A folder holds 1,000 tiny files, each exactly 1 byte long, on a file system with 4096-byte blocks (one block per file). How much disk space is wasted in blocks that hold no data, in megabytes (1 MB = 1,000,000 bytes)?
+  ask: Wasted space
+  unit: MB
+  ans: 4.095
+  tol: 0.01
+  verify: 1000*(4096-1)/1e6
+  sol: Each file reserves 4096 bytes but uses 1, wasting 4095 bytes. For 1,000 files that is $1000 \times 4095 = 4{,}095{,}000$ bytes, about 4.1 MB, to store 1,000 bytes of real data. Lots of tiny files is expensive in space (and in inodes).
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A configuration file must never be seen half-written, even if the machine crashes during a save. Write the steps, in Python or in words, that save it safely, and say why each step is needed.
+  sol: |
+    ```python
+    import os
+    def safe_save(path, text):
+        tmp = path + ".tmp"
+        with open(tmp, "w") as f:
+            f.write(text)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, path)
+        d = os.open(os.path.dirname(path) or ".", os.O_RDONLY)
+        os.fsync(d)
+        os.close(d)
+    ```
+    - **Write to a temporary file**, never over the original: a crash mid-write then only damages the temp copy.
+    - **flush then fsync** the temp file, so its contents are on the device before we switch names. Otherwise the rename could survive while the data does not.
+    - **Rename over the old name** (`os.replace`): rename is atomic, so a reader sees the complete old file or the complete new file, never a mix.
+    - **fsync the directory**, so the rename itself is durable.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A database on a hard disk calls fsync once per transaction, and each fsync takes 8 ms. (a) What is the most commits per second it can achieve? (b) With group commit, 50 waiting transactions share each fsync. What commits per second is now possible, ignoring other costs? Give the answer to (b).
+  ask: Commits per second with group commit
+  unit: per second
+  ans: 6250
+  tol: 1
+  verify: (1000/8)*50
+  sol: |
+    (a) Each fsync takes 8 ms, so $1000/8 = 125$ fsyncs per second, hence at most 125 commits per second.
+
+    (b) With 50 commits per fsync, throughput is up to $125 \times 50 = 6250$ commits per second. The cost is latency: each transaction may wait for its group to fill, so real systems limit the wait.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "A cold-cache lookup of /a/b/c/file reads, for each of the four directories (the root, a, b and c) one inode and one directory block, and then one inode for the file itself. Assuming each directory fits in one block and nothing is cached, how many disk reads are needed to obtain the file's inode (before reading any file data)?"
+  ask: Disk reads
+  unit: ""
+  ans: 9
+  tol: 0.1
+  verify: 4*2+1
+  sol: |
+    - Root: read its inode (1), then its block to find `a` (1) = 2.
+    - `a`: inode (1) and block to find `b` (1) = 2.
+    - `b`: inode (1) and block to find `c` (1) = 2.
+    - `c`: inode (1) and block to find `file` (1) = 2.
+    - `file`: its inode (1).
+
+    Total $4 \times 2 + 1 = 9$ reads, at about 8 ms each on a spinning disk (72 ms) before the first byte of data. This is why caching directory entries and inodes in RAM matters so much, and why deep paths cost more on a cold cache.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Design question. A notes app promises: once the user sees a tick, the note survives the failure of any one machine, even a sudden power loss. Describe the write path (storage on each machine, replication, and exactly when the tick is shown), and name two things that could still break the promise."
+  sol: |
+    **Write path (one reasonable design).**
+    1. The client sends the note to a leader server, which appends it to a **write-ahead log** on local disk and calls **fsync**, so it survives a power cut on that machine.
+    2. The leader sends the log entry to at least two followers, each in a different rack or zone. Each follower appends and fsyncs, then acknowledges.
+    3. When the leader has the local fsync plus **at least one** follower acknowledgement (so two durable copies exist), it shows the **tick**. Later the entry is applied to the main store and the log is trimmed.
+
+    A single machine's failure now leaves one durable copy. Using 2 of 3 acknowledgements is a common quorum rule that also lets the system continue when one machine is down.
+
+    **What could still break it.**
+    - *A drive that lies about flushes* (volatile cache without power-loss protection) acknowledges data that is not yet stable. Mitigation: use drives with power-loss protection and test them.
+    - *Correlated failure*: both copies in the same rack, a bad software update, or a bug that corrupts all replicas. Mitigation: spread across failure domains, stage rollouts, keep checksums and periodic backups.
+    - *Silent corruption* on disk. Mitigation: checksums per block and repair from another replica.
+
+    [Inference: this is a standard pattern, not the design of any specific product.]
+  check: none

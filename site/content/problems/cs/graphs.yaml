@@ -1,0 +1,111 @@
+# Graphs and their representations. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A group of 10 people. Every pair of them could be friends. What is the largest number of friendship edges the undirected graph can have, with no repeated pairs?
+  ask: Edges
+  unit: ""
+  ans: 45
+  tol: 0.1
+  verify: 10 * 9 / 2
+  sol: "Each of the 10 people can be paired with the 9 others, giving $10 \\times 9 = 90$ ordered pairs. A friendship is the same edge in both directions, so each unordered pair was counted twice, and the maximum is $90 / 2 = 45$. In general $V(V-1)/2$."
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these is best modelled as a directed graph?
+  opts: ["Two cities joined by a two-way highway", "Web pages linking to other web pages", "Classmates who are in the same class"]
+  ans: 1
+  sol: A page A can link to page B without B linking back, so each link needs a direction. A two-way highway and "in the same class" are the same in both directions, so undirected edges suffice.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A city map has 1,000,000 junctions. An adjacency matrix stores one byte per pair of junctions (including each junction with itself). How many gigabytes is that? (Take 1 GB = 10^9 bytes.)
+  ask: Memory
+  unit: GB
+  ans: 1000
+  tol: 1
+  verify: 1e6 * 1e6 / 1e9
+  sol: The matrix has $10^6 \times 10^6 = 10^{12}$ cells, one byte each, so $10^{12}$ bytes. Dividing by $10^9$ gives 1,000 GB, which is 1 terabyte. Nearly all of it would store "no road", since each junction meets only a few roads.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A road network has 1,000,000 junctions and 1,500,000 two-way roads, stored as an adjacency list. How many entries (neighbour records) does the whole list contain, in millions?
+  ask: Entries
+  unit: million
+  ans: 3
+  tol: 0.01
+  verify: 2 * 1.5e6 / 1e6
+  sol: A two-way road between A and B appears twice, once in A's list (pointing to B) and once in B's list (pointing to A). So the lists contain $2 \times 1{,}500{,}000 = 3{,}000{,}000$ entries, which is 3 million. In general, an undirected graph's list has $2E$ entries. Compare this with the $10^{12}$ cells of a matrix.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You have a friendship graph stored as a dictionary mapping each person to the set of their friends. Write a function that suggests people for a person to befriend, meaning friends of friends who are not already friends and not the person themselves. What does it cost?
+  sol: |
+    Collect the friends of every friend into one set, then remove the person's current friends and the person.
+    ```python
+    def suggest(friends, me):
+        mine = friends[me]
+        found = set()
+        for f in mine:
+            found |= friends[f]
+        return found - mine - {me}
+    ```
+    The work is proportional to the sum of the degrees of the person's friends (the size of all those friend sets), and set difference is proportional to the sizes involved. If you have $d$ friends and each has about $d$ friends, that is about $d^2$ steps, regardless of the billion other people in the network. Because friendship is undirected, `friends[f]` always contains `me`, which is why `me` is removed. A refinement: count how many friends each candidate shares with you (use a dictionary of counts) and suggest the highest counts first.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A graph has 50,000 nodes and 100,000 undirected edges. Your program does two things a lot, "list all neighbours of a node" and "is there an edge between u and v?". Compare an adjacency matrix with an adjacency list, and propose the best structure.
+  sol: |
+    **Matrix.** $50{,}000^2 = 2.5 \times 10^9$ cells, even at one byte each that is 2.5 GB, almost all empty (only 200,000 of them are filled, since each undirected edge fills two cells). Edge checks are $O(1)$ but listing neighbours means scanning a row of 50,000 cells.
+
+    **Plain adjacency list.** About $2 \times 100{,}000 = 200{,}000$ entries (tiny). Listing neighbours is exactly $\deg(u)$ steps, but an edge check scans a list: $O(\deg(u))$.
+
+    **Best choice.** A dictionary mapping each node to a **set** of neighbours: memory $O(V+E)$, listing neighbours is $O(\deg(u))$, and `v in graph[u]` is $O(1)$ on average. Use a list of (neighbour, weight) pairs, or a dictionary of neighbour-to-weight, if edges carry weights.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A maze is given as a grid of characters, where "#" is a wall and "." is open floor, and you may step up, down, left or right. Explain how to treat it as a graph without building an adjacency list. How many nodes and at most how many edges does a 1,000 by 1,000 grid have, and why does building the list explicitly waste effort?
+  sol: |
+    **Model.** Each open cell is a node. There is an edge between two open cells that share a side. Instead of storing edges, write a function that, given a cell, tests its four sides and **yields the open ones**. An algorithm that explores the graph asks for a cell's neighbours when it needs them.
+    ```python
+    def neighbours(r, c, grid):
+        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < len(grid) and 0 <= nc < len(grid[0]) and grid[nr][nc] == ".":
+                yield nr, nc
+    ```
+    **Size.** A 1,000 by 1,000 grid has at most $10^6$ nodes. Each cell has at most 4 neighbours, so the list would hold at most $4 \times 10^6$ entries ($2 \times 10^6$ undirected edges counted from both ends, so a little under that after the borders). The grid is already a perfectly compact description of those edges: the rule "adjacent cells are linked" is the same everywhere. Building lists would cost time and memory to copy information the grid already holds, and for states of a puzzle (too many to list) it would be impossible.
+
+    **Why it matters.** The same pattern (a function that produces neighbours) handles word ladders, puzzle boards and state-space searches, and an algorithm such as BFS needs only that function.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A social network has 1 billion users, an average of 200 friends each, and a few accounts with 50 million followers. Design how the graph is stored, how you answer "does A follow B?" and "who are the mutual friends of A and B?", and how you cope with the huge accounts and with data too big for one machine.
+  sol: |
+    **Estimate.** With 200 friends each, an adjacency list has about $2 \times 10^{11}$ entries. At 8 bytes per entry that is about 1.6 TB, too large for one machine's memory, so the graph must be **partitioned** (and typically compressed, with neighbour lists sorted so that differences can be stored in fewer bytes). A matrix is out of the question: $10^{18}$ cells.
+
+    **Storage.** Store each user's neighbour list as a sorted array of user ids, keyed by user id, on the machine chosen by hashing the id (so a request goes to one machine). Keep **both directions** for a directed follow graph: "who does A follow" and "who follows A" are different lists, and each is needed by some feature.
+
+    **Does A follow B?** Go to A's machine and search A's sorted list with binary search, $O(\log \deg(A))$. For hot pairs, a cache of recent answers helps.
+
+    **Mutual friends of A and B.** Fetch both sorted lists and intersect them by walking the two lists together, in time $O(\deg(A) + \deg(B))$, or, if one list is much shorter, look each of its members up in the other. For ordinary users that is a few hundred items.
+
+    **Huge accounts.** A list of 50 million entries should never be fetched or intersected in full. Options: keep it split into pages across several machines; answer questions about it with a membership structure, such as a Bloom filter, or an index keyed by the pair (follower, followed) so that "does A follow celebrity C?" is looked up from A's side, which has only about 200 entries; and compute celebrity-related work (such as feed delivery) when read rather than when written. [Inference: these are common techniques; the real internals of any company are not public.]
+
+    **Partitioning quality.** Edges that cross machines cost network hops. A good partition keeps tightly linked groups together, but friend networks are hard to cut cleanly, so systems often accept hashing by id for simplicity and rely on caches to hide the cost.
+  check: none

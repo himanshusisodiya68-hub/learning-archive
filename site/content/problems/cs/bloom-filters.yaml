@@ -1,0 +1,99 @@
+# Bloom filters. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A Bloom filter says "definitely not present" for the username "zoya_07". What can you conclude?
+  opts: ["zoya_07 was never added to the filter", "zoya_07 was probably never added, but might have been", "Nothing; you must check the database anyway"]
+  ans: 0
+  sol: A key that was added switched on all of its positions, and switches never turn off. So if any position is off, the key was never added. "Definitely not" is a guarantee. It is the "maybe" answer that needs a second check.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A Bloom filter uses k = 3 hash functions. You add 4 different keys. At most how many switches can be on?
+  ask: Switches on
+  unit: ""
+  ans: 12
+  tol: 0.1
+  verify: 3*4
+  sol: Each key switches on at most k = 3 positions, so 4 keys switch on at most $3 \times 4 = 12$. If any positions coincide, fewer switches are on.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A filter has m = 1000 bits, holds n = 100 keys and uses k = 3 hash functions. Using p = (1 - e^(-kn/m))^k, what is the false positive rate, as a percentage?
+  ask: False positive rate
+  unit: "%"
+  ans: 1.74
+  tol: 0.02
+  verify: 100*Math.pow(1-Math.exp(-3*100/1000),3)
+  sol: |
+    $kn/m = 300/1000 = 0.3$. Then $e^{-0.3} \approx 0.741$, so a given switch is on with probability $1 - 0.741 = 0.259$. A key that was never added needs all 3 positions on, so $p \approx 0.259^3 \approx 0.0174$, which is about 1.74%.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: You want to keep n = 1,000,000 usernames in a Bloom filter with a 1% false positive rate. Using m = -n ln(p) / (ln 2)^2, how many megabytes (1 MB = 8,000,000 bits) does the bit array need?
+  ask: Size
+  unit: MB
+  ans: 1.2
+  tol: 0.01
+  verify: -1e6*Math.log(0.01)/(Math.log(2)**2)/8e6
+  sol: |
+    $m = -10^6 \ln(0.01)/(\ln 2)^2 = 10^6 \times 4.605/0.4805 \approx 9.585 \times 10^6$ bits, about 9.6 bits per key. Dividing by 8,000,000 bits per megabyte gives about 1.2 MB. The same names stored as text would need around 16 MB or more.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A sign-up service stores 500 million usernames in a database. Describe how you would put a Bloom filter in front of it for the check "is this username free?". Say what each answer from the filter leads to, and what happens when a user finally registers a name.
+  sol: |
+    Keep the filter in memory on the web servers.
+
+    - **Filter says "definitely not present":** the name is free as far as we know, so tell the user "available" without querying the database.
+    - **Filter says "maybe present":** query the database. If the database has the name, say "taken". If it does not, this was a false positive and the name is available.
+    - **When a user registers a name:** the database is the source of truth. Its unique index decides who wins if two people register the same name at once. After a successful insert, add the name to the filter.
+
+    The filter never decides uniqueness; it only saves lookups. A name added to the filter and then released (account deleted) stays a "maybe" until the filter is rebuilt, which costs only a harmless extra lookup.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Your service keeps data in 20 sorted files on disk. A lookup for a key checks the files from newest to oldest. Most lookups are for keys that do not exist. How can a Bloom filter per file help, and what size of filter would you pick for 5 million keys per file if you can tolerate a 1% false positive rate?
+  sol: |
+    Without help, a missing key costs one disk read per file, 20 in total. With a filter per file kept in memory, a lookup first asks each filter. A filter that says "not present" lets us skip that file entirely. With a 1% rate, a missing key reaches a given file with probability 1%, so on average only $20 \times 0.01 = 0.2$ files are read instead of 20.
+
+    For 5 million keys at 1%, we need about 9.6 bits per key: $5\times10^6 \times 9.6 = 4.8\times10^7$ bits, about 6 MB per file, with $k = 7$. Twenty files cost about 120 MB of memory. A key that does exist still needs reading from the file that holds it, so the filters help most when many lookups are for missing keys. Storage engines in the LSM-tree family are commonly described as using this technique [Unverified: from memory].
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: You have 10 bits of memory per key. Using k = 7 hash functions, what is the false positive rate, as a percentage? (Use p = (1 - e^(-kn/m))^k with m/n = 10.)
+  ask: False positive rate
+  unit: "%"
+  ans: 0.82
+  tol: 0.01
+  verify: 100*Math.pow(1-Math.exp(-7/10),7)
+  sol: |
+    $kn/m = 7/10 = 0.7$ and $e^{-0.7} \approx 0.4966$, so a switch is on with probability $0.5034$. Then $p \approx 0.5034^7 \approx 0.0082$, about 0.82%. The best $k$ is $(m/n)\ln 2 = 10 \times 0.693 \approx 6.9$, so 7 is the right choice. Try $k = 3$ for contrast: $(1 - e^{-0.3})^3 \approx 1.7\%$, twice as bad.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Show that when a Bloom filter uses the best number of hash functions, about half of its bits are on, and that its false positive rate is then about 2^(-k). Use p = (1 - e^(-kn/m))^k and k = (m/n) ln 2.
+  sol: |
+    The chance that a given bit is on after adding $n$ keys with $k$ hashes each is $1 - e^{-kn/m}$. With $k = (m/n)\ln 2$ we get $kn/m = \ln 2$, so $e^{-kn/m} = e^{-\ln 2} = 1/2$. Hence each bit is on with probability $1 - 1/2 = 1/2$: about half the bits are on.
+
+    The false positive rate needs all $k$ bits of a stranger to be on, so $p \approx (1/2)^k = 2^{-k}$.
+
+    Check with numbers: 10 bits per key gives $k \approx 7$ and $p \approx 2^{-7} = 0.78\%$, close to the 0.82% from the exact formula (which uses rounded $k = 7$ rather than 6.93).
+
+    Reading it the other way: each extra hash function halves $p$, and each extra hash function costs $\ln 2$ more... in fact it needs $1/\ln 2 \approx 1.44$ more bits per key, because $k = 1.44 \cdot \log_2$ ... which is why each factor of 10 costs about 4.8 bits per key ($\log_2 10 \times 1.44 = 4.79$).
+  check: none

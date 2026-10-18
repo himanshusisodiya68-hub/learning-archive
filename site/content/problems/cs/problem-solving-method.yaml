@@ -1,0 +1,101 @@
+# A method for any problem. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A dispatcher tries every way of pairing 10 orders with 10 riders (each order gets a different rider). How many pairings is that?
+  ask: Pairings
+  unit: ""
+  ans: 3628800
+  tol: 0.5
+  verify: (function(){ let f=1; for(let i=2;i<=10;i++) f*=i; return f; })()
+  sol: The first order has 10 choices of rider, the next 9, then 8, and so on, so the count is $10! = 10\times9\times8\times\cdots\times1 = 3{,}628{,}800$. At 10 orders that is fine for a computer; at 20 orders it is about $2.4\times10^{18}$, which is not.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: You must process n = 100,000 items in about a second. Which running time is realistic?
+  opts: ["O(n log n)", "O(n²)", "O(2ⁿ)"]
+  ans: 0
+  sol: With about $10^8$ simple steps per second, $n\log n \approx 1.7\times10^6$ fits easily. $n^2 = 10^{10}$ would take about 100 seconds, and $2^n$ has about 30,000 digits.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A method needs n × n steps with n = 200,000. A machine does 10^8 steps per second. How many seconds does it take?
+  ask: Time
+  unit: seconds
+  ans: 400
+  tol: 1
+  verify: (2e5*2e5)/1e8
+  sol: Steps $= 200{,}000^2 = 4\times10^{10}$. Time $= 4\times10^{10} / 10^{8} = 400$ seconds, over six minutes. We needed an $O(n\log n)$ or $O(n)$ method; this estimate costs ten seconds and saves a wrong program.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: The statement of a problem is unclear to you. What is the best first move?
+  opts: ["Start coding the most likely reading", "Restate it in your own words and work two or three tiny examples by hand", "Look for the fastest known algorithm"]
+  ans: 1
+  sol: Restating and working small examples exposes misunderstandings cheaply, often reveals the pattern, and gives you test cases for later. Coding a guess or hunting for an algorithm before you understand the question wastes the most time.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Given up to 100,000 numbers and a target T, count the pairs of positions i < j with a[i] + a[j] = T. Walk through the method (understand, examples, brute force, bottleneck, pattern, test) and give the final cost.
+  sol: |
+    **Understand.** Input is a list of up to $10^5$ numbers and T; output is a count. Pairs are of positions, so equal values at different positions are different pairs.
+    **Examples.** [1, 3, 2, 2] with T = 4 gives 2: positions 0 and 1 (1 + 3), and positions 2 and 3 (2 + 2). The empty list gives 0. [2, 2, 2] with T = 4 gives 3 (three ways to choose two of three positions).
+    **Brute force.** Check every pair: $O(n^2) = 10^{10}$ steps, too slow for $n = 10^5$ but correct, and ideal as the test reference.
+    **Bottleneck.** For each item $x$ we search the whole rest of the list for $T - x$.
+    **Pattern.** "Have I seen the partner before?" is a hash map from value to how many times seen. Scan left to right: add `seen[T - x]` to the count, then record $x$.
+    ```python
+    def count_pairs(a, t):
+        seen, count = {}, 0
+        for x in a:
+            count += seen.get(t - x, 0)
+            seen[x] = seen.get(x, 0) + 1
+        return count
+    ```
+    **Test.** Empty, one item, all equal ([2, 2, 2] with T = 4 must give 3), negatives, and a stress test against the brute force. Cost: $O(n)$ time, $O(n)$ memory.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Given 40 positive numbers, decide whether some subset adds to exactly T. Trying every subset is about 10^12 steps. What do the limits suggest, and how can you do better than brute force?
+  sol: |
+    $2^{40} \approx 1.1\times10^{12}$ subsets, at $10^8$ steps a second about 3 hours, so brute force is too slow, but $2^{20} \approx 10^6$ is cheap. That gap suggests splitting the problem: **meet in the middle**.
+    Split the numbers into two halves of 20. Enumerate all $2^{20}$ subset sums of each half (about a million each). Then ask whether some sum $s$ from the first half and some sum $T - s$ from the second half exist. Put the second half's sums in a hash set, and for every sum $s$ of the first half test whether $T - s$ is in the set. Cost about $2\times2^{20}$ steps, roughly two million, plus the memory for a million sums.
+    Lesson: when n is a little too big for $2^n$, halving the exponent turns $2^{40}$ into $2\times2^{20}$. Dynamic programming over sums is another option when T is small.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Your fast solution passes all the examples in the statement but fails on hidden tests, and you do not know which input breaks it. Describe a systematic way to find the fault, using a brute-force solution.
+  sol: |
+    1. Write a brute force that is obviously correct, even if it is only fast enough for $n \le 8$.
+    2. Write a random generator of tiny inputs, with small values so that duplicates, zeros and negative numbers occur often.
+    3. Loop thousands of times: generate an input, run both solutions, and stop at the first difference. This is a stress test.
+    4. Shrink: reduce the failing input by deleting items or lowering values while the difference remains, until it is tiny enough to trace by hand.
+    5. Trace the fast solution on that input and compare the state with the brute force step by step; the fault is where they first disagree.
+    6. Fix it, then add that input to your permanent test list and re-run the stress test.
+    If no difference appears, also test the **limits**: the largest n (for time), the largest values (for overflow in fixed-size integers), and special structure such as all equal or already sorted.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Count triples of positions i < j < k in an array of up to 3,000 numbers whose sum is zero. Use the method to move from brute force to a method that fits the limit, and state the complexity at each stage.
+  sol: |
+    **Limits.** $n \le 3000$ allows about $n^2 = 9\times10^6$ steps and even a bit more, but $n^3 = 2.7\times10^{10}$ is too slow. The target is $O(n^2)$ or $O(n^2\log n)$.
+    **Brute force.** Three nested loops, $O(n^3)$: correct, and the test reference.
+    **Bottleneck.** For each pair $(i, j)$ we search for the third number $-(a_i + a_j)$ by a loop, which is a search for a value we already know.
+    **Improvement 1: hash map.** For each pair $(i, j)$ with $i<j$, the needed third value is known; keep a map of counts of the values seen after $j$ (scan $j$ from the right). Cost $O(n^2)$ time and $O(n)$ memory.
+    **Improvement 2: sort and two pointers.** Choosing three distinct positions is the same as choosing a set of three positions, so the order $i<j<k$ is only a way to avoid counting a triple more than once. Sorting the values first therefore loses nothing. Sort, fix the first item $a_i$, and run the pair-sum two-pointer scan over the items to its right looking for sum $-a_i$. Each scan is $O(n)$, so the total is $O(n^2)$ with $O(1)$ extra memory after the $O(n\log n)$ sort. The one delicate point is repeated values: when $a_l = a_r$ and the sum matches, add the number of pairs among that block of equal values, $\binom{m}{2}$ for a block of $m$, instead of stepping one at a time.
+    **Test.** Empty and short arrays, all zeros (many triples, check the count formula $\binom{n}{3}$), and a stress test against the $O(n^3)$ version.
+  check: none
