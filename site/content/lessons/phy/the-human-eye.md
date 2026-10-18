@@ -76,6 +76,15 @@ next:
   q: 'A perfect eye still looks through the air, and the air itself bends and scatters light on the way. Why do stars twinkle while planets do not, and why is the sky blue instead of black?'
   leaf: 'phy/atmospheric-refraction-and-scattering'
   name: 'Atmospheric refraction and scattering'
+symbols:
+  - s: 'P'
+    means: 'power of the corrective lens: 1/focal length in metres (dioptre, D)'
+  - s: 'x'
+    means: 'far point of the myopic eye: farthest distance seen clearly (m)'
+  - s: 'd'
+    means: 'near point of the hypermetropic eye: nearest distance seen clearly (m)'
+  - s: '4'
+    means: 'power in dioptres needed to bring the 25 cm reading distance into focus (D)'
 ---
 
 :::hook

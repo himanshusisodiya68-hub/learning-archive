@@ -76,6 +76,23 @@ next:
   q: 'Light travels straight until something stops it. When it meets a smooth, shiny surface it does not stop: it bounces. But which way does it go, and why does your face seem to float behind the glass?'
   leaf: 'phy/laws-of-reflection'
   name: 'Laws of reflection'
+symbols:
+  - s: 'E'
+    means: 'illuminance: light energy arriving per unit area of the surface (lux)'
+  - s: 'I'
+    means: 'luminous intensity of the point source (candela)'
+  - s: 'r'
+    means: 'distance from the point source to the surface (m)'
+  - s: '\theta'
+    means: 'angle between the light ray and the normal to the surface (degrees)'
+  - s: 'h_{\text{image}}'
+    means: 'height of the image on the pinhole-camera screen (cm or m)'
+  - s: 'h_{\text{object}}'
+    means: 'height of the object in front of the pinhole (cm or m)'
+  - s: 'd_{\text{screen}}'
+    means: 'distance from the pinhole to the screen (cm or m)'
+  - s: 'd_{\text{object}}'
+    means: 'distance from the object to the pinhole (cm or m)'
 ---
 
 :::hook

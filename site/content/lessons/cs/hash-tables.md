@@ -75,6 +75,21 @@ next:
   q: 'Most usernames people type are already taken. Could the system answer "definitely available" or "probably taken" without even touching the database, using just a few megabytes of memory per billion names?'
   leaf: 'cs/bloom-filters'
   name: 'Bloom filters'
+symbols:
+  - s: 'n'
+    means: 'number of keys stored in the table (count)'
+  - s: 'm'
+    means: 'number of slots in the table (count)'
+  - s: '\alpha'
+    means: 'load factor: keys stored divided by slots, n/m (no unit)'
+  - s: 'h(\text{key})'
+    means: 'hash function: turns a key into a large whole number'
+  - s: '\bmod'
+    means: 'remainder after division, used to fold the hash into the range 0 to m - 1'
+  - s: 'O(1)'
+    means: 'constant time: the work does not grow as more keys are added'
+  - s: 'O(n)'
+    means: 'linear time: the work grows in step with the number of keys, the worst case'
 ---
 
 :::hook

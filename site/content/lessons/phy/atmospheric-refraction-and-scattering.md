@@ -75,6 +75,17 @@ next:
   q: 'Air blurs and bends starlight before it reaches you, yet astronomers still photograph galaxies and doctors see single cells. How can pieces of curved glass bring a faint, far or tiny thing into view, and what sets the limit?'
   leaf: 'phy/optical-instruments'
   name: 'Optical instruments'
+symbols:
+  - s: 'I_{\text{scattered}}'
+    means: 'intensity of the scattered light (W/m^2)'
+  - s: '\lambda'
+    means: 'wavelength of the light (nm)'
+  - s: 'R'
+    means: 'angular shift in the apparent position of a star caused by the atmosphere (radians)'
+  - s: 'n_0'
+    means: 'refractive index of air at the ground (no unit)'
+  - s: 'z'
+    means: 'zenith angle: angle of the star from the vertical overhead (degrees)'
 ---
 
 :::hook

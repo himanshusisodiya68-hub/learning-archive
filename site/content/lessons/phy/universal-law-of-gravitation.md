@@ -72,6 +72,23 @@ next:
   q: 'If gravity weakens with distance, do you weigh less on top of a mountain? And what happens to your weight if you go down a deep mine: does it grow, or shrink?'
   leaf: 'phy/variation-of-g'
   name: 'Variation of g'
+symbols:
+  - s: 'F'
+    means: 'gravitational force between the two masses (N)'
+  - s: 'G'
+    means: 'gravitational constant, 6.67 × 10^-11 N m^2/kg^2'
+  - s: 'm_1'
+    means: 'mass of the first body (kg)'
+  - s: 'm_2'
+    means: 'mass of the second body (kg)'
+  - s: 'r'
+    means: 'distance between the centres of the two bodies (m)'
+  - s: 'g'
+    means: 'acceleration of free fall at the planets surface (m/s^2)'
+  - s: 'M'
+    means: 'mass of the planet (kg)'
+  - s: 'R'
+    means: 'radius of the planet (m)'
 ---
 
 :::hook

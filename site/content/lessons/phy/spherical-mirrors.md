@@ -80,6 +80,21 @@ next:
   q: 'A mirror turns light back by bouncing it. But a magnifying glass lets light pass straight through and still bends it. Why does light change direction just by entering water or glass? Why does a straw look broken in a glass of water?'
   leaf: 'phy/refraction-and-snells-law'
   name: 'Refraction and Snell''s law'
+symbols:
+  - s: 'f'
+    means: 'focal length: distance from the pole to the focus (cm or m)'
+  - s: 'R'
+    means: 'radius of curvature of the mirror (cm or m)'
+  - s: 'u'
+    means: 'object distance from the pole, negative in front of the mirror (cm or m)'
+  - s: 'v'
+    means: 'image distance from the pole (cm or m)'
+  - s: 'm'
+    means: 'magnification: image height divided by object height (no unit)'
+  - s: 'h'''
+    means: 'height of the image (cm or m)'
+  - s: 'h'
+    means: 'height of the object (cm or m)'
 ---
 
 :::hook

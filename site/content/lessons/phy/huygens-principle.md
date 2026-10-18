@@ -77,6 +77,27 @@ next:
   q: 'Huygens says every point of a wavefront sends out its own little wavelets. So what happens where wavelets from two different places meet: can light plus light ever make darkness?'
   leaf: 'phy/interference-and-youngs-experiment'
   name: 'Interference and Young''s experiment'
+symbols:
+  - s: 'i'
+    means: 'angle of incidence, measured from the normal (degrees)'
+  - s: 'r'
+    means: 'angle of refraction, measured from the normal (degrees)'
+  - s: 'v_1'
+    means: 'speed of light in the first medium (m/s)'
+  - s: 'v_2'
+    means: 'speed of light in the second medium (m/s)'
+  - s: 'n_1'
+    means: 'refractive index of the first medium (no unit)'
+  - s: 'n_2'
+    means: 'refractive index of the second medium (no unit)'
+  - s: '\lambda_{\text{medium}}'
+    means: 'wavelength of the light in the medium (nm)'
+  - s: '\lambda_{\text{vacuum}}'
+    means: 'wavelength of the light in vacuum (nm)'
+  - s: 'L_{\text{opt}}'
+    means: 'optical path length: the distance in vacuum that takes the same travel time (m)'
+  - s: 'd'
+    means: 'geometric distance travelled in the medium (m)'
 ---
 
 :::hook

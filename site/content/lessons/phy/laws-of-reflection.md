@@ -78,6 +78,21 @@ next:
   q: 'A flat mirror gives a perfect same-size copy of you. But a steel spoon gives a tiny upside-down face on one side and a smaller upright one on the other. What changes when the mirror curves?'
   leaf: 'phy/spherical-mirrors'
   name: 'Spherical mirrors'
+symbols:
+  - s: 'i'
+    means: 'angle of incidence, measured from the normal (degrees)'
+  - s: 'r'
+    means: 'angle of reflection, measured from the normal (degrees)'
+  - s: '\hat{\mathbf{i}}'
+    means: 'unit vector along the incident ray (no unit)'
+  - s: '\hat{\mathbf{n}}'
+    means: 'unit vector along the normal to the surface (no unit)'
+  - s: '\hat{\mathbf{r}}'
+    means: 'unit vector along the reflected ray (no unit)'
+  - s: '\theta'
+    means: 'angle between the two mirrors (degrees)'
+  - s: '\delta'
+    means: 'total deviation of the ray after reflecting from both mirrors (degrees)'
 ---
 
 :::hook

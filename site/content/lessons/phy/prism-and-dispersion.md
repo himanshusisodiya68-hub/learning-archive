@@ -80,6 +80,23 @@ next:
   q: 'Light has now been bent by lenses and split by a prism. But you carry a living lens in your head. How does it refocus from a page to a mountain in a second, and what goes wrong when it cannot?'
   leaf: 'phy/the-human-eye'
   name: 'The human eye'
+symbols:
+  - s: '\delta'
+    means: 'angle of deviation: angle between the incident ray and the emergent ray (degrees)'
+  - s: 'i'
+    means: 'angle of incidence on the first face (degrees)'
+  - s: 'e'
+    means: 'angle of emergence from the second face (degrees)'
+  - s: 'A'
+    means: 'angle of the prism, between its two refracting faces (degrees)'
+  - s: 'r_1'
+    means: 'angle of refraction at the first face (degrees)'
+  - s: 'r_2'
+    means: 'angle of incidence at the second face inside the prism (degrees)'
+  - s: '\delta_m'
+    means: 'angle of minimum deviation (degrees)'
+  - s: 'n'
+    means: 'refractive index of the prism material (no unit)'
 ---
 
 :::hook

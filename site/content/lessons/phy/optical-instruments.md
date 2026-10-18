@@ -80,6 +80,19 @@ next:
   q: 'Even a flawless lens cannot show you a single atom, however much it magnifies, because light itself is a wave and waves smear. What does it really mean for light to be a wave, and how does a wave decide where to go next?'
   leaf: 'phy/huygens-principle'
   name: 'Huygens'' principle'
+symbols:
+  - s: 'm'
+    means: 'magnifying power: angle subtended by the image divided by angle subtended by the object (no unit)'
+  - s: 'D'
+    means: 'near point of the eye, 25 cm (cm)'
+  - s: 'f'
+    means: 'focal length of the magnifying lens (cm)'
+  - s: 'L'
+    means: 'distance between the objective and eyepiece images, roughly the tube length of the microscope (cm)'
+  - s: 'f_o'
+    means: 'focal length of the objective lens (cm)'
+  - s: 'f_e'
+    means: 'focal length of the eyepiece lens (cm)'
 ---
 
 :::hook

@@ -81,6 +81,25 @@ next:
   q: 'Look closely at a cheap magnifying glass and you may see coloured fringes around bright edges. The light that went in was white, so where do the colours come from?'
   leaf: 'phy/prism-and-dispersion'
   name: 'Prism and dispersion'
+symbols:
+  - s: 'f'
+    means: 'focal length: distance from the lens to the point where parallel rays meet (cm or m)'
+  - s: 'u'
+    means: 'object distance from the optical centre, negative for a real object (cm or m)'
+  - s: 'v'
+    means: 'image distance from the optical centre (cm or m)'
+  - s: 'm'
+    means: 'magnification: image height divided by object height (no unit)'
+  - s: 'h'''
+    means: 'height of the image (cm or m)'
+  - s: 'h'
+    means: 'height of the object (cm or m)'
+  - s: 'n'
+    means: 'refractive index of the lens material (no unit)'
+  - s: 'R_1'
+    means: 'radius of curvature of the first surface the light meets (cm or m)'
+  - s: 'R_2'
+    means: 'radius of curvature of the second surface (cm or m)'
 ---
 
 :::hook

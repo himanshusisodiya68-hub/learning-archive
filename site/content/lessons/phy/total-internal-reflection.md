@@ -79,6 +79,19 @@ next:
   q: 'We now know how light behaves at a flat surface. But a piece of curved glass, thick in the middle, makes a magnifying glass that focuses the Sun to a burning point. How does curved glass bring many rays to one point?'
   leaf: 'phy/lenses-and-the-lens-formula'
   name: 'Lenses and the lens formula'
+symbols:
+  - s: '\theta_c'
+    means: 'critical angle: the angle of incidence beyond which light cannot leave the denser medium (degrees)'
+  - s: 'n_1'
+    means: 'refractive index of the denser medium, or of the fibre core (no unit)'
+  - s: 'n_2'
+    means: 'refractive index of the rarer medium, or of the fibre cladding (no unit)'
+  - s: '\theta_{\max}'
+    means: 'acceptance angle: the largest angle from the axis at which light entering a fibre from air is still guided (degrees)'
+  - s: 'R_{\text{circle}}'
+    means: 'radius of the lit circle on the surface, or of Snells window (m)'
+  - s: 'h'
+    means: 'depth of the lamp or the diver below the surface (m)'
 ---
 
 :::hook

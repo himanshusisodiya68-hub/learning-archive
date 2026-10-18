@@ -81,6 +81,21 @@ next:
   q: 'Going into glass, light bends towards the normal; coming out, it bends away. But if it hits the surface steeply enough from inside glass or water, there is no more bending room left. What does the light do then?'
   leaf: 'phy/total-internal-reflection'
   name: 'Total internal reflection'
+symbols:
+  - s: 'v'
+    means: 'speed of light in the medium (m/s)'
+  - s: 'c'
+    means: 'speed of light in vacuum, 3 × 10^8 m/s'
+  - s: 'n'
+    means: 'absolute refractive index of the medium (no unit)'
+  - s: 'n_1'
+    means: 'refractive index of the first medium, where the ray starts (no unit)'
+  - s: '\theta_1'
+    means: 'angle of incidence, measured from the normal (degrees)'
+  - s: 'n_2'
+    means: 'refractive index of the second medium (no unit)'
+  - s: '\theta_2'
+    means: 'angle of refraction, measured from the normal (degrees)'
 ---
 
 :::hook

@@ -80,6 +80,17 @@ next:
   q: 'Light reflecting from glass or water comes back partly polarised, so a reflection has hidden rules. What happens when light reflects from both the front and back of a layer thinner than a hair? Why does a soap bubble show colour?'
   leaf: 'phy/thin-films'
   name: 'Thin films'
+symbols:
+  - s: 'I'
+    means: 'intensity of the light emerging from the polaroid (W/m^2)'
+  - s: 'I_0'
+    means: 'intensity of the light falling on the polaroid (W/m^2)'
+  - s: '\theta'
+    means: 'angle between the lights polarisation direction and the polaroids pass axis (degrees)'
+  - s: '\theta_B'
+    means: 'Brewsters angle: angle of incidence at which reflected light is fully polarised (degrees)'
+  - s: 'n'
+    means: 'refractive index of the reflecting medium (no unit)'
 ---
 
 :::hook

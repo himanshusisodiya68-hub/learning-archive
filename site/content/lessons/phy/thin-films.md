@@ -79,6 +79,23 @@ next:
   q: 'All through these lessons we have called light a wave, but a wave of what? Water waves move water and sound moves air. What is waving when light crosses empty space from the Sun?'
   leaf: 'phy/electromagnetic-waves'
   name: 'Electromagnetic waves'
+symbols:
+  - s: '\Delta'
+    means: 'optical path difference between the two reflected rays (nm)'
+  - s: 'n'
+    means: 'refractive index of the film (no unit)'
+  - s: 't'
+    means: 'thickness of the film (nm)'
+  - s: 'r'
+    means: 'angle of refraction inside the film (degrees)'
+  - s: 'm'
+    means: 'whole number labelling the order of the fringe (no unit)'
+  - s: '\lambda'
+    means: 'wavelength of the light in vacuum (nm)'
+  - s: '\beta'
+    means: 'fringe spacing along the air wedge (mm)'
+  - s: '\alpha'
+    means: 'angle of the air wedge (radians)'
 ---
 
 :::hook

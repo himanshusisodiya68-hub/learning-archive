@@ -80,6 +80,23 @@ next:
   q: 'Interference and diffraction work for sound and water waves too. Is there anything light can do that those waves cannot, a sign that it wiggles in a different way?'
   leaf: 'phy/polarisation'
   name: 'Polarisation'
+symbols:
+  - s: 'a'
+    means: 'width of the single slit (mm)'
+  - s: '\theta'
+    means: 'angle from the central axis to a point on the screen (degrees)'
+  - s: '\lambda'
+    means: 'wavelength of the light (nm)'
+  - s: 'n'
+    means: 'order of the minimum, a non-zero integer (no unit)'
+  - s: 'I'
+    means: 'intensity at angle theta (W/m^2)'
+  - s: 'I_0'
+    means: 'intensity of the central maximum (W/m^2)'
+  - s: '\beta'
+    means: 'phase quantity, pi a sin(theta) over lambda (radians)'
+  - s: 'D'
+    means: 'diameter of the circular aperture (mm)'
 ---
 
 :::hook

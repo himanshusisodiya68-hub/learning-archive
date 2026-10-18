@@ -80,6 +80,27 @@ next:
   q: 'If light is a wave, a single narrow slit should behave like a whole crowd of tiny sources all interfering. So what happens to a beam of light when you squeeze the slit narrower and narrower?'
   leaf: 'phy/diffraction'
   name: 'Diffraction'
+symbols:
+  - s: 'I'
+    means: 'resultant intensity at a point on the screen (W/m^2)'
+  - s: 'I_1'
+    means: 'intensity of the first beam alone (W/m^2)'
+  - s: 'I_2'
+    means: 'intensity of the second beam alone (W/m^2)'
+  - s: 'I_0'
+    means: 'intensity of one beam alone, when the two beams are equal (W/m^2)'
+  - s: '\phi'
+    means: 'phase difference between the two waves (radians)'
+  - s: '\Delta'
+    means: 'path difference between the two waves (m)'
+  - s: '\lambda'
+    means: 'wavelength of the light (nm)'
+  - s: '\beta'
+    means: 'fringe width: distance between neighbouring bright fringes (mm)'
+  - s: 'D'
+    means: 'distance from the slits to the screen (m)'
+  - s: 'd'
+    means: 'separation between the two slits (mm)'
 ---
 
 :::hook
