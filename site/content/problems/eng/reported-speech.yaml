@@ -1,0 +1,167 @@
+# Reported speech. All problems are original (no NCERT items for this leaf). There is no NCERT answer key: every answer is a model answer written by us for this archive.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Tina said, \"I am happy.\" Choose the correct report: Tina said that ___."
+  opts: ["she is happy", "she was happy", "I was happy", "she has been happy"]
+  ans: 1
+  sol: |
+    The speaker is Tina, so *I* becomes *she*. The reporting verb *said* is in the past, so *am* steps back to *was*. *She is happy* leaves the tense unshifted, *I was happy* leaves the pronoun, and *has been* is the wrong tense.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Sunil said, \"I will come tomorrow.\" Complete the report: Sunil said that he would come ___."
+  opts: ["tomorrow", "the next day", "yesterday", "today"]
+  ans: 1
+  sol: |
+    With a past reporting verb, *tomorrow* becomes *the next day* (or *the following day*). *Yesterday* is the opposite direction and *today* becomes *that day*, not the plain *today*.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which sentence is correct?"
+  opts: ["He said me that he was busy.", "He told me that he was busy.", "He told that he was busy.", "He said to that he was busy."]
+  ans: 1
+  sol: |
+    *Tell* needs a person after it (*told me*). *Say* does not take an object directly (*said that*, or *said to me that*). The first option puts a person directly after *said*, the third drops the person after *told*, and the fourth has *to* with nothing after it.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "The teacher said to us, \"Sit down.\" Complete the report: The teacher ___ us to sit down."
+  opts: ["told", "said", "said that", "exclaimed"]
+  ans: 0
+  sol: |
+    A command is reported with a verb that can take an object and *to*: *told, ordered, asked*. *Said* cannot take *us to sit* in this pattern, *said that* belongs to statements, and *exclaimed* belongs to exclamations.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "She asked, \"Where do you live?\" Choose the correct indirect form."
+  opts: ["She asked me where did I live.", "She asked me where I lived.", "She asked me that where I lived.", "She asked me where I live?"]
+  ans: 1
+  sol: |
+    A reported question takes statement word order (*I lived*), with no *do/did* and no question mark. The question word *where* is the link, so *that* is not needed. *You* becomes *I* here, because the listener (the reporter) is the person addressed.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Change into indirect speech. (a) Gita said to me, \"I have finished my homework.\" (b) The mother said to the boy, \"Don't touch the stove.\" (c) \"What are you reading?\" the librarian asked Dev. (d) Arjun said, \"Hurrah! We have won the match.\""
+  sol: |
+    Model answers:
+
+    (a) *Gita told me that she had finished her homework.* Said to becomes told; I becomes she; the present perfect have finished becomes had finished; my becomes her.
+
+    (b) *The mother told the boy not to touch the stove.* A negative command: told + object + not to + base verb.
+
+    (c) *The librarian asked Dev what he was reading.* The question word what stays, the order becomes statement order, and you becomes he; are reading becomes was reading.
+
+    (d) *Arjun exclaimed with joy that they had won the match.* The interjection Hurrah is replaced by the feeling (joy); we becomes they (the team, to which Arjun belongs) and have won becomes had won.
+
+    [Note] Model answers written for this archive, not an official key.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Change into direct speech. (a) He said that he was going to the market that evening. (b) She asked me whether I had seen her keys. (c) The captain told the players to run faster."
+  sol: |
+    Model answers:
+
+    (a) *He said, "I am going to the market this evening."* Undo each change: he becomes I, was going becomes am going, that evening becomes this evening.
+
+    (b) *She said to me, "Have you seen my keys?"* Whether turns back into a yes/no question: I becomes you, had seen becomes have seen, her becomes my, and a question mark returns.
+
+    (c) *The captain said to the players, "Run faster."* A to-infinitive command turns back into an imperative. (*"Run faster, please."* is also possible if the tone was a request, but told suggests an order.)
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "The teacher said, \"The Moon moves round the Earth.\" Choose the correct report."
+  opts: ["The teacher said that the Moon moves round the Earth.", "The teacher said that the Moon had moved round the Earth.", "The teacher said that the Moon was moving round the Earth.", "The teacher said that the Moon will move round the Earth."]
+  ans: 0
+  sol: |
+    The sentence is a universal truth, so the tense does not shift even though *said* is in the past. The second and third options change the meaning (a finished event, or an action in progress), and the fourth moves it into the future. Some usage guides accept *moved*; this is the form a board key expects.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "\"Can you swim?\" he asked her. Choose the correct report."
+  opts: ["He asked her if she can swim.", "He asked her if she could swim.", "He asked her if could she swim.", "He asked her that she could swim."]
+  ans: 1
+  sol: |
+    A yes/no question uses *if* (or *whether*) with statement order. After the past *asked*, *can* shifts to *could*, and *you* becomes *she*. The first option does not backshift, the third keeps question order, and the fourth uses *that*, which belongs to statements.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Report the conversation in a single paragraph, using suitable reporting verbs. Mother: \"Why are you late?\" Sunil: \"My bus broke down, Mother. I walked home.\" Mother: \"Please call me next time.\""
+  sol: |
+    Model answer: *Mother asked Sunil why he was late. Sunil replied respectfully that his bus had broken down and that he had walked home. Mother requested him to call her the next time.*
+
+    Why: the first line is a wh-question, so *asked* + question word + statement order, with you becoming he. The second line is two statements; *broke down* and *walked* are past simple and shift to the past perfect; *my* becomes *his*, and the address *Mother* is dropped (it is shown by *respectfully*). The third line is a polite request: *requested him to call her*; *next time* becomes *the next time*.
+
+    [Note] A model answer written for this archive; other wordings are possible.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Each sentence has one error in reported speech. Correct it. (a) He said me that he was ill. (b) She asked me where was the station. (c) The doctor advised him not eat sweets. (d) My friend said that he will join us the next day. (e) The teacher asked whether had I finished the work."
+  sol: |
+    (a) *said me* should be *told me*: "He told me that he was ill." (or "He said that he was ill.")
+
+    (b) *where was the station* should be *where the station was*: a reported question takes statement order.
+
+    (c) *not eat* should be *not to eat*: the reported command takes *not to* + base verb.
+
+    (d) *will join* should be *would join*: the reporting verb is in the past, so will shifts to would.
+
+    (e) *whether had I finished* should be *whether I had finished*: statement order again.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Report each sentence using the verb in brackets. (a) \"I'm sorry I broke your vase,\" Isha said to Meena. (apologised) (b) \"Don't forget to lock the door,\" Dad said to me. (reminded) (c) \"Let's go for a walk,\" said Kabir. (suggested) (d) \"I didn't take your pen,\" Leela said to me. (denied) (e) \"I will pay you back on Monday,\" Zoya said to me. (promised)"
+  sol: |
+    Model answers:
+
+    (a) *Isha apologised to Meena for breaking her vase.* Apologise takes for + -ing.
+
+    (b) *Dad reminded me to lock the door.* Remind takes object + to + base verb.
+
+    (c) *Kabir suggested going for a walk.* (or *Kabir suggested that they go for a walk.*) Suggest takes -ing or a that clause with the base verb, not to + base verb.
+
+    (d) *Leela denied taking my pen.* (or *denied having taken my pen*). Deny takes -ing.
+
+    (e) *Zoya promised to pay me back on Monday.* Promise takes to + base verb. (*Zoya promised that she would pay me back on Monday* is also correct.)
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Change into indirect speech: The doctor said to the patient, \"You are very weak. Take rest for a week and do not go out. Will you follow my advice?\""
+  sol: |
+    Model answer: *The doctor told the patient that he was very weak, advised him to take rest for a week and not to go out, and asked whether he would follow that advice.*
+
+    Split by type. Sentence 1 is a statement: *told the patient that he was very weak* (you becomes he). Sentence 2 is a command and advice: *advised him to take rest ... and not to go out*; both verbs share the one *advised him*, so the second need only add *not to*. Sentence 3 is a yes/no question: *asked whether he would follow that advice*; will becomes would, and *my advice* becomes *that advice* (this avoids the confusing *his advice*, which might be taken to mean the patient's).
+
+    [Note] A model answer written for this archive.
+  check: none

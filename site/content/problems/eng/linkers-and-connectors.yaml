@@ -1,0 +1,165 @@
+# Linkers and connectors. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive; there is no NCERT answer key for English.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: She was tired, ___ she kept working."
+  opts: ["but", "so", "because", "unless"]
+  ans: 0
+  sol: |
+    The second idea goes against the first (tired, yet she worked), so the relation is contrast and the coordinating conjunction *but* fits. *So* shows result, *because* shows cause, and *unless* shows condition; none of them makes sense here.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Take an umbrella, ___ you will get wet."
+  opts: ["or", "and", "but", "so"]
+  ans: 0
+  sol: |
+    The second clause is a warning about what happens if you do not follow the first, so *or* (meaning "otherwise") is correct. *And* would suggest that you will get wet because you take an umbrella.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: ___ it was raining, we played outside."
+  opts: ["Because", "Although", "Unless", "Therefore"]
+  ans: 1
+  sol: |
+    Playing outside goes against the rain, so the relation is contrast and the subordinating conjunction *Although* is needed. *Because* would give a reason, *Unless* a condition, and *Therefore* is a linking adverb that cannot start a clause like this.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: He stayed at home ___ he was ill."
+  opts: ["because", "unless", "but", "or"]
+  ans: 0
+  sol: |
+    Being ill is the reason for staying at home, so the linker shows cause: *because*. *Unless* shows a condition, and *but* and *or* join equal clauses with a contrast or a choice that does not fit the meaning.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Join each pair of sentences using the word given. (a) The road was blocked. We took a longer route. (so) (b) She is poor. She is honest. (although) (c) Ravi sings well. He dances well. (Begin: Not only) (d) You must finish your homework. Then you may play. (until)"
+  sol: |
+    (a) *The road was blocked, so we took a longer route.* The first clause is the cause and the second the result; *so* takes a comma before it.
+
+    (b) *Although she is poor, she is honest.* *Although* introduces the subordinate clause; no *but* is added. (*She is honest although she is poor* is also correct.)
+
+    (c) *Not only does Ravi sing well, but he also dances well.* After *not only* at the start, the helper verb comes before the subject (*does Ravi sing*).
+
+    (d) *You may not play until you finish your homework.* After *until*, the present simple stands for the future time; do not write *until you will finish*.
+
+    [Note] Model answers written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Fill each gap with a suitable word from the box. You may use each word once. (however, moreover, therefore, in conclusion, for example) Plastic bags are cheap and light. (1) ___, they take a very long time to break down. (2) ___, they block drains and harm animals. (3) ___, many cities have restricted them. Cloth bags are a better choice. (4) ___, a jute bag can be used again and again. (5) ___, we should all carry our own bags."
+  sol: |
+    Model answer: (1) However, (2) Moreover, (3) Therefore, (4) For example, (5) In conclusion.
+
+    (1) The sentence before praises plastic bags and this one names a drawback: contrast, *However*.
+    (2) A second drawback is added: addition, *Moreover*.
+    (3) Restricting bags is a result of the harm described: *Therefore*.
+    (4) A jute bag is an illustration of a better choice: *For example*.
+    (5) The last sentence draws the conclusion of the whole paragraph: *In conclusion*.
+
+    [Note] Model answer written for this archive.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Which sentence is punctuated correctly?"
+  opts: ["It was late, however we went on.", "It was late; however, we went on.", "It was late however, we went on.", "It was late, however, we went on."]
+  ans: 1
+  sol: |
+    *However* is a linking adverb, not a conjunction, so it cannot join two clauses after a bare comma. It needs a full stop or semicolon before it and a comma after it. The first and fourth options are comma splices, and the third puts the comma on the wrong side.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: ___ the heavy rain, the match was held."
+  opts: ["Although", "Despite", "However", "Because"]
+  ans: 1
+  sol: |
+    A noun phrase (*the heavy rain*) follows, and the relation is contrast, so *Despite* is the right choice. *Although* needs a clause (*Although it rained heavily*), *However* is a linking adverb, and *Because* would give a reason, which does not fit the meaning.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: Neither the captain ___ the players were ready."
+  opts: ["or", "nor", "and", "but"]
+  ans: 1
+  sol: |
+    *Neither* is always paired with *nor*. The verb *were* agrees with the nearer subject, *players*.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Combine each pair into one sentence using the word or phrase given. (a) The shop was closed. We had to buy the book elsewhere. (as a result) (b) She studied late. She woke up fresh. (even though) (c) Hurry up. You will miss the bus. (Begin: Unless) (d) The weather was bad. The flight left on time. (in spite of) (e) He saved money. He wanted to buy a bicycle. (so that)"
+  sol: |
+    (a) *The shop was closed; as a result, we had to buy the book elsewhere.* A semicolon or full stop goes before the linking phrase and a comma after it.
+
+    (b) *Even though she studied late, she woke up fresh.* A clause follows *even though*; no *but* is added.
+
+    (c) *Unless you hurry up, you will miss the bus.* *Unless* means "if you do not", so the verb stays positive.
+
+    (d) *In spite of the bad weather, the flight left on time.* A noun phrase follows *in spite of*, so the clause *the weather was bad* becomes *the bad weather*.
+
+    (e) *He saved money so that he could buy a bicycle.* *So that* shows purpose and takes a modal (*could*) in the past; *would* is also acceptable.
+
+    [Note] Model answers written for this archive. Other correct wordings exist.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Each sentence has one error in a linker or its use. Find it and correct it. (1) Although it was cold, but we went out for a walk. (2) We took umbrellas, because of it might rain. (3) The park was nearly empty, therefore a few joggers were running. (4) We walked until the rain will begin. (5) Neither my brother or I wanted to go home. (6) Despite of the rain, we enjoyed the walk."
+  sol: |
+    (1) Delete *but*: "Although it was cold, we went out for a walk." *Although* and *but* both show contrast.
+
+    (2) *because of it might rain* should be *because it might rain*: a clause follows, so *because* and not *because of*.
+
+    (3) *therefore* should be *but* (or *however*): the second idea goes against the first, so the relation is contrast, not result. For example: "The park was nearly empty, but a few joggers were running." or "...empty; however, a few joggers were running."
+
+    (4) *will begin* should be *began*: the story is in the past, so "We walked until the rain began."
+
+    (5) *or* should be *nor*: "Neither my brother nor I wanted to go home."
+
+    (6) *Despite of* should be *Despite* or *In spite of*: "Despite the rain, we enjoyed the walk."
+
+    [Note] Six errors, one per sentence. Model answers written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Write a paragraph of 60 to 80 words on 'Why students should sleep early'. Use at least five different linkers from different groups (for example addition, contrast, cause, result, example, summing up) and underline them."
+  sol: |
+    This is an open writing task. One possible model answer (about 75 words), with linkers in brackets:
+
+    Students should sleep early for several reasons. A rested mind learns faster, because sleep helps the brain store what was studied during the day. Moreover, tired students make more careless mistakes. Some think late-night study is useful; however, studying while sleepy often wastes time. As a result, marks can fall. For example, a student who revises for one fresh hour may remember more than one who revises for three tired hours. Therefore, an early bedtime is a sensible habit.
+
+    Linkers used: because (cause), moreover (addition), however (contrast), as a result (result), for example (example), therefore (conclusion). Marking points: five or more linkers from different groups; correct punctuation (semicolon before however, comma after each linking adverb); one relation per link; word limit kept.
+
+    [Note] One possible answer written for this archive, not an official model. The claim about sleep is stated cautiously ("may") because this exercise tests linking, not science.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: mcq
+  q: "In which sentence does 'since' show a reason, not a point in time?"
+  opts: ["I have lived here since 2015.", "Since you are free, please help me.", "It is a year since he left.", "She has been silent since morning."]
+  ans: 1
+  sol: |
+    In "Since you are free, please help me", *since* means *because*: being free is the reason for the request. In the other three sentences *since* marks a starting point in time (since 2015, since he left, since morning).
+  check: none
