@@ -1,0 +1,159 @@
+# Prepositions and conjunctions. All problems are original (no NCERT items for this leaf). All answers are model answers written by us; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: My birthday is ___ 14 March."
+  opts: ["in", "on", "at", "by"]
+  ans: 1
+  sol: |
+    A date takes *on*: "on 14 March". *In* is used for a whole month (in March), and *at* for a clock time or point.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The boys ran ___ the classroom when the bell rang."
+  opts: ["in", "into", "at", "by"]
+  ans: 1
+  sol: |
+    The boys moved from outside to inside, so the preposition of movement *into* is needed. *In* shows only a position.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: We stayed indoors ___ it was raining heavily."
+  opts: ["because", "but", "or", "although"]
+  ans: 0
+  sol: |
+    The rain is the reason for staying in, so the subordinating conjunction of reason, *because*, is needed. *But* and *although* show contrast, which does not fit, and *or* offers a choice.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Between you and ___, the film was dull."
+  opts: ["I", "me", "my", "mine"]
+  ans: 1
+  sol: |
+    A pronoun after a preposition takes the object form. *Between you and me* is correct; *between you and I* is a common mistake.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Fill each gap with a suitable preposition. She is afraid (1) dogs and not good (2) swimming; she is fond (3) books and keen (4) writing."
+  sol: |
+    Model answer: (1) of, (2) at, (3) of, (4) on.
+
+    All four are fixed pairings: *afraid of*, *good at*, *fond of*, *keen on*. Note that the -ing word after the preposition (*swimming*, *writing*) is correct: a verb after a preposition takes -ing.
+
+    [Note] A model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Each sentence has one error. Find it and correct it. (a) He is senior than me. (b) Although he was tired, but he kept working. (c) She prefers tea than coffee. (d) The two brothers divided the sweets among them. (e) Unless you do not hurry, you will miss the bus."
+  sol: |
+    (a) *senior than* should be *senior to*. Senior takes *to*, not *than*: "He is senior to me."
+
+    (b) Remove *but* (or remove *Although*). Two conjunctions cannot do the same job: "Although he was tired, he kept working."
+
+    (c) *than* should be *to*. *Prefer* is followed by *to*: "She prefers tea to coffee."
+
+    (d) *among* should be *between*. There are only two brothers: "The two brothers divided the sweets between them."
+
+    (e) Remove *not*. *Unless* already means *if not*: "Unless you hurry, you will miss the bus."
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: No sooner had the bell rung ___ the students rushed out."
+  opts: ["when", "than", "then", "that"]
+  ans: 1
+  sol: |
+    *No sooner* is paired with *than*; *hardly* and *scarcely* are paired with *when*. The helper *had* comes before the subject because the sentence opens with *no sooner*.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the correct form: Neither the teacher nor the students ___ aware of the change."
+  opts: ["was", "were", "is", "has been"]
+  ans: 1
+  sol: |
+    With *neither...nor* the verb agrees with the nearer subject. The nearer subject is *students*, which is plural, so *were* is correct. (If the order were reversed, *Neither the students nor the teacher was aware*, the verb would be singular.)
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: Please submit the project ___ Friday."
+  opts: ["till", "by", "during", "since"]
+  ans: 1
+  sol: |
+    The sentence sets a deadline: the project must be handed in not later than Friday. *By* gives this meaning. *Till* would suggest the submitting goes on up to Friday, and *during* and *since* do not fit.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Fill each gap with a suitable preposition or conjunction. Our school organised a trip (1) the hills in the first week (2) June. We left (3) six o'clock in the morning and travelled (4) a forest road. (5) the journey we sang songs. (6) it was sunny at the start, we carried jackets, (7) the hills are cold at night."
+  sol: |
+    Model answer: (1) to, (2) of, (3) at, (4) through (along is also acceptable), (5) During, (6) Although (Though is also acceptable), (7) because.
+
+    (1) *to* shows the destination; (2) *week of June*, belonging to the month; (3) *at* with a clock time; (4) *through* or *along* a road in the forest; (5) *during* + a noun for a period within which something happens; (6) a contrast between sunny weather and carrying jackets; (7) the reason for carrying jackets.
+
+    [Note] Several gaps accept more than one answer; this is a model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "The sentences below contain one error each. Find and correct them. (1) Rohan is good in mathematics. (2) He divided his pocket money between his three cousins. (3) Because it was late, so we took a taxi. (4) The thief entered in the house through the window. (5) He is married with a doctor. (6) Hardly had she sat down than the phone rang."
+  sol: |
+    (1) *good in* should be *good at*.
+
+    (2) *between* should be *among*: there are three cousins, taken as a group. (In stricter usage *between* can be used for three distinct people, but school keys expect *among*.)
+
+    (3) Remove *so*: "Because it was late, we took a taxi."
+
+    (4) *entered in* should be *entered*: the verb *enter* needs no preposition. "The thief entered the house through the window."
+
+    (5) *married with* should be *married to*.
+
+    (6) *than* should be *when*: *hardly* is paired with *when*. "Hardly had she sat down when the phone rang."
+
+    [Note] Six corrections in all. A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Combine each pair of sentences as directed. (a) He was ill. He attended the function. (Use: Although) (b) Work hard. You will fail. (Use: Unless) (c) She sings well. She dances well. (Use: not only ... but also) (d) We had just sat down. The lights went out. (Begin: Hardly)"
+  sol: |
+    (a) *Although he was ill, he attended the function.* Contrast needs a subordinating conjunction, and no *but* is used.
+
+    (b) *Unless you work hard, you will fail.* Unless means if not, so the clause stays positive.
+
+    (c) *She not only sings well but also dances well.* Both halves are verb phrases, so the structure is parallel. Another acceptable form: *She is not only a good singer but also a good dancer.*
+
+    (d) *Hardly had we sat down when the lights went out.* *Hardly* takes *when*, and the first part is inverted with the past perfect.
+
+    [Note] Model answers written for this archive; other correct joins exist.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "(a) Say whether *before* is a preposition, a conjunction or an adverb in each sentence. (i) She left before noon. (ii) We reached home before the rain began. (iii) I have seen him before. (b) Write one sentence for each of the three uses of *since*."
+  sol: |
+    (a) (i) Preposition: its object is the noun *noon*. (ii) Conjunction: it begins the clause *the rain began*, which has its own subject and verb. (iii) Adverb: it stands alone with no object and no clause.
+
+    (b) Model sentences. Preposition: *I have lived here since 2015.* Conjunction: *It is ten years since I met her.* Adverb: *He left home in 2010 and has not been seen since.*
+
+    [Note] Your own sentences are correct if the word has a noun after it (preposition), a clause after it (conjunction) or stands alone (adverb). A model answer written for this archive.
+  check: none

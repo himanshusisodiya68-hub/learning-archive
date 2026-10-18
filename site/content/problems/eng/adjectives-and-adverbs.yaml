@@ -1,0 +1,153 @@
+# Adjectives and adverbs. All problems are original (no NCERT items for this leaf). All answers are model answers written by us for this archive; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The old man walked ___ across the road."
+  opts: ["slow", "slowly", "slower", "more slow"]
+  ans: 1
+  sol: |
+    The describing word tells how he walked, so it modifies the verb *walked* and must be an adverb: *slowly*. *Slow* is an adjective, and the comparative forms make no sense without a comparison.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The flowers in the garden smell ___."
+  opts: ["sweetly", "sweet", "sweeter than", "more sweetly"]
+  ans: 1
+  sol: |
+    *Smell* is a linking verb here: it describes the flowers, which are nouns, so an adjective is needed: *sweet*. *Sweetly* would describe how the flowers perform the action of smelling, which is not the meaning.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Choose the correct comparative sentence."
+  opts: ["Kavya is more taller than Meena.", "Kavya is taller than Meena.", "Kavya is tallest than Meena.", "Kavya is taller to Meena."]
+  ans: 1
+  sol: |
+    A one-syllable adjective takes *-er* for the comparative, and the comparative goes with *than*. *More taller* is a double comparative, *tallest* is the superlative, and *to* is used only with Latin comparatives such as *senior* and *superior*.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Which phrase has the adjectives in the correct order?"
+  opts: ["a wooden small box", "a small wooden box", "a wooden brown small box", "a brown wooden small box"]
+  ans: 1
+  sol: |
+    The usual order is opinion, size, age, shape, colour, origin, material. Size comes before material, so *a small wooden box*. The other options put material before size or colour.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Choose the correct option: Nobody in the team plays as ___ as Imran."
+  opts: ["good", "well", "better", "best"]
+  ans: 1
+  sol: |
+    The word describes how Imran plays, so it is an adverb: *well*. *Good* is an adjective. The pattern *as ... as* needs the positive degree, so *better* and *best* are wrong.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the correct option: Iqbal is junior ___ me by two years."
+  opts: ["than", "to", "from", "of"]
+  ans: 1
+  sol: |
+    *Junior*, like *senior*, *superior* and *inferior*, is a Latin comparative and takes *to*, not *than*: "Iqbal is junior to me by two years."
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Each sentence has one error in an adjective or adverb. Find it and correct it. (a) She speaks English very fluent. (b) He is the most cleverest boy in the class. (c) Delhi is bigger than any city in India. (d) The soup tastes deliciously."
+  sol: |
+    (a) *fluent* should be *fluently*. The word describes the verb *speaks*, so an adverb is needed: "She speaks English very fluently."
+
+    (b) *the most cleverest* should be *the cleverest* (or *the most clever*). Do not use *most* and *-est* together.
+
+    (c) *any city* should be *any other city*. Delhi is itself a city in India, so it must be excluded from the group it is compared with.
+
+    (d) *deliciously* should be *delicious*. *Tastes* is a linking verb here and describes the soup, so an adjective is needed.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Rewrite as directed without changing the meaning. (a) The Nile is the longest river in Africa. (Begin: The Nile is longer ... ) (b) The tea is so hot that I cannot drink it. (Use too ... to) (c) No other student in the class is as intelligent as Ritu. (Use the superlative) (d) She is not so tall as her sister. (Use the comparative; begin: Her sister ...)"
+  sol: |
+    (a) *The Nile is longer than any other river in Africa.* The superlative becomes the comparative with *than any other* and a singular noun.
+
+    (b) *The tea is too hot for me to drink.* *Too* carries the negative result, so no *not* is needed.
+
+    (c) *Ritu is the most intelligent student in the class.*
+
+    (d) *Her sister is taller than she is.* (*Than she* is the formal form; *than her* is common in speech.)
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "The paragraph below has six errors involving adjectives, adverbs or comparison. Find and correct each. (1) Anita is a real good student. (2) She works hardly and hardly ever misses a class. (3) Of her two brothers, Arun is the elder and Ravi is the cleverest. (4) Both of them feel badly when they lose. (5) Their house is nearer to the school than us. (6) Anita is more prettier than her sisters."
+  sol: |
+    (1) *real* should be *really*: *Good* is an adjective, so the word that strengthens it must be an adverb. "Anita is a really good student."
+
+    (2) *hardly* should be *hard*. *Hardly* means almost not, which contradicts the next clause. "She works hard and hardly ever misses a class." (The second *hardly* is correct here.)
+
+    (3) *the cleverest* should be *the cleverer*. Only two brothers are compared, so the comparative is needed. (*Elder* is correct.)
+
+    (4) *badly* should be *bad*. After the linking verb *feel* describing how they are, an adjective is the exam key's choice: "feel bad". [Unverified] Some modern usage accepts *feel badly*, but board keys follow the traditional rule.
+
+    (5) *than us* should be *than ours* (or *than ours is*). Compare like with like: house with house, not house with people.
+
+    (6) *more prettier* should be *prettier*. Do not use *more* with *-er*.
+
+    [Note] Six corrections in all. A model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Fill each gap with the correct word from the brackets. (1) The patient was too weak ___ walk without help. (to / that) (2) I have ___ time left, so I cannot finish the book. (a little / little) (3) She was ___ a brilliant speaker that everyone listened. (so / such) (4) The Himalayas are ___ than the Western Ghats. (higher / more high) (5) The dog was ___ fast asleep that it did not hear us. (so / such)"
+  sol: |
+    Model answer: (1) to, (2) little, (3) such, (4) higher, (5) so.
+
+    (1) *Too weak to walk*: the pattern is too + adjective + to + verb.
+    (2) *Little* means almost none, which agrees with "cannot finish". *A little* would suggest some time is left.
+    (3) *Such a brilliant speaker* has a noun (speaker), so *such* is needed.
+    (4) *Higher*: one-syllable adjectives take *-er*.
+    (5) *So fast asleep*: *so* goes with an adjective or adverb (here the adjective *fast asleep*); *such* would need a noun.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "Choose the sentence that is correct."
+  opts: ["I hardly could believe my eyes, it was so incredible.", "I could hardly believe my eyes; it was so incredible.", "I could hard believe my eyes; it was such incredible.", "I could believe hardly my eyes; it was so incredible."]
+  ans: 1
+  sol: |
+    Frequency and near-negative adverbs such as *hardly* go before the main verb and after the auxiliary or modal: *could hardly believe*. The first option puts *hardly* before *could*, the third uses *hard* where *hardly* is meant, and the fourth separates the verb from its object.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Write a short paragraph of four to six sentences describing a place you know well. Use at least two adjectives in the correct order before a noun, two different adverbs of manner or frequency in their correct positions, one comparative with than and one superlative. Then underline or list each of these."
+  sol: |
+    This is open-ended; below is one possible model answer, not the only correct one.
+
+    "My grandmother's village is a **quiet little green** place (opinion/size/colour) in the hills. People **usually** wake up before sunrise, and the market opens **early**. The village school is **smaller than** the one in our town, but its playground is **the largest** in the valley. Children play there **cheerfully** until dark, and I always return to the city feeling sad."
+
+    Checks: *quiet little green* follows the order opinion, size, colour. *Usually* (frequency) stands before the main verb *wake*; *early* and *cheerfully* (manner and time) follow the verb. *Smaller than* is the comparative; *the largest* is the superlative. *Feeling sad* uses an adjective after a linking verb (feel).
+
+    [Note] A model answer for this archive; assess your own text with the checks above.
+  check: none
