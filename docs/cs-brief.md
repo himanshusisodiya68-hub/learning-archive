@@ -78,5 +78,9 @@ node check-answers.mjs
 
 Fix everything reported. Never run `node build.mjs`. Never commit.
 
+**Common slips:**
+- Single-quote every front-matter string that contains `: `, especially margin `text`.
+- Never leave a bare `$` in prose: a shell variable such as `$HOME` must sit in backticks, or KaTeX will try to read it as maths.
+
 ## Report
 Keep it to a few lines: the files written, the check results, and anything labelled [Unverified] or [Inference].
