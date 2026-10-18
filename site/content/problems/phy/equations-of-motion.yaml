@@ -479,3 +479,96 @@
 
     Check: the ball rises $u^2/2g = 361/20 = 18.05$ m, taking $1.9$ s; the fall from $18.05 + 30 = 48.05$ m takes $\sqrt{2(48.05)/10} = 3.1$ s; total $5.0$ s.
   check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A body moving with constant acceleration covers 15 m in the 3rd second and 25 m in the 5th second of its motion. Find the distance it covers in the 8th second. (Original problem.)
+  ask: Distance in the 8th second
+  unit: m
+  ans: 40
+  tol: 0.05
+  verify: 2.5+5*7.5
+  sol: |
+    The distance in the $n$th second is the distance in $n$ seconds minus the distance in $n-1$ seconds: $s_n = u + a\left(n - \tfrac12\right)$.
+
+    Third second: $u + 2.5a = 15$. Fifth second: $u + 4.5a = 25$. Subtracting gives $2a = 10$, so $a = 5$ m/s² and $u = 15 - 12.5 = 2.5$ m/s.
+
+    Eighth second: $s_8 = 2.5 + 5\times7.5 = 40$ m.
+
+    Check: $s_8 = s(8) - s(7) = (2.5\times8 + 2.5\times64) - (2.5\times7 + 2.5\times49) = 180 - 140 = 40$ m.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Car A is travelling at 25 m/s and sees car B 60 m ahead, moving in the same direction at a steady 15 m/s. The driver of A brakes at once with a constant deceleration. Find the smallest deceleration that just avoids a collision. (Original problem.)
+  ask: Minimum deceleration
+  unit: m/s²
+  ans: 0.8333
+  tol: 0.001
+  verify: 10*10/(2*60)
+  sol: |
+    Work in the frame of car B. A approaches B at a relative speed of $25 - 15 = 10$ m/s, and the gap is 60 m. B moves at constant velocity, so this frame is simply a steady shift, and A's relative deceleration is the same $a$.
+
+    A collision is just avoided if the relative speed falls to zero exactly as the gap closes to zero. Using $v^2 = u^2 + 2as$ with relative $u = 10$, $v = 0$, $s = 60$:
+    $$0 = 10^2 - 2a(60) \;\Rightarrow\; a = \frac{100}{120} = 0.833\ \text{m/s}^2.$$
+
+    The time taken is $10/0.833 = 12$ s. In that time A travels $25\times12 - \tfrac12(0.833)(144) = 240$ m and B travels $15\times12 = 180$ m: A has gained exactly the 60 m gap.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: A car travelling at 20 m/s brakes with a constant deceleration of 4 m/s² until it stops, and then remains at rest. Find the distance it covers in the first 8 s after the brakes are applied. (Original problem.)
+  ask: Distance in 8 s
+  unit: m
+  ans: 50
+  tol: 0.05
+  verify: 20*20/(2*4)
+  sol: |
+    The time to stop is $t_{\text{stop}} = u/|a| = 20/4 = 5$ s. After 5 s the car is at rest, so nothing more happens in the remaining 3 s.
+
+    The distance is therefore the stopping distance, $s = \dfrac{u^2}{2|a|} = \dfrac{400}{8} = 50$ m.
+
+    Putting $t = 8$ into $s = ut + \tfrac12at^2$ would give $160 - 128 = 32$ m, which is wrong: that formula would let the car reverse after 5 s, with $v = 20 - 4\times8 = -12$ m/s.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A ball is thrown vertically upwards. It passes a level A twice with a time of 4.0 s between the two passes, and a level B, 15 m above A, twice with 2.0 s between the passes. Find the acceleration of free fall g implied by these data. (Original problem.)
+  ask: Value of g
+  unit: m/s²
+  ans: 10
+  tol: 0.01
+  verify: 8*15/(4*4-2*2)
+  sol: |
+    At a height $h$ above the launch point the two passes occur at $t = \dfrac{u \pm \sqrt{u^2 - 2gh}}{g}$, so their time gap is $T = \dfrac{2\sqrt{u^2 - 2gh}}{g}$, or $\dfrac{g^2T^2}{4} = u^2 - 2gh$.
+
+    Write this for A and B and subtract; the unknown launch speed $u$ cancels:
+    $$\frac{g^2}{4}\left(T_A^2 - T_B^2\right) = 2g\,(h_B - h_A) \;\Rightarrow\; g = \frac{8\,(h_B - h_A)}{T_A^2 - T_B^2}.$$
+
+    With $h_B - h_A = 15$ m, $T_A = 4$ s, $T_B = 2$ s: $g = \dfrac{8\times15}{16 - 4} = 10$ m/s².
+
+    Check: if $g = 10$, then the half-gap at A is 2 s, so the speed at A is $10\times2 = 20$ m/s, and at B it is $10\times1 = 10$ m/s. Going from 20 to 10 m/s while rising costs $(20^2 - 10^2)/(2\times10) = 15$ m, as stated. The launch speed and the height of A itself are never needed.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: A stone is dropped from the top of a 40 m tower. At the same instant a second stone is thrown vertically upwards from the foot of the tower with a speed of 20 m/s. Take g = 10 m/s² and neglect air resistance. At what height above the ground do the stones meet? (Original problem.)
+  ask: Height of the meeting point
+  unit: m
+  ans: 20
+  tol: 0.05
+  verify: 40-0.5*10*(40/20)**2
+  sol: |
+    Both stones have the same acceleration $g$ downward, so relative to each other the acceleration is zero. The relative velocity is constant: the dropped stone starts at rest, the other at 20 m/s upward, so they approach each other at 20 m/s. (This is true at every instant, whatever the value of $g$.)
+
+    The gap is 40 m, so they meet at $t = 40/20 = 2$ s.
+
+    At that time the first stone has fallen $\tfrac12(10)(2^2) = 20$ m, so it is at $40 - 20 = 20$ m above the ground. Check with the second: $20\times2 - \tfrac12(10)(4) = 40 - 20 = 20$ m. ✓
+
+    Both are still in the air at $t = 2$ s (the first lands at $\sqrt{2\times40/10} = 2.83$ s, the second after 4 s), so the meeting is real.
+  check: code

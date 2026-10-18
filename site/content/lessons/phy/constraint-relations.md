@@ -165,7 +165,7 @@ Read it as: two strands of length $y_p$, one of length $y_m$, and a fixed part t
 </svg>
 :::
 
-Now the forces. The rope is light, so the tension $T$ is the same all along it. The 5 kg mass has weight and one tension. The movable pulley is **light** (massless), so on its own it must have zero net force, which means the load below it pulls down with $T$ on the strand it hangs from, and the load plus pulley are pulled up by two strands, $2T$. Take down as positive and let $a$ be the acceleration of the 5 kg mass. The load then has acceleration $a/2$ upward.
+Now the forces. The rope is light, so the tension $T$ is the same all along it. The 5 kg mass has weight and one tension. The movable pulley is **light** (massless), so we can treat it and its 4 kg load as one body of mass 4 kg: gravity pulls it down with $4g$, and two strands pull it up, $2T$ in all. Take down as positive and let $a$ be the acceleration of the 5 kg mass. The load then has acceleration $a/2$ upward.
 
 :::worked title="The 5 kg mass and the 4 kg load"
 5 kg mass: $5g - T = 5a$.
@@ -235,7 +235,7 @@ Read it as: the wedge moves faster when the block is heavy compared with the wed
 q: A block slides down a smooth wedge that is free to move on a smooth floor. Compared with a fixed wedge, the normal force on the block is
 options: ["larger", "smaller", "the same"]
 answer: 1
-right: Right. The wedge gives way, so it does not push back as hard: N = mMg cosθ/(M + m sin²θ) is below mg cosθ. A movable wedge also reduces the block's acceleration relative to the ground in the vertical direction.
+right: Right. The wedge gives way, so it does not push back as hard: N = mMg cosθ/(M + m sin²θ) is below mg cosθ.
 wrong: Compare N = mg cosθ for a fixed wedge with N = mMg cosθ/(M + m sin²θ). The denominator is bigger than M, so N is smaller. A support that moves away pushes back less.
 :::
 
@@ -260,8 +260,6 @@ The length of the ladder does not enter: it only fixes the angle. (Check with co
 <line class="ray" x1="60" y1="80" x2="60" y2="125" marker-end="url(#crl1)"/><text class="k" x="68" y="124">v_A</text>
 <line class="ray" x1="200" y1="200" x2="250" y2="200" marker-end="url(#crl1)"/><text class="k" x="252" y="195">v_B</text>
 <line class="wf" x1="60" y1="80" x2="87" y2="103" marker-end="url(#crl2)"/>
-<line class="wf" x1="200" y1="200" x2="173" y2="177" style="opacity:0"/>
-<line class="faint" x1="200" y1="200" x2="229" y2="225"/>
 <text x="150" y="150">ladder</text>
 <text x="140" y="190">θ</text>
 <text x="80" y="56">same component along the ladder</text>
@@ -284,7 +282,7 @@ Constraints give an independent check. For smooth surfaces and light pulleys, no
 $$5gy - 4g\,\tfrac{y}{2} = \tfrac12(5)v^2 + \tfrac12(4)\left(\tfrac{v}{2}\right)^2 \;\Rightarrow\; 3gy = 3v^2.$$
 Read it as: the energy released (left) is shared among the moving parts (right). So $v^2 = gy$. For constant acceleration, $v^2 = 2ay$, so $a = g/2$, the same answer we got from forces. If the two methods ever disagree, a constraint has a wrong factor.
 
-One more fact the equations will not tell you: a string can pull but cannot push. The constraint "the string is taut" holds only while $T \ge 0$. If your solution gives a negative tension, the string goes slack, the bodies fly free of one another, and the constraint no longer applies. A bead on a rod behaves differently, because a rod can push, so the contact constraint works in both directions. The same holds for contact: it holds only while $N \ge 0$. For a ladder sliding from the vertical on smooth surfaces, the wall pushes only while $N \ge 0$, and the top leaves the wall when the ladder has dropped to two-thirds of its height (the problem set asks you to prove it).
+One more fact the equations will not tell you: a string can pull but cannot push. The constraint "the string is taut" holds only while $T \ge 0$. If your solution gives a negative tension, the string goes slack, the bodies fly free of one another, and the constraint no longer applies. A bead on a rod behaves differently, because a rod can push, so the contact constraint works in both directions. The same holds for contact: it holds only while $N \ge 0$. For a ladder sliding from the vertical on smooth surfaces, the wall pushes only while $N \ge 0$, and the top leaves the wall when it has fallen to two-thirds of its starting height (the problem set asks you to prove it).
 
 ## Key ideas to remember {lvl=1 id=s-keys}
 
