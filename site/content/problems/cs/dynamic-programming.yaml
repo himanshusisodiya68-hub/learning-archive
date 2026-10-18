@@ -29,10 +29,10 @@
   unit: ""
   ans: 89
   tol: 0.1
-  verify: 89
+  verify: round((pow((1+sqrt(5))/2,11)-pow((1-sqrt(5))/2,11))/sqrt(5))
   sol: |
     Let $w(n)$ be the number of ways to reach step $n$. The last move was a 1-step from step $n-1$ or a 2-step from step $n-2$, so $w(n) = w(n-1) + w(n-2)$, with $w(1) = 1$ and $w(2) = 2$. Then $w$ is 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 for $n = 1$ to $10$. So there are 89 ways.
-  check: none
+  check: code
 
 - id: b2
   lvl: board

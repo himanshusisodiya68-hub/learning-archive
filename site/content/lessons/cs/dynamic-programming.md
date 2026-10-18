@@ -99,7 +99,7 @@ symbols:
 q: Here's the puzzle. To compare two words of ten letters each, we keep one answer for every pair of beginnings (including the empty beginning). How many answers is that?
 options: ["121", "About 10 million", "About 10 billion"]
 answer: 0
-right: Right. Each word has 11 beginnings (0 to 10 letters), so there are 11 × 11 = 121 small questions. Counting every possible sequence of edits would run to millions; the grid avoids it.
+right: Right. Each word has 11 beginnings (0 to 10 letters), so there are 11 × 11 = 121 small questions. Trying every possible sequence of edits would mean far more than that; the grid avoids it.
 wrong: Count the beginnings of one word, including the empty one: 0 letters, 1 letter, up to 10 letters. Then pair them up with the beginnings of the other word.
 :::
 
