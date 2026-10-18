@@ -1,0 +1,29 @@
+# NCERT Exploration (Science), Grade 9: the new textbook (2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+# No answer key PDF was found for this book, so solutions are ours.
+class: 9
+subject: phy
+name: Science (Exploration)
+code: iesc1
+chapters:
+  - { n: 1, title: "Exploration: Entering the World of Secondary Science", pdf: iesc101 }
+  - { n: 2, title: "Cell: The Building Block of Life", pdf: iesc102 }
+  - { n: 3, title: Tissues in Action, pdf: iesc103 }
+  - n: 4
+    title: Describing Motion Around Us
+    pdf: iesc104
+    leaves: [phy/distance-and-displacement, phy/speed-velocity-acceleration, phy/equations-of-motion, phy/motion-graphs]
+  - { n: 5, title: Exploring Mixtures and their Separation, pdf: iesc105 }
+  - n: 6
+    title: How Forces Affect Motion
+    pdf: iesc106
+    leaves: [phy/inertia-and-the-first-law, phy/momentum-and-the-second-law, phy/third-law]
+  - n: 7
+    title: Work, Energy, and Simple Machines
+    pdf: iesc107
+    leaves: [phy/work-done-by-a-force, phy/kinetic-and-potential-energy, phy/power, phy/simple-machines]
+  - { n: 8, title: Journey Inside the Atom, pdf: iesc108 }
+  - { n: 9, title: Atomic Foundations of Matter, pdf: iesc109 }
+  - { n: 10, title: "Sound Waves: Characteristics and Applications", pdf: iesc110 }
+  - { n: 11, title: "Reproduction: How Life Continues", pdf: iesc111 }
+  - { n: 12, title: "Patterns in Life: Diversity and Classification", pdf: iesc112 }
+  - { n: 13, title: "Earth as a System: Energy, Matter, and Life", pdf: iesc113 }

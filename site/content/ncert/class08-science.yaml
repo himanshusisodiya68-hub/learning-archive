@@ -8,7 +8,10 @@ chapters:
   - { n: 2, title: "The Invisible Living World: Beyond Our Naked Eye", pdf: hecu102 }
   - { n: 3, title: "Health: The Ultimate Treasure", pdf: hecu103 }
   - { n: 4, title: "Electricity: Magnetic and Heating Effects", pdf: hecu104 }
-  - { n: 5, title: Exploring Forces, pdf: hecu105 }
+  - n: 5
+    title: Exploring Forces
+    pdf: hecu105
+    leaves: [phy/inertia-and-the-first-law, phy/friction]
   - { n: 6, title: "Pressure, Winds, Storms, and Cyclones", pdf: hecu106 }
   - { n: 7, title: Particulate Nature of Matter, pdf: hecu107 }
   - { n: 8, title: "Nature of Matter: Elements, Compounds, and Mixtures", pdf: hecu108 }

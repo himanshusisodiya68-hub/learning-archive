@@ -1,0 +1,21 @@
+# NCERT Curiosity (Science), Grade 6 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/
+class: 6
+subject: phy
+name: Science (Curiosity)
+code: fecu1
+chapters:
+  - { n: 1, title: The Wonderful World of Science, pdf: fecu101 }
+  - { n: 2, title: Diversity in the Living World, pdf: fecu102 }
+  - { n: 3, title: "Mindful Eating: A Path to a Healthy Body", pdf: fecu103 }
+  - { n: 4, title: Exploring Magnets, pdf: fecu104 }
+  - n: 5
+    title: Measurement of Length and Motion
+    pdf: fecu105
+    leaves: [phy/distance-and-displacement]
+  - { n: 6, title: Materials Around Us, pdf: fecu106 }
+  - { n: 7, title: Temperature and its Measurement, pdf: fecu107 }
+  - { n: 8, title: A Journey through States of Water, pdf: fecu108 }
+  - { n: 9, title: Methods of Separation in Everyday Life, pdf: fecu109 }
+  - { n: 10, title: "Living Creatures: Exploring their Characteristics", pdf: fecu110 }
+  - { n: 11, title: "Nature's Treasures", pdf: fecu111 }
+  - { n: 12, title: Beyond Earth, pdf: fecu112 }

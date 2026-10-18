@@ -51,6 +51,7 @@ site/
   package.json            npm run build | npm run check
   build.mjs               content → dist/ (index.html + data/*.json); KaTeX pre-renders all math
   check-answers.mjs       recomputes every numeric answer from its `verify` expression
+  lint-lesson.mjs         checks single lesson files (front matter, core, KaTeX, blocks, widgets) without a build; safe in parallel
   fix-yaml.py             quotes YAML values containing ": " or " #"; run before every build
   app/shell.html, app.css, app.js   the single-page app (vanilla JS, inline in index.html)
   content/
@@ -103,7 +104,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio` (and `eng` later).
   - `figure caption="..."` containing inline `<svg>`, with classes `ray`, `faint`, `obj`, `pen`, `axis` and colour vars `--phy --chem --bio --mat --eng --ink --muted`.
   - `figrow`, `see`, `html`.
   - `widget name=...` with attrs passed as options.
-- **Widgets in `app.js`:** `refraction-sim`, `optics-bench types=... u= f=`, `prism-sim`, `fringes [mode=single] [lambda=]`, `polarisers`. A new widget goes in the `WIDGETS` map in `app.js`; reuse the `.bench`, `.controls` and `.readout` classes.
+- **Widgets in `app.js`:** `refraction-sim`, `optics-bench types=... u= f=`, `prism-sim`, `fringes [mode=single] [lambda=]`, `polarisers`, `projectile [u= angle= g=]` (trajectory, range, height, time of flight, complementary-angle ghost), `motion-graphs [u= a=]` (linked x–t, v–t, a–t graphs with areas). A new widget goes in the `WIDGETS` map in `app.js`; reuse the `.bench`, `.controls` and `.readout` classes.
 - **Math:** `$...$` and `$$...$$` (KaTeX).
 - **Style:** short paragraphs and concrete numbers. Explain *why* before formulas. One idea per section. Bold only key terms: the app renders bold as a highlighter mark.
 - **How the app presents a lesson:** core-idea card and outcomes at the top, a lesson map grouped by depth, then each `##` section as a numbered card. A band marks where each new depth begins. Key ideas and traps form the wrap-up. So keep section titles short (they appear in the map and the contents list), and keep sections ordered by depth.

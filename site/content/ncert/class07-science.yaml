@@ -11,7 +11,10 @@ chapters:
   - { n: 5, title: "Changes Around Us: Physical and Chemical", pdf: gecu105 }
   - { n: 6, title: "Adolescence: A Stage of Growth and Change", pdf: gecu106 }
   - { n: 7, title: Heat Transfer in Nature, pdf: gecu107 }
-  - { n: 8, title: Measurement of Time and Motion, pdf: gecu108 }
+  - n: 8
+    title: Measurement of Time and Motion
+    pdf: gecu108
+    leaves: [phy/speed-velocity-acceleration, phy/motion-graphs]
   - { n: 9, title: Life Processes in Animals, pdf: gecu109 }
   - { n: 10, title: Life Processes in Plants, pdf: gecu110 }
   - n: 11

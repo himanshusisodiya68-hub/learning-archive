@@ -642,6 +642,70 @@
       el.querySelectorAll('input').forEach(i => i.addEventListener('input', draw)); draw();
     },
 
+    // Projectile from ground level: trajectory, range, maximum height and time of flight; ghost path at the complementary angle.
+    'projectile'(el, o) {
+      el.innerHTML = `<div class="bench"><svg viewBox="0 0 600 260" role="img" aria-label="Projectile trajectory"></svg>
+        <div class="controls">
+          <label>Launch speed u: <b data-r="uv"></b><input data-r="u" type="range" min="5" max="40" step="0.5" value="${o.u || 20}"></label>
+          <label>Launch angle θ: <b data-r="tv"></b><input data-r="t" type="range" min="5" max="85" value="${o.angle || 40}"></label>
+          <label>g: <b data-r="gv"></b><input data-r="g" type="range" min="1.6" max="25" step="0.1" value="${o.g || 9.8}"></label>
+        </div><div class="readout" data-r="out"></div></div>`;
+      const q = n => el.querySelector(`[data-r="${n}"]`), svg = el.querySelector('svg'), R = Math.PI / 180;
+      function path(u, t, g, X, Y, s) { let d = ''; const T = 2 * u * Math.sin(t) / g;
+        for (let i = 0; i <= 60; i++) { const tt = T * i / 60, x = u * Math.cos(t) * tt, y = u * Math.sin(t) * tt - g * tt * tt / 2; d += (i ? 'L' : 'M') + (X + x * s).toFixed(1) + ' ' + (Y - y * s).toFixed(1); }
+        return d; }
+      function draw() {
+        const u = +q('u').value, th = +q('t').value, g = +q('g').value, t = th * R;
+        q('uv').textContent = u + ' m/s'; q('tv').textContent = th + '°'; q('gv').textContent = g.toFixed(1) + ' m/s²';
+        const T = 2 * u * Math.sin(t) / g, Rg = u * u * Math.sin(2 * t) / g, H = (u * Math.sin(t)) ** 2 / (2 * g), Rmax = u * u / g;
+        const X = 30, Y = 230, s = Math.min(540 / Math.max(Rmax, 1), 200 / Math.max(Rmax / 2, 1));
+        let gr = `<line class="axis" x1="${X}" y1="${Y}" x2="590" y2="${Y}" style="stroke-dasharray:none"/>`;
+        if (Math.abs(th - 45) > 1) gr += `<path d="${path(u, (90 - th) * R, g, X, Y, s)}" style="fill:none;stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 4"/>`;
+        gr += `<path d="${path(u, t, g, X, Y, s)}" style="fill:none;stroke:var(--phy);stroke-width:2.4"/>`;
+        const xh = X + Rg / 2 * s, yh = Y - H * s;
+        gr += `<line x1="${xh}" y1="${Y}" x2="${xh}" y2="${yh}" style="stroke:var(--chem);stroke-dasharray:3 3"/><circle cx="${xh}" cy="${yh}" r="3.5" style="fill:var(--chem)"/>`;
+        gr += `<line x1="${X}" y1="${Y}" x2="${X + 40 * Math.cos(t)}" y2="${Y - 40 * Math.sin(t)}" style="stroke:var(--ink);stroke-width:2"/><circle cx="${X + Rg * s}" cy="${Y}" r="4" style="fill:var(--phy)"/>`;
+        gr += `<text x="${xh + 6}" y="${(yh + Y) / 2}">H</text><text x="${X + Rg * s / 2 - 6}" y="${Y + 18}">R</text>${Math.abs(th - 45) > 1 ? `<text x="440" y="20" style="fill:var(--muted)">dashed: same u at ${90 - th}°</text>` : ''}`;
+        svg.innerHTML = gr;
+        q('out').innerHTML = `<span>range R = u²sin2θ/g = <b>${Rg.toFixed(1)} m</b></span><span>max height H = <b>${H.toFixed(1)} m</b></span><span>time of flight T = <b>${T.toFixed(2)} s</b></span><span>max range (45°) = <b>${Rmax.toFixed(1)} m</b></span>`;
+      }
+      el.querySelectorAll('input').forEach(i => i.addEventListener('input', draw)); draw();
+    },
+
+    // Uniformly accelerated motion in a line: linked x–t, v–t and a–t graphs, with the area under v–t shaded.
+    'motion-graphs'(el, o) {
+      el.innerHTML = `<div class="bench"><svg viewBox="0 0 600 230" role="img" aria-label="Position, velocity and acceleration graphs"></svg>
+        <div class="controls">
+          <label>Initial velocity u: <b data-r="uv"></b><input data-r="u" type="range" min="-10" max="10" step="0.5" value="${o.u ?? 4}"></label>
+          <label>Acceleration a: <b data-r="av"></b><input data-r="a" type="range" min="-4" max="4" step="0.1" value="${o.a ?? -1}"></label>
+          <label>Time t: <b data-r="tv"></b><input data-r="t" type="range" min="0" max="10" step="0.1" value="6"></label>
+        </div><div class="readout" data-r="out"></div></div>`;
+      const q = n => el.querySelector(`[data-r="${n}"]`), svg = el.querySelector('svg');
+      function panel(x0, title, f, lo, hi, t, fill) {
+        const W = 180, H = 150, Y0 = 40, sx = W / 10, sy = H / (hi - lo || 1), Y = v => Y0 + H - (v - lo) * sy;
+        let d = '', area = '';
+        for (let i = 0; i <= 100; i++) { const tt = i / 10; d += (i ? 'L' : 'M') + (x0 + tt * sx).toFixed(1) + ' ' + Y(f(tt)).toFixed(1); }
+        if (fill) { area = `M${x0} ${Y(0)}`; for (let i = 0; i <= Math.round(t * 10); i++) { const tt = i / 10; area += `L${(x0 + tt * sx).toFixed(1)} ${Y(f(tt)).toFixed(1)}`; } area += `L${(x0 + t * sx).toFixed(1)} ${Y(0)}Z`; }
+        return `<text x="${x0}" y="24" style="font-weight:700">${title}</text><rect x="${x0}" y="${Y0}" width="${W}" height="${H}" style="fill:none;stroke:var(--rule)"/>
+          ${lo < 0 && hi > 0 ? `<line x1="${x0}" y1="${Y(0)}" x2="${x0 + W}" y2="${Y(0)}" style="stroke:var(--muted);stroke-dasharray:3 3"/>` : ''}
+          ${area ? `<path d="${area}" style="fill:color-mix(in srgb, var(--phy) 18%, transparent)"/>` : ''}<path d="${d}" style="fill:none;stroke:var(--phy);stroke-width:2"/>
+          <line x1="${x0 + t * sx}" y1="${Y0}" x2="${x0 + t * sx}" y2="${Y0 + H}" style="stroke:var(--chem)"/><circle cx="${x0 + t * sx}" cy="${Y(f(t))}" r="4" style="fill:var(--chem)"/>
+          <text x="${x0 + W - 8}" y="${Y0 + H + 16}" style="fill:var(--muted)">t</text>`;
+      }
+      function draw() {
+        const u = +q('u').value, a = +q('a').value, t = +q('t').value;
+        q('uv').textContent = u + ' m/s'; q('av').textContent = a.toFixed(1) + ' m/s²'; q('tv').textContent = t.toFixed(1) + ' s';
+        const x = tt => u * tt + a * tt * tt / 2, v = tt => u + a * tt;
+        let xs = [], vs = []; for (let i = 0; i <= 100; i++) { xs.push(x(i / 10)); vs.push(v(i / 10)); }
+        const pad = (lo, hi) => { const m = Math.max(Math.abs(lo), Math.abs(hi), 1); return [Math.min(lo, 0) - .1 * m, Math.max(hi, 0) + .1 * m]; };
+        const [xl, xh] = pad(Math.min(...xs), Math.max(...xs)), [vl, vh] = pad(Math.min(...vs), Math.max(...vs));
+        svg.innerHTML = panel(10, 'x–t: slope is v', x, xl, xh, t) + panel(210, 'v–t: slope a, area Δx', v, vl, vh, t, true) + panel(410, 'a–t: area is Δv', () => a, Math.min(a, 0) - 1, Math.max(a, 0) + 1, t, true);
+        const dist = (() => { let s = 0; for (let i = 0; i < 200; i++) { const t0 = t * i / 200; s += Math.abs(v(t0 + t / 400)) * t / 200; } return s; })();
+        q('out').innerHTML = `<span>x = ut + ½at² = <b>${x(t).toFixed(2)} m</b></span><span>v = u + at = <b>${v(t).toFixed(2)} m/s</b></span><span>distance travelled = <b>${dist.toFixed(2)} m</b></span>${a !== 0 && -u / a > 0 && -u / a < t ? `<span>turns around at t = <b>${(-u / a).toFixed(2)} s</b></span>` : ''}`;
+      }
+      el.querySelectorAll('input').forEach(i => i.addEventListener('input', draw)); draw();
+    },
+
     // Unpolarised light through two or three polaroids: Malus' law at each sheet.
     'polarisers'(el) {
       el.innerHTML = `<div class="bench"><svg viewBox="0 0 600 200" role="img" aria-label="Light passing through polaroid sheets"></svg>

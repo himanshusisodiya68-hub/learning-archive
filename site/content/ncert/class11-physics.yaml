@@ -1,0 +1,32 @@
+# NCERT Physics, Class 11, Parts 1 and 2 (reprint 2026-27). pdf: file code at ncert.nic.in/textbook/pdf/. Answers: keph1an.
+class: 11
+subject: phy
+name: Physics
+code: keph
+chapters:
+  - { n: 1, title: Units and Measurement, pdf: keph101 }
+  - n: 2
+    title: Motion in a Straight Line
+    pdf: keph102
+    leaves: [phy/speed-velocity-acceleration, phy/equations-of-motion, phy/motion-graphs, phy/relative-motion]
+  - n: 3
+    title: Motion in a Plane
+    pdf: keph103
+    leaves: [phy/vectors-in-motion, phy/projectile-motion, phy/circular-motion, phy/relative-motion]
+  - n: 4
+    title: Laws of Motion
+    pdf: keph104
+    leaves: [phy/inertia-and-the-first-law, phy/momentum-and-the-second-law, phy/third-law, phy/free-body-diagrams, phy/friction, phy/circular-dynamics]
+  - n: 5
+    title: Work, Energy and Power
+    pdf: keph105
+    leaves: [phy/work-done-by-a-force, phy/kinetic-and-potential-energy, phy/work-energy-theorem, phy/conservative-forces, phy/power, phy/collisions]
+  - { n: 6, title: Systems of Particles and Rotational Motion, pdf: keph106 }
+  - { n: 7, title: Gravitation, pdf: keph107 }
+  - { n: 8, title: Mechanical Properties of Solids, pdf: keph201 }
+  - { n: 9, title: Mechanical Properties of Fluids, pdf: keph202 }
+  - { n: 10, title: Thermal Properties of Matter, pdf: keph203 }
+  - { n: 11, title: Thermodynamics, pdf: keph204 }
+  - { n: 12, title: Kinetic Theory, pdf: keph205 }
+  - { n: 13, title: Oscillations, pdf: keph206 }
+  - { n: 14, title: Waves, pdf: keph207 }

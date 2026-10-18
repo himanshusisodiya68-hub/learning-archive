@@ -20,6 +20,6 @@ You write the deep content for one leaf of the Learning Archive. Before writing,
    - an existing widget where one fits;
    - finish with the Key ideas and Toolkit and traps sections.
 2. **Problems.** Append 2–4 `adv` and 2–4 `oly` problems to the problems file with `cat >>`. Each is original and fully solved, and every numeric one has a correct `verify` expression. Do not reproduce problems from books from memory. Classic-book problems may be copied word for word only from PDFs the owner has provided; give their source.
-3. **Checks.** Run `cd site && python3 fix-yaml.py && node check-answers.mjs && node build.mjs`, and fix anything the checker or the lint reports.
+3. **Checks.** Other writers may be working in parallel, so check only your own files: `cd site && node lint-lesson.mjs content/lessons/<subj>/<leaf>.md && python3 fix-yaml.py content/problems/<subj>/<leaf>.yaml && node check-answers.mjs`. Fix everything the linter reports and every checker message naming your file. Never run `node build.mjs` or `fix-yaml.py` without arguments; the main session builds.
 
 Do not run browser tests or take screenshots, and do not commit. Reply in at most 5 lines: the files written, section count, problems added, and anything unverified (labelled [Inference] or [Unverified]).

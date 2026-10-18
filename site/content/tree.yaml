@@ -40,10 +40,10 @@ subjects:
       leaves:
       - id: distance-and-displacement
         name: Distance and displacement
-        from: C9
+        from: C6
       - id: speed-velocity-acceleration
         name: Speed, velocity, acceleration
-        from: C9
+        from: C7
       - id: equations-of-motion
         name: Equations of motion
         from: C9
@@ -88,6 +88,9 @@ subjects:
         from: C11
       - id: friction
         name: Friction
+        from: C8
+      - id: circular-dynamics
+        name: Dynamics of circular motion
         from: C11
       - id: constraint-relations
         name: Constraint relations
@@ -108,10 +111,10 @@ subjects:
       leaves:
       - id: work-done-by-a-force
         name: Work done by a force
-        from: C9
+        from: C7
       - id: kinetic-and-potential-energy
         name: Kinetic and potential energy
-        from: C9
+        from: C7
       - id: work-energy-theorem
         name: Work–energy theorem
         from: C11
@@ -120,7 +123,13 @@ subjects:
         from: C11
       - id: power
         name: Power
-        from: C9
+        from: C7
+      - id: simple-machines
+        name: Simple machines
+        from: C7
+      - id: collisions
+        name: Collisions
+        from: C11
     - id: rotation
       name: Rotation
       tag: 'Bodies with size: spinning as well as moving.'
@@ -177,7 +186,7 @@ subjects:
       leaves:
       - id: pressure-and-buoyancy
         name: Pressure and buoyancy
-        from: C9
+        from: C7
       - id: elasticity
         name: Elasticity
         from: C11
@@ -744,7 +753,7 @@ subjects:
         from: C7
       - id: congruent-triangles
         name: Congruent triangles
-        from: C9
+        from: C7
       - id: similar-triangles
         name: Similar triangles
         from: C10
