@@ -1,6 +1,6 @@
 ---
 title: Force on a current-carrying conductor
-summary: A wire carrying current in a magnetic field is pushed sideways because each moving charge is. From Fleming's left-hand rule to F = I l × B, wires of any shape, closed loops, rods on rails and inclines, hanging wires, the current balance, the kick of a current pulse, the tension in a flexible current loop, and who really does the work.
+summary: 'Why a wire carrying current jumps sideways in a magnet''s field, the push behind every electric motor.'
 ncert: ["Class 10 Science · Ch 12 Magnetic Effects of Electric Current (§12.3)", "Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.2)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Field lines and compasses, Vectors and the cross product, Newton's laws and friction]

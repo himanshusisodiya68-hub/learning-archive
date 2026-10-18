@@ -1,6 +1,6 @@
 ---
 title: Electric current and potential difference
-summary: "What flows in a wire and what pushes it. Current as charge per second, potential difference as energy per charge, ammeters and voltmeters, circuit symbols, drift velocity (I = nAv_d e), EMF versus terminal voltage, and how energy actually travels from a battery to a bulb."
+summary: 'What actually flows in a wire, what pushes it along, and how to measure both with a simple battery and bulb.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.1–11.3)"]
 up_to: Olympiad
 builds_on: [Electric charge, Coulomb's law, Potential]

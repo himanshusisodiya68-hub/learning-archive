@@ -1,6 +1,6 @@
 ---
 title: Electric field
-summary: Why physics replaces action at a distance with a field, the field as force per unit charge, superposition, field lines, the electric dipole (axial, equatorial and general fields, torque, force in a non-uniform field, dipole–dipole forces), fields of rings, discs, rods, arcs and hemispheres by integration, charged particles in uniform fields, field lines versus trajectories, and oscillation through a charged ring.
+summary: 'How a charge pushes another without touching it, and the invisible map of pushes it spreads through space.'
 ncert: ["Class 12 Physics · Ch 1 Electric Charges and Fields (§1.7–1.12)"]
 up_to: Olympiad
 builds_on: [Electric charge, Coulomb's law, Vectors and their addition, Projectile motion, Integration]

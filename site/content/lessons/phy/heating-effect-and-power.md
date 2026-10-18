@@ -1,6 +1,6 @@
 ---
 title: Heating effect of current and electric power
-summary: Why a current warms a resistor, Joule's law H = I²Rt, power P = VI, the kilowatt hour and electricity bills, bulbs, heaters and fuses, rated versus actual power, maximum power transfer, the microscopic origin p = J·E, fuse-wire scaling and heating with cooling.
+summary: 'Why a wire gets hot when current flows, and how to read your electricity bill and a bulb''s wattage.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.7–11.8)"]
 up_to: Olympiad
 builds_on: [Potential difference, Ohm's law, Resistors in series and parallel, Specific heat capacity]

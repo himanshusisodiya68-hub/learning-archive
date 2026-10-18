@@ -1,6 +1,6 @@
 ---
 title: Lorentz force and the motion of charges in magnetic fields
-summary: The force q(E + v × B) and why its magnetic part steers without doing work. Circles of radius mv/qB with a period independent of speed, helices and their pitch, the velocity selector, Thomson's e/m and the mass spectrometer, the cyclotron and its relativistic limit, entering a field region (chord, exit angle, time), the Hall effect, E × B drift and cycloids, magnetic focusing, and magnetic mirrors.
+summary: 'Why moving charges bend into circles in a magnetic field, and how that bending sorts particles and powers accelerators.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.2–4.3)"]
 up_to: Olympiad
 builds_on: [Uniform circular motion, Vectors and the cross product, Electric field, Electric potential and the electron-volt, Drift velocity of electrons]

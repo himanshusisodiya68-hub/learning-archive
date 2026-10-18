@@ -1,6 +1,6 @@
 ---
 title: Electric charge
-summary: Two kinds of charge from rubbing, electrons as the carriers, conductors and insulators, the electroscope, the three properties of charge (additive, conserved, quantised), induction and the electrophorus, why charged bodies attract neutral ones, charge sharing between conductors, Millikan's idea, quarks and charge invariance.
+summary: 'Why a rubbed balloon sticks to the wall, and the three simple facts about charge that everything else rests on.'
 ncert: ["Class 12 Physics · Ch 1 Electric Charges and Fields (§1.1–1.4)"]
 up_to: Olympiad
 builds_on: [Structure of the atom, Force and Newton's laws, Conservation laws]

@@ -166,6 +166,24 @@
   const branchMastery = b => { const ls = b.leaves; return ls.reduce((s, l, i) => s + mastery(`${b._sid}/${l.id}`), 0) / ls.length; };
   const pillarMastery = p => { const bs = p.branches; return bs.reduce((s, b) => s + branchMastery(b), 0) / bs.length; };
 
+  /* Title Case for headings, card titles and labels: small words and single-letter symbols stay lowercase; maths and code untouched. */
+  const SMALL = new Set(['a', 'an', 'the', 'and', 'or', 'but', 'nor', 'of', 'in', 'on', 'at', 'to', 'for', 'by', 'vs', 'via', 'as', 'with', 'from', 'into', 'per']);
+  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k';
+  function tcWord(w, first) {
+    const core = w.replace(/[^A-Za-z]/g, '');
+    if (!core || /[A-Z]/.test(w)) return w;
+    if (!first && (SMALL.has(core.toLowerCase()) || core.length === 1)) return w;
+    return w.replace(/[a-z]/, c => c.toUpperCase());
+  }
+  function titleCase(root) {
+    if (!root) return;
+    root.querySelectorAll(TC_SEL).forEach(el => {
+      const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.katex, code, .count, .lv, small') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+      let first = true, n;
+      while ((n = walk.nextNode())) n.textContent = n.textContent.split(/(\s+)/).map(w => { if (!w || /^\s+$/.test(w)) return w; const r = tcWord(w, first); first = false; return r; }).join('');
+    });
+  }
+
   /* ================= STATE + ROUTER ================= */
   const S = { subj: 'phy', pillar: null, branch: null, leaf: null, mode: 'subject', cls: 10, ltab: 'learn', depth: 4, lessonKey: null,
     set: [], setName: '', from: 'practice', idx: 0, hintN: {}, solShown: {}, checked: {}, revQueue: [], revIdx: 0, revShown: false };
@@ -190,7 +208,7 @@
     document.querySelectorAll('section[data-view]').forEach(s => s.classList.toggle('on', s.dataset.view === v));
     const nav = NAV_OF[v] || v;
     document.querySelectorAll('.nav').forEach(a => a.dataset.nav === nav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
-    RENDER[v]();
+    RENDER[v](); titleCase(document.querySelector('main'));
     if (!pendingSection) window.scrollTo(0, 0);
   }
   window.addEventListener('hashchange', route);
@@ -500,12 +518,11 @@
         <button class="btn quiet sm" data-add-core>${PG.cards[key + '#core'] ? 'In your review cards ✓' : '+ Add to my review cards'}</button>
       </div>` : '';
     const hasHook = /class="hook"/.test(lesson.introHtml || ''), op = lesson.opener || {};
-    const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}"><div class="op-art">${op.art || coverArt(L)}</div><div class="op-body"><div class="op-k">Start here</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div></div>` : '';
+    const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}"><div class="op-art">${op.art || coverArt(L)}</div><div class="op-body"><div class="op-k">A puzzle to start</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div></div>` : '';
     const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><b>In real life</b><span>where this idea is quietly at work around you</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl"><span class="rl-n">${i + 1}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
     const outHTML = lesson.outcomes && lesson.outcomes.length ? `<div class="outcomes"><div class="eyebrow">After this lesson you can</div><ol>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ol></div>` : '';
-    const mapHTML = `<div class="lmap"><div class="lmap-h"><b>Lesson map</b><span>${lesson.sections.length} sections · about ${mins} min at full depth</span></div>
-        <div class="depth"><span>Show depth up to</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div></div>
-        <div class="lmap-g">${groups.map(g => `<div class="lmb l${g.lvl}" data-lvl="${g.lvl || 1}"><div class="lmb-h">${g.lvl ? escHTML((B[g.lvl] || [''])[0]) : 'Wrap-up'}</div>${g.secs.map(sec => `<button data-to="${sec.id}"><span class="n">${sec._n}</span><span>${escHTML(sec.title)}</span></button>`).join('')}</div>`).join('')}</div></div>`;
+    const mapHTML = `<div class="lmap-g">${groups.map(g => `<div class="lmb l${g.lvl}" data-lvl="${g.lvl || 1}"><div class="lmb-h">${g.lvl ? escHTML((B[g.lvl] || [''])[0]) : 'Wrap-up'}</div>${g.secs.map(sec => `<button data-to="${sec.id}"><span class="n">${sec._n}</span><span>${escHTML(sec.title)}</span></button>`).join('')}</div>`).join('')}</div>`;
+    const depthHTML = `<div class="depth depthbar"><span>Reading depth</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div></div>`;
     const needs = (lesson.builds_on || []).map(b => `<span class="chip">${escHTML(b)}</span>`).join('');
     const ncert = (lesson.ncert || []).map(n => `<span>${escHTML(n)}</span>`).join('<span>·</span>');
     root.innerHTML = `
@@ -523,8 +540,9 @@
       </div>
       <div class="lpane s-${sid}" data-lpane="learn">
         <div class="read"><div class="read-main">
-          ${openerHTML}<div class="top-grid">${coreHTML}<div class="top-side">${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}</div></div>${lifeHTML}
-          ${mapHTML}
+          ${openerHTML}${coreHTML}${lifeHTML}
+          <details class="inside"><summary>What's inside this lesson<span>${lesson.sections.length} sections · about ${mins} min at full depth</span></summary>${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}${mapHTML}</details>
+          ${depthHTML}
           <div class="prose">${lesson.introHtml ? `<div class="intro">${lesson.introHtml}</div>` : ''}${sections}</div>
           ${lesson.next ? (() => { const T = lesson.next.leaf && leafByKey(lesson.next.leaf); return `<div class="nextq s-${sid}"><div class="eyebrow">The question that leads on</div><p class="nq">${lesson.next.q}</p><div class="nq-f">${T ? `<span>Answered in <b>${escHTML(T.l.name)}</b></span>${T.l.live ? `<button class="btn" data-goto="${lesson.next.leaf}">Find out →</button>` : '<span class="muted">(lesson coming soon)</span>'}` : ''}</div></div>`; })() : ''}
           <div class="next-step"><div><b>That's the lesson.</b><span>Now test it: ${probs.length} problems, from NCERT to Olympiad.</span></div><button class="btn" data-ltab-go="practice">Go to practice</button></div>
@@ -552,6 +570,7 @@
     const notes = $('notes'); notes.value = PG.notes[key] || '';
     let nt; notes.addEventListener('input', () => { clearTimeout(nt); nt = setTimeout(() => { PG.notes[key] = notes.value; touch(); }, 800); });
     renderLadder(key, probs);
+    titleCase(root);
     if (S.depth > D.length) S.depth = D.length;
     applyDepth();
     startSpy(root);

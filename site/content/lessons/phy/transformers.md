@@ -1,6 +1,6 @@
 ---
 title: Transformers and power transmission
-summary: How two coils sharing one flux trade voltage for current. The turns ratio from Faraday's law, why an idle transformer draws almost nothing, the current ratio from energy and from flux balance, reflected impedance and matching, the four losses and the condition for maximum efficiency, why power travels at high voltage, the autotransformer, a transformer on dc, switch-on inrush, and the coupled-circuit model.
+summary: 'How a transformer changes voltage with no moving parts, and why the power lines to your home run at huge voltages.'
 ncert: ["Class 12 Physics · Ch 7 Alternating Current (§7.8)"]
 up_to: Olympiad
 builds_on: [Self and mutual inductance, Alternating current, Magnetic materials, Heating effect and power, Resistance and resistivity]

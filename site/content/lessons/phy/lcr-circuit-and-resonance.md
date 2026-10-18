@@ -1,6 +1,6 @@
 ---
 title: The LCR circuit and resonance
-summary: A resistor, an inductor and a capacitor in series share one current but not one phase. Phasors turn Kirchhoff's loop rule into a right triangle, giving the impedance and the phase angle. At one frequency the two reactances cancel and the current peaks; the sharpness of that peak is the quality factor. Then power and the power factor, power-factor correction, tuning a radio, free and damped LC oscillations, the true peaks of the capacitor and inductor voltages, complex impedance and parallel anti-resonance.
+summary: 'How a coil, a capacitor and a resistor together can "pick" one frequency, the trick behind tuning a radio.'
 ncert: ["Class 12 Physics · Ch 7 Alternating Current (§7.6–7.7)"]
 up_to: Olympiad
 builds_on: [Alternating current, AC through R, L and C, Self and mutual inductance, Capacitors, Kirchhoff's rules, Simple harmonic motion]

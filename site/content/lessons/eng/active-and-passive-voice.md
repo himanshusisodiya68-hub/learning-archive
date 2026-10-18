@@ -1,6 +1,6 @@
 ---
 title: Active and passive voice
-summary: Why English can tell one event two ways, how to build the passive in every tense, when each voice is the better choice, the board's transformation questions (statements, questions, commands, modals, two objects, by-agent), and uses beyond the board.
+summary: 'Why "the dog bit the man" and "the man was bitten" tell different stories, and how to flip any sentence safely.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Tenses", "Verbs and auxiliaries", "Transitive and intransitive verbs"]

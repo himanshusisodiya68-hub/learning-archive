@@ -1,6 +1,6 @@
 ---
 title: Ampère's circuital law
-summary: The circulation of B round a closed loop equals μ₀ times the current threading it. Why symmetry turns this into a one-line field calculation (the magnetic twin of Gauss's law), the long wire inside and outside, the solenoid and the toroid, thick and hollow conductors, the coaxial cable, current sheets, the end of a solenoid, a hole in a current-carrying cylinder, magnetic pressure, and where the law breaks down.
+summary: 'A clever shortcut that finds the magnetic field around a current by looking at its symmetry instead of doing heavy sums.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.6–4.7)"]
 up_to: Olympiad
 builds_on: [Biot–Savart law, Field lines and compasses, Gauss's law, Area of a circle and annulus]

@@ -1,6 +1,6 @@
 ---
 title: Resistance and resistivity
-summary: Why a wire's resistance grows with length and falls with thickness, how resistivity separates the material from the shape, what happens when a wire is stretched or heated, how to find the resistance of tapered, spherical and coaxial conductors, and where resistivity comes from in the electron picture.
+summary: 'Why a long thin wire fights current more than a short thick one, and how the material itself matters.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.5)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Ohm's law, Resistors in series and parallel, Area of a circle]

@@ -1,6 +1,6 @@
 ---
 title: Nouns and articles
-summary: Why language needs names for things, the five kinds of noun, countable and uncountable, number, gender and the possessive, collective nouns and agreement, why English has a, an and the, the rules for each article and for using none, the board's usual traps, and the finer shades beyond the board.
+summary: 'Why English needs "a", "an" and "the", and the one question that tells you which to use.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Words and their jobs"]

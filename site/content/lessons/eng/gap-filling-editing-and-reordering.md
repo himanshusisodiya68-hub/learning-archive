@@ -1,6 +1,6 @@
 ---
 title: Gap filling, editing and reordering
-summary: Why the board tests grammar through gaps, faulty lines and jumbled text, what each question type is really checking (tense, agreement, articles, prepositions, connectors, pronouns), a step-by-step strategy for each, a marking checklist, and the finer points beyond the board.
+summary: 'How to spot the one wrong word in a messy passage, fill any blank correctly, and put jumbled lines back in order.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Tenses", "Subject–verb agreement", "Nouns and articles", "Pronouns", "Prepositions and conjunctions", "Linkers and connectors"]

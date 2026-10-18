@@ -1,6 +1,6 @@
 ---
 title: Infinitives, gerunds and participles
-summary: Why English lets a verb work as a noun, adjective or adverb without a full clause, the infinitive, the gerund and the participles with their uses, which verbs take which form, the dangling-participle trap, the board's combining and error-spotting questions, and finer points beyond the board.
+summary: 'How a verb can do the work of a noun or a describing word, and why "to go" and "going" differ.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Verbs and auxiliaries", "Tenses", "Modals"]

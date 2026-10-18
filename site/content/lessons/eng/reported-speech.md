@@ -1,6 +1,6 @@
 ---
 title: Reported speech
-summary: Why we report what others said, how the words change (pronouns, tense, time and place words), reporting statements, questions, commands and exclamations, choosing reporting verbs, when not to backshift, and the board's conversion questions.
+summary: 'How to retell what someone said without quoting them, and why the words must shift when time has passed.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Tenses", "Pronouns", "Sentence types and clauses"]

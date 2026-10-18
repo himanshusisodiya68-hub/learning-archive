@@ -1,6 +1,6 @@
 ---
 title: Linkers and connectors
-summary: Why ideas need linking words, the nine relations a linker can show, coordinating and subordinating conjunctions, correlative pairs, linking adverbs and their punctuation, although versus despite, the board's gap-filling, editing and sentence-joining questions, and the finer points of register and flow.
+summary: 'The small words that make your sentences flow, and the simple question that tells you which one to pick.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Parts of speech", "Clauses and sentence types"]

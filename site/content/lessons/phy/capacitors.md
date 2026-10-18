@@ -1,6 +1,6 @@
 ---
 title: Capacitors and dielectrics
-summary: Two conductors that hold equal and opposite charge. Capacitance as pure geometry, the parallel-plate, spherical and cylindrical capacitors, how a dielectric polarises and why it raises C by K, partly filled gaps, series and parallel from charge and potential bookkeeping, the energy ½CV² and its density ½ε₀E², the energy lost when charge is shared, forces on plates and on a dielectric at constant Q and constant V, and networks solved by symmetry.
+summary: 'How two close metal plates can store charge like a tiny rechargeable tank, and what an insulator between them does.'
 ncert: ["Class 12 Physics · Ch 2 Electrostatic Potential and Capacitance (§2.10–2.15)"]
 up_to: Olympiad
 builds_on: [Electric field, Gauss's law, Electrostatic potential, Conductors in electrostatics]

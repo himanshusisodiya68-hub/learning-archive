@@ -1,6 +1,6 @@
 ---
 title: Motional emf
-summary: A conductor moving through a magnetic field becomes a battery, because the field pushes its free charges along it. ε = Blv from the Lorentz force and again from the changing flux; rods on rails, energy accounting, rotating rods and the Faraday disc, the Earth's field, loops crossing a field edge, terminal and coasting rods, rods with a battery, a capacitor or an inductor, and why the magnetic force still does no net work.
+summary: 'How simply moving a wire through a magnetic field turns it into a battery, and how big that battery is.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.6)"]
 up_to: Olympiad
 builds_on: [Lorentz force and circular motion, Force on a current-carrying conductor, Electromagnetic induction, Lenz's law, Ohm's law]

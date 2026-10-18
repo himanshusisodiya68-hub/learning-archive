@@ -1,6 +1,6 @@
 ---
 title: Resistors in series and parallel
-summary: Why currents are shared and voltages add, the series and parallel rules from conservation of charge and energy, why houses are wired in parallel, voltage and current dividers, and the tricks for harder networks (equipotentials, symmetry, the cube, infinite ladders, delta–star, superposition and Foster's theorem).
+summary: 'Why adding a bulb to a circuit can dim the others or leave them bright, depending on how you connect it.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.6)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Ohm's law, Resistance and resistivity]

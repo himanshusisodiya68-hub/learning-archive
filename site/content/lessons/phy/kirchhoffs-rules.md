@@ -1,6 +1,6 @@
 ---
 title: Kirchhoff's rules
-summary: The junction rule (charge conservation) and the loop rule (a conservative field plus the EMF of cells), careful sign conventions, the branch-current method, why the equations always suffice, nodal and mesh analysis, charging a battery, superposition, symmetry with sources, Thevenin's theorem and where the rules break down.
+summary: 'Two simple bookkeeping rules that let you untangle any circuit, however messy it looks.'
 ncert: ["Class 12 Physics · Ch 3 Current Electricity (§3.12)"]
 up_to: Olympiad
 builds_on: [Ohm's law, Resistors in series and parallel, EMF and internal resistance, Electric potential]

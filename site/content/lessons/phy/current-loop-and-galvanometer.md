@@ -1,6 +1,6 @@
 ---
 title: Torque on a current loop and the moving-coil galvanometer
-summary: Why a current loop in a magnetic field feels a couple but no net force, the magnetic moment m = NIA and τ = m × B for any planar loop, energy −m·B, the motor and its commutator, oscillations, the moving-coil galvanometer with its radial field, sensitivities, ammeters, voltmeters and their loading, orbital and spinning-charge moments, forces in non-uniform fields, and the ballistic galvanometer.
+summary: 'Why a loop of current twists in a magnetic field, and how that twist becomes the needle of a meter.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.9–4.10)"]
 up_to: Olympiad
 builds_on: [Force on a current-carrying conductor, Biot–Savart law, Ohm's law, Resistors in series and parallel, Electric dipole in a uniform field]

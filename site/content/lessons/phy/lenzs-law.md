@@ -1,6 +1,6 @@
 ---
 title: Lenz's law
-summary: The direction of every induced current. Opposition to the change of flux (not to the flux), a four-step method, the minus sign of Faraday's law as energy conservation, forces on loops entering a field with P = Fv = ε²/R, eddy-current braking and damping, a magnet falling through a ring or a conducting tube, the jumping ring, the sign of self and mutual induction, and the superconducting ring that keeps its flux fixed.
+summary: 'Nature always fights a change in magnetism; learn the simple rule that tells you which way the current flows.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.5)"]
 up_to: Olympiad
 builds_on: [Magnetic flux, "Faraday's law of induction", Right-hand rule for a current loop, Force on a current-carrying conductor, Heating effect and power]

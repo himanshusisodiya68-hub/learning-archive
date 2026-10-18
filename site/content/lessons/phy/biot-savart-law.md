@@ -1,6 +1,6 @@
 ---
 title: The Biot–Savart law
-summary: "How a small piece of current makes a magnetic field (inverse square, cross product, μ₀), the field of a circular loop on its axis and at its centre, finite and infinite straight wires, arcs and hairpins, polygon loops, the solenoid as stacked loops, rotating charged rings and discs, Helmholtz coils, and the field of a slowly moving point charge."
+summary: 'How a tiny piece of current creates magnetism around it, and how adding up pieces gives the field of any wire.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.4–4.5)"]
 up_to: Olympiad
 builds_on: [Coulomb's law, Electric field, Electric current, Vectors and the cross product, Integration by substitution]

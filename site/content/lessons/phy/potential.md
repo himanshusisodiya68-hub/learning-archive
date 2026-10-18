@@ -1,6 +1,6 @@
 ---
 title: Electrostatic potential and potential energy
-summary: "Why a conservative field can be described by one number at each point, the potential of a point charge, a dipole and continuous bodies (ring, disc, shell, sphere, line), equipotentials and E = −∇V, the energy of an assembly of charges and of a dipole in a field, conductors in equilibrium, charge sharing and grounding, energy conservation for moving charges, self-energy and the method of images."
+summary: 'A single number at every point that tells you the energy a charge would have there, and why that is so handy.'
 ncert: ["Class 12 Physics · Ch 2 Electrostatic Potential and Capacitance (§2.1–2.9)"]
 up_to: Olympiad
 builds_on: [Electric charge, Coulomb's law, Electric field, Gauss's law, Work and energy]

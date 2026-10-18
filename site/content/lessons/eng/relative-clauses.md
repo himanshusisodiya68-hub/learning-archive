@@ -1,6 +1,6 @@
 ---
 title: Relative clauses
-summary: Why English hangs extra information on a noun with who, which, that, whose, where and when, defining and non-defining clauses, when to drop the pronoun, prepositions, commas, joining sentences for the board, and finer points beyond it.
+summary: 'How to add extra information about a person or thing mid-sentence, and when a pair of commas changes the meaning.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Sentence types and clauses", "Nouns and pronouns"]

@@ -1,6 +1,6 @@
 ---
 title: Electromagnetic induction and Faraday's law
-summary: How a magnet makes a current without touching the wire. Faraday's and Henry's experiments, magnetic flux as B·A and as a surface integral, Faraday's law ε = −N dΦ/dt and the three ways to change flux, charge flow q = NΔΦ/R and the search coil, the rotating-coil generator, the induced non-conservative electric field (inside and outside a solenoid), eddy currents, the betatron condition and why "voltage" around a changing flux depends on the path.
+summary: 'How moving a magnet near a wire makes electricity out of nothing but motion, the idea behind every power station.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.1–6.4)"]
 up_to: Olympiad
 builds_on: [Magnetic field of a current, Biot–Savart law, Ampère's circuital law, Electric potential and emf, Ohm's law, Dot product of vectors]

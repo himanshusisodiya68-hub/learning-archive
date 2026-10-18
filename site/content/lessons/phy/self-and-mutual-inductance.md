@@ -1,6 +1,6 @@
 ---
 title: Self and mutual inductance
-summary: Why a coil resists changes in its own current, how one coil talks to another, and where the energy goes. Flux linkage NΦ = LI and why L depends only on geometry, the long solenoid, toroid and coaxial cable, mutual inductance and its reciprocity, the coupling coefficient, combinations of inductors, the energy ½LI² and the field energy density B²/2μ₀, the L–R circuit's growth and decay, the spark when an inductive circuit is broken, and flux trapping in a superconducting ring.
+summary: 'Why a coil resists any sudden change in its own current, and how one coil can send energy to another.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.7)"]
 up_to: Olympiad
 builds_on: [Electromagnetic induction, Lenz's law, Ampère's circuital law, Capacitors, Kirchhoff's rules]

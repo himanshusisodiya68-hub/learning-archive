@@ -1,6 +1,6 @@
 ---
 title: Forces between parallel currents
-summary: Two currents push or pull on each other because each sits in the other's magnetic field. The force per unit length μ₀I₁I₂/2πd, Newton's third law, the ampere and why the Earth's field must be removed, several wires and equilibrium, a loop beside a long wire, beams of moving charges and the factor (v/c)², the pinch effect and magnetic pressure, contracting coils and coaxial rings.
+summary: 'Why two wires carrying current pull together or push apart without touching, and how that defines the ampere.'
 ncert: ["Class 12 Physics · Ch 4 Moving Charges and Magnetism (§4.8)"]
 up_to: Olympiad
 builds_on: [Force on a current, Biot–Savart law, Ampère's law, Coulomb's law]

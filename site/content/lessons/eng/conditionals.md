@@ -1,6 +1,6 @@
 ---
 title: Conditional sentences
-summary: Why English has a special sentence for "what if", the four basic types (zero, first, second, third) built from one idea, how to choose between them, unless and its cousins, mixed conditionals, wishes, inversion, and the board's rewriting and error-correction questions.
+summary: 'How to talk about "what if" in English, from sure things to wild daydreams, and why the verb takes a step back.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Tenses", "Modal verbs"]

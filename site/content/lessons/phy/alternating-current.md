@@ -1,6 +1,6 @@
 ---
 title: Alternating current and the AC generator
-summary: Why the mains alternates, the generator emf NBAω sin ωt from Faraday's law, peak, average and rms values, power in a resistor, rms of rectified, square, triangular and offset waveforms, how AC meters respond, phasors and adding sinusoids, the mean of a product, and three-phase supply.
+summary: 'Why the socket in your wall alternates, how a spinning coil makes it, and what "230 volts" really means.'
 ncert: ["Class 12 Physics · Ch 6 Electromagnetic Induction (§6.8)", "Class 12 Physics · Ch 7 Alternating Current (§7.1–7.3)"]
 up_to: Olympiad
 builds_on: [Electromagnetic induction, Heating effect and power, Ohm's law]

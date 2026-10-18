@@ -1,6 +1,6 @@
 ---
 title: Magnetic field, field lines and compasses
-summary: What a magnetic field is and why moving charges make one; the compass as a detector; field lines of a bar magnet, a straight wire, a loop and a solenoid; the right-hand thumb rule; superposition and neutral points; the Earth's field; no magnetic monopoles; B as an axial vector; exact field lines in two dimensions; magnetism as electricity seen from a moving frame.
+summary: 'Why a compass needle points north, and how to draw the invisible magnetism around magnets and wires.'
 ncert: ["Class 10 Science · Ch 12 Magnetic Effects of Electric Current (§12.1–12.2)"]
 up_to: Olympiad
 builds_on: [Electric current, Electric field, Field lines, Vectors and the cross product]

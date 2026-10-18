@@ -1,6 +1,6 @@
 ---
 title: Domestic electric circuits
-summary: How electricity reaches and is shared out inside a house. Live, neutral and earth wires, the meter board, 5 A and 15 A circuits, fuses, short circuits and overloading, earthing, what 220 V AC means, wire sizes and voltage drop, fault currents, MCBs and RCDs, electric shock and the adiabatic melting of a fuse.
+summary: 'How electricity reaches your house, why a fuse saves you from fire, and what the three wires in a plug do.'
 ncert: ["Class 10 Science · Ch 12 Magnetic Effects of Electric Current (§12.4)"]
 up_to: JEE
 builds_on: [Potential difference, Ohm's law, Resistors in series and parallel, Heating effect and power]

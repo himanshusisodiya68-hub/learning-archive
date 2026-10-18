@@ -1,6 +1,6 @@
 ---
 title: Subject–verb agreement
-summary: Why English makes the verb match its subject, the basic singular and plural rule, the tricky cases (phrases in between, and, or, nor, collective nouns, each and every, news and scissors, relative clauses, there is), how the board tests it, and the finer points of notional agreement beyond the board.
+summary: 'Why "the box of apples is" and not "are", and a simple trick that settles the verb every time.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Nouns and pronouns", "Verbs and auxiliaries", "Tenses"]

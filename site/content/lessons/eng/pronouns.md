@@ -1,6 +1,6 @@
 ---
 title: Pronouns
-summary: Why English has stand-in words for nouns, the nine kinds of pronoun, subject and object forms, possessives and reflexives, agreement with the noun they replace, the who/whom/which/that choices, the board's error-correction and gap-filling questions, and finer points beyond the board.
+summary: 'Why "me and him went" sounds wrong, and how stand-in words stop your writing from repeating itself.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Nouns and articles"]

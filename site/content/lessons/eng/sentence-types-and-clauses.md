@@ -1,6 +1,6 @@
 ---
 title: Sentence types and clauses
-summary: Why a sentence is built around a clause, the four sentence types by purpose, the three kinds of clause and the simple, compound, complex and compound-complex structures, fixing fragments and run-ons, combining and transforming sentences for the board, and the finer points beyond it.
+summary: 'What a sentence is really made of, and how to take any long, tangled sentence apart in seconds.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Verbs and auxiliaries", "Tenses", "Parts of speech"]

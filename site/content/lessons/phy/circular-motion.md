@@ -1,6 +1,6 @@
 ---
 title: Circular motion
-summary: "Kinematics of motion on a circle: angular displacement, velocity and acceleration, why steady circling is accelerated, the centripetal acceleration v²/R = ω²R from the velocity triangle and from vectors, tangential acceleration, and the radius of curvature of any path."
+summary: 'Why a car turning at steady speed is still accelerating, and the simple rule that gives that hidden acceleration.'
 ncert: ["Class 11 Physics · Ch 3 Motion in a Plane (§3.10 Uniform circular motion)"]
 up_to: Olympiad
 builds_on: [Speed, velocity, acceleration, Vectors in motion, Differentiation of sin and cos]

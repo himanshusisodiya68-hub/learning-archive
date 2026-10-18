@@ -1,6 +1,6 @@
 ---
 title: Displacement current and Maxwell's equations
-summary: Why Ampère's law breaks down for a charging capacitor, how Maxwell's displacement current ε₀dΦ_E/dt repairs it, the magnetic field between charging plates, conduction versus displacement current in matter, the four Maxwell equations as a set, the continuity equation as the deep reason, and the energy that flows into a capacitor through its rim.
+summary: 'A missing piece in the laws of magnetism, and the bold idea that fixed it and pointed towards light itself.'
 ncert: ["Class 12 Physics · Ch 8 Electromagnetic Waves (§8.1–8.2)"]
 up_to: Olympiad
 builds_on: [Ampère's circuital law, Gauss's law, Capacitors, Electromagnetic induction]

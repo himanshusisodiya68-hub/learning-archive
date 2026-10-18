@@ -1,6 +1,6 @@
 ---
 title: Ohm's law
-summary: Why current through a metal wire is proportional to the potential difference across it, what resistance means, the rheostat, why the law fails for bulbs and diodes, EMF and internal resistance, real meters and the potential divider.
+summary: 'Push harder on a wire and more current flows, in a perfectly steady ratio; discover why, and when it breaks.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.4)"]
 up_to: Olympiad
 builds_on: [Electric current and potential difference, Proportionality and straight-line graphs]

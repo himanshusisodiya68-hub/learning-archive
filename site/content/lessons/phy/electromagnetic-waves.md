@@ -1,6 +1,6 @@
 ---
 title: Electromagnetic waves
-summary: How changing electric and magnetic fields keep each other going and travel at c = 1/√(μ₀ε₀); the transverse E, B, k triad with E = cB; accelerated charges as sources; the spectrum from γ-rays to radio; energy density, intensity, the Poynting vector, momentum and radiation pressure; waves in matter (n = √(ε_r μ_r)); and, at Olympiad depth, the wave equation from Maxwell's curl equations, the kinked-field-line picture of radiation, the Larmor formula and dipole antennas. Light is one of these waves.
+summary: 'How electricity and magnetism chase each other through empty space as light, radio and Wi-Fi, all at one speed.'
 ncert: ["Class 12 Physics · Ch 8 Electromagnetic Waves (§8.3–8.4)"]
 up_to: Olympiad
 builds_on: [Displacement current, Electromagnetic induction, Ampère's circuital law, Gauss's law, Polarisation]

@@ -1,6 +1,6 @@
 ---
 title: Modals
-summary: Why English has helper verbs for ability, permission, possibility, advice and duty, the form rules that make modals different from ordinary verbs, each modal with its meanings, past and perfect modals, substitutes, modals in reported speech, the board's editing and rewriting questions, and finer shades beyond the board.
+summary: 'How tiny words like can, may, must and should let you ask, advise, guess and demand, obeying one rule.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Verbs and auxiliaries", "Tenses"]

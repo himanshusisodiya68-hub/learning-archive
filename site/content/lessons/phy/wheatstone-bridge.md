@@ -1,6 +1,6 @@
 ---
 title: The Wheatstone bridge
-summary: Measuring a resistance by comparing it, not by reading meters. The balance condition from equal potentials and from Kirchhoff's rules, why a null reading ignores the battery and the galvanometer, the metre bridge and its end corrections, sensitivity, unbalanced bridges by Thevenin's theorem, the Carey Foster bridge, and bridges as sensors for temperature and strain.
+summary: 'How to measure an unknown resistance precisely by balancing it against known ones until nothing flows.'
 ncert: ["Class 12 Physics · Ch 3 Current Electricity (§3.13)"]
 up_to: Olympiad
 builds_on: [Ohm's law, Resistors in series and parallel, Kirchhoff's rules, Resistance and resistivity]

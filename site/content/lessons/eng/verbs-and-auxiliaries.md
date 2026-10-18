@@ -1,6 +1,6 @@
 ---
 title: Verbs and auxiliaries
-summary: Why every sentence needs a verb, the kinds of verb (action, linking, auxiliary, modal), the three forms and how to spot regular and irregular ones, do-support in questions and negatives, modals and what each one means, agreement of subject and verb, transitive and intransitive verbs, finite and non-finite forms, and finer points beyond the board.
+summary: 'Every sentence needs a verb, and helper verbs quietly decide its form; learn how to spot and use them.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Parts of speech: noun, pronoun, adjective, adverb"]

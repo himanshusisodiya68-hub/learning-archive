@@ -1,6 +1,6 @@
 ---
 title: Magnetic dipole and bar magnet
-summary: Why magnetic poles always come in pairs, the bar magnet as a crowd of atomic current loops, the dipole analogy with electrostatics, axial and equatorial fields (exact and far), torque, energy and oscillation in a uniform field, Gauss's law for magnetism and what a monopole would change, the Earth as a dipole (dip and declination), neutral points, deflection and oscillation magnetometers, the full dipole field, and forces between magnets.
+summary: 'Why you can never cut a magnet into a lone north pole, and what a bar magnet is really made of.'
 ncert: ["Class 12 Physics · Ch 5 Magnetism and Matter (§5.1–5.3)"]
 up_to: Olympiad
 builds_on: [Electric field, Gauss's law, Potential, Field lines and compasses, Current loop and galvanometer]

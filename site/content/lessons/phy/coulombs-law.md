@@ -1,6 +1,6 @@
 ---
 title: Coulomb's law
-summary: The force between two point charges. Why it falls as 1/r², how Coulomb measured it, the vector form and Newton's third law, k and ε₀, superposition, the 10³⁹ comparison with gravity, hanging spheres and rings of charge, the shell theorem, Earnshaw's theorem and unstable equilibria, charges in orbit and on rotating frames, and how precisely the exponent 2 has been tested.
+summary: 'How strongly do two charges push or pull each other, and why doubling the distance cuts that force to a quarter?'
 ncert: ["Class 12 Physics · Ch 1 Electric Charges and Fields (§1.5–1.6)"]
 up_to: Olympiad
 builds_on: [Electric charge, Newton's laws of motion, Vectors, Newton's law of gravitation]

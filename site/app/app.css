@@ -832,3 +832,12 @@ details.method .principles { margin-top: 4px; }
 .hb.can ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 13.5px; line-height: 1.45; }
 @media (max-width: 960px) { .habits { grid-template-columns: minmax(0, 1fr); } .opener { grid-template-columns: minmax(0, 1fr); } .op-art { max-width: 320px; } }
 @media (max-width: 560px) { .cmp-g { grid-template-columns: minmax(0, 1fr); } .opener { padding: 18px; } .op-story { font-size: 16.5px; } }
+
+/* ---------- simplified lesson column ---------- */
+.read-main > .core { margin-bottom: 14px; }
+details.inside { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 12px 16px; margin: 0 0 12px; }
+details.inside > summary { color: var(--ink); font-size: 14.5px; }
+details.inside > summary span { font-weight: 400; color: var(--muted); font-size: 12.5px; margin-left: 10px; }
+details.inside .outcomes { border: 0; padding: 4px 0 10px; }
+details.inside .needs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; } details.inside .needs .eyebrow { width: 100%; }
+.depthbar { margin: 0 0 6px; }

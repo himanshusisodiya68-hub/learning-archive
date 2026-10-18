@@ -1,6 +1,6 @@
 ---
 title: AC through a resistor, an inductor and a capacitor
-summary: A sinusoidal voltage across a resistor, an inductor or a capacitor drives a sinusoidal current, but only the resistor keeps it in step. From v = L di/dt and i = C dv/dt to reactance, phase lags and leads, phasors, zero average power, real coils, complex impedance, parallel branches, low-pass and high-pass filters, chokes and coupling capacitors, switch-on offsets and non-sinusoidal drives.
+summary: 'Why a coil and a capacitor make current and voltage fall out of step, while a plain resistor never does.'
 ncert: ["Class 12 Physics · Ch 7 Alternating Current (§7.2–7.5)"]
 up_to: Olympiad
 builds_on: [Alternating current, Self and mutual inductance, Capacitors, Ohm's law, Heating effect and power]

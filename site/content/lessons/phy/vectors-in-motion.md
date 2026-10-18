@@ -1,6 +1,6 @@
 ---
 title: Vectors in motion
-summary: Why direction forces us to use vectors, how they add, subtract and split into components, and how position, velocity and acceleration become vectors; motion in a plane with constant acceleration, then tangential and normal acceleration, curvature, polar components and what makes a quantity a vector.
+summary: 'Why "5 km" is not enough when you travel, and the arrows that let you describe any motion exactly.'
 ncert: ["Class 11 Physics · Ch 3 Motion in a Plane (§3.2–3.8)"]
 up_to: Olympiad
 builds_on: [Equations of motion, Motion graphs, Trigonometric ratios, Pythagoras' theorem]

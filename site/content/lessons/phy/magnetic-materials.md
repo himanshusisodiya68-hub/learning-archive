@@ -1,6 +1,6 @@
 ---
 title: Magnetic materials
-summary: Why every material answers a magnetic field. Orbital and spin moments, magnetisation M and the Ampèrian surface current, magnetic intensity H with B = μ₀(H + M), susceptibility and permeability, diamagnetism by Lenz's law, paramagnetism and Curie's law, ferromagnetic domains, the hysteresis loop and the energy it wastes, soft iron versus steel, forces on samples in a non-uniform field, boundary conditions and magnetic circuits, shielding, and the superconductor as a perfect diamagnet.
+summary: 'Why iron sticks to a magnet but wood and water barely notice, and how a magnet can remember.'
 ncert: ["Class 12 Physics · Ch 5 Magnetism and Matter (§5.4–5.5)"]
 up_to: Olympiad
 builds_on: [Magnetic dipole and bar magnet, Ampère's circuital law, Current loop and its magnetic moment, Electromagnetic induction (Lenz's law)]

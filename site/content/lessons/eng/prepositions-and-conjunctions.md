@@ -1,6 +1,6 @@
 ---
 title: Prepositions and conjunctions
-summary: Why English needs small linking words, how prepositions show relations of time, place, direction and cause, the fixed pairings the board tests, how conjunctions join and rank clauses, correlative pairs, and the finer points beyond the board.
+summary: 'Why we say "in the morning" but "at night", and how little words join ideas into sentences that make sense.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Nouns and pronouns", "Verbs and auxiliaries", "Tenses"]

@@ -1,6 +1,6 @@
 ---
 title: Tenses
-summary: Why English marks time on the verb, the two things every tense encodes (when, and what shape the action has), all twelve tenses with rules, signal words and common mistakes, sequence of tenses, the board's gap-filling and editing questions, and uses beyond the board.
+summary: 'Two simple questions that unlock all twelve English tenses: when did it happen, and what shape did the action have?'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Verbs and auxiliaries"]

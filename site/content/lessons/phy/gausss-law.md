@@ -1,6 +1,6 @@
 ---
 title: Gauss's law
-summary: Electric flux, why the flux out of any closed surface is exactly the enclosed charge over ε₀, choosing Gaussian surfaces by symmetry (line, sheet, shell, solid sphere), solid angle and flux through a cube face or a disc, non-uniform spheres, a cavity with a uniform field, conductors and the σ²/2ε₀ pressure, the field jump across a sheet, Earnshaw's theorem and Gauss's law for gravity.
+summary: 'A clever counting trick that turns the hard job of finding electric fields into a one-line calculation.'
 ncert: ["Class 12 Physics · Ch 1 Electric Charges and Fields (§1.9, §1.13–1.14)"]
 up_to: Olympiad
 builds_on: [Coulomb's law, Electric field, Field lines, Area and volume of a sphere and cylinder]

@@ -1,6 +1,6 @@
 ---
 title: A Letter to God
-summary: A farmer's crop is flattened by hail, he writes to God for a hundred pesos, and a kind postmaster answers. The story's faith, irony, metaphors and narrative voice, plus the grammar it teaches (non-defining relative clauses and negatives for emphasis).
+summary: 'A farmer writes to God for help after a storm, and the reply he gets teaches him something unexpected about faith.'
 ncert: ["Class 10 English · First Flight · Ch 1 A Letter to God"]
 up_to: "Class 10"
 builds_on: [Reading a short story, Nouns and pronouns, Simple sentence structure]

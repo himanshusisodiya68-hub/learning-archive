@@ -1,6 +1,6 @@
 ---
 title: Adjectives and adverbs
-summary: Why English has describing words, what an adjective and an adverb each modify, how they are formed, degrees of comparison, order of adjectives, adverb types and positions, the board's usual traps (good/well, hard/hardly, bad/badly, comparatives with to), and finer points beyond the board.
+summary: 'The one question that tells you whether to say "good" or "well", "quick" or "quickly", and why the other choice sounds wrong.'
 ncert: []
 up_to: "Class 10"
 builds_on: ["Nouns", "Verbs and auxiliaries"]
