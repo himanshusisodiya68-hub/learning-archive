@@ -1,0 +1,158 @@
+# Nouns and articles. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Choose the correct word: He is ___ university student."
+  opts: ["a", "an", "many", "few"]
+  ans: 0
+  sol: |
+    *University* begins with the sound "yoo", a consonant sound, so the article is *a*. *An* is used only before a vowel sound. *Many* and *few* are used with plural nouns, but *student* is singular.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "What is the plural of the noun knife?"
+  opts: ["knifes", "knives", "knifs", "knive"]
+  ans: 1
+  sol: |
+    Many nouns ending in -fe change to -ves in the plural: knife, knives; wife, wives; life, lives. The other options are not standard spellings.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which of these is an abstract noun?"
+  opts: ["bravery", "Delhi", "flock", "gold"]
+  ans: 0
+  sol: |
+    *Bravery* is a quality that cannot be touched, so it is abstract. *Delhi* is a proper noun, *flock* is a collective noun and *gold* is a material noun.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["The Ganga is a sacred river.", "Ganga is a sacred river the.", "A Ganga is a sacred river.", "Ganga a sacred river is the."]
+  ans: 0
+  sol: |
+    Names of rivers take *the*: *the Ganga*. The third option wrongly uses *a* with a unique river, and the other two are not sentences in correct word order.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Choose the sentence with correct subject-verb agreement."
+  opts: ["The news are surprising.", "The news is surprising.", "The news were surprising.", "The newses is surprising."]
+  ans: 1
+  sol: |
+    *News* ends in s but is an uncountable, singular noun, so it takes a singular verb: *The news is surprising.* It has no plural form, so *newses* is also wrong.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Fill each gap with a, an, the, or put a cross (X) if no article is needed. (1) ___ sun rises in (2) ___ east. My father is (3) ___ honest man who works as (4) ___ engineer. He plays (5) ___ violin in his free time. We had (6) ___ lunch at noon."
+  sol: |
+    Model answer: (1) The, (2) the, (3) an, (4) an, (5) the, (6) X.
+
+    (1) The sun is unique, so *the*. (2) *The east* is a direction taken as one known point. (3) *Honest* begins with a vowel sound because the h is silent: *an*. (4) *Engineer* starts with a vowel sound and the sentence says what he is: *an*. (5) Musical instruments take *the*: *plays the violin*. (6) A meal name takes no article.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Each sentence has one error with a noun. Find it and correct it. (a) She gave me many advices. (b) The furnitures in the hall are new. (c) Two sheeps were grazing in the field. (d) My sister-in-laws are coming for dinner. (e) The childrens' park is closed today."
+  sol: |
+    (a) *many advices* should be *a lot of advice* (or *some advice*, *many pieces of advice*). Advice is uncountable.
+
+    (b) *The furnitures ... are* should be *The furniture ... is*. Furniture is uncountable and singular.
+
+    (c) *sheeps* should be *sheep*. Sheep has the same form in the plural.
+
+    (d) *sister-in-laws* should be *sisters-in-law*. In a compound noun the main word, sister, takes the plural.
+
+    (e) *childrens'* should be *children's*. Children is an irregular plural without an s, so it takes 's.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the correct phrase for a hostel meant for many girls."
+  opts: ["girls' hostel", "girl's hostel", "girls's hostel", "girls hostel's"]
+  ans: 0
+  sol: |
+    The owners are many and the plural, *girls*, already ends in s, so only an apostrophe is added: *girls' hostel*. *Girl's hostel* would mean a hostel belonging to one girl.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Which word is a collective noun in this sentence? \"Her speech showed great courage, and the audience applauded.\""
+  opts: ["speech", "courage", "audience", "great"]
+  ans: 2
+  sol: |
+    *Audience* names a group of people as one body, so it is a collective noun. *Courage* is an abstract noun, *speech* is a common noun and *great* is an adjective.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Fill the gaps with a, an, the, or X (no article). Yesterday I visited (1) ___ zoo near my house. (2) ___ zoo has (3) ___ elephant that is over fifty years old. (4) ___ keeper told us that it eats a great deal of food (5) ___ day. After (6) ___ visit we had (7) ___ lunch at the zoo canteen and returned home."
+  sol: |
+    Model answer: (1) a, (2) The, (3) an, (4) The, (5) a, (6) the, (7) X.
+
+    (1) First mention of one zoo: *a*. (2) The same zoo, now known to the reader: *the*. (3) A new singular noun with a vowel sound: *an*. (4) *The keeper* is a particular keeper of that zoo, known from the context; *a keeper* would also be possible in a loose reading. (5) Rate: *a day*, meaning each day. (6) The visit just described: *the*. (7) A meal: no article.
+
+    [Note] Items (4) and (6) depend on the reading of the passage; the answers given are the likeliest. A model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Change the sentence to the plural, making every necessary change: The woman saw a mouse near the knife and the loaf."
+  sol: |
+    *The women saw mice near the knives and the loaves.*
+
+    - woman becomes women (irregular).
+    - *a mouse* becomes *mice*, and the article *a* is dropped because mice is plural.
+    - knife becomes knives, and loaf becomes loaves (f changes to ves).
+    - *The* stays the same in the plural. The verb *saw* does not change.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Explain the difference in meaning between the sentences in each pair. (a) There is little water in the jug. / There is a little water in the jug. (b) Few students passed. / A few students passed. (c) She is a teacher. / She is the teacher."
+  sol: |
+    (a) *Little* means almost none, a complaint that there is not enough. *A little* means some, a small but useful amount. Water is uncountable, so both use *little* and not *few*.
+
+    (b) *Few* means hardly any, so the result is poor. *A few* means some, so the result is positive. Students is countable, so both use *few*.
+
+    (c) *A teacher* tells us her job, one among many teachers. *The teacher* points to one particular teacher whom the listener already knows or can identify, for example the teacher of their class.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Write one sentence each using: (a) a collective noun taken as a single group, (b) a collective noun taken as separate individuals, (c) an abstract noun, (d) a material noun. Underline the noun in each."
+  sol: |
+    One possible set of answers (other sentences are acceptable if the noun and the verb agreement are right):
+
+    (a) The *team* is practising on the ground. (a singular verb: the group acts as one)
+
+    (b) The *committee* are divided in their opinions. (a plural verb and *their*: the members hold different opinions; in the board's answer keys the singular is safer, so this plural form is an option in British usage)
+
+    (c) *Honesty* is the best policy. (abstract: a quality)
+
+    (d) The bracelet is made of *silver*. (material: a substance)
+
+    [Note] These are model answers written for this archive; label (b) as one possible answer.
+  check: none

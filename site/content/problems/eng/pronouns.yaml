@@ -1,0 +1,164 @@
+# Pronouns. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive; there is no NCERT answer key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Ravi and ___ went to the market."
+  opts: ["me", "I", "myself", "mine"]
+  ans: 1
+  sol: |
+    Drop Ravi and test: "___ went to the market." The pronoun is the doer, so the subject form *I* is needed. *Me* is the object form, *myself* is reflexive and needs a doer to bend back to, and *mine* is a possessive.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The book on the table is ___."
+  opts: ["my", "mine", "me", "myself"]
+  ans: 1
+  sol: |
+    The pronoun stands alone after *is*, with no noun after it, so the standalone possessive *mine* is needed. *My* must come before a noun (*my book*).
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The dog wagged ___ tail."
+  opts: ["it's", "its", "it", "itself"]
+  ans: 1
+  sol: |
+    The possessive of *it* is *its*, with no apostrophe. *It's* is only a short form of *it is* or *it has*.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: She hurt ___ while cutting vegetables."
+  opts: ["her", "herself", "hers", "she"]
+  ans: 1
+  sol: |
+    The doer and the one hurt are the same person, so the reflexive pronoun *herself* is used. *Her* would suggest someone else was hurt.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Name the kind of each pronoun in the sentences below (personal, possessive, reflexive, demonstrative, interrogative, relative or indefinite). (a) They arrived late. (b) The red scooter is mine. (c) Who broke the vase? (d) Those are my shoes. (e) She taught herself chess. (f) The boy who sat beside me was kind. (g) Nobody knew the answer."
+  sol: |
+    Model answer: (a) They: personal (subject form). (b) mine: possessive. (c) Who: interrogative. (d) Those: demonstrative. (e) herself: reflexive. (f) who: relative (it joins "sat beside me" to boy). (g) Nobody: indefinite.
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Each sentence has one pronoun error. Find it and correct it. (a) Between you and I, the plan is risky. (b) Each of the girls have brought her pen. (c) The boy which won the prize is my cousin. (d) The decision is their's. (e) He taught hisself to swim."
+  sol: |
+    (a) *you and I* should be *you and me*. Between is a preposition and takes the object form: "Between you and me, the plan is risky."
+
+    (b) *have* should be *has*. Each is singular: "Each of the girls has brought her pen."
+
+    (c) *which* should be *who*. The antecedent is a person, and the pronoun is the doer of won: "The boy who won the prize is my cousin."
+
+    (d) *their's* should be *theirs*. Possessive pronouns take no apostrophe: "The decision is theirs."
+
+    (e) *hisself* should be *himself*. There is no word hisself: "He taught himself to swim."
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: This is the girl ___ I met at the fair."
+  opts: ["who", "whom", "whose", "which"]
+  ans: 1
+  sol: |
+    Answer the clause: "I met her." The relative pronoun is the object of *met*, so the formal object form *whom* is expected. *Who* is common in speech but a formal key prefers whom. *Whose* shows ownership, and *which* is for things.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: Each of the boys collected ___ certificate."
+  opts: ["their", "his", "her", "its"]
+  ans: 1
+  sol: |
+    *Each* is singular, and the group named is boys, so the matching singular pronoun is *his*. *Her* is the wrong gender, *its* is for things, and *their* is plural. [Inference] Some modern writers accept singular *their*, but a traditional key prefers *his* for an all-boy group.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: I know the girl ___ bag was stolen."
+  opts: ["who", "whom", "whose", "which"]
+  ans: 2
+  sol: |
+    The bag belongs to the girl, so the pronoun of ownership *whose* is needed. Who and whom do not show possession, and which is for things.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Fill each gap with one suitable pronoun. (1) Between you and ___, the film was too long. (2) The teacher praised Anil and ___ (the speaker). (3) This bag is neither yours nor ___ (the speaker's); it is Kabir's. (4) I taught ___ to swim by watching videos. (5) The woman ___ daughter won the race was beaming. (6) He is the only one of the boys ___ I trust."
+  sol: |
+    Model answer: (1) me, (2) me, (3) mine, (4) myself, (5) whose, (6) whom (that is also acceptable).
+
+    (1) After the preposition between: the object form, *me*.
+    (2) *Anil and me*: the pronoun is the object of praised. Test: "The teacher praised me."
+    (3) A standalone possessive of the speaker, with no noun after it: *mine*.
+    (4) Doer and receiver are the same person: *myself*.
+    (5) Ownership of daughter: *whose*.
+    (6) After "the only one", *that* is usually preferred; *whom* is the formal object form (I trust him). Either is acceptable.
+
+    [Note] Model answers written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "The paragraph below has six pronoun errors, one per numbered sentence. Find and correct each. (1) Me and my cousin visited the fair. (2) There we met our teacher, who we respect greatly. (3) She gave a sweet to each of we children. (4) The sweets, that were fresh, tasted wonderful. (5) My cousin hurt hisself on the swing. (6) Its a day that we will always remember."
+  sol: |
+    (1) *Me and my cousin* should be *My cousin and I*: it is the subject (and I goes last).
+
+    (2) *who* should be *whom*: "we respect her", so the relative pronoun is the object. (*Who* is common in speech but a formal key prefers whom.)
+
+    (3) *we* should be *us*: it follows the preposition of.
+
+    (4) *that* should be *which*: the clause is non-defining, set off by commas, so it takes which.
+
+    (5) *hisself* should be *himself*.
+
+    (6) *Its* should be *It's* (it is): the apostrophe belongs here because the word is a short form, not a possessive.
+
+    [Note] Six corrections. A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Join each pair of sentences into one, using a relative pronoun. (a) I met a man. His car had broken down. (b) The girl is my neighbour. She won the prize. (c) This is the book. I told you about it. (d) He told me a story. It was very funny."
+  sol: |
+    (a) *I met a man whose car had broken down.* Whose shows that the car belonged to the man.
+
+    (b) *The girl who won the prize is my neighbour.* Who stands for the girl and is the doer of won. (*The girl who is my neighbour won the prize* is a different emphasis but also acceptable.)
+
+    (c) *This is the book that I told you about.* (Also: *which I told you about*, or formally *about which I told you*.)
+
+    (d) *He told me a story, which was very funny.* The clause adds extra information, so it takes a comma and which.
+
+    [Note] Several correct versions exist; these are model answers written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "The sentence \"Rita told Seema that she had won\" is unclear. Explain why in one sentence, then rewrite it in two ways so that the meaning is clear in each."
+  sol: |
+    Model answer: The pronoun *she* could refer to either Rita or Seema, so a reader cannot tell who won (its antecedent is ambiguous).
+
+    Rewrite 1 (Seema won): *Rita told Seema, "You have won."* Or: *Rita told Seema that Seema had won.*
+
+    Rewrite 2 (Rita won): *Rita told Seema, "I have won."* Or: *Rita told Seema that Rita herself had won.*
+
+    [Note] A model answer written for this archive; other clear rewrites are possible.
+  check: none

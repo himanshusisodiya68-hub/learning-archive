@@ -1,0 +1,200 @@
+# Verbs and auxiliaries. All problems are original (no NCERT items for this leaf). All answers are model answers written by us; there is no NCERT answer key for English.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "In the sentence \"She has been waiting for an hour\", which words are auxiliary verbs?"
+  opts: ["waiting", "has been", "has been waiting", "for an hour"]
+  ans: 1
+  sol: |
+    *Waiting* is the main verb. *Has* and *been* are the auxiliaries: *has* belongs to the perfect and *been* to the continuous. Together with *waiting* they form the verb phrase *has been waiting*.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: He ___ not like spicy food."
+  opts: ["do", "does", "is", "has"]
+  ans: 1
+  sol: |
+    The present-tense question and negative of an ordinary verb use do-support. With *he* the helper is *does*, and the main verb stays in the base form: "He does not like spicy food." *Do* does not fit he, and *is* and *has* would need a different verb form after them.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: You ___ wear a helmet when you ride a bike. It is the law."
+  opts: ["can", "might", "must", "used to"]
+  ans: 2
+  sol: |
+    The law makes it a strong obligation, so *must* fits. *Can* gives permission or ability, *might* a weak possibility, and *used to* a past habit.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Neither of the boys ___ present."
+  opts: ["are", "were", "is", "have been"]
+  ans: 2
+  sol: |
+    *Neither* means "not one of the two" and takes a singular verb. Of the options, only *is* is singular (and present). *Were* is a plural past, and *are* and *have been* are plural.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Fill each gap with a suitable auxiliary or modal verb. (a) ___ you lend me your pen, please? (b) She ___ speak four languages when she was only ten. (c) You look unwell. You ___ see a doctor. (d) ___ he finished his homework yet? (e) I ___ not seen him since Monday."
+  sol: |
+    Model answer: (a) Could (or Can, Will, Would), (b) could, (c) should, (d) Has, (e) have.
+
+    (a) A polite request: *could* or *would*. *Can* is less polite but acceptable in informal English.
+    (b) Past ability, general: *could*.
+    (c) Advice: *should* (*ought to* also works).
+    (d) *Finished* is V3, so the helper is *has* (he is singular): present perfect question.
+    (e) *Seen* is V3 and the subject is *I*: *have*.
+
+    Other answers are possible when the meaning allows. A model answer written for this archive.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "The lights are on, so she ___ be at home."
+  opts: ["may not", "must", "used to", "needn't"]
+  ans: 1
+  sol: |
+    The speaker draws a firm conclusion from evidence (the lights). That is the logical use of *must*. *May not* would suggest the opposite, *used to* refers to a past habit, and *needn't* means "is not necessary".
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Add a question tag to each sentence. (a) She plays the violin, ___? (b) Let's go to the park, ___? (c) Nobody called yesterday, ___? (d) I am late, ___? (e) You have never been abroad, ___?"
+  sol: |
+    Model answer: (a) doesn't she, (b) shall we, (c) did they, (d) aren't I, (e) have you.
+
+    (a) A positive statement with an ordinary verb: negative tag with do-support, *doesn't she*.
+    (b) After *Let's*, the tag is *shall we*.
+    (c) *Nobody* is a negative word, so the tag is positive, and the pronoun for nobody is *they*: *did they*.
+    (d) The tag for *I am* is *aren't I*.
+    (e) *Never* makes the sentence negative, so the tag is positive and repeats the helper: *have you*.
+
+    A model answer written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["He can sings very well.", "He can sing very well.", "He cans sing very well.", "He can to sing very well."]
+  ans: 1
+  sol: |
+    A modal is followed by the base form of the verb, with no -s on either word and no *to*. The only sentence that follows this rule is "He can sing very well."
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Each sentence has one error with the verb. Find it and correct it. (a) Each of the girls have a prize. (b) The news about the match are good. (c) My sister as well as my cousins are coming. (d) He didn't knew the way. (e) You needn't to go."
+  sol: |
+    (a) *have* should be *has*. *Each* is singular: "Each of the girls has a prize."
+
+    (b) *are* should be *is*. *News* is singular: "The news about the match is good."
+
+    (c) *are* should be *is*. *As well as* does not make the subject plural, and the verb agrees with the first subject, *my sister*: "My sister as well as my cousins is coming."
+
+    (d) *knew* should be *know*. After *did* the main verb is the base form: "He didn't know the way."
+
+    (e) *needn't to go* should be *needn't go* (or *don't need to go*). As a modal, *need* is followed by the base form with no *to*.
+
+    A model answer written for this archive.
+  check: none
+
+- id: b6
+  lvl: board
+  kind: mcq
+  q: "Choose the correct word: She enjoys ___ stories."
+  opts: ["to write", "writing", "write", "wrote"]
+  ans: 1
+  sol: |
+    *Enjoy* is followed by a gerund (the -ing form): "She enjoys writing stories." *To write* is used after verbs like *want* and *decide*, not after *enjoy*.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Fill each gap with the correct form of lie, lay, rise or raise. (a) Please ___ the book on the table. (b) She ___ down for a nap an hour ago. (c) The sun ___ in the east. (d) They ___ the flag every morning."
+  sol: |
+    Model answer: (a) lay, (b) lay, (c) rises, (d) raise.
+
+    (a) A thing is being put somewhere, so the verb needs an object (the book): transitive *lay*. The instruction is in the present, so the base form is *lay*.
+    (b) She herself reclined, with no object, and it was an hour ago: intransitive *lie*, past form *lay*.
+    (c) The sun does the rising itself and there is no object: *rises*, third person singular.
+    (d) The flag is raised by someone, so there is an object: *raise*, plural subject.
+
+    Notice that the base form of (a) and the past form of (b) are the same word, *lay*. A model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Explain the difference in meaning between the two sentences in each pair. (a) You mustn't park here. / You needn't park here. (b) I used to swim every day. / I am used to swimming every day."
+  sol: |
+    (a) *Mustn't* is a prohibition: parking here is forbidden. *Needn't* means it is not necessary: parking here is allowed but not required (for example, the speaker is saying the person may go elsewhere or not stop at all).
+
+    (b) *Used to + base verb* describes a past habit that has stopped: I swam every day before, but I do not now. *Be used to + -ing* means "be accustomed to": swimming every day is normal for me at present. In the second, *to* is a preposition, which is why the -ing form follows.
+
+    A model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Rewrite each sentence using the modal or expression given, without changing the meaning. (a) It is not necessary for you to wait. (Use needn't.) (b) Perhaps she is lost. (Use might.) (c) I advise you to rest. (Use should.) (d) It is forbidden to smoke here. (Use must not.) (e) It was wrong of you not to call us. (Use should have.)"
+  sol: |
+    Model answer:
+
+    (a) You needn't wait.
+    (b) She might be lost.
+    (c) You should rest.
+    (d) You must not smoke here.
+    (e) You should have called us.
+
+    In (b), *might* (or *may*) expresses possibility, followed by the base form *be*. In (e), a modal plus *have + V3* judges a past action.
+
+    A model answer written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Read the sentence: \"Wanting to win, Arun practised every day and has improved a great deal.\" (a) Pick out the finite verbs. (b) Pick out the non-finite verbs and name each kind. (c) In the finite verb phrase that has an auxiliary, name the auxiliary and the main verb."
+  sol: |
+    (a) The finite verbs are *practised* (past simple) and *has improved* (present perfect). Each has a subject, *Arun*, and shows tense.
+
+    (b) The non-finite verbs are *wanting* (a present participle, acting like an adjective for Arun) and *to win* (an infinitive, the thing wanted).
+
+    (c) In *has improved*, the auxiliary is *has* and the main verb is *improved* (V3 of improve).
+
+    A model answer written for this archive.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "The passage has six errors with verbs. Find and correct each. (1) My brother do not like vegetables. (2) Does he eats anything green? (3) The team are practising hard, because the number of matches are increasing. (4) We should have went earlier. (5) Yesterday I seen a rainbow. (6) She can to play the sitar."
+  sol: |
+    (1) *do not* should be *does not*: *brother* is singular.
+
+    (2) *eats* should be *eat*: after *does* the main verb is the base form.
+
+    (3) *are increasing* should be *is increasing*, because *the number of* is singular. (*The team are practising* is acceptable if the team is seen as individuals, though many board keys expect *is*.)
+
+    (4) *went* should be *gone*: after *should have* the form is V3.
+
+    (5) *seen* should be *saw*: with a finished time (*yesterday*) and no helper, the past simple V2 is used.
+
+    (6) *can to play* should be *can play*: no *to* after a modal.
+
+    A model answer written for this archive; the collective-noun choice in (3) is a matter of exam convention.
+  check: none
