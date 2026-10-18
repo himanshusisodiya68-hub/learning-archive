@@ -1,6 +1,6 @@
 ---
 title: Heating effect of current and electric power
-summary: 'Why a wire gets hot when current flows, and how to read your electricity bill and a bulb''s wattage.'
+summary: 'Why the heater''s coil glows red while the cord feeding it stays cool, though the same current flows through both.'
 ncert: ["Class 10 Science · Ch 11 Electricity (§11.7–11.8)"]
 up_to: Olympiad
 builds_on: [Potential difference, Ohm's law, Resistors in series and parallel, Specific heat capacity]
@@ -45,14 +45,58 @@ outcomes:
   - 'Use an energy balance to find the efficiency and heating time of a kettle'
   - 'Derive maximum power transfer at R = r and the r^(3/2) law for fuse wires'
   - 'Analyse heating with cooling and thermal runaway, and use the local form p = J·E'
+opener:
+  story: |
+    Plug in a 2 kW room heater and look at it. The coil inside glows orange, hot enough to light a match. Now touch the cord that brings electricity to it. It is barely warm.
+
+    Here's the odd part. Every bit of current that reaches the coil has to come along that cord. Same wire route, same amount of current, one end almost glowing and the other end cool enough to hold in your hand. Nothing is being "used up" along the way, because what flows into the coil also flows out of it.
+
+    So where does the heat come from, and why does it pile up in the coil and not in the cord? The answer also explains your electricity bill, why fuses exist, and why a loose plug can start a fire.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A heater plugged in: its cord stays cool while the coil inside glows"><rect x="8" y="104" width="22" height="32" rx="4" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M30 114 H44 M30 126 H44" style="stroke:var(--ink);stroke-width:2"/><path d="M44 120 H130" style="fill:none;stroke:var(--muted);stroke-width:5;stroke-linecap:round"/><rect x="120" y="64" width="190" height="112" rx="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M130 120 L148 88 L166 152 L184 88 L202 152 L220 88 L238 152 L256 88 L274 152 L292 120" style="fill:none;stroke:var(--bad);stroke-width:4;stroke-linejoin:round"/><path d="M160 54 q-8 -10 0 -20 q8 -10 0 -20 M215 54 q-8 -10 0 -20 q8 -10 0 -20 M270 54 q-8 -10 0 -20 q8 -10 0 -20" style="fill:none;stroke:var(--bad);stroke-width:2;stroke-linecap:round"/><path d="M60 100 L100 100" style="fill:none;stroke:var(--c);stroke-width:2"/><path d="M92 94 L102 100 L92 106Z" style="fill:var(--c)"/><text x="12" y="84" style="font-size:11px;fill:var(--c)">same current</text><text x="14" y="158" style="font-size:11px;fill:var(--muted)">cord: stays cool</text><text x="168" y="200" style="font-size:11px;fill:var(--bad)">coil: glowing hot</text></svg>'
+life:
+  - 'A geyser, kettle, iron or toaster is a coil of high-resistance wire that you deliberately let heat up, while the thick cord feeding it stays cool.'
+  - 'The bulb filament glows white-hot while the copper leads holding it stay cold: the same story at 2500 degrees.'
+  - 'A phone charger and laptop brick get warm because a little of the electrical energy always ends up as heat.'
+  - 'A loose plug in an old socket gets hot or even sparks: the poor contact has a high resistance, so it takes all the heat.'
+  - 'Your electricity bill charges for energy: a 2 kW geyser running for an hour costs as many units as twenty 100 W bulbs would eat in the same time.'
+models:
+  - name: 'The cost lands at the narrow point'
+    text: 'When one flow has to squeeze through a narrow part, the loss concentrates there: the toll plaza on an expressway, the one slow approver in a workflow, the single narrow bridge. To cut waste, widen the bottleneck, not the whole road.'
+  - name: 'Pay for energy, not for power'
+    text: 'Power is how fast you use something; energy is how much you use in all. The bill charges for kilowatt hours, like a data plan charging for gigabytes and not for megabits per second. A big appliance used for a minute can cost less than a small one left on all day.'
+  - name: 'Losses grow with the square'
+    text: 'Double the current and the heat quadruples. Small increases in load near the limit cost disproportionately more: a road at 90% capacity, a server at 95% load, a person with one more task. It is why power companies send electricity at very high voltage and low current.'
+links:
+  - leaf: 'phy/power'
+    name: 'Power (mechanics)'
+    same: 'Both are the rate of energy transfer, energy divided by time, measured in watts. A lifting motor gives energy to a load at $Fv$; a resistor takes it at $VI$. Both are billed in the same joules and kilowatt hours.'
+    differs: 'In mechanics the energy you transfer usually ends up stored (height, speed). In a resistor it ends up as random motion of atoms, heat, and cannot be turned back into electricity.'
+  - leaf: 'phy/calorimetry'
+    name: 'Calorimetry'
+    same: 'A heater''s heat can be measured: electrical energy $Pt$ in equals $mc\Delta T$ in the water, so you can find the specific heat of water, or the efficiency of a kettle, with a stopwatch and a thermometer.'
+    differs: 'Calorimetry also counts the heat the container and air carry away. The electrical side is easy to know exactly; the loss side is the uncertain part.'
+symbols:
+  - { s: 'V', means: 'potential difference (voltage): energy given up per coulomb (volt, V)' }
+  - { s: 'I', means: 'electric current: charge passing per second (ampere, A)' }
+  - { s: 'R', means: 'resistance: how strongly the wire opposes the flow (ohm, Ω)' }
+  - { s: 't', means: 'time the current flows (second, s)' }
+  - { s: 'H', means: 'heat produced in the resistor (joule, J)' }
+  - { s: 'P', means: 'power: energy turned into heat each second (watt, W)' }
+  - { s: '\mathcal{E}', means: 'emf of the source: energy the cell gives each coulomb (volt, V)' }
+  - { s: 'r', means: 'internal resistance of the source (ohm, Ω)' }
+  - { s: '\eta', means: 'efficiency: useful energy divided by energy supplied (no unit)' }
+next:
+  q: 'Too much current makes a wire glow and melt. A house runs fans, lights and a geyser at once off the same two wires, so how does it stay safe, and why is a thin bit of wire called a fuse the cheapest hero in the building?'
+  leaf: 'phy/domestic-electric-circuits'
+  name: 'Domestic electric circuits'
 ---
 
 :::hook
-q: A 100 W bulb and a 25 W bulb, both rated for 220 V, are connected in series across the 220 V mains. Which one glows brighter?
-options: ["The 100 W bulb", "The 25 W bulb", "Both equally"]
+q: So what's your guess: why does the coil glow while the cord, carrying exactly the same current, stays cool?
+options: ["The cord carries less current than the coil", "The coil has far more resistance, so the same current dumps far more heat in it", "The cord is cooled by its plastic covering"]
 answer: 1
-right: Right. In series both carry the same current, so the brighter one is the one with the larger resistance, and the 25 W bulb has four times the resistance of the 100 W one.
-wrong: The "100 W" on a bulb is what it draws on its own across 220 V. In series the current is shared, and heat goes as I²R, so the larger resistance wins. The 25 W bulb has the larger resistance.
+right: Yes. Heat goes as current squared times resistance, and the current is identical, so all the difference is resistance. The coil is a long thin alloy wire with a large resistance; the thick copper cord has almost none. Same river of charge, but the coil is the narrow rapids where the energy is given up.
+wrong: Current can't be different: the coil and the cord are in one loop, and what enters the coil must leave it. Look for the difference in the wires themselves. The coil is thin, long and made of a high-resistance alloy, so charges lose far more energy there, and the lost energy shows up as heat.
 :::
 
 ## Where the energy goes {lvl=1 id=s-energy label="Class 10"}

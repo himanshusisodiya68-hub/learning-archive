@@ -1,6 +1,6 @@
 ---
 title: The Wheatstone bridge
-summary: 'How to measure an unknown resistance precisely by balancing it against known ones until nothing flows.'
+summary: 'How to measure a resistance to a fraction of a percent with a half-flat battery and a meter nobody has calibrated.'
 ncert: ["Class 12 Physics · Ch 3 Current Electricity (§3.13)"]
 up_to: Olympiad
 builds_on: [Ohm's law, Resistors in series and parallel, Kirchhoff's rules, Resistance and resistivity]
@@ -46,14 +46,57 @@ outcomes:
   - 'Choose the balance point and ratio arms for best sensitivity, and account for end corrections'
   - 'Find the galvanometer current in an unbalanced bridge using Thevenins theorem'
   - 'Use the Carey Foster bridge, and quarter, half and full strain-gauge bridges'
+opener:
+  story: |
+    Here is a puzzle from 150 years ago. You must measure an unknown resistor very exactly. Your battery is half flat, its voltage drifting lower as you work. The meter in your hand has never been calibrated and its own resistance is unknown. Yet your answer comes out right to a fraction of a percent.
+
+    Think of the old two-pan balance in a vegetable market. It does not need to know how strong gravity is: it would give the same verdict on the Moon. It only has to show one thing, that the beam is level and nothing is moving.
+
+    The Wheatstone bridge is that balance built out of resistors. The best measurement, it turns out, is the one where the meter reads nothing at all.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A two-pan balance with the beam level: a known and an unknown weight match"><rect x="126" y="206" width="68" height="10" rx="3" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M160 206 V92" style="fill:none;stroke:var(--ink);stroke-width:4"/><path d="M50 92 H270" style="fill:none;stroke:var(--c);stroke-width:5;stroke-linecap:round"/><circle cx="160" cy="92" r="7" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M50 92 L28 152 M50 92 L72 152 M270 92 L248 152 M270 92 L292 152" style="fill:none;stroke:var(--muted);stroke-width:1.5"/><path d="M18 152 H82 M238 152 H302" style="fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round"/><rect x="34" y="124" width="32" height="26" rx="3" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><rect x="254" y="124" width="32" height="26" rx="3" style="fill:color-mix(in srgb,var(--chem) 30%,var(--surface));stroke:var(--chem);stroke-width:2"/><text x="44" y="142" style="font-size:11px;fill:var(--ink)">R</text><text x="265" y="142" style="font-size:11px;fill:var(--ink)">?</text><path d="M160 85 V52" style="fill:none;stroke:var(--muted);stroke-width:2"/><circle cx="160" cy="48" r="3" style="fill:var(--bad)"/><text x="172" y="52" style="font-size:11px;fill:var(--bad)">level: nothing moves</text><text x="30" y="178" style="font-size:11px;fill:var(--muted)">known</text><text x="244" y="178" style="font-size:11px;fill:var(--muted)">unknown</text><text x="70" y="236" style="font-size:11px;fill:var(--muted)">same verdict on the Moon</text></svg>'
+life:
+  - 'The tarazu (two-pan balance) in a vegetable market or a jeweller''s shop is the same idea: compare against known weights and look for level.'
+  - 'The metre bridge in a school lab is a Wheatstone bridge with a metre of uniform wire as two of its arms.'
+  - 'Digital kitchen and bathroom scales use load cells: strain gauges whose tiny resistance change is read by a bridge.'
+  - 'Thermostats and temperature probes often use a resistor whose value changes with heat, read by a bridge circuit.'
+  - 'Engineers test bridges, aircraft wings and engines with strain gauges glued on, all read with Wheatstone bridges.'
+models:
+  - name: 'Measure by comparing'
+    text: 'Instead of measuring in absolute terms, compare against something known and look for a match. Benchmarking against a peer, a referee''s ruling, ranking by a reference price: relative answers are often more accurate than absolute ones.'
+  - name: 'The best test shows zero'
+    text: 'A null reading needs no calibrated meter, only the ability to see ''no difference''. Reconciling a ledger to zero or a spirit level showing the bubble in the middle are the same trick.'
+  - name: 'Ratios survive scaling'
+    text: 'If everything scales by the same factor, balance remains. Double all prices and all wages and what you can afford is unchanged; it is why real, not nominal, comparisons are what matter.'
+links:
+  - leaf: 'phy/potential'
+    name: 'Electric potential'
+    same: 'Balance means two points sit at the same potential, like two water tanks at the same level joined by a pipe: no height difference, no flow.'
+    differs: 'Water level is something you can see; potential must be inferred, and here the zero reading of the galvanometer is how we see it.'
+  - leaf: 'phy/resistance-and-resistivity'
+    name: 'Resistance and resistivity'
+    same: 'The metre bridge works because a uniform wire''s resistance is proportional to its length, and strain gauges work because stretching a wire changes its resistance.'
+    differs: 'Resistance depends on temperature as well as shape, which is a nuisance for the metre bridge but the very thing a thermometer bridge uses.'
+symbols:
+  - { s: 'R_1,\,R_2,\,R_3,\,R_4', means: 'the four resistors (arms) of the bridge (ohm, Ω)' }
+  - { s: 'R', means: 'known resistance placed in one gap of the metre bridge (ohm, Ω)' }
+  - { s: 'S', means: 'unknown resistance in the other gap of the metre bridge (ohm, Ω)' }
+  - { s: 'l', means: 'length of wire from the left end to the balance point (centimetre, cm)' }
+  - { s: 'X,\,Y', means: 'the two resistances compared in a Carey Foster bridge (ohm, Ω)' }
+  - { s: '\lambda', means: 'resistance of the bridge wire per centimetre (Ω/cm)' }
+  - { s: 'E', means: 'EMF of the battery supplying the bridge (volt, V)' }
+  - { s: 'G_F', means: 'gauge factor of a strain gauge: fractional change in resistance per unit strain (no unit)' }
+next:
+  q: 'A galvanometer needle swings when a tiny current flows, but why should a current move a needle at all? Hold a compass next to a wire carrying current and watch the needle twitch: what does electricity have to do with magnets?'
+  leaf: 'phy/field-lines-and-compasses'
+  name: 'Field lines and compasses'
 ---
 
 :::hook
-q: A Wheatstone bridge is balanced with a 2 V cell, so the galvanometer reads zero. You replace the cell with a 6 V battery and change nothing else. What does the galvanometer read now?
+q: So what's your guess: a bridge is balanced with a 2 V cell and the galvanometer reads zero. You swap in a 6 V battery and change nothing else. What does it read now?
 options: ["Zero", "Three times its previous reading", "A small current, because the bridge is now unbalanced", "It depends on the galvanometer's resistance"]
 answer: 0
-right: Right. Balance means the two middle points are at the same potential. Tripling the emf triples every potential in the circuit, so the two points stay equal and the reading stays zero. That is the whole secret of the bridge.
-wrong: Balance depends only on the ratios of the four resistances. A bigger emf scales every potential by the same factor, so two equal potentials stay equal and the galvanometer still reads zero.
+right: Yes, still zero, which is the whole secret. Balance means the two middle points are at the same potential. Tripling the EMF triples every potential in the circuit, so two equal potentials stay equal. The battery, like gravity on the Moon, drops out of the verdict.
+wrong: Balance depends only on the ratios of the four resistors. A bigger EMF scales every potential by the same factor, so two equal potentials stay equal and the galvanometer still reads zero. No battery or meter detail enters the answer.
 :::
 
 ## Why compare instead of measure? {lvl=2 id=s-why label="Class 12"}

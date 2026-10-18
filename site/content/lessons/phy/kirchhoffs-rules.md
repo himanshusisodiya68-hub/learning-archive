@@ -1,6 +1,6 @@
 ---
 title: Kirchhoff's rules
-summary: 'Two simple bookkeeping rules that let you untangle any circuit, however messy it looks.'
+summary: 'Two simple bookkeeping rules that untangle any circuit, and explain why a strong battery can force current backwards through a weak one.'
 ncert: ["Class 12 Physics · Ch 3 Current Electricity (§3.12)"]
 up_to: Olympiad
 builds_on: [Ohm's law, Resistors in series and parallel, EMF and internal resistance, Electric potential]
@@ -48,14 +48,57 @@ outcomes:
   - 'Decide whether a cell is charging or discharging and apply V = ε ± Ir'
   - 'Use nodal analysis, mesh analysis, Millmans rule, superposition and symmetry'
   - 'Apply Thevenins theorem and explain when the rules fail'
+opener:
+  story: |
+    Put a brand-new battery in a torch beside an old one that is nearly flat. Both are connected to the same bulb, so surely both help push? Here is the strange thing. Wire a strong cell and a weak cell side by side and the strong one can push current backwards through the weak one, charging it from the wrong side.
+
+    That is why you are told never to mix old and new batteries in a remote: the weak one gets forced and can even leak. It is also exactly how a jump-start works, and how your phone charges.
+
+    There is no series or parallel shortcut here. But there are two beautifully simple rules, one about where the current goes and one about where the energy goes, that crack any circuit, however tangled.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A strong and a weak cell in parallel with a lamp: the strong cell pushes current backwards through the weak one"><path d="M60 60 H250 V107 M60 190 H250 V143" style="fill:none;stroke:var(--ink);stroke-width:2.5"/><path d="M60 60 V108 M60 120 V190" style="fill:none;stroke:var(--ink);stroke-width:2.5"/><path d="M46 108 H74" style="stroke:var(--c);stroke-width:4"/><path d="M52 120 H68" style="stroke:var(--c);stroke-width:4"/><path d="M150 60 V108 M150 120 V190" style="fill:none;stroke:var(--ink);stroke-width:2.5"/><path d="M136 108 H164" style="stroke:var(--chem);stroke-width:4"/><path d="M142 120 H158" style="stroke:var(--chem);stroke-width:4"/><circle cx="250" cy="125" r="18" style="fill:var(--surface);stroke:var(--ink);stroke-width:2.5"/><path d="M237 112 L263 138 M263 112 L237 138" style="stroke:var(--ink);stroke-width:2"/><path d="M76 98 V74" style="fill:none;stroke:var(--c);stroke-width:3"/><path d="M70 82 L76 70 L82 82Z" style="fill:var(--c)"/><path d="M168 76 V98" style="fill:none;stroke:var(--bad);stroke-width:3"/><path d="M162 90 L168 102 L174 90Z" style="fill:var(--bad)"/><text x="10" y="118" style="font-size:11px;fill:var(--c)">10 V</text><text x="104" y="118" style="font-size:11px;fill:var(--chem)">4 V</text><text x="226" y="170" style="font-size:11px;fill:var(--muted)">lamp</text><text x="40" y="222" style="font-size:11px;fill:var(--bad)">the 4 V cell is being charged</text></svg>'
+life:
+  - 'Mixing old and new batteries in a remote or toy: the strong cells force current through the weak ones, which drain and may leak.'
+  - 'Jump-starting a car: the good battery pushes current into the dead one, exactly the charging case of the loop rule.'
+  - 'A phone charger works only because its voltage is higher than the battery''s, so current enters the battery''s positive terminal.'
+  - 'Rooftop solar panels feed a home and also the grid: at a junction, current in must equal current out, whichever way it flows.'
+  - 'Traffic at a roundabout and water at a pipe junction obey the same counting rule as the junction rule: what comes in goes out.'
+models:
+  - name: 'What goes in must come out'
+    text: 'At any junction nothing is created or lost: cars at a crossing, water in pipes, money in an account at the end of a day. Every reconciliation or audit is this rule applied to rupees.'
+  - name: 'A round trip returns you to the start'
+    text: 'Walk around any loop of hills and you finish at your starting height, so the ups and downs sum to zero. Round any closed loop of a circuit the voltage gains and drops cancel; a ledger whose loops don''t net to zero has an error in it.'
+  - name: 'Count equations against unknowns'
+    text: 'A problem can be solved when the independent rules equal the unknowns: a sudoku, a household budget, a network. Before solving, count; if you are short, find the rule you forgot.'
+links:
+  - leaf: 'phy/conservative-forces'
+    name: 'Conservative forces'
+    same: 'The loop rule is the statement that the electric force is conservative: bring a charge round any closed path and the net work done is zero, just like carrying a ball up a hill and back down.'
+    differs: 'A battery adds energy, so in the loop sum its EMF appears with the resistor drops. The rule is about the electric field''s own work, not about batteries or heat.'
+  - leaf: 'phy/electromagnetic-induction'
+    name: 'Electromagnetic induction'
+    same: 'The same loop rule fails here: if the magnetic flux through the loop is changing, the induced EMF is not zero and the voltage drops no longer sum to zero.'
+    differs: 'Kirchhoff''s rules assume steady currents and no changing flux. Induction is exactly the case that breaks them, which tells you what the rules really rest on.'
+symbols:
+  - { s: 'I', means: 'current in a branch of the circuit (ampere, A)' }
+  - { s: 'R', means: 'resistance of a resistor (ohm, Ω)' }
+  - { s: '\varepsilon', means: 'EMF of a cell: energy it gives each coulomb (volt, V)' }
+  - { s: 'r', means: 'internal resistance of a cell (ohm, Ω)' }
+  - { s: 'V', means: 'terminal voltage across a cell, or voltage across a part (volt, V)' }
+  - { s: '\Delta V', means: 'change of potential across one element when walking round a loop (volt, V)' }
+  - { s: 'E_{th}', means: 'Thevenin EMF: the open-circuit voltage of a network between two terminals (volt, V)' }
+  - { s: 'R_{th}', means: 'Thevenin resistance seen between the same two terminals (ohm, Ω)' }
+next:
+  q: 'With these rules you can solve any tangle of five resistors. But can you arrange the resistors so that no current at all flows through the middle one, and could that give us a way to measure an unknown resistance without trusting any meter?'
+  leaf: 'phy/wheatstone-bridge'
+  name: 'The Wheatstone bridge'
 ---
 
 :::hook
-q: A 10 V cell (internal resistance 2 Ω) and a 4 V cell (internal resistance 1 Ω) are connected in parallel, positive to positive, and a 2 Ω lamp is connected across them. What does the 4 V cell do?
+q: So what's your guess: a 10 V cell (internal resistance 2 Ω) and a 4 V cell (1 Ω) sit side by side, positive to positive, with a 2 Ω lamp across them. What does the 4 V cell do?
 options: ["It helps the 10 V cell, pushing current out of its positive terminal", "Current is driven into its positive terminal: it is being charged", "Nothing: no current flows through it"]
 answer: 1
-right: Right. The common terminal voltage turns out to be 4.5 V, which is above the 4 V cell's EMF, so 0.5 A is pushed backwards through it. Kirchhoff's rules find this in a few lines, and the worked example below does exactly that.
-wrong: The two cells are not in series, so their EMFs do not simply add or subtract. The 10 V cell raises the common terminals to 4.5 V, above the smaller cell's EMF, so current is forced into the 4 V cell's positive terminal and it is charged.
+right: Yes, the weak cell gets charged. The shared terminal voltage works out at 4.5 V, above the 4 V cell's own EMF, so 0.5 A is pushed backwards through it. Kirchhoff's rules find this in a few lines, and the worked example below does exactly that.
+wrong: The two cells are not in series, so their EMFs do not simply add. The 10 V cell holds the shared terminals at 4.5 V, above the weaker cell's EMF, so current is forced into the weak cell's positive terminal and it is charged, just like a phone on a charger.
 :::
 
 ## Where series and parallel stop working {lvl=1 id=s-why label="Class 10"}

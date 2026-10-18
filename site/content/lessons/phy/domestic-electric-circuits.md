@@ -1,6 +1,6 @@
 ---
 title: Domestic electric circuits
-summary: 'How electricity reaches your house, why a fuse saves you from fire, and what the three wires in a plug do.'
+summary: 'How electricity gets to your wall socket, what the three pins in a plug are for, and why a switch only protects you in the right wire.'
 ncert: ["Class 10 Science · Ch 12 Magnetic Effects of Electric Current (§12.4)"]
 up_to: JEE
 builds_on: [Potential difference, Ohm's law, Resistors in series and parallel, Heating effect and power]
@@ -45,14 +45,57 @@ outcomes:
   - 'Explain earthing and why switches go in the live wire'
   - 'Convert between rms and peak values, and calculate voltage drop and heating in wires'
   - 'Calculate fault currents, explain MCBs and RCDs, and estimate the adiabatic melting time of a fuse'
+opener:
+  story: |
+    You switch off the fan, the blades slow and stop. Now an electrician climbs up, opens the casing and reaches in for a wire. He probably says what electricians always say: "Switch off at the main first, even if the fan is off."
+
+    That sounds like fussing. The switch is off, so no current is flowing, so how can the wire hurt you? Yet people really do get shocks from appliances that are switched off. A switch is only a gap in a wire, and the house has two wires coming in, not one.
+
+    So the question is: which wire does the switch break, and does it matter? It does, and the answer is why every switch, fuse and plug in your home is wired the way it is.
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A wall switch breaking the live wire to a ceiling fan, with the neutral wire running straight to the fan"><path d="M90 40 H310" style="fill:none;stroke:var(--ink);stroke-width:4"/><path d="M200 40 V126" style="fill:none;stroke:var(--muted);stroke-width:3"/><rect x="20" y="90" width="44" height="70" rx="5" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M42 112 L56 98" style="fill:none;stroke:var(--c);stroke-width:3;stroke-linecap:round"/><circle cx="42" cy="112" r="3" style="fill:var(--ink)"/><circle cx="42" cy="146" r="3" style="fill:var(--ink)"/><path d="M10 60 H42 V90 M42 160 V200 H186 V152" style="fill:none;stroke:var(--bad);stroke-width:3"/><path d="M10 226 H214 V152" style="fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:6 4"/><ellipse cx="200" cy="140" rx="38" ry="7" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><ellipse cx="200" cy="140" rx="38" ry="7" transform="rotate(60 200 140)" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><ellipse cx="200" cy="140" rx="38" ry="7" transform="rotate(120 200 140)" style="fill:color-mix(in srgb,var(--c) 30%,var(--surface));stroke:var(--c);stroke-width:2"/><circle cx="200" cy="140" r="9" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="50" y="54" style="font-size:11px;fill:var(--bad)">live wire, 220 V</text><text x="70" y="132" style="font-size:11px;fill:var(--muted)">switch OFF</text><text x="224" y="222" style="font-size:11px;fill:var(--ink)">neutral wire</text><text x="252" y="108" style="font-size:11px;fill:var(--muted)">fan</text></svg>'
+life:
+  - 'The three-pin plug: the longer, thicker earth pin goes to the metal body of your fridge, washing machine or geyser, so a fault sends the current to the ground instead of through you.'
+  - 'The meter board with MCBs near your front door: one for lights and fans (5 A), one for the geyser and AC (15 A).'
+  - 'The tingle you feel from a washing machine body or the sparks at an old switch are leakage and poor contacts, the same circuit rules showing up.'
+  - 'The electricity bill, which counts units (kilowatt hours) of energy and has a fixed charge for the line to your home.'
+  - 'The trip switch in a bathroom that cuts the power the moment a hair dryer falls into water.'
+models:
+  - name: 'Defence in depth'
+    text: 'No single safety device is trusted alone: the fuse, the earth wire and the trip switch each cover failures the others miss. Seat belt plus airbag plus crumple zone; savings plus insurance plus emergency fund.'
+  - name: 'Cut the supply, not the symptom'
+    text: 'The switch goes where the danger comes from, the live wire. Shutting the main valve beats closing every tap; freezing the source account beats chasing each fraudulent payment.'
+  - name: 'Independent branches fail independently'
+    text: 'Because every appliance sits across the same two wires, one burnt-out bulb doesn''t darken the house. Several income streams, several suppliers, backup servers: parallel structures keep a system alive when one part fails.'
+links:
+  - leaf: 'phy/resistors-in-series-and-parallel'
+    name: 'Resistors in series and parallel'
+    same: 'A house is the parallel rule at full scale: each appliance has the full 220 V across it, and the currents add up in the main wire, so adding appliances raises the total current.'
+    differs: 'Safety devices such as the fuse and the switch are deliberately placed in series with what they guard, so that breaking them breaks the whole path.'
+  - leaf: 'phy/electromagnetic-induction'
+    name: 'Electromagnetic induction'
+    same: 'A trip switch (RCD) is induction at work: live and neutral pass through one iron ring and their magnetic effects cancel. A leak to earth upsets the balance and the changing flux induces a voltage that trips the switch.'
+    differs: 'Normal wiring relies on currents in the two wires being equal and opposite; the RCD notices only when they are not.'
+symbols:
+  - { s: 'V', means: 'voltage between two points, such as live and neutral (volt, V)' }
+  - { s: 'I', means: 'current in a wire or drawn by an appliance (ampere, A)' }
+  - { s: 'P', means: 'power rating of an appliance (watt, W)' }
+  - { s: 'V_{\text{rms}}', means: 'root-mean-square voltage: the steady DC value giving the same heating, 220 V for mains (V)' }
+  - { s: 'V_0', means: 'peak voltage of the alternating supply, about 311 V (V)' }
+  - { s: 'R_L', means: 'resistance of the live wiring from supply to the fault (ohm, Ω)' }
+  - { s: 'R_E', means: 'resistance of the earth path back to the supply (ohm, Ω)' }
+  - { s: 'I_{\text{fault}}', means: 'current that flows when the live wire touches an earthed body (ampere, A)' }
+next:
+  q: 'A house is easy: every appliance sits across the same two wires. But most real circuits, like a battery charger or a network of cells, are neither plain series nor plain parallel. How do you find the current in every wire of such a tangle?'
+  leaf: 'phy/kirchhoffs-rules'
+  name: 'Kirchhoff''s rules'
 ---
 
 :::hook
-q: A ceiling fan is switched off at the wall. An electrician opens it up and touches a wire inside. When is this safe?
+q: So what's your guess: the fan is switched off and the electrician touches a wire inside it. When is that safe?
 options: ["Always: the switch is off, so no current can flow", "Only if the switch is in the live wire", "Only if the switch is in the neutral wire", "Never, whatever the wiring"]
 answer: 1
-right: Right. A switch in the live wire disconnects the fan from the 220 V wire, so everything after it sits at earth potential. A switch in the neutral wire stops the current but leaves the fan connected to the live wire. (Electricians still switch off at the mains, because they cannot be sure how a house was wired.)
-wrong: An "off" switch only breaks the circuit at one point. If that point is in the neutral wire, the fan is still joined to the live wire at 220 V, and touching it with your feet on the floor completes a circuit through you. The switch must be in the live wire.
+right: Yes. A switch in the live wire cuts the fan off from the 220 V wire, so everything after the switch sits at earth potential. In the neutral wire the same switch stops the current but leaves the fan joined to the live wire. (Electricians still switch off at the mains, because they cannot be sure how an old house was wired.)
+wrong: An off switch breaks the circuit at one point only. If that point is in the neutral wire, the fan is still joined to the live wire at 220 V, and touching it with your feet on the floor completes a circuit through you. The switch has to be in the live wire.
 :::
 
 ## The supply that comes into a house {lvl=1 id=s-supply label="Class 10"}
