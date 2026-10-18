@@ -1,0 +1,92 @@
+# Replication. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A database machine is up 95% of the time. You keep two copies that fail independently. What percentage of the time is at least one copy up?
+  ask: Availability
+  unit: "%"
+  ans: 99.75
+  tol: 0.01
+  verify: (1-0.05*0.05)*100
+  sol: Both copies are down together with probability $0.05 \times 0.05 = 0.0025$. So at least one is up $1 - 0.0025 = 0.9975$ of the time, which is 99.75%. This assumes the two fail independently; two copies in one rack would do worse.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these is NOT a reason to replicate a database?
+  opts: ["Survive the failure of one machine", "Serve users from a copy near them", "Make writes faster because there are more machines to write to"]
+  ans: 2
+  sol: Replication helps availability, latency and read capacity. It does not speed up writes; every copy must eventually receive every write, so writes get no faster and may get slower (especially if synchronous). Spreading writes across machines is partitioning, not replication.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A leaderless store keeps n = 7 replicas and each write must be confirmed by w = 5. What is the smallest read quorum r that guarantees every read overlaps the latest write?
+  ask: Smallest r
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: 7-5+1
+  sol: |
+    We need $w + r > n$, so $5 + r > 7$, giving $r > 2$, hence $r = 3$. Check: any 5 replicas and any 3 replicas out of 7 share at least $5 + 3 - 7 = 1$ replica.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A user posts a comment and, on reloading the page a moment later, does not see it, though other users see it a second later. The app reads from asynchronous followers. Which fix targets exactly this problem?
+  opts: ["Serve that user's reads from the leader for a few seconds after they write", "Add more followers", "Switch the followers to read from older snapshots"]
+  ans: 0
+  sol: This is a read-your-writes violation caused by replication lag. Reading one's own recent data from the leader (or from a follower known to have caught up) fixes it. More followers do not remove lag, and older snapshots make it worse.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Your service has one leader and three followers with asynchronous replication, and the leader fails. Walk through what must happen for a safe failover and name two things that can go wrong.
+  sol: |
+    Steps: (1) followers notice the leader is not responding, usually after a timeout; (2) one follower is chosen as the new leader, normally the one with the most up-to-date log; (3) clients and the other followers are pointed at the new leader; (4) the old leader, if it returns, must be told to become a follower and not accept writes.
+    What can go wrong: (a) lost writes, since asynchronous replication means the new leader may be missing the last few writes the old leader confirmed; (b) split brain, if the old leader returns and still thinks it leads, so two machines accept writes; (c) a timeout set too short triggers needless failovers on a brief slowdown, while one set too long extends the outage.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Write a Python function quorum_write(replicas, key, value, w) that sends the write to all replicas and returns True once w of them acknowledge. Then say what you would do about replicas that did not acknowledge.
+  sol: |
+    ```python
+    def quorum_write(replicas, key, value, w):
+        acks = 0
+        for rep in replicas:
+            try:
+                rep.put(key, value)
+                acks += 1
+            except Exception:
+                pass                 # replica down or slow
+        return acks >= w
+    ```
+    A real client sends the requests in parallel and returns as soon as w acknowledgements arrive, without waiting for the rest. Replicas that missed the write are fixed later by read repair (a reader that sees an old version writes the newer one back) and by a background anti-entropy process that compares replicas and copies missing data.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Two data centres each have a leader (multi-leader). Asha edits her profile bio in Pune while, at the same moment, her phone syncs an edit to the same bio from Delhi. Explain why last-write-wins can lose data here, and propose a better approach for a bio field and for a "likes" counter.
+  sol: |
+    Each leader stamps its edit with its own clock. If the clocks differ by even a second, the edit that really happened later may carry the earlier timestamp and be discarded, and in any case one of the two concurrent edits is silently thrown away.
+    For the bio, detect that the edits were concurrent (version vectors do this without relying on clocks) and keep both versions for the application or the user to resolve, or merge them field by field if they touched different fields.
+    For a likes counter, make the operation mergeable: instead of storing "likes = 10" and overwriting, each data centre counts its own increments and the total is the sum, a kind of data structure known as a conflict-free replicated counter. Concurrent increments then never conflict.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Design the replication plan for a payments ledger that must never lose a confirmed transaction, survive the loss of a whole data centre, and still answer within about 100 ms for users in two cities 1,500 km apart. State the trade-off you cannot avoid.
+  sol: |
+    A confirmed transaction must not be lost, so replication to at least a second data centre must be synchronous before confirming: asynchronous replication would allow a lost write when the leader's site dies. Use a single leader with synchronous or quorum replication (for example three replicas across three failure zones, with a write confirmed once two have stored it) and a consensus protocol to choose the new leader safely and prevent split brain.
+    The trade-off is physical. Light in fibre travels about 200,000 km/s, so a 1,500 km one-way trip takes about 7.5 ms and a round trip about 15 ms, before routers and processing. Waiting for a distant replica therefore adds at least that to every write, but a 100 ms budget leaves room. Reads that do not need the latest value can be served from a nearby follower, with read-your-writes handled by reading the leader or a caught-up replica for a user's own recent data.
+    What cannot be avoided: safety against loss costs write latency, and during a network partition between sites the system must either refuse some writes (to stay correct) or accept them and risk conflicts. A ledger should choose to refuse. [Inference: a typical design reasoning, not any specific company's system.]
+  check: none

@@ -1,0 +1,103 @@
+# Partitioning and sharding. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A service must store 1 billion posts, and one machine can hold 50 million. What is the smallest number of machines (ignoring replicas) that can hold all the posts?
+  ask: Machines
+  unit: ""
+  ans: 20
+  tol: 0.1
+  verify: ceil(1e9/50e6)
+  sol: $10^9 / (5 \times 10^7) = 20$ exactly, so 20 machines. In practice you would use more, to leave room for growth and uneven sizes, and each would also be replicated.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which query is cheap under hash partitioning of orders by order id?
+  opts: ["Fetch order 90412", "List all orders placed between 1 and 7 October", "List orders in order-id sequence"]
+  ans: 0
+  sol: Hashing sends order 90412 to one known partition. Range and ordered queries need the neighbours of a key, and hashing scatters neighbours across all partitions, so those must ask every partition.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A cluster places each key on machine (hash mod N). It grows from 10 machines to 11. Roughly what percentage of keys must move to a different machine?
+  ask: Keys moved
+  unit: "%"
+  ans: 90.9
+  tol: 0.2
+  verify: (1-1/11)*100
+  sol: A key stays only when $h \bmod 10 = h \bmod 11$. Over any 110 consecutive hash values, this holds for exactly 10 of them, so 1 in 11 stay and $10/11 \approx 90.9\%$ move. With consistent hashing only about $1/11 \approx 9\%$ would move.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A cluster using consistent hashing with well-spread virtual nodes has 20 machines. A 21st is added. About what percentage of the keys move to the new machine?
+  ask: Keys moved
+  unit: "%"
+  ans: 4.76
+  tol: 0.05
+  verify: 100/21
+  sol: A fair share for each of 21 machines is $1/21$ of the data, and the new machine takes its share from the others, so about $100/21 \approx 4.76\%$ of keys move. No keys move between the old machines.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A social app partitions posts by hash of post id. A celebrity's new post gets 2 million reads a minute, more than one machine can serve. Propose two fixes and the cost of each.
+  sol: |
+    Fix 1, cache: put the post in an in-memory cache in front of the shard. The shard then sees only occasional refreshes, not 2 million reads. Cost: readers may see slightly stale data (such as a like count a few seconds old) and the cache must expire or refresh.
+    Fix 2, spread the key: keep several copies of the hot post on different partitions (`post42#0` to `post42#9`), choosing one at random for each read. Reads spread ten ways. Cost: every update to the post must be written to all ten copies, and it takes some engineering to detect which posts are hot and to apply this only to them.
+    A third option is to add more read replicas for the hot partition, which helps reads but not writes. [Inference: typical approaches; real systems combine them.]
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Write Python for a consistent-hash ring with virtual nodes. It should have add(machine) and lookup(key) methods. Say how virtual nodes help.
+  sol: |
+    ```python
+    import bisect, hashlib
+
+    def h(s):
+        return int.from_bytes(hashlib.md5(s.encode()).digest()[:8], "big")
+
+    class Ring:
+        def __init__(self, vnodes=100):
+            self.vnodes, self.points, self.owner = vnodes, [], {}
+        def add(self, machine):
+            for i in range(self.vnodes):
+                p = h(f"{machine}#{i}")
+                bisect.insort(self.points, p)
+                self.owner[p] = machine
+        def lookup(self, key):
+            i = bisect.bisect(self.points, h(key)) % len(self.points)
+            return self.owner[self.points[i]]
+    ```
+    Each machine appears at 100 points on the circle. With one point per machine the gaps between machines would be very uneven, so some machines would own much more than their share. With many points per machine the shares average out, and a machine joining takes a little from every other machine rather than a lot from one neighbour. Giving a stronger machine more virtual nodes lets it take a larger share.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: An online shop partitions orders by customer id. The product team now wants a page showing "all orders for seller 77 this week". Describe two ways to build it, and compare cost.
+  sol: |
+    Way 1, scatter-gather: ask every partition for orders with seller 77 (each keeps a local index by seller), then merge. Writes stay cheap, since an order is written once, in its customer's partition. Reads touch every partition, so latency is that of the slowest one and load grows with cluster size.
+    Way 2, a global index (or a second copy of the data partitioned by seller): every new order is also written to a structure partitioned by seller id, so the seller page reads one partition. Reads are cheap, but each order write now touches two partitions, takes longer, and the seller copy can lag behind. It also needs a way to repair the copy if one of the two writes fails.
+    Choose by ratio: if seller pages are rare, use scatter-gather; if they are common and must be fast, pay on the write side. [Inference: standard trade-off reasoning.]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Design the partitioning for a time-series store that takes 2 million sensor readings a second from 500,000 sensors and must answer "readings of sensor S in the last hour" quickly and "average over all sensors in the last minute" occasionally. Choose the key, address hot spots, and say how you rebalance.
+  sol: |
+    Key: sensor id first, then timestamp (`S#2026-10-18T14:03:07`). Range partitioning on this key keeps one sensor's readings together in time order, so "last hour of sensor S" is one short range scan in one partition. Writes spread over 500,000 sensors, avoiding the timestamp-first hot spot where every new reading would hit the newest partition.
+    Hot spots: a few sensors may report far more often. Split large ranges automatically when a partition grows past a size or traffic limit, and optionally add a bucket (such as the hour) to the key of very busy sensors.
+    Cross-partition: "average over all sensors in the last minute" must ask every partition. Make it cheap by maintaining a separate pre-aggregated stream (per-minute totals written by a stream processor), so the occasional global query reads a small summary rather than scanning 120 million readings.
+    Rebalancing: use many small partitions (thousands) assigned to machines, and move whole partitions when machines are added, throttling copy traffic and serving from the old location until the new one is ready. Replicate each partition for safety. [Inference: a typical design, not any product's documented behaviour.]
+  check: none

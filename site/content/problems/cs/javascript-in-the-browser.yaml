@@ -1,0 +1,98 @@
+# JavaScript in the browser. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "What does `document.querySelector('h1').textContent = 'Hi'` do?"
+  opts: ["Adds a new h1 to the page", "Replaces the text of the first h1 on the page with Hi", "Shows an alert box saying Hi"]
+  ans: 1
+  sol: "`querySelector` finds the first element matching the selector, and assigning to its `textContent` replaces its text. The DOM changes and the browser redraws."
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A screen shows 60 frames per second. How many milliseconds does the browser have to produce each frame?
+  ask: Time per frame
+  unit: ms
+  ans: 16.7
+  tol: 0.1
+  verify: 1000/60
+  sol: One second is 1000 ms, shared among 60 frames, so each frame gets $1000/60 \approx 16.7$ ms.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "What does this print? `console.log('A'); setTimeout(() => console.log('B'), 0); Promise.resolve().then(() => console.log('C')); console.log('D');`"
+  opts: ["A B C D", "A D B C", "A D C B"]
+  ans: 2
+  sol: A and D are plain code on the current job. When it finishes, the promise callback (microtask) C runs before the next task, the timer B. So the output is A D C B.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A page awaits three independent requests one after another, taking 200 ms, 150 ms and 250 ms. How long does it wait in total?
+  ask: Total wait
+  unit: ms
+  ans: 600
+  tol: 0.1
+  verify: 200 + 150 + 250
+  sol: Each `await` finishes before the next request starts, so the times add, $200 + 150 + 250 = 600$ ms.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Interview question: `fetch('/api/item/99')` returns a 404, yet the `catch` block never runs. Why, and what should the code do?"
+  sol: |
+    `fetch` rejects its promise only on network-level failure (no connection, blocked request). If the server answers at all, even with 404 or 500, the promise resolves with a response object. Its `ok` property is false for statuses outside 200 to 299.
+
+    So the code must check explicitly:
+
+    ```js
+    const res = await fetch("/api/item/99");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    ```
+
+    Now the error reaches the `catch` block like any other. Also decide what the user sees: a message, a retry button, or an empty state.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: A dashboard makes three independent requests that take 200 ms, 150 ms and 250 ms. It is rewritten to use Promise.all instead of three awaits in a row. How many milliseconds does the user save?
+  ask: Time saved
+  unit: ms
+  ans: 350
+  tol: 0.1
+  verify: (200 + 150 + 250) - Math.max(200, 150, 250)
+  sol: In turn the cost is $200+150+250 = 600$ ms. Together it is the slowest, 250 ms. The saving is $600 - 250 = 350$ ms. (This assumes the server handles them independently and the network is not the bottleneck. [Inference])
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A search box sends a request on every keystroke. Users report that sometimes the results shown do not match what they typed. Explain the bug and give two complementary fixes.
+  sol: |
+    **Bug (stale response).** Typing "ca" then "cat" starts two requests. Network times vary, so the reply for "ca" can arrive after the reply for "cat" and overwrite the correct results. Requests are not guaranteed to finish in the order they started.
+
+    **Fix 1: cancel or ignore the old request.** Keep an `AbortController` and abort the previous request when a new one starts, or give each request an increasing number and only render a response whose number is the latest.
+
+    **Fix 2: debounce.** Wait about 300 ms after the last key press before sending, so a burst of typing produces one request. This also cuts server load.
+
+    Optional extras: show a loading state, and cache results for queries already seen.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A click handler runs a 300 ms computation over 50,000 list items and the page janks. Propose three fixes in increasing order of effort, with the trade-off of each.
+  sol: |
+    1. **Do less work.** Render only what is visible (a virtualised list showing about 30 rows) or compute lazily on demand. Cheapest and often best. Trade-off: scrolling code gets more complex.
+    2. **Chunk the work.** Process 500 items per slice and yield between slices with `setTimeout` (or a scheduler API where available) so the browser can paint and handle input. Total time is slightly longer, but each slice is far below the 16.7 ms frame budget if tuned. Trade-off: results arrive gradually and you must handle the user changing something mid-way.
+    3. **Move it off the main thread.** A Web Worker runs the computation in parallel and posts the result back. The page stays fully responsive. Trade-off: no DOM access in the worker, and copying 50,000 items between threads costs time (transferable objects help).
+
+    Measure first with the browser's performance profiler. Fix 1 beats the others because work not done costs nothing.
+  check: none

@@ -1,0 +1,93 @@
+# HTML and CSS. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which HTML element is the best choice for the main menu links of a page?
+  opts: ["<div class='menu'>", "<nav>", "<span>"]
+  ans: 1
+  sol: "`<nav>` says that its contents are navigation, so screen readers can jump to it and search engines understand it. A `<div>` or `<span>` could look identical but carries no meaning."
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: "A box has width 200 px (content), 20 px padding on every side and a 2 px border on every side, with the default box sizing. How wide is the visible box (margin excluded)?"
+  ask: Visible width
+  unit: px
+  ans: 244
+  tol: 0.1
+  verify: 200 + 2*20 + 2*2
+  sol: By default `width` means the content only. Add padding on both sides ($2 \times 20 = 40$) and border on both sides ($2 \times 2 = 4$) to get $200 + 40 + 4 = 244$ px.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    A card uses `box-sizing: border-box`, `width: 300px`, 16 px padding on every side and a 1 px border on every side. How wide is the content area?
+  ask: Content width
+  unit: px
+  ans: 266
+  tol: 0.1
+  verify: 300 - 2*16 - 2*1
+  sol: With `border-box` the 300 px includes padding and border. Content is what remains, $300 - 2(16) - 2(1) = 266$ px.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: Which CSS makes a gallery with three equal columns and 16 px between them?
+  opts: ["display: flex; columns: 3;", "display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;", "display: block; width: 33%;"]
+  ans: 1
+  sol: Grid defines columns directly. `repeat(3, 1fr)` makes three columns that each take one equal share of the free space, and `gap` sets the spacing. The other options do not create a column structure.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Interview question: how do you centre a box both horizontally and vertically inside its parent, and why does the method work?"
+  sol: |
+    Make the parent a flex container and centre on both axes:
+
+    ```css
+    .parent { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    ```
+
+    `justify-content` positions items along the main axis (horizontal for a row) and `align-items` along the cross axis (vertical). Centring both puts the child in the middle. The parent needs a height larger than the child, which is why `min-height` is set. Grid works too: `display: grid; place-items: center;`.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |
+    A flex row is 900 px wide with no gap. It has three items with `flex: 1`, `flex: 2` and `flex: 3`, and each starts from a basis of 0. How wide is the widest item?
+  ask: Widest item
+  unit: px
+  ans: 450
+  tol: 0.1
+  verify: 900 * 3 / (1 + 2 + 3)
+  sol: The shares total $1 + 2 + 3 = 6$ parts, so one part is $900/6 = 150$ px. The third item gets 3 parts, $3 \times 150 = 450$ px.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: mcq
+  q: "An element matches three rules that all set its colour. Rule X is `#menu a` , rule Y is `nav .list .item` , rule Z is `.a.b.c.d.e` (the last matches because the element has all five classes). Which colour wins?"
+  opts: ["X, with specificity (1,0,1)", "Y, with specificity (0,2,1)", "Z, with specificity (0,5,0)"]
+  ans: 0
+  sol: Specificity is compared left to right as (ids, classes, tags). X is (1,0,1), Y is (0,2,1), Z is (0,5,0). A single id outranks any number of classes, so X wins whatever the file order.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A page looks right on a laptop, but on a phone the user must pinch and scroll sideways. Give the most likely causes, in the order you would check them, and a fix for each.
+  sol: |
+    1. **No viewport meta tag.** The phone pretends to be about 980 px wide and shrinks the page. Fix: add `<meta name="viewport" content="width=device-width, initial-scale=1">`.
+    2. **Something wider than the screen.** A fixed `width: 800px`, a wide table or an image without `max-width: 100%`. Find it by outlining all elements (`* { outline: 1px solid red; }`) or by checking which element's right edge passes the viewport. Fix: flexible units, `max-width`, or let the table scroll inside its own wrapper with `overflow-x: auto`.
+    3. **Padding and border adding to width 100%.** With the default box sizing, `width: 100%; padding: 16px` is wider than its parent. Fix: `box-sizing: border-box`.
+    4. **Long unbreakable text** such as a URL. Fix: `overflow-wrap: anywhere`.
+
+    The stretch idea is the debugging order: check the page-wide setting first, then find the single offending element, rather than adding more media queries.
+  check: none

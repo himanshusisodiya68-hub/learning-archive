@@ -1,0 +1,98 @@
+# Passwords, sessions and OAuth. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: Which of these is a "something you have" factor?
+  opts: ["Your six-digit UPI PIN", "The SIM card and phone your banking app is tied to", "The name of your first school"]
+  ans: 1
+  sol: A PIN and a school name are secrets in your head ("know"). A phone or SIM is an object only you hold, so it is "have". A fingerprint would be "are". Pairing a PIN with the registered phone gives two different kinds of evidence.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A password is exactly 8 letters, each one of the 26 lowercase English letters. How many different passwords are possible?
+  ask: Possible passwords
+  unit: ""
+  ans: 208827064576
+  tol: 1
+  verify: Math.pow(26, 8)
+  sol: Each of the 8 positions has 26 choices, and the choices are independent, so there are $26^8 = 208{,}827{,}064{,}576$, about $2 \times 10^{11}$.
+  check: code
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A site stores passwords with a slow hash, so an attacker can test only 1,000 guesses per second. About how many years would it take to try every 8-letter lowercase password (there are 26^8 of them)? Take one year as 365 days.
+  ask: Time to try all
+  unit: years
+  ans: 6.6
+  tol: 0.1
+  verify: Math.pow(26, 8) / 1000 / (365 * 24 * 3600)
+  sol: |
+    Total guesses $26^8 \approx 2.088 \times 10^{11}$. At 1,000 per second that is $2.088 \times 10^{8}$ seconds. A year has $365 \times 24 \times 3600 = 3.1536 \times 10^{7}$ seconds, so the time is about 6.6 years. (On average the password is found halfway, about 3.3 years.) With a fast hash at $10^{10}$ guesses per second the same search takes about 21 seconds, which is why slowness matters.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A bank locks a 6-digit PIN for 24 hours after every 3 wrong attempts. An attacker who keeps guessing as fast as the lock allows must try, in the worst case, every one of the 1,000,000 PINs. How many days does this take in the worst case, counting 3 guesses per day?
+  ask: Worst-case days
+  unit: days
+  ans: 333334
+  tol: 1
+  verify: Math.ceil(1000000 / 3)
+  sol: |
+    One million PINs at 3 per day gives $1{,}000{,}000 / 3 = 333{,}333.3$, so 333,334 days, about 913 years. A short PIN is safe here because of the **lockout limit**, not because of any secrecy in the algorithm. Without the limit, a million guesses would take seconds.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Design the storage and login check for passwords on a new site. Say exactly what is saved per user, what happens at registration and at login, and what you would add for users who reuse weak passwords.
+  sol: |
+    **Save per user:** a random salt (16 bytes or more), the output of a slow password hash (bcrypt, scrypt or Argon2) with its cost settings, and nothing else about the password.
+    **Registration:** generate the salt with the operating system's secure random source, compute the hash of salt plus password, store both. Discard the password.
+    **Login:** fetch the salt, hash the typed password the same way, compare with the stored value using a constant-time comparison. Give the same error for "unknown user" and "wrong password", so the page does not reveal which usernames exist.
+    **Extras:** enforce a minimum length and reject passwords found in common-password lists, rate-limit attempts per account and per address, offer a second factor (an authenticator app or passkey), and store the cost setting so you can raise it over time and re-hash a user's password at their next successful login.
+    ```python
+    # at login
+    ok = hmac.compare_digest(slow_hash(pw, row.salt), row.hash)
+    ```
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Your product has mobile apps and a website, and users demand a "log out of all devices" button. A teammate suggests long-lived JWTs (valid for 30 days) because "servers then need no database". Argue for or against and propose a design.
+  sol: |
+    Against pure long-lived JWTs. A signed token carries its own proof of validity, so the server has no record to delete; "log out everywhere" cannot work until the 30 days run out, and a stolen phone's token stays valid.
+    **Proposal A (simplest):** server-side sessions with a random id in a cookie or app secure storage. Logout-all deletes every row for that user. The cost is a shared store (such as an in-memory database) that every server reads.
+    **Proposal B (hybrid):** access tokens valid for about 5 to 15 minutes, checked by signature only, plus a refresh token stored in the database. Logout-all revokes the user's refresh tokens, and the longest a stolen access token survives is its short lifetime. A user-level "tokens issued before time T are void" value, cached in memory, tightens this further.
+    Trade-off summary: stateless checks scale easily but give up instant revocation; the hybrid takes back most of the control at the cost of one lookup on each refresh.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: 'An attacker holds a stolen table of 1,000,000 password hashes and a list of 10^9 common passwords. All hashes were made with the same fast function, and the attacker can compute 10^10 hashes per second. First suppose there is no salt. Then suppose every user has a unique salt. How many hours does the salted attack take if the attacker must test every common password against every user?'
+  ask: Hours with salt
+  unit: hours
+  ans: 27.8
+  tol: 0.1
+  verify: 1e9 * 1e6 / 1e10 / 3600
+  sol: |
+    **No salt:** the same password always gives the same hash, so the attacker hashes the $10^9$ candidates once ($0.1$ second at $10^{10}$ per second) and looks each stolen hash up in that table. Every user with a listed password falls at once.
+    **Unique salts:** a candidate hashed with one user's salt tells nothing about another's, so the work is $10^9 \times 10^6 = 10^{15}$ hashes. At $10^{10}$ per second that is $10^5$ seconds, about $10^5/3600 = 27.8$ hours. A million times more work, and a slow hash (about 10,000 times slower) would stretch it to decades.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: In the OAuth "login with Google" flow, the app sends your browser to Google and Google sends it back to the app with a one-time code. Suppose the app does not check that the code comes back in response to a login that this same browser started. Describe an attack in which the attacker logs your browser into the attacker's account, and say what the "state" value is and how it stops this.
+  sol: |
+    **Attack (login CSRF):** the attacker starts a login at the app with their own Google account and stops at the point where Google redirects back with a code for the **attacker's** identity. They do not use the link; they trick you (an image, a hidden form, a message) into opening it in your browser. The app receives a valid code, exchanges it, and logs your browser in as the attacker. You then upload photos, add a card or save notes into the attacker's account, which the attacker can read afterwards.
+    **Defence:** before redirecting, the app generates a random **state** value, stores it in the browser's session (a cookie) and includes it in the request to Google. Google returns the same state with the code. The app accepts the callback only if the returned state equals the one stored for that browser. The attacker's link carries a state your browser never issued, so the check fails.
+    Related rule: register exact redirect addresses with Google, so a code cannot be sent to an attacker's site.
+  check: none

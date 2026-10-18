@@ -1,0 +1,89 @@
+# Indexes: hash, B-tree and LSM-tree. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A sorted index holds 100 million keys. At most how many comparisons does plain binary search need to find one key?
+  ask: Comparisons
+  unit: ""
+  ans: 27
+  tol: 0.1
+  verify: ceil(log2(1e8))
+  sol: Each comparison halves what is left. We need the smallest $k$ with $2^k \ge 10^8$. Since $2^{26} \approx 6.7\times10^7$ and $2^{27} \approx 1.34\times10^8$, $k = 27$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which query is a hash index NOT suited for?
+  opts: ["WHERE user_id = 981", "WHERE price BETWEEN 100 AND 200", "WHERE email = 'a@b.com'"]
+  ans: 1
+  sol: A hash index scatters neighbouring values, so it can only answer equality. A range (BETWEEN) needs a sorted structure such as a B-tree.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A B-tree has about 100 keys per node. About how many levels does it need to index 1 million rows?
+  ask: Levels
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: ceil(log10(1e6)/log10(100))
+  sol: Each level multiplies the reach by 100. One level covers 100, two cover $100^2 = 10^4$, three cover $100^3 = 10^6$. So 3 levels reach 1 million rows, that is $\lceil \log_{100} 10^6 \rceil = 3$.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A table has an index on (last_name, first_name). Which query can use it efficiently?
+  opts: ["WHERE first_name = 'Asha'", "WHERE last_name = 'Rao' AND first_name = 'Asha'", "WHERE first_name LIKE 'A%'"]
+  ans: 1
+  sol: The index is sorted by last_name first, then first_name within each last name (the leftmost-prefix rule). Option B filters on both in index order. Option A skips the first column, so the entries for 'Asha' are scattered. Option C also skips last_name, so it cannot jump in either.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: 'An orders table (id, customer_id, city, amount, created_at) is slow for three frequent queries: (1) all orders of one customer, (2) orders in one city with amount over 500, (3) the 20 most recent orders overall. Propose indexes and say why, including the column order.'
+  sol: |
+    (1) `CREATE INDEX ON orders(customer_id)`: an equality lookup on a selective column.
+    (2) `CREATE INDEX ON orders(city, amount)`: equality column first, then the range column. The database jumps to the city, then walks the sorted amounts above 500. The reverse order `(amount, city)` would have to scan all amounts above 500 across every city.
+    (3) `CREATE INDEX ON orders(created_at)`: reading the last 20 entries of the sorted index gives the 20 most recent rows with no sort.
+    Three indexes means each insert now does four writes (table plus three). That is acceptable if reads dominate; confirm with the query plan and measure.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A team adds an index to every column of a 20-column table "to be safe". Inserts become much slower. Explain why, estimate the write work per insert, and say what you would do.
+  sol: |
+    Each insert must add the row to the table and add an entry to every index. With an index on all 20 columns that is about 21 separate structure updates (one is usually the primary key), many of them random page writes, plus the extra space and cache pressure. Updates to an indexed column cost even more because the old entry is removed and a new one added.
+    What to do: find the queries that are actually slow and frequent, read their plans, and keep only the indexes that serve them (drop the rest, since most indexes are never used by any query). Use composite indexes where one index can serve several queries through the leftmost-prefix rule. Re-measure insert speed after dropping.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A service receives 50,000 writes per second (sensor readings) and only a few hundred reads. A colleague proposes an LSM-tree store, another a B-tree. Argue for one, covering the write path, the read path, and the downside you accept.
+  sol: |
+    The workload is write-heavy, so an LSM-tree is the better fit. Write path: each reading goes to an in-memory sorted table plus a sequential log, and is flushed later as a sorted file. No random in-place page edits, so the disk or flash sustains very high write rates. A B-tree would edit a page in place for every write, which means random I/O and rewriting a whole page (say 8 KB) to change one small row.
+    Read path: a read checks the memtable, then files newest to oldest, skipping most files through their Bloom filters. Reads are slower and less predictable than a B-tree's three page reads, but only a few hundred per second are needed.
+    Downside accepted: write amplification from compaction (data is rewritten as files merge), background I/O that can cause latency spikes, and more complex tuning. Cheap to accept here because reads are rare.
+    [Inference] Real products differ in details; the trade-off is the point.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: A B-tree holds 1 billion keys with 500 entries per page. The leaf level holds all the keys. Count the pages in all the levels above the leaves (assume each upper level has one entry per page below it, and round each level up). Then estimate the memory needed to cache them if a page is 8 KB, and say how many disk reads a lookup then needs.
+  ask: Pages above the leaves
+  unit: pages
+  ans: 4009
+  tol: 1
+  verify: ceil(1e9/500/500)+ceil(1e9/500/500/500)+1
+  sol: |
+    Leaf pages: $10^9/500 = 2\times10^6$. The level above needs one entry per leaf page, so $2\times10^6/500 = 4000$ pages. The level above that: $4000/500 = 8$ pages. Above that: 1 root page. Total above the leaves: $4000 + 8 + 1 = 4009$ pages.
+    Memory: $4009 \times 8\text{ KB} \approx 33$ MB, small enough to keep in RAM easily.
+    A lookup then walks the cached upper levels in memory, and needs only about **one** disk read, for the leaf page. The 16 GB leaf level (about $2\times10^6 \times 8$ KB) is what stays on disk. This is why even a billion-row index feels instant. (Assumes full pages; real trees leave some space empty, so true counts are somewhat higher.)
+  check: code

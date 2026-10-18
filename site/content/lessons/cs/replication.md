@@ -154,7 +154,6 @@ The simplest plan is to choose one replica as the **leader**. All writes go to t
 <path class="ray" d="M130 36 L300 111"/>
 <circle cx="190" cy="76" r="6" style="fill:var(--mat)"/>
 <circle cx="300" cy="111" r="6" style="fill:var(--mat)"/>
-<rect x="190" y="82" width="110" height="0" />
 <text x="205" y="68" style="font-size:10px;fill:var(--muted)">sees x = 7</text>
 <text x="310" y="104" style="font-size:10px;fill:var(--muted)">sees x = 7</text>
 <text x="135" y="102" style="font-size:10px;fill:var(--bad)">B still shows the old x</text>

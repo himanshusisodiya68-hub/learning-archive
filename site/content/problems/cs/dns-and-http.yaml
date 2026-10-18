@@ -1,0 +1,88 @@
+# DNS and HTTP. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: A browser receives a response that begins "HTTP/1.1 404". What does it mean?
+  opts: ["The request worked and the page follows", "The server works but has nothing at the requested path", "The server itself crashed"]
+  ans: 1
+  sol: Codes in the 4xx family mean the request was wrong from the server's point of view; 404 specifically means "not found". A server crash would be a 5xx code such as 500.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which HTTP method is meant for reading a page without changing anything on the server?
+  opts: ["POST", "GET", "DELETE"]
+  ans: 1
+  sol: GET is for reading and should not change anything, which is why browsers and caches may repeat it freely. POST submits data and DELETE removes something.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A DNS answer has a TTL of 300 seconds. A resolver is asked for that name continuously all day, and refreshes it from the authoritative server exactly when the TTL expires. How many times does it contact the authoritative server in one hour?
+  ask: Lookups
+  unit: ""
+  ans: 12
+  tol: 0.1
+  verify: 3600/300
+  sol: One refresh every 300 seconds means $3600/300 = 12$ refreshes per hour, however many users ask the resolver. This is how a cache protects the authoritative server.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: A browser holds a saved copy of a file and sends a request with its fingerprint (ETag). The file has not changed. What does the server reply?
+  opts: ["200 OK with the whole file again", "304 Not Modified with an empty body", "404 Not Found"]
+  ans: 1
+  sol: With 304 Not Modified the server says "your copy is still current", saving the bandwidth of sending the file again. The browser uses its saved copy.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Describe, step by step, what happens when your resolver has nothing cached and you open www.example.co.in. Name each server it asks and what each one returns.
+  sol: |
+    1. The resolver asks a **root server** about `www.example.co.in`. The root does not know it but returns the servers responsible for the top-level domain `in`.
+    2. The resolver asks an **`in` server**, which returns the servers for the next level, `co.in`.
+    3. It asks a **`co.in` server**, which returns the authoritative servers for `example.co.in`.
+    4. It asks the **authoritative server** for `example.co.in`, which returns the A (or AAAA) record with the IP address of `www`, or a CNAME pointing to another name that must itself be looked up.
+    5. The resolver caches every answer for its TTL, returns the address to your device, and your device caches it too. (In practice the resolver usually already has the root and top-level answers cached, and the exact number of delegation levels depends on the domain.)
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: You will move a busy website to a new server on Saturday night, and its DNS record currently has a TTL of 24 hours. Plan the change so that almost all visitors reach the new server within minutes.
+  sol: |
+    Lower the TTL well before the move: on Thursday, change the record's TTL to a short value such as 300 seconds. Wait at least the old TTL (24 hours) so that every cache has fetched the short-TTL version. On Saturday night, bring up the new server, check it works, then change the address in the record; caches expire within about 5 minutes. Keep the old server running for a while, since a few resolvers ignore TTLs, and afterwards raise the TTL again to cut lookup traffic.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A page needs 60 small files. Using HTTP/1.1, the browser opens 6 parallel connections and each connection fetches one file per round trip (RTT = 50 ms). Ignoring connection setup and download time, how long, in milliseconds, does it take to fetch all 60 files?
+  ask: Time
+  unit: ms
+  ans: 500
+  tol: 0.5
+  verify: (60/6)*50
+  sol: Six connections fetch 6 files at a time, so 60 files need $60/6 = 10$ rounds of one RTT each, $10 \times 50 = 500$ ms. With HTTP/2 all 60 requests can go out together on one connection, so ideal time is about one RTT, 50 ms, plus transfer time.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: With a round-trip time of 100 ms and a cold DNS cache, estimate the time to the first byte of a page for (a) HTTPS over TCP with TLS 1.3, (b) HTTP/3 over QUIC, and (c) HTTP/3 resuming a connection to a server visited earlier. Give your assumptions.
+  sol: |
+    Assume one DNS round trip of 100 ms for a cold lookup (a nearby resolver could make it faster), and ignore server processing.
+
+    (a) DNS 100 ms + TCP handshake 100 ms + TLS 1.3 handshake 100 ms + request and first byte 100 ms = about 400 ms.
+
+    (b) QUIC combines the transport and security handshake into one round trip: DNS 100 + QUIC and TLS 100 + request 100 = about 300 ms.
+
+    (c) With a resumed session the client can send the request in its very first packet (0-RTT): DNS 100 (or cached, 0) + request 100 = about 200 ms, or about 100 ms with a warm DNS cache. [Unverified: 0-RTT has caveats, it is only safe for repeatable requests, because an attacker may replay it.]
+
+    The lesson of the arithmetic: each avoided round trip is worth a full RTT, so protocols and caches compete to remove them.
+  check: none

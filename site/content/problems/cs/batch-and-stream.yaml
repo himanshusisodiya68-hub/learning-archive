@@ -1,0 +1,107 @@
+# Batch and stream processing. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A T20 match has two innings of up to 20 overs, and each over has 6 legal balls. At most how many legal ball events can the log of one complete match hold?
+  ask: Ball events
+  unit: ""
+  ans: 240
+  tol: 0.1
+  verify: 2*20*6
+  sol: Each innings has $20 \times 6 = 120$ legal balls, and there are two innings, so at most $2 \times 120 = 240$ legal-ball events. Wides and no-balls add extra events, so the real log can be a little longer.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which job is most naturally a batch job?
+  opts: ["Showing the live score on a phone", "Generating every customer's monthly electricity bill", "Alerting a driver that a ride was just cancelled"]
+  ans: 1
+  sol: A monthly bill needs a complete, fixed pile of readings and nobody needs the answer within a second, so one scheduled batch run is ideal. The other two lose their value if they arrive late, which points to streams.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A topic receives 50,000 events per second. One consumer can handle 5,000 events per second. At least how many partitions (with one consumer each) are needed to keep up?
+  ask: Partitions
+  unit: ""
+  ans: 10
+  tol: 0.1
+  verify: ceil(50000/5000)
+  sol: Each partition is read by one consumer in the group, so the capacity is partitions times 5,000 per second. We need $p \times 5000 \ge 50000$, so $p \ge 10$. In practice you would add some spare room for bursts.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: All ball events of one match must be processed in the order they happened. Which choice of partition key achieves this?
+  opts: ["A random number for each event", "The match id", "The name of the batsman"]
+  ans: 1
+  sol: Order is guaranteed only inside one partition. Keying by match id sends every event of that match to the same partition, so they are read in order. A random key scatters them, and keying by batsman splits one match over several partitions, so the overall order of the match is lost.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: You have one thousand files of ball-by-ball records for ten seasons, far too big for one machine. Describe, using map, shuffle and reduce, how to find each bowler's total wickets.
+  sol: |
+    **Map**: each machine reads some of the files. For every line where a wicket fell, emit a pair (bowler, 1). Lines without a wicket emit nothing. (Run-outs are not credited to the bowler, so the map step must skip them.)
+
+    **Shuffle**: the framework hashes the key (the bowler's name) and sends all pairs for the same bowler to the same machine.
+
+    **Reduce**: each machine sums the 1s for each bowler it received, producing (bowler, total wickets).
+
+    Fault tolerance: if one machine fails, only its slice is rerun, because input files do not change. An optional **combiner** step, summing locally before the shuffle, reduces network traffic. To find the top ten, run a second small job (or one last reduce) that sorts the totals.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: num
+  q: Events arrive at 1,200 per second but the consumers process only 1,000 per second. After a 10-minute burst at these rates, how many events are waiting (the lag)?
+  ask: Events waiting
+  unit: ""
+  ans: 120000
+  tol: 1
+  verify: (1200-1000)*10*60
+  sol: The backlog grows by the difference of the rates, $1200 - 1000 = 200$ events each second. Ten minutes is $600$ seconds, so the backlog is $200 \times 600 = 120{,}000$ events. At 1,000 per second the consumers need 120 more seconds to clear it, once the arrival rate drops below their speed.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A consumer reads each "wicket" event, sends an SMS to fans, then commits its offset. It crashes right after sending an SMS but before committing. Explain what goes wrong and give two ways to make the system behave as if each SMS were sent once.
+  sol: |
+    **What goes wrong**: on restart the consumer resumes from the last committed offset, reads the same event again and sends the SMS a second time. This is at-least-once delivery. Committing the offset first instead would risk the opposite, losing the SMS.
+
+    **Fixes**:
+    1. **Idempotency key**: give each event a unique id and pass it to the SMS provider as an idempotency key, so a repeated request with the same key is ignored by the provider. (This works only if the provider supports it.)
+    2. **Dedupe table**: record the event ids already notified in a durable store, and check it before sending. To avoid a gap between "send" and "record", record an intent (id, status = sending) first, send, then mark done; on restart, a "sending" record is retried with the same key.
+
+    A third option is to make the **effect** naturally idempotent, for example by setting "fans notified for wicket 7 = true" instead of sending blindly, but a real SMS is an outside effect, so options 1 and 2 are needed. The general rule: at-least-once delivery plus idempotent handling gives an exactly-once effect.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: 'Design the data pipeline behind a live-score feature for an IPL final watched by 25 million people at once. Cover ingest, partitioning, ordering, the stream job, serving to phones, late or wrong events, replays, and the nightly batch job. State which parts you would label as assumptions.'
+  sol: |
+    **Ingest**: the scorer's app emits one event per ball, with a unique event id, the match id and a sequence number, to a replicated topic keyed by match id. A producer retry carries the same id, so duplicates can be detected. (Event rate is tiny: a few events per minute per match. The hard part is the readers.)
+
+    **Ordering**: all events for a match share a partition, so they arrive in order; the stream job also checks the sequence number and buffers an event that arrives out of order until the missing one shows up (or flags a gap).
+
+    **Stream job**: one consumer per partition folds events into the match state $s_k = f(s_{k-1}, e_k)$ (runs, wickets, overs, batsmen). It is idempotent (dedupe by event id, or skip events with a sequence number already applied), and checkpoints its state together with the offset, so a crash resumes without double counting.
+
+    **Serving**: the latest state is written to an in-memory store and an edge cache. The 25 million phones should not each hit the stream job: use a fan-out layer (push gateways or short-lived cached reads with a one-second time to live) so the load is on cheap caches. A reconnecting phone fetches the current state, not the whole history. Because the state is small and the same for everyone, this is a read-scaling problem more than a stream problem.
+
+    **Late and wrong events**: umpire reviews and scorer errors arrive as correcting events and are folded in the same way, changing later states. Events delayed beyond the watermark are applied as corrections rather than dropped.
+
+    **Replay and recovery**: retain the topic for days; to fix a bug, deploy the fixed job and replay from the start of the match into a fresh state store, then switch traffic over.
+
+    **Batch path**: overnight, a batch job reads the whole log of the season and recomputes every statistic exactly (strike rates, records), overwriting any approximate live values.
+
+    **Failure and trade-offs**: if the stream job lags, serve the last state with a "delayed" marker (availability over freshness, as in the consistency lesson); if a region fails, a standby consumer group in another region takes over from the replicated log. Cost trade-offs: number of partitions, retention length, running both a stream and a batch path.
+
+    **Assumptions [Inference]**: the event rates, the one-second cache, and the presence of a push gateway are assumptions; no broadcaster's actual architecture is public here.
+  check: none
