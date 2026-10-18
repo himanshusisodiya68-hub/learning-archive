@@ -1,0 +1,110 @@
+# Scaling up and scaling out. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A ticket app has 50 million daily users, and each makes about 10 requests a day. Taking a day as 86,400 seconds, what is the average number of requests per second?
+  ask: Requests per second
+  unit: req/s
+  ans: 5787
+  tol: 5
+  verify: 50e6*10/86400
+  sol: Total requests are $50\times10^6 \times 10 = 5\times10^8$ per day. Divide by 86,400 seconds, which gives about 5,787 requests per second on average.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which web server design lets you add or remove servers freely during a sale?
+  opts: ["Each server keeps its logged-in users in its own memory", "Servers keep nothing between requests; sessions live in a shared store", "Each user is hand-assigned to one server forever"]
+  ans: 1
+  sol: If servers hold no per-user state, any server can handle any request, so a new one helps at once and a dead one loses nothing. State has not disappeared; it has moved to the shared store, which becomes the part you must scale carefully.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A service averages 2,000 requests per second and its daily peak is 4 times the average. One server handles 250 requests per second. How many servers do you need to survive the peak with one spare server (N+1)?
+  ask: Servers
+  unit: servers
+  ans: 33
+  tol: 0.1
+  verify: ceil(2000*4/250)+1
+  sol: Peak load is $2000 \times 4 = 8000$ requests per second. At 250 per server that needs $8000/250 = 32$ servers. Add one spare so a single failure still leaves enough capacity, giving 33.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A job is 90% parallelisable, so 10% must run one step at a time. Using Amdahl's law, what is the speed-up with 8 workers? Give the answer to 2 decimal places.
+  ask: Speed-up
+  unit: times
+  ans: 4.71
+  tol: 0.01
+  verify: 1/((1-0.9)+0.9/8)
+  sol: $S(n) = 1/((1-p)+p/n)$ with $p = 0.9$, $n = 8$. The denominator is $0.1 + 0.9/8 = 0.1 + 0.1125 = 0.2125$, so $S = 1/0.2125 \approx 4.71$. Eight workers give less than five times the speed.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Interview style. An app has 20 million daily users who each upload on average 3 photos a day, each about 2 MB. Estimate the storage needed per year, and say what you would add to that estimate before buying disks.
+  sol: |
+    Photos per day: $20\times10^6 \times 3 = 6\times10^7$. Bytes per day: $6\times10^7 \times 2$ MB $= 1.2\times10^8$ MB $= 120$ TB. Per year: $120 \times 365 \approx 43{,}800$ TB, about 44 petabytes.
+
+    Before buying, adjust for what the raw figure leaves out:
+    - **Replication**: keeping 3 copies for safety triples it to roughly 130 PB.
+    - **Thumbnails and resized versions**, which add some tens of percent.
+    - **Growth**: if users double in a year, the second year costs more than the first.
+    - **Headroom**: do not plan to fill disks to 100 percent.
+
+    The point of the exercise is the order of magnitude (tens of petabytes, not terabytes and not exabytes) and showing the assumptions aloud. The upload counts and sizes here are assumed, not data from a real service.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: A shop's website was slow during a sale. The team doubled the web servers from 10 to 20, but pages are just as slow. Monitoring shows web server CPU at 30 percent and the single database at 98 percent CPU. Explain what happened and list a sensible order of fixes.
+  sol: |
+    The bottleneck is the database, not the web servers. The web tier was never the limit (CPU at 30 percent), so doubling it changed nothing, and the extra servers even send more concurrent queries to the database.
+
+    A sensible order, cheapest and least risky first:
+    1. **Find the expensive queries** and add missing indexes; this often removes most of the load.
+    2. **Cache** hot, repeated reads (product pages, prices) so most requests never reach the database.
+    3. **Read replicas** for read-heavy traffic, accepting that replicas can lag a little.
+    4. **Move non-urgent work to queues** (emails, invoices).
+    5. **Scale the database up** if a bigger machine is simple and affordable.
+    6. **Shard** the data only if write volume still exceeds one machine, since it complicates every later feature.
+
+    After each step, measure again; a new bottleneck appears.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: In the simple one-queue model, response time is $T = s/(1-\rho)$. A request takes $s = 20$ ms alone. You want average response time to stay at or under 100 ms. What is the highest utilisation $\rho$ you can run at? Give the answer as a fraction.
+  ask: Utilisation
+  unit: ""
+  ans: 0.8
+  tol: 0.005
+  verify: 1-20/100
+  sol: Set $20/(1-\rho) = 100$. Then $1-\rho = 20/100 = 0.2$, so $\rho = 0.8$, or 80 percent busy. Above this, response time passes 100 ms and climbs steeply; at 90 percent it would be 200 ms. This is a simplified model, so treat it as a guide to headroom rather than an exact prediction.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A ticket site sells 10,000 seats at a fixed time, and 1,000,000 people press Buy in the same minute. Design how the system should cope. Say what you would scale, what you would deliberately not scale, and how you would keep two people from getting the same seat.
+  sol: |
+    **Estimate first.** 1 million users in one minute is about 17,000 requests per second for the first click alone, and users refresh, so plan on several times that for a short burst. The burst is brief and the stock is tiny (10,000 seats), so buying a database big enough to serve everyone directly is wasteful.
+
+    **Scale out the cheap, stateless parts.** Static pages, images and the seat map can sit on a CDN and caches. Web servers are stateless and can be added just before the sale (pre-warmed, since starting servers takes time).
+
+    **Do not let everyone reach the seat data.** Put a **waiting room** (a queue in front of the checkout) that lets in only as many people as the seat inventory can handle, say a few thousand at a time. This turns a spike into a steady flow and keeps utilisation off the steep part of the curve. Users see their place in line, which is honest and calms refreshing.
+
+    **Protect correctness at the one narrow point.** Seat allocation is the serial part (Amdahl): it cannot be freely parallelised without risk of selling a seat twice. Keep it small. Either a single authoritative store per event or per section, using an atomic operation such as "reserve seat if free" or a unique constraint on (event, seat), so the second buyer fails cleanly. Hold a reservation for a few minutes with a timeout, then release it if unpaid.
+
+    **Fail well.** Rate-limit per user, reject excess early with a clear message instead of timing out, process payment asynchronously through a queue, and make retries safe with an idempotency key so a double click does not charge twice.
+
+    **Trade-off.** Fairness and simplicity (first come, first served via the queue) against peak revenue and user patience. Real ticketing systems differ and their internals are not public [Inference]; this is a typical design.
+  check: none
