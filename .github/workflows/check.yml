@@ -25,3 +25,5 @@ jobs:
         run: node check-answers.mjs
       - name: Build and lint
         run: node build.mjs
+      - name: Check lesson links
+        run: pip install --quiet pyyaml && python3 check-links.py
