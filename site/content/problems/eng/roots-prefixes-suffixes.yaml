@@ -1,0 +1,176 @@
+# Roots, prefixes and suffixes. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Which word is the correct opposite of 'possible'?"
+  opts: ["unpossible", "impossible", "dispossible", "inpossible"]
+  ans: 1
+  sol: |
+    The prefix *in-* (not) changes to *im-* before the letters b, m and p, so the opposite is *impossible*. The other three are not English words.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "The suffix -less in 'careless' means:"
+  opts: ["full of", "without", "again", "able to be"]
+  ans: 1
+  sol: |
+    *-less* means without, so *careless* is without care. *-ful* is the suffix that means full of (*careful*), *re-* means again, and *-able* means able to be.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which part of speech is 'kindness'?"
+  opts: ["adjective", "verb", "noun", "adverb"]
+  ans: 2
+  sol: |
+    The suffix *-ness* turns the adjective *kind* into a noun that names a quality. Kind (adjective), kindness (noun), kindly (adverb).
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "The prefix 'tri-' in 'triangle' and 'tricolour' means:"
+  opts: ["two", "three", "four", "many"]
+  ans: 1
+  sol: |
+    *tri-* means three. A triangle has three angles and a tricolour has three colours. *Bi-* means two, *quad-* four, and *multi-* or *poly-* many.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Break the word 'unhappiness' into its parts. Name the prefix, the root and the suffix, say what each one means, and give the part of speech of the whole word."
+  sol: |
+    Model answer: **un-** (prefix, meaning not) + **happy** (root, the core meaning) + **-ness** (suffix, meaning state or quality). The y of happy changes to i when the suffix is added.
+
+    Together they give "the state of not being happy". *Unhappiness* is a noun, because the suffix -ness turns the adjective into a noun.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Fill each gap with the correct form of the word in brackets. (1) Her ___ act saved three children. (courage) (2) The new rule caused great ___ among the students. (confuse) (3) He spoke ___ to the guest. (rude) (4) The scientist's ___ changed medicine. (discover) (5) The exam was so long that finishing it in an hour was ___. (possible)"
+  sol: |
+    Model answer: (1) courageous, (2) confusion, (3) rudely, (4) discovery, (5) impossible.
+
+    (1) A noun (*act*) follows, so an adjective is needed: *courage* + *-ous* = courageous.
+    (2) After *great*, a noun: *confuse* becomes *confusion*.
+    (3) The word describes the verb *spoke*, so an adverb: *rude* + *-ly* = rudely.
+    (4) After the possessive *scientist's* a noun is needed: *discover* becomes *discovery*.
+    (5) The sentence says finishing was out of the question, so the opposite of *possible* is needed: *impossible* (in- before p becomes im-).
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Read the sentence: 'The old well was inexhaustible; it never ran dry even in the hottest summer.' The word 'inexhaustible' means:"
+  opts: ["easily emptied", "that cannot be used up", "very tired", "not clean"]
+  ans: 1
+  sol: |
+    Cut the word: *in-* (not) + *exhaust* (use up, drain) + *-ible* (can be). So it means "that cannot be used up", which the rest of the sentence ("never ran dry") confirms. *Very tired* uses the other sense of exhausted and ignores the prefix.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Read the passage: 'At the village fair, Mohan was a visible figure, always generous with sweets and quick to agree to any plan. His brother, in contrast, was reserved and often unwilling to join.' Find a word in the passage that means the opposite of each: (a) invisible, (b) stingy, (c) disagree, (d) willing."
+  sol: |
+    Model answer: (a) visible, (b) generous, (c) agree, (d) unwilling.
+
+    (a) *invisible* is *in-* + *visible*; the passage uses the base word *visible*.
+    (b) *stingy* has no prefix pair; the passage gives *generous* as its opposite.
+    (c) *dis-* + *agree* is *disagree*, so the opposite is the base word *agree*.
+    (d) *un-* + *willing* is *unwilling*, so the opposite of *willing* is *unwilling*, which the passage uses for the brother.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the right word: 'Stop being so ___! You are fifteen, not five.'"
+  opts: ["childlike", "childish", "childless", "childly"]
+  ans: 1
+  sol: |
+    *Childish* means silly or immature, and it is used as a criticism. *Childlike* is a compliment (innocent, trusting). *Childless* means without children, and *childly* is not a word.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Each sentence has one error in the form of a word. Find and correct it. (a) He is very carefull about money. (b) The teacher was unsatisfy with the answers. (c) She happyly accepted the gift. (d) It was an unforgetable trip."
+  sol: |
+    Model answer: (a) carefull should be *careful* (-ful has one l). (b) unsatisfy should be *dissatisfied* (or *unsatisfied*), an adjective is needed after *was*. (c) happyly should be *happily* (y changes to i before -ly). (d) unforgetable should be *unforgettable* (forget doubles its t before a vowel suffix).
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Use these parts to work out the meaning of each word: circum- (around), navig (sail), bene- (well), fact (make or do), in- (not), aud (hear), -ible (can be), trans- (across). Words: (a) circumnavigate, (b) benefactor, (c) inaudible, (d) transcontinental."
+  sol: |
+    Model answer:
+    (a) *circumnavigate* = to sail around (a whole island or the world).
+    (b) *benefactor* = one who does good, a person who gives money or help.
+    (c) *inaudible* = not able to be heard.
+    (d) *transcontinental* = going across a continent, as in a transcontinental railway.
+
+    In each case, take the suffix off first, name the root, then test the meaning in a sentence.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A sign says 'INFLAMMABLE: keep away from fire'. A traveller says, 'The prefix in- means not, so it must be safe near fire.' Explain what is wrong, and give the safe wording used today."
+  sol: |
+    Model answer: The traveller is wrong because *in-* has two meanings. In *incorrect* it means "not", but in *inflammable* it means "in" or "into": the word comes from setting something in flames, so it means "easily set on fire". *Inflammable* and *flammable* mean the same.
+
+    Because the confusion could be dangerous, safety signs today use **flammable** (can burn) and **non-flammable** (cannot burn). *Invaluable* is a similar trap: it means very valuable, not worthless.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "Which group of words all share a root meaning 'to carry'?"
+  opts: ["transport, export, portable", "predict, verdict, dictate", "inspect, spectator, prospect", "construct, structure, destruction"]
+  ans: 0
+  sol: |
+    *Port* means carry: transport (carry across), export (carry out), portable (can be carried). The second group shares *dict* (say), the third *spect* (look), and the fourth *struct* (build).
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Join the prefix and the root and write the word that results. Say what happens at the joint in each case. (a) ad + tract, (b) con + lect, (c) in + mature, (d) sub + press, (e) in + rational."
+  sol: |
+    Model answer: (a) *attract*: the d of ad- becomes t before t. (b) *collect*: the n of con- becomes l before l. (c) *immature*: in- becomes im- before m. (d) *suppress*: the b of sub- becomes p before p. (e) *irrational*: in- becomes ir- before r.
+
+    This process is called **assimilation**: the last sound of the prefix becomes like the first sound of the root, which makes the word easier to say.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "A student says: 'Decimate comes from the Latin word for ten, so it must mean to kill one in ten. Writing that a flood decimated the village is a mistake.' Respond in a short paragraph. What does the example teach about using roots?"
+  sol: |
+    Model answer: The root gives the word's origin, not its present meaning. Decimate did once refer to killing one in ten (the Roman practice is usually cited, though I am not certain of the details [Unverified]), but through use it has widened to mean destroying a large part of something. Many careful writers still prefer the narrower sense, so in a formal answer it is safe to use a clearer verb such as *devastated*. Still, the student is wrong to treat a word's history as a rule for today.
+
+    The lesson is that a root is a clue that gives a good first guess, and the sentence and a dictionary confirm it. The same is true of *awful*, which once meant full of awe.
+
+    [Note] This is one possible model answer written for this archive; the point about formal usage is a matter of style, not a fixed rule.
+  check: none

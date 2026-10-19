@@ -1,0 +1,203 @@
+# Inference and vocabulary in context. All problems and passages are original (no NCERT items for this leaf), modelled on the CBSE Class 10 reading format. All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Unlike his talkative brother, Sam was taciturn and spoke only when asked. What does taciturn mean?"
+  opts: ["quiet and reserved", "rude", "very clever", "lazy"]
+  ans: 0
+  sol: |
+    "Unlike" signals a contrast. His brother is talkative, so Sam, who speaks only when asked, is the opposite: quiet and reserved. Nothing in the sentence suggests rudeness, cleverness or laziness.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Use the prefix to decide. The teacher asked us to rewrite the paragraph. What does rewrite mean?"
+  opts: ["write again", "write wrongly", "stop writing", "write before"]
+  ans: 0
+  sol: |
+    The prefix *re-* means again, so *rewrite* is to write again. *Mis-* would give "write wrongly", and *pre-* would give "before".
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "The river bank was covered with wet clay after the flood. Which meaning of bank is used here?"
+  opts: ["the side of a river", "a place where money is kept", "a row of switches", "to tilt an aircraft"]
+  ans: 0
+  sol: |
+    "River bank" and "covered with wet clay after the flood" point to the edge of the river. The money meaning is the one most readers know first, which is why the sentence has to be checked.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Meera came in, shook her umbrella and hung her dripping coat on the hook. What can you infer?"
+  opts: ["It was raining outside.", "Meera is a teacher.", "Meera is unhappy.", "Meera is going out again."]
+  ans: 0
+  sol: |
+    Umbrella and dripping coat both point to rain. The other options have no clue in the sentence: nothing mentions her job, her mood, or leaving again.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "In each sentence, name the type of context clue (definition, synonym, contrast, example or cause and effect) and say what the underlined word means. (a) The soldier was so parched that he drank the whole jug at once. (b) Unlike the lenient teacher next door, Mr Rao punished every late arrival. (c) She enjoys hobbies such as chess, kite-flying and birdwatching."
+  sol: |
+    Model answer.
+    (a) Cause and effect: the result (drinking a whole jug at once) shows that parched means very thirsty.
+    (b) Contrast: "Unlike" and the strict punishment show that lenient means not strict, easy-going.
+    (c) Example: chess, kite-flying and birdwatching are all hobbies; "such as" introduces the examples.
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: |
+    Read the passage and answer the questions.
+
+    Every evening at five, Coach Ibrahim's ground in Nashik filled with boys in torn shoes and borrowed pads. He had no money for a net, so he hung an old fishing net from two bamboo poles and called it the stadium. The parents smiled at the contraption, but the boys practised there until the light faded. Three years later, two of them were chosen for the state team. Asked for his secret, the coach shrugged. "I only gave them a place to be stubborn," he said.
+
+    (i) Choose the option that best gives the meaning of "contraption" as used in the passage: (a) a clever machine (b) a makeshift device (c) a famous building (d) a game.
+    (ii) Find a word in the passage that means "taken for a short time on the understanding that it will be returned".
+    (iii) Find a word in the passage that is opposite in meaning to "emptied".
+    (iv) Why did the parents smile at the contraption?
+    (v) What does the coach's remark "a place to be stubborn" suggest about his view of success?
+  sol: |
+    Model answer.
+    (i) (b) a makeshift device. A fishing net hung on bamboo poles and called a stadium is a rough, improvised arrangement; the parents' smile also shows it is not impressive.
+    (ii) borrowed ("borrowed pads").
+    (iii) filled ("the ground ... filled with boys").
+    (iv) They found it amusing and doubted that a fishing net on poles could serve as a proper practice ground. This is inferred from "smiled" together with the net's makeshift nature.
+    (v) He believes success comes from the players' own persistence; his part was only to give them space and time to keep trying. The word "only" shows he gives little credit to himself.
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: |
+    Read the passage and answer the questions.
+
+    For six months of the year the road to the village of Dhar is little more than a rumour. Landslides swallow it after every storm, and the nearest hospital, sixty kilometres away, might as well be on the moon. Nurse Kavita arrived with a bag of bandages and a stubborn smile, and found the villagers wary. They were used to promises from the plains that evaporated with the first rain. So she began small: a weekly check on the old, a lesson on boiling water. By winter, mothers who had once hidden from her were queueing outside her one-room clinic.
+
+    (i) What does the writer mean by "little more than a rumour"?
+    (ii) Which word in the passage means "cautious and distrustful"?
+    (iii) Which word in the passage means "disappeared"? Pick the one used in a comparison with rain.
+    (iv) Why were the villagers wary of Nurse Kavita?
+    (v) What does the change in the mothers' behaviour by winter show?
+  sol: |
+    Model answer.
+    (i) The road is so often blocked that it barely exists; one hears of it more than one can use it. The next sentence (landslides swallow it) supports this.
+    (ii) wary.
+    (iii) evaporated.
+    (iv) They had been let down before: earlier promises from outsiders vanished quickly, so they did not expect Kavita's help to last. This is inferred from "used to promises from the plains that evaporated".
+    (v) It shows that trust had been earned. Small, steady actions (the weekly check, the lesson) proved she meant to stay, so the mothers who hid now came openly.
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "The minister's reply was so oblique that nobody in the hall could tell whether he agreed or not. Which option is closest in meaning to oblique as used here?"
+  opts: ["indirect", "loud", "honest", "hurried"]
+  ans: 0
+  sol: |
+    Nobody could tell whether he agreed, so the reply did not state his view plainly. Indirect fits. Loud, honest and hurried do not explain why the listeners were unsure. Substituting "indirect" keeps the sentence sensible; the other three do not.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: |
+    Read the passage and answer the questions.
+
+    When the school announced that mobile phones would be banned from the library, the students grumbled. A month later, Tara noticed something odd. The corner tables, once crowded with whispering groups, now held a handful of readers, each lost in a book. Even the librarian, who rarely smiled, was seen straightening a shelf and humming.
+
+    (i) What can you infer about the students' first reaction to the ban?
+    (ii) What does "lost in a book" suggest?
+    (iii) What do you infer about the librarian's feelings after the ban? Support your answer with a phrase from the passage.
+  sol: |
+    Model answer.
+    (i) They disliked it: "grumbled" shows complaint and displeasure, not acceptance.
+    (ii) The readers were so absorbed that they did not notice anything around them.
+    (iii) She was pleased. "Humming" while "straightening a shelf" shows contentment, which is striking because the passage says she "rarely smiled".
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "The shopkeeper said, 'Let me see what I can do,' glanced at the clock and began counting the notes in the till. What can you infer?"
+  opts: ["He is unlikely to give the discount.", "He will certainly give a big discount.", "He is about to close the shop for the year.", "He did not hear the customer."]
+  ans: 0
+  sol: |
+    The phrase "let me see what I can do" is non-committal, and the glance at the clock and the counting of notes suggest that his mind is on closing up, not on the customer. The most reasonable inference is that the discount is unlikely. "Certainly" and "for the year" go beyond the clues, and nothing suggests he did not hear.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Arrange each group of words from most favourable to least favourable in connotation, and explain what the choice would tell a reader about the writer's attitude. (a) slim, skinny, thin (b) determined, stubborn, persistent (c) thrifty, stingy, careful"
+  sol: |
+    One possible model answer.
+    (a) slim, thin, skinny. All three denote a lack of body weight; "slim" admires, "thin" is neutral, "skinny" suggests too little.
+    (b) persistent, determined, stubborn. "Persistent" praises keeping going; "determined" is positive but neutral; "stubborn" suggests refusing to listen.
+    (c) careful, thrifty, stingy. "Careful" and "thrifty" approve of sensible spending; "stingy" blames.
+    If a writer chooses the last word in each group for a person, the writer is criticising that person. The facts have not changed, but the attitude, or tone, has.
+    [Note] The ordering of neutral words (thin, determined, thrifty) is a judgement and could be argued either way; this is a model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: mcq
+  q: "'What a fine moment to lose the keys,' muttered Arjun, as the train pulled out of the station. The writer's tone in this line is best described as"
+  opts: ["ironic and exasperated", "admiring", "calm and neutral", "cheerful"]
+  ans: 0
+  sol: |
+    Arjun calls the moment "fine" when it is the worst possible time: he says the opposite of what he means, which is irony. "Muttered" and the departing train show his frustration. The admiring and cheerful options take the words at face value.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: |
+    Read the passage and answer the questions.
+
+    The council announced that the old lake would be "improved". Within a year, the reeds were gone, the herons had left, and a concrete walkway ringed the water. At the opening, the councillor spoke of "progress", while an elderly fisherman stood at the edge, saying nothing and holding his empty net.
+
+    (i) What is the writer's attitude to the council's work? Quote two words or phrases that show it.
+    (ii) Why does the writer put "improved" and "progress" in quotation marks?
+    (iii) What does the fisherman's silence suggest?
+  sol: |
+    One possible model answer.
+    (i) The writer is critical. The quotation marks around "improved" and "progress", and the list of losses (reeds gone, herons left) show that the writer does not accept that the work was an improvement.
+    (ii) The marks show the writer is quoting the council's words with doubt, even mockery: the words claim a gain, but the facts describe a loss.
+    (iii) That he is saddened, and maybe feels powerless: the "empty net" suggests his livelihood has gone with the fish, and he has nothing to say that would be heard.
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: mcq
+  q: "Passage: 'The shop shut at noon, three hours before its usual time.' Which statement is an inference the passage supports, rather than speculation?"
+  opts: ["Something unusual caused the early closing.", "The owner was ill.", "There was a power cut.", "The shop will never open again."]
+  ans: 0
+  sol: |
+    The passage gives only that the closing was earlier than usual. That something out of the ordinary happened is a mild inference. Illness, a power cut and never reopening are all speculation: nothing in the sentence points to them, and "never" is an extreme.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "You meet an unfamiliar word in this sentence: 'Her ebullient mood was infectious; within minutes the whole queue was laughing and chatting.' Without a dictionary, work out the likely meaning of ebullient, naming each clue you use and the substitution test you apply. Then say why a word-part guess alone would not be enough."
+  sol: |
+    Model answer.
+    Clues: (1) Cause and effect. Her mood was "infectious" and made "the whole queue laughing and chatting". So the mood is lively and spreads to others. (2) The structure of the sentence: a mood that makes people laugh must be positive and energetic.
+    Prediction: ebullient is probably cheerful and full of energy.
+    Substitution: "Her cheerful, energetic mood was infectious; within minutes the whole queue was laughing and chatting." The sentence holds together, and its tone is unchanged, so the guess is supported.
+    Word parts: the ending *-ent* only marks an adjective and tells nothing about the meaning, and the beginning does not suggest a known prefix to most readers. [Unverified: the word is often linked to a Latin root for bubbling; I have not checked this.] Parts alone would therefore be unreliable, but the sentence's clues are enough.
+    [Note] This is a model answer written for this archive.
+  check: none

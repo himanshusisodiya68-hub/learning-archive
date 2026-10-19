@@ -1,0 +1,378 @@
+# Unseen passages. All problems and all passages are original, written for this archive (no NCERT items for this leaf; the places, people and figures in the passages are invented for practice). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: text
+  q: |
+    Read the passage and answer the questions.
+
+    > Every Sunday, before the sun has fully risen, the road behind our colony turns into a market. By six o'clock the sellers have arrived with their carts and cloth sheets. Shanta Bai spreads her bangles on a blue tarpaulin; two lanes down, old Mr Joseph unfolds a table of second-hand books, each priced at ten rupees. Near the tea stall, a man weighs green chillies on a brass scale and shouts the day's price to nobody in particular.
+    >
+    > By eight, the lane is so crowded that one can only move at the speed of the crowd. Children are tugged along by their mothers. A boy balances a tray of glasses of sugarcane juice and somehow never spills a drop. The smell of frying jalebis rolls over everything, and the sound of bargaining rises and falls like waves.
+    >
+    > What surprises visitors is that nothing here is written down. There are no price tags, no bills and no signboards. Sellers remember their regular customers and who owes them a rupee. A woman who buys vegetables every week may quietly be handed an extra bunch of coriander. The market runs on memory and trust.
+    >
+    > By noon the sellers begin to pack up. Unsold fruit is sold cheap, then cheaper still, and by one o'clock the municipal van arrives to sweep the lane. When the last cart rolls away, the road is only a road again, as quiet as any other afternoon, waiting for the following Sunday.
+
+    (a) Choose the best title: (i) Shopping for Bangles; (ii) A Market That Lives for One Morning; (iii) The Municipal Van; (iv) How to Bargain.
+    (b) At what time does the lane become very crowded?
+    (c) What is the price of each second-hand book at Mr Joseph's table?
+    (d) According to the passage, what surprises visitors to the market?
+    (e) True, False or Not given: "The municipal van comes to the lane every day of the week."
+  sol: |
+    Model answers, written for this archive.
+
+    (a) (ii) A Market That Lives for One Morning. The passage follows the market from the early setting-up to the packing-up and ends with the road returning to normal. Option (i) and (iii) are single details (too narrow) and (iv) is not discussed.
+
+    (b) By eight o'clock (paragraph 2, first sentence). This is a scanning question: look for a clock time near the idea of a crowd.
+
+    (c) Ten rupees (paragraph 1).
+
+    (d) That nothing is written down: there are no price tags, bills or signboards, and the market works on the sellers' memory and trust (paragraph 3).
+
+    (e) Not given. The passage says that the van arrives at one o'clock after the Sunday market, but it does not say how often it comes to the lane on other days.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: |
+    Read the paragraph and answer the question.
+
+    > Honeybees are remarkable communicators. A bee that finds a good patch of flowers returns to the hive and performs a dance. The angle of the dance shows the direction of the flowers in relation to the sun, and the length of the dance shows how far away they are. The other bees watch, then fly straight to the spot.
+
+    Which sentence is the topic sentence of the paragraph?
+  opts: ["Honeybees are remarkable communicators.", "A bee that finds a good patch of flowers returns to the hive and performs a dance.", "The angle of the dance shows the direction of the flowers in relation to the sun.", "The other bees watch, then fly straight to the spot."]
+  ans: 0
+  sol: |
+    The first sentence states the general point, that honeybees are remarkable communicators. The other three sentences give support: how the dance is performed, what it shows, and what the watching bees do. The second, third and fourth options are all details that back up the first.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: |
+    Read the paragraph and answer the question.
+
+    > Our school collects rainwater from its roof in a large underground tank. The water is used to flush the toilets and to water the playground, so the school has cut its use of tap water by almost a third. The tank was built by a local contractor in a single month, and students check its level every Friday.
+
+    What is the main idea of the paragraph?
+  opts: ["Students check the tank on Fridays", "The school saves tap water by collecting and using rainwater", "A local contractor built a tank", "Rain falls on roofs"]
+  ans: 1
+  sol: |
+    The paragraph is about how the school collects and uses rainwater and what it saves. Option 1 covers all the sentences. "Students check the tank on Fridays" and "A local contractor built a tank" are single details (too narrow), and "Rain falls on roofs" is too general to describe this paragraph.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: |
+    Read the paragraph and answer the question.
+
+    > The new bridge opened in June. It cut the journey time between the two villages from an hour to twenty minutes, which delighted the people on both banks. However, they soon found that it could not take heavy trucks, and these had to keep using the old road, which was narrow and often blocked.
+
+    In the last sentence, "these" refers to:
+  opts: ["the two villages", "the people on both banks", "heavy trucks", "the old road"]
+  ans: 2
+  sol: |
+    A pronoun refers back to the nearest noun that fits. The sentence says the bridge "could not take heavy trucks, and these had to keep using the old road". Only the trucks can "use the old road" because the bridge cannot take them, so "these" means heavy trucks. Villages, people and the old road do not fit the meaning of the sentence.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: mcq
+  q: |
+    Read the paragraph and answer the question.
+
+    > The school garden was started by Class 8 in July. The students planted tomatoes, spinach and marigolds. By October the tomatoes had grown well, but the spinach was eaten by insects. The students have not yet decided what to do with the vegetables.
+
+    "The marigolds were eaten by insects." Is this statement True, False or Not given?
+  opts: ["True", "False", "Not given"]
+  ans: 2
+  sol: |
+    The passage says insects ate the spinach; it says nothing about what happened to the marigolds. The statement sounds possible, but the passage neither says it nor contradicts it, so the answer is Not given. It would be False only if the passage said the marigolds were not eaten.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: |
+    Read the passage and answer the questions. (Discursive passage, in the style of the CBSE paper.)
+
+    > **Handwriting in the age of keyboards**
+    >
+    > When did you last write a full page by hand? For many students the honest answer is "in the last exam". Keyboards and touchscreens have taken over so much of our writing that some schools have begun to wonder whether handwriting deserves a place on the timetable at all. The argument against it is easy to state: typing is faster, neater and easier to correct, and the world of work runs on screens.
+    >
+    > There is, however, another side. Many teachers point out that writing by hand is slow, and that this slowness is useful. A student who copies a lecture word for word on a laptop can finish with pages of notes and very little understanding, because the fingers have done the work without the mind. A student writing by hand cannot keep up with the speaker and must choose what matters, rephrasing as she goes. In effect, she begins studying while she is still taking notes.
+    >
+    > Handwriting may also help young children learn to read. Forming the shape of a letter with one's own hand gives the child a physical memory of it, which looking at a picture or pressing a key does not. Teachers report that children who write their letters often recognise them sooner.
+    >
+    > None of this means that keyboards should be banished. A child who finds handwriting painful should be free to type, and a long report is better typed than scrawled. The sensible position is not to choose one tool for ever but to match the tool to the task. A shopping list, a diary entry or the first rough notes of an idea might belong on paper; a polished essay, a spreadsheet or an email may belong on a screen.
+    >
+    > What would be a pity is for handwriting to vanish through neglect rather than choice. Like cycling or swimming, it is a skill that stays with us only if it is practised, and a person who has not written a letter by hand for years may find that their own writing has become hard to read, even to themselves.
+
+    1. What is the passage mainly about? (a) Why keyboards should replace handwriting; (b) Why handwriting still has value and how to use both tools; (c) How children learn to read; (d) Why long reports should be typed.
+    2. According to paragraph 1, what is the argument against teaching handwriting?
+    3. Why does the writer say that the slowness of handwriting is "useful"?
+    4. The phrase "the fingers have done the work without the mind" suggests that the student: (a) typed with great skill; (b) recorded the words without really thinking about them; (c) disliked the lecture; (d) wrote more neatly than others.
+    5. Which of these does the writer NOT say? (a) A long report is better typed; (b) Handwriting may help children to recognise letters; (c) Handwriting should be taught only to adults; (d) Writing by hand makes a student choose what matters.
+    6. What does the writer mean by "match the tool to the task"?
+    7. Why does the writer compare handwriting with cycling or swimming?
+    8. Find a word in the fourth paragraph that means "sent away" or "driven out".
+  sol: |
+    Model answers, written for this archive.
+
+    1. (b). The passage weighs the case against handwriting but mostly argues for keeping it and for choosing the right tool. (a) and (c) and (d) are each only a part of the passage.
+
+    2. Typing is faster, neater and easier to correct, and work today is done on screens (paragraph 1, last sentence).
+
+    3. Because it forces the student to pick what is important and put it in her own words, so she starts understanding the lecture while taking notes (paragraph 2).
+
+    4. (b). The sentence contrasts copying "word for word" with understanding: the fingers moved but the student did not think about the words.
+
+    5. (c). The writer never says handwriting is only for adults; the passage is about children and students. The other three options are stated.
+
+    6. Use handwriting or the keyboard depending on what you are doing: paper for lists, diaries and rough notes; a screen for polished essays, spreadsheets and emails (paragraph 4).
+
+    7. To show that handwriting is a skill that is kept only by practice, and that it fades if left unused, just as cycling or swimming would (last paragraph).
+
+    8. *Banished* (paragraph 4, "keyboards should be banished").
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: |
+    Read the passage and answer the questions. (Case-based factual passage, in the style of the CBSE paper.)
+
+    > The city of Nandgaon launched a public bicycle-sharing scheme, Pedal Nandgaon, on 2 October last year. Riders unlock a bicycle from any of the 40 docking stations using a mobile app and return it to any station. The first 30 minutes of each ride are free; after that the charge is Rs 5 for every extra 15 minutes or part of it. The city council published these figures after the first twelve months.
+
+    | Quarter | Rides (in thousands) | Average ride (minutes) |
+    |---|---|---|
+    | October to December | 48 | 22 |
+    | January to March | 66 | 25 |
+    | April to June | 54 | 19 |
+    | July to September | 32 | 17 |
+
+    > The report notes that the scheme was used most in the cool months and least in the monsoon. Surveys at the stations showed that 52 per cent of riders used a bicycle to reach a bus stop or metro station, 31 per cent used it for shopping or errands, and the rest for exercise. Because the first half hour is free and the average ride is shorter than that, most riders pay nothing. This worries the council's finance committee: the scheme costs Rs 1.2 crore a year to run, but only Rs 15 lakh came from fees. The transport officer disagrees. She argues that a public service should be judged by the car trips it replaces, not by the money it earns. The council will review the fee structure in December, but no change has yet been announced.
+
+    1. In which quarter was the average ride longest? (a) October to December; (b) January to March; (c) April to June; (d) July to September.
+    2. How many rides were taken between April and September, in all?
+    3. What percentage of riders used the bicycles for exercise?
+    4. Why do most riders pay nothing?
+    5. True, False or Not given: "The council has decided to raise the fees."
+    6. Roughly what fraction of the yearly running cost was met by fees? (Take 1 crore = 100 lakh.)
+    7. On what basis does the transport officer say the scheme should be judged?
+  sol: |
+    Model answers, written for this archive.
+
+    1. (b) January to March: 25 minutes, the largest value in the third column.
+
+    2. April to June and July to September: 54 thousand + 32 thousand = 86 thousand rides (86,000).
+
+    3. 52 + 31 = 83 per cent used it for a bus stop or metro, or for shopping or errands, so the remaining 100 - 83 = 17 per cent used it for exercise.
+
+    4. Because the first 30 minutes of each ride are free and the average ride (17 to 25 minutes) is shorter than 30 minutes.
+
+    5. False. The passage says the council will review the fee structure in December and that no change has yet been announced. (It is not "Not given", because the passage speaks about it and says that no change has been announced.)
+
+    6. Running cost = Rs 1.2 crore = Rs 120 lakh; fees = Rs 15 lakh. 15 / 120 = 1/8, so about one-eighth (12.5 per cent).
+
+    7. By the number of car trips it replaces, not by the money it earns.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: |
+    Read the passage and answer the question.
+
+    > The Bhandari town council has installed twelve public drinking-water points near bus stands and markets. Each point is cleaned every morning and the water is tested once a week. Residents may fill bottles free of cost up to two litres at a time; larger quantities are charged at one rupee per litre. The council hopes the points will reduce the sale of plastic bottles, though no figures on this are yet available.
+
+    Which of the following is NOT stated in the passage?
+  opts: ["The water is tested once a week", "Up to two litres may be filled free at a time", "The sale of plastic bottles has already fallen by half", "Each point is cleaned every morning"]
+  ans: 2
+  sol: |
+    The passage says the council *hopes* the points will reduce bottle sales and that no figures are available yet, so a claim that sales have fallen by half is not stated (and is in fact contrary to "no figures"). The other three options are in the passage nearly word for word: weekly testing, two litres free, daily cleaning. In a "NOT stated" question, three options are in the passage and one is not.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: |
+    Read the passage and answer the questions in not more than 20 words each.
+
+    > The stepwell at Kharwa was built long before anyone in the village can remember. Its steps go down in a series of landings to the water, and in summer its cool air draws children and old men alike. In recent years it had been forgotten, its steps covered with weeds and its water green. Last year a group of students from the village school asked permission to clean it. They worked on weekends for three months, clearing the steps, removing rubbish and planting neem trees around the edge. Today the well is a meeting place again, and the village council has promised funds to keep it clean.
+
+    (a) Why do children and old men gather at the stepwell in summer?
+    (b) What did the students do to the stepwell?
+    (c) What has the village council promised?
+  sol: |
+    Model answers, written for this archive. Any answer that keeps the meaning and stays within the limit is acceptable.
+
+    (a) Because the air down in the well is cool, which is pleasant in summer.
+
+    (b) They cleared the weeds and rubbish from the steps and planted neem trees around the edge, working on weekends for three months.
+
+    (c) The council has promised money to keep the stepwell clean.
+
+    Note how each answer starts with the point asked for and leaves out the history. Copying the whole sentence would exceed 20 words and may include irrelevant detail.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: |
+    Read the passage and answer the question.
+
+    > A school's survey found that 40 per cent of its students cycled to school in 2023. In 2024 the figure rose to 50 per cent. The principal described this as "a rise of ten per cent".
+
+    Which statement is the most accurate description of the change?
+  opts: ["The share of students who cycle rose by 10 percentage points, from 40 to 50 per cent", "The number of students who cycle rose by exactly 10", "The share of students who cycle did not change", "Half of the students who did not cycle in 2023 began to cycle in 2024"]
+  ans: 0
+  sol: |
+    The share moved from 40 per cent to 50 per cent, a rise of 10 *percentage points*. The principal's "ten per cent" is loose wording: as a proportion of the earlier figure the rise is 10 / 40 = 25 per cent, but the plain statement of what the survey found is the first option. The second option confuses a share with a head-count, since the passage gives no numbers of students. The third contradicts the passage. The fourth is wrong too: of the 60 per cent who did not cycle in 2023, only about one-sixth (10 out of 60) would have started, if the school's size stayed the same.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: |
+    Read the passage and answer the questions.
+
+    > **Specialist or generalist?**
+    >
+    > Every few years a new list appears of the careers of the future, and every list says roughly the same thing: the world is changing too fast for anyone to be sure which skills will matter. It is odd, then, to find so many young people being urged to specialise early. Choose a stream at fifteen, a branch at seventeen, a speciality at twenty-two, say the advisers, and become the best in the country at one thing.
+    >
+    > The case for specialisation is strong, and it is easy to see why it persuades. Depth takes time. A surgeon, a violinist or a chip designer is made over thousands of hours, and no one reaches that level by sampling a little of everything. Specialists are also easier to hire, for an employer can see at once what they can do.
+    >
+    > But the generalist has her own case, and it deserves a hearing. Those who range widely tend to notice connections that a specialist, with her eyes on a narrow field, can miss: an engineer who has studied music may hear a pattern in a vibration, and a doctor who has read history may spot an old mistake being repeated. When a field is shaken by a sudden change, it is often an outsider who sees the way forward, because he is not attached to the old way of doing things.
+    >
+    > The real danger, however, may lie not in either path but in choosing too soon and too firmly. A teenager who commits to a narrow track on the strength of one good result, or her parents' preference, may discover at thirty that she has built a house on ground she never chose. Equally, someone who never commits at all may end with a thin acquaintance with many things and mastery of none.
+    >
+    > Perhaps the most useful advice is the least dramatic: go deep in something, but keep the windows open. A person who has one subject she knows thoroughly and several she is curious about has a way of learning how to learn, which no list of future careers can take away.
+
+    1. Why does the writer begin by mentioning lists of "careers of the future"?
+    2. According to the second paragraph, what makes the case for specialisation strong? Give two reasons.
+    3. What point is made by the example of the engineer who has studied music?
+    4. Explain "built a house on ground she never chose".
+    5. Which statement would the writer most probably agree with? (a) Students should delay choosing any subject until the age of thirty; (b) A person should gain real depth in one subject while staying curious about others; (c) Specialists are less useful than generalists; (d) Lists of future careers are a reliable guide.
+    6. Is the writer's tone one-sided or balanced? Support your answer with a phrase from the passage.
+  sol: |
+    Model answers, written for this archive.
+
+    1. To show that nobody can be sure which skills will matter in the future, which makes early, narrow specialisation look risky ("it is odd, then...").
+
+    2. Depth takes a long time (thousands of hours to become a surgeon, a violinist or a chip designer), and specialists are easier for employers to hire because their skills are clear.
+
+    3. That people with wide interests notice connections that someone focused on a narrow field may miss.
+
+    4. A person who commits too early may build her whole career on a choice that was not truly her own (made on one good result, or to please parents), and may realise this only years later when it is hard to change.
+
+    5. (b). This is the advice in the last paragraph ("go deep in something, but keep the windows open"). (a) and (c) are extreme: the writer values depth and does not call specialists less useful. (d) is the opposite of the first paragraph.
+
+    6. Balanced. The writer gives the specialist's case fairly ("The case for specialisation is strong") and then says the generalist's case "deserves a hearing"; the danger is placed in choosing too early, not in either path. Phrases such as "Perhaps the most useful advice" show a measured, not a dogmatic, tone.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: |
+    Read the notice and answer the questions. (Case-based factual passage with a table.)
+
+    > **Sunrise Public School: Annual Science Fair.** The fair will be held on Friday, 14 November in the school hall and on the playground. Visitors are welcome from 10 a.m. to 4 p.m. and must register at the gate. Parking is limited to 60 vehicles.
+
+    | Event | Time | Venue |
+    |---|---|---|
+    | Opening address | 10:00 a.m. | Hall |
+    | Model exhibition (Classes 6 to 8) | 10:15 a.m. to 12:00 noon | Hall |
+    | Lunch break (coupon Rs 30) | 12:00 noon to 12:30 p.m. | Playground |
+    | Project demonstrations (Classes 9 and 10) | 12:30 p.m. to 2:30 p.m. | Hall |
+    | Rocket launch | 2:30 p.m. | Playground |
+    | Prize distribution | 3:30 p.m. | Hall |
+
+    > **Revised notice, 12 November.** Because rain is forecast for Friday afternoon, the rocket launch has been moved to 11:30 a.m. All other timings are unchanged.
+
+    1. What is the last event of the day, and when does it begin?
+    2. After the revised notice, how long will visitors have between the end of the model exhibition and the first project demonstration?
+    3. A parent arrives at 12:15 p.m. hoping to see the Class 7 model exhibition. Can she? Give a reason.
+    4. A visitor wishes to see both the rocket launch and the Class 10 demonstrations. Is this possible after the revision? Explain.
+    5. True, False or Not given: "Visitors must pay an entry fee at the gate."
+    6. How many events in the table are described as costing money?
+  sol: |
+    Model answers, written for this archive.
+
+    1. The prize distribution, which begins at 3:30 p.m.
+
+    2. 30 minutes: the exhibition ends at 12:00 noon and the demonstrations begin at 12:30 p.m. (that half hour is the lunch break, unchanged in the revised notice).
+
+    3. No. The model exhibition for Classes 6 to 8 ends at 12:00 noon, and the lunch break begins at that time, so by 12:15 p.m. it has ended.
+
+    4. Yes. After the revision the rocket launch is at 11:30 a.m. on the playground, and the Class 9 and 10 demonstrations begin at 12:30 p.m. in the hall, so a visitor can see the launch first and the demonstrations afterwards, with lunch in between.
+
+    5. Not given. The notice says visitors "must register at the gate" but does not mention any fee, so we cannot say that one is charged.
+
+    6. One: only the lunch break is marked with a price (a coupon of Rs 30).
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: |
+    Read the passage and answer the question.
+
+    > Some people say that rivers in cities are too dirty to be saved. The experience of the Lakshmi, a small river that flows through our town, suggests otherwise. Ten years ago it was little better than a drain. Then residents stopped dumping rubbish into it, the council built a sewage plant, and a school's nature club began monthly clean-ups. Today children paddle in it again, although it is still not safe to drink. Success took patience: for the first three years there was little visible change.
+
+    Which statement best expresses the writer's view?
+  opts: ["City rivers can never be saved.", "The Lakshmi is now safe to drink from.", "A dirty city river can recover, but it takes combined effort and time.", "The school's nature club alone cleaned the Lakshmi."]
+  ans: 2
+  sol: |
+    The third option sums up the passage: recovery is possible ("suggests otherwise"), required effort from residents, the council and the club, and needed patience (three years of little change).
+
+    The first option is the view the writer is arguing against (and uses the extreme word "never"). The second contradicts the passage ("still not safe to drink"). The fourth is too narrow and gives all the credit to one group, although the passage names three. Each wrong option is a different type of distractor: reversal, contradiction and a too-narrow detail.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: |
+    Read the paragraph.
+
+    > The Anand Bakery opens at five in the morning, long before most shops on the street. Mr Anand learned the trade from his father and still uses the old brick oven, although his sons have urged him to buy an electric one. He says the oven gives the bread a flavour that no machine can copy. By seven the shelves are empty, and customers who arrive late go home with nothing but the smell.
+
+    Frame three questions on this paragraph: one multiple-choice question, one short-answer question, and one True / False / Not given statement. Give the correct answer to each. (This is an open-ended task; one possible set of questions and model answers is given.)
+  sol: |
+    One possible answer, written for this archive. Other well-framed questions are equally acceptable.
+
+    **MCQ.** Why does Mr Anand not buy an electric oven? (a) He cannot afford one; (b) His sons do not want one; (c) He believes the old oven gives the bread a flavour a machine cannot copy; (d) The shop is too small. Answer: (c). Options (a), (b) and (d) are not given in the passage; (b) is also the reverse of what it says, since the sons urge him to buy one.
+
+    **Short answer.** What happens to customers who come after seven o'clock? Answer: They find the shelves empty and go home with nothing but the smell of bread.
+
+    **True / False / Not given.** "Mr Anand's sons want him to replace the brick oven." Answer: True (they have "urged him to buy an electric one").
+
+    What makes these good questions: each can be answered from one place in the paragraph, has one clear answer, and (for the MCQ) the wrong options are plausible but can be shown wrong from the text.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: |
+    Read the passage and answer the questions.
+
+    > The council has announced that the avenue of old neem trees outside the railway station will be cut down to widen the road. It is a decision taken with great speed and little discussion. The notice was displayed for three days; the trees have stood for ninety years. No survey of traffic was published, and no plan to plant new trees was mentioned. We are told that the wider road will save five minutes on the journey to the market. It seems that we have found a very costly way to reach the shops sooner.
+
+    1. What is the writer's purpose: to inform, to entertain or to criticise? Explain in a sentence.
+    2. Which word best describes the tone: (a) cheerful; (b) neutral; (c) critical and ironic; (d) fearful?
+    3. Quote a sentence that shows that the decision was hasty.
+    4. What does the last sentence suggest about the writer's view of the plan?
+  sol: |
+    Model answers, written for this archive.
+
+    1. To criticise. The writer sets the council's speed and the short notice against the age of the trees, and points out what the plan leaves out (no survey, no replanting), so the passage is a protest, not a plain report.
+
+    2. (c) critical and ironic. The last sentence calls the plan "a very costly way to reach the shops sooner", which says the opposite of praise, in a sharp, restrained way.
+
+    3. "It is a decision taken with great speed and little discussion." (A second proof: "The notice was displayed for three days; the trees have stood for ninety years.")
+
+    4. That the writer thinks the price (ninety-year-old trees) is far too high for the benefit (about five minutes saved), so the plan is a poor bargain.
+  check: none

@@ -18,13 +18,24 @@ Later phases: English (Wren & Martin, literature), a programming/AI foundation, 
 - **Reality filter.** Never present inferred or unverified content as fact; label it [Inference], [Unverified] or [Speculation]. Examples: data missing from a reprinted question, figure values worked backwards from the answer key, discrepancies between question and answer key. State these in the solution.
 - **Share once a pillar is complete**: republish the site and send the link with a short summary of what changed and anything unverified.
 
+## Working together (two contributors)
+
+The owner (`himanshusisodiya68-hub`) and a collaborator build this together. Each runs Claude on their own account and token budget. Sessions share nothing except this repo, so everything another session needs must be committed. The guide for humans is `docs/collaboration.md`.
+
+- **Claim before you start.** Every piece of work (a chapter, a branch of leaves, an app fix) is a GitHub issue assigned to one person. Before starting, check the open issues (`gh issue list` or the GitHub page) and leave alone any leaf claimed by the other person. If the user names no issue, ask which one, or offer to open one.
+- **Split by leaf, never by file type.** For the life of the issue, one person owns every file of a leaf: its problems, its lesson and its tree entry.
+- **Shared hotspot files**: `content/tree.yaml`, `content/ncert/*.yaml`, `site/app/*`, `site/*.mjs` and "Build order and status" below. Pull `main` just before editing them, keep each edit small, and list them in the PR.
+- **The owner's standing requirements bind both contributors.** Put questions for the owner in the issue or PR, not in a guess.
+- **Never leave work only inside a session.** Before a session ends or runs into a usage limit, commit and push, even half-finished drafts (open a draft PR). Then comment on the issue with what is done and what comes next, so either person can continue from the branch.
+- **Status lives in two places**: issues say who is doing what now; "Build order and status" says what is finished. Update that section in the PR that finishes the work.
+
 ## Content principles (mandatory)
 
 **Read `docs/content-principles.md` before writing or revising any lesson.** In short: life first; Feynman style (real-life puzzle, plain words before notation, first principles); every lesson has an illustrated opener card, core idea, In real life, depth sections, Think with it (mental models, same idea elsewhere), wrap-up and a closing question that leads to the next lesson. CS levels follow the career ladder (Foundations, SDE-1, SDE-2, SDE-3). Notation rules (words before symbols, one new symbol per paragraph, every equation read aloud, a Symbols card) are in §2a. Reference books: catalogue and token-free download method in `docs/refs/books.md`; save reading notes in `docs/refs/` so books are read once.
 
 ## Keeping cost down
 
-The owner pays per token. Work lean.
+Each contributor pays for their own tokens. Work lean.
 
 **Model split.**
 - The main session runs on **Sonnet**: `.claude/settings.json` sets `"model": "sonnet"`; also pick Sonnet when starting a session if the UI asks. It does the routine work:
@@ -49,6 +60,8 @@ The owner pays per token. Work lean.
 
 ```
 CLAUDE.md                 this file
+docs/collaboration.md     how the two contributors split, hand off and review work
+.github/                  CI (check.yml), PR template, "Claim work" issue template
 docs/reference-books.md   books the owner will upload (★ = phase 1)
 design/                   mockups (reference only)
 site/
@@ -160,18 +173,21 @@ Playwright: `import { chromium } from '/opt/node22/lib/node_modules/playwright/i
 
 ## Git
 
-The repo is `himanshusisodiya68-hub/learning-archive`, branch `main`. Commit with:
+The repo is `himanshusisodiya68-hub/learning-archive`. Two people push to it, so **never commit to `main` directly**.
 
-```
-git -c user.email=himanshusisodiya68@gmail.com -c user.name=himanshusisodiya68-hub commit -m "..."
-git push -u origin main
-```
+1. Start from an up-to-date `main` on a new branch: `git switch main && git pull && git switch -c <area>/<short-name>`, for example `content/phy-kinematics`, `app/fix-search` or `docs/status`. A cloud session that made its own `claude/...` branch keeps that branch.
+2. Commit under your own git identity, the one `git config user.name` and `user.email` already give. Never pass someone else's name or email with `-c`.
+3. Run the checks (step 5 of the workflow above), then push the branch (`git push -u origin HEAD`). Open a pull request into `main`, fill in the template and add `Closes #<issue>`.
+4. The other person reviews and squash-merges. CI (`.github/workflows/check.yml`) must pass first.
+5. If `main` moved in the meantime, merge it into your branch (`git pull origin main`) and resolve conflicts before asking for review.
 
 Never put model names in commits or code.
 
 ## Publishing the site
 
 The live private site is a multi-file Artifact: **https://claude.ai/artifact/YTDZjDN5obmJ7uxKbyS56s**.
+
+It lives on the **collaborator's** claude.ai account (not the repo owner's), so only sessions signed in to that account can publish. Always publish from an up-to-date `main` after a merge. On any other account, `Artifact action=read` answers "artifact not found": skip publishing, say in the PR that it is ready to publish, and leave the rest to the collaborator.
 
 From a new session:
 1. `Artifact action=read url=<that url>` (required before updating).
@@ -180,6 +196,7 @@ From a new session:
    - `url`: the URL above
    - `root`: `site/dist`
    - `files`: every `data/**/*.json` (list them with `find data -name '*.json'` inside `site/dist`)
+   - One publish takes at most 255 files and 64 MB, and the build has about 510 data files (about 72 MB). So publish in batches of at most 250 `data` files to the same `url`: each later publish adds to the files already there.
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
 
@@ -240,10 +257,16 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 - `next` chain runs through every pillar in order; the last leaf (`iv-offers`) loops back to `problem-solving-method`.
 - `python3 site/check-links.py` validates every `links`/`next` leaf id; run it with the other checks.
 
+**Done: English (51 leaves, all with lessons and problems).** Not yet republished to the site artifact.
+- **Pillars:** Grammar (16, done earlier), Vocabulary (9), Writing (5), Reading (2), Literature (literary devices, plus First Flight Ch 1–9 and Footprints Without Feet Ch 1–9: every prose chapter).
+- **Writing:** Sonnet subagents, one per leaf, from training knowledge. Literature chapters read only the NCERT 2026-27 PDFs (`jeff1xx`, `jefp1xx`) to copy every exercise question word for word; poems sharing a PDF are skipped (out of scope). Non-literature problems are original (about 15 per leaf).
+- **Reality filter:** there is no NCERT answer key for English, so every answer is a model answer. Author biographies, etymologies and the CBSE paper format and marks are labelled [Unverified].
+- **Known gaps:** the PDF text layer has no section headings, so labels in `num` (OC, TT, TL, SP, WR, RF, TA) are inferred. Some printed NCERT slips are copied as printed and flagged in the answer: Glimpses OC2 Q1 mismatched pairs, Midnight Visitor "Ausable" for Max. The italics that some Thinking about language items depend on (Mijbil TL II/III) are missing from the text layer. The 17 older lessons (16 grammar leaves and A Letter to God) still lack the opener, symbols and life fields and need the cheap retrofit pass (`docs/retrofit.md`).
+
 **Owner's direction (Oct 2026):** build Physics and Maths fully first (see `docs/content-principles.md` §0); CS gains Competitive programming and Interviews pillars as pattern catalogues.
 
 **Next, in order:**
-1. The owner chooses what comes next (Computer Science is done). Candidates: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
+1. The owner chooses what comes next (Computer Science and English are done). Candidates: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.

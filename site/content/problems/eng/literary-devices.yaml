@@ -1,0 +1,188 @@
+# Literary devices. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Which sentence contains a simile? "
+  opts: ["The classroom was a zoo after the bell.", "Her smile was bright as the morning sun.", "The old clock groaned as it struck twelve.", "I have told you a million times."]
+  ans: 1
+  sol: |
+    A simile compares two unlike things using *like* or *as*. "Bright as the morning sun" uses *as*, so option 2 is the simile. Option 1 says the classroom *was* a zoo (metaphor), option 3 gives the clock a human groan (personification), and option 4 is an exaggeration (hyperbole).
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "\"The wind whispered through the empty street.\" Which figure of speech is this?"
+  opts: ["Simile", "Personification", "Alliteration", "Oxymoron"]
+  ans: 1
+  sol: |
+    Whispering is something people do. The sentence gives the wind a human action, so it is personification. There is no *like* or *as* (not a simile), no repeated starting sound (not alliteration; *wind* and *whispered* share a sound only loosely), and no pair of opposites (not an oxymoron). The effect is a quiet, lonely mood.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "A story is told by a character who says \"I\" and describes only what she sees and feels. What is the point of view?"
+  opts: ["First person", "Third person omniscient", "Third person limited", "Second person"]
+  ans: 0
+  sol: |
+    A narrator who uses *I* and tells the events from inside her own experience is first person. The reader knows only what she knows or chooses to say.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Match the example to the device. \"She said she was fine, but her eyes were red and she kept looking at the door.\" How is her feeling shown?"
+  opts: ["Indirect characterisation, through looks and actions", "Direct characterisation by the narrator", "Foreshadowing", "Onomatopoeia"]
+  ans: 0
+  sol: |
+    The narrator never names the feeling. We infer it from her red eyes and her glances, which are looks and actions. That is indirect characterisation. Direct characterisation would be a sentence such as "She was sad."
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Write one original sentence of each kind: (a) a metaphor, (b) a hyperbole, (c) a sentence with alliteration."
+  sol: |
+    One possible model answer (many sentences are acceptable):
+
+    (a) Metaphor: *The exam hall was a furnace.* It says the hall *is* a furnace, with no *like* or *as*, and shows the heat and pressure.
+    (b) Hyperbole: *I have waited here for a hundred years.* It exaggerates on purpose to show impatience.
+    (c) Alliteration: *Seven sleepy sailors sang softly.* The repeated *s* sound gives a soft, drowsy feel.
+
+    Marking idea: each sentence must show the device, not merely name it.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Read the extract (original) and answer: \"The factory siren was a hungry wolf, howling at dawn for the tired workers to return.\" The figure of speech used in the line is"
+  opts: ["simile", "metaphor", "onomatopoeia", "understatement"]
+  ans: 1
+  sol: |
+    The siren is said to *be* a hungry wolf, with no *like* or *as*. A direct comparison without a signal word is a metaphor. The word *howling* is also a sound word, but the main device is the metaphor. Effect: the siren seems fierce and demanding, as if the factory preys on the workers.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Read the passage (original) and answer the questions that follow.\n\nRavi spent months building a small wooden boat for the village fair. On the morning of the race he carried it proudly to the pond, set it down, and found that it sank at once. Everyone laughed except old Biju, who quietly handed him a jar of wax.\n\n(a) Name the kind of irony in the sentence about the boat and explain it. (b) What does the old man's action show about his character? Which method of characterisation is this?"
+  sol: |
+    Model answer:
+
+    (a) This is **situational irony**. After months of effort and pride, a reader expects the boat to float and win, but it sinks at once, the opposite of the expected outcome.
+
+    (b) Biju's action shows that he is kind and practical. He does not laugh; he helps by offering wax, which could be used to seal the boat. This is **indirect characterisation**, because the narrator does not say "Biju was kind"; we work it out from what he does while others laugh.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "In about 40 words, explain the irony in the way the farmer reacts to the help he receives in \"A Letter to God\"."
+  sol: |
+    One possible model answer (about 45 words):
+
+    The farmer writes to God for help and the postmaster and his staff, moved by his faith, send him part of the money. Yet the farmer, receiving less than he asked, accuses these helpers of stealing the rest. It is ironic that the people who helped him are blamed, while he credits only God.
+
+    Points the examiner looks for: what was expected (gratitude), what happened (blame), and what it shows (the farmer's blind faith or his distrust of people). This is a model answer written for this archive, not an official key.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Identify the figure of speech in each line and say in one sentence what it adds. (a) \"The classroom was as silent as a graveyard.\" (b) \"Time crept on tiptoe through the long afternoon.\" (c) \"I have been calling you for ages!\""
+  sol: |
+    Model answer:
+
+    (a) **Simile** (uses *as ... as*). It adds a sense of total, uneasy silence.
+    (b) **Personification** (time is said to creep on tiptoe like a person). It adds a feeling of slowness and boredom.
+    (c) **Hyperbole** (*for ages* is a deliberate exaggeration). It adds impatience or annoyance.
+
+    Each answer needs the name, the evidence and the effect. This is a model answer written for this archive.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "In about 100 words, write about how a writer can show a character's nature without saying it directly. Use one example of your own."
+  sol: |
+    One possible model answer (about 100 words):
+
+    A writer can show a character's nature through indirect characterisation: what the character says, does, thinks, looks like, and how other people react. Instead of writing "Mina was generous", the writer might show her giving half her lunch to a classmate who forgot his, and then pretending she was not hungry. The reader reaches the conclusion without being told, which feels more convincing and memorable. Direct characterisation, where the narrator names the trait, is faster but gives the reader less to discover. Good stories combine both: a short statement from the narrator, confirmed by actions that prove it.
+
+    This is one possible answer, written for this archive.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Read this original passage and answer the questions.\n\nThe monsoon had been promised for weeks, and Dev's wheat stood dry and golden. Each evening he climbed the water tank and searched the horizon like a sailor looking for land. When, on the last night of June, black clouds finally rolled in, he laughed aloud. By morning, the whole field lay under a sheet of water, and the wheat, drowned, would never be harvested.\n\n(a) Pick out the simile and say what it adds. (b) What kind of irony does the passage contain? (c) Which line works as foreshadowing, and how do you know?"
+  sol: |
+    Model answer:
+
+    (a) The simile is "like a sailor looking for land". It compares Dev's search for clouds to a lost sailor's search for shore, and adds the sense of desperate, anxious hope.
+    (b) **Situational irony**. The rain Dev longed for arrives, but it is so heavy that it destroys the crop he wanted it to save. The thing he hoped for is what ruins him.
+    (c) A strong choice is the sentence about the wheat standing "dry and golden" and the long wait for the monsoon: it shows that everything depends on a single event and prepares the reader for a sudden reversal. (An alternative answer is Dev's laugh, which sets up how far he has to fall.) Foreshadowing is shown when an early detail matters later.
+
+    Several readings are accepted if the reasoning is given. This is a model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A student writes: \"The writer uses a metaphor.\" Another writes: \"The writer compares the old man to a tree that has seen many storms, using a metaphor to show that he is steady and has survived hardship.\" Explain which answer is better and why. Then improve the first answer for the line \"Grandfather was an old oak.\""
+  sol: |
+    Model answer:
+
+    The second answer is better because it has all three parts of a good device answer: the name (metaphor), the evidence (the old man is compared to a tree that has seen many storms) and the effect (it shows he is steady and has survived hardship). The first answer only names the device, which earns little.
+
+    Improved first answer: "In 'Grandfather was an old oak', the writer uses a metaphor and says he is an oak, with no *like* or *as*. The oak is strong, deep-rooted and long-lived, so the image shows that Grandfather is strong, dependable and has stood firm through many years."
+
+    This is a model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "A satirical story describes a king who boasts that nothing can harm him. The narrator praises his courage in grand language, but the events show him afraid of a small cat. (a) Which devices are at work? (b) What is the writer's real attitude? (c) How would the story change if told in first person by the king?"
+  sol: |
+    One possible model answer:
+
+    (a) **Irony** (the gap between the narrator's praise and the king's real fear), **hyperbole** (the grand language of praise) and **satire** (their combined purpose is to mock).
+    (b) The writer's real attitude is mocking: he wants the reader to see that the king's boasting is hollow and to laugh at pride.
+    (c) In first person, the king would probably tell the story to flatter himself and might leave out or excuse the cat. The reader would then have to read between the lines, and the irony would be dramatic: we would see what the narrator refuses to admit. The tone would turn from open satire to the quieter humour of an unreliable narrator.
+
+    This is one possible answer, written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Rewrite the plain sentence below in two different ways, one using personification and one using a simile, and then say which version you prefer for a sad story and why.\n\nPlain sentence: \"The house was empty after the family left.\""
+  sol: |
+    One possible model answer:
+
+    Personification: *The house sighed as the last door closed behind the family.* (The house is given a human feeling.)
+    Simile: *The house stood empty, like a shell after the sea has taken its creature.* (A comparison with something hollow and abandoned.)
+
+    For a sad story, the personification may be better, because it makes the house itself seem to grieve and keeps the reader inside the feeling, while the simile paints a picture but keeps a little more distance. Either choice is acceptable if the reasoning is given: the point is that the device must suit the mood.
+
+    This is one possible answer, written for this archive.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "In a short story, a woman scorns an old brooch that she inherits, calling it cheap, and leaves it in a drawer. Years later, in a time of trouble, the brooch turns out to be worth a lot. (a) What device is this, and what kind? (b) Suggest one early detail that could foreshadow this turn. (c) Write a two-sentence flashback that explains why the brooch mattered to her grandmother."
+  sol: |
+    One possible model answer:
+
+    (a) **Situational irony**: she dismisses the brooch, and it turns out to be what saves her, the opposite of what she (and the reader) expected.
+    (b) An early detail such as a jeweller glancing twice at the brooch before saying it was "not for sale", or her grandmother wearing it only on special days, would foreshadow its true value without giving the secret away.
+    (c) *Forty years earlier, a young bride had wept on a railway platform as her mother pinned the brooch to her sari. It was the last gift she carried from the home she would never see again.* The scene goes back in time and explains the brooch's hidden value.
+
+    This is one possible answer, written for this archive.
+  check: none

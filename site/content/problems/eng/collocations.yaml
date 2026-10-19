@@ -1,0 +1,165 @@
+# Collocations. All problems are original (no NCERT items for this leaf), modelled on the CBSE Class 10 gap-filling, editing and writing formats. All answers are model answers written for this archive.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Please ___ attention to the board while I explain."
+  opts: ["give", "pay", "make", "do"]
+  ans: 1
+  sol: |
+    The collocation is *pay attention*. *Give attention* is not the usual pair, and *make* and *do* do not go with attention. (*Draw attention* and *catch someone's attention* are different collocations with a different meaning.)
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["She said a lie to her teacher.", "She told a lie to her teacher.", "She did a lie to her teacher.", "She spoke a lie to her teacher."]
+  ans: 1
+  sol: |
+    English pairs *tell* with *a lie* (also *a joke*, *the truth*, *a story*). *Say* goes with words such as *sorry*, *a word* and *a prayer*, so *said a lie* sounds wrong even though it is grammatical.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: There was ___ rain all night, and the streets were flooded by morning."
+  opts: ["strong", "heavy", "high", "tall"]
+  ans: 1
+  sol: |
+    *Heavy rain* is the collocation. *Strong* goes with wind, tea and smells; *high* with speed and prices; *tall* with people, buildings and trees.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: It is dark in here. Could you ___ the light, please?"
+  opts: ["open", "switch on", "make", "do"]
+  ans: 1
+  sol: |
+    Lights, fans and televisions are *switched on* (or *turned on*), and *switched off* or *turned off*. *Open* goes with doors, books and boxes.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: I have a headache, so I am going to ___ some medicine."
+  opts: ["eat", "take", "make", "do"]
+  ans: 1
+  sol: |
+    The collocation is *take medicine*. *Eat medicine* is a word-for-word translation from some home languages and is not used in English.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Read the passage and choose the correct option for each gap. Last month our school (1) ___ a science fair. Many students (2) ___ part in it, and every project (3) ___ attention from the visitors. The Principal (4) ___ a speech at the end and thanked everyone. (1) A: did  B: held  C: made  D: kept  (2) A: took  B: made  C: gave  D: did  (3) A: paid  B: drew  C: told  D: said  (4) A: said  B: told  C: gave  D: did. Which option gives the correct set (1) to (4)?"
+  opts: ["B, A, B, C", "A, B, C, D", "B, B, A, C", "C, A, B, D"]
+  ans: 0
+  sol: |
+    (1) *held* a science fair (hold a fair, a meeting, an event). (2) *took* part (take part in). (3) *drew* attention (a project draws attention; visitors pay it). (4) *gave* a speech (give a speech). So B, A, B, C.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Each line of the passage below has an error in the choice of word. Correct each one, writing only the wrong word and its correction. (1) Last night we did a mistake and missed the bus. (2) My brother said a joke and everyone laughed. (3) It was a cold evening, so I opened the heater. (4) I could not sleep because of the strong traffic outside."
+  sol: |
+    Model answer: (1) did -> made (make a mistake). (2) said -> told (tell a joke). (3) opened -> switched on or turned on (switch on a heater). (4) strong -> heavy (heavy traffic).
+
+    Each error is a collocation error: the grammar of the line is correct, but the verb or adjective is not the one English pairs with that noun.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Choose the option that correctly completes the sentence: She has (1) ___ a great deal of progress this term, and her teacher (2) ___ her on her result."
+  opts: ["(1) made, (2) congratulated", "(1) done, (2) congratulated", "(1) made, (2) praised", "(1) done, (2) praised"]
+  ans: 0
+  sol: |
+    *Make progress* is the collocation, so (1) is *made*. *Congratulate someone on* is the pattern with the preposition *on*, so (2) *congratulated* (her) *on her result* is correct. *Praised* takes *for* (praised her for), so *praised her on her result* is wrong, and *done progress* is not a pair.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "A student wrote the following sentences in a letter to the Principal. Rewrite each underlined informal phrase with a more formal collocation. (a) I want to tell you that the library is too noisy. (b) Please sort out this problem soon. (c) I am doing a complaint about the delay in the bus. (d) Thank you very much for your help."
+  sol: |
+    Model answer: (a) I wish to bring to your notice that the library is too noisy. (b) Kindly resolve this problem at the earliest. (c) I wish to lodge (or make) a complaint about the delay of the bus. (d) I am deeply grateful for your help (or: I express my gratitude for your help).
+
+    Note that (c) is also a collocation error in the original: the pair is *lodge* or *make* a complaint, not *do* a complaint.
+
+    [Note] This is one possible model answer written for this archive, not an official board key.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Complete the notice using suitable words. Use one word in each gap. NOTICE. The annual sports day will be (1) ___ on Friday, 14 March. All students are requested to (2) ___ part in at least one event. Anyone who wishes to (3) ___ leave must (4) ___ an application to the class teacher by Wednesday."
+  sol: |
+    Model answer: (1) held, (2) take, (3) seek (or: ask for, apply for), (4) submit (or: make, send).
+
+    A sports day is *held* (an event is held on a date), students *take part in* an event, and a leave application is *submitted* or *made* to a teacher. *Seek leave* and *ask for leave* are both acceptable.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Strong, heavy, high and powerful all express 'a great degree of'. Write one phrase for each that uses a noun it goes with, then explain in two sentences why you cannot always replace one with another."
+  sol: |
+    Model answer: *strong wind* (or *strong tea*), *heavy rain* (or *heavy traffic*), *high speed* (or *high price*), *powerful engine* (or *powerful speech*).
+
+    The adjectives overlap in meaning but not in the nouns they accept: we say *heavy rain* but *strong wind*, though both describe force. The choice is decided by the habit of the language, not by meaning, which is why a collocation must be learnt as a whole phrase.
+
+    This is one possible model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Which verb would you use with each noun, and why does 'cause' fit the first two but not the third? Nouns: (a) a delay, (b) damage, (c) an improvement. Verbs to choose from: cause, bring about, lead to."
+  sol: |
+    Model answer: (a) *cause a delay*, (b) *cause damage*, (c) *bring about* (or *lead to*) *an improvement*.
+
+    The verb *cause* usually keeps company with unwelcome things (trouble, damage, delay), so it carries a negative colour. Used with *improvement* it would sound odd, as if the improvement were unwelcome. For good outcomes, neutral or positive verbs such as *bring about* and *lead to* are more natural. This habit is called semantic prosody [Unverified: usual corpus-linguistics term].
+
+    This is one possible model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Improve the paragraph by replacing the plain words in brackets with a precise collocation, without changing the meaning. 'There was a (very big) problem with the water supply. The residents (said) a complaint to the municipality and (got) an answer after three days. They hope the delay will not (make) the same problem again.'"
+  sol: |
+    Model answer: 'There was a serious (or acute) problem with the water supply. The residents lodged a complaint with the municipality and received a reply after three days. They hope the delay will not cause the same problem again.'
+
+    Notes: *serious problem* replaces the vague *very big problem*; *said a complaint* was a collocation error (lodge or make a complaint); *got an answer* becomes the more formal *received a reply*; *cause a problem* is the usual pair with an unwelcome noun. Other answers using standard collocations are acceptable.
+
+    This is one possible model answer written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "A friend says: 'The sentence I made a photo of the Taj Mahal is grammatical, so it cannot be an error.' Explain, in about 60 words, why it is still marked wrong and how you would correct it."
+  sol: |
+    Model answer: The sentence is built correctly: subject, verb, object, preposition. But grammar only checks the structure, not the choice of partners. English pairs the noun *photo* with the verb *take*, so *made a photo* is a collocation error. A reader understands it, yet it sounds unnatural and would cost marks for appropriate vocabulary. The correction is *I took a photo of the Taj Mahal*.
+
+    This is one possible model answer written for this archive.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "Sort these into collocation or idiom and give a one-line reason for each: (a) heavy rain, (b) break the ice, (c) make a decision, (d) a piece of cake."
+  sol: |
+    Model answer: (a) collocation: heavy and rain keep their ordinary meanings, but heavy is the partner English expects. (b) idiom: it means to make people feel relaxed at a first meeting, not to break real ice. (c) collocation: the words keep their ordinary meanings and make is the verb English expects with decision. (d) idiom: it means something very easy, not a portion of cake.
+
+    The test is whether the meaning of the phrase is the sum of its words. If yes, it is a collocation; if the meaning changes, it is an idiom. The line between the two is not sharp.
+
+    This is one possible model answer written for this archive.
+  check: none
