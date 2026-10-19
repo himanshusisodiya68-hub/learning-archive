@@ -87,10 +87,17 @@
     return null;
   }
   async function getLesson(key) { return lessonCache[key] ||= await fetchJSON(`data/lessons/${fileOf(key)}.json`); }
+  // One file per leaf holds the lesson and its problems (data/lessons/<subj>--<leaf>.json, field probs).
   async function getProblems(key) {
     if (problemCache[key]) return problemCache[key];
     const L = leafByKey(key); if (!L || !L.l.problems) return (problemCache[key] = []);
-    return (problemCache[key] = await fetchJSON(`data/problems/${fileOf(key)}.json`));
+    return (problemCache[key] = (await getLesson(key)).probs || []);
+  }
+  // Problems from a few leaves only (never the whole archive): leaves picked at random, or by today's date.
+  async function sampleProblems(n, keep = () => true, seeded = false) {
+    let x = today() * 9301 + 49297; const rnd = seeded ? () => (x = (x * 9301 + 49297) % 233280) / 233280 : Math.random;
+    const ks = liveLeaves().filter(y => y.l.problems && keep(y.l)).map(y => y.key).sort(() => rnd() - .5).slice(0, n);
+    return (await Promise.all(ks.map(getProblems))).flat();
   }
   const liveLeaves = () => TREE.subjects.flatMap(s => (s.pillars || []).flatMap(p => p.branches.flatMap(b => b.leaves.filter(l => l.live || l.problems).map(l => ({ key: `${s.id}/${l.id}`, l, s })))));
 
@@ -448,7 +455,7 @@
   const PAGES = [['Home', 'home', 'navHome'], ['Learn', 'learn', 'navLearn'], ['Practice', 'practice', 'navPractice'], ['Review', 'review', 'navReview'], ['Notebook', 'notebook', 'navNotebook'], ['Progress', 'progress', 'navProgress']];
   function commands() {
     const cmds = PAGES.map(([t, v, i]) => ({ g: 'Go to', t, p: 'Page', i, run: () => go(v) }));
-    cmds.push({ g: 'Go to', t: "Today's problem set", p: 'Practice · mixed topics and levels', i: 'shuffle', run: async () => startSet(dailySet(await allProblems()), "Today's mixed set", 0) });
+    cmds.push({ g: 'Go to', t: "Today's problem set", p: 'Practice · mixed topics and levels', i: 'shuffle', run: async () => startSet(dailySet(await sampleProblems(8, undefined, true)), "Today's mixed set", 0) });
     cmds.push({ g: 'Go to', t: 'Browse NCERT books by class', p: 'Learn · class view', i: 'chapter', run: () => { S.mode = 'class'; go('learn'); } });
     TREE.subjects.forEach(sj => cmds.push({ g: 'Go to', t: sj.name, p: 'Subject', i: SUBJ_ICON[sj.id], c: sj.id, run: () => { S.mode = 'subject'; go('learn~' + sj.id); } }));
     return cmds;
@@ -1265,18 +1272,17 @@
     for (const p of src) { if (!seen.has(p.lvl) || picked.length >= 4) { picked.push(p); seen.add(p.lvl); } if (picked.length === 6) break; }
     return picked;
   }
-  async function allProblems() { const ks = liveLeaves().filter(x => x.l.problems).map(x => x.key); const arr = await Promise.all(ks.map(getProblems)); return arr.flat(); }
   RENDER.practice = async () => {
     const leaves = liveLeaves().filter(x => x.l.problems);
     $('sets').innerHTML = `<div class="panel set"><span class="eyebrow">Recommended</span><h3>Today's mixed set</h3><p>6 problems across levels and topics, shuffled daily.</p><div><button class="btn" data-start="daily">Start</button></div></div>` +
       leaves.map(x => { const L = leafByKey(x.key); return `<div class="panel set s-${x.s.id}"><span class="eyebrow">${escHTML(L.p.name)} · ${escHTML(L.b.name)}</span><h3>${escHTML(x.l.name)}</h3><p>${x.l.problems} problems, NCERT first, then up to Olympiad.</p><div><button class="btn ghost" data-start-leaf="${x.key}">Start</button></div></div>`; }).join('');
-    const all = await allProblems();
-    $('level-row').innerHTML = LVL_ORDER.map(k => { const n = all.filter(p => p.lvl === k).length; return n ? `<button data-level="${k}"><span class="tier ${LEVELS[k][2]}" style="padding:0;background:none;font-size:14px">${LEVELS[k][0]}</span><span>${n} problems</span></button>` : ''; }).join('');
+    const count = k => leaves.reduce((a, x) => a + ((x.l.lv || {})[k] || 0), 0);
+    $('level-row').innerHTML = LVL_ORDER.map(k => { const n = count(k); return n ? `<button data-level="${k}"><span class="tier ${LEVELS[k][2]}" style="padding:0;background:none;font-size:14px">${LEVELS[k][0]}</span><span>${n} problems</span></button>` : ''; }).join('');
   };
   document.addEventListener('click', async e => {
-    const d = e.target.closest('[data-start="daily"]'); if (d) { const all = await allProblems(); return startSet(dailySet(all), "Today's mixed set", 0); }
+    const d = e.target.closest('[data-start="daily"]'); if (d) return startSet(dailySet(await sampleProblems(8, undefined, true)), "Today's mixed set", 0);
     const lf = e.target.closest('[data-start-leaf]'); if (lf) { const ps = await getProblems(lf.dataset.startLeaf); return startSet(ps, leafByKey(lf.dataset.startLeaf).l.name, 0); }
-    const lv = e.target.closest('[data-level]'); if (lv) { const all = await allProblems(); return startSet(all.filter(p => p.lvl === lv.dataset.level), LEVELS[lv.dataset.level][0], 0); }
+    const lv = e.target.closest('[data-level]'); if (lv) { const k = lv.dataset.level, ps = (await sampleProblems(10, l => (l.lv || {})[k])).filter(p => p.lvl === k).sort(() => Math.random() - .5).slice(0, 20); return startSet(ps, LEVELS[k][0], 0); }
   });
   function startSet(list, name, idx) {
     if (!list.length) return;

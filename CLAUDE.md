@@ -125,7 +125,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 - **Blocks** are `:::kind attrs` … `:::`:
   - `hook` (opening question), with `q:`, `options: [...]` (a JSON array), `answer:` (index), `right:`, `wrong:`. `qc` (quick check) uses the same fields.
   - `worked title="..."`, `law caption=`, `eq caption=`, `note title= tone=`.
-  - `figure caption="..."` containing inline `<svg>`, with classes `ray`, `faint`, `obj`, `pen`, `axis` and colour vars `--phy --chem --bio --mat --eng --ink --muted`.
+  - `figure caption="..."` containing inline `<svg>`, with classes `ray`, `faint`, `obj`, `pen`, `axis` and colour vars `--phy --chem --bio --mat --eng --ink --muted`. The app CSS sets figure labels to 11 px mono (about 6.6 viewBox units per character) and overrides any `font-size` on a parent `<g>` or `<svg>`: put a smaller size on the `<text>` itself, and size boxes for the real width. Then run `check-figures.mjs`.
   - `figrow`, `see`, `html`.
   - `widget name=...` with attrs passed as options.
 - **Widgets in `app.js`:** `refraction-sim`, `optics-bench types=... u= f=`, `prism-sim`, `fringes [mode=single] [lambda=]`, `polarisers`, `projectile [u= angle= g=]` (trajectory, range, height, time of flight, complementary-angle ghost), `motion-graphs [u= a=]` (linked x–t, v–t, a–t graphs with areas). A new widget goes in the `WIDGETS` map in `app.js`; reuse the `.bench`, `.controls` and `.readout` classes.
@@ -199,7 +199,7 @@ From a new session:
    - `url`: the URL above
    - `root`: `site/dist`
    - `files`: every `data/**/*.json` and `fonts/*.woff2` (list them with `find data fonts -type f` inside `site/dist`). KaTeX fonts are separate files, not inlined, so the page stays small; `data/extras.json` holds the home-page sparks, loaded after the first paint.
-   - One publish takes at most 255 files and 64 MB, and the build has about 510 data files (about 72 MB). So publish in batches of at most 250 `data` files to the same `url`: each later publish adds to the files already there.
+   - Each lesson file `data/lessons/<subj>--<leaf>.json` also holds that leaf's problems (`probs`), so the build has about 280 files (one per leaf, plus `tree`, `ncert`, `search`, `extras` and 20 fonts; about 70 MB). One publish takes at most 255 files and 64 MB, and one version holds at most 511 files, so publish in two batches to the same `url`: each later publish adds to the files already there. Keep the file count low: never add one file per problem or per section.
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
 

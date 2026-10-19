@@ -76,7 +76,7 @@ node lint-lesson.mjs content/lessons/cs/<leaf>.md
 node check-answers.mjs
 ```
 
-Then check your figures, building into your own folder: `DIST_DIR=/tmp/<leaf>-dist node build.mjs >/dev/null && DIST_DIR=/tmp/<leaf>-dist node check-figures.mjs <subj>/<leaf>`. Fix every label it reports (spilling out of a box, past the edge, overlapping, or crossed by a line).
+Then check your figures, building into your own folder: `DIST_DIR=/tmp/<leaf>-dist node build.mjs >/dev/null && DIST_DIR=/tmp/<leaf>-dist node check-figures.mjs <subj>/<leaf>`. Fix every label it reports (spilling out of a box, past the edge, overlapping, or crossed by a line). Figure labels render at 11 px mono (about 6.6 viewBox units per character) and a `font-size` on a parent `<g>` is ignored: set any smaller size on the `<text>` itself.
 
 Fix everything reported. Never run plain `node build.mjs` (always with your own `DIST_DIR`). Never commit.
 

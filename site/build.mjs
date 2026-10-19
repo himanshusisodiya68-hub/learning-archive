@@ -153,7 +153,6 @@ function renderProblem(p, leafId) {
 /* ---------- build ---------- */
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, 'data', 'lessons'), { recursive: true });
-fs.mkdirSync(path.join(DIST, 'data', 'problems'), { recursive: true });
 const write = (rel, obj) => fs.writeFileSync(path.join(DIST, rel), JSON.stringify(obj));
 
 const tree = readYaml(C('tree.yaml'));
@@ -178,14 +177,14 @@ for (const s of tree.subjects) {
         let probs = [];
         if (fs.existsSync(pf)) {
           probs = (readYaml(pf) || []).map(p => renderProblem(p, key));
-          write(`data/problems/${s.id}--${l.id}.json`, probs);
           l.problems = probs.length; problemCount += probs.length;
           l.levels = [...new Set(probs.map(p => p.lvl))];
+          l.lv = probs.reduce((a, p) => (a[p.lvl] = (a[p.lvl] || 0) + 1, a), {});
           probs.forEach((p, i) => search.push({ g: 'Problems', c: s.id, icon: 'pen', title: p.plain.slice(0, 140), path: `${p.source || p.lvl} · ${l.name}`, text: '', go: { problem: key, index: i } }));
         }
         if (fs.existsSync(lf)) {
           const lesson = parseLesson(lf);
-          lesson.key = key; lesson.problems = probs.length;
+          lesson.key = key; lesson.problems = probs.length; lesson.probs = probs; // one file per leaf: lesson + its problems
           lesson.lifeIcons = lifeIcons[key] || [];
           if (lesson.life.length && lesson.lifeIcons.length !== lesson.life.length) console.warn(`life-icons.yaml: ${key} has ${lesson.lifeIcons.length} icons for ${lesson.life.length} items`);
           write(`data/lessons/${s.id}--${l.id}.json`, lesson);
@@ -194,6 +193,7 @@ for (const s of tree.subjects) {
           search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: l.name, path: `${s.name} › ${p.name} › ${b.name}`, text: lesson.summary || '', go: { lesson: key } });
           lesson.sections.forEach(sec => search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: sec.title, path: `${l.name} · section`, text: sec.text, go: { lesson: key, section: sec.id } }));
         } else {
+          if (probs.length) write(`data/lessons/${s.id}--${l.id}.json`, { key, probs });
           search.push({ g: 'Topics', c: s.id, icon: p.id, title: l.name, path: `${s.name} › ${p.name} › ${b.name} · lesson not written yet`, text: '', go: { subj: s.id, pillar: pi, branch: bi, leaf: li } });
         }
       });
