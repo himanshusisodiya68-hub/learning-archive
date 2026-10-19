@@ -249,7 +249,7 @@ console.log(`built: ${liveCount} lessons, ${problemCount} problems, ${search.len
 {
   const widgets = new Set([...js.matchAll(/^    '([a-z-]+)'\(el/gm)].map(m => m[1]));
   const issues = [];
-  for (const dir of ['lessons', 'problems']) for (const f of fs.readdirSync(path.join(DIST, 'data', dir))) {
+  for (const dir of ['lessons']) for (const f of fs.readdirSync(path.join(DIST, 'data', dir))) { // problems live inside each lesson file
     const txt = fs.readFileSync(path.join(DIST, 'data', dir, f), 'utf8');
     const kerr = (txt.match(/katex-error/g) || []).length;
     if (kerr) issues.push(`${dir}/${f}: ${kerr} KaTeX error(s), e.g. ${(txt.match(/katex-error[^>]*title=\\"([^\\]*)/) || [])[1] || ''}`);
