@@ -1,0 +1,274 @@
+# Analytical paragraph. All problems are original (no NCERT items for this leaf); all data is invented for practice. All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: |
+    Illustrative data: the school library issued 40 books on Monday, 55 on Tuesday, 70 on Wednesday, 90 on Thursday and 55 on Friday. Which sentence is analysis, not just description?
+  opts: ["The graph has five bars and a title.", "Issues rose from 40 on Monday to a peak of 90 on Thursday, more than double the Monday figure.", "Monday 40, Tuesday 55, Wednesday 70, Thursday 90, Friday 55.", "The graph shows the library."]
+  ans: 1
+  sol: |
+    The second sentence picks the peak, names the starting point and compares them ("more than double"). The first describes the layout, the third repeats the numbers and the fourth says nothing specific. Analysis compares and explains.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: |
+    Illustrative data:
+
+    | Month | Visitors to a science fair |
+    |---|---|
+    | May | 200 |
+    | June | 800 |
+
+    Which sentence reports the change accurately?
+  opts: ["Visitors halved between May and June.", "Visitors rose slightly between May and June.", "Visitors increased fourfold between May and June.", "Visitors stayed steady between May and June."]
+  ans: 2
+  sol: |
+    800 divided by 200 is 4, so the number quadrupled: *fourfold*. A slight rise would be a small change, steady means no change, and halved means a fall to 100.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: |
+    Choose the best verb phrase to complete the sentence about past data: "Between 2015 and 2022 the sales of the shop ___ steadily from 120 to 300 units a month."
+  opts: ["rise", "rose", "are rising", "will rise"]
+  ans: 1
+  sol: |
+    The period 2015 to 2022 is finished, so the past simple *rose* is needed. *Rise* is the base form, *are rising* is the present continuous and *will rise* is the future. (The present perfect *have risen* would also be acceptable if the writer linked the change to now.)
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: |
+    Illustrative data:
+
+    | Item | Packets sold in a week |
+    |---|---|
+    | Samosa | 240 |
+    | Sandwich | 150 |
+    | Juice | 90 |
+    | Fruit cup | 45 |
+
+    Which statement is accurate?
+  opts: ["Sandwiches sold more than samosas.", "Juice sold twice as many packets as fruit cups.", "Fruit cups sold more than juice.", "Samosas sold exactly three times as many as sandwiches."]
+  ans: 1
+  sol: |
+    Juice sold 90 and fruit cups sold 45, so juice sold twice as many. Samosas (240) sold more than sandwiches (150), and 240 is 1.6 times 150, not three times. Fruit cups (45) sold less than juice (90).
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: |
+    Illustrative data:
+
+    | Month | Rainfall in a town (mm) |
+    |---|---|
+    | June | 80 |
+    | July | 310 |
+    | August | 260 |
+    | September | 120 |
+
+    Write two sentences about the table: one stating the overall trend and one comparing two months with figures.
+  sol: |
+    One possible model answer: *Rainfall in the town rose sharply from June to July and then fell steadily until September. July was the wettest month at 310 mm, nearly four times the 80 mm recorded in June.*
+
+    The first sentence gives the pattern (rose, then fell); the second quotes the highest figure and compares it with the lowest-month figure (310 divided by 80 is just under four). Answers will vary; check that figures are correct and that the second sentence compares rather than lists.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: |
+    Write an analytical paragraph in 100 to 120 words on the table below. (All figures are invented for practice.)
+
+    **Average minutes per day spent on a phone by Class 10 students (illustrative)**
+
+    | Purpose | Weekdays | Weekends |
+    |---|---|---|
+    | Study | 50 | 20 |
+    | Social media | 40 | 90 |
+    | Games | 20 | 70 |
+    | Calls and messages | 30 | 30 |
+  sol: |
+    One possible model answer (about 110 words; answers will vary):
+
+    > The table compares the average time Class 10 students spend on their phones each day for four purposes, on weekdays and at weekends. Phone use rises sharply at weekends, from 140 to 210 minutes a day. On weekdays study is the main use at 50 minutes, but at weekends it falls to 20 minutes. Social media grows from 40 to 90 minutes, and games more than triple, from 20 to 70 minutes. Only calls and messages stay steady at 30 minutes. This suggests that students use phones for study when school demands it and for entertainment when they are free. Parents could therefore help by setting limits on weekend screen time.
+
+    Planning: totals are 50 + 40 + 20 + 30 = 140 and 20 + 90 + 70 + 30 = 210. The trend is the weekend rise; the details are the fall in study and the rise in entertainment; the one steady item is a useful contrast. Check yourself against the lesson's checklist: opening, trend, figures, comparison, hedged reason, conclusion, length, one paragraph.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: |
+    The table below is the data of a bar graph. Write an analytical paragraph in 100 to 120 words. (All figures are invented for practice.)
+
+    **Daily water use per person in a household, in litres (illustrative)**
+
+    | Activity | Litres per day |
+    |---|---|
+    | Bathing | 45 |
+    | Toilet flushing | 40 |
+    | Washing clothes | 30 |
+    | Cooking and drinking | 15 |
+    | Cleaning | 10 |
+  sol: |
+    One possible model answer (answers will vary):
+
+    > The bar graph shows how a person in a household uses 140 litres of water in a day. Bathing takes the largest share at 45 litres, closely followed by toilet flushing at 40 litres, and together they account for about 60 per cent of the total. Washing clothes uses 30 litres, while cooking and drinking, the essential needs, require just 15 litres. Cleaning uses the least at 10 litres. It is striking that so much water goes to uses that do not need clean drinking water. This may be because people rarely think about how much a bucket or a flush uses. Households could therefore save water with shorter baths and by reusing wash water for flushing.
+
+    Check: 45 + 40 + 30 + 15 + 10 = 140. Bathing plus flushing is 85, which is about 61 per cent of 140. The inference (people rarely think about it) is hedged with *may*. [Inference: the final suggestion goes beyond the data, which is acceptable in a conclusion if it follows from the reason.]
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: |
+    A cue list gives no figures. Write an analytical paragraph of 100 to 120 words using the cues below.
+
+    **Topic: Growth of digital payments among young people (illustrative cues)**
+
+    | Reasons | Concerns | Solutions |
+    |---|---|---|
+    | speed and convenience | fraud and fake links | awareness at school and home |
+    | rewards and cashback | overspending | spending limits |
+    | no need to carry cash | sharing passwords | strong passwords and secure apps |
+  sol: |
+    One possible model answer (answers will vary):
+
+    > Digital payments are fast becoming the first choice of young people, and the cue list explains why. They are quick and convenient, they offer rewards and cashback, and they remove the need to carry cash. However, the same ease brings risks. Fake links can lead to fraud, easy payments may encourage overspending, and careless sharing of passwords can empty an account. These concerns suggest that many young users trust the technology more than they understand it. Therefore, schools and families should spread awareness, while users should set spending limits and protect their accounts with strong passwords and secure apps. With such care, digital payments can remain both convenient and safe.
+
+    The answer states the trend, links reasons to concerns with *However*, hedges the inference and ends with solutions. A cue-based answer should use connected sentences, not copy the cues as a list.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: |
+    A student wrote this weak paragraph on the data below. Name three faults and then rewrite it as a better paragraph of about 80 to 100 words.
+
+    **Plastic bags used per family per week (illustrative)**
+
+    | Year | Bags |
+    |---|---|
+    | 2019 | 24 |
+    | 2021 | 15 |
+    | 2023 | 6 |
+
+    Weak paragraph: *The graph shows plastic bags. In 2019 it is 24. In 2021 it is 15. In 2023 it is 6. The graph shows it is going down.*
+  sol: |
+    Faults: (1) the opening does not say what is measured or for whom (plastic bags used per family per week); (2) the figures are listed and not compared, and the tense is wrong (*is* for past years); (3) there is no reason and no conclusion, and the last sentence only repeats what the reader can see.
+
+    One possible rewrite (about 80 words):
+
+    > The graph shows the number of plastic bags a family used each week in 2019, 2021 and 2023. Use fell steadily, by nine bags in each two-year period, from 24 in 2019 to 15 in 2021 and just 6 in 2023. This is a drop of three-quarters in four years. It may be because of awareness campaigns or the spread of cloth bags. If the trend continues, plastic bags could soon be rare in homes, though continued awareness will still be needed.
+
+    Check: 24 minus 15 is 9 and 15 minus 6 is 9, so the fall is steady; 18 out of 24 is three-quarters. Answers will vary.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: |
+    A paragraph on the plastic-bag data (24 bags in 2019, 15 in 2021, 6 in 2023) needs a closing sentence. Which is best?
+  opts: ["Thank you for reading.", "I like this graph because it is simple.", "If the trend continues, plastic bags could soon be rare in homes, though continued awareness will still be needed.", "Plastic takes about 400 years to break down, so it is very dangerous."]
+  ans: 2
+  sol: |
+    The third option follows from the data, looks ahead and is hedged with *if* and *could*. The first has no content, the second is a personal opinion about the graph, and the fourth adds an outside fact that the data does not give (and that carries an unverified figure).
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: |
+    Write an analytical paragraph of 100 to 120 words comparing the two schools below. Your paragraph should show the crossover and give one hedged reason. (All figures are invented for practice.)
+
+    **Per cent of students taking part in sports (illustrative)**
+
+    | Year | School A | School B |
+    |---|---|---|
+    | 2019 | 60 | 30 |
+    | 2021 | 55 | 45 |
+    | 2023 | 48 | 62 |
+  sol: |
+    One possible model answer (answers will vary):
+
+    > The table compares the share of students taking part in sports at two schools in 2019, 2021 and 2023. In 2019 School A was far ahead, with 60 per cent against only 30 per cent at School B. Since then the gap has closed and reversed. School A slipped steadily to 48 per cent, whereas School B more than doubled its figure to 62 per cent. By 2023, therefore, School B had overtaken School A. This may be because School B invested in new grounds and coaches, while School A offered fewer activities. Overall, participation depends on facilities as much as interest, so School A could revive sport by upgrading its facilities.
+
+    Key marks: the crossover (between 2021 and 2023, B overtakes A), the figures for the start and end, and a comparison word (whereas). Check: 30 doubled is 60 and 62 is slightly above that, so "more than doubled" is accurate. The reason is a hedged guess [Inference].
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: |
+    Using the travel table in this lesson (Cycling fell from 25 to 15 per cent between 2018 and 2023; private vehicles rose from 25 to 35 per cent), say which of these sentences are facts from the data and which are inferences. Rewrite each unsafe inference with a suitable hedge.
+
+    1. Cycling fell from 25 to 15 per cent.
+    2. Cycling fell because roads became dangerous.
+    3. Private vehicles rose by ten percentage points.
+    4. Families bought more cars because they earned more.
+  sol: |
+    1. Fact. 3. Fact (35 minus 25 is ten percentage points).
+
+    2. Inference, stated as a fact. Hedged: *Cycling fell, possibly because roads feel less safe.*
+
+    4. Inference, and it also brings in income, which is not in the table. Hedged: *Private vehicles rose, which may reflect rising family incomes.* [Inference: the table says nothing about income, so even the hedged version should be a short side remark.]
+
+    Rule: facts quote the table; inferences take a hedge (may, probably, suggests, possibly) and should be supported by the data wherever possible.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: |
+    This paragraph has correct facts but reads like a drumbeat. Rewrite it in three or four sentences using linkers, grouping and varied openings. (Illustrative data from the travel table.)
+
+    *The table shows that walking fell from 30 per cent to 22 per cent. The table shows that cycling fell from 25 per cent to 15 per cent. The table shows that buses rose from 20 per cent to 28 per cent. The table shows that private vehicles rose from 25 per cent to 35 per cent.*
+  sol: |
+    One possible model rewrite:
+
+    > Between 2018 and 2023 the two muscle-powered modes lost ground: walking fell from 30 to 22 per cent and cycling from 25 to 15 per cent. In contrast, motorised travel gained, with buses climbing from 20 to 28 per cent and private vehicles from 25 to 35 per cent. Overall, motorised modes grew from 45 to 63 per cent of trips.
+
+    The rewrite groups the four lines into two pairs, uses *In contrast* and *Overall*, varies the openings and adds a combined figure (20 + 25 = 45; 28 + 35 = 63). Answers will vary.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: mcq
+  q: |
+    Data: umbrella sales in a city were highest in July. Which sentence is best hedged?
+  opts: ["Umbrella sales peaked in July because the monsoon arrived.", "Umbrella sales peaked in July, which probably reflects the monsoon rains.", "Umbrella sales peaked in July, definitely due to rain.", "Umbrella shopkeepers earned a lot in July."]
+  ans: 1
+  sol: |
+    The second sentence states the fact and attaches a likely reason with *probably*. The first and third present a guess as a certainty (the data never mentions rain), and the fourth adds a claim about earnings that the data cannot support.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: |
+    A pie chart is given as a table. Write an analytical paragraph of 100 to 120 words, using fractions where you can. (All figures are invented for practice.)
+
+    **How a family spends its monthly budget (per cent, illustrative)**
+
+    | Head | Share |
+    |---|---|
+    | Food | 35 |
+    | Housing | 25 |
+    | Education | 15 |
+    | Health | 10 |
+    | Savings | 10 |
+    | Other | 5 |
+  sol: |
+    One possible model answer (answers will vary):
+
+    > The pie chart shows how a family divides its monthly budget among six heads. Food takes the largest slice at 35 per cent, followed by housing at one-quarter. Together, these two basic needs account for 60 per cent of spending. Education claims 15 per cent, while health and savings take 10 per cent each, and everything else only 5 per cent. The small saving suggests that the family has little room for emergencies or future plans. This may be because essentials absorb most of the income. The family could therefore plan carefully, cut unnecessary expenses and try to raise its savings to at least 15 per cent.
+
+    Check: 35 + 25 + 15 + 10 + 10 + 5 = 100. Food plus housing is 60 per cent. Savings of 10 per cent is one-tenth. The reason and the target of 15 per cent are a hedged inference and a suggestion, not data [Inference].
+  check: none

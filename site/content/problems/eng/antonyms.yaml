@@ -1,0 +1,197 @@
+# Antonyms. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Choose the word that is opposite in meaning to ancient."
+  opts: ["old", "modern", "historic", "broken"]
+  ans: 1
+  sol: |
+    *Ancient* means belonging to a very distant past, so its opposite is *modern*. *Old* and *historic* are close in meaning to ancient, and *broken* has nothing to do with age.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which pair is a complementary pair, with no middle point between the two words?"
+  opts: ["hot and cold", "alive and dead", "buy and sell", "big and small"]
+  ans: 1
+  sol: |
+    Something is either alive or dead, with nothing in between, so this is a complementary pair. Hot and cold are gradable (warm and cool lie between), big and small are gradable too, and buy and sell are relational, because each needs the other.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Choose the correct opposite of logical."
+  opts: ["unlogical", "inlogical", "illogical", "dislogical"]
+  ans: 2
+  sol: |
+    *Logical* begins with *l*, and the negative prefix before *l* is *il-*: *illogical*. The other forms are not real English words.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: text
+  q: "Write the opposite of each word: (a) brave (b) victory (c) expand (d) include (e) early."
+  sol: |
+    Model answer: (a) cowardly, (b) defeat, (c) contract (or shrink), (d) exclude, (e) late.
+
+    Each answer is the same part of speech as the given word: adjective for adjective (brave, cowardly), noun for noun (victory, defeat), and verb for verb (expand, contract; include, exclude).
+
+    [Note] Some words allow more than one acceptable opposite (for example, *brave* can also take *timid*). This is a model answer written for this archive.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: mcq
+  q: "Complete the pair using a suffix: careful / ___"
+  opts: ["uncareful", "carefree", "careless", "discareful"]
+  ans: 2
+  sol: |
+    The pair is *careful* (full of care) and *careless* (without care). The suffix -ful is swapped for -less. *Carefree* means without worries, which is a different idea, and the other two forms are not real words.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: |
+    Read the passage and answer the questions that follow.
+
+    When Meena returned to her village after ten years, she found the old library abandoned. The roof had fallen in, the shelves were bare, and the courtyard, once noisy with children, was silent. Meena did not complain. She asked every household to donate a book, and within a month hundreds had arrived. Some neighbours were doubtful at first, but they were soon convinced as the walls rose. By winter the shelves were full again and the silence had given way to laughter.
+
+    Find a word or phrase from the passage that is the opposite of each of the following.
+    (a) noisy
+    (b) bare
+    (c) doubtful
+    (d) fallen
+  sol: |
+    Model answer:
+    (a) noisy: silent
+    (b) bare: full
+    (c) doubtful: convinced
+    (d) fallen: rose (the passage says "the walls rose"; the base verbs are fall and rise)
+
+    Method: find the word in its sentence, say its sense, then choose a word with the same part of speech and the opposite sense. In (b), *bare* here means empty of books, so *full* is the opposite for this sense.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Select the option that is the opposite of the word scarce in this sentence: Fresh vegetables were scarce after the floods."
+  opts: ["abundant", "rare", "costly", "tiny"]
+  ans: 0
+  sol: |
+    *Scarce* means in short supply, so its opposite is *abundant*, meaning plentiful. *Rare* is close to scarce in meaning, so it is a synonym bait. *Costly* is about price and *tiny* is about size.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Add the correct prefix to form the opposite: (a) possible (b) legal (c) regular (d) honest (e) mature (f) visible."
+  sol: |
+    Model answer: (a) impossible, (b) illegal, (c) irregular, (d) dishonest, (e) immature, (f) invisible.
+
+    Rule used: im- before p, b and m (possible, mature); il- before l (legal); ir- before r (regular). *Honest* takes dis-, and *visible* takes in-.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Which of these is NOT an opposite of the word generous?"
+  opts: ["miserly", "stingy", "selfless", "tight-fisted"]
+  ans: 2
+  sol: |
+    *Generous* means ready to give freely. *Miserly*, *stingy* and *tight-fisted* all mean unwilling to give or spend, so they are its opposites. *Selfless* means thinking of others before oneself, which is close to generous in meaning, so it is not an opposite.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: |
+    Rewrite each sentence replacing the word in *italics* with its opposite, so that the sentence still makes sense.
+    (a) The coach was *strict* about timings.
+    (b) The thieves made a *swift* escape through the narrow lane.
+    (c) The teacher *praised* the careless work.
+  sol: |
+    One possible set of model answers:
+    (a) The coach was *lenient* about timings. (Opposite of strict: lenient or easy-going.)
+    (b) The thieves made a *slow* escape through the narrow lane. (Opposite of swift: slow or sluggish.)
+    (c) The teacher *criticised* the careless work. (Opposite of praised: criticised or scolded.)
+
+    Check each answer by reading it aloud: the meaning should reverse, and the grammar should stay correct.
+
+    [Note] The wording of (a) is open to more than one answer. This is one possible model answer written for this archive.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Give a suitable opposite of sharp in each sentence: (a) a sharp knife (b) a sharp mind (c) a sharp bend in the road (d) a sharp rise in prices."
+  sol: |
+    One possible set of model answers: (a) blunt, (b) dull, (c) gentle, (d) gradual (or slight).
+
+    A word has a separate antonym for each sense. In (a) *sharp* means able to cut, so the opposite is *blunt*. In (b) it means quick to understand, so *dull*. In (c) it means a sudden turn, so *gentle*. In (d) it means sudden and large, so *gradual* or *slight*.
+
+    [Note] This is one possible model answer.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: mcq
+  q: "A cylinder is labelled inflammable. What does the label warn you about?"
+  opts: ["It cannot burn", "It catches fire easily", "It has already burnt", "It is very cold"]
+  ans: 1
+  sol: |
+    *Inflammable* means easily set on fire, the same as *flammable*. The prefix in- here does not mean not (it comes from the sense of "into", as in *inflame*) [Unverified]. Because many people read it as "not flammable", safety labels now prefer *flammable*, and the true opposite is *non-flammable*.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Explain the difference between disinterested and uninterested. Write one sentence for each word to show the difference."
+  sol: |
+    Model answer: *Uninterested* means not interested: *Rohan was uninterested in the cricket match and read a book.* *Disinterested* means impartial, with no personal gain at stake: *A disinterested judge decides the case only on the evidence.*
+
+    In everyday speech many people use *disinterested* to mean uninterested, but in careful or formal writing the two are kept apart.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Explain why 'She is not unhappy' is not the same as 'She is happy'. Name the figure of speech used."
+  sol: |
+    Model answer: *Happy* and *unhappy* are gradable opposites, with a middle ground of "neither very happy nor sad". Saying *not unhappy* only rules out the sad end of the scale; it leaves the person somewhere between content and happy, and it sounds like an understatement. *She is happy* is a plain, stronger claim.
+
+    The figure of speech is **litotes**: affirming something by denying its opposite, usually to understate.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "The word sanction can have two opposite meanings. Write two sentences that show them, and say what kind of word this is."
+  sol: |
+    Model answer: (1) *The principal sanctioned the school trip* (she gave permission). (2) *The world sanctioned the country for breaking the treaty* (it punished the country).
+
+    A word with two opposite meanings is a **contronym**. A reader decides which meaning is meant from the rest of the sentence, so a writer should add a clear word if there is any risk of confusion.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m6
+  lvl: main
+  kind: mcq
+  q: "Which sentence contains an oxymoron?"
+  opts: ["The hall was silent, and the silence was heavy.", "The teacher's praise was a deafening silence.", "United we stand, divided we fall.", "The room was as quiet as a mouse."]
+  ans: 1
+  sol: |
+    An oxymoron joins two opposite words in a single phrase. In the second option the phrase *deafening silence* puts a very loud word beside the word for no sound. The third is an antithesis, which balances opposite ideas across a whole sentence. The fourth is a simile, and the first has no clash of opposites.
+  check: none

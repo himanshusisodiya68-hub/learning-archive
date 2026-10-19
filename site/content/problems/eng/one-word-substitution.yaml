@@ -1,0 +1,187 @@
+# One-word substitution. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Choose the one word for: \"a person who collects coins\"."
+  opts: ["philatelist", "numismatist", "bibliophile", "polyglot"]
+  ans: 1
+  sol: |
+    A person who collects coins is a *numismatist*. A *philatelist* collects stamps, a *bibliophile* loves books, and a *polyglot* knows many languages.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Choose the one word for: \"a place where birds are kept\"."
+  opts: ["apiary", "aviary", "aquarium", "arsenal"]
+  ans: 1
+  sol: |
+    An *aviary* is where birds are kept (avi- is the Latin root for bird). An *apiary* is for bees, an *aquarium* for fish and water animals, and an *arsenal* for weapons.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Choose the one word for: \"a man whose wife has died\"."
+  opts: ["bachelor", "widow", "widower", "orphan"]
+  ans: 2
+  sol: |
+    A man whose wife has died is a *widower*. A *widow* is a woman whose husband has died, a *bachelor* is an unmarried man and an *orphan* is a child who has lost both parents.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: text
+  q: "Match each phrase with one word from the box. Box: polyglot, misanthrope, dispensary, inaudible, somnambulist. (a) a place where medicines are given out (b) one who hates mankind (c) that cannot be heard (d) one who walks in his sleep (e) one who knows many languages"
+  sol: |
+    Model answer: (a) dispensary, (b) misanthrope, (c) inaudible, (d) somnambulist, (e) polyglot.
+
+    (a) A dispensary dispenses (gives out) medicines. (b) *mis-* means hate and *anthrop-* means human being. (c) in- (not) + aud- (hear) + -ible. (d) a somnambulist is a sleepwalker. (e) *poly-* means many and *glot* is a language.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: mcq
+  q: "Choose the one word for: \"one who does something for pleasure and not for payment\"."
+  opts: ["novice", "amateur", "veteran", "mercenary"]
+  ans: 1
+  sol: |
+    An *amateur* does something for the love of it, not for pay. A *novice* is a beginner, a *veteran* has long experience, and a *mercenary* fights for pay.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Replace the underlined phrase in each sentence with one word. (a) The doctor's handwriting was <u>impossible to read</u>. (b) The king <u>gave up the throne</u> in favour of his son. (c) She gave a speech <u>without any preparation</u>. (d) The ink was <u>of a kind that cannot be erased</u>. (e) Two thousand prisoners were given <u>a general pardon</u>."
+  sol: |
+    Model answer: (a) illegible, (b) abdicated, (c) extempore, (d) indelible, (e) an amnesty.
+
+    Rewritten: (a) The doctor's handwriting was illegible. (b) The king abdicated in favour of his son. (c) She gave an extempore speech. (d) The ink was indelible. (e) Two thousand prisoners were granted an amnesty.
+
+    In (b) the verb is in the past, so *abdicated* is needed, not *abdicate*. In (c) the word is placed before the noun and takes *an* because it starts with a vowel sound. In (e) the noun needs the article *an*.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the one word for: \"rule by a small group of people\"."
+  opts: ["democracy", "autocracy", "oligarchy", "anarchy"]
+  ans: 2
+  sol: |
+    *Oligarchy* is rule by a few (oligo- means few). *Democracy* is rule by the people, *autocracy* is rule by one person with unlimited power, and *anarchy* is the absence of government.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: "Choose the one word for: \"the killing of one's brother\"."
+  opts: ["patricide", "matricide", "fratricide", "regicide"]
+  ans: 2
+  sol: |
+    *Fratricide* is the killing of a brother (fratri- is the Latin root for brother). *Patricide* is for a father, *matricide* for a mother and *regicide* for a king.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the one word for: \"a speech or piece of writing in praise of a person, especially one who has died\"."
+  opts: ["epitaph", "elegy", "obituary", "eulogy"]
+  ans: 3
+  sol: |
+    A *eulogy* is praise. An *epitaph* is written on a tomb, an *elegy* is a poem of mourning, and an *obituary* is a notice of death in a newspaper.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Fill each blank with a suitable one-word substitute from the box. Box: nocturnal, ephemeral, amateur, omniscient, sedentary. (a) Owls are ______ birds: they hunt at night. (b) The fame of a film star can be ______; it may last only a few months. (c) He plays cricket as an ______ and has never been paid. (d) A ______ lifestyle with little exercise is bad for health. (e) No teacher is ______; even the best teacher does not know everything."
+  sol: |
+    Model answer: (a) nocturnal, (b) ephemeral, (c) amateur, (d) sedentary, (e) omniscient.
+
+    (a) active at night, so nocturnal. (b) lasting only a short time, so ephemeral. (c) "an" before a vowel sound; amateur means does it for pleasure, not for pay. (d) sedentary means spending much time sitting. (e) omniscient means all-knowing (omni- is all, sci- is know).
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b6
+  lvl: board
+  kind: mcq
+  q: "A warning sign in a petrol store reads \"INFLAMMABLE\". What does the word mean?"
+  opts: ["cannot be set on fire", "easily set on fire", "not harmful", "cannot be seen"]
+  ans: 1
+  sol: |
+    *Inflammable* means easily set on fire. The prefix in- here comes from the Latin word for "in" (as in inflame), not from "not". To say that something will not burn, use *non-flammable*. Because the word can mislead, many safety labels now use *flammable*.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Explain the difference between an epidemic, a pandemic and an endemic disease. Give one sentence for each."
+  sol: |
+    One possible model answer.
+
+    An *epidemic* is a disease that spreads quickly through a community or region: for example, a dengue outbreak in one city. A *pandemic* is a disease that spreads across countries or the whole world, such as the Covid-19 outbreak that began in 2019. An *endemic* disease is regularly found in a particular region or group, for example malaria in some tropical regions.
+
+    The three words differ in how far and how fast the disease spreads (epidemic, pandemic) and in whether it is always present (endemic).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: mcq
+  q: "Which of the following pairs is NOT correctly matched?"
+  opts: ["agnostic: one who holds that the existence of God cannot be known", "cynic: one who sneers at the sincerity of others", "atheist: one who doubts everything until it is proved", "sycophant: one who flatters the powerful for personal gain"]
+  ans: 2
+  sol: |
+    An *atheist* is one who does not believe in God. The person who doubts everything until it is proved is a *sceptic*. The other three pairs are correct.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "You have not met these words before, but you know the roots: xeno- (stranger), pyro- (fire), anglo- (English), -phobia (fear), -mania (craze), -phile (lover). Work out a likely meaning for each: (a) xenophobia (b) pyromaniac (c) Anglophile. Then say one thing that could go wrong with this method."
+  sol: |
+    One possible model answer.
+
+    (a) *Xenophobia*: xeno- + -phobia, so a fear (or dislike) of strangers or foreigners. (b) *Pyromaniac*: pyro- + mania, so a person with an uncontrollable urge to set things on fire. (c) *Anglophile*: Anglo- + -phile, so a lover of England or of English things.
+
+    What can go wrong: roots can mislead when a word's meaning has drifted from its parts, or when a word has an unusual history. For example, *inflammable* looks as though it should mean "cannot burn", but it means the opposite. So use roots to get a first guess, then check it against the sentence or a dictionary.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Rewrite the passage using one-word substitutes for the underlined phrases, and make any other changes the grammar needs. \"Our principal is <u>one who knows many languages</u>. Her father was <u>one who collects stamps</u>, and her mother is <u>a woman whose husband has died</u>. She says that the quarrel between the two clubs was <u>a thing that could not be avoided</u>, but the loss of the old records is <u>something that cannot be repaired</u>.\""
+  sol: |
+    Model answer: "Our principal is a polyglot. Her father was a philatelist, and her mother is a widow. She says that the quarrel between the two clubs was inevitable, but the loss of the old records is irreparable."
+
+    Notes: *polyglot*, *philatelist* and *widow* take the article *a*. *Inevitable* and *irreparable* are adjectives, so they replace the phrases "a thing that could not be avoided" and "something that cannot be repaired" exactly. The tenses of the original sentences are kept.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: mcq
+  q: "A school magazine is published twice every year. The most exact word for its frequency is:"
+  opts: ["annual", "biennial", "biannual", "centenary"]
+  ans: 2
+  sol: |
+    *Biannual* means twice a year. *Biennial* means every two years, *annual* means once a year, and *centenary* is a hundredth anniversary. Note that some writers use *biannual* loosely for either meaning, so in real writing it helps to say "twice a year" or "every two years" if there could be doubt.
+  check: none
+
+- id: m6
+  lvl: main
+  kind: text
+  q: "A student writes: \"The match ended in a draw, and the omniscient crowd went home happy.\" Another student claims that one-word substitutes always improve a sentence. Give two reasons why they do not, with an example from this lesson."
+  sol: |
+    One possible model answer.
+
+    First, the word must fit exactly. In the sentence above, *omniscient* means all-knowing, so it does not suit a crowd that has simply watched a match. A near-fit word is worse than a plain phrase.
+
+    Second, the reader must know the word. A notice for young children saying "do not bring inflammable items" is harder than "do not bring anything that can be set on fire", and *inflammable* can even mislead. A good writer chooses the word that the reader will understand at once.
+
+    A third reason can be tone: *miser* is an insult, while "someone who spends very little" is neutral.
+  check: none

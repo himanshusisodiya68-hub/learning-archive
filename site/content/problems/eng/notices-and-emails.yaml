@@ -1,0 +1,269 @@
+# Notices and emails. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Which of these should NOT appear in a school notice?"
+  opts: ["The name of the school at the top", "The date of issue", "The greeting 'Dear students,'", "The writer's name and designation"]
+  ans: 2
+  sol: |
+    A notice goes to everyone and is not addressed to any one reader, so it has no salutation. It has the issuer's name, the word NOTICE, a date, a heading, a body, and the writer's name and designation.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "A notice says: 'The annual day will be held in the school hall. All students are invited.' Which essential fact is missing?"
+  opts: ["The date and time", "The name of the hall", "A greeting", "A closing phrase"]
+  ans: 0
+  sol: |
+    A reader cannot act without knowing when to come. The date and time are the first things a notice must give. The place (the school hall) and the people (all students) are already given, and a notice needs neither a greeting nor a closing phrase.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "You are writing to 'The Manager' and do not know the name. Which salutation and closing match?"
+  opts: ["Dear Sir/Madam ... Yours faithfully", "Dear Sir/Madam ... Yours sincerely", "Dear Manager ... Love", "Hi ... Cheers"]
+  ans: 0
+  sol: |
+    When the reader's name is unknown, the standard formal pair is Dear Sir/Madam with Yours faithfully. Yours sincerely goes with a named reader (Dear Mr Rao). Love, Hi and Cheers are informal.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: text
+  q: "List the five questions that the body of a notice should answer, in one line each."
+  sol: |
+    Model answer:
+    1. What is happening? (the event or the message)
+    2. When? (date and time)
+    3. Where? (venue)
+    4. Who is it for? (the people who may or must attend)
+    5. What must the reader do? (register, bring something, contact a person, by a date)
+
+    A notice that answers all five lets the reader act without asking anyone.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: mcq
+  q: "Which is the best subject line for an email asking the principal for permission for a field trip on 5 December?"
+  opts: ["Request", "Please read this", "Permission for Class X field trip on 5 December", "Hello sir"]
+  ans: 2
+  sol: |
+    A good subject line names the topic and the date, so the reader knows what the email is about before opening it. 'Request', 'Please read this' and 'Hello sir' say nothing about the subject.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "The annual school picnic fixed for Saturday, 5 December 2026 has been postponed because of a forecast of heavy rain. As Kavita Rao, Vice Principal of Sunrise Public School, Pune, write a notice in not more than 50 words."
+  sol: |
+    Model answer (one possible answer; the details are invented, as the question gives none):
+
+    SUNRISE PUBLIC SCHOOL, PUNE
+
+    NOTICE
+
+    30 November 2026
+
+    Annual Picnic Postponed
+
+    The annual picnic fixed for Saturday, 5 December 2026, stands postponed because heavy rain is forecast. The new date will be announced soon. Students who have paid should keep their receipts, as the amount will be adjusted. The reporting time and venue remain unchanged.
+
+    Kavita Rao
+    Vice Principal
+
+    The body has 44 words. It gives what changed, the old date, the reason, what will happen next, what students must do and what stays the same. There is no Dear and no closing phrase.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "You are Karan Mehta of Class X-C. You have lost a wristwatch in the school playground. Write a notice for the notice board in not more than 50 words."
+  sol: |
+    Model answer (one possible answer; details invented):
+
+    SUNRISE PUBLIC SCHOOL, PUNE
+
+    NOTICE
+
+    11 November 2026
+
+    Lost: Wristwatch
+
+    A black wristwatch with a steel strap was lost near the school playground on Tuesday, 10 November 2026, between 1 and 2 p.m. Whoever finds it is requested to hand it over at the school office or contact the undersigned. A reward will be given.
+
+    Karan Mehta
+    Class X-C
+
+    The body has 45 words. It describes the item, says where and when it was lost, tells the finder what to do and mentions a reward. Since the writer is a student, the designation is the class.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "You are Riya Sen, captain of Class X-B. Write an email to the Principal, Mr A. K. Rao, requesting permission to hold a science exhibition in the school hall. Write in 100 to 120 words."
+  sol: |
+    Model answer (one possible answer; details invented):
+
+    To: principal@sunriseschool.example
+    Subject: Permission for Class X-B science exhibition on 12 December
+
+    Dear Sir,
+
+    I am the captain of Class X-B. On behalf of my classmates, I request your permission to hold a science exhibition in the school hall on Saturday, 12 December 2026, from 10 a.m. to 1 p.m.
+
+    Students will display working models and charts, and junior classes and parents will be invited to see them. Our science teacher, Mr Nair, has agreed to guide us. We shall keep the hall clean and finish all clearing work by 2 p.m.
+
+    I would be grateful for your reply by 25 November 2026, so that we can begin our preparations. Thank you for your kind consideration.
+
+    Yours faithfully,
+    Riya Sen
+    Class X-B
+
+    The body has about 100 words. Format: To and Subject lines, salutation, three short paragraphs, closing and name. Content: who is asking, what, when, where, who will attend, support from a teacher, a promise about the hall and a reply deadline. Tone is formal, with polite modals and no contractions.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Garbage has not been collected in your colony, Green Park, for a week. You are Meera Joshi, a resident. Write an email of about 100 words to the Municipal Commissioner, complaining and asking for action."
+  sol: |
+    Model answer (one possible answer; details invented):
+
+    To: commissioner@citymunicipal.example
+    Subject: Uncollected garbage in Green Park for one week: action requested
+
+    Dear Sir/Madam,
+
+    I am a resident of Green Park, Block C. Garbage has not been collected from our lane since 9 November 2026. Piles of waste now block the road, attract stray dogs and give off a foul smell, and several children have complained of stomach upsets. Residents have reported the matter twice to the ward office, but nothing has been done.
+
+    I request you to direct the sanitation staff to clear the garbage at once and to restore daily collection. I would be grateful if you could confirm the action taken by 20 November 2026.
+
+    Yours faithfully,
+    Meera Joshi
+    Green Park, Block C
+
+    The email is about 95 words. It states the place, the fault, the length of time and the harm, makes one clear request and sets a date for a reply. The tone is firm but polite, with no abuse.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "You are Aarav. Write an informal email of about 100 words to your cousin Tanvi, inviting her to spend the winter vacation with you in Pune. Then, in one or two sentences, say what changes between this email and a formal one."
+  sol: |
+    Model answer (one possible answer):
+
+    To: tanvi.cousin@example.com
+    Subject: Come to Pune this winter!
+
+    Hi Tanvi,
+
+    How are you? I hope your exams went well. Mine ended yesterday, and I am so relieved!
+
+    Our winter vacation starts on 21 December, and I really want you to spend it with us in Pune. Mum and Dad have already said yes. We can visit Sinhagad Fort, try the street food on FC Road and see two new films. Dadi is also looking forward to meeting you.
+
+    Please tell me by the end of this week if you can come, so that we can book your train tickets.
+
+    Take care, and say hello to everyone.
+
+    Love,
+    Aarav
+
+    What changes: in an informal email the salutation (Hi), contractions, friendly questions and a warm closing (Take care, Love) are allowed. In a formal email the language is polite and impersonal, with Dear Sir/Madam, no contractions and a formal closing such as Yours faithfully.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Rewrite each weak subject line so that it tells the reader the topic and, where possible, the action and the date. (a) 'Meeting' (the team meeting moves to Thursday 3 p.m., Room B). (b) 'Urgent!!!' (you need a manager's approval of a travel budget by Friday 5 p.m.). (c) 'Question' (you want to know which date the Q3 audit is on)."
+  sol: |
+    Model answer (wording may differ):
+    (a) Team meeting moved to Thursday, 3 p.m., Room B
+    (b) Approval needed by Friday, 5 p.m.: travel budget
+    (c) Question: which date is the Q3 audit?
+
+    In each one the main words come first, the date or deadline is included, and a short tag (Question) or a plain statement tells the reader what to do. 'Urgent!!!' fails because it says nothing about the topic and every sender claims urgency.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Rewrite this rambling email so that a busy manager can act on it. 'Subject: Hi. Hello sir, I hope you are well. I was thinking about the budget, and also about the vendor, and there is a problem with the laptop, so I wanted to ask whether you could approve the 40,000 rupee spend for the vendor and let me know about the laptop soon, as the vendor needs the money before the end of the month.'"
+  sol: |
+    Model answer (one possible rewrite):
+
+    Subject: Approval needed by 25 Oct: Rs 40,000 payment to vendor
+
+    Dear Sir,
+
+    Could you approve the Rs 40,000 payment to the vendor by 25 October? The vendor needs it before the month ends.
+
+    Separately, my laptop is faulty. I will email IT about it and keep you informed.
+
+    Thank you,
+    [Name]
+
+    What was changed: the subject line now names the action, the amount and the date; the ask comes in the first line; the laptop problem is moved to a separate line and sent to the right place; and the filler (Hi, I hope you are well, I was thinking about) is removed. Mentioning the laptop here is optional; a stricter version would send a second email.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "You are emailing a decision to your manager, who must approve it, and to three colleagues, who only need to know. How should you address the email?"
+  opts: ["Everyone in To", "Manager in To, colleagues in Cc", "Manager in Cc, colleagues in To", "Manager in Bcc, colleagues in To"]
+  ans: 1
+  sol: |
+    The person who must act goes in To. People who only need to be kept informed go in Cc. Putting everyone in To blurs who has to act, and Bcc hides people for privacy, which is not what is wanted here.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "You work in a small firm. A client call you organised for Monday 9 November at 11 a.m. must move to Tuesday 10 November at 3 p.m. because the client's team is travelling. Write the email to your colleague Priya (about 70 words), asking her to confirm she can attend and to update the shared calendar."
+  sol: |
+    Model answer (one possible answer):
+
+    To: priya@firm.example
+    Subject: Client call moved to Tue 10 Nov, 3 p.m.: please confirm
+
+    Hi Priya,
+
+    The client's team is travelling on Monday, so we must move the call from Monday, 9 November, 11 a.m. to Tuesday, 10 November, 3 p.m. The link stays the same.
+
+    Could you:
+    1. confirm by tomorrow, 5 p.m., that you can attend;
+    2. update the shared calendar?
+
+    If 3 p.m. does not suit you, tell me today so that I can ask the client for another slot.
+
+    Thanks,
+    [Name]
+
+    Why it works: the subject line carries the change, the date and the action; the reason is one clause; the two asks are numbered and have a deadline; and the email offers a plan if Priya cannot attend. It is friendly but still precise.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "For each situation, decide whether a notice, an email, or both is the better format, and give one reason. (a) The society will cut off water for tank cleaning next Sunday from 9 a.m. to 1 p.m. (b) You need the school office to correct a spelling error on your certificate. (c) The school has a new holiday for Diwali and parents must be told."
+  sol: |
+    Model answer:
+    (a) A notice. It goes to every resident at once, nobody needs to reply, and it can be pinned at the gate and the lift. A reminder by message is a useful extra.
+    (b) An email. It is one request to one office, needs a reply, and should carry your name, class, certificate number and the exact correction wanted.
+    (c) Both. A notice goes up in school so children see it, and an email or circular goes to parents so the news reaches homes. The notice announces the fact; the email can add what parents must do (for example, send a reply to confirm).
+
+    The rule behind all three: a notice announces to a group; an email asks or tells one reader and invites a reply.
+  check: none

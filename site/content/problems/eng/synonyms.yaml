@@ -1,0 +1,186 @@
+# Synonyms and shades of meaning. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Choose the word closest in meaning to the underlined word: The old man was too *frail* to climb the stairs."
+  opts: ["weak", "rude", "wealthy", "careless"]
+  ans: 0
+  sol: |
+    *Frail* means physically weak or easily hurt, which explains why he could not climb the stairs. Rude, wealthy and careless describe manners, money and attention, none of which fit the reason given in the sentence.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which word shows the strongest feeling of anger?"
+  opts: ["cross", "annoyed", "furious", "irritated"]
+  ans: 2
+  sol: |
+    On the anger ladder, *cross*, *annoyed* and *irritated* are all mild to moderate. *Furious* is near the top, describing very strong anger.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Meena spends carefully and never wastes money. Which word would praise her?"
+  opts: ["thrifty", "stingy", "miserly", "tight-fisted"]
+  ans: 0
+  sol: |
+    All four words describe someone careful with money, but they carry different feelings. *Thrifty* is approving. *Stingy*, *miserly* and *tight-fisted* suggest an unpleasant unwillingness to spend or share.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Choose the word that fits best: The tired porter ___ along the platform with the heavy trunk."
+  opts: ["trudged", "tiptoed", "skipped", "glided"]
+  ans: 0
+  sol: |
+    *Trudged* means walked slowly and heavily, which suits a tired person with a heavy load. *Tiptoed* means walked quietly on the toes, *skipped* is a light, happy movement, and *glided* is smooth and effortless.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Give two synonyms for each word, and say in a few words how the two synonyms differ in strength or feeling: (a) begin (b) tired."
+  sol: |
+    One possible model answer.
+
+    (a) *begin*: *start* and *commence*. Start is everyday and informal; commence is formal and fits official writing ("The meeting will commence at ten").
+
+    (b) *tired*: *weary* and *exhausted*. Weary suggests a long, drawn-out tiredness; exhausted is stronger and means completely drained of energy.
+
+    [Note] Other pairs are also correct, for example *launch* or *embark* for begin, and *sleepy* or *drained* for tired, as long as the difference is explained.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Read the passage and answer the questions that follow. Meena's village had suffered a long drought, and the harvest was meagre. Most families were reluctant to spend even a small sum, but the schoolteacher, a diligent and cheerful woman, persuaded them to dig a shared well. Within a month the villagers, who had been bewildered by their misfortune, were working together, and soon there was ample water for every field. Find a word or phrase from the passage that means the same as: (a) hardworking (b) scanty (c) unwilling (d) confused (e) more than enough."
+  sol: |
+    Model answer.
+
+    (a) **diligent**: "a diligent and cheerful woman" describes someone who works with care and effort. It is an adjective, as *hardworking* is.
+
+    (b) **meagre**: "the harvest was meagre" means the harvest was small in amount. Both are adjectives.
+
+    (c) **reluctant**: "reluctant to spend" means not willing to spend.
+
+    (d) **bewildered**: "bewildered by their misfortune" means puzzled and confused. Note that the word is taken in the form it has in the passage.
+
+    (e) **ample**: "ample water for every field" means more than enough.
+
+    [Note] This is a model answer written for this archive, not an official board key. The passage is original.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the word closest in meaning to the underlined word as used in the sentence: The detective's *meticulous* search left no corner of the room unchecked."
+  opts: ["careful and thorough", "hurried", "secret", "noisy"]
+  ans: 0
+  sol: |
+    *Meticulous* means showing great attention to detail, and the clue "left no corner of the room unchecked" restates this idea. *Hurried* is the opposite of careful, and *secret* and *noisy* describe how the search was carried out, not how thorough it was.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Replace each underlined phrase with a single, more precise verb from the same family. (a) The child *said softly* in the dark corridor, \"Is anyone there?\" (b) The soldiers *walked in a steady rhythm* across the parade ground. (c) The boy *looked angrily* at the umpire."
+  sol: |
+    One possible model answer.
+
+    (a) *whispered*: speaking very softly, often to avoid being heard.
+
+    (b) *marched*: walking in step, in a firm and regular rhythm.
+
+    (c) *glared*: looking at someone angrily for a moment or longer.
+
+    Each new verb carries the manner of the action inside it, so the adverb is no longer needed. *Murmured* for (a) is also acceptable.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Choose the word that best completes the sentence: The lawyer was praised for his ___, a refusal to give up even when the case looked lost."
+  opts: ["obstinacy", "persistence", "stubbornness", "rigidity"]
+  ans: 1
+  sol: |
+    The sentence says the lawyer was *praised*, so we need a word with an approving feeling. *Persistence* is a positive word for not giving up. *Obstinacy* and *stubbornness* are disapproving, and *rigidity* suggests an unbending, inflexible attitude.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "(a) Write one sentence each for *famous* and *notorious* to show how they differ. (b) Explain why the sentence \"The thief robbed the jewellery\" is wrong and correct it."
+  sol: |
+    One possible model answer.
+
+    (a) *The famous cricketer was welcomed by thousands of fans.* (Famous is neutral or positive: known by many.) *The notorious smuggler was finally arrested.* (Notorious: known widely for something bad.)
+
+    (b) *Rob* is followed by the person or place that is robbed, not by the thing taken. *Steal* is followed by the thing taken. The corrected sentence is "The thief stole the jewellery" or "The thief robbed the shop".
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Arrange these five words from the weakest to the strongest feeling of happiness: ecstatic, content, delighted, pleased, happy. Then say which pair of neighbours is hardest to separate and why."
+  sol: |
+    One possible model answer: content, pleased, happy, delighted, ecstatic.
+
+    *Content* is a quiet satisfaction, *pleased* a mild positive reaction, *happy* a general good feeling, *delighted* strong and showing outwardly, and *ecstatic* an extreme joy.
+
+    The hardest pair to separate is *pleased* and *happy*, since many speakers would swap their order and the difference depends on how a word is used in the sentence. This is a judgement, and the main point is that a ladder gives a reasonable order, not a fixed one.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A company announces that it is \"releasing talent\" and \"rightsizing the workforce\". (a) Name the figure of speech. (b) Translate the announcement into plain words. (c) Why might the company prefer the softer phrase?"
+  sol: |
+    Model answer.
+
+    (a) Euphemism: a softer phrase put in place of a harsh one.
+
+    (b) "The company is sacking some of its employees" (or "ending the jobs of some employees").
+
+    (c) The soft phrase lessens the shock and may protect the company's image, but it can also hide the human cost, so a careful reader translates it back to the plain version.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "A science report calls the same liquid \"the solution\" in one sentence, \"the fluid\" in the next and \"the mixture\" in the third. What is the main fault?"
+  opts: ["The reader may think three different substances are meant.", "The words are too long for a report.", "The report should use more adjectives.", "Synonyms are never allowed in English."]
+  ans: 0
+  sol: |
+    In technical writing, a changed word signals a changed thing. *Solution*, *fluid* and *mixture* mean different things in science, so swapping them for variety may leave the reader unsure what is being described. Fixed terms should stay fixed. The other options are not true statements about the problem.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Write two sentences about the same person, one using *slim* and one using *scrawny*, so that the reader forms a very different impression. Then explain, in one sentence, what makes the difference."
+  sol: |
+    One possible model answer.
+
+    *The slim dancer moved across the stage with perfect balance.* (an admiring picture)
+    *The scrawny boy shivered at the bus stop, his wrists thin as sticks.* (an unflattering, sympathetic or critical picture)
+
+    Both words describe a thin body (same denotation), but *slim* has an approving connotation and *scrawny* suggests thinness that looks weak or unhealthy.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "Give a suitable synonym for *dull* in each sentence, and say why the three synonyms cannot replace one another. (a) The knife was too dull to cut the rope. (b) The lecture was so dull that half the class fell asleep. (c) It was a dull morning, with grey clouds covering the sky."
+  sol: |
+    Model answer.
+
+    (a) *blunt*: not sharp.
+    (b) *boring* (or *tedious*): not interesting.
+    (c) *overcast* (or *grey*): cloudy and without sunlight.
+
+    The word *dull* has several senses (polysemy), and each sense has its own synonyms. "A boring knife" or "a blunt lecture" makes no sense, since each synonym fits only the sense it replaces. This is why you must decide the sense in the sentence before searching for a synonym.
+  check: none

@@ -1,0 +1,323 @@
+# Formal letters. All problems are original (no NCERT items for this leaf). The board-format problems mirror the CBSE Class 10 writing task as remembered (100-120 words) [Unverified]. All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "A letter begins 'Dear Mr Rao,'. Which closing is correct?"
+  opts: ["Yours faithfully,", "Yours sincerely,", "Your loving friend,", "Thanking you, bye,"]
+  ans: 1
+  sol: |
+    The greeting names the receiver, so the closing is *Yours sincerely*. *Yours faithfully* goes with the unnamed greeting *Sir or Madam*. The other two are informal and do not belong in a formal letter.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which sentence suits a letter of complaint to a shop manager?"
+  opts: ["Your guys are useless!", "I'm so fed up with this junk.", "I request you to replace the faulty item within seven days.", "Fix it ASAP or else!"]
+  ans: 2
+  sol: |
+    A formal letter uses a polite request verb, no contractions, no slang and no exclamation marks. Only the third option has all of these and also names a remedy and a time limit. The others are rude, informal or both.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which is the correct order of parts in a formal letter?"
+  opts: ["Salutation, subject line, receiver's address, body", "Sender's address and date, receiver's address, subject line, salutation, body", "Subject line, body, salutation, date", "Body, salutation, date, receiver's address"]
+  ans: 1
+  sol: |
+    The order is: sender's address, date, receiver's address (below To), subject line, salutation, body, closing phrase, signature. Only the second option keeps the parts in this order. In all the others a part appears before the one that should come first.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "You are writing to the Municipal Commissioner about a blocked drain on MG Road that has overflowed since 2 August. Which is the best subject line?"
+  opts: ["Complaint", "Blocked drain on MG Road overflowing since 2 August", "Sir, please help me, I am very upset about the drain", "Drain."]
+  ans: 1
+  sol: |
+    A good subject line names the problem, the place and the date in a short phrase. The second option does all three. *Complaint* and *Drain* are too vague, and the third is a sentence about feelings, not a subject line.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Rewrite each informal sentence in a formal register for a letter. (a) I'm writing because the bus never comes on time. (b) Please sort it out ASAP! (c) Thanks a lot for reading this."
+  sol: |
+    One possible model answer:
+
+    (a) I wish to bring to your notice that the bus on Route 14 does not arrive on time.
+    (b) I request you to look into the matter at the earliest.
+    (c) I shall be grateful for your prompt attention to this matter.
+
+    Notice what changed: the contraction *I'm* became *I wish*, the slang *sort it out* and *ASAP* became a polite request, the exclamation mark went, and a vague complaint received a specific route (any real or invented route is fine).
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "You are Karan Singh of 40, Lake View Colony, Udaipur. The lake near your colony is filling up with plastic bags and bottles thrown by visitors. Write a letter to the editor of a newspaper about it, suggesting what should be done. (100-120 words)"
+  sol: |
+    One possible model answer (body: about 100 words).
+
+    > 40, Lake View Colony\
+    > Udaipur\
+    > 20 October 2026
+    >
+    > To\
+    > The Editor\
+    > The Mewar Times\
+    > Udaipur
+    >
+    > Subject: Plastic waste in the lake
+    >
+    > Sir,
+    >
+    > Through the columns of your esteemed daily, I wish to draw the attention of the authorities to the plastic waste that is choking our lake.
+    >
+    > Every weekend, visitors leave bags, bottles and food packets along the shore, and much of it floats into the water. Fish are dying, the water smells, and the beauty that draws tourists to our city is fading fast.
+    >
+    > I request the municipal corporation to place dustbins every fifty metres, fine those who litter and run regular clean-up drives. Citizens, too, must carry their waste home.
+    >
+    > I hope you will publish this letter so that action follows soon.
+    >
+    > Yours faithfully,\
+    > Karan Singh
+
+    Why it scores: the layout is complete; the subject line names the matter; paragraph 2 gives facts and effects; paragraph 3 gives actions to both authorities and citizens. [Unverified: the actual marking split of the board.]
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "You are Neha Arora of 7, Civil Lines, Kanpur. On 5 September you ordered a school bag and a lunch box worth Rs 1,890 online from 'Bagwala Online', Mumbai (order no. 4521). The parcel arrived on 20 September with the lunch box missing, and the bag has a broken zip. The customer care helpline has not helped. Write a letter of complaint to the manager. (100-120 words)"
+  sol: |
+    One possible model answer (body: about 100 words).
+
+    > 7, Civil Lines\
+    > Kanpur\
+    > 22 September 2026
+    >
+    > To\
+    > The Manager\
+    > Bagwala Online\
+    > Andheri, Mumbai
+    >
+    > Subject: Incomplete and damaged delivery of order no. 4521
+    >
+    > Sir,
+    >
+    > On 5 September, I ordered a school bag and a lunch box worth Rs 1,890 from your website (order no. 4521). The parcel reached me on 20 September, fifteen days after my order.
+    >
+    > To my dismay, the lunch box was missing, and the bag has a broken zip. I called your helpline twice, on 20 and 21 September, but I received no help.
+    >
+    > I therefore request you to send a replacement bag and the missing lunch box within seven days or refund the full amount. If I do not hear from you, I shall be compelled to approach the consumer forum.
+    >
+    > Yours faithfully,\
+    > Neha Arora
+    >
+    > Enclosures: copy of invoice, photographs
+
+    The model keeps the facts in the order they happened, names a remedy and a deadline, and uses a firm but calm tone. The delay, the shortfall and the damage are all used, since a marker looks for each cue in the question.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "You are Rohit Das, the librarian of St. Joseph's School, 12 Park Street, Kolkata. Write a letter to the manager of 'Knowledge House', College Street, Kolkata, ordering 30 copies of 'Concise Science Dictionary' at Rs 250 each and 15 copies of 'India: A Pictorial History' at Rs 600 each. Ask for the trade discount, delivery within ten days and payment after delivery. (100-120 words)"
+  sol: |
+    One possible model answer (body: about 113 words).
+
+    > 12 Park Street\
+    > Kolkata\
+    > 3 November 2026
+    >
+    > To\
+    > The Manager\
+    > Knowledge House\
+    > College Street, Kolkata
+    >
+    > Subject: Order for books for the school library
+    >
+    > Sir,
+    >
+    > Kindly supply the following books to our school library.
+    >
+    > 1. Concise Science Dictionary, 30 copies, at Rs 250 each
+    > 2. India: A Pictorial History, 15 copies, at Rs 600 each
+    >
+    > Please allow us the usual trade discount for schools. We would like the books packed carefully and delivered to the school address within ten days of this order. The books are meant for our reading room, which opens with the new session, so timely delivery is important to us. Payment will be made by cheque after the books are delivered and checked. Kindly send the bill along with the books.
+    >
+    > Please confirm the order and the date of delivery at an early date.
+    >
+    > Yours faithfully,\
+    > Rohit Das\
+    > Librarian, St. Joseph's School
+
+    The order names each title, quantity and price, and it states discount, delivery time, packing and payment terms. The total (Rs 7,500 + Rs 9,000 = Rs 16,500 before discount) may be shown, but is not needed.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "You are Ananya Reddy of Class X, Green Valley School, Hyderabad. Your school plans to buy twenty-five tablet computers for classroom use. Write an enquiry letter to the sales manager of 'Techmart', Banjara Hills, Hyderabad, asking about models, prices, bulk discount, warranty and delivery time. (100-120 words)"
+  sol: |
+    One possible model answer (body: about 112 words). Use the sender block of the school, as the question implies.
+
+    > Green Valley School\
+    > Jubilee Hills, Hyderabad\
+    > 6 January 2026
+    >
+    > To\
+    > The Sales Manager\
+    > Techmart\
+    > Banjara Hills, Hyderabad
+    >
+    > Subject: Enquiry about tablet computers for school use
+    >
+    > Sir,
+    >
+    > Our school is planning to buy twenty-five tablet computers for classroom use, and I write to enquire about the models you stock. We are a school of about 1,200 students and wish to set up a digital classroom this year.
+    >
+    > Kindly send us your latest price list with the specifications of each model. We would also like to know whether you offer a discount on a bulk purchase, the length of the warranty and the earliest date by which you can deliver twenty-five tablets. Please also tell us whether each tablet comes with a cover, a charger and teaching software.
+    >
+    > An early reply, together with a sample quotation, will be greatly appreciated.
+    >
+    > Yours faithfully,\
+    > Ananya Reddy
+
+    An enquiry commits nothing: there is no quantity as an order and no payment words. It asks every question the task listed (models, prices, discount, warranty, delivery).
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "You are Vikram Joshi of 9, Rose Garden, Nagpur. Cars and bikes speed past your school, with no speed breaker or traffic police nearby, and a child was nearly hit last week. Write a letter to the editor of a newspaper suggesting measures to make the road safe. (100-120 words)"
+  sol: |
+    One possible model answer (body: about 113 words).
+
+    > 9, Rose Garden\
+    > Nagpur\
+    > 15 July 2026
+    >
+    > To\
+    > The Editor\
+    > The Vidarbha Herald\
+    > Nagpur
+    >
+    > Subject: Need for road safety measures near the school
+    >
+    > Sir,
+    >
+    > Through the columns of your widely read daily, I wish to draw the attention of the traffic authorities to the dangerous speeding of vehicles near our school.
+    >
+    > Hundreds of children cross the road every morning, yet cars and motorbikes race past at high speed. There are no speed breakers or traffic police, and last week a child narrowly escaped being hit.
+    >
+    > I urge the authorities to build speed breakers, paint a zebra crossing, place a traffic constable at the school gate during school hours and put up a speed limit sign. Parents, too, must teach their children to cross carefully.
+    >
+    > I hope this letter will be published so that a tragedy is avoided.
+    >
+    > Yours faithfully,\
+    > Vikram Joshi
+
+    Note the three-part plan: purpose, facts with effect, concrete suggestions to named parties.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Rewrite this chatty complaint in a formal register, keeping all its facts: 'Hi! I got a washing machine from your shop on 1 June and it's already broken. It makes a horrible noise and leaks. Your guys said they'd come but nobody did. Fix it now or give my money back or I'll go to the consumer court!'"
+  sol: |
+    One possible model answer.
+
+    "Sir, I bought a washing machine from your shop on 1 June, and it has developed two faults. It makes a loud noise while running, and it leaks water. Your staff promised to send a technician, but no one has come. I therefore request you to repair or replace the machine within seven days or refund its price. If I receive no reply, I shall be compelled to approach the consumer forum."
+
+    What was changed: the greeting *Hi!* became *Sir*; *it's already broken* became a precise description (noise and leakage); *your guys said they'd come* became a polite, impersonal sentence; the threat is calm and conditional; all contractions and exclamation marks are gone. The facts (1 June, washing machine, noise, leakage, no visit, the remedy and the consumer authority) are all kept. (The chatty draft said 'consumer court'; the formal version uses *consumer forum*, which is the usual term in the model letters of this lesson.)
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "A student's letter to the editor reads: 'To The Editor. Dear sir, I'm writing about the drains in my area which are really bad!!! The smell is awful and everyone is falling ill. Do something fast. Thanks. Yours sincerely, Raj.' List at least six faults, naming the part of the letter each belongs to."
+  sol: |
+    One possible model answer.
+
+    1. **No sender's address or date** at the top.
+    2. **No subject line.**
+    3. **Salutation:** *Dear sir* should be *Sir* (or *Sir or Madam*) with a capital S and a comma.
+    4. **Closing:** *Yours sincerely* does not match the unnamed greeting; it should be *Yours faithfully*.
+    5. **Register:** the contraction *I'm*, the slang-like *really bad* and the three exclamation marks are informal.
+    6. **Vague content:** no area name, no date, no number of residents affected, no description of the effect beyond *falling ill*.
+    7. **Request:** *Do something fast* is a demand, not a polite, specific request. It should name the authority and the action (clean the drains, spray disinfectant) and say how soon.
+    8. **Length and structure:** a single clumsy paragraph, far below the 100-120 word target, with no opening line such as *Through the columns of your esteemed daily* and no closing hope for publication.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Write a reply, in 100-120 words, from the manager of Sharma Electricals to the complaint in the lesson's model (kettle EK-500 bought on 4 March, bill no. 2187, burning smell, refused exchange on 9 March). You are Mr Sharma, the manager. The shop accepts the complaint, apologises and offers a replacement."
+  sol: |
+    One possible model answer (body: about 112 words).
+
+    > Sharma Electricals\
+    > Station Road, Jaipur\
+    > 14 March 2026
+    >
+    > To\
+    > Ms Ritu Verma\
+    > 22, Lal Kothi Colony, Jaipur
+    >
+    > Subject: Your complaint about electric kettle, bill no. 2187
+    >
+    > Dear Ms Verma,
+    >
+    > Thank you for your letter of 12 March. We are sorry that the kettle you bought on 4 March has failed and that our salesman refused to help you on 9 March. His reply was wrong, as the one-year warranty clearly covers such a fault.
+    >
+    > We have checked our records and found your bill dated 4 March. Please bring the kettle and the bill to our shop on any working day, and a new kettle of the same model will be handed to you. If you prefer, our technician can collect the faulty kettle from your home. We have also instructed our staff to honour all warranty claims.
+    >
+    > We regret the inconvenience.
+    >
+    > Yours sincerely,\
+    > R. K. Sharma\
+    > Manager
+
+    A reply acknowledges the letter, accepts or explains, states the action and apologises. Because the receiver is named, the greeting is *Dear Ms Verma* and the closing is *Yours sincerely*.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Compose a formal email (subject line and body, 90-110 words) to the customer care of an online grocery service. Your order of 12 items, number 88231, placed on 3 October for delivery by 7 pm, arrived at 11 pm with the milk and eggs missing and the bill charging you for them (Rs 160). You want the Rs 160 refunded within three working days. You are Rina Bose."
+  sol: |
+    One possible model answer.
+
+    **Subject:** Order 88231: items missing, refund of Rs 160 requested
+
+    Dear Customer Care Team,
+
+    I placed order 88231 for twelve items on 3 October, with delivery promised by 7 pm. The order reached me at 11 pm, four hours late, and the milk and eggs were missing from the package, although the bill includes them at Rs 160.
+
+    I request you to refund Rs 160 to my original payment method within three working days. Please also confirm by return email that the matter has been recorded, so that I can use the confirmation if the refund is delayed. I have attached a photograph of the delivered items and the invoice.
+
+    Thank you for your help.
+
+    Yours sincerely,\
+    Rina Bose
+
+    What carries over from the letter: the subject line names the order and the problem; the facts are dated and numbered; the request has a remedy and a deadline. What differs: no sender's address block and a named greeting are normal in an email, so *Yours sincerely* is used. (About 100 words in the body.)
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "This letter body has about 165 words, over the limit. Cut it to about 110 words without losing the facts or the request. 'I am writing this letter to you today because I want to complain about the very, very bad condition of the road that goes from Sector 5 to Sector 9 in our city. This road has been in a terrible condition for the last three months and nobody is doing anything about it. There are more than fifteen big potholes on it and when it rains they fill with water so that you cannot see them. Last week an old man on a scooter fell into one and broke his arm. All the people who live here are very angry and upset about this. I would like to request you very kindly, if it is possible for you, to please repair the road as soon as possible so that no more accidents happen and we can travel safely. I will be extremely grateful to you for your kind help and I hope you will not ignore my letter.'"
+  sol: |
+    One possible model answer (about 105 words).
+
+    "I wish to bring to your notice the poor condition of the road between Sector 5 and Sector 9. For the last three months, it has had more than fifteen potholes, and during rain they fill with water and become invisible. Last week an elderly scooter rider fell into one and broke his arm. Residents are angry that no repair has been made.
+
+    I therefore request you to repair the road within a fortnight so that no more accidents occur. I shall be grateful for your prompt action."
+
+    How the cut was made: the purpose is stated in the first sentence (the opening *I am writing this letter to you today because I want to* was filler); *very, very bad* and *terrible* became facts; *nobody is doing anything* was shortened; the request now has a deadline and no repeated pleas; the closing hope was folded into one sentence. Every fact (location, three months, fifteen potholes, rain, the injured man, the request) survives.
+  check: none

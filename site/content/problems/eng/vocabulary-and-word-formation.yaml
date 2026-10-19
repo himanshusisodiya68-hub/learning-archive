@@ -1,0 +1,204 @@
+# Vocabulary and word formation. All problems are original (no NCERT items for this leaf), modelled on CBSE Class 10 gap-filling, editing and writing tasks. All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The ___ of the new library took place on Monday. (open)"
+  opts: ["opens", "opening", "opened", "openly"]
+  ans: 1
+  sol: |
+    "The ___ of" is a noun slot: the word after *the* names a thing (an event). The noun made from *open* is *opening*. *Opens* and *opened* are verb forms, and *openly* is an adverb.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Priya answered every question ___. (confident)"
+  opts: ["confident", "confidence", "confidently", "confidences"]
+  ans: 2
+  sol: |
+    The gap tells us how she answered, so it describes an action: an adverb is needed. The adverb of *confident* is *confidently*. *Confident* is an adjective, and *confidence* and *confidences* are nouns.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which of these words is a verb?"
+  opts: ["strength", "strong", "strongly", "strengthen"]
+  ans: 3
+  sol: |
+    *Strengthen* (to make stronger) is the verb; the -en ending is a common verb ending. *Strength* is the noun, *strong* the adjective and *strongly* the adverb.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: It was ___ to finish the whole task in ten minutes."
+  opts: ["unpossible", "impossible", "inpossible", "dispossible"]
+  ans: 1
+  sol: |
+    The negative of *possible* is *impossible*. The prefix in- changes to im- before the letter p. *Unpossible*, *inpossible* and *dispossible* are not English words.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The students were ___ in the science experiment."
+  opts: ["interested", "interesting", "interest", "interestingly"]
+  ans: 0
+  sol: |
+    The sentence says how the students felt, so the -ed form is needed: *interested*. The -ing form (*interesting*) would describe the experiment, the thing that caused the feeling: "The experiment was interesting."
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Fill in the blanks with the correct form of the word given in brackets. Write only the answers, numbered (a) to (e). Last month our town held a (a) ___ (celebrate) of its hundredth year. People from every part of the district gathered in the park to see the (b) ___ (perform) of local artists. The (c) ___ (organise) had worked very (d) ___ (hard) for weeks, and the result was a (e) ___ (memory) evening."
+  sol: |
+    Model answer: (a) celebration, (b) performance (or performances), (c) organisers, (d) hard, (e) memorable.
+
+    (a) "a ___ of" needs a singular noun: *celebration*.
+    (b) "the ___ of local artists" needs a noun: *performance* (the plural *performances* is also acceptable).
+    (c) "The ___ had worked" needs a plural noun for people: *organisers*.
+    (d) *Hard* is both the adjective and the adverb. It describes how they worked, so the bracket word stays as it is. Not every gap changes the word, and *hardly* would mean "almost not" and spoil the meaning.
+    (e) "a ___ evening" needs an adjective: *memorable*. *Memorial* (a monument) and *memorised* do not fit.
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Each line of the passage below has an error in the form of a word. Find the incorrect word and write the correction in a table with two columns, Incorrect and Correct. The new metro line has made travel to work far more convenience for thousands of people. Passengers no longer depend on crowded buses. The trains run frequent, and the service is very reliably. Officials say the line was built in record time because the engineers worked careful."
+  sol: |
+    Model answer:
+
+    | Incorrect | Correct |
+    |---|---|
+    | convenience | convenient |
+    | frequent | frequently |
+    | reliably | reliable |
+    | careful | carefully |
+
+    Reasons: "far more ___" compares a quality, so an adjective is needed (*convenient*). "Run ___" describes an action, so an adverb (*frequently*). "Is very ___" follows a linking verb, so an adjective (*reliable*). "Worked ___" describes an action, so an adverb (*carefully*).
+
+    [Note] Model answer written for this archive. The exact layout and marking of the board's editing question changes by year [Unverified], so follow the instructions printed on the question paper.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Complete each word family with the missing forms (use only forms that exist). (a) decide: noun, adjective, adverb. (b) success: verb, adjective, adverb. (c) strong: noun, verb, adverb."
+  sol: |
+    Model answer:
+
+    | Root | Verb | Noun | Adjective | Adverb |
+    |---|---|---|---|---|
+    | (a) decide | decide | decision | decisive | decisively |
+    | (b) success | succeed | success | successful | successfully |
+    | (c) strong | strengthen | strength | strong | strongly |
+
+    Notes: the spelling of the verb in (b) changes to *succeed*; in (c) the noun *strength* and the verb *strengthen* are built from the root with -th and -en.
+
+    [Note] A practice task in the style of word-formation exercises, not a board item. Model answer written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "The paragraph below is vague. Rewrite it, replacing the underlined words (here shown in capitals) with exact verbs, nouns or adjectives. 'It was a NICE day, so we WENT to the fair. There was a VERY BIG crowd. I GOT a toy, and my sister GOT some sweets. The food was GOOD, and we had a lot of THINGS to do.'"
+  sol: |
+    One possible model answer (many versions are acceptable):
+
+    "It was a crisp, sunny morning, so we strolled to the fair. A vast crowd, thousands strong, filled the grounds. I won a toy at the ring-toss stall, and my sister bought some sweets. The food was hot and fragrant, and we had dozens of rides, games and stalls to try."
+
+    What was changed: *nice* became *crisp, sunny* (a detail instead of a label); *went* became *strolled* (the verb shows how); *very big* became *vast* and was given a number; *got* became *won* and *bought* (two different actions that *got* had hidden); *good* became *hot and fragrant*; *things* became a list of exact nouns.
+
+    [Note] This is one possible answer written for this archive.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "You are writing a leave application to your principal. Rewrite each informal line in a formal register. (1) I want to ask for a day off. (2) I got sick yesterday. (3) My mum will send a doctor's note. (4) The kids in my class say I need to rest."
+  sol: |
+    One possible model answer:
+
+    (1) I would like to request leave for one day.
+    (2) I was unwell yesterday.
+    (3) My mother will send a medical certificate. (or "a doctor's certificate")
+    (4) My classmates have advised me to rest. (In a real letter you would leave this out; what matters here is *kids* becoming *classmates*.)
+
+    What changed: *ask for* became *request*, *got sick* became *was unwell*, *mum* became *mother*, and *kids* became *classmates*. The point is not to use bigger words but to remove casual ones. Formal writing is still plain and polite.
+
+    [Note] Model answer written for this archive.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Choose the right word from each pair and give a one-line reason. (a) The company introduced an (economic / economical) car that uses little fuel. (b) The (historic / historical) match ended with India's first win at the ground. (c) She is a very (sensible / sensitive) girl; a harsh word upsets her. (d) After three (successful / successive) defeats, the coach resigned."
+  sol: |
+    Model answer:
+
+    (a) *economical*: it saves fuel, which means saving resources. *Economic* would mean "about the economy".
+    (b) *historic*: it was an important moment worth remembering. *Historical* would only say that the match belongs to the past.
+    (c) *sensitive*: the clue is that a harsh word upsets her. *Sensible* means having good sense.
+    (d) *successive*: three defeats one after another. *Successful* would not suit defeats.
+
+    [Note] Model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Write one sentence each for stubborn, determined and thrifty, using the word in a context in which the feeling it carries is clear. Then explain in one line why you cannot swap stubborn and determined without changing the message."
+  sol: |
+    One possible model answer:
+
+    - *Stubborn:* My uncle was stubborn about the route and refused to listen when we said the road was closed. (negative: refuses good advice)
+    - *Determined:* Anita was determined to finish the marathon, and she kept going despite the heat. (positive: keeps going toward a goal)
+    - *Thrifty:* My grandmother is thrifty; she saves jars and reuses them. (positive: careful with resources)
+
+    Stubborn and determined both describe someone who will not give up, but stubborn suggests a person who is unreasonable and does not listen, while determined praises the effort. Swapping them flips whether the writer approves or disapproves. This difference is called connotation.
+
+    [Note] This is one possible answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "In which sentence is the word 'record' pronounced with the stress on its second syllable (reCORD)?"
+  opts: ["She holds the school record in the high jump.", "Please record the lecture on your phone.", "His record at work is spotless.", "The record was broken in 2019."]
+  ans: 1
+  sol: |
+    *Record* as a verb (to record) is stressed on the second syllable: *reCORD*. In the other three sentences it is a noun (a record), stressed on the first syllable: *REcord*. This noun-verb stress difference is a strong tendency in English (present, object, import, increase), not an exceptionless rule.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "Mira starts a word bank. Every Sunday she copies 40 words and their dictionary meanings from a thesaurus into a notebook and re-reads them once. Give three improvements to her method and show one model entry for the word 'reluctant'."
+  sol: |
+    One possible model answer.
+
+    Improvements: (1) Take fewer words, about three a day, and from texts she actually reads, so each word arrives in context. (2) Write each meaning in her own words and her own sentence, not the dictionary's. (3) Review by recall (cover the meaning, say it, check it) after a day, a week and a month, instead of re-reading once. [Unverified] The exact intervals vary between methods; the principle is spacing plus recall.
+
+    Model entry:
+
+    | Word | Class | Family | Meaning in my words | Partners | My sentence |
+    |---|---|---|---|---|---|
+    | reluctant | adjective | reluctance (n), reluctantly (adv) | not wanting to do something | reluctant to agree | Mira was reluctant to sing in front of the whole school. |
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "Name the word-formation process in each: (a) brunch; (b) exam; (c) laser; (d) notebook; (e) edit, made from editor."
+  sol: |
+    Model answer: (a) blending (breakfast + lunch); (b) clipping (examination shortened); (c) acronym (initials of the full name read as a word); (d) compounding (note + book); (e) back-formation (the verb was made by taking away what looks like an ending from the noun).
+
+    [Note] Model answer written for this archive. The dates and routes by which these words entered English are not stated, because they are [Unverified] here.
+  check: none
