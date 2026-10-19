@@ -399,7 +399,7 @@ The RCD passes both wires through one iron ring. Their magnetic fields in the ri
 <path class="ray" d="M80 120 L50 120 M56 116 L50 120 L56 124" style="fill:none"/><text x="40" y="138">I_N</text>
 <path class="ln" d="M204 60 q12 4 0 8 q12 4 0 8 q12 4 0 8" style="fill:none"/>
 <line class="ln" x1="210" y1="62" x2="250" y2="40"/><line class="ln" x1="210" y1="82" x2="250" y2="56"/>
-<rect x="250" y="30" width="70" height="34" style="fill:none;stroke:var(--ink)"/><text x="258" y="52">trip relay</text>
+<rect x="250" y="30" width="86" height="34" style="fill:none;stroke:var(--ink)"/><text x="258" y="52">trip relay</text>
 <text x="96" y="192">net flux ∝ I_L − I_N</text>
 <text x="226" y="84">sense coil</text>
 </svg>

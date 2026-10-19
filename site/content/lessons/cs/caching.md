@@ -150,7 +150,7 @@ A request from your phone passes through several places, and each can keep a cop
 :::figure caption="A request travels inwards until some layer has the answer. Each layer that answers saves every trip beyond it."
 <svg viewBox="0 0 320 130" role="img" aria-label="Request passes browser, CDN, app cache, database in a row">
 <g style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--ink);stroke-width:1.5"><rect x="8" y="40" width="58" height="40" rx="6"/><rect x="88" y="40" width="58" height="40" rx="6"/><rect x="168" y="40" width="58" height="40" rx="6"/><rect x="248" y="40" width="58" height="40" rx="6"/></g>
-<g style="font-size:10px;fill:var(--ink)"><text x="16" y="64">browser</text><text x="107" y="64">CDN</text><text x="176" y="58">app</text><text x="176" y="70">cache</text><text x="256" y="64">database</text></g>
+<g style="font-size:10px;fill:var(--ink)"><text x="16" y="64">browser</text><text x="107" y="64">CDN</text><text x="176" y="58">app</text><text x="176" y="70">cache</text><text x="277" y="64" text-anchor="middle" style="font-size:9px">database</text></g>
 <g class="axis"><line x1="66" y1="60" x2="88" y2="60"/><line x1="146" y1="60" x2="168" y2="60"/><line x1="226" y1="60" x2="248" y2="60"/></g>
 <text x="8" y="106" style="font-size:10px;fill:var(--muted)">fast, private</text>
 <text x="226" y="106" style="font-size:10px;fill:var(--muted)">slow, the truth</text>

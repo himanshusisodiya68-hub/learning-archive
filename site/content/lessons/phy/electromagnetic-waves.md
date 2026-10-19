@@ -179,8 +179,8 @@ $$E_y = E_0\sin(kx-\omega t),\qquad B_z = B_0\sin(kx-\omega t),\qquad \frac{E_0}
 <line style="stroke:var(--chem);stroke-width:1" x1="45" y1="110" x2="30.5" y2="120.6"/><line style="stroke:var(--chem);stroke-width:1" x1="60" y1="110" x2="36.5" y2="127.1"/><line style="stroke:var(--chem);stroke-width:1" x1="75" y1="110" x2="51.5" y2="127.1"/><line style="stroke:var(--chem);stroke-width:1" x1="90" y1="110" x2="75.5" y2="120.6"/><line style="stroke:var(--chem);stroke-width:1" x1="120" y1="110" x2="134.5" y2="99.4"/><line style="stroke:var(--chem);stroke-width:1" x1="135" y1="110" x2="158.5" y2="92.9"/><line style="stroke:var(--chem);stroke-width:1" x1="150" y1="110" x2="173.5" y2="92.9"/><line style="stroke:var(--chem);stroke-width:1" x1="165" y1="110" x2="179.5" y2="99.4"/><line style="stroke:var(--chem);stroke-width:1" x1="195" y1="110" x2="180.5" y2="120.6"/><line style="stroke:var(--chem);stroke-width:1" x1="210" y1="110" x2="186.5" y2="127.1"/><line style="stroke:var(--chem);stroke-width:1" x1="225" y1="110" x2="201.5" y2="127.1"/><line style="stroke:var(--chem);stroke-width:1" x1="240" y1="110" x2="225.5" y2="120.6"/><line style="stroke:var(--chem);stroke-width:1" x1="270" y1="110" x2="284.5" y2="99.4"/><line style="stroke:var(--chem);stroke-width:1" x1="285" y1="110" x2="308.5" y2="92.9"/><line style="stroke:var(--chem);stroke-width:1" x1="300" y1="110" x2="323.5" y2="92.9"/><line style="stroke:var(--chem);stroke-width:1" x1="315" y1="110" x2="329.5" y2="99.4"/>
 <text class="k" x="58" y="48">E (along y)</text>
 <text class="k" x="18" y="140" style="fill:var(--chem)">B (along z)</text>
-<text class="k" x="300" y="100">x</text>
-<text x="230" y="185">direction of travel: E × B</text>
+<text class="k" x="350" y="114">x</text>
+<text x="350" y="185" text-anchor="end">direction of travel: E × B</text>
 <line class="ln" x1="345" y1="40" x2="370" y2="40"/><polyline class="ln" points="365,37 370,40 365,43"/>
 <line class="ln" x1="345" y1="40" x2="345" y2="15"/><polyline class="ln" points="342,20 345,15 348,20"/>
 <line class="ln" x1="345" y1="40" x2="333" y2="49"/>

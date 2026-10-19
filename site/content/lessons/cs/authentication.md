@@ -52,7 +52,7 @@ opener:
     That sounds like a magic trick. To check something you must know it, and if the company knew it, the hackers would know it too. And what about the next click? You typed your password once this morning, yet you tap through a dozen pages and the site still knows it is you.
 
     How can a computer verify a password it does not keep, and remember you without asking again?
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A login form on the left, a database of scrambled hashes on the right, and a cookie ticket in between"><rect x="14" y="40" width="110" height="140" rx="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="26" y="64" style="font-size:11px;fill:var(--ink)">Log in</text><rect x="26" y="74" width="86" height="20" rx="4" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="32" y="88" style="font-size:10px;fill:var(--muted)">himanshu</text><rect x="26" y="102" width="86" height="20" rx="4" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="32" y="116" style="font-size:12px;fill:var(--ink)">••••••••</text><rect x="26" y="136" width="86" height="22" rx="11" style="fill:var(--c)"/><path d="M126 110 L184 110" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:5 4"/><rect x="190" y="40" width="116" height="140" rx="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="200" y="60" style="font-size:10px;fill:var(--muted)">users table</text><text x="200" y="82" style="font-size:9px;fill:var(--ink)">himanshu  $2b$12$q9Kx…</text><text x="200" y="100" style="font-size:9px;fill:var(--ink)">asha      $2b$12$7Tz1…</text><text x="200" y="118" style="font-size:9px;fill:var(--ink)">ravi      $2b$12$Lm0e…</text><text x="200" y="146" style="font-size:10px;fill:var(--bad)">no password anywhere</text><rect x="120" y="196" width="80" height="28" rx="6" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:1.5"/><text x="128" y="214" style="font-size:10px;fill:var(--ink)">cookie: id=a8f3…</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A login form on the left, a database of scrambled hashes on the right, and a cookie ticket in between"><rect x="14" y="40" width="110" height="140" rx="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="26" y="64" style="font-size:11px;fill:var(--ink)">Log in</text><rect x="26" y="74" width="86" height="20" rx="4" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="32" y="88" style="font-size:10px;fill:var(--muted)">himanshu</text><rect x="26" y="102" width="86" height="20" rx="4" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="32" y="116" style="font-size:12px;fill:var(--ink)">••••••••</text><rect x="26" y="136" width="86" height="22" rx="11" style="fill:var(--c)"/><path d="M126 110 L184 110" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:5 4"/><rect x="190" y="40" width="116" height="140" rx="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="200" y="60" style="font-size:10px;fill:var(--muted)">users table</text><text x="200" y="82" style="font-size:9px;fill:var(--ink)">himanshu  $2b$12$q9Kx…</text><text x="200" y="100" style="font-size:9px;fill:var(--ink)">asha      $2b$12$7Tz1…</text><text x="200" y="118" style="font-size:9px;fill:var(--ink)">ravi      $2b$12$Lm0e…</text><text x="198" y="146" style="font-size:9px;fill:var(--bad)">no password anywhere</text><rect x="100" y="196" width="120" height="28" rx="6" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:1.5"/><text x="110" y="214" style="font-size:10px;fill:var(--ink)">cookie: id=a8f3…</text></svg>'
 life:
   - 'Every login box you have used: Gmail, Instagram, your college portal, your bank.'
   - 'Staying logged in to YouTube for months is a session or token living in your browser.'
@@ -164,14 +164,16 @@ wrong: Salt changes the stored fingerprint, not how guessable the password is. W
 HTTP has no memory: each request arrives as a stranger. After a successful login, the server creates a **session**: it makes a long random **session id**, saves "id a8f3… means user 42" in its own table, and sends the id back in a **cookie**, a small note the browser attaches to every later request to that site. The server looks the id up and knows who you are. Logging out deletes the table entry.
 
 :::figure caption="The cookie is like a cloakroom ticket: the number means nothing alone, but the server has the coat it matches."
-<svg viewBox="0 0 320 170" role="img" aria-label="Browser logs in, server stores a session and returns a cookie, browser sends the cookie on the next request">
-<g style="stroke:var(--ink);stroke-width:1.5"><path d="M50 18 L50 160"/><path d="M270 18 L270 160"/></g>
+<svg viewBox="0 0 320 185" role="img" aria-label="Browser logs in, server stores a session and returns a cookie, browser sends the cookie on the next request">
+<g style="stroke:var(--ink);stroke-width:1.5"><path d="M50 18 L50 178"/><path d="M270 18 L270 178"/></g>
 <g style="font-size:11px;fill:var(--ink)"><text x="22" y="12">Browser</text><text x="242" y="12">Server</text></g>
-<g style="fill:none;stroke:var(--c);stroke-width:1.6"><path d="M52 40 L266 46"/><path d="M268 80 L54 86"/><path d="M52 124 L266 130"/></g>
-<g style="font-size:9.5px;fill:var(--muted)">
-<text x="76" y="34">1 username + password (over TLS)</text>
-<text x="62" y="70">2 checks hash; stores id→user 42; sets cookie</text>
-<text x="66" y="118">3 any page + cookie id=a8f3… → "user 42"</text>
+<g style="fill:none;stroke:var(--c);stroke-width:1.6"><path d="M52 44 L266 48"/><path d="M268 98 L54 102"/><path d="M52 156 L266 160"/></g>
+<g style="fill:var(--muted)" text-anchor="middle">
+<text x="160" y="34" style="font-size:9.5px">1 username + password (over TLS)</text>
+<text x="160" y="76" style="font-size:9.5px">2 checks hash; stores id→user 42;</text>
+<text x="160" y="87" style="font-size:9.5px">sets cookie</text>
+<text x="160" y="130" style="font-size:9.5px">3 any page + cookie id=a8f3…</text>
+<text x="160" y="141" style="font-size:9.5px">→ "user 42"</text>
 </g>
 </svg>
 :::
@@ -209,16 +211,21 @@ wrong: A signed ticket with no register cannot be cancelled by the issuer. Which
 You tap **Continue with Google** on a shopping app. The app never sees your Google password, yet it learns who you are. This is **OAuth** (with **OpenID Connect** on top for the identity part). Think of the valet key: you give the app a narrow, expiring pass rather than your master key.
 
 :::figure caption="The authorisation-code flow, simplified. Your password goes only to Google."
-<svg viewBox="0 0 320 190" role="img" aria-label="Sequence between browser, app and Google: redirect, login and consent, code returned, code swapped for a token">
-<g style="stroke:var(--ink);stroke-width:1.5"><path d="M40 20 L40 180"/><path d="M160 20 L160 180"/><path d="M280 20 L280 180"/></g>
+<svg viewBox="0 0 320 250" role="img" aria-label="Sequence between browser, app and Google: redirect, login and consent, code returned, code swapped for a token">
+<g style="stroke:var(--ink);stroke-width:1.5"><path d="M40 20 L40 244"/><path d="M160 20 L160 244"/><path d="M280 20 L280 244"/></g>
 <g style="font-size:11px;fill:var(--ink)"><text x="14" y="14">You</text><text x="136" y="14">App</text><text x="250" y="14">Google</text></g>
-<g style="fill:none;stroke:var(--c);stroke-width:1.5"><path d="M42 40 L156 44"/><path d="M42 70 L276 76"/><path d="M278 102 L44 108"/><path d="M42 132 L156 136"/><path d="M158 160 L278 164"/></g>
-<g style="font-size:9px;fill:var(--muted)">
-<text x="48" y="36">1 tap Continue with Google</text>
-<text x="96" y="66">2 redirect: log in, tap Allow</text>
-<text x="100" y="98">3 sends you back with a one-time code</text>
-<text x="48" y="128">4 you hand the code to the app</text>
-<text x="168" y="156">5 app swaps code for a token</text>
+<g style="fill:none;stroke:var(--c);stroke-width:1.5"><path d="M42 58 L156 62"/><path d="M42 102 L276 108"/><path d="M278 150 L44 156"/><path d="M42 196 L156 200"/><path d="M158 238 L278 242"/></g>
+<g style="fill:var(--muted)" text-anchor="middle">
+<text x="100" y="37" style="font-size:9px">1 tap Continue</text>
+<text x="100" y="48" style="font-size:9px">with Google</text>
+<text x="220" y="80" style="font-size:9px">2 redirect: log in,</text>
+<text x="220" y="91" style="font-size:9px">tap Allow</text>
+<text x="220" y="124" style="font-size:9px">3 sends you back</text>
+<text x="220" y="135" style="font-size:9px">with a one-time code</text>
+<text x="100" y="175" style="font-size:9px">4 you hand the code</text>
+<text x="100" y="186" style="font-size:9px">to the app</text>
+<text x="220" y="217" style="font-size:9px">5 app swaps code</text>
+<text x="220" y="228" style="font-size:9px">for a token</text>
 </g>
 </svg>
 :::

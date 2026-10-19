@@ -135,7 +135,8 @@ Here is the map. Its two directions are the first two questions. Left to right: 
 <svg viewBox="0 0 360 250" role="img" aria-label="A map placing Python and JavaScript top left, TypeScript, Java and Go top right, C and C++ bottom right, Rust bottom right edge">
 <line x1="40" y1="215" x2="345" y2="215" class="axis"/>
 <line x1="40" y1="215" x2="40" y2="20" class="axis"/>
-<text x="190" y="240" style="font-size:10px;fill:var(--muted);text-anchor:middle">types checked while running  →  types checked before running</text>
+<text x="40" y="233" style="font-size:10px;fill:var(--muted)">← types checked while running</text>
+<text x="345" y="245" style="font-size:10px;fill:var(--muted);text-anchor:end">types checked before running →</text>
 <text x="14" y="120" transform="rotate(-90 14 120)" style="font-size:10px;fill:var(--muted);text-anchor:middle">runtime frees memory  ↑  you / rules  ↓</text>
 <g style="font-size:12px;fill:var(--ink)">
 <circle cx="80" cy="55" r="5" style="fill:var(--mat)"/><text x="90" y="59">Python</text>
@@ -209,15 +210,15 @@ Every running program asks for memory (to hold a list, a text, a record) and mus
 A picture of the choice:
 
 :::figure caption="Same job, three ways. The arrows say who decides when memory is freed."
-<svg viewBox="0 0 360 150" role="img" aria-label="Three rows: C where the programmer frees, Java or Python where a collector frees, Rust where the compiler inserts the free">
+<svg viewBox="0 0 440 150" role="img" aria-label="Three rows: C where the programmer frees, Java or Python where a collector frees, Rust where the compiler inserts the free">
 <g style="font-size:11px;fill:var(--ink)">
-<text x="12" y="30">C</text><rect x="40" y="14" width="90" height="24" rx="5" class="obj" style="fill:none;stroke:var(--ink)"/><text x="48" y="30">you call free()</text>
-<text x="12" y="80">Python, Java, Go</text><rect x="110" y="64" width="130" height="24" rx="5" style="fill:none;stroke:var(--mat);stroke-width:1.5"/><text x="118" y="80">collector sweeps it later</text>
-<text x="12" y="130">Rust</text><rect x="48" y="114" width="160" height="24" rx="5" style="fill:none;stroke:var(--phy);stroke-width:1.5"/><text x="56" y="130">compiler adds it at scope end</text>
+<text x="12" y="30">C</text><rect x="40" y="14" width="120" height="24" rx="5" class="obj" style="fill:none;stroke:var(--ink)"/><text x="48" y="30">you call free()</text>
+<text x="12" y="80">Python, Java, Go</text><rect x="126" y="64" width="186" height="24" rx="5" style="fill:none;stroke:var(--mat);stroke-width:1.5"/><text x="134" y="80">collector sweeps it later</text>
+<text x="12" y="130">Rust</text><rect x="48" y="114" width="210" height="24" rx="5" style="fill:none;stroke:var(--phy);stroke-width:1.5"/><text x="56" y="130">compiler adds it at scope end</text>
 </g>
-<text x="300" y="30" style="font-size:10px;fill:var(--muted)">fast, risky</text>
-<text x="270" y="80" style="font-size:10px;fill:var(--muted)">safe, some cost</text>
-<text x="226" y="130" style="font-size:10px;fill:var(--muted)">fast, safe, stricter</text>
+<text x="430" y="30" style="font-size:10px;fill:var(--muted);text-anchor:end">fast, risky</text>
+<text x="430" y="80" style="font-size:10px;fill:var(--muted);text-anchor:end">safe, some cost</text>
+<text x="430" y="130" style="font-size:10px;fill:var(--muted);text-anchor:end">fast, safe, stricter</text>
 </svg>
 :::
 

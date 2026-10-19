@@ -189,7 +189,7 @@ The formula used a rectangle. Does a circle, or a blob, give the same $\boldsymb
 Cover the flat loop with a fine grid of tiny rectangles, and imagine the same current $I$ circulating round every tiny rectangle in the same sense. Where two tiny rectangles share an edge, their currents along that edge are **equal and opposite**, so they cancel exactly. Every interior edge cancels. All that survives is the current round the **outer boundary**, which is the original loop.
 
 :::figure caption="A flat loop as a mosaic of small current loops, all circulating the same way. On every shared edge the two currents are opposite and cancel, leaving only the current round the outside."
-<svg viewBox="0 0 300 180" role="img" aria-label="Grid of small square loops all circulating counterclockwise; on a shared edge the two currents point opposite ways">
+<svg viewBox="0 0 320 180" role="img" aria-label="Grid of small square loops all circulating counterclockwise; on a shared edge the two currents point opposite ways">
 <line class="faint" x1="100" y1="40" x2="100" y2="160"/><line class="faint" x1="140" y1="40" x2="140" y2="160"/><line class="faint" x1="180" y1="40" x2="180" y2="160"/>
 <line class="faint" x1="60" y1="80" x2="220" y2="80"/><line class="faint" x1="60" y1="120" x2="220" y2="120"/>
 <rect x="60" y="40" width="160" height="120" style="fill:none;stroke:var(--phy);stroke-width:2.5"/>
@@ -200,7 +200,7 @@ Cover the flat loop with a fine grid of tiny rectangles, and imagine the same cu
 <line style="stroke:var(--ink);stroke-width:2" x1="105" y1="85" x2="105" y2="110"/><polygon style="fill:var(--ink)" points="105,116 101,107 109,107"/>
 <text class="k" x="68" y="104">↑</text><text class="k" x="112" y="104">↓</text>
 <text x="230" y="70">shared</text><text x="230" y="84">edges</text><text x="230" y="98">cancel</text>
-<text x="40" y="176">only the outer boundary current survives</text>
+<text x="28" y="176">only the outer boundary current survives</text>
 </svg>
 :::
 
@@ -247,7 +247,7 @@ A galvanometer detects and measures small currents by turning the torque on a co
 **Why the curved poles and the iron core.** The iron core draws the field lines into itself, and the curved gap makes them **radial**: in the gap they all point along radii of the core. The coil's vertical sides move round inside that gap, so they always cut the field at right angles, whatever the deflection. The plane of the coil always lies along the field lines, so $\sin\theta = 1$ at every position, and the torque is simply $NIAB$. The iron also makes $B$ in the gap much stronger.
 
 :::figure caption="Top view of a moving-coil galvanometer. The concave poles and the soft-iron core make the field in the gap radial. The coil's sides (⊙ and ⊗) always move at right angles to the field, so the deflecting torque is NIAB at every angle."
-<svg viewBox="0 0 320 200" role="img" aria-label="Top view: N and S poles with concave faces around a soft iron core; radial field lines in the gap; coil sides with tangential forces">
+<svg viewBox="0 0 320 206" role="img" aria-label="Top view: N and S poles with concave faces around a soft iron core; radial field lines in the gap; coil sides with tangential forces">
 <path d="M30,30 L120.3,30 L120.3,55 A60,60 0 0,0 120.3,145 L120.3,170 L30,170 Z" style="fill:var(--muted);fill-opacity:.25;stroke:var(--muted)"/>
 <path d="M199.7,30 L290,30 L290,170 L199.7,170 L199.7,145 A60,60 0 0,0 199.7,55 Z" style="fill:var(--muted);fill-opacity:.25;stroke:var(--muted)"/>
 <text class="k" x="58" y="105">N</text><text class="k" x="250" y="105">S</text>
@@ -259,7 +259,7 @@ A galvanometer detects and measures small currents by turning the torque on a co
 <circle cx="204.2" cy="116.1" r="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><line style="stroke:var(--ink);stroke-width:1.3" x1="200" y1="112" x2="208.4" y2="120.2"/><line style="stroke:var(--ink);stroke-width:1.3" x1="200" y1="120.2" x2="208.4" y2="112"/>
 <line style="stroke:var(--ink);stroke-width:2" x1="113.7" y1="90" x2="108.2" y2="104.6"/><polygon style="fill:var(--ink)" points="105.5,112.1 111.96,105.97 104.44,103.23"/><text class="k" x="90" y="122">F</text>
 <line style="stroke:var(--ink);stroke-width:2" x1="206.3" y1="110" x2="211.76" y2="95.42"/><polygon style="fill:var(--ink)" points="214.5,87.9 215.52,96.79 208.0,94.05"/><text class="k" x="220" y="86">F</text>
-<text x="40" y="192">field radial in the gap: plane of coil always along B</text>
+<text x="160" y="188" style="text-anchor:middle">field radial in the gap:</text><text x="160" y="200" style="text-anchor:middle">plane of coil always along B</text>
 </svg>
 :::
 
@@ -322,13 +322,13 @@ The cure is one extra resistor in each case.
 <svg viewBox="0 0 360 150" role="img" aria-label="Ammeter circuit with galvanometer and parallel shunt; voltmeter circuit with galvanometer and series resistor">
 <line class="ln" x1="20" y1="60" x2="60" y2="60"/><line class="ln" x1="60" y1="40" x2="60" y2="80"/>
 <line class="ln" x1="60" y1="40" x2="96" y2="40"/><circle cx="110" cy="40" r="14" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><text class="k" x="105" y="44">G</text><line class="ln" x1="124" y1="40" x2="160" y2="40"/>
-<line class="ln" x1="60" y1="80" x2="95" y2="80"/><rect x="95" y="75" width="30" height="10" style="fill:var(--surface);stroke:var(--phy);stroke-width:2"/><line class="ln" x1="125" y1="80" x2="160" y2="80"/><text class="k" x="104" y="102">S</text>
+<line class="ln" x1="60" y1="80" x2="95" y2="80"/><rect x="95" y="75" width="30" height="10" style="fill:var(--surface);stroke:var(--phy);stroke-width:2"/><line class="ln" x1="125" y1="80" x2="160" y2="80"/><text class="k" x="104" y="112">S</text>
 <line class="ln" x1="160" y1="40" x2="160" y2="80"/><line class="ln" x1="160" y1="60" x2="190" y2="60"/>
 <text x="22" y="54">I →</text><text x="70" y="32">I_g</text><text x="66" y="96">I − I_g</text>
-<text x="30" y="135">ammeter: small S in parallel</text>
+<text x="30" y="125">ammeter:</text><text x="30" y="137">small S in parallel</text>
 <line class="ln" x1="210" y1="60" x2="240" y2="60"/><circle cx="254" cy="60" r="14" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><text class="k" x="249" y="64">G</text>
 <line class="ln" x1="268" y1="60" x2="290" y2="60"/><rect x="290" y="55" width="40" height="10" style="fill:var(--surface);stroke:var(--phy);stroke-width:2"/><line class="ln" x1="330" y1="60" x2="350" y2="60"/><text class="k" x="306" y="85">R</text>
-<text x="215" y="135">voltmeter: large R in series</text>
+<text x="215" y="125">voltmeter:</text><text x="215" y="137">large R in series</text>
 </svg>
 :::
 
@@ -522,7 +522,7 @@ A loop with $\mathbf m$ along $\mathbf B$ moves toward where the field is **stro
 <text class="k" x="78" y="130">F</text><text class="k" x="228" y="130">F</text>
 <line style="stroke:var(--chem);stroke-width:2" x1="160" y1="84" x2="160" y2="56"/><polygon style="fill:var(--chem)" points="160,48 155,58 165,58"/><text class="k" x="166" y="58">m</text>
 <line style="stroke:var(--ink);stroke-width:1.5" x1="93" y1="90" x2="72" y2="90"/><polygon style="fill:var(--ink)" points="66,90 74,86 74,94"/><text x="40" y="84">B_r</text>
-<text x="10" y="186">stronger field below</text><text x="226" y="22">weaker above</text>
+<text x="10" y="174">stronger</text><text x="10" y="186">field below</text><text x="274" y="36">weaker</text><text x="274" y="48">above</text>
 </svg>
 :::
 

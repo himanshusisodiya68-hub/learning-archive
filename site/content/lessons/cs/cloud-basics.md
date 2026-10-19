@@ -165,7 +165,7 @@ A provider divides the world into **regions**, such as Mumbai or Frankfurt, each
 <rect x="24" y="62" width="84" height="84" rx="8" style="fill:color-mix(in srgb,var(--mat) 10%,var(--surface));stroke:var(--mat)"/>
 <rect x="118" y="62" width="84" height="84" rx="8" style="fill:color-mix(in srgb,var(--mat) 10%,var(--surface));stroke:var(--mat)"/>
 <rect x="212" y="62" width="84" height="84" rx="8" style="fill:color-mix(in srgb,var(--bad) 10%,var(--surface));stroke:var(--bad)"/>
-<text x="40" y="80" style="font-size:10px;fill:var(--ink)">Zone A</text><text x="134" y="80" style="font-size:10px;fill:var(--ink)">Zone B</text><text x="228" y="80" style="font-size:10px;fill:var(--ink)">Zone C (down)</text>
+<text x="32" y="140" style="font-size:9px;fill:var(--ink)">Zone A</text><text x="126" y="140" style="font-size:9px;fill:var(--ink)">Zone B</text><text x="220" y="140" style="font-size:9px;fill:var(--ink)">Zone C (down)</text>
 <rect x="44" y="96" width="44" height="30" rx="4" style="fill:var(--mat)"/><rect x="138" y="96" width="44" height="30" rx="4" style="fill:var(--mat)"/><rect x="232" y="96" width="44" height="30" rx="4" style="fill:var(--muted)"/>
 <text x="150" y="20" style="font-size:11px;fill:var(--ink)">Load balancer</text>
 <path d="M160 24 L66 94 M160 24 L160 94" style="stroke:var(--ink);stroke-width:1.3;fill:none"/><path d="M160 24 L254 94" style="stroke:var(--bad);stroke-width:1.3;fill:none;stroke-dasharray:4 4"/>

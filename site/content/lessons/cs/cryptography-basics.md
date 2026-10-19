@@ -52,7 +52,7 @@ opener:
     Yet your PIN arrives safely, and the app is sure it is talking to the real bank and not a copycat. Here is the strange part. You and the bank have never met. You have never swapped a password or a secret code. Your phone just opened the app and, within a blink, a private line existed.
 
     How can two strangers build a secret while everyone listens to every word they say?
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A phone and a bank exchange locked messages while an eavesdropper sees only scrambled data"><rect x="14" y="70" width="70" height="110" rx="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="24" y="86" width="50" height="62" rx="4" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="30" y="122" style="font-size:11px;fill:var(--ink)">PIN ••••</text><rect x="236" y="70" width="70" height="110" rx="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M246 96 L271 80 L296 96 Z" style="fill:var(--c)"/><rect x="250" y="100" width="6" height="36" style="fill:var(--ink)"/><rect x="264" y="100" width="6" height="36" style="fill:var(--ink)"/><rect x="278" y="100" width="6" height="36" style="fill:var(--ink)"/><path d="M88 125 L232 125" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:5 4"/><rect x="132" y="108" width="56" height="34" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:2"/><path d="M150 108 v-8 a10 10 0 0 1 20 0 v8" style="fill:none;stroke:var(--c);stroke-width:2"/><text x="144" y="130" style="font-size:10px;fill:var(--ink)">x7#Qk9</text><circle cx="160" cy="42" r="14" style="fill:none;stroke:var(--bad);stroke-width:2"/><path d="M154 40 q6 -6 12 0 M155 46 q5 4 10 0" style="fill:none;stroke:var(--bad);stroke-width:1.5"/><text x="116" y="72" style="font-size:10px;fill:var(--bad)">eavesdropper sees:</text><text x="112" y="88" style="font-size:10px;fill:var(--muted)">only scrambled noise</text><text x="18" y="200" style="font-size:10px;fill:var(--muted)">you</text><text x="248" y="200" style="font-size:10px;fill:var(--muted)">the bank</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A phone and a bank exchange locked messages while an eavesdropper sees only scrambled data"><rect x="14" y="70" width="70" height="110" rx="12" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="24" y="86" width="50" height="62" rx="4" style="fill:none;stroke:var(--c);stroke-width:1.5"/><text x="30" y="122" style="font-size:11px;fill:var(--ink)">PIN ••••</text><rect x="236" y="70" width="70" height="110" rx="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M246 96 L271 80 L296 96 Z" style="fill:var(--c)"/><rect x="250" y="100" width="6" height="36" style="fill:var(--ink)"/><rect x="264" y="100" width="6" height="36" style="fill:var(--ink)"/><rect x="278" y="100" width="6" height="36" style="fill:var(--ink)"/><path d="M88 125 L130 125 M190 125 L232 125" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:5 4"/><rect x="132" y="108" width="56" height="34" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:2"/><path d="M150 108 v-8 a10 10 0 0 1 20 0 v8" style="fill:none;stroke:var(--c);stroke-width:2"/><text x="144" y="130" style="font-size:10px;fill:var(--ink)">x7#Qk9</text><circle cx="160" cy="42" r="14" style="fill:none;stroke:var(--bad);stroke-width:2"/><path d="M154 40 q6 -6 12 0 M155 46 q5 4 10 0" style="fill:none;stroke:var(--bad);stroke-width:1.5"/><text x="116" y="72" style="font-size:10px;fill:var(--bad)">eavesdropper sees:</text><text x="112" y="88" style="font-size:10px;fill:var(--muted)">only scrambled noise</text><text x="18" y="200" style="font-size:10px;fill:var(--muted)">you</text><text x="248" y="200" style="font-size:10px;fill:var(--muted)">the bank</text></svg>'
 life:
   - 'The padlock in your browser''s address bar means a TLS handshake like the one in this lesson just happened.'
   - 'WhatsApp''s "end-to-end encrypted" notice means only the two phones hold the keys; the servers in the middle carry scrambled data.'
@@ -205,11 +205,11 @@ You added red + blue + yellow in a different order, and the order does not matte
 <path d="M50 106 L50 158"/><path d="M270 106 L270 158"/>
 </g>
 <g style="font-size:9.5px;fill:var(--muted)">
-<text x="184" y="26">shared yellow (public)</text>
+<text x="182" y="22">shared yellow</text><text x="182" y="33">(public)</text>
 <text x="8" y="68">your private</text><text x="8" y="79">red (secret)</text>
 <text x="226" y="68">bank private</text><text x="232" y="79">blue (secret)</text>
-<text x="118" y="128">swap mixtures in the open</text>
-<text x="8" y="202">same secret brown</text><text x="214" y="202">same secret brown</text>
+<text x="160" y="128" text-anchor="middle">swap mixtures in the open</text>
+<text x="8" y="202">same secret brown</text><text x="312" y="202" text-anchor="end">same secret brown</text>
 </g>
 </svg>
 :::
@@ -266,11 +266,11 @@ The fix is a **certificate**: a small file saying "this public key belongs to *y
 **TLS** is the protocol behind the padlock and `https`. Its handshake uses every idea above, in about one round trip in the modern version (TLS 1.3). [Unverified: version details from memory]
 
 :::figure caption="A simplified TLS 1.3 handshake. Everything after the keys are agreed is encrypted with the fast shared key."
-<svg viewBox="0 0 320 230" role="img" aria-label="Sequence diagram of a TLS handshake between a browser and a server">
-<g style="stroke:var(--ink);stroke-width:1.5"><path d="M60 20 L60 215"/><path d="M260 20 L260 215"/></g>
-<g style="font-size:11px;fill:var(--ink)"><text x="32" y="14">Browser</text><text x="232" y="14">Server</text></g>
+<svg viewBox="0 0 340 230" role="img" aria-label="Sequence diagram of a TLS handshake between a browser and a server">
+<g style="stroke:var(--ink);stroke-width:1.5"><path d="M60 20 L60 215"/><path d="M316 20 L316 215"/></g>
+<g style="font-size:11px;fill:var(--ink)"><text x="32" y="14">Browser</text><text x="292" y="14">Server</text></g>
 <g style="fill:none;stroke:var(--c);stroke-width:1.6">
-<path d="M62 48 L256 58"/><path d="M256 98 L64 108"/><path d="M62 148 L256 158"/><path d="M256 188 L64 198"/>
+<path d="M62 48 L312 58"/><path d="M312 98 L64 108"/><path d="M62 148 L312 158"/><path d="M312 188 L64 198"/>
 </g>
 <g style="font-size:9.5px;fill:var(--muted)">
 <text x="70" y="40">1 hello + my Diffie–Hellman value</text>

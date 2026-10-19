@@ -160,12 +160,12 @@ Read it as: two hundred thousand items, every pair checked, 40 billion steps, at
 <svg viewBox="0 0 320 170" role="img" aria-label="Growth curves for n, n log n, n squared and 2 to the n against a budget line">
 <path class="axis" d="M30 140 L30 14 M30 140 L304 140" style="stroke:var(--ink);stroke-width:1.5;fill:none"/>
 <line x1="30" y1="52" x2="304" y2="52" style="stroke:var(--muted);stroke-width:1.5;stroke-dasharray:6 4"/>
-<text x="240" y="46" style="font-size:10px;fill:var(--muted)">budget about 10^8</text>
+<text x="112" y="46" style="font-size:10px;fill:var(--muted)">budget about 10^8</text>
 <path d="M30 140 L304 112" style="fill:none;stroke:var(--mat);stroke-width:2"/>
 <path d="M30 140 C120 130 220 100 304 90" style="fill:none;stroke:var(--phy);stroke-width:2"/>
 <path d="M30 140 C150 138 230 100 270 14" style="fill:none;stroke:var(--bad);stroke-width:2"/>
 <path d="M30 140 C70 138 90 110 100 14" style="fill:none;stroke:var(--ink);stroke-width:2"/>
-<g style="font-size:10px;fill:var(--ink)"><text x="270" y="108" style="fill:var(--mat)">n</text><text x="262" y="84" style="fill:var(--phy)">n log n</text><text x="256" y="30" style="fill:var(--bad)">n²</text><text x="106" y="28">2ⁿ</text><text x="270" y="160" style="fill:var(--muted)">n →</text></g>
+<g style="font-size:10px;fill:var(--ink)"><text x="270" y="108" style="fill:var(--mat)">n</text><text x="262" y="84" style="fill:var(--phy)">n log n</text><text x="276" y="24" style="fill:var(--bad)">n²</text><text x="106" y="28">2ⁿ</text><text x="270" y="160" style="fill:var(--muted)">n →</text></g>
 </svg>
 :::
 

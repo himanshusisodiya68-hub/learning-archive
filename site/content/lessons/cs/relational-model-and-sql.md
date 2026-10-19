@@ -119,8 +119,8 @@ The cure is to give every kind of thing its own **table** (a grid of rows and co
 Our tiny shop has two tables.
 
 :::figure caption="Two tables linked by a key. Each order points at its customer; the customer's details are stored once."
-<svg viewBox="0 0 560 190" role="img" aria-label="customers table with columns id, name, city; orders table with columns id, customer_id, amount; arrow from customer_id to id">
-<g class="faint"><rect x="20" y="40" width="210" height="110" fill="none" stroke="currentColor"/><rect x="300" y="40" width="240" height="110" fill="none" stroke="currentColor"/></g>
+<svg viewBox="0 0 620 190" role="img" aria-label="customers table with columns id, name, city; orders table with columns id, customer_id, amount; arrow from customer_id to id">
+<g class="faint"><rect x="20" y="40" width="210" height="110" fill="none" stroke="currentColor"/><rect x="300" y="40" width="300" height="110" fill="none" stroke="currentColor"/></g>
 <text x="20" y="28" style="font-size:13px;fill:var(--ink)">customers</text>
 <text x="300" y="28" style="font-size:13px;fill:var(--ink)">orders</text>
 <g style="font-size:12px;fill:var(--ink)">
@@ -129,11 +129,11 @@ Our tiny shop has two tables.
 <text x="30" y="106">2</text><text x="140" y="106">Ravi</text><text x="190" y="106">Delhi</text>
 <text x="30" y="126">3</text><text x="140" y="126">Meera</text><text x="190" y="126">Pune</text>
 <text x="30" y="146">4</text><text x="140" y="146">Karan</text><text x="190" y="146">Delhi</text>
-<text x="310" y="62" style="font-weight:bold">id</text><text x="350" y="62" style="fill:var(--mat);font-weight:bold">customer_id (foreign key)</text><text x="490" y="62" style="font-weight:bold">amount</text>
-<text x="310" y="86">10</text><text x="380" y="86">1</text><text x="500" y="86">500</text>
-<text x="310" y="106">11</text><text x="380" y="106">1</text><text x="500" y="106">250</text>
-<text x="310" y="126">12</text><text x="380" y="126">2</text><text x="500" y="126">900</text>
-<text x="310" y="146">13</text><text x="380" y="146">3</text><text x="500" y="146">120</text>
+<text x="310" y="62" style="font-weight:bold">id</text><text x="350" y="62" style="fill:var(--mat);font-weight:bold">customer_id (foreign key)</text><text x="545" y="62" style="font-weight:bold">amount</text>
+<text x="310" y="86">10</text><text x="380" y="86">1</text><text x="555" y="86">500</text>
+<text x="310" y="106">11</text><text x="380" y="106">1</text><text x="555" y="106">250</text>
+<text x="310" y="126">12</text><text x="380" y="126">2</text><text x="555" y="126">900</text>
+<text x="310" y="146">13</text><text x="380" y="146">3</text><text x="555" y="146">120</text>
 </g>
 <path class="pen" d="M375 90 C340 175 120 175 40 90" fill="none" stroke="var(--mat)" stroke-width="2"/>
 </svg>

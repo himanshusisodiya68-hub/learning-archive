@@ -127,12 +127,12 @@ print("Dhoni" in batted)   # False
 :::figure caption="The same match in three shapes. Each is built to make one kind of question quick."
 <svg viewBox="0 0 320 100" role="img" aria-label="Three questions matched to list, dict and set">
 <g style="font-size:11px;fill:var(--ink)">
-<rect x="8" y="14" width="96" height="70" rx="8" style="fill:none;stroke:var(--mat);stroke-width:1.8"/>
-<text x="20" y="36">list</text><text x="20" y="54" style="fill:var(--muted)">where is it?</text><text x="20" y="72" style="fill:var(--muted)">balls[3]</text>
-<rect x="112" y="14" width="96" height="70" rx="8" style="fill:none;stroke:var(--mat);stroke-width:1.8"/>
-<text x="124" y="36">dict</text><text x="124" y="54" style="fill:var(--muted)">what goes with?</text><text x="124" y="72" style="fill:var(--muted)">runs["Kohli"]</text>
-<rect x="216" y="14" width="96" height="70" rx="8" style="fill:none;stroke:var(--mat);stroke-width:1.8"/>
-<text x="228" y="36">set</text><text x="228" y="54" style="fill:var(--muted)">is it in here?</text><text x="228" y="72" style="fill:var(--muted)">x in batted</text>
+<rect x="6" y="14" width="100" height="70" rx="8" style="fill:none;stroke:var(--mat);stroke-width:1.8"/>
+<text x="14" y="36">list</text><text x="14" y="54" style="fill:var(--muted);font-size:10px">where is it?</text><text x="14" y="72" style="fill:var(--muted);font-size:10px">balls[3]</text>
+<rect x="110" y="14" width="100" height="70" rx="8" style="fill:none;stroke:var(--mat);stroke-width:1.8"/>
+<text x="118" y="36">dict</text><text x="118" y="54" style="fill:var(--muted);font-size:10px">what goes with?</text><text x="118" y="72" style="fill:var(--muted);font-size:10px">runs["Kohli"]</text>
+<rect x="214" y="14" width="100" height="70" rx="8" style="fill:none;stroke:var(--mat);stroke-width:1.8"/>
+<text x="222" y="36">set</text><text x="222" y="54" style="fill:var(--muted);font-size:10px">is it in here?</text><text x="222" y="72" style="fill:var(--muted);font-size:10px">x in batted</text>
 </g>
 </svg>
 :::

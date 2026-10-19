@@ -122,7 +122,7 @@ How do we squeeze minus signs into a row of bits? Ride the odometer backwards. I
 In this scheme, called **two's complement**, half the patterns are used for negatives. Take 3 bits for a small picture:
 
 :::figure caption="The 3-bit ring. Going one step forward adds 1, going one step back subtracts 1, and the pattern 111 is one step back from 000, so it is -1."
-<svg viewBox="0 0 320 200" role="img" aria-label="Eight 3-bit patterns around a ring with their signed values: 000 is 0, 001 is 1, 010 is 2, 011 is 3, 100 is -4, 101 is -3, 110 is -2, 111 is -1">
+<svg viewBox="0 -12 320 212" role="img" aria-label="Eight 3-bit patterns around a ring with their signed values: 000 is 0, 001 is 1, 010 is 2, 011 is 3, 100 is -4, 101 is -3, 110 is -2, 111 is -1">
 <circle cx="160" cy="95" r="58" style="fill:none;stroke:var(--muted);stroke-width:1.5" class="faint"/>
 <circle cx="160.0" cy="37.0" r="5" style="fill:var(--ink)"/>
 <text x="160.0" y="7.0" text-anchor="middle" style="font-size:12px;fill:var(--muted)">000</text>
@@ -148,7 +148,7 @@ In this scheme, called **two's complement**, half the patterns are used for nega
 <circle cx="119.0" cy="54.0" r="5" style="fill:var(--c)"/>
 <text x="94.9" y="33.9" text-anchor="middle" style="font-size:12px;fill:var(--muted)">111</text>
 <text x="137.4" y="77.4" text-anchor="middle" style="font-size:14px;fill:var(--c)">-1</text>
-<text x="160" y="99" text-anchor="middle" style="font-size:11px;fill:var(--muted)">+1 clockwise</text></svg>
+<text x="160" y="93" text-anchor="middle" style="font-size:10px;fill:var(--muted)">+1</text><text x="160" y="105" text-anchor="middle" style="font-size:10px;fill:var(--muted)">clockwise</text></svg>
 :::
 
 The first bit now tells you the sign: 1 means negative. In an $n$-bit box the numbers run from $-2^{n-1}$ to $2^{n-1}-1$. For 8 bits that is **−128 to 127**, and for 32 bits about ±2.1 billion. There is one more negative number than positive, because zero uses up one of the non-negative patterns.

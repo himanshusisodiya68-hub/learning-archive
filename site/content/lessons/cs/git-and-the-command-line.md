@@ -177,8 +177,8 @@ To try an idea without risk, make a second label. Work on it, and `main` stays u
 :::figure caption="Two branches. Commits C and D live on feature while E lands on main. The merge commit M has two parents."
 <svg viewBox="0 0 360 150" role="img" aria-label="Commit graph: A and B on main, C and D on a feature branch, E on main, and a merge commit M with two parents">
 <g style="stroke:var(--ink);stroke-width:1.5;fill:none">
-<line x1="50" y1="40" x2="110" y2="40"/><line x1="110" y1="40" x2="190" y2="40"/><line x1="190" y1="40" x2="270" y2="40"/>
-<path d="M110 40 L150 100 L220 100 L270 40"/>
+<line x1="63" y1="40" x2="97" y2="40"/><line x1="123" y1="40" x2="177" y2="40"/><line x1="203" y1="40" x2="257" y2="40"/>
+<path d="M117.2 50.8 L142.8 89.2 M163 100 L207 100 M228.3 90 L261.7 50"/>
 </g>
 <g style="font-size:11px;fill:var(--ink);text-anchor:middle">
 <circle cx="50" cy="40" r="13" style="fill:color-mix(in srgb,var(--mat) 18%,var(--surface));stroke:var(--mat)"/><text x="50" y="44">A</text>

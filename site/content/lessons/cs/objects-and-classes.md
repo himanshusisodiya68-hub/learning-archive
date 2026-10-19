@@ -147,21 +147,21 @@ Calling `score` always bumps runs and balls together, so they cannot drift apart
 ```
 
 :::figure caption="One object, two halves: remembered facts and the actions that change them. The class is the blueprint; asha and ravi are two objects with separate state."
-<svg viewBox="0 0 560 170" role="img" aria-label="A class blueprint and two objects made from it">
-<rect x="10" y="20" width="150" height="110" rx="8" style="fill:none;stroke:var(--muted);stroke-dasharray:5 4"/>
+<svg viewBox="0 0 580 170" role="img" aria-label="A class blueprint and two objects made from it">
+<rect x="10" y="20" width="190" height="110" rx="8" style="fill:none;stroke:var(--muted);stroke-dasharray:5 4"/>
 <text x="24" y="42" style="font-size:12px;fill:var(--muted)">class Batter</text>
 <text x="24" y="64" style="font-size:11px;fill:var(--ink)">state: name, runs, balls</text>
 <text x="24" y="84" style="font-size:11px;fill:var(--ink)">score(), strike_rate()</text>
 <text x="24" y="116" style="font-size:11px;fill:var(--muted)">the blueprint</text>
-<path d="M162 60 L250 40" class="pen"/><path d="M162 90 L250 112" class="pen"/>
-<rect x="252" y="14" width="140" height="62" rx="8" style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.5"/>
-<text x="264" y="36" style="font-size:12px;fill:var(--ink)">asha</text>
-<text x="264" y="56" style="font-size:11px;fill:var(--ink)">runs 10, balls 2</text>
-<rect x="252" y="90" width="140" height="62" rx="8" style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.5"/>
-<text x="264" y="112" style="font-size:12px;fill:var(--ink)">ravi</text>
-<text x="264" y="132" style="font-size:11px;fill:var(--ink)">runs 0, balls 0</text>
-<text x="410" y="50" style="font-size:11px;fill:var(--muted)">each object, its own state</text>
-<text x="410" y="126" style="font-size:11px;fill:var(--muted)">same methods, shared blueprint</text>
+<path d="M202 60 L290 40" class="pen"/><path d="M202 90 L290 112" class="pen"/>
+<rect x="292" y="14" width="140" height="62" rx="8" style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.5"/>
+<text x="304" y="36" style="font-size:12px;fill:var(--ink)">asha</text>
+<text x="304" y="56" style="font-size:11px;fill:var(--ink)">runs 10, balls 2</text>
+<rect x="292" y="90" width="140" height="62" rx="8" style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.5"/>
+<text x="304" y="112" style="font-size:12px;fill:var(--ink)">ravi</text>
+<text x="304" y="132" style="font-size:11px;fill:var(--ink)">runs 0, balls 0</text>
+<text x="450" y="46" style="font-size:11px;fill:var(--muted)">each object,</text><text x="450" y="60" style="font-size:11px;fill:var(--muted)">its own state</text>
+<text x="450" y="122" style="font-size:11px;fill:var(--muted)">same methods,</text><text x="450" y="136" style="font-size:11px;fill:var(--muted)">shared blueprint</text>
 </svg>
 :::
 

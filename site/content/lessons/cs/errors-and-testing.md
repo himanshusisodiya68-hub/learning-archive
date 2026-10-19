@@ -132,7 +132,8 @@ If nothing on the way catches it, the program ends and prints a **traceback**: t
 <g style="font-size:11px;fill:var(--ink)">
 <text x="32" y="40">main(): try ... except ValueError</text>
 <text x="56" y="72">load_user(): no handler</text>
-<text x="80" y="108">read_age(): int("abc") fails</text>
+<text x="80" y="104">read_age():</text>
+<text x="80" y="118">int("abc") fails</text>
 </g>
 <path d="M176 130 C176 130 320 130 340 100 C355 76 330 40 296 36" class="pen" style="fill:none;stroke:var(--bad);stroke-width:2"/>
 <text x="352" y="62" style="font-size:11px;fill:var(--bad)">ValueError climbs up,</text>

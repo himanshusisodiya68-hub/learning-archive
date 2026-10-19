@@ -179,16 +179,16 @@ def place_order(cart, card):
 The top function now reads like a table of contents. Each helper is short enough to test alone: `total_with_delivery` can be checked with a plain list and no card at all.
 
 :::figure caption="A function that reads like a table of contents: one level of detail at a time."
-<svg viewBox="0 0 360 150" role="img" aria-label="place_order calls three smaller functions">
-<rect x="130" y="10" width="100" height="32" rx="6" style="fill:color-mix(in srgb,var(--mat) 14%,var(--surface));stroke:var(--mat);stroke-width:1.5"/>
-<text x="144" y="31" style="font-size:12px;fill:var(--ink)">place_order()</text>
-<path d="M160 42 L70 94 M180 42 L180 94 M200 42 L290 94" class="pen" style="fill:none;stroke:var(--muted);stroke-width:1.5"/>
-<rect x="14" y="96" width="112" height="32" rx="6" style="fill:none;stroke:var(--mat);stroke-width:1.5"/>
-<text x="22" y="117" style="font-size:11px;fill:var(--ink)">total_with_delivery()</text>
-<rect x="128" y="96" width="104" height="32" rx="6" style="fill:none;stroke:var(--mat);stroke-width:1.5"/>
-<text x="150" y="117" style="font-size:11px;fill:var(--ink)">charge()</text>
-<rect x="238" y="96" width="112" height="32" rx="6" style="fill:none;stroke:var(--mat);stroke-width:1.5"/>
-<text x="254" y="117" style="font-size:11px;fill:var(--ink)">send_receipt()</text>
+<svg viewBox="0 0 410 150" role="img" aria-label="place_order calls three smaller functions">
+<rect x="150" y="10" width="120" height="32" rx="6" style="fill:color-mix(in srgb,var(--mat) 14%,var(--surface));stroke:var(--mat);stroke-width:1.5"/>
+<text x="163" y="31" style="font-size:12px;fill:var(--ink)">place_order()</text>
+<path d="M180 42 L88 94 M210 42 L210 94 M240 42 L335 94" class="pen" style="fill:none;stroke:var(--muted);stroke-width:1.5"/>
+<rect x="8" y="96" width="160" height="32" rx="6" style="fill:none;stroke:var(--mat);stroke-width:1.5"/>
+<text x="18" y="117" style="font-size:11px;fill:var(--ink)">total_with_delivery()</text>
+<rect x="176" y="96" width="70" height="32" rx="6" style="fill:none;stroke:var(--mat);stroke-width:1.5"/>
+<text x="186" y="117" style="font-size:11px;fill:var(--ink)">charge()</text>
+<rect x="254" y="96" width="148" height="32" rx="6" style="fill:none;stroke:var(--mat);stroke-width:1.5"/>
+<text x="264" y="117" style="font-size:11px;fill:var(--ink)">send_receipt()</text>
 </svg>
 :::
 

@@ -162,13 +162,13 @@ The unit is the joule per coulomb, called the **volt** (V). A potential differen
 <rect class="m2" x="250" y="150" width="90" height="40" style="stroke:var(--ink);stroke-width:1.2"/>
 <polyline class="ln" points="110,55 200,55 200,120 270,120 270,150" style="stroke-width:3"/>
 <circle class="ln" cx="200" cy="90" r="16"/><line class="ln" x1="184" y1="90" x2="216" y2="90"/><line class="ln" x1="200" y1="74" x2="200" y2="106"/>
-<polyline class="ln" points="250,185 60,185 60,70" style="stroke-width:3"/>
+<polyline class="ln" points="250,185 60,185 60,154" style="stroke-width:3"/><polyline class="ln" points="60,120 60,70" style="stroke-width:3"/>
 <rect x="45" y="120" width="30" height="34" style="fill:var(--surface);stroke:var(--chem);stroke-width:2"/>
 <text class="k" x="48" y="141">pump</text>
 <line class="ray" x1="140" y1="45" x2="180" y2="45"/><text x="128" y="40">flow</text>
 <line class="faint" x1="10" y1="50" x2="10" y2="170"/><text x="14" y="104">h</text>
 <text x="22" y="22">high tank (high potential)</text>
-<text x="222" y="204">low tank (low potential)</text>
+<text x="350" y="204" text-anchor="end">low tank (low potential)</text>
 <text x="222" y="84">wheel = lamp</text>
 <text x="84" y="134">= battery</text>
 </svg>
@@ -288,7 +288,7 @@ In time $t$ each electron moves a distance $v_d t$. So every electron within tha
 <g style="fill:var(--chem)"><circle cx="135" cy="60" r="4"/><circle cx="160" cy="88" r="4"/><circle cx="185" cy="58" r="4"/><circle cx="205" cy="92" r="4"/><circle cx="228" cy="70" r="4"/><circle cx="150" cy="72" r="4"/><circle cx="215" cy="52" r="4"/></g>
 <line class="gr" x1="110" y1="132" x2="250" y2="132"/><line class="gr" x1="110" y1="126" x2="110" y2="138"/><line class="gr" x1="250" y1="126" x2="250" y2="138"/>
 <text class="k" x="160" y="150">v_d t</text><text class="k" x="262" y="62">A</text>
-<line class="ray" x1="140" y1="22" x2="220" y2="22"/><path d="M220 17 L230 22 L220 27 Z" style="fill:var(--phy)"/><text x="236" y="26">drift (positive carriers)</text>
+<text x="20" y="26">drift (positive carriers)</text><line class="ray" x1="200" y1="22" x2="280" y2="22"/><path d="M280 17 L290 22 L280 27 Z" style="fill:var(--phy)"/>
 </svg>
 :::
 

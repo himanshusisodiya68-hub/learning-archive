@@ -132,7 +132,7 @@ The clerk needs to remember where they are in the notebook. A special sticky not
 Then back to step 1, forever. A jump instruction just writes a new number into the PC, which is all a loop or an `if` really is at this level.
 
 :::figure caption="The loop a CPU repeats billions of times a second. The program counter picks the highlighted instruction; a jump changes the program counter."
-<svg viewBox="0 0 360 170" role="img" aria-label="Memory of instructions on the left, the CPU loop of fetch, decode and execute in the middle, registers and arithmetic unit on the right">
+<svg viewBox="0 0 360 182" role="img" aria-label="Memory of instructions on the left, the CPU loop of fetch, decode and execute in the middle, registers and arithmetic unit on the right">
 <rect x="14" y="14" width="96" height="142" rx="8" style="fill:none;stroke:var(--ink);stroke-width:1.5"/>
 <g style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--rule)"><rect x="22" y="24" width="80" height="22"/><rect x="22" y="50" width="80" height="22"/><rect x="22" y="76" width="80" height="22"/><rect x="22" y="102" width="80" height="22"/><rect x="22" y="128" width="80" height="22"/></g>
 <rect x="22" y="76" width="80" height="22" style="fill:var(--c);fill-opacity:0.35;stroke:var(--c);stroke-width:2"/>
@@ -144,7 +144,7 @@ Then back to step 1, forever. A jump instruction just writes a new number into t
 <g style="fill:var(--ink);font-size:11px;text-anchor:middle"><text x="175" y="44">fetch</text><text x="175" y="88">decode</text><text x="175" y="132">execute</text></g>
 <g style="stroke:var(--c);stroke-width:1.6;fill:none"><path d="M175 54 L175 70"/><path d="M175 98 L175 114"/></g>
 <rect x="240" y="26" width="108" height="64" rx="8" style="fill:none;stroke:var(--ink);stroke-width:1.4"/>
-<g style="fill:var(--ink);font-size:10px"><text x="248" y="44">registers</text><text x="248" y="60">r0 = 5   r1 = 3</text><text x="248" y="78">r0 = 8 after ADD</text></g>
+<g style="fill:var(--ink);font-size:10px"><text x="248" y="44">registers</text><text x="248" y="60">r0 = 5   r1 = 3</text><text x="246" y="78" style="font-size:9px">r0 = 8 after ADD</text></g>
 <rect x="240" y="106" width="108" height="36" rx="8" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:1.8"/>
 <text x="266" y="128" style="font-size:11px;fill:var(--ink)">adder (ALU)</text>
 <path d="M210 128 L240 124" style="stroke:var(--c);stroke-width:1.6;fill:none"/>

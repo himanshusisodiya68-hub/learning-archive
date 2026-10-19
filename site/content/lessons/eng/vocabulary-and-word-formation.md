@@ -60,10 +60,10 @@ opener:
       <rect x="150" y="80" width="120" height="50" rx="12" fill="none" stroke="var(--eng)" stroke-width="2.5"/>
       <text x="210" y="102" text-anchor="middle" font-size="18" font-weight="600" fill="var(--ink)">decide</text>
       <text x="210" y="121" text-anchor="middle" font-size="12" fill="var(--muted)">the root</text>
-      <line x1="180" y1="80" x2="100" y2="48" stroke="var(--eng)" stroke-width="1.8"/>
-      <line x1="240" y1="80" x2="320" y2="48" stroke="var(--eng)" stroke-width="1.8"/>
-      <line x1="180" y1="130" x2="100" y2="162" stroke="var(--eng)" stroke-width="1.8"/>
-      <line x1="240" y1="130" x2="320" y2="162" stroke="var(--eng)" stroke-width="1.8"/>
+      <line x1="180" y1="80" x2="135" y2="62" stroke="var(--eng)" stroke-width="1.8"/>
+      <line x1="240" y1="80" x2="285" y2="62" stroke="var(--eng)" stroke-width="1.8"/>
+      <line x1="180" y1="130" x2="135" y2="148" stroke="var(--eng)" stroke-width="1.8"/>
+      <line x1="240" y1="130" x2="285" y2="148" stroke="var(--eng)" stroke-width="1.8"/>
       <rect x="22" y="22" width="150" height="40" rx="8" fill="none" stroke="var(--muted)"/>
       <text x="97" y="40" text-anchor="middle" font-size="15" fill="var(--ink)">decision</text>
       <text x="97" y="55" text-anchor="middle" font-size="11" fill="var(--muted)">noun: a thing</text>

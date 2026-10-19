@@ -166,7 +166,7 @@ print(translate(20000))              # 40480
 ```
 
 :::figure caption="Translation: the page number goes through the page table, the offset passes straight through. Each program has its own table."
-<svg viewBox="0 0 420 170" role="img" aria-label="A virtual address split into page number and offset; the page number is looked up in the page table to give a frame number; frame and offset form the physical address">
+<svg viewBox="0 0 440 170" role="img" aria-label="A virtual address split into page number and offset; the page number is looked up in the page table to give a frame number; frame and offset form the physical address">
 <g style="stroke:var(--ink);stroke-width:1.3">
 <rect x="14" y="20" width="110" height="30" style="fill:color-mix(in srgb,var(--c) 15%,var(--surface))"/>
 <rect x="14" y="20" width="70" height="30" style="fill:color-mix(in srgb,var(--c) 40%,var(--surface))"/>

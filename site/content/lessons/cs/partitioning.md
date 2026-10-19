@@ -193,10 +193,12 @@ Two fixes keep movement small.
 <circle cx="260" cy="75" r="9" style="fill:var(--surface);stroke:var(--bad);stroke-width:2;stroke-dasharray:3 2"/>
 <g style="font-size:12px;fill:var(--ink)"><text x="166" y="20">A</text><text x="262" y="180">B</text><text x="80" y="182">C</text><text x="272" y="72" style="fill:var(--bad)">D (new)</text></g>
 <g style="fill:var(--ink)"><circle cx="228" cy="48" r="3"/><circle cx="250" cy="104" r="3"/><circle cx="215" cy="205" r="3"/><circle cx="106" cy="196" r="3"/><circle cx="82" cy="95" r="3"/><circle cx="120" cy="45" r="3"/></g>
-<text x="300" y="120" style="font-size:12px;fill:var(--ink)">Before D joins, the keys</text>
-<text x="300" y="138" style="font-size:12px;fill:var(--ink)">between A and B all went to B.</text>
-<text x="300" y="164" style="font-size:12px;fill:var(--ink)">After, those just before D</text>
-<text x="300" y="182" style="font-size:12px;fill:var(--ink)">move to D. Nothing else moves.</text>
+<text x="296" y="104" style="font-size:10px;fill:var(--ink)">Before D joins, the keys</text>
+<text x="296" y="118" style="font-size:10px;fill:var(--ink)">between A and B all</text>
+<text x="296" y="132" style="font-size:10px;fill:var(--ink)">went to B.</text>
+<text x="296" y="158" style="font-size:10px;fill:var(--ink)">After, those just before D</text>
+<text x="296" y="172" style="font-size:10px;fill:var(--ink)">move to D. Nothing else</text>
+<text x="296" y="186" style="font-size:10px;fill:var(--ink)">moves.</text>
 </svg>
 :::
 

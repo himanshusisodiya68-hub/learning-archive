@@ -124,7 +124,7 @@ Read it as: the log sits 6 m from the light bag and 2 m from the heavy one. The 
 :::figure caption="A 2 kg and a 6 kg bag 8 m apart balance on a log 6 m from the light one. That balance point is the centre of mass."
 <svg viewBox="0 0 380 175" role="img" aria-label="Plank balanced on a pivot with a 2 kilogram bag at the left end and a 6 kilogram bag at the right end">
 <rect x="30" y="100" width="320" height="8" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.4"/>
-<rect x="38" y="74" width="24" height="26" rx="3" class="m2" style="stroke:var(--ink);stroke-width:1.2"/><text x="40" y="91" class="k">2 kg</text>
+<rect x="38" y="74" width="38" height="26" rx="3" class="m2" style="stroke:var(--ink);stroke-width:1.2"/><text x="43" y="91" class="k">2 kg</text>
 <rect x="308" y="58" width="44" height="42" rx="3" class="m2" style="stroke:var(--ink);stroke-width:1.2"/><text x="318" y="83" class="k">6 kg</text>
 <path d="M260 108 L244 140 L276 140 Z" style="fill:var(--chem);stroke:var(--ink);stroke-width:1.2"/>
 <text x="228" y="156" class="k">balance point</text>
@@ -234,8 +234,8 @@ Two things follow at once.
 <path d="M180 75 Q205 80 232 175" class="faint"/><path d="M180 75 Q150 80 128 175" class="faint"/>
 <circle cx="136" cy="145" r="5" style="fill:var(--phy)"/><circle cx="224" cy="145" r="5" style="fill:var(--phy)"/>
 <circle cx="180" cy="145" r="4" style="fill:var(--chem);stroke:var(--ink);stroke-width:1"/>
-<path d="M180 75 L180 145" class="faint"/>
-<text x="150" y="60" class="k">burst</text><text x="188" y="162">centre of mass</text>
+<path d="M180 75 L180 182" class="faint"/>
+<text x="150" y="60" class="k">burst</text><text x="180" y="196" style="text-anchor:middle">centre of mass</text>
 <text x="86" y="140">piece</text><text x="236" y="140">piece</text>
 </svg>
 :::

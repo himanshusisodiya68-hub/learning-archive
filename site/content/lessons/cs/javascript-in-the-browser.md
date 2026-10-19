@@ -152,12 +152,12 @@ console.log("D");
 Why `A D C B`? A and D are plain code on the current job. When it ends, the loop drains the microtasks (C) and only then takes the timer task (B), even though the timer was set to 0 ms.
 
 :::figure caption="The event loop: tasks wait in queues, the main thread runs one job to completion, urgent promise callbacks go first."
-<svg viewBox="0 0 320 150" role="img" aria-label="Task queue and microtask queue feed the call stack on the main thread">
+<svg viewBox="0 0 320 158" role="img" aria-label="Task queue and microtask queue feed the call stack on the main thread">
 <g style="fill:color-mix(in srgb,var(--mat) 14%,var(--surface));stroke:var(--rule)"><rect x="10" y="14" width="96" height="30" rx="4"/><rect x="10" y="60" width="96" height="30" rx="4"/><rect x="210" y="26" width="100" height="70" rx="6"/></g>
 <g style="font-size:11px;fill:var(--ink)"><text x="18" y="33">task queue</text><text x="18" y="79">microtasks</text><text x="226" y="50">main thread</text><text x="226" y="66">runs one job</text><text x="226" y="82">to the end</text></g>
 <g style="fill:none;stroke:var(--mat);stroke-width:2"><path d="M108 29 L206 52"/><path d="M108 75 L206 70"/></g>
 <text x="8" y="118" style="font-size:11px;fill:var(--muted)">after every job, microtasks are emptied first</text>
-<text x="8" y="134" style="font-size:11px;fill:var(--muted)">then the next task is taken; between tasks the page may paint</text>
+<text x="8" y="134" style="font-size:11px;fill:var(--muted)">then the next task is taken;</text><text x="8" y="150" style="font-size:11px;fill:var(--muted)">between tasks the page may paint</text>
 </svg>
 :::
 

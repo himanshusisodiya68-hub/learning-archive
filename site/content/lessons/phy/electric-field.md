@@ -257,7 +257,7 @@ pointing from $-q$ to $+q$. Unit C m.
 <line class="faint" x1="120" y1="120" x2="150" y2="30"/><line class="faint" x1="180" y1="120" x2="150" y2="30"/>
 <circle cx="120" cy="120" r="8" style="fill:var(--ink)"/><circle class="obj" cx="180" cy="120" r="8"/>
 <text class="k" x="112" y="148">−q</text><text class="k" x="174" y="148">+q</text>
-<line style="stroke:var(--ink);stroke-width:2" x1="132" y1="102" x2="166" y2="102"/><polygon style="fill:var(--ink)" points="172,102 163,98 163,106"/><text class="k" x="146" y="96">p</text>
+<line style="stroke:var(--ink);stroke-width:2" x1="132" y1="102" x2="166" y2="102"/><polygon style="fill:var(--ink)" points="172,102 163,98 163,106"/><text class="k" x="156" y="96">p</text>
 <text x="140" y="166">2a</text>
 <circle class="obj" cx="300" cy="120" r="3.5"/><text class="k" x="296" y="140">P</text>
 <line class="ray" x1="300" y1="120" x2="350" y2="120"/><polygon style="fill:var(--phy)" points="358,120 348,115 348,125"/><text x="318" y="110">E ∥ p</text>
@@ -354,7 +354,7 @@ Unlike gravity, the acceleration depends on $q/m$. Example 1.7 in the NCERT prob
 <line class="ray" x1="150" y1="75" x2="350" y2="20.5"/>
 <line class="faint" x1="95" y1="90" x2="150" y2="75"/>
 <line class="ln" x1="350" y1="10" x2="350" y2="170"/>
-<text x="356" y="58">Y</text><text x="112" y="86">φ</text>
+<text x="356" y="58">Y</text><text x="116" y="74">φ</text>
 <line class="faint" x1="40" y1="155" x2="150" y2="155"/><text x="90" y="170">L</text>
 <line class="faint" x1="95" y1="165" x2="350" y2="165"/><text x="220" y="160">D</text>
 </svg>

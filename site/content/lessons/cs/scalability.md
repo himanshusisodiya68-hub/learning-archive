@@ -133,7 +133,7 @@ There are only two ways out. Make the owner faster (a better stove, a quicker ha
 Start with the simple option, and move to the harder one only when the numbers say so.
 
 :::figure caption="Response time against how busy a server is. It climbs gently, then bends sharply upward."
-<svg viewBox="0 0 320 230" role="img" aria-label="Curve of response time rising steeply as utilisation approaches 100 percent">
+<svg viewBox="0 0 320 240" role="img" aria-label="Curve of response time rising steeply as utilisation approaches 100 percent">
 <line x1="40" y1="200" x2="305" y2="200" class="axis"/>
 <line x1="40" y1="200" x2="40" y2="16" class="axis"/>
 <polyline points="40,200 105,197 170,191 222,179 248,164 274,119 287,30" style="fill:none;stroke:var(--mat);stroke-width:2.5"/>
@@ -141,7 +141,7 @@ Start with the simple option, and move to the harder one only when the numbers s
 <line x1="274" y1="200" x2="274" y2="119" class="faint"/>
 <text x="238" y="216" style="font-size:10px;fill:var(--muted)">80%</text>
 <text x="264" y="216" style="font-size:10px;fill:var(--muted)">90%</text>
-<text x="122" y="228" style="font-size:10px;fill:var(--muted)">how busy the server is</text>
+<text x="122" y="234" style="font-size:10px;fill:var(--muted)">how busy the server is</text>
 <text x="44" y="30" style="font-size:10px;fill:var(--muted)">wait</text>
 <text x="170" y="158" style="font-size:10px;fill:var(--ink)">5× at 80%</text>
 <text x="200" y="104" style="font-size:10px;fill:var(--ink)">10× at 90%</text>

@@ -126,7 +126,7 @@ $$F_{ba} = I_b L B_a = \frac{\mu_0 I_a I_b}{2\pi d}\,L .$$
 **Direction.** Point the fingers along $\mathbf L$ (out of the page) and curl them towards $\mathbf B_a$: the thumb of the cross product points **towards wire *a***. The figure shows it.
 
 :::figure caption="Two wires seen end-on, both currents out of the page (dots). The field of a at b points up; I L × B then points left, towards a. By symmetry the field of b at a points down and the force on a points right. Like currents attract."
-<svg viewBox="0 0 320 190" role="img" aria-label="Two wires end on, field circles around wire a, attraction arrows">
+<svg viewBox="0 0 320 208" role="img" aria-label="Two wires end on, field circles around wire a, attraction arrows">
 <circle class="faint" cx="100" cy="95" r="40"/><circle class="faint" cx="100" cy="95" r="80"/>
 <circle cx="100" cy="95" r="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.6"/><circle cx="100" cy="95" r="3" style="fill:var(--ink)"/>
 <circle cx="220" cy="95" r="10" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.6"/><circle cx="220" cy="95" r="3" style="fill:var(--ink)"/>
@@ -137,7 +137,7 @@ $$F_{ba} = I_b L B_a = \frac{\mu_0 I_a I_b}{2\pi d}\,L .$$
 <line class="ln" x1="114" y1="95" x2="150" y2="95" style="stroke:var(--chem);stroke-width:2.4"/><polygon points="158,95 148,90 148,100" style="fill:var(--chem)"/>
 <text x="160" y="118">F</text><text x="134" y="118">F</text>
 <path class="ray" d="M 100 55 A 40 40 0 0 0 60 95" /><polygon points="60,103 55,92 65,92" style="fill:var(--phy)"/>
-<text x="20" y="178">field circles of a run anticlockwise (right-hand rule)</text>
+<text x="20" y="192">field circles of a run anticlockwise</text><text x="20" y="205">(right-hand rule)</text>
 </svg>
 :::
 

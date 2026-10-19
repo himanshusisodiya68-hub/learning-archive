@@ -137,14 +137,14 @@ The template for a whole contest has five phases:
 Why shortest first? Suppose three problems take 10, 20 and 50 minutes with no mistakes. The order 10, 20, 50 gives solve times 10, 30, 80 and penalty 120. The order 50, 20, 10 gives 50, 70, 80 and penalty 200. The long job placed first delays everything after it. This is the same exchange argument as in the greedy lesson.
 
 :::figure caption="Same three problems, two orders. Shortest first finishes the cheap ones early and cuts total penalty from 200 to 120."
-<svg viewBox="0 0 320 130" role="img" aria-label="Two timelines of the same three problems in different orders">
+<svg viewBox="0 0 320 124" role="img" aria-label="Two timelines of the same three problems in different orders">
 <text x="8" y="22" style="font-size:10px;fill:var(--muted)">short first</text>
 <rect x="70" y="10" width="18" height="16" class="pen"/><rect x="88" y="10" width="36" height="16" class="pen"/><rect x="124" y="10" width="90" height="16" class="pen"/>
 <text x="74" y="22" style="font-size:9px;fill:var(--ink)">10</text><text x="98" y="22" style="font-size:9px;fill:var(--ink)">20</text><text x="160" y="22" style="font-size:9px;fill:var(--ink)">50</text>
 <text x="8" y="62" style="font-size:10px;fill:var(--muted)">long first</text>
 <rect x="70" y="50" width="90" height="16" class="pen"/><rect x="160" y="50" width="36" height="16" class="pen"/><rect x="196" y="50" width="18" height="16" class="pen"/>
 <text x="110" y="62" style="font-size:9px;fill:var(--ink)">50</text><text x="172" y="62" style="font-size:9px;fill:var(--ink)">20</text><text x="200" y="62" style="font-size:9px;fill:var(--ink)">10</text>
-<text x="70" y="104" style="font-size:10px;fill:var(--muted)">solve times: 10, 30, 80 (penalty 120) versus 50, 70, 80 (penalty 200)</text>
+<text x="8" y="100" style="font-size:10px;fill:var(--muted)">solve times: 10, 30, 80 (penalty 120)</text><text x="8" y="114" style="font-size:10px;fill:var(--muted)">versus 50, 70, 80 (penalty 200)</text>
 </svg>
 :::
 

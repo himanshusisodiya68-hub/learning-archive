@@ -155,7 +155,7 @@ A big screen is built as a tree of small functions called **components**, such a
 <g style="font-size:11px;fill:var(--ink);text-anchor:middle"><text x="160" y="29">App: state</text><text x="75" y="119">SeatMap</text><text x="245" y="119">Cart</text></g>
 <g style="fill:none;stroke:var(--mat);stroke-width:2"><path d="M140 40 L85 98"/><path d="M180 40 L235 98"/></g>
 <g style="fill:none;stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 3"><path d="M56 98 L110 42"/></g>
-<g style="font-size:10px;fill:var(--muted)"><text x="10" y="70">props down</text><text x="226" y="70">props down</text><text x="14" y="158">click: onSelect(14) goes up, state changes, everything re-renders</text></g>
+<g style="font-size:10px;fill:var(--muted)"><text x="10" y="70">props down</text><text x="226" y="70">props down</text><text x="14" y="148">click: onSelect(14) goes up,</text><text x="14" y="161">state changes, everything re-renders</text></g>
 </svg>
 :::
 

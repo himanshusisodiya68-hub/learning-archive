@@ -126,7 +126,7 @@ This only works smoothly if servers are **interchangeable**, which is why the sc
 :::figure caption="The client sees one address. The balancer chooses a server and skips the one that has failed."
 <svg viewBox="0 0 320 120" role="img" aria-label="Client to balancer to three servers with one failed">
 <g style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--ink);stroke-width:1.5"><rect x="8" y="44" width="52" height="32" rx="6"/><rect x="100" y="44" width="68" height="32" rx="6"/><rect x="230" y="8" width="70" height="28" rx="5"/><rect x="230" y="46" width="70" height="28" rx="5"/><rect x="230" y="84" width="70" height="28" rx="5" style="stroke:var(--bad);stroke-dasharray:4 3"/></g>
-<g style="font-size:10px;fill:var(--ink)"><text x="16" y="64">client</text><text x="108" y="64">balancer</text><text x="244" y="26">server 1</text><text x="244" y="64">server 2</text><text x="244" y="102">server 3 ✗</text></g>
+<g style="font-size:10px;fill:var(--ink)"><text x="16" y="64">client</text><text x="108" y="64">balancer</text><g style="font-size:9px"><text x="236" y="26" style="font-size:9px">server 1</text><text x="236" y="64" style="font-size:9px">server 2</text><text x="236" y="102" style="font-size:9px">server 3 ✗</text></g></g>
 <g class="axis"><line x1="60" y1="60" x2="100" y2="60"/><line x1="168" y1="56" x2="230" y2="24"/><line x1="168" y1="62" x2="230" y2="60"/></g>
 <line x1="168" y1="68" x2="230" y2="98" class="faint"/>
 </svg>
@@ -242,13 +242,13 @@ class Ring:
 The `vnodes` (virtual nodes) are the trick that keeps the load even: each server appears at many points on the ring, so no server gets one unlucky big arc. A more powerful server can be given more points. When a server dies, its many small arcs are spread among all the survivors, not dumped on a single neighbour.
 
 :::figure caption="Keys and servers share one circle. A key belongs to the first server clockwise from it."
-<svg viewBox="0 0 320 200" role="img" aria-label="A ring with three servers and some keys; each key points clockwise to the next server">
+<svg viewBox="0 0 320 216" role="img" aria-label="A ring with three servers and some keys; each key points clockwise to the next server">
 <circle cx="160" cy="100" r="70" style="fill:none;stroke:var(--muted);stroke-width:2"/>
 <g style="fill:var(--mat);stroke:var(--ink);stroke-width:1.5"><circle cx="160" cy="30" r="9"/><circle cx="221" cy="135" r="9"/><circle cx="99" cy="135" r="9"/></g>
 <g style="font-size:10px;fill:var(--ink)"><text x="152" y="20">S1</text><text x="232" y="150">S2</text><text x="76" y="152">S3</text></g>
 <g style="fill:var(--ink)"><circle cx="209" cy="48" r="4"/><circle cx="224" cy="95" r="4"/><circle cx="160" cy="170" r="4"/><circle cx="108" cy="52" r="4"/></g>
-<text x="238" y="60" style="font-size:10px;fill:var(--muted)">key, goes to S2</text>
-<text x="10" y="190" style="font-size:10px;fill:var(--muted)">add a server: only the keys just before it change owner</text>
+<text x="238" y="58" style="font-size:9px;fill:var(--muted)">key, goes</text><text x="238" y="69" style="font-size:9px;fill:var(--muted)">to S2</text>
+<text x="10" y="198" style="font-size:10px;fill:var(--muted)">add a server: only the keys</text><text x="10" y="210" style="font-size:10px;fill:var(--muted)">just before it change owner</text>
 </svg>
 :::
 

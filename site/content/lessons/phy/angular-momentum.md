@@ -177,7 +177,7 @@ Now the puzzle. Compare the kinetic energies. Since $K = \tfrac12 I\omega^2 = L^
 <rect x="165" y="100" width="34" height="30" style="fill:var(--c)"/><rect x="205" y="55" width="34" height="75" style="fill:var(--chem)"/>
 <text x="165" y="28" style="font-size:11px;fill:var(--muted)">w (2 to 5)</text>
 <rect x="265" y="70" width="22" height="60" style="fill:var(--c)"/><rect x="291" y="70" width="22" height="60" style="fill:var(--chem)"/>
-<text x="262" y="28" style="font-size:11px;fill:var(--muted)">L (6 and 6)</text>
+<text x="250" y="28" style="font-size:11px;fill:var(--muted)">L (6 and 6)</text>
 <text x="52" y="146" style="font-size:11px;fill:var(--muted)">first bar: arms out, second: arms in</text>
 </svg>
 :::

@@ -208,7 +208,7 @@ For NCERT Example 7.4, a 15.0 µF capacitor at 50 Hz has $X_C = 212\ \Omega$; on
 <path class="ray" d="M290.0,90.0 L298.3,75.8 L306.7,62.5 L315.0,51.1 L323.3,42.4 L331.7,36.9 L340.0,35.0 L348.3,36.9 L356.7,42.4 L365.0,51.1 L373.3,62.5 L381.7,75.8 L390.0,90.0 L398.3,104.2 L406.7,117.5 L415.0,128.9 L423.3,137.6 L431.7,143.1 L440.0,145.0 L448.3,143.1 L456.7,137.6 L465.0,128.9 L473.3,117.5 L481.7,104.2 L490.0,90.0"/>
 <path class="wf" d="M290.0,52.0 L298.3,53.3 L306.7,57.1 L315.0,63.1 L323.3,71.0 L331.7,80.2 L340.0,90.0 L348.3,99.8 L356.7,109.0 L365.0,116.9 L373.3,122.9 L381.7,126.7 L390.0,128.0 L398.3,126.7 L406.7,122.9 L415.0,116.9 L423.3,109.0 L431.7,99.8 L440.0,90.0 L448.3,80.2 L456.7,71.0 L465.0,63.1 L473.3,57.1 L481.7,53.3 L490.0,52.0"/>
 <text class="k" x="100" y="180">Inductor: i lags</text><text class="k" x="355" y="180">Capacitor: i leads</text>
-<text x="62" y="28" style="fill:var(--phy)">v peak</text><text x="118" y="46" style="fill:var(--eng)">i peak</text>
+<text x="62" y="28" style="fill:var(--phy)">v peak</text><text x="136" y="46" style="fill:var(--eng)">i peak</text>
 <text x="322" y="28" style="fill:var(--phy)">v peak</text><text x="282" y="46" style="fill:var(--eng)">i peak</text>
 <text x="236" y="94">t</text><text x="496" y="94">t</text>
 </svg>
@@ -246,7 +246,7 @@ Phasors add like vectors because sines of the same frequency add like the projec
 <text x="134" y="62" style="fill:var(--phy)">V</text><text x="100" y="72" style="fill:var(--eng)">I</text>
 <text x="314" y="62" style="fill:var(--phy)">V</text><text x="284" y="140" style="fill:var(--eng)">I</text>
 <text x="494" y="62" style="fill:var(--phy)">V</text><text x="408" y="56" style="fill:var(--eng)">I</text>
-<text x="270" y="108">90°</text><text x="424" y="86">90°</text>
+<text x="292" y="108">90°</text><text x="424" y="86">90°</text>
 <text class="k" x="45" y="175">Resistor</text><text class="k" x="225" y="175">Inductor</text><text class="k" x="400" y="175">Capacitor</text>
 </svg>
 :::
@@ -332,7 +332,7 @@ The quantity $\sqrt{R^2+\omega^2L^2}$ is the coil's **impedance**. Only $R$ abso
 <line class="wf" x1="50" y1="162" x2="140" y2="162"/>
 <path class="ln" d="M95,150 A45,45 0 0 0 87,125"/>
 <text x="100" y="140">φ</text><text x="120" y="176" style="fill:var(--eng)">I (reference)</text>
-<text x="130" y="145">V_R = IR</text><text x="238" y="95">V_L = IωL</text><text x="105" y="80" style="fill:var(--phy)">V = I√(R² + ω²L²)</text>
+<text x="130" y="145">V_R = IR</text><text x="238" y="95">V_L = IωL</text><text x="50" y="56" style="fill:var(--phy)">V = I√(R² + ω²L²)</text>
 </svg>
 :::
 
@@ -405,7 +405,7 @@ and it can be **smaller than either branch current**: energy sloshes between the
 :::figure caption="Current phasors for R in parallel with C. The common voltage V is the reference. I_R lies along V, I_C is 90° ahead, and the line current I is the diagonal, leading V by θ with tan θ = ωCR."
 <svg viewBox="0 0 360 180" role="img" aria-label="Current phasor diagram for a resistor and a capacitor in parallel">
 <defs><marker id="ahp7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker></defs>
-<line class="ray" x1="50" y1="150" x2="320" y2="150"/><text x="300" y="168" style="fill:var(--phy)">V (reference)</text>
+<line class="ray" x1="50" y1="150" x2="320" y2="150"/><text x="320" y="168" style="fill:var(--phy);text-anchor:end">V (reference)</text>
 <line class="wf" x1="50" y1="150" x2="200" y2="150" marker-end="url(#ahp7)"/>
 <line class="wf" x1="50" y1="150" x2="50" y2="40" marker-end="url(#ahp7)"/>
 <line class="faint" x1="200" y1="150" x2="200" y2="40"/><line class="faint" x1="50" y1="40" x2="200" y2="40"/>

@@ -143,7 +143,7 @@ Each part of the law has a reason:
 <line class="ln" x1="95" y1="130" x2="252" y2="44" style="stroke-dasharray:4 3"/>
 <path class="ln" d="M 135 130 A 40 40 0 0 0 130 111"/>
 <circle class="ln" cx="260" cy="40" r="9" style="fill:none"/><line class="ln" x1="254" y1="34" x2="266" y2="46"/><line class="ln" x1="266" y1="34" x2="254" y2="46"/>
-<text class="k" x="92" y="150">I dl</text><text class="k" x="140" y="122">θ</text><text class="k" x="170" y="80">r</text>
+<text class="k" x="92" y="162">I dl</text><text class="k" x="140" y="122">θ</text><text class="k" x="170" y="80">r</text>
 <text class="k" x="275" y="45">P</text><text x="230" y="70">dB (into page)</text><text x="88" y="145">O</text>
 </svg>
 :::
@@ -193,7 +193,7 @@ The direction of $d\vec B$ is perpendicular to $\vec r$, tilted away from the ax
 <line class="faint" x1="238" y1="100" x2="238" y2="41" style="stroke-dasharray:2 2"/>
 <circle cx="200" cy="100" r="2.5" style="fill:var(--ink)"/>
 <text class="k" x="196" y="118">P</text><text class="k" x="78" y="70">R</text><text class="k" x="140" y="58">r</text>
-<text class="k" x="140" y="115">x</text><text class="k" x="243" y="38">dB</text><text x="250" y="96">dB cos φ (adds)</text><text x="244" y="162">from bottom element</text>
+<text class="k" x="140" y="115">x</text><text class="k" x="243" y="38">dB</text><text x="250" y="96">dB cos φ (adds)</text><text x="244" y="164">from bottom</text><text x="244" y="177">element</text>
 </svg>
 :::
 
@@ -239,7 +239,7 @@ Now a straight wire of finite length, and a point P at perpendicular distance $d
 <path class="ln" d="M 200 120 A 30 30 0 0 1 205 103"/><path class="ln" d="M 200 120 A 30 30 0 0 0 203.5 134.1"/>
 <polyline class="faint" points="80,110 90,110 90,120"/>
 <circle class="ln" cx="245" cy="120" r="8" style="fill:none"/><line class="ln" x1="240" y1="115" x2="250" y2="125"/><line class="ln" x1="250" y1="115" x2="240" y2="125"/>
-<text class="k" x="180" y="106">θ₁</text><text class="k" x="180" y="145">θ₂</text><text class="k" x="150" y="114">d</text>
+<text class="k" x="180" y="106">θ₁</text><text class="k" x="183" y="135">θ₂</text><text class="k" x="150" y="114">d</text>
 <text class="k" x="226" y="140">P</text><text class="k" x="64" y="124">N</text><text class="k" x="60" y="64">I</text>
 </svg>
 :::

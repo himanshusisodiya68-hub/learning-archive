@@ -126,7 +126,7 @@ That is the whole idea, in three verbs:
 The name **divide and conquer** is this recipe. The part that changes from problem to problem is the combine step. For sorting it is the merge.
 
 :::figure caption="Merge sort on 8 numbers. The pile is halved until single items remain, then merged back up. Every level of merging touches all 8 numbers once."
-<svg viewBox="0 0 320 180" role="img" aria-label="Four levels of a halving tree, each level labelled with the total work of about n">
+<svg viewBox="0 0 320 194" role="img" aria-label="Four levels of a halving tree, each level labelled with the total work of about n">
 <g style="fill:color-mix(in srgb,var(--mat) 10%,var(--surface));stroke:var(--mat);stroke-width:1.5">
 <rect x="20" y="10" width="280" height="24" rx="4"/>
 <rect x="20" y="42" width="137" height="24" rx="4"/><rect x="163" y="42" width="137" height="24" rx="4"/>
@@ -136,10 +136,10 @@ The name **divide and conquer** is this recipe. The part that changes from probl
 <g style="font-size:10px;fill:var(--ink);text-anchor:middle">
 <text x="160" y="26">1 pile of n</text><text x="88" y="58">2 piles of n/2</text><text x="231" y="58">2 piles of n/2</text>
 <text x="52" y="90">n/4</text><text x="123" y="90">n/4</text><text x="194" y="90">n/4</text><text x="265" y="90">n/4</text>
-<text x="160" y="122">8 piles of 1: already sorted</text>
+<text x="34.5" y="122">1</text><text x="69.5" y="122">1</text><text x="104.5" y="122">1</text><text x="139.5" y="122">1</text><text x="174.5" y="122">1</text><text x="209.5" y="122">1</text><text x="244.5" y="122">1</text><text x="279.5" y="122">1</text><text x="160" y="146">8 piles of 1: already sorted</text>
 </g>
-<text x="160" y="152" style="font-size:11px;fill:var(--ink);text-anchor:middle">levels: log₂ n (3 here, 20 for a million)</text>
-<text x="160" y="170" style="font-size:11px;fill:var(--mat);text-anchor:middle">work per level: about n  →  total about n × log₂ n</text>
+<text x="160" y="168" style="font-size:11px;fill:var(--ink);text-anchor:middle">levels: log₂ n (3 here, 20 for a million)</text>
+<text x="160" y="186" style="font-size:11px;fill:var(--mat);text-anchor:middle">work per level: about n  →  total about n × log₂ n</text>
 </svg>
 :::
 

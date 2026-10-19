@@ -238,15 +238,15 @@ def edit(a, b):
 Only the previous row is kept, so memory is $O(m)$ instead of $O(nm)$. Edit distance from "garden" to "danger" is 4.
 
 :::figure caption="The LCS table for two short words. Each cell looks only at the cell above, the cell on the left, and the cell diagonally up-left, so the table is filled row by row."
-<svg viewBox="0 0 320 150" role="img" aria-label="A grid of cells with arrows from the left, above and diagonal neighbours into one cell">
+<svg viewBox="0 0 360 150" role="img" aria-label="A grid of cells with arrows from the left, above and diagonal neighbours into one cell">
 <g style="stroke:var(--rule);fill:var(--surface);stroke-width:1">
-<rect x="60" y="20" width="48" height="36"/><rect x="108" y="20" width="48" height="36"/><rect x="156" y="20" width="48" height="36"/>
-<rect x="60" y="56" width="48" height="36"/><rect x="108" y="56" width="48" height="36"/><rect x="156" y="56" width="48" height="36" style="fill:color-mix(in srgb,var(--c) 25%,var(--surface));stroke:var(--c)"/>
-<rect x="60" y="92" width="48" height="36"/><rect x="108" y="92" width="48" height="36"/><rect x="156" y="92" width="48" height="36"/>
+<rect x="52" y="20" width="56" height="36"/><rect x="108" y="20" width="56" height="36"/><rect x="164" y="20" width="56" height="36"/>
+<rect x="52" y="56" width="56" height="36"/><rect x="108" y="56" width="56" height="36"/><rect x="164" y="56" width="56" height="36" style="fill:color-mix(in srgb,var(--c) 25%,var(--surface));stroke:var(--c)"/>
+<rect x="52" y="92" width="56" height="36"/><rect x="108" y="92" width="56" height="36"/><rect x="164" y="92" width="56" height="36"/>
 </g>
-<g style="stroke:var(--c);stroke-width:1.5;fill:none"><path d="M132 40 L168 68"/><path d="M180 38 V58"/><path d="M130 76 H158"/></g>
-<g style="font-size:10px;fill:var(--ink)" text-anchor="middle"><text x="84" y="42">diag</text><text x="132" y="42">diag</text><text x="180" y="42">above</text><text x="84" y="78">...</text><text x="132" y="78">left</text><text x="180" y="78">dp[i][j]</text></g>
-<text x="220" y="78" style="font-size:10px;fill:var(--muted)">needs 3 neighbours,</text><text x="220" y="92" style="font-size:10px;fill:var(--muted)">so O(1) work per cell</text>
+<g style="stroke:var(--c);stroke-width:1.5;fill:none"><path d="M152 48 L176 63"/><path d="M192 47 V63"/><path d="M150 67 H166"/></g>
+<g style="font-size:10px;fill:var(--ink)" text-anchor="middle"><text x="80" y="42">diag</text><text x="136" y="42">diag</text><text x="192" y="42">above</text><text x="80" y="78">...</text><text x="132" y="82">left</text><text x="192" y="82">dp[i][j]</text></g>
+<text x="230" y="78" style="font-size:10px;fill:var(--muted)">needs 3 neighbours,</text><text x="230" y="92" style="font-size:10px;fill:var(--muted)">so O(1) work per cell</text>
 </svg>
 :::
 

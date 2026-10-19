@@ -153,26 +153,26 @@ So we add layers, each one saving the next from work:
 4. **The shard** that owns the name, holding the permanent record.
 
 :::figure caption="A check flows downward and stops at the first layer that can answer. Only the uncertain cases reach the owner shard."
-<svg viewBox="0 0 480 230" role="img" aria-label="Four boxes in a row: normalise, cache, Bloom filter, owner shard, with arrows showing early exits">
+<svg viewBox="0 0 500 240" role="img" aria-label="Four boxes in a row: normalise, cache, Bloom filter, owner shard, with arrows showing early exits">
 <g style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.8">
-<rect x="10" y="40" width="96" height="50" rx="8"/><rect x="132" y="40" width="96" height="50" rx="8"/><rect x="254" y="40" width="96" height="50" rx="8"/><rect x="376" y="40" width="96" height="50" rx="8"/>
+<rect x="6" y="40" width="112" height="50" rx="8"/><rect x="132" y="40" width="112" height="50" rx="8"/><rect x="258" y="40" width="112" height="50" rx="8"/><rect x="384" y="40" width="112" height="50" rx="8"/>
 </g>
 <g style="fill:var(--ink);font-size:12px">
-<text x="26" y="62">Normalise</text><text x="154" y="62">Cache</text><text x="268" y="62">Bloom filter</text><text x="394" y="62">Owner shard</text>
+<text x="16" y="62">Normalise</text><text x="142" y="62">Cache</text><text x="268" y="62">Bloom filter</text><text x="394" y="62">Owner shard</text>
 </g>
 <g style="fill:var(--muted);font-size:10px">
-<text x="22" y="78">asha_R → asha_r</text><text x="146" y="78">"taken" seen?</text><text x="262" y="78">"definitely free"?</text><text x="388" y="78">exact answer</text>
+<text x="14" y="78" style="font-size:9px">asha_R → asha_r</text><text x="140" y="78" style="font-size:9px">"taken" seen?</text><text x="266" y="78" style="font-size:9px">"definitely free"?</text><text x="392" y="78" style="font-size:9px">exact answer</text>
 </g>
 <g style="fill:none;stroke:var(--ink);stroke-width:1.5">
-<path d="M106 65 H132"/><path d="M228 65 H254"/><path d="M350 65 H376"/>
+<path d="M118 65 H132"/><path d="M244 65 H258"/><path d="M370 65 H384"/>
 </g>
 <g style="fill:none;stroke:var(--ok);stroke-width:1.5;stroke-dasharray:4 3">
-<path d="M180 90 V150"/><path d="M302 90 V150"/>
+<path d="M188 90 V150"/><path d="M314 90 V150"/>
 </g>
 <g style="fill:var(--ok);font-size:10px">
-<text x="132" y="168">answer: taken</text><text x="254" y="168">answer: free (hint)</text>
+<text x="132" y="168">answer: taken</text><text x="258" y="168">answer: free (hint)</text>
 </g>
-<text x="20" y="205" style="font-size:10px;fill:var(--muted)">Most checks leave early. Only maybe-taken names that missed the cache reach the shard.</text>
+<text x="20" y="205" style="font-size:10px;fill:var(--muted)">Most checks leave early.</text><text x="20" y="221" style="font-size:10px;fill:var(--muted)">Only maybe-taken names that missed the cache reach the shard.</text>
 </svg>
 :::
 

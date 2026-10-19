@@ -215,7 +215,7 @@ The catch is in the word **independent**. The product only holds if the copies f
 </g>
 <g style="fill:var(--muted);font-size:11px">
 <text x="14" y="105">Series: 0.999 × 0.999 × 0.999 ≈ 99.7%</text>
-<text x="258" y="150">Parallel: 1 − 0.01 × 0.01 = 99.99%</text>
+<text x="240" y="150" style="font-size:10px">Parallel: 1 − 0.01 × 0.01 = 99.99%</text>
 </g>
 </svg>
 :::
