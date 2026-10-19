@@ -80,7 +80,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 2. Map the chapter to leaves in `tree.yaml`. Add leaves if needed, each with a first-principles `what`; branches and pillars also carry `split` and `links`. Add `leaves: [subj/leaf-id, ...]` to the chapter in `content/ncert/...yaml`.
 3. Write `problems/<subj>/<leaf>.yaml` with every NCERT item word for word (with its solution), plus `found`, `board` and `main` problems (format below).
 4. For each leaf, call the `theory-writer` subagent (Opus). It writes `lessons/<subj>/<leaf>.md` and appends the `adv` and `oly` problems.
-5. `cd site && python3 fix-yaml.py && node check-answers.mjs && node build.mjs`. Fix every reported problem, from the checker or the lint; the checker has caught real arithmetic slips.
+5. `cd site && python3 fix-yaml.py && node check-answers.mjs && python3 check-links.py && node build.mjs`. Fix every reported problem, from the checker or the lint; the checker has caught real arithmetic slips.
 6. Commit and push (see Git below). When a pillar is complete, republish the site (see Publishing).
 
 ## Lesson format (`content/lessons/<subj>/<leaf>.md`)
@@ -218,7 +218,7 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 
 **Retrofit status:** Optics and Electricity and magnetism have had the cheap pass (opener, hook, symbols, life, models, links, next); see `docs/retrofit.md`. Deep passes not started.
 
-**Map of everything (Oct 2026):** all six subject trees exist (Physics 118 leaves, Maths 59, Chemistry 53, Biology 33, English 51, Computer Science 80) and the class view lists every NCERT book for Classes 6–12 (Science/Physics, Maths, Chemistry, Biology, English Class 10). Chapters of Class 11/12 Chemistry and Biology are already mapped to leaves.
+**Map of everything (Oct 2026):** all six subject trees exist (Physics 118 leaves, Maths 59, Chemistry 53, Biology 33, English 51, Computer Science 117) and the class view lists every NCERT book for Classes 6–12 (Science/Physics, Maths, Chemistry, Biology, English Class 10). Chapters of Class 11/12 Chemistry and Biology are already mapped to leaves.
 
 **Done: Physics › Mechanics pillar (37 leaves, all with lessons).** Published to the site artifact (version 15).
 - **Branches:** kinematics (8), Newton's laws (8), work–energy–power (7, ends with collisions, as in NCERT Class 11 Ch 5), rotation (5), gravitation (4), properties of matter (5).
@@ -232,16 +232,18 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 
 **Owner's rule (Oct 2026): no more reading of PDFs or books to save tokens.** Write Computer Science (and later English) from training knowledge; the CS books in Drive are not to be read.
 
-**In progress: Computer Science (117 leaves).**
-- Brief for writers: `docs/cs-brief.md` (Sonnet general-purpose subagents, 3 leaves each, no book reading).
-- Done: How computers work, Programming (all leaves), hash-tables, plus parts of Data structures and Algorithms.
-- Order: data-structures → algorithms → operating-systems → networks → data-systems → software-engineering → web-and-apps → system-design → cloud-devops → ai → competitive-programming → interviews.
-- `next` chain: the last leaf of each pillar points to the first leaf of the next pillar in this order.
+**Done: Computer Science (117 leaves, all with lessons and problems).** Published to the site artifact (version 18).
+- **Pillars:** How computers work, Programming, Data structures, Algorithms, Operating systems, Networks, Data systems, Software engineering, Web and apps, System design, Cloud and DevOps, AI, Competitive programming (pattern catalogues), Interviews (pattern catalogues, design rounds, behavioural).
+- **Writing:** Sonnet subagents with `docs/cs-brief.md`, from training knowledge (no books read). Problems are original: 8 per leaf, 10–12 for pattern-catalogue leaves. Code in lessons was run where the writer could.
+- **Reality filter:** book chapter numbers, history dates and from-memory figures are labelled [Unverified]; claims about real companies' internals are [Inference].
+- **Known weak spots:** `web-security` problem f2 has a trivial `verify`; the Kubernetes rolling-update rounding rule (problem m1) is [Unverified].
+- `next` chain runs through every pillar in order; the last leaf (`iv-offers`) loops back to `problem-solving-method`.
+- `python3 site/check-links.py` validates every `links`/`next` leaf id; run it with the other checks.
 
 **Owner's direction (Oct 2026):** build Physics and Maths fully first (see `docs/content-principles.md` §0); CS gains Competitive programming and Interviews pillars as pattern catalogues.
 
 **Next, in order:**
-1. Finish Computer Science (owner's choice, Oct 2026). Then the owner chooses: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
+1. The owner chooses what comes next (Computer Science is done). Candidates: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.
