@@ -1,0 +1,153 @@
+# Two pointers and sliding window. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    A step counter recorded these daily totals (in thousands): 3, 8, 2, 9, 4, 7, 1. What is the largest total over any 3 consecutive days?
+  ask: Best 3-day total
+  unit: thousand steps
+  ans: 20
+  tol: 0.1
+  verify: '(() => { const a=[3,8,2,9,4,7,1]; let cur=a[0]+a[1]+a[2], best=cur; for (let i=3;i<a.length;i++) { cur+=a[i]-a[i-3]; best=Math.max(best,cur); } return best; })()'
+  sol: |
+    First window: 3 + 8 + 2 = 13. Slide: add 9, drop 3, giving 19. Add 4, drop 8: 15. Add 7, drop 2: 20. Add 1, drop 9: 12. The largest is 20 (days 4 to 6: 9 + 4 + 7). Each slide costs one addition and one subtraction.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: |
+    Which of these is NOT a safe fit for a sliding window?
+  opts: ["The best total of any 5 consecutive days of positive step counts", "The longest stretch of letters with no repeated letter", "Counting subarrays with total exactly k in a list that includes negative numbers"]
+  ans: 2
+  sol: |
+    The third. With negative numbers, adding an item can lower the total and removing one can raise it, so there is no safe rule for moving either end. Use prefix sums with a map instead. The first is a fixed window, and the second is a variable window whose validity (no repeat) behaves monotonically.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    A list of positive numbers is [5, 1, 3, 5, 10, 7, 4, 9, 2, 8]. What is the length of the shortest stretch of neighbouring numbers with total at least 15?
+  ask: Length
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: '(() => { const a=[5,1,3,5,10,7,4,9,2,8], t=15; let left=0,total=0,best=Infinity; for (let r=0;r<a.length;r++) { total+=a[r]; while (total>=t) { best=Math.min(best,r-left+1); total-=a[left]; left++; } } return best; })()'
+  sol: |
+    Grow on the right and shrink on the left while the total is at least 15. The stretch 10, 7 has total 17 and length 2. No single number reaches 15, so 2 is the minimum. The pointers move forward only, so the work is O(n).
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    What is the length of the longest stretch of neighbouring letters with no letter repeated in "abcabcbbxyzabc"?
+  ask: Length
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: '(() => { const s="abcabcbbxyzabc"; let best=0; for (let i=0;i<s.length;i++) { const seen=new Set(); for (let j=i;j<s.length;j++) { if (seen.has(s[j])) break; seen.add(s[j]); best=Math.max(best,j-i+1); } } return best; })()'
+  sol: |
+    Positions: a0 b1 c2 a3 b4 c5 b6 b7 x8 y9 z10 a11 b12 c13. Remember the last position of each letter and, when a letter repeats inside the window, move the left end just past its previous position. Up to position 7 no clean stretch is longer than 3 (such as "abc" or "cab"). At position 12 the letter b repeats the b at position 7, so the left end jumps to 8. The window x, y, z, a, b, c (positions 8 to 13) is clean and has length 6, the maximum.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |
+    How many different triples of values (ignoring order, with no repeated triple) in [-4, -1, -1, 0, 1, 2] add up to zero?
+  ask: Different triples
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: '(() => { const a=[-4,-1,-1,0,1,2]; const s=new Set(); for (let i=0;i<a.length;i++) for (let j=i+1;j<a.length;j++) for (let k=j+1;k<a.length;k++) if (a[i]+a[j]+a[k]===0) s.add([a[i],a[j],a[k]].sort((x,y)=>x-y).join()); return s.size; })()'
+  sol: |
+    Sort (already sorted), fix the first value, and run opposite-end pointers on the rest, skipping repeated first values and repeated partners.
+    Fix -4: need pairs summing to 4 from the rest; the largest pair is 1 + 2 = 3, so none. Fix -1 (first one): need 1 from the rest: -1 + 2 = 1 gives (-1, -1, 2); 0 + 1 = 1 gives (-1, 0, 1). The second -1 as a first value is skipped, since it would repeat these answers. Fix 0: the remaining 1 and 2 cannot sum to 0.
+    Two different triples. The cost is O(n log n) to sort plus O(n squared) for the fix-and-sweep.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |
+    Seven vertical walls stand one unit apart with heights 3, 9, 4, 7, 2, 8, 5. Water held between two walls has area (distance between them) times (the shorter height). What is the largest area you can hold?
+  ask: Largest area
+  unit: square units
+  ans: 32
+  tol: 0.1
+  verify: '(() => { const h=[3,9,4,7,2,8,5]; let best=0; for (let i=0;i<h.length;i++) for (let j=i+1;j<h.length;j++) best=Math.max(best,Math.min(h[i],h[j])*(j-i)); return best; })()'
+  sol: |
+    Start with the outer walls: heights 3 and 5, distance 6, area 3 * 6 = 18. Move the shorter wall (3). Walls 9 and 5, distance 5: area 25. Move the shorter (5): walls 9 and 8, distance 4: area 32. Move the shorter (8): walls 9 and 2, distance 3: area 6. Move 2: walls 9 and 7, distance 2: area 14. Move 7: walls 9 and 4, distance 1: area 4. The best is 32, between the walls of height 9 and 8.
+    Why moving the shorter wall is safe: any pair using the shorter wall and a closer partner has a smaller width and its height is still capped by that shorter wall, so it cannot beat the current area.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |
+    A row of lamps reads 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1 (1 is on, 0 is off). You may switch on at most 2 of the off lamps. What is the longest run of neighbouring lamps that can be all on?
+  ask: Longest run
+  unit: lamps
+  ans: 8
+  tol: 0.1
+  verify: '(() => { const a=[1,1,0,0,1,1,1,0,1,1,0,1], k=2; let left=0,z=0,best=0; for (let r=0;r<a.length;r++) { if (a[r]===0) z++; while (z>k) { if (a[left]===0) z--; left++; } best=Math.max(best,r-left+1); } return best; })()'
+  sol: |
+    A window is valid if it contains at most 2 zeros. Grow on the right, count zeros, and shrink on the left while there are more than 2. The best window is positions 4 to 11 (1, 1, 1, 0, 1, 1, 0, 1), which has two zeros and length 8. Nothing longer fits: any window of length 9 contains three zeros.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |
+    How many stretches of neighbouring numbers in [2, 1, 1, 3, 2, 1] contain exactly 2 different values?
+  ask: Stretches
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: '(() => { const a=[2,1,1,3,2,1]; let c=0; for (let i=0;i<a.length;i++) { const s=new Set(); for (let j=i;j<a.length;j++) { s.add(a[j]); if (s.size===2) c++; } } return c; })()'
+  sol: |
+    Use exactly(2) = atMost(2) - atMost(1).
+    atMost(1): stretches with a single distinct value. The singles (6 of them) plus [1, 1] give 7.
+    atMost(2): for each right end, count the window length. Windows by right end: 1, 2, 3, then at the 3 the window [1, 1, 3] has 2 distinct values (length 3, from left = 1), giving 3; at the next 2 the window is [3, 2] (length 2); at the last 1 the window is [2, 1] (length 2). Total 1 + 2 + 3 + 3 + 2 + 2 = 13.
+    exactly(2) = 13 - 7 = 6. Directly: [2,1], [2,1,1], [1,3], [1,1,3], [3,2], [2,1] at the end.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    Run the shortest-stretch-with-total-at-least-target window on [1, -2, 3] with target 3. What does it return, what is the true answer, and what does this show?
+  sol: |
+    Trace: right = 0: total 1. right = 1: total -1. right = 2: total 2. The total never reaches 3, so the loop never fires and the function reports "none" (0).
+    The true answer is 1: the single item 3 is a stretch with total 3. The algorithm missed it because the early negative numbers dragged the running total down, and the left end never moved to discard them.
+    This shows the monotone-validity requirement. The window method is justified only when extending a window never lowers its total and shrinking never raises it. With negative numbers, a valid stretch can begin after a "bad" prefix that only a left-end move could remove, and no rule tells us when to move.
+    The fix: prefix sums plus a monotonic deque of prefix indices (for the shortest stretch with total at least k), or, for exact totals, prefix sums with a map.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: |
+    Trace the smallest-stretch-containing-all-letters window for s = "xaybzaxbyc" and need = "abc". Say what the counter called missing measures and why the left end can safely move after each record.
+  sol: |
+    Positions: x0 a1 y2 b3 z4 a5 x6 b7 y8 c9. Start with need = {a: 1, b: 1, c: 1} and missing = 3. The counter missing is how many needed letters the window still lacks. A letter that is not needed, or is in surplus, pushes its entry in need to zero or below without changing missing.
+    Right end walks: x (need[x] becomes -1), a (missing 2), y, b (missing 1), z, a (surplus: need[a] becomes -1), x, b (surplus), y, then c (missing 0). The window is the whole string and is valid.
+    Shrink from the left while the letter at left has a negative need (it is surplus, so it can go): x, then a at position 1, then y, then b at position 3, then z. The letter at position 5 is a with need 0: dropping it would lose a needed letter, so stop. The window is s[5..9] = "axbyc", length 5, recorded as best.
+    Then give up that a: need[a] returns to 1, missing becomes 1, left moves to 6. The right end has already reached the end, so the answer is "axbyc" (length 5).
+    The left end can move safely after a record because every smaller window that starts at the old left end has already been considered, and any window that begins there and ends later is longer. Each pointer moves at most n times, so the time is O(n).
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    Find the maximum of every window of length 3 in [1, 3, -1, -3, 5, 3, 6, 7] in O(n) time, even though the maximum cannot be updated by "add the entering item, subtract the leaving one". Describe the data structure and explain why the total work is linear.
+  sol: |
+    Keep a deque (double-ended queue) of indices whose values are in strictly decreasing order from front to back. The front is always the index of the maximum of the current window.
+    For each new index i: (1) pop from the back while the back value is less than or equal to a[i], since those items can never be the maximum while a[i] is in the window (a[i] is larger and will stay longer); (2) push i at the back; (3) pop the front if it is outside the window (index <= i - 3); (4) once i >= 2, the answer for this window is a[front].
+    Trace: 1 -> deque [0]; 3 pops 1 -> [1]; -1 -> [1, 2], answer 3; -3 -> [1, 2, 3], answer 3; 5 pops everything -> [4], answer 5; 3 -> [4, 5], answer 5; 6 pops -> [6], answer 6; 7 pops -> [7], answer 7. Result [3, 3, 5, 5, 6, 7].
+    Linear because each index is pushed once and popped at most once, so the pushes and pops total at most 2n. Memory is O(k) for the deque.
+  check: none

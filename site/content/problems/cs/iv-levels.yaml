@@ -1,0 +1,103 @@
+# What SDE-1, SDE-2 and SDE-3 are judged on. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A senior engineer's design review stops 3 teams from building the wrong thing. Each team would have lost 2 engineer-weeks to rework. How many engineer-weeks does the review save?
+  ask: Saved
+  unit: engineer-weeks
+  ans: 6
+  tol: 0.01
+  verify: 3*2
+  sol: $3\times 2 = 6$ engineer-weeks. The review took perhaps half a day, which is why influence across teams is worth more than the same hours spent on one's own task. The numbers are invented for illustration.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which of these is the best one-line description of a level?
+  opts: ["How many years you have worked", "The size and vagueness of the problem you are trusted to own", "How fast you write code", "Your salary"]
+  ans: 1
+  sol: Levels reflect scope, ambiguity, influence and design ownership. Years, speed and salary are related at best, but they are not the definition.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: You are interviewing for SDE-2. Which story is the best fit?
+  opts: ["Fixing one bug I was assigned", "Owning a feature end to end, turning a vague request into a plan, and shipping it with monitoring", "Reorganising the company's engineering strategy", "A weekend hobby project with no users"]
+  ans: 1
+  sol: SDE-2 is about owning a feature or service end to end and handling vagueness. A single assigned bug is SDE-1 scope; reorganising strategy is far above SDE-2; a hobby project may add colour but does not show ownership under real constraints.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Explain the difference between SDE-1 and SDE-2 using one example task, "Add a discount-code field to checkout".
+  sol: |
+    **SDE-1.** Given the ticket with the requirements, adds the field, validation and tests, follows the team's patterns, asks for review, and fixes the review comments.
+
+    **SDE-2.** Starts from the goal ("increase repeat orders with codes"). Asks who creates codes, whether a code can be used once or many times, and what happens if two people use the same code at the same instant. Writes a short plan, builds the feature end to end including storage and reporting, adds monitoring for misuse, and tells support and product when it ships.
+
+    **The difference.** Not the typing speed. The SDE-2 owns the outcome and the unknowns around it, while the SDE-1 owns a clearly defined slice.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: A candidate applying for SDE-3 gives a behavioural story about fixing a performance bug alone over a weekend. Explain why this is a weak fit and how to retell it to show senior scope, without inventing facts.
+  sol: |
+    **Why weak.** The scope is one person, one bug, and no one else's work changed. It shows diligence, which is expected at every level, but not influence or ambiguity handling.
+
+    **Retell with the same facts.** Look in the real story for the wider parts, and bring them forward:
+    - Why was this bug found? Was a measure missing? "I noticed nobody tracked this latency, so I added a dashboard the whole team still uses."
+    - Did anyone else need convincing? "I explained the cause to the product manager so the fix could be prioritised over a feature."
+    - Did it change a rule? "I added a performance test to the pipeline so the same class of bug is caught early."
+    - What did you learn that you taught? "I wrote up the investigation for the team."
+
+    **If none of these happened.** Do not invent them. Pick a different story from the bank that has real scope, and keep this one for a theme such as ownership or failure.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Compare how a design round feels for a candidate at SDE-1 and at SDE-3, including what the interviewer does and what the candidate is expected to do.
+  sol: |
+    **SDE-1.** The interviewer often gives a narrower problem and more hints, for instance a small service or an object-oriented design. The candidate is expected to clarify, propose a sensible structure, and explain the main choices. A few gaps (such as failure handling) may be forgiven. [Inference]
+
+    **SDE-3.** The prompt is broad and vague on purpose. The interviewer watches for the candidate to lead: state requirements and numbers, propose a design, choose the deep dive themselves, raise failure, cost and evolution before being asked, and defend trade-offs under push-back.
+
+    **Signal.** At SDE-1 the question is "can this person design a sensible small thing?". At SDE-3 it is "can this person lead the design of a large thing and make others better?". The framework is the same; the autonomy and depth differ.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Your manager says you are strong but "not ready for the next level yet". Describe a plan for the next two quarters, and what evidence you would collect, without gaming the process.
+  sol: |
+    **Step 1, ask.** Ask your manager for specifics: what does the next level own that you do not yet? Ask for one example of work that would count. Vague feedback needs a concrete example.
+
+    **Step 2, pick one project.** Choose a problem with wider scope and some ambiguity, something that crosses a team boundary, that your manager agrees matters. Write a short plan and share it.
+
+    **Step 3, lead, not just do.** Run the design discussion, keep stakeholders informed, bring in one more junior person and help them succeed.
+
+    **Step 4, record evidence monthly.** The goal, your decisions and their reasoning, what changed for others, and any honest numbers (incidents down, time saved by estimate).
+
+    **Step 5, check in.** At the quarter's end, ask whether this is the kind of work the level expects. If not, adjust.
+
+    **Not gaming.** Do not take on work only for the title; pick problems the team actually needs. Do not claim others' work. The most durable promotion cases are by-products of useful work. [Inference: opinion based on common advice.]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Argue for or against this statement, and give reasons. "Senior engineers should be interviewed mostly on system design and behaviour, and coding rounds should be dropped for them."
+  sol: |
+    **A balanced position.** Coding rounds should be reduced in weight, not dropped.
+
+    **For reduced weight.** Senior work is mostly design, decisions and influence. A hard coding puzzle tests recall of patterns, which says little about leading a project. Design and behavioural rounds test the work the level actually involves.
+
+    **Against dropping.** First, coding is the one round where the candidate shows real output under observation, and a senior who cannot read or write code fluently will struggle in design reviews and mentoring. Second, many senior engineers do still write code daily. Third, without a coding round, a loop depends heavily on the candidate's self-description, which is easier to polish than code.
+
+    **Middle path.** Keep one coding round that looks like real work (extend or debug code, discuss trade-offs), and give design and behaviour the most weight. Different companies choose differently. [Inference]
+  check: none

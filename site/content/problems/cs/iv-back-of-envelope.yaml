@@ -1,0 +1,125 @@
+# Back-of-the-envelope estimation. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: How many seconds are there in a day? (Give the exact figure, then remember the round number 100,000 used for quick estimates.)
+  ask: Seconds
+  unit: s
+  ans: 86400
+  tol: 1
+  verify: 24 * 60 * 60
+  sol: 24 hours x 60 minutes x 60 seconds = 86,400 seconds. For quick estimates we round it to about $10^5$, which is within 15%.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: About how large is $2^{40}$ bytes?
+  opts: ["A gigabyte", "A terabyte", "A petabyte"]
+  ans: 1
+  sol: Each ten steps of the exponent multiply by about a thousand. $2^{10}$ is a kilobyte, $2^{20}$ a megabyte, $2^{30}$ a gigabyte, $2^{40}$ a terabyte (about $1.1\times10^{12}$ bytes).
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A news site has 20 million daily users, each loading 10 articles a day. What is the average number of article requests per second? (Use 86,400 seconds.)
+  ask: Average requests per second
+  unit: per s
+  ans: 2315
+  tol: 10
+  verify: 20e6 * 10 / 86400
+  sol: Requests per day are 20,000,000 x 10 = 200,000,000. Dividing by 86,400 gives about 2,315 a second on average. The busy hour may be 2 to 3 times that.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: A forum receives 5 million new posts a day, each about 1 KB (take 1 KB as 1,000 bytes). How many terabytes of text does it add in a year, with one copy only?
+  ask: Storage per year
+  unit: TB
+  ans: 1.825
+  tol: 0.01
+  verify: 5e6 * 1000 * 365 / 1e12
+  sol: Per day, 5,000,000 x 1,000 bytes = 5 GB. Over 365 days that is 1,825 GB, about 1.8 TB. With three copies it would be about 5.5 TB. Small enough to fit on one server's disks, so storage is not the hard part for this service.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Peak traffic is 24,000 requests a second. One server handles 800 requests a second, and you want each server to run at no more than half its capacity. How many servers do you need?
+  ask: Servers
+  unit: ""
+  ans: 60
+  tol: 0.5
+  verify: ceil(24000 / (800 * 0.5))
+  sol: At full capacity, 24,000 / 800 = 30 servers. Running at a target load of 0.5 doubles that to 60 servers, which leaves headroom for a failed machine or a spike.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: 2 million people stream the same match, each at 4 Mbit a second. What total outgoing bandwidth is that, in gigabits a second? (1 Gbit = 1,000 Mbit.)
+  ask: Bandwidth
+  unit: Gbit/s
+  ans: 8000
+  tol: 1
+  verify: 2e6 * 4 / 1000
+  sol: 2,000,000 x 4 Mbit = 8,000,000 Mbit a second = 8,000 Gbit a second (8 Tbit a second). One network card handles about 10 Gbit a second, so no single site can serve this; the stream must be copied to many CDN locations near viewers.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A photo site has 10 million distinct photos whose thumbnails average 500 KB (take 500,000 bytes). Suppose the most popular 20% of photos serve most of the traffic and you want to cache exactly those. How much memory, in terabytes?
+  ask: Cache size
+  unit: TB
+  ans: 1
+  tol: 0.01
+  verify: 1e7 * 500e3 * 0.2 / 1e12
+  sol: All thumbnails are 10,000,000 x 500 KB = 5 TB. Twenty percent of that is 1 TB. That is too much for one machine's memory but easy across a dozen cache servers, and the 80/20 rule itself is a rule of thumb, not a guarantee. [Inference]
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A social app has 100 million daily users and each posts once a day on average. Each user has 200 followers, and a post is copied into every follower's timeline when it is written ("fan-out on write"). How many timeline insertions per second on average? (Use 86,400 seconds.)
+  ask: Insertions per second
+  unit: per s
+  ans: 231481
+  tol: 500
+  verify: 100e6 * 1 * 200 / 86400
+  sol: Posts a day are 100,000,000. Each causes 200 insertions, so 20 billion insertions a day. Dividing by 86,400 gives about 231,000 a second on average, and perhaps 700,000 at peak. This is far beyond one database, so timelines need partitioned storage. It also shows the cost of fan-out on write for users with millions of followers, where one post would cause millions of writes.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: An interviewer says "assume we have a billion users". List the questions you must ask before you can estimate the load, and say how each one changes the number.
+  sol: |
+    A billion registered users is not a load. I would ask:
+    - How many are active each day (DAU)? The load scales with active users, which may be 10% or less of the total.
+    - How many requests does an active user make per day, and what kinds? A user who reads fifty times a day and writes once makes the load read-heavy.
+    - What is the peak factor? The busy hour may be 2 to 3 times the average, or more for events like a final.
+    - How big is each request and each stored item? Bandwidth and storage are size times count.
+    - How are users distributed across the world? It decides whether regional copies are needed.
+    - How long is data kept, and how many copies? Storage per year grows by the retention period and the replication factor.
+    With answers, the chain is DAU x actions per user / 86,400 for average QPS, then the peak factor, then size for bandwidth and storage.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: Estimate the resources for a web crawler that fetches 1 billion pages a month, with an average of 100 KB per page. Give fetches per second, incoming bandwidth, storage per month, and how many crawler workers you need if each worker keeps 50 fetches in flight and a fetch takes about 0.5 seconds. State what the estimate does not include.
+  sol: |
+    Fetch rate: a month is about 30 x 86,400 = 2.6 million seconds, so 1,000,000,000 / 2,592,000 is about 386 pages a second.
+
+    Bandwidth in: 386 x 100 KB = 38.6 MB a second, about 310 Mbit a second, comfortably within a single network card (10 Gbit a second).
+
+    Storage: 1 billion x 100 KB = 100 TB a month of raw pages, about 300 TB with three copies. Compressing text (often to a third or less) cuts it, so a rate of tens of TB a month is a realistic target. [Inference: compression ratios vary]
+
+    Workers: each worker completes about 50 / 0.5 = 100 fetches a second, so 386 / 100 is about 4 workers on these numbers. Allowing for peak, for slow sites and for failures, say 8 to 10.
+
+    What it leaves out: politeness (a site must not be hammered, so per-site rate limits and a queue per site matter more than raw capacity), the time to look up addresses, pages that fail or redirect, de-duplicating pages already seen, parsing and link extraction, re-crawling to keep pages fresh (which multiplies the fetch rate), and robots rules. The estimate shows that raw bandwidth is not the hard part; scheduling and storage are.
+  check: none

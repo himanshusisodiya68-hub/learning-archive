@@ -1,0 +1,104 @@
+# Telling your stories (STAR). All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: You have a two-minute (120 second) answer. Using the rough split of 15 percent Situation, 10 percent Task, 60 percent Action and 15 percent Result, how many seconds should the Action take?
+  ask: Action time
+  unit: seconds
+  ans: 72
+  tol: 0.1
+  verify: 120*0.6
+  sol: $120\times 0.60 = 72$ seconds. The split is a guideline, not a rule, but it makes the point that the Action, the part about you, should be the longest. Situation about 18 s, Task about 12 s, Result about 18 s.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which sentence best shows the candidate's own contribution?
+  opts: ["We improved the build and it went faster.", "The team handled the migration well.", "I profiled the build, found two slow steps and moved them to run in parallel.", "It was decided that the tests would be rewritten."]
+  ans: 2
+  sol: Only the third says what the speaker did and how. The others use "we", "the team" or the passive voice, which hide the speaker's part. The interviewer is judging you, so your actions must be visible.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: A candidate says, "I cut our build from 40 minutes to 10 minutes." By what percentage did the build time fall?
+  ask: Reduction
+  unit: percent
+  ans: 75
+  tol: 0.1
+  verify: (40-10)/40*100
+  sol: The drop is $40-10 = 30$ minutes, which is $30/40 = 0.75$, or 75 percent. Quoting both the before and after (40 to 10 minutes) and the percentage is stronger than "much faster", provided the numbers are true and you can say how you measured them.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: text
+  q: Rewrite this weak answer to "Tell me about a time you had a conflict" in STAR form, using an invented but realistic example. Weak answer, "We sometimes disagreed about how to build things, but we always worked it out."
+  sol: |
+    One possible answer (invented for practice).
+
+    - **Situation.** "During my internship, another intern and I disagreed on whether to store user settings in the main database or a separate file."
+    - **Task.** "We had to settle it by Friday so the team could build on it. I was responsible for the settings module."
+    - **Action.** "I first asked him to explain why he preferred a file, and I realised he was worried about slow database calls at start-up. I measured the call, which took about 20 milliseconds, and showed him. I also listed what a file could not do: share settings across devices. I suggested a small cache in front of the database, and asked our mentor to review both options."
+    - **Result.** "He agreed with the cache design, we shipped on Friday, and start-up stayed under the target. I learned to ask for the worry behind a position before arguing against it."
+
+    It works because it names the disagreement, shows listening, uses evidence, and ends in a result and a lesson.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Build a story bank outline for yourself or a fictional candidate. List six stories (one line each) and tag each with at least two of these themes, covering all five of conflict, failure, ownership, ambiguity and influence. Explain how you check there are no gaps and no repeats.
+  sol: |
+    One possible bank for a fictional second-year engineer (invented).
+
+    1. Settings design disagreement with a fellow intern. Themes, conflict and influence.
+    2. Broke the staging build by skipping a test, fixed it in an hour and added a check. Themes, failure and ownership.
+    3. Took over an unowned flaky-test problem and halved failures. Themes, ownership and ambiguity.
+    4. Final-year project with a vague brief from a professor; defined three milestones. Themes, ambiguity and influence.
+    5. Persuaded the team to adopt code review checklists. Themes, influence and ownership.
+    6. Taught a junior classmate to debug, and his project passed. Themes, helping others and conflict (he was frustrated at first).
+
+    **Check.** Draw a grid with stories as rows and themes as columns, and tick the cells. Each theme needs at least two ticks (so you have a spare if one story was already used). No story should supply more than three ticks, or it is carrying too much. Stories should come from at least three different settings (work, college, project), so a five-round loop does not repeat a setting. Then practise each aloud once, with a timer, and note the weakest.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: An interviewer asks "Tell me about a time you failed", and you answer with a good STAR story. They then ask, "What would you do differently, and how do you know it would work?" Give a strong answer shape and say what makes a weak one.
+  sol: |
+    **Strong shape.** Name one concrete change, then the evidence. For example, "I would add an automated check before every release, and I already did: since I added it, it blocked two releases that had the same mistake, so it works." If the change is recent and unproven, say what you would measure: "I would track failed releases per month; before it was two, and I would expect zero to one."
+
+    **Also.** Show it was a change in process, not just a promise to try harder. "Be more careful" cannot be checked; "add an automatic check" can.
+
+    **Weak answers.** "Nothing, it was out of my control" (denies ownership). "I would just be more careful" (nothing changes). A change with no way to tell whether it worked (no evidence). An answer that contradicts the story you just told.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: Your best story is true, but its result was good partly because of luck (a competitor's product failed that month). The interviewer asks, "How much of this was your doing?" How do you answer honestly without undermining the story?
+  sol: |
+    **Say what was yours and what was not.** For example, "The launch went well, and part of that was timing: a competitor had an outage that month, which sent us extra users. What I can claim is that we handled the extra traffic without downtime, because I had load-tested the page in the week before and fixed two bottlenecks."
+
+    **Why this works.** Interviewers expect luck in real outcomes. Separating your part from the luck shows judgement and honesty, which are exactly what the behavioural round tests. It also keeps the story true, so further follow-ups cannot break it.
+
+    **What not to do.** Do not claim the whole result, and do not shrink your part so far that nothing is left. State the decision you controlled and its evidence.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: At staff level you are asked, "Tell me about a time you changed the direction of a decision you did not own." Sketch a STAR story at the right scope and list the signals that tell the interviewer it is senior.
+  sol: |
+    **Example shape (invented).**
+    - *Situation.* "Three teams were each building their own notification code, with different retry rules, and users were getting duplicates. A director had approved a fourth, separate build."
+    - *Task.* "I did not own any of the teams. I wanted a shared library, or at least shared rules, without a reorganisation."
+    - *Action.* "I counted duplicate complaints over a quarter to make the cost visible, interviewed the three tech leads to learn what each would not give up, drafted a one-page proposal that kept their differences as options, and prototyped the shared retry logic in a week. I asked the director for 20 minutes with the numbers and a small first step, not a mandate. I volunteered to maintain the library for the first two quarters."
+    - *Result.* "Two teams adopted it within the quarter, duplicates fell by about half by our own count, and the fourth build was cancelled. The third team stayed separate; I recorded why and revisited it six months later."
+
+    **Signals of seniority.** No authority, so influence through evidence. Understanding each party's constraints. A small first step. Taking on the maintenance cost. An honest partial outcome. Effects beyond one team. [Inference: expectations vary by company.]
+  check: none

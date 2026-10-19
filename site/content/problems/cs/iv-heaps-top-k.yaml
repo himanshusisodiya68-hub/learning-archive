@@ -1,0 +1,153 @@
+# Heaps and top-k. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    The numbers 5, 3, 8, 1 and 9 are put into an empty min-heap. Two items are then removed, one after the other, each time taking the smallest. What is the value of the second item removed?
+  ask: Second removed
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '[5, 3, 8, 1, 9].sort((a, b) => a - b)[1]'
+  sol: |
+    A min-heap always gives the smallest remaining number. The first removal gives 1. The second gives the smallest of 3, 5, 8, 9, which is 3.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: You must keep the 3 largest numbers seen so far in a stream. Which structure is the best fit?
+  opts: ["A min-heap holding at most 3 numbers", "A max-heap holding all numbers", "A sorted list of all numbers"]
+  ans: 0
+  sol: |
+    A min-heap of size 3. Its top is the smallest of the three kept, which is the one a new number must beat. Memory stays at 3 items and each step costs about log 3. The other two options store everything and cost more, with no benefit for this question.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    A stream delivers 4, 9, 2, 7, 10, 1, 8 in that order. You keep the 3 largest numbers in a min-heap of size 3. When the stream ends, what is the sum of the three numbers in the heap?
+  ask: Sum
+  unit: ""
+  ans: 27
+  tol: 0.1
+  verify: '[4, 9, 2, 7, 10, 1, 8].sort((a, b) => b - a).slice(0, 3).reduce((a, b) => a + b, 0)'
+  sol: |
+    Heap after 4, 9, 2: {2, 4, 9}. Then 7 beats 2: {4, 7, 9}. Then 10 beats 4: {7, 9, 10}. Then 1 loses to 7. Then 8 beats 7: {8, 9, 10}. The sum is 8 + 9 + 10 = 27.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    A million items go through a size-8 min-heap to find the top 8. Each item costs up to about log2(8) steps of sifting. About how many sifting steps does the whole run take at most?
+  ask: Steps
+  unit: ""
+  ans: 3000000
+  tol: 1
+  verify: '1e6 * Math.log2(8)'
+  sol: |
+    Each of the 1,000,000 items needs at most about log2(8) = 3 steps, so about 3,000,000 steps. Sorting all items would take about 1,000,000 x log2(1,000,000), roughly 20,000,000 steps, and would hold all million in memory. This is the n log k versus n log n gap.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |
+    Four sorted lists are merged into one sorted list: [1, 4, 7], [2, 5, 8], [3, 6, 9] and [0, 10]. What is the 6th number in the merged list (counting from 1)?
+  ask: 6th number
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: '[1, 4, 7, 2, 5, 8, 3, 6, 9, 0, 10].sort((a, b) => a - b)[5]'
+  sol: |
+    The heap starts with the four fronts 1, 2, 3, 0. Pops, in order: 0 (then 10 enters), 1 (4 enters), 2 (5 enters), 3 (6 enters), 4 (7 enters), 5. The sixth number popped is 5. The heap never holds more than 4 items, which is why the merge costs O(N log k) for N items and k lists.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |
+    Four meetings are given as (start, end): (0, 30), (5, 10), (10, 25), (15, 20). A meeting ending at time t does not clash with one starting at t. What is the smallest number of rooms needed?
+  ask: Rooms
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(() => { const m = [[0, 30], [5, 10], [10, 25], [15, 20]].sort((a, b) => a[0] - b[0]); const ends = []; for (const [s, e] of m) { ends.sort((a, b) => a - b); if (ends.length && ends[0] <= s) ends[0] = e; else ends.push(e); } return ends.length; })()'
+  sol: |
+    Sort by start: (0,30), (5,10), (10,25), (15,20). Heap of end times: (0,30) opens a room, heap {30}. (5,10): the earliest end is 30, not free, so open a room, heap {10, 30}. (10,25): the earliest end is 10, which is not after 10, so the room is reused, heap {25, 30}. (15,20): the earliest end is 25, not free, so open a room, heap {20, 25, 30}. Three rooms. At time 15 the meetings (0,30), (10,25) and (15,20) really are running together.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |
+    Numbers arrive one by one: 5, 15, 1, 3, 8. After each number, the median of everything so far is recorded (for an even count, the average of the two middle numbers). What is the sum of the five recorded medians?
+  ask: Sum of medians
+  unit: ""
+  ans: 29
+  tol: 0.1
+  verify: '(() => { const xs = [5, 15, 1, 3, 8]; let s = 0; for (let i = 1; i <= xs.length; i++) { const a = xs.slice(0, i).sort((p, q) => p - q); s += i % 2 ? a[(i - 1) / 2] : (a[i / 2 - 1] + a[i / 2]) / 2; } return s; })()'
+  sol: |
+    After 5: median 5. After 5, 15: (5 + 15) / 2 = 10. After 5, 15, 1: sorted 1, 5, 15, median 5. After adding 3: sorted 1, 3, 5, 15, median (3 + 5) / 2 = 4. After adding 8: sorted 1, 3, 5, 8, 15, median 5. Sum: 5 + 10 + 5 + 4 + 5 = 29. With two heaps each step is O(log n) instead of re-sorting.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |
+    Ropes of lengths 4, 3, 2 and 6 must be joined into one. Joining two ropes costs the sum of their lengths, and the joined rope can be joined again. What is the least total cost?
+  ask: Cost
+  unit: ""
+  ans: 29
+  tol: 0.1
+  verify: '(() => { const a = [4, 3, 2, 6]; let t = 0; while (a.length > 1) { a.sort((x, y) => x - y); const s = a.shift() + a.shift(); t += s; a.push(s); } return t; })()'
+  sol: |
+    Always join the two shortest. Join 2 and 3 for 5 (total 5); the ropes are 4, 5, 6. Join 4 and 5 for 9 (total 14); the ropes are 6, 9. Join 6 and 9 for 15 (total 29). The least cost is 29. The heap makes each "two smallest" step O(log n).
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    A service logs one billion numeric response times per day on a single machine with little memory, and you need the slowest 1,000 of them. A colleague proposes sorting the log file. Compare sorting, a heap, and quickselect for this, and say what changes if the data lives on 100 machines.
+  sol: |
+    Sorting costs O(n log n) time and needs either all data in memory or an external merge sort that writes to disk several times. It does far more than asked.
+
+    A size-1,000 min-heap reads the data once, with at most about log2(1000), roughly 10, steps per item: about 10 billion simple steps and memory for 1,000 numbers. This suits a stream because it needs one pass and no storage of the rest.
+
+    Quickselect needs all the numbers in memory (or repeated passes over the file), so it is a poor fit for a memory-poor, stream-like job, although its O(n) average is attractive if the data fits.
+
+    On 100 machines, each computes its own top 1,000 with a heap, then one machine merges the 100 lists of 1,000 (100,000 items) with another heap, or just a sort of 100,000 numbers. The true top 1,000 is guaranteed to be inside the union of the local top-1,000 lists, because any item that is global top-1,000 is certainly top-1,000 on its own machine. Only 100,000 numbers move across the network instead of a billion.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |
+    Tasks A (4 times), B (2 times) and C (2 times) must each run in one time slot. The same task cannot run again until 2 other slots have passed (so after A in slot 1 the next A may start in slot 4). A slot can be left idle. What is the smallest number of slots to finish all 8 tasks?
+  ask: Slots
+  unit: ""
+  ans: 10
+  tol: 0.1
+  verify: '(() => { const cnt = { A: 4, B: 2, C: 2 }, cool = 2; let t = 0, left = 8; const last = {}; while (left > 0) { t++; let best = null; for (const k in cnt) { if (cnt[k] > 0 && (last[k] === undefined || t - last[k] > cool) && (best === null || cnt[k] > cnt[best])) best = k; } if (best) { cnt[best]--; left--; last[best] = t; } } return t; })()'
+  sol: |
+    Greedy with a max-heap of remaining counts plus a waiting line for tasks cooling down: each slot, run the available task with the most remaining runs; if none is available, stay idle. The schedule is A B C A B C A _ _ A: slot 1 A, 2 B, 3 C, 4 A, 5 B, 6 C, 7 A, 8 idle, 9 idle, 10 A.
+
+    Lower bound check: A runs 4 times and must be 3 slots apart each time, so the first and last A are at least 9 slots apart, giving at least 10 slots. The answer is 10, and the 8 tasks plus 2 idle slots fill it.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    Hardest stretch. You are given k sorted lists of integers. Find the smallest interval [lo, hi] such that every list has at least one number inside it. If two intervals have the same length, pick the one with the smaller lo. Describe the algorithm and its cost.
+  sol: |
+    Think of picking one number from each list; the interval must span the smallest and the largest picked. Start by picking the first number of every list. The heap holds these k picks, ordered by value, and you track the largest pick as `cur_max`.
+
+    Repeat: the interval for the current picks is [heap top, cur_max]; record it if it is shorter than the best so far (strictly shorter, so ties keep the earlier, smaller lo). Then remove the smallest pick and replace it with the next number from the same list. Update `cur_max` if the new number is larger. If that list has run out, stop, because no interval can cover all lists any more.
+
+    Why this is right: the only way to get a shorter interval is to raise its lower end, so the smallest pick must be advanced; advancing any other pick can only widen the interval. Every list's numbers are visited at most once, so with N numbers in total and a heap of at most k items the cost is O(N log k) time and O(k) extra space.
+  check: none
