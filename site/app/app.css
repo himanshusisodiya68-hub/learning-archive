@@ -1160,3 +1160,21 @@ html.ck-open { overflow: hidden; }
   .around-g::-webkit-scrollbar { display: none; }
   .around-g > .mn { flex: 0 0 82%; scroll-snap-align: start; }
 }
+
+/* ---------- maths placeholders and the brainy loader ---------- */
+.tx:not(.ok) { font-family: var(--f-mono); font-size: .88em; color: var(--muted); }
+.tx.dm:not(.ok) { display: block; text-align: center; padding: 8px 0; }
+.loading.bl { display: grid; justify-items: center; gap: 14px; padding: 9vh 16px 40px; text-align: center; color: var(--accent); }
+.bl-orb { width: 92px; height: 92px; }
+.bl-core { animation: blpulse 1.4s ease-in-out infinite; transform-origin: center; }
+@keyframes blpulse { 50% { transform: scale(1.25); } }
+.bl-slot { width: 100%; display: flex; justify-content: center; }
+.bl-l { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.bl-card { width: min(460px, 100%); background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 16px 18px; text-align: left; color: var(--ink); box-shadow: var(--shadow, 0 10px 30px -20px rgba(0,0,0,.3)); animation: blin .35s ease-out; }
+@keyframes blin { from { opacity: 0; transform: translateY(6px); } }
+.bl-k { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--chem); margin-bottom: 6px; }
+.bl-card p { margin: 0; font-family: var(--f-body); font-size: 16.5px; line-height: 1.55; }
+.bl-rev { margin-top: 12px; border: 1px solid var(--rule); background: var(--sunk); color: var(--ink); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+.bl-ans { margin-top: 12px !important; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--good) 10%, var(--surface)); font-size: 15px !important; }
+#boot:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .bl-core, .bl-card { animation: none; } }

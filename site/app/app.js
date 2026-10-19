@@ -87,7 +87,8 @@
     }
     return null;
   }
-  async function getLesson(key) { return lessonCache[key] ||= await fetchJSON(`data/lessons/${fileOf(key)}.json`); }
+  // The promise is cached, so the lesson and its problems (same file) share one request.
+  function getLesson(key) { return lessonCache[key] ||= fetchJSON(`data/lessons/${fileOf(key)}.json`).catch(e => { delete lessonCache[key]; throw e; }); }
   // One file per leaf holds the lesson and its problems (data/lessons/<subj>--<leaf>.json, field probs).
   async function getProblems(key) {
     if (problemCache[key]) return problemCache[key];
@@ -196,11 +197,59 @@
   function titleCase(root) {
     if (!root) return;
     root.querySelectorAll(TC_SEL).forEach(el => {
-      const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.katex, code, .count, .lv, small') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+      const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.katex, .tx, code, .count, .lv, small') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
       let first = true, n;
       while ((n = walk.nextNode())) n.textContent = n.textContent.split(/(\s+)/).map(w => { if (!w || /^\s+$/.test(w)) return w; const r = tcWord(w, first); first = false; return r; }).join('');
     });
   }
+
+
+  /* ---------- maths: the data carries TeX (<span class="tx">); KaTeX (loaded once, then cached) draws it on screen ---------- */
+  let katexP = null;
+  const loadKatex = () => katexP ||= new Promise((res, rej) => { if (window.katex) return res(); const sc = document.createElement('script'); sc.src = 'katex.min.js'; sc.onload = () => res(); sc.onerror = () => { katexP = null; rej(); }; document.head.appendChild(sc); });
+  function renderTex(root) {
+    const els = [...root.querySelectorAll('.tx:not(.ok)')]; if (!els.length) return;
+    loadKatex().then(() => els.forEach(el => { if (el.classList.contains('ok')) return; const t = el.textContent;
+      try { window.katex.render(t, el, { displayMode: el.classList.contains('dm'), throwOnError: false, strict: 'ignore', output: 'html' }); el.classList.add('ok'); el.setAttribute('aria-label', t); } catch (e) { /* leave the TeX visible */ } })).catch(() => {});
+  }
+  new MutationObserver(ms => { for (const m of ms) for (const n of m.addedNodes) if (n.nodeType === 1 && !n.closest('.katex')) renderTex(n.parentElement || n); }).observe(document.body, { childList: true, subtree: true });
+
+  /* ---------- a brainy loader: a fact or a quick puzzle while data arrives ---------- */
+  const BRAINY = [
+    ['f', 'Sunlight takes about 8 minutes 20 seconds to reach Earth, so you always see the Sun as it was a little in the past.'],
+    ['f', 'Sound covers about 1 km in 3 seconds. Count the seconds between lightning and thunder, divide by 3, and you have the distance in km.'],
+    ['f', 'Water is densest at about 4 °C. That is why lakes freeze from the top down and fish survive the winter below the ice.'],
+    ['f', 'Electrons in a wire drift slower than a millimetre per second, yet a bulb lights at once: the electric field travels at nearly the speed of light.'],
+    ['f', 'A 4-digit PIN has 10,000 possible values; a 6-digit PIN has a million. Two more digits, a hundred times harder to guess.'],
+    ['f', 'Binary search on a sorted list of a million names needs at most 20 looks. Double the list and it needs just one more.'],
+    ['f', 'The lens of your eye forms an upside-down image on the retina; your brain turns it the right way up.'],
+    ['f', 'A rainbow is really a full circle. The ground hides the lower half; from an aeroplane you can sometimes see all of it.'],
+    ['f', 'The sky is blue because air scatters short (blue) wavelengths several times more strongly than long (red) ones.'],
+    ['f', 'There are more ways to shuffle a deck of 52 cards (about 8 × 10⁶⁷) than there are atoms making up the Earth.'],
+    ['f', 'On the Moon you would weigh about one-sixth of what you weigh on Earth, though your mass would not change at all.'],
+    ['f', 'Young Gauss is said to have added 1 to 100 in seconds: pair 1 + 100, 2 + 99, … that is 50 pairs of 101, so 5050.'],
+    ['p', 'A bat and a ball cost ₹110 together. The bat costs ₹100 more than the ball. How much does the ball cost?', '₹5. Then the bat is ₹105, and ₹105 + ₹5 = ₹110. (₹10 is the tempting wrong answer.)'],
+    ['p', '5 machines take 5 minutes to make 5 toys. How long do 100 machines take to make 100 toys?', '5 minutes. Each machine makes one toy in 5 minutes.'],
+    ['p', 'Lily pads double in area every day and cover the whole lake on day 48. On which day was the lake half covered?', 'Day 47. One more doubling covers the rest.'],
+    ['p', 'You drive to a town at 40 km/h and come back at 60 km/h. What is your average speed for the round trip?', '48 km/h, not 50. You spend longer at the slower speed. (Take 120 km each way: 3 h + 2 h for 240 km.)'],
+    ['p', 'A 1 km long train enters a 1 km long tunnel at 60 km/h. How long until the whole train is out?', '2 minutes. The front must travel 2 km: the tunnel plus the train’s own length.'],
+    ['p', 'In most programming languages, what does 0.1 + 0.2 print?', '0.30000000000000004. Computers store numbers in binary, and 0.1 has no exact binary form.'],
+    ['p', 'Which has more mass: a kilogram of iron or a kilogram of cotton?', 'Neither: both are 1 kg. The cotton just takes up far more space.'],
+    ['p', 'How many times can you subtract 5 from 25?', 'Once. After that you are subtracting 5 from 20.']
+  ];
+  let brainyI = Math.floor(Math.random() * BRAINY.length);
+  const brainyCard = () => { const b = BRAINY[brainyI++ % BRAINY.length];
+    return b[0] === 'f' ? `<div class="bl-card"><span class="bl-k">Did you know?</span><p>${b[1]}</p></div>`
+      : `<div class="bl-card"><span class="bl-k">Quick puzzle</span><p>${b[1]}</p><button class="bl-rev" data-bl-rev>Show the answer</button><p class="bl-ans" hidden>${b[2]}</p></div>`; };
+  const loaderHTML = label => `<div class="loading bl"><svg class="bl-orb" viewBox="-50 -50 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><ellipse rx="42" ry="14"/><ellipse rx="42" ry="14" transform="rotate(60)"/><ellipse rx="42" ry="14" transform="rotate(-60)"/></g><circle class="bl-core" r="7" fill="currentColor"/>
+    ${[[0, 1.4, 'var(--eng)'], [60, 1.9, 'var(--mat)'], [-60, 2.4, 'var(--chem)']].map(([r, d, c]) => `<g transform="rotate(${r})"><circle r="4.5" fill="${c}"><animateMotion dur="${d}s" repeatCount="indefinite" path="M42,0 A42,14 0 1,1 -42,0 A42,14 0 1,1 42,0"/></circle></g>`).join('')}</svg>
+    <div class="bl-l">${label}</div><div class="bl-slot">${brainyCard()}</div></div>`;
+  document.addEventListener('click', e => { const b = e.target.closest('[data-bl-rev]'); if (b) { b.hidden = true; b.nextElementSibling.hidden = false; } });
+  // A long wait gets a new card every 9 seconds, unless a puzzle answer is open.
+  setInterval(() => document.querySelectorAll('.bl-slot').forEach(sl => { if (!sl.querySelector('.bl-ans:not([hidden])')) sl.innerHTML = brainyCard(); }), 9000);
+  { const boot = document.getElementById('boot'); if (boot) boot.innerHTML = loaderHTML('Opening Polymath…'); }
+  // Google Fonts load without blocking the first paint (the link starts as media=print); system fonts show until they arrive.
+  { const gf = document.getElementById('gfonts'); if (gf) { if (gf.sheet) gf.media = 'all'; else gf.addEventListener('load', () => { gf.media = 'all'; }); } }
 
   /* ================= STATE + ROUTER ================= */
   const S = { subj: 'phy', pillar: null, branch: null, leaf: null, mode: 'subject', cls: 10, ltab: 'learn', depth: 4, lessonKey: null,
@@ -216,6 +265,7 @@
   }
   function route() {
     if (!TREE) return;
+    { const boot = document.getElementById('boot'); if (boot) boot.remove(); }
     let { v, key } = parseHash();
     if (v === 'play' && !S.set.length) v = 'practice';
     if (v === 'lesson') {
@@ -237,7 +287,11 @@
   /* ================= HOME ================= */
   $('today-date').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' });
   { const hr = new Date().getHours(); $('greet').textContent = (hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening') + '. One idea today?'; }
+  // Home-page sparks live in extras.json, fetched the first time Home is shown.
+  let extrasP = null;
+  const loadExtras = () => extrasP ||= fetchJSON('data/extras.json').then(ex => { Object.entries(ex).forEach(([k, sp]) => { const L = leafByKey(k); if (L) L.l.sparks = sp; }); if (parseHash().v === 'home') { RENDER.home(); titleCase($('habits')); } }).catch(() => { extrasP = null; });
   RENDER.home = () => {
+    loadExtras();
     const live = liveLeaves().filter(x => x.l.live);
     const lastKey = PG.last && leafByKey(PG.last) && leafByKey(PG.last).l.live ? PG.last : (live[0] && live[0].key);
     const C = $('continue');
@@ -693,7 +747,7 @@
     const L = leafByKey(key);
     if (!L || !L.l.live) { root.innerHTML = `<div class="empty-card panel">This lesson is not written yet.</div>`; return; }
     if (root.dataset.key !== key) {
-      root.dataset.key = key; root.innerHTML = '<div class="loading">Loading lesson…</div>';
+      root.dataset.key = key; root.innerHTML = loaderHTML('Loading the lesson…');
       const [lesson, probs] = await Promise.all([getLesson(key), getProblems(key)]);
       if (S.lessonKey !== key) return;
       buildLesson(root, L, lesson, probs);
@@ -1409,7 +1463,6 @@
   Promise.all([fetchJSON('data/tree.json'), fetchJSON('data/ncert.json')])
     .then(([t, n]) => { TREE = t; NCERT = n; route();
       // After the first paint: home-page sparks, then the search index (or sooner, when the palette opens).
-      fetchJSON('data/extras.json').then(ex => { Object.entries(ex).forEach(([k, sp]) => { const L = leafByKey(k); if (L) L.l.sparks = sp; }); if (parseHash().v === 'home') { RENDER.home(); titleCase($('habits')); } }).catch(() => {});
-      (window.requestIdleCallback || (f => setTimeout(f, 1200)))(() => loadSearch()); })
+      (window.requestIdleCallback || (f => setTimeout(f, 1200)))(() => { loadSearch(); loadKatex().catch(() => {}); }); })
     .catch(err => { document.querySelector('main .inner').innerHTML = `<div class="empty-card panel">The archive data could not be loaded (${escHTML(err.message)}). Reload the page to try again.</div>`; });
 })();

@@ -66,7 +66,7 @@ docs/reference-books.md   books the owner will upload (★ = phase 1)
 design/                   mockups (reference only)
 site/
   package.json            npm run build | npm run check
-  build.mjs               content → dist/ (index.html + data/*.json); KaTeX pre-renders all math
+  build.mjs               content → dist/ (index.html + data/*.json); maths ships as TeX (<span class="tx">) and KaTeX draws it in the browser (katex.min.js, loaded once); the build still renders every formula once so a TeX error fails the lint
   check-answers.mjs       recomputes every numeric answer from its `verify` expression
   check-figures.mjs       renders every figure in Chromium and reports clipped, spilling, overlapping or crossed-out labels
   lint-lesson.mjs         checks single lesson files (front matter, core, KaTeX, blocks, widgets) without a build; safe in parallel
@@ -198,7 +198,7 @@ From a new session:
    - `file_path`: `site/dist/index.html`
    - `url`: the URL above
    - `root`: `site/dist`
-   - `files`: every `data/**/*.json` and `fonts/*.woff2` (list them with `find data fonts -type f` inside `site/dist`). KaTeX fonts are separate files, not inlined, so the page stays small; `data/extras.json` holds the home-page sparks, loaded after the first paint.
+   - `files`: `katex.min.js`, every `data/**/*.json` and `fonts/*.woff2` (list them with `find data fonts katex.min.js -type f` inside `site/dist`). KaTeX fonts are separate files, not inlined, so the page stays small; `data/extras.json` holds the home-page sparks, loaded after the first paint.
    - Each lesson file `data/lessons/<subj>--<leaf>.json` also holds that leaf's problems (`probs`), so the build has about 280 files (one per leaf, plus `tree`, `ncert`, `search`, `extras` and 20 fonts; about 70 MB). One publish takes at most 255 files and 64 MB, and one version holds at most 511 files, so publish in two batches to the same `url`: each later publish adds to the files already there. Keep the file count low: never add one file per problem or per section.
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
