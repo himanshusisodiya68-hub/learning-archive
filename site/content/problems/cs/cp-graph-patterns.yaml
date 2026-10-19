@@ -1,0 +1,161 @@
+# Graph patterns. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: "In this maze, S is the start, E is the exit and # is a wall. You may move up, down, left or right into a non-wall cell. Rows: S..#. / ##.#. / ..... / .###. / ....E. What is the fewest steps from S (top-left) to E (bottom-right)?"
+  ask: Steps
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: '(() => { const g=["S..#.","##.#.",".....",".###.","....E"]; const R=5,C=5; const d=g.map(r=>Array(C).fill(-1)); d[0][0]=0; const q=[[0,0]]; while(q.length){ const [r,c]=q.shift(); for (const [dr,dc] of [[1,0],[-1,0],[0,1],[0,-1]]){ const a=r+dr,b=c+dc; if(a>=0&&a<R&&b>=0&&b<C&&g[a][b]!=="#"&&d[a][b]<0){ d[a][b]=d[r][c]+1; q.push([a,b]); } } } return d[4][4]; })()'
+  sol: |
+    BFS from S gives each cell its distance. The only way out of the top-left pocket is along the top row to the third column, then down. The route is right, right, down, down, right, right, down, down: 8 steps. The walls under the first two cells and the wall row below the middle block any shortcut.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Roads have different lengths, all positive. Which algorithm finds the cheapest route from one town to all others?"
+  opts: ["BFS, because it finds the fewest roads", "Dijkstra with a heap", "Union-find"]
+  ans: 1
+  sol: |
+    Dijkstra. BFS counts roads, not lengths, so a route with fewer roads can be longer. Union-find answers questions about groups, not distances.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: "A grid has fire (F), open cells (.) and walls (#). Each minute fire spreads to the four neighbouring non-wall cells. Rows: F...# / ..#.. / #.... / ...#F. After how many minutes has fire reached every non-wall cell?"
+  ask: Minutes
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: '(() => { const g=["F...#","..#..","#....","...#F"]; const R=4,C=5; const d=g.map(r=>Array(C).fill(-1)); const q=[]; for(let r=0;r<R;r++) for(let c=0;c<C;c++) if(g[r][c]==="F"){ d[r][c]=0; q.push([r,c]); } while(q.length){ const [r,c]=q.shift(); for (const [dr,dc] of [[1,0],[-1,0],[0,1],[0,-1]]){ const a=r+dr,b=c+dc; if(a>=0&&a<R&&b>=0&&b<C&&g[a][b]!=="#"&&d[a][b]<0){ d[a][b]=d[r][c]+1; q.push([a,b]); } } } return Math.max(...d.flat()); })()'
+  sol: |
+    Run one multi-source BFS that starts from both F cells at distance 0. The distance of a cell is the minute fire reaches it. The largest distance over all non-wall cells is 5 (the bottom-left cell). One search answers it; running a BFS from every cell would be far slower.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: "Eight people are numbered 0 to 7. These friendships are announced in order: (0,1), (1,2), (3,4), (5,6), (6,7), (5,7), (2,0). Friends of friends belong to the same circle. How many separate circles are there at the end?"
+  ask: Circles
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(() => { const p=[0,1,2,3,4,5,6,7]; const f=x=>p[x]===x?x:(p[x]=f(p[x])); let c=8; for (const [u,v] of [[0,1],[1,2],[3,4],[5,6],[6,7],[5,7],[2,0]]){ const a=f(u),b=f(v); if(a!==b){ p[a]=b; c--; } } return c; })()'
+  sol: |
+    Use union-find. Start with 8 groups; each successful union reduces the count by one. The pairs (0,1), (1,2), (3,4), (5,6) and (6,7) succeed: 8 - 5 = 3. The pairs (5,7) and (2,0) return False because those people are already together (they close cycles). The circles are {0,1,2}, {3,4} and {5,6,7}.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: "Towns 0 to 4 are joined by two-way roads with lengths: 0-1: 4, 0-2: 1, 2-1: 2, 1-3: 5, 2-3: 8, 3-4: 3, 2-4: 12. What is the length of the shortest route from town 0 to town 4?"
+  ask: Length
+  unit: ""
+  ans: 11
+  tol: 0.1
+  verify: '(() => { const E=[[0,1,4],[0,2,1],[2,1,2],[1,3,5],[2,3,8],[3,4,3],[2,4,12]]; const d=Array(5).fill(Infinity); d[0]=0; for(let k=0;k<5;k++) for(const [u,v,w] of E){ if(d[u]+w<d[v]) d[v]=d[u]+w; if(d[v]+w<d[u]) d[u]=d[v]+w; } return d[4]; })()'
+  sol: |
+    Dijkstra from 0: dist[2] = 1, then dist[1] = 1 + 2 = 3 (better than the direct 4), then dist[3] = 3 + 5 = 8 (better than 1 + 8 = 9), then dist[4] = 8 + 3 = 11 (better than 1 + 12 = 13). The route is 0, 2, 1, 3, 4. BFS would choose 0, 2, 4 with only two roads, but that costs 13.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: "Seven courses are numbered 0 to 6. Prerequisites (A, B) mean A must be finished in an earlier term than B: (0,1), (0,2), (1,3), (2,3), (3,4), (2,5), (5,4), (4,6). Any number of courses may be taken in one term if their prerequisites are done. What is the fewest terms needed?"
+  ask: Terms
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: '(() => { const E=[[0,1],[0,2],[1,3],[2,3],[3,4],[2,5],[5,4],[4,6]]; const best=Array(7).fill(1); for(let k=0;k<7;k++) for(const [u,v] of E) best[v]=Math.max(best[v],best[u]+1); return Math.max(...best); })()'
+  sol: |
+    The answer is the longest chain of courses along the prerequisites, found with a topological order and best[v] = 1 + max(best[u]) over prerequisites u. best is 1 for course 0, 2 for courses 1 and 2, 3 for courses 3 and 5, 4 for course 4 and 5 for course 6. So 5 terms. A cycle (say adding the pair (6,0)) would make the plan impossible, and Kahn's algorithm would fail to place every course.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: "Six villages 0 to 5 can be joined by cables of these lengths (village, village, length): (0,1,4), (0,2,2), (1,2,5), (1,3,10), (2,4,3), (3,4,7), (3,5,6), (4,5,8), (2,3,1). What is the least total cable that connects all six villages?"
+  ask: Total length
+  unit: ""
+  ans: 16
+  tol: 0.1
+  verify: '(() => { const E=[[4,0,1],[2,0,2],[5,1,2],[10,1,3],[3,2,4],[7,3,4],[6,3,5],[8,4,5],[1,2,3]].sort((a,b)=>a[0]-b[0]); const p=[0,1,2,3,4,5]; const f=x=>p[x]===x?x:(p[x]=f(p[x])); let t=0; for(const [w,u,v] of E){ const a=f(u),b=f(v); if(a!==b){ p[a]=b; t+=w; } } return t; })()'
+  sol: |
+    Kruskal: sort the cables by length (1, 2, 3, 4, 5, 6, 7, 8, 10) and take each one that joins two different groups. Take (2,3) 1, (0,2) 2, (2,4) 3 and (0,1) 4. Skip (1,2) 5, since villages 1 and 2 are already joined. Take (3,5) 6, which brings in village 5. All six villages are now connected with five cables: 1 + 2 + 3 + 4 + 6 = 16.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: "A 5 by 5 maze has rows: .#... / .#.#. / .#.#. / .#.#. / ...#. where # is a wall. You start at the top-left cell and must reach the bottom-right cell, moving up, down, left or right. You may walk through at most one wall cell (break it). What is the fewest steps?"
+  ask: Steps
+  unit: ""
+  ans: 8
+  tol: 0.1
+  verify: '(() => { const g=[".#...",".#.#.",".#.#.",".#.#.","...#."]; const R=5,C=5,K=1; const seen=new Set(["0,0,0"]); let q=[[0,0,0]], steps=0; while(q.length){ const nq=[]; for(const [r,c,u] of q){ if(r===R-1&&c===C-1) return steps; for(const [dr,dc] of [[1,0],[-1,0],[0,1],[0,-1]]){ const a=r+dr,b=c+dc; if(a<0||a>=R||b<0||b>=C) continue; const nu=u+(g[a][b]==="#"?1:0); const key=a+","+b+","+nu; if(nu<=K&&!seen.has(key)){ seen.add(key); nq.push([a,b,nu]); } } } q=nq; steps++; } return -1; })()'
+  sol: |
+    Search the expanded graph whose nodes are (row, column, walls broken so far), with the third part limited to 0 or 1. With no break, the route winds down the left column, along the bottom, up the middle and across the top: 16 steps. With one break, walk right along the top row through the wall in the second column (4 steps), then down the right edge (4 steps): 8 steps. Keeping the number of breaks in the node is what makes the search correct.
+  check: code
+
+- id: m5
+  lvl: main
+  kind: mcq
+  q: "Six people A to F have conflicts: A-B, B-C, C-D, D-E, E-A and F-A. Can they be split into two teams so that no conflicting pair is in the same team?"
+  opts: ["Yes, put A, C and E in one team", "No, because A, B, C, D and E form a cycle of odd length", "Yes, as long as F joins the team of B"]
+  ans: 1
+  sol: |
+    No. A graph can be two-coloured exactly when it has no odd cycle, and A-B-C-D-E-A is a cycle of 5 people. Colouring A red forces B blue, C red, D blue and E red, but E and A are in conflict and both red. A BFS 2-colouring finds exactly this clash.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: "Nodes 0 to 5 are joined by two-way edges: 0-1, 0-2, 1-3, 2-3, 1-4, 2-4, 3-5, 4-5, 3-4. In how many different ways can you go from 0 to 5 using the fewest possible edges?"
+  ask: Shortest paths
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: '(() => { const E=[[0,1],[0,2],[1,3],[2,3],[1,4],[2,4],[3,5],[4,5],[3,4]]; const adj=Array.from({length:6},()=>[]); for(const [u,v] of E){ adj[u].push(v); adj[v].push(u); } const d=Array(6).fill(-1), w=Array(6).fill(0); d[0]=0; w[0]=1; const q=[0]; while(q.length){ const u=q.shift(); for(const v of adj[u]){ if(d[v]<0){ d[v]=d[u]+1; q.push(v); } if(d[v]===d[u]+1) w[v]+=w[u]; } } return w[5]; })()'
+  sol: |
+    Run BFS and keep ways[v]. Distances are 0 for node 0, 1 for nodes 1 and 2, 2 for nodes 3 and 4, and 3 for node 5. ways[1] = ways[2] = 1; ways[3] = ways[1] + ways[2] = 2; ways[4] = 2; ways[5] = ways[3] + ways[4] = 4. The edge 3-4 joins two nodes at the same distance, so it never lies on a shortest path. The four routes are 0-1-3-5, 0-2-3-5, 0-1-4-5 and 0-2-4-5.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: "Towns 0 to 5 have two-way roads with steepness values (town, town, steepness): (0,1,7), (0,2,3), (1,3,5), (2,3,9), (2,4,4), (3,5,6), (4,5,8), (1,2,2). You want a route from 0 to 5 whose steepest road is as gentle as possible. What is that steepest value?"
+  ask: Steepness
+  unit: ""
+  ans: 6
+  tol: 0.1
+  verify: '(() => { const E=[[7,0,1],[3,0,2],[5,1,3],[9,2,3],[4,2,4],[6,3,5],[8,4,5],[2,1,2]].sort((a,b)=>a[0]-b[0]); const p=[0,1,2,3,4,5]; const f=x=>p[x]===x?x:(p[x]=f(p[x])); for(const [w,u,v] of E){ p[f(u)]=f(v); if(f(0)===f(5)) return w; } return -1; })()'
+  sol: |
+    Sort the roads by steepness: 2, 3, 4, 5, 6, 7, 8, 9. Add them one at a time to a union-find and stop as soon as towns 0 and 5 are in one group. After 2 (1-2), 3 (0-2), 4 (2-4) and 5 (1-3) the group holds towns 0, 1, 2, 3 and 4 but not 5. Adding 6 (3-5) joins town 5, so the answer is 6, for example the route 0, 2, 1, 3, 5 with steepness 3, 2, 5, 6. Town 5 can only be entered by roads of steepness 6 or 8, so no route does better.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: "Roads have length 1 or 2 only. Show how to find shortest distances from a source in O(V + E) time using plain BFS, and apply it to the roads 0-1 (2), 1-2 (1), 0-3 (1), 3-4 (1), 4-2 (2) to find the distance from town 0 to town 2."
+  sol: |
+    **Idea.** Replace every road of length 2 by two roads of length 1 with a new middle node. Every road now has length 1, so plain BFS gives true distances, and the distances between the original nodes are unchanged. The new graph has at most $V + E$ nodes and $2E$ edges, so BFS costs $O(V + E)$, which beats Dijkstra's $O((V+E)\log V)$. For weights up to $W$ the same trick costs $O(V + WE)$, worth it only for small $W$.
+
+    ```python
+    def split_bfs(n, edges, src):          # edges: (u, v, w) with w in {1, 2}
+        adj = [[] for _ in range(n)]
+        for u, v, w in edges:
+            if w == 2:
+                m = len(adj); adj.append([])    # new middle node
+                for a, b in ((u, m), (m, v)):
+                    adj[a].append(b); adj[b].append(a)
+            else:
+                adj[u].append(v); adj[v].append(u)
+        # then run ordinary BFS from src on adj
+    ```
+
+    **Example.** Route 0-1-2 has length 2 + 1 = 3. Route 0-3-4-2 has length 1 + 1 + 2 = 4. After splitting, the first is 3 edges and the second is 4 edges, so BFS finds distance 3.
+  check: none
