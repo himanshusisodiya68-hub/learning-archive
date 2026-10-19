@@ -318,12 +318,12 @@ Which loop shape you want depends on the job.
 Note that soft iron can have a **higher** retentivity than steel. What makes steel suitable for permanent magnets is its much larger coercivity: its magnetism is hard to knock out. [Unverified: the comparison follows the NCERT text's discussion as recalled; specific alloys recalled from memory.]
 
 :::figure caption="Soft iron (left): tall, thin loop, easy to magnetise and demagnetise, little energy lost per cycle. Hard steel (right): wide loop with a large coercivity, hard to demagnetise, the right choice for permanent magnets."
-<svg viewBox="0 0 320 150" role="img" aria-label="Two B–H loops side by side; the left one narrow and tall labelled soft iron, the right one wide labelled steel">
+<svg viewBox="0 0 320 162" role="img" aria-label="Two B–H loops side by side; the left one narrow and tall labelled soft iron, the right one wide labelled steel">
 <line class="axis" x1="10" y1="75" x2="150" y2="75"/><line class="axis" x1="80" y1="140" x2="80" y2="10"/>
 <path d="M140 20 C110 24 88 30 80 33 C74 36 72 55 70 75 C68 100 50 125 20 130 C50 126 76 120 80 117 C86 114 88 95 90 75 C92 50 110 26 140 20" style="fill:none;stroke:var(--phy);stroke-width:2.2"/>
 <line class="axis" x1="170" y1="75" x2="310" y2="75"/><line class="axis" x1="240" y1="140" x2="240" y2="10"/>
 <path d="M305 30 C280 36 255 40 240 42 C215 45 205 60 200 75 C192 100 200 115 175 120 C200 114 225 110 240 108 C265 105 275 90 280 75 C288 50 280 35 305 30" style="fill:none;stroke:var(--phy);stroke-width:2.2"/>
-<text x="40" y="148">soft iron</text><text x="215" y="148">steel</text>
+<text x="40" y="154">soft iron</text><text x="215" y="154">steel</text>
 <text x="142" y="70">H</text><text x="84" y="16">B</text><text x="302" y="70">H</text><text x="244" y="16">B</text>
 </svg>
 :::

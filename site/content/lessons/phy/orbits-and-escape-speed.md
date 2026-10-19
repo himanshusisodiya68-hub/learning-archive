@@ -158,11 +158,11 @@ Read the formula: a bigger $r$ means a smaller $v$ and a longer period. Distant 
 <circle class="faint" cx="180" cy="120" r="106"/>
 <circle class="obj" cx="197.5" cy="120" r="3"/>
 <circle class="obj" cx="246.5" cy="120" r="3"/>
-<circle class="obj" cx="286" cy="120" r="3"/>
+<circle class="obj" cx="255" cy="45" r="3"/>
 <text x="204" y="112" style="font-size:10px;fill:var(--muted)">station</text>
-<text x="206" y="146" style="font-size:10px;fill:var(--muted)">400 km, 92 min</text>
-<text x="212" y="64" style="font-size:10px;fill:var(--muted)">GPS: 20,200 km, 12 h</text>
-<text x="226" y="30" style="font-size:10px;fill:var(--muted)">GEO: 35,800 km, 24 h</text>
+<text x="204" y="140" style="font-size:10px;fill:var(--muted)">400 km,</text><text x="204" y="152" style="font-size:10px;fill:var(--muted)">92 min</text>
+<line class="faint" x1="250" y1="120" x2="292" y2="120"/><text x="296" y="106" style="font-size:10px;fill:var(--muted)">GPS</text><text x="296" y="117" style="font-size:10px;fill:var(--muted)">20,200 km</text><text x="296" y="128" style="font-size:10px;fill:var(--muted)">12 h</text>
+<line class="faint" x1="258" y1="45" x2="292" y2="45"/><text x="296" y="40" style="font-size:10px;fill:var(--muted)">GEO</text><text x="296" y="51" style="font-size:10px;fill:var(--muted)">35,800 km</text><text x="296" y="62" style="font-size:10px;fill:var(--muted)">24 h</text>
 <text x="156" y="218" style="font-size:10px;fill:var(--muted)">Earth</text>
 <text x="40" y="232" style="font-size:10px;fill:var(--muted)">radii of the orbits: 1.06, 4.2 and 6.6 Earth radii</text>
 </svg>
@@ -218,13 +218,13 @@ So $E = -K$ and $U = 2E$. A number: a 1000 kg satellite on $r = 7.0\times10^6$ m
 <line class="wf" x1="170" y1="90" x2="170" y2="76" style="stroke-width:3"/>
 <circle class="obj" cx="170" cy="90" r="3.5"/>
 <text x="56" y="16" style="font-size:10px;fill:var(--muted)">energy</text>
-<text x="300" y="54" style="font-size:10px;fill:var(--muted)">E = 0: free</text>
+<text x="352" y="54" text-anchor="end" style="font-size:10px;fill:var(--muted)">E = 0: free</text>
 <text x="104" y="212" style="font-size:10px;fill:var(--muted)">surface, r = R</text>
 <text x="176" y="212" style="font-size:10px;fill:var(--muted)">orbit radius</text>
 <text x="254" y="68" style="font-size:10px;fill:var(--muted)">E of the orbit</text>
 <text x="178" y="108" style="font-size:10px;fill:var(--ink)">U (curve)</text>
 <text x="176" y="86" style="font-size:10px;fill:var(--eng)">K</text>
-<text x="318" y="198" style="font-size:10px;fill:var(--muted)">distance r</text>
+<text x="352" y="196" text-anchor="end" style="font-size:10px;fill:var(--muted)">distance r</text>
 </svg>
 :::
 
@@ -319,7 +319,7 @@ where $a$ is the semi-major axis, half of the ellipse's long diameter. Read it a
 <text x="60" y="130" style="font-size:10px;fill:var(--muted)">burn 1</text>
 <text x="212" y="96" style="font-size:10px;fill:var(--muted)">burn 2</text>
 <text x="250" y="172" style="font-size:10px;fill:var(--muted)">high circle</text>
-<text x="14" y="26" style="font-size:10px;fill:var(--muted)">low circle</text>
+<text x="60" y="152" style="font-size:10px;fill:var(--muted)">low circle</text>
 </svg>
 :::
 

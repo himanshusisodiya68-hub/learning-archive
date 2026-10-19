@@ -87,6 +87,20 @@ function renderBody(src) {
 }
 
 /* ---------- lessons ---------- */
+// Plain text for search: each rendered KaTeX span becomes its TeX source (otherwise the text holds the formula three times).
+function texOnly(html) {
+  let out = '', i = 0;
+  for (;;) {
+    const j = html.indexOf('<span class="katex', i); if (j < 0) return out + html.slice(i);
+    out += html.slice(i, j);
+    let depth = 0, k = j;
+    const re = /<span\b|<\/span>/g; re.lastIndex = j;
+    for (let m; (m = re.exec(html));) { depth += m[0] === '</span>' ? -1 : 1; if (!depth) { k = re.lastIndex; break; } }
+    if (k === j) return out + html.slice(j);
+    const tex = (html.slice(j, k).match(/<annotation encoding="application\/x-tex">([\s\S]*?)<\/annotation>/) || [, ''])[1];
+    out += ' ' + tex.replace(/&amp;/g, '&') + ' '; i = k;
+  }
+}
 function parseLesson(file) {
   const raw = fs.readFileSync(file, 'utf8');
   const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
@@ -103,7 +117,7 @@ function parseLesson(file) {
     const id = a.id || 's-' + head.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const lvl = +(a.lvl || 1);
     const html = renderBody(text);
-    return { id, lvl, title: head, titleHtml: mdi(head), label: a.label || LEVEL_LABEL[lvl], html, text: stripTags(html).slice(0, 4000) };
+    return { id, lvl, title: head, titleHtml: mdi(head), label: a.label || LEVEL_LABEL[lvl], html, text: stripTags(texOnly(html)).slice(0, 4000) };
   });
   const co = meta.core;
   const core = co ? {
@@ -194,18 +208,26 @@ for (const book of ncert) for (const ch of book.chapters) {
   search.push({ g: 'NCERT chapters', c: book.subject, icon: 'chapter', title: ch.title, path: `Class ${book.class} ${book.name}${ch.restored ? ' · restored chapter' : ''}`, text: '', go: { ncert: `${book.class}`, lesson: ch.live ? ch.leaves[0] : undefined } });
 }
 
+// Home-page "sparks" are large and only the home habits use them, so they load after the first paint.
+const extras = {};
+for (const s of tree.subjects) for (const p of s.pillars || []) for (const b of p.branches) for (const l of b.leaves) if (l.sparks) { extras[`${s.id}/${l.id}`] = l.sparks; delete l.sparks; }
 write('data/tree.json', tree);
 write('data/ncert.json', ncert);
-write('data/search.json', search);
+write('data/extras.json', extras);
+// Search index: short keys and short snippets (the palette needs titles, paths and a little context, not whole sections).
+const clip = (t, n) => { t = (t || '').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n).replace(/\s\S*$/, '') + '…' : t; };
+write('data/search.json', search.map(x => ({ g: x.g, c: x.c, i: x.icon, t: x.title, p: x.path, x: clip(x.text, x.go.section ? 160 : 200), go: x.go })));
 
-/* ---------- page: inline CSS (app + KaTeX with fonts as data URIs) and JS ---------- */
+/* ---------- page: inline CSS (app + KaTeX, fonts in dist/fonts/) and JS ---------- */
 const kdir = path.join(ROOT, 'node_modules/katex/dist');
 let kcss = fs.readFileSync(path.join(kdir, 'katex.min.css'), 'utf8');
 kcss = kcss.replace(/@font-face\{[^}]*\}/g, face => {
   const m = face.match(/url\((fonts\/[^)]+\.woff2)\)/);
   if (!m) return '';
-  const b64 = fs.readFileSync(path.join(kdir, m[1])).toString('base64');
-  return face.replace(/src:[^;}]+/, `src:url(data:font/woff2;base64,${b64}) format("woff2")`);
+  // Fonts are separate files, so the page loads only the few a lesson actually uses.
+  fs.mkdirSync(path.join(DIST, 'fonts'), { recursive: true });
+  fs.copyFileSync(path.join(kdir, m[1]), path.join(DIST, m[1]));
+  return face.replace(/src:[^;}]+/, `src:url(${m[1]}) format("woff2")`);
 });
 const shell = fs.readFileSync(path.join(ROOT, 'app/shell.html'), 'utf8');
 const css = fs.readFileSync(path.join(ROOT, 'app/app.css'), 'utf8');

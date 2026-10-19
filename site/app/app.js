@@ -415,26 +415,95 @@
   let nbT; $('nb').addEventListener('input', e => { const t = e.target.closest('[data-note]'); if (!t) return; clearTimeout(nbT); nbT = setTimeout(() => { PG.notes[t.dataset.note] = t.value; touch(); }, 700); });
   $('nb').addEventListener('click', e => { const b = e.target.closest('[data-open],[data-notes]'); if (!b) return; if (b.dataset.notes) openLesson(b.dataset.notes, 'notes'); else openLesson(b.dataset.open); });
 
-  /* ---------- search ---------- */
-  const GROUPS = ['Lessons', 'Topics', 'Problems', 'NCERT chapters'];
-  const hl = (t, q) => { const i = t.toLowerCase().indexOf(q); return i < 0 ? escHTML(t) : escHTML(t.slice(0, i)) + '<mark>' + escHTML(t.slice(i, i + q.length)) + '</mark>' + escHTML(t.slice(i + q.length)); };
-  let HITS = [];
-  function runSearch() {
-    const raw = $('q').value.trim(), q = raw.toLowerCase(), r = $('results');
-    if (q.length < 2) { r.hidden = true; HITS = []; return; }
-    const words = q.split(/\s+/);
-    const scored = SEARCH.map(x => {
-      const t = x.title.toLowerCase(), all = (x.title + ' ' + x.path + ' ' + x.text).toLowerCase();
-      if (!words.every(w => all.includes(w))) return null;
-      return { x, s: (t.includes(q) ? 10 : 0) + (t.startsWith(q) ? 5 : 0) + words.filter(w => t.includes(w)).length * 2 + (x.g === 'Lessons' ? 1 : 0) };
-    }).filter(Boolean).sort((a, b) => b.s - a.s);
-    HITS = [];
-    const html = GROUPS.map(g => { const list = scored.filter(h => h.x.g === g).slice(0, g === 'Topics' ? 6 : 5); if (!list.length) return '';
-      return `<div class="sgroup"><h4>${g}</h4>${list.map(h => { HITS.push(h.x); const iconName = h.x.icon || SUBJ_ICON[h.x.c];
-        return `<button class="shit s-${h.x.c}" data-hit="${HITS.length - 1}"><span class="tile sm">${ico(iconName)}</span><span style="min-width:0"><span class="t">${hl(h.x.title, q)}</span><span class="p">${escHTML(h.x.path)}</span></span><span class="src">open →</span></button>`; }).join('')}</div>`; }).join('');
-    r.hidden = false;
-    r.innerHTML = html || `<div class="sempty">Nothing matches “${escHTML(raw)}” yet. The archive grows chapter by chapter; try a broader word such as “light” or “motion”.</div>`;
+  /* ---------- search: a command palette (Ctrl/⌘ K, "/", or any search button), fuzzy over everything ---------- */
+  let searchP = null, TOK = null;
+  const tokens = t => t.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').split(/[^a-z0-9]+/).filter(w => w.length > 1);
+  function loadSearch() {
+    return searchP ||= fetchJSON('data/search.json').then(list => {
+      SEARCH = list; TOK = new Map();
+      list.forEach((x, i) => { x.lt = x.t.toLowerCase(); x.la = (x.t + ' ' + x.p + ' ' + x.x).toLowerCase();
+        for (const w of new Set(tokens(x.t + ' ' + x.p + ' ' + x.x))) { let a = TOK.get(w); if (!a) TOK.set(w, a = []); a.push(i); } });
+      if (!$('cmdk').hidden) paletteRender();
+    }).catch(() => { searchP = null; });
   }
+  function near(a, b, k) { // edit distance ≤ k (small k, short words)
+    if (Math.abs(a.length - b.length) > k) return false;
+    let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) { const cur = [i]; let best = i;
+      for (let j = 1; j <= b.length; j++) { cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); best = Math.min(best, cur[j]); }
+      if (best > k) return false; prev = cur; }
+    return prev[b.length] <= k;
+  }
+  // Entries matching one query word: any token that contains it, starts with it, or is one or two typos away.
+  function wordHits(w) {
+    const out = new Set(), k = w.length >= 7 ? 2 : w.length >= 4 ? 1 : 0;
+    for (const [t, ids] of TOK) if (t.includes(w) || (k && t.length >= 3 && near(w, t.length > w.length + k ? t.slice(0, w.length + k) : t, k))) ids.forEach(i => out.add(i));
+    return out;
+  }
+  function subseq(q, t) { // fzf-style: every letter of q in order; bonus for runs and word starts
+    let j = 0, sc = 0, run = 0;
+    for (let i = 0; i < t.length && j < q.length; i++) if (t[i] === q[j]) { run++; sc += 1 + run + (i === 0 || /[^a-z0-9]/.test(t[i - 1]) ? 3 : 0); j++; } else run = 0;
+    return j === q.length ? sc : 0;
+  }
+  const PAGES = [['Home', 'home', 'navHome'], ['Learn', 'learn', 'navLearn'], ['Practice', 'practice', 'navPractice'], ['Review', 'review', 'navReview'], ['Notebook', 'notebook', 'navNotebook'], ['Progress', 'progress', 'navProgress']];
+  function commands() {
+    const cmds = PAGES.map(([t, v, i]) => ({ g: 'Go to', t, p: 'Page', i, run: () => go(v) }));
+    cmds.push({ g: 'Go to', t: "Today's problem set", p: 'Practice · mixed topics and levels', i: 'shuffle', run: async () => startSet(dailySet(await allProblems()), "Today's mixed set", 0) });
+    cmds.push({ g: 'Go to', t: 'Browse NCERT books by class', p: 'Learn · class view', i: 'chapter', run: () => { S.mode = 'class'; go('learn'); } });
+    TREE.subjects.forEach(sj => cmds.push({ g: 'Go to', t: sj.name, p: 'Subject', i: SUBJ_ICON[sj.id], c: sj.id, run: () => { S.mode = 'subject'; go('learn~' + sj.id); } }));
+    return cmds;
+  }
+  let HITS = [], ACT = 0;
+  const hlw = (t, ws) => { let h = escHTML(t); ws.filter(w => w.length > 1).sort((a, b) => b.length - a.length).forEach(w => { h = h.replace(new RegExp('(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')(?![^<]*>)', 'ig'), '<mark>$1</mark>'); }); return h; };
+  function paletteResults(raw) {
+    const q = raw.trim().toLowerCase(), ws = tokens(q), groups = [];
+    const cmds = commands();
+    if (!q) {
+      const recent = Object.entries(PG.lessons).sort((a, b) => (b[1].opened || 0) - (a[1].opened || 0)).map(([k]) => k).filter(k => leafByKey(k) && leafByKey(k).l.live);
+      if (PG.last && leafByKey(PG.last)) recent.unshift(PG.last);
+      const rec = [...new Set(recent)].slice(0, 4).map(k => { const L = leafByKey(k); return { g: 'Recent lessons', t: L.l.name, p: `${L.s.name} › ${L.p.name}`, i: 'lesson', c: L.s.id, run: () => openLesson(k) }; });
+      if (rec.length) groups.push(['Recent lessons', rec]);
+      groups.push(['Go to', cmds]);
+      return groups;
+    }
+    const scoreCmd = c => { const t = c.t.toLowerCase(); return t.startsWith(q) ? 90 : t.includes(q) ? 70 : subseq(q.replace(/\s+/g, ''), t); };
+    const cm = cmds.map(c => [c, scoreCmd(c)]).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([c]) => c);
+    if (cm.length) groups.push(['Go to', cm]);
+    if (!TOK) { groups.push(['Searching', [{ g: '', t: 'Loading the search index…', p: 'One moment', i: 'search', run: () => {} }]]); return groups; }
+    let ids = null;
+    for (const w of ws.length ? ws : [q]) { const h = wordHits(w); ids = ids ? new Set([...ids].filter(i => h.has(i))) : h; if (!ids.size) break; }
+    let cand = [...(ids || [])];
+    if (!cand.length && q.replace(/\s+/g, '').length >= 3) { const qq = q.replace(/\s+/g, ''); cand = SEARCH.map((x, i) => i).filter(i => subseq(qq, SEARCH[i].lt) > qq.length * 2); }
+    const scored = cand.map(i => { const x = SEARCH[i], t = x.lt;
+      let sc = (t === q ? 120 : 0) + (t.startsWith(q) ? 60 : 0) + (t.includes(q) ? 40 : 0);
+      ws.forEach(w => { if (new RegExp('\\b' + w.replace(/[^a-z0-9]/g, '')).test(t)) sc += 14; else if (t.includes(w)) sc += 8; else if (x.la.includes(w)) sc += 3; });
+      sc += Math.min(12, subseq(q.replace(/\s+/g, ''), t) / 4) + (x.g === 'Lessons' && !x.go.section ? 10 : 0) - x.t.length / 60;
+      return { x, sc }; }).sort((a, b) => b.sc - a.sc);
+    const ORDER = [['Lessons', x => x.g === 'Lessons' && !x.go.section, 6], ['Inside lessons', x => x.g === 'Lessons' && x.go.section, 5], ['Topics', x => x.g === 'Topics', 5], ['NCERT chapters', x => x.g === 'NCERT chapters', 4], ['Problems', x => x.g === 'Problems', 5]];
+    ORDER.forEach(([name, f, n]) => { const list = scored.filter(h => f(h.x)).slice(0, n).map(h => ({ t: h.x.t, p: h.x.p, x: h.x.go.section ? h.x.x : '', i: h.x.i || SUBJ_ICON[h.x.c], c: h.x.c, run: () => goHit(h.x) })); if (list.length) groups.push([name, list]); });
+    return groups;
+  }
+  function paletteRender() {
+    const raw = $('cmdk-q').value, groups = paletteResults(raw), ws = tokens(raw);
+    HITS = groups.flatMap(([, l]) => l); ACT = Math.min(ACT, Math.max(0, HITS.length - 1));
+    let n = 0;
+    $('cmdk-list').innerHTML = groups.map(([g, l]) => `<div class="ck-g"><div class="ck-h">${escHTML(g)}</div>${l.map(h => { const k = n++;
+      return `<button class="ck-i${h.c ? ' s-' + h.c : ''}" role="option" id="ck-${k}" data-ck="${k}" aria-selected="${k === ACT}"><span class="tile sm">${ico(h.i || 'search')}</span><span class="ck-t"><b>${hlw(h.t, ws)}</b><small>${escHTML(h.p || '')}${h.x ? ' · ' + hlw(h.x, ws) : ''}</small></span><span class="ck-go">↵</span></button>`; }).join('')}</div>`).join('')
+      || `<div class="ck-empty">Nothing matches “${escHTML(raw)}”. Try another word, or fewer words.</div>`;
+    $('cmdk-q').setAttribute('aria-activedescendant', HITS.length ? 'ck-' + ACT : '');
+  }
+  function paletteMove(d) { if (!HITS.length) return; ACT = (ACT + d + HITS.length) % HITS.length;
+    $('cmdk-list').querySelectorAll('[data-ck]').forEach(b => b.setAttribute('aria-selected', +b.dataset.ck === ACT));
+    const el = $('ck-' + ACT); if (el) el.scrollIntoView({ block: 'nearest' }); $('cmdk-q').setAttribute('aria-activedescendant', 'ck-' + ACT); }
+  let lastFocus = null;
+  function openPalette(q = '') {
+    if (!TREE) return; loadSearch();
+    const box = $('cmdk'); if (box.hidden) lastFocus = document.activeElement;
+    box.hidden = false; document.documentElement.classList.add('ck-open');
+    $('cmdk-q').value = q; ACT = 0; paletteRender(); $('cmdk-q').focus();
+  }
+  function closePalette() { $('cmdk').hidden = true; document.documentElement.classList.remove('ck-open'); if (lastFocus && lastFocus.focus && lastFocus !== $('q')) lastFocus.focus(); }
+  function runHit(h) { if (!h) return; closePalette(); h.run(); }
   async function goHit(x) {
     const g = x.go;
     if (g.problem) { const ps = await getProblems(g.problem); return startSet(ps, leafByKey(g.problem).l.name, g.index); }
@@ -444,12 +513,23 @@
     if (pl && g.branch != null) S.focusBranch = 'br-' + pl.branches[g.branch].id;
     S.mode = 'subject'; go('learn~' + g.subj + (pl ? '~' + pl.id : ''));
   }
-  $('q').addEventListener('input', runSearch);
-  $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && HITS[0]) { e.preventDefault(); goHit(HITS[0]); } if (e.key === 'Escape') { $('q').value = ''; runSearch(); } });
-  $('results').addEventListener('click', e => { const b = e.target.closest('[data-hit]'); if (b) goHit(HITS[+b.dataset.hit]); });
+  let ckT; $('cmdk-q').addEventListener('input', () => { ACT = 0; cancelAnimationFrame(ckT); ckT = requestAnimationFrame(paletteRender); });
+  $('cmdk-q').addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); paletteMove(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); paletteMove(-1); }
+    else if (e.key === 'Enter') { e.preventDefault(); runHit(HITS[ACT]); }
+    else if (e.key === 'Escape') { e.preventDefault(); closePalette(); }
+    else if (e.key === 'Tab') { e.preventDefault(); paletteMove(e.shiftKey ? -1 : 1); }
+  });
+  $('cmdk').addEventListener('click', e => { const b = e.target.closest('[data-ck]'); if (b) return runHit(HITS[+b.dataset.ck]); if (e.target.closest('[data-ck-close]')) closePalette(); });
+  $('cmdk-list').addEventListener('mousemove', e => { const b = e.target.closest('[data-ck]'); if (b && +b.dataset.ck !== ACT) { ACT = +b.dataset.ck; $('cmdk-list').querySelectorAll('[data-ck]').forEach(x => x.setAttribute('aria-selected', x === b)); } });
+  document.addEventListener('click', e => { if (e.target.closest('[data-search]')) { e.preventDefault(); openPalette(); } });
+  $('q').addEventListener('focus', () => { const v = $('q').value; $('q').blur(); openPalette(v); });
+  const IS_MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+  document.querySelectorAll('[data-kbd]').forEach(k => k.textContent = IS_MAC ? '⌘K' : 'Ctrl K');
   document.addEventListener('keydown', e => {
-    if (e.key !== '/' || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
-    e.preventDefault(); if (parseHash().v !== 'home') go('home'); setTimeout(() => $('q').focus(), 0);
+    if ((e.metaKey || e.ctrlKey) && !e.altKey && e.key.toLowerCase() === 'k') { e.preventDefault(); return $('cmdk').hidden ? openPalette() : closePalette(); }
+    if (e.key === '/' && $('cmdk').hidden && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && !document.activeElement.isContentEditable) { e.preventDefault(); openPalette(); }
   });
 
   /* ================= LEARN ================= */
@@ -1310,7 +1390,10 @@
   /* ================= START ================= */
   fillIcons();
   updateBadge();
-  Promise.all([fetchJSON('data/tree.json'), fetchJSON('data/ncert.json'), fetchJSON('data/search.json')])
-    .then(([t, n, s]) => { TREE = t; NCERT = n; SEARCH = s; route(); })
+  Promise.all([fetchJSON('data/tree.json'), fetchJSON('data/ncert.json')])
+    .then(([t, n]) => { TREE = t; NCERT = n; route();
+      // After the first paint: home-page sparks, then the search index (or sooner, when the palette opens).
+      fetchJSON('data/extras.json').then(ex => { Object.entries(ex).forEach(([k, sp]) => { const L = leafByKey(k); if (L) L.l.sparks = sp; }); if (parseHash().v === 'home') { RENDER.home(); titleCase($('habits')); } }).catch(() => {});
+      (window.requestIdleCallback || (f => setTimeout(f, 1200)))(() => loadSearch()); })
     .catch(err => { document.querySelector('main .inner').innerHTML = `<div class="empty-card panel">The archive data could not be loaded (${escHTML(err.message)}). Reload the page to try again.</div>`; });
 })();

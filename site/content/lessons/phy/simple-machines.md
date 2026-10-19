@@ -154,15 +154,15 @@ Read it as: a long arm lets a small force balance a big one on a short arm. So t
 $$\text{MA} = \frac{\text{effort arm}}{\text{load arm}}.$$
 
 :::figure caption="A lever in balance. The load is 30 N at 0.2 m from the fulcrum. The effort needed is 30 × 0.2 / 0.6 = 10 N at 0.6 m, so MA = 3. The effort end moves three times as far as the load."
-<svg viewBox="0 0 320 200" role="img" aria-label="A lever with a fulcrum, a load close to the fulcrum and an effort farther away">
+<svg viewBox="0 0 320 208" role="img" aria-label="A lever with a fulcrum, a load close to the fulcrum and an effort farther away">
 <path d="M130 150 L160 150 L145 124Z" style="fill:var(--muted)"/>
 <line x1="40" y1="124" x2="290" y2="124" style="stroke:var(--ink);stroke-width:5;stroke-linecap:round"/>
 <path d="M115 70 L115 118" style="fill:none;stroke:var(--chem);stroke-width:3"/><path d="M109 110 L115 120 L121 110" style="fill:none;stroke:var(--chem);stroke-width:3"/>
 <path d="M270 70 L270 118" style="fill:none;stroke:var(--phy);stroke-width:3"/><path d="M264 110 L270 120 L276 110" style="fill:none;stroke:var(--phy);stroke-width:3"/>
-<text x="92" y="62" style="font-size:12px;fill:var(--chem)">load 30 N</text><text x="240" y="62" style="font-size:12px;fill:var(--phy)">effort 10 N</text>
+<text x="92" y="62" style="font-size:12px;fill:var(--chem)">load 30 N</text><text x="234" y="62" style="font-size:12px;fill:var(--phy)">effort 10 N</text>
 <line x1="115" y1="168" x2="145" y2="168" style="stroke:var(--chem);stroke-width:1.5"/><line x1="145" y1="184" x2="270" y2="184" style="stroke:var(--phy);stroke-width:1.5"/>
 <text x="102" y="164" style="font-size:11px;fill:var(--chem)">0.2 m</text><text x="188" y="198" style="font-size:11px;fill:var(--phy)">0.6 m</text>
-<text x="132" y="170" style="font-size:11px;fill:var(--muted)">fulcrum</text>
+<text x="150" y="170" style="font-size:11px;fill:var(--muted)">fulcrum</text>
 </svg>
 :::
 

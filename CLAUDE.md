@@ -160,7 +160,8 @@ Aim for every NCERT item, then about 2–4 problems at each level: found, board,
 
 ## App structure (site/app)
 
-- **Home:** search, continue card, review and daily set, stats, subject cards, pillars ready to study.
+- **Search palette (everywhere):** Ctrl/⌘ K, `/`, the rail's Search button (desktop), the top bar's Search button (phone) or the home search box open one palette. It searches lessons, sections, topics, NCERT chapters and problems with typo-tolerant fuzzy matching, and lists pages and subjects to jump to. `data/search.json` loads in the background after the first paint.
+- **Home:** continue card, review and daily set, habits, subject cards.
 - **Learn:** two levels, `#learn~<subj>` (pillar cards) and `#learn~<subj>~<pillar>` (each branch once, as a numbered learning path of its leaves). The class view (NCERT books) is the second mode.
 - **Lesson:** `#lesson~<subj>~<leaf>`.
 
@@ -197,7 +198,7 @@ From a new session:
    - `file_path`: `site/dist/index.html`
    - `url`: the URL above
    - `root`: `site/dist`
-   - `files`: every `data/**/*.json` (list them with `find data -name '*.json'` inside `site/dist`)
+   - `files`: every `data/**/*.json` and `fonts/*.woff2` (list them with `find data fonts -type f` inside `site/dist`). KaTeX fonts are separate files, not inlined, so the page stays small; `data/extras.json` holds the home-page sparks, loaded after the first paint.
    - One publish takes at most 255 files and 64 MB, and the build has about 510 data files (about 72 MB). So publish in batches of at most 250 `data` files to the same `url`: each later publish adds to the files already there.
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
