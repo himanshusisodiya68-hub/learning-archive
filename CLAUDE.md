@@ -68,6 +68,7 @@ site/
   package.json            npm run build | npm run check
   build.mjs               content → dist/ (index.html + data/*.json); KaTeX pre-renders all math
   check-answers.mjs       recomputes every numeric answer from its `verify` expression
+  check-figures.mjs       renders every figure in Chromium and reports clipped, spilling, overlapping or crossed-out labels
   lint-lesson.mjs         checks single lesson files (front matter, core, KaTeX, blocks, widgets) without a build; safe in parallel
   fix-yaml.py             quotes YAML values containing ": " or " #"; run before every build
   app/shell.html, app.css, app.js   the single-page app (vanilla JS, inline in index.html)
@@ -93,7 +94,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 2. Map the chapter to leaves in `tree.yaml`. Add leaves if needed, each with a first-principles `what`; branches and pillars also carry `split` and `links`. Add `leaves: [subj/leaf-id, ...]` to the chapter in `content/ncert/...yaml`.
 3. Write `problems/<subj>/<leaf>.yaml` with every NCERT item word for word (with its solution), plus `found`, `board` and `main` problems (format below).
 4. For each leaf, call the `theory-writer` subagent (Opus). It writes `lessons/<subj>/<leaf>.md` and appends the `adv` and `oly` problems.
-5. `cd site && python3 fix-yaml.py && node check-answers.mjs && python3 check-links.py && node build.mjs`. Fix every reported problem, from the checker or the lint; the checker has caught real arithmetic slips.
+5. `cd site && python3 fix-yaml.py && node check-answers.mjs && python3 check-links.py && node build.mjs && node check-figures.mjs <subj>/<leaf>`. Fix every reported problem, from the checker or the lint; the checker has caught real arithmetic slips. `check-figures.mjs` renders each figure in headless Chromium and reports labels that spill out of boxes, run past the figure edge, overlap, or are crossed by a line; SVGs are written blind, so this is the only way to catch those (it needs no screenshots).
 6. Commit and push (see Git below). When a pillar is complete, republish the site (see Publishing).
 
 ## Lesson format (`content/lessons/<subj>/<leaf>.md`)

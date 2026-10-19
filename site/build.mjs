@@ -13,7 +13,7 @@ const escHtml = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const C = p => path.join(ROOT, 'content', p);
-const DIST = path.join(ROOT, 'dist');
+const DIST = process.env.DIST_DIR ? path.resolve(process.env.DIST_DIR) : path.join(ROOT, 'dist');
 const readYaml = f => safeLoad(fs.readFileSync(f, 'utf8'), f);
 const LEVEL_LABEL = { 1: 'Class 10', 2: 'Class 12', 3: 'JEE Advanced', 4: 'Olympiad' };
 

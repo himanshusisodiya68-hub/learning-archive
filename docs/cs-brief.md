@@ -76,7 +76,9 @@ node lint-lesson.mjs content/lessons/cs/<leaf>.md
 node check-answers.mjs
 ```
 
-Fix everything reported. Never run `node build.mjs`. Never commit.
+Then check your figures, building into your own folder: `DIST_DIR=/tmp/<leaf>-dist node build.mjs >/dev/null && DIST_DIR=/tmp/<leaf>-dist node check-figures.mjs <subj>/<leaf>`. Fix every label it reports (spilling out of a box, past the edge, overlapping, or crossed by a line).
+
+Fix everything reported. Never run plain `node build.mjs` (always with your own `DIST_DIR`). Never commit.
 
 **Common slips:**
 - Single-quote every front-matter string that contains `: `, especially margin `text`.
