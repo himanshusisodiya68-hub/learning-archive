@@ -187,7 +187,7 @@ Never put model names in commits or code.
 
 The live private site is a multi-file Artifact: **https://claude.ai/artifact/YTDZjDN5obmJ7uxKbyS56s**.
 
-It lives on the owner's claude.ai account, so **only the owner's sessions publish**, always from an up-to-date `main` after a merge. In a collaborator's session, skip publishing: say in the PR that it is ready to publish, and leave the rest to the owner.
+It lives on the **collaborator's** claude.ai account (not the repo owner's), so only sessions signed in to that account can publish. Always publish from an up-to-date `main` after a merge. On any other account, `Artifact action=read` answers "artifact not found": skip publishing, say in the PR that it is ready to publish, and leave the rest to the collaborator.
 
 From a new session:
 1. `Artifact action=read url=<that url>` (required before updating).
@@ -196,6 +196,7 @@ From a new session:
    - `url`: the URL above
    - `root`: `site/dist`
    - `files`: every `data/**/*.json` (list them with `find data -name '*.json'` inside `site/dist`)
+   - One publish takes at most 255 files and 64 MB, and the build has about 510 data files (about 72 MB). So publish in batches of at most 250 `data` files to the same `url`: each later publish adds to the files already there.
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
 
