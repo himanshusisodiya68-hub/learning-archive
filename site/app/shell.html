@@ -1,17 +1,19 @@
-<title>Learning Archive</title>
+<title>Polymath</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <style>/*CSS*/</style>
 
 <div class="app">
   <nav class="rail" aria-label="Main">
-    <div class="brand">learning archive<small id="build-info">phase 1</small></div>
-    <a class="nav" href="#home" data-nav="home"><span data-icon="home"></span>Home</a>
-    <a class="nav" href="#learn" data-nav="learn"><span data-icon="tree"></span>Learn</a>
-    <a class="nav" href="#practice" data-nav="practice"><span data-icon="pen"></span>Practice</a>
-    <a class="nav" href="#review" data-nav="review"><span data-icon="review"></span>Review<span class="badge" id="rev-badge" hidden>0</span></a>
+    <a class="brand" href="#home"><span class="brand-mark" data-icon="logo"></span>Polymath</a>
+    <a class="nav" href="#home" data-nav="home"><span data-icon="navHome"></span>Home</a>
+    <a class="nav" href="#learn" data-nav="learn"><span data-icon="navLearn"></span>Learn</a>
+    <a class="nav" href="#practice" data-nav="practice"><span data-icon="navPractice"></span>Practice</a>
+    <a class="nav" href="#review" data-nav="review"><span data-icon="navReview"></span>Review<span class="badge" id="rev-badge" hidden>0</span></a>
+    <a class="nav desk-only" href="#notebook" data-nav="notebook"><span data-icon="navNotebook"></span>Notebook</a>
+    <a class="nav" href="#progress" data-nav="progress"><span data-icon="navProgress" class="desk-only"></span><span data-icon="navYou" class="phone-only"></span><span class="desk-only">Progress</span><span class="phone-only">You</span></a>
     <div class="rail-foot"><div id="sync-state">Progress saved in this browser.</div></div>
   </nav>
 
@@ -20,35 +22,34 @@
 
     <section data-view="home">
       <div class="home-hero">
-        <div class="eyebrow" id="today-date">Today</div>
-        <h1 class="h1">What do you want to understand today?</h1>
+        <div class="hh-text">
+          <div class="eyebrow" id="today-date">Today</div>
+          <h1 class="h1" id="greet">One idea today?</h1>
+        </div>
         <div class="search big">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-          <input id="q" type="search" placeholder="Search a topic or formula…" autocomplete="off" aria-label="Search the archive">
+          <input id="q" type="search" placeholder="Search a topic, formula or question" autocomplete="off" aria-label="Search">
           <kbd aria-hidden="true">/</kbd>
         </div>
-        <div class="suggest" id="suggest"><span>Try</span></div>
-        <div id="results" class="sresults" hidden></div>
       </div>
+      <div id="results" class="sresults" hidden></div>
       <div class="home-grid">
         <div id="continue"></div>
         <div class="home-side">
-          <a class="panel mini-card" href="#review"><span class="tile" data-icon="review"></span><div><h3 id="due-title">Nothing due yet</h3><p id="due-text">Cards and missed problems come back here at growing intervals.</p></div></a>
-          <button class="panel mini-card" data-start="daily"><span class="tile" data-icon="shuffle"></span><div><h3>Today's problem set</h3><p id="daily-text">Mixed across topics and levels, so you learn to pick the method yourself.</p></div></button>
+          <a class="panel mini-card" href="#review"><span class="tile" data-icon="navReview"></span><div><h3 id="due-title">Nothing due yet</h3><p id="due-text">Cards and missed problems come back here at growing intervals.</p></div></a>
+          <button class="panel mini-card" data-start="daily"><span class="tile s-mat" data-icon="shuffle"></span><div><h3>Today's problem set</h3><p id="daily-text">Mixed topics and levels, so you learn to pick the method yourself.</p></div></button>
         </div>
       </div>
       <div class="habits" id="habits"></div>
       <div class="sec-title">Your subjects <span class="eyebrow" id="live-count"></span></div>
       <div class="subj-grid" id="subj-list"></div>
-      <div class="sec-title">Ready to study <span class="eyebrow">pillars with lessons written</span></div>
-      <div class="ready" id="ready"></div>
       <details class="method"><summary>How these lessons teach: the Feynman way</summary>
       <div class="principles">
         <div class="pr"><span class="tile sm" data-icon="question"></span><div><b>Start with a real question</b><span>Every lesson opens with something you have wondered about. The idea arrives as the answer, so you know why it exists before you see a formula.</span></div></div>
         <div class="pr"><span class="tile sm" data-icon="pen"></span><div><b>Plain words first, notation last</b><span>Symbols are shorthand for sentences you already understand. If an idea cannot be said simply, it is not yet understood: Feynman's test.</span></div></div>
         <div class="pr"><span class="tile sm" data-icon="shuffle"></span><div><b>Same idea, many places</b><span>Gravity and electric force share one shape; a hash table and a library index share one trick. Seeing the common pattern turns facts into mental models you can use anywhere.</span></div></div>
         <div class="pr"><span class="tile sm" data-icon="calendar"></span><div><b>Each answer raises the next question</b><span>Every lesson ends on a question the next one answers. Follow the chain and a whole branch of your knowledge tree lights up.</span></div></div>
-        <div class="pr"><span class="tile sm" data-icon="review"></span><div><b>Recall, space, streak</b><span>Quick checks pull ideas from memory, reviews return just before you forget, and a daily streak keeps the habit alive.</span></div></div>
+        <div class="pr"><span class="tile sm" data-icon="navReview"></span><div><b>Recall, then space it out</b><span>Quick checks pull ideas from memory, and reviews return just before you would forget. A few minutes a day is enough.</span></div></div>
       </div></details>
     </section>
 
@@ -63,7 +64,7 @@
           <button aria-pressed="true" data-mode="subject">By subject</button>
           <button aria-pressed="false" data-mode="class">By class (NCERT)</button>
         </div>
-        <div class="seg" role="group" aria-label="Subject" id="subj-seg"></div>
+        <div class="seg chips" role="group" aria-label="Subject" id="subj-seg"></div>
       </div>
       <div id="by-subject">
         <div class="crumbs" id="crumbs"></div>
@@ -94,6 +95,8 @@
 
     <section data-view="play"><div class="player" id="player"></div></section>
     <section data-view="review"><div class="rev" id="rev"></div></section>
+    <section data-view="progress"><div id="prog"></div></section>
+    <section data-view="notebook"><div id="nb"></div></section>
 
     </div>
   </main>
