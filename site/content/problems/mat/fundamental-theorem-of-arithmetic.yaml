@@ -331,3 +331,194 @@
   sol: |
     Write $a = 6x$ and $b = 6y$ with $x, y$ coprime (that is what HCF = 6 means). Then $\mathrm{LCM} = 6xy = 36$, so $xy = 6$ with $\gcd(x, y) = 1$. The factorisations of 6 into coprime ordered pairs are $(1, 6), (6, 1), (2, 3), (3, 2)$. So there are 4 ordered pairs: $(6, 36), (36, 6), (12, 18), (18, 12)$.
   check: both
+
+- id: a1
+  lvl: adv
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 7.1.22
+  kind: num
+  q: |-
+    Show that 1000! ends with 249 zeros. Generalize!
+  ask: Number of trailing zeros of 1000!
+  ans: 249
+  tol: 0.01
+  verify: floor(1000/5)+floor(1000/25)+floor(1000/125)+floor(1000/625)
+  sol: |
+    Each trailing zero is a factor $10 = 2 \times 5$. By the Fundamental Theorem of Arithmetic, $1000! = 2^{v_2} \times 5^{v_5} \times (\text{other primes})$ in exactly one way, so the number of trailing zeros is $\min(v_2, v_5)$, where $v_p$ is the exponent of $p$ in $1000!$.
+
+    **Counting the 5s (Legendre).** Among $1, 2, \dots, 1000$: every multiple of 5 contributes one 5, every multiple of 25 one more, every multiple of 125 one more, and $625$ one more:
+    $$v_5 = \left\lfloor \tfrac{1000}{5} \right\rfloor + \left\lfloor \tfrac{1000}{25} \right\rfloor + \left\lfloor \tfrac{1000}{125} \right\rfloor + \left\lfloor \tfrac{1000}{625} \right\rfloor = 200 + 40 + 8 + 1 = 249.$$
+
+    **Counting the 2s.** $v_2 = 500 + 250 + 125 + 62 + 31 + 15 + 7 + 3 + 1 = 994$, far more than 249.
+
+    So $1000! = 10^{249} \times M$ with $M$ not divisible by 5 (hence not by 10): exactly **249** trailing zeros.
+
+    **Generalisation.**
+    1. For any $n$, the number of trailing zeros of $n!$ is $\sum_{k \ge 1} \lfloor n/5^k \rfloor$, since 2s always outnumber 5s.
+    2. For any prime $p$, $v_p(n!) = \sum_{k \ge 1} \lfloor n/p^k \rfloor$ (Legendre's formula). An equivalent closed form is $v_p(n!) = \dfrac{n - s_p(n)}{p - 1}$, where $s_p(n)$ is the sum of the digits of $n$ written in base $p$. Check: $1000 = 13000_5$ (that is $625 + 3 \times 125$), digit sum 4, and $(1000 - 4)/4 = 249$.
+    3. In base $b$, the trailing zeros of $n!$ number $\min_{p \mid b} \lfloor v_p(n!)/v_p(b) \rfloor$. For example, in base 12 $= 2^2 \times 3$, take the smaller of $\lfloor v_2/2 \rfloor$ and $v_3$.
+  check: code
+
+- id: a2
+  lvl: adv
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 7.1.11
+  kind: proof
+  q: |-
+    Prove that the fraction $(n^3 + 2n)/(n^4 + 3n^2 + 1)$ is in lowest terms for every positive integer $n$.
+  hints:
+    - Let $d$ be any common divisor of the numerator and the denominator. It divides every integer combination of the two.
+    - Run Euclid's algorithm on the expressions. Subtract $n$ times the numerator from the denominator.
+  sol: |
+    Write $A = n^3 + 2n$ and $B = n^4 + 3n^2 + 1$, and let $d$ be a positive integer dividing both. Any number of the form $xA + yB$ with integers $x, y$ is then also divisible by $d$. We imitate Euclid's algorithm, treating the expressions like numbers:
+
+    - $B - nA = n^4 + 3n^2 + 1 - n^4 - 2n^2 = n^2 + 1$, so $d \mid n^2 + 1$.
+    - $A - n(n^2 + 1) = n^3 + 2n - n^3 - n = n$, so $d \mid n$.
+    - $(n^2 + 1) - n \cdot n = 1$, so $d \mid 1$.
+
+    Hence $d = 1$: the only common positive divisor is 1, so HCF$(A, B) = 1$ and the fraction is in lowest terms for every positive integer $n$.
+
+    (In one line: $1 = (n^2 + 1)(B - nA) - nA = (n^2+1)B - (n^3 + 2n)A$, an explicit Bézout combination of $A$ and $B$ equal to 1. Check: $(n^2+1)^2 - n(n^3 + 2n) = n^4 + 2n^2 + 1 - n^4 - 2n^2 = 1$.)
+  check: none
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: How many ordered pairs $(a, b)$ of positive integers satisfy $\mathrm{LCM}(a, b) = 360$? (Original problem.)
+  ask: Number of ordered pairs
+  ans: 105
+  tol: 0.01
+  verify: (()=>{const g=(x,y)=>y?g(y,x%y):x;let c=0;for(let a=1;a<=360;a++)for(let b=1;b<=360;b++)if(a*b/g(a,b)===360)c++;return c})()
+  sol: |
+    $360 = 2^3 \times 3^2 \times 5$. Both $a$ and $b$ must divide 360, so each is $2^{x} 3^{y} 5^{z}$ with exponents no larger than those of 360. By uniqueness of factorisation, the LCM condition splits into one independent condition per prime: the **larger** of the two exponents of each prime must equal its exponent in 360.
+
+    For a prime with exponent $e$ in 360, count pairs $(s, t)$ with $0 \le s, t \le e$ and $\max(s, t) = e$. All pairs: $(e+1)^2$. Pairs with both below $e$: $e^2$. So $(e+1)^2 - e^2 = 2e + 1$ pairs.
+
+    - Prime 2, $e = 3$: 7 pairs.
+    - Prime 3, $e = 2$: 5 pairs.
+    - Prime 5, $e = 1$: 3 pairs.
+
+    Total: $7 \times 5 \times 3 = 105$ ordered pairs.
+
+    General rule: the number of ordered pairs with LCM $= p_1^{e_1}\cdots p_k^{e_k}$ is $(2e_1 + 1)\cdots(2e_k + 1)$, which equals the number of divisors of $n^2$.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: Find $\mathrm{HCF}(2^{20} - 1,\ 2^{12} - 1)$. (Original problem.)
+  ask: HCF
+  ans: 15
+  tol: 0.01
+  verify: (()=>{const g=(a,b)=>b?g(b,a%b):a;return g(2**20-1,2**12-1)})()
+  sol: |
+    Factorising $2^{20} - 1 = 1048575$ is possible but tedious. Euclid's algorithm is faster, and it works on the exponents.
+
+    **Key step.** For $m > k$,
+    $$2^m - 1 = 2^{m-k}(2^k - 1) + (2^{m-k} - 1),$$
+    because the right side is $2^m - 2^{m-k} + 2^{m-k} - 1$. So the remainder of $2^m - 1$ on division by $2^k - 1$ comes from $2^{m-k} - 1$, and
+    $$\mathrm{HCF}(2^m - 1, 2^k - 1) = \mathrm{HCF}(2^k - 1, 2^{m-k} - 1).$$
+    That is exactly one step of the subtraction form of Euclid's algorithm on the exponents $(m, k) \to (k, m - k)$.
+
+    **Run it:** $(20, 12) \to (12, 8) \to (8, 4) \to (4, 4)$, and $\mathrm{HCF}(2^4 - 1, 2^4 - 1) = 15$. In general $\mathrm{HCF}(2^m - 1, 2^k - 1) = 2^{\mathrm{HCF}(m,k)} - 1$, here $2^4 - 1 = 15$.
+
+    **Check by factorising:** $2^{12} - 1 = 4095 = 3^2 \times 5 \times 7 \times 13$ and $2^{20} - 1 = 1048575 = 3 \times 5^2 \times 11 \times 31 \times 41$. Common part: $3 \times 5 = 15$. ✓
+  check: code
+
+- id: o1
+  lvl: oly
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 7.1.20
+  kind: proof
+  q: |-
+    Show that $1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}$ can never be an integer.
+  hints:
+    - Look at the powers of 2 in the denominators. Let $2^k$ be the largest power of 2 that is at most $n$.
+    - Exactly one denominator, $2^k$ itself, contains $k$ factors of 2. Multiply the whole sum by a suitable number and compare parities.
+  sol: |
+    [Note] For $n = 1$ the sum is 1, an integer, so the statement is meant for $n \ge 2$; we prove it for every $n \ge 2$.
+
+    Let $H = 1 + \frac12 + \cdots + \frac1n$ and let $2^k$ be the largest power of 2 with $2^k \le n$. Since $n \ge 2$, $k \ge 1$.
+
+    **Claim: $2^k$ is the only number in $1, \dots, n$ divisible by $2^k$.** Any other multiple of $2^k$ is at least $2 \times 2^k = 2^{k+1}$, which exceeds $n$ by the choice of $k$. So every $m \le n$ other than $2^k$ has fewer than $k$ factors of 2.
+
+    Let $L = \mathrm{LCM}(1, 2, \dots, n)$. By the prime-by-prime rule for the LCM, the exponent of 2 in $L$ is the largest exponent of 2 among $1, \dots, n$, which is $k$. Write $L = 2^k Q$ with $Q$ odd. Then
+    $$L \cdot H = \sum_{m=1}^{n} \frac{L}{m}.$$
+    Each $L/m$ is an integer because $m \mid L$.
+
+    - For $m = 2^k$: $L/m = Q$, which is **odd**.
+    - For every other $m$: $m$ has at most $k - 1$ factors of 2, so $L/m$ still has at least one factor of 2 and is **even**.
+
+    So $L \cdot H$ = odd + (sum of evens) = **odd**.
+
+    If $H$ were an integer, $L \cdot H$ would be a multiple of $L$, and $L$ is even (it contains $2^k$ with $k \ge 1$), so $L \cdot H$ would be even. Contradiction. Hence $H$ is never an integer for $n \ge 2$.
+
+    Example: for $n = 6$, $k = 2$, $L = 60$, and $60H = 60 + 30 + 20 + 15 + 12 + 10 = 147$, odd, so $H = 147/60 = 49/20$ is not an integer.
+  check: none
+
+- id: o2
+  lvl: oly
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 7.1.28
+  kind: proof
+  q: |-
+    Prove that any integer greater than or equal to 7 can be written as a sum of two relatively prime integers, both greater than 1. For example, 22 and 15 are relatively prime, and thus $37 = 22 + 15$ represents the number 37 in the desired way.
+  hints:
+    - Any common divisor of $x$ and $y$ divides $y - x$. So two numbers that differ by 1 are always coprime; two odd numbers that differ by 2 or by 4 are coprime too.
+    - Split into three cases by the remainder of $n$ on division by 4 (with all odd $n$ together).
+  sol: |
+    (Bay Area Mathematical Olympiad 2000.) The tool: if $d$ divides both $x$ and $y$, then $d$ divides $y - x$.
+
+    **Case 1: $n$ odd**, $n = 2m + 1$ with $m \ge 3$ (since $n \ge 7$). Take $m$ and $m + 1$. They differ by 1, so any common divisor divides 1: they are coprime. Both exceed 1 because $m \ge 3$. Example: $7 = 3 + 4$, $9 = 4 + 5$.
+
+    **Case 2: $n = 4m$**, with $m \ge 2$ (since $n \ge 8$). Take $2m - 1$ and $2m + 1$. Both are odd and they differ by 2, so a common divisor divides 2; being odd, it must be 1. Both exceed 1 since $2m - 1 \ge 3$. Example: $8 = 3 + 5$, $12 = 5 + 7$.
+
+    **Case 3: $n = 4m + 2$**, with $m \ge 2$ (since $n \ge 10$; note $n = 6$ is excluded by the hypothesis). Take $2m - 1$ and $2m + 3$. Both are odd and they differ by 4, so a common divisor divides 4; being odd, it is 1. Both exceed 1 since $2m - 1 \ge 3$. Example: $10 = 3 + 7$, $14 = 5 + 9$.
+
+    (Why not $2m$ and $2m + 2$ in Case 3? Both even. And $2m + 1$ twice? Equal numbers share themselves. That is why the pair is spread out by 4.)
+
+    Every integer $n \ge 7$ falls into exactly one case, which proves the statement. The bound 7 is sharp: $6 = 2 + 4 = 3 + 3$ are the only splits into parts above 1, and neither pair is coprime.
+  check: none
+
+- id: o3
+  lvl: oly
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 7.1.32
+  kind: proof
+  q: |-
+    The sequence $a_1, a_2, \dots$ of natural numbers satisfies $\mathrm{GCD}(a_i, a_j) = \mathrm{GCD}(i, j)$ for all $i \ne j$. Prove that $a_i = i$ for all $i$.
+  hints:
+    - Compare $a_i$ with $a_{2i}$ to show that $i$ divides $a_i$.
+    - If $a_i$ were bigger than $i$, use the index $j = a_i$ itself.
+  sol: |
+    (Russia 1995.) Fix $i$.
+
+    **Step 1: $i \mid a_i$ for every $i$.** Take $j = 2i \ne i$. Then $\mathrm{GCD}(a_i, a_{2i}) = \mathrm{GCD}(i, 2i) = i$. A GCD of $a_i$ with anything divides $a_i$, so $i \mid a_i$. In particular $a_i \ge i$.
+
+    **Step 2: $a_i = i$.** Suppose instead $a_i = m > i$. Use the index $j = m$, which differs from $i$. By the hypothesis,
+    $$\mathrm{GCD}(a_i, a_m) = \mathrm{GCD}(i, m) = \mathrm{GCD}(i, a_i) = i,$$
+    the last equality because $i \mid a_i$ (Step 1). On the other hand, $a_i = m$ and, by Step 1 applied to the index $m$, $m \mid a_m$. So $\mathrm{GCD}(a_i, a_m) = \mathrm{GCD}(m, a_m) = m$.
+
+    Hence $m = i$, contradicting $m > i$. Therefore $a_i = i$ for every $i$. ∎
+
+    Remark: the sequence $a_i = i$ does satisfy the condition, so it is the unique such sequence.
+  check: none
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: For positive integers $n$, let $d_n = \mathrm{HCF}(n^2 + 3,\ (n+1)^2 + 3)$. Find the largest value that $d_n$ takes. (Original problem.)
+  ask: Largest value of d_n
+  ans: 13
+  tol: 0.01
+  verify: (()=>{const g=(a,b)=>b?g(b,a%b):a;let m=0;for(let n=1;n<=2000;n++)m=Math.max(m,g(n*n+3,(n+1)*(n+1)+3));return m})()
+  sol: |
+    Let $d$ divide both $n^2 + 3$ and $(n+1)^2 + 3 = n^2 + 2n + 4$.
+
+    **Eliminate $n^2$.** Subtract: $d$ divides $(n^2 + 2n + 4) - (n^2 + 3) = 2n + 1$.
+
+    **Eliminate $n$.** Now $d$ divides $n^2 + 3$ and $2n + 1$. Note $(2n + 1)(2n - 1) = 4n^2 - 1$, so
+    $$4(n^2 + 3) - (2n + 1)(2n - 1) = 4n^2 + 12 - 4n^2 + 1 = 13.$$
+    So $d \mid 13$, which means $d_n$ is 1 or 13.
+
+    **Is 13 reached?** We need $13 \mid 2n + 1$, for example $n = 6$: $n^2 + 3 = 39 = 3 \times 13$ and $7^2 + 3 = 52 = 4 \times 13$, so $d_6 = 13$.
+
+    The largest value is **13** (attained exactly when $n \equiv 6 \pmod{13}$, since then $13 \mid 2n+1$ and $4(n^2+3) = 13 + (2n+1)(2n-1)$ is divisible by 13, and 13 is odd and prime so $13 \mid n^2 + 3$).
+
+    The method (combine the two expressions to kill the variable, as in Euclid's algorithm) is the one behind the classic AIME 1985 problem discussed in Zeitz, Example 7.1.8; the numbers here are our own.
+  check: code
