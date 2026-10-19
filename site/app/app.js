@@ -103,7 +103,7 @@
   const liveLeaves = () => TREE.subjects.flatMap(s => (s.pillars || []).flatMap(p => p.branches.flatMap(b => b.leaves.filter(l => l.live || l.problems).map(l => ({ key: `${s.id}/${l.id}`, l, s })))));
 
   function lessonNeighbours(key) {
-    const list = liveLeaves().filter(x => x.l.live); const i = list.findIndex(x => x.key === key);
+    const sid = key.split('/')[0], list = liveLeaves().filter(x => x.l.live && x.s.id === sid); const i = list.findIndex(x => x.key === key); // stay inside the subject
     return i < 0 ? {} : { prev: list[i - 1], next: list[i + 1] };
   }
   const lessonCard = (x, dir, cur) => {
@@ -176,7 +176,7 @@
     if (n && got / n >= .9) return 1;
     if (n && got / n >= .5) return .75;
     if (got) return .5;
-    if (PG.lessons[key]) return .25;
+    if (PG.lessons[key] && PG.lessons[key].read) return .25; // read to the Wrap-up, not just opened
     return 0;
   }
   const streak = () => { const d = PG.days || {}; let n = 0, t = today(); if (!d[t]) t--; while (d[t]) { n++; t--; } return n; };
@@ -303,7 +303,7 @@
     const seen = Object.values(PG.cards).reduce((a, c) => a + (c.seen || 0), 0);
     const xpOf = (lsn, gp, sh) => lsn.length * 10 + gp.reduce((a, p) => a + XP_LVL[lvlOfId(p.id)], 0) + sh.length * 4;
     const shaky = probs.filter(p => p.r === 'shaky');
-    const xp = xpOf(opened, got, shaky) + seen * 2 + notes.length * 15;
+    const xp = xpOf(opened.filter(x => PG.lessons[x.key].read), got, shaky) + seen * 2 + notes.length * 15;
     let level = 1; while (xpNeed(level + 1) <= xp) level++;
     const rank = RANKS.find(([n]) => level >= n)[1];
     const days = [...Object.keys(PG.days || {}).map(Number), ...opened.map(x => dayOf(x.ts)), ...probs.map(p => dayOf(p.at))].filter(Boolean);
@@ -543,7 +543,11 @@
   /* ================= LEARN ================= */
   /* Two levels only: a subject page (pillar cards) and a pillar page (each branch once, as a numbered learning path). */
   const TAGS = { OLY: 'Olympiad', JEE: 'JEE', BEG: 'Foundations', INT: 'SDE-1', ADV: 'SDE-2', SDE: 'SDE-3', LIFE: 'Everyday' };
-  const lvlTag = l => `<span class="lvl ${l === 'JEE' || l === 'ADV' ? 'jee' : l === 'OLY' || l === 'SDE' ? 'oly' : ''}">${TAGS[l] || 'Class ' + String(l).slice(1)}</span>`;
+  const TOP = { sci: ['', 'Class 10', 'Class 12', 'JEE Adv.', 'Olympiad'], cs: ['', 'Foundations', 'SDE-1', 'SDE-2', 'SDE-3'], eng: ['', 'Foundation', 'Class 10', 'Beyond'] };
+  // Where the topic starts (tree "from") → how deep the lesson goes (deepest section level).
+  const lvlTag = (l, sid) => { const a = TAGS[l.from] || 'Class ' + String(l.from).slice(1), t = l.top ? (TOP[sid] || TOP.sci)[l.top] : '', b = t && t !== a ? t : '';
+    const deep = l.top >= 4 || l.from === 'OLY' || l.from === 'SDE', mid = l.top === 3 || l.from === 'JEE' || l.from === 'ADV';
+    return `<span class="lvl ${deep ? 'oly' : mid ? 'jee' : ''}" title="${b ? `Starts at ${a}, goes up to ${b}` : a}">${a}${b ? ` → ${b}` : ''}</span>`; };
   const leavesOf = p => p.branches.flatMap(b => b.leaves);
   const countLive = ls => ls.filter(l => l.live).length;
   const avgMastery = (sid, ls) => ls.length ? ls.reduce((a, l) => a + mastery(`${sid}/${l.id}`), 0) / ls.length : 0;
@@ -650,7 +654,7 @@
         return `<li><button class="stone ${l.live ? 'live' : 'soon'}" ${l.live ? `data-open-leaf="${k}"` : 'disabled'}>
           <span class="so-n" style="--p:${mm}">${li + 1}</span>
           <span class="so-t"><b>${escHTML(l.name)}</b><span>${l.live ? escHTML(l.summary || '') : 'Not written yet'}</span></span>
-          <span class="so-x">${lvlTag(l.from)}${l.live ? `<span class="pcount">${l.problems || 0} problems</span>` : ''}</span></button></li>`; }).join('')}</ol>
+          <span class="so-x">${lvlTag(l, s.id)}${l.live ? `<span class="pcount">${l.problems || 0} problems</span>` : ''}</span></button></li>`; }).join('')}</ol>
     </section>`; }).join('')}`;
   }
   $('tree-view').addEventListener('click', e => {
@@ -890,6 +894,7 @@
     const r = pr.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .4 - r.top) / r.height));
     bar.style.width = (p * 100).toFixed(1) + '%'; $('read-pct').textContent = Math.round(p * 100) + '%';
     const past = id => { const el = $(id); return el && el.getBoundingClientRect().top < innerHeight * .4; }, inL = past('lbegin'), inW = past('st-wrap');
+    { const rec = PG.lessons[S.lessonKey]; if (inW && rec && !rec.read) { rec.read = Date.now(); touch(); } }
     document.querySelectorAll('.trk').forEach(t => { const k = t.dataset.trk, on = k === 'st-warm' ? !inL : k === 'lbegin' ? inL && !inW : inW;
       t.classList.toggle('on', on); t.classList.toggle('done', !on && (k === 'st-warm' ? inL : k === 'lbegin' && inW)); });
   }, { passive: true });

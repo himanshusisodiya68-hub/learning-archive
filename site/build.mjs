@@ -188,7 +188,7 @@ for (const s of tree.subjects) {
           lesson.lifeIcons = lifeIcons[key] || [];
           if (lesson.life.length && lesson.lifeIcons.length !== lesson.life.length) console.warn(`life-icons.yaml: ${key} has ${lesson.lifeIcons.length} icons for ${lesson.life.length} items`);
           write(`data/lessons/${s.id}--${l.id}.json`, lesson);
-          l.live = true; liveCount++; l.summary = lesson.summary || ''; l.sections = lesson.sections.length; l.ask = lesson.hookQ || ''; l.can = (lesson.outcomes || []).slice(0, 2); l.nextq = lesson.next && lesson.next.leaf ? { q: lesson.next.q, leaf: lesson.next.leaf } : null;
+          l.live = true; liveCount++; l.top = Math.max(1, ...lesson.sections.filter(x => !['s-keys', 's-traps'].includes(x.id)).map(x => x.lvl)); // deepest level the lesson reaches l.summary = lesson.summary || ''; l.sections = lesson.sections.length; l.ask = lesson.hookQ || ''; l.can = (lesson.outcomes || []).slice(0, 2); l.nextq = lesson.next && lesson.next.leaf ? { q: lesson.next.q, leaf: lesson.next.leaf } : null;
           l.sparks = [...(lesson.margin || []).filter(m => m.kind !== 'tip').map(m => ({ t: m.title || m.kind, h: m.html })), ...(lesson.models || []).map(m => ({ t: 'Mental model: ' + stripTags(m.name), h: m.html }))];
           search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: l.name, path: `${s.name} › ${p.name} › ${b.name}`, text: lesson.summary || '', go: { lesson: key } });
           lesson.sections.forEach(sec => search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: sec.title, path: `${l.name} · section`, text: sec.text, go: { lesson: key, section: sec.id } }));
