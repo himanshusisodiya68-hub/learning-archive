@@ -24,7 +24,7 @@ Claude reads the short version of these rules from `CLAUDE.md` ("Working togethe
 2. **Start a session** in Claude Code: *"Work on issue #12."* Claude makes a branch, does the work, runs `fix-yaml`, `check-answers` and `build`, then pushes and opens a PR with `Closes #12`.
 3. **Review.** The other person reviews the PR, either by hand or by asking their own Claude to *"review PR #12 against CLAUDE.md"* (or `/code-review` on the PR). CI has to pass.
 4. **Merge** (squash), then both of you `git pull` on `main`.
-5. **Publish** (owner only): the site artifact lives on the owner's account, so the owner's session republishes after a pillar is complete.
+5. **Publish** (collaborator's account only): the site artifact lives on the collaborator's claude.ai account, so a session on that account republishes from `main` once a pillar is complete.
 
 ## Splitting the work so both budgets count
 
