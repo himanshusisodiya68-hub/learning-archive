@@ -237,7 +237,7 @@
       const L = leafByKey(lastKey), n = L.l.problems || 0;
       const got = Object.entries(PG.problems).filter(([k, v]) => k.startsWith(lastKey + '#') && v.r === 'got').length;
       const idx = L.b.leaves.findIndex(l => l.id === L.l.id), next = L.b.leaves[idx + 1];
-      C.innerHTML = `<div class="cont s-${L.s.id}">${coverArt(L)}
+      C.innerHTML = `<div class="cont s-${L.s.id}"><span class="tile cont-tile">${ico(SUBJ_ICON[L.s.id])}</span>
         <div class="eyebrow">${PG.last ? 'Continue where you left off' : 'Start here'}</div>
         <div class="cont-path">${escHTML(L.s.name)} › ${escHTML(L.p.name)} › ${escHTML(L.b.name)}</div>
         <h2>${escHTML(L.l.name)}</h2>
@@ -596,18 +596,6 @@
 
   /* ================= LESSON ================= */
   /* Decorative header art, chosen by branch; classes ln / ray / m2 are styled in app.css (.cover-art). */
-  const ART = {
-    optics: '<rect class="m2" x="0" y="80" width="300" height="80"/><line class="ln" x1="0" y1="80" x2="300" y2="80"/><polyline class="ray" points="40,0 150,80 200,160"/><line class="ln" x1="77" y1="0" x2="51" y2="35"/><line class="ln" x1="101" y1="18" x2="75" y2="53"/><line class="ln" x1="125" y1="35" x2="100" y2="71"/><line class="ln" x1="181" y1="85" x2="140" y2="109"/><line class="ln" x1="191" y1="102" x2="151" y2="126"/>',
-    electrostatics: '<circle class="m2" cx="170" cy="80" r="16"/><path class="ray" d="M186 80H300M182 91L262 150M170 96V160M158 91L78 150M154 80H40M158 69L78 10M170 64V0M182 69L262 10"/><path class="ln" d="M96 140L112 126M230 126L246 140M246 20L230 34M112 34L96 20"/><path class="ray" d="M164 80h12M170 74v12"/>',
-    'current-electricity': '<rect class="m2" x="40" y="30" width="220" height="100" rx="6"/><path class="ray" d="M40 80V30H100L108 18L124 42L140 18L156 42L172 18L180 30H260V80"/><path class="ln" d="M260 80V130H170M130 130H40V80"/><path class="ray" d="M150 112V148M170 120V140"/><path class="ln" d="M150 130H130M170 130H170"/>',
-    magnetism: '<circle class="m2" cx="190" cy="80" r="10"/><circle class="ln" cx="190" cy="80" r="30"/><circle class="ln" cx="190" cy="80" r="52"/><circle class="ln" cx="190" cy="80" r="74"/><path class="ray" d="M190 50A30 30 0 0 1 220 80M190 28A52 52 0 0 1 242 80M190 6A74 74 0 0 1 264 80"/><circle class="ray" cx="190" cy="80" r="3"/>',
-    'induction-and-ac': '<path class="ln" d="M0 80H300"/><path class="ray" d="M0 80C25 10 50 10 75 80S125 150 150 80S200 10 225 80S275 150 300 80"/><path class="ln" d="M60 130H240M232 124L240 130L232 136"/><rect class="m2" x="226" y="14" width="46" height="34" rx="4"/>',
-    _: '<path class="ln" d="M0 40H300M0 80H300M0 120H300M60 0V160M120 0V160M180 0V160M240 0V160"/><circle class="m2" cx="180" cy="80" r="24"/>'
-  };
-  function coverArt(L) {
-    const art = ART[L && L.b && L.b.id] || (L && L.p && ART[L.p.id]) || ART._;
-    return `<svg class="cover-art" viewBox="0 0 300 160" aria-hidden="true">${art}</svg>`;
-  }
   RENDER.lesson = async () => {
     const key = S.lessonKey, root = $('lesson-root');
     const L = leafByKey(key);
@@ -665,7 +653,7 @@
         <button class="btn quiet sm" data-add-core>${PG.cards[key + '#core'] ? 'In your review cards ✓' : '+ Add to my review cards'}</button>
       </div>` : '';
     const hasHook = /class="hook"/.test(lesson.introHtml || ''), op = lesson.opener || {};
-    const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}"><div class="op-art">${op.art || coverArt(L)}</div><div class="op-k">A puzzle to start</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div>` : '';
+    const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}">${op.art ? `<div class="op-art">${op.art}</div>` : ''}<div class="op-k">A puzzle to start</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div>` : '';
     const symHTML = lesson.symbols && lesson.symbols.length ? `<div class="symbols"><div class="rl-h"><b>Symbols in this lesson</b><span>shorthand only: each one is a word you already know</span></div><div class="sym-g">${lesson.symbols.map(x => `<div class="sym"><span class="sym-s">${x.s}</span><span>${x.m}</span></div>`).join('')}</div></div>` : '';
     const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><b>In real life</b><span>where this idea is quietly at work around you</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl"><span class="rl-n">${i + 1}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
     const outHTML = lesson.outcomes && lesson.outcomes.length ? `<div class="outcomes"><div class="eyebrow">After this lesson you can</div><ol>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ol></div>` : '';
@@ -674,7 +662,7 @@
     const needs = (lesson.builds_on || []).map(b => `<span class="chip">${escHTML(b)}</span>`).join('');
     const ncert = (lesson.ncert || []).map(n => `<span>${escHTML(n)}</span>`).join('<span>·</span>');
     root.innerHTML = `
-      <div class="lesson-head s-${sid}">${coverArt(L)}
+      <div class="lesson-head s-${sid}">
         <button class="back" data-back>← ${escHTML(L.s.name)} · ${escHTML(L.p.name)} · ${escHTML(L.b.name)}</button>
         <h1>${escHTML(lesson.title || L.l.name)}</h1>
         ${lesson.summary ? `<p class="lh-sum">${escHTML(lesson.summary)}</p>` : ''}

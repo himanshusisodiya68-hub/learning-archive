@@ -1009,3 +1009,9 @@ main { overflow-x: clip; }
   .subj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nb-h { grid-template-columns: auto minmax(0, 1fr); } .nb-h .btn { grid-column: 1 / -1; }
 }
+
+/* continue card: the subject's own icon instead of a generic picture */
+.cont > .cont-tile { position: absolute; top: 22px; right: 24px; width: 72px; height: 72px; border-radius: 20px; }
+.cont-tile .ic { width: 38px; height: 38px; }
+.cont h2, .cont-path, .cont .eyebrow { padding-right: 90px; }
+@media (max-width: 560px) { .cont-tile { width: 52px; height: 52px; border-radius: 15px; top: 18px; right: 18px; } .cont-tile .ic { width: 28px; height: 28px; } .cont h2, .cont-path, .cont .eyebrow { padding-right: 64px; } }
