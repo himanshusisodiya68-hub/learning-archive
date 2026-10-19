@@ -1,0 +1,162 @@
+# Linked list tricks. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: |
+    A list holds the values 1, 2, 3, 4, 5, 6 in order. The slow-and-fast method moves slow one node and fast two nodes per step, and stops when fast has no next node. What value does slow point at when it stops?
+  ask: Value at slow
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: '(() => { const a=[1,2,3,4,5,6]; let s=0,f=0; while (f<a.length && f+1<a.length) { s+=1; f+=2; } return a[s]; })()'
+  sol: |
+    Positions are numbered from 0. Step 1: slow at 1, fast at 2. Step 2: slow at 2, fast at 4. Step 3: slow at 3, fast at 6, which is past the end. Slow stands on position 3, the value 4. For an even length this is the second of the two middle nodes.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: |
+    In the loop that reverses a list in place, why must the line that saves next (nxt = head.next) come before the line head.next = prev?
+  opts: ["Python requires assignments in alphabetical order", "Turning the arrow overwrites head.next, so the rest of the list would be lost", "It makes the loop run faster"]
+  ans: 1
+  sol: |
+    Turning the arrow overwrites head.next. If you have not saved the old next node first, nothing points to the rest of the list any more, and the remaining nodes are lost. Saving first keeps a handle on the unprocessed part.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |
+    From the list 1, 2, 3, 4, 5 you delete the 2nd node from the end using a lead pointer and a trail pointer. What is the sum of the values left in the list?
+  ask: Sum
+  unit: ""
+  ans: 11
+  tol: 0.1
+  verify: '(() => { const a=[1,2,3,4,5], n=2; a.splice(a.length-n,1); return a.reduce((x,y)=>x+y,0); })()'
+  sol: |
+    Use a dummy head. Move lead 2 steps ahead of the dummy, then advance lead and trail together until lead stands on the last node (5). Trail then stands on 3, just before the node to delete (4). Link 3 to 5. The list is 1, 2, 3, 5 and the sum is 11.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    A list has 8 nodes numbered 0 to 7 from the head. Node 7 points back to node 3, so nodes 3 to 7 form a loop. Slow and fast both start at node 0; each round slow moves one node and fast moves two. After how many rounds do they first stand on the same node?
+  ask: Rounds
+  unit: ""
+  ans: 5
+  tol: 0.1
+  verify: '(() => { const nx=i=>i<7?i+1:3; let s=0,f=0,r=0; do { s=nx(s); f=nx(nx(f)); r++; } while (s!==f); return r; })()'
+  sol: |
+    Round by round (slow, fast): 1: (1, 2). 2: (2, 4). 3: (3, 6). 4: (4, 3), because fast goes 6, 7, then back to 3. 5: (5, 5). They meet at node 5 after 5 rounds.
+    Check with the formula: a = 3 (head to loop start), loop length c = 5, meeting offset b = 2 (node 5 is two steps into the loop). Then a + b = 5 steps for slow, and a = kc - b gives 3 = 5 - 2 with k = 1.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |
+    You merge the sorted lists 1, 3, 5, 7 and 2, 4, 6, 8, 10 with the splice-merge loop (while both lists are non-empty, compare the two front values and take the smaller). How many comparisons does that loop make before it attaches the leftover list?
+  ask: Comparisons
+  unit: ""
+  ans: 7
+  tol: 0.1
+  verify: '(() => { const a=[1,3,5,7], b=[2,4,6,8,10]; let i=0,j=0,c=0; while (i<a.length && j<b.length) { c++; if (a[i]<=b[j]) i++; else j++; } return c; })()'
+  sol: |
+    The values leave in the order 1, 2, 3, 4, 5, 6, 7, one per comparison. After 7 is taken from the first list, that list is empty and the loop ends, so there were 7 comparisons. The remaining 8 and 10 are attached in one step with no comparison. In general the loop makes at most n + m - 1 comparisons.
+  check: code
+
+- id: m2
+  lvl: main
+  kind: text
+  q: |
+    Using only O(1) extra memory, decide whether the list 1, 2, 3, 2, 1 is a palindrome. Show each step on this list and say why you may restore it afterwards.
+  sol: |
+    Step 1: find the middle with slow and fast. For 1, 2, 3, 2, 1 (5 nodes) slow ends on the third node (value 3).
+    Step 2: reverse the list from the middle onward. The tail 3, 2, 1 becomes 1, 2, 3, so we now have two chains that end at the same node: 1, 2, 3 and 1, 2, 3 (the first chain still points into the middle node).
+    Step 3: walk one pointer from the head and one from the reversed tail, comparing values: 1 and 1, 2 and 2, 3 and 3. All match, so the list is a palindrome. For an even length, the two halves are the same length and the walk ends cleanly; for an odd length the middle node is compared with itself, which is harmless.
+    Step 4 (optional): reverse the second half again so the caller gets the original list back. We changed arrows, not values, so reversing again restores them exactly.
+    Cost: O(n) time and O(1) extra memory, against O(n) memory for copying values to an array.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |
+    The list 1, 2, 3, 4, 5, 6, 7, 8 is reversed in groups of 3, and a short last group is left alone. Number the positions of the new list from 1. What is the sum of (position times value) over all eight nodes?
+  ask: Sum of position times value
+  unit: ""
+  ans: 196
+  tol: 0.1
+  verify: '(() => { const a=[1,2,3,4,5,6,7,8], k=3; let out=[]; for (let i=0;i<a.length;i+=k) { const g=a.slice(i,i+k); out=out.concat(g.length===k?g.reverse():g); } return out.reduce((s,v,i)=>s+(i+1)*v,0); })()'
+  sol: |
+    Groups of 3: (1, 2, 3) becomes (3, 2, 1); (4, 5, 6) becomes (6, 5, 4); the last group (7, 8) has fewer than 3 nodes, so it stays. The new list is 3, 2, 1, 6, 5, 4, 7, 8.
+    Position times value: 1*3 + 2*2 + 3*1 + 4*6 + 5*5 + 6*4 + 7*7 + 8*8 = 3 + 4 + 3 + 24 + 25 + 24 + 49 + 64 = 196.
+    The routine finds the k-th node first: if there are not k nodes left, it stops and leaves the rest alone.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |
+    A least-recently-used cache holds 3 entries. Starting empty, these operations run in order: put 1, put 2, put 3, get 1, put 4, get 2, put 5, get 3, get 1, put 2, get 4, get 5. A get of a missing key is a miss, and a put of a new key into a full cache evicts the least recently used entry. How many gets are misses?
+  ask: Misses
+  unit: ""
+  ans: 3
+  tol: 0.1
+  verify: '(() => { const ops=[["p",1],["p",2],["p",3],["g",1],["p",4],["g",2],["p",5],["g",3],["g",1],["p",2],["g",4],["g",5]]; let c=[],m=0; for (const [o,k] of ops) { const i=c.indexOf(k); if (o==="g") { if (i<0) m++; else { c.splice(i,1); c.unshift(k); } } else { if (i>=0) c.splice(i,1); else if (c.length===3) c.pop(); c.unshift(k); } } return m; })()'
+  sol: |
+    Write the cache from most to least recent.
+    - put 1, 2, 3: [3, 2, 1].
+    - get 1: hit, [1, 3, 2].
+    - put 4: full, evict 2: [4, 1, 3].
+    - get 2: miss (1st miss).
+    - put 5: evict 3: [5, 4, 1].
+    - get 3: miss (2nd miss).
+    - get 1: hit, [1, 5, 4].
+    - put 2: evict 4: [2, 1, 5].
+    - get 4: miss (3rd miss).
+    - get 5: hit.
+    Three misses. In the real structure each hit moves one node to the front of the doubly linked list, and each eviction removes the node before the tail sentinel and deletes its key from the map.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: |
+    Slow moves one node and fast moves two. They meet inside a loop. Prove that restarting one pointer at the head and moving both one node at a time makes them meet at the loop start. Then say what changes if fast moves three nodes per step.
+  sol: |
+    Let a be the steps from the head to the loop start, c the loop length, and b the steps from the loop start to the meeting point, measured along the loop. When they meet, slow has walked a + b. Fast has walked twice as far, 2(a + b). Fast is at the same node as slow, so it has walked the same distance plus a whole number k of extra laps: 2(a + b) = (a + b) + kc. Hence a + b = kc, or a = kc - b.
+    Now the pointer at the meeting point, moving a steps, travels kc - b steps. From the meeting point (b steps past the loop start), moving c - b steps reaches the loop start, and each further c steps is a full lap, so kc - b steps also lands on the loop start. The pointer from the head also takes a steps and lands on the loop start. They arrive together, exactly at the start.
+    Why they meet at all: once both are in the loop, fast gains one node on slow per round, so the gap changes by one each time and must hit zero within c rounds; it cannot jump over slow.
+    With speed 3 the same bookkeeping gives 3(a + b) = (a + b) + kc, so 2(a + b) = kc and the restart trick no longer gives a = kc - b. Fast also gains two nodes per round on slow, so it might skip over slow when the gap is odd and the loop length is even, and may need extra laps. Speed 2 is chosen because the gap closes by exactly one.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: |
+    Two singly linked lists end in a shared tail (or share nothing). Pointer p walks list A and, on reaching the end, continues from the head of B; pointer q does the same with B then A. Prove that p and q reach the shared node at the same time (or both reach the end together if nothing is shared).
+  sol: |
+    Let the unshared parts have lengths x (in A) and y (in B), and the shared tail have length s (s may be 0). So |A| = x + s and |B| = y + s.
+    Pointer p walks the whole of A (x + s nodes), then switches to the head of B and walks its unshared part (y nodes) to reach the first shared node. Counting each node visited as one step, that is x + s + y steps.
+    Pointer q walks the whole of B (y + s nodes), then switches to the head of A and walks the unshared part (x nodes). That is y + s + x steps, the same total.
+    So after exactly x + y + s steps both pointers stand on the first shared node. They cannot coincide earlier: before that, each pointer is either in an unshared part (nodes of A's part and B's part are all different) or p and q are at different distances from the shared node.
+    If s = 0 there is no shared node, and both pointers reach the end (None) after x + y steps, so p equals q equals None and the loop stops. Total time O(x + y + s) and memory O(1), with no length counting needed.
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: |
+    Each node of a singly linked list has an extra pointer called other that points to any node in the same list, or to nothing. Make a deep copy of the list (new nodes with the same values and the same shape of next and other pointers) using O(1) extra memory apart from the copy itself. Describe the three passes and explain why a hash map is not needed.
+  sol: |
+    The hash map version stores old node to new node, so that other can be translated. We can store the same information inside the list itself.
+    Pass 1 (interleave): for every old node A, create a copy A' holding the same value and insert it right after A, so the list becomes A, A', B, B', C, C', and so on. Now the copy of any old node is simply old.next.
+    Pass 2 (set other): for every old node A, if A.other is not empty, set A'.other = A.other.next. This is the copy of the node that A.other points to. Walk the list two nodes at a time so you visit only old nodes.
+    Pass 3 (separate): walk again, restoring the old list (A.next = A'.next, which is the next old node) and linking the copies (A'.next = the next copy). Be careful with the last node: its copy should point to nothing. Keep a dummy for the copy list and set old pointers back before moving on, so the original list is left unchanged.
+    Time is O(n) in three passes; extra memory is O(1) beyond the n new nodes. The map is unnecessary because the position right after each old node plays the role of the map entry.
+    Two classic mistakes: setting other before every copy exists (do all insertions in pass 1 first), and forgetting to restore the original list in pass 3.
+  check: none

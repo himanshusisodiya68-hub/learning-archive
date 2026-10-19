@@ -1,0 +1,173 @@
+# Dynamic programming patterns. All problems are original.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A staircase has 10 steps and you climb one or two at a time. In how many different ways can you reach the top?
+  ask: Ways
+  unit: ""
+  ans: 89
+  tol: 0.1
+  verify: '(()=>{let a=1,b=1;for(let i=0;i<9;i++){[a,b]=[b,a+b]}return b})()'
+  sol: |
+    Let $f(i)$ be the number of ways to climb $i$ steps. The last move was one step from $i-1$ or two steps from $i-2$, so $f(i) = f(i-1) + f(i-2)$ with $f(0) = f(1) = 1$. The values run 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, so $f(10) = 89$.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: In the house-robber question (take the most money, never two neighbouring houses), let best[i] be the most money from the first i+1 houses. Which recurrence is right?
+  opts: ["best[i] = best[i-1] + nums[i]", "best[i] = max(best[i-1], best[i-2] + nums[i])", "best[i] = min(best[i-1], best[i-2]) + nums[i]"]
+  ans: 1
+  sol: |
+    For house $i$ there are two choices. Skip it, and the best is whatever the earlier houses give, best[i-1]. Rob it, and the neighbour i-1 must be skipped, so you add nums[i] to best[i-2]. Take the larger of the two. The first option robs neighbours; the third takes a minimum, which never maximises.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: Coins are worth 1, 3 and 4 rupees. What is the fewest number of coins that make exactly 6 rupees?
+  ask: Coins
+  unit: ""
+  ans: 2
+  tol: 0.1
+  verify: '(()=>{const coins=[1,3,4],A=6;const best=[0];for(let a=1;a<=A;a++){best[a]=Infinity;for(const c of coins){if(c<=a)best[a]=Math.min(best[a],best[a-c]+1)}}return best[A]})()'
+  sol: |
+    Fill best[a] for a = 0 to 6: 0, 1, 2, 1, 1, 2, 2. For example best[6] is the minimum of best[5]+1 = 3, best[3]+1 = 2 and best[2]+1 = 3, which is 2 (coins 3 and 3). A greedy choice would take 4+1+1, which is three coins, so greedy is wrong here.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |
+    Coins are worth 1, 2 and 5 rupees, and you have as many of each as you like. How many different combinations of coins make 11 rupees? (Order does not matter: 1+2 and 2+1 are the same.)
+  ask: Combinations
+  unit: ""
+  ans: 11
+  tol: 0.1
+  verify: '(()=>{const w=[1];for(let a=1;a<=11;a++)w[a]=0;for(const c of [1,2,5]){for(let a=c;a<=11;a++)w[a]+=w[a-c]}return w[11]})()'
+  sol: |
+    Put the coins on the outer loop so each coin is decided once and order is ignored: ways[a] += ways[a - c]. After the coin 1, every amount has 1 way. After adding coin 2, ways[a] = floor(a/2) + 1, so ways[11] = 6. After adding coin 5, ways[11] = 6 + ways[6] + ways[1] where ways[6] = 4 and ways[1] = 1 at that stage, giving 11. If the loops were swapped, the code would count orderings instead, a much larger number.
+  check: code
+
+- id: m1
+  lvl: main
+  kind: num
+  q: What is the length of the longest strictly increasing selection (keeping the order, gaps allowed) from the list 3, 10, 2, 1, 20, 4, 6, 15?
+  ask: Length
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: '(()=>{const n=[3,10,2,1,20,4,6,15];const b=n.map(()=>1);for(let i=0;i<n.length;i++)for(let j=0;j<i;j++)if(n[j]<n[i])b[i]=Math.max(b[i],b[j]+1);return Math.max(...b)})()'
+  sol: |
+    Let best[i] be the longest rising run ending at position $i$. Values: 3 gives 1; 10 gives 2 (3,10); 2 gives 1; 1 gives 1; 20 gives 3 (3,10,20); 4 gives 2 (3,4) or (2,4); 6 gives 3 (3,4,6); 15 gives 4 (3,4,6,15). The largest is 4. The tails method gives the same length: tails evolve as [3], [3,10], [2,10], [1,10], [1,10,20], [1,4,20], [1,4,6], [1,4,6,15].
+  check: code
+
+- id: m2
+  lvl: main
+  kind: num
+  q: What is the fewest number of single-letter insertions, deletions and replacements needed to turn the word "garden" into the word "danger"?
+  ask: Edits
+  unit: ""
+  ans: 4
+  tol: 0.1
+  verify: '(()=>{const a="garden",b="danger",m=a.length,n=b.length;const d=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)d[i][0]=i;for(let j=0;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){d[i][j]=Math.min(d[i-1][j-1]+(a[i-1]!=b[j-1]?1:0),d[i-1][j]+1,d[i][j-1]+1)}return d[m][n]})()'
+  sol: |
+    Use the table dp[i][j] = edits to turn the first i letters of "garden" into the first j letters of "danger", with first row and column equal to their indices. Filling it row by row gives dp[6][6] = 4. One way to see 4: garden to darden (replace g by d), to danden (replace r by n), to dangen (replace d by g), to danger (replace n by r). Replacing three letters is not enough, because only the second letter "a" matches in position, and no cheaper alignment exists in the table.
+  check: code
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A grid has 4 rows and 5 columns, numbered from 0. You start at row 0, column 0 and finish at row 3, column 4, moving only one step right or one step down. The cells at row 1, column 1 and at row 2, column 3 are blocked. How many different paths are there?
+  ask: Paths
+  unit: ""
+  ans: 7
+  tol: 0.1
+  verify: '(()=>{const g=[[0,0,0,0,0],[0,1,0,0,0],[0,0,0,1,0],[0,0,0,0,0]];const d=g.map(r=>r.map(()=>0));for(let r=0;r<4;r++)for(let c=0;c<5;c++){if(g[r][c])continue;if(r==0&&c==0)d[r][c]=1;else d[r][c]=(r?d[r-1][c]:0)+(c?d[r][c-1]:0)}return d[3][4]})()'
+  sol: |
+    The ways to reach a cell are the ways to reach the cell above plus the cell to the left; a blocked cell has 0. The table is
+    row 0: 1 1 1 1 1
+    row 1: 1 0 1 2 3
+    row 2: 1 1 2 0 3
+    row 3: 1 2 4 4 7
+    so the finish cell holds 7. Without the blocks the answer would be 35.
+  check: code
+
+- id: m4
+  lvl: main
+  kind: num
+  q: A bag holds at most 11 kg. The items weigh 3, 4, 5, 9 and 4 kg and are worth 3, 4, 4, 10 and 4 rupees. Each item can be taken at most once. What is the largest total value you can carry?
+  ask: Value
+  unit: rupees
+  ans: 11
+  tol: 0.1
+  verify: '(()=>{const w=[3,4,5,9,4],v=[3,4,4,10,4],cap=11;const b=Array(cap+1).fill(0);for(let i=0;i<w.length;i++)for(let x=cap;x>=w[i];x--)b[x]=Math.max(b[x],b[x-w[i]]+v[i]);return b[cap]})()'
+  sol: |
+    Let best[w] be the top value within weight $w$, updating the capacity backwards for each item so that every item is used once. The best result is 11: take the items of weight 3, 4 and 4 (total 11 kg, value 3 + 4 + 4 = 11). The tempting heavy item of weight 9 is worth 10 but leaves only 2 kg, which fits nothing; the 3 + 4 + 4 combination is better.
+  check: code
+
+- id: a1
+  lvl: adv
+  kind: text
+  q: A staircase has a toll on every step, given in a list, and each move goes up one or two steps. You may start on step 0 or step 1, and the top is one step past the last step in the list. Talk through the five-step script aloud for the cheapest total toll, then write the code.
+  sol: |
+    **State.** Let cost[i] be the cheapest total toll to stand on step i (paying that step's toll when you land on it).
+    **Base cases.** You may start on step 0 or step 1, so cost[0] = toll[0] and cost[1] = toll[1].
+    **Transition.** The last move came from step i-1 or step i-2, so cost[i] = toll[i] + min(cost[i-1], cost[i-2]).
+    **Order.** Each state needs only the two below it, so fill upward from 2.
+    **Answer and cost.** The top is one past the last step, reachable from either of the last two steps, so the answer is min(cost[n-1], cost[n-2]). There are $n$ states with constant work each, so time $O(n)$; only the last two values are needed, so memory is $O(1)$.
+
+    ```python
+    def cheapest(toll):
+        a, b = toll[0], toll[1]          # cost to stand on steps 0 and 1
+        for x in toll[2:]:
+            a, b = b, x + min(a, b)
+        return min(a, b)
+    ```
+    Check by hand with tolls 10, 15, 20: cost is 10, 15, then 20 + min(10, 15) = 30. The answer is min(15, 30) = 15 (start on step 1, jump to the top).
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: text
+  q: For two strings of lengths m and n, the longest common subsequence table takes O(mn) memory. Show how to use O(min(m, n)) memory when you only need the length, and explain what breaks when you also need the subsequence itself and how to fix it.
+  sol: |
+    Row $i$ of the table depends only on row $i-1$ (the cells above and diagonal) and on the earlier cells of its own row (to the left). So keep two rows, `prev` and `cur`, and swap them after each row. Choose the shorter string to run along the row, so each row has $\min(m, n) + 1$ entries.
+
+    ```python
+    def lcs_len(a, b):
+        if len(b) > len(a): a, b = b, a            # b is the shorter
+        prev = [0] * (len(b) + 1)
+        for x in a:
+            cur = [0]
+            for j, y in enumerate(b, 1):
+                cur.append(prev[j-1] + 1 if x == y else max(prev[j], cur[j-1]))
+            prev = cur
+        return prev[-1]
+    ```
+    **What breaks.** To recover the subsequence you walk the full table backwards from the bottom-right: if the letters match, take the letter and go diagonally, otherwise move to the larger of the cell above and the cell to the left. That walk needs all rows, so the two-row version cannot do it.
+    **Fix.** Either keep the full table ($O(mn)$ memory) for the walk, or use a divide-and-conquer idea (Hirschberg): compute the last row of the top half forwards and of the bottom half backwards with two-row tables, find the split column where their sum is largest, and recurse on the two halves. That keeps $O(\min(m, n))$ memory with about twice the time. [Unverified: from memory of the technique]
+  check: none
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: A list of whole numbers, each up to 100 in size and at most 100 of them, must be split into two groups so that the difference between the two group sums is as small as possible. Describe a method and its cost, and run it on 3, 9, 7, 3.
+  sol: |
+    Let $S$ be the total. If one group has sum $s$, the other has $S - s$ and the difference is $|S - 2s|$. So find every sum $s$ that some subset can reach, and pick the reachable $s$ closest to $S/2$. This is subset sum.
+
+    ```python
+    def min_difference(nums):
+        total = sum(nums)
+        bits = 1                                   # bit s set: sum s reachable
+        for x in nums:
+            bits |= bits << x
+        for s in range(total // 2, -1, -1):        # largest reachable s up to half
+            if bits >> s & 1:
+                return total - 2 * s
+    ```
+    The sums are at most $100 \times 100 = 10{,}000$, so there are at most 10,001 states and 100 items, about a million steps (the bit shifts do the inner loop in one operation each). This is pseudo-polynomial: it depends on the size of the numbers, not only on how many there are.
+
+    On 3, 9, 7, 3 the total is 22 and the half is 11. Reachable sums include 0, 3, 6, 7, 9, 10, 12, 13, 16, 19, 22, and 11 is not among them. The largest reachable sum up to 11 is 10 (3 + 7), so the difference is $22 - 20 = 2$ (groups 3 and 7 against 9 and 3, sums 10 and 12).
+  check: none
