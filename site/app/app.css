@@ -1174,7 +1174,5 @@ html.ck-open { overflow: hidden; }
 @keyframes blin { from { opacity: 0; transform: translateY(6px); } }
 .bl-k { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--chem); margin-bottom: 6px; }
 .bl-card p { margin: 0; font-family: var(--f-body); font-size: 16.5px; line-height: 1.55; }
-.bl-rev { margin-top: 12px; border: 1px solid var(--rule); background: var(--sunk); color: var(--ink); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; }
-.bl-ans { margin-top: 12px !important; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--good) 10%, var(--surface)); font-size: 15px !important; }
 #boot:empty { display: none; }
 @media (prefers-reduced-motion: reduce) { .bl-core, .bl-card { animation: none; } }

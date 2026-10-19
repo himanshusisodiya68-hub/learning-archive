@@ -214,7 +214,7 @@
   }
   new MutationObserver(ms => { for (const m of ms) for (const n of m.addedNodes) if (n.nodeType === 1 && !n.closest('.katex')) renderTex(n.parentElement || n); }).observe(document.body, { childList: true, subtree: true });
 
-  /* ---------- a brainy loader: a fact or a quick puzzle while data arrives ---------- */
+  /* ---------- a brainy loader: a fact while data arrives ---------- */
   const BRAINY = [
     ['f', 'Sunlight takes about 8 minutes 20 seconds to reach Earth, so you always see the Sun as it was a little in the past.'],
     ['f', 'Sound covers about 1 km in 3 seconds. Count the seconds between lightning and thunder, divide by 3, and you have the distance in km.'],
@@ -228,25 +228,18 @@
     ['f', 'There are more ways to shuffle a deck of 52 cards (about 8 × 10⁶⁷) than there are atoms making up the Earth.'],
     ['f', 'On the Moon you would weigh about one-sixth of what you weigh on Earth, though your mass would not change at all.'],
     ['f', 'Young Gauss is said to have added 1 to 100 in seconds: pair 1 + 100, 2 + 99, … that is 50 pairs of 101, so 5050.'],
-    ['p', 'A bat and a ball cost ₹110 together. The bat costs ₹100 more than the ball. How much does the ball cost?', '₹5. Then the bat is ₹105, and ₹105 + ₹5 = ₹110. (₹10 is the tempting wrong answer.)'],
-    ['p', '5 machines take 5 minutes to make 5 toys. How long do 100 machines take to make 100 toys?', '5 minutes. Each machine makes one toy in 5 minutes.'],
-    ['p', 'Lily pads double in area every day and cover the whole lake on day 48. On which day was the lake half covered?', 'Day 47. One more doubling covers the rest.'],
-    ['p', 'You drive to a town at 40 km/h and come back at 60 km/h. What is your average speed for the round trip?', '48 km/h, not 50. You spend longer at the slower speed. (Take 120 km each way: 3 h + 2 h for 240 km.)'],
-    ['p', 'A 1 km long train enters a 1 km long tunnel at 60 km/h. How long until the whole train is out?', '2 minutes. The front must travel 2 km: the tunnel plus the train’s own length.'],
-    ['p', 'In most programming languages, what does 0.1 + 0.2 print?', '0.30000000000000004. Computers store numbers in binary, and 0.1 has no exact binary form.'],
-    ['p', 'Which has more mass: a kilogram of iron or a kilogram of cotton?', 'Neither: both are 1 kg. The cotton just takes up far more space.'],
-    ['p', 'How many times can you subtract 5 from 25?', 'Once. After that you are subtracting 5 from 20.']
+    ['f', 'Drive somewhere at 40 km/h and back at 60 km/h, and your average speed is 48 km/h, not 50: you spend longer at the slower speed.'],
+    ['f', 'A 1 km train going through a 1 km tunnel must travel 2 km before it is fully out: the tunnel plus its own length.'],
+    ['f', 'Anything that doubles every day is only half done on the day before it finishes. Exponential growth stays hidden until the very end.'],
+    ['f', 'In most programming languages 0.1 + 0.2 gives 0.30000000000000004, because computers store numbers in binary and 0.1 has no exact binary form.']
   ];
   let brainyI = Math.floor(Math.random() * BRAINY.length);
-  const brainyCard = () => { const b = BRAINY[brainyI++ % BRAINY.length];
-    return b[0] === 'f' ? `<div class="bl-card"><span class="bl-k">Did you know?</span><p>${b[1]}</p></div>`
-      : `<div class="bl-card"><span class="bl-k">Quick puzzle</span><p>${b[1]}</p><button class="bl-rev" data-bl-rev>Show the answer</button><p class="bl-ans" hidden>${b[2]}</p></div>`; };
+  const brainyCard = () => `<div class="bl-card"><span class="bl-k">Did you know?</span><p>${BRAINY[brainyI++ % BRAINY.length][1]}</p></div>`;
   const loaderHTML = label => `<div class="loading bl"><svg class="bl-orb" viewBox="-50 -50 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><ellipse rx="42" ry="14"/><ellipse rx="42" ry="14" transform="rotate(60)"/><ellipse rx="42" ry="14" transform="rotate(-60)"/></g><circle class="bl-core" r="7" fill="currentColor"/>
     ${[[0, 1.4, 'var(--eng)'], [60, 1.9, 'var(--mat)'], [-60, 2.4, 'var(--chem)']].map(([r, d, c]) => `<g transform="rotate(${r})"><circle r="4.5" fill="${c}"><animateMotion dur="${d}s" repeatCount="indefinite" path="M42,0 A42,14 0 1,1 -42,0 A42,14 0 1,1 42,0"/></circle></g>`).join('')}</svg>
     <div class="bl-l">${label}</div><div class="bl-slot">${brainyCard()}</div></div>`;
-  document.addEventListener('click', e => { const b = e.target.closest('[data-bl-rev]'); if (b) { b.hidden = true; b.nextElementSibling.hidden = false; } });
-  // A long wait gets a new card every 9 seconds, unless a puzzle answer is open.
-  setInterval(() => document.querySelectorAll('.bl-slot').forEach(sl => { if (!sl.querySelector('.bl-ans:not([hidden])')) sl.innerHTML = brainyCard(); }), 9000);
+  // A long wait gets a new fact every 9 seconds.
+  setInterval(() => document.querySelectorAll('.bl-slot').forEach(sl => { sl.innerHTML = brainyCard(); }), 9000);
   { const boot = document.getElementById('boot'); if (boot) boot.innerHTML = loaderHTML('Opening Polymath…'); }
   // Google Fonts load without blocking the first paint (the link starts as media=print); system fonts show until they arrive.
   { const gf = document.getElementById('gfonts'); if (gf) { if (gf.sheet) gf.media = 'all'; else gf.addEventListener('load', () => { gf.media = 'all'; }); } }
