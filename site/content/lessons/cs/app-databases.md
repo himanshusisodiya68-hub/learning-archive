@@ -179,7 +179,7 @@ Other ORMs have the same switch under other names (`include` in Prisma, `prefetc
 <g style="fill:var(--bad)"><rect x="8" y="24" width="10" height="22"/><rect x="22" y="24" width="10" height="22"/><rect x="36" y="24" width="10" height="22"/><rect x="50" y="24" width="10" height="22"/><rect x="64" y="24" width="10" height="22"/><rect x="78" y="24" width="10" height="22"/><rect x="92" y="24" width="10" height="22"/><rect x="106" y="24" width="10" height="22"/><rect x="120" y="24" width="10" height="22"/><rect x="134" y="24" width="10" height="22"/><rect x="148" y="24" width="10" height="22"/><rect x="162" y="24" width="10" height="22"/><rect x="176" y="24" width="10" height="22"/><rect x="190" y="24" width="10" height="22"/><rect x="204" y="24" width="10" height="22"/><rect x="218" y="24" width="10" height="22"/><rect x="232" y="24" width="10" height="22"/><rect x="246" y="24" width="10" height="22"/><rect x="260" y="24" width="10" height="22"/><rect x="274" y="24" width="10" height="22"/><rect x="288" y="24" width="10" height="22"/></g>
 <text x="8" y="76" style="font-size:10px;fill:var(--muted)">Join: 1 round trip</text>
 <rect x="8" y="84" width="40" height="22" style="fill:var(--mat)"/>
-<text x="8" y="124" style="font-size:9px;fill:var(--muted)">Each bar is one trip (network wait included), not the amount of data.</text>
+<text x="8" y="124" style="font-size:9px;fill:var(--muted)">Each bar = one trip (waiting included), not data size.</text>
 </svg>
 :::
 
