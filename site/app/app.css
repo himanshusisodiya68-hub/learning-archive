@@ -793,9 +793,11 @@ details.method .principles { margin-top: 4px; }
 .nextq .muted { color: rgba(255,255,255,.75); }
 
 /* ---------- opener, real life, think-with-it, home habits ---------- */
-.opener { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 22px; align-items: center; border-radius: 18px; padding: 22px 24px; margin-bottom: 14px;
+.opener { display: flow-root; border-radius: 18px; padding: 22px 24px; margin-bottom: 14px;
   background: radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--c) 22%, var(--surface)), var(--surface) 70%); border: 1px solid color-mix(in srgb, var(--c) 35%, var(--rule)); box-shadow: 0 18px 40px -28px var(--c); }
-.op-art svg { width: 100%; height: auto; display: block; min-height: 240px; }
+.op-art { float: right; width: min(42%, 400px); margin: 0 0 14px 28px; }
+.op-art svg { width: 100%; height: auto; display: block; }
+#op-q { clear: both; padding-top: 4px; }
 .op-art text { font-family: var(--f-display); }
 .op-art .cover-art { position: static; width: 100%; opacity: 1; }
 .op-k { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--c); margin-bottom: 6px; }
@@ -842,7 +844,7 @@ details.method .principles { margin-top: 4px; }
 .ask { border-top: 1px dashed var(--rule); padding-top: 10px; margin-top: 4px; display: grid; gap: 4px; }
 .ask b { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--eng); } .ask p { margin: 0; font-weight: 600; line-height: 1.45; }
 .hb.can ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 13.5px; line-height: 1.45; }
-@media (max-width: 960px) { .habits { grid-template-columns: minmax(0, 1fr); } .opener { grid-template-columns: minmax(0, 1fr); } .op-art { max-width: 320px; } }
+@media (max-width: 960px) { .habits { grid-template-columns: minmax(0, 1fr); } .op-art { float: none; width: 100%; max-width: 380px; margin: 0 auto 16px; } }
 @media (max-width: 560px) { .cmp-g { grid-template-columns: minmax(0, 1fr); } .opener { padding: 18px; } .op-story { font-size: 16.5px; } }
 
 /* ---------- simplified lesson column ---------- */
