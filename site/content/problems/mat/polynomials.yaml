@@ -1,0 +1,354 @@
+# Class 10 Maths Polynomials: NCERT questions copied word for word from NCERT Mathematics Class X (reprint 2026-27), Ch 2. Originals marked found/board/main.
+# Note: the 2026-27 reprint of Ch 2 has only Exercise 2.1 (one question) and Exercise 2.2 (two questions); its Introduction still says the division algorithm will be studied, but the chapter has no such section. [Unverified: whether the omission is intended.]
+# Figure questions (Example 1 and Exercise 2.1): the bracketed description after the NCERT wording is ours, written from the printed graphs.
+
+- id: ncert10-eg-2-1
+  lvl: ncert-intext
+  num: "X Example 1"
+  source: NCERT X Maths · Ch 2 · Example 1
+  kind: text
+  q: |-
+    Look at the graphs in Fig. 2.9 given below. Each is the graph of $y = p(x)$, where $p(x)$ is a polynomial. For each of the graphs, find the number of zeroes of $p(x)$.
+
+    [Our description of Fig. 2.9, not NCERT text. (i) a curve rising from the lower left; it crosses the x-axis once, left of the y-axis, then stays above the axis with a small wiggle. (ii) a downward-opening arch that crosses the x-axis at two points. (iii) a curve that crosses the x-axis, rises to a peak above it, dips slightly below the axis to a valley, then rises across it again. (iv) a straight slanted line crossing the x-axis once, to the right of the origin. (v) an upward-opening U-shaped curve whose lowest point just touches the x-axis. (vi) a curve rising from the lower left across the x-axis, then a small peak, a small valley and a second peak near the axis, then falling away below it.]
+  sol: |
+    A real number $k$ is a zero of $p(x)$ when $p(k) = 0$, that is, when the point $(k, 0)$ lies on the graph. So the number of zeroes is the number of points where the graph meets the x-axis.
+
+    (i) The graph meets the x-axis at one point only, so there is **1** zero.
+
+    (ii) It meets the x-axis at two points, so there are **2** zeroes.
+
+    (iii) It meets the x-axis at three points (once going up, once coming down into the valley, once going up again), so there are **3** zeroes. (The book asks "Why?": a curve that goes up, down and up again can cross the axis up to three times, and this one does.)
+
+    (iv) A slanted straight line meets the x-axis exactly once, so there is **1** zero. (A line $y = ax + b$ with $a \neq 0$ has the single zero $-b/a$.)
+
+    (v) The curve touches the x-axis at its lowest point and nowhere else. A touching point is still a point of the graph on the x-axis, so there is **1** zero. (The two coincident points of the parabola have become one.)
+
+    (vi) The graph meets the x-axis at four points, so there are **4** zeroes. [Inference] From the printed graph, the first small peak sits very close to the axis; the book's count of 4 is taken from its own solution, and I cannot read the picture to better than that.
+  answer_key: "The number of zeroes is 1, 2, 3, 1, 1, 4 for (i)-(vi) (from the worked solution in the book)."
+  check: ncert-key
+
+- id: ncert10-eg-2-2
+  lvl: ncert-intext
+  num: "X Example 2"
+  source: NCERT X Maths · Ch 2 · Example 2
+  kind: text
+  q: |-
+    Find the zeroes of the quadratic polynomial $x^2 + 7x + 10$, and verify the relationship between the zeroes and the coefficients.
+  sol: |
+    **Factorise.** We need two numbers with product $10$ and sum $7$: they are $2$ and $5$. So
+    $$x^2 + 7x + 10 = (x+2)(x+5).$$
+
+    **Zeroes.** A product is zero only if a factor is zero, so $x + 2 = 0$ or $x + 5 = 0$, giving $x = -2$ and $x = -5$. These are the zeroes.
+
+    **Relationship.** Here $a = 1$, $b = 7$, $c = 10$.
+
+    - Sum of zeroes $= -2 + (-5) = -7 = -\dfrac{7}{1} = \dfrac{-b}{a}$.
+    - Product of zeroes $= (-2)(-5) = 10 = \dfrac{10}{1} = \dfrac{c}{a}$.
+
+    Both relations hold.
+  check: ncert-key
+
+- id: ncert10-eg-2-3
+  lvl: ncert-intext
+  num: "X Example 3"
+  source: NCERT X Maths · Ch 2 · Example 3
+  kind: text
+  q: |-
+    Find the zeroes of the polynomial $x^2 - 3$ and verify the relationship between the zeroes and the coefficients.
+  sol: |
+    **Factorise.** Use the identity $a^2 - b^2 = (a-b)(a+b)$ with $a = x$ and $b = \sqrt3$:
+    $$x^2 - 3 = (x - \sqrt3)(x + \sqrt3).$$
+
+    **Zeroes.** $x - \sqrt3 = 0$ or $x + \sqrt3 = 0$, so the zeroes are $\sqrt3$ and $-\sqrt3$.
+
+    **Relationship.** Compare with $ax^2 + bx + c$: $a = 1$, $b = 0$, $c = -3$.
+
+    - Sum of zeroes $= \sqrt3 + (-\sqrt3) = 0 = \dfrac{-0}{1} = \dfrac{-b}{a}$.
+    - Product of zeroes $= (\sqrt3)(-\sqrt3) = -3 = \dfrac{-3}{1} = \dfrac{c}{a}$.
+
+    Both relations hold. The zeroes need not be whole numbers or fractions; here they are irrational.
+  check: ncert-key
+
+- id: ncert10-eg-2-4
+  lvl: ncert-intext
+  num: "X Example 4"
+  source: NCERT X Maths · Ch 2 · Example 4
+  kind: text
+  q: |-
+    Find a quadratic polynomial, the sum and product of whose zeroes are $-3$ and $2$, respectively.
+  sol: |
+    Let the polynomial be $ax^2 + bx + c$ with zeroes $\alpha$ and $\beta$. The two relations say
+    $$\alpha + \beta = -3 = \frac{-b}{a}, \qquad \alpha\beta = 2 = \frac{c}{a}.$$
+
+    These fix only the ratios $b : a$ and $c : a$. Choose $a = 1$. Then $b = 3$ and $c = 2$, so one polynomial that fits is
+    $$x^2 + 3x + 2.$$
+
+    **Check.** $x^2 + 3x + 2 = (x+1)(x+2)$ has zeroes $-1$ and $-2$: sum $-3$, product $2$.
+
+    **All the others.** Any other choice of $a$ scales $b$ and $c$ by the same factor, so every polynomial that fits is $k(x^2 + 3x + 2)$ with $k$ a non-zero real number.
+  check: ncert-key
+
+- id: ncert10-eg-2-5
+  lvl: ncert-intext
+  num: "X Example 5*"
+  source: |
+    NCERT X Maths · Ch 2 · Example 5 (marked * in the book: "Not from the examination point of view")
+  kind: text
+  q: |-
+    Verify that $3$, $-1$, $-\dfrac{1}{3}$ are the zeroes of the cubic polynomial $p(x) = 3x^3 - 5x^2 - 11x - 3$, and then verify the relationship between the zeroes and the coefficients.
+  sol: |
+    **Coefficients.** Comparing with $ax^3 + bx^2 + cx + d$: $a = 3$, $b = -5$, $c = -11$, $d = -3$.
+
+    **The three numbers are zeroes.**
+
+    - $p(3) = 3 \times 27 - 5 \times 9 - 11 \times 3 - 3 = 81 - 45 - 33 - 3 = 0$.
+    - $p(-1) = 3(-1)^3 - 5(-1)^2 - 11(-1) - 3 = -3 - 5 + 11 - 3 = 0$.
+    - $p\!\left(-\tfrac13\right) = 3\left(-\tfrac13\right)^3 - 5\left(-\tfrac13\right)^2 - 11\left(-\tfrac13\right) - 3 = -\tfrac19 - \tfrac59 + \tfrac{11}{3} - 3 = -\tfrac23 + \tfrac23 = 0$.
+
+    Each value gives $0$, and a cubic has at most three zeroes, so $3$, $-1$ and $-\tfrac13$ are all of them.
+
+    **Relationships.** Take $\alpha = 3$, $\beta = -1$, $\gamma = -\tfrac13$.
+
+    - $\alpha + \beta + \gamma = 3 - 1 - \tfrac13 = \tfrac53 = \dfrac{-(-5)}{3} = \dfrac{-b}{a}$.
+    - $\alpha\beta + \beta\gamma + \gamma\alpha = -3 + \tfrac13 - 1 = -\tfrac{11}{3} = \dfrac{c}{a}$. (Here $\beta\gamma = \tfrac13$ and $\gamma\alpha = -1$.)
+    - $\alpha\beta\gamma = 3 \times (-1) \times \left(-\tfrac13\right) = 1 = \dfrac{-(-3)}{3} = \dfrac{-d}{a}$.
+
+    All three hold.
+  check: ncert-key
+
+- id: ncert10-ex-2.1-1
+  lvl: ncert-ex
+  num: "X Ex 2.1 Q1"
+  source: NCERT X Maths · Ch 2 · Exercise 2.1
+  kind: text
+  q: |-
+    The graphs of $y = p(x)$ are given in Fig. 2.10 below, for some polynomials $p(x)$. Find the number of zeroes of $p(x)$, in each case.
+
+    [Our description of Fig. 2.10, not NCERT text. Figure (i): the graph is a horizontal line above the x-axis; it does not meet the x-axis. Figure (ii): a curve that rises from the lower left to a small hump below the axis, dips to a valley below the axis, then climbs steeply and crosses the x-axis once, on the right. Figure (iii): a curve rising from the lower left across the x-axis, peaking high above it near the y-axis, dropping to a valley that dips just below the x-axis, then rising again; it crosses the x-axis three times. Figure (iv): a U-shaped curve opening upwards whose lowest part dips below the x-axis; it crosses the x-axis at two points. Figure (v): a wavy curve that starts below the axis at the left, crosses the x-axis, peaks, comes back down across it, dips to a valley below the axis near the y-axis, climbs across it again to a second peak, and falls across it once more on the right; it crosses the x-axis at four points. Figure (vi): a curve that rises across the x-axis once at the far left, peaks, and then comes down to just touch the x-axis; it rises to a peak above the axis near the y-axis, comes down to touch the x-axis a second time, and then rises away; it meets the x-axis at three points (one crossing, two touchings).]
+  sol: |
+    The zeroes of $p(x)$ are the x-coordinates of the points where the graph meets the x-axis, so count those points. A point where the curve only touches the axis still counts once.
+
+    | Figure | How the graph meets the x-axis | Zeroes |
+    |---|---|---|
+    | (i) | never (it is a horizontal line above the axis) | **0** |
+    | (ii) | one crossing, on the right | **1** |
+    | (iii) | three crossings | **3** |
+    | (iv) | two crossings | **2** |
+    | (v) | four crossings | **4** |
+    | (vi) | one crossing and two touching points | **3** |
+
+    Case (i) is a polynomial like a non-zero constant $p(x) = c$: it has no zero because $c \neq 0$ never equals $0$.
+
+    The printed answer key reads: (i) No zeroes, (ii) 1, (iii) 3, (iv) 2, (v) 4, (vi) 3. This agrees with the count above for every figure. [Inference] The figures were read by eye from the page image at high zoom. In (iii) the valley dips only slightly below the axis, so the crossing count of 3 relies on that small dip.
+  answer_key: "(i) No zeroes (ii) 1 (iii) 3 (iv) 2 (v) 4 (vi) 3"
+  check: ncert-key
+
+- id: ncert10-ex-2.2-1
+  lvl: ncert-ex
+  num: "X Ex 2.2 Q1"
+  source: NCERT X Maths · Ch 2 · Exercise 2.2
+  kind: text
+  q: |-
+    Find the zeroes of the following quadratic polynomials and verify the relationship between the zeroes and the coefficients.
+
+    (i) $x^2 - 2x - 8$ &emsp; (ii) $4s^2 - 4s + 1$ &emsp; (iii) $6x^2 - 3 - 7x$ &emsp; (iv) $4u^2 + 8u$ &emsp; (v) $t^2 - 15$ &emsp; (vi) $3x^2 - x - 4$
+  sol: |
+    In each part, factorise to find the zeroes $\alpha, \beta$, then check $\alpha + \beta = -b/a$ and $\alpha\beta = c/a$.
+
+    **(i)** $x^2 - 2x - 8 = (x-4)(x+2)$. Zeroes: $4$ and $-2$. Here $a = 1$, $b = -2$, $c = -8$.
+    Sum $= 4 + (-2) = 2 = -\dfrac{-2}{1}$. Product $= 4 \times (-2) = -8 = \dfrac{-8}{1}$. Both hold.
+
+    **(ii)** $4s^2 - 4s + 1 = (2s-1)^2$. The only zero is $s = \tfrac12$, counted twice: $\tfrac12$ and $\tfrac12$. Here $a = 4$, $b = -4$, $c = 1$.
+    Sum $= \tfrac12 + \tfrac12 = 1 = -\dfrac{-4}{4}$. Product $= \tfrac12 \times \tfrac12 = \tfrac14 = \dfrac14$. Both hold.
+
+    **(iii)** Write it as $6x^2 - 7x - 3$. Split the middle term: $6 \times (-3) = -18 = (-9)(2)$ and $-9 + 2 = -7$, so
+    $6x^2 - 9x + 2x - 3 = 3x(2x-3) + 1(2x-3) = (2x-3)(3x+1)$.
+    Zeroes: $\tfrac32$ and $-\tfrac13$. Here $a = 6$, $b = -7$, $c = -3$.
+    Sum $= \tfrac32 - \tfrac13 = \tfrac76 = -\dfrac{-7}{6}$. Product $= \tfrac32 \times \left(-\tfrac13\right) = -\tfrac12 = \dfrac{-3}{6}$. Both hold.
+
+    **(iv)** $4u^2 + 8u = 4u(u+2)$. Zeroes: $0$ and $-2$. Here $a = 4$, $b = 8$, $c = 0$.
+    Sum $= 0 + (-2) = -2 = -\dfrac84$. Product $= 0 \times (-2) = 0 = \dfrac04$. Both hold.
+
+    **(v)** $t^2 - 15 = (t - \sqrt{15})(t + \sqrt{15})$. Zeroes: $\sqrt{15}$ and $-\sqrt{15}$. Here $a = 1$, $b = 0$, $c = -15$.
+    Sum $= 0 = -\dfrac01$. Product $= -15 = \dfrac{-15}{1}$. Both hold.
+
+    **(vi)** Split the middle term: $3 \times (-4) = -12 = (-4)(3)$ and $-4 + 3 = -1$, so
+    $3x^2 - 4x + 3x - 4 = x(3x-4) + 1(3x-4) = (3x-4)(x+1)$.
+    Zeroes: $\tfrac43$ and $-1$. Here $a = 3$, $b = -1$, $c = -4$.
+    Sum $= \tfrac43 - 1 = \tfrac13 = -\dfrac{-1}{3}$. Product $= \tfrac43 \times (-1) = -\tfrac43 = \dfrac{-4}{3}$. Both hold.
+
+    The printed answer key agrees with all six pairs of zeroes.
+  answer_key: "(i) -2, 4 (ii) 1/2, 1/2 (iii) -1/3, 3/2 (iv) -2, 0 (v) -sqrt(15), sqrt(15) (vi) -1, 4/3"
+  check: ncert-key
+
+- id: ncert10-ex-2.2-2
+  lvl: ncert-ex
+  num: "X Ex 2.2 Q2"
+  source: NCERT X Maths · Ch 2 · Exercise 2.2
+  kind: text
+  q: |-
+    Find a quadratic polynomial each with the given numbers as the sum and product of its zeroes respectively.
+
+    (i) $\dfrac14,\ -1$ &emsp; (ii) $\sqrt2,\ \dfrac13$ &emsp; (iii) $0,\ \sqrt5$ &emsp; (iv) $1,\ 1$ &emsp; (v) $-\dfrac14,\ \dfrac14$ &emsp; (vi) $4,\ 1$
+  sol: |
+    If $\alpha + \beta = S$ and $\alpha\beta = P$, then $x^2 - Sx + P$ is a quadratic polynomial with those zeroes, because $(x-\alpha)(x-\beta) = x^2 - (\alpha+\beta)x + \alpha\beta$. Any non-zero multiple $k(x^2 - Sx + P)$ also works; the answer key clears fractions by choosing $k$ suitably.
+
+    **(i)** $S = \tfrac14$, $P = -1$: $x^2 - \tfrac14 x - 1$. Multiply by $4$: $\mathbf{4x^2 - x - 4}$.
+
+    **(ii)** $S = \sqrt2$, $P = \tfrac13$: $x^2 - \sqrt2\,x + \tfrac13$. Multiply by $3$: $\mathbf{3x^2 - 3\sqrt2\,x + 1}$.
+
+    **(iii)** $S = 0$, $P = \sqrt5$: $\mathbf{x^2 + \sqrt5}$.
+
+    **(iv)** $S = 1$, $P = 1$: $\mathbf{x^2 - x + 1}$.
+
+    **(v)** $S = -\tfrac14$, $P = \tfrac14$: $x^2 + \tfrac14 x + \tfrac14$. Multiply by $4$: $\mathbf{4x^2 + x + 1}$.
+
+    **(vi)** $S = 4$, $P = 1$: $\mathbf{x^2 - 4x + 1}$.
+
+    **Remark (ours).** In (iii), (iv) and (v) the discriminant $b^2 - 4ac$ is negative ($-4\sqrt5$, $-3$ and $-15$ for the forms above), so these polynomials have no real zeroes. The sum and product given in the question then belong to non-real numbers; the polynomial $x^2 - Sx + P$ is still the one that has them. The printed answer key gives exactly the six polynomials above.
+  answer_key: "(i) 4x^2 - x - 4 (ii) 3x^2 - 3 sqrt(2) x + 1 (iii) x^2 + sqrt(5) (iv) x^2 - x + 1 (v) 4x^2 + x + 1 (vi) x^2 - 4x + 1"
+  check: ncert-key
+
+# ---------- Original problems ----------
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Find the larger zero of the polynomial $x^2 - 5x + 6$. (Original problem.)
+  ask: Larger zero
+  ans: 3
+  tol: 0.001
+  verify: (5+sqrt(25-24))/2
+  sol: |
+    Factorise: $x^2 - 5x + 6 = (x-2)(x-3)$, since $2 \times 3 = 6$ and $2 + 3 = 5$. The zeroes are $2$ and $3$, so the larger is $3$.
+
+    Check with the relations: sum $= 5 = -b/a$ and product $= 6 = c/a$.
+  check: both
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Without finding the zeroes, find the sum of the zeroes of $3x^2 - 12x + 5$. (Original problem.)
+  ask: Sum of the zeroes
+  ans: 4
+  tol: 0.001
+  verify: 12/3
+  sol: |
+    For $ax^2 + bx + c$ the sum of the zeroes is $-b/a$. Here $a = 3$, $b = -12$, so the sum is $-(-12)/3 = 4$.
+
+    (The discriminant is $144 - 60 = 84 > 0$, so the two zeroes are real and the sum is a sum of two real numbers.)
+  check: both
+
+- id: f3
+  lvl: found
+  kind: text
+  q: Which of these are polynomials in $x$? For each polynomial, give its degree and say whether it is linear, quadratic or cubic. (a) $3x^2 - 5x + 1$ (b) $x + \dfrac1x$ (c) $7 - x^3$ (d) $\sqrt{x} + 2$ (e) $\dfrac{x}{2} - 4$. (Original problem.)
+  sol: |
+    A polynomial in $x$ has only whole-number powers $0, 1, 2, \dots$ of $x$.
+
+    (a) Polynomial, degree 2: quadratic.
+    (b) Not a polynomial: $\frac1x = x^{-1}$ has a negative power.
+    (c) Polynomial, degree 3: cubic.
+    (d) Not a polynomial: $\sqrt{x} = x^{1/2}$ has a fractional power.
+    (e) Polynomial, degree 1: linear. Its zero is $x = 8$.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: Find a quadratic polynomial whose zeroes are $3$ and $-2$. Verify the relationship between the zeroes and the coefficients. (Original problem.)
+  sol: |
+    Sum of zeroes $= 3 + (-2) = 1$. Product $= 3 \times (-2) = -6$.
+
+    The polynomial is $x^2 - (\text{sum})x + \text{product} = x^2 - x - 6$.
+
+    **Verify.** Here $a = 1$, $b = -1$, $c = -6$. Then $-b/a = 1 =$ sum, and $c/a = -6 =$ product. Also $x^2 - x - 6 = (x-3)(x+2)$ has zeroes $3$ and $-2$. Any $k(x^2 - x - 6)$ with $k \neq 0$ also works.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: |-
+    **Case study.** A garden fountain throws water in an arc. Taking the nozzle as the origin, the height $y$ (in metres) of the water at a horizontal distance $x$ (in metres) is $y = -x^2 + 4x$.
+
+    (a) Find the zeroes of the polynomial $-x^2 + 4x$.
+    (b) How far from the nozzle does the water land?
+    (c) Does the graph open upwards or downwards? Give a reason using the coefficient of $x^2$.
+
+    (Original problem.)
+  sol: |
+    (a) $-x^2 + 4x = -x(x - 4)$, so the zeroes are $x = 0$ and $x = 4$. (Check: sum $= 4 = -4/(-1)$; product $= 0 = 0/(-1)$.)
+
+    (b) The water is at ground level ($y = 0$) at the zeroes. $x = 0$ is the nozzle itself, so it lands at $x = 4$ m.
+
+    (c) The coefficient of $x^2$ is $-1 < 0$, so the parabola opens **downwards**, like an arch. That is the shape of the water's path, which rises and then falls.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: mcq
+  q: |-
+    **Assertion (A):** The polynomial $x^2 + 1$ has no real zeroes.
+    **Reason (R):** The graph of $y = x^2 + 1$ lies entirely above the x-axis.
+
+    Choose the correct option. (Original problem.)
+  opts: ["Both A and R are true, and R is the correct explanation of A.", "Both A and R are true, but R is not the correct explanation of A.", "A is true but R is false.", "A is false but R is true."]
+  ans: 0
+  sol: |
+    $x^2 \geq 0$ for every real $x$, so $x^2 + 1 \geq 1 > 0$: the value is never zero, which is why $A$ holds. Equivalently, the graph is the parabola $y = x^2$ lifted by $1$, so every point has $y \geq 1$ and the graph never meets the x-axis. Zeroes are exactly the x-coordinates of points where the graph meets the x-axis, so $R$ is true and explains $A$. Option 1.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: The zeroes of the polynomial $x^2 - 8x + k$ differ by $2$. Find $k$. (Original problem.)
+  ask: Value of k
+  ans: 15
+  tol: 0.001
+  verify: ((8+2)/2)*((8-2)/2)
+  sol: |
+    Let the zeroes be $\alpha$ and $\beta$ with $\alpha - \beta = 2$. From the sum, $\alpha + \beta = 8$.
+
+    Adding: $2\alpha = 10$, so $\alpha = 5$; then $\beta = 3$.
+
+    Product $= k = \alpha\beta = 5 \times 3 = 15$.
+
+    **Check.** $x^2 - 8x + 15 = (x-3)(x-5)$, zeroes $3$ and $5$, which differ by $2$.
+  check: both
+
+- id: m2
+  lvl: main
+  kind: num
+  q: If $\alpha$ and $\beta$ are the zeroes of $2x^2 - 5x + 3$, find the value of $\alpha^2 + \beta^2$. (Original problem.)
+  ask: Value of α² + β²
+  ans: 3.25
+  tol: 0.001
+  verify: pow(5/2,2)-2*(3/2)
+  sol: |
+    Here $a = 2$, $b = -5$, $c = 3$, so $\alpha + \beta = \tfrac52$ and $\alpha\beta = \tfrac32$.
+
+    Use the identity $\alpha^2 + \beta^2 = (\alpha+\beta)^2 - 2\alpha\beta$:
+    $$\alpha^2 + \beta^2 = \frac{25}{4} - 3 = \frac{13}{4} = 3.25.$$
+
+    **Check.** $2x^2 - 5x + 3 = (2x-3)(x-1)$ has zeroes $\tfrac32$ and $1$: $\tfrac94 + 1 = \tfrac{13}{4}$.
+  check: both
+
+- id: m3
+  lvl: main
+  kind: num
+  q: The zeroes of the cubic polynomial $x^3 - 12x^2 + 44x - 48$ are in arithmetic progression. Find the largest zero. (Original problem.)
+  ask: Largest zero
+  ans: 6
+  tol: 0.001
+  verify: 4+sqrt(16-48/4)
+  sol: |
+    Let the zeroes be $a - d$, $a$, $a + d$ with $d > 0$. For $x^3 + bx^2 + cx + d_0$ with leading coefficient $1$: sum of zeroes $= -b = 12$, so $3a = 12$ and $a = 4$.
+
+    Product of zeroes $= -d_0 = 48$:
+    $$(a-d)\,a\,(a+d) = a(a^2 - d^2) = 4(16 - d^2) = 48 \Rightarrow d^2 = 4 \Rightarrow d = 2.$$
+
+    So the zeroes are $2, 4, 6$ and the largest is $6$.
+
+    **Check with the third relation.** Sum of products in pairs $= 2\cdot4 + 4\cdot6 + 2\cdot6 = 8 + 24 + 12 = 44 = c/a$. It matches.
+  check: both
