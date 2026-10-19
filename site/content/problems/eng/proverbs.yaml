@@ -1,0 +1,197 @@
+# Proverbs. All problems are original (no NCERT items for this leaf), written for the Learning Archive. All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Which proverb means that small, steady efforts can achieve something big?"
+  opts: ["A rolling stone gathers no moss.", "Little strokes fell great oaks.", "Empty vessels make the most noise.", "All that glitters is not gold."]
+  ans: 1
+  sol: |
+    *Little strokes fell great oaks* says that many small, repeated blows can bring down even a great tree. The other proverbs are about restlessness, loud talk and appearances.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "What does the proverb 'A stitch in time saves nine' mean?"
+  opts: ["Sewing is a useful skill.", "Mend a small problem early, before it grows into a big one.", "Nine people can do a job faster than one.", "Take your time over small jobs."]
+  ans: 1
+  sol: |
+    The picture is of a small tear. One stitch now saves nine later when the tear has grown. The lesson is to deal with a small problem at once.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the proverb: Too many cooks spoil the ___."
+  opts: ["broth", "kitchen", "party", "rice"]
+  ans: 0
+  sol: |
+    The fixed form is *Too many cooks spoil the broth*. It means that when too many people try to manage one task, the work is spoilt.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Which of the following is a proverb, not an idiom?"
+  opts: ["to kick the bucket", "once in a blue moon", "Honesty is the best policy.", "to break the ice"]
+  ans: 2
+  sol: |
+    *Honesty is the best policy* is a complete sentence giving advice. The other three are phrases that fit inside sentences, and their meanings are not their words (to die, rarely, to ease a tense start).
+  check: none
+
+- id: f5
+  lvl: found
+  kind: mcq
+  q: "The Hindi saying 'Doodh ka jala chhach bhi phoonk phoonk kar peeta hai' is closest in meaning to which English proverb?"
+  opts: ["A burnt child dreads the fire.", "Time and tide wait for no man.", "Birds of a feather flock together.", "Rome was not built in a day."]
+  ans: 0
+  sol: |
+    Someone who has been scalded by hot milk blows even on cool buttermilk. In the same way, a burnt child dreads the fire: a bad experience makes a person over-careful. The other proverbs are about time, company and patience.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Read the passage and answer. 'Ritu had been told by her coach all season to rest her sore ankle. She ignored the advice, played the final, and was carried off the field in the first ten minutes. The team lost.' Which proverb best sums up the passage?"
+  opts: ["Prevention is better than cure.", "Practice makes perfect.", "Union is strength.", "Birds of a feather flock together."]
+  ans: 0
+  sol: |
+    Strip the story: she ignored a warning about a small problem, and it turned into a big one. The rule is to prevent trouble early. *Prevention is better than cure* states that rule. The others are about practice, teamwork and company, which the passage does not discuss.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Complete each proverb with the correct word and state its message in one line. (a) Slow and steady wins the ___. (b) Where there is a will, there is a ___. (c) Better late than ___. (d) A friend in need is a friend ___."
+  sol: |
+    Model answer.
+
+    (a) race. Steady effort beats a hurried burst.
+    (b) way. If you really want something, you will find a means of getting it.
+    (c) never. Doing something late is better than not doing it at all.
+    (d) indeed (one word). The real friend is the one who helps in trouble.
+
+    This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Match each situation with the most suitable proverb from the box. Box: Pride goes before a fall / Make hay while the sun shines / Look before you leap / Too many cooks spoil the broth. (i) Kabir invested all his savings in a company without reading a single page about it and lost most of them. (ii) A shop sells umbrellas, and the owner stocks up in June, just before the rains. (iii) Six students quarrelled over how to design the school magazine cover, and the cover was never finished. (iv) A cricketer who claimed that no bowler could get him out was bowled first ball."
+  sol: |
+    Model answer.
+
+    (i) Look before you leap. He acted without thinking about the result.
+    (ii) Make hay while the sun shines. He prepares for the season in which sales will be good.
+    (iii) Too many cooks spoil the broth. Too many people with their own plans ruined the work.
+    (iv) Pride goes before a fall. His boast was followed by failure.
+
+    Method: strip each story to a rule first (think before acting; use the season; too many managers; boasting ends badly), then pick the proverb that states it.
+
+    This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Write the opening paragraph (about 80 words) of an article on the topic 'Honesty is the best policy'. Begin with the proverb and explain it in your own words."
+  sol: |
+    One possible model answer.
+
+    "Honesty is the best policy," as the old saying goes. It means that telling the truth and playing fair may sometimes cost us a little today, but in the end they bring us trust, and trust is worth more than any quick gain. A shopkeeper who gives the right change keeps his customers for life. A student who owns up to a mistake earns the teacher's respect. In a world full of shortcuts, honesty is still the road that takes us furthest.
+
+    Marking checklist: the proverb is quoted exactly (1); its meaning is explained in the writer's own words (1); at least one concrete example (1); a clear link to the topic and a closing sentence (1); correct grammar and spelling (1).
+
+    This is one possible model answer written for this archive, not an official board key.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Each sentence contains one error in the wording or grammar of a proverb. Rewrite the proverb correctly. (a) A rolling stone gather no moss. (b) Birds of feather flock together. (c) Haste make waste. (d) A friend in need is a friend in deed."
+  sol: |
+    Model answer.
+
+    (a) A rolling stone gathers no moss. (The singular subject takes gathers.)
+    (b) Birds of a feather flock together. (The article a is part of the fixed form.)
+    (c) Haste makes waste. (The singular subject haste takes makes.)
+    (d) A friend in need is a friend indeed. (Indeed is one word, meaning truly.)
+
+    This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "'Look before you leap' and 'He who hesitates is lost' seem to say opposite things. Explain, with one example for each, how both can be sensible advice."
+  sol: |
+    One possible model answer.
+
+    Each proverb is a rule of thumb that holds within a range of situations, not a law that holds everywhere.
+
+    *Look before you leap* suits decisions that are big and hard to undo. Before choosing a stream in Class 11, or lending a large sum to a friend, it pays to check the facts first, because a wrong step is costly and cannot easily be taken back.
+
+    *He who hesitates is lost* suits situations in which the chance is about to close. If a cricketer sees a clear run-out chance and stops to think, the batter is safe by the time he throws.
+
+    So the question to ask is: What is at stake, and is the chance about to close? If the cost of a mistake is high and there is time, look first; if the moment is passing and the cost of trying is small, act.
+
+    This is one possible model answer written for this archive, not an official board key.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Give the English proverb that is the equivalent of each Hindi saying, not a word-for-word translation. (a) Jiski lathi uski bhains. (b) Ek aur ek gyarah. (c) Bahut jogi math ujad. (d) Jo garajte hain woh barasate nahi."
+  sol: |
+    Model answer.
+
+    (a) Might is right. The one with power gets his way, whatever the justice of it.
+    (b) Union is strength. Two together are much stronger than two separate ones (one plus one is eleven, not two).
+    (c) Too many cooks spoil the broth. Too many people in charge ruin the work.
+    (d) Barking dogs seldom bite. Those who make the loudest threats rarely carry them out.
+
+    Equivalents carry the same lesson in a different image. Translating (a) as "He who has the stick owns the buffalo" would be correct as a translation but would not count as the English equivalent.
+
+    This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Report each sentence in indirect speech. (a) The teacher said, 'A stitch in time saves nine.' (b) My grandfather said to me, 'You were late yesterday, and honesty is the best policy.' Explain why the tense of the proverb does or does not change."
+  sol: |
+    Model answer.
+
+    (a) The teacher said that a stitch in time saves nine.
+
+    (b) My grandfather told me that I had been late the day before and that honesty is the best policy.
+
+    A proverb states a general truth, which is true now as well as then. When the reported words are a universal truth, the tense does not shift back even if the reporting verb is in the past. Ordinary facts do shift: *you were late yesterday* becomes *I had been late the day before*. The proverb in (b) stays in the present.
+
+    This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "'Spare the rod and spoil the child' is an old proverb. In about 100 words, say what it means, what is true in it, and why many people today disagree with it."
+  sol: |
+    One possible model answer.
+
+    "Spare the rod and spoil the child" means that if a child is never punished, he or she will grow up badly behaved. The wise part of it is that children do need firm limits and clear rules; without them they do not learn to care about others. But the proverb is usually taken to mean beating, and many people now disagree. Studies and experience suggest that fear teaches children to hide mistakes, not to avoid them. Calm explanation, fair consequences and the example of adults teach more lastingly. Discipline is necessary, but discipline need not mean pain.
+
+    Checklist: states the meaning (1); identifies what is true (1); a reasoned objection (1); a balanced conclusion (1). Origin of the saying is often credited to the Bible, [Unverified], and is not needed for the answer.
+
+    This is one possible model answer written for this archive, not an official board key.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: mcq
+  q: "Which of these situations is best described by the proverb 'Too many cooks spoil the broth'?"
+  opts: ["Twenty villagers together lift a fallen tree off the road in a minute.", "Four members of a quiz team each shout a different answer at the last moment, and the team loses the point.", "A family saves a little every month to buy a car.", "A shopkeeper returns a wallet he found."]
+  ans: 1
+  sol: |
+    The rule is that too many people trying to decide one thing at once spoils the result. Option B shows that: four people give four different answers on a single question and the team loses. Option A is a case of *many hands make light work* (a task that divides well), C is about steady saving, and D about honesty.
+  check: none

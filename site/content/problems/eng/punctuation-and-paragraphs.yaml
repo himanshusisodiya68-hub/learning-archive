@@ -1,0 +1,184 @@
+# Punctuation and paragraphs. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Which sentence is correctly punctuated?"
+  opts: ["Where do you live.", "Where do you live?", "where do you live?", "Where do you live!"]
+  ans: 1
+  sol: |
+    A direct question starts with a capital letter and ends with a question mark: *Where do you live?* The first option ends a question with a full stop, the third lacks the capital, and the fourth uses an exclamation mark for an ordinary question.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Choose the correct word: The cat licked ___ paw."
+  opts: ["it's", "its", "its'", "it is"]
+  ans: 1
+  sol: |
+    *Its* (no apostrophe) means belonging to it. *It's* is only the short form of *it is* or *it has*, and *its'* does not exist. Test: "The cat licked it is paw" makes no sense, so the apostrophe form is wrong.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which phrase correctly shows that the hostel belongs to many girls?"
+  opts: ["the girl's hostel", "the girls hostel", "the girls' hostel", "the girls's hostel"]
+  ans: 2
+  sol: |
+    Many owners means a plural noun, *girls*, and a plural ending in s takes only an apostrophe after the s: *the girls' hostel*. *The girl's hostel* shows one owner, and *the girls hostel* has no ownership mark at all.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Where should the comma go? \"Thank you Meera\""
+  opts: ["Thank, you Meera", "Thank you, Meera", "Thank you Meera,", "No comma is needed"]
+  ans: 1
+  sol: |
+    Meera is the person being addressed, so a comma separates the name from the rest: *Thank you, Meera.* This is the comma of direct address.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Write the following with the correct capital letters and end marks: \"what a lovely morning it is said ravi are you coming to the park\" (Do not add or remove words. Treat it as two sentences spoken by Ravi.)"
+  sol: |
+    Model answer: *"What a lovely morning it is!" said Ravi. "Are you coming to the park?"*
+
+    The first spoken sentence is an exclamation and ends with an exclamation mark, placed inside the quotation marks. The tag *said Ravi* is not part of the speech and continues the same sentence, so *said* has a small letter, while *Ravi* needs a capital as a name. The second spoken sentence is new, so it begins with a capital letter and ends with a question mark.
+
+    [Note] This is one possible model answer written for this archive; a full stop instead of an exclamation mark after *is* is also acceptable if the writer reads it as a calm remark.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Punctuate the passage, adding capital letters where needed: \"the monsoon arrived early this year in kerala the farmers were delighted they said that the rains would fill the ponds and the wells\""
+  sol: |
+    Model answer: *The monsoon arrived early this year in Kerala. The farmers were delighted. They said that the rains would fill the ponds and the wells.*
+
+    Reasoning: there are three complete ideas, so three sentences, each beginning with a capital letter. *Kerala* is a place name and needs a capital. *They said that...* is reported speech, so no quotation marks are needed.
+
+    [Note] One possible model answer written for this archive. A comma after *Kerala* is also acceptable if the first two sentences are joined: *The monsoon arrived early this year in Kerala, and the farmers were delighted.*
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: "Each line of the passage below has one error. Find it and correct it. (1) The school library open at nine every day. (2) Its a quiet place where students read. (3) The librarian said, \"you may borrow two books.\" (4) Most of the childrens prefer storybooks."
+  sol: |
+    Model answer:
+    (1) *open* should be *opens* (subject-verb agreement with the singular *library*): The school library opens at nine every day.
+    (2) *Its* should be *It's* (it is): It's a quiet place where students read.
+    (3) The speech is a new sentence inside the quotation marks, so it needs a capital letter: The librarian said, "You may borrow two books."
+    (4) *childrens* should be *children* (the plural of child is already *children*; there is no ownership here): Most of the children prefer storybooks.
+
+    [Note] A model answer written for this archive. Each line holds exactly one error, as in the board format.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Rewrite each of the following correctly. (a) It was getting late, we decided to leave. (b) My brother who lives in Delhi is a doctor. (c) The shop opens at ten however it is closed on Sundays. (Where more than one repair is possible, give one.)"
+  sol: |
+    Model answer:
+    (a) *It was getting late, so we decided to leave.* (a comma splice, repaired with *so*; a full stop or semicolon would also work.)
+    (b) *My brother, who lives in Delhi, is a doctor.* (the commas mark extra information, as a speaker with only one brother would say.)
+    (c) *The shop opens at ten; however, it is closed on Sundays.* (*however* is a linker, so it needs a semicolon or full stop before it and a comma after it.)
+
+    [Note] One possible model answer written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: "Put these sentences into the best order to make a paragraph, and write the order as letters. (A) They also learn to share, listen and wait for their turn. (B) In a group, children are not only taught the lessons in the book. (C) Group activities in school help students in many ways. (D) As a result, they leave school as better teammates as well as better students."
+  sol: |
+    Model answer: C, B, A, D.
+
+    (C) is the topic sentence: a general statement with no word that points back. (B) develops it ("In a group, children are not only taught...") and is followed by (A), which begins with *They also*, so it needs (B) to name *children*. (D) begins *As a result* and sums up, so it is last.
+
+    Paragraph: *Group activities in school help students in many ways. In a group, children are not only taught the lessons in the book. They also learn to share, listen and wait for their turn. As a result, they leave school as better teammates as well as better students.*
+
+    [Note] A model answer written for this archive.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: mcq
+  q: "Which of the following is a correctly punctuated line of dialogue with its tag?"
+  opts: ["\"I will be late\", said Neha.", "\"I will be late,\" said Neha.", "\"I will be late.\" said Neha.", "\"I will be late\" said, Neha."]
+  ans: 1
+  sol: |
+    When the speech comes first and the speaker is named after it, the speech ends with a comma placed inside the closing quotation mark: *"I will be late," said Neha.* The first option puts the comma outside, the third uses a full stop inside and then a small *said*, and the fourth puts a comma in the wrong place.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Write a paragraph of about 80 to 100 words on the topic \"Why every student should read a newspaper\". Begin with a topic sentence, use at least two linkers, and end with a closing sentence."
+  sol: |
+    One possible model answer (about 95 words):
+
+    *Reading a newspaper every day is one of the simplest habits a student can build. First, it keeps us informed about events in our city, our country and the world, which makes class discussions richer. In addition, the editorial and sports pages teach us how to follow an argument and a score with equal care. Moreover, a daily reader meets new words in context, so vocabulary grows without effort. Finally, the habit costs only a few minutes. For that small investment, a student gains knowledge, language and confidence.*
+
+    Checklist: one idea (why read a paper), a topic sentence first, linkers *First, In addition, Moreover, Finally*, a closing sentence, complete sentences, no comma splices. [Note] Open-ended; this is one possible model answer written for this archive.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Rewrite this run of text as a short dialogue with the correct quotation marks, punctuation and paragraphing (one paragraph for each speaker): Where are you going asked Mother to the market said Sam I need some notebooks then take this list said Mother and buy vegetables too"
+  sol: |
+    Model answer:
+
+    *"Where are you going?" asked Mother.*
+
+    *"To the market," said Sam. "I need some notebooks."*
+
+    *"Then take this list," said Mother, "and buy vegetables too."*
+
+    Reasoning: each time the speaker changes, a new paragraph starts. The question ends in a question mark inside the closing mark. In the second line the tag *said Sam* sits between two spoken sentences, so the first ends in a comma and the second begins with a capital. In the third line the tag interrupts one sentence, so the speech resumes with a small letter after the comma.
+
+    [Note] One possible model answer written for this archive; single quotation marks would also be correct if used consistently.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: text
+  q: "Explain, in about 80 words, the difference in meaning between the pair of sentences below, and say what each comma does. (a) My cousin who lives in Chennai is a pilot. (b) My cousin, who lives in Chennai, is a pilot."
+  sol: |
+    One possible model answer:
+
+    Without commas, sentence (a) uses *who lives in Chennai* to pick out one cousin from several, so the speaker has more than one cousin and the one in Chennai is the pilot. With commas, sentence (b) treats *who lives in Chennai* as extra information about a cousin the listener already knows; it could be removed without damaging the meaning, and the speaker probably has only one cousin. The pair of commas works like a pair of brackets around the added detail.
+
+    [Note] A model answer written for this archive; the idea is covered in the Relative clauses lesson as defining and non-defining clauses.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "The paragraph below mixes two ideas and has three punctuation faults. Rewrite it as two clear paragraphs, each with a topic sentence, and correct the faults. \"Our village library is open on weekdays, it has a good collection of storybooks. The monsoon was heavy this year the river flooded the lower fields. Children visit the library after school and the librarian helps them choose books. Many farmers lost a part of their crop and the panchayat has asked for relief.\""
+  sol: |
+    One possible model answer:
+
+    *Our village library is a lively place. It is open on weekdays and has a good collection of storybooks. Children visit it after school, and the librarian helps them choose books.*
+
+    *The heavy monsoon this year brought hardship to the village. The river flooded the lower fields, and many farmers lost part of their crop. As a result, the panchayat has asked for relief.*
+
+    Faults repaired: (1) a comma splice after *weekdays*; (2) a run-on at *this year the river*; (3) the two ideas (library, flood) were interleaved, so the sentences about each were grouped and each paragraph given a topic sentence. A comma before *and* was added where it joins two full clauses.
+
+    [Note] A model answer written for this archive; wording of the topic sentences may differ.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: mcq
+  q: "Which of these sentences uses the colon and semicolon correctly?"
+  opts: ["She packed: a book, a bottle and a snack; the bus was waiting.", "She packed three things: a book, a bottle and a snack; the bus was waiting.", "She packed three things; a book, a bottle and a snack: the bus was waiting.", "She packed, three things: a book, a bottle, and a snack, the bus was waiting."]
+  ans: 1
+  sol: |
+    A colon must follow a complete statement, and *She packed three things* is complete, so it can introduce the list. The semicolon then joins two complete, related clauses: the list sentence and *the bus was waiting*. The first option puts a colon after the incomplete *She packed*, the third swaps the two marks, and the fourth adds a stray comma and ends with a comma splice.
+  check: none

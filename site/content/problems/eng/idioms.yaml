@@ -1,0 +1,179 @@
+# Idioms. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "What does the idiom 'a piece of cake' mean in this sentence? The geography quiz was a piece of cake."
+  opts: ["very easy", "very sweet", "very long", "very strange"]
+  ans: 0
+  sol: |
+    An idiom is read as a whole, not word by word. A piece of cake is something that takes almost no effort, so the quiz was very easy. The other options are traps built from the literal words (cake is sweet) or from guesses unrelated to the situation.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Choose the meaning of 'spill the beans'."
+  opts: ["to reveal a secret", "to cook a meal", "to make a mess", "to waste food"]
+  ans: 0
+  sol: |
+    To spill the beans is to give away a secret, often by accident. The picture is of beans escaping from a container; the meaning is that hidden information gets out. Cooking, mess and waste are literal readings of the words.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Which of these is a proverb, not an idiom?"
+  opts: ["Look before you leap", "Cold feet", "Under the weather", "A black sheep"]
+  ans: 0
+  sol: |
+    A proverb is a complete saying that gives advice or states a truth. "Look before you leap" is a whole sentence advising care. The other three are phrases that fit inside a sentence ("She has cold feet", "He is under the weather", "He is the black sheep of the family"), so they are idioms.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Choose the correct sentence."
+  opts: ["He let the cat out of the bag.", "He let the dog out of the bag.", "He let out the cat of the bag.", "He let a cat out from a bag."]
+  ans: 0
+  sol: |
+    An idiom keeps its words and its order. Only the first option keeps "let the cat out of the bag" intact. Changing the animal, the order or the articles breaks the idiom and leaves only the literal sentence, if that.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Write in your own words what each idiom means: (a) lend a hand (b) green with envy (c) once in a blue moon (d) burn the midnight oil."
+  sol: |
+    Model answer: (a) lend a hand: to help someone. (b) green with envy: very jealous of what another person has. (c) once in a blue moon: very rarely. (d) burn the midnight oil: to study or work late into the night.
+
+    Any wording that gives the same meaning is acceptable. This is one possible model answer.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: mcq
+  q: "Read the sentence and choose the meaning of the underlined idiom. When the new teacher made a joke about her own handwriting, it broke the ice, and the students began to talk freely."
+  opts: ["made people feel at ease", "made the room cold", "made the class angry", "ended the lesson"]
+  ans: 0
+  sol: |
+    To break the ice is to remove the stiffness at a first meeting so that people relax. The clue is the second half of the sentence: the students "began to talk freely", which is what happens once awkwardness goes. "Made the room cold" is the literal trap.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Fill in the blank with the most suitable idiom. The doctor told him to rest because he had been ___ for a week with a cold and a cough."
+  opts: ["under the weather", "over the moon", "in hot water", "on cloud nine"]
+  ans: 0
+  sol: |
+    Under the weather means slightly ill, which fits a cold and a cough. Over the moon and on cloud nine mean very happy, and in hot water means in trouble. Only the first agrees with the situation of the sentence.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Read the extract and answer. 'For weeks Kabir had planned to speak to the principal about the broken lab equipment, but he kept beating about the bush. At last he took the bull by the horns and walked into her office.' (a) What does 'beating about the bush' mean here? (b) Pick out the phrase from the extract that means 'faced the difficulty boldly'."
+  sol: |
+    Model answer: (a) Beating about the bush means avoiding the main point, that is, talking or acting around a matter without dealing with it directly. In the extract Kabir kept delaying instead of speaking about the equipment.
+
+    (b) The phrase is "took the bull by the horns". It means to face a difficulty directly and bravely, which is exactly what Kabir does when he walks into the principal's office.
+
+    The contrast signalled by "At last" helps: the first idiom is the opposite of the second.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Spot the sentence in which the idiom is used incorrectly."
+  opts: ["Anil's selection was a blessing in disguise because he later found a better job.", "Our team was in the same boat, so we understood each other's trouble.", "She spilled the peas about the surprise gift.", "The match was called off at the eleventh hour."]
+  ans: 2
+  sol: |
+    The idiom is "spill the beans". "Spilled the peas" changes a word in the fixed phrase, so it is no longer an idiom. The other three use blessing in disguise, in the same boat and at the eleventh hour correctly, in their fixed forms and with fitting meanings.
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Use each idiom in a sentence of your own that shows its meaning: (a) in the nick of time (b) a wild goose chase (c) turn over a new leaf."
+  sol: |
+    One possible model answer.
+
+    (a) The firefighters reached the building in the nick of time and brought the children out safely.
+
+    (b) We spent the whole afternoon looking for the pen that was, in fact, in my brother's pocket; it was a wild goose chase.
+
+    (c) After failing the unit test, Meena decided to turn over a new leaf and study a little every day.
+
+    Each sentence shows the meaning through its situation (a rescue just in time, a useless search, a fresh start), which is what examiners look for.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: "Read the passage and answer. 'Ritu had been dreading the recital. She had practised for months, but on the evening itself she got cold feet and nearly stayed at home. Her sister, who knew her well, did not beat about the bush. \"You are going to play,\" she said. Ritu took a breath, walked on stage and, to her own surprise, played it as if it were a piece of cake. Afterwards the teacher said she had hit the nail on the head with her choice of piece.' Explain the four idioms (cold feet, beat about the bush, a piece of cake, hit the nail on the head) as used here, and state what each tells you about the situation or the people."
+  sol: |
+    Model answer.
+
+    Cold feet: sudden nervousness before an important moment, enough to make her want to back out. It shows how much the recital meant to her.
+
+    Did not beat about the bush: spoke directly and plainly. It shows the sister is frank and cares enough to be firm.
+
+    A piece of cake: very easy. Ritu played so smoothly that the performance seemed effortless, which contrasts with her earlier fear.
+
+    Hit the nail on the head: made exactly the right choice. The teacher praises her choice of piece as perfectly suited to her.
+
+    The four idioms trace her journey from fear (cold feet) through encouragement (the sister's plain speech) to ease (a piece of cake) and praise (the nail). This is one possible model answer.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Each sentence uses an idiom wrongly or mixes two pictures. Rewrite each correctly and say what was wrong. (a) We must nip this problem in the bud before it snowballs out of control. (b) He gave the lion share of the sweets to his friends. (c) She was on a cloud nine after the result."
+  sol: |
+    Model answer.
+
+    (a) Wrong: mixed metaphor. A bud (a plant) and a snowball (rolling snow) are two different pictures. Rewrite: "We must nip this problem in the bud." or "We must stop this problem before it snowballs."
+
+    (b) Wrong: the idiom is "the lion's share" (the biggest part). The possessive 's is missing and the article is dropped. Rewrite: "He gave the lion's share of the sweets to his friends."
+
+    (c) Wrong: the idiom is "on cloud nine" with no article before cloud. Rewrite: "She was on cloud nine after the result."
+
+    The point in all three is that an idiom is a fixed phrase: do not drop, add or change words, and keep one picture per sentence.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "Work out the meaning of the underlined idiom from context. Everyone had predicted that the school's chess team would lose, but a quiet new student, a real dark horse, won three matches in a row and took the team to the final. What is a 'dark horse'?"
+  opts: ["a person whose ability is not known or is underestimated", "a dangerous person", "a person who works at night", "a person who is hiding something"]
+  ans: 0
+  sol: |
+    The context gives the answer. Nobody expected the team to win and the student was "quiet" and "new", yet won match after match. So a dark horse is a competitor whose abilities were unknown or underrated. "Dangerous" and "hiding something" fit the idea of "dark" but not the situation, and "works at night" is the literal trap.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "In about 80 words, write a short paragraph for your school magazine about preparing for the board exams. Use at least four idioms from this lesson and underline them (use asterisks around each idiom). Your paragraph should be natural, not a list."
+  sol: |
+    One possible model answer.
+
+    The board exams are no longer a *bolt from the blue*; they have been coming for months. Some of us *burn the midnight oil* every night, while others *leave no stone unturned* by solving every sample paper. A few students are *down in the dumps* because of one weak subject, but a teacher's patient help can be a *blessing in disguise*. My advice is simple: do not *beat about the bush*. Make a timetable, stick to it, and the paper may well turn out to be *a piece of cake*.
+
+    Marking points: four or more idioms used correctly and with their fixed words, a clear flow of ideas, and a register that suits a school magazine. Any similar paragraph is acceptable.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "A friend says, 'Idioms are useless; I can always say the same thing in plain words.' Write a short reply in which you (a) give one reason the friend is partly right and (b) give two reasons idioms are still worth learning."
+  sol: |
+    One possible model answer.
+
+    (a) The friend is partly right because plain words are often safer: a wrong or overused idiom sounds worse than a clear sentence, and a formal letter is usually better in plain language. Clichés also add nothing.
+
+    (b) First, idioms are everywhere in real speech, films, news headlines and exam passages, so you cannot understand them without learning them; reading about someone who is "under the weather" or "in hot water" would otherwise puzzle you. Second, a well-chosen idiom compresses an idea and adds colour in a few words: "a storm in a teacup" says in four words that a small matter is being blown out of proportion.
+
+    So the best plan is to use idioms sparingly and exactly, and to know them well enough to understand them when others do.
+  check: none

@@ -1,0 +1,184 @@
+# Homonyms, homophones and confusables. All problems are original (no NCERT items for this leaf). All answers are model answers written for this archive, not an official board key.
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: "Which word is a homophone of 'knight'?"
+  opts: ["night", "kite", "knit", "nigh"]
+  ans: 0
+  sol: |
+    A homophone sounds the same but is spelt differently and means something different. *Night* sounds exactly like *knight* (the silent k is not pronounced). *Kite* and *knit* sound different, and *nigh* (meaning near) rhymes with *high*, not with *knight*.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: "Which pair of words are homophones?"
+  opts: ["peace / piece", "bad / bed", "cap / cup", "ship / sheep"]
+  ans: 0
+  sol: |
+    *Peace* and *piece* sound the same but are spelt differently and have different meanings. In the other pairs the vowels differ, so the words sound different: *bad* and *bed*, *cap* and *cup*, *ship* and *sheep*.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: Everyone ___ Karan has handed in the form."
+  opts: ["accept", "except", "expect", "excepts"]
+  ans: 1
+  sol: |
+    The sentence needs a word meaning "apart from", which is *except*. *Accept* means to receive or agree, *expect* means to look forward to something, and *excepts* is a verb form that does not fit here.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: "Complete the sentence: The ___ of our school gave away the prizes."
+  opts: ["principle", "principal", "principles'", "principally"]
+  ans: 1
+  sol: |
+    The sentence needs a person, the head of the school, so *principal*. A *principle* is a rule or belief. Memory hook: the principal is your pal.
+  check: none
+
+- id: f5
+  lvl: found
+  kind: text
+  q: "Write two sentences that show two different meanings of the homonym 'bark'."
+  sol: |
+    One possible model answer:
+
+    1. *The dog's loud bark scared the thief away.* (the sound a dog makes)
+    2. *The bark of the old banyan tree was rough and grey.* (the outer covering of a tree)
+
+    Both sentences use the same spelling and the same sound, and the surrounding words (dog, scared, banyan tree) show which meaning is meant. Any two correct sentences that bring out two different meanings earn the credit.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: "Editing. Each line below has one error. Find the error and write the correct word. (a) Last Sunday our school took us to the sight of an old fort. (b) Our principle, Mrs Rao, spoke to us before we left. (c) She gave us some advise about staying together. (d) Everyone accept Ravi arrived on time. (e) We could not decide weather to carry umbrellas."
+  sol: |
+    Model answer:
+
+    (a) *sight* should be *site* (a place where something stands). *Sight* means the ability to see.
+    (b) *principle* should be *principal* (the head of the school, a person).
+    (c) *advise* should be *advice* (a noun is needed after *some*; the noun takes c).
+    (d) *accept* should be *except* (meaning "apart from").
+    (e) *weather* should be *whether* (meaning "if").
+
+    All five wrong words are real words, so the clue is the meaning and the part of speech, not the spelling. [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: "Choose the correct option to fill the gap: The speaker's words had a deep ___ on the audience."
+  opts: ["affect", "effect", "affects", "effected"]
+  ans: 1
+  sol: |
+    After "a deep" a noun is needed, and the noun meaning "result or impression" is *effect*. *Affect* is normally a verb (to influence), and *affects* and *effected* are verb forms.
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: "Distinguish between the words in each pair by using each word in a sentence of your own. (i) complement / compliment (ii) stationary / stationery (iii) council / counsel"
+  sol: |
+    One possible model answer:
+
+    (i) *complement* (something that completes): *The green scarf is a perfect complement to her dress.* *Compliment* (praise): *She gave me a compliment on my drawing.*
+    (ii) *stationary* (not moving): *The train stood stationary outside the station.* *Stationery* (paper, pens, envelopes): *We bought the stationery for school from the corner shop.*
+    (iii) *council* (a group that governs or advises): *The village council met on Sunday.* *Counsel* (advice): *The old teacher offered us wise counsel.*
+
+    A good answer shows the meaning in the surrounding words of each sentence. [Note] This is a model answer written for this archive.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: "Read the sentence: 'The villagers bore the hardship of the drought patiently.' Which of the following is closest in meaning to the word 'bore' as used here?"
+  opts: ["drilled", "endured", "made tired", "gave birth to"]
+  ans: 1
+  sol: |
+    *Bore* here is the past form of the verb *bear* in the sense of "put up with". The villagers put up with, or *endured*, the hardship. The other options are meanings of other words that happen to look alike: *bore* (to drill a hole), *bore* (to make someone tired), and *bore* (past of *bear* meaning to give birth).
+  check: none
+
+- id: b5
+  lvl: board
+  kind: text
+  q: "Gap filling. Choose the correct word from the brackets for each gap. Raju's (1) (advice / advise) to me was to (2) (loose / lose) no time. He said I should (3) (practice / practise) every day so that the (4) (effect / affect) of nerves would not (5) (effect / affect) my speech."
+  sol: |
+    Model answer: (1) advice, (2) lose, (3) practise, (4) effect, (5) affect.
+
+    (1) After the possessive *Raju's* a noun is needed: *advice* (noun, c).
+    (2) *Lose* is a verb meaning "to fail to keep": *lose no time*. *Loose* means not tight.
+    (3) After *should* a verb is needed: *practise* (verb, s, in British spelling).
+    (4) After *the* a noun is needed: *the effect* of nerves, meaning the result.
+    (5) After *would not* a verb is needed: *affect* (to influence).
+
+    [Note] This is a model answer written for this archive, not an official board key.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: mcq
+  q: "In which sentence does the word 'wound' rhyme with 'sound'?"
+  opts: ["The doctor cleaned the wound carefully.", "She wound the string around the reel.", "The wound healed within a week.", "He pressed a cloth on the wound."]
+  ans: 1
+  sol: |
+    *Wound* is a heteronym. As a noun meaning "an injury" it is said as *woond*, in the first, third and fourth sentences. As the past form of the verb *wind* (to turn or coil) it is said to rhyme with *sound*, which is the second sentence. The spelling is identical, so only the meaning and sound tell the words apart.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: "Explain why 'bank' in 'river bank' and 'bank' in 'bank loan' are called homonyms and not one word with two senses. How would a dictionary show the difference?"
+  sol: |
+    One possible model answer:
+
+    The two meanings are unrelated. You cannot explain how a place that keeps money grew out of the side of a river by stretching the meaning of one word, and the two words are usually traced to different sources. [Unverified: the origins are usually given as a Scandinavian word for the river bank and an Italian word for a moneychanger's bench.] They share only spelling and sound, by chance, so they are homonyms.
+
+    A dictionary shows this by giving each *bank* its own headword, often with a small raised number (bank¹, bank²), whereas a word with related senses (polysemy), such as *foot* of a person and *foot* of a hill, has one headword with the senses numbered under it.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: "Choose the correct word: The two colours ___ each other perfectly."
+  opts: ["compliment", "complement", "complements", "compliments"]
+  ans: 1
+  sol: |
+    The colours go well together and make each other complete, so the word comes from *complement* (to complete), not *compliment* (to praise). The subject *colours* is plural, so the verb takes no -s: *complement*. The forms with -s would suit a singular subject.
+  check: none
+
+- id: m4
+  lvl: main
+  kind: text
+  q: "The word 'sanction' can mean 'to approve' or 'to punish'. Read the two sentences and say which sense is meant in each, and how you can tell. (i) The council sanctioned the plan for a new playground. (ii) The countries sanctioned the regime for breaking the treaty."
+  sol: |
+    One possible model answer:
+
+    (i) *Approved.* A council deciding on a plan for a playground is giving permission. No one punishes a plan for a playground, and "for a new playground" shows a favourable decision.
+
+    (ii) *Punished.* The words "for breaking the treaty" give a reason for punishment, and countries act against a regime that has broken an agreement.
+
+    Such a word, with two opposite meanings, is a contronym. Only the sentence (who acts, on what, and why) decides which meaning is meant, so the reader works from context.
+
+    [Note] This is a model answer written for this archive.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: text
+  q: "Explain the pun in the joke 'I used to be a banker, but I lost interest.' Then write one pun of your own using the word 'bark' or 'bat'."
+  sol: |
+    One possible model answer:
+
+    The word *interest* has two meanings. In "lost interest" it means that the speaker's curiosity or liking faded. In banking, *interest* is money paid on a loan or deposit. The joke works because a banker who "lost interest" appears to say he lost money, but also that he lost enthusiasm. One word carries both meanings at once.
+
+    A pun of my own: *The dog was a poor judge of trees: he always barked up the wrong one.* (This plays on the idiom *to bark up the wrong tree* and on *bark* as a tree's covering.) Any pun that plays on two real meanings of the word is acceptable.
+
+    [Note] This is a model answer written for this archive.
+  check: none
