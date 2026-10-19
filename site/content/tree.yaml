@@ -664,9 +664,11 @@ subjects:
       - id: fundamental-theorem-of-arithmetic
         name: Fundamental theorem of arithmetic
         from: C10
+        what: 'Primes are the atoms of the whole numbers: every number above 1 is a product of primes in exactly one way, up to order. Because the recipe is unique, two numbers can be compared prime by prime, which is where HCF (the smaller power of each prime) and LCM (the larger power) come from.'
       - id: irrational-numbers
         name: Irrational numbers
         from: C10
+        what: 'Some lengths cannot be written as a ratio of two whole numbers: the diagonal of a unit square is one. Uniqueness of prime factorisation is what proves it, by showing that assuming a fraction leads to a contradiction; the same argument then settles numbers built from such roots.'
   - id: algebra
     name: Algebra
     tag: Symbols for unknown or general quantities.
@@ -696,6 +698,7 @@ subjects:
       - id: polynomials
         name: Polynomials
         from: C10
+        what: 'A polynomial is a rule built only from adding and multiplying the input by itself, so its graph is a smooth curve whose crossings with the x-axis are its zeroes. Multiplying out the factors shows that the zeroes are tied to the coefficients: their sum and product can be read off without solving.'
     - id: sequences-and-counting
       name: Sequences and counting
       tag: Patterns in lists, and counting without listing.
