@@ -1,0 +1,101 @@
+# Offers and negotiation. All problems are original. All figures are invented for practice.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A grant of 48 share units vests evenly over 48 months. There is no cliff. How many units have vested after 12 months?
+  ask: Vested units
+  unit: units
+  ans: 12
+  tol: 0.01
+  verify: 48*12/48
+  sol: $48\times 12/48 = 12$ units, a quarter of the grant, because 12 of 48 months have passed.
+  check: code
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: What is a vesting cliff?
+  opts: ["A drop in the share price", "A waiting period before any shares vest", "A bonus paid on leaving", "A tax on shares"]
+  ans: 1
+  sol: A cliff is a waiting period, often one year, during which nothing vests. If you leave before it ends you receive none of the grant.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: An offer has a base of 20, a bonus of 10 percent of the base, and a grant of 40 share units that vest evenly over 4 years (assume each unit is worth 1 and keeps its value). What is the total compensation for year one, in the same units?
+  ask: Year-one TC
+  unit: units
+  ans: 32
+  tol: 0.01
+  verify: 20+0.10*20+40/4
+  sol: Base 20, bonus $0.10\times 20 = 2$, equity $40/4 = 10$. Total $20+2+10 = 32$. If the unit value halves, the equity falls to 5 and the total to 27, which shows the risk in the shares.
+  check: code
+
+- id: b2
+  lvl: board
+  kind: mcq
+  q: The recruiter calls with an offer that is lower than you hoped. What is the best first response?
+  opts: ["Accept straight away so they don't change their mind", "Reject it angrily", "Thank them warmly, say you are excited, and ask for time and the written details", "Ask for double"]
+  ans: 2
+  sol: Thanking, showing interest and asking for time and the written terms keeps the relationship warm and gives you room to review and counter. Accepting at once or reacting angrily closes options.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: text
+  q: Offer A pays a base of 20, a bonus of 2 and shares worth 10 a year. Offer B pays a base of 26 and a bonus of 1.3 and no shares. Compare them in three share-price scenarios (halves, stays, doubles). State which you would choose for someone with savings and for someone with a loan, with reasons.
+  sol: |
+    **Year-one TC.** A is $20+2+\text{shares}$ and B is $27.3$.
+    - Halves: shares worth 5, so A is 27, slightly below B (27.3).
+    - Stays: shares worth 10, so A is 32, above B by 4.7.
+    - Doubles: shares worth 20, so A is 42, above B by 14.7.
+
+    A beats B in two of three scenarios, and loses only slightly in the bad one. On average A looks better, if the three outcomes are equally likely.
+
+    **With savings:** choose A. They can ride out a bad year, and the upside is large.
+
+    **With a loan and no savings:** B may suit better, because fixed cash covers fixed repayments, and a bad share year would hurt. Yet the downside of A is small here (27 against 27.3), so even this person might choose A, if the shares are of a listed company and sellable when vested. The deciding factors are risk tolerance and whether the shares can be sold. These scenarios are invented. [Inference]
+  check: none
+
+- id: m2
+  lvl: main
+  kind: text
+  q: Write a short, polite message (or script) that asks for a higher base using a real competing offer, without bluffing or ultimatums. Use invented numbers.
+  sol: |
+    "Thank you again for the offer. I am excited about the team and the work, and I would like to join. I have also received another offer with a base of 26, and the scope there is similar. Your base is 22. Based on that and on what I would bring to the role, is there flexibility to move the base closer to 25? If not on base, I would be glad to discuss a joining bonus or the level. I can decide by Friday."
+
+    **Why it works.** Warm and clear about preference. Honest (the other offer is real). Specific number. Open to other parts of the package. A deadline stated as a fact, not a threat.
+
+    **What it avoids.** Inflating the other offer, demanding an answer today, hinting you will walk away, or comparing the two companies unkindly.
+  check: none
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: A grant is 48 units, vesting evenly over 48 months with a 12-month cliff (after the cliff, the vested share is months worked divided by 48). The unit was worth 1 at grant and is worth 2 when you leave after 30 months. What is the value of what you own at that time, in the same units?
+  ask: Value of vested units
+  unit: units
+  ans: 60
+  tol: 0.01
+  verify: 48*30/48*2
+  sol: After 30 months the vested units are $48\times 30/48 = 30$. At a price of 2 each the value is $30\times 2 = 60$. At the old price it would have been 30, so the price rise doubled it. The unvested 18 units are forfeited. Vested units are usually yours even if you leave, but check the plan's terms, which differ between companies. [Inference]
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: text
+  q: You hold two offers. Offer X pays about 15 percent more, in a stable team doing maintenance work you could do now. Offer Y pays less, in a smaller team that will let you lead a new service within a year and works with an engineer you admire. Give a decision framework and say what further information you would collect before choosing.
+  sol: |
+    **Framework.** Compare three-year pictures, not first-year pay.
+
+    1. *Skills and scope.* With X, what do I know in three years that I do not know today? With Y, what could I own, and could I be at the next level sooner?
+    2. *Money over time.* The 15 percent gap is real, but if Y leads to a higher level a year or two earlier, the gap can reverse. Estimate both paths, and mark each guess as a guess.
+    3. *Risk.* Is Y's team and company stable enough? Can I afford a worse case, such as a project being cancelled? Do I have savings, and what do my obligations look like?
+    4. *Reversibility.* A stable job is easy to return to; a growth chance may not come again. The cost of trying Y is often smaller than the cost of wondering.
+
+    **Information to collect.** Talk to two people who joined each team in the last two years; ask what they own now. Ask Y's manager what "lead a new service" means in writing, and how the level and review process work. Ask X's team what people did to get promoted. Ask both for the vesting terms.
+
+    **Decision.** There is no universal answer. If your savings are comfortable and Y's claims check out, many people choose Y; if money pressure is high, X may be right. Whichever you choose, write down why, so that you can check in a year. [Inference: opinion]
+  check: none
