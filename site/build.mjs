@@ -147,6 +147,7 @@ const search = [];
 const leafIndex = {};
 let liveCount = 0, problemCount = 0;
 
+const lifeIcons = fs.existsSync(C('life-icons.yaml')) ? readYaml(C('life-icons.yaml')) || {} : {};
 for (const s of tree.subjects) {
   s.whatHtml = md(s.what); s.linksHtml = mdi(s.links || '');
   search.push({ g: 'Topics', c: s.id, title: s.name, path: 'Subject', text: stripTags(s.whatHtml), go: { subj: s.id } });
@@ -171,6 +172,8 @@ for (const s of tree.subjects) {
         if (fs.existsSync(lf)) {
           const lesson = parseLesson(lf);
           lesson.key = key; lesson.problems = probs.length;
+          lesson.lifeIcons = lifeIcons[key] || [];
+          if (lesson.life.length && lesson.lifeIcons.length !== lesson.life.length) console.warn(`life-icons.yaml: ${key} has ${lesson.lifeIcons.length} icons for ${lesson.life.length} items`);
           write(`data/lessons/${s.id}--${l.id}.json`, lesson);
           l.live = true; liveCount++; l.summary = lesson.summary || ''; l.sections = lesson.sections.length; l.ask = lesson.hookQ || ''; l.can = (lesson.outcomes || []).slice(0, 2); l.nextq = lesson.next && lesson.next.leaf ? { q: lesson.next.q, leaf: lesson.next.leaf } : null;
           l.sparks = [...(lesson.margin || []).filter(m => m.kind !== 'tip').map(m => ({ t: m.title || m.kind, h: m.html })), ...(lesson.models || []).map(m => ({ t: 'Mental model: ' + stripTags(m.name), h: m.html }))];

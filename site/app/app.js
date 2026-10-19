@@ -178,7 +178,7 @@
 
   /* Title Case for headings, card titles and labels: small words and single-letter symbols stay lowercase; maths and code untouched. */
   const SMALL = new Set(['a', 'an', 'the', 'and', 'or', 'but', 'nor', 'of', 'in', 'on', 'at', 'to', 'for', 'by', 'vs', 'via', 'as', 'with', 'from', 'into', 'per']);
-  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k';
+  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k, .lbegin h2';
   function tcWord(w, first) {
     const core = w.replace(/[^A-Za-z]/g, '');
     if (!core || /[A-Z]/.test(w)) return w;
@@ -618,6 +618,65 @@
   };
   const ENG_DEPTH = [[1, 'Foundation'], [2, 'Class 10 board'], [3, 'Beyond the board']];
   const CS_DEPTH = [[1, 'Foundations'], [2, 'SDE-1'], [3, 'SDE-2'], [4, 'SDE-3']];
+  /* Icons for "In real life" items, picked per item in content/life-icons.yaml. Compact form, segments split by '|':
+     "c cx cy r" circle, "r x y w h rx" rect, "e cx cy rx ry deg" ellipse, anything else is a path. */
+  const LIFE_ICONS = {
+    phone: 'r 6 2 12 20 2|M11 18h2', laptop: 'r 4 5 16 11 1.5|M2 19h20', tv: 'r 3 4 18 12 1.5|M8 20h8M12 16v4',
+    wifi: 'M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0|c 12 19.5 1', tower: 'M5 4a10 10 0 0 0 0 12M19 4a10 10 0 0 1 0 12M8 7a5 5 0 0 0 0 6M16 7a5 5 0 0 1 0 6M12 12v10|c 12 10 1.5',
+    camera: 'M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z|c 12 13 4', mic: 'r 9 2 6 12 3|M5 11a7 7 0 0 0 14 0M12 18v4',
+    speaker: 'M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12', music: 'M9 18V5l11-2v13|c 6.5 18 2.5|c 17.5 16 2.5',
+    game: 'r 2 7 20 11 5|M7 10.5v4M5 12.5h4|c 15.5 11.5 1|c 17.5 14 1', film: 'r 3 5 18 14 2|M7 5v14M17 5v14M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4',
+    car: 'M3 16H2v-3.5L5 11l2.5-4h8l3.5 4 3 1.5V16h-1M9 16h6|c 7 16.5 2|c 17 16.5 2', bike: 'M6 16l4-7h6l2 7M10 9l2 7M9 6h3|c 6 16 3.5|c 18 16 3.5',
+    train: 'r 5 3 14 14 3|M5 10h14M8 21l1.5-4M16 21l-1.5-4|c 9 13.5 1|c 15 13.5 1', plane: 'M10.5 21l1.5-1 1.5 1v-5l7 2v-2l-7-5V4.5a1.5 1.5 0 0 0-3 0V11l-7 5v2l7-2z',
+    ship: 'M3 15l2 5h14l2-5zM12 3v12M12 4l6 9h-6', rocket: 'M12 2c3 2.5 4.5 6 4.5 10l-2 4h-5l-2-4c0-4 1.5-7.5 4.5-10zM9.5 16L7 19v2l3-1.5M14.5 16l2.5 3v2l-3-1.5|c 12 9 1.7',
+    satellite: 'M4 9l5-5 3 3-5 5zM12 17l5-5 3 3-5 5zM9.5 9.5l5 5M17 3a4 4 0 0 1 4 4', road: 'M8 3L4 21M16 3l4 18M12 4v3M12 10v3M12 16v3',
+    traffic: 'r 8 2 8 17 3|c 12 6 1.5|c 12 10.5 1.5|c 12 15 1.5|M12 19v3', bridge: 'M2 9h20M2 9v11M22 9v11M2 17c4-5 16-5 20 0M7 9v5M12 9v4M17 9v5',
+    bulb: 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z', plug: 'M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5',
+    battery: 'r 2 7 17 10 2|M22 11v2M6 10v4M10 10v4', bolt: 'M13 2L4 14h7l-1 8 9-12h-7z',
+    fan: 'M12 10.5C12 6 9 3 7 5s1 5 5 5.5M13.5 12c4.5 0 7.5-3 5.5-5s-5 1-5.5 5M12 13.5c0 4.5 3 7.5 5 5.5s-1-5-5-5.5M10.5 12c-4.5 0-7.5 3-5.5 5s5-1 5.5-5|c 12 12 1.5',
+    fridge: 'r 6 2 12 20 2|M6 10h12M9 5v2M9 13v3', cooking: 'M4 10h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM2 10h20M9 6c0-1 1-1.5 1-2.5M14 6c0-1 1-1.5 1-2.5M8 21h8',
+    tea: 'M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 11h1.5a2.5 2.5 0 0 1 0 5H16M8 5c0-1 1-1.5 1-2.5M12 5c0-1 1-1.5 1-2.5M3 22h14',
+    food: 'M4 3v8M2.5 3v4a1.5 1.5 0 0 0 3 0V3M4 11v10M20 3c-2 0-3 2-3 6h3v12', bottle: 'M10 2h4M10 2v4L8 9v11a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9l-2-3V2M8 13h8',
+    tap: 'M4 8h9a3 3 0 0 1 3 3v2M4 6v4M8 8V5h4M16 17s-1.5 1.7-1.5 2.7a1.5 1.5 0 0 0 3 0c0-1-1.5-2.7-1.5-2.7z', glasses: 'M10 14a2 2 0 0 1 4 0M3 14l1.5-7M21 14l-1.5-7|c 6.5 14 3.5|c 17.5 14 3.5',
+    eye: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z|c 12 12 3', sun: 'M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4|c 12 12 4',
+    moon: 'M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z', star: 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z',
+    cloud: 'M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5z', rain: 'M7 14a4 4 0 0 1-.5-8A5.5 5.5 0 0 1 17 6.5a3.5 3.5 0 0 1-.5 7.5zM8 17l-1 3M12 17l-1 3M16 17l-1 3',
+    snow: 'M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 4l3 2 3-2M9 20l3-2 3 2', wind: 'M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h7',
+    rainbow: 'M2 18a10 10 0 0 1 20 0M5.5 18a6.5 6.5 0 0 1 13 0M9 18a3 3 0 0 1 6 0', sea: 'M2 8c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0M2 13c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0M2 18c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0',
+    mountain: 'M2 20l7-12 4 6 3-4 6 10z', tree: 'M12 22v-5M12 2L6 11h3l-4 6h14l-4-6h3z', leaf: 'M5 19C5 10 10 4 20 4c0 10-6 15-15 15zM5 19l8-8',
+    sprout: 'M12 22V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3.5-2.5 5-6 5z', paw: 'M12 12c-3 0-5 3-5 5.5 0 1.5 1.5 2.5 3 2l2-.5 2 .5c1.5.5 3-.5 3-2 0-2.5-2-5.5-5-5.5z|c 6.5 10 1.8|c 10 6.5 1.8|c 14 6.5 1.8|c 17.5 10 1.8',
+    drop: 'M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z', fire: 'M12 22a7 7 0 0 0 7-7c0-4-3-6-4-10-2 2-3 4-3 6-1-1-2-2-2-4-2 2-5 5-5 8a7 7 0 0 0 7 7z',
+    thermometer: 'M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0zM12 9v8', magnet: 'M6 3v8a6 6 0 0 0 12 0V3h-4v8a2 2 0 0 1-4 0V3zM6 7h4M14 7h4',
+    compass: 'M15.5 8.5l-2 5-5 2 2-5z|c 12 12 9', clock: 'M12 7v5l3 2|c 12 12 9', stopwatch: 'M12 14v-4M10 2h4M12 2v3M18 7l1.5-1.5|c 12 14 7',
+    calendar: 'r 3 5 18 16 2|M3 10h18M8 3v4M16 3v4', ball: 'M3.5 9.5c3 1 6 3.5 7.5 11M20.5 14.5c-3-1-6-3.5-7.5-11|c 12 12 9',
+    run: 'M7 21l3-6 3 2v5M6 11l3-3h4l3 4h3M10 8l-1 6|c 14 4 2', swing: 'M3 3h18M8 3L6 16M16 3l2 13M5 16h14', lift: 'r 5 2 14 20 1.5|M12 2v20M7 9l1.5-2L10 9M14 15l1.5 2 1.5-2',
+    pendulum: 'M4 3h16M12 3l5 12|c 17.8 17 2.2', spring: 'M12 2v3L7 7l10 3-10 3 10 3-10 3 5 2v3', sine: 'M2 12c2-6 4-6 6 0s4 6 6 0 4-6 6 0',
+    balance: 'M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0zM20 7l-3 7a3 3 0 0 0 6 0z', weight: 'M8 7a4 4 0 0 1 8 0M6 9h12l2 12H4z',
+    ruler: 'M3 17L17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2', triangle: 'M12 3l9 16H3z', dice: 'r 4 4 16 16 3|c 8.5 8.5 1|c 15.5 8.5 1|c 12 12 1|c 8.5 15.5 1|c 15.5 15.5 1',
+    calculator: 'r 5 2 14 20 2|M8 5h8v4H8z|c 9 13 .8|c 12 13 .8|c 15 13 .8|c 9 17 .8|c 12 17 .8|c 15 17 .8', grid: 'r 3 3 18 18 2|M3 9h18M3 15h18M9 3v18M15 3v18',
+    chart: 'M3 3v18h18M7 15l4-4 3 3 6-6', bars: 'M4 20V10M10 20V4M16 20v-7M22 20H2', rupee: 'M7 4h10M7 8.5h10M10 4c4 0 5 2 5 4.5S13 13 10 13H8l7 8',
+    card: 'r 2 5 20 14 2|M2 10h20M6 15h4', cart: 'M3 4h2l2.5 11h11L21 7H6.2|c 9 19.5 1.5|c 17 19.5 1.5', ticket: 'M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4zM14 7v10',
+    briefcase: 'r 3 7 18 13 2|M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18', pin: 'M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z|c 12 10 2.5',
+    globe: 'M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18|c 12 12 9', home: 'M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-6h4v6',
+    building: 'M4 21V4h10v17M14 9h6v12M2 21h20M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1', factory: 'M2 21V10l6 4v-4l6 4V6h3l1-3h1l1 3h2v15zM2 21h20',
+    school: 'M2 9l10-5 10 5-10 5zM6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5', heart: 'M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z',
+    pulse: 'M2 12h4l2-5 4 10 2-5h8', pill: 'M10.5 3.5a5 5 0 0 1 7 7l-7 7a5 5 0 0 1-7-7zM7 7l7 7', person: 'M5 21v-2a7 7 0 0 1 14 0v2|c 12 7 4',
+    people: 'M3 20a6 6 0 0 1 12 0M15 14.5a5 5 0 0 1 6 5.5|c 9 8 3|c 17 9 2.5', brain: 'M12 4v16M12 4a3 3 0 0 0-5.5 1.5A3 3 0 0 0 4 10a3 3 0 0 0 1 5 3 3 0 0 0 3 4 3 3 0 0 0 4 1M12 4a3 3 0 0 1 5.5 1.5A3 3 0 0 1 20 10a3 3 0 0 1-1 5 3 3 0 0 1-3 4 3 3 0 0 1-4 1',
+    dna: 'M8 3c0 6 8 6 8 9s-8 3-8 9M16 3c0 6-8 6-8 9s8 3 8 9M9 5h6M10.5 8.5h3M10.5 15.5h3M9 19h6', atom: 'e 12 12 10 4 0|e 12 12 10 4 60|e 12 12 10 4 -60|c 12 12 1.3',
+    flask: 'M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3M7 15h10', chat: 'M4 5h16v11H9l-5 4z',
+    mail: 'r 3 5 18 14 2|M3 7l9 6 9-6', book: 'M4 19V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14', news: 'M4 4h13v16H6a2 2 0 0 1-2-2zM17 8h3v10a2 2 0 0 1-2 2M7 8h7M7 12h7M7 16h4',
+    pen: 'M4 20l1-4L16 5l3 3L8 19zM14 7l3 3', type: 'M4 7V4h16v3M9 20h6M12 4v16', quote: 'M5 18c2-1 3-3 3-6H5V6h6v6c0 4-2 7-6 8zM14 18c2-1 3-3 3-6h-3V6h6v6c0 4-2 7-6 8z',
+    mask: 'M4 5h16v6a8 8 0 0 1-16 0zM8 10h2M14 10h2M9 15a4 4 0 0 0 6 0', palette: 'M12 3a9 9 0 0 0 0 18c1.5 0 2-1 2-2s-1-1.5-1-2.5 1-1.5 2-1.5h2a4 4 0 0 0 4-4c0-4.5-4-8-9-8z|c 7.5 11 1|c 10 7 1|c 15 7 1',
+    lock: 'r 5 11 14 10 2|M8 11V7a4 4 0 0 1 8 0v4', key: 'M11 12.5L21 3M17 7l3 3M15 9l2 2|c 7.5 15.5 4.5', shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',
+    server: 'r 4 3 16 7 1.5|r 4 14 16 7 1.5|c 8 6.5 .8|c 8 17.5 .8', database: 'e 12 5 8 3 0|M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3',
+    code: 'M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16', robot: 'r 5 8 14 11 2|M12 4v4M9.5 16h5M2 12v3M22 12v3|c 12 3.5 1|c 9.5 12.5 1|c 14.5 12.5 1',
+    search: 'M20 20l-4-4|c 11 11 7', gear: 'M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1|c 12 12 3|c 12 12 7',
+    wrench: 'M15 3a5 5 0 0 0-4.5 7L3 17.5 6.5 21l7.5-7.5A5 5 0 0 0 21 9l-3 3-3-3 3-3a5 5 0 0 0-3-3z', refresh: 'M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4',
+    bell: 'M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4', target: 'c 12 12 9|c 12 12 5|c 12 12 1', question: 'M9.5 9a2.5 2.5 0 0 1 5 .5c0 1.5-2.5 2-2.5 3.5M12 16.5v.5|c 12 12 9'
+  };
+  const lifeIcon = name => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${(LIFE_ICONS[name] || LIFE_ICONS.pin).split('|').map(s => { const a = s.split(' ');
+    return a[0] === 'c' ? `<circle cx="${a[1]}" cy="${a[2]}" r="${a[3]}"/>` : a[0] === 'r' ? `<rect x="${a[1]}" y="${a[2]}" width="${a[3]}" height="${a[4]}" rx="${a[5]}"/>` : a[0] === 'e' ? `<ellipse cx="${a[1]}" cy="${a[2]}" rx="${a[3]}" ry="${a[4]}" transform="rotate(${a[5]} ${a[1]} ${a[2]})"/>` : `<path d="${s}"/>`; }).join('')}</svg>`;
+  const LIFE_TINTS = ['--chem', '--mat', '--phy', '--eng', '--cs', '--bio'];
   let spy = null;
   function buildLesson(root, L, lesson, probs) {
     const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = BANDS[sid] || BANDS.sci, D = isEng ? ENG_DEPTH : sid === 'cs' ? CS_DEPTH : DEPTH;
@@ -637,14 +696,15 @@
     if (lesson.models && lesson.models.length) think.push(`<div class="mms">${lesson.models.map(m => `<div class="mm"><div class="mm-k">${ico('bulb')}Mental model</div><b>${m.name}</b><p>${m.html}</p></div>`).join('')}</div>`);
     if (lesson.links && lesson.links.length) think.push(lesson.links.map(x => { const T = x.leaf && leafByKey(x.leaf), nm = escHTML(x.name || (T ? T.l.name : x.leaf));
       return `<div class="cmp"><div class="cmp-h"><span>Same idea elsewhere</span>${T && T.l.live ? `<button data-goto="${x.leaf}">${nm} →</button>` : `<b>${nm}</b>`}</div><div class="cmp-g"><div class="cmp-c same"><b>What's common</b><p>${x.same}</p></div><div class="cmp-c diff"><b>What's different</b><p>${x.differs}</p></div></div></div>`; }).join(''));
+    sections += '%%WRAPSTAGE%%';
     if (think.length) sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Think with it</span><span class="band-h">Ideas to carry outside this subject</span></div>${think.join('')}`;
     if (margin) sections += `<div class="around"><div class="eyebrow">Around this idea</div><div class="around-g">${margin}</div></div>`;
-    sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Wrap-up</span><span class="band-h">What to carry in your head</span></div>` + tail.map(secHTML).join('');
+    sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Remember</span><span class="band-h">What to carry in your head</span></div>` + tail.map(secHTML).join('');
     const groups = []; body.forEach(sec => { let g = groups.find(x => x.lvl === sec.lvl); if (!g) groups.push(g = { lvl: sec.lvl, secs: [] }); g.secs.push(sec); });
     if (tail.length) groups.push({ lvl: 0, secs: tail });
     const c = lesson.core;
     const coreHTML = c ? `<div class="core">
-        <div class="core-h"><span class="core-badge">${ico('bulb')}</span><div><div class="core-k">The core idea</div><div class="core-s">Memorise this exactly. Every question on this topic is this idea under harder conditions.</div></div></div>
+        <div class="core-h"><span class="core-badge">${ico('bulb')}</span><div><div class="core-k">The one idea to keep</div><div class="core-s">Memorise this exactly. Every question on this topic is this idea under harder conditions.</div></div></div>
         <p class="core-idea">${c.ideaHtml}</p>
         ${c.formulas && c.formulas.length ? `<div class="core-f">${c.formulas.map(f => `<div class="cf">${f.html}${f.label ? `<small>${f.label}</small>` : ''}</div>`).join('')}</div>` : ''}
         ${c.patterns && c.patterns.length ? `<div class="core-f">${c.patterns.map(p => `<div class="cf pat"><code>${p.text}</code>${p.label ? `<small>${p.label}</small>` : ''}</div>`).join('')}</div>` : ''}
@@ -655,11 +715,24 @@
     const hasHook = /class="hook"/.test(lesson.introHtml || ''), op = lesson.opener || {};
     const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}">${op.art ? `<div class="op-art">${op.art}</div>` : ''}<div class="op-k">A puzzle to start</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div>` : '';
     const symHTML = lesson.symbols && lesson.symbols.length ? `<div class="symbols"><div class="rl-h"><b>Symbols in this lesson</b><span>shorthand only: each one is a word you already know</span></div><div class="sym-g">${lesson.symbols.map(x => `<div class="sym"><span class="sym-s">${x.s}</span><span>${x.m}</span></div>`).join('')}</div></div>` : '';
-    const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><b>In real life</b><span>where this idea is quietly at work around you</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl"><span class="rl-n">${i + 1}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
+    const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><span class="rl-pin">${lifeIcon('pin')}</span><b>In real life</b><span>you have already met this idea</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl" style="--t:var(${LIFE_TINTS[i % LIFE_TINTS.length]})"><span class="rl-ic">${lifeIcon((lesson.lifeIcons || [])[i])}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
     const outHTML = lesson.outcomes && lesson.outcomes.length ? `<div class="outcomes"><div class="eyebrow">After this lesson you can</div><ol>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ol></div>` : '';
     const mapHTML = `<div class="lmap-g">${groups.map(g => `<div class="lmb l${g.lvl}" data-lvl="${g.lvl || 1}"><div class="lmb-h">${g.lvl ? escHTML((B[g.lvl] || [''])[0]) : 'Wrap-up'}</div>${g.secs.map(sec => `<button data-to="${sec.id}"><span class="n">${sec._n}</span><span>${escHTML(sec.title)}</span></button>`).join('')}</div>`).join('')}</div>`;
-    const depthHTML = `<div class="depth depthbar"><span>Reading depth</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div></div>`;
     const needs = (lesson.builds_on || []).map(b => `<span class="chip">${escHTML(b)}</span>`).join('');
+    const hasWarm = !!(openerHTML || lifeHTML), stN = hasWarm ? [1, 2, 3] : [0, 1, 2];
+    const stage = (n, k, note, id) => `<div class="stage st-${k.toLowerCase().replace(/[^a-z]+/g, '')}"${id ? ` id="${id}"` : ''}>${n ? `<span class="st-n">${n}</span>` : ''}<span class="st-k">${k}</span>${note ? `<span class="st-note">${note}</span>` : ''}<i></i></div>`;
+    sections = sections.replace('%%WRAPSTAGE%%', stage(stN[2], 'Wrap-up', 'mental models, key ideas, traps and the question that leads on', 'st-wrap'));
+    const first = body[0] || tail[0];
+    const beginHTML = `<section class="lbegin" id="lbegin">
+        <div class="lb-top"><div><div class="lb-k">The lesson begins here</div><h2>${escHTML(lesson.title || L.l.name)}</h2></div><div class="lb-meta">${body.length} sections<br>about ${mins} min at full depth</div></div>
+        ${coreHTML}
+        <div class="lb-row"><span class="lb-l">How deep today?</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div><span class="lb-sp"></span>${symHTML ? `<button class="lb-btn" data-lb="sym" aria-expanded="false">Symbols (${lesson.symbols.length})</button>` : ''}<button class="lb-btn" data-lb="inside" aria-expanded="false">What's inside</button></div>
+        ${first ? `<button class="lb-go" data-to="${first.id}">Start section 1 ↓</button>` : ''}
+      </section>
+      ${symHTML ? `<div class="lb-panel" data-lbp="sym" hidden>${symHTML}</div>` : ''}
+      <div class="lb-panel inside" data-lbp="inside" hidden>${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}${mapHTML}</div>`;
+    const tocBtn = sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Fnd', 'SDE1', 'SDE2', 'SDE3'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`;
+    const trk = (n, k, sub, to) => `<button class="trk" data-trk="${to}" data-to="${to}"><span class="trk-d">${n || '•'}</span><b>${k}</b><span class="trk-s"${to === 'lbegin' ? ' id="trk-count"' : ''}>${sub}</span></button>`;
     const ncert = (lesson.ncert || []).map(n => `<span>${escHTML(n)}</span>`).join('<span>·</span>');
     root.innerHTML = `
       <div class="lesson-head s-${sid}">
@@ -676,16 +749,16 @@
       </div>
       <div class="lpane s-${sid}" data-lpane="learn">
         <div class="read"><div class="read-main">
-          ${openerHTML}${coreHTML}${symHTML}${lifeHTML}
-          <details class="inside"><summary>What's inside this lesson<span>${lesson.sections.length} sections · about ${mins} min at full depth</span></summary>${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}${mapHTML}</details>
-          ${depthHTML}
+          ${hasWarm ? `<div id="st-warm">${stage(1, 'Warm-up', 'a puzzle and where you meet this idea, no notes needed')}</div>${openerHTML}${lifeHTML}` : ''}
+          ${stage(stN[1], 'The lesson', '')}
+          ${beginHTML}
           <div class="prose">${lesson.introHtml ? `<div class="intro">${lesson.introHtml}</div>` : ''}${sections}</div>
           ${lesson.next ? (() => { const T = lesson.next.leaf && leafByKey(lesson.next.leaf); return `<div class="nextq s-${sid}"><div class="eyebrow">The question that leads on</div><p class="nq">${lesson.next.q}</p><div class="nq-f">${T ? `<span>Answered in <b>${escHTML(T.l.name)}</b></span>${T.l.live ? `<button class="btn" data-goto="${lesson.next.leaf}">Find out →</button>` : '<span class="muted">(lesson coming soon)</span>'}` : ''}</div></div>`; })() : ''}
           <div class="next-step"><div><b>That's the lesson.</b><span>Now test it: ${probs.length} problems, from NCERT to Olympiad.</span></div><button class="btn" data-ltab-go="practice">Go to practice</button></div>
           ${(() => { const n = lessonNeighbours(key); return (n.prev || n.next) ? `<nav class="lnav" aria-label="Lessons">${n.prev ? lessonCard(n.prev, 'prev', L) : '<span></span>'}${n.next ? lessonCard(n.next, 'next', L) : '<span class="lnav-end">That is the last lesson written so far.</span>'}</nav>` : ''; })()}
         </div>
-        <aside class="side"><div class="toc-wrap"><div class="toc-top"><b>On this page</b><span id="read-pct">0%</span></div><div class="readbar"><i id="read-bar"></i></div>
-          <nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Fnd', 'SDE1', 'SDE2', 'SDE3'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
+        <aside class="side"><div class="toc-wrap"><div class="toc-top"><b>Your path through this lesson</b><span id="read-pct">0%</span></div><div class="readbar"><i id="read-bar"></i></div>
+          <nav class="toc" id="toc" aria-label="Sections">${hasWarm ? trk(1, 'Warm-up', 'puzzle', 'st-warm') : ''}${trk(stN[1], 'The lesson', `${body.length} sections`, 'lbegin')}<div class="toc-sub">${body.map(tocBtn).join('')}</div>${trk(stN[2], 'Wrap-up', 'key ideas, traps', 'st-wrap')}<div class="toc-sub">${tail.map(tocBtn).join('')}</div></nav></div>
         </aside></div>
       </div>
       <div class="lpane" data-lpane="practice" hidden>
@@ -710,11 +783,13 @@
     if (S.depth > D.length) S.depth = D.length;
     applyDepth();
     startSpy(root);
+    setTimeout(() => window.dispatchEvent(new Event('scroll')), 60);
   }
   function startSpy(root) {
     if (spy) spy.disconnect();
     const toc = $('toc'); if (!toc || !('IntersectionObserver' in window)) return;
-    spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) toc.querySelectorAll('[data-to]').forEach(b => b.classList.toggle('on', b.dataset.to === en.target.id)); }), { rootMargin: '-15% 0px -75% 0px' });
+    spy = new IntersectionObserver(es => es.forEach(en => { if (!en.isIntersecting) return; toc.querySelectorAll('.toc-sub [data-to]').forEach(b => b.classList.toggle('on', b.dataset.to === en.target.id));
+      const vis = [...toc.querySelectorAll('.toc-sub:first-of-type [data-to]')].filter(b => !b.hidden), i = vis.findIndex(b => b.dataset.to === en.target.id), c = $('trk-count'); if (c && i >= 0) c.textContent = `${i + 1} of ${vis.length}`; }), { rootMargin: '-15% 0px -75% 0px' });
     root.querySelectorAll('.sec').forEach(s => spy.observe(s));
   }
   window.addEventListener('scroll', () => {
@@ -722,6 +797,9 @@
     const pr = document.querySelector('[data-lpane="learn"] .prose'); if (!pr) return;
     const r = pr.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .4 - r.top) / r.height));
     bar.style.width = (p * 100).toFixed(1) + '%'; $('read-pct').textContent = Math.round(p * 100) + '%';
+    const past = id => { const el = $(id); return el && el.getBoundingClientRect().top < innerHeight * .4; }, inL = past('lbegin'), inW = past('st-wrap');
+    document.querySelectorAll('.trk').forEach(t => { const k = t.dataset.trk, on = k === 'st-warm' ? !inL : k === 'lbegin' ? inL && !inW : inW;
+      t.classList.toggle('on', on); t.classList.toggle('done', !on && (k === 'st-warm' ? inL : k === 'lbegin' && inW)); });
   }, { passive: true });
   function showLessonTab() {
     document.querySelectorAll('#ltabs [data-ltab]').forEach(b => b.setAttribute('aria-selected', b.dataset.ltab === S.ltab));
@@ -749,6 +827,8 @@
     const tab = t.closest('[data-ltab]'); if (tab) { S.ltab = tab.dataset.ltab; return showLessonTab(); }
     if (t.closest('[data-ltab-go]')) { S.ltab = 'practice'; showLessonTab(); return window.scrollTo(0, 0); }
     const d = t.closest('[data-depth]'); if (d) { S.depth = +d.dataset.depth; return applyDepth(); }
+    { const lb = t.closest('[data-lb]'); if (lb) { const open = lb.getAttribute('aria-expanded') !== 'true';
+      document.querySelectorAll('[data-lb]').forEach(b => { const me = b === lb && open; b.setAttribute('aria-expanded', me); const pnl = document.querySelector(`[data-lbp="${b.dataset.lb}"]`); if (pnl) pnl.hidden = !me; }); return; } }
     const to = t.closest('[data-to]'); if (to) return $(to.dataset.to).scrollIntoView({ behavior: 'smooth', block: 'start' });
     { const g = t.closest('[data-goto]'); if (g) { openLesson(g.dataset.goto); window.scrollTo(0, 0); return; } }
     if (t.closest('[data-back]')) { const L = leafByKey(S.lessonKey); S.focusBranch = 'br-' + L.b.id; return go(`learn~${L.s.id}~${L.p.id}`); }
