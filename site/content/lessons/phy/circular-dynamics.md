@@ -122,7 +122,7 @@ Feel the string as you whirl the stone: it tugs your hand outward. That is the t
 <line class="ln" x1="150" y1="120" x2="230" y2="120"/><circle class="m2 ln" cx="230" cy="120" r="9"/>
 <line class="ray" x1="220" y1="120" x2="172" y2="120" marker-end="url(#cd1a)"/><text class="k" x="168" y="112">T inward</text>
 <line class="wf" x1="230" y1="108" x2="230" y2="64" marker-end="url(#cd1b)"/><text x="238" y="86">v (tangent)</text>
-<line class="faint" x1="230" y1="60" x2="230" y2="16"/><text x="238" y="22">after the string breaks</text>
+<line class="faint" x1="230" y1="60" x2="230" y2="16"/><text x="238" y="22">after the string</text><text x="238" y="35">breaks</text>
 </svg>
 :::
 
@@ -273,7 +273,7 @@ Tie a bob to a string and spin it so that it goes round in a horizontal circle, 
 <line class="ln" x1="160" y1="16" x2="235" y2="146"/><circle class="m2 ln" cx="235" cy="146" r="9"/>
 <line class="ray" x1="231" y1="140" x2="203" y2="92" marker-end="url(#cd3a)"/><text class="k" x="246" y="104">T</text>
 <line class="wf" x1="235" y1="157" x2="235" y2="206" marker-end="url(#cd3b)"/><text class="k" x="244" y="196">mg</text>
-<text x="170" y="64">θ</text><text x="168" y="164">r = L sin θ</text>
+<text x="170" y="64">θ</text><text x="96" y="153" style="font-size:9px">r = L sin θ</text>
 </svg>
 :::
 
@@ -317,7 +317,7 @@ Energy links the two. From bottom to top the body climbs a height $2r$, so $v_{\
 <circle class="m2 ln" cx="150" cy="194" r="8"/>
 <line class="ray" x1="150" y1="184" x2="150" y2="134" marker-end="url(#cd4a)"/><text class="k" x="160" y="156">T</text>
 <line class="wf" x1="160" y1="204" x2="160" y2="228" marker-end="url(#cd4b)"/><text class="k" x="168" y="226">mg</text>
-<text x="250" y="46">top: T + mg = mv²/r</text><text x="250" y="198">bottom: T − mg = mv²/r</text>
+<text x="190" y="46">top: T + mg = mv²/r</text><text x="190" y="198">bottom: T − mg = mv²/r</text>
 </svg>
 :::
 

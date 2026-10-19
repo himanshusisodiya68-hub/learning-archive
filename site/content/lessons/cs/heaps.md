@@ -126,9 +126,9 @@ The rule does *not* say which child is more urgent, or compare cousins. That is 
 :::figure caption="A min-heap of seven items. Every parent is smaller than its children. The array underneath lists the tree level by level, left to right."
 <svg viewBox="0 0 320 210" role="img" aria-label="A binary tree with 1 at the top, 3 and 2 below, then 9, 6, 4, 8, and the same values in an array strip">
 <g class="pen" style="stroke:var(--ink);stroke-width:1.5;fill:none">
-<line x1="160" y1="34" x2="95" y2="80"/><line x1="160" y1="34" x2="225" y2="80"/>
-<line x1="95" y1="80" x2="60" y2="126"/><line x1="95" y1="80" x2="130" y2="126"/>
-<line x1="225" y1="80" x2="190" y2="126"/><line x1="225" y1="80" x2="260" y2="126"/>
+<line x1="146.5" y1="40.4" x2="108.5" y2="69.6"/><line x1="173.5" y1="40.4" x2="211.5" y2="69.6"/>
+<line x1="84.7" y1="93.5" x2="70.3" y2="112.5"/><line x1="105.3" y1="93.5" x2="119.7" y2="112.5"/>
+<line x1="214.7" y1="93.5" x2="200.3" y2="112.5"/><line x1="235.3" y1="93.5" x2="249.7" y2="112.5"/>
 </g>
 <g style="font-size:14px;fill:var(--ink);text-anchor:middle">
 <circle cx="160" cy="30" r="17" style="fill:var(--mat);stroke:var(--ink)"/><text x="160" y="35" style="fill:var(--surface)">1</text>

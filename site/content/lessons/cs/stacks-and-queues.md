@@ -143,10 +143,10 @@ wrong: Trace it: [1], [1,2], pop removes 2 giving [1], push 3 gives [1,3], pop r
 
 :::figure caption="The call stack while function C runs, called by B, called by A. Frames are pushed on a call and popped on return, so the newest call always finishes first."
 <svg viewBox="0 0 340 170" role="img" aria-label="Three stacked frames labelled A, B and C with C on top, and arrows for call and return">
-<g style="fill:color-mix(in srgb,var(--c) 12%,var(--surface));stroke:var(--ink);stroke-width:1.3"><rect x="110" y="120" width="120" height="30"/><rect x="110" y="88" width="120" height="30"/><rect x="110" y="56" width="120" height="30" style="fill:var(--c)"/></g>
+<g style="fill:color-mix(in srgb,var(--c) 12%,var(--surface));stroke:var(--ink);stroke-width:1.3"><rect x="95" y="120" width="150" height="30"/><rect x="95" y="88" width="150" height="30"/><rect x="95" y="56" width="150" height="30" style="fill:var(--c)"/></g>
 <g style="font-size:12px;text-anchor:middle"><text x="170" y="140" style="fill:var(--ink)">frame of A</text><text x="170" y="108" style="fill:var(--ink)">frame of B</text><text x="170" y="76" style="fill:var(--surface)">frame of C (running)</text></g>
-<g style="fill:none;stroke:var(--muted);stroke-width:1.6"><path d="M70 120 L70 60"/><path d="M64 68 L70 58 L76 68"/><path d="M270 60 L270 120"/><path d="M264 112 L270 122 L276 112"/></g>
-<g style="font-size:10px;fill:var(--muted)"><text x="20" y="96">call: push</text><text x="240" y="150">return: pop</text></g>
+<g style="fill:none;stroke:var(--muted);stroke-width:1.6"><path d="M60 120 L60 60"/><path d="M54 68 L60 58 L66 68"/><path d="M280 60 L280 120"/><path d="M274 112 L280 122 L286 112"/></g>
+<g style="font-size:10px;fill:var(--muted)"><text x="60" y="140" text-anchor="middle">call: push</text><text x="288" y="140" text-anchor="middle">return: pop</text></g>
 </svg>
 :::
 

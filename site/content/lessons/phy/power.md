@@ -224,7 +224,7 @@ Compare constant force: then $a$ is constant, $v = at$, and the power $P = Fv = 
 <path d="M50 170 L256 38" style="fill:none;stroke:var(--phy);stroke-width:3"/>
 <line x1="50" y1="54" x2="270" y2="54" style="stroke:var(--chem);stroke-width:3"/>
 <line x1="230" y1="54" x2="230" y2="170" style="stroke:var(--muted);stroke-dasharray:4 4"/>
-<text x="262" y="48" style="font-size:12px;fill:var(--phy)">F constant</text>
+<text x="262" y="48" style="font-size:9px;fill:var(--phy)">F constant</text>
 <text x="60" y="46" style="font-size:12px;fill:var(--chem)">P constant</text>
 <text x="224" y="188" style="font-size:12px;fill:var(--ink)">t</text><text x="12" y="30" style="font-size:11px;fill:var(--muted)">P</text>
 <text x="108" y="150" style="font-size:12px;fill:var(--ink)">work = area</text>

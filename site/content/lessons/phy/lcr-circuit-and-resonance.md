@@ -165,7 +165,7 @@ $$v_m^2 = (i_mR)^2 + \big(i_m(X_L - X_C)\big)^2.$$
 <line class="faint" x1="232" y1="180" x2="232" y2="96"/><polygon points="232,90 226,102 238,102" style="fill:var(--muted)"/>
 <text x="240" y="140">V_L − V_C</text>
 <line class="wf" x1="50" y1="180" x2="226" y2="93"/><polygon points="232,90 218,90 224,101" style="fill:var(--eng)"/>
-<text class="k" x="120" y="122">V = i_m Z</text>
+<text class="k" x="150" y="168">V = i_m Z</text>
 <path class="ln" d="M100,180 A50,50 0 0 0 95,158"/>
 <text x="106" y="172">φ</text>
 </svg>
@@ -268,7 +268,7 @@ A large $Q$ means a tall, narrow peak. Notice that $R$ does not move the resonan
 :::figure caption="rms current against angular frequency for L = 0.1 H, C = 10 µF (so ω₀ = 1000 rad/s) and a 10 V rms source. Solid: R = 10 Ω, Q = 10, peak 1 A, half-power width 100 rad/s. Dashed: R = 30 Ω, Q = 3.3, peak 0.33 A, width 300 rad/s. Both peak at the same ω₀. Short bars mark the half-power points."
 <svg viewBox="0 0 460 235" role="img" aria-label="Two resonance curves peaking at the same frequency, one tall and narrow, one low and broad">
 <line class="ln" x1="40" y1="200" x2="440" y2="200"/><line class="ln" x1="40" y1="200" x2="40" y2="15"/>
-<text x="425" y="216">ω</text><text x="8" y="22">I</text>
+<text x="446" y="204">ω</text><text x="8" y="22">I</text>
 <text x="30" y="216">500</text><text x="216" y="216">1000</text><text x="404" y="216">1500</text>
 <line class="faint" x1="230" y1="200" x2="230" y2="25"/>
 <text x="0" y="34">1 A</text><line class="faint" x1="36" y1="30" x2="44" y2="30"/>
@@ -279,7 +279,7 @@ A large $Q$ means a tall, narrow peak. Notice that $R$ does not move the resonan
 <line class="faint" x1="211.5" y1="80" x2="249.5" y2="80"/>
 <text class="k" x="256" y="76">Δω = 100</text>
 <line class="ln" x1="177.3" y1="152" x2="177.3" y2="168"/><line class="ln" x1="291.3" y1="152" x2="291.3" y2="168"/>
-<text class="k" x="296" y="172">Δω = 300</text>
+<text class="k" x="238" y="186">Δω = 300</text>
 <text x="232" y="22">ω₀</text>
 </svg>
 :::

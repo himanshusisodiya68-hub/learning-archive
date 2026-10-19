@@ -100,7 +100,7 @@ wrong: The retina is fixed at the back of the eye, so it cannot slide like a cam
 The eye is a camera made of living tissue. Light enters through the **cornea**, a thin transparent bulge at the front, which does most of the bending. Behind it, the coloured **iris** controls the size of the **pupil**, the opening that admits light: the pupil shrinks in bright light and widens in dim light. The **eye lens**, a flexible, jelly-like converging lens held by the **ciliary muscles**, fine-tunes the focus. Together they form a real, **inverted** image on the **retina**, a light-sensitive screen packed with rod and cone cells. These turn light into electrical signals that travel along the **optic nerve** to the brain, which interprets the image as upright.
 
 :::figure caption="The eye focuses parallel light from a distant object onto the retina."
-<svg viewBox="0 0 360 200" role="img" aria-label="Labelled diagram of the human eye">
+<svg viewBox="0 0 380 200" role="img" aria-label="Labelled diagram of the human eye">
 <circle cx="200" cy="100" r="80" style="fill:color-mix(in srgb, var(--phy) 5%, var(--surface));stroke:var(--ink);stroke-width:1.6"/>
 <path d="M128 66 Q106 100 128 134" style="fill:none;stroke:var(--ink);stroke-width:2"/>
 <line x1="138" y1="64" x2="138" y2="88" style="stroke:var(--eng);stroke-width:4"/><line x1="138" y1="112" x2="138" y2="136" style="stroke:var(--eng);stroke-width:4"/>

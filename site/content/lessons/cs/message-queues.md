@@ -123,7 +123,7 @@ That rail is a **message queue**. The waiter is the **producer** (whoever create
 <text x="130" y="98" style="font-size:10px;fill:var(--muted)">messages wait</text>
 <path d="M220 64 L262 36 M220 64 L262 92" class="faint" style="stroke:var(--muted);fill:none"/>
 <g style="stroke:var(--ink);stroke-width:1.2;fill:none"><rect x="262" y="22" width="50" height="26" rx="4"/><rect x="262" y="78" width="50" height="26" rx="4"/></g>
-<g style="font-size:10px;fill:var(--ink)"><text x="268" y="39">Worker 1</text><text x="268" y="95">Worker 2</text></g>
+<g style="fill:var(--ink)" text-anchor="middle"><text x="287" y="39" style="font-size:9px">Worker 1</text><text x="287" y="95" style="font-size:9px">Worker 2</text></g>
 </svg>
 :::
 

@@ -134,7 +134,7 @@ Your source code is just text, the same kind of thing as an email. To run it, so
 <circle cx="65" cy="165" r="16" style="fill:var(--surface);stroke:var(--ink)"/><text x="65" y="170" style="font-size:11px">price</text>
 <circle cx="155" cy="165" r="16" style="fill:var(--surface);stroke:var(--ink)"/><text x="155" y="170" style="font-size:11px">3</text>
 </g>
-<text x="300" y="170" style="font-size:10px;fill:var(--muted)">leaves: values</text>
+<text x="352" y="170" style="font-size:10px;fill:var(--muted);text-anchor:end">leaves: values</text>
 </svg>
 :::
 

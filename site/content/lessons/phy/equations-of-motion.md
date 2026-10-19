@@ -207,9 +207,9 @@ Because there are two directions, up and down, choose a positive direction first
 <line class="faint" x1="95" y1="200" x2="95" y2="30"/><line class="faint" x1="250" y1="200" x2="250" y2="30"/>
 <circle class="obj" cx="95" cy="200" r="5"/><circle class="obj" cx="95" cy="80" r="5"/><circle class="obj" cx="95" cy="50" r="5"/><circle class="obj" cx="250" cy="50" r="5"/><circle class="obj" cx="250" cy="80" r="5"/><circle class="obj" cx="250" cy="200" r="5"/>
 <text x="40" y="190">t=0 s</text><text x="40" y="84">1 s</text><text x="10" y="44">t=2 s top</text>
-<text class="k" x="104" y="204">0 m, v = +20</text><text class="k" x="104" y="84">15 m, v = +10</text><text class="k" x="104" y="54">20 m, v = 0</text>
-<text x="262" y="204">4 s</text><text x="262" y="84">3 s</text><text class="k" x="272" y="54">v = 0 at 20 m</text>
-<text class="k" x="170" y="130">up: slowing</text><text class="k" x="200" y="150">down: speeding up</text>
+<text class="k" x="104" y="192">0 m, v = +20</text><text class="k" x="104" y="84">15 m, v = +10</text><text class="k" x="104" y="54">20 m, v = 0</text>
+<text x="262" y="192">4 s</text><text x="262" y="84">3 s</text><text class="k" x="272" y="54">v = 0 at 20 m</text>
+<text class="k" x="170" y="130">up: slowing</text><text class="k" x="244" y="150" style="text-anchor:end">down: speeding up</text>
 </svg>
 :::
 

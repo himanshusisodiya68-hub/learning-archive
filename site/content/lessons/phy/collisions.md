@@ -301,7 +301,7 @@ A cue ball at 5 m/s hits an identical ball at rest, and the cue ball goes off at
 <line x1="180" y1="100" x2="260" y2="56" class="wf" marker-end="url(#cl3)"/><text x="248" y="48">target v₂</text>
 <line x1="141" y1="123" x2="168" y2="180" class="ray" marker-end="url(#cl2)"/><text x="172" y="190">cue v₁</text>
 <line x1="141" y1="123" x2="180" y2="100" class="faint"/>
-<path d="M154 141 A15 15 0 0 0 169 128" class="gr"/><text x="146" y="164" class="k">90°</text>
+<path d="M154 141 A15 15 0 0 0 169 128" class="gr"/><text x="170" y="162" class="k">90°</text>
 </svg>
 :::
 

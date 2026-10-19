@@ -154,7 +154,7 @@ Read it as: take the place that has waited longest, and for every neighbour not 
 
 :::figure caption="BFS from S. Places are finished in rings: first the places one step away, then two, then three. Each place is queued once."
 <svg viewBox="0 0 320 130" role="img" aria-label="A graph from S with rings labelled 0, 1 and 2 steps">
-<g class="pen" style="stroke:var(--ink);stroke-width:1.5;fill:none"><line x1="40" y1="65" x2="120" y2="30"/><line x1="40" y1="65" x2="120" y2="100"/><line x1="120" y1="30" x2="210" y2="30"/><line x1="120" y1="100" x2="210" y2="100"/><line x1="120" y1="30" x2="210" y2="100"/><line x1="210" y1="30" x2="285" y2="65"/><line x1="210" y1="100" x2="285" y2="65"/></g>
+<g class="pen" style="stroke:var(--ink);stroke-width:1.5;fill:none"><line x1="55.6" y1="58.2" x2="104.4" y2="36.8"/><line x1="55.6" y1="71.8" x2="104.4" y2="93.2"/><line x1="137.0" y1="30.0" x2="193.0" y2="30.0"/><line x1="137.0" y1="100.0" x2="193.0" y2="100.0"/><line x1="133.4" y1="40.4" x2="196.6" y2="89.6"/><line x1="225.4" y1="37.2" x2="269.6" y2="57.8"/><line x1="225.4" y1="92.8" x2="269.6" y2="72.2"/></g>
 <g style="font-size:13px;fill:var(--ink);text-anchor:middle">
 <circle cx="40" cy="65" r="15" style="fill:var(--mat)"/><text x="40" y="70" style="fill:var(--surface)">S</text>
 <circle cx="120" cy="30" r="15" style="fill:color-mix(in srgb,var(--mat) 30%,var(--surface));stroke:var(--mat)"/><text x="120" y="35">1</text>

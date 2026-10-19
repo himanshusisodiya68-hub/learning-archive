@@ -156,7 +156,7 @@ There is a second way to say the same thing, which is often easier to use. Take 
 <line x1="284" y1="54" x2="284" y2="166" style="stroke:var(--ink);stroke-width:1.5"/>
 <path d="M278 54 L290 54 M278 166 L290 166" style="stroke:var(--ink);stroke-width:1.5"/>
 <text x="296" y="114" style="font-size:12px;fill:var(--ink)">h</text>
-<text x="70" y="40" style="font-size:11px;fill:var(--muted)">same height gained, same work by gravity</text>
+<text x="70" y="18" style="font-size:11px;fill:var(--muted)">same height gained,</text><text x="70" y="31" style="font-size:11px;fill:var(--muted)">same work by gravity</text>
 </svg>
 :::
 
@@ -206,8 +206,8 @@ Read it as: the stored energy grows as the *square* of the squeeze. Squeeze twic
 <line x1="230" y1="50" x2="230" y2="160" style="stroke:var(--muted);stroke-dasharray:4 4"/>
 <line x1="50" y1="50" x2="230" y2="50" style="stroke:var(--muted);stroke-dasharray:4 4"/>
 <text x="224" y="178" style="font-size:12px;fill:var(--ink)">x</text><text x="24" y="54" style="font-size:12px;fill:var(--ink)">kx</text>
-<text x="268" y="176" style="font-size:11px;fill:var(--muted)">compression</text><text x="10" y="24" style="font-size:11px;fill:var(--muted)">force</text>
-<text x="146" y="134" style="font-size:12px;fill:var(--ink)">area = ½ k x²</text>
+<text x="316" y="176" text-anchor="end" style="font-size:11px;fill:var(--muted)">compression</text><text x="10" y="24" style="font-size:11px;fill:var(--muted)">force</text>
+<text x="120" y="134" style="font-size:12px;fill:var(--ink)">area = ½ k x²</text>
 </svg>
 :::
 
@@ -315,11 +315,11 @@ Draw $U$ against position along a line. The curve is a map of the whole motion. 
 <path d="M20 30 C50 30 70 160 110 160 S150 90 190 90 S230 170 270 170 S300 40 310 30" style="fill:none;stroke:var(--phy);stroke-width:3"/>
 <line x1="20" y1="120" x2="310" y2="120" style="stroke:var(--chem);stroke-width:1.8;stroke-dasharray:6 4"/>
 <circle cx="64" cy="120" r="4.5" style="fill:var(--chem)"/><circle cx="150" cy="120" r="4.5" style="fill:var(--chem)"/>
-<text x="296" y="114" style="font-size:12px;fill:var(--chem)">E</text>
-<text x="40" y="110" style="font-size:10px;fill:var(--muted)">turning</text><text x="122" y="140" style="font-size:10px;fill:var(--muted)">turning</text>
+<text x="28" y="114" style="font-size:12px;fill:var(--chem)">E</text>
+<text x="74" y="112" style="font-size:10px;fill:var(--muted)">turning</text><text x="160" y="140" style="font-size:10px;fill:var(--muted)">turning</text>
 <text x="86" y="176" style="font-size:10px;fill:var(--muted)">stable</text>
 <text x="168" y="80" style="font-size:10px;fill:var(--muted)">unstable</text>
-<text x="248" y="190" style="font-size:10px;fill:var(--muted)">deeper valley</text>
+<text x="298" y="196" text-anchor="end" style="font-size:10px;fill:var(--muted)">deeper valley</text>
 <text x="8" y="14" style="font-size:11px;fill:var(--muted)">U</text><text x="304" y="198" style="font-size:11px;fill:var(--muted)">x</text>
 </svg>
 :::

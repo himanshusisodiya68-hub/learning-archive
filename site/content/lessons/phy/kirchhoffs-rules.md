@@ -164,13 +164,13 @@ Almost every mistake with Kirchhoff's rules is a sign mistake. Fix two choices, 
 :::figure caption="Changes in potential as you walk across an element in the direction of the walking arrow (above each element). Current arrows are drawn below the resistors."
 <svg viewBox="0 0 360 170" role="img" aria-label="Four cases: walking across a resistor with and against the current, and across a cell from negative to positive and from positive to negative">
 <line class="ln" x1="20" y1="40" x2="55" y2="40"/><polyline class="ray" points="55,40 59,32 67,48 75,32 83,48 91,32 95,40"/><line class="ln" x1="95" y1="40" x2="130" y2="40"/>
-<text x="40" y="18">walk →</text><text x="40" y="68">I →</text><text class="k" x="40" y="92">ΔV = −IR</text>
+<text x="40" y="18">walk →</text><text x="40" y="68">I →</text><text class="k" x="40" y="86">ΔV = −IR</text>
 <line class="ln" x1="200" y1="40" x2="235" y2="40"/><polyline class="ray" points="235,40 239,32 247,48 255,32 263,48 271,32 275,40"/><line class="ln" x1="275" y1="40" x2="310" y2="40"/>
-<text x="220" y="18">walk →</text><text x="220" y="68">← I</text><text class="k" x="220" y="92">ΔV = +IR</text>
+<text x="220" y="18">walk →</text><text x="220" y="68">← I</text><text class="k" x="220" y="86">ΔV = +IR</text>
 <line class="ln" x1="20" y1="135" x2="68" y2="135"/><line class="ln" x1="68" y1="128" x2="68" y2="142" style="stroke-width:4"/><line class="ln" x1="80" y1="121" x2="80" y2="149" style="stroke-width:2"/><line class="ln" x1="80" y1="135" x2="130" y2="135"/>
-<text x="56" y="118">−</text><text x="86" y="118">+</text><text x="40" y="112">walk →</text><text class="k" x="40" y="166">ΔV = +ε</text>
+<text x="56" y="118">−</text><text x="86" y="118">+</text><text x="40" y="102">walk →</text><text class="k" x="40" y="166">ΔV = +ε</text>
 <line class="ln" x1="200" y1="135" x2="248" y2="135"/><line class="ln" x1="248" y1="121" x2="248" y2="149" style="stroke-width:2"/><line class="ln" x1="260" y1="128" x2="260" y2="142" style="stroke-width:4"/><line class="ln" x1="260" y1="135" x2="310" y2="135"/>
-<text x="236" y="118">+</text><text x="266" y="118">−</text><text x="220" y="112">walk →</text><text class="k" x="220" y="166">ΔV = −ε</text>
+<text x="236" y="118">+</text><text x="266" y="118">−</text><text x="220" y="102">walk →</text><text class="k" x="220" y="166">ΔV = −ε</text>
 </svg>
 :::
 
@@ -352,13 +352,13 @@ $$R_{AB} = R \parallel 2R \parallel 2R = \frac{R}{2}.$$
 **Octahedron.** Twelve equal resistors form the edges of an octahedron. Its six corners are a top A, a bottom B and four corners round the middle (the equator).
 
 :::figure caption="Current I enters at the top corner A and leaves at the bottom corner B. All four equator corners are equivalent, so they share one potential and the four equator edges (faint) carry no current."
-<svg viewBox="0 0 300 220" role="img" aria-label="An octahedron of resistors with current entering at the top vertex and leaving at the bottom vertex">
+<svg viewBox="0 0 320 220" role="img" aria-label="An octahedron of resistors with current entering at the top vertex and leaving at the bottom vertex">
 <line class="faint" x1="60" y1="112" x2="125" y2="135"/><line class="faint" x1="125" y1="135" x2="240" y2="112"/><line class="faint" x1="240" y1="112" x2="175" y2="90"/><line class="faint" x1="175" y1="90" x2="60" y2="112"/>
 <line class="ln" x1="150" y1="20" x2="60" y2="112" style="stroke:var(--phy);stroke-width:2"/><line class="ln" x1="150" y1="20" x2="125" y2="135" style="stroke:var(--phy);stroke-width:2"/><line class="ln" x1="150" y1="20" x2="240" y2="112" style="stroke:var(--phy);stroke-width:2"/><line class="ln" x1="150" y1="20" x2="175" y2="90" style="stroke:var(--phy);stroke-width:2"/>
 <line class="ln" x1="150" y1="200" x2="60" y2="112" style="stroke:var(--phy);stroke-width:2"/><line class="ln" x1="150" y1="200" x2="125" y2="135" style="stroke:var(--phy);stroke-width:2"/><line class="ln" x1="150" y1="200" x2="240" y2="112" style="stroke:var(--phy);stroke-width:2"/><line class="ln" x1="150" y1="200" x2="175" y2="90" style="stroke:var(--phy);stroke-width:2"/>
 <circle class="obj" cx="150" cy="20" r="4.5"/><circle class="obj" cx="150" cy="200" r="4.5"/>
 <text class="k" x="160" y="18">A</text><text class="k" x="160" y="212">B</text>
-<text x="70" y="58">I/4 each</text><text x="70" y="172">I/4 each</text><text x="250" y="116">equator: same V</text>
+<text x="40" y="58">I/4 each</text><text x="40" y="172">I/4 each</text><text x="250" y="108">equator:</text><text x="250" y="121">same V</text>
 </svg>
 :::
 

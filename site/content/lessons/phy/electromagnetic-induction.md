@@ -184,7 +184,7 @@ $$\Phi_B = \vec B\cdot\vec A = BA\cos\theta.$$
 <line class="ln" x1="170" y1="88" x2="236" y2="57"/><polyline class="ln" points="227,56 236,57 231,65"/>
 <line class="faint" x1="170" y1="88" x2="250" y2="88"/>
 <path class="ln" d="M 205 88 A 35 35 0 0 0 202 74"/>
-<text class="k" x="240" y="54">A</text><text class="k" x="212" y="84">θ</text><text class="k" x="298" y="27">B</text>
+<text class="k" x="240" y="54">A</text><text class="k" x="220" y="80">θ</text><text class="k" x="298" y="27">B</text>
 </svg>
 :::
 

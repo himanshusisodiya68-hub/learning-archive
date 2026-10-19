@@ -314,7 +314,7 @@ $$r_0 = \frac{\mu_0 I}{2\pi B_H}.$$
 <line class="ln" x1="150" y1="104" x2="150" y2="134"/><polyline class="ln" points="145,126 150,134 155,126"/>
 <line class="ln" x1="128" y1="134" x2="128" y2="104"/><polyline class="ln" points="123,112 128,104 133,112"/>
 <line class="ln" x1="268" y1="125" x2="268" y2="75"/><polyline class="ln" points="263,83 268,75 273,83"/>
-<text x="62" y="155">wire's field cancels B_H</text><text x="246" y="145">fields add</text>
+<text x="40" y="152">wire's field</text><text x="40" y="165">cancels B_H</text><text x="246" y="145">fields add</text>
 <line class="faint" x1="140" y1="170" x2="200" y2="170"/><text x="155" y="185">r₀</text>
 </svg>
 :::

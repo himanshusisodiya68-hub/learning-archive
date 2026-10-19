@@ -472,7 +472,7 @@ The last form is the formula for two impedances **in parallel**: $j\omega L_p$ a
 <text x="10" y="60">V_p</text>
 <text class="k" x="156" y="84">L_p</text>
 <text class="k" x="256" y="84">a²R</text>
-<text x="80" y="150">magnetising branch ∥ reflected load</text>
+<text x="40" y="150">magnetising branch ∥ reflected load</text>
 </svg>
 :::
 

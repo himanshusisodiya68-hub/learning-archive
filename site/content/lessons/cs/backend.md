@@ -116,14 +116,14 @@ Why not do it all in the app on your phone? Because your phone is not trusted (y
 Every request, whether it books a ticket or loads a profile, passes through much the same stages:
 
 :::figure caption="The same six stages for almost every request. A problem at any stage ends the journey early with an error response."
-<svg viewBox="0 0 320 130" role="img" aria-label="A row of six boxes from route to response, with early exit arrows for errors">
+<svg viewBox="0 0 350 130" role="img" aria-label="A row of six boxes from route to response, with early exit arrows for errors">
 <g style="fill:var(--surface);stroke:var(--ink);stroke-width:1.2">
-<rect x="6" y="40" width="46" height="34" rx="4"/><rect x="58" y="40" width="46" height="34" rx="4"/><rect x="110" y="40" width="46" height="34" rx="4"/><rect x="162" y="40" width="46" height="34" rx="4"/><rect x="214" y="40" width="46" height="34" rx="4"/><rect x="266" y="40" width="48" height="34" rx="4"/>
+<rect x="4" y="40" width="50" height="34" rx="4"/><rect x="62" y="40" width="50" height="34" rx="4"/><rect x="120" y="40" width="50" height="34" rx="4"/><rect x="178" y="40" width="50" height="34" rx="4"/><rect x="236" y="40" width="50" height="34" rx="4"/><rect x="294" y="40" width="50" height="34" rx="4"/>
 </g>
-<g style="font-size:9px;fill:var(--ink)" text-anchor="middle"><text x="29" y="61">route</text><text x="81" y="61">validate</text><text x="133" y="61">auth</text><text x="185" y="61">logic</text><text x="237" y="61">database</text><text x="290" y="61">response</text></g>
-<g style="fill:none;stroke:var(--c);stroke-width:1.5"><path d="M52 57 L58 57"/><path d="M104 57 L110 57"/><path d="M156 57 L162 57"/><path d="M208 57 L214 57"/><path d="M260 57 L266 57"/></g>
-<g style="font-size:9px;fill:var(--muted)" text-anchor="middle"><text x="29" y="96">404</text><text x="81" y="96">400</text><text x="133" y="96">401 / 403</text><text x="185" y="96">409</text><text x="237" y="96">500</text></g>
-<g style="stroke:var(--muted);stroke-dasharray:3 3;fill:none"><path d="M29 74 L29 86"/><path d="M81 74 L81 86"/><path d="M133 74 L133 86"/><path d="M185 74 L185 86"/><path d="M237 74 L237 86"/></g>
+<g style="fill:var(--ink)" text-anchor="middle"><text x="29" y="61" style="font-size:8.5px">route</text><text x="87" y="61" style="font-size:8.5px">validate</text><text x="145" y="61" style="font-size:8.5px">auth</text><text x="203" y="61" style="font-size:8.5px">logic</text><text x="261" y="61" style="font-size:8.5px">database</text><text x="319" y="61" style="font-size:8.5px">response</text></g>
+<g style="fill:none;stroke:var(--c);stroke-width:1.5"><path d="M54 57 L62 57"/><path d="M112 57 L120 57"/><path d="M170 57 L178 57"/><path d="M228 57 L236 57"/><path d="M286 57 L294 57"/></g>
+<g style="fill:var(--muted)" text-anchor="middle"><text x="29" y="96" style="font-size:9px">404</text><text x="87" y="96" style="font-size:9px">400</text><text x="145" y="96" style="font-size:9px">401 / 403</text><text x="203" y="96" style="font-size:9px">409</text><text x="261" y="96" style="font-size:9px">500</text></g>
+<g style="stroke:var(--muted);stroke-dasharray:3 3;fill:none"><path d="M29 74 L29 86"/><path d="M87 74 L87 86"/><path d="M145 74 L145 86"/><path d="M203 74 L203 86"/><path d="M261 74 L261 86"/></g>
 <text x="6" y="22" style="font-size:10px;fill:var(--muted)">Each stage can stop early with an error code</text>
 </svg>
 :::

@@ -144,21 +144,21 @@ Suppose a million scorecard lines, each like `Kohli 4` (one ball, 4 runs). We wa
 
 :::figure caption="Map, shuffle, reduce: the shuffle gathers every pair with the same key onto one machine."
 <svg viewBox="0 0 320 170" role="img" aria-label="Three map machines send pairs through a shuffle to two reduce machines">
-<rect x="14" y="20" width="74" height="30" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"/>
-<text x="22" y="39" style="font-size:10px;fill:var(--ink)">map: Kohli 4</text>
-<rect x="14" y="68" width="74" height="30" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"/>
-<text x="22" y="87" style="font-size:10px;fill:var(--ink)">map: Rohit 6</text>
-<rect x="14" y="116" width="74" height="30" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"/>
-<text x="22" y="135" style="font-size:10px;fill:var(--ink)">map: Kohli 1</text>
-<rect x="228" y="34" width="78" height="38" rx="6" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:1.5"/>
-<text x="236" y="50" style="font-size:10px;fill:var(--ink)">reduce Kohli</text>
-<text x="236" y="64" style="font-size:10px;fill:var(--ink)">4 + 1 = 5</text>
-<rect x="228" y="102" width="78" height="38" rx="6" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:1.5"/>
-<text x="236" y="118" style="font-size:10px;fill:var(--ink)">reduce Rohit</text>
-<text x="236" y="132" style="font-size:10px;fill:var(--ink)">total 6</text>
-<path d="M90 35 L226 52" style="fill:none;stroke:var(--muted);stroke-width:1.2"/>
-<path d="M90 131 L226 58" style="fill:none;stroke:var(--muted);stroke-width:1.2"/>
-<path d="M90 83 L226 120" style="fill:none;stroke:var(--muted);stroke-width:1.2"/>
+<rect x="14" y="20" width="88" height="30" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"/>
+<text x="20" y="39" style="font-size:10px;fill:var(--ink)">map: Kohli 4</text>
+<rect x="14" y="68" width="88" height="30" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"/>
+<text x="20" y="87" style="font-size:10px;fill:var(--ink)">map: Rohit 6</text>
+<rect x="14" y="116" width="88" height="30" rx="6" style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"/>
+<text x="20" y="135" style="font-size:10px;fill:var(--ink)">map: Kohli 1</text>
+<rect x="222" y="34" width="92" height="38" rx="6" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:1.5"/>
+<text x="230" y="50" style="font-size:10px;fill:var(--ink)">reduce Kohli</text>
+<text x="230" y="64" style="font-size:10px;fill:var(--ink)">4 + 1 = 5</text>
+<rect x="222" y="102" width="92" height="38" rx="6" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c);stroke-width:1.5"/>
+<text x="230" y="118" style="font-size:10px;fill:var(--ink)">reduce Rohit</text>
+<text x="230" y="132" style="font-size:10px;fill:var(--ink)">total 6</text>
+<path d="M102 35 L220 52" style="fill:none;stroke:var(--muted);stroke-width:1.2"/>
+<path d="M102 131 L220 58" style="fill:none;stroke:var(--muted);stroke-width:1.2"/>
+<path d="M102 83 L220 120" style="fill:none;stroke:var(--muted);stroke-width:1.2"/>
 <text x="130" y="165" style="font-size:10px;fill:var(--muted)">shuffle by key</text>
 </svg>
 :::

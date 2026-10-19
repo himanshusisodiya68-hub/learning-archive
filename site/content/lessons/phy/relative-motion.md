@@ -197,7 +197,7 @@ There are two classic questions, and they have different answers. Take a river 2
 <line class="ray" x1="50" y1="190" x2="50" y2="122" marker-end="url(#rmb1)"/>
 <line class="wf" x1="50" y1="120" x2="92" y2="120" marker-end="url(#rmb2)"/>
 <line x1="50" y1="190" x2="92" y2="122" style="stroke:var(--chem);stroke-width:2.5;stroke-dasharray:6 4;fill:none" marker-end="url(#rmb3)"/>
-<text class="k" x="14" y="160">boat 5</text><text class="k" x="56" y="112">river 3</text><text class="k" x="86" y="164">ground</text>
+<text class="k" x="4" y="160">boat 5</text><text class="k" x="56" y="112">river 3</text><text class="k" x="86" y="164">ground</text>
 <text x="40" y="214">straight across: 40 s</text>
 <line class="faint" x1="200" y1="40" x2="340" y2="40"/><line class="faint" x1="200" y1="200" x2="340" y2="200"/>
 <circle class="obj" cx="270" cy="190" r="4"/>
@@ -226,7 +226,7 @@ Suppose a swimmer does $u = 3$ m/s in a river that flows at $w = 5$ m/s and is $
 Draw the water's arrow, 5 units. Whichever way she points, her own 3-unit arrow is added at its tip. So the tip of her ground velocity can land anywhere on a circle of radius 3 centred on the water arrow's tip. The least drift belongs to the ground velocity pointing most nearly straight across, which is the **tangent** from the start to that circle.
 
 :::figure caption="The velocity circle. The swimmer's own arrow (radius 3, orange) can point anywhere, so her ground velocity ends somewhere on the circle. The tangent from the start (O) is the best: it is at right angles to her own arrow, forming a 3-4-5 triangle."
-<svg viewBox="0 0 340 200" role="img" aria-label="Circle of possible ground velocities, with the tangent as best choice">
+<svg viewBox="0 0 340 212" role="img" aria-label="Circle of possible ground velocities, with the tangent as best choice">
 <defs><marker id="rmc1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker><marker id="rmc2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker><marker id="rmc3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--chem)"/></marker></defs>
 <path class="faint" d="M96 170 A84 84 0 0 1 264 170"/>
 <circle class="obj" cx="40" cy="170" r="4"/>
@@ -234,8 +234,8 @@ Draw the water's arrow, 5 units. Whichever way she points, her own 3-unit arrow 
 <line class="wf" x1="180" y1="170" x2="132" y2="104" marker-end="url(#rmc2)"/>
 <line x1="40" y1="170" x2="128" y2="106" style="stroke:var(--chem);stroke-width:2.5;fill:none" marker-end="url(#rmc3)"/>
 <path class="ln" d="M122 110 L128 116 L134 110"/>
-<text class="k" x="86" y="188">water 5</text><text class="k" x="188" y="120">her own, 3</text><text class="k" x="30" y="122">ground 4</text>
-<text x="196" y="190">bank direction: the current flows this way</text>
+<text class="k" x="86" y="188">water 5</text><text class="k" x="188" y="152">her own, 3</text><text class="k" x="30" y="122">ground 4</text>
+<text x="148" y="190">bank direction:</text><text x="148" y="203">the current flows this way</text>
 </svg>
 :::
 
@@ -271,8 +271,8 @@ Step into A's frame, where A stands still at the origin. B's velocity as seen by
 <circle cx="103" cy="132" r="3" style="fill:var(--ink)"/>
 <text class="k" x="190" y="196">A (the origin)</text>
 <text class="k" x="190" y="34">B starts 40 km north</text>
-<text class="k" x="108" y="188">closest: 24 km</text>
-<text x="40" y="84">B moves 25 km/h</text><text x="40" y="98">along this line</text>
+<text class="k" x="190" y="174">closest: 24 km</text>
+<text x="12" y="84">B moves 25 km/h</text><text x="12" y="98">along this line</text>
 </svg>
 :::
 

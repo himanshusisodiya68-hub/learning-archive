@@ -128,7 +128,7 @@ Why should a surface be special? Look at one water molecule deep inside the liqu
 <text class="k" x="50" y="190">inside: balanced</text>
 <circle class="faint" cx="256" cy="60" r="40"/><circle class="obj" cx="256" cy="60" r="6"/>
 <line class="ray" x1="256" y1="60" x2="256" y2="96" marker-end="url(#st1)"/><line class="ray" x1="256" y1="60" x2="226" y2="82" marker-end="url(#st1)"/><line class="ray" x1="256" y1="60" x2="286" y2="82" marker-end="url(#st1)"/>
-<text class="k" x="200" y="46">surface: pulled inwards</text>
+<text class="k" x="208" y="46" style="text-anchor:end">surface: pulled inwards</text>
 <text x="26" y="52">air</text>
 </svg>
 :::
@@ -197,10 +197,10 @@ The liquid-solid angle at the edge is the **angle of contact** $\theta$, measure
 <path d="M20 120 Q70 82 120 120Z" class="m2" style="stroke:var(--phy);stroke-width:2"/>
 <path d="M150 120 L150 100 Q180 78 210 100 L210 120Z" class="m2" style="stroke:var(--phy);stroke-width:2"/>
 <path d="M254 120 Q248 76 290 74 Q332 76 326 120Z" class="m2" style="stroke:var(--phy);stroke-width:2"/>
-<path d="M44 120 A22 22 0 0 0 30 106" style="fill:none;stroke:var(--eng);stroke-width:1.6"/><text class="k" x="50" y="110">θ &lt; 90°</text>
+<path d="M44 120 A22 22 0 0 0 30 106" style="fill:none;stroke:var(--eng);stroke-width:1.6"/><text class="k" x="26" y="92">θ &lt; 90°</text>
 <text class="k" x="162" y="138">θ = 90°</text>
 <path d="M276 120 A22 22 0 0 1 256 98" style="fill:none;stroke:var(--eng);stroke-width:1.6"/><text class="k" x="290" y="138">θ &gt; 90°</text>
-<text x="38" y="145">water on glass</text><text x="258" y="152">mercury on glass</text>
+<text x="38" y="145">water on glass</text><text x="240" y="152">mercury on glass</text>
 </svg>
 :::
 

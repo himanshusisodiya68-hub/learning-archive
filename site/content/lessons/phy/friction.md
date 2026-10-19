@@ -137,9 +137,9 @@ Once sliding, the force drops a little and stays at roughly the same value, the 
 <line class="ray" x1="50" y1="190" x2="190" y2="50"/>
 <line class="faint" x1="190" y1="50" x2="190" y2="190"/><line class="faint" x1="50" y1="50" x2="190" y2="50"/>
 <line class="wf" x1="190" y1="90" x2="330" y2="90"/><line class="wf" x1="190" y1="50" x2="190" y2="90" style="stroke-dasharray:3 3"/>
-<text x="196" y="210">applied push F</text><text x="8" y="32">friction f</text>
+<text x="196" y="210">applied push F</text><text x="56" y="28">friction f</text>
 <text class="k" x="56" y="46">max static: μs N</text><text class="k" x="236" y="82">kinetic: μk N</text>
-<text x="78" y="140">at rest: f = F</text><text x="192" y="132">slipping starts</text>
+<text x="56" y="100" style="font-size:9px">at rest: f = F</text><text x="192" y="132">slipping starts</text>
 </svg>
 :::
 

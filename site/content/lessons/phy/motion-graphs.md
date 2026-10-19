@@ -54,7 +54,7 @@ opener:
     Quick: what just happened? Most people say "they were going the same speed at that moment". It sounds right. The lines meet, so they must be equal at that point.
 
     Equal in *what*, exactly? That one word decides everything. Learn to read graphs and you can look at a squiggle, never see the train, and still tell who is faster, who is slowing down and who just turned back.
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Two position-time lines crossing: the steep one is the fast train, the gentle one the slow train"><line x1="40" y1="200" x2="300" y2="200" style="stroke:var(--ink);stroke-width:1.6"/><line x1="40" y1="200" x2="40" y2="30" style="stroke:var(--ink);stroke-width:1.6"/><path d="M40 190 L280 50" style="fill:none;stroke:var(--c);stroke-width:2.6"/><path d="M40 90 L280 170" style="fill:none;stroke:var(--chem);stroke-width:2.6"/><line x1="145" y1="200" x2="145" y2="130" style="stroke:var(--muted);stroke-dasharray:4 4"/><line x1="40" y1="130" x2="145" y2="130" style="stroke:var(--muted);stroke-dasharray:4 4"/><circle cx="145" cy="130" r="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="150" y="122" style="font-size:11px;fill:var(--ink)">they cross</text><text x="196" y="80" style="font-size:11px;fill:var(--c)">fast train</text><text x="196" y="160" style="font-size:11px;fill:var(--chem)">slow local</text><text x="244" y="218" style="font-size:11px;fill:var(--muted)">time</text><text x="46" y="42" style="font-size:11px;fill:var(--muted)">distance from start</text><text x="110" y="232" style="font-size:11px;fill:var(--muted)">same place, same moment</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Two position-time lines crossing: the steep one is the fast train, the gentle one the slow train"><line x1="40" y1="200" x2="300" y2="200" style="stroke:var(--ink);stroke-width:1.6"/><line x1="40" y1="200" x2="40" y2="30" style="stroke:var(--ink);stroke-width:1.6"/><path d="M40 190 L280 50" style="fill:none;stroke:var(--c);stroke-width:2.6"/><path d="M40 90 L280 170" style="fill:none;stroke:var(--chem);stroke-width:2.6"/><line x1="145" y1="200" x2="145" y2="130" style="stroke:var(--muted);stroke-dasharray:4 4"/><line x1="40" y1="130" x2="145" y2="130" style="stroke:var(--muted);stroke-dasharray:4 4"/><circle cx="145" cy="130" r="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><text x="152" y="180" style="font-size:11px;fill:var(--ink)">they cross</text><text x="166" y="66" style="font-size:11px;fill:var(--c)">fast train</text><text x="196" y="134" style="font-size:11px;fill:var(--chem)">slow local</text><text x="244" y="218" style="font-size:11px;fill:var(--muted)">time</text><text x="46" y="42" style="font-size:11px;fill:var(--muted)">distance from start</text><text x="110" y="232" style="font-size:11px;fill:var(--muted)">same place, same moment</text></svg>'
 symbols:
   - s: 'x'
     means: 'position: where the object is along the line, measured from a chosen zero (metres, m)'
@@ -119,8 +119,8 @@ Put **time** along the bottom and **position** (how far from home) up the side. 
 <path class="ray" d="M40 180 L140 90 L190 90 L290 180"/>
 <line class="faint" x1="40" y1="90" x2="140" y2="90"/><line class="faint" x1="140" y1="90" x2="140" y2="180"/>
 <circle class="obj" cx="140" cy="90" r="3.5"/><circle class="obj" cx="190" cy="90" r="3.5"/>
-<text x="46" y="32">position (km)</text><text x="284" y="198">time (h)</text><text x="12" y="94">60</text><text x="136" y="196">1</text><text x="186" y="196">1.5</text><text x="286" y="196">2.5</text>
-<text class="k" x="64" y="118">out: +60 km/h</text><text class="k" x="150" y="80">stopped</text><text class="k" x="236" y="130">back: −60 km/h</text>
+<text x="46" y="32">position (km)</text><text x="296" y="210">time (h)</text><text x="12" y="94">60</text><text x="136" y="196">1</text><text x="186" y="196">1.5</text><text x="286" y="196">2.5</text>
+<text class="k" x="48" y="106">out:</text><text class="k" x="48" y="118">+60 km/h</text><text class="k" x="150" y="80">stopped</text><text class="k" x="236" y="130">back: −60 km/h</text>
 </svg>
 :::
 
@@ -151,8 +151,8 @@ The speeding-up part is a triangle: its speed grows steadily from 0 to 20, so th
 <line class="ln" x1="40" y1="180" x2="335" y2="180"/><line class="ln" x1="40" y1="180" x2="40" y2="20"/>
 <path class="m2" d="M40 180 L96 60 L264 60 L320 180Z"/><path class="ray" d="M40 180 L96 60 L264 60 L320 180"/>
 <line class="faint" x1="96" y1="60" x2="96" y2="180"/><line class="faint" x1="264" y1="60" x2="264" y2="180"/>
-<text x="46" y="32">speed (m/s)</text><text x="284" y="198">time (s)</text><text x="14" y="64">20</text><text x="92" y="196">10</text><text x="260" y="196">40</text><text x="316" y="196">50</text>
-<text class="k" x="52" y="150">100 m</text><text class="k" x="148" y="124">20 × 30 = 600 m</text><text class="k" x="268" y="150">100 m</text>
+<text x="46" y="32">speed (m/s)</text><text x="296" y="210">time (s)</text><text x="14" y="64">20</text><text x="92" y="196">10</text><text x="260" y="196">40</text><text x="316" y="196">50</text>
+<text class="k" x="58" y="172">100 m</text><text class="k" x="148" y="124">20 × 30 = 600 m</text><text class="k" x="270" y="172">100 m</text>
 </svg>
 :::
 
@@ -248,7 +248,7 @@ A ball thrown straight up shows everything at once. Take up as positive, a launc
 <path class="ray" d="M40 20 L320 200"/>
 <circle class="obj" cx="180" cy="110" r="3.5"/>
 <text x="46" y="14">v (m/s)</text><text x="296" y="104">t (s)</text><text x="14" y="24">20</text><text x="6" y="204">−20</text><text x="174" y="126">2</text><text x="314" y="126">4</text>
-<text class="k" x="64" y="84">up: +20 m</text><text class="k" x="236" y="168">down: −20 m</text><text class="k" x="188" y="96">top: v = 0</text>
+<text class="k" x="64" y="84">up: +20 m</text><text class="k" x="262" y="134">down:</text><text class="k" x="262" y="147">−20 m</text><text class="k" x="188" y="96">top: v = 0</text>
 </svg>
 :::
 

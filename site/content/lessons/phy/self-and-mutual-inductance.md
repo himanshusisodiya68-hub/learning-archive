@@ -215,7 +215,7 @@ wrong: L = μ₀N²A/l. Twice the turns doubles B, and doubles the number of tur
 <ellipse class="pen" cx="190" cy="80" rx="8" ry="40" fill="none"/>
 <text x="40" y="45">coil 1: n₁ turns/m, radius r₁</text>
 <text x="140" y="140">coil 2: N₂ turns</text>
-<text class="k" x="256" y="74">B = μ₀n₁I₁</text>
+<text class="k" x="256" y="124">B = μ₀n₁I₁</text>
 </svg>
 :::
 

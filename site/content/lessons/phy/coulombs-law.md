@@ -154,7 +154,7 @@ The power 2 is not an accident. It is the signature of **three-dimensional space
 Picture the influence of a charge as something that streams out equally in all directions, like light from a bulb or paint from a spray can. Nothing is lost on the way. At distance $r$ the same total amount is spread over a sphere of area $4\pi r^2$. At distance $2r$ the sphere has four times the area, so each square metre gets a quarter as much.
 
 :::figure caption="The same lines leave the charge and cross both spheres. The sphere of radius 2r has four times the area, so the lines per unit area, and the force on a test charge, are four times smaller."
-<svg viewBox="0 0 320 220" role="img" aria-label="A point charge with eight radial lines crossing two concentric circles of radius r and 2r">
+<svg viewBox="0 0 380 220" role="img" aria-label="A point charge with eight radial lines crossing two concentric circles of radius r and 2r">
 <circle class="faint" cx="110" cy="110" r="40"/>
 <circle class="faint" cx="110" cy="110" r="80"/>
 <g class="ray">
@@ -226,7 +226,7 @@ the vector and the unit vector **from 1 to 2**.
 <text class="lbl" x="12" y="236">O</text>
 <line class="faint" x1="30" y1="225" x2="90" y2="160"/>
 <line class="faint" x1="30" y1="225" x2="240" y2="70"/>
-<text class="lbl" x="42" y="186">r₁</text><text class="lbl" x="150" y="160">r₂</text>
+<text class="lbl" x="68" y="208">r₁</text><text class="lbl" x="150" y="160">r₂</text>
 <line class="ln" x1="90" y1="160" x2="240" y2="70" style="stroke-width:1.6;opacity:1"/>
 <text class="k" x="150" y="105">r₂₁</text>
 <circle class="obj" cx="90" cy="160" r="7" style="fill:var(--phy)"/>
@@ -356,7 +356,7 @@ The commonest Coulomb's-law problem in JEE: two small balls of mass $m$, equal c
 <polygon points="180,112 186.3,119.4 178.7,121.8" style="fill:var(--phy)"/>
 <text class="k" x="166" y="110">T</text>
 <line class="faint" x1="101" y1="196" x2="199" y2="196"/>
-<text class="lbl" x="140" y="212">r = 2L sin θ</text>
+<text class="lbl" x="190" y="212" text-anchor="end">r = 2L sin θ</text>
 <text class="lbl" x="104" y="96">L</text>
 </svg>
 :::
@@ -409,7 +409,7 @@ Superposition becomes an integral when charge is spread out. The simplest useful
 <line class="ray" x1="250" y1="110" x2="291" y2="92"/>
 <polygon points="291,92 284.5,99.3 281.3,91.9" style="fill:var(--phy)"/>
 <text class="lbl" x="230" y="78">dF from dQ′</text><text class="lbl" x="230" y="152">dF from dQ</text>
-<text class="lbl" x="200" y="210">sideways parts cancel</text>
+<text class="lbl" x="165" y="210">sideways parts cancel</text>
 </svg>
 :::
 
@@ -485,7 +485,7 @@ Newton proved two remarkable facts for gravity, and the same proofs work for cha
 **Newton's argument for the inside.** Take a point P inside the shell and draw a thin double cone through P. It cuts out two patches of the shell, one near and one far.
 
 :::figure caption="A thin double cone through an interior point P cuts two patches from the shell. Their areas grow as the square of the distance from P, and their forces fall as the inverse square, so the two forces are equal and opposite."
-<svg viewBox="0 0 300 220" role="img" aria-label="Circle representing a shell with an off-centre point P inside; a narrow double cone through P meets the shell in a small near patch and a larger far patch">
+<svg viewBox="0 0 330 220" role="img" aria-label="Circle representing a shell with an off-centre point P inside; a narrow double cone through P meets the shell in a small near patch and a larger far patch">
 <circle cx="150" cy="110" r="90" style="fill:none;stroke:var(--phy);stroke-width:2"/>
 <polygon points="185,85 84.4,48.4 107.4,30.7" style="fill:var(--phy);opacity:.15"/>
 <polygon points="185,85 239.9,105 239.1,122.9" style="fill:var(--phy);opacity:.15"/>
@@ -495,9 +495,9 @@ Newton proved two remarkable facts for gravity, and the same proofs work for cha
 <path d="M239.9,105 A90,90 0 0 1 239.1,122.9" style="fill:none;stroke:var(--ink);stroke-width:5"/>
 <circle class="obj" cx="185" cy="85" r="4" style="fill:var(--ink)"/>
 <text class="k" x="182" y="76">P</text>
-<text class="lbl" x="40" y="30">far patch: area ∝ r₁²</text>
-<text class="lbl" x="200" y="150">near patch: area ∝ r₂²</text>
-<text class="lbl" x="110" y="110">force ∝ area / r²</text>
+<text class="lbl" x="20" y="14">far patch: area ∝ r₁²</text>
+<text class="lbl" x="248" y="120">near patch:</text><text class="lbl" x="248" y="133">area ∝ r₂²</text>
+<text class="lbl" x="94" y="165">force ∝ area / r²</text>
 </svg>
 :::
 

@@ -116,7 +116,7 @@ Two measures you will use all the time. The **depth** of an item is how many edg
 <g style="fill:none;stroke:var(--ink);stroke-width:1.5"><path d="M160 36 L90 70"/><path d="M160 36 L230 70"/><path d="M90 94 L50 130"/><path d="M90 94 L130 130"/></g>
 <g style="stroke:var(--mat);stroke-width:1.6;fill:color-mix(in srgb,var(--mat) 12%,var(--surface))"><rect x="122" y="14" width="76" height="24" rx="6"/><rect x="58" y="70" width="64" height="24" rx="6"/><rect x="198" y="70" width="64" height="24" rx="6"/><rect x="18" y="130" width="64" height="24" rx="6"/><rect x="98" y="130" width="64" height="24" rx="6"/></g>
 <g style="font-size:11px;fill:var(--ink)" text-anchor="middle"><text x="160" y="30">Downloads</text><text x="90" y="86">School</text><text x="230" y="86">Music</text><text x="50" y="146">Physics</text><text x="130" y="146">Maths</text></g>
-<g style="font-size:10px;fill:var(--muted)"><text x="204" y="26">root (depth 0)</text><text x="270" y="86">child of the root</text><text x="170" y="146">leaves</text></g>
+<g style="font-size:10px;fill:var(--muted)"><text x="204" y="26">root (depth 0)</text><text x="230" y="110" text-anchor="middle">child of the root</text><text x="170" y="146">leaves</text></g>
 </svg>
 :::
 
@@ -285,8 +285,8 @@ For random insertion order the tree is, on average, reasonably balanced, with he
 
 :::figure caption="The same five keys. Inserted as 3, 1, 4, 2, 5 the tree is bushy and finding 5 takes three steps. Inserted as 1, 2, 3, 4, 5 it is a line and finding 5 takes five."
 <svg viewBox="0 0 320 150" role="img" aria-label="A bushy tree with root 3 beside a straight line tree 1 2 3 4 5 leaning right">
-<g style="fill:none;stroke:var(--ink);stroke-width:1.4"><path d="M80 28 L50 62"/><path d="M80 28 L112 62"/><path d="M50 62 L64 98"/><path d="M112 62 L126 98"/>
-<path d="M200 22 L222 52"/><path d="M222 52 L244 76"/><path d="M244 76 L266 100"/><path d="M266 100 L288 124"/></g>
+<g style="fill:none;stroke:var(--ink);stroke-width:1.4"><path d="M70.7 38.5 L59.3 51.5"/><path d="M89.6 38.2 L102.4 51.8"/><path d="M55.1 75.0 L58.9 85.0"/><path d="M117.1 75.0 L120.9 85.0"/>
+<path d="M208.3 33.3 L213.7 40.7"/><path d="M231.5 62.3 L234.5 65.7"/><path d="M253.5 86.3 L256.5 89.7"/><path d="M275.5 110.3 L278.5 113.7"/></g>
 <g style="stroke:var(--mat);stroke-width:1.6;fill:color-mix(in srgb,var(--mat) 12%,var(--surface))"><circle cx="80" cy="28" r="12"/><circle cx="50" cy="62" r="12"/><circle cx="112" cy="62" r="12"/><circle cx="64" cy="98" r="12"/><circle cx="126" cy="98" r="12"/><circle cx="200" cy="22" r="12"/><circle cx="222" cy="52" r="12"/><circle cx="244" cy="76" r="12"/><circle cx="266" cy="100" r="12"/><circle cx="288" cy="124" r="12"/></g>
 <g style="font-size:11px;fill:var(--ink)" text-anchor="middle"><text x="80" y="32">3</text><text x="50" y="66">1</text><text x="112" y="66">4</text><text x="64" y="102">2</text><text x="126" y="102">5</text><text x="200" y="26">1</text><text x="222" y="56">2</text><text x="244" y="80">3</text><text x="266" y="104">4</text><text x="288" y="128">5</text></g>
 </svg>

@@ -13,7 +13,7 @@ const escHtml = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const C = p => path.join(ROOT, 'content', p);
-const DIST = path.join(ROOT, 'dist');
+const DIST = process.env.DIST_DIR ? path.resolve(process.env.DIST_DIR) : path.join(ROOT, 'dist');
 const readYaml = f => safeLoad(fs.readFileSync(f, 'utf8'), f);
 const LEVEL_LABEL = { 1: 'Class 10', 2: 'Class 12', 3: 'JEE Advanced', 4: 'Olympiad' };
 
@@ -87,6 +87,20 @@ function renderBody(src) {
 }
 
 /* ---------- lessons ---------- */
+// Plain text for search: each rendered KaTeX span becomes its TeX source (otherwise the text holds the formula three times).
+function texOnly(html) {
+  let out = '', i = 0;
+  for (;;) {
+    const j = html.indexOf('<span class="katex', i); if (j < 0) return out + html.slice(i);
+    out += html.slice(i, j);
+    let depth = 0, k = j;
+    const re = /<span\b|<\/span>/g; re.lastIndex = j;
+    for (let m; (m = re.exec(html));) { depth += m[0] === '</span>' ? -1 : 1; if (!depth) { k = re.lastIndex; break; } }
+    if (k === j) return out + html.slice(j);
+    const tex = (html.slice(j, k).match(/<annotation encoding="application\/x-tex">([\s\S]*?)<\/annotation>/) || [, ''])[1];
+    out += ' ' + tex.replace(/&amp;/g, '&') + ' '; i = k;
+  }
+}
 function parseLesson(file) {
   const raw = fs.readFileSync(file, 'utf8');
   const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
@@ -103,7 +117,7 @@ function parseLesson(file) {
     const id = a.id || 's-' + head.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const lvl = +(a.lvl || 1);
     const html = renderBody(text);
-    return { id, lvl, title: head, titleHtml: mdi(head), label: a.label || LEVEL_LABEL[lvl], html, text: stripTags(html).slice(0, 4000) };
+    return { id, lvl, title: head, titleHtml: mdi(head), label: a.label || LEVEL_LABEL[lvl], html, text: stripTags(texOnly(html)).slice(0, 4000) };
   });
   const co = meta.core;
   const core = co ? {
@@ -139,7 +153,6 @@ function renderProblem(p, leafId) {
 /* ---------- build ---------- */
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, 'data', 'lessons'), { recursive: true });
-fs.mkdirSync(path.join(DIST, 'data', 'problems'), { recursive: true });
 const write = (rel, obj) => fs.writeFileSync(path.join(DIST, rel), JSON.stringify(obj));
 
 const tree = readYaml(C('tree.yaml'));
@@ -147,6 +160,7 @@ const search = [];
 const leafIndex = {};
 let liveCount = 0, problemCount = 0;
 
+const lifeIcons = fs.existsSync(C('life-icons.yaml')) ? readYaml(C('life-icons.yaml')) || {} : {};
 for (const s of tree.subjects) {
   s.whatHtml = md(s.what); s.linksHtml = mdi(s.links || '');
   search.push({ g: 'Topics', c: s.id, title: s.name, path: 'Subject', text: stripTags(s.whatHtml), go: { subj: s.id } });
@@ -163,20 +177,23 @@ for (const s of tree.subjects) {
         let probs = [];
         if (fs.existsSync(pf)) {
           probs = (readYaml(pf) || []).map(p => renderProblem(p, key));
-          write(`data/problems/${s.id}--${l.id}.json`, probs);
           l.problems = probs.length; problemCount += probs.length;
           l.levels = [...new Set(probs.map(p => p.lvl))];
+          l.lv = probs.reduce((a, p) => (a[p.lvl] = (a[p.lvl] || 0) + 1, a), {});
           probs.forEach((p, i) => search.push({ g: 'Problems', c: s.id, icon: 'pen', title: p.plain.slice(0, 140), path: `${p.source || p.lvl} · ${l.name}`, text: '', go: { problem: key, index: i } }));
         }
         if (fs.existsSync(lf)) {
           const lesson = parseLesson(lf);
-          lesson.key = key; lesson.problems = probs.length;
+          lesson.key = key; lesson.problems = probs.length; lesson.probs = probs; // one file per leaf: lesson + its problems
+          lesson.lifeIcons = lifeIcons[key] || [];
+          if (lesson.life.length && lesson.lifeIcons.length !== lesson.life.length) console.warn(`life-icons.yaml: ${key} has ${lesson.lifeIcons.length} icons for ${lesson.life.length} items`);
           write(`data/lessons/${s.id}--${l.id}.json`, lesson);
           l.live = true; liveCount++; l.summary = lesson.summary || ''; l.sections = lesson.sections.length; l.ask = lesson.hookQ || ''; l.can = (lesson.outcomes || []).slice(0, 2); l.nextq = lesson.next && lesson.next.leaf ? { q: lesson.next.q, leaf: lesson.next.leaf } : null;
           l.sparks = [...(lesson.margin || []).filter(m => m.kind !== 'tip').map(m => ({ t: m.title || m.kind, h: m.html })), ...(lesson.models || []).map(m => ({ t: 'Mental model: ' + stripTags(m.name), h: m.html }))];
           search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: l.name, path: `${s.name} › ${p.name} › ${b.name}`, text: lesson.summary || '', go: { lesson: key } });
           lesson.sections.forEach(sec => search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: sec.title, path: `${l.name} · section`, text: sec.text, go: { lesson: key, section: sec.id } }));
         } else {
+          if (probs.length) write(`data/lessons/${s.id}--${l.id}.json`, { key, probs });
           search.push({ g: 'Topics', c: s.id, icon: p.id, title: l.name, path: `${s.name} › ${p.name} › ${b.name} · lesson not written yet`, text: '', go: { subj: s.id, pillar: pi, branch: bi, leaf: li } });
         }
       });
@@ -191,18 +208,26 @@ for (const book of ncert) for (const ch of book.chapters) {
   search.push({ g: 'NCERT chapters', c: book.subject, icon: 'chapter', title: ch.title, path: `Class ${book.class} ${book.name}${ch.restored ? ' · restored chapter' : ''}`, text: '', go: { ncert: `${book.class}`, lesson: ch.live ? ch.leaves[0] : undefined } });
 }
 
+// Home-page "sparks" are large and only the home habits use them, so they load after the first paint.
+const extras = {};
+for (const s of tree.subjects) for (const p of s.pillars || []) for (const b of p.branches) for (const l of b.leaves) if (l.sparks) { extras[`${s.id}/${l.id}`] = l.sparks; delete l.sparks; }
 write('data/tree.json', tree);
 write('data/ncert.json', ncert);
-write('data/search.json', search);
+write('data/extras.json', extras);
+// Search index: short keys and short snippets (the palette needs titles, paths and a little context, not whole sections).
+const clip = (t, n) => { t = (t || '').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n).replace(/\s\S*$/, '') + '…' : t; };
+write('data/search.json', search.map(x => ({ g: x.g, c: x.c, i: x.icon, t: x.title, p: x.path, x: clip(x.text, x.go.section ? 160 : 200), go: x.go })));
 
-/* ---------- page: inline CSS (app + KaTeX with fonts as data URIs) and JS ---------- */
+/* ---------- page: inline CSS (app + KaTeX, fonts in dist/fonts/) and JS ---------- */
 const kdir = path.join(ROOT, 'node_modules/katex/dist');
 let kcss = fs.readFileSync(path.join(kdir, 'katex.min.css'), 'utf8');
 kcss = kcss.replace(/@font-face\{[^}]*\}/g, face => {
   const m = face.match(/url\((fonts\/[^)]+\.woff2)\)/);
   if (!m) return '';
-  const b64 = fs.readFileSync(path.join(kdir, m[1])).toString('base64');
-  return face.replace(/src:[^;}]+/, `src:url(data:font/woff2;base64,${b64}) format("woff2")`);
+  // Fonts are separate files, so the page loads only the few a lesson actually uses.
+  fs.mkdirSync(path.join(DIST, 'fonts'), { recursive: true });
+  fs.copyFileSync(path.join(kdir, m[1]), path.join(DIST, m[1]));
+  return face.replace(/src:[^;}]+/, `src:url(${m[1]}) format("woff2")`);
 });
 const shell = fs.readFileSync(path.join(ROOT, 'app/shell.html'), 'utf8');
 const css = fs.readFileSync(path.join(ROOT, 'app/app.css'), 'utf8');
@@ -210,21 +235,21 @@ const js = fs.readFileSync(path.join(ROOT, 'app/app.js'), 'utf8');
 const page = shell.replace('/*CSS*/', () => css + '\n' + kcss).replace('/*JS*/', () => js.replace(/<\/script/g, '<\\/script'));
 fs.writeFileSync(path.join(DIST, 'index.html'), page);
 // Standalone document (Vercel / phone): the artifact host adds its own skeleton, a plain host does not.
-const standalone = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F4F6F5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#10141A" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Archive"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><style>[hidden]{display:none!important}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{margin:0}</style></head><body>${page}</body></html>`;
+const standalone = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F7F7FB" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0B0D1A" media="(prefers-color-scheme: dark)"><meta name="color-scheme" content="light dark"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Polymath"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><style>[hidden]{display:none!important}html{-webkit-text-size-adjust:100%;text-size-adjust:100%}body{margin:0}</style></head><body>${page}</body></html>`;
 fs.writeFileSync(path.join(DIST, 'standalone.html'), standalone);
 // On a plain host (Vercel sets VERCEL=1) the root file must be the full document, because an existing index.html wins over any rewrite.
 if (process.env.VERCEL) fs.writeFileSync(path.join(DIST, 'index.html'), standalone);
 fs.writeFileSync(path.join(DIST, 'preview.html'), standalone);
 fs.mkdirSync(path.join(DIST, 'icons'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'app/icons'))) fs.copyFileSync(path.join(ROOT, 'app/icons', f), path.join(DIST, 'icons', f));
-fs.writeFileSync(path.join(DIST, 'manifest.webmanifest'), JSON.stringify({ name: 'Learning Archive', short_name: 'Archive', start_url: './standalone.html', scope: './', display: 'standalone', background_color: '#F4F6F5', theme_color: '#2A4A9A', icons: [{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' }, { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml' }] }));
+fs.writeFileSync(path.join(DIST, 'manifest.webmanifest'), JSON.stringify({ name: 'Polymath', short_name: 'Polymath', start_url: './standalone.html', scope: './', display: 'standalone', background_color: '#F7F7FB', theme_color: '#5B3DF5', icons: [{ src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' }, { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml' }] }));
 console.log(`built: ${liveCount} lessons, ${problemCount} problems, ${search.length} search entries, page ${(page.length / 1024).toFixed(0)} KB`);
 
 // Lint the output without a browser: KaTeX errors, unknown widgets, unbalanced ::: blocks, empty solutions.
 {
   const widgets = new Set([...js.matchAll(/^    '([a-z-]+)'\(el/gm)].map(m => m[1]));
   const issues = [];
-  for (const dir of ['lessons', 'problems']) for (const f of fs.readdirSync(path.join(DIST, 'data', dir))) {
+  for (const dir of ['lessons']) for (const f of fs.readdirSync(path.join(DIST, 'data', dir))) { // problems live inside each lesson file
     const txt = fs.readFileSync(path.join(DIST, 'data', dir, f), 'utf8');
     const kerr = (txt.match(/katex-error/g) || []).length;
     if (kerr) issues.push(`${dir}/${f}: ${kerr} KaTeX error(s), e.g. ${(txt.match(/katex-error[^>]*title=\\"([^\\]*)/) || [])[1] || ''}`);

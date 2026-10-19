@@ -228,7 +228,7 @@ wrong: Compare one edge of cost 5 against three edges of cost 1. Which route doe
 
 :::figure caption="Dijkstra from node A. The expensive direct road A to C costs 12, but going through B costs 4 + 3 = 7 in total. BFS would choose the direct road because it has fewer edges."
 <svg viewBox="0 0 320 150" role="img" aria-label="Three towns A, B and C with a direct road from A to C costing 12 and a two-road route through B costing 4 and 3">
-<g style="stroke:var(--ink);stroke-width:1.5;fill:none"><path d="M60 100 L160 40"/><path d="M160 40 L260 100"/><path d="M60 100 L260 100" style="stroke:var(--bad)"/></g>
+<g style="stroke:var(--ink);stroke-width:1.5;fill:none"><path d="M73.7 91.8 L146.3 48.2"/><path d="M173.7 48.2 L246.3 91.8"/><path d="M76 100 L244 100" style="stroke:var(--bad)"/></g>
 <g style="fill:var(--surface);stroke:var(--c);stroke-width:1.5"><circle cx="60" cy="100" r="16"/><circle cx="160" cy="40" r="16"/><circle cx="260" cy="100" r="16"/></g>
 <g style="font-size:11px;fill:var(--ink)" text-anchor="middle"><text x="60" y="104">A</text><text x="160" y="44">B</text><text x="260" y="104">C</text><text x="98" y="62">4</text><text x="224" y="62">3</text><text x="160" y="120" style="fill:var(--bad)">12</text></g>
 <text x="160" y="142" text-anchor="middle" style="font-size:10px;fill:var(--muted)">cheapest A to C = 7, through B</text>

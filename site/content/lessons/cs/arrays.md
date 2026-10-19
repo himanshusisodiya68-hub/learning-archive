@@ -146,7 +146,7 @@ Adding at the **end** is different: if there is a free box right after the last 
 | Find a value (unsorted) | O(n) | look box by box |
 
 :::figure caption="Inserting at index 1: everything to the right of the gap moves one box over. The further left you insert, the more items move."
-<svg viewBox="0 0 360 120" role="img" aria-label="Boxes A B C D with a new box X inserted at position 1, B C D shifting right">
+<svg viewBox="0 0 390 120" role="img" aria-label="Boxes A B C D with a new box X inserted at position 1, B C D shifting right">
 <g style="font-size:12px;text-anchor:middle">
 <g style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--ink);stroke-width:1.3"><rect x="20" y="14" width="40" height="32"/><rect x="60" y="14" width="40" height="32"/><rect x="100" y="14" width="40" height="32"/><rect x="140" y="14" width="40" height="32"/><rect x="180" y="14" width="40" height="32" style="fill:var(--surface);stroke-dasharray:4 3"/></g>
 <g style="fill:var(--ink)"><text x="40" y="35">A</text><text x="80" y="35">B</text><text x="120" y="35">C</text><text x="160" y="35">D</text></g>

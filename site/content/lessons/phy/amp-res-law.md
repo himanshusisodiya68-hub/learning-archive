@@ -214,7 +214,7 @@ The field rises linearly from zero on the axis to its largest value $\mu_0 I/(2\
 <line class="faint" x1="100" y1="150" x2="100" y2="50"/>
 <line class="faint" x1="44" y1="148" x2="98" y2="148"/>
 <text class="k" x="96" y="166">a</text><text class="k" x="318" y="168">r</text><text class="k" x="26" y="26">B</text>
-<text x="108" y="44">μ₀I/2πa</text><text x="52" y="110">∝ r</text><text x="220" y="108">∝ 1/r</text>
+<text x="108" y="44">μ₀I/2πa</text><text x="68" y="128">∝ r</text><text x="220" y="108">∝ 1/r</text>
 </svg>
 :::
 
@@ -426,7 +426,7 @@ where $\vec d$ runs from the rod's axis to the hole's axis.
 <text class="k" x="116" y="96">O</text><text class="k" x="178" y="114">O′</text><text class="k" x="146" y="94">d</text>
 <text class="k" x="195" y="78">B</text>
 <circle class="ln" cx="85" cy="70" r="7"/><circle cx="85" cy="70" r="2" style="fill:var(--ink)"/><text class="k" x="70" y="58">J</text>
-<text x="215" y="185">uniform B in hole</text>
+<text x="215" y="176">uniform B</text><text x="215" y="189">in hole</text>
 </svg>
 :::
 

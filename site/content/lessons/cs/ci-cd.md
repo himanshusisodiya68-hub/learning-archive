@@ -128,11 +128,11 @@ wrong: The bug itself is the same size. What changes is how many places you must
 A **pipeline** is a fixed series of automatic steps. If a step fails, the pipeline stops and tells the author, and nothing after it runs.
 
 :::figure caption="A typical pipeline. Cheap, fast checks come first so that a failure is reported in minutes."
-<svg viewBox="0 0 320 120" role="img" aria-label="Stages: build, unit tests, integration tests, deploy to staging, deploy to production, with a red stop at any failure">
+<svg viewBox="0 0 320 124" role="img" aria-label="Stages: build, unit tests, integration tests, deploy to staging, deploy to production, with a red stop at any failure">
 <g style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.4"><rect x="6" y="30" width="54" height="40" rx="6"/><rect x="70" y="30" width="54" height="40" rx="6"/><rect x="134" y="30" width="54" height="40" rx="6"/><rect x="198" y="30" width="54" height="40" rx="6"/><rect x="262" y="30" width="52" height="40" rx="6"/></g>
 <g style="font-size:10px;fill:var(--ink)"><text x="18" y="54">Build</text><text x="80" y="48">Unit</text><text x="82" y="60">tests</text><text x="140" y="48">Integ.</text><text x="142" y="60">tests</text><text x="205" y="48">Staging</text><text x="272" y="48">Prod</text></g>
 <g style="stroke:var(--muted);stroke-width:1.4;fill:none"><path d="M60 50 L70 50"/><path d="M124 50 L134 50"/><path d="M188 50 L198 50"/><path d="M252 50 L262 50"/></g>
-<text x="6" y="100" style="font-size:10px;fill:var(--muted)">seconds</text><text x="76" y="100" style="font-size:10px;fill:var(--muted)">minutes</text><text x="136" y="100" style="font-size:10px;fill:var(--muted)">minutes+</text><text x="202" y="100" style="font-size:10px;fill:var(--bad)">any red step stops it</text>
+<text x="6" y="100" style="font-size:10px;fill:var(--muted)">seconds</text><text x="76" y="100" style="font-size:10px;fill:var(--muted)">minutes</text><text x="136" y="100" style="font-size:10px;fill:var(--muted)">minutes+</text><text x="202" y="100" style="font-size:10px;fill:var(--bad)">any red step</text><text x="202" y="112" style="font-size:10px;fill:var(--bad)">stops it</text>
 </svg>
 :::
 

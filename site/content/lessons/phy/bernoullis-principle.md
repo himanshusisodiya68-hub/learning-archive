@@ -137,7 +137,7 @@ Now the central question. Water flows along a horizontal pipe that narrows. In t
 That is the whole idea, and it matches the paper puzzle: the air over the paper moves faster than the air beneath, so the pressure above is lower and the paper is pushed up.
 
 :::figure caption="Water in a horizontal pipe that narrows. The three vertical tubes act as pressure gauges: the water stands lower in the narrow part, where the flow is faster."
-<svg viewBox="0 0 360 200" role="img" aria-label="A pipe narrowing in the middle with three vertical gauge tubes showing a lower water level in the narrow part">
+<svg viewBox="0 0 360 212" role="img" aria-label="A pipe narrowing in the middle with three vertical gauge tubes showing a lower water level in the narrow part">
 <path class="ln" d="M20 90 H110 L150 112 H210 L250 90 H340"/>
 <path class="ln" d="M20 170 H110 L150 148 H210 L250 170 H340"/>
 <rect x="21" y="91" width="318" height="78" style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:none"/>
@@ -148,9 +148,9 @@ That is the whole idea, and it matches the paper puzzle: the air over the paper 
 <line class="faint" x1="40" y1="38" x2="320" y2="38"/>
 <path class="ray" d="M30 130 H92" style="stroke-width:2.5"/><path d="M86 125 L98 130 L86 135Z" style="fill:var(--phy)"/>
 <path class="ray" d="M160 130 H198" style="stroke-width:4.5"/><path d="M192 124 L206 130 L192 136Z" style="fill:var(--phy)"/>
-<text x="26" y="188" style="font-size:10px;fill:var(--muted)">wide: slow, high pressure</text>
-<text x="150" y="188" style="font-size:10px;fill:var(--muted)">narrow: fast, low</text>
-<text x="256" y="188" style="font-size:10px;fill:var(--muted)">wide: slow, high</text>
+<text x="26" y="188" style="font-size:10px;fill:var(--muted)">wide: slow,</text><text x="26" y="200" style="font-size:10px;fill:var(--muted)">high pressure</text>
+<text x="150" y="188" style="font-size:10px;fill:var(--muted)">narrow: fast,</text><text x="150" y="200" style="font-size:10px;fill:var(--muted)">low pressure</text>
+<text x="256" y="188" style="font-size:10px;fill:var(--muted)">wide: slow,</text><text x="256" y="200" style="font-size:10px;fill:var(--muted)">high pressure</text>
 </svg>
 :::
 
@@ -206,7 +206,7 @@ where $h_1$ is the depth of the hole. Read this as: "twice the geometric mean of
 <text x="130" y="150" style="font-size:11px;fill:var(--eng)">h₂</text>
 <line class="faint" x1="110" y1="200" x2="250" y2="200"/>
 <text x="164" y="216" style="font-size:11px;fill:var(--muted)">range x = 2√(h₁h₂)</text>
-<text x="34" y="34" style="font-size:10px;fill:var(--muted)">open to the air</text>
+<text x="30" y="13" style="font-size:10px;fill:var(--muted)">open to the air</text>
 </svg>
 :::
 

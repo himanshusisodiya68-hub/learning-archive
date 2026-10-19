@@ -153,7 +153,7 @@ A **container** shares the host's kernel. It adds only the program and its files
 <text x="90" y="14" style="fill:var(--ink)">Virtual machines</text><text x="270" y="14" style="fill:var(--ink)">Containers</text>
 <g style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c)"><rect x="14" y="24" width="72" height="60" rx="3"/><rect x="94" y="24" width="72" height="60" rx="3"/></g>
 <g style="fill:var(--surface);stroke:var(--ink)"><rect x="18" y="28" width="64" height="18" rx="2"/><rect x="18" y="50" width="64" height="30" rx="2"/><rect x="98" y="28" width="64" height="18" rx="2"/><rect x="98" y="50" width="64" height="30" rx="2"/></g>
-<g style="fill:var(--ink)"><text x="50" y="41">app</text><text x="50" y="68">own OS + kernel</text><text x="130" y="41">app</text><text x="130" y="68">own OS + kernel</text></g>
+<g style="fill:var(--ink)"><text x="50" y="41">app</text><text x="50" y="63">own OS</text><text x="50" y="75">+ kernel</text><text x="130" y="41">app</text><text x="130" y="63">own OS</text><text x="130" y="75">+ kernel</text></g>
 <rect x="14" y="92" width="152" height="22" rx="3" style="fill:var(--surface);stroke:var(--ink)"/><text x="90" y="107" style="fill:var(--ink)">hypervisor</text>
 <rect x="14" y="120" width="152" height="22" rx="3" style="fill:var(--surface);stroke:var(--ink)"/><text x="90" y="135" style="fill:var(--ink)">host hardware</text>
 <g style="fill:color-mix(in srgb,var(--c) 14%,var(--surface));stroke:var(--c)"><rect x="194" y="24" width="50" height="50" rx="3"/><rect x="250" y="24" width="50" height="50" rx="3"/><rect x="306" y="24" width="46" height="50" rx="3"/></g>

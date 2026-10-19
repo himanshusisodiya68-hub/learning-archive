@@ -167,7 +167,7 @@ for k in range(1, 5):   # 1, 2, 3, 4
 <svg viewBox="0 0 320 170" role="img" aria-label="Flow chart of a while loop: condition test, body, back to the test, exit when false">
 <rect x="20" y="62" width="70" height="34" rx="4" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><text x="36" y="84" style="font-size:12px;fill:var(--ink)">set up</text>
 <path d="M90 79 L120 79" style="stroke:var(--ink);stroke-width:1.5;fill:none"/>
-<path d="M165 54 L210 79 L165 104 L120 79 Z" style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.5"/><text x="148" y="83" style="font-size:11px;fill:var(--ink)">still true?</text>
+<path d="M165 54 L210 79 L165 104 L120 79 Z" style="fill:color-mix(in srgb,var(--mat) 12%,var(--surface));stroke:var(--mat);stroke-width:1.5"/><text x="165" y="82" text-anchor="middle" style="font-size:8.5px;fill:var(--ink)">still true?</text>
 <path d="M165 104 L165 128" style="stroke:var(--mat);stroke-width:1.5;fill:none"/><text x="170" y="120" style="font-size:10px;fill:var(--mat)">yes</text>
 <rect x="125" y="128" width="80" height="30" rx="4" style="fill:none;stroke:var(--ink);stroke-width:1.5"/><text x="148" y="147" style="font-size:12px;fill:var(--ink)">body</text>
 <path d="M125 143 L100 143 L100 79 L120 79" style="stroke:var(--muted);stroke-width:1.5;fill:none;stroke-dasharray:4 3"/>

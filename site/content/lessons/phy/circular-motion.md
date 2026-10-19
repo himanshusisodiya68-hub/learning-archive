@@ -54,7 +54,7 @@ opener:
     Physics has a name for that hidden something: **acceleration**. We usually think of it as "getting faster", but its real meaning is wider: any change of velocity at all. And a velocity is not just a number. It also says which way you are heading.
 
     Here is a fact to try at a party. The Earth goes round the Sun at nearly the same speed all year, about 30 km/s, and never really speeds up or slows down. Yet it is accelerating towards the Sun every single second, at about 6 mm/s². How can something at constant speed be accelerating, and where does that acceleration point?
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Car on a roundabout at constant speed, with velocity along the track and acceleration towards the centre"><circle cx="140" cy="140" r="74" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--c);stroke-width:2"/><circle cx="140" cy="140" r="4" style="fill:var(--ink)"/><rect x="204" y="130" width="22" height="20" rx="5" style="fill:var(--chem)"/><path d="M215 130 L215 84" style="stroke:var(--ink);stroke-width:3;fill:none"/><path d="M215 84 L209 94 M215 84 L221 94" style="stroke:var(--ink);stroke-width:3;fill:none"/><path d="M202 140 L152 140" style="stroke:var(--c);stroke-width:3;stroke-dasharray:6 4;fill:none"/><path d="M152 140 L162 134 M152 140 L162 146" style="stroke:var(--c);stroke-width:3;fill:none"/><text x="222" y="100" style="font-size:11px;fill:var(--ink)">velocity</text><text x="156" y="160" style="font-size:11px;fill:var(--c)">acceleration</text><text x="146" y="134" style="font-size:11px;fill:var(--muted)">centre</text><circle cx="262" cy="52" r="36" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M262 52 L282 30" style="stroke:var(--chem);stroke-width:3;fill:none"/><circle cx="262" cy="52" r="3" style="fill:var(--ink)"/><text x="244" y="82" style="font-size:11px;fill:var(--muted)">36 km/h</text><text x="228" y="102" style="font-size:11px;fill:var(--muted)">needle frozen</text><text x="30" y="232" style="font-size:11px;fill:var(--muted)">constant speed, turning velocity: accelerating</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="Car on a roundabout at constant speed, with velocity along the track and acceleration towards the centre"><circle cx="140" cy="140" r="74" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--c);stroke-width:2"/><circle cx="140" cy="140" r="4" style="fill:var(--ink)"/><rect x="204" y="130" width="22" height="20" rx="5" style="fill:var(--chem)"/><path d="M215 130 L215 84" style="stroke:var(--ink);stroke-width:3;fill:none"/><path d="M215 84 L209 94 M215 84 L221 94" style="stroke:var(--ink);stroke-width:3;fill:none"/><path d="M202 140 L152 140" style="stroke:var(--c);stroke-width:3;stroke-dasharray:6 4;fill:none"/><path d="M152 140 L162 134 M152 140 L162 146" style="stroke:var(--c);stroke-width:3;fill:none"/><text x="222" y="120" style="font-size:11px;fill:var(--ink)">velocity</text><text x="100" y="162" style="font-size:11px;fill:var(--c)">acceleration</text><text x="146" y="134" style="font-size:11px;fill:var(--muted)">centre</text><circle cx="262" cy="52" r="36" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><path d="M262 52 L282 30" style="stroke:var(--chem);stroke-width:3;fill:none"/><circle cx="262" cy="52" r="3" style="fill:var(--ink)"/><text x="244" y="82" style="font-size:11px;fill:var(--muted)">36 km/h</text><text x="228" y="102" style="font-size:11px;fill:var(--muted)">needle frozen</text><text x="30" y="232" style="font-size:11px;fill:var(--muted)">constant speed, turning velocity: accelerating</text></svg>'
 symbols:
   - s: 'v'
     means: 'speed along the circle (m/s)'
@@ -121,7 +121,7 @@ Velocity is speed together with direction. If the direction changes, the velocit
 The velocity at each point is along the **tangent** to the circle. You can see this when a stone whirled on a string is released: it flies off along the tangent at the point of release, not outward along the radius. Sparks from a grinding wheel do the same.
 
 :::figure caption="Uniform circular motion (anticlockwise): the velocity v (blue) is along the tangent; the acceleration a (orange) points to the centre. Both have constant size, but both keep turning."
-<svg viewBox="0 0 360 220" role="img" aria-label="Circle with tangential velocity arrows and inward acceleration arrows at four points">
+<svg viewBox="0 0 372 220" role="img" aria-label="Circle with tangential velocity arrows and inward acceleration arrows at four points">
 <defs><marker id="cmv1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker><marker id="cma1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker></defs>
 <circle class="ln" cx="180" cy="110" r="80"/>
 <circle class="obj" cx="180" cy="110" r="3"/><text class="k" x="186" y="122">O</text>
@@ -129,7 +129,7 @@ The velocity at each point is along the **tangent** to the circle. You can see t
 <circle class="obj" cx="180" cy="30" r="4"/><line class="ray" x1="180" y1="30" x2="128" y2="30" marker-end="url(#cmv1)"/><line class="wf" x1="180" y1="30" x2="180" y2="68" marker-end="url(#cma1)"/>
 <circle class="obj" cx="104.8" cy="137.4" r="4"/><line class="ray" x1="104.8" y1="137.4" x2="122.6" y2="186.3" marker-end="url(#cmv1)"/><line class="wf" x1="104.8" y1="137.4" x2="140.5" y2="124.4" marker-end="url(#cma1)"/>
 <circle class="obj" cx="220" cy="179.3" r="4"/><line class="ray" x1="220" y1="179.3" x2="265" y2="153.3" marker-end="url(#cmv1)"/><line class="wf" x1="220" y1="179.3" x2="201" y2="146.4" marker-end="url(#cma1)"/>
-<line class="faint" x1="260" y1="58" x2="260" y2="10"/><text x="266" y="22">released here: flies off along the tangent</text>
+<line class="faint" x1="260" y1="58" x2="260" y2="10"/><text x="266" y="14">released here:</text><text x="266" y="27">flies off along</text><text x="266" y="40">the tangent</text>
 <text class="k" x="266" y="70">v</text><text class="k" x="228" y="104">a</text>
 <text class="k" x="124" y="24">v</text><text class="k" x="186" y="64">a</text>
 <text x="20" y="208">speed constant, direction of v changing</text>
@@ -189,7 +189,7 @@ We know uniform circular motion is accelerated. Now find the direction and the s
 Let the body be at P at time $t$ and at P′ at time $t + \Delta t$, with position vectors $\mathbf r$ and $\mathbf r'$ from the centre C. In that time the radius turns through $\Delta\theta$. The velocities $\mathbf v$ and $\mathbf v'$ have the same size $v$ and are perpendicular to $\mathbf r$ and $\mathbf r'$. So the angle between $\mathbf v$ and $\mathbf v'$ is also $\Delta\theta$.
 
 :::figure caption="Left: positions P and P′ on the circle; the radius turns through Δθ. Right: the velocities drawn from one point; they also turn through Δθ, and Δv points toward the centre (along the bisector, reversed)."
-<svg viewBox="0 0 360 200" role="img" aria-label="Position triangle CPP′ and the similar velocity triangle with Δv">
+<svg viewBox="0 0 360 238" role="img" aria-label="Position triangle CPP′ and the similar velocity triangle with Δv">
 <defs><marker id="cmv2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker><marker id="cma2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker><marker id="cmk2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker></defs>
 <circle class="faint" cx="90" cy="130" r="80"/>
 <circle class="obj" cx="90" cy="130" r="3"/><text class="k" x="78" y="146">C</text>
@@ -199,13 +199,13 @@ Let the body be at P at time $t$ and at P′ at time $t + \Delta t$, with positi
 <circle class="obj" cx="141.4" cy="68.7" r="3.5"/><circle class="obj" cx="103.9" cy="51.2" r="3.5"/>
 <text class="k" x="148" y="70">P</text><text class="k" x="96" y="44">P′</text>
 <text x="124" y="108">r</text><text x="84" y="92">r′</text><text x="126" y="52">Δr</text>
-<text x="20" y="196">positions (sides R, R, |Δr|)</text>
+<text x="20" y="218">positions</text><text x="20" y="230">(sides R, R, |Δr|)</text>
 <line class="ray" x1="330" y1="150" x2="261.1" y2="92.1" marker-end="url(#cmv2)"/>
 <line class="ray" x1="330" y1="150" x2="241.4" y2="134.3" marker-end="url(#cmv2)"/>
 <line class="wf" x1="261.1" y1="92.1" x2="242.6" y2="131.8" marker-end="url(#cma2)"/>
 <path class="gr" d="M313.1 135.9 A22 22 0 0 0 308.3 146.2"/><text x="290" y="132">Δθ</text>
 <text class="k" x="298" y="110">v</text><text class="k" x="282" y="160">v′</text><text class="k" x="232" y="112">Δv</text>
-<text x="220" y="196">velocities (sides v, v, |Δv|)</text>
+<text x="214" y="218">velocities</text><text x="214" y="230">(sides v, v, |Δv|)</text>
 </svg>
 :::
 
@@ -290,7 +290,7 @@ These two lines are the whole of circular kinematics. With $\mathbf r = R\hat{\m
 $$\mathbf v = R\omega\,\hat{\boldsymbol\theta},\qquad \mathbf a = \underbrace{R\alpha\,\hat{\boldsymbol\theta}}_{\text{tangential}}\ \underbrace{-\ R\omega^2\,\hat{\mathbf r}}_{\text{centripetal}}.$$
 
 :::figure caption="Speeding up on a circle: the tangential part a_t lies along v, the centripetal part a_c points to the centre, and the total a points inside the circle but ahead of the centre."
-<svg viewBox="0 0 360 210" role="img" aria-label="Circle with a point showing tangential and centripetal acceleration components and their resultant">
+<svg viewBox="0 0 360 232" role="img" aria-label="Circle with a point showing tangential and centripetal acceleration components and their resultant">
 <defs><marker id="cma3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker><marker id="cmk3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker></defs>
 <circle class="faint" cx="150" cy="120" r="85"/>
 <circle class="obj" cx="150" cy="120" r="3"/><text class="k" x="140" y="138">C</text>
@@ -304,8 +304,8 @@ $$\mathbf v = R\omega\,\hat{\boldsymbol\theta},\qquad \mathbf a = \underbrace{R\
 <text class="k" x="192" y="96">a<tspan dy="3" style="font-size:9px">c</tspan></text>
 <text class="k" x="150" y="70">a</text>
 <text x="220" y="56">P</text>
-<text x="236" y="30">tangent (direction of v)</text>
-<text x="16" y="200">tan φ = a_t / a_c, φ measured from the radius</text>
+<text x="236" y="30">tangent</text><text x="236" y="42">(direction of v)</text>
+<text x="16" y="222">tan φ = a_t / a_c, φ measured from the radius</text>
 </svg>
 :::
 
@@ -418,7 +418,7 @@ $$\rho = \frac{\left(1 + y'^2\right)^{3/2}}{|y''|}.$$
 <line class="faint" x1="84" y1="113.2" x2="64.1" y2="131.1"/><line class="faint" x1="84" y1="113.2" x2="103.9" y2="135.3"/>
 <line class="faint" x1="64.1" y1="131.1" x2="84" y2="153.2"/><line class="faint" x1="103.9" y1="135.3" x2="84" y2="153.2"/>
 <text x="26" y="132">a_t</text><text x="106" y="142">a_n</text>
-<text x="200" y="230">osculating circle at the top (dashed)</text>
+<text x="180" y="214" text-anchor="middle">osculating circle</text><text x="180" y="227" text-anchor="middle">at the top (dashed)</text>
 </svg>
 :::
 

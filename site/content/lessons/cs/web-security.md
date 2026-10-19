@@ -206,8 +206,8 @@ Browsers attach your site's cookies **automatically** to any request to that sit
 <g style="font-size:11px;fill:var(--ink)"><text x="8" y="14">Evil page</text><text x="118" y="14">Your browser</text><text x="250" y="14">Bank</text></g>
 <g style="fill:none;stroke:var(--c);stroke-width:1.6"><path d="M42 52 L156 56"/><path d="M162 100 L276 106"/><path d="M278 136 L164 142" style="stroke:var(--muted);stroke-dasharray:4 4"/></g>
 <g style="font-size:9px;fill:var(--muted)">
-<text x="46" y="46">1 hidden form: send transfer</text>
-<text x="166" y="94">2 POST /transfer + bank cookie</text>
+<text x="100" y="35" text-anchor="middle" style="font-size:9px">1 hidden form:</text><text x="100" y="46" text-anchor="middle" style="font-size:9px">send transfer</text>
+<text x="220" y="80" text-anchor="middle" style="font-size:9px">2 POST /transfer</text><text x="220" y="91" text-anchor="middle" style="font-size:9px">+ bank cookie</text>
 <text x="170" y="132">3 money moves</text>
 </g>
 </svg>

@@ -148,7 +148,7 @@ Let a charge move perpendicular to a uniform field $\mathbf B$. The force has co
 <line class="ray" x1="150" y1="30" x2="104" y2="30"/><polygon points="104,26 96,30 104,34" style="fill:var(--phy)"/>
 <line class="pen" x1="150" y1="36" x2="150" y2="68" style="stroke:var(--ink)"/><polygon points="146,66 150,74 154,66" style="fill:var(--ink)"/>
 <text x="106" y="22">v</text><text x="156" y="62">F</text><text x="165" y="96">r</text><line class="faint" x1="150" y1="88" x2="200" y2="58"/>
-<text x="238" y="125">B into page</text>
+<text x="296" y="125" text-anchor="end">B into page</text>
 </svg>
 :::
 
@@ -192,7 +192,7 @@ Split the velocity into a part along the field, $v_\parallel$, and a part across
 A circle carried steadily along the axis is a **helix**, like the thread of a screw or a stretched spring.
 
 :::figure caption="Helical path. The circle is set by v⊥; the steady drift along B is set by v∥. The distance advanced in one turn is the pitch."
-<svg viewBox="0 0 300 150" role="img" aria-label="A helix drawn along a horizontal field direction, with the pitch marked between two successive turns">
+<svg viewBox="0 0 300 158" role="img" aria-label="A helix drawn along a horizontal field direction, with the pitch marked between two successive turns">
 <line class="axis" x1="20" y1="85" x2="280" y2="85"/><polygon points="272,81 280,85 272,89" style="fill:var(--muted)"/><text x="262" y="78">B</text>
 <path class="ray" style="fill:none" d="M66,85 L68,78 L68,72 L69,66 L68,61 L67,57 L66,55 L65,53 L63,53 L62,55 L61,57 L60,61 L60,66 L60,72 L61,78 L62,85 L65,92 L67,98 L71,104 L75,109 L80,113 L85,115 L90,117 L95,117 L100,115 L105,113 L110,109 L114,104 L117,98 L120,92 L123,85 L124,78 L125,72 L125,66 L125,61 L124,57 L123,55 L121,53 L120,53 L119,55 L117,57 L117,61 L116,66 L116,72 L117,78 L119,85 L121,92 L124,98 L128,104 L132,109 L136,113 L141,115 L146,117 L152,117 L157,115 L162,113 L166,109 L170,104 L174,98 L177,92 L179,85 L181,78 L181,72 L182,66 L181,61 L181,57 L179,55 L178,53 L177,53 L175,55 L174,57 L173,61 L173,66 L173,72 L174,78 L175,85 L178,92 L181,98 L184,104 L188,109 L193,113 L198,115 L203,117 L208,117 L213,115 L218,113 L223,109 L227,104 L230,98 L233,92 L236,85"/>
 <line class="faint" x1="63" y1="40" x2="63" y2="132"/><line class="faint" x1="120" y1="40" x2="120" y2="132"/>
@@ -226,7 +226,7 @@ Now add an electric field perpendicular to $\mathbf B$, and send a positive part
 <g style="fill:var(--muted);font-size:12px"><text x="80" y="55">×</text><text x="130" y="55">×</text><text x="180" y="55">×</text><text x="220" y="55">×</text><text x="80" y="115">×</text><text x="130" y="115">×</text><text x="180" y="115">×</text><text x="220" y="115">×</text></g>
 <line class="ray" x1="10" y1="80" x2="290" y2="80"/><polygon points="282,76 290,80 282,84" style="fill:var(--phy)"/>
 <path class="faint" style="fill:none" d="M60,80 Q160,78 240,50"/><path class="faint" style="fill:none" d="M60,80 Q160,82 240,110"/>
-<line class="pen" x1="120" y1="80" x2="120" y2="104" style="stroke:var(--ink)"/><polygon points="116,102 120,110 124,102" style="fill:var(--ink)"/><text x="126" y="106">qE</text>
+<line class="pen" x1="120" y1="80" x2="120" y2="104" style="stroke:var(--ink)"/><polygon points="116,102 120,110 124,102" style="fill:var(--ink)"/><text x="102" y="102">qE</text>
 <line class="pen" x1="150" y1="80" x2="150" y2="56" style="stroke:var(--ink)"/><polygon points="146,58 150,50 154,58" style="fill:var(--ink)"/><text x="156" y="62">qvB</text>
 <text x="244" y="48">fast</text><text x="244" y="118">slow</text><text x="12" y="72">ions</text>
 </svg>
@@ -316,7 +316,7 @@ Many problems have the field fill only part of space, beyond a straight edge. In
 <line class="ray" x1="126" y1="192" x2="150" y2="150"/><line class="ray" x1="46" y1="150" x2="70" y2="192"/><polygon points="66,186 72,195 73,184" style="fill:var(--phy)"/>
 <line class="pen" x1="150" y1="150" x2="168" y2="119" style="stroke:var(--ink)"/><polygon points="163,119 170,115 170,124" style="fill:var(--ink)"/>
 <circle cx="98" cy="120" r="3" style="fill:var(--ink)"/><line class="faint" x1="98" y1="120" x2="150" y2="150"/><line class="faint" x1="98" y1="120" x2="46" y2="150"/>
-<text x="172" y="112">v (60°)</text><text x="84" y="114">C</text><text x="80" y="168">chord √3 r</text><text x="200" y="168">no field</text>
+<text x="172" y="112">v (60°)</text><text x="84" y="114">C</text><text x="66" y="168">chord √3 r</text><text x="200" y="168">no field</text>
 </svg>
 :::
 

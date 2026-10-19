@@ -121,8 +121,7 @@ A **rotation** lifts one node up and lets its parent drop down beside it, like t
 
 :::figure caption="A right rotation. Subtrees A, B and C each keep their internal order. Only the links around x and y change, and the left-to-right order A, x, B, y, C is the same before and after."
 <svg viewBox="0 0 320 150" role="img" aria-label="Before: y on top, x as left child with subtrees A and B, and C under y. After: x on top, A on the left, y on the right with B and C below it">
-<g style="fill:none;stroke:var(--ink);stroke-width:1.4"><path d="M80 24 L50 60"/><path d="M80 24 L112 70"/><path d="M50 60 L28 104"/><path d="M50 60 L72 104"/>
-<path d="M240 24 L212 70"/><path d="M240 24 L270 60"/><path d="M270 60 L248 104"/><path d="M270 60 L292 104"/></g>
+<g style="fill:none;stroke:var(--ink);stroke-width:1.4"><path d="M72 34 L58 50"/><path d="M87 35 L112 70"/><path d="M44 72 L28 104"/><path d="M56 72 L72 104"/><path d="M233 35 L212 70"/><path d="M248 34 L262 50"/><path d="M264 72 L248 104"/><path d="M276 72 L292 104"/></g>
 <g style="stroke:var(--mat);stroke-width:1.6;fill:color-mix(in srgb,var(--mat) 12%,var(--surface))"><circle cx="80" cy="24" r="13"/><circle cx="50" cy="60" r="13"/><circle cx="240" cy="24" r="13"/><circle cx="270" cy="60" r="13"/></g>
 <g style="stroke:var(--muted);stroke-width:1.2;fill:var(--surface)"><path d="M28 104 L18 130 L38 130 Z"/><path d="M72 104 L62 130 L82 130 Z"/><path d="M112 70 L102 96 L122 96 Z"/><path d="M212 70 L202 96 L222 96 Z"/><path d="M248 104 L238 130 L258 130 Z"/><path d="M292 104 L282 130 L302 130 Z"/></g>
 <g style="font-size:11px;fill:var(--ink)" text-anchor="middle"><text x="80" y="28">y</text><text x="50" y="64">x</text><text x="240" y="28">x</text><text x="270" y="64">y</text><text x="28" y="126">A</text><text x="72" y="126">B</text><text x="112" y="92">C</text><text x="212" y="92">A</text><text x="248" y="126">B</text><text x="292" y="126">C</text><text x="160" y="70" style="fill:var(--muted)">→</text></g>
@@ -154,12 +153,12 @@ wrong: A rotation is used to change the shape. What must not change, or the sear
 A rotation is a tool. A balanced tree is a **rule that says when to use it**. The two famous rules:
 
 :::figure caption="Two rules, one goal. AVL keeps the two sides of every node within one level of each other. Red-black allows more slack, but the colour rules still stop any path being more than twice as long as another."
-<svg viewBox="0 0 320 120" role="img" aria-label="Left: AVL tree with balance numbers. Right: red-black tree with red and black nodes">
-<g style="fill:none;stroke:var(--ink);stroke-width:1.3"><path d="M80 22 L48 56"/><path d="M80 22 L112 56"/><path d="M48 56 L32 92"/><path d="M112 56 L128 92"/><path d="M240 22 L208 56"/><path d="M240 22 L272 56"/><path d="M208 56 L192 92"/><path d="M272 56 L288 92"/></g>
+<svg viewBox="0 0 320 132" role="img" aria-label="Left: AVL tree with balance numbers. Right: red-black tree with red and black nodes">
+<g style="fill:none;stroke:var(--ink);stroke-width:1.3"><path d="M72 31 L56 47"/><path d="M88 31 L104 47"/><path d="M43 67 L37 81"/><path d="M117 67 L123 81"/><path d="M232 31 L216 47"/><path d="M248 31 L264 47"/><path d="M203 67 L197 81"/><path d="M277 67 L283 81"/></g>
 <g style="stroke:var(--mat);stroke-width:1.5;fill:color-mix(in srgb,var(--mat) 12%,var(--surface))"><circle cx="80" cy="22" r="12"/><circle cx="48" cy="56" r="12"/><circle cx="112" cy="56" r="12"/><circle cx="32" cy="92" r="12"/><circle cx="128" cy="92" r="12"/></g>
 <g style="stroke:var(--ink);stroke-width:1.5"><circle cx="240" cy="22" r="12" style="fill:var(--ink)"/><circle cx="208" cy="56" r="12" style="fill:var(--bad)"/><circle cx="272" cy="56" r="12" style="fill:var(--bad)"/><circle cx="192" cy="92" r="12" style="fill:var(--ink)"/><circle cx="288" cy="92" r="12" style="fill:var(--ink)"/></g>
 <g style="font-size:10px;fill:var(--ink)" text-anchor="middle"><text x="80" y="26">0</text><text x="48" y="60">0</text><text x="112" y="60">0</text><text x="32" y="96">0</text><text x="128" y="96">0</text></g>
-<g style="font-size:10px;fill:var(--muted)"><text x="10" y="116">AVL: left height − right height ∈ {−1, 0, 1}</text><text x="180" y="116">red-black: no red under red</text></g>
+<g style="fill:var(--muted)"><text x="10" y="114" style="font-size:9px">AVL: left height − right</text><text x="10" y="125" style="font-size:9px">height ∈ {−1, 0, 1}</text><text x="180" y="114" style="font-size:9px">red-black: no red</text><text x="180" y="125" style="font-size:9px">under red</text></g>
 </svg>
 :::
 

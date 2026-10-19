@@ -54,7 +54,7 @@ opener:
     Now drop the magnet. It does not fall. It *drifts*, like a leaf sinking in honey, and takes several seconds to come out of the bottom. Copper is not magnetic: a fridge magnet will not stick to it. Nothing touches the magnet, and no air is trapped under it.
 
     Yet something is plainly holding it back, and the faster it tries to fall, the harder it holds. Where does this invisible brake come from?
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A steel bolt drops fast through a copper pipe while a magnet drifts slowly down another, with dashed current rings in the pipe wall"><rect x="40" y="36" width="80" height="170" rx="4" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--muted);stroke-width:2"/><rect x="190" y="36" width="80" height="170" rx="4" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--muted);stroke-width:2"/><rect x="72" y="150" width="16" height="32" rx="3" style="fill:var(--muted)"/><line x1="80" y1="60" x2="80" y2="140" style="stroke:var(--ink);stroke-width:2"/><polygon points="75,138 80,148 85,138" style="fill:var(--ink)"/><rect x="222" y="92" width="16" height="18" style="fill:var(--chem)"/><rect x="222" y="110" width="16" height="18" style="fill:var(--bad)"/><ellipse cx="230" cy="70" rx="38" ry="7" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:4 3"/><ellipse cx="230" cy="150" rx="38" ry="7" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:4 3"/><line x1="290" y1="96" x2="290" y2="116" style="stroke:var(--ink);stroke-width:2"/><polygon points="286,114 290,122 294,114" style="fill:var(--ink)"/><text x="40" y="26" style="font-size:11px;fill:var(--muted)">steel bolt: under 0.5 s</text><text x="190" y="26" style="font-size:11px;fill:var(--muted)">magnet: seconds</text><text x="194" y="176" style="font-size:11px;fill:var(--muted)">currents it stirs up</text><text x="46" y="224" style="font-size:11px;fill:var(--muted)">copper pipe</text><text x="196" y="224" style="font-size:11px;fill:var(--muted)">copper pipe</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A steel bolt drops fast through a copper pipe while a magnet drifts slowly down another, with dashed current rings in the pipe wall"><rect x="40" y="36" width="80" height="170" rx="4" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--muted);stroke-width:2"/><rect x="190" y="36" width="80" height="170" rx="4" style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--muted);stroke-width:2"/><rect x="72" y="150" width="16" height="32" rx="3" style="fill:var(--muted)"/><line x1="80" y1="60" x2="80" y2="140" style="stroke:var(--ink);stroke-width:2"/><polygon points="75,138 80,148 85,138" style="fill:var(--ink)"/><rect x="222" y="92" width="16" height="18" style="fill:var(--chem)"/><rect x="222" y="110" width="16" height="18" style="fill:var(--bad)"/><ellipse cx="230" cy="70" rx="38" ry="7" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:4 3"/><ellipse cx="230" cy="150" rx="38" ry="7" style="fill:none;stroke:var(--c);stroke-width:2;stroke-dasharray:4 3"/><line x1="290" y1="96" x2="290" y2="116" style="stroke:var(--ink);stroke-width:2"/><polygon points="286,114 290,122 294,114" style="fill:var(--ink)"/><text x="40" y="26" style="font-size:11px;fill:var(--muted)">steel bolt: under 0.5 s</text><text x="190" y="26" style="font-size:11px;fill:var(--muted)">magnet: seconds</text><text x="196" y="176" style="font-size:10px;fill:var(--muted)">currents</text><text x="196" y="188" style="font-size:10px;fill:var(--muted)">it stirs up</text><text x="46" y="224" style="font-size:11px;fill:var(--muted)">copper pipe</text><text x="196" y="224" style="font-size:11px;fill:var(--muted)">copper pipe</text></svg>'
 life:
   - 'The hum of an induction cooktop and the way its pan heats: changing flux stirs up currents in the metal, and Lenz''s law fixes their direction.'
   - 'Eddy-current brakes on some trains and roller coasters slow the vehicle with no brake pads to wear out.'
@@ -127,7 +127,7 @@ So the loop behaves like something with inertia for flux: it resists whatever th
 <ellipse cx="130" cy="75" rx="10" ry="40" style="fill:none;stroke:var(--phy);stroke-width:3"/>
 <line x1="165" y1="75" x2="105" y2="75" style="stroke:var(--phy);stroke-dasharray:4 3"/><polygon points="108,71 100,75 108,79" style="fill:var(--phy)"/>
 <text x="140" y="68" style="font-size:11px">B ind</text>
-<text x="104" y="128" style="font-size:11px">near face N</text>
+<text x="130" y="128" text-anchor="middle" style="font-size:11px">near face N</text>
 <text x="30" y="150" style="font-size:11px">flux rising: repel</text>
 </g>
 <line x1="180" y1="10" x2="180" y2="150" class="faint"/>
@@ -140,7 +140,7 @@ So the loop behaves like something with inertia for flux: it resists whatever th
 <ellipse cx="130" cy="75" rx="10" ry="40" style="fill:none;stroke:var(--phy);stroke-width:3"/>
 <line x1="100" y1="75" x2="160" y2="75" style="stroke:var(--phy);stroke-dasharray:4 3"/><polygon points="157,71 165,75 157,79" style="fill:var(--phy)"/>
 <text x="138" y="68" style="font-size:11px">B ind</text>
-<text x="104" y="128" style="font-size:11px">near face S</text>
+<text x="130" y="128" text-anchor="middle" style="font-size:11px">near face S</text>
 <text x="20" y="150" style="font-size:11px">flux falling: attract</text>
 </g>
 </svg>
@@ -297,7 +297,7 @@ A solid piece of metal has no wires, but it is full of closed paths. When it mov
 <rect x="265" y="60" width="50" height="60" style="fill:var(--phy);opacity:0.15"/>
 <ellipse cx="277" cy="88" rx="4" ry="14" style="fill:none;stroke:var(--phy);stroke-width:1.5"/>
 <ellipse cx="292" cy="88" rx="4" ry="14" style="fill:none;stroke:var(--phy);stroke-width:1.5"/>
-<text x="210" y="140" style="font-size:11px">slotted: weak braking</text>
+<text x="200" y="140" style="font-size:10px">slotted: weak braking</text>
 </svg>
 :::
 
@@ -334,8 +334,8 @@ Think of the pipe as a stack of rings. Take a magnet falling with its N pole dow
 <line x1="230" y1="90" x2="230" y2="130" class="pen"/><polygon points="226,128 230,136 234,128" style="fill:var(--ink)"/><text x="238" y="115">v</text>
 <text x="88" y="60" style="fill:var(--phy)">⊗</text><text x="203" y="60" style="fill:var(--phy)">⊙</text>
 <text x="88" y="160" style="fill:var(--phy)">⊙</text><text x="203" y="160" style="fill:var(--phy)">⊗</text>
-<text x="215" y="50" style="font-size:11px">flux falling: attracts</text>
-<text x="215" y="175" style="font-size:11px">flux rising: repels</text>
+<text x="215" y="42" style="font-size:10px">flux falling:</text><text x="215" y="53" style="font-size:10px">attracts</text>
+<text x="215" y="172" style="font-size:10px">flux rising:</text><text x="215" y="183" style="font-size:10px">repels</text>
 <line x1="150" y1="70" x2="150" y2="35" style="stroke:var(--phy);stroke-width:2"/><polygon points="146,38 150,30 154,38" style="fill:var(--phy)"/>
 <text x="157" y="40" style="font-size:11px">F up</text>
 </svg>

@@ -189,7 +189,7 @@ The analogy is exact only **outside** the sources and only for the far field (or
 <line class="faint" x1="30" y1="120" x2="370" y2="120"/><line class="faint" x1="150" y1="120" x2="150" y2="30"/>
 <rect class="m2" x="120" y="112" width="60" height="16" style="stroke:var(--ink);stroke-width:1.2"/>
 <text class="k" x="124" y="146">S</text><text class="k" x="170" y="146">N</text>
-<line style="stroke:var(--ink);stroke-width:2" x1="130" y1="102" x2="166" y2="102"/><polygon style="fill:var(--ink)" points="172,102 163,98 163,106"/><text class="k" x="146" y="96">m</text>
+<line style="stroke:var(--ink);stroke-width:2" x1="130" y1="102" x2="166" y2="102"/><polygon style="fill:var(--ink)" points="172,102 163,98 163,106"/><text class="k" x="134" y="96">m</text>
 <circle class="obj" cx="300" cy="120" r="3.5"/><text class="k" x="296" y="140">P</text>
 <line class="ray" x1="300" y1="120" x2="350" y2="120"/><polygon style="fill:var(--phy)" points="358,120 348,115 348,125"/><text x="316" y="110">B ∥ m</text>
 <text x="235" y="135">r</text>
@@ -321,7 +321,7 @@ Three numbers describe the field at a place:
 <line class="faint" x1="300" y1="70" x2="357.9" y2="70"/><line class="faint" x1="357.9" y1="70" x2="357.9" y2="138.9"/>
 <line class="ray" x1="300" y1="70" x2="357.9" y2="138.9"/><polygon style="fill:var(--phy)" points="357.9,138.9 349.0,134.6 355.2,129.4"/>
 <text class="k" x="314" y="120">B</text><text x="318" y="62">B_H</text><text x="363" y="108">B_V</text><text class="k" x="326" y="86">I</text>
-<text x="300" y="190">horizontal: B_H = B cos I</text><text x="300" y="206">vertical: B_V = B sin I</text>
+<text x="262" y="190">horizontal: B_H = B cos I</text><text x="262" y="206">vertical: B_V = B sin I</text>
 </svg>
 :::
 
@@ -355,13 +355,13 @@ Where are they? Use the fact that the magnet's field is **along** $\vec m$ on th
 <line class="ray" x1="20" y1="195" x2="20" y2="35"/><polygon style="fill:var(--phy)" points="20,27 15,37 25,37"/><text x="26" y="40">B_H</text>
 <rect class="m2" x="104" y="80" width="12" height="60" style="stroke:var(--ink);stroke-width:1.2"/>
 <text class="k" x="106" y="76">N</text><text class="k" x="106" y="154">S</text>
-<line class="faint" x1="45" y1="110" x2="175" y2="110"/>
+<line class="faint" x1="62" y1="110" x2="104" y2="110"/><line class="faint" x1="116" y1="110" x2="158" y2="110"/>
 <text class="k" x="48" y="114">×</text><text class="k" x="164" y="114">×</text>
 <text x="70" y="200">N pointing north</text>
 <line class="ray" x1="240" y1="195" x2="240" y2="35"/><polygon style="fill:var(--phy)" points="240,27 235,37 245,37"/><text x="246" y="40">B_H</text>
 <rect class="m2" x="324" y="80" width="12" height="60" style="stroke:var(--ink);stroke-width:1.2"/>
-<text class="k" x="326" y="76">S</text><text class="k" x="326" y="154">N</text>
-<line class="faint" x1="330" y1="20" x2="330" y2="185"/>
+<text class="k" x="341" y="76">S</text><text class="k" x="341" y="154">N</text>
+<line class="faint" x1="330" y1="42" x2="330" y2="168"/>
 <text class="k" x="326" y="34">×</text><text class="k" x="326" y="180">×</text>
 <text x="290" y="200">N pointing south</text>
 </svg>

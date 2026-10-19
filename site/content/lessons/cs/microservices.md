@@ -114,10 +114,10 @@ Think of a single kitchen versus a food court. In the single kitchen, the chef g
 <rect x="10" y="30" width="120" height="80" rx="6" style="fill:none;stroke:var(--mat);stroke-width:2"/>
 <g style="stroke:var(--ink);stroke-width:1" class="pen"><rect x="20" y="44" width="40" height="20" rx="3" style="fill:none"/><rect x="78" y="44" width="40" height="20" rx="3" style="fill:none"/><rect x="48" y="78" width="40" height="20" rx="3" style="fill:none"/></g>
 <path d="M60 54 L78 54 M98 64 L80 78 M62 78 L48 66" style="stroke:var(--ink);fill:none"/>
-<text x="10" y="22" style="font-size:10px;fill:var(--muted)">Monolith: calls inside one process</text>
+<text x="10" y="12" style="font-size:10px;fill:var(--muted)">Monolith: calls</text><text x="10" y="24" style="font-size:10px;fill:var(--muted)">inside one process</text>
 <g style="stroke:var(--mat);stroke-width:2;fill:none"><rect x="170" y="44" width="40" height="26" rx="4"/><rect x="262" y="44" width="40" height="26" rx="4"/><rect x="216" y="92" width="40" height="26" rx="4"/></g>
 <path d="M212 57 L260 57 M266 72 L250 92 M222 92 L196 72" style="stroke:var(--muted);stroke-dasharray:4 3;fill:none"/>
-<text x="170" y="22" style="font-size:10px;fill:var(--muted)">Services: calls over the network</text>
+<text x="170" y="12" style="font-size:10px;fill:var(--muted)">Services: calls</text><text x="170" y="24" style="font-size:10px;fill:var(--muted)">over the network</text>
 <text x="218" y="52" style="font-size:9px;fill:var(--ink)">slow?</text>
 </svg>
 :::

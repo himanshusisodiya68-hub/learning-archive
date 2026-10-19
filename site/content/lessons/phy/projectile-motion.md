@@ -125,7 +125,7 @@ The two views are the full story. The motions are **independent**; their only li
 <line class="faint" x1="70" y1="50" x2="125" y2="50"/><line class="faint" x1="70" y1="81" x2="180" y2="81"/><line class="faint" x1="70" y1="133" x2="235" y2="133"/>
 <circle class="obj" cx="70" cy="40" r="4.5"/><circle class="obj" cx="70" cy="50" r="4.5"/><circle class="obj" cx="70" cy="81" r="4.5"/><circle class="obj" cx="70" cy="133" r="4.5"/><circle class="obj" cx="70" cy="205" r="4.5"/>
 <circle cx="125" cy="50" r="4.5" style="fill:var(--phy)"/><circle cx="180" cy="81" r="4.5" style="fill:var(--phy)"/><circle cx="235" cy="133" r="4.5" style="fill:var(--phy)"/><circle cx="290" cy="205" r="4.5" style="fill:var(--phy)"/>
-<text class="k" x="78" y="30">start</text><text x="76" y="176">dropped</text><text class="k" x="196" y="62">thrown sideways</text><text x="258" y="196">lands</text>
+<text class="k" x="78" y="30">start</text><text x="76" y="176">dropped</text><text class="k" x="196" y="62">thrown sideways</text><text x="300" y="196">lands</text>
 </svg>
 :::
 
@@ -180,7 +180,7 @@ Read it as: "height equals a straight-line term (the climb you would get with no
 <circle class="obj" cx="30" cy="180" r="3.5"/><circle class="obj" cx="100" cy="90" r="3.5"/><circle class="obj" cx="170" cy="60" r="3.5"/><circle class="obj" cx="240" cy="90" r="3.5"/><circle class="obj" cx="310" cy="180" r="3.5"/>
 <line class="ray" x1="30" y1="180" x2="62" y2="180" marker-end="url(#pjh1)"/><line class="ray" x1="100" y1="90" x2="132" y2="90" marker-end="url(#pjh1)"/><line class="ray" x1="170" y1="60" x2="202" y2="60" marker-end="url(#pjh1)"/><line class="ray" x1="240" y1="90" x2="272" y2="90" marker-end="url(#pjh1)"/><line class="ray" x1="310" y1="180" x2="342" y2="180" marker-end="url(#pjh1)"/>
 <line class="wf" x1="30" y1="180" x2="30" y2="146" marker-end="url(#pjv1)"/><line class="wf" x1="100" y1="90" x2="100" y2="73" marker-end="url(#pjv1)"/><line class="wf" x1="240" y1="90" x2="240" y2="107" marker-end="url(#pjv1)"/><line class="wf" x1="310" y1="180" x2="310" y2="214" marker-end="url(#pjv1)"/>
-<text class="k" x="178" y="48">top: only sideways</text><text x="40" y="196">launch</text><text x="270" y="196">landing</text>
+<text class="k" x="178" y="48">top: only sideways</text><text x="40" y="196">launch</text><text x="300" y="196" text-anchor="end">landing</text>
 </svg>
 :::
 

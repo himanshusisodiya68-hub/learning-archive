@@ -158,17 +158,17 @@ wrong: Which line is supposed to make the calls stop?
 When factorial(3) calls factorial(2), the first call is not finished: it is waiting for an answer to multiply by 3. The computer must remember where it was. It does so on the **call stack**, a pile of **frames**, one per unfinished call, each holding that call's own variables. The newest call sits on top, and only the top one is running.
 
 :::figure caption="factorial(3) at its deepest. Frames pile up on the way down, then finish from the top on the way back."
-<svg viewBox="0 0 320 170" role="img" aria-label="Three stacked frames: factorial(3) waits, factorial(2) waits, factorial(1) returns 1">
-<rect x="40" y="16" width="160" height="38" rx="6" style="fill:none;stroke:var(--mat);stroke-width:2"/>
-<text x="52" y="40" style="font-size:12px;fill:var(--ink)">factorial(1): n=1 → return 1</text>
-<rect x="40" y="58" width="160" height="38" rx="6" style="fill:none;stroke:var(--muted);stroke-width:1.5"/>
-<text x="52" y="82" style="font-size:12px;fill:var(--ink)">factorial(2): waits, n=2</text>
-<rect x="40" y="100" width="160" height="38" rx="6" style="fill:none;stroke:var(--muted);stroke-width:1.5"/>
-<text x="52" y="124" style="font-size:12px;fill:var(--ink)">factorial(3): waits, n=3</text>
-<path d="M230 130 L230 28" class="pen"/>
-<text x="238" y="30" style="font-size:10px;fill:var(--muted)">top: running</text>
-<text x="238" y="128" style="font-size:10px;fill:var(--muted)">bottom: first call</text>
-<text x="40" y="160" style="font-size:10px;fill:var(--muted)">unwind: 1, then 2×1 = 2, then 3×2 = 6</text>
+<svg viewBox="0 0 400 170" role="img" aria-label="Three stacked frames: factorial(3) waits, factorial(2) waits, factorial(1) returns 1">
+<rect x="10" y="16" width="210" height="38" rx="6" style="fill:none;stroke:var(--mat);stroke-width:2"/>
+<text x="20" y="40" style="font-size:11px;fill:var(--ink)">factorial(1): n=1 → return 1</text>
+<rect x="10" y="58" width="210" height="38" rx="6" style="fill:none;stroke:var(--muted);stroke-width:1.5"/>
+<text x="20" y="82" style="font-size:11px;fill:var(--ink)">factorial(2): waits, n=2</text>
+<rect x="10" y="100" width="210" height="38" rx="6" style="fill:none;stroke:var(--muted);stroke-width:1.5"/>
+<text x="20" y="124" style="font-size:11px;fill:var(--ink)">factorial(3): waits, n=3</text>
+<path d="M240 130 L240 28" class="pen"/>
+<text x="248" y="30" style="font-size:10px;fill:var(--muted)">top: running</text>
+<text x="248" y="128" style="font-size:10px;fill:var(--muted)">bottom: first call</text>
+<text x="10" y="160" style="font-size:10px;fill:var(--muted)">unwind: 1, then 2×1 = 2, then 3×2 = 6</text>
 </svg>
 :::
 
@@ -198,7 +198,7 @@ Here is the tree of calls for `fib(4)`. Each box is one call; count them.
 :::figure caption="Calls made by fib(4): nine in all. fib(2) is computed twice, fib(1) three times."
 <svg viewBox="0 0 320 180" role="img" aria-label="Recursion tree of fib(4) with nine nodes">
 <g style="fill:none;stroke:var(--muted);stroke-width:1.4">
-<path d="M160 22 L90 58 M160 22 L230 58 M90 58 L50 102 M90 58 L130 102 M230 58 L200 102 M230 58 L260 102 M50 102 L25 146 M50 102 L75 146"/>
+<path d="M144.9 29.8 L105.1 50.2 M175.1 29.8 L214.9 50.2 M78.6 70.6 L61.4 89.4 M101.4 70.6 L118.6 89.4 M220.4 72.0 L209.6 88.0 M239.6 72.0 L250.4 88.0 M41.6 116.8 L33.4 131.2 M58.4 116.8 L66.6 131.2"/>
 </g>
 <g style="font-size:10px;fill:var(--ink);text-anchor:middle">
 <circle cx="160" cy="22" r="15" style="fill:var(--surface);stroke:var(--ink)"/><text x="160" y="26">f(4)</text>

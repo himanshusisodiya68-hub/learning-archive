@@ -161,8 +161,8 @@ Sorting costs $O(n\log n)$ and the pass costs $O(n)$, so the whole thing is $O(n
 <rect x="160" y="106" width="105" height="16" rx="3"/>
 </g>
 <g style="font-size:10px;fill:var(--ink)">
-<text x="24" y="22">A 9-11</text><text x="59" y="46">B 10-12 (overlaps A)</text><text x="94" y="70">C 11-13</text>
-<text x="129" y="94">D 12-15 (overlaps C)</text><text x="164" y="118">E 13-16</text><text x="24" y="142">F 9-17 (overlaps everything)</text>
+<text x="24" y="22">A 9-11</text><text x="59" y="46">B 10-12</text><text x="129" y="46" style="fill:var(--muted)">(overlaps A)</text><text x="94" y="70">C 11-13</text>
+<text x="129" y="94">D 12-15</text><text x="234" y="94" style="fill:var(--muted)">(overlaps C)</text><text x="164" y="118">E 13-16</text><text x="24" y="142">F 9-17 (overlaps everything)</text>
 </g>
 </svg>
 :::

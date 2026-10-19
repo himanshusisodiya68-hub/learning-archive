@@ -68,6 +68,7 @@ site/
   package.json            npm run build | npm run check
   build.mjs               content → dist/ (index.html + data/*.json); KaTeX pre-renders all math
   check-answers.mjs       recomputes every numeric answer from its `verify` expression
+  check-figures.mjs       renders every figure in Chromium and reports clipped, spilling, overlapping or crossed-out labels
   lint-lesson.mjs         checks single lesson files (front matter, core, KaTeX, blocks, widgets) without a build; safe in parallel
   fix-yaml.py             quotes YAML values containing ": " or " #"; run before every build
   app/shell.html, app.css, app.js   the single-page app (vanilla JS, inline in index.html)
@@ -93,7 +94,7 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 2. Map the chapter to leaves in `tree.yaml`. Add leaves if needed, each with a first-principles `what`; branches and pillars also carry `split` and `links`. Add `leaves: [subj/leaf-id, ...]` to the chapter in `content/ncert/...yaml`.
 3. Write `problems/<subj>/<leaf>.yaml` with every NCERT item word for word (with its solution), plus `found`, `board` and `main` problems (format below).
 4. For each leaf, call the `theory-writer` subagent (Opus). It writes `lessons/<subj>/<leaf>.md` and appends the `adv` and `oly` problems.
-5. `cd site && python3 fix-yaml.py && node check-answers.mjs && python3 check-links.py && node build.mjs`. Fix every reported problem, from the checker or the lint; the checker has caught real arithmetic slips.
+5. `cd site && python3 fix-yaml.py && node check-answers.mjs && python3 check-links.py && node build.mjs && node check-figures.mjs <subj>/<leaf>`. Fix every reported problem, from the checker or the lint; the checker has caught real arithmetic slips. `check-figures.mjs` renders each figure in headless Chromium and reports labels that spill out of boxes, run past the figure edge, overlap, or are crossed by a line; SVGs are written blind, so this is the only way to catch those (it needs no screenshots).
 6. Commit and push (see Git below). When a pillar is complete, republish the site (see Publishing).
 
 ## Lesson format (`content/lessons/<subj>/<leaf>.md`)
@@ -124,13 +125,14 @@ Subject ids: `phy`, `mat`, `chem`, `bio`, `eng`, `cs`. Leaf `from` tags: `C6`–
 - **Blocks** are `:::kind attrs` … `:::`:
   - `hook` (opening question), with `q:`, `options: [...]` (a JSON array), `answer:` (index), `right:`, `wrong:`. `qc` (quick check) uses the same fields.
   - `worked title="..."`, `law caption=`, `eq caption=`, `note title= tone=`.
-  - `figure caption="..."` containing inline `<svg>`, with classes `ray`, `faint`, `obj`, `pen`, `axis` and colour vars `--phy --chem --bio --mat --eng --ink --muted`.
+  - `figure caption="..."` containing inline `<svg>`, with classes `ray`, `faint`, `obj`, `pen`, `axis` and colour vars `--phy --chem --bio --mat --eng --ink --muted`. The app CSS sets figure labels to 11 px mono (about 6.6 viewBox units per character) and overrides any `font-size` on a parent `<g>` or `<svg>`: put a smaller size on the `<text>` itself, and size boxes for the real width. Then run `check-figures.mjs`.
   - `figrow`, `see`, `html`.
   - `widget name=...` with attrs passed as options.
 - **Widgets in `app.js`:** `refraction-sim`, `optics-bench types=... u= f=`, `prism-sim`, `fringes [mode=single] [lambda=]`, `polarisers`, `projectile [u= angle= g=]` (trajectory, range, height, time of flight, complementary-angle ghost), `motion-graphs [u= a=]` (linked x–t, v–t, a–t graphs with areas). A new widget goes in the `WIDGETS` map in `app.js`; reuse the `.bench`, `.controls` and `.readout` classes.
 - **Math:** `$...$` and `$$...$$` (KaTeX).
 - **Style:** short paragraphs and concrete numbers. Explain *why* before formulas. One idea per section. Bold only key terms: the app renders bold as a highlighter mark.
-- **How the app presents a lesson (one column):** opener card (story, art, hook) → core idea → Symbols → In real life → a collapsed "What's inside" (outcomes, map) and the depth bar → each `##` section as a numbered card, with a band where each new depth begins → Think with it (models, links) → wrap-up (key ideas, traps) → the question that leads on. Keep section titles short and sections ordered by depth.
+- **How the app presents a lesson (three stages):** **1 Warm-up**: opener card (story, art, hook), then In real life cards. **2 The lesson**: a dark "The lesson begins here" banner (title, core idea, depth chooser, Symbols and What's inside toggles, Start section 1), then each `##` section as a numbered card, with a band where each new depth begins. **3 Wrap-up**: Think with it (models, links), key ideas, traps, and the question that leads on. On desktop a side tracker shows the stage and section. Keep section titles short and sections ordered by depth.
+- **In real life icons:** `content/life-icons.yaml` gives one icon name per `life` item, in order (names from `LIFE_ICONS` in `app.js`; unknown or missing names show a map pin, and the build warns when a lesson's count does not match). Add a line there for every new lesson.
 
 ## Problem format (`content/problems/<subj>/<leaf>.yaml`)
 
@@ -158,7 +160,8 @@ Aim for every NCERT item, then about 2–4 problems at each level: found, board,
 
 ## App structure (site/app)
 
-- **Home:** search, continue card, review and daily set, stats, subject cards, pillars ready to study.
+- **Search palette (everywhere):** Ctrl/⌘ K, `/`, the rail's Search button (desktop), the top bar's Search button (phone) or the home search box open one palette. It searches lessons, sections, topics, NCERT chapters and problems with typo-tolerant fuzzy matching, and lists pages and subjects to jump to. `data/search.json` loads in the background after the first paint.
+- **Home:** continue card, review and daily set, habits, subject cards.
 - **Learn:** two levels, `#learn~<subj>` (pillar cards) and `#learn~<subj>~<pillar>` (each branch once, as a numbered learning path of its leaves). The class view (NCERT books) is the second mode.
 - **Lesson:** `#lesson~<subj>~<leaf>`.
 
@@ -195,8 +198,8 @@ From a new session:
    - `file_path`: `site/dist/index.html`
    - `url`: the URL above
    - `root`: `site/dist`
-   - `files`: every `data/**/*.json` (list them with `find data -name '*.json'` inside `site/dist`)
-   - One publish takes at most 255 files and 64 MB, and the build has about 510 data files (about 72 MB). So publish in batches of at most 250 `data` files to the same `url`: each later publish adds to the files already there.
+   - `files`: every `data/**/*.json` and `fonts/*.woff2` (list them with `find data fonts -type f` inside `site/dist`). KaTeX fonts are separate files, not inlined, so the page stays small; `data/extras.json` holds the home-page sparks, loaded after the first paint.
+   - Each lesson file `data/lessons/<subj>--<leaf>.json` also holds that leaf's problems (`probs`), so the build has about 280 files (one per leaf, plus `tree`, `ncert`, `search`, `extras` and 20 fonts; about 70 MB). One publish takes at most 255 files and 64 MB, and one version holds at most 511 files, so publish in two batches to the same `url`: each later publish adds to the files already there. Keep the file count low: never add one file per problem or per section.
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
 

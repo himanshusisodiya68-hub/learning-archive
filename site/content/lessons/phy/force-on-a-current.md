@@ -133,7 +133,7 @@ A memory hook: **F**irst finger, **F**ield; se**C**ond finger, **C**urrent; thu*
 <line class="ray" x1="160" y1="120" x2="268" y2="120"/><polygon points="272,120 260,114 260,126" style="fill:var(--phy)"/>
 <line class="ln" x1="160" y1="120" x2="160" y2="34"/><polygon points="160,28 154,40 166,40" style="fill:var(--ink)"/>
 <line class="wf" x1="160" y1="120" x2="99" y2="172"/><polygon points="95,175 106,172 99,164" style="fill:var(--eng)"/>
-<text class="k" x="230" y="112">B</text><text x="196" y="140">first finger: field</text>
+<text class="k" x="230" y="112">B</text><text x="190" y="142">first finger: field</text>
 <text class="k" x="168" y="40">F</text><text x="168" y="56">thumb: force (motion)</text>
 <text class="k" x="80" y="168">I</text><text x="20" y="194">second finger: current</text>
 <circle cx="160" cy="120" r="3" style="fill:var(--ink)"/>

@@ -53,7 +53,7 @@ opener:
     That flicker is the supply itself. The voltage at the wall is not steady like a battery's. It rises, falls through zero, goes negative, and comes back, 50 times every second. Averaged over a whole cycle, the voltage is exactly zero.
 
     A battery whose average was zero would be dead, yet this supply heats a kettle fiercely. So when the label on the socket says 220 volts, which 220 does it mean?
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A sine wave of mains voltage with dashed lines at 220 volts and a question mark above where the peak is"><line x1="24" y1="120" x2="304" y2="120" style="stroke:var(--muted);stroke-width:1.5"/><line x1="30" y1="28" x2="30" y2="212" style="stroke:var(--muted);stroke-width:1.5"/><line x1="30" y1="63.4" x2="300" y2="63.4" style="stroke:var(--chem);stroke-width:1.5;stroke-dasharray:5 4"/><line x1="30" y1="176.6" x2="300" y2="176.6" style="stroke:var(--chem);stroke-width:1.5;stroke-dasharray:5 4"/><polyline points="30.0,120.0 32.5,110.7 35.0,101.6 37.5,92.6 40.0,84.1 42.5,76.0 45.0,68.6 47.5,61.8 50.0,55.8 52.5,50.7 55.0,46.5 57.5,43.4 60.0,41.2 62.5,40.1 65.0,40.1 67.5,41.2 70.0,43.4 72.5,46.5 75.0,50.7 77.5,55.8 80.0,61.8 82.5,68.6 85.0,76.0 87.5,84.1 90.0,92.6 92.5,101.6 95.0,110.7 97.5,120.0 100.0,129.3 102.5,138.4 105.0,147.4 107.5,155.9 110.0,164.0 112.5,171.4 115.0,178.2 117.5,184.2 120.0,189.3 122.5,193.5 125.0,196.6 127.5,198.8 130.0,199.9 132.5,199.9 135.0,198.8 137.5,196.6 140.0,193.5 142.5,189.3 145.0,184.2 147.5,178.2 150.0,171.4 152.5,164.0 155.0,155.9 157.5,147.4 160.0,138.4 162.5,129.3 165.0,120.0 167.5,110.7 170.0,101.6 172.5,92.6 175.0,84.1 177.5,76.0 180.0,68.6 182.5,61.8 185.0,55.8 187.5,50.7 190.0,46.5 192.5,43.4 195.0,41.2 197.5,40.1 200.0,40.1 202.5,41.2 205.0,43.4 207.5,46.5 210.0,50.7 212.5,55.8 215.0,61.8 217.5,68.6 220.0,76.0 222.5,84.1 225.0,92.6 227.5,101.6 230.0,110.7 232.5,120.0 235.0,129.3 237.5,138.4 240.0,147.4 242.5,155.9 245.0,164.0 247.5,171.4 250.0,178.2 252.5,184.2 255.0,189.3 257.5,193.5 260.0,196.6 262.5,198.8 265.0,199.9 267.5,199.9 270.0,198.8 272.5,196.6 275.0,193.5 277.5,189.3 280.0,184.2 282.5,178.2 285.0,171.4 287.5,164.0 290.0,155.9 292.5,147.4 295.0,138.4 297.5,129.3 300.0,120.0" style="fill:none;stroke:var(--c);stroke-width:3"/><text x="36" y="58" style="font-size:11px;fill:var(--chem)">220 V (the label)</text><text x="236" y="40" style="font-size:16px;fill:var(--bad)">?</text><text x="120" y="22" style="font-size:11px;fill:var(--muted)">how high does it really go?</text><text x="34" y="232" style="font-size:11px;fill:var(--muted)">20 ms per cycle, 50 cycles every second</text><text x="270" y="136" style="font-size:11px;fill:var(--muted)">0 V</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A sine wave of mains voltage with dashed lines at 220 volts and a question mark above where the peak is"><line x1="24" y1="120" x2="304" y2="120" style="stroke:var(--muted);stroke-width:1.5"/><line x1="30" y1="28" x2="30" y2="212" style="stroke:var(--muted);stroke-width:1.5"/><line x1="30" y1="63.4" x2="300" y2="63.4" style="stroke:var(--chem);stroke-width:1.5;stroke-dasharray:5 4"/><line x1="30" y1="176.6" x2="300" y2="176.6" style="stroke:var(--chem);stroke-width:1.5;stroke-dasharray:5 4"/><polyline points="30.0,120.0 32.5,110.7 35.0,101.6 37.5,92.6 40.0,84.1 42.5,76.0 45.0,68.6 47.5,61.8 50.0,55.8 52.5,50.7 55.0,46.5 57.5,43.4 60.0,41.2 62.5,40.1 65.0,40.1 67.5,41.2 70.0,43.4 72.5,46.5 75.0,50.7 77.5,55.8 80.0,61.8 82.5,68.6 85.0,76.0 87.5,84.1 90.0,92.6 92.5,101.6 95.0,110.7 97.5,120.0 100.0,129.3 102.5,138.4 105.0,147.4 107.5,155.9 110.0,164.0 112.5,171.4 115.0,178.2 117.5,184.2 120.0,189.3 122.5,193.5 125.0,196.6 127.5,198.8 130.0,199.9 132.5,199.9 135.0,198.8 137.5,196.6 140.0,193.5 142.5,189.3 145.0,184.2 147.5,178.2 150.0,171.4 152.5,164.0 155.0,155.9 157.5,147.4 160.0,138.4 162.5,129.3 165.0,120.0 167.5,110.7 170.0,101.6 172.5,92.6 175.0,84.1 177.5,76.0 180.0,68.6 182.5,61.8 185.0,55.8 187.5,50.7 190.0,46.5 192.5,43.4 195.0,41.2 197.5,40.1 200.0,40.1 202.5,41.2 205.0,43.4 207.5,46.5 210.0,50.7 212.5,55.8 215.0,61.8 217.5,68.6 220.0,76.0 222.5,84.1 225.0,92.6 227.5,101.6 230.0,110.7 232.5,120.0 235.0,129.3 237.5,138.4 240.0,147.4 242.5,155.9 245.0,164.0 247.5,171.4 250.0,178.2 252.5,184.2 255.0,189.3 257.5,193.5 260.0,196.6 262.5,198.8 265.0,199.9 267.5,199.9 270.0,198.8 272.5,196.6 275.0,193.5 277.5,189.3 280.0,184.2 282.5,178.2 285.0,171.4 287.5,164.0 290.0,155.9 292.5,147.4 295.0,138.4 297.5,129.3 300.0,120.0" style="fill:none;stroke:var(--c);stroke-width:3"/><text x="102" y="86" style="font-size:9px;fill:var(--chem)">220 V</text><text x="102" y="97" style="font-size:9px;fill:var(--chem)">(the label)</text><text x="236" y="40" style="font-size:16px;fill:var(--bad)">?</text><text x="120" y="22" style="font-size:11px;fill:var(--muted)">how high does it really go?</text><text x="34" y="232" style="font-size:11px;fill:var(--muted)">20 ms per cycle, 50 cycles every second</text><text x="270" y="136" style="font-size:11px;fill:var(--muted)">0 V</text></svg>'
 life:
   - 'Every mains socket, fan, light and kettle at home runs on AC that changes direction 50 times a second in India.'
   - 'The long wires and transformer stations along a highway carry AC at very high voltage to waste less energy, then step it down for your street.'
@@ -138,7 +138,7 @@ Take a flat coil of $N$ turns and area $A$, and spin it at a steady angular spee
 <line class="faint" x1="160" y1="95" x2="215" y2="95"/>
 <line class="ln" x1="160" y1="95" x2="206" y2="56.4" style="stroke-width:2"/><polyline class="ln" points="197.3,58.4 206,56.4 202.5,64.6" style="stroke-width:2"/>
 <path class="ln" d="M185 95 A25 25 0 0 0 179.2 78.9"/>
-<text class="k" x="210" y="54">n</text><text x="188" y="88">θ = ωt</text>
+<text class="k" x="210" y="54">n</text><text x="222" y="88" style="font-size:10px">θ = ωt</text>
 <text class="k" x="236" y="38">B</text>
 <path class="ln" d="M110 140 A62 62 0 0 0 150 156"/><polyline class="ln" points="142,158 150,156 144,150"/><text x="96" y="168">ω</text>
 </svg>
@@ -285,10 +285,10 @@ Writing out $\sin$ and $\cos$ every time two AC quantities are compared is clums
 Draw an arrow of length $V_0$ from the origin, and let it rotate anticlockwise at angular speed $\omega$, starting along the $x$-axis at $t = 0$. At time $t$ it makes angle $\omega t$ with the $x$-axis, so its **projection on the vertical axis** is $V_0\sin\omega t$. That projection *is* the voltage. The rotating arrow is called a **phasor**.
 
 :::figure caption="Phasors. The arrows V₀ and I₀ rotate anticlockwise together at ω. Their vertical projections trace out v and i (right). Here i leads v by φ: the current reaches its peak earlier, by the time φ/ω."
-<svg viewBox="0 0 360 200" role="img" aria-label="Two rotating arrows on the left, one at angle omega t and one further ahead by phi, with their vertical projections traced as two sine waves on the right">
+<svg viewBox="0 0 380 200" role="img" aria-label="Two rotating arrows on the left, one at angle omega t and one further ahead by phi, with their vertical projections traced as two sine waves on the right">
 <circle class="faint" cx="80" cy="100" r="60"/>
 <line class="ln" x1="10" y1="100" x2="150" y2="100" style="stroke-width:1"/><line class="ln" x1="80" y1="30" x2="80" y2="170" style="stroke-width:1"/>
-<line class="ln" x1="170" y1="100" x2="355" y2="100" style="stroke-width:1"/><line class="ln" x1="170" y1="30" x2="170" y2="170" style="stroke-width:1"/>
+<line class="ln" x1="170" y1="100" x2="372" y2="100" style="stroke-width:1"/><line class="ln" x1="170" y1="30" x2="170" y2="170" style="stroke-width:1"/>
 <line class="ray" x1="80" y1="100" x2="118.6" y2="54.0" style="stroke-width:2.5"/>
 <line class="ray" x1="80" y1="100" x2="80" y2="60" style="stroke:var(--chem);stroke-width:2.5"/>
 <polyline class="ray" points="170.0,100.0 171.5,96.9 173.0,93.7 174.5,90.6 176.0,87.5 177.5,84.5 179.0,81.5 180.5,78.5 182.0,75.6 183.5,72.8 185.0,70.0 186.5,67.3 188.0,64.7 189.5,62.2 191.0,59.9 192.5,57.6 194.0,55.4 195.5,53.4 197.0,51.5 198.5,49.7 200.0,48.0 201.5,46.5 203.0,45.2 204.5,44.0 206.0,42.9 207.5,42.0 209.0,41.3 210.5,40.7 212.0,40.3 213.5,40.1 215.0,40.0 216.5,40.1 218.0,40.3 219.5,40.7 221.0,41.3 222.5,42.0 224.0,42.9 225.5,44.0 227.0,45.2 228.5,46.5 230.0,48.0 231.5,49.7 233.0,51.5 234.5,53.4 236.0,55.4 237.5,57.6 239.0,59.9 240.5,62.2 242.0,64.7 243.5,67.3 245.0,70.0 246.5,72.8 248.0,75.6 249.5,78.5 251.0,81.5 252.5,84.5 254.0,87.5 255.5,90.6 257.0,93.7 258.5,96.9 260.0,100.0 261.5,103.1 263.0,106.3 264.5,109.4 266.0,112.5 267.5,115.5 269.0,118.5 270.5,121.5 272.0,124.4 273.5,127.2 275.0,130.0 276.5,132.7 278.0,135.3 279.5,137.8 281.0,140.1 282.5,142.4 284.0,144.6 285.5,146.6 287.0,148.5 288.5,150.3 290.0,152.0 291.5,153.5 293.0,154.8 294.5,156.0 296.0,157.1 297.5,158.0 299.0,158.7 300.5,159.3 302.0,159.7 303.5,159.9 305.0,160.0 306.5,159.9 308.0,159.7 309.5,159.3 311.0,158.7 312.5,158.0 314.0,157.1 315.5,156.0 317.0,154.8 318.5,153.5 320.0,152.0 321.5,150.3 323.0,148.5 324.5,146.6 326.0,144.6 327.5,142.4 329.0,140.1 330.5,137.8 332.0,135.3 333.5,132.7 335.0,130.0 336.5,127.2 338.0,124.4 339.5,121.5 341.0,118.5 342.5,115.5 344.0,112.5 345.5,109.4 347.0,106.3 348.5,103.1 350.0,100.0"/>
@@ -299,7 +299,7 @@ Draw an arrow of length $V_0$ from the origin, and let it rotate anticlockwise a
 <path class="ln" d="M100 100 A20 20 0 0 0 92.9 84.7"/><text x="102" y="92">ωt</text>
 <path class="ln" d="M99.3 77.0 A30 30 0 0 0 80 70"/><text x="86" y="66">φ</text>
 <text class="k" x="122" y="50">V₀</text><text class="k" x="60" y="56" style="fill:var(--chem)">I₀</text>
-<text x="300" y="38" style="fill:var(--phy)">v</text><text x="230" y="150" style="fill:var(--chem)">i</text><text x="342" y="114">ωt</text><text x="186" y="176">now</text>
+<text x="300" y="38" style="fill:var(--phy)">v</text><text x="230" y="150" style="fill:var(--chem)">i</text><text x="356" y="94">ωt</text><text x="186" y="176">now</text>
 </svg>
 :::
 
@@ -458,7 +458,7 @@ Each voltage is the vertical projection of its rotating arrow. The projection of
 <line class="ray" x1="60" y1="150" x2="90" y2="98" style="stroke:var(--chem);stroke-width:2.5"/>
 <line class="faint" x1="150" y1="150" x2="180" y2="98"/><line class="faint" x1="90" y1="98" x2="180" y2="98"/>
 <line class="ray" x1="60" y1="150" x2="180" y2="98" style="stroke:var(--eng);stroke-width:2.5"/>
-<path class="ln" d="M85 150 A25 25 0 0 0 72.5 128.3"/><text x="88" y="140">φ</text>
+<path class="ln" d="M85 150 A25 25 0 0 0 72.5 128.3"/><text x="82" y="126">φ</text>
 <path class="ln" d="M110 150 A50 50 0 0 0 105.9 130.1"/><text x="113" y="143">δ</text>
 <text class="k" x="140" y="166">A₁</text><text class="k" x="62" y="96" style="fill:var(--chem)">A₂</text><text class="k" x="184" y="94" style="fill:var(--eng)">A</text>
 </svg>
@@ -535,9 +535,9 @@ $$v_1 = V_0\sin\omega t,\quad v_2 = V_0\sin(\omega t - 120°),\quad v_3 = V_0\si
 <line class="ray" x1="150" y1="110" x2="210.6" y2="145" style="stroke:var(--chem);stroke-width:2.5"/>
 <line class="ray" x1="150" y1="110" x2="89.4" y2="145" style="stroke:var(--bio);stroke-width:2.5"/>
 <line class="ray" x1="210.6" y1="145" x2="150" y2="40" style="stroke:var(--eng);stroke-dasharray:5 3"/>
-<path class="ln" d="M150 90 A20 20 0 0 1 167.3 120"/><text x="170" y="100">120°</text>
+<path class="ln" d="M150 98 A12 12 0 0 1 160.4 116"/><text x="153" y="92" style="font-size:9px">120°</text>
 <text class="k" x="156" y="38">V₁</text><text class="k" x="214" y="160" style="fill:var(--chem)">V₂</text><text class="k" x="62" y="160" style="fill:var(--bio)">V₃</text>
-<text x="190" y="80" style="fill:var(--eng)">V₁ − V₂</text>
+<text x="224" y="96" style="fill:var(--eng)">V₁ − V₂</text>
 </svg>
 :::
 

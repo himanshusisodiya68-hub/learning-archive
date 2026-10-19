@@ -8,11 +8,21 @@
   const ICONS = {
     home: '<path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/>',
     tree: '<circle cx="12" cy="5" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 7v4M6 16v-2.5h12V16M12 11v5"/>',
-    atom: '<ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/>',
-    pi: '<path d="M4 7h16M8.5 7v12M15 7v9a3 3 0 0 0 3 3"/>',
-    flask: '<path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7 15h10"/>',
-    leaf: '<path d="M5 19c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 19l9-9"/>',
-    book: '<path d="M3 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h7z"/>',
+    atom: '<path class="fl" d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/><path d="M12 2c4 0 6 4.5 6 10s-2 10-6 10-6-4.5-6-10 2-10 6-10z"/><path d="M3.3 7c2-3.5 6.8-3 11.6-.3s7.8 6.8 5.8 10.3-6.8 3-11.6.3S1.3 10.5 3.3 7z"/>',
+    pi: '<path class="fl" d="M4 4h16v16H4z"/><path d="M17 5H7l6 7-6 7h10"/>',
+    flask: '<path class="fl" d="M7.5 15h9l2.4 4.2a.8.8 0 0 1-.7 1.3H5.8a.8.8 0 0 1-.7-1.3z"/><path d="M9 3h6M10 3v6l-5.5 9.5A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3"/><path d="M7.5 15h9"/>',
+    leaf: '<path class="fl" d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15z"/><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l8-8"/>',
+    book: '<path class="fl" d="M12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5z"/><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/>',
+    logo: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12v9M12 12L4 7.5"/>',
+    navHome: '<path class="fl" d="M5 9l7-5.5L19 9v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><path d="M3 10.5L12 3l9 7.5M5 9v11a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9"/>',
+    navLearn: '<path class="fl" d="M2 9l10-5 10 5-10 5z"/><path d="M2 9l10-5 10 5-10 5zM6 11v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5M22 9v6"/>',
+    navPractice: '<path class="fl" d="M12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z"/><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>',
+    navReview: '<path class="fl" d="M5 8h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2z"/><path d="M5 8h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2zM8 4h11a2 2 0 0 1 2 2v10M8 14.5l1.8 1.8L13 13"/>',
+    navNotebook: '<path class="fl" d="M9.5 3H18a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 18 21H9.5z"/><path d="M6 3h12a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 18 21H6zM9.5 3v18M3.5 7.5H6M3.5 12H6M3.5 16.5H6M13 8h3.5M13 11.5h3.5"/>',
+    navProgress: '<path class="fl" d="M7.5 4h9v5a4.5 4.5 0 0 1-9 0z"/><path d="M7.5 4h9v5a4.5 4.5 0 0 1-9 0zM7.5 6H4.5a3 3 0 0 0 3 4.3M16.5 6h3a3 3 0 0 1-3 4.3M12 13.5V17M8 21h8M9.5 17h5"/>',
+    navYou: '<path class="fl" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4.5 21a7.5 7.5 0 0 1 15 0"/>',
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    check: '<path d="M5 12l4 4 10-10"/>',
     mechanics: '<path d="M3 20h18"/><path d="M3 20C7 6 15 6 21 20" stroke-dasharray="2 2.6"/><circle cx="12" cy="9.5" r="2" fill="currentColor"/>',
     'oscillations-and-waves': '<path d="M2 12C5 3 8 3 11 12S17 21 20 12"/><path d="M20 12h2"/>',
     'thermal-physics': '<path d="M10 14V5a2 2 0 0 1 4 0v9a4 4 0 1 1-4 0z"/><path d="M12 9v6"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/>',
@@ -21,7 +31,7 @@
     'modern-physics': '<circle cx="12" cy="12" r="2.2" fill="currentColor"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(-30 12 12)"/><circle cx="20.2" cy="7.25" r="1.2" fill="currentColor"/>',
     'tools-of-the-trade': '<rect x="2" y="8" width="20" height="8" rx="1.5"/><path d="M6 8v3M10 8v4M14 8v3M18 8v4"/>',
     number: '<path d="M9 4L7 20M17 4l-2 16M4 9h17M3 15h17"/>',
-    algebra: '<text x="3.5" y="18" font-size="15" font-style="italic" font-family="Literata, Georgia, serif" fill="currentColor" stroke="none">x</text><text x="13.5" y="11" font-size="9" font-family="Literata, Georgia, serif" fill="currentColor" stroke="none">2</text>',
+    algebra: '<text x="3.5" y="18" font-size="15" font-style="italic" font-family="Source Serif 4, Georgia, serif" fill="currentColor" stroke="none">x</text><text x="13.5" y="11" font-size="9" font-family="Source Serif 4, Georgia, serif" fill="currentColor" stroke="none">2</text>',
     geometry: '<circle cx="12" cy="12" r="9"/><path d="M12 3L4.2 16.5h15.6z"/>',
     trigonometry: '<path d="M3 20h17V6z"/><path d="M8 20A5 5 0 0 0 6.86 16.82"/><path d="M17 20v-3h3"/>',
     calculus: '<path d="M3 20Q12 20 20 4"/><path d="M6 21.5L17.6 10.5"/><circle cx="11.75" cy="16" r="1.4" fill="currentColor"/>',
@@ -37,7 +47,7 @@
     chapter: '<path d="M5 3h12a2 2 0 0 1 2 2v16l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2z"/>',
     bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
     alert: '<path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5v.01"/>',
-    code: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
+    code: '<path class="fl" d="M2 4h20v16H2z"/><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/>',
     chev: '<path d="M9 5l7 7-7 7"/>'
   };
   const ico = (name, cls = '') => `<svg viewBox="0 0 24 24" class="ic ${cls}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.lesson}</svg>`;
@@ -77,10 +87,17 @@
     return null;
   }
   async function getLesson(key) { return lessonCache[key] ||= await fetchJSON(`data/lessons/${fileOf(key)}.json`); }
+  // One file per leaf holds the lesson and its problems (data/lessons/<subj>--<leaf>.json, field probs).
   async function getProblems(key) {
     if (problemCache[key]) return problemCache[key];
     const L = leafByKey(key); if (!L || !L.l.problems) return (problemCache[key] = []);
-    return (problemCache[key] = await fetchJSON(`data/problems/${fileOf(key)}.json`));
+    return (problemCache[key] = (await getLesson(key)).probs || []);
+  }
+  // Problems from a few leaves only (never the whole archive): leaves picked at random, or by today's date.
+  async function sampleProblems(n, keep = () => true, seeded = false) {
+    let x = today() * 9301 + 49297; const rnd = seeded ? () => (x = (x * 9301 + 49297) % 233280) / 233280 : Math.random;
+    const ks = liveLeaves().filter(y => y.l.problems && keep(y.l)).map(y => y.key).sort(() => rnd() - .5).slice(0, n);
+    return (await Promise.all(ks.map(getProblems))).flat();
   }
   const liveLeaves = () => TREE.subjects.flatMap(s => (s.pillars || []).flatMap(p => p.branches.flatMap(b => b.leaves.filter(l => l.live || l.problems).map(l => ({ key: `${s.id}/${l.id}`, l, s })))));
 
@@ -168,7 +185,7 @@
 
   /* Title Case for headings, card titles and labels: small words and single-letter symbols stay lowercase; maths and code untouched. */
   const SMALL = new Set(['a', 'an', 'the', 'and', 'or', 'but', 'nor', 'of', 'in', 'on', 'at', 'to', 'for', 'by', 'vs', 'via', 'as', 'with', 'from', 'into', 'per']);
-  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k';
+  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k, .lbegin h2';
   function tcWord(w, first) {
     const core = w.replace(/[^A-Za-z]/g, '');
     if (!core || /[A-Z]/.test(w)) return w;
@@ -194,7 +211,7 @@
     const h = (location.hash || '#home').slice(1);
     if (h.startsWith('lesson~')) { const [, sid, lid] = h.split('~'); return { v: 'lesson', key: `${sid}/${lid}` }; }
     if (h.startsWith('learn~')) { const [, sid, pid] = h.split('~'); return { v: 'learn', sid, pid }; }
-    return { v: ['home', 'learn', 'practice', 'play', 'review', 'lesson'].includes(h) ? h : 'home' };
+    return { v: ['home', 'learn', 'practice', 'play', 'review', 'lesson', 'progress', 'notebook'].includes(h) ? h : 'home' };
   }
   function route() {
     if (!TREE) return;
@@ -218,6 +235,7 @@
 
   /* ================= HOME ================= */
   $('today-date').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' });
+  { const hr = new Date().getHours(); $('greet').textContent = (hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening') + '. One idea today?'; }
   RENDER.home = () => {
     const live = liveLeaves().filter(x => x.l.live);
     const lastKey = PG.last && leafByKey(PG.last) && leafByKey(PG.last).l.live ? PG.last : (live[0] && live[0].key);
@@ -226,7 +244,7 @@
       const L = leafByKey(lastKey), n = L.l.problems || 0;
       const got = Object.entries(PG.problems).filter(([k, v]) => k.startsWith(lastKey + '#') && v.r === 'got').length;
       const idx = L.b.leaves.findIndex(l => l.id === L.l.id), next = L.b.leaves[idx + 1];
-      C.innerHTML = `<div class="cont s-${L.s.id}">${coverArt(L)}
+      C.innerHTML = `<div class="cont s-${L.s.id}"><span class="tile cont-tile">${ico(SUBJ_ICON[L.s.id])}</span>
         <div class="eyebrow">${PG.last ? 'Continue where you left off' : 'Start here'}</div>
         <div class="cont-path">${escHTML(L.s.name)} › ${escHTML(L.p.name)} › ${escHTML(L.b.name)}</div>
         <h2>${escHTML(L.l.name)}</h2>
@@ -243,8 +261,9 @@
     const opened = live.filter(x => PG.lessons[x.key]);
     const loops = opened.filter(x => x.l.nextq && !PG.lessons[x.l.nextq.leaf]).map(x => ({ q: x.l.nextq.q, to: x.l.nextq.leaf, from: x.l.name }));
     const tease = pick(live.filter(x => !PG.lessons[x.key] && x.l.ask), 3);
-    const loopHTML = loops.length ? loops.slice(0, 3).map(o => { const T = leafByKey(o.to), ok = T && T.l.live;
+    const loopHTML = loops.length ? loops.slice(0, 2).map(o => { const T = leafByKey(o.to), ok = T && T.l.live;
       return `<button class="loop" ${ok ? `data-open="${o.to}"` : 'disabled'}><span class="loop-q">${o.q}</span><span class="loop-f">left open by ${escHTML(o.from)} · ${ok ? 'close it →' : 'answer coming soon'}</span></button>`; }).join('')
+      + (loops.length > 2 ? `<a class="hb-link hb-more" href="#progress">+ ${loops.length - 2} more open question${loops.length > 3 ? 's' : ''}</a>` : '')
       : tease ? `<button class="loop" data-open="${tease.key}"><span class="loop-q">${tease.l.ask}</span><span class="loop-f">${escHTML(tease.l.name)} · find out →</span></button>` : '';
     const sparks = live.flatMap(x => (x.l.sparks || []).map(s2 => ({ ...s2, key: x.key, name: x.l.name })));
     const sp = pick(sparks, 11), askx = pick(live.filter(x => x.s.id !== 'eng' && x.l.ask && x.l.ask.length > 45 && /\?\s*$/.test(x.l.ask.replace(/<[^>]+>/g, '')) && (!tease || x.key !== tease.key)), 5);
@@ -252,51 +271,246 @@
     $('habits').innerHTML = `
       <div class="hb loops"><div class="hb-k">${loops.length ? 'Questions you left open' : 'A question worth chasing'}</div><p class="hb-s">${loops.length ? 'Your mind keeps unfinished questions alive. Close one today.' : 'Pick it up, and the answer is one lesson away.'}</p>${loopHTML}</div>
       <div class="hb spark">${sp ? `<div class="hb-k">Today's spark · ${escHTML(sp.t)}</div><p class="sp-t">${sp.h}</p><button class="hb-link" data-open="${sp.key}">from ${escHTML(sp.name)} →</button>` : ''}${askx ? `<div class="ask"><b>Ask someone today</b><p>${askx.l.ask}</p><button class="hb-link" data-open="${askx.key}">the answer →</button></div>` : ''}</div>
-      <div class="hb can"><div class="hb-k">You can now explain</div>${can.length ? `<ul>${can.slice(-4).reverse().map(c => `<li>${c}</li>`).join('')}</ul><p class="hb-s">${can.length} idea${can.length > 1 ? 's' : ''} you could teach a friend. That is the real measure of progress.</p>` : '<p class="hb-s">Every lesson you finish adds something here you can explain to anyone, at dinner, in an interview, to a curious kid.</p>'}</div>`;
+      <div class="hb can"><div class="hb-k">You can now explain</div>${can.length ? `<div class="hb-n">${can.length}</div><ul>${can.slice(-4).reverse().map(c => `<li>${ico('check')}<span>${c}</span></li>`).join('')}</ul><a class="hb-link hb-more" href="#progress">Ideas you could teach a friend →</a>` : '<p class="hb-s">Every lesson you finish adds something here you can explain to anyone, at dinner, in an interview, to a curious kid.</p>'}</div>`;
 
     $('live-count').textContent = `${live.length} lessons live`;
     $('subj-list').innerHTML = TREE.subjects.map(s => {
       const ls = (s.pillars || []).flatMap(leavesOf), nLive = countLive(ls), pct = Math.round(avgMastery(s.id, ls) * 100);
       return `<button class="subj-card s-${s.id} ${s.pillars ? '' : 'soon'}" data-open-subj="${s.id}">
-        <span class="sc-top"><span class="tile">${ico(SUBJ_ICON[s.id])}</span>${s.pillars ? ring(pct, 44) : ''}</span>
+        <span class="sc-top"><span class="tile">${ico(SUBJ_ICON[s.id])}</span>${s.pillars ? `<span class="sc-pc" title="Your progress">${pct}%</span>` : ''}</span>
         <span class="sc-name">${escHTML(s.name)}</span>
-        <span class="sc-sub">${s.pillars ? `${nLive} lessons written · ${ls.length} mapped` : 'Tree comes in a later phase'}</span>
-        ${s.pillars ? `<span class="sc-pils">${s.pillars.map(p => `<span title="${escHTML(p.name)}" class="${countLive(leavesOf(p)) ? 'on' : ''}">${ico(p.id)}</span>`).join('')}</span>` : ''}</button>`;
+        <span class="sc-sub">${s.pillars ? (nLive ? `${nLive} of ${ls.length} lessons` : `${ls.length} lessons mapped, coming soon`) : 'Coming soon'}</span><span class="meter" title="Your progress"><i style="width:${s.pillars ? Math.max(2, pct) : 0}%"></i></span></button>`;
     }).join('');
-    const ready = TREE.subjects.flatMap(s => (s.pillars || []).map(p => ({ s, p, ls: leavesOf(p) }))).filter(x => countLive(x.ls));
-    $('ready').innerHTML = ready.map(({ s, p, ls }) => { const m = Math.round(avgMastery(s.id, ls) * 100);
-      return `<button class="ready-row s-${s.id}" data-ready="${s.id}~${p.id}"><span class="tile sm">${ico(p.id)}</span>
-        <span class="rr-t"><b>${escHTML(p.name)}</b><span>${escHTML(s.name)} · ${countLive(ls)} of ${ls.length} lessons · ${p.branches.length} branches</span></span>
-        <span class="rr-m"><span class="meter"><i style="width:${m}%"></i></span>${m}%</span>${ico('chev', 'chev')}</button>`; }).join('');
   };
   $('continue').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openLesson(b.dataset.open, b.dataset.tab || 'learn'); });
   $('subj-list').addEventListener('click', e => { const b = e.target.closest('[data-open-subj]'); if (b) go('learn~' + b.dataset.openSubj); });
   $('habits').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openLesson(b.dataset.open); });
-  $('ready').addEventListener('click', e => { const b = e.target.closest('[data-ready]'); if (b) go('learn~' + b.dataset.ready); });
 
-  /* ---------- search ---------- */
-  const GROUPS = ['Lessons', 'Topics', 'Problems', 'NCERT chapters'];
-  const SUGGEST = ['focal length', 'power of a lens', 'mirage', 'critical angle', 'mirror formula', 'Fermat', 'projectile', 'quadratic'];
-  $('suggest').insertAdjacentHTML('beforeend', SUGGEST.map(t => `<button data-sug="${escHTML(t)}">${t}</button>`).join(''));
-  $('suggest').addEventListener('click', e => { const b = e.target.closest('[data-sug]'); if (b) { $('q').value = b.dataset.sug; runSearch(); $('q').focus(); } });
-  const hl = (t, q) => { const i = t.toLowerCase().indexOf(q); return i < 0 ? escHTML(t) : escHTML(t.slice(0, i)) + '<mark>' + escHTML(t.slice(i, i + q.length)) + '</mark>' + escHTML(t.slice(i + q.length)); };
-  let HITS = [];
-  function runSearch() {
-    const raw = $('q').value.trim(), q = raw.toLowerCase(), r = $('results');
-    if (q.length < 2) { r.hidden = true; HITS = []; return; }
-    const words = q.split(/\s+/);
-    const scored = SEARCH.map(x => {
-      const t = x.title.toLowerCase(), all = (x.title + ' ' + x.path + ' ' + x.text).toLowerCase();
-      if (!words.every(w => all.includes(w))) return null;
-      return { x, s: (t.includes(q) ? 10 : 0) + (t.startsWith(q) ? 5 : 0) + words.filter(w => t.includes(w)).length * 2 + (x.g === 'Lessons' ? 1 : 0) };
-    }).filter(Boolean).sort((a, b) => b.s - a.s);
-    HITS = [];
-    const html = GROUPS.map(g => { const list = scored.filter(h => h.x.g === g).slice(0, g === 'Topics' ? 6 : 5); if (!list.length) return '';
-      return `<div class="sgroup"><h4>${g}</h4>${list.map(h => { HITS.push(h.x); const iconName = h.x.icon || SUBJ_ICON[h.x.c];
-        return `<button class="shit s-${h.x.c}" data-hit="${HITS.length - 1}"><span class="tile sm">${ico(iconName)}</span><span style="min-width:0"><span class="t">${hl(h.x.title, q)}</span><span class="p">${escHTML(h.x.path)}</span></span><span class="src">open →</span></button>`; }).join('')}</div>`; }).join('');
-    r.hidden = false;
-    r.innerHTML = html || `<div class="sempty">Nothing matches “${escHTML(raw)}” yet. The archive grows chapter by chapter; try a broader word such as “light” or “motion”.</div>`;
+  /* ================= PROGRESS ================= */
+  const SUBJ_ORDER = ['phy', 'mat', 'chem', 'eng', 'cs', 'bio'];   // colour-blind-checked adjacency
+  const RANKS = [[15, 'Polymath'], [10, 'Scholar'], [6, 'Adept'], [3, 'Apprentice'], [1, 'Curious']];
+  const XP_LVL = { ncert: 10, found: 10, board: 15, main: 20, adv: 30, oly: 50 };
+  const lvlOfId = id => /^ncert/.test(id) ? 'ncert' : ({ f: 'found', b: 'board', m: 'main', a: 'adv', o: 'oly' })[id[0]] || 'ncert';
+  const dayOf = ts => Math.floor((ts || 0) / 86400000);
+  const xpNeed = n => 50 * n * (n - 1);
+  function stats() {
+    const live = liveLeaves().filter(x => x.l.live);
+    const opened = live.filter(x => PG.lessons[x.key]).map(x => ({ ...x, ts: PG.lessons[x.key].opened || PG.updated || Date.now() }));
+    const probs = Object.entries(PG.problems).map(([k, v]) => ({ key: k.split('#')[0], id: k.split('#')[1] || '', ...v }));
+    const got = probs.filter(p => p.r === 'got');
+    const notes = Object.entries(PG.notes || {}).filter(([, t]) => t && t.trim());
+    const seen = Object.values(PG.cards).reduce((a, c) => a + (c.seen || 0), 0);
+    const xpOf = (lsn, gp, sh) => lsn.length * 10 + gp.reduce((a, p) => a + XP_LVL[lvlOfId(p.id)], 0) + sh.length * 4;
+    const shaky = probs.filter(p => p.r === 'shaky');
+    const xp = xpOf(opened, got, shaky) + seen * 2 + notes.length * 15;
+    let level = 1; while (xpNeed(level + 1) <= xp) level++;
+    const rank = RANKS.find(([n]) => level >= n)[1];
+    const days = [...Object.keys(PG.days || {}).map(Number), ...opened.map(x => dayOf(x.ts)), ...probs.map(p => dayOf(p.at))].filter(Boolean);
+    const start = days.length ? Math.min(...days) : today();
+    const byDay1 = arr => arr.filter(x => dayOf(x.ts || x.at) <= start);
+    const subjects = a => new Set(a.map(x => (x.s ? x.s.id : x.key.split('/')[0]))).size;
+    const allLeaves = TREE.subjects.reduce((a, s2) => a + (s2.pillars || []).reduce((b, p) => b + leavesOf(p).length, 0), 0);
+    const wk = today() - ((new Date().getDay() + 6) % 7);
+    const weekXp = xpOf(opened.filter(x => dayOf(x.ts) >= wk), got.filter(p => dayOf(p.at) >= wk), shaky.filter(p => dayOf(p.at) >= wk));
+    return { live, opened, got, notes, seen, xp, level, rank, start, byDay1, subjects, allLeaves, weekXp };
   }
+  function starXY(key, sid) {
+    const C = { phy: [70, 62], mat: [62, 150], chem: [130, 108], eng: [195, 52], cs: [192, 146], bio: [128, 172] }[sid] || [130, 100];
+    let h = 2166136261; for (const ch of key) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
+    const a = ((h >>> 0) % 6283) / 1000, r = 8 + ((h >>> 12) % 34);
+    return [C[0] + Math.cos(a) * r * 1.25, C[1] + Math.sin(a) * r * .85];
+  }
+  function sky(live, litSet, label) {
+    const by = {}; live.forEach(x => (by[x.s.id] ||= []).push(x));
+    let lines = '', dots = '';
+    Object.entries(by).forEach(([sid, arr]) => {
+      let prev = null;
+      arr.forEach((x, i) => { const [cx, cy] = starXY(x.key, sid), lit = litSet.has(x.key);
+        if (lit && prev && i % 3) lines += `<line x1="${prev[0].toFixed(1)}" y1="${prev[1].toFixed(1)}" x2="${cx.toFixed(1)}" y2="${cy.toFixed(1)}" stroke="var(--${sid})" stroke-opacity=".5"/>`;
+        if (lit) prev = [cx, cy];
+        dots += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${lit ? 2.4 : 1.1}" fill="${lit ? `var(--${sid})` : '#ECEEF8'}" fill-opacity="${lit ? 1 : .22}"/>`; });
+    });
+    return `<svg viewBox="0 0 260 200" role="img" aria-label="${label}"><rect width="260" height="200" rx="14" fill="#11142A"/>${lines}${dots}</svg>`;
+  }
+  RENDER.progress = () => {
+    const st = stats(), live = st.live;
+    const cur = xpNeed(st.level), nxt = xpNeed(st.level + 1), frac = (st.xp - cur) / (nxt - cur);
+    const C = 2 * Math.PI * 52;
+    const nextRank = (RANKS.slice().reverse().find(([n]) => n > st.level) || [null, null])[1];
+    const d1 = { o: st.byDay1(st.opened), g: st.byDay1(st.got) };
+    const pctLit = n => Math.round(n / st.allLeaves * 100);
+    const tn = [
+      ['Ideas you can explain', d1.o.length, st.opened.length],
+      ['Problems solved', d1.g.length, st.got.length],
+      ['Subjects explored', st.subjects(d1.o), st.subjects(st.opened)],
+      ['Knowledge tree lit', pctLit(d1.o.length) + '%', pctLit(litLeaves() || st.opened.length) + '%']];
+    const daysIn = today() - st.start + 1;
+    // radar
+    const R = 100, pt = (i, v) => { const a = (-90 + i * 60) * Math.PI / 180; return `${(Math.cos(a) * R * v).toFixed(1)},${(Math.sin(a) * R * v).toFixed(1)}`; };
+    const share = (sid, arr) => { const n = live.filter(x => x.s.id === sid).length; return n ? arr.filter(x => x.s.id === sid).length / n : 0; };
+    const poly = arr => SUBJ_ORDER.map((sid, i) => pt(i, Math.max(share(sid, arr), .03))).join(' ');
+    const rings = [.25, .5, .75, 1].map(f => `<polygon points="${SUBJ_ORDER.map((_, i) => pt(i, f)).join(' ')}" fill="none" stroke="var(--rule)"/>`).join('');
+    const axes = SUBJ_ORDER.map((sid, i) => { const [x, y] = pt(i, 1).split(','), [lx, ly] = pt(i, 1.22).split(','); return `<line x1="0" y1="0" x2="${x}" y2="${y}" stroke="var(--rule)"/><text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle">${({ phy: 'Physics', mat: 'Maths', chem: 'Chemistry', eng: 'English', cs: 'Computing', bio: 'Biology' })[sid]}</text>`; }).join('');
+    // weekly chart
+    const weeks = Math.max(2, Math.min(8, Math.ceil(daysIn / 7)));
+    const vals = Array.from({ length: weeks }, (_, i) => { const end = today() - (weeks - 1 - i) * 7; return st.opened.filter(x => dayOf(x.ts) <= end).length; });
+    const top = Math.max(4, ...vals), X = i => 50 + i * (580 / (weeks - 1)), Y = v => 160 - v / top * 140;
+    const line = vals.map((v, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join(' ');
+    const ticks = [0, Math.round(top / 2), top].map(v => `<line x1="40" x2="636" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" stroke="var(--rule)"/><text x="32" y="${Y(v).toFixed(1)}" text-anchor="end" dominant-baseline="middle">${v}</text>`).join('');
+    const wl = vals.map((_, i) => `<text x="${X(i).toFixed(1)}" y="184" text-anchor="middle">${i === weeks - 1 ? 'now' : 'W' + (i + 1)}</text>`).join('');
+    // open questions
+    const loops = st.opened.filter(x => x.l.nextq && !PG.lessons[x.l.nextq.leaf]).map(x => ({ q: x.l.nextq.q, to: x.l.nextq.leaf, from: x.l.name }));
+    // badges
+    const subjN = st.subjects(st.opened), olyGot = st.got.some(p => lvlOfId(p.id) === 'oly'), advGot = st.got.some(p => lvlOfId(p.id) === 'adv');
+    const pillarDone = TREE.subjects.some(s2 => (s2.pillars || []).some(p => { const ls = leavesOf(p).filter(l => l.live); return ls.length >= 5 && ls.every(l => PG.lessons[`${s2.id}/${l.id}`]); }));
+    const B = (name, how, icon, sid, ok, prog) => ({ name, how, icon, sid, ok, prog });
+    const badges = [
+      B('First step', 'Open your first lesson', 'navLearn', 'phy', st.opened.length >= 1, `${Math.min(st.opened.length, 1)}/1`),
+      B('First principles', 'Finish 10 lessons', 'logo', 'phy', st.opened.length >= 10, `${Math.min(st.opened.length, 10)}/10`),
+      B('Problem solver', 'Solve 25 problems', 'navPractice', 'mat', st.got.length >= 25, `${Math.min(st.got.length, 25)}/25`),
+      B('Century', 'Solve 100 problems', 'navPractice', 'mat', st.got.length >= 100, `${Math.min(st.got.length, 100)}/100`),
+      B('In your own words', 'Write 5 notes', 'navNotebook', 'eng', st.notes.length >= 5, `${Math.min(st.notes.length, 5)}/5`),
+      B('Memory keeper', 'Recall 50 cards', 'navReview', 'cs', st.seen >= 50, `${Math.min(st.seen, 50)}/50`),
+      B('Pillar complete', 'Open every lesson of one pillar', 'navProgress', 'chem', pillarDone, pillarDone ? 'done' : 'not yet'),
+      B('Teacher', 'Explain 50 ideas', 'navYou', 'bio', st.opened.length >= 50, `${Math.min(st.opened.length, 50)}/50`),
+      B('Polymath', 'Lessons in 4 subjects', 'atom', 'eng', subjN >= 4, `${Math.min(subjN, 4)}/4`),
+      B('Deep end', 'Solve a JEE Advanced or SDE-2 problem', 'flask', 'chem', advGot, advGot ? 'done' : '0/1'),
+      B('Olympian', 'Solve an Olympiad or system-design problem', 'navProgress', 'cs', olyGot, olyGot ? 'done' : '0/1'),
+      B('Note master', 'Write 25 notes', 'navNotebook', 'bio', st.notes.length >= 25, `${Math.min(st.notes.length, 25)}/25`)];
+    const earned = badges.filter(b => b.ok).length;
+    $('prog').innerHTML = `
+      <div class="pg-head"><div><div class="eyebrow">Progress · ${daysIn} day${daysIn > 1 ? 's' : ''} since you started</div><h1 class="h1">Look how far you have come</h1></div>
+        <a class="btn ghost phone-only" href="#notebook">${ico('navNotebook')}Notebook</a></div>
+      <div class="pg-row r3">
+        <div class="pg-level"><div class="pg-ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="10"/><circle cx="60" cy="60" r="52" fill="none" stroke="#9D8BFF" stroke-width="10" stroke-linecap="round" stroke-dasharray="${(C * Math.max(.02, frac)).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 60 60)"/></svg><div><b>${st.level}</b><small>LEVEL</small></div></div>
+          <div class="pg-lv-t"><b>${st.rank}</b><span>${st.xp.toLocaleString('en-IN')} / ${nxt.toLocaleString('en-IN')} XP to level ${st.level + 1}${nextRank ? ` · next title: ${nextRank}` : ''}</span><small>XP comes from lessons, problems solved (more for harder levels), cards recalled and notes written. Never from time spent.</small></div></div>
+        <div class="panel pg-then span2"><div class="pg-h"><h2>You on day 1 → you today</h2></div>
+          <div class="pg-tn">${tn.map(([k, a, b]) => `<div><span>${k}</span><b>${b}</b><small>was ${a} on day 1</small></div>`).join('')}</div></div>
+      </div>
+      <div class="pg-row r2">
+        <div class="pg-sky"><div class="pg-h"><h2>Your sky of ideas</h2><span>each star is a lesson; it lights up once you study it</span></div>
+          <div class="pg-skies"><figure>${sky(live, new Set(d1.o.map(x => x.key)), 'Day 1')}<figcaption>Day 1 · ${d1.o.length} star${d1.o.length === 1 ? '' : 's'}</figcaption></figure><figure>${sky(live, new Set(st.opened.map(x => x.key)), 'Today')}<figcaption>Today · ${st.opened.length} of ${live.length} stars</figcaption></figure></div>
+          <div class="pg-key">${SUBJ_ORDER.filter(sid => live.some(x => x.s.id === sid)).map(sid => `<span><i style="background:var(--${sid})"></i>${escHTML(subjOf(sid).name)}</span>`).join('')}</div></div>
+        <div class="panel"><div class="pg-h"><h2>Your shape, then and now</h2><span>share of each subject's lessons studied</span></div>
+          <div class="pg-radar"><svg viewBox="-150 -132 300 264" role="img" aria-label="Radar chart of subjects studied, day 1 compared with today">${rings}${axes}<polygon points="${poly(st.opened)}" fill="var(--accent)" fill-opacity=".16" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/><polygon points="${poly(d1.o)}" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 3"/></svg>
+          <div class="pg-legend"><span><i class="dash"></i>Day 1</span><span><i class="fill"></i>Today</span></div></div></div>
+      </div>
+      <div class="pg-row r3">
+        <div class="panel span2"><div class="pg-h"><h2>Ideas you can explain, week by week</h2><span>${st.opened.length} total</span></div>
+          <svg class="pg-line" viewBox="0 0 650 194" role="img" aria-label="Line chart of lessons studied over the last ${weeks} weeks">${ticks}${wl}<path d="${line} L${X(weeks - 1).toFixed(1)} 160 L${X(0)} 160 Z" fill="var(--accent)" fill-opacity=".1"/><path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${X(weeks - 1).toFixed(1)}" cy="${Y(vals[weeks - 1]).toFixed(1)}" r="5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></svg></div>
+        <div class="panel pg-league"><div class="pg-h"><h2>Weekly league</h2><span class="pill">this week</span></div>
+          <div class="lg-row me"><span>1</span><i>You</i><b>You</b><em>${st.weekXp} XP</em></div>
+          <p class="hb-s">Your league fills up when you share Polymath with friends: everyone's XP this week, ranked, reset every Monday. XP counts understanding, never hours online.</p></div>
+      </div>
+      ${loops.length ? `<div class="panel pg-loops"><div class="pg-h"><h2>Questions you left open</h2><span>${loops.length}</span></div><div class="pg-lq">${loops.map(o => { const T = leafByKey(o.to), ok = T && T.l.live; return `<button class="loop" ${ok ? `data-open="${o.to}"` : 'disabled'}><span class="loop-q">${o.q}</span><span class="loop-f">left open by ${escHTML(o.from)} · ${ok ? 'close it →' : 'answer coming soon'}</span></button>`; }).join('')}</div></div>` : ''}
+      <div class="panel pg-badges"><div class="pg-h"><h2>Badges</h2><span>${earned} of ${badges.length} earned</span></div>
+        <div class="bd-grid">${badges.map(b => `<div class="bd ${b.ok ? 'ok s-' + b.sid : ''}"><span class="bd-i">${ico(b.ok ? b.icon : 'lock')}</span><b>${b.name}</b><span>${b.how}</span><small>${b.ok ? 'earned' : b.prog}</small></div>`).join('')}</div></div>`;
+  };
+  $('prog').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openLesson(b.dataset.open); });
+
+  /* ================= NOTEBOOK ================= */
+  RENDER.notebook = () => {
+    const live = liveLeaves().filter(x => x.l.live);
+    const notes = Object.entries(PG.notes || {}).filter(([k, t]) => t && t.trim() && leafByKey(k)).sort((a, b) => (PG.lessons[b[0]] || {}).opened - (PG.lessons[a[0]] || {}).opened);
+    const todo = live.filter(x => PG.lessons[x.key] && !(PG.notes || {})[x.key]).slice(0, 6);
+    $('nb').innerHTML = `
+      <div class="head"><div class="eyebrow">Notebook</div><h1 class="h1">In your own words</h1><p class="lede">Explaining an idea yourself is the surest test that you understand it. Everything you write in a lesson's "My notes" tab collects here.</p></div>
+      ${notes.length ? `<div class="nb-list">${notes.map(([k, t]) => { const L = leafByKey(k); return `<div class="nb-card s-${L.s.id}"><div class="nb-h"><span class="tile sm">${ico(SUBJ_ICON[L.s.id])}</span><div><b>${escHTML(L.l.name)}</b><span>${escHTML(L.s.name)} › ${escHTML(L.p.name)}</span></div><button class="btn quiet" data-open="${k}">Open lesson</button></div><textarea data-note="${k}" aria-label="Your note on ${escHTML(L.l.name)}">${escHTML(t)}</textarea></div>`; }).join('')}</div>`
+        : `<div class="panel empty-card">${ico('navNotebook')}<p>No notes yet. Open any lesson, switch to its <b>My notes</b> tab, and explain the idea as if to a friend.</p></div>`}
+      ${todo.length ? `<div class="sec-title">Explain one of these next</div><div class="nb-todo">${todo.map(x => `<button class="nb-t s-${x.s.id}" data-notes="${x.key}"><span class="tile sm">${ico(SUBJ_ICON[x.s.id])}</span><span>${escHTML(x.l.name)}</span>${ico('chev', 'chev')}</button>`).join('')}</div>` : ''}`;
+  };
+  let nbT; $('nb').addEventListener('input', e => { const t = e.target.closest('[data-note]'); if (!t) return; clearTimeout(nbT); nbT = setTimeout(() => { PG.notes[t.dataset.note] = t.value; touch(); }, 700); });
+  $('nb').addEventListener('click', e => { const b = e.target.closest('[data-open],[data-notes]'); if (!b) return; if (b.dataset.notes) openLesson(b.dataset.notes, 'notes'); else openLesson(b.dataset.open); });
+
+  /* ---------- search: a command palette (Ctrl/⌘ K, "/", or any search button), fuzzy over everything ---------- */
+  let searchP = null, TOK = null;
+  const tokens = t => t.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').split(/[^a-z0-9]+/).filter(w => w.length > 1);
+  function loadSearch() {
+    return searchP ||= fetchJSON('data/search.json').then(list => {
+      SEARCH = list; TOK = new Map();
+      list.forEach((x, i) => { x.lt = x.t.toLowerCase(); x.la = (x.t + ' ' + x.p + ' ' + x.x).toLowerCase();
+        for (const w of new Set(tokens(x.t + ' ' + x.p + ' ' + x.x))) { let a = TOK.get(w); if (!a) TOK.set(w, a = []); a.push(i); } });
+      if (!$('cmdk').hidden) paletteRender();
+    }).catch(() => { searchP = null; });
+  }
+  function near(a, b, k) { // edit distance ≤ k (small k, short words)
+    if (Math.abs(a.length - b.length) > k) return false;
+    let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) { const cur = [i]; let best = i;
+      for (let j = 1; j <= b.length; j++) { cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); best = Math.min(best, cur[j]); }
+      if (best > k) return false; prev = cur; }
+    return prev[b.length] <= k;
+  }
+  // Entries matching one query word: any token that contains it, starts with it, or is one or two typos away.
+  function wordHits(w) {
+    const out = new Set(), k = w.length >= 7 ? 2 : w.length >= 4 ? 1 : 0;
+    for (const [t, ids] of TOK) if (t.includes(w) || (k && t.length >= 3 && near(w, t.length > w.length + k ? t.slice(0, w.length + k) : t, k))) ids.forEach(i => out.add(i));
+    return out;
+  }
+  function subseq(q, t) { // fzf-style: every letter of q in order; bonus for runs and word starts
+    let j = 0, sc = 0, run = 0;
+    for (let i = 0; i < t.length && j < q.length; i++) if (t[i] === q[j]) { run++; sc += 1 + run + (i === 0 || /[^a-z0-9]/.test(t[i - 1]) ? 3 : 0); j++; } else run = 0;
+    return j === q.length ? sc : 0;
+  }
+  const PAGES = [['Home', 'home', 'navHome'], ['Learn', 'learn', 'navLearn'], ['Practice', 'practice', 'navPractice'], ['Review', 'review', 'navReview'], ['Notebook', 'notebook', 'navNotebook'], ['Progress', 'progress', 'navProgress']];
+  function commands() {
+    const cmds = PAGES.map(([t, v, i]) => ({ g: 'Go to', t, p: 'Page', i, run: () => go(v) }));
+    cmds.push({ g: 'Go to', t: "Today's problem set", p: 'Practice · mixed topics and levels', i: 'shuffle', run: async () => startSet(dailySet(await sampleProblems(8, undefined, true)), "Today's mixed set", 0) });
+    cmds.push({ g: 'Go to', t: 'Browse NCERT books by class', p: 'Learn · class view', i: 'chapter', run: () => { S.mode = 'class'; go('learn'); } });
+    TREE.subjects.forEach(sj => cmds.push({ g: 'Go to', t: sj.name, p: 'Subject', i: SUBJ_ICON[sj.id], c: sj.id, run: () => { S.mode = 'subject'; go('learn~' + sj.id); } }));
+    return cmds;
+  }
+  let HITS = [], ACT = 0;
+  const hlw = (t, ws) => { let h = escHTML(t); ws.filter(w => w.length > 1).sort((a, b) => b.length - a.length).forEach(w => { h = h.replace(new RegExp('(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')(?![^<]*>)', 'ig'), '<mark>$1</mark>'); }); return h; };
+  function paletteResults(raw) {
+    const q = raw.trim().toLowerCase(), ws = tokens(q), groups = [];
+    const cmds = commands();
+    if (!q) {
+      const recent = Object.entries(PG.lessons).sort((a, b) => (b[1].opened || 0) - (a[1].opened || 0)).map(([k]) => k).filter(k => leafByKey(k) && leafByKey(k).l.live);
+      if (PG.last && leafByKey(PG.last)) recent.unshift(PG.last);
+      const rec = [...new Set(recent)].slice(0, 4).map(k => { const L = leafByKey(k); return { g: 'Recent lessons', t: L.l.name, p: `${L.s.name} › ${L.p.name}`, i: 'lesson', c: L.s.id, run: () => openLesson(k) }; });
+      if (rec.length) groups.push(['Recent lessons', rec]);
+      groups.push(['Go to', cmds]);
+      return groups;
+    }
+    const scoreCmd = c => { const t = c.t.toLowerCase(); return t.startsWith(q) ? 90 : t.includes(q) ? 70 : subseq(q.replace(/\s+/g, ''), t); };
+    const cm = cmds.map(c => [c, scoreCmd(c)]).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([c]) => c);
+    if (cm.length) groups.push(['Go to', cm]);
+    if (!TOK) { groups.push(['Searching', [{ g: '', t: 'Loading the search index…', p: 'One moment', i: 'search', run: () => {} }]]); return groups; }
+    let ids = null;
+    for (const w of ws.length ? ws : [q]) { const h = wordHits(w); ids = ids ? new Set([...ids].filter(i => h.has(i))) : h; if (!ids.size) break; }
+    let cand = [...(ids || [])];
+    if (!cand.length && q.replace(/\s+/g, '').length >= 3) { const qq = q.replace(/\s+/g, ''); cand = SEARCH.map((x, i) => i).filter(i => subseq(qq, SEARCH[i].lt) > qq.length * 2); }
+    const scored = cand.map(i => { const x = SEARCH[i], t = x.lt;
+      let sc = (t === q ? 120 : 0) + (t.startsWith(q) ? 60 : 0) + (t.includes(q) ? 40 : 0);
+      ws.forEach(w => { if (new RegExp('\\b' + w.replace(/[^a-z0-9]/g, '')).test(t)) sc += 14; else if (t.includes(w)) sc += 8; else if (x.la.includes(w)) sc += 3; });
+      sc += Math.min(12, subseq(q.replace(/\s+/g, ''), t) / 4) + (x.g === 'Lessons' && !x.go.section ? 10 : 0) - x.t.length / 60;
+      return { x, sc }; }).sort((a, b) => b.sc - a.sc);
+    const ORDER = [['Lessons', x => x.g === 'Lessons' && !x.go.section, 6], ['Inside lessons', x => x.g === 'Lessons' && x.go.section, 5], ['Topics', x => x.g === 'Topics', 5], ['NCERT chapters', x => x.g === 'NCERT chapters', 4], ['Problems', x => x.g === 'Problems', 5]];
+    ORDER.forEach(([name, f, n]) => { const list = scored.filter(h => f(h.x)).slice(0, n).map(h => ({ t: h.x.t, p: h.x.p, x: h.x.go.section ? h.x.x : '', i: h.x.i || SUBJ_ICON[h.x.c], c: h.x.c, run: () => goHit(h.x) })); if (list.length) groups.push([name, list]); });
+    return groups;
+  }
+  function paletteRender() {
+    const raw = $('cmdk-q').value, groups = paletteResults(raw), ws = tokens(raw);
+    HITS = groups.flatMap(([, l]) => l); ACT = Math.min(ACT, Math.max(0, HITS.length - 1));
+    let n = 0;
+    $('cmdk-list').innerHTML = groups.map(([g, l]) => `<div class="ck-g"><div class="ck-h">${escHTML(g)}</div>${l.map(h => { const k = n++;
+      return `<button class="ck-i${h.c ? ' s-' + h.c : ''}" role="option" id="ck-${k}" data-ck="${k}" aria-selected="${k === ACT}"><span class="tile sm">${ico(h.i || 'search')}</span><span class="ck-t"><b>${hlw(h.t, ws)}</b><small>${escHTML(h.p || '')}${h.x ? ' · ' + hlw(h.x, ws) : ''}</small></span><span class="ck-go">↵</span></button>`; }).join('')}</div>`).join('')
+      || `<div class="ck-empty">Nothing matches “${escHTML(raw)}”. Try another word, or fewer words.</div>`;
+    $('cmdk-q').setAttribute('aria-activedescendant', HITS.length ? 'ck-' + ACT : '');
+  }
+  function paletteMove(d) { if (!HITS.length) return; ACT = (ACT + d + HITS.length) % HITS.length;
+    $('cmdk-list').querySelectorAll('[data-ck]').forEach(b => b.setAttribute('aria-selected', +b.dataset.ck === ACT));
+    const el = $('ck-' + ACT); if (el) el.scrollIntoView({ block: 'nearest' }); $('cmdk-q').setAttribute('aria-activedescendant', 'ck-' + ACT); }
+  let lastFocus = null;
+  function openPalette(q = '') {
+    if (!TREE) return; loadSearch();
+    const box = $('cmdk'); if (box.hidden) lastFocus = document.activeElement;
+    box.hidden = false; document.documentElement.classList.add('ck-open');
+    $('cmdk-q').value = q; ACT = 0; paletteRender(); $('cmdk-q').focus();
+  }
+  function closePalette() { $('cmdk').hidden = true; document.documentElement.classList.remove('ck-open'); if (lastFocus && lastFocus.focus && lastFocus !== $('q')) lastFocus.focus(); }
+  function runHit(h) { if (!h) return; closePalette(); h.run(); }
   async function goHit(x) {
     const g = x.go;
     if (g.problem) { const ps = await getProblems(g.problem); return startSet(ps, leafByKey(g.problem).l.name, g.index); }
@@ -306,12 +520,23 @@
     if (pl && g.branch != null) S.focusBranch = 'br-' + pl.branches[g.branch].id;
     S.mode = 'subject'; go('learn~' + g.subj + (pl ? '~' + pl.id : ''));
   }
-  $('q').addEventListener('input', runSearch);
-  $('q').addEventListener('keydown', e => { if (e.key === 'Enter' && HITS[0]) { e.preventDefault(); goHit(HITS[0]); } if (e.key === 'Escape') { $('q').value = ''; runSearch(); } });
-  $('results').addEventListener('click', e => { const b = e.target.closest('[data-hit]'); if (b) goHit(HITS[+b.dataset.hit]); });
+  let ckT; $('cmdk-q').addEventListener('input', () => { ACT = 0; cancelAnimationFrame(ckT); ckT = requestAnimationFrame(paletteRender); });
+  $('cmdk-q').addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); paletteMove(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); paletteMove(-1); }
+    else if (e.key === 'Enter') { e.preventDefault(); runHit(HITS[ACT]); }
+    else if (e.key === 'Escape') { e.preventDefault(); closePalette(); }
+    else if (e.key === 'Tab') { e.preventDefault(); paletteMove(e.shiftKey ? -1 : 1); }
+  });
+  $('cmdk').addEventListener('click', e => { const b = e.target.closest('[data-ck]'); if (b) return runHit(HITS[+b.dataset.ck]); if (e.target.closest('[data-ck-close]')) closePalette(); });
+  $('cmdk-list').addEventListener('mousemove', e => { const b = e.target.closest('[data-ck]'); if (b && +b.dataset.ck !== ACT) { ACT = +b.dataset.ck; $('cmdk-list').querySelectorAll('[data-ck]').forEach(x => x.setAttribute('aria-selected', x === b)); } });
+  document.addEventListener('click', e => { if (e.target.closest('[data-search]')) { e.preventDefault(); openPalette(); } });
+  $('q').addEventListener('focus', () => { const v = $('q').value; $('q').blur(); openPalette(v); });
+  const IS_MAC = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+  document.querySelectorAll('[data-kbd]').forEach(k => k.textContent = IS_MAC ? '⌘K' : 'Ctrl K');
   document.addEventListener('keydown', e => {
-    if (e.key !== '/' || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
-    e.preventDefault(); if (parseHash().v !== 'home') go('home'); setTimeout(() => $('q').focus(), 0);
+    if ((e.metaKey || e.ctrlKey) && !e.altKey && e.key.toLowerCase() === 'k') { e.preventDefault(); return $('cmdk').hidden ? openPalette() : closePalette(); }
+    if (e.key === '/' && $('cmdk').hidden && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && !document.activeElement.isContentEditable) { e.preventDefault(); openPalette(); }
   });
 
   /* ================= LEARN ================= */
@@ -458,18 +683,6 @@
 
   /* ================= LESSON ================= */
   /* Decorative header art, chosen by branch; classes ln / ray / m2 are styled in app.css (.cover-art). */
-  const ART = {
-    optics: '<rect class="m2" x="0" y="80" width="300" height="80"/><line class="ln" x1="0" y1="80" x2="300" y2="80"/><polyline class="ray" points="40,0 150,80 200,160"/><line class="ln" x1="77" y1="0" x2="51" y2="35"/><line class="ln" x1="101" y1="18" x2="75" y2="53"/><line class="ln" x1="125" y1="35" x2="100" y2="71"/><line class="ln" x1="181" y1="85" x2="140" y2="109"/><line class="ln" x1="191" y1="102" x2="151" y2="126"/>',
-    electrostatics: '<circle class="m2" cx="170" cy="80" r="16"/><path class="ray" d="M186 80H300M182 91L262 150M170 96V160M158 91L78 150M154 80H40M158 69L78 10M170 64V0M182 69L262 10"/><path class="ln" d="M96 140L112 126M230 126L246 140M246 20L230 34M112 34L96 20"/><path class="ray" d="M164 80h12M170 74v12"/>',
-    'current-electricity': '<rect class="m2" x="40" y="30" width="220" height="100" rx="6"/><path class="ray" d="M40 80V30H100L108 18L124 42L140 18L156 42L172 18L180 30H260V80"/><path class="ln" d="M260 80V130H170M130 130H40V80"/><path class="ray" d="M150 112V148M170 120V140"/><path class="ln" d="M150 130H130M170 130H170"/>',
-    magnetism: '<circle class="m2" cx="190" cy="80" r="10"/><circle class="ln" cx="190" cy="80" r="30"/><circle class="ln" cx="190" cy="80" r="52"/><circle class="ln" cx="190" cy="80" r="74"/><path class="ray" d="M190 50A30 30 0 0 1 220 80M190 28A52 52 0 0 1 242 80M190 6A74 74 0 0 1 264 80"/><circle class="ray" cx="190" cy="80" r="3"/>',
-    'induction-and-ac': '<path class="ln" d="M0 80H300"/><path class="ray" d="M0 80C25 10 50 10 75 80S125 150 150 80S200 10 225 80S275 150 300 80"/><path class="ln" d="M60 130H240M232 124L240 130L232 136"/><rect class="m2" x="226" y="14" width="46" height="34" rx="4"/>',
-    _: '<path class="ln" d="M0 40H300M0 80H300M0 120H300M60 0V160M120 0V160M180 0V160M240 0V160"/><circle class="m2" cx="180" cy="80" r="24"/>'
-  };
-  function coverArt(L) {
-    const art = ART[L && L.b && L.b.id] || (L && L.p && ART[L.p.id]) || ART._;
-    return `<svg class="cover-art" viewBox="0 0 300 160" aria-hidden="true">${art}</svg>`;
-  }
   RENDER.lesson = async () => {
     const key = S.lessonKey, root = $('lesson-root');
     const L = leafByKey(key);
@@ -492,6 +705,65 @@
   };
   const ENG_DEPTH = [[1, 'Foundation'], [2, 'Class 10 board'], [3, 'Beyond the board']];
   const CS_DEPTH = [[1, 'Foundations'], [2, 'SDE-1'], [3, 'SDE-2'], [4, 'SDE-3']];
+  /* Icons for "In real life" items, picked per item in content/life-icons.yaml. Compact form, segments split by '|':
+     "c cx cy r" circle, "r x y w h rx" rect, "e cx cy rx ry deg" ellipse, anything else is a path. */
+  const LIFE_ICONS = {
+    phone: 'r 6 2 12 20 2|M11 18h2', laptop: 'r 4 5 16 11 1.5|M2 19h20', tv: 'r 3 4 18 12 1.5|M8 20h8M12 16v4',
+    wifi: 'M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0|c 12 19.5 1', tower: 'M5 4a10 10 0 0 0 0 12M19 4a10 10 0 0 1 0 12M8 7a5 5 0 0 0 0 6M16 7a5 5 0 0 1 0 6M12 12v10|c 12 10 1.5',
+    camera: 'M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z|c 12 13 4', mic: 'r 9 2 6 12 3|M5 11a7 7 0 0 0 14 0M12 18v4',
+    speaker: 'M4 9h4l5-4v14l-5-4H4zM16 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12', music: 'M9 18V5l11-2v13|c 6.5 18 2.5|c 17.5 16 2.5',
+    game: 'r 2 7 20 11 5|M7 10.5v4M5 12.5h4|c 15.5 11.5 1|c 17.5 14 1', film: 'r 3 5 18 14 2|M7 5v14M17 5v14M3 9.5h4M3 14.5h4M17 9.5h4M17 14.5h4',
+    car: 'M3 16H2v-3.5L5 11l2.5-4h8l3.5 4 3 1.5V16h-1M9 16h6|c 7 16.5 2|c 17 16.5 2', bike: 'M6 16l4-7h6l2 7M10 9l2 7M9 6h3|c 6 16 3.5|c 18 16 3.5',
+    train: 'r 5 3 14 14 3|M5 10h14M8 21l1.5-4M16 21l-1.5-4|c 9 13.5 1|c 15 13.5 1', plane: 'M10.5 21l1.5-1 1.5 1v-5l7 2v-2l-7-5V4.5a1.5 1.5 0 0 0-3 0V11l-7 5v2l7-2z',
+    ship: 'M3 15l2 5h14l2-5zM12 3v12M12 4l6 9h-6', rocket: 'M12 2c3 2.5 4.5 6 4.5 10l-2 4h-5l-2-4c0-4 1.5-7.5 4.5-10zM9.5 16L7 19v2l3-1.5M14.5 16l2.5 3v2l-3-1.5|c 12 9 1.7',
+    satellite: 'M4 9l5-5 3 3-5 5zM12 17l5-5 3 3-5 5zM9.5 9.5l5 5M17 3a4 4 0 0 1 4 4', road: 'M8 3L4 21M16 3l4 18M12 4v3M12 10v3M12 16v3',
+    traffic: 'r 8 2 8 17 3|c 12 6 1.5|c 12 10.5 1.5|c 12 15 1.5|M12 19v3', bridge: 'M2 9h20M2 9v11M22 9v11M2 17c4-5 16-5 20 0M7 9v5M12 9v4M17 9v5',
+    bulb: 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z', plug: 'M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5',
+    battery: 'r 2 7 17 10 2|M22 11v2M6 10v4M10 10v4', bolt: 'M13 2L4 14h7l-1 8 9-12h-7z',
+    fan: 'M12 10.5C12 6 9 3 7 5s1 5 5 5.5M13.5 12c4.5 0 7.5-3 5.5-5s-5 1-5.5 5M12 13.5c0 4.5 3 7.5 5 5.5s-1-5-5-5.5M10.5 12c-4.5 0-7.5 3-5.5 5s5-1 5.5-5|c 12 12 1.5',
+    fridge: 'r 6 2 12 20 2|M6 10h12M9 5v2M9 13v3', cooking: 'M4 10h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM2 10h20M9 6c0-1 1-1.5 1-2.5M14 6c0-1 1-1.5 1-2.5M8 21h8',
+    tea: 'M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 11h1.5a2.5 2.5 0 0 1 0 5H16M8 5c0-1 1-1.5 1-2.5M12 5c0-1 1-1.5 1-2.5M3 22h14',
+    food: 'M4 3v8M2.5 3v4a1.5 1.5 0 0 0 3 0V3M4 11v10M20 3c-2 0-3 2-3 6h3v12', bottle: 'M10 2h4M10 2v4L8 9v11a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9l-2-3V2M8 13h8',
+    tap: 'M4 8h9a3 3 0 0 1 3 3v2M4 6v4M8 8V5h4M16 17s-1.5 1.7-1.5 2.7a1.5 1.5 0 0 0 3 0c0-1-1.5-2.7-1.5-2.7z', glasses: 'M10 14a2 2 0 0 1 4 0M3 14l1.5-7M21 14l-1.5-7|c 6.5 14 3.5|c 17.5 14 3.5',
+    eye: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z|c 12 12 3', sun: 'M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4|c 12 12 4',
+    moon: 'M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z', star: 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z',
+    cloud: 'M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5z', rain: 'M7 14a4 4 0 0 1-.5-8A5.5 5.5 0 0 1 17 6.5a3.5 3.5 0 0 1-.5 7.5zM8 17l-1 3M12 17l-1 3M16 17l-1 3',
+    snow: 'M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 4l3 2 3-2M9 20l3-2 3 2', wind: 'M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h7',
+    rainbow: 'M2 18a10 10 0 0 1 20 0M5.5 18a6.5 6.5 0 0 1 13 0M9 18a3 3 0 0 1 6 0', sea: 'M2 8c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0M2 13c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0M2 18c2.5-2 5-2 7.5 0s5 2 7.5 0 3.5-1.5 5 0',
+    mountain: 'M2 20l7-12 4 6 3-4 6 10z', tree: 'M12 22v-5M12 2L6 11h3l-4 6h14l-4-6h3z', leaf: 'M5 19C5 10 10 4 20 4c0 10-6 15-15 15zM5 19l8-8',
+    sprout: 'M12 22V11M12 11C12 7 9 5 5 5c0 4 3 6 7 6zM12 14c0-3 2.5-5 6-5 0 3.5-2.5 5-6 5z', paw: 'M12 12c-3 0-5 3-5 5.5 0 1.5 1.5 2.5 3 2l2-.5 2 .5c1.5.5 3-.5 3-2 0-2.5-2-5.5-5-5.5z|c 6.5 10 1.8|c 10 6.5 1.8|c 14 6.5 1.8|c 17.5 10 1.8',
+    drop: 'M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z', fire: 'M12 22a7 7 0 0 0 7-7c0-4-3-6-4-10-2 2-3 4-3 6-1-1-2-2-2-4-2 2-5 5-5 8a7 7 0 0 0 7 7z',
+    thermometer: 'M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0zM12 9v8', magnet: 'M6 3v8a6 6 0 0 0 12 0V3h-4v8a2 2 0 0 1-4 0V3zM6 7h4M14 7h4',
+    compass: 'M15.5 8.5l-2 5-5 2 2-5z|c 12 12 9', clock: 'M12 7v5l3 2|c 12 12 9', stopwatch: 'M12 14v-4M10 2h4M12 2v3M18 7l1.5-1.5|c 12 14 7',
+    calendar: 'r 3 5 18 16 2|M3 10h18M8 3v4M16 3v4', ball: 'M3.5 9.5c3 1 6 3.5 7.5 11M20.5 14.5c-3-1-6-3.5-7.5-11|c 12 12 9',
+    run: 'M7 21l3-6 3 2v5M6 11l3-3h4l3 4h3M10 8l-1 6|c 14 4 2', swing: 'M3 3h18M8 3L6 16M16 3l2 13M5 16h14', lift: 'r 5 2 14 20 1.5|M12 2v20M7 9l1.5-2L10 9M14 15l1.5 2 1.5-2',
+    pendulum: 'M4 3h16M12 3l5 12|c 17.8 17 2.2', spring: 'M12 2v3L7 7l10 3-10 3 10 3-10 3 5 2v3', sine: 'M2 12c2-6 4-6 6 0s4 6 6 0 4-6 6 0',
+    balance: 'M12 3v18M7 21h10M4 7h16M4 7l-3 7a3 3 0 0 0 6 0zM20 7l-3 7a3 3 0 0 0 6 0z', weight: 'M8 7a4 4 0 0 1 8 0M6 9h12l2 12H4z',
+    ruler: 'M3 17L17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2', triangle: 'M12 3l9 16H3z', dice: 'r 4 4 16 16 3|c 8.5 8.5 1|c 15.5 8.5 1|c 12 12 1|c 8.5 15.5 1|c 15.5 15.5 1',
+    calculator: 'r 5 2 14 20 2|M8 5h8v4H8z|c 9 13 .8|c 12 13 .8|c 15 13 .8|c 9 17 .8|c 12 17 .8|c 15 17 .8', grid: 'r 3 3 18 18 2|M3 9h18M3 15h18M9 3v18M15 3v18',
+    chart: 'M3 3v18h18M7 15l4-4 3 3 6-6', bars: 'M4 20V10M10 20V4M16 20v-7M22 20H2', rupee: 'M7 4h10M7 8.5h10M10 4c4 0 5 2 5 4.5S13 13 10 13H8l7 8',
+    card: 'r 2 5 20 14 2|M2 10h20M6 15h4', cart: 'M3 4h2l2.5 11h11L21 7H6.2|c 9 19.5 1.5|c 17 19.5 1.5', ticket: 'M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4zM14 7v10',
+    briefcase: 'r 3 7 18 13 2|M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18', pin: 'M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z|c 12 10 2.5',
+    globe: 'M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18|c 12 12 9', home: 'M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-6h4v6',
+    building: 'M4 21V4h10v17M14 9h6v12M2 21h20M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1', factory: 'M2 21V10l6 4v-4l6 4V6h3l1-3h1l1 3h2v15zM2 21h20',
+    school: 'M2 9l10-5 10 5-10 5zM6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5', heart: 'M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z',
+    pulse: 'M2 12h4l2-5 4 10 2-5h8', pill: 'M10.5 3.5a5 5 0 0 1 7 7l-7 7a5 5 0 0 1-7-7zM7 7l7 7', person: 'M5 21v-2a7 7 0 0 1 14 0v2|c 12 7 4',
+    people: 'M3 20a6 6 0 0 1 12 0M15 14.5a5 5 0 0 1 6 5.5|c 9 8 3|c 17 9 2.5', brain: 'M12 4v16M12 4a3 3 0 0 0-5.5 1.5A3 3 0 0 0 4 10a3 3 0 0 0 1 5 3 3 0 0 0 3 4 3 3 0 0 0 4 1M12 4a3 3 0 0 1 5.5 1.5A3 3 0 0 1 20 10a3 3 0 0 1-1 5 3 3 0 0 1-3 4 3 3 0 0 1-4 1',
+    dna: 'M8 3c0 6 8 6 8 9s-8 3-8 9M16 3c0 6-8 6-8 9s8 3 8 9M9 5h6M10.5 8.5h3M10.5 15.5h3M9 19h6', atom: 'e 12 12 10 4 0|e 12 12 10 4 60|e 12 12 10 4 -60|c 12 12 1.3',
+    flask: 'M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3M7 15h10', chat: 'M4 5h16v11H9l-5 4z',
+    mail: 'r 3 5 18 14 2|M3 7l9 6 9-6', book: 'M4 19V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14', news: 'M4 4h13v16H6a2 2 0 0 1-2-2zM17 8h3v10a2 2 0 0 1-2 2M7 8h7M7 12h7M7 16h4',
+    pen: 'M4 20l1-4L16 5l3 3L8 19zM14 7l3 3', type: 'M4 7V4h16v3M9 20h6M12 4v16', quote: 'M5 18c2-1 3-3 3-6H5V6h6v6c0 4-2 7-6 8zM14 18c2-1 3-3 3-6h-3V6h6v6c0 4-2 7-6 8z',
+    mask: 'M4 5h16v6a8 8 0 0 1-16 0zM8 10h2M14 10h2M9 15a4 4 0 0 0 6 0', palette: 'M12 3a9 9 0 0 0 0 18c1.5 0 2-1 2-2s-1-1.5-1-2.5 1-1.5 2-1.5h2a4 4 0 0 0 4-4c0-4.5-4-8-9-8z|c 7.5 11 1|c 10 7 1|c 15 7 1',
+    lock: 'r 5 11 14 10 2|M8 11V7a4 4 0 0 1 8 0v4', key: 'M11 12.5L21 3M17 7l3 3M15 9l2 2|c 7.5 15.5 4.5', shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',
+    server: 'r 4 3 16 7 1.5|r 4 14 16 7 1.5|c 8 6.5 .8|c 8 17.5 .8', database: 'e 12 5 8 3 0|M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3',
+    code: 'M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16', robot: 'r 5 8 14 11 2|M12 4v4M9.5 16h5M2 12v3M22 12v3|c 12 3.5 1|c 9.5 12.5 1|c 14.5 12.5 1',
+    search: 'M20 20l-4-4|c 11 11 7', gear: 'M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1|c 12 12 3|c 12 12 7',
+    wrench: 'M15 3a5 5 0 0 0-4.5 7L3 17.5 6.5 21l7.5-7.5A5 5 0 0 0 21 9l-3 3-3-3 3-3a5 5 0 0 0-3-3z', refresh: 'M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4',
+    bell: 'M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4', target: 'c 12 12 9|c 12 12 5|c 12 12 1', question: 'M9.5 9a2.5 2.5 0 0 1 5 .5c0 1.5-2.5 2-2.5 3.5M12 16.5v.5|c 12 12 9'
+  };
+  const lifeIcon = name => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${(LIFE_ICONS[name] || LIFE_ICONS.pin).split('|').map(s => { const a = s.split(' ');
+    return a[0] === 'c' ? `<circle cx="${a[1]}" cy="${a[2]}" r="${a[3]}"/>` : a[0] === 'r' ? `<rect x="${a[1]}" y="${a[2]}" width="${a[3]}" height="${a[4]}" rx="${a[5]}"/>` : a[0] === 'e' ? `<ellipse cx="${a[1]}" cy="${a[2]}" rx="${a[3]}" ry="${a[4]}" transform="rotate(${a[5]} ${a[1]} ${a[2]})"/>` : `<path d="${s}"/>`; }).join('')}</svg>`;
+  const LIFE_TINTS = ['--chem', '--mat', '--phy', '--eng', '--cs', '--bio'];
   let spy = null;
   function buildLesson(root, L, lesson, probs) {
     const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = BANDS[sid] || BANDS.sci, D = isEng ? ENG_DEPTH : sid === 'cs' ? CS_DEPTH : DEPTH;
@@ -511,14 +783,15 @@
     if (lesson.models && lesson.models.length) think.push(`<div class="mms">${lesson.models.map(m => `<div class="mm"><div class="mm-k">${ico('bulb')}Mental model</div><b>${m.name}</b><p>${m.html}</p></div>`).join('')}</div>`);
     if (lesson.links && lesson.links.length) think.push(lesson.links.map(x => { const T = x.leaf && leafByKey(x.leaf), nm = escHTML(x.name || (T ? T.l.name : x.leaf));
       return `<div class="cmp"><div class="cmp-h"><span>Same idea elsewhere</span>${T && T.l.live ? `<button data-goto="${x.leaf}">${nm} →</button>` : `<b>${nm}</b>`}</div><div class="cmp-g"><div class="cmp-c same"><b>What's common</b><p>${x.same}</p></div><div class="cmp-c diff"><b>What's different</b><p>${x.differs}</p></div></div></div>`; }).join(''));
+    sections += '%%WRAPSTAGE%%';
     if (think.length) sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Think with it</span><span class="band-h">Ideas to carry outside this subject</span></div>${think.join('')}`;
     if (margin) sections += `<div class="around"><div class="eyebrow">Around this idea</div><div class="around-g">${margin}</div></div>`;
-    sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Wrap-up</span><span class="band-h">What to carry in your head</span></div>` + tail.map(secHTML).join('');
+    sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Remember</span><span class="band-h">What to carry in your head</span></div>` + tail.map(secHTML).join('');
     const groups = []; body.forEach(sec => { let g = groups.find(x => x.lvl === sec.lvl); if (!g) groups.push(g = { lvl: sec.lvl, secs: [] }); g.secs.push(sec); });
     if (tail.length) groups.push({ lvl: 0, secs: tail });
     const c = lesson.core;
     const coreHTML = c ? `<div class="core">
-        <div class="core-h"><span class="core-badge">${ico('bulb')}</span><div><div class="core-k">The core idea</div><div class="core-s">Memorise this exactly. Every question on this topic is this idea under harder conditions.</div></div></div>
+        <div class="core-h"><span class="core-badge">${ico('bulb')}</span><div><div class="core-k">The one idea to keep</div><div class="core-s">Memorise this exactly. Every question on this topic is this idea under harder conditions.</div></div></div>
         <p class="core-idea">${c.ideaHtml}</p>
         ${c.formulas && c.formulas.length ? `<div class="core-f">${c.formulas.map(f => `<div class="cf">${f.html}${f.label ? `<small>${f.label}</small>` : ''}</div>`).join('')}</div>` : ''}
         ${c.patterns && c.patterns.length ? `<div class="core-f">${c.patterns.map(p => `<div class="cf pat"><code>${p.text}</code>${p.label ? `<small>${p.label}</small>` : ''}</div>`).join('')}</div>` : ''}
@@ -527,16 +800,29 @@
         <button class="btn quiet sm" data-add-core>${PG.cards[key + '#core'] ? 'In your review cards ✓' : '+ Add to my review cards'}</button>
       </div>` : '';
     const hasHook = /class="hook"/.test(lesson.introHtml || ''), op = lesson.opener || {};
-    const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}"><div class="op-art">${op.art || coverArt(L)}</div><div class="op-body"><div class="op-k">A puzzle to start</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div></div>` : '';
+    const openerHTML = (hasHook || op.story) ? `<div class="opener s-${sid}">${op.art ? `<div class="op-art">${op.art}</div>` : ''}<div class="op-k">A puzzle to start</div>${op.story ? `<div class="op-story">${op.story}</div>` : ''}<div id="op-q"></div></div>` : '';
     const symHTML = lesson.symbols && lesson.symbols.length ? `<div class="symbols"><div class="rl-h"><b>Symbols in this lesson</b><span>shorthand only: each one is a word you already know</span></div><div class="sym-g">${lesson.symbols.map(x => `<div class="sym"><span class="sym-s">${x.s}</span><span>${x.m}</span></div>`).join('')}</div></div>` : '';
-    const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><b>In real life</b><span>where this idea is quietly at work around you</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl"><span class="rl-n">${i + 1}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
+    const lifeHTML = lesson.life && lesson.life.length ? `<div class="reallife"><div class="rl-h"><span class="rl-pin">${lifeIcon('pin')}</span><b>In real life</b><span>you have already met this idea</span></div><div class="rl-g">${lesson.life.map((x, i) => `<div class="rl" style="--t:var(${LIFE_TINTS[i % LIFE_TINTS.length]})"><span class="rl-ic">${lifeIcon((lesson.lifeIcons || [])[i])}</span><p>${x}</p></div>`).join('')}</div></div>` : '';
     const outHTML = lesson.outcomes && lesson.outcomes.length ? `<div class="outcomes"><div class="eyebrow">After this lesson you can</div><ol>${lesson.outcomes.map(o => `<li><span>${o}</span></li>`).join('')}</ol></div>` : '';
     const mapHTML = `<div class="lmap-g">${groups.map(g => `<div class="lmb l${g.lvl}" data-lvl="${g.lvl || 1}"><div class="lmb-h">${g.lvl ? escHTML((B[g.lvl] || [''])[0]) : 'Wrap-up'}</div>${g.secs.map(sec => `<button data-to="${sec.id}"><span class="n">${sec._n}</span><span>${escHTML(sec.title)}</span></button>`).join('')}</div>`).join('')}</div>`;
-    const depthHTML = `<div class="depth depthbar"><span>Reading depth</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div></div>`;
     const needs = (lesson.builds_on || []).map(b => `<span class="chip">${escHTML(b)}</span>`).join('');
+    const hasWarm = !!(openerHTML || lifeHTML), stN = hasWarm ? [1, 2, 3] : [0, 1, 2];
+    const stage = (n, k, note, id) => `<div class="stage st-${k.toLowerCase().replace(/[^a-z]+/g, '')}"${id ? ` id="${id}"` : ''}>${n ? `<span class="st-n">${n}</span>` : ''}<span class="st-k">${k}</span>${note ? `<span class="st-note">${note}</span>` : ''}<i></i></div>`;
+    sections = sections.replace('%%WRAPSTAGE%%', stage(stN[2], 'Wrap-up', 'mental models, key ideas, traps and the question that leads on', 'st-wrap'));
+    const first = body[0] || tail[0];
+    const beginHTML = `<section class="lbegin" id="lbegin">
+        <div class="lb-top"><div><div class="lb-k">The lesson begins here</div><h2>${escHTML(lesson.title || L.l.name)}</h2></div><div class="lb-meta">${body.length} sections<br>about ${mins} min at full depth</div></div>
+        ${coreHTML}
+        <div class="lb-row"><span class="lb-l">How deep today?</span><div class="seg" id="depth-seg">${D.map(([d, n]) => `<button data-depth="${d}">${n}</button>`).join('')}</div><span class="lb-sp"></span>${symHTML ? `<button class="lb-btn" data-lb="sym" aria-expanded="false">Symbols (${lesson.symbols.length})</button>` : ''}<button class="lb-btn" data-lb="inside" aria-expanded="false">What's inside</button></div>
+        ${first ? `<button class="lb-go" data-to="${first.id}">Start section 1 ↓</button>` : ''}
+      </section>
+      ${symHTML ? `<div class="lb-panel" data-lbp="sym" hidden>${symHTML}</div>` : ''}
+      <div class="lb-panel inside" data-lbp="inside" hidden>${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}${mapHTML}</div>`;
+    const tocBtn = sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Fnd', 'SDE1', 'SDE2', 'SDE3'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`;
+    const trk = (n, k, sub, to) => `<button class="trk" data-trk="${to}" data-to="${to}"><span class="trk-d">${n || '•'}</span><b>${k}</b><span class="trk-s"${to === 'lbegin' ? ' id="trk-count"' : ''}>${sub}</span></button>`;
     const ncert = (lesson.ncert || []).map(n => `<span>${escHTML(n)}</span>`).join('<span>·</span>');
     root.innerHTML = `
-      <div class="lesson-head s-${sid}">${coverArt(L)}
+      <div class="lesson-head s-${sid}">
         <button class="back" data-back>← ${escHTML(L.s.name)} · ${escHTML(L.p.name)} · ${escHTML(L.b.name)}</button>
         <h1>${escHTML(lesson.title || L.l.name)}</h1>
         ${lesson.summary ? `<p class="lh-sum">${escHTML(lesson.summary)}</p>` : ''}
@@ -550,16 +836,16 @@
       </div>
       <div class="lpane s-${sid}" data-lpane="learn">
         <div class="read"><div class="read-main">
-          ${openerHTML}${coreHTML}${symHTML}${lifeHTML}
-          <details class="inside"><summary>What's inside this lesson<span>${lesson.sections.length} sections · about ${mins} min at full depth</span></summary>${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}${mapHTML}</details>
-          ${depthHTML}
+          ${hasWarm ? `<div id="st-warm">${stage(1, 'Warm-up', 'a puzzle and where you meet this idea, no notes needed')}</div>${openerHTML}${lifeHTML}` : ''}
+          ${stage(stN[1], 'The lesson', '')}
+          ${beginHTML}
           <div class="prose">${lesson.introHtml ? `<div class="intro">${lesson.introHtml}</div>` : ''}${sections}</div>
           ${lesson.next ? (() => { const T = lesson.next.leaf && leafByKey(lesson.next.leaf); return `<div class="nextq s-${sid}"><div class="eyebrow">The question that leads on</div><p class="nq">${lesson.next.q}</p><div class="nq-f">${T ? `<span>Answered in <b>${escHTML(T.l.name)}</b></span>${T.l.live ? `<button class="btn" data-goto="${lesson.next.leaf}">Find out →</button>` : '<span class="muted">(lesson coming soon)</span>'}` : ''}</div></div>`; })() : ''}
           <div class="next-step"><div><b>That's the lesson.</b><span>Now test it: ${probs.length} problems, from NCERT to Olympiad.</span></div><button class="btn" data-ltab-go="practice">Go to practice</button></div>
           ${(() => { const n = lessonNeighbours(key); return (n.prev || n.next) ? `<nav class="lnav" aria-label="Lessons">${n.prev ? lessonCard(n.prev, 'prev', L) : '<span></span>'}${n.next ? lessonCard(n.next, 'next', L) : '<span class="lnav-end">That is the last lesson written so far.</span>'}</nav>` : ''; })()}
         </div>
-        <aside class="side"><div class="toc-wrap"><div class="toc-top"><b>On this page</b><span id="read-pct">0%</span></div><div class="readbar"><i id="read-bar"></i></div>
-          <nav class="toc" id="toc" aria-label="Sections">${lesson.sections.map(sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Fnd', 'SDE1', 'SDE2', 'SDE3'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`).join('')}</nav></div>
+        <aside class="side"><div class="toc-wrap"><div class="toc-top"><b>Your path through this lesson</b><span id="read-pct">0%</span></div><div class="readbar"><i id="read-bar"></i></div>
+          <nav class="toc" id="toc" aria-label="Sections">${hasWarm ? trk(1, 'Warm-up', 'puzzle', 'st-warm') : ''}${trk(stN[1], 'The lesson', `${body.length} sections`, 'lbegin')}<div class="toc-sub">${body.map(tocBtn).join('')}</div>${trk(stN[2], 'Wrap-up', 'key ideas, traps', 'st-wrap')}<div class="toc-sub">${tail.map(tocBtn).join('')}</div></nav></div>
         </aside></div>
       </div>
       <div class="lpane" data-lpane="practice" hidden>
@@ -584,11 +870,13 @@
     if (S.depth > D.length) S.depth = D.length;
     applyDepth();
     startSpy(root);
+    setTimeout(() => window.dispatchEvent(new Event('scroll')), 60);
   }
   function startSpy(root) {
     if (spy) spy.disconnect();
     const toc = $('toc'); if (!toc || !('IntersectionObserver' in window)) return;
-    spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) toc.querySelectorAll('[data-to]').forEach(b => b.classList.toggle('on', b.dataset.to === en.target.id)); }), { rootMargin: '-15% 0px -75% 0px' });
+    spy = new IntersectionObserver(es => es.forEach(en => { if (!en.isIntersecting) return; toc.querySelectorAll('.toc-sub [data-to]').forEach(b => b.classList.toggle('on', b.dataset.to === en.target.id));
+      const vis = [...toc.querySelectorAll('.toc-sub:first-of-type [data-to]')].filter(b => !b.hidden), i = vis.findIndex(b => b.dataset.to === en.target.id), c = $('trk-count'); if (c && i >= 0) c.textContent = `${i + 1} of ${vis.length}`; }), { rootMargin: '-15% 0px -75% 0px' });
     root.querySelectorAll('.sec').forEach(s => spy.observe(s));
   }
   window.addEventListener('scroll', () => {
@@ -596,6 +884,9 @@
     const pr = document.querySelector('[data-lpane="learn"] .prose'); if (!pr) return;
     const r = pr.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .4 - r.top) / r.height));
     bar.style.width = (p * 100).toFixed(1) + '%'; $('read-pct').textContent = Math.round(p * 100) + '%';
+    const past = id => { const el = $(id); return el && el.getBoundingClientRect().top < innerHeight * .4; }, inL = past('lbegin'), inW = past('st-wrap');
+    document.querySelectorAll('.trk').forEach(t => { const k = t.dataset.trk, on = k === 'st-warm' ? !inL : k === 'lbegin' ? inL && !inW : inW;
+      t.classList.toggle('on', on); t.classList.toggle('done', !on && (k === 'st-warm' ? inL : k === 'lbegin' && inW)); });
   }, { passive: true });
   function showLessonTab() {
     document.querySelectorAll('#ltabs [data-ltab]').forEach(b => b.setAttribute('aria-selected', b.dataset.ltab === S.ltab));
@@ -623,6 +914,8 @@
     const tab = t.closest('[data-ltab]'); if (tab) { S.ltab = tab.dataset.ltab; return showLessonTab(); }
     if (t.closest('[data-ltab-go]')) { S.ltab = 'practice'; showLessonTab(); return window.scrollTo(0, 0); }
     const d = t.closest('[data-depth]'); if (d) { S.depth = +d.dataset.depth; return applyDepth(); }
+    { const lb = t.closest('[data-lb]'); if (lb) { const open = lb.getAttribute('aria-expanded') !== 'true';
+      document.querySelectorAll('[data-lb]').forEach(b => { const me = b === lb && open; b.setAttribute('aria-expanded', me); const pnl = document.querySelector(`[data-lbp="${b.dataset.lb}"]`); if (pnl) pnl.hidden = !me; }); return; } }
     const to = t.closest('[data-to]'); if (to) return $(to.dataset.to).scrollIntoView({ behavior: 'smooth', block: 'start' });
     { const g = t.closest('[data-goto]'); if (g) { openLesson(g.dataset.goto); window.scrollTo(0, 0); return; } }
     if (t.closest('[data-back]')) { const L = leafByKey(S.lessonKey); S.focusBranch = 'br-' + L.b.id; return go(`learn~${L.s.id}~${L.p.id}`); }
@@ -979,18 +1272,17 @@
     for (const p of src) { if (!seen.has(p.lvl) || picked.length >= 4) { picked.push(p); seen.add(p.lvl); } if (picked.length === 6) break; }
     return picked;
   }
-  async function allProblems() { const ks = liveLeaves().filter(x => x.l.problems).map(x => x.key); const arr = await Promise.all(ks.map(getProblems)); return arr.flat(); }
   RENDER.practice = async () => {
     const leaves = liveLeaves().filter(x => x.l.problems);
     $('sets').innerHTML = `<div class="panel set"><span class="eyebrow">Recommended</span><h3>Today's mixed set</h3><p>6 problems across levels and topics, shuffled daily.</p><div><button class="btn" data-start="daily">Start</button></div></div>` +
       leaves.map(x => { const L = leafByKey(x.key); return `<div class="panel set s-${x.s.id}"><span class="eyebrow">${escHTML(L.p.name)} · ${escHTML(L.b.name)}</span><h3>${escHTML(x.l.name)}</h3><p>${x.l.problems} problems, NCERT first, then up to Olympiad.</p><div><button class="btn ghost" data-start-leaf="${x.key}">Start</button></div></div>`; }).join('');
-    const all = await allProblems();
-    $('level-row').innerHTML = LVL_ORDER.map(k => { const n = all.filter(p => p.lvl === k).length; return n ? `<button data-level="${k}"><span class="tier ${LEVELS[k][2]}" style="padding:0;background:none;font-size:14px">${LEVELS[k][0]}</span><span>${n} problems</span></button>` : ''; }).join('');
+    const count = k => leaves.reduce((a, x) => a + ((x.l.lv || {})[k] || 0), 0);
+    $('level-row').innerHTML = LVL_ORDER.map(k => { const n = count(k); return n ? `<button data-level="${k}"><span class="tier ${LEVELS[k][2]}" style="padding:0;background:none;font-size:14px">${LEVELS[k][0]}</span><span>${n} problems</span></button>` : ''; }).join('');
   };
   document.addEventListener('click', async e => {
-    const d = e.target.closest('[data-start="daily"]'); if (d) { const all = await allProblems(); return startSet(dailySet(all), "Today's mixed set", 0); }
+    const d = e.target.closest('[data-start="daily"]'); if (d) return startSet(dailySet(await sampleProblems(8, undefined, true)), "Today's mixed set", 0);
     const lf = e.target.closest('[data-start-leaf]'); if (lf) { const ps = await getProblems(lf.dataset.startLeaf); return startSet(ps, leafByKey(lf.dataset.startLeaf).l.name, 0); }
-    const lv = e.target.closest('[data-level]'); if (lv) { const all = await allProblems(); return startSet(all.filter(p => p.lvl === lv.dataset.level), LEVELS[lv.dataset.level][0], 0); }
+    const lv = e.target.closest('[data-level]'); if (lv) { const k = lv.dataset.level, ps = (await sampleProblems(10, l => (l.lv || {})[k])).filter(p => p.lvl === k).sort(() => Math.random() - .5).slice(0, 20); return startSet(ps, LEVELS[k][0], 0); }
   });
   function startSet(list, name, idx) {
     if (!list.length) return;
@@ -1104,7 +1396,10 @@
   /* ================= START ================= */
   fillIcons();
   updateBadge();
-  Promise.all([fetchJSON('data/tree.json'), fetchJSON('data/ncert.json'), fetchJSON('data/search.json')])
-    .then(([t, n, s]) => { TREE = t; NCERT = n; SEARCH = s; route(); })
+  Promise.all([fetchJSON('data/tree.json'), fetchJSON('data/ncert.json')])
+    .then(([t, n]) => { TREE = t; NCERT = n; route();
+      // After the first paint: home-page sparks, then the search index (or sooner, when the palette opens).
+      fetchJSON('data/extras.json').then(ex => { Object.entries(ex).forEach(([k, sp]) => { const L = leafByKey(k); if (L) L.l.sparks = sp; }); if (parseHash().v === 'home') { RENDER.home(); titleCase($('habits')); } }).catch(() => {});
+      (window.requestIdleCallback || (f => setTimeout(f, 1200)))(() => loadSearch()); })
     .catch(err => { document.querySelector('main .inner').innerHTML = `<div class="empty-card panel">The archive data could not be loaded (${escHTML(err.message)}). Reload the page to try again.</div>`; });
 })();

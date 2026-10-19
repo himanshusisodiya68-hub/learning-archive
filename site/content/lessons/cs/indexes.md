@@ -145,16 +145,16 @@ A **hash index** is the hash table from the earlier lesson, kept in the database
 A **B-tree** keeps keys in sorted order inside a tree. Binary search on 100 million sorted keys takes about 27 steps, and every step could be a separate slow disk read. The B-tree improves this with one idea: **disks read a whole page at a time (often 8 KB), so make each node a whole page and pack it with hundreds of keys**.
 
 :::figure caption="A B-tree. Each node holds many keys and sends you down one branch. With 500 keys per node, three levels reach 125 million rows."
-<svg viewBox="0 0 560 220" role="img" aria-label="Root node with keys 100 and 200 pointing to three child nodes, each pointing to leaf pages with row pointers">
-<g class="faint"><rect x="215" y="14" width="130" height="30" fill="none" stroke="currentColor"/></g>
-<text x="232" y="34" style="font-size:12px;fill:var(--ink)">&lt;100 | 100-200 | &gt;200</text>
+<svg viewBox="0 0 560 234" role="img" aria-label="Root node with keys 100 and 200 pointing to three child nodes, each pointing to leaf pages with row pointers">
+<g class="faint"><rect x="190" y="14" width="180" height="30" fill="none" stroke="currentColor"/></g>
+<text x="280" y="34" style="font-size:12px;fill:var(--ink);text-anchor:middle">&lt;100 | 100-200 | &gt;200</text>
 <g class="faint"><rect x="40" y="90" width="130" height="30" fill="none" stroke="currentColor"/><rect x="215" y="90" width="130" height="30" fill="none" stroke="currentColor"/><rect x="390" y="90" width="130" height="30" fill="none" stroke="currentColor"/></g>
 <text x="58" y="110" style="font-size:11px;fill:var(--muted)">30 | 60 | 90</text><text x="232" y="110" style="font-size:11px;fill:var(--mat)">120 | 150 | 180</text><text x="408" y="110" style="font-size:11px;fill:var(--muted)">220 | 250 | 280</text>
 <g class="faint"><rect x="130" y="170" width="70" height="26" fill="none" stroke="currentColor"/><rect x="215" y="170" width="70" height="26" fill="none" stroke="var(--mat)"/><rect x="300" y="170" width="70" height="26" fill="none" stroke="currentColor"/></g>
 <text x="140" y="187" style="font-size:11px;fill:var(--muted)">120..139</text><text x="225" y="187" style="font-size:11px;fill:var(--mat)">140..159</text><text x="310" y="187" style="font-size:11px;fill:var(--muted)">160..179</text>
 <path class="pen" d="M280 44 L280 90 M280 120 L250 170" fill="none" stroke="var(--mat)" stroke-width="2"/>
 <path class="faint" d="M270 44 L105 90 M290 44 L455 90 M250 120 L165 170 M280 120 L335 170" fill="none" stroke="currentColor"/>
-<text x="20" y="214" style="font-size:11px;fill:var(--muted)">Looking for 150: root says "100-200", next node says "150 is in the middle", leaf page holds the row pointer.</text>
+<text x="20" y="212" style="font-size:11px;fill:var(--muted)">Looking for 150: root says "100-200", next node says "150 is in the middle",</text><text x="20" y="226" style="font-size:11px;fill:var(--muted)">leaf page holds the row pointer.</text>
 </svg>
 :::
 

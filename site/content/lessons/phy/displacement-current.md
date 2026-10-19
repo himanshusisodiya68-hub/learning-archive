@@ -228,7 +228,7 @@ $$B\cdot 2\pi r = \mu_0 i_d\frac{r^2}{R^2}\quad\Longrightarrow\quad B = \frac{\m
 <line class="faint" x1="40" y1="50" x2="140" y2="50"/>
 <text x="136" y="166">R</text>
 <text x="44" y="44">μ₀i_d/2πR</text>
-<text x="62" y="120">∝ r</text><text x="230" y="90">∝ 1/r</text>
+<text x="100" y="128">∝ r</text><text x="230" y="90">∝ 1/r</text>
 </svg>
 :::
 

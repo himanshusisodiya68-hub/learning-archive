@@ -181,9 +181,9 @@ Two design choices matter. First, **small sizes and small values**: with values 
 
 :::figure caption="The three parts of a stress test. The oracle must be trusted; the generator must reach the bad case."
 <svg viewBox="0 0 320 120" role="img" aria-label="Table of the three parts: oracle, generator, comparator">
-<rect x="10" y="14" width="92" height="92" rx="8" class="pen"/><text x="22" y="40" style="font-size:12px;fill:var(--ink)">Oracle</text><text x="18" y="60" style="font-size:10px;fill:var(--muted)">slow, simple,</text><text x="18" y="74" style="font-size:10px;fill:var(--muted)">obviously right</text>
-<rect x="114" y="14" width="92" height="92" rx="8" class="pen"/><text x="124" y="40" style="font-size:12px;fill:var(--ink)">Generator</text><text x="122" y="60" style="font-size:10px;fill:var(--muted)">tiny, seeded,</text><text x="122" y="74" style="font-size:10px;fill:var(--muted)">shaped for ties</text>
-<rect x="218" y="14" width="92" height="92" rx="8" class="pen"/><text x="226" y="40" style="font-size:12px;fill:var(--ink)">Comparator</text><text x="226" y="60" style="font-size:10px;fill:var(--muted)">stop at first</text><text x="226" y="74" style="font-size:10px;fill:var(--muted)">difference, print</text><text x="226" y="88" style="font-size:10px;fill:var(--muted)">the seed</text>
+<rect x="6" y="14" width="100" height="92" rx="8" class="pen"/><text x="14" y="40" style="font-size:12px;fill:var(--ink)">Oracle</text><text x="14" y="60" style="font-size:10px;fill:var(--muted)">slow, simple,</text><text x="14" y="74" style="font-size:10px;fill:var(--muted)">obviously right</text>
+<rect x="110" y="14" width="100" height="92" rx="8" class="pen"/><text x="118" y="40" style="font-size:12px;fill:var(--ink)">Generator</text><text x="118" y="60" style="font-size:10px;fill:var(--muted)">tiny, seeded,</text><text x="118" y="74" style="font-size:10px;fill:var(--muted)">shaped for ties</text>
+<rect x="214" y="14" width="100" height="92" rx="8" class="pen"/><text x="222" y="40" style="font-size:12px;fill:var(--ink)">Comparator</text><text x="222" y="60" style="font-size:10px;fill:var(--muted)">stop at first</text><text x="222" y="74" style="font-size:10px;fill:var(--muted)">difference,</text><text x="222" y="88" style="font-size:10px;fill:var(--muted)">print the seed</text>
 </svg>
 :::
 

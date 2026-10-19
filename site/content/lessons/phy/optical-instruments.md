@@ -139,7 +139,7 @@ Two converging lenses in a tube multiply their effects. The **objective**, of ve
 <polyline class="ray" points="180,94 220,94 340,46"/><polyline class="ray" points="180,94 220,70 340,-2"/>
 <line class="faint" x1="220" y1="94" x2="100" y2="142"/><line class="faint" x1="220" y1="70" x2="100" y2="142"/>
 <line x1="100" y1="70" x2="100" y2="142" style="stroke:var(--bio);stroke-width:3;stroke-dasharray:5 3"/>
-<text x="62" y="30">objective</text><text x="200" y="22">eyepiece</text><text x="30" y="58">object</text><text x="150" y="112">first image</text><text x="20" y="160">final virtual image</text>
+<text x="62" y="30">objective</text><text x="200" y="22">eyepiece</text><text x="30" y="58">object</text><text x="196" y="127">first image</text><text x="20" y="160">final virtual image</text>
 </svg>
 :::
 

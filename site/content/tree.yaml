@@ -1238,7 +1238,7 @@ subjects:
       - {id: biodiversity-and-conservation, name: 'Biodiversity and conservation', from: C12}
 - id: eng
   name: English
-  what: 'English is the tool you use to understand everything else you will study, and to be understood. It has four jobs: take in meaning (reading), put meaning out (writing), obey the rules that make a sentence clear (grammar), and learn from other minds (literature).\n\nSo the pillars follow the jobs. Grammar comes first because writing and reading both depend on it. Writing and reading are the two directions of one skill. Literature is where all three are used on real texts.'
+  what: "English is the tool you use to understand everything else you will study, and to be understood. It has four jobs: take in meaning (reading), put meaning out (writing), obey the rules that make a sentence clear (grammar), and learn from other minds (literature).\n\nSo the pillars follow the jobs. Grammar comes first because writing and reading both depend on it. Writing and reading are the two directions of one skill. Literature is where all three are used on real texts."
   split: 'The pillars are the four jobs of language: grammar (the rules), writing (meaning out), reading (meaning in) and literature (all three on real texts).'
   links: '<b>How the pillars connect.</b> Grammar is used by every other pillar. Reading builds the vocabulary that writing uses. Literature gives the examples that grammar and writing talk about.'
   pillars:

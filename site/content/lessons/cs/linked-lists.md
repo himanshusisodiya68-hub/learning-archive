@@ -151,7 +151,7 @@ def delete_after(node):
 Read the first as: "the new node points to the old next, and my node points to the new node". Both cost a couple of steps, however long the list is: **O(1)**. Nothing else moves.
 
 :::figure caption="Insert after node B. Step 1 (dashed): the new node X points to C. Step 2: B points to X. Do them in the other order and C is lost."
-<svg viewBox="0 0 360 130" role="img" aria-label="Nodes A B C in a chain with a new node X inserted between B and C by two pointer changes">
+<svg viewBox="0 0 390 130" role="img" aria-label="Nodes A B C in a chain with a new node X inserted between B and C by two pointer changes">
 <g style="font-size:12px;text-anchor:middle">
 <g style="fill:color-mix(in srgb,var(--c) 10%,var(--surface));stroke:var(--ink);stroke-width:1.3"><rect x="14" y="20" width="56" height="30" rx="5"/><rect x="104" y="20" width="56" height="30" rx="5"/><rect x="250" y="20" width="56" height="30" rx="5"/></g>
 <rect x="150" y="84" width="56" height="30" rx="5" style="fill:var(--c);stroke:var(--ink);stroke-width:1.3"/>

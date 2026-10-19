@@ -228,7 +228,7 @@ A frame that rotates is accelerating too: every point in it goes in a circle, wi
 <line class="faint" x1="180" y1="115" x2="250" y2="115"/><text x="206" y="108">r</text>
 <circle class="obj" cx="250" cy="115" r="7"/>
 <line class="ray" x1="244" y1="115" x2="205" y2="115" marker-end="url(#pft1)"/><text class="k" x="204" y="136">friction f</text>
-<line class="wf" x1="258" y1="115" x2="300" y2="115" marker-end="url(#pft2)" style="stroke-dasharray:4 3"/><text class="k" x="258" y="136">m ω² r</text>
+<line class="wf" x1="258" y1="115" x2="300" y2="115" marker-end="url(#pft2)" style="stroke-dasharray:4 3"/><text class="k" x="278" y="136">m ω² r</text>
 <path class="faint" d="M180 40 A75 75 0 0 1 255 115"/>
 <text x="120" y="38">turns at ω</text>
 <text x="30" y="214">rotating frame: f balances the centrifugal force</text>
