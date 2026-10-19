@@ -119,13 +119,13 @@ A **wavefront** is a surface on which every point vibrates in the same phase, fo
 - Far from any source, a small piece of a sphere is nearly flat: light from the Sun or a distant star arrives as **plane** wavefronts.
 
 :::figure caption="Rays are perpendicular to wavefronts: spherical near a point source (left), plane far from it (right)."
-<svg viewBox="0 0 360 150" role="img" aria-label="Spherical and plane wavefronts with rays">
+<svg viewBox="0 0 360 162" role="img" aria-label="Spherical and plane wavefronts with rays">
 <circle class="obj" cx="70" cy="75" r="4"/>
 <circle cx="70" cy="75" r="22" style="fill:none;stroke:var(--eng);stroke-width:1.5"/><circle cx="70" cy="75" r="42" style="fill:none;stroke:var(--eng);stroke-width:1.5"/><circle cx="70" cy="75" r="62" style="fill:none;stroke:var(--eng);stroke-width:1.5"/>
 <line class="ray" x1="70" y1="75" x2="140" y2="75"/><line class="ray" x1="70" y1="75" x2="120" y2="25"/><line class="ray" x1="70" y1="75" x2="120" y2="125"/><line class="ray" x1="70" y1="75" x2="20" y2="25"/><line class="ray" x1="70" y1="75" x2="20" y2="125"/>
 <line x1="220" y1="15" x2="220" y2="135" style="stroke:var(--eng);stroke-width:1.5"/><line x1="255" y1="15" x2="255" y2="135" style="stroke:var(--eng);stroke-width:1.5"/><line x1="290" y1="15" x2="290" y2="135" style="stroke:var(--eng);stroke-width:1.5"/>
 <line class="ray" x1="200" y1="40" x2="340" y2="40"/><line class="ray" x1="200" y1="75" x2="340" y2="75"/><line class="ray" x1="200" y1="110" x2="340" y2="110"/>
-<text x="30" y="148">spherical</text><text x="250" y="148">plane</text>
+<text x="30" y="154">spherical</text><text x="250" y="154">plane</text>
 </svg>
 :::
 

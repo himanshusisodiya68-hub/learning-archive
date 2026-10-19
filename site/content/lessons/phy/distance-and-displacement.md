@@ -130,7 +130,7 @@ Count the metres under her feet: 100 m forward, then 60 m back. That is 160 m. T
 Now ask a different question: how far is she from where she started? She is standing on the 40 m mark, so she is 40 m from the start. And she is on the forward side of it. This arrow from the start to the finish is her **displacement**: 40 m in the forward direction. Displacement needs both a size and a direction.
 
 :::figure caption="The athlete's route: 100 m out, 60 m back. The path (orange) is 160 m long, but the displacement (blue arrow) is only 40 m from start to finish."
-<svg viewBox="0 0 360 150" role="img" aria-label="Number line from 0 to 100 m with the athlete going out to 100 and back to 40, and the displacement arrow from 0 to 40">
+<svg viewBox="0 0 360 162" role="img" aria-label="Number line from 0 to 100 m with the athlete going out to 100 and back to 40, and the displacement arrow from 0 to 40">
 <defs><marker id="dd1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker><marker id="dd2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker></defs>
 <line class="ln" x1="30" y1="100" x2="330" y2="100"/>
 <line class="ln" x1="30" y1="95" x2="30" y2="105"/><line class="ln" x1="150" y1="95" x2="150" y2="105"/><line class="ln" x1="330" y1="95" x2="330" y2="105"/>
@@ -139,7 +139,7 @@ Now ask a different question: how far is she from where she started? She is stan
 <path class="wf" d="M330 70 L150 70" marker-end="url(#dd1)"/>
 <text x="150" y="46">out: 100 m</text><text x="214" y="86">back: 60 m</text>
 <path class="ray" d="M30 134 L150 134" marker-end="url(#dd2)"/>
-<text x="46" y="148">displacement: 40 m forward</text>
+<text x="46" y="151">displacement: 40 m forward</text>
 <circle class="obj" cx="150" cy="100" r="5"/>
 </svg>
 :::
@@ -197,8 +197,8 @@ On a circle, you can ask for the displacement at any stage. Run half a lap of a 
 <path class="wf" d="M110 95 A70 70 0 0 1 250 95"/>
 <line class="ray" x1="110" y1="95" x2="244" y2="95" marker-end="url(#dd3)"/>
 <circle class="obj" cx="110" cy="95" r="5"/><circle class="obj" cx="250" cy="95" r="5"/>
-<text class="k" x="96" y="116">start</text><text class="k" x="240" y="116">finish</text>
-<text x="136" y="40">distance = πR (curved)</text><text x="116" y="140">displacement = 2R (straight)</text>
+<text class="k" x="100" y="116" text-anchor="end">start</text><text class="k" x="240" y="116">finish</text>
+<text x="180" y="56" text-anchor="middle">distance = πR</text><text x="180" y="69" text-anchor="middle">(curved)</text><text x="180" y="122" text-anchor="middle">displacement = 2R</text><text x="180" y="135" text-anchor="middle">(straight)</text>
 </svg>
 :::
 
