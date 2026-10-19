@@ -92,7 +92,7 @@ links:
   - { leaf: eng/literary-devices, name: Literary devices, same: "Irony, exaggeration and repetition are used in both poems and plays to shape tone.", differs: "In a play they come through actors and staging, not only words on the page." }
 next:
   q: 'In this play, people quarrel over a dog that is better than another. What happens when a rich, loving owner spoils her pet so much that it falls ill, and a vet has to cure the owner as much as the dog?'
-  leaf: fp-a-triumph-of-surgery
+  leaf: eng/fp-a-triumph-of-surgery
   name: A Triumph of Surgery
 ---
 

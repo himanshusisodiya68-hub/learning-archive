@@ -83,7 +83,7 @@ links:
   - { leaf: "eng/proverbs", name: "Proverbs", same: "The story opens with two sayings about thieves and tests them against what happens.", differs: "A proverb is a general claim; a story tests it on one case and may show it to be false." }
 next:
   q: "Horace is fooled because he never saw who the lady really was. What happens in a story where the main figure leaves no footprints at all, and is hard to see?"
-  leaf: fp-footprints-without-feet
+  leaf: eng/fp-footprints-without-feet
   name: "Footprints without Feet"
 ---
 

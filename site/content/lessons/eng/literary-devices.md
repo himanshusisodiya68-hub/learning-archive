@@ -102,7 +102,7 @@ links:
   - { leaf: "eng/ff-a-letter-to-god", name: "A Letter to God", same: "It is full of the devices in this lesson: irony, contrast, and nature imagery.", differs: "The chapter shows them in one story; this lesson names them for use across all stories." }
 next:
   q: "A farmer's field is flattened by hail, and so he writes to God for help. What does the postmaster do, and what does the farmer say about it?"
-  leaf: ff-a-letter-to-god
+  leaf: eng/ff-a-letter-to-god
   name: "A Letter to God"
 ---
 

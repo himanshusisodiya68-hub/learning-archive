@@ -8,5 +8,6 @@ Cheap pass = front matter + hook only (docs/retrofit-cheap.md). Deep pass = rewr
 | Physics › Electricity and magnetism | 33 | yes | **done** (Oct 2026), with symbols | — |
 | Physics › Mechanics | 37 | yes | **new style throughout** (Oct 2026; vectors and circular motion retrofitted) | — (Sonnet-written; Opus deep pass later) |
 | English › Grammar and literature | 17 | yes | — | — |
+| English › Vocabulary, writing, reading, literature (new) | 34 | yes | written to the new standard | — |
 | Samples (gravitation, hash tables) | 2 | yes | written to the new standard | — |
 | Computer Science | in progress | yes | written to the new standard (docs\/cs-brief.md) | — |

@@ -240,10 +240,16 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 - `next` chain runs through every pillar in order; the last leaf (`iv-offers`) loops back to `problem-solving-method`.
 - `python3 site/check-links.py` validates every `links`/`next` leaf id; run it with the other checks.
 
+**Done: English (51 leaves, all with lessons and problems).** Not yet republished to the site artifact.
+- **Pillars:** Grammar (16, done earlier), Vocabulary (9), Writing (5), Reading (2), Literature (literary devices, plus First Flight Ch 1–9 and Footprints Without Feet Ch 1–9: every prose chapter).
+- **Writing:** Sonnet subagents, one per leaf, from training knowledge. Literature chapters read only the NCERT 2026-27 PDFs (`jeff1xx`, `jefp1xx`) to copy every exercise question word for word; poems sharing a PDF are skipped (out of scope). Non-literature problems are original (about 15 per leaf).
+- **Reality filter:** there is no NCERT answer key for English, so every answer is a model answer. Author biographies, etymologies and the CBSE paper format and marks are labelled [Unverified].
+- **Known gaps:** the PDF text layer has no section headings, so labels in `num` (OC, TT, TL, SP, WR, RF, TA) are inferred. Some printed NCERT slips are copied as printed and flagged in the answer: Glimpses OC2 Q1 mismatched pairs, Midnight Visitor "Ausable" for Max. The italics that some Thinking about language items depend on (Mijbil TL II/III) are missing from the text layer. The 17 older lessons (16 grammar leaves and A Letter to God) still lack the opener, symbols and life fields and need the cheap retrofit pass (`docs/retrofit.md`).
+
 **Owner's direction (Oct 2026):** build Physics and Maths fully first (see `docs/content-principles.md` §0); CS gains Competitive programming and Interviews pillars as pattern catalogues.
 
 **Next, in order:**
-1. The owner chooses what comes next (Computer Science is done). Candidates: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
+1. The owner chooses what comes next (Computer Science and English are done). Candidates: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
 2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.

@@ -62,7 +62,7 @@ links:
   - { leaf: eng/fp-the-necklace, name: The Necklace, same: "Both are about how appearances and money shape a woman's life", differs: "Mathilde is trapped by her own vanity; Bholi is trapped by other people's view of her, and she breaks free" }
 next:
   q: Bholi's story shows how kindness can change one life. What happens when a book, rather than a person, saves something far bigger, and a whole planet depends on it?
-  leaf: fp-the-book-that-saved-the-earth
+  leaf: eng/fp-the-book-that-saved-the-earth
   name: The Book That Saved the Earth
 opener:
   story: |

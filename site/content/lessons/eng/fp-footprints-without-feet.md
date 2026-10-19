@@ -84,7 +84,7 @@ links:
   - { leaf: eng/fp-a-question-of-trust, name: A Question of Trust, same: 'Both chapters follow a clever person who breaks the law and are told with an eye for dry humour.', differs: 'In A Question of Trust the plot turns on a trick played on a thief; here the chapter simply follows the wrongdoer from one crisis to the next.' }
 next:
   q: 'Griffin invented something and used it badly. What does it take to become a real scientist, and how do curiosity and patience shape one?'
-  leaf: fp-the-making-of-a-scientist
+  leaf: eng/fp-the-making-of-a-scientist
   name: The Making of a Scientist
 ---
 

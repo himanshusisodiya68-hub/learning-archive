@@ -85,7 +85,7 @@ links:
   - { leaf: eng/literary-devices, name: Literary devices, same: "Irony, symbol and first-person narration are the craft tools used in this story.", differs: "The devices lesson defines them in general; here each is read in a single short story." }
 next:
   q: 'In this story a clever young thief is outwitted by kindness. What happens when a visitor arrives at midnight claiming to be someone he is not, and the host must decide whom to trust?'
-  leaf: fp-the-midnight-visitor
+  leaf: eng/fp-the-midnight-visitor
   name: The Midnight Visitor
 ---
 
