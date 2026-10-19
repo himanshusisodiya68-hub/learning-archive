@@ -221,7 +221,7 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 **Map of everything (Oct 2026):** all six subject trees exist (Physics 118 leaves, Maths 59, Chemistry 53, Biology 33, English 51, Computer Science 80) and the class view lists every NCERT book for Classes 6–12 (Science/Physics, Maths, Chemistry, Biology, English Class 10). Chapters of Class 11/12 Chemistry and Biology are already mapped to leaves.
 
 **Done: Physics › Mechanics pillar (37 leaves, all with lessons).** Published to the site artifact (version 15).
-- **Branches:** kinematics (8), Newton's laws (8), work–energy–power (6), rotation (6, includes collisions), gravitation (4), properties of matter (5).
+- **Branches:** kinematics (8), Newton's laws (8), work–energy–power (7, ends with collisions, as in NCERT Class 11 Ch 5), rotation (5), gravitation (4), properties of matter (5).
 - **NCERT covered:** Class 6 Ch 5; Class 7 Ch 8; Class 8 Ch 5–6; Class 9 (new book) Ch 4, 6, 7; Class 11 Ch 2–9 (all examples and exercises).
 - **Writing:** lessons were written by Sonnet subagents (to save cost), not the Opus theory-writer; an Opus deep pass can come later.
 - **Known gaps:**

@@ -3,7 +3,7 @@ title: Collisions
 summary: Why a Newton's cradle sends out exactly one ball, how momentum and the bounciness of a crash fix every speed afterwards, and where the lost energy goes.
 ncert: ["Class 11 Physics · Ch 5 Work, Energy and Power (§5.12–5.13 Collisions: elastic and inelastic, in one and two dimensions)", "Class 11 Physics · Ch 6 System of Particles and Rotational Motion (§6.3 momentum of a system)"]
 up_to: Olympiad
-builds_on: [Centre of mass, Third law, Kinetic and potential energy, Momentum and the second law]
+builds_on: [Momentum and the second law, Third law, Kinetic and potential energy, Conservative forces]
 notes_prompt: Explain to a friend why a Newton's cradle sends out one ball at the same speed, and why it cannot send out two balls at half the speed.
 margin:
   - kind: history
@@ -77,9 +77,9 @@ links:
     same: 'During an elastic collision, kinetic energy turns into the elastic potential energy of the squeezed bodies and back again, like a spring.'
     differs: 'Total energy is always conserved, but in an inelastic collision the kinetic energy that does not come back has become heat and sound, which we do not follow.'
 next:
-  q: 'A pool cue that hits a ball off-centre makes it spin as well as move forward. And a door pushed near the hinge hardly moves, but at the handle swings easily. What decides how strongly a push turns something?'
-  leaf: 'phy/torque'
-  name: 'Torque'
+  q: 'In every crash the pair as a whole carried on unaffected, as if the internal forces did not exist. Is there one special point in any body or group of bodies that always moves this simply, and how do you find it for a seesaw, a hammer or a family on a boat?'
+  leaf: 'phy/centre-of-mass'
+  name: 'Centre of mass'
 symbols:
   - s: 'm_1,\ m_2'
     means: 'masses of the two bodies (kg)'
@@ -265,7 +265,7 @@ Energy check: the bullet had $\tfrac12(0.02)(250)^2 = 625$ J; the block and bull
 
 ## The centre-of-mass view {lvl=3 id=s-cm label="JEE"}
 
-Seen from the centre of mass, any collision looks simple. In that frame the total momentum is zero, so the two bodies move in opposite directions with equal momenta $p$, and their combined kinetic energy is $p^2/2m_1 + p^2/2m_2 = p^2/2\mu$, where $\mu = m_1m_2/(m_1+m_2)$ is the reduced mass of the previous lesson. In terms of the relative speed $u_{rel} = u_1 - u_2$, this energy is $\tfrac12\mu\,u_{rel}^2$.
+Seen from the centre of mass, any collision looks simple. In that frame the total momentum is zero, so the two bodies move in opposite directions with equal momenta $p$, and their combined kinetic energy is $p^2/2m_1 + p^2/2m_2 = p^2/2\mu$, where $\mu = m_1m_2/(m_1+m_2)$ is called the **reduced mass**. (The next lesson, on the centre of mass, builds this frame fully.) In terms of the relative speed $u_{rel} = u_1 - u_2$, this energy is $\tfrac12\mu\,u_{rel}^2$.
 
 After the collision the relative speed has been multiplied by $e$ (that is what $e$ means), so each body's speed has been multiplied by $e$, and the kinetic energy by $e^2$. The kinetic energy lost is therefore
 

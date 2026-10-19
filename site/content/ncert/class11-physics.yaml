@@ -20,7 +20,7 @@ chapters:
   - n: 5
     title: Work, Energy and Power
     pdf: keph105
-    leaves: [phy/work-done-by-a-force, phy/kinetic-and-potential-energy, phy/work-energy-theorem, phy/conservative-forces, phy/power, phy/simple-machines]
+    leaves: [phy/work-done-by-a-force, phy/kinetic-and-potential-energy, phy/work-energy-theorem, phy/conservative-forces, phy/power, phy/simple-machines, phy/collisions]
   - n: 6
     title: Systems of Particles and Rotational Motion
     pdf: keph106

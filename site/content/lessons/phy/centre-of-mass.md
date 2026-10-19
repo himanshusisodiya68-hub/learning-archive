@@ -3,7 +3,7 @@ title: Centre of mass
 summary: Every tumbling, exploding or wobbling thing has one point that moves as simply as a thrown ball, and finding it is easier than you think.
 ncert: ["Class 11 Physics · Ch 6 System of Particles and Rotational Motion (§6.1–6.2 Centre of mass, §6.3 Motion of centre of mass)"]
 up_to: Olympiad
-builds_on: [Momentum and the second law, Third law, Projectile motion]
+builds_on: [Momentum and the second law, Third law, Projectile motion, Collisions]
 notes_prompt: Explain to a friend why a spinning bat tossed in the air has one point that flies in a smooth arc, and how you would find that point with a single finger.
 margin:
   - kind: history
@@ -77,9 +77,9 @@ links:
     same: 'Under gravity alone, any thrown body, however much it spins or breaks up, has a centre of mass that follows the same parabola as a ball.'
     differs: 'The parabola belongs to the centre of mass only. Individual pieces of a tumbling or exploding body take other paths.'
 next:
-  q: 'Two cars crash and stick together. The centre of mass of the pair carries straight on as if nothing happened, but the wreck is crumpled and hot. Where did the energy go, and can we predict the speeds after any crash?'
-  leaf: 'phy/collisions'
-  name: 'Collisions'
+  q: 'The centre of mass tells us how a body travels, but not how it spins. A door pushed near the hinge hardly moves, yet at the handle it swings easily. What decides how strongly a push turns something?'
+  leaf: 'phy/torque'
+  name: 'Torque'
 symbols:
   - s: 'm_i'
     means: 'mass of the i-th particle (kg)'
@@ -259,7 +259,7 @@ The system law gives three tricks that appear again and again.
 **3. One acceleration for a whole contraption.** Masses 3 kg and 2 kg hang on a string over a pulley, and accelerate at $a = 1.96$ m/s² (3 kg down, 2 kg up). The centre-of-mass acceleration is the mass-weighted average, $a_{cm} = (3a - 2a)/5 = 0.39$ m/s² down. It is far less than $g$ because the pulley's support pushes up on the system from outside: the string tension is internal, but the pull of the support is not.
 
 :::note title="The centre-of-mass frame" tone=olympiad
-If you ride along with the centre of mass (when $\vec F_{ext}=0$ it is a good inertial frame), the total momentum is zero. Many two-body problems become short: in that frame the two bodies always move in opposite directions, with momenta equal and opposite. We use this in the lesson on collisions.
+If you ride along with the centre of mass (when $\vec F_{ext}=0$ it is a good inertial frame), the total momentum is zero. Many two-body problems become short: in that frame the two bodies always move in opposite directions, with momenta equal and opposite. The collisions lesson used exactly this view: now you can see why it works.
 :::
 
 :::qc lvl=3

@@ -98,9 +98,9 @@ links:
     same: 'Both rest on counting energy: an ideal machine passes work through unchanged, just as the theorem says the net work becomes kinetic energy.'
     differs: 'The theorem tracks where the energy goes; machines are about how a force is traded for distance on the way.'
 next:
-  q: 'A seesaw balances at one special point, and a hammer thrown into the air spins around one special point as it flies. What is that point, and how do you find it for any shape?'
-  leaf: 'phy/centre-of-mass'
-  name: 'Centre of mass'
+  q: 'A lever trades force for distance but never creates energy. Now let two trolleys crash and stick together: the total momentum survives the crash, yet some kinetic energy vanishes. Where does it go, and can we predict the speeds after any collision?'
+  leaf: 'phy/collisions'
+  name: 'Collisions'
 ---
 
 :::hook
