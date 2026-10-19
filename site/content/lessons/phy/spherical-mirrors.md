@@ -117,7 +117,7 @@ A spherical mirror is a piece cut from a hollow, polished sphere. If the reflect
 <line class="ray" x1="20" y1="60" x2="264.9" y2="60"/><line class="ray" x1="264.9" y1="60" x2="156.4" y2="120"/>
 <circle class="obj" cx="110" cy="100" r="3.5"/><circle class="obj" cx="190" cy="100" r="3.5"/><circle class="obj" cx="270" cy="100" r="3.5"/>
 <text class="k" x="104" y="118">C</text><text class="k" x="185" y="118">F</text><text class="k" x="276" y="118">P</text>
-<text x="24" y="94">principal axis</text><text x="196" y="80">reflected ray</text>
+<text x="24" y="94">principal axis</text><text x="170" y="138">reflected ray</text>
 <line class="gr" x1="110" y1="182" x2="270" y2="182"/><text x="180" y="196">R</text>
 <line class="gr" x1="190" y1="160" x2="270" y2="160"/><text x="224" y="156">f</text>
 </svg>

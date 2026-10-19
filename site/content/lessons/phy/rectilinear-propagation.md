@@ -165,8 +165,8 @@ A point source casts a shadow with a sharp edge. Real sources such as the Sun ha
 <line class="ray" x1="40" y1="40" x2="330" y2="102.1"/><line class="ray" x1="40" y1="120" x2="330" y2="57.9"/>
 <line class="faint" x1="40" y1="40" x2="330" y2="143.6"/><line class="faint" x1="40" y1="120" x2="330" y2="16.4"/>
 <line class="ln" x1="330" y1="10" x2="330" y2="150" style="stroke-width:2"/><line class="gr" x1="210" y1="50" x2="210" y2="110" style="stroke-dasharray:3 3"/>
-<text x="10" y="150">extended source</text><text x="160" y="110">object</text><text x="215" y="45">near screen</text><text x="292" y="12">far screen</text>
-<text x="226" y="84" class="k">umbra ends</text>
+<text x="10" y="150">extended source</text><text x="160" y="110">object</text><text x="142" y="46">near screen</text><text x="292" y="12">far screen</text>
+<text x="216" y="65" class="k">umbra ends</text>
 </svg>
 :::
 

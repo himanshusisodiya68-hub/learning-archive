@@ -55,7 +55,7 @@ opener:
     Same wire, same voltage. The bird stands with both feet on it and nothing happens. But if it stretched a wing to the next wire, or to the pole, it would be in deadly trouble. So what decides whether a voltage hurts you?
 
     The answer is that "how high" a voltage is means nothing by itself. Only the gap between two places matters, like the drop of a hill and not its height above sea level. This lesson gives that idea a name, **potential**, and shows why it turns hard problems into easy sums.
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A bird perched on a high-voltage wire with both feet at the same potential, while the large voltage drop is between the wire and the ground"><rect x="36" y="52" width="9" height="178" style="fill:var(--muted)"/><rect x="14" y="54" width="52" height="6" style="fill:var(--muted)"/><path d="M40 60 Q160 108 300 62" style="fill:none;stroke:var(--ink);stroke-width:3"/><text x="62" y="46" style="font-size:11px;fill:var(--bad)">11 000 V</text><ellipse cx="166" cy="76" rx="16" ry="10" style="fill:var(--c)"/><circle cx="181" cy="67" r="6" style="fill:var(--c)"/><path d="M186 66 L194 68 L186 70Z" style="fill:var(--ink)"/><path d="M152 80 L138 86 L152 84Z" style="fill:var(--c)"/><line x1="162" y1="84" x2="162" y2="92" style="stroke:var(--ink);stroke-width:2"/><line x1="172" y1="85" x2="172" y2="93" style="stroke:var(--ink);stroke-width:2"/><text x="112" y="132" style="font-size:11px;fill:var(--muted)">both feet at the same potential</text><line x1="0" y1="228" x2="320" y2="228" style="stroke:var(--muted);stroke-width:2"/><text x="240" y="222" style="font-size:11px;fill:var(--muted)">0 V (earth)</text><path d="M270 80 L270 216" style="fill:none;stroke:var(--chem);stroke-width:2;stroke-dasharray:5 4"/><path d="M264 90 L270 76 L276 90Z" style="fill:var(--chem)"/><path d="M264 206 L270 220 L276 206Z" style="fill:var(--chem)"/><text x="116" y="170" style="font-size:11px;fill:var(--chem)">the big difference is down here,</text><text x="116" y="184" style="font-size:11px;fill:var(--chem)">not across the bird</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A bird perched on a high-voltage wire with both feet at the same potential, while the large voltage drop is between the wire and the ground"><rect x="36" y="52" width="9" height="178" style="fill:var(--muted)"/><rect x="14" y="54" width="52" height="6" style="fill:var(--muted)"/><path d="M40 60 Q160 108 300 62" style="fill:none;stroke:var(--ink);stroke-width:3"/><text x="62" y="46" style="font-size:11px;fill:var(--bad)">11 000 V</text><ellipse cx="166" cy="76" rx="16" ry="10" style="fill:var(--c)"/><circle cx="181" cy="67" r="6" style="fill:var(--c)"/><path d="M186 66 L194 68 L186 70Z" style="fill:var(--ink)"/><path d="M152 80 L138 86 L152 84Z" style="fill:var(--c)"/><line x1="162" y1="84" x2="162" y2="92" style="stroke:var(--ink);stroke-width:2"/><line x1="172" y1="85" x2="172" y2="93" style="stroke:var(--ink);stroke-width:2"/><text x="112" y="132" style="font-size:11px;fill:var(--muted)">both feet at the same potential</text><line x1="0" y1="228" x2="320" y2="228" style="stroke:var(--muted);stroke-width:2"/><text x="204" y="222" style="font-size:11px;fill:var(--muted)">0 V (earth)</text><path d="M270 80 L270 216" style="fill:none;stroke:var(--chem);stroke-width:2;stroke-dasharray:5 4"/><path d="M264 90 L270 76 L276 90Z" style="fill:var(--chem)"/><path d="M264 206 L270 220 L276 206Z" style="fill:var(--chem)"/><text x="116" y="164" style="font-size:11px;fill:var(--chem)">the big difference</text><text x="116" y="176" style="font-size:11px;fill:var(--chem)">is down here, not</text><text x="116" y="188" style="font-size:11px;fill:var(--chem)">across the bird</text></svg>'
 life:
   - 'The 1.5 V on a battery label is a potential difference: every coulomb that passes gains or gives 1.5 joules.'
   - 'An ECG measures potential differences between points on your skin to read your heartbeat.'
@@ -201,9 +201,9 @@ An **equipotential surface** joins all points at one potential, like a contour l
 **Spacing tells the strength.** If neighbouring surfaces differ by $\Delta V$ and are $\Delta l$ apart, then $E = \Delta V/\Delta l$. Crowded surfaces mean a strong field, just as crowded contours mean a steep hill.
 
 :::figure caption="Left: a point charge. Equipotentials are spheres (circles here), drawn for equal steps of V (radii in the ratio 1/4 : 1/3 : 1/2 : 1), so they crowd together near the charge where the field (faint radial lines) is strong. Right: a uniform field. Equipotentials are equally spaced planes perpendicular to the field."
-<svg viewBox="0 0 360 180" role="img" aria-label="Concentric circular equipotentials around a point charge with radial field lines, and parallel equally spaced vertical equipotential lines in a uniform field pointing right">
+<svg viewBox="0 0 360 190" role="img" aria-label="Concentric circular equipotentials around a point charge with radial field lines, and parallel equally spaced vertical equipotential lines in a uniform field pointing right">
 <line class="faint" x1="90" y1="90" x2="170" y2="90"/><line class="faint" x1="90" y1="90" x2="10" y2="90"/><line class="faint" x1="90" y1="90" x2="90" y2="10"/><line class="faint" x1="90" y1="90" x2="90" y2="170"/>
-<line class="faint" x1="90" y1="90" x2="147" y2="33"/><line class="faint" x1="90" y1="90" x2="33" y2="147"/><line class="faint" x1="90" y1="90" x2="147" y2="147"/><line class="faint" x1="90" y1="90" x2="33" y2="33"/>
+<line class="faint" x1="108" y1="72" x2="147" y2="33"/><line class="faint" x1="72" y1="108" x2="33" y2="147"/><line class="faint" x1="108" y1="108" x2="147" y2="147"/><line class="faint" x1="72" y1="72" x2="33" y2="33"/>
 <circle class="ray" cx="90" cy="90" r="20"/><circle class="ray" cx="90" cy="90" r="27"/><circle class="ray" cx="90" cy="90" r="40"/><circle class="ray" cx="90" cy="90" r="80"/>
 <circle class="obj" cx="90" cy="90" r="5"/><text class="k" x="96" y="84">+q</text>
 <line class="ray" x1="215" y1="20" x2="215" y2="165"/><line class="ray" x1="250" y1="20" x2="250" y2="165"/><line class="ray" x1="285" y1="20" x2="285" y2="165"/><line class="ray" x1="320" y1="20" x2="320" y2="165"/>
@@ -344,13 +344,13 @@ $$V(r) = \frac{kQ}{R} + \int_r^R \frac{kQr'}{R^3}\,dr' = \frac{kQ\,(3R^2 - r^2)}
 **Concentric shells.** For shells of radii $r_j$ carrying $q_j$, the potential of shell $i$ is $V_i = k\sum_j q_j/\max(r_i, r_j)$: each other shell acts like a point charge if it is inside, and like a constant if it is outside.
 
 :::figure caption="V(r) for a charge Q on a thin shell (blue) and spread uniformly through a solid ball (orange) of the same radius R. Outside both are kQ/r. The shell's potential is flat inside; the ball's rises to 1.5 kQ/R at the centre. The slope (minus E) is continuous for the ball but jumps at the shell."
-<svg viewBox="0 0 360 200" role="img" aria-label="Graph of potential against distance. A flat line inside radius R for the shell, a downward parabola for the solid sphere reaching 1.5 at the centre, and a common 1 over r curve outside">
+<svg viewBox="-16 0 376 200" role="img" aria-label="Graph of potential against distance. A flat line inside radius R for the shell, a downward parabola for the solid sphere reaching 1.5 at the centre, and a common 1 over r curve outside">
 <line class="ln" x1="40" y1="170" x2="340" y2="170"/><line class="ln" x1="40" y1="170" x2="40" y2="20"/>
 <line class="faint" x1="110" y1="170" x2="110" y2="40"/><line class="faint" x1="40" y1="90" x2="110" y2="90"/><line class="faint" x1="40" y1="50" x2="60" y2="50"/>
 <polyline class="ray" points="40,90 110,90"/>
 <polyline class="ray" points="110,90 117,97 124,103 131,108 138,113 145,117 152,120 159,123 166,126 173,128 180,130 194,134 208,137 222,139 236,141 250,143 264,145 278,146 292,148 306,149 320,150"/>
 <polyline class="ln" style="stroke:var(--chem);stroke-width:2" points="40,50 47,50 54,52 61,54 68,56 75,60 82,64 89,70 96,76 103,82 110,90"/>
-<text x="104" y="184">R</text><text x="324" y="184">r</text><text x="8" y="94">kQ/R</text><text x="2" y="54">1.5kQ/R</text><text x="44" y="18">V</text>
+<text x="104" y="184">R</text><text x="324" y="184">r</text><text x="8" y="94">kQ/R</text><text x="36" y="54" style="text-anchor:end">1.5kQ/R</text><text x="44" y="18">V</text>
 <text x="200" y="124">kQ/r</text><text x="60" y="84">shell</text><text x="66" y="44" style="fill:var(--chem)">solid ball</text>
 </svg>
 :::
@@ -468,7 +468,7 @@ So any trick that produces a potential with the right charges and the right boun
 <path class="ray" d="M185 51 Q235 70 245 110"/><path class="ray" d="M175 51 Q125 70 115 110"/>
 <path class="ray" d="M185 48 Q285 40 300 110"/><path class="ray" d="M175 48 Q75 40 60 110"/>
 <text x="150" y="124" style="fill:var(--chem)">− − − − − − −</text>
-<text x="24" y="104">earthed plane, V = 0</text>
+<text x="12" y="128">earthed plane, V = 0</text>
 </svg>
 :::
 

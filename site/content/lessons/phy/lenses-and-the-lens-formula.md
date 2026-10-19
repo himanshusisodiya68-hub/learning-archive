@@ -115,7 +115,7 @@ wrong: Try it on any sunny day. Far things are beyond the glass's focus, and the
 A **lens** is a transparent body bounded by two surfaces, at least one of them curved. A lens that is **thicker in the middle** than at the edges is **convex**: it bends parallel light together, so it is **converging**. A lens that is **thinner in the middle** is **concave** and **diverging**.
 
 :::figure caption="A convex lens. Rays parallel to the axis converge to F₂; a ray through the optical centre O goes straight on."
-<svg viewBox="0 0 360 190" role="img" aria-label="Convex lens with principal foci and optical centre">
+<svg viewBox="0 0 360 200" role="img" aria-label="Convex lens with principal foci and optical centre">
 <line class="faint" x1="10" y1="100" x2="350" y2="100" style="stroke-dasharray:6 4"/>
 <path class="m2" d="M180 25 Q205 100 180 175 Q155 100 180 25z" style="stroke:var(--phy);stroke-width:1.5"/>
 <line class="ray" x1="10" y1="55" x2="180" y2="55"/><line class="ray" x1="180" y1="55" x2="300" y2="122.5"/>

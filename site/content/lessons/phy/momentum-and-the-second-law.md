@@ -235,12 +235,12 @@ Read it as: if the lift accelerates up, the scale reads more than your weight.
 :::figure caption="In a lift accelerating upwards, the floor must push harder than gravity pulls: the scale reads more than mg."
 <svg viewBox="0 0 360 220" role="img" aria-label="A person in a lift accelerating upward: the normal force arrow is longer than the weight arrow">
 <defs><marker id="mo1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker><marker id="mo2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker></defs>
-<rect class="ln" x="110" y="20" width="110" height="180" rx="4"/>
-<circle class="obj" cx="165" cy="110" r="7"/>
-<line class="ray" x1="165" y1="104" x2="165" y2="30" marker-end="url(#mo1)"/>
-<line class="wf" x1="165" y1="118" x2="165" y2="170" marker-end="url(#mo2)"/>
-<text class="k" x="172" y="48">N (floor)</text>
-<text class="k" x="172" y="160">mg</text>
+<rect class="ln" x="104" y="20" width="124" height="180" rx="4"/>
+<circle class="obj" cx="150" cy="110" r="7"/>
+<line class="ray" x1="150" y1="104" x2="150" y2="30" marker-end="url(#mo1)"/>
+<line class="wf" x1="150" y1="118" x2="150" y2="170" marker-end="url(#mo2)"/>
+<text class="k" x="158" y="48">N (floor)</text>
+<text class="k" x="158" y="160">mg</text>
 <line class="ln" x1="270" y1="150" x2="270" y2="80" marker-end="url(#mo1)"/>
 <text x="240" y="170">a = 2 m/s²</text><text x="240" y="184">upward</text>
 </svg>

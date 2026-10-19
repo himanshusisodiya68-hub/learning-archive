@@ -192,7 +192,7 @@ The formula contains no width and no shape. Join vessels of different shapes at 
 <path class="ln" d="M40 50 L40 170 M60 50 L60 170 M100 50 L100 170 M180 50 L180 170 M205 50 L228 170 M275 50 L252 170 M322 50 L300 170 M344 50 L322 170"/>
 <path class="ln" d="M20 170 L40 170 M60 170 L100 170 M180 170 L228 170 M252 170 L300 170 M322 170 L350 170 M20 170 L20 200 L350 200 L350 170"/>
 <line class="faint" x1="30" y1="70" x2="355" y2="70"/>
-<text x="130" y="62">same level in every vessel</text>
+<text x="130" y="38">same level in every vessel</text>
 <text x="110" y="222">same depth, same pressure at the bottom</text>
 </svg>
 :::
@@ -291,7 +291,7 @@ For a box you can check it directly. The bottom face is deeper than the top face
 <rect x="140" y="90" width="80" height="60" rx="3" style="fill:var(--muted);stroke:var(--ink);stroke-width:1.5"/>
 <line class="ray" x1="165" y1="62" x2="165" y2="88" marker-end="url(#pab)"/><line class="ray" x1="195" y1="62" x2="195" y2="88" marker-end="url(#pab)"/>
 <line class="wf" x1="150" y1="200" x2="150" y2="152" marker-end="url(#pab2)"/><line class="wf" x1="180" y1="200" x2="180" y2="152" marker-end="url(#pab2)"/><line class="wf" x1="210" y1="200" x2="210" y2="152" marker-end="url(#pab2)"/>
-<text x="232" y="76">small push down</text><text x="232" y="190">bigger push up</text>
+<text x="232" y="70">small push</text><text x="232" y="82">down</text><text x="232" y="184">bigger push</text><text x="232" y="196">up</text>
 <text x="232" y="124" class="k">net: up</text>
 </svg>
 :::

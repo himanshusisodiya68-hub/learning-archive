@@ -120,7 +120,7 @@ His famous test used two ramps facing each other. A ball released from a height 
 <text x="30" y="30">start, height h</text>
 <text x="196" y="68">steep</text>
 <text x="262" y="88">gentler</text>
-<text x="260" y="140">flat: never stops</text>
+<text x="226" y="140">flat: never stops</text>
 </svg>
 :::
 

@@ -188,7 +188,7 @@ Light from A reaches B by bouncing off a mirror. Of all possible bounce points, 
 <line class="faint" x1="196.7" y1="110" x2="280" y2="160"/><line class="faint" x1="280" y1="60" x2="280" y2="160"/>
 <line class="gr" x1="80" y1="40" x2="140" y2="110" style="stroke-dasharray:2 3"/><line class="gr" x1="140" y1="110" x2="280" y2="60" style="stroke-dasharray:2 3"/>
 <text class="k" x="66" y="34">A</text><text class="k" x="290" y="58">B</text><text class="k" x="290" y="166">B′</text>
-<text x="100" y="128">a longer path (dotted)</text>
+<text x="40" y="136">a longer path (dotted)</text>
 </svg>
 :::
 

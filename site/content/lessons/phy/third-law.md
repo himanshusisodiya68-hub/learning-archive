@@ -173,7 +173,7 @@ The mistake is adding the two forces together. They act on different bodies, so 
 So the real engine of the whole team is the ground. The horse pushes the ground back, and the ground pushes the horse forward. In empty space, or on perfectly smooth ice, there is nothing to push against: the horse could neither start nor stop.
 
 :::figure caption="Horizontal forces, arrow lengths to scale. Horse 400 kg, cart 200 kg, both speeding up at 0.5 m/s². Horse: 500 − 300 = 200 N forward = 400 × 0.5. Cart: 300 − 200 = 100 N forward = 200 × 0.5."
-<svg viewBox="0 0 380 190" role="img" aria-label="A horse and a cart with horizontal forces on each drawn separately">
+<svg viewBox="0 0 380 196" role="img" aria-label="A horse and a cart with horizontal forces on each drawn separately">
 <defs><marker id="tl2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker><marker id="tl2b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--eng)"/></marker></defs>
 <line class="ln" x1="10" y1="150" x2="370" y2="150"/>
 <rect class="m2 ln" x="30" y="88" width="100" height="50" rx="6"/><text class="k" x="52" y="118">horse 400 kg</text>
@@ -184,7 +184,7 @@ So the real engine of the whole team is the ground. The horse pushes the ground 
 <line class="wf" x1="150" y1="46" x2="72" y2="46" marker-end="url(#tl2b)"/><text x="72" y="40">cart → horse 300 N</text>
 <line class="ray" x1="205" y1="72" x2="283" y2="72" marker-end="url(#tl2a)"/><text x="205" y="66">horse → cart 300 N</text>
 <line class="wf" x1="283" y1="46" x2="231" y2="46" marker-end="url(#tl2b)"/><text x="205" y="40">ground → cart 200 N</text>
-<text x="30" y="176">ground pushes the horse; the rope pair (300 N) never cancels</text>
+<text x="30" y="173">ground pushes the horse;</text><text x="30" y="186">the rope pair (300 N) never cancels</text>
 </svg>
 :::
 
@@ -211,7 +211,7 @@ A book rests on a table. The Earth pulls it down (its weight $W$) and the table 
 <rect class="ln" x="240" y="78" width="40" height="20" rx="3"/>
 <line class="ray" x1="260" y1="104" x2="260" y2="142" marker-end="url(#tl3a)"/><text x="196" y="56">book on table</text>
 <path class="m2 ln" d="M190 210 Q270 178 350 210"/>
-<line class="wf" x1="330" y1="198" x2="330" y2="156" marker-end="url(#tl3b)"/><text x="268" y="176">book on Earth</text>
+<line class="wf" x1="330" y1="198" x2="330" y2="156" marker-end="url(#tl3b)"/><text x="322" y="176" text-anchor="end">book on Earth</text>
 </svg>
 :::
 

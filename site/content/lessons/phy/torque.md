@@ -197,7 +197,7 @@ Read it as: the sideways part of the force times the distance, or equally the wh
 <line class="ray" x1="200" y1="150" x2="278" y2="105" marker-end="url(#tq3a)"/><text class="k" x="284" y="104">F</text>
 <text x="232" y="144">θ</text>
 <line class="faint" x1="200" y1="150" x2="95" y2="211"/><line class="faint" x1="60" y1="150" x2="95" y2="211"/>
-<text class="k" x="30" y="196">d = r sin θ</text>
+<text class="k" x="138" y="206">d = r sin θ</text>
 <text x="190" y="170" class="k">P</text>
 </svg>
 :::

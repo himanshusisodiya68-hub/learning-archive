@@ -246,7 +246,7 @@ Phasors add like vectors because sines of the same frequency add like the projec
 <text x="134" y="62" style="fill:var(--phy)">V</text><text x="100" y="72" style="fill:var(--eng)">I</text>
 <text x="314" y="62" style="fill:var(--phy)">V</text><text x="284" y="140" style="fill:var(--eng)">I</text>
 <text x="494" y="62" style="fill:var(--phy)">V</text><text x="408" y="56" style="fill:var(--eng)">I</text>
-<text x="292" y="108">90°</text><text x="424" y="86">90°</text>
+<text x="292" y="108">90°</text><text x="450" y="64">90°</text>
 <text class="k" x="45" y="175">Resistor</text><text class="k" x="225" y="175">Inductor</text><text class="k" x="400" y="175">Capacitor</text>
 </svg>
 :::

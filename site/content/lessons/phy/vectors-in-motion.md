@@ -54,7 +54,7 @@ opener:
     How can 3 and 4 add up to 5? Nobody is cheating. Distance, the number your feet count, and the straight-line gap, the number a crow counts, are different things. And the crow's number depends on a thing a plain number cannot hold: **which way** each leg points.
 
     That one idea (a quantity that carries a direction inside it) is the language in which all of motion, forces, fields and waves are written. Once you can think in arrows, a thrown ball, a boat crossing a river and a plane in a crosswind become the same puzzle.
-  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A walk 3 km east then 4 km north, and the 5 km straight line from start to market"><line x1="40" y1="190" x2="200" y2="190" style="stroke:var(--c);stroke-width:3"/><line x1="200" y1="190" x2="200" y2="60" style="stroke:var(--c);stroke-width:3"/><line x1="40" y1="190" x2="200" y2="60" style="stroke:var(--chem);stroke-width:3;stroke-dasharray:7 5"/><circle cx="40" cy="190" r="6" style="fill:var(--ink)"/><circle cx="200" cy="60" r="7" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="194" y="182" width="12" height="8" style="fill:none;stroke:var(--muted)"/><text x="30" y="212" style="font-size:11px;fill:var(--ink)">your door</text><text x="212" y="64" style="font-size:11px;fill:var(--ink)">market</text><text x="86" y="208" style="font-size:11px;fill:var(--c)">3 km east</text><text x="206" y="130" style="font-size:11px;fill:var(--c)">4 km north</text><text x="60" y="118" style="font-size:11px;fill:var(--chem)">5 km as the crow flies</text><text x="40" y="232" style="font-size:11px;fill:var(--muted)">3 + 4 = 5, when directions differ</text></svg>'
+  art: '<svg viewBox="0 0 320 240" role="img" aria-label="A walk 3 km east then 4 km north, and the 5 km straight line from start to market"><line x1="40" y1="190" x2="200" y2="190" style="stroke:var(--c);stroke-width:3"/><line x1="200" y1="190" x2="200" y2="60" style="stroke:var(--c);stroke-width:3"/><line x1="40" y1="190" x2="200" y2="60" style="stroke:var(--chem);stroke-width:3;stroke-dasharray:7 5"/><circle cx="40" cy="190" r="6" style="fill:var(--ink)"/><circle cx="200" cy="60" r="7" style="fill:var(--surface);stroke:var(--ink);stroke-width:2"/><rect x="194" y="182" width="12" height="8" style="fill:none;stroke:var(--muted)"/><text x="30" y="212" style="font-size:11px;fill:var(--ink)">your door</text><text x="212" y="64" style="font-size:11px;fill:var(--ink)">market</text><text x="86" y="208" style="font-size:11px;fill:var(--c)">3 km east</text><text x="206" y="130" style="font-size:11px;fill:var(--c)">4 km north</text><text x="20" y="100" style="font-size:11px;fill:var(--chem)">5 km as the crow flies</text><text x="40" y="232" style="font-size:11px;fill:var(--muted)">3 + 4 = 5, when directions differ</text></svg>'
 symbols:
   - s: '\mathbf{A},\ \mathbf{B}'
     means: 'two vectors: arrows that have both a size and a direction'
@@ -151,7 +151,7 @@ That is the **triangle rule**: place the tail of $\mathbf B$ at the head of $\ma
 <line x1="30" y1="150" x2="140" y2="110" style="stroke:var(--phy);stroke-width:2" marker-end="url(#vmA)"/>
 <line x1="140" y1="110" x2="180" y2="40" style="stroke:var(--chem);stroke-width:2" marker-end="url(#vmB)"/>
 <line x1="30" y1="150" x2="180" y2="40" style="stroke:var(--ink);stroke-width:2.2" marker-end="url(#vmR)"/>
-<text class="k" x="88" y="148">A</text><text class="k" x="168" y="84">B</text><text class="k" x="88" y="88">R = A + B</text>
+<text class="k" x="88" y="148">A</text><text class="k" x="168" y="84">B</text><text class="k" x="26" y="96">R = A + B</text>
 <text x="50" y="176">triangle rule</text>
 <line x1="200" y1="150" x2="310" y2="110" style="stroke:var(--phy);stroke-width:2" marker-end="url(#vmA)"/>
 <line x1="200" y1="150" x2="240" y2="80" style="stroke:var(--chem);stroke-width:2" marker-end="url(#vmB)"/>
@@ -510,7 +510,7 @@ $$\mathbf a = \frac{dv}{dt}\,\hat{\mathbf t} + \frac{v^2}{\rho}\,\hat{\mathbf n}
 <line x1="170" y1="60" x2="215" y2="118" style="stroke:var(--ink);stroke-width:2.2" marker-end="url(#vmK1)"/>
 <circle class="obj" cx="170" cy="60" r="3.5"/>
 <text x="198" y="50">a_t = dv/dt</text><text x="100" y="104">a_n = v²/ρ</text><text class="k" x="220" y="104">a</text>
-<text x="252" y="76">path</text><text x="40" y="78">osculating circle</text>
+<text x="252" y="76">path</text><text x="46" y="150">osculating circle</text>
 </svg>
 :::
 

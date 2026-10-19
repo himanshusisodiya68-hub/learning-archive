@@ -148,7 +148,7 @@ wrong: The part of the velocity along B gives no force. Use v sin 30° = 1.5 m/s
 Now lay the rod across two parallel rails a distance $l$ apart, joined at one end through a resistor $R$. The rod, the rails and the resistor form a loop. The field $\mathbf B$ is perpendicular to the plane of the rails.
 
 :::figure caption="A rod PQ slides to the right at speed v on rails joined through R, in a field B into the page (crosses). The carriers in the rod are pushed upward (v × B), so P is the positive terminal. Current runs up the rod and anticlockwise round the loop; the force BIl on the rod points left, against the motion."
-<svg viewBox="0 0 340 220" role="img" aria-label="Rod sliding on rails with resistor, magnetic field into page, current and force directions">
+<svg viewBox="0 0 340 228" role="img" aria-label="Rod sliding on rails with resistor, magnetic field into page, current and force directions">
 <defs><marker id="me-a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker><marker id="me-a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker></defs>
 <g class="faint"><path d="M76,66 l8,8 M84,66 l-8,8 M136,66 l8,8 M144,66 l-8,8 M196,66 l8,8 M204,66 l-8,8 M256,66 l8,8 M264,66 l-8,8 M76,146 l8,8 M84,146 l-8,8 M136,146 l8,8 M144,146 l-8,8 M196,146 l8,8 M204,146 l-8,8 M256,146 l8,8 M264,146 l-8,8 M106,106 l8,8 M114,106 l-8,8 M166,106 l8,8 M174,106 l-8,8 M296,106 l8,8 M304,106 l-8,8"/></g>
 <line class="ln" x1="40" y1="40" x2="320" y2="40"/><line class="ln" x1="40" y1="180" x2="320" y2="180"/>
@@ -231,7 +231,7 @@ $$\varepsilon = \int_0^l B(\omega r)\,dr = \tfrac12 B\omega l^2.$$
 <path class="faint" d="M160,110 L250,110 A90,90 0 0 0 223.6,46.4 Z" style="fill:var(--phy);fill-opacity:0.12"/>
 <line class="ln" x1="160" y1="110" x2="223.6" y2="46.4" style="stroke-width:4"/>
 <circle cx="160" cy="110" r="4" style="fill:var(--ink)"/><text class="k" x="140" y="128">O</text><text class="k" x="228" y="40">A</text>
-<line class="ray" x1="202" y1="68" x2="218" y2="84" marker-end="url(#me-b1)"/><text x="222" y="92">v = ωr</text>
+<line class="ray" x1="202" y1="68" x2="218" y2="84" marker-end="url(#me-b1)"/><text x="186" y="100">v = ωr</text>
 <text x="168" y="80">r</text>
 <path class="ray" d="M270,110 A110,110 0 0 0 253,52" style="fill:none" marker-end="url(#me-b1)"/><text class="k" x="276" y="80">ω</text>
 <text x="20" y="214">B ⊙ out of the page (parallel to the axis)</text>
@@ -288,7 +288,7 @@ A rectangular loop, $a$ along the direction of motion and $b$ across it, is pull
 The current reverses between entry and exit, but the **force** does not. Each time it is $B^2b^2v/R$, **opposing** the motion. The pushing hand works only during entry and exit.
 
 :::figure caption="Top: a loop (a along the motion, b across) pulled at speed v through a field strip of width D. Bottom: the emf round the loop and the drag force against time. The emf is +Bbv while entering and −Bbv while leaving; the force opposes the motion both times."
-<svg viewBox="0 0 340 250" role="img" aria-label="Loop entering a field strip, with emf and force against time graphs">
+<svg viewBox="0 0 340 264" role="img" aria-label="Loop entering a field strip, with emf and force against time graphs">
 <defs><marker id="me-c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--phy)"/></marker></defs>
 <rect x="150" y="10" width="120" height="80" style="fill:var(--phy);fill-opacity:0.10;stroke:none"/>
 <line class="faint" x1="150" y1="8" x2="150" y2="92"/><line class="faint" x1="270" y1="8" x2="270" y2="92"/>
@@ -303,7 +303,7 @@ The current reverses between entry and exit, but the **force** does not. Each ti
 <line class="axis" x1="30" y1="240" x2="330" y2="240"/><line class="axis" x1="30" y1="214" x2="30" y2="246"/>
 <text class="k" x="6" y="232">F</text>
 <polyline class="ln" points="30,240 70,240 70,220 130,220 130,240 210,240 210,220 270,220 270,240 320,240" style="fill:none"/>
-<text x="140" y="234">opposes v both times</text>
+<text x="140" y="257">opposes v both times</text>
 </svg>
 :::
 

@@ -260,7 +260,7 @@ Three families behave very differently.
 <line class="axis" x1="40" y1="180" x2="40" y2="15"/>
 <text x="300" y="198">T</text><text x="14" y="25">ρ</text>
 <line class="pen" x1="40" y1="150" x2="330" y2="80" style="stroke:var(--phy)"/>
-<text x="250" y="88" style="fill:var(--phy)">pure metal</text>
+<text x="250" y="116" style="fill:var(--phy)">pure metal</text>
 <line class="pen" x1="40" y1="60" x2="330" y2="56" style="stroke:var(--chem)"/>
 <text x="230" y="48" style="fill:var(--chem)">alloy (manganin)</text>
 <path class="pen" d="M50 20 Q90 140 180 160 T330 172" style="fill:none;stroke:var(--mat)"/>
