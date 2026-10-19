@@ -352,3 +352,180 @@
 
     **Check with the third relation.** Sum of products in pairs $= 2\cdot4 + 4\cdot6 + 2\cdot6 = 8 + 24 + 12 = 44 = c/a$. It matches.
   check: both
+
+# ---------- adv and oly ----------
+# Problems marked "Zeitz" are copied word for word from Paul Zeitz, The Art and Craft of Problem Solving, 2nd ed. (Wiley, 2007), §5.4, pp. 172-173, via the reading notes in docs/refs/maths/polynomials.md. The solutions are ours, not the book's.
+
+- id: a1
+  lvl: adv
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 5.4.9
+  kind: text
+  q: |-
+    Find the remainder when you divide $x^{81} + x^{49} + x^{25} + x^9 + x$ by $x^3 - x$.
+  sol: |
+    Call the dividend $P(x)$. The divisor $x^3 - x = x(x - 1)(x + 1)$ has degree 3, so the remainder has degree at most 2: write it $R(x) = Ax^2 + Bx + C$ and
+    $$P(x) = (x^3 - x)\,Q(x) + Ax^2 + Bx + C.$$
+    This holds for every $x$, so put in the three zeroes of the divisor, where the first term vanishes.
+
+    - $x = 0$: $P(0) = 0$, so $C = 0$.
+    - $x = 1$: $P(1) = 1 + 1 + 1 + 1 + 1 = 5$, so $A + B + C = 5$.
+    - $x = -1$: every power is odd, so $P(-1) = -5$, and $A - B + C = -5$.
+
+    Then $A + B = 5$ and $A - B = -5$ give $A = 0$, $B = 5$. The remainder is $\mathbf{5x}$.
+
+    **Second view.** Modulo $x^3 - x$ we may replace $x^3$ by $x$, so $x^{2m+1} = x\,(x^2)^m$ and $x^{2m+1} - x = x\big((x^2)^m - 1\big)$ is divisible by $x(x^2 - 1)$. Each of the five odd powers leaves remainder $x$, total $5x$.
+  check: none
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: Let $\alpha, \beta, \gamma$ be the three roots of $x^3 + 2x^2 - 3x - 1 = 0$. Without finding the roots, find $\alpha^3 + \beta^3 + \gamma^3$. (Original problem.)
+  ask: Value of α³ + β³ + γ³
+  ans: -23
+  tol: 0.001
+  verify: pow(-2,3) - 3*(-2)*(-3) + 3*1
+  sol: |
+    **Vieta.** With $a = 1$, $b = 2$, $c = -3$, $d = -1$:
+    $$e_1 = \alpha+\beta+\gamma = -2,\quad e_2 = \alpha\beta+\beta\gamma+\gamma\alpha = -3,\quad e_3 = \alpha\beta\gamma = 1.$$
+
+    **Sum of squares.** $\alpha^2 + \beta^2 + \gamma^2 = e_1^2 - 2e_2 = 4 + 6 = 10$.
+
+    **Use the equation itself.** Each root satisfies $x^3 = -2x^2 + 3x + 1$. Adding this for the three roots,
+    $$\alpha^3 + \beta^3 + \gamma^3 = -2(10) + 3(-2) + 3(1) = -20 - 6 + 3 = -23.$$
+
+    **Cross-check** with the identity $\sum\alpha^3 = e_1^3 - 3e_1e_2 + 3e_3 = -8 - 18 + 3 = -23$.
+  check: both
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: When a polynomial $P(x)$ is divided by $x - 1$ the remainder is $3$, and when it is divided by $x - 2$ the remainder is $5$. Find the remainder when $P(x)$ is divided by $x^2 - 3x + 2$, and give the value of that remainder at $x = 4$. (Original problem.)
+  ask: Value of the remainder at x = 4
+  ans: 9
+  tol: 0.001
+  verify: ((5-3)/(2-1))*4 + (3 - (5-3)/(2-1))
+  sol: |
+    By the remainder theorem, $P(1) = 3$ and $P(2) = 5$.
+
+    The divisor $x^2 - 3x + 2 = (x - 1)(x - 2)$ has degree 2, so the remainder is $Ax + B$:
+    $$P(x) = (x - 1)(x - 2)\,Q(x) + Ax + B.$$
+    Put in $x = 1$: $A + B = 3$. Put in $x = 2$: $2A + B = 5$. Subtracting, $A = 2$ and then $B = 1$.
+
+    The remainder is $2x + 1$, and its value at $x = 4$ is $9$.
+
+    (We never needed to know $P$ itself; any polynomial with those two remainders gives the same answer.)
+  check: both
+
+- id: a4
+  lvl: adv
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 5.4.16 (Hungary 1899)
+  kind: proof
+  q: |-
+    Let $r$ and $s$ be the roots of $x^2 - (a + d)x + (ad - bc) = 0$. Prove that $r^3$ and $s^3$ are the roots of $y^2 - (a^3 + d^3 + 3abc + 3bcd)y + (ad - bc)^3 = 0$.
+  hints: ["Vieta gives r + s and rs directly from the first equation.", "Write r³ + s³ using only r + s and rs.", "A quadratic y² − Sy + P has roots u and v exactly when u + v = S and uv = P."]
+  sol: |
+    **Step 1: Vieta on the first equation.** $r + s = a + d$ and $rs = ad - bc$.
+
+    **Step 2: sum of cubes.** Since $(r+s)^3 = r^3 + s^3 + 3rs(r+s)$,
+    $$r^3 + s^3 = (r+s)^3 - 3rs(r+s) = (a+d)^3 - 3(ad - bc)(a+d).$$
+    Expand: $(a+d)^3 = a^3 + 3a^2d + 3ad^2 + d^3$ and $3(ad - bc)(a + d) = 3a^2d + 3ad^2 - 3abc - 3bcd$. Subtracting,
+    $$r^3 + s^3 = a^3 + d^3 + 3abc + 3bcd.$$
+
+    **Step 3: product of cubes.** $r^3s^3 = (rs)^3 = (ad - bc)^3$.
+
+    **Step 4: assemble.** The quadratic $(y - r^3)(y - s^3) = y^2 - (r^3 + s^3)y + r^3s^3$ is exactly the given one, so its roots are $r^3$ and $s^3$. $\blacksquare$
+
+    **Why these expressions?** (Our remark.) $x^2 - (a+d)x + (ad - bc)$ is the characteristic polynomial of the matrix $\begin{pmatrix} a & b \\ c & d\end{pmatrix}$, whose eigenvalues are $r, s$. The cube of the matrix has eigenvalues $r^3, s^3$, trace $a^3 + d^3 + 3abc + 3bcd$ and determinant $(ad - bc)^3$.
+  check: none
+
+- id: o1
+  lvl: oly
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 5.4.14
+  kind: proof
+  q: |-
+    Let $p(x)$ be a polynomial with integer coefficients satisfying $p(0) = p(1) = 1999$. Show that $p$ has no integer zeros.
+  hints: ["For integer coefficients, m − n divides p(m) − p(n).", "Split the integers into even and odd ones and compare each with 0 or 1.", "What is the parity of p(k)?"]
+  sol: |
+    **Key fact.** If $p$ has integer coefficients and $m, n$ are integers, then $m - n$ divides $p(m) - p(n)$. Indeed $p(m) - p(n) = \sum_j c_j\,(m^j - n^j)$, and each $m^j - n^j = (m - n)(m^{j-1} + m^{j-2}n + \dots + n^{j-1})$.
+
+    **Even $k$.** Then $k - 0$ is even, so $p(k) - p(0)$ is even, and $p(k)$ has the same parity as $p(0) = 1999$: odd.
+
+    **Odd $k$.** Then $k - 1$ is even, so $p(k) - p(1)$ is even, and $p(k)$ is again odd.
+
+    So $p(k)$ is odd for every integer $k$; in particular $p(k) \neq 0$. Hence $p$ has no integer zeros. $\blacksquare$
+
+    (The number 1999 matters only for being odd.)
+  check: none
+
+- id: o2
+  lvl: oly
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 5.4.21 (Canada 1970)
+  kind: proof
+  q: |-
+    Let $P(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0$ be a polynomial with integral coefficients. Suppose that there exist four distinct integers $a, b, c, d$ with $P(a) = P(b) = P(c) = P(d) = 5$. Prove that there is no integer $k$ with $P(k) = 8$.
+  hints: ["The polynomial P(x) − 5 has four known integer zeros.", "Peel off the four factors with the factor theorem; why does the quotient still have integer coefficients?", "Can four distinct non-zero integers, times another integer, multiply to 3?"]
+  sol: |
+    **Factor.** $R(x) = P(x) - 5$ has integer coefficients and leading coefficient 1, and $R(a) = R(b) = R(c) = R(d) = 0$. By the factor theorem, applied four times (as in the lesson's proof that a polynomial has at most $n$ zeroes),
+    $$P(x) - 5 = (x - a)(x - b)(x - c)(x - d)\,Q(x).$$
+    $Q$ has integer coefficients: dividing a polynomial with integer coefficients by a monic factor $x - t$ with $t$ an integer uses only multiplication by $t$ and addition, so every quotient stays in integers.
+
+    **Suppose $P(k) = 8$** for an integer $k$. Then
+    $$(k - a)(k - b)(k - c)(k - d)\,Q(k) = 3.$$
+    All five factors are integers, and none is zero (the product is $3$). The four numbers $k - a, k - b, k - c, k - d$ are **distinct**, because $a, b, c, d$ are.
+
+    Among distinct non-zero integers at most one equals $1$ and at most one equals $-1$, so at least two of the four have absolute value at least $2$. Then
+    $$|3| = |k-a|\,|k-b|\,|k-c|\,|k-d|\,|Q(k)| \geq 2 \cdot 2 \cdot 1 \cdot 1 \cdot 1 = 4,$$
+    a contradiction. So no integer $k$ has $P(k) = 8$. $\blacksquare$
+
+    (The same argument shows $P(k)$ can never be $2, 3, 4, 6, 7$ or $8$: the product would have to be a non-zero number of absolute value at most 3.)
+  check: none
+
+- id: o3
+  lvl: oly
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 5.4.20 (USAMO 1977)
+  kind: proof
+  q: |-
+    If $a$ and $b$ are two roots of $x^4 + x^3 - 1 = 0$, prove that $ab$ is a root of $x^6 + x^4 + x^3 - x^2 - 1 = 0$.
+  hints: ["Call the other two roots c and d, and name s = a + b, p = ab, t = c + d, q = cd.", "Write the four Vieta equations of the quartic in s, p, t, q.", "Eliminate t and q, then s; what equation is left for p?"]
+  sol: |
+    **Setting up.** The quartic has four roots $a, b, c, d$. They are distinct: a repeated root would also be a root of the derivative $4x^3 + 3x^2 = x^2(4x + 3)$, but $x = 0$ gives $-1$ and $x = -\frac34$ gives $\frac{81}{256} - \frac{27}{64} - 1 \neq 0$. So "two roots" means two of the four, and $c, d$ are the other two. Name
+    $$s = a + b,\quad p = ab,\quad t = c + d,\quad q = cd.$$
+
+    **Vieta for $x^4 + x^3 + 0x^2 + 0x - 1$** ($e_k = (-1)^k a_{4-k}$):
+
+    - $e_1$: $s + t = -1$.
+    - $e_2$: $ab + cd + (a+b)(c+d) = p + q + st = 0$.
+    - $e_3$: $ab(c+d) + cd(a+b) = pt + qs = 0$.
+    - $e_4$: $pq = -1$.
+
+    **Eliminate.** From $e_4$, $p \neq 0$ and $q = -\frac1p$. From $e_1$, $t = -1 - s$. Then $e_3$ becomes $-p(1 + s) - \frac{s}{p} = 0$, i.e.
+    $$p^2(1 + s) + s = 0 \quad\Longrightarrow\quad s\,(p^2 + 1) = -p^2.$$
+    Here $p^2 + 1 \neq 0$, since otherwise the left side is $0$ while the right side is $1$. So
+    $$s = -\frac{p^2}{p^2 + 1}, \qquad 1 + s = \frac{1}{p^2 + 1}.$$
+    Now $e_2$ reads $p - \frac1p - s(1 + s) = 0$, that is
+    $$\frac{p^2 - 1}{p} = s(1 + s) = -\frac{p^2}{(p^2 + 1)^2}.$$
+    Multiply by $p\,(p^2 + 1)^2$:
+    $$(p^2 - 1)(p^2 + 1)^2 + p^3 = 0.$$
+    Since $(p^2 - 1)(p^4 + 2p^2 + 1) = p^6 + p^4 - p^2 - 1$, this is
+    $$p^6 + p^4 + p^3 - p^2 - 1 = 0.$$
+    So $p = ab$ is a root of $x^6 + x^4 + x^3 - x^2 - 1 = 0$. $\blacksquare$
+
+    **Numerical sanity check (ours).** The quartic has real roots near $0.8192$ and $-1.3803$; their product is about $-1.1307$, and $x^6 + x^4 + x^3 - x^2 - 1$ at $-1.1307$ is $0$ to four decimal places.
+  check: none
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: A polynomial $P(x)$ of degree 4 with leading coefficient 1 satisfies $P(1) = 2$, $P(2) = 5$, $P(3) = 10$ and $P(4) = 17$. Find $P(5)$. (Original problem.)
+  ask: Value of P(5)
+  ans: 50
+  tol: 0.001
+  verify: (5*5 + 1) + (5-1)*(5-2)*(5-3)*(5-4)
+  sol: |
+    **Spot the pattern.** The values $2, 5, 10, 17$ are $k^2 + 1$ for $k = 1, 2, 3, 4$. The tempting answer $5^2 + 1 = 26$ ignores the degree.
+
+    **Manufacture zeroes.** Let $Q(x) = P(x) - (x^2 + 1)$. Subtracting a quadratic does not touch the $x^4$ term, so $Q$ has degree 4 with leading coefficient 1, and $Q(1) = Q(2) = Q(3) = Q(4) = 0$. Knowing four zeroes and the leading coefficient of a quartic fixes it:
+    $$Q(x) = (x - 1)(x - 2)(x - 3)(x - 4).$$
+
+    **Evaluate.** $P(5) = (25 + 1) + 4 \cdot 3 \cdot 2 \cdot 1 = 26 + 24 = 50$.
+  check: both
