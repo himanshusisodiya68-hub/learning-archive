@@ -6,6 +6,7 @@
 
   /* ================= ICONS ================= */
   const ICONS = {
+    search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
     home: '<path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/>',
     tree: '<circle cx="12" cy="5" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 7v4M6 16v-2.5h12V16M12 11v5"/>',
     atom: '<path class="fl" d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/><path d="M12 2c4 0 6 4.5 6 10s-2 10-6 10-6-4.5-6-10 2-10 6-10z"/><path d="M3.3 7c2-3.5 6.8-3 11.6-.3s7.8 6.8 5.8 10.3-6.8 3-11.6.3S1.3 10.5 3.3 7z"/>',
@@ -185,7 +186,7 @@
 
   /* Title Case for headings, card titles and labels: small words and single-letter symbols stay lowercase; maths and code untouched. */
   const SMALL = new Set(['a', 'an', 'the', 'and', 'or', 'but', 'nor', 'of', 'in', 'on', 'at', 'to', 'for', 'by', 'vs', 'via', 'as', 'with', 'from', 'into', 'per']);
-  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k, .lbegin h2';
+  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .xl-t > b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k, .lbegin h2';
   function tcWord(w, first) {
     const core = w.replace(/[^A-Za-z]/g, '');
     if (!core || /[A-Z]/.test(w)) return w;
@@ -781,8 +782,12 @@
     const margin = (lesson.margin || []).map(m => `<div class="mn ${m.kind === 'tip' ? 'tip' : m.kind === 'olympiad' ? 'oly' : ''}"><b>${escHTML(m.title || m.kind)}</b>${m.html}</div>`).join('');
     const think = [];
     if (lesson.models && lesson.models.length) think.push(`<div class="mms">${lesson.models.map(m => `<div class="mm"><div class="mm-k">${ico('bulb')}Mental model</div><b>${m.name}</b><p>${m.html}</p></div>`).join('')}</div>`);
-    if (lesson.links && lesson.links.length) think.push(lesson.links.map(x => { const T = x.leaf && leafByKey(x.leaf), nm = escHTML(x.name || (T ? T.l.name : x.leaf));
-      return `<div class="cmp"><div class="cmp-h"><span>Same idea elsewhere</span>${T && T.l.live ? `<button data-goto="${x.leaf}">${nm} →</button>` : `<b>${nm}</b>`}</div><div class="cmp-g"><div class="cmp-c same"><b>What's common</b><p>${x.same}</p></div><div class="cmp-c diff"><b>What's different</b><p>${x.differs}</p></div></div></div>`; }).join(''));
+    // Same idea elsewhere: one compact list; each row shows the link and one line of what is shared, and opens to compare.
+    if (lesson.links && lesson.links.length) think.push(`<div class="xl"><div class="xl-h"><b>Same idea elsewhere</b><span>${lesson.links.length} connection${lesson.links.length > 1 ? 's' : ''} · open one to compare</span></div>${lesson.links.map(x => {
+      const T = x.leaf && leafByKey(x.leaf), nm = escHTML(x.name || (T ? T.l.name : x.leaf)), xs = T ? T.s.id : sid;
+      return `<details class="xl-i s-${xs}"><summary><span class="tile sm">${ico(SUBJ_ICON[xs])}</span><span class="xl-t"><b>${nm}</b><small>${T ? escHTML(T.s.name) + ' · ' : ''}${x.same}</small></span><span class="xl-chev" aria-hidden="true"></span></summary>
+        <div class="xl-b"><div class="cmp-c same"><b>What's common</b><p>${x.same}</p></div><div class="cmp-c diff"><b>What's different</b><p>${x.differs}</p></div>
+        ${T && T.l.live ? `<button class="btn quiet sm" data-goto="${x.leaf}">Open ${nm} →</button>` : '<span class="xl-soon">Lesson coming soon</span>'}</div></details>`; }).join('')}</div>`);
     sections += '%%WRAPSTAGE%%';
     if (think.length) sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Think with it</span><span class="band-h">Ideas to carry outside this subject</span></div>${think.join('')}`;
     if (margin) sections += `<div class="around"><div class="eyebrow">Around this idea</div><div class="around-g">${margin}</div></div>`;
