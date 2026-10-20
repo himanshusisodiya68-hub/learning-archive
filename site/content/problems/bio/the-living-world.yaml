@@ -1,0 +1,450 @@
+# The living world. NCERT questions copied word for word from NCERT Biology Class XI (reprint 2026-27) Ch 1 (Exercises 1 to 10) and NCERT Science Class IX Ch 12 "Patterns in Life: Diversity and Classification" (Think It Over, Pause and Ponder, Activity 12.2 and Revise, Reflect, Refine Q3, Q6, Q12; the other Class IX questions belong to biological-classification). No NCERT answer key exists for Biology: all answers are model answers written for this archive. Found, board and main problems are original.
+
+- id: ncert9-it-12-t1
+  lvl: ncert-intext
+  num: "IX 12 · Think It Over Q1"
+  source: NCERT IX Science · Ch 12 · Think It Over (p. 228)
+  kind: text
+  q: |-
+    What do you understand by biodiversity?
+  sol: |
+    **Biodiversity** is the immense variety of living organisms on Earth: the number and types of organisms present on the planet, from microscopic algae and bacteria to giant trees and large animals, living in habitats from the snow-clad Himalayas to the coral reefs of the Andaman Sea. About 1.7 to 1.8 million species are known and described, and new ones are still being found. Biodiversity keeps ecosystems stable (algae release oxygen, fungi and bacteria decompose waste, bees and birds pollinate) and gives people food, shelter, medicines and livelihoods.
+  check: none
+
+- id: ncert9-it-12-t2
+  lvl: ncert-intext
+  num: "IX 12 · Think It Over Q2"
+  source: NCERT IX Science · Ch 12 · Think It Over (p. 228)
+  kind: text
+  q: |-
+    How does the grouping of organisms help us understand diversity?
+  sol: |
+    Millions of kinds of organisms cannot be studied one at a time. Grouping them by shared characteristics turns the variety into a manageable system: organisms that share features are placed together, so we can see how they are similar and different, how they are related, and how they function. It also lets us predict (a newly found animal with a notochord, for example, is placed with the chordates and we immediately know much about it) and plan conservation and farming.
+  check: none
+
+- id: ncert9-it-12-t3
+  lvl: ncert-intext
+  num: "IX 12 · Think It Over Q3"
+  source: NCERT IX Science · Ch 12 · Think It Over (p. 228)
+  kind: text
+  q: |-
+    On what basis, are plants and animals classified?
+  sol: |
+    Scientists start with broad, easily visible features and then use finer ones. NCERT Class 9 lists seven kinds of characteristic: (1) external features (shape, size, body organisation); (2) mode of nutrition (autotrophic or heterotrophic); (3) internal structures (skeleton, organs, tissues); (4) cell structure (unicellular or multicellular, prokaryotic or eukaryotic, cell wall present or absent); (5) ecological role (producer, consumer, decomposer); (6) reproduction (asexual and/or sexual); (7) genetic similarity, studied with DNA. Similar features suggest descent from common ancestors.
+  check: none
+
+- id: ncert9-it-12-t4
+  lvl: ncert-intext
+  num: "IX 12 · Think It Over Q4"
+  source: NCERT IX Science · Ch 12 · Think It Over (p. 228)
+  kind: text
+  q: |-
+    How does classification help address problems in farming?
+  sol: |
+    [Unverified: NCERT poses this question without an answer.] The chapter notes that farmers have long conserved diverse crop varieties with useful characteristics such as drought tolerance, pest resistance and the ability to grow in nutrient-poor soil, because diversity reduces the risk of crop failure and strengthens food security. Classification helps by (i) identifying exactly which species and varieties exist and what traits they carry; (ii) allowing a breeder to look for a drought-tolerant or pest-resistant relative of a crop within the same genus or family; (iii) identifying pests and the beneficial insects that control them, so that the right control is used; and (iv) giving each crop one name so seed, research and trade information is shared without confusion.
+  check: none
+
+- id: ncert9-it-12-p1
+  lvl: ncert-intext
+  num: "IX 12 · Pause and Ponder 1"
+  source: NCERT IX Science · Ch 12 · Pause and Ponder 1 (p. 231)
+  kind: text
+  q: |-
+    If many organisms share common features, could they also share a common ancestry?
+  sol: |
+    Yes. Class 9 says that similar features in organisms suggest that they have evolved from common ancestors, and that organisms with similar DNA are considered to have a common ancestry. The closer the resemblance in structure, cell organisation and DNA, the more recently two groups probably shared an ancestor. This is why systematics takes evolutionary relationships into account. One caution: resemblance can also arise from similar environments, so modern classification checks many characters, including DNA, before concluding that two groups are related.
+  check: none
+
+- id: ncert9-it-12-a2
+  lvl: ncert-intext
+  num: "IX 12 · Activity 12.2"
+  source: NCERT IX Science · Ch 12 · Activity 12.2 (Pakke Tiger Reserve case study, p. 232)
+  kind: text
+  q: |-
+    Carefully read the given case study of Pakke Tiger Reserve.
+    The Pakke Tiger Reserve in Arunachal Pradesh is a forest where scientists have recorded nearly 300 bird species, which is striking given that India as a whole has about 1,300 bird species. Pakke is also known for supporting four species of hornbills — the Rufous-necked Hornbill, the Oriental Pied Hornbill, the Great Hornbill, and the Wreathed Hornbill (Fig. 12.3). These large birds nest only in large, old trees with suitable cavities and feed on specific fruits. As a result, different hornbill species are found in different parts of the forest depending on tree size and fruit availability. Studying such patterns allows scientists to ask precise questions about biodiversity, such as —
+    How are species distributed within a forest? Which plants and animals are closely linked?
+    How does classifying the four hornbill species help us understand biodiversity?
+    Think and discuss the case based on the following questions —
+    (i) How can scientists keep track of so many species?
+    (ii) The four hornbills look similar in some ways. What features can help scientists distinguish them from one another?
+    (iii) What would happen if the large, old trees disappeared from the forest?
+  sol: |
+    The figure (photographs of the four hornbills) is not in the text layer, so the answer to (ii) uses the case text only. [Unverified for the picture details.]
+
+    **(i)** By classifying and naming them: each species gets one standard scientific name and a place in the hierarchy, so records from different observers can be compared and counted without confusion.
+
+    **(ii)** Hornbills share large size and cavity nesting, so scientists look for differences: size and colour pattern, the shape of the bill and casque, the food they eat, and where in the forest they live, since each species depends on particular tree sizes and fruits (the case itself says species are found in different parts of the forest according to tree size and fruit availability).
+
+    **(iii)** The hornbills nest only in large, old trees with cavities and feed on specific fruits, so without such trees they would lose nesting sites and food. Their numbers would fall and some species could disappear. Plants that depend on them to spread seeds would be affected too, which shows how closely species in a forest are linked. This is also why classification supports conservation: it tells us which species are present and which are threatened.
+
+    **How classifying the four hornbills helps:** it shows how species are distributed within the forest, which plants and animals are closely linked, and which species need which habitat.
+  check: none
+
+- id: ncert9-it-12-p7
+  lvl: ncert-intext
+  num: "IX 12 · Pause and Ponder 7"
+  source: NCERT IX Science · Ch 12 · Pause and Ponder 7 (p. 247)
+  kind: text
+  q: |-
+    Does the term ‘biodiversity’ relate only to the variety of organisms, or does it encompass other elements?
+  sol: |
+    It covers more than the count of species. Biodiversity also includes the **variety within a species** (different crop varieties and populations carry different genetic traits, such as drought tolerance or pest resistance), the **variety of habitats and ecosystems** (mountains, deserts, rainforests, coasts, wetlands) and the **interactions** among organisms and their surroundings (food webs, pollination, decomposition). [Unverified: the three-level scheme of genetic, species and ecosystem diversity is the standard framework taught in Class 12 Ecology; the Class 9 text hints at it through crop varieties and habitats.]
+  check: none
+
+- id: ncert9-it-12-p8
+  lvl: ncert-intext
+  num: "IX 12 · Pause and Ponder 8"
+  source: NCERT IX Science · Ch 12 · Pause and Ponder 8 (p. 247)
+  kind: text
+  q: |-
+    If you find a new organism in a pond, what features will you observe to classify it and why?
+  sol: |
+    Start with broad features and then go finer, as scientists do. (1) **Cell structure**: under a microscope, is it unicellular or multicellular, is there a membrane-bound nucleus, is there a cell wall? This separates the major groups. (2) **Mode of nutrition**: does it make its own food (green, chlorophyll) or does it ingest or absorb food? (3) **External features**: shape, size, body organisation, movement by cilia, flagella or pseudopodia. (4) **Internal structure**: tissues, organs, skeleton, if any. (5) **Reproduction**: asexual or sexual. (6) **Ecological role**: producer, consumer or decomposer. (7) **DNA** comparison with known species. We use many characters because one feature alone can mislead: the same organism fits different groups depending on the criterion.
+  check: none
+
+- id: ncert9-it-12-p9
+  lvl: ncert-intext
+  num: "IX 12 · Pause and Ponder 9"
+  source: NCERT IX Science · Ch 12 · Pause and Ponder 9 (p. 247)
+  kind: text
+  q: |-
+    Why do genetic studies provide deep information about living beings?
+  sol: |
+    Every living cell contains DNA, which carries the instructions for its growth and function. Because DNA is inherited, comparing it shows how closely organisms are related: organisms with similar DNA are considered to share a common ancestry. It does not depend on outward appearance, which can mislead, and it can be compared in tiny organisms that look alike. Genetic data led Carl Woese (1977) to propose the three domains Bacteria, Archaea and Eukarya, and showed that microscopic life is far more diverse than was thought.
+  check: none
+
+- id: ncert9-it-12-p10
+  lvl: ncert-intext
+  num: "IX 12 · Pause and Ponder 10"
+  source: NCERT IX Science · Ch 12 · Pause and Ponder 10 (p. 247)
+  kind: text
+  q: |-
+    How can changes in climate affect the biodiversity?
+  sol: |
+    Each species is adapted to a range of temperature, rainfall and habitat. When the climate changes faster than species can adapt or move, some decline: mountain species run out of higher ground, coral reefs bleach in warmer water, and plants that flower with the monsoon may flower out of step with their pollinators. When one species disappears, others that depend on it decline too, so the effect spreads through food webs. Class 9 lists climate change, together with pollution, deforestation and overuse of resources, among human activities that are reducing biodiversity.
+  check: none
+
+- id: ncert9-ex-12-3
+  lvl: ncert-ex
+  num: "IX 12 · Q3"
+  source: NCERT IX Science · Ch 12 · Revise, Reflect, Refine Q3
+  kind: text
+  q: |-
+    Observe two different animals in your immediate environment. What features help you distinguish between them? How do these features help place them into different groups?
+  sol: |
+    Model answer, using a crow and a cow (any two animals will do). **Distinguishing features:** the crow has feathers, a beak and wings and lays eggs; the cow has hair, four legs, horns and mammary glands and gives birth to young. Both have a backbone and a notochord at some stage, and both are warm-blooded. **Grouping:** both belong to Kingdom Animalia and the phylum Chordata because they have a backbone. They separate at class: the crow is a bird (Aves) because it has feathers, wings and lays eggs; the cow is a mammal (Mammalia) because it has hair and mammary glands. So an observable feature decides at which step of the ladder two animals part company. [Unverified: the animals are an illustration; this question has no fixed answer.]
+  check: none
+
+- id: ncert9-ex-12-6
+  lvl: ncert-ex
+  num: "IX 12 · Q6"
+  source: NCERT IX Science · Ch 12 · Revise, Reflect, Refine Q6
+  kind: text
+  q: |-
+    How does the diversity of organisms contribute to the balance and stability of an ecosystem?
+  sol: |
+    Each organism plays a role: plants and algae are producers and release oxygen; herbivores and carnivores are consumers that keep each other's numbers in check; fungi and bacteria decompose waste and return nutrients to the soil; bees, birds and bats pollinate and spread seeds. These roles are interconnected, so a diverse ecosystem has many species doing each job. If one species declines, another can partly take over its role, and the food webs keep working. In an ecosystem with few species, the loss of one can cause others that depend on it to decline, and the system may collapse. Diversity also reduces risk in farming: a mixture of crop varieties is less likely to fail altogether to one pest or drought.
+  check: none
+
+- id: ncert9-ex-12-12
+  lvl: ncert-ex
+  num: "IX 12 · Q12"
+  source: NCERT IX Science · Ch 12 · Revise, Reflect, Refine Q12
+  kind: text
+  q: |-
+    In the classification hierarchy, which group — class or genus — has fewer members but more features in common? Explain your answer.
+  sol: |
+    **Genus.** The hierarchy runs from broad groups to narrow ones; at each lower step the members share more features, and every lower group is part of the group above. A genus contains only closely related species (for example *Panthera tigris* and *Panthera leo* in *Panthera*), whereas a class contains many orders, families and genera (class Mammalia includes the orders Carnivora and Primata, and more). So the genus is small and its members have many characters in common, while the class is large and its members share only a few broad characters (for mammals: hair and mammary glands).
+  check: none
+
+- id: ncert11-ex-1-1
+  lvl: ncert-ex
+  num: "XI 1 · Q1"
+  source: NCERT XI Biology · Ch 1 · Exercise Q1
+  kind: text
+  q: |-
+    Why are living organisms classified?
+  sol: |
+    There are millions of kinds of organisms (about 1.7 to 1.8 million are known and described), and it is impossible to study each one separately. Classification groups organisms into convenient categories on the basis of easily observable characters, so that: (i) the study of organisms becomes easier, organised and systematic; (ii) similarities and differences are clear, and with them the relationships between organisms; (iii) a new organism can be placed, identified and named by comparing it with known ones; (iv) scientists everywhere share a common system; (v) the information supports use of bio-resources in agriculture, forestry and industry, and conservation.
+  check: none
+
+- id: ncert11-ex-1-2
+  lvl: ncert-ex
+  num: "XI 1 · Q2"
+  source: NCERT XI Biology · Ch 1 · Exercise Q2
+  kind: text
+  q: |-
+    Why are the classification systems changing every now and then?
+  sol: |
+    Classification is based on the knowledge and tools available at the time. As new characters are discovered, the grouping is revised: external features gave way to internal structure, cell structure, development, ecological information and then DNA. New tools (microscopes, staining techniques, genetic analysis) revealed things earlier systems could not explain. Examples from Class 9: the two-kingdom system could not place amoeba or bacteria, so Protista, Monera and Fungi were added (five kingdoms), and DNA comparison led to the three-domain system. Newly discovered organisms must also be fitted in. Modern systematics aims to reflect evolutionary relationships, which are still being worked out, so classification is a process of reasoning and change, not a final answer.
+  check: none
+
+- id: ncert11-ex-1-3
+  lvl: ncert-ex
+  num: "XI 1 · Q3"
+  source: NCERT XI Biology · Ch 1 · Exercise Q3
+  kind: text
+  q: |-
+    What different criteria would you choose to classify people that you meet often?
+  sol: |
+    There is no single correct answer; the point is that the choice of criterion decides the groups. Model answer: people can be grouped by (i) occupation: students, teachers, shopkeepers, doctors, farmers; (ii) age: children, adults, senior citizens; (iii) place: neighbours, classmates, relatives; (iv) language they speak; (v) relationship to you: family, friends, acquaintances. Each criterion cuts the same people into different groups, just as the same animal can be sorted by habitat, diet or body structure. A good criterion is easy to observe, applies to everyone, and gives groups that tell you something useful. Biologists likewise prefer characters that are observable and reflect real relationships rather than chance resemblance.
+  check: none
+
+- id: ncert11-ex-1-4
+  lvl: ncert-ex
+  num: "XI 1 · Q4"
+  source: NCERT XI Biology · Ch 1 · Exercise Q4
+  kind: text
+  q: |-
+    What do we learn from identification of individuals and populations?
+  sol: |
+    [Unverified: NCERT gives no answer.] Identification means recognising which organism, or which kind of organism, we have in front of us. Only after an organism is identified correctly can it be given the right scientific name (nomenclature), because a name can be attached only if we know to which organism it belongs. From identifying individuals and populations we learn: (i) which species are present in an area and how many kinds there are (biodiversity); (ii) how individuals of one population resemble each other and differ from related species; (iii) whether a species is new, rare or threatened; (iv) which species are useful (crops, medicines) or harmful (pests, disease carriers); and (v) the raw data for classification and for studying relationships.
+  check: none
+
+- id: ncert11-ex-1-5
+  lvl: ncert-ex
+  num: "XI 1 · Q5"
+  source: NCERT XI Biology · Ch 1 · Exercise Q5
+  kind: mcq
+  q: |-
+    Given below is the scientific name of Mango. Identify the correctly written name.
+    Mangifera Indica
+    Mangifera indica
+  opts: ["Mangifera Indica", "Mangifera indica"]
+  ans: 1
+  sol: |
+    **Mangifera indica** is correct. In a biological name the genus (*Mangifera*) starts with a capital letter, but the specific epithet (*indica*) starts with a small letter. Both words are in Latin and are printed in italics, or separately underlined when handwritten. The author's name, if given, comes after the epithet in abbreviated form: *Mangifera indica* Linn.
+  check: none
+
+- id: ncert11-ex-1-6
+  lvl: ncert-ex
+  num: "XI 1 · Q6"
+  source: NCERT XI Biology · Ch 1 · Exercise Q6
+  kind: text
+  q: |-
+    Define a taxon. Give some examples of taxa at different hierarchical levels.
+  sol: |
+    A **taxon** (plural **taxa**) is a group of organisms of any rank in the classification, a unit of classification; it is a convenient category based on characters the members share. Taxa exist at different hierarchical levels, for example: *Mangifera indica* (a species), *Panthera* (a genus), Felidae (a family), Carnivora (an order), Mammalia (a class), Chordata (a phylum), Animalia (a kingdom). In plants: Solanaceae (family), Angiospermae (division), Plantae (kingdom). Everyday groups such as dogs, cats, mammals and animals are taxa at different levels: a dog is a mammal and mammals are animals.
+  check: none
+
+- id: ncert11-ex-1-7
+  lvl: ncert-ex
+  num: "XI 1 · Q7"
+  source: NCERT XI Biology · Ch 1 · Exercise Q7
+  kind: text
+  q: |-
+    Can you identify the correct sequence of taxonomical categories?
+    (a) Species Order Phylum Kingdom
+    (b) Genus Species Order Kingdom
+    (c) Species Genus Order Phylum
+  sol: |
+    The full ascending sequence is species, genus, family, order, class, phylum (division in plants), kingdom. **(b) is wrong:** genus is placed before species, but species is the lowest category. **(a) and (c) both keep the correct ascending order**, though each leaves out some ranks: (a) skips genus, family and class; (c) skips family and class (and ends at phylum, not kingdom). [Inference: NCERT gives no key; since the question asks for "the correct sequence", the sequence that omits fewer of the ranks, (c), is the closest to the full ladder, but both (a) and (c) are in valid ascending order. In an examination, if forced to choose one, note that (b) is definitely wrong.]
+  check: none
+
+- id: ncert11-ex-1-8
+  lvl: ncert-ex
+  num: "XI 1 · Q8"
+  source: NCERT XI Biology · Ch 1 · Exercise Q8
+  kind: text
+  q: |-
+    Try to collect all the currently accepted meanings for the word ‘species’. Discuss with your teacher the meaning of species in case of higher plants and animals on one hand, and bacteria on the other hand.
+  sol: |
+    [Unverified in part: the definitions beyond NCERT are from general biology.] Meanings: (1) NCERT §1.2.1: a group of individual organisms with fundamental similarities, distinguishable from closely related species by clear morphological differences (the morphological species). (2) The biological species concept, which NCERT credits to Ernst Mayr: a group of individuals that can interbreed in nature and produce fertile offspring and are isolated from other such groups. (3) Species is the lowest taxonomic category in both plants and animals. (4) Genetic meaning: a group whose members share a common gene pool and are genetically distinct from other groups.
+
+    **Higher plants and animals:** a species is usually recognised by structure and by the ability to interbreed (a mango flower cannot normally breed with a wheat plant; a lion and a tiger are distinct species of *Panthera*). **Bacteria:** most reproduce asexually by division, with no mating, so the interbreeding test cannot be used. Bacterial species are defined by shared structure, biochemical features and DNA similarity instead, and the boundaries are less sharp. This is one reason the species concept is still discussed.
+  check: none
+
+- id: ncert11-ex-1-9
+  lvl: ncert-ex
+  num: "XI 1 · Q9"
+  source: NCERT XI Biology · Ch 1 · Exercise Q9
+  kind: text
+  q: |-
+    Define and understand the following terms:
+    (i) Phylum (ii) Class (iii) Family (iv) Order (v) Genus
+  sol: |
+    **(i) Phylum:** the category above class; it groups related classes with common features. Fishes, amphibians, reptiles, birds and mammals form the phylum Chordata (notochord and dorsal hollow neural system). In plants the same rank is called a division.
+    **(ii) Class:** the category above order; it groups related orders. The order Primata (monkey, gorilla, gibbon) and the order Carnivora (tiger, cat, dog) both belong to the class Mammalia.
+    **(iii) Family:** a group of related genera with fewer similarities than a genus. Plants are placed in families by both vegetative and reproductive features: *Solanum*, *Petunia* and *Datura* are in Solanaceae. *Panthera* and *Felis* are in Felidae.
+    **(iv) Order:** an assemblage of related families with a few similar characters, identified from aggregates of characters. The families Felidae and Canidae belong to the order Carnivora.
+    **(v) Genus:** a group of closely related species with more characters in common than species of other genera. Potato (*S. tuberosum*) and brinjal (*S. melongena*) are species of *Solanum*; lion, tiger and leopard are species of *Panthera*.
+  check: none
+
+- id: ncert11-ex-1-10
+  lvl: ncert-ex
+  num: "XI 1 · Q10"
+  source: NCERT XI Biology · Ch 1 · Exercise Q10
+  kind: text
+  q: |-
+    Illustrate the taxonomical hierarchy with suitable examples of a plant and an animal.
+  sol: |
+    The hierarchy, from the broadest to the narrowest category, is kingdom, phylum (division in plants), class, order, family, genus, species. As we go down, the members share more characters.
+
+    | Category | Man (animal) | Mango (plant) |
+    |---|---|---|
+    | Kingdom | Animalia | Plantae |
+    | Phylum / Division | Chordata | Angiospermae |
+    | Class | Mammalia | Dicotyledonae |
+    | Order | Primata | Sapindales |
+    | Family | Hominidae | Anacardiaceae |
+    | Genus | *Homo* | *Mangifera* |
+    | Species | *Homo sapiens* | *Mangifera indica* |
+
+    Table 1.1 of NCERT gives the genus to phylum/division entries; the kingdoms (Animalia and Plantae) are from the text of §1.2.7. Another animal example: tiger, *Panthera tigris*, family Felidae, order Carnivora, class Mammalia, phylum Chordata, kingdom Animalia.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: |-
+    In the name Solanum tuberosum (potato), the word tuberosum is the
+    (Original problem.)
+  opts: ["genus", "specific epithet", "family", "author's name"]
+  ans: 1
+  sol: |
+    A binomial name has two words: the genus first (*Solanum*) and the specific epithet second (*tuberosum*). Together they identify the species. The family is Solanaceae, and the author's name would come after the epithet. Answer: specific epithet.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: |-
+    Of these taxonomic groups, which one has members that share the largest number of characters?
+    (Original problem.)
+  opts: ["Order", "Genus", "Family", "Class"]
+  ans: 1
+  sol: |
+    Going up the hierarchy the shared characters fall, so the lowest of the four ranks has most in common. From lowest to highest: genus, family, order, class. So genus.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: text
+  q: |-
+    Lion (*Panthera leo*), tiger (*Panthera tigris*) and leopard (*Panthera pardus*) are three big cats. (a) Name their genus. (b) Name the family to which they and the domestic cat belong. (c) Why are cat and dog placed in different families? (Original problem.)
+  sol: |
+    (a) *Panthera*; the species are *leo*, *tigris* and *pardus*. (b) Felidae; the domestic cat belongs to the genus *Felis*, which is in the same family as *Panthera*. (c) A cat and a dog share some features (both are carnivores) but differ in others, so they are placed in two families, Felidae and Canidae. Both families belong to the same order, Carnivora.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: text
+  q: |-
+    A farmer in Punjab, a trader in Chennai and a scientist in Paris each use a different name for the same plant. Give two reasons why scientists do not rely on such common names. (Original problem.)
+  sol: |
+    (1) Common names vary from place to place, even within one country, so people cannot be sure they mean the same organism. (2) The same common name may be used for different organisms in different places. A scientific name is a standard, two-word Latin name that is the same all over the world and is given to only one known organism, so everyone arrives at the same organism from the same name. Rules for the name are set by the ICBN for plants and the ICZN for animals.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: |-
+    (3 marks) What is binomial nomenclature? Who introduced it? Write the rules for writing a scientific name, with the example of mango. (Original problem.)
+  sol: |
+    **Binomial nomenclature** is the system of naming an organism with two components, the generic name (genus) and the specific epithet. It was given by **Carolus Linnaeus**. (1 mark)
+
+    **Rules** (any four for 2 marks): (i) names are in Latin or Latinised and written in italics; (ii) the first word is the genus, the second the specific epithet; (iii) when handwritten, the two words are separately underlined, and printed in italics; (iv) the genus starts with a capital letter, the epithet with a small letter; (v) the author's name follows the epithet, abbreviated.
+
+    Example: *Mangifera indica* Linn. (genus *Mangifera*, epithet *indica*, described first by Linnaeus). Marks: definition and Linnaeus, rules, and a correct example.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: |-
+    (3 marks) Distinguish between taxonomy and systematics, and define a taxon. (Original problem.)
+  sol: |
+    **Taxonomy** is the process of classifying organisms into taxa; characterisation, identification, classification and nomenclature are basic to it. (1 mark)
+
+    **Systematics** is the study of the arrangement and relationships of organisms; the word comes from the Latin *systema*. Its scope now includes identification, nomenclature and classification, and it takes evolutionary relationships into account. (1 mark)
+
+    **Taxon**: a group of organisms at any rank in the hierarchy, a unit of classification, for example dogs, mammals or animals. (1 mark)
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: |-
+    (3 marks) Using the table below, find the lowest category that man (Homo sapiens) and housefly (Musca domestica) have in common, and the highest listed category at which they differ. Mango and wheat both belong to the division Angiospermae; at which category do they first differ? Give a reason.
+    Man: Homo, Hominidae, Primata, Mammalia, Chordata.
+    Housefly: Musca, Muscidae, Diptera, Insecta, Arthropoda.
+    Mango: Mangifera, Anacardiaceae, Sapindales, Dicotyledonae, Angiospermae.
+    Wheat: Triticum, Poaceae, Poales, Monocotyledonae, Angiospermae. (Original problem.)
+  sol: |
+    Man and housefly differ in every listed category from genus up to phylum (Chordata against Arthropoda). The only category they still share is the **kingdom**, Animalia, so the lowest common category is the kingdom and the highest listed category at which they differ is the **phylum**. (1.5 marks)
+
+    Mango and wheat are the same up to the division Angiospermae and differ first at the **class**: Dicotyledonae against Monocotyledonae. (1 mark)
+
+    Reason: the groups are separated by characters, and the number shared falls as you go up the hierarchy. (0.5 mark)
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: |-
+    (5 marks) Explain the taxonomic hierarchy. Illustrate it with an animal and a plant, and state how the number of shared characters changes from species to kingdom. (Original problem.)
+  sol: |
+    **Points an examiner looks for:**
+
+    1. Classification is a hierarchy of steps; each step is a rank or taxonomic category. (1)
+    2. The order from lowest to highest: species, genus, family, order, class, phylum (division in plants), kingdom. (1)
+    3. An animal example in full, e.g. tiger *Panthera tigris*: genus *Panthera*, family Felidae, order Carnivora, class Mammalia, phylum Chordata, kingdom Animalia. (1)
+    4. A plant example in full, e.g. mango *Mangifera indica*: genus *Mangifera*, family Anacardiaceae, order Sapindales, class Dicotyledonae, division Angiospermae, kingdom Plantae. (1)
+    5. As you go up from species to kingdom, the number of common characters decreases; lower taxa share more characters, and higher categories make relationships harder to determine, so the problem of classification gets more complex. (1)
+    A neat ladder or table diagram earns the presentation mark.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: mcq
+  q: |-
+    Match Column I with Column II (original problem):
+    Column I: (A) Felidae; (B) Carnivora; (C) Solanum; (D) Chordata.
+    Column II: (1) Order; (2) Family; (3) Phylum; (4) Genus.
+  opts: ["A-2, B-1, C-4, D-3", "A-2, B-3, C-4, D-1", "A-1, B-2, C-3, D-4", "A-4, B-1, C-2, D-3"]
+  ans: 0
+  sol: |
+    Felidae ends in -idae and is a family (2). Carnivora is the animal order that includes Felidae and Canidae (1). *Solanum* is a genus (4), whose family is Solanaceae. Chordata is the phylum (3). So A-2, B-1, C-4, D-3.
+  check: none
+
+- id: m2
+  lvl: main
+  kind: mcq
+  q: |-
+    Assertion (A): Two species of the same genus share more characters than two genera of the same family.
+    Reason (R): The genus is a lower taxonomic category than the family.
+    (Original problem.)
+  opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false but R is true"]
+  ans: 0
+  sol: |
+    Lower categories share more characters, and the genus is below the family. Species of one genus are closely related (e.g. lion and tiger in *Panthera*), while different genera of a family (*Panthera* and *Felis* in Felidae) share fewer. Both statements are true and R explains A: option (a).
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: |-
+    Read the statements about taxonomy (original problem):
+    (i) Species is the lowest taxonomic category in both plants and animals.
+    (ii) The category called division is used for plants, and the corresponding rank in animals is phylum.
+    (iii) In a scientific name the specific epithet starts with a capital letter.
+    (iv) The author's name appears after the specific epithet, in abbreviated form.
+    Which statements are correct?
+  opts: ["(i), (ii) and (iv) only", "(i), (ii) and (iii) only", "(ii), (iii) and (iv) only", "(i) and (iii) only"]
+  ans: 0
+  sol: |
+    (i) True. (ii) True: classes with a few similar characters in plants are assigned to a division; in animals the equivalent rank is phylum. (iii) False: the genus is capitalised; the epithet starts with a small letter. (iv) True: e.g. *Mangifera indica* Linn. So (i), (ii) and (iv).
+  check: none
+
+- id: m4
+  lvl: main
+  kind: mcq
+  q: |-
+    Mango (Mangifera indica) and wheat (Triticum aestivum) are placed in the same
+    (Original problem; use Table 1.1 of NCERT.)
+  opts: ["class but different divisions", "division but different classes", "order but different families", "family but different orders"]
+  ans: 1
+  sol: |
+    Table 1.1: mango is in class Dicotyledonae, order Sapindales, family Anacardiaceae; wheat is in class Monocotyledonae, order Poales, family Poaceae. Both belong to the division Angiospermae. So they are in the same division but different classes (and different orders and families as well): option (b).
+  check: none
