@@ -1,0 +1,228 @@
+# Maths in life · Fermi estimation: original problems (no NCERT chapter is mapped to this leaf).
+# Estimation problems: every figure that is not given in a question is an assumption, labelled as such. Any answer within the same order of magnitude (a factor of about 3 either way) is right; the stored answer is one reasonable estimate, not "the" value. Figures quoted as typical (a stadium, a rail route) are round numbers for practice [Unverified], not looked up.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A chai stall sells about 300 cups on a typical day at ₹10 a cup. Estimate its sales in a 30-day month. (Original problem.)
+  ask: Monthly sales
+  unit: ₹
+  ans: 90000
+  tol: 1000
+  verify: 300*10*30
+  sol: |
+    This is the basic Fermi move: break the unknown into factors you can reason about, then multiply.
+
+    $$\text{sales per month} = \underbrace{300}_{\text{cups/day}} \times \underbrace{10}_{\text{₹/cup}} \times \underbrace{30}_{\text{days}} = ₹90{,}000.$$
+
+    The answer is about $9 \times 10^4$ rupees. Real stalls vary (200 or 400 cups, ₹8 or ₹12), but all those choices still land between ₹50,000 and ₹1,50,000: the same order of magnitude, which is what an estimate is for.
+  check: both
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Estimate the number of seconds in one year. Give your answer in units of 10⁷ seconds, to two decimals. (Original problem.)
+  ask: Seconds in a year, in units of 10^7 s
+  unit: "×10⁷ s"
+  ans: 3.15
+  tol: 0.05
+  verify: 365*24*3600/1e7
+  sol: |
+    Multiply the factors: $365 \text{ days} \times 24 \text{ h/day} \times 3600 \text{ s/h} = 31{,}536{,}000 \text{ s}$, which is $3.15 \times 10^7$ s.
+
+    A handy memory aid: a year is "about $\pi \times 10^7$ seconds" ($\pi \times 10^7 = 3.14 \times 10^7$, within $0.5\%$). Physicists use it all the time for quick estimates.
+
+    A sanity check: a million seconds is about 11.6 days, so $10^7$ seconds is about 116 days, and one year is about 3 of those, as it should be.
+  check: both
+
+- id: f3
+  lvl: found
+  kind: text
+  q: Estimate how many cups of chai are drunk in a town of 10 lakh (1 million) people in one day. State every assumption you use. (Original problem.)
+  sol: |
+    **One possible model answer** (any answer within the same order of magnitude, roughly $10^5$ to $10^7$ cups a day, is right; the point is the method).
+
+    Split the town into people who drink chai and people who do not, then multiply:
+
+    - Fraction who drink chai at all: assume about $\tfrac{2}{3}$ (children and some adults do not). That gives about $7 \times 10^5$ people.
+    - Cups per drinker per day: assume 2.
+    - Cups per day: $7 \times 10^5 \times 2 \approx 1.4 \times 10^6$.
+
+    So about **fourteen lakh cups a day**, around $10^6$.
+
+    **Cross-check from the supply side.** Suppose a stall sells 300 cups a day (as in problem f1). Then the town needs about $1.4 \times 10^6 / 300 \approx 4700$ stall-equivalents. Also count chai made at home, so the real number of stalls is lower. About 1 stall per 200 people feels reasonable for a busy town, which gives 5000 stalls. The two routes agree to within a factor of two, which is what a Fermi estimate hopes for.
+  check: none
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: |-
+    A student estimates the mass of the air in a classroom 10 m long, 8 m wide and 3 m high. The density of air is about 1.2 kg per cubic metre. The student's answer is "about 3 grams". Which is the best estimate? (Original problem.)
+  opts: ["about 3 g", "about 300 g", "about 300 kg", "about 300 tonnes"]
+  ans: 2
+  sol: |
+    **Volume:** $10 \times 8 \times 3 = 240 \text{ m}^3$.
+
+    **Mass:** $240 \times 1.2 \approx 290$ kg, so about 300 kg: option 3.
+
+    The sanity check that exposes "3 g": air is much lighter than water but not nothing. A cubic metre of air is already about 1.2 kg (the weight of a few bags of sugar), and the room holds 240 of them. So 3 g is wrong by a factor of about $10^5$. The classroom's air weighs about as much as four or five adults.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A family of 3 has an unlimited-data plan, and all three watch video on their phones. Suppose each person watches 2 hours of video a day, and one hour of video uses about 1.5 GB of data.
+
+    Estimate the family's data use in a 30-day month, in GB. (Original problem.)
+  ask: Data used in a month
+  unit: GB
+  ans: 270
+  tol: 200
+  verify: 3*2*1.5*30
+  sol: |
+    Multiply the factors: $3 \text{ people} \times 2 \text{ h/day} \times 1.5 \text{ GB/h} \times 30 \text{ days} = 270$ GB.
+
+    This is an estimate built on assumptions the question gives (1.5 GB per hour is a round number for high-quality video, [Unverified]; lower quality streams use a lot less). If you assume 0.7 GB an hour or 3 GB an hour, the answer moves between about 125 GB and 540 GB. Any answer from about 100 GB to 1000 GB (the same order of magnitude) is acceptable.
+
+    **Sanity check.** A 2 GB-a-day mobile plan gives about 60 GB a month. Three heavy video watchers use several times that, so a few hundred GB feels right, and 3 GB or 30 000 GB would not.
+  check: both
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A large railway terminus has 20 platforms. Suppose each platform handles a train about every 30 minutes for 18 hours a day, and each train carries about 1,000 passengers who board or alight at this station.
+
+    Estimate the number of passengers passing through the station in a day. (Original problem.)
+  ask: Passengers per day
+  ans: 720000
+  tol: 500000
+  verify: 20*(18*2)*1000
+  sol: |
+    **Trains per platform per day:** $18 \text{ h} \times 2 \text{ trains/h} = 36$.
+
+    **Trains per day, all platforms:** $20 \times 36 = 720$.
+
+    **Passengers:** $720 \times 1000 = 7.2 \times 10^5$, about 7 lakh a day.
+
+    Any answer between about $10^5$ and $2 \times 10^6$ is right. The assumptions matter more than the arithmetic. Platforms are not all busy all day, and many trains stand for longer than 30 minutes, which would pull the answer down. Meanwhile trains are often fuller than 1,000, which pushes it up. These errors partly cancel, which is why Fermi estimates are usually better than you would expect.
+
+    [Inference] The result is plausible for a very large terminus but is not checked against any real station's published figures.
+  check: both
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** After a match, 1,00,000 spectators leave a stadium through 25 exit gates. Suppose each gate lets through about 1 person per second and the crowd spreads evenly over the gates.
+
+    Estimate, in minutes, how long the stadium takes to empty. (Original problem.)
+  ask: Time to empty
+  unit: min
+  ans: 67
+  tol: 40
+  verify: 100000/25/60
+  sol: |
+    **People per gate:** $100000 / 25 = 4000$.
+
+    **Time per gate:** $4000 \text{ people} \div 1 \text{ person/s} = 4000$ s.
+
+    **In minutes:** $4000/60 \approx 67$ min, a little over an hour.
+
+    Any answer from about 30 minutes to 3 hours is the right order of magnitude. Crowds are not even, and people dawdle, so the true time is longer. That is why real stadiums have many more exits than this model. If you doubled the number of gates, the time would halve, since time is inversely proportional to the number of gates.
+  check: both
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: |-
+    A sack of rice has mass 50 kg. Suppose one grain of rice has a mass of about 25 mg ($25 \times 10^{-6}$ kg). Roughly how many grains are in the sack? (Original problem.)
+  opts: ["about 2 thousand", "about 20 thousand", "about 2 million", "about 2 billion"]
+  ans: 2
+  sol: |
+    Number of grains = total mass / mass of one grain $= \dfrac{50 \text{ kg}}{25 \times 10^{-6} \text{ kg}} = 2 \times 10^6$.
+
+    That is 2 million, option 3. Sanity check: a fistful of rice is about 100 g, which is about 4,000 grains at 25 mg each. A 50 kg sack holds 500 fistfuls, so $500 \times 4000 = 2 \times 10^6$, the same result by a different route.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: |-
+    Suppose the road distance from Delhi to Mumbai is about 1,400 km and a ₹500 note is about 15 cm long. If notes were laid end to end along this road, about how many would be needed? Give the answer in units of 10⁶ (a million) notes. (Original problem.)
+  ask: Number of notes, in millions
+  unit: million
+  ans: 9.3
+  tol: 5
+  verify: 1.4e6/0.15/1e6
+  sol: |
+    **Convert to the same unit.** $1400 \text{ km} = 1.4 \times 10^6$ m, and $15 \text{ cm} = 0.15$ m.
+
+    **Divide.** $\dfrac{1.4 \times 10^6}{0.15} \approx 9.3 \times 10^6$ notes, about 93 lakh notes.
+
+    So a little under 10 million. Any estimate between about $3 \times 10^6$ and $3 \times 10^7$ is within the same order of magnitude.
+
+    **The value** of that line of notes would be about $9.3 \times 10^6 \times 500 \approx ₹4.7 \times 10^9$, about ₹470 crore: a good reminder that a number which sounds huge (a long road) and one that sounds small (a note) multiply to something you can picture.
+  check: both
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |-
+    A book of 500 pages is 25 mm thick (not counting the cover). Estimate the height, in metres, of a stack of 1,00,000 sheets of the same paper. Hint: a sheet has two pages, one on each side. (Original problem.)
+  ask: Height of the stack
+  unit: m
+  ans: 10
+  tol: 2
+  verify: 100000*(25/(500/2))/1000
+  sol: |
+    **Common slip.** 500 *pages* is 250 *sheets*, because each sheet carries a page on the front and another on the back. Dividing by 500 instead of 250 gives half the correct thickness.
+
+    **Thickness of one sheet:** $\dfrac{25 \text{ mm}}{250} = 0.1$ mm.
+
+    **Stack:** $10^5 \times 0.1 \text{ mm} = 10^4$ mm $= 10$ m.
+
+    That is about the height of a three-storey building. A heap of a lakh sheets (200 reams of 500) is taller than you would guess when you think of one thin sheet.
+  check: both
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |-
+    Suppose a city of 1 crore (10⁷) people uses 135 litres of water per person per day. An Olympic swimming pool holds about 2.5 million litres. How many Olympic pools' worth of water does the city use each day? (Original problem.)
+  ask: Number of pools
+  ans: 540
+  tol: 300
+  verify: 1e7*135/2.5e6
+  sol: |
+    **Total daily use:** $10^7 \times 135 \text{ L} = 1.35 \times 10^9$ L, which is 1350 million litres a day.
+
+    **In pools:** $\dfrac{1.35 \times 10^9}{2.5 \times 10^6} = 540$.
+
+    So about 500 pools a day. Any answer between about 200 and 1500 is the same order of magnitude.
+
+    [Unverified] The 135 litres per person per day is the figure often quoted as a planning norm for Indian cities, but it is used here only as a practice number; actual supply varies a great deal.
+  check: both
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |-
+    Suppose a heart beats about 70 times a minute and a person lives for 70 years (take a year as 365 days). Estimate the number of heartbeats in a lifetime, in units of $10^9$ (a billion). (Original problem.)
+  ask: Heartbeats in a lifetime, in billions
+  unit: "×10⁹"
+  ans: 2.6
+  tol: 1.5
+  verify: 70*60*24*365*70/1e9
+  sol: |
+    **Beats per day:** $70 \times 60 \times 24 = 100{,}800 \approx 10^5$. A handy fact: about a lakh heartbeats a day.
+
+    **Per year:** $1.008 \times 10^5 \times 365 \approx 3.7 \times 10^7$.
+
+    **In 70 years:** $3.7 \times 10^7 \times 70 \approx 2.6 \times 10^9$.
+
+    So about 2.6 billion, or roughly $3 \times 10^9$. Any answer from about $10^9$ to $5 \times 10^9$ is right.
+
+    The shortcut route: $10^5 \text{ beats/day} \times 3 \times 10^4 \text{ days} \approx 3 \times 10^9$. Rounding in Fermi problems is not cheating. Keeping 3 digits would be false precision when "70 beats a minute" is itself only a rough figure.
+  check: both
