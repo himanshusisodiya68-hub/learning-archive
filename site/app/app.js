@@ -602,8 +602,9 @@
   /* Two levels only: a subject page (pillar cards) and a pillar page (each branch once, as a numbered learning path). */
   const TAGS = { OLY: 'Olympiad', JEE: 'JEE', BEG: 'Foundations', INT: 'SDE-1', ADV: 'SDE-2', SDE: 'SDE-3', LIFE: 'Everyday' };
   const TOP = { sci: ['', 'Class 10', 'Class 12', 'JEE Adv.', 'Olympiad'], cs: ['', 'Foundations', 'SDE-1', 'SDE-2', 'SDE-3'], eng: ['', 'Foundation', 'Class 10', 'Beyond'] };
-  // Where the topic starts (tree "from") → how deep the lesson goes (deepest section level).
-  const lvlTag = (l, sid) => { const a = TAGS[l.from] || 'Class ' + String(l.from).slice(1), t = l.top ? (TOP[sid] || TOP.sci)[l.top] : '', b = t && t !== a ? t : '';
+  // School subjects: the NCERT class where the topic is first taught → how deep the lesson goes.
+  // CS and English: the lesson's own range, from its first section's level to its deepest.
+  const lvlTag = (l, sid) => { const range = (sid === 'cs' || sid === 'eng') && l.low && l.top, a = range ? TOP[sid][l.low] : TAGS[l.from] || 'Class ' + String(l.from).slice(1), t = l.top ? (TOP[sid] || TOP.sci)[l.top] : '', b = t && t !== a ? t : '';
     const deep = l.top >= 4 || l.from === 'OLY' || l.from === 'SDE', mid = l.top === 3 || l.from === 'JEE' || l.from === 'ADV';
     return `<span class="lvl ${deep ? 'oly' : mid ? 'jee' : ''}" title="${b ? `Starts at ${a}, goes up to ${b}` : a}">${a}${b ? ` → ${b}` : ''}</span>`; };
   const leavesOf = p => p.branches.flatMap(b => b.leaves);
