@@ -17,7 +17,7 @@ const args = process.argv.slice(2), ji = args.indexOf('--json');
 const jsonOut = ji >= 0 ? args.splice(ji, 2)[1] : null, only = args[0] || '';
 const index = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
 const css = (index.match(/<style>([\s\S]*?)<\/style>/) || [, ''])[1];
-const fontLink = (index.match(/<link rel="stylesheet" href="https:\/\/fonts[^>]*>/) || [''])[0];
+const fontLink = (index.match(/<link[^>]*href="https:\/\/fonts\.googleapis\.com\/css2[^>]*>/) || [''])[0].replace(' media="print"', '');
 const files = fs.readdirSync(path.join(DIST, 'data/lessons')).filter(f => f.endsWith('.json') && f.includes(only.replace('/', '--'))).sort();
 
 const browser = await chromium.launch();
