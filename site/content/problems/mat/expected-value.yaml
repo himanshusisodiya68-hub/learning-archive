@@ -1,0 +1,222 @@
+# Maths in life · Expected value: original problems (no NCERT chapter is mapped to this leaf).
+# Prizes, premiums and probabilities are made up for practice ("suppose ..."); none is a claim about any real lottery, insurer or product.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A fair six-faced die is rolled once and you win as many rupees as the number that shows. What is the expected winning in ₹? (Original problem.)
+  ask: Expected winning
+  unit: ₹
+  ans: 3.5
+  tol: 0.001
+  verify: (1+2+3+4+5+6)/6
+  sol: |
+    **Expected value** is the average per play over a very large number of plays: multiply each outcome by its probability, then add.
+
+    $$E = 1 \cdot \tfrac16 + 2 \cdot \tfrac16 + \cdots + 6 \cdot \tfrac16 = \frac{21}{6} = 3.5.$$
+
+    Notice that you can never win exactly ₹3.5 on one roll. Expected value is not a value you will see, it is a long-run average: after 1,000 rolls you would have won about ₹3,500.
+  check: both
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A game costs ₹10 to play. You roll a fair die and win ₹30 if a 6 shows, and nothing otherwise. What is your expected profit per game, in ₹? (Original problem.)
+  ask: Expected profit
+  unit: ₹
+  ans: -5
+  tol: 0.001
+  verify: 30/6-10
+  sol: |
+    **Expected prize:** $30 \times \tfrac16 + 0 \times \tfrac56 = ₹5$.
+
+    **Expected profit** = expected prize $-$ price $= 5 - 10 = -₹5$.
+
+    On average you lose ₹5 every time you play. The **fair price** of this game (the price at which the expected profit is zero) is ₹5. At ₹10, the person running the game keeps ₹5 per play on average.
+  check: both
+
+- id: f3
+  lvl: found
+  kind: num
+  q: |-
+    A lottery sells 10,000 tickets. There is one first prize of ₹20,000 and ten second prizes of ₹1,000 each. What is the fair price of one ticket, in ₹? (Original problem.)
+  ask: Fair price of a ticket
+  unit: ₹
+  ans: 3
+  tol: 0.001
+  verify: (20000+10*1000)/10000
+  sol: |
+    Total prize money $= 20000 + 10 \times 1000 = ₹30{,}000$, shared over 10,000 tickets.
+
+    A single ticket wins ₹20,000 with probability $\dfrac{1}{10000}$, ₹1,000 with probability $\dfrac{10}{10000}$, and nothing otherwise:
+    $$E = 20000 \cdot \frac{1}{10000} + 1000 \cdot \frac{10}{10000} = 2 + 1 = ₹3.$$
+
+    So the fair price is ₹3. If the lottery charges ₹10 a ticket, the organisers collect ₹1,00,000 and pay out ₹30,000, keeping ₹70,000. A ticket at ₹10 has an expected loss of ₹7. People still buy tickets because the chance of a big prize is exciting, not because the average favours them.
+  check: both
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: |-
+    A fair coin is tossed once. If heads, you win ₹2. If tails, you lose ₹1. What is your expected gain per toss? (Original problem.)
+  opts: ["-₹0.50", "₹0", "₹0.50", "₹1"]
+  ans: 2
+  sol: |
+    $E = 2 \times \tfrac12 + (-1) \times \tfrac12 = 1 - 0.5 = ₹0.50$. Option 3.
+
+    Losses count as negative values. A common slip is to treat "lose ₹1" as $+1$ or to forget the loss altogether (giving ₹1, the last option). Option 2 would be right only if the game were fair, which would need heads to pay ₹1.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** Suppose a phone insurance plan costs ₹1,200 a year. Suppose there is a 5% chance in a year that the phone is damaged and needs a repair costing ₹15,000 (the insurer pays the full repair). Find the expected repair cost for a person with no insurance, in ₹. (Original problem.)
+  ask: Expected repair cost per year
+  unit: ₹
+  ans: 750
+  tol: 0.5
+  verify: 0.05*15000
+  sol: |
+    With probability $0.05$ you pay ₹15,000, otherwise ₹0:
+    $$E = 0.05 \times 15000 + 0.95 \times 0 = ₹750.$$
+
+    The plan costs ₹1,200, so on average the buyer pays ₹450 more than the expected repair cost: that ₹450 pays for the insurer's costs and profit. By expected value alone, the insurance is a bad deal.
+
+    **Why insure anyway?** If the phone breaks, a ₹15,000 bill might hurt badly; the plan swaps an unpredictable cost (₹0 or ₹15,000) for a fixed ₹1,200. You accept a small loss on average in return for removing a risk you cannot afford. Expected value tells you the average, but it does not tell you how much a bad year would hurt.
+  check: both
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A Diwali scratch card costs ₹50. Suppose the prizes are: ₹500 with probability 0.05, ₹100 with probability 0.10, ₹10 with probability 0.30, and nothing otherwise. Find the expected net gain per card (prize minus price), in ₹. (Original problem.)
+  ask: Expected net gain
+  unit: ₹
+  ans: -12
+  tol: 0.001
+  verify: 500*0.05+100*0.10+10*0.30-50
+  sol: |
+    **Expected prize:** $500 \times 0.05 + 100 \times 0.10 + 10 \times 0.30 + 0 \times 0.55 = 25 + 10 + 3 = ₹38$.
+
+    **Expected net gain:** $38 - 50 = -₹12$.
+
+    So the card is worth ₹38 on average and costs ₹50. The "chance of winning something" is $0.05 + 0.10 + 0.30 = 45\%$, which sounds good, but it includes the ₹10 prize, which is less than the price of the card. Always compare the prize with the price, not just count the winning cards.
+  check: both
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** Game A: you win ₹100 with probability 1/2 and ₹0 otherwise. Game B: you get ₹50 for sure. Both have the same expected value, ₹50. Find the variance of the winnings in Game A, in ₹². (Original problem.)
+  ask: Variance of Game A
+  unit: ₹²
+  ans: 2500
+  tol: 0.001
+  verify: 0.5*Math.pow(100-50,2)+0.5*Math.pow(0-50,2)
+  sol: |
+    **Variance** measures how far the outcomes typically sit from the expected value: $\text{Var} = E\left[(X - \mu)^2\right]$, where $\mu$ is the expected value.
+
+    For Game A, $\mu = 50$. The two outcomes are $50$ above and $50$ below, each with probability $\tfrac12$:
+    $$\text{Var} = \tfrac12 (100 - 50)^2 + \tfrac12 (0 - 50)^2 = \tfrac12(2500) + \tfrac12(2500) = 2500.$$
+
+    The standard deviation is $\sqrt{2500} = ₹50$. For Game B, the variance is $0$.
+
+    **Reading it:** same average, different **risk**. Someone who needs ₹50 for sure (a bus fare home) prefers B; someone who enjoys a gamble may like A. Variance is the number that captures this difference.
+  check: both
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: |-
+    **Assertion (A):** Buying an extended warranty whose price is more than the expected repair cost can still be a sensible decision.
+    **Reason (R):** The warranty removes the risk of one very large, unplanned expense, and some people value that certainty above the small average loss.
+
+    Choose the correct option. (Original problem.)
+  opts: ["Both A and R are true, and R is the correct explanation of A.", "Both A and R are true, but R is not the correct explanation of A.", "A is true but R is false.", "A is false but R is true."]
+  ans: 0
+  sol: |
+    Expected value compares averages. A warranty priced above the expected repair cost loses a little on average, but it turns an uncertain big cost into a small fixed one: it reduces variance. If a large repair would seriously hurt your budget, paying a small premium for peace of mind can be the right choice (A is true), and R states precisely why. Option 1.
+
+    The counter-case: if you could comfortably pay for a repair from savings, and you buy many such policies over the years, you would on average lose money. Then declining is better.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two fair dice are rolled and you win, in rupees, the larger of the two numbers shown (if both are equal, that number). What is the expected winning, in ₹, to two decimals? (Original problem.)
+  ask: Expected winning
+  unit: ₹
+  ans: 4.47
+  tol: 0.01
+  verify: (1*1+2*3+3*5+4*7+5*9+6*11)/36
+  sol: |
+    There are 36 equally likely pairs. Count the pairs whose maximum is $k$. Both dice are at most $k$ in $k^2$ pairs, and both are at most $k-1$ in $(k-1)^2$ pairs, so the maximum equals $k$ in $k^2 - (k-1)^2 = 2k - 1$ pairs:
+
+    | max | 1 | 2 | 3 | 4 | 5 | 6 |
+    |---|---|---|---|---|---|---|
+    | pairs | 1 | 3 | 5 | 7 | 9 | 11 |
+
+    The counts add to $36$. Then
+    $$E = \frac{1 \cdot 1 + 2 \cdot 3 + 3 \cdot 5 + 4 \cdot 7 + 5 \cdot 9 + 6 \cdot 11}{36} = \frac{161}{36} \approx 4.47.$$
+
+    Sanity check: one die averages 3.5, and the larger of two dice must average more than that. 4.47 does.
+  check: both
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |-
+    A bag holds 3 red and 2 blue balls. Two balls are drawn at random without replacement. You win ₹10 for each red ball drawn. What is the expected winning, in ₹? (Original problem.)
+  ask: Expected winning
+  unit: ₹
+  ans: 12
+  tol: 0.001
+  verify: 10*2*3/5
+  sol: |
+    **Use linearity of expectation.** Let $X_1$ be 1 if the first ball is red and 0 otherwise, and $X_2$ the same for the second ball. The number of red balls is $X_1 + X_2$, and expectations add, even when the two draws depend on each other.
+
+    $P(\text{first is red}) = \tfrac35$. For the second ball, by symmetry, $P(\text{second is red}) = \tfrac35$ also (before the first ball is seen, every position in the sequence is equally likely to hold a red ball).
+
+    Expected reds $= \tfrac35 + \tfrac35 = 1.2$, so expected winning $= 10 \times 1.2 = ₹12$.
+
+    **Check by the long way.** $P(0 \text{ red}) = \tfrac{2}{5}\cdot\tfrac14 = 0.1$, $P(2 \text{ red}) = \tfrac35\cdot\tfrac24 = 0.3$, so $P(1 \text{ red}) = 0.6$. Then $E = 10(0.6) + 20(0.3) = 6 + 6 = ₹12$.
+  check: both
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A fair die is rolled once. Let X be the number that shows. Find the variance of X, to three decimals. (Original problem.)
+  ask: Variance of X
+  ans: 2.917
+  tol: 0.001
+  verify: (1+4+9+16+25+36)/6-Math.pow(3.5,2)
+  sol: |
+    Use $\text{Var}(X) = E[X^2] - (E[X])^2$.
+
+    $E[X] = 3.5$. $E[X^2] = \dfrac{1 + 4 + 9 + 16 + 25 + 36}{6} = \dfrac{91}{6} \approx 15.1667$.
+
+    $\text{Var}(X) = \dfrac{91}{6} - \dfrac{49}{4} = \dfrac{182 - 147}{12} = \dfrac{35}{12} \approx 2.917.$
+
+    The standard deviation is about $1.71$. A typical roll is about 1.7 away from the average of 3.5, which matches the picture: outcomes spread evenly from 1 to 6.
+  check: both
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |-
+    Suppose a game has you stake all your money in each round. With probability 1/2 your money triples, and with probability 1/2 you lose everything. You play 10 rounds in a row, staking everything each time (if you lose everything, you stay at zero). By what factor does your starting money grow in expectation after 10 rounds? Give the factor to two decimals. (Original problem.)
+  ask: Expected multiple of starting money
+  unit: times
+  ans: 57.67
+  tol: 0.01
+  verify: Math.pow(1.5,10)
+  sol: |
+    **One round.** Expected multiple $= \tfrac12 \times 3 + \tfrac12 \times 0 = 1.5$.
+
+    **Ten rounds.** Each round multiplies your expected money by $1.5$, and the rounds are independent, so the expected multiple is $1.5^{10} \approx 57.67$. On paper, the game looks wonderful: your money grows 58-fold on average.
+
+    **Why expected value misleads here.** To have *any* money left after 10 rounds you must win all 10, which has probability $\left(\tfrac12\right)^{10} = \tfrac{1}{1024}$, about $0.1\%$. With that tiny chance you end with $3^{10} = 59049$ times your start; the other $1023$ times out of $1024$ you have nothing. The average of 57.67 is entirely made up of that one very rare, very large win.
+
+    So a player who cares about **not going bankrupt** should refuse this game, even though its expected value is huge. Expected value is the right guide when you play many independent rounds and can survive the bad ones. It is the wrong guide when one bad outcome ends the game (ruin), or when you can play only once.
+  check: both

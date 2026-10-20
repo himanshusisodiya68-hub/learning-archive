@@ -1,0 +1,223 @@
+# Maths in life · Exponential growth: original problems (no NCERT chapter is mapped to this leaf).
+# Rates, populations and amounts are made up for practice ("suppose ..."); none is a claim about real data.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Suppose a colony starts with 5,000 bacteria and the number doubles every 20 minutes. How many bacteria are there after 2 hours? (Original problem.)
+  ask: Number of bacteria
+  ans: 320000
+  tol: 0.5
+  verify: 5000*Math.pow(2,6)
+  sol: |
+    **Count the doublings.** 2 hours is 120 minutes, and $120/20 = 6$ doublings.
+
+    **Each doubling multiplies by 2**, so after 6 of them the number is multiplied by $2^6 = 64$:
+    $$5000 \times 64 = 3{,}20{,}000.$$
+
+    Step by step: $5000 \to 10000 \to 20000 \to 40000 \to 80000 \to 160000 \to 320000$.
+
+    Compare with linear growth: if the colony added 5,000 every 20 minutes, it would have only $5000 + 6 \times 5000 = 35000$. The doubling colony is nine times bigger after just two hours.
+  check: both
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Suppose money grows at 8% per year, compounded yearly. Using the rule of 72, the doubling time is about 72/8 = 9 years. Find the exact doubling time, in years, to three decimals. (Original problem.)
+  ask: Exact doubling time
+  unit: years
+  ans: 9.006
+  tol: 0.001
+  verify: Math.log(2)/Math.log(1.08)
+  sol: |
+    We need $t$ with $1.08^t = 2$. Take logarithms of both sides: $t \ln 1.08 = \ln 2$, so
+    $$t = \frac{\ln 2}{\ln 1.08} = \frac{0.693147}{0.076961} \approx 9.006 \text{ years}.$$
+
+    The rule of 72 says $t \approx 72/r$ with $r$ in percent. It gives 9, which is excellent. Why 72? For small $r$, $\ln(1+r) \approx r$, so $t \approx \ln 2 / r = 69.3/r_\%$. People use 72 instead of 69.3 because it divides evenly by 2, 3, 4, 6, 8, 9, 12, and it corrects a little for the fact that $\ln(1+r)$ is slightly smaller than $r$ at rates of 6–10%.
+  check: both
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A sample of 80 g of a radioactive substance has a half-life of 5 days. How much of it is left after 20 days? (Original problem.)
+  ask: Mass left
+  unit: g
+  ans: 5
+  tol: 0.001
+  verify: 80/Math.pow(2,4)
+  sol: |
+    **Half-life** is the time for half of the substance to decay, and it is the same no matter how much is left. 20 days is $20/5 = 4$ half-lives.
+
+    $80 \to 40 \to 20 \to 10 \to 5$ g, or $80 \times \left(\tfrac12\right)^4 = 5$ g.
+
+    This is **exponential decay**: growth with a factor below 1. The amount lost in each period gets smaller (40 g, then 20, 10, 5), because each time it is a fixed *fraction* of what remains. It never reaches exactly zero in this model.
+  check: both
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: |-
+    Offer A pays you ₹10,000 every day for 30 days. Offer B pays 1 paisa on day 1, 2 paise on day 2, 4 paise on day 3, and keeps doubling each day for 30 days. After 30 days, which gives more in total? (Original problem.)
+  opts: ["Offer A, because ₹10,000 a day is much more than a paisa a day", "Offer B, by a wide margin", "Both give almost the same", "Offer B only if the offer lasts more than 40 days"]
+  ans: 1
+  sol: |
+    Offer A gives $30 \times 10{,}000 = ₹3{,}00{,}000$.
+
+    Offer B pays $2^{k-1}$ paise on day $k$, so the total over 30 days is the geometric sum $1 + 2 + 4 + \cdots + 2^{29} = 2^{30} - 1 = 1{,}07{,}37{,}41{,}823$ paise, which is about ₹1.07 crore.
+
+    So B wins by a factor of more than 30. Look at the early days to see why people choose A: for the first 2 weeks B pays under ₹82 in total ($2^{14}-1 = 16383$ paise = ₹163.83 through day 14). B's last-day payout alone is $2^{29}$ paise, about ₹53.7 lakh. This is "slow, then sudden": nearly all of the growth is crammed into the last few steps. Option 2.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A rumour spreads in a colony. Suppose the person who starts it tells 3 new people in the first hour. In every later hour, each person who heard it in the previous hour tells 3 people who have not heard it.
+
+    How many people (not counting the first person) have heard the rumour by the end of the 6th hour? (Original problem.)
+  ask: People who have heard it
+  ans: 1092
+  tol: 0.5
+  verify: (Math.pow(3,7)-3)/2
+  sol: |
+    New listeners in each hour: $3, 9, 27, 81, 243, 729$. Each hour's new hearers are three times the last hour's.
+
+    This is a geometric series with first term $3$ and ratio $3$. Its sum for 6 terms is
+    $$S = \frac{3(3^6 - 1)}{3 - 1} = \frac{3 \times 728}{2} = 1092.$$
+
+    Notice that the last hour alone (729) is more than the total of the first five hours (363). That pattern holds for any ratio above 2: the latest step is bigger than everything before it combined. It is why a rumour (or an infection, or a viral video) looks harmless for the first few hours and then seems to explode.
+
+    The model is idealised: in reality the colony runs out of people who have not heard it, and growth slows down.
+  check: both
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** Suppose a dose of 500 mg of a medicine is taken. The amount in the blood halves every 4 hours (the half-life is 4 hours). Find the amount left in the blood 10 hours after the dose, in mg, to two decimals. (Original problem.)
+  ask: Amount left
+  unit: mg
+  ans: 88.39
+  tol: 0.01
+  verify: 500*Math.pow(0.5,2.5)
+  sol: |
+    10 hours is $10/4 = 2.5$ half-lives. The amount is
+    $$A = 500 \times \left(\tfrac12\right)^{2.5}.$$
+
+    Two half-lives bring it to $500/4 = 125$ mg. The extra half half-life multiplies by $\left(\tfrac12\right)^{0.5} = \dfrac{1}{\sqrt 2} \approx 0.7071$, so $125 \times 0.7071 \approx 88.39$ mg.
+
+    Check it sits between the two whole-number answers: after 8 hours 125 mg, after 12 hours 62.5 mg, and 88.39 is between them, closer to 125 as it should be.
+
+    [Inference] Real drugs do not always follow a single half-life; this is the simplified exponential-decay model.
+  check: both
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A town had a population of 40,000 in 2010 and 52,000 in 2020. Suppose it grew by the same percentage each year. Find that yearly growth rate, in percent, to two decimals. (Original problem.)
+  ask: Yearly growth rate
+  unit: "%"
+  ans: 2.66
+  tol: 0.01
+  verify: (Math.pow(52000/40000,0.1)-1)*100
+  sol: |
+    Over 10 years the population was multiplied by $\dfrac{52000}{40000} = 1.3$. If each year multiplies by the same factor $g$, then $g^{10} = 1.3$.
+
+    Take the 10th root: $g = 1.3^{0.1} = e^{\ln(1.3)/10} = e^{0.026236} \approx 1.02658$.
+
+    So the growth is about $2.66\%$ a year.
+
+    **A trap:** $30\%$ over 10 years is **not** $3\%$ a year. At $3\%$ a year the town would reach $40000 \times 1.03^{10} \approx 53{,}757$, which is more than 52,000, because growth compounds: each year's growth is on a larger population than the year before.
+  check: both
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: |-
+    **Assertion (A):** In exponential growth, the amount added in each step gets larger and larger.
+    **Reason (R):** In exponential growth, each step adds a fixed percentage of the amount present at that time.
+
+    Choose the correct option. (Original problem.)
+  opts: ["Both A and R are true, and R is the correct explanation of A.", "Both A and R are true, but R is not the correct explanation of A.", "A is true but R is false.", "A is false but R is true."]
+  ans: 0
+  sol: |
+    In exponential growth, $x_{n+1} = (1+r)\,x_n$, so the amount added in step $n$ is $r\,x_n$, a fixed percentage $r$ of the current amount (R is true).
+
+    Because $x_n$ itself keeps rising, $r\,x_n$ rises too. So the additions grow (A is true) and this is *because of* R. Compare linear growth, where the same amount is added every step.
+
+    Option 1.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A lily patch on a pond doubles in area every day and covers the whole pond on day 30. If the pond starts with 4 patches of the same size (instead of 1), on which day does the pond get fully covered? (Original problem.)
+  ask: Day on which the pond is covered
+  ans: 28
+  tol: 0.001
+  verify: 30-Math.log2(4)
+  sol: |
+    Four patches are the same as one patch that has already doubled twice ($1 \to 2 \to 4$). Those two doublings take two days off the clock, so the pond is covered 2 days earlier: day $30 - 2 = 28$.
+
+    Using the formula: area on day $d$ is $4 \times 2^{d}$ units (in units of one patch), and the pond area is $2^{30}$. So $4 \cdot 2^d = 2^{30}$, i.e. $2^{d+2} = 2^{30}$, so $d = 28$.
+
+    **Related question:** on which day was the pond half covered? Day 29. On day 25 it was only $1/32$ covered, about $3\%$: it looked like almost nothing, yet 5 days later it was full. That is "slow, then sudden".
+  check: both
+
+- id: m2
+  lvl: main
+  kind: num
+  q: At what rate of compound interest per year (compounded yearly) will a sum of money triple in 10 years? Give the rate in percent, to two decimals. (Original problem.)
+  ask: Rate
+  unit: "%"
+  ans: 11.61
+  tol: 0.01
+  verify: (Math.pow(3,0.1)-1)*100
+  sol: |
+    We need $(1+r)^{10} = 3$. Take the 10th root: $1 + r = 3^{1/10} = e^{\ln 3 / 10} = e^{0.109861} \approx 1.11612$.
+
+    So $r \approx 11.61\%$.
+
+    **Quick check with the rule of 72.** Tripling takes about $\ln 3 / \ln 2 \approx 1.585$ doublings. If one doubling takes $72/r$ years, tripling takes about $1.585 \times 72/r = 114/r$ years. Setting $114/r = 10$ gives $r \approx 11.4\%$, close to the exact $11.61\%$.
+  check: both
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |-
+    The amount of radioactive carbon-14 in a dead sample halves every 5,730 years (take this as the half-life). A sample has 12.5% of the carbon-14 it had when it died. How old is the sample, in years? (Original problem.)
+  ask: Age of the sample
+  unit: years
+  ans: 17190
+  tol: 1
+  verify: 5730*Math.log(1/0.125)/Math.log(2)
+  sol: |
+    $12.5\% = \tfrac18 = \left(\tfrac12\right)^3$, so exactly 3 half-lives have passed.
+
+    Age $= 3 \times 5730 = 17190$ years.
+
+    If the remaining fraction were not a neat power of $\tfrac12$ (say $30\%$), you would solve $\left(\tfrac12\right)^{t/5730} = 0.30$, giving $t = 5730 \times \dfrac{\ln(1/0.30)}{\ln 2} \approx 9{,}950$ years. The same logarithm formula gives 3 half-lives when the fraction is $\tfrac18$.
+
+    [Inference] In practice radiocarbon dates are calibrated against other records, so this is the textbook model only.
+  check: both
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |-
+    A sheet of paper 0.1 mm thick is folded in half, then in half again, and so on, 42 times. In an ideal world where the paper could be folded that often, how thick is the pile? Give the thickness in km. (Original problem.)
+  ask: Thickness
+  unit: km
+  ans: 439805
+  tol: 5
+  verify: 0.1e-3*Math.pow(2,42)/1000
+  sol: |
+    Each fold doubles the number of layers, so after 42 folds there are $2^{42}$ layers, each 0.1 mm $= 10^{-4}$ m thick.
+
+    $2^{42} = 4{,}398{,}046{,}511{,}104 \approx 4.4 \times 10^{12}$. So the thickness is $4.4 \times 10^{12} \times 10^{-4} = 4.4 \times 10^8$ m, which is $4.4 \times 10^5$ km, about 4,40,000 km.
+
+    The Earth-to-Moon distance is about $3.8 \times 10^5$ km [Unverified: round figure], so 42 folds would reach slightly past the Moon. Meanwhile after 7 folds the pile is only $2^7 \times 0.1 = 12.8$ mm thick, hardly more than a finger. The first half of the folds give almost nothing; the last few do all the work.
+
+    (Real paper cannot be folded anywhere near this many times, because the fold itself uses up length. This is a thought experiment about powers of 2.)
+  check: both
