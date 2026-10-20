@@ -1,0 +1,383 @@
+# Photosynthesis. NCERT questions copied word for word from NCERT Biology Class XI (reprint 2026-27) Ch 11 (Exercises 1 to 9) and Science Class X Ch 5 (in-text Questions p.87 Q1-Q2; Exercises Q3 and Q7). No NCERT answer key exists for Biology: all answers are model answers written for this archive. Found, board and main problems are original.
+
+- id: ncert11-ex-11-1
+  lvl: ncert-ex
+  num: "XI 11 · Q1"
+  source: NCERT XI Biology · Ch 11 · Exercise Q1
+  kind: text
+  q: |-
+    By looking at a plant externally, can you tell whether a plant is C3 or C4? Why and how?
+  sol: |
+    **Not reliably.** The difference between C3 and C4 plants lies in the *internal* anatomy of the leaf (the Kranz arrangement of bundle sheath cells) and in the biochemistry of CO2 fixation (PEP carboxylase in the mesophyll, RuBisCO in the bundle sheath). Neither can be seen by looking at the outside of a leaf: both kinds have green leaves, stomata and veins.
+
+    Only *indirect hints* are possible from the outside, and they are hints, not proof:
+    - C4 plants are mostly tropical or dry-region plants that thrive in high light and high temperature, and show high biomass productivity (maize, sugarcane and sorghum are C4; wheat, rice and potato are C3).
+    - A plant that keeps growing vigorously in the hottest, brightest part of the year is more likely to be C4.
+
+    To be sure, cut a thin vertical section of the leaf and look under a microscope for Kranz anatomy (see Q2).
+  check: none
+
+- id: ncert11-ex-11-2
+  lvl: ncert-ex
+  num: "XI 11 · Q2"
+  source: NCERT XI Biology · Ch 11 · Exercise Q2
+  kind: text
+  q: |-
+    By looking at which internal structure of a plant you can tell whether a plant is C3 or C4? Explain.
+  sol: |
+    By looking at the **leaf anatomy** in a vertical section: C4 plants show **Kranz ("wreath") anatomy**.
+    - Around each vascular bundle lies a ring of particularly large **bundle sheath cells**, with a large number of chloroplasts, thick walls impervious to gaseous exchange and no intercellular spaces. There may be several layers of them.
+    - The mesophyll cells sit outside this ring and are in contact with the air spaces.
+
+    In a C3 leaf, the bundle sheath is not specialised in this way (it has few or no chloroplasts), and the Calvin cycle runs in all the mesophyll cells. So a section of maize or sorghum shows the wreath of chloroplast-rich bundle sheath cells; a section of a C3 leaf does not.
+  check: none
+
+- id: ncert11-ex-11-3
+  lvl: ncert-ex
+  num: "XI 11 · Q3"
+  source: NCERT XI Biology · Ch 11 · Exercise Q3
+  kind: text
+  q: |-
+    Even though a very few cells in a C4 plant carry out the biosynthetic – Calvin pathway, yet they are highly productive. Can you discuss why?
+  sol: |
+    Because the few Calvin-cycle cells (the bundle sheath) are **supercharged with CO2**.
+    1. In the mesophyll, **PEP carboxylase** (which has no oxygenase activity) fixes CO2 into the 4-carbon acid OAA, then malic or aspartic acid, even when atmospheric CO2 is scarce.
+    2. These C4 acids are carried into the bundle sheath cells and broken down there, releasing CO2. This raises the CO2 concentration around RuBisCO far above that of the air.
+    3. At high CO2, RuBisCO works almost only as a **carboxylase**; the wasteful **photorespiration** is minimised, so little fixed carbon, and no ATP, is thrown away.
+    4. The system also tolerates high temperature and responds to high light intensity, so it keeps running at full speed when C3 plants slow down.
+
+    In effect the mesophyll is a pump that delivers CO2 to a small, well-supplied factory. A small factory running flat out beats a large one that wastes part of its output. (The pump itself costs extra ATP [Unverified: not in NCERT], but in bright, hot, dry places the gain far outweighs this.)
+  check: none
+
+- id: ncert11-ex-11-4
+  lvl: ncert-ex
+  num: "XI 11 · Q4"
+  source: NCERT XI Biology · Ch 11 · Exercise Q4
+  kind: text
+  q: |-
+    RuBisCO is an enzyme that acts both as a carboxylase and oxygenase. Why do you think RuBisCO carries out more carboxylation in C4 plants?
+  sol: |
+    CO2 and O2 **compete** for the same active site of RuBisCO, so which reaction happens depends on the relative concentration of the two gases at the enzyme.
+
+    In C4 plants RuBisCO is found only in the bundle sheath cells (the mesophyll lacks it). There, C4 acids from the mesophyll are broken down and release CO2, which increases the CO2 concentration at the enzyme site. With plenty of CO2 and little O2, almost every RuBP is carboxylated to 2 PGA; the oxygenase reaction (the start of photorespiration) is minimised. In C3 plants, RuBisCO sits in mesophyll cells exposed to the ordinary CO2 : O2 ratio of the leaf air, so some O2 does bind.
+  check: none
+
+- id: ncert11-ex-11-5
+  lvl: ncert-ex
+  num: "XI 11 · Q5"
+  source: NCERT XI Biology · Ch 11 · Exercise Q5
+  kind: text
+  q: |-
+    Suppose there were plants that had a high concentration of Chlorophyll b, but lacked chlorophyll a, would it carry out photosynthesis? Then why do plants have chlorophyll b and other accessory pigments?
+  sol: |
+    **No.** Chlorophyll a is the chief pigment of photosynthesis: the single chlorophyll a molecule at the reaction centre of each photosystem (P680 in PS II, P700 in PS I) is the one that actually gives up an excited electron. Chlorophyll b can absorb light but can only *pass the energy on* to chlorophyll a; it cannot start the electron transport itself. Without chlorophyll a there is no reaction centre, so no light reaction.
+
+    Plants still have **chlorophyll b, xanthophylls and carotenoids** (accessory pigments) because they
+    - absorb light of wavelengths that chlorophyll a absorbs poorly, so a wider range of the spectrum is used, and transfer the energy to chlorophyll a (they are part of the antenna);
+    - protect chlorophyll a from **photo-oxidation** by excess light.
+  check: none
+
+- id: ncert11-ex-11-6
+  lvl: ncert-ex
+  num: "XI 11 · Q6"
+  source: NCERT XI Biology · Ch 11 · Exercise Q6
+  kind: text
+  q: |-
+    Why is the colour of a leaf kept in the dark frequently becomes yellow, or pale green? Which pigment do you think is more stable?
+  sol: |
+    In the dark the leaf cannot make new **chlorophyll**, while the chlorophyll it already has keeps breaking down. [Unverified: NCERT does not explain the mechanism; the standard account is that chlorophyll synthesis needs light and the molecule is degraded faster than it is renewed.] As the green fades, the **yellow to orange pigments (xanthophylls and carotenoids)**, which were hidden under the green, show through, so the leaf looks yellow or pale green.
+
+    So the **carotenoids and xanthophylls are the more stable pigments**: they persist after chlorophyll has gone. This is also what you see in autumn leaves.
+  check: none
+
+- id: ncert11-ex-11-7
+  lvl: ncert-ex
+  num: "XI 11 · Q7"
+  source: NCERT XI Biology · Ch 11 · Exercise Q7
+  kind: text
+  q: |-
+    Look at leaves of the same plant on the shady side and compare it with the leaves on the sunny side. Or, compare the potted plants kept in the sunlight with those in the shade. Which of them has leaves that are darker green ? Why?
+  sol: |
+    This is an observation task; the expected result is that the **shade leaves are darker green**. [Unverified: the result of a real observation depends on the plant, and NCERT gives no answer.]
+
+    Why: in dim light the plant is short of light, so it makes more chlorophyll per leaf (and per chloroplast) and often a larger, thinner leaf, to catch as many photons as possible. A dark green colour means a lot of chlorophyll. In strong sunlight, light is not limiting (saturation occurs at about 10 per cent of full sunlight), so extra chlorophyll gains little, and too much light can break down chlorophyll; sun leaves therefore tend to be lighter green, with more protective carotenoid-type pigments.
+  check: none
+
+- id: ncert11-ex-11-8
+  lvl: ncert-ex
+  num: "XI 11 · Q8"
+  source: NCERT XI Biology · Ch 11 · Exercise Q8
+  kind: text
+  q: |-
+    Figure 11.10 shows the effect of light on the rate of photosynthesis. Based on the graph, answer the following questions:
+    (a) At which point/s (A, B or C) in the curve light is a limiting factor?
+    (b) What could be the limiting factor/s in region A?
+    (c) What do C and D represent on the curve?
+  sol: |
+    **[Unverified]** The figure itself is not in the text layer: only its letters A to E survive. From the chapter text, Fig. 11.10 plots the rate of photosynthesis (y-axis) against light intensity (x-axis): the rate rises roughly linearly at low light, bends over, and then levels off at high light. The answers below assume that standard shape and the usual positions (A on the rising part, B at the bend, C on the plateau, D on the light-intensity axis below the plateau). Check them against your textbook's figure.
+
+    **(a)** Light is the limiting factor on the **rising part of the curve (A)**, where doubling the light roughly doubles the rate. At the bend (B) light is only just ceasing to limit, and at **C** it no longer limits.
+
+    **(b)** In region A the limiting factor is the **light intensity** itself. Strictly, the rate there is set by whichever factor is nearest its minimum (Blackman's law), so if the curve is flat because of CO2 or temperature, those would be the limiting factors instead. The ones NCERT lists are CO2 concentration, temperature, water and the plant's own factors.
+
+    **(c)** **C** represents the plateau: the **maximum rate** of photosynthesis, at **light saturation**, where more light no longer helps because another factor (CO2, temperature, enzymes) now limits. **D** marks the **light intensity at which saturation is reached** (about 10 per cent of full sunlight for most plants).
+  check: none
+
+- id: ncert11-ex-11-9
+  lvl: ncert-ex
+  num: "XI 11 · Q9"
+  source: NCERT XI Biology · Ch 11 · Exercise Q9
+  kind: text
+  q: |-
+    Give comparison between the following:
+    (a) C3 and C4 pathways
+    (b) Cyclic and non-cyclic photophosphorylation
+    (c) Anatomy of leaf in C3 and C4 plants
+  sol: |
+    **(a) C3 and C4 pathways**
+
+    | Feature | C3 pathway | C4 pathway |
+    |---|---|---|
+    | First stable product of CO2 fixation | 3-carbon acid, PGA | 4-carbon acid, OAA |
+    | Primary CO2 acceptor | RuBP (5-carbon) | PEP (3-carbon) |
+    | Enzyme of first fixation | RuBisCO | PEP carboxylase (PEPcase) |
+    | Cells where CO2 is first fixed | Mesophyll | Mesophyll |
+    | Cells where the Calvin cycle runs | Mesophyll | Bundle sheath only |
+    | Photorespiration | Present | Negligible |
+    | Temperature optimum | Lower (20 to 25 °C) | Higher (30 to 40 °C) [values from the choices in NCERT Table 11.1; Unverified] |
+    | Response to high light and CO2 | Saturates at lower light; CO2 limiting even at present levels | Keeps responding to high light; CO2 saturation at about 360 µL/L |
+    | Productivity | Lower | Higher |
+    | Examples | Wheat, rice, potato | Maize, sugarcane, sorghum |
+
+    **(b) Cyclic and non-cyclic photophosphorylation**
+
+    | Feature | Cyclic | Non-cyclic |
+    |---|---|---|
+    | Photosystems | PS I only | PS II and PS I in series (Z scheme) |
+    | Electron path | Excited electron returns to PS I through the electron transport chain | From water, through PS II, chain and PS I, to NADP+ |
+    | Products | ATP only | ATP, NADPH + H+ and O2 |
+    | Water splitting and O2 release | No | Yes |
+    | Where | Stroma lamellae (lack PS II and NADP reductase) [possible location] | Grana lamellae |
+    | When | Also when only light beyond 680 nm is available | Normal condition |
+
+    **(c) Leaf anatomy of C3 and C4 plants**
+
+    | Feature | C3 leaf | C4 leaf |
+    |---|---|---|
+    | Bundle sheath | Not specialised; few or no chloroplasts | Large cells in a wreath (Kranz anatomy), many chloroplasts, thick walls, no intercellular spaces |
+    | Cell types that fix CO2 | One: mesophyll | Two: mesophyll and bundle sheath |
+    | Calvin cycle | In all mesophyll cells | Only in bundle sheath cells |
+    | RuBisCO | In mesophyll | In bundle sheath only (mesophyll has PEPcase) |
+  check: none
+
+- id: ncert10-it-5-1
+  lvl: ncert-intext
+  num: "X 5 · p.87 Q1"
+  source: NCERT X Science · Ch 5 · In-text Questions (p.87) Q1. [Spans autotrophic and heterotrophic nutrition; also placed in the nutrition leaf.]
+  kind: text
+  q: |-
+    What are the differences between autotrophic nutrition and heterotrophic nutrition?
+  sol: |
+    | Autotrophic nutrition | Heterotrophic nutrition |
+    |---|---|
+    | The organism makes its own food from simple inorganic raw materials (carbon dioxide and water) | The organism takes in complex organic substances made by other organisms |
+    | Needs an external energy source, the Sun, and chlorophyll (photosynthesis) | Needs enzymes to break the food down into simpler substances |
+    | Food stored as starch | Food stored as glycogen (in animals) [stated in NCERT for humans] |
+    | Green plants and some bacteria | Animals and fungi |
+    | Survives on its own | Depends directly or indirectly on autotrophs |
+  check: none
+
+- id: ncert10-it-5-2
+  lvl: ncert-intext
+  num: "X 5 · p.87 Q2"
+  source: NCERT X Science · Ch 5 · In-text Questions (p.87) Q2
+  kind: text
+  q: |-
+    Where do plants get each of the raw materials required for photosynthesis?
+  sol: |
+    - **Carbon dioxide**: from the air, through the **stomata** (tiny pores on the surface of leaves; the guard cells open and close them). Some gas also enters across the surface of stems and roots.
+    - **Water**: taken up from the soil by the **roots** in terrestrial plants, and carried up to the leaves.
+    - **Sunlight and chlorophyll** are not raw materials but are needed too: light comes from the Sun and chlorophyll is in the chloroplasts of the leaf cells.
+    - Other materials (nitrogen, phosphorus, iron, magnesium) are taken up from the soil. Nitrogen is taken up as inorganic nitrates or nitrites, or as organic compounds made by bacteria from atmospheric nitrogen.
+  check: none
+
+- id: ncert10-ex-5-3
+  lvl: ncert-ex
+  num: "X 5 · Q3"
+  source: NCERT X Science · Ch 5 · Exercise Q3
+  kind: mcq
+  q: |-
+    The autotrophic mode of nutrition requires
+  opts: ["carbon dioxide and water.", "chlorophyll.", "sunlight.", "all of the above."]
+  ans: 3
+  sol: |
+    Autotrophs convert carbon dioxide and water into carbohydrates in the presence of sunlight and chlorophyll. All three requirements are needed, so the answer is **(d) all of the above**.
+  check: none
+
+- id: ncert10-ex-5-7
+  lvl: ncert-ex
+  num: "X 5 · Q7"
+  source: NCERT X Science · Ch 5 · Exercise Q7
+  kind: text
+  q: |-
+    What are the necessary conditions for autotrophic nutrition and what are its by-products?
+  sol: |
+    **Necessary conditions:** carbon dioxide (from the air, through stomata), water (from the soil), **sunlight** (the energy source) and **chlorophyll** (in the chloroplasts) to absorb the light energy.
+
+    **Products:** carbohydrates (glucose, stored as starch) are the food made. The **by-product is oxygen**, released when water is split; it leaves the leaf through the stomata. (The Class XI chapter shows that this O2 comes from water, not from CO2.)
+
+    In words: carbon dioxide + water, in the presence of sunlight and chlorophyll, give carbohydrate + oxygen.
+  check: none
+
+- id: f1
+  lvl: found
+  kind: mcq
+  q: The oxygen released during photosynthesis comes from (original problem)
+  opts: ["carbon dioxide", "water", "glucose", "RuBP"]
+  ans: 1
+  sol: |
+    **Water.** Van Niel's comparison with sulphur bacteria (which use H2S and release sulphur, not O2) led to this inference, and radioisotope experiments later proved it: water is split at PS II, 2H2O → 4H+ + O2 + 4e−. The oxygen of CO2 ends up in the sugar and in the water that is formed.
+  check: none
+
+- id: f2
+  lvl: found
+  kind: mcq
+  q: Which pair correctly matches a stage of photosynthesis with the place where it happens in the chloroplast? (original problem)
+  opts: ["Light reaction: stroma; Calvin cycle: grana", "Light reaction: thylakoid membranes; Calvin cycle: stroma", "Light reaction: outer membrane; Calvin cycle: inner membrane", "Light reaction and Calvin cycle: both in the lumen"]
+  ans: 1
+  sol: |
+    The membrane system (grana and stroma lamellae) traps light and makes ATP and NADPH; the enzymes of the Calvin cycle are dissolved in the **stroma**, where sugar and then starch are made.
+  check: none
+
+- id: f3
+  lvl: found
+  kind: num
+  q: How many molecules of ATP does the Calvin cycle use to make 2 molecules of glucose? (Original problem. Use the NCERT count of 3 ATP per CO2 fixed.)
+  ask: ATP molecules
+  unit: ATP
+  ans: 36
+  tol: 0.01
+  verify: 2*6*3
+  sol: |
+    One glucose needs 6 CO2, hence 6 turns of the cycle. Each CO2 fixed uses 3 ATP (2 for the reduction steps, 1 for regenerating RuBP), so one glucose needs $6\times3 = 18$ ATP (and 12 NADPH). Two glucose molecules need $2\times18 = 36$ ATP (and 24 NADPH).
+  check: code
+
+- id: f4
+  lvl: found
+  kind: text
+  q: Why is it a misnomer to call the Calvin cycle the "dark reaction"? (Original problem.)
+  sol: |
+    The cycle does not need light *directly*, but it depends on the ATP and NADPH made in the light reaction. Experiments show that when light is cut off, the biosynthetic phase continues for a short time (until the ATP and NADPH run out) and then stops; when light returns, it restarts. In ordinary life it runs in the daytime, in the stroma of a leaf in sunlight, so it does not "happen in the dark". The better names are the *biosynthetic* or *carbon-fixation* phase.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: text
+  q: (2 marks) Distinguish between an absorption spectrum and an action spectrum. (Original problem.)
+  sol: |
+    - **Absorption spectrum** (1 mark): a graph of how much light a pigment absorbs at each wavelength (e.g. chlorophyll a peaks in the blue and red regions).
+    - **Action spectrum** (1 mark): a graph of the rate of photosynthesis at each wavelength of light. It resembles the absorption spectra of chlorophyll a and b, which shows that these are the pigments of photosynthesis.
+    Engelmann's experiment (a prism, the alga *Cladophora* and aerobic bacteria clustering where O2 was released) gave the first action spectrum. The two curves do not overlap exactly: some photosynthesis occurs at other wavelengths because accessory pigments pass energy to chlorophyll a.
+  check: none
+
+- id: b2
+  lvl: board
+  kind: text
+  q: (3 marks) Name the three stages of the Calvin cycle and state what happens in each. (Original problem.)
+  sol: |
+    1. **Carboxylation** (1 mark): CO2 combines with the 5-carbon acceptor RuBP, catalysed by RuBisCO, to give 2 molecules of the 3-carbon acid 3-PGA.
+    2. **Reduction** (1 mark): PGA is phosphorylated using ATP and reduced using NADPH to triose phosphate and finally sugar (glucose, starch, sucrose); 2 ATP and 2 NADPH per CO2 fixed.
+    3. **Regeneration** (1 mark): RuBP is formed again from triose phosphates, using 1 ATP per CO2, so the cycle continues.
+    Examiners also like: six turns for one glucose, 18 ATP and 12 NADPH in total, and that the cycle runs in the stroma of all photosynthetic plants (C3 and C4).
+  check: none
+
+- id: b3
+  lvl: board
+  kind: text
+  q: (3 marks) What is photorespiration? Why does it not occur in C4 plants? (Original problem.)
+  sol: |
+    - **Definition** (1 mark): RuBisCO can bind O2 as well as CO2 (the two compete). When it binds O2, RuBP is split into one 3-carbon PGA and one 2-carbon phosphoglycolate in the photorespiratory pathway. No sugar and no ATP or NADPH is made; CO2 is released and ATP is used up.
+    - **Why not in C4 plants** (2 marks): the mesophyll fixes CO2 with PEP carboxylase, which does not bind O2, and C4 acids carry the CO2 to the bundle sheath cells. Breaking these acids down raises the CO2 concentration at RuBisCO, so it acts as a carboxylase and the oxygenase activity is minimised.
+    Add: this is why C4 plants have higher productivity and tolerate higher temperatures. NCERT states that the biological function of photorespiration is not known.
+  check: none
+
+- id: b4
+  lvl: board
+  kind: text
+  q: (5 marks) Describe how ATP and NADPH are produced in the light reaction of photosynthesis, with the help of the Z scheme. (Original problem.)
+  sol: |
+    Points an examiner looks for (any five well-linked points; a neat labelled Z scheme earns marks):
+    1. Two photosystems in the thylakoid membrane, **PS II (P680)** and **PS I (P700)**; each has a light-harvesting complex (antenna) that funnels energy to one chlorophyll a molecule, the reaction centre.
+    2. PS II absorbs 680 nm light; its electrons are excited and picked up by an acceptor.
+    3. They pass downhill along an electron transport chain (cytochromes) to PS I. The electrons are not used up. On the way, protons are pumped across the thylakoid membrane into the lumen.
+    4. PS I is also excited (700 nm); its electron passes to another acceptor and then downhill to **NADP+**, which is reduced to **NADPH + H+** (enzyme NADP reductase, on the stroma side).
+    5. PS II's lost electrons are replaced by **splitting of water** on the lumen side: 2H2O → 4H+ + O2 + 4e−. O2 is released; protons add to the lumen gradient.
+    6. **Chemiosmosis:** the proton gradient (high in the lumen, with a lower pH) breaks down as protons flow through the CF0 channel of **ATP synthase** to the stroma; the energy changes CF1 and ADP + Pi becomes **ATP**.
+    7. The zigzag shape of the carriers on the redox scale gives the name Z scheme.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: mcq
+  q: |-
+    Assertion (A): C4 plants show little or no photorespiration.
+    Reason (R): In the bundle sheath cells of C4 plants, C4 acids are broken down and release CO2, which raises the CO2 concentration at the RuBisCO site.
+    (Original problem.)
+  opts: ["Both A and R are true, and R is the correct explanation of A", "Both A and R are true, but R is not the correct explanation of A", "A is true but R is false", "A is false but R is true"]
+  ans: 0
+  sol: |
+    Photorespiration starts when O2 competes with CO2 at the active site of RuBisCO. Raising the CO2 level at the enzyme tips the competition towards carboxylation, so the oxygenase activity is minimised. Both statements are true and R explains A: option (a).
+  check: none
+
+- id: m2
+  lvl: main
+  kind: mcq
+  q: |-
+    Match Column I with Column II (original problem):
+    Column I: (A) P680; (B) RuBisCO; (C) PEP carboxylase; (D) CF0 part of ATP synthase.
+    Column II: (1) transmembrane proton channel; (2) first CO2 fixation in mesophyll of C4 plants; (3) reaction centre of PS II; (4) carboxylation of RuBP in the Calvin cycle.
+  opts: ["A-3, B-4, C-2, D-1", "A-3, B-2, C-4, D-1", "A-1, B-4, C-2, D-3", "A-4, B-3, C-1, D-2"]
+  ans: 0
+  sol: |
+    P680 is the chlorophyll a reaction centre of PS II (3). RuBisCO carboxylates RuBP in the Calvin cycle (4). PEPcase fixes CO2 in the mesophyll of C4 plants (2). CF0 is the transmembrane channel through which protons flow (1). So A-3, B-4, C-2, D-1.
+  check: none
+
+- id: m3
+  lvl: main
+  kind: mcq
+  q: |-
+    Read the statements about the light reaction (original problem):
+    (i) The stroma lamellae lack PS II and the NADP reductase enzyme.
+    (ii) Cyclic photophosphorylation produces ATP and NADPH.
+    (iii) The protons released by splitting of water accumulate in the thylakoid lumen.
+    (iv) The Z scheme begins with excitation of PS I.
+    Which statements are correct?
+  opts: ["(i) and (iii) only", "(i), (ii) and (iii) only", "(ii) and (iv) only", "(iii) and (iv) only"]
+  ans: 0
+  sol: |
+    (i) True: this is why only cyclic flow is thought to happen there. (ii) False: cyclic flow gives ATP only; the electron does not reach NADP+. (iii) True: water is split on the inner (lumen) side of the membrane. (iv) False: the scheme starts with PS II (P680), even though PS I was discovered first. So only (i) and (iii).
+  check: none
+
+- id: m4
+  lvl: main
+  kind: mcq
+  q: |-
+    A leaf of a C3 plant is in bright light at 25 °C with plenty of water, but the air has only about 0.03 per cent CO2. Which change would increase its rate of photosynthesis the most? (Original problem.)
+  opts: ["Doubling the light intensity", "Raising the CO2 concentration to about 0.05 per cent", "Raising the temperature to 45 °C", "Keeping the plant in the dark for some hours"]
+  ans: 1
+  sol: |
+    Blackman's law of limiting factors: the rate is set by the factor nearest its minimum. Light is already bright (saturation is near 10 per cent of full sunlight), and C3 plants are not saturated at today's CO2 level; they respond to CO2 up to about 0.05 per cent. A high temperature of 45 °C is beyond the optimum of a C3 plant and would reduce the rate. So raise the CO2: option (b). This is the principle behind CO2-enriched greenhouses for tomato and bell pepper.
+  check: none
+
+- id: m5
+  lvl: main
+  kind: num
+  q: In non-cyclic photophosphorylation, 3 molecules of O2 are released. Assuming 2 electrons are needed to reduce one NADP+ to NADPH, how many molecules of NADPH are formed? (Original problem; uses 2H2O → 4H+ + O2 + 4e−.)
+  ask: NADPH molecules
+  unit: NADPH
+  ans: 6
+  tol: 0.01
+  verify: 3*4/2
+  sol: |
+    Each O2 comes with 4 electrons from 2H2O, so 3 O2 mean $3\times4 = 12$ electrons passed along the Z scheme. These electrons end up on NADP+, 2 per NADPH, giving $12/2 = 6$ NADPH. [The count of 2 electrons per NADPH is standard biochemistry rather than stated in NCERT: Unverified.]
+  check: code
