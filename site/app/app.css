@@ -21,18 +21,18 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #0B0D1A; --surface: #151829; --sunk: #1D2136;
-    --ink: #ECEEF8; --muted: #A3A8C3; --rule: #272B44; --accent: #8B7CFF; --accent-ink: #0B0D1A; --accent-soft: rgba(139, 124, 255, .14);
+    --paper: #0E1124; --surface: #1A1E37; --sunk: #232845;
+    --ink: #EEF0FA; --muted: #B4B9D5; --rule: #343A62; --accent: #8B7CFF; --accent-ink: #0B0D1A; --accent-soft: rgba(139, 124, 255, .14);
     --phy: #A08EFF; --mat: #4FD6F0; --chem: #FFB547; --bio: #5FD38A; --eng: #FF7AA2; --cs: #6AA5FF; --good: #5FD38A; --warn: #FFB547; --bad: #FF8A80;
-    --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0l6 6M6 0L0 6' stroke='%23ECEEF8' stroke-opacity='.045' stroke-width='.7'/%3E%3C/svg%3E"); --shadow: 0 1px 0 rgba(0,0,0,.2);
+    --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0l6 6M6 0L0 6' stroke='%23ECEEF8' stroke-opacity='.06' stroke-width='.7'/%3E%3C/svg%3E"); --shadow: 0 1px 0 rgba(0,0,0,.2);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #0B0D1A; --surface: #151829; --sunk: #1D2136;
-    --ink: #ECEEF8; --muted: #A3A8C3; --rule: #272B44; --accent: #8B7CFF; --accent-ink: #0B0D1A; --accent-soft: rgba(139, 124, 255, .14);
+  --paper: #0E1124; --surface: #1A1E37; --sunk: #232845;
+    --ink: #EEF0FA; --muted: #B4B9D5; --rule: #343A62; --accent: #8B7CFF; --accent-ink: #0B0D1A; --accent-soft: rgba(139, 124, 255, .14);
     --phy: #A08EFF; --mat: #4FD6F0; --chem: #FFB547; --bio: #5FD38A; --eng: #FF7AA2; --cs: #6AA5FF; --good: #5FD38A; --warn: #FFB547; --bad: #FF8A80;
-    --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0l6 6M6 0L0 6' stroke='%23ECEEF8' stroke-opacity='.045' stroke-width='.7'/%3E%3C/svg%3E"); --shadow: 0 1px 0 rgba(0,0,0,.2);
+    --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0l6 6M6 0L0 6' stroke='%23ECEEF8' stroke-opacity='.06' stroke-width='.7'/%3E%3C/svg%3E"); --shadow: 0 1px 0 rgba(0,0,0,.2);
     color-scheme: dark;
 }
 
@@ -1176,3 +1176,18 @@ html.ck-open { overflow: hidden; }
 .bl-card p { margin: 0; font-family: var(--f-body); font-size: 16.5px; line-height: 1.55; }
 #boot:empty { display: none; }
 @media (prefers-reduced-motion: reduce) { .bl-core, .bl-card { animation: none; } }
+
+/* ---------- Dark theme depth: a soft glow behind the page, cards lifted off it ---------- */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --glow: radial-gradient(900px 520px at 15% -8%, rgba(139, 124, 255, .16), transparent 62%), radial-gradient(700px 480px at 100% 0%, rgba(79, 214, 240, .07), transparent 60%); --lift: inset 0 1px 0 rgba(255, 255, 255, .05), 0 10px 26px -18px rgba(0, 0, 0, .7); } }
+:root[data-theme="dark"] { --glow: radial-gradient(900px 520px at 15% -8%, rgba(139, 124, 255, .16), transparent 62%), radial-gradient(700px 480px at 100% 0%, rgba(79, 214, 240, .07), transparent 60%); --lift: inset 0 1px 0 rgba(255, 255, 255, .05), 0 10px 26px -18px rgba(0, 0, 0, .7); }
+body { background-image: var(--glow, none), var(--weave); background-repeat: no-repeat, repeat; background-attachment: fixed, scroll; background-size: auto, 6px 6px; }
+.panel, .cont, .sc, .xl, .mm, .rl, .sec, .opener, .lesson-head, .bl-card, .stone.live, .pillar, .branch { box-shadow: var(--lift, none); }
+
+/* ---------- Theme toggle (desktop rail and phone top bar) ---------- */
+.theme-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+.theme-btn:hover { color: var(--ink); border-color: color-mix(in srgb, var(--accent) 40%, var(--rule)); }
+.theme-btn > span[data-icon] { display: inline-flex; } .theme-btn .ic { width: 16px; height: 16px; }
+.rail-foot .theme-btn { margin: 0 0 10px; }
+.m-top .m-actions { display: flex; align-items: center; gap: 8px; }
+.m-top .theme-btn { width: 36px; height: 36px; padding: 0; justify-content: center; }
+.m-top .theme-btn .tb-l { display: none; }

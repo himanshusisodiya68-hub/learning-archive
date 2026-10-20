@@ -161,6 +161,7 @@ Aim for every NCERT item, then about 2–4 problems at each level: found, board,
 ## App structure (site/app)
 
 - **Search palette (everywhere):** Ctrl/⌘ K, `/`, the rail's Search button (desktop), the top bar's Search button (phone) or the home search box open one palette. It searches lessons, sections, topics, NCERT chapters and problems with typo-tolerant fuzzy matching, and lists pages and subjects to jump to. `data/search.json` loads in the background after the first paint.
+- **Theme:** a light/dark toggle sits at the foot of the desktop rail and in the phone top bar; it follows the device until the reader picks one, then remembers it (`localStorage` key `pm-theme`, applied by an inline script before the page paints).
 - **Home:** continue card, review and daily set, habits, subject cards.
 - **Learn:** two levels, `#learn~<subj>` (pillar cards) and `#learn~<subj>~<pillar>` (each branch once, as a numbered learning path of its leaves). The class view (NCERT books) is the second mode.
 - **Lesson:** `#lesson~<subj>~<leaf>`.
@@ -238,7 +239,7 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 
 **Retrofit status:** Optics and Electricity and magnetism have had the cheap pass (opener, hook, symbols, life, models, links, next); see `docs/retrofit.md`. Deep passes not started.
 
-**Done: Maths › Maths in life, 4 leaves (issue #7).** Not yet republished to the site artifact.
+**Done: Maths › Maths in life, 4 leaves (issue #7).** Published to the site artifact (version 28).
 - **Leaves:** `compound-interest-and-emis` (money), `fermi-estimation` and `exponential-growth` (estimation), `expected-value` (decisions); each has a lesson from Class 10 to Olympiad and 19–20 original problems (no NCERT chapter is mapped). The CS lessons that already linked to these leaves now lead to live lessons.
 - **Art of Problem Solving thread:** `docs/refs/maths/strategies.md` holds notes on Zeitz Ch 2–3 strategies (reusable). Every lesson has one or two `Problem-solving move` note boxes naming the strategy and section; 5 adv/oly problems are Zeitz Ch 2 problems copied word for word, with our own solutions.
 - **Still to write in this pillar:** `percentages-in-life`, `misleading-statistics` (expected value's `next` points to it).
@@ -265,13 +266,13 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 - `next` chain runs through every pillar in order; the last leaf (`iv-offers`) loops back to `problem-solving-method`.
 - `python3 site/check-links.py` validates every `links`/`next` leaf id; run it with the other checks.
 
-**Done: English (51 leaves, all with lessons and problems).** Not yet republished to the site artifact.
+**Done: English (51 leaves, all with lessons and problems).** Published to the site artifact (version 28).
 - **Pillars:** Grammar (16, done earlier), Vocabulary (9), Writing (5), Reading (2), Literature (literary devices, plus First Flight Ch 1–9 and Footprints Without Feet Ch 1–9: every prose chapter).
 - **Writing:** Sonnet subagents, one per leaf, from training knowledge. Literature chapters read only the NCERT 2026-27 PDFs (`jeff1xx`, `jefp1xx`) to copy every exercise question word for word; poems sharing a PDF are skipped (out of scope). Non-literature problems are original (about 15 per leaf).
 - **Reality filter:** there is no NCERT answer key for English, so every answer is a model answer. Author biographies, etymologies and the CBSE paper format and marks are labelled [Unverified].
 - **Known gaps:** the PDF text layer has no section headings, so labels in `num` (OC, TT, TL, SP, WR, RF, TA) are inferred. Some printed NCERT slips are copied as printed and flagged in the answer: Glimpses OC2 Q1 mismatched pairs, Midnight Visitor "Ausable" for Max. The italics that some Thinking about language items depend on (Mijbil TL II/III) are missing from the text layer. The 17 older lessons (16 grammar leaves and A Letter to God) still lack the opener, symbols and life fields and need the cheap retrofit pass (`docs/retrofit.md`).
 
-**Done: Maths › Class 10 Ch 1 Real Numbers and Ch 2 Polynomials (3 leaves, issue #5).** Not yet republished to the site artifact.
+**Done: Maths › Class 10 Ch 1 Real Numbers and Ch 2 Polynomials (3 leaves, issue #5).** Published to the site artifact (version 28).
 - **Leaves:** `fundamental-theorem-of-arithmetic` and `irrational-numbers` (Ch 1), `polynomials` (Ch 2); each has a lesson from Class 10 to Olympiad and 25–28 problems.
 - **NCERT covered:** every example and exercise question of the 2026-27 reprint of Ch 1 (Ex 1.1–1.2, Examples 1–7, Theorems 1.2–1.3) and Ch 2 (Ex 2.1–2.2, Examples 1–5). The reprint has no Euclid's division algorithm or polynomial division sections (both promised in its introductions); the lessons teach them at depth 2–3.
 - **Olympiad material:** Paul Zeitz, *The Art and Craft of Problem Solving* (owner's Drive copy), §7.1, §2.3 and §5.4. Notes and the problems copied word for word are in `docs/refs/maths/`; adv/oly problems quote them with `source: Zeitz … Problem N.N.N`, with our own solutions.
