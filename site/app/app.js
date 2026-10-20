@@ -71,7 +71,8 @@
   };
   const LVL_ORDER = Object.keys(LEVELS);
   const CS_LEVELS = { found: ['Warm-up', 'Check the idea itself', 'found'], board: ['Practice', 'Apply it once', 'board'], main: ['Interview', 'Typical coding-interview level', 'main'], adv: ['Advanced', 'Several ideas combined', 'adv'], oly: ['System design', 'SDE-3 level: design at scale', 'oly'] };
-  const lvInfo = (lv, sid) => (sid === 'cs' && CS_LEVELS[lv]) || LEVELS[lv];
+  const BIO_LEVELS = { main: ['NEET', 'One or two steps beyond NCERT, NEET style', 'main'] };
+  const lvInfo = (lv, sid) => (sid === 'cs' && CS_LEVELS[lv]) || (sid === 'bio' && BIO_LEVELS[lv]) || LEVELS[lv];
   const DEPTH = [[1, 'Class 10'], [2, 'Class 12 · JEE Main'], [3, 'JEE Adv. · Irodov'], [4, 'Olympiad']];
   const LV_SHORT = { 1: 'C10', 2: 'C12', 3: 'Adv', 4: 'Oly' };
 
@@ -601,7 +602,7 @@
   /* ================= LEARN ================= */
   /* Two levels only: a subject page (pillar cards) and a pillar page (each branch once, as a numbered learning path). */
   const TAGS = { OLY: 'Olympiad', JEE: 'JEE', BEG: 'Foundations', INT: 'SDE-1', ADV: 'SDE-2', SDE: 'SDE-3', LIFE: 'Everyday' };
-  const TOP = { sci: ['', 'Class 10', 'Class 12', 'JEE Adv.', 'Olympiad'], cs: ['', 'Foundations', 'SDE-1', 'SDE-2', 'SDE-3'], eng: ['', 'Foundation', 'Class 10', 'Beyond'] };
+  const TOP = { sci: ['', 'Class 10', 'Class 12', 'JEE Adv.', 'Olympiad'], cs: ['', 'Foundations', 'SDE-1', 'SDE-2', 'SDE-3'], eng: ['', 'Foundation', 'Class 10', 'Beyond'], bio: ['', 'Class 10', 'Class 12', 'NEET', 'NEET'] };
   // School subjects: the NCERT class where the topic is first taught → how deep the lesson goes.
   // CS and English: the lesson's own range, from its first section's level to its deepest.
   const lvlTag = (l, sid) => { const range = (sid === 'cs' || sid === 'eng') && l.low && l.top, a = range ? TOP[sid][l.low] : TAGS[l.from] || 'Class ' + String(l.from).slice(1), t = l.top ? (TOP[sid] || TOP.sci)[l.top] : '', b = t && t !== a ? t : '';
@@ -765,10 +766,12 @@
   const BANDS = {
     sci: { 1: ['Class 10', 'The foundation: every student needs this'], 2: ['Class 12 · JEE Main', 'Stop above this line if you only need Class 10'], 3: ['JEE Advanced · Irodov', 'Same core idea, harder situations'], 4: ['Olympiad', 'The idea at full depth'] },
     cs: { 1: ['Foundations', 'Anyone can follow this, no coding needed'], 2: ['SDE-1', 'What a junior engineer must know'], 3: ['SDE-2', 'Trade-offs a mid-level engineer weighs'], 4: ['SDE-3', 'Designing at scale and leading the decision'] },
-    eng: { 1: ['Foundation', 'Classes 6 to 8: the rule itself'], 2: ['Class 10 board', 'What the board paper tests'], 3: ['Beyond the board', 'Style and nuance'] }
+    eng: { 1: ['Foundation', 'Classes 6 to 8: the rule itself'], 2: ['Class 10 board', 'What the board paper tests'], 3: ['Beyond the board', 'Style and nuance'] },
+    bio: { 1: ['Class 9–10', 'The foundation: every student needs this'], 2: ['Class 11–12', 'NCERT in full; stop above this line if you only need Class 10'], 3: ['NEET and beyond', 'The same idea as NEET and working biologists use it'] }
   };
   const ENG_DEPTH = [[1, 'Foundation'], [2, 'Class 10 board'], [3, 'Beyond the board']];
   const CS_DEPTH = [[1, 'Foundations'], [2, 'SDE-1'], [3, 'SDE-2'], [4, 'SDE-3']];
+  const BIO_DEPTH = [[1, 'Class 9–10'], [2, 'Class 11–12'], [3, 'NEET · beyond']];
   /* Icons for "In real life" items, picked per item in content/life-icons.yaml. Compact form, segments split by '|':
      "c cx cy r" circle, "r x y w h rx" rect, "e cx cy rx ry deg" ellipse, anything else is a path. */
   const LIFE_ICONS = {
@@ -830,7 +833,7 @@
   const LIFE_TINTS = ['--chem', '--mat', '--phy', '--eng', '--cs', '--bio'];
   let spy = null;
   function buildLesson(root, L, lesson, probs) {
-    const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = BANDS[sid] || BANDS.sci, D = isEng ? ENG_DEPTH : sid === 'cs' ? CS_DEPTH : DEPTH;
+    const key = lesson.key, sid = L.s.id, isEng = sid === 'eng', B = BANDS[sid] || BANDS.sci, D = isEng ? ENG_DEPTH : sid === 'cs' ? CS_DEPTH : sid === 'bio' ? BIO_DEPTH : DEPTH;
     const wrap = ['s-keys', 's-traps'];
     const body = lesson.sections.filter(x => !wrap.includes(x.id)), tail = lesson.sections.filter(x => wrap.includes(x.id));
     const words = lesson.sections.reduce((a, x) => a + (x.text || '').split(/\s+/).length, 0), mins = Math.max(5, Math.round(words / 180 / 5) * 5);
@@ -886,7 +889,7 @@
       </section>
       ${symHTML ? `<div class="lb-panel" data-lbp="sym" hidden>${symHTML}</div>` : ''}
       <div class="lb-panel inside" data-lbp="inside" hidden>${outHTML}${needs ? `<div class="needs"><div class="eyebrow">Builds on</div>${needs}</div>` : ''}${mapHTML}</div>`;
-    const tocBtn = sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Fnd', 'SDE1', 'SDE2', 'SDE3'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`;
+    const tocBtn = sec => `<button data-to="${sec.id}" data-lvl-toc="${sec.lvl}"><span class="n">${sec._n}</span><span class="t">${escHTML(sec.title)}</span><span class="lv l${sec.lvl}">${isEng ? sec.lvl : sid === 'cs' ? ['', 'Fnd', 'SDE1', 'SDE2', 'SDE3'][sec.lvl] : sid === 'bio' ? ['', 'C10', 'C12', 'NEET'][sec.lvl] : LV_SHORT[sec.lvl]}</span></button>`;
     const trk = (n, k, sub, to) => `<button class="trk" data-trk="${to}" data-to="${to}"><span class="trk-d">${n || '•'}</span><b>${k}</b><span class="trk-s"${to === 'lbegin' ? ' id="trk-count"' : ''}>${sub}</span></button>`;
     const ncert = (lesson.ncert || []).map(n => `<span>${escHTML(n)}</span>`).join('<span>·</span>');
     root.innerHTML = `

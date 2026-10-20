@@ -10,10 +10,10 @@ chapters:
   - { n: 3, title: Metals and Non-metals, pdf: jesc103 }
   - { n: 4, title: Carbon and its Compounds, pdf: jesc104 }
   - { title: Periodic Classification of Elements, restored: true }
-  - { n: 5, title: Life Processes, pdf: jesc105 }
-  - { n: 6, title: Control and Coordination, pdf: jesc106 }
-  - { n: 7, title: How do Organisms Reproduce?, pdf: jesc107 }
-  - { n: 8, title: Heredity, pdf: jesc108 }
+  - { n: 5, title: Life Processes, pdf: jesc105, leaves: [bio/nutrition, bio/photosynthesis, bio/breathing, bio/circulation, bio/excretion] }
+  - { n: 6, title: Control and Coordination, pdf: jesc106, leaves: [bio/neural-control, bio/chemical-coordination, bio/plant-growth] }
+  - { n: 7, title: How do Organisms Reproduce?, pdf: jesc107, leaves: [bio/reproduction-in-plants, bio/human-reproduction, bio/reproductive-health] }
+  - { n: 8, title: Heredity, pdf: jesc108, leaves: [bio/inheritance-and-variation] }
   - n: 9
     title: Light – Reflection and Refraction
     pdf: jesc109
@@ -31,5 +31,5 @@ chapters:
     pdf: jesc112
     leaves: [phy/field-lines-and-compasses, phy/force-on-a-current, phy/domestic-electric-circuits, phy/electromagnetic-induction]
   - { title: Sources of Energy, restored: true }
-  - { n: 13, title: Our Environment, pdf: jesc113 }
+  - { n: 13, title: Our Environment, pdf: jesc113, leaves: [bio/ecosystem] }
   - { title: Sustainable Management of Natural Resources, restored: true }
