@@ -61,7 +61,7 @@
   opts: ["Offer A, because ₹10,000 a day is much more than a paisa a day", "Offer B, by a wide margin", "Both give almost the same", "Offer B only if the offer lasts more than 40 days"]
   ans: 1
   sol: |
-    Offer A gives $30 \times 10{,}000 = ₹3{,}00{,}000$.
+    Offer A gives $30 \times 10{,}000 = \text{₹}3{,}00{,}000$.
 
     Offer B pays $2^{k-1}$ paise on day $k$, so the total over 30 days is the geometric sum $1 + 2 + 4 + \cdots + 2^{29} = 2^{30} - 1 = 1{,}07{,}37{,}41{,}823$ paise, which is about ₹1.07 crore.
 

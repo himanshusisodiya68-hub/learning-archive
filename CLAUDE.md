@@ -238,6 +238,11 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 
 **Retrofit status:** Optics and Electricity and magnetism have had the cheap pass (opener, hook, symbols, life, models, links, next); see `docs/retrofit.md`. Deep passes not started.
 
+**Done: Maths › Maths in life, 4 leaves (issue #7).** Not yet republished to the site artifact.
+- **Leaves:** `compound-interest-and-emis` (money), `fermi-estimation` and `exponential-growth` (estimation), `expected-value` (decisions); each has a lesson from Class 10 to Olympiad and 19–20 original problems (no NCERT chapter is mapped). The CS lessons that already linked to these leaves now lead to live lessons.
+- **Art of Problem Solving thread:** `docs/refs/maths/strategies.md` holds notes on Zeitz Ch 2–3 strategies (reusable). Every lesson has one or two `Problem-solving move` note boxes naming the strategy and section; 5 adv/oly problems are Zeitz Ch 2 problems copied word for word, with our own solutions.
+- **Still to write in this pillar:** `percentages-in-life`, `misleading-statistics` (expected value's `next` points to it).
+
 **Map of everything (Oct 2026):** all six subject trees exist (Physics 118 leaves, Maths 59, Chemistry 53, Biology 33, English 51, Computer Science 117) and the class view lists every NCERT book for Classes 6–12 (Science/Physics, Maths, Chemistry, Biology, English Class 10). Chapters of Class 11/12 Chemistry and Biology are already mapped to leaves.
 
 **Done: Physics › Mechanics pillar (37 leaves, all with lessons).** Published to the site artifact (version 15).

@@ -13,7 +13,7 @@
   sol: |
     **Simple interest** means the interest is always worked out on the original amount only. Each year you earn the same $6\%$ of ₹20,000.
 
-    One year: $20000 \times 0.06 = ₹1200$. Three years: $3 \times 1200 = ₹3600$.
+    One year: $20000 \times 0.06 = \text{₹}1200$. Three years: $3 \times 1200 = \text{₹}3600$.
 
     In symbols, $SI = \dfrac{P \times r \times t}{100}$ with $r$ in percent, so $SI = \dfrac{20000 \times 6 \times 3}{100} = 3600$.
   check: both
@@ -34,7 +34,7 @@
 
     Step by step: $10000 \to 10800 \to 11664 \to 12597.12$.
 
-    Compare with simple interest: $10000 + 3 \times 800 = ₹12400$. The extra ₹197.12 is interest earned on earlier interest.
+    Compare with simple interest: $10000 + 3 \times 800 = \text{₹}12400$. The extra ₹197.12 is interest earned on earlier interest.
   check: both
 
 - id: f3
@@ -50,7 +50,7 @@
     In one year there are two compounding periods. The rate per period is half of $10\%$, which is $5\%$. So the number of periods is $n = 2$ and the amount is
     $$A = 50000 \times 1.05^2 = 50000 \times 1.1025 = ₹55125.$$
 
-    Interest $= 55125 - 50000 = ₹5125$.
+    Interest $= 55125 - 50000 = \text{₹}5125$.
 
     If the same $10\%$ were compounded only once a year, the interest would be ₹5000. The extra ₹125 comes from adding the first half-year's interest early, so that it too earns interest.
   check: both
@@ -110,9 +110,9 @@
   sol: |
     An EMI (equated monthly instalment) is a fixed payment, but its two parts change every month.
 
-    **Interest part.** Interest for the first month is charged on the whole balance: $500000 \times \dfrac{9}{100} \times \dfrac{1}{12} = ₹3750$.
+    **Interest part.** Interest for the first month is charged on the whole balance: $500000 \times \dfrac{9}{100} \times \dfrac{1}{12} = \text{₹}3750$.
 
-    **Principal part.** Whatever is left of the EMI repays the loan: $10380 - 3750 = ₹6630$.
+    **Principal part.** Whatever is left of the EMI repays the loan: $10380 - 3750 = \text{₹}6630$.
 
     So only about $64\%$ of the first EMI reduces the loan; about $36\%$ is interest. Next month the balance is smaller, so the interest part is a little smaller and the principal part a little bigger. In the last months the EMI is almost all principal. This is why paying a loan off early saves so much: the early EMIs are the most interest-heavy.
   check: both
@@ -130,9 +130,9 @@
   tol: 0.5
   verify: (30000-1500)*1.03
   sol: |
-    After paying ₹1,500 she still owes $30000 - 1500 = ₹28500$.
+    After paying ₹1,500 she still owes $30000 - 1500 = \text{₹}28500$.
 
-    Interest of $3\%$ is charged on this: $28500 \times 1.03 = ₹29355$.
+    Interest of $3\%$ is charged on this: $28500 \times 1.03 = \text{₹}29355$.
 
     **The trap.** She paid ₹1,500 but the debt fell by only ₹645, because ₹855 was interest. Over the year, $3\%$ a month compounds to $1.03^{12} - 1 \approx 42.6\%$ per year. If the minimum payment is only about as large as the monthly interest plus a sliver, the debt shrinks very slowly while the card looks "under control". The minimum payment keeps you in good standing; it does not make the debt go away.
   check: both
@@ -190,9 +190,9 @@
     Each year the amount is multiplied by the same factor $1 + r$. So the amount at the end of year 3 divided by the amount at the end of year 2 is exactly that factor:
     $$1 + r = \frac{6655}{6050} = 1.1.$$
 
-    So $r = 10\%$. The money earned in year 3 is $6655 - 6050 = ₹605$, which is $10\%$ of ₹6,050. You do not need the principal at all.
+    So $r = 10\%$. The money earned in year 3 is $6655 - 6050 = \text{₹}605$, which is $10\%$ of ₹6,050. You do not need the principal at all.
 
-    (If you want it: $P \times 1.1^2 = 6050$ gives $P = ₹5000$.)
+    (If you want it: $P \times 1.1^2 = 6050$ gives $P = \text{₹}5000$.)
   check: both
 
 - id: m3
@@ -218,7 +218,7 @@
 
     **Numbers.** $E = \dfrac{100000 \times 0.01 \times 1.126825}{0.126825} = \dfrac{1126.825}{0.126825} \approx 8884.88$.
 
-    So the EMI is about ₹8,885. Total paid $= 12 \times 8884.88 \approx ₹1,06,619$, so total interest is about ₹6,619: less than the ₹12,000 a naive "$12\%$ of ₹1,00,000" gives, because the balance shrinks each month.
+    So the EMI is about ₹8,885. Total paid $= 12 \times 8884.88 \approx \text{₹}1,06,619$, so total interest is about ₹6,619: less than the ₹12,000 a naive "$12\%$ of ₹1,00,000" gives, because the balance shrinks each month.
   check: both
 
 - id: m4
@@ -241,7 +241,7 @@
     With $1.01^{-12} \approx 0.887449$, the fraction is $\dfrac{0.112551}{0.01} = 11.2551$, so
     $$B \approx 9414.69 \times 11.2551 \approx ₹1{,}05{,}963.$$
 
-    **What this shows.** Half the EMIs have been paid ($12 \times 9414.69 \approx ₹1{,}12{,}976$), yet more than half the loan (₹1,05,963 of ₹2,00,000) is still owed: only about ₹94,037 of principal has been repaid. Early EMIs are mostly interest.
+    **What this shows.** Half the EMIs have been paid ($12 \times 9414.69 \approx \text{₹}1{,}12{,}976$), yet more than half the loan (₹1,05,963 of ₹2,00,000) is still owed: only about ₹94,037 of principal has been repaid. Early EMIs are mostly interest.
   check: both
 
 - id: a1
@@ -257,10 +257,10 @@
     The loan equals the present value of the payments. If all $n$ payments were ₹15,000,
     $$P = E\,\frac{1-(1+r)^{-n}}{r} \implies (1+r)^{-n} = 1 - \frac{Pr}{E}.$$
 
-    Here $Pr = 10^6 \times 0.008 = ₹8000$ and $E = 15000$, so $1 - Pr/E = 1 - 0.5\overline{3} = 0.4\overline{6}$. Taking logarithms,
+    Here $Pr = 10^6 \times 0.008 = \text{₹}8000$ and $E = 15000$, so $1 - Pr/E = 1 - 0.5\overline{3} = 0.4\overline{6}$. Taking logarithms,
     $$n = \frac{-\ln(0.46667)}{\ln 1.008} = \frac{0.76214}{0.0079681} \approx 95.65.$$
 
-    So 95 full EMIs are not enough and 96 are too many: the 96th payment is a smaller one. **Check:** after 95 EMIs the balance is $10^6 \times 1.008^{95} - 15000 \times \dfrac{1.008^{95}-1}{0.008}$. With $1.008^{95} \approx 2.13182$ this is about ₹9,657, so the 96th payment is $9657 \times 1.008 \approx ₹9{,}735$.
+    So 95 full EMIs are not enough and 96 are too many: the 96th payment is a smaller one. **Check:** after 95 EMIs the balance is $10^6 \times 1.008^{95} - 15000 \times \dfrac{1.008^{95}-1}{0.008}$. With $1.008^{95} \approx 2.13182$ this is about ₹9,657, so the 96th payment is $9657 \times 1.008 \approx \text{₹}9{,}735$.
 
     **Total: 96 payments.** Notice how sensitive $n$ is to $E$: the first month's interest (₹8,000) eats more than half of each EMI. At ₹8,000 a month the loan would never end.
   check: both
@@ -298,16 +298,16 @@
   tol: 0.5
   verify: 180-(-Math.log(1-((3e6*0.0075/(1-Math.pow(1.0075,-240)))*(1-Math.pow(1.0075,-180))/0.0075-5e5)*0.0075/(3e6*0.0075/(1-Math.pow(1.0075,-240))))/Math.log(1.0075))
   sol: |
-    **EMI.** $E = \dfrac{Pr}{1-(1+r)^{-n}} = \dfrac{22500}{1 - 1.0075^{-240}}$. With $1.0075^{240} \approx 6.00915$, $E \approx ₹26{,}991.78$.
+    **EMI.** $E = \dfrac{Pr}{1-(1+r)^{-n}} = \dfrac{22500}{1 - 1.0075^{-240}}$. With $1.0075^{240} \approx 6.00915$, $E \approx \text{₹}26{,}991.78$.
 
     **Balance after 60 EMIs.** It is the present value of the 180 EMIs still to come:
     $$B_{60} = E\,\frac{1 - 1.0075^{-180}}{0.0075} \approx 26991.78 \times 98.593 \approx ₹26{,}61{,}211.$$
     So five years of EMIs (about ₹16.2 lakh paid) have cut the loan by only about ₹3.4 lakh.
 
-    **After the prepayment** the balance is $B' \approx ₹21{,}61{,}211$. With the same EMI, the number of months $m$ left satisfies $(1+r)^{-m} = 1 - B'r/E$:
+    **After the prepayment** the balance is $B' \approx \text{₹}21{,}61{,}211$. With the same EMI, the number of months $m$ left satisfies $(1+r)^{-m} = 1 - B'r/E$:
     $$1 - \frac{2161211 \times 0.0075}{26991.78} = 1 - 0.60052 = 0.39948, \qquad m = \frac{-\ln 0.39948}{\ln 1.0075} \approx \frac{0.91759}{0.0074720} \approx 122.8.$$
 
-    The loan had 180 months to go; now it has about 122.8. **About 57 months (nearly 5 years) saved.** The interest saved is roughly $26992 \times 57.2 - 500000 \approx ₹10.4$ lakh, about twice the prepayment, because the prepayment removes principal that would otherwise have been charged interest for the most interest-heavy years.
+    The loan had 180 months to go; now it has about 122.8. **About 57 months (nearly 5 years) saved.** The interest saved is roughly $26992 \times 57.2 - 500000 \approx \text{₹}10.4$ lakh, about twice the prepayment, because the prepayment removes principal that would otherwise have been charged interest for the most interest-heavy years.
   check: both
 
 - id: a4
@@ -358,7 +358,7 @@
 
     (a) Find, in terms of $m$, $i$ and $B_0$, the total amount paid if this goes on for ever, and the condition on $m$ for the total to be finite.
 
-    (b) Evaluate the total for $B_0 = ₹30{,}000$, $m = 5\%$, $i = 3\%$. (Original problem.)
+    (b) Evaluate the total for $B_0 = \text{₹}30{,}000$, $m = 5\%$, $i = 3\%$. (Original problem.)
   ask: Total paid in (b)
   unit: ₹
   ans: 69767.44
@@ -388,7 +388,7 @@
 
     (a) Show that the loan is cleared at time $T$ exactly when $p = \dfrac{RP}{1-e^{-RT}}$, and hence that the total repaid divided by $P$ depends only on the product $x = RT$.
 
-    (b) Suppose $P = ₹20$ lakh, $R = 0.08$ per year and $T = 25$ years. Find the total repaid, to the nearest hundred rupees. (Original problem.)
+    (b) Suppose $P = \text{₹}20$ lakh, $R = 0.08$ per year and $T = 25$ years. Find the total repaid, to the nearest hundred rupees. (Original problem.)
   ask: Total repaid in (b)
   unit: ₹
   ans: 4626070.57
@@ -405,7 +405,7 @@
 
     **(b)** $x = 0.08 \times 25 = 2$, $e^{-2} \approx 0.135335$, so
     $$\frac{pT}{P} = \frac{2}{0.864665} \approx 2.31304, \qquad pT \approx 20{,}00{,}000 \times 2.31304 \approx ₹46{,}26{,}071.$$
-    To the nearest hundred, **about ₹46,26,100**. The payment rate is $p \approx ₹1{,}85{,}043$ a year, about ₹15,420 a month. A monthly EMI loan at $0.08/12$ per month for 300 months would give nearly the same total, because monthly steps are fine compared with the 12.5-year time scale $1/R$.
+    To the nearest hundred, **about ₹46,26,100**. The payment rate is $p \approx \text{₹}1{,}85{,}043$ a year, about ₹15,420 a month. A monthly EMI loan at $0.08/12$ per month for 300 months would give nearly the same total, because monthly steps are fine compared with the 12.5-year time scale $1/R$.
 
     **Limits as a check.** For small $x$, $\dfrac{x}{1-e^{-x}} \approx 1 + \dfrac x2$: on average you owe half the loan over the term. For large $x$ it tends to $x$: you pay interest on almost the whole loan for the whole term, so $p \to RP$, the perpetuity.
   check: both
