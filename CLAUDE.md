@@ -66,7 +66,7 @@ docs/reference-books.md   books the owner will upload (★ = phase 1)
 design/                   mockups (reference only)
 site/
   package.json            npm run build | npm run check
-  build.mjs               content → dist/ (index.html + data/*.json); KaTeX pre-renders all math
+  build.mjs               content → dist/ (index.html + data/*.json); maths ships as TeX (<span class="tx">) and KaTeX draws it in the browser (katex.min.js, loaded once); the build still renders every formula once so a TeX error fails the lint
   check-answers.mjs       recomputes every numeric answer from its `verify` expression
   check-figures.mjs       renders every figure in Chromium and reports clipped, spilling, overlapping or crossed-out labels
   lint-lesson.mjs         checks single lesson files (front matter, core, KaTeX, blocks, widgets) without a build; safe in parallel
@@ -198,7 +198,7 @@ From a new session:
    - `file_path`: `site/dist/index.html`
    - `url`: the URL above
    - `root`: `site/dist`
-   - `files`: every `data/**/*.json` and `fonts/*.woff2` (list them with `find data fonts -type f` inside `site/dist`). KaTeX fonts are separate files, not inlined, so the page stays small; `data/extras.json` holds the home-page sparks, loaded after the first paint.
+   - `files`: `katex.min.js`, every `data/**/*.json` and `fonts/*.woff2` (list them with `find data fonts katex.min.js -type f` inside `site/dist`). KaTeX fonts are separate files, not inlined, so the page stays small; `data/extras.json` holds the home-page sparks, loaded after the first paint.
    - Each lesson file `data/lessons/<subj>--<leaf>.json` also holds that leaf's problems (`probs`), so the build has about 280 files (one per leaf, plus `tree`, `ncert`, `search`, `extras` and 20 fonts; about 70 MB). One publish takes at most 255 files and 64 MB, and one version holds at most 511 files, so publish in two batches to the same `url`: each later publish adds to the files already there. Keep the file count low: never add one file per problem or per section.
 
 Omit `capabilities` (it keeps the stored `db` + `user`; progress is saved per user). Never publish a new artifact for the site.
@@ -271,11 +271,17 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 - **Reality filter:** there is no NCERT answer key for English, so every answer is a model answer. Author biographies, etymologies and the CBSE paper format and marks are labelled [Unverified].
 - **Known gaps:** the PDF text layer has no section headings, so labels in `num` (OC, TT, TL, SP, WR, RF, TA) are inferred. Some printed NCERT slips are copied as printed and flagged in the answer: Glimpses OC2 Q1 mismatched pairs, Midnight Visitor "Ausable" for Max. The italics that some Thinking about language items depend on (Mijbil TL II/III) are missing from the text layer. The 17 older lessons (16 grammar leaves and A Letter to God) still lack the opener, symbols and life fields and need the cheap retrofit pass (`docs/retrofit.md`).
 
+**Done: Maths › Class 10 Ch 1 Real Numbers and Ch 2 Polynomials (3 leaves, issue #5).** Not yet republished to the site artifact.
+- **Leaves:** `fundamental-theorem-of-arithmetic` and `irrational-numbers` (Ch 1), `polynomials` (Ch 2); each has a lesson from Class 10 to Olympiad and 25–28 problems.
+- **NCERT covered:** every example and exercise question of the 2026-27 reprint of Ch 1 (Ex 1.1–1.2, Examples 1–7, Theorems 1.2–1.3) and Ch 2 (Ex 2.1–2.2, Examples 1–5). The reprint has no Euclid's division algorithm or polynomial division sections (both promised in its introductions); the lessons teach them at depth 2–3.
+- **Olympiad material:** Paul Zeitz, *The Art and Craft of Problem Solving* (owner's Drive copy), §7.1, §2.3 and §5.4. Notes and the problems copied word for word are in `docs/refs/maths/`; adv/oly problems quote them with `source: Zeitz … Problem N.N.N`, with our own solutions.
+- **Known gaps:** the answer key has no entries for Ex 1.1 Q5–6 and Ex 1.2, so those solutions are ours; Ex 2.1 graph descriptions are ours (labelled); history dates and the Hardy & Wright reference are [Unverified].
+
 **Owner's direction (Oct 2026):** build Physics and Maths fully first (see `docs/content-principles.md` §0); CS gains Competitive programming and Interviews pillars as pattern catalogues.
 
 **Next, in order:**
 1. The owner chooses what comes next (Computer Science and English are done). Candidates: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
-2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
+2. Class 10 Maths, chapter by chapter, from Ch 3 Pair of Linear Equations (Ch 1–2 done; Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.
 

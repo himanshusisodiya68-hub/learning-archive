@@ -4,8 +4,8 @@ subject: mat
 name: Mathematics
 code: jemh1
 chapters:
-  - { n: 1, title: Real Numbers, pdf: jemh101 }
-  - { n: 2, title: Polynomials, pdf: jemh102 }
+  - { n: 1, title: Real Numbers, pdf: jemh101, leaves: [mat/fundamental-theorem-of-arithmetic, mat/irrational-numbers] }
+  - { n: 2, title: Polynomials, pdf: jemh102, leaves: [mat/polynomials] }
   - { n: 3, title: Pair of Linear Equations in Two Variables, pdf: jemh103 }
   - { n: 4, title: Quadratic Equations, pdf: jemh104 }
   - { n: 5, title: Arithmetic Progressions, pdf: jemh105 }

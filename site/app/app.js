@@ -6,6 +6,7 @@
 
   /* ================= ICONS ================= */
   const ICONS = {
+    search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
     home: '<path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/>',
     tree: '<circle cx="12" cy="5" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 7v4M6 16v-2.5h12V16M12 11v5"/>',
     atom: '<path class="fl" d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/><path d="M12 2c4 0 6 4.5 6 10s-2 10-6 10-6-4.5-6-10 2-10 6-10z"/><path d="M3.3 7c2-3.5 6.8-3 11.6-.3s7.8 6.8 5.8 10.3-6.8 3-11.6.3S1.3 10.5 3.3 7z"/>',
@@ -86,7 +87,8 @@
     }
     return null;
   }
-  async function getLesson(key) { return lessonCache[key] ||= await fetchJSON(`data/lessons/${fileOf(key)}.json`); }
+  // The promise is cached, so the lesson and its problems (same file) share one request.
+  function getLesson(key) { return lessonCache[key] ||= fetchJSON(`data/lessons/${fileOf(key)}.json`).catch(e => { delete lessonCache[key]; throw e; }); }
   // One file per leaf holds the lesson and its problems (data/lessons/<subj>--<leaf>.json, field probs).
   async function getProblems(key) {
     if (problemCache[key]) return problemCache[key];
@@ -102,7 +104,7 @@
   const liveLeaves = () => TREE.subjects.flatMap(s => (s.pillars || []).flatMap(p => p.branches.flatMap(b => b.leaves.filter(l => l.live || l.problems).map(l => ({ key: `${s.id}/${l.id}`, l, s })))));
 
   function lessonNeighbours(key) {
-    const list = liveLeaves().filter(x => x.l.live); const i = list.findIndex(x => x.key === key);
+    const sid = key.split('/')[0], list = liveLeaves().filter(x => x.l.live && x.s.id === sid); const i = list.findIndex(x => x.key === key); // stay inside the subject
     return i < 0 ? {} : { prev: list[i - 1], next: list[i + 1] };
   }
   const lessonCard = (x, dir, cur) => {
@@ -175,7 +177,7 @@
     if (n && got / n >= .9) return 1;
     if (n && got / n >= .5) return .75;
     if (got) return .5;
-    if (PG.lessons[key]) return .25;
+    if (PG.lessons[key] && PG.lessons[key].read) return .25; // read to the Wrap-up, not just opened
     return 0;
   }
   const streak = () => { const d = PG.days || {}; let n = 0, t = today(); if (!d[t]) t--; while (d[t]) { n++; t--; } return n; };
@@ -185,7 +187,7 @@
 
   /* Title Case for headings, card titles and labels: small words and single-letter symbols stay lowercase; maths and code untouched. */
   const SMALL = new Set(['a', 'an', 'the', 'and', 'or', 'but', 'nor', 'of', 'in', 'on', 'at', 'to', 'for', 'by', 'vs', 'via', 'as', 'with', 'from', 'into', 'per']);
-  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k, .lbegin h2';
+  const TC_SEL = '.lesson-head h1, .prose .sec-h h2, .pc-name, .so-t b, .br-t h3, .tv-hero h2, .toc .t, .lmb button span:last-child, .rl-h b, .cmp-h button, .cmp-h b, .xl-t > b, .mm b, .lnav-b b, .cont h2, .sc-name, .rr-t b, .h1, .sec-title, .branch-nav button, details > summary, .ltabs button, .nq-f b, .tz-h b, .hb-link, .worked .wt, .about-title h2, .op-k, .lbegin h2';
   function tcWord(w, first) {
     const core = w.replace(/[^A-Za-z]/g, '');
     if (!core || /[A-Z]/.test(w)) return w;
@@ -195,11 +197,52 @@
   function titleCase(root) {
     if (!root) return;
     root.querySelectorAll(TC_SEL).forEach(el => {
-      const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.katex, code, .count, .lv, small') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+      const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.katex, .tx, code, .count, .lv, small') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
       let first = true, n;
       while ((n = walk.nextNode())) n.textContent = n.textContent.split(/(\s+)/).map(w => { if (!w || /^\s+$/.test(w)) return w; const r = tcWord(w, first); first = false; return r; }).join('');
     });
   }
+
+
+  /* ---------- maths: the data carries TeX (<span class="tx">); KaTeX (loaded once, then cached) draws it on screen ---------- */
+  let katexP = null;
+  const loadKatex = () => katexP ||= new Promise((res, rej) => { if (window.katex) return res(); const sc = document.createElement('script'); sc.src = 'katex.min.js'; sc.onload = () => res(); sc.onerror = () => { katexP = null; rej(); }; document.head.appendChild(sc); });
+  function renderTex(root) {
+    const els = [...root.querySelectorAll('.tx:not(.ok)')]; if (!els.length) return;
+    loadKatex().then(() => els.forEach(el => { if (el.classList.contains('ok')) return; const t = el.textContent;
+      try { window.katex.render(t, el, { displayMode: el.classList.contains('dm'), throwOnError: false, strict: 'ignore', output: 'html' }); el.classList.add('ok'); el.setAttribute('aria-label', t); } catch (e) { /* leave the TeX visible */ } })).catch(() => {});
+  }
+  new MutationObserver(ms => { for (const m of ms) for (const n of m.addedNodes) if (n.nodeType === 1 && !n.closest('.katex')) renderTex(n.parentElement || n); }).observe(document.body, { childList: true, subtree: true });
+
+  /* ---------- a brainy loader: a fact while data arrives ---------- */
+  const BRAINY = [
+    ['f', 'Sunlight takes about 8 minutes 20 seconds to reach Earth, so you always see the Sun as it was a little in the past.'],
+    ['f', 'Sound covers about 1 km in 3 seconds. Count the seconds between lightning and thunder, divide by 3, and you have the distance in km.'],
+    ['f', 'Water is densest at about 4 °C. That is why lakes freeze from the top down and fish survive the winter below the ice.'],
+    ['f', 'Electrons in a wire drift slower than a millimetre per second, yet a bulb lights at once: the electric field travels at nearly the speed of light.'],
+    ['f', 'A 4-digit PIN has 10,000 possible values; a 6-digit PIN has a million. Two more digits, a hundred times harder to guess.'],
+    ['f', 'Binary search on a sorted list of a million names needs at most 20 looks. Double the list and it needs just one more.'],
+    ['f', 'The lens of your eye forms an upside-down image on the retina; your brain turns it the right way up.'],
+    ['f', 'A rainbow is really a full circle. The ground hides the lower half; from an aeroplane you can sometimes see all of it.'],
+    ['f', 'The sky is blue because air scatters short (blue) wavelengths several times more strongly than long (red) ones.'],
+    ['f', 'There are more ways to shuffle a deck of 52 cards (about 8 × 10⁶⁷) than there are atoms making up the Earth.'],
+    ['f', 'On the Moon you would weigh about one-sixth of what you weigh on Earth, though your mass would not change at all.'],
+    ['f', 'Young Gauss is said to have added 1 to 100 in seconds: pair 1 + 100, 2 + 99, … that is 50 pairs of 101, so 5050.'],
+    ['f', 'Drive somewhere at 40 km/h and back at 60 km/h, and your average speed is 48 km/h, not 50: you spend longer at the slower speed.'],
+    ['f', 'A 1 km train going through a 1 km tunnel must travel 2 km before it is fully out: the tunnel plus its own length.'],
+    ['f', 'Anything that doubles every day is only half done on the day before it finishes. Exponential growth stays hidden until the very end.'],
+    ['f', 'In most programming languages 0.1 + 0.2 gives 0.30000000000000004, because computers store numbers in binary and 0.1 has no exact binary form.']
+  ];
+  let brainyI = Math.floor(Math.random() * BRAINY.length);
+  const brainyCard = () => `<div class="bl-card"><span class="bl-k">Did you know?</span><p>${BRAINY[brainyI++ % BRAINY.length][1]}</p></div>`;
+  const loaderHTML = label => `<div class="loading bl"><svg class="bl-orb" viewBox="-50 -50 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><ellipse rx="42" ry="14"/><ellipse rx="42" ry="14" transform="rotate(60)"/><ellipse rx="42" ry="14" transform="rotate(-60)"/></g><circle class="bl-core" r="7" fill="currentColor"/>
+    ${[[0, 1.4, 'var(--eng)'], [60, 1.9, 'var(--mat)'], [-60, 2.4, 'var(--chem)']].map(([r, d, c]) => `<g transform="rotate(${r})"><circle r="4.5" fill="${c}"><animateMotion dur="${d}s" repeatCount="indefinite" path="M42,0 A42,14 0 1,1 -42,0 A42,14 0 1,1 42,0"/></circle></g>`).join('')}</svg>
+    <div class="bl-l">${label}</div><div class="bl-slot">${brainyCard()}</div></div>`;
+  // A long wait gets a new fact every 9 seconds.
+  setInterval(() => document.querySelectorAll('.bl-slot').forEach(sl => { sl.innerHTML = brainyCard(); }), 9000);
+  { const boot = document.getElementById('boot'); if (boot) boot.innerHTML = loaderHTML('Opening Polymath…'); }
+  // Google Fonts load without blocking the first paint (the link starts as media=print); system fonts show until they arrive.
+  { const gf = document.getElementById('gfonts'); if (gf) { if (gf.sheet) gf.media = 'all'; else gf.addEventListener('load', () => { gf.media = 'all'; }); } }
 
   /* ================= STATE + ROUTER ================= */
   const S = { subj: 'phy', pillar: null, branch: null, leaf: null, mode: 'subject', cls: 10, ltab: 'learn', depth: 4, lessonKey: null,
@@ -215,6 +258,7 @@
   }
   function route() {
     if (!TREE) return;
+    { const boot = document.getElementById('boot'); if (boot) boot.remove(); }
     let { v, key } = parseHash();
     if (v === 'play' && !S.set.length) v = 'practice';
     if (v === 'lesson') {
@@ -236,7 +280,11 @@
   /* ================= HOME ================= */
   $('today-date').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' });
   { const hr = new Date().getHours(); $('greet').textContent = (hr < 12 ? 'Good morning' : hr < 17 ? 'Good afternoon' : 'Good evening') + '. One idea today?'; }
+  // Home-page sparks live in extras.json, fetched the first time Home is shown.
+  let extrasP = null;
+  const loadExtras = () => extrasP ||= fetchJSON('data/extras.json').then(ex => { Object.entries(ex).forEach(([k, sp]) => { const L = leafByKey(k); if (L) L.l.sparks = sp; }); if (parseHash().v === 'home') { RENDER.home(); titleCase($('habits')); } }).catch(() => { extrasP = null; });
   RENDER.home = () => {
+    loadExtras();
     const live = liveLeaves().filter(x => x.l.live);
     const lastKey = PG.last && leafByKey(PG.last) && leafByKey(PG.last).l.live ? PG.last : (live[0] && live[0].key);
     const C = $('continue');
@@ -302,7 +350,7 @@
     const seen = Object.values(PG.cards).reduce((a, c) => a + (c.seen || 0), 0);
     const xpOf = (lsn, gp, sh) => lsn.length * 10 + gp.reduce((a, p) => a + XP_LVL[lvlOfId(p.id)], 0) + sh.length * 4;
     const shaky = probs.filter(p => p.r === 'shaky');
-    const xp = xpOf(opened, got, shaky) + seen * 2 + notes.length * 15;
+    const xp = xpOf(opened.filter(x => PG.lessons[x.key].read), got, shaky) + seen * 2 + notes.length * 15;
     let level = 1; while (xpNeed(level + 1) <= xp) level++;
     const rank = RANKS.find(([n]) => level >= n)[1];
     const days = [...Object.keys(PG.days || {}).map(Number), ...opened.map(x => dayOf(x.ts)), ...probs.map(p => dayOf(p.at))].filter(Boolean);
@@ -542,7 +590,11 @@
   /* ================= LEARN ================= */
   /* Two levels only: a subject page (pillar cards) and a pillar page (each branch once, as a numbered learning path). */
   const TAGS = { OLY: 'Olympiad', JEE: 'JEE', BEG: 'Foundations', INT: 'SDE-1', ADV: 'SDE-2', SDE: 'SDE-3', LIFE: 'Everyday' };
-  const lvlTag = l => `<span class="lvl ${l === 'JEE' || l === 'ADV' ? 'jee' : l === 'OLY' || l === 'SDE' ? 'oly' : ''}">${TAGS[l] || 'Class ' + String(l).slice(1)}</span>`;
+  const TOP = { sci: ['', 'Class 10', 'Class 12', 'JEE Adv.', 'Olympiad'], cs: ['', 'Foundations', 'SDE-1', 'SDE-2', 'SDE-3'], eng: ['', 'Foundation', 'Class 10', 'Beyond'] };
+  // Where the topic starts (tree "from") → how deep the lesson goes (deepest section level).
+  const lvlTag = (l, sid) => { const a = TAGS[l.from] || 'Class ' + String(l.from).slice(1), t = l.top ? (TOP[sid] || TOP.sci)[l.top] : '', b = t && t !== a ? t : '';
+    const deep = l.top >= 4 || l.from === 'OLY' || l.from === 'SDE', mid = l.top === 3 || l.from === 'JEE' || l.from === 'ADV';
+    return `<span class="lvl ${deep ? 'oly' : mid ? 'jee' : ''}" title="${b ? `Starts at ${a}, goes up to ${b}` : a}">${a}${b ? ` → ${b}` : ''}</span>`; };
   const leavesOf = p => p.branches.flatMap(b => b.leaves);
   const countLive = ls => ls.filter(l => l.live).length;
   const avgMastery = (sid, ls) => ls.length ? ls.reduce((a, l) => a + mastery(`${sid}/${l.id}`), 0) / ls.length : 0;
@@ -649,7 +701,7 @@
         return `<li><button class="stone ${l.live ? 'live' : 'soon'}" ${l.live ? `data-open-leaf="${k}"` : 'disabled'}>
           <span class="so-n" style="--p:${mm}">${li + 1}</span>
           <span class="so-t"><b>${escHTML(l.name)}</b><span>${l.live ? escHTML(l.summary || '') : 'Not written yet'}</span></span>
-          <span class="so-x">${lvlTag(l.from)}${l.live ? `<span class="pcount">${l.problems || 0} problems</span>` : ''}</span></button></li>`; }).join('')}</ol>
+          <span class="so-x">${lvlTag(l, s.id)}${l.live ? `<span class="pcount">${l.problems || 0} problems</span>` : ''}</span></button></li>`; }).join('')}</ol>
     </section>`; }).join('')}`;
   }
   $('tree-view').addEventListener('click', e => {
@@ -688,7 +740,7 @@
     const L = leafByKey(key);
     if (!L || !L.l.live) { root.innerHTML = `<div class="empty-card panel">This lesson is not written yet.</div>`; return; }
     if (root.dataset.key !== key) {
-      root.dataset.key = key; root.innerHTML = '<div class="loading">Loading lesson…</div>';
+      root.dataset.key = key; root.innerHTML = loaderHTML('Loading the lesson…');
       const [lesson, probs] = await Promise.all([getLesson(key), getProblems(key)]);
       if (S.lessonKey !== key) return;
       buildLesson(root, L, lesson, probs);
@@ -781,8 +833,12 @@
     const margin = (lesson.margin || []).map(m => `<div class="mn ${m.kind === 'tip' ? 'tip' : m.kind === 'olympiad' ? 'oly' : ''}"><b>${escHTML(m.title || m.kind)}</b>${m.html}</div>`).join('');
     const think = [];
     if (lesson.models && lesson.models.length) think.push(`<div class="mms">${lesson.models.map(m => `<div class="mm"><div class="mm-k">${ico('bulb')}Mental model</div><b>${m.name}</b><p>${m.html}</p></div>`).join('')}</div>`);
-    if (lesson.links && lesson.links.length) think.push(lesson.links.map(x => { const T = x.leaf && leafByKey(x.leaf), nm = escHTML(x.name || (T ? T.l.name : x.leaf));
-      return `<div class="cmp"><div class="cmp-h"><span>Same idea elsewhere</span>${T && T.l.live ? `<button data-goto="${x.leaf}">${nm} →</button>` : `<b>${nm}</b>`}</div><div class="cmp-g"><div class="cmp-c same"><b>What's common</b><p>${x.same}</p></div><div class="cmp-c diff"><b>What's different</b><p>${x.differs}</p></div></div></div>`; }).join(''));
+    // Same idea elsewhere: one compact list; each row shows the link and one line of what is shared, and opens to compare.
+    if (lesson.links && lesson.links.length) think.push(`<div class="xl"><div class="xl-h"><b>Same idea elsewhere</b><span>${lesson.links.length} connection${lesson.links.length > 1 ? 's' : ''} · open one to compare</span></div>${lesson.links.map(x => {
+      const T = x.leaf && leafByKey(x.leaf), nm = escHTML(x.name || (T ? T.l.name : x.leaf)), xs = T ? T.s.id : sid;
+      return `<details class="xl-i s-${xs}"><summary><span class="tile sm">${ico(SUBJ_ICON[xs])}</span><span class="xl-t"><b>${nm}</b><small>${T ? escHTML(T.s.name) + ' · ' : ''}${x.same}</small></span><span class="xl-chev" aria-hidden="true"></span></summary>
+        <div class="xl-b"><div class="cmp-c same"><b>What's common</b><p>${x.same}</p></div><div class="cmp-c diff"><b>What's different</b><p>${x.differs}</p></div>
+        ${T && T.l.live ? `<button class="btn quiet sm" data-goto="${x.leaf}">Open ${nm} →</button>` : '<span class="xl-soon">Lesson coming soon</span>'}</div></details>`; }).join('')}</div>`);
     sections += '%%WRAPSTAGE%%';
     if (think.length) sections += `<div class="band wrap" data-lvl="1"><span class="band-n">Think with it</span><span class="band-h">Ideas to carry outside this subject</span></div>${think.join('')}`;
     if (margin) sections += `<div class="around"><div class="eyebrow">Around this idea</div><div class="around-g">${margin}</div></div>`;
@@ -885,6 +941,7 @@
     const r = pr.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * .4 - r.top) / r.height));
     bar.style.width = (p * 100).toFixed(1) + '%'; $('read-pct').textContent = Math.round(p * 100) + '%';
     const past = id => { const el = $(id); return el && el.getBoundingClientRect().top < innerHeight * .4; }, inL = past('lbegin'), inW = past('st-wrap');
+    { const rec = PG.lessons[S.lessonKey]; if (inW && rec && !rec.read) { rec.read = Date.now(); touch(); } }
     document.querySelectorAll('.trk').forEach(t => { const k = t.dataset.trk, on = k === 'st-warm' ? !inL : k === 'lbegin' ? inL && !inW : inW;
       t.classList.toggle('on', on); t.classList.toggle('done', !on && (k === 'st-warm' ? inL : k === 'lbegin' && inW)); });
   }, { passive: true });
@@ -1399,7 +1456,6 @@
   Promise.all([fetchJSON('data/tree.json'), fetchJSON('data/ncert.json')])
     .then(([t, n]) => { TREE = t; NCERT = n; route();
       // After the first paint: home-page sparks, then the search index (or sooner, when the palette opens).
-      fetchJSON('data/extras.json').then(ex => { Object.entries(ex).forEach(([k, sp]) => { const L = leafByKey(k); if (L) L.l.sparks = sp; }); if (parseHash().v === 'home') { RENDER.home(); titleCase($('habits')); } }).catch(() => {});
-      (window.requestIdleCallback || (f => setTimeout(f, 1200)))(() => loadSearch()); })
+      (window.requestIdleCallback || (f => setTimeout(f, 1200)))(() => { loadSearch(); loadKatex().catch(() => {}); }); })
     .catch(err => { document.querySelector('main .inner').innerHTML = `<div class="empty-card panel">The archive data could not be loaded (${escHTML(err.message)}). Reload the page to try again.</div>`; });
 })();
