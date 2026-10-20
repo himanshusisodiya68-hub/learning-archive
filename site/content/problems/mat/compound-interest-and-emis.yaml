@@ -243,3 +243,169 @@
 
     **What this shows.** Half the EMIs have been paid ($12 \times 9414.69 \approx ₹1{,}12{,}976$), yet more than half the loan (₹1,05,963 of ₹2,00,000) is still owed: only about ₹94,037 of principal has been repaid. Early EMIs are mostly interest.
   check: both
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |-
+    Suppose a bank lends ₹10,00,000 at 9.6% per year, charged at 0.8% per month on the outstanding balance. The borrower can afford ₹15,000 a month. Every EMI is ₹15,000 except the last, which is just enough to clear what remains. How many monthly payments are needed in all? (Original problem.)
+  ask: Number of monthly payments
+  ans: 96
+  tol: 0
+  verify: Math.ceil(-Math.log(1-1e6*0.008/15000)/Math.log(1.008))
+  sol: |
+    The loan equals the present value of the payments. If all $n$ payments were ₹15,000,
+    $$P = E\,\frac{1-(1+r)^{-n}}{r} \implies (1+r)^{-n} = 1 - \frac{Pr}{E}.$$
+
+    Here $Pr = 10^6 \times 0.008 = ₹8000$ and $E = 15000$, so $1 - Pr/E = 1 - 0.5\overline{3} = 0.4\overline{6}$. Taking logarithms,
+    $$n = \frac{-\ln(0.46667)}{\ln 1.008} = \frac{0.76214}{0.0079681} \approx 95.65.$$
+
+    So 95 full EMIs are not enough and 96 are too many: the 96th payment is a smaller one. **Check:** after 95 EMIs the balance is $10^6 \times 1.008^{95} - 15000 \times \dfrac{1.008^{95}-1}{0.008}$. With $1.008^{95} \approx 2.13182$ this is about ₹9,657, so the 96th payment is $9657 \times 1.008 \approx ₹9{,}735$.
+
+    **Total: 96 payments.** Notice how sensitive $n$ is to $E$: the first month's interest (₹8,000) eats more than half of each EMI. At ₹8,000 a month the loan would never end.
+  check: both
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |-
+    A home loan is repaid in 240 equal monthly EMIs at 0.75% per month on the outstanding balance. Number the EMIs 1, 2, ..., 240. Find the number of the first EMI in which the part that repays principal is larger than the part that pays interest. Show that the answer does not depend on the amount borrowed. (Original problem.)
+  ask: EMI number
+  ans: 149
+  tol: 0
+  verify: 241-Math.floor(Math.log(2)/Math.log(1.0075))
+  sol: |
+    Just before EMI $k$, the balance equals the present value of the $n-k+1$ EMIs still to be paid:
+    $$B_{k-1} = E\,\frac{1-(1+r)^{-(n-k+1)}}{r}.$$
+    The interest part of EMI $k$ is $rB_{k-1} = E\left[1-(1+r)^{-(n-k+1)}\right]$, so the principal part is $E(1+r)^{-(n-k+1)}$.
+
+    Principal exceeds interest when the principal part exceeds $E/2$:
+    $$(1+r)^{-(n-k+1)} > \tfrac12 \iff n-k+1 < \frac{\ln 2}{\ln(1+r)} = \frac{0.693147}{0.0074720} \approx 92.77.$$
+
+    So we need $n - k + 1 \le 92$, that is $k \ge 240 + 1 - 92 = 149$.
+
+    **EMI number 149** (a little over 12 years into a 20-year loan). Neither $P$ nor $E$ appears in the condition, only $r$ and $n$, so the crossover is the same for a ₹5 lakh loan and a ₹5 crore loan. In fact, the crossover always comes about $\ln 2/r$ months **before the end**, about 92.8 months here, however long the loan.
+  check: both
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |-
+    Suppose a loan of ₹30,00,000 is taken at 0.75% per month for 240 monthly EMIs. Right after the 60th EMI, the borrower prepays a lump sum of ₹5,00,000 and keeps paying the same EMI until the loan is cleared. By how many months does the loan end earlier? Give the answer to the nearest whole month. (Original problem.)
+  ask: Months saved
+  unit: months
+  ans: 57
+  tol: 0.5
+  verify: 180-(-Math.log(1-((3e6*0.0075/(1-Math.pow(1.0075,-240)))*(1-Math.pow(1.0075,-180))/0.0075-5e5)*0.0075/(3e6*0.0075/(1-Math.pow(1.0075,-240))))/Math.log(1.0075))
+  sol: |
+    **EMI.** $E = \dfrac{Pr}{1-(1+r)^{-n}} = \dfrac{22500}{1 - 1.0075^{-240}}$. With $1.0075^{240} \approx 6.00915$, $E \approx ₹26{,}991.78$.
+
+    **Balance after 60 EMIs.** It is the present value of the 180 EMIs still to come:
+    $$B_{60} = E\,\frac{1 - 1.0075^{-180}}{0.0075} \approx 26991.78 \times 98.593 \approx ₹26{,}61{,}211.$$
+    So five years of EMIs (about ₹16.2 lakh paid) have cut the loan by only about ₹3.4 lakh.
+
+    **After the prepayment** the balance is $B' \approx ₹21{,}61{,}211$. With the same EMI, the number of months $m$ left satisfies $(1+r)^{-m} = 1 - B'r/E$:
+    $$1 - \frac{2161211 \times 0.0075}{26991.78} = 1 - 0.60052 = 0.39948, \qquad m = \frac{-\ln 0.39948}{\ln 1.0075} \approx \frac{0.91759}{0.0074720} \approx 122.8.$$
+
+    The loan had 180 months to go; now it has about 122.8. **About 57 months (nearly 5 years) saved.** The interest saved is roughly $26992 \times 57.2 - 500000 \approx ₹10.4$ lakh, about twice the prepayment, because the prepayment removes principal that would otherwise have been charged interest for the most interest-heavy years.
+  check: both
+
+- id: a4
+  lvl: adv
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 2.3.28
+  kind: proof
+  q: "Prove the formula for the sum of a geometric series: a^(n−1) + a^(n−2) + ... + 1 = (a^n − 1)/(a − 1)."
+  hints: ["The formula needs a ≠ 1. Check it for n = 1 first.", "Assume it for n and add the next term a^n to both sides.", "Put the right side over the common denominator a − 1."]
+  sol: |
+    (Our own solution.) Throughout, $a \neq 1$ so that the right side makes sense. Let $S_n = a^{n-1} + a^{n-2} + \cdots + a + 1$.
+
+    **Base case**, $n = 1$: the left side is $1$ and the right side is $\dfrac{a - 1}{a - 1} = 1$.
+
+    **Inductive step.** Suppose $S_n = \dfrac{a^n - 1}{a - 1}$ for some $n \ge 1$. Then $S_{n+1} = a^n + S_n$, so
+    $$S_{n+1} = a^n + \frac{a^n - 1}{a - 1} = \frac{a^{n}(a-1) + a^n - 1}{a - 1} = \frac{a^{n+1} - 1}{a - 1}.$$
+    That is the formula for $n + 1$, so by induction it holds for every positive integer $n$.
+
+    **A one-line check without induction:** $(a-1)S_n = (a^n + a^{n-1} + \cdots + a) - (a^{n-1} + \cdots + 1) = a^n - 1$; everything else cancels in pairs.
+
+    **Why it matters here.** With $a = 1 + r$, the penultimate-step argument for a loan gives $B_n = P(1+r)^n - E\,S_n$, and $S_n = \dfrac{(1+r)^n - 1}{r}$ by this formula. Setting $B_n = 0$ is exactly the EMI formula.
+  check: none
+
+- id: o1
+  lvl: oly
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 2.3.33
+  kind: proof
+  q: "Prove Bernoulli's Inequality, which states that if x > −1, x ≠ 0 and n is a positive integer greater than 1, then (1 + x)^n > 1 + nx."
+  hints: ["Start at n = 2 and expand.", "Multiply the inequality for n by (1 + x). Why is it safe to multiply both sides by this number?", "What is the leftover term, and what does it mean for money?"]
+  sol: |
+    (Our own solution.) Induction on $n \ge 2$.
+
+    **Base case**, $n = 2$: $(1+x)^2 = 1 + 2x + x^2 > 1 + 2x$, because $x \neq 0$ makes $x^2 > 0$.
+
+    **Inductive step.** Suppose $(1+x)^n > 1 + nx$ for some $n \ge 2$. Since $x > -1$, the number $1 + x$ is **positive**, so multiplying both sides by it keeps the direction of the inequality:
+    $$(1+x)^{n+1} > (1 + nx)(1 + x) = 1 + (n+1)x + nx^2 > 1 + (n+1)x,$$
+    the last step because $nx^2 > 0$. This is the statement for $n+1$, which completes the induction.
+
+    **Where each hypothesis is used.** $x \neq 0$ makes the inequality strict (at $x = 0$ both sides equal 1). $x > -1$ is what lets us multiply by $1 + x$; without it the claim can fail: with $x = -3$, $n = 3$, the left side is $(-2)^3 = -8$ and the right side is $1 - 9 = -8$, equal, not greater.
+
+    **Meaning for money.** With $x = r > 0$, $(1+r)^n$ is the compound-interest factor and $1 + nr$ the simple-interest factor, so compound interest beats simple interest for every $n \ge 2$. The discarded term $nx^2$ at each step is precisely interest earned on earlier interest. For $-1 < x < 0$ (a loss of $|x|$ per period) the inequality says repeated losses of $|x|$ leave you **more** than $n$ simple deductions of $|x|$ would, because each loss is taken from a shrinking amount: the same reason inflation erodes cash a little slower than "6% times the years".
+  check: none
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |-
+    Suppose a credit card charges interest at a rate $i$ per month on whatever is unpaid, and its "minimum amount due" is a fraction $m$ of the statement balance. A cardholder with balance $B_0$ stops using the card and, every month, pays exactly the minimum due on that month's statement; the rest is then charged interest and becomes next month's statement balance.
+
+    (a) Find, in terms of $m$, $i$ and $B_0$, the total amount paid if this goes on for ever, and the condition on $m$ for the total to be finite.
+
+    (b) Evaluate the total for $B_0 = ₹30{,}000$, $m = 5\%$, $i = 3\%$. (Original problem.)
+  ask: Total paid in (b)
+  unit: ₹
+  ans: 69767.44
+  tol: 1
+  verify: 0.05*30000/(1-0.95*1.03)
+  sol: |
+    **Recurrence.** On statement $k$ the balance is $B_k$. The payment is $mB_k$; what remains, $(1-m)B_k$, is charged interest, so
+    $$B_{k+1} = (1-m)(1+i)\,B_k = qB_k, \qquad q = (1-m)(1+i).$$
+    Hence $B_k = q^k B_0$: a geometric progression.
+
+    **(a)** The payments are $mB_0, mqB_0, mq^2B_0, \ldots$, a geometric series. It converges exactly when $0 \le q < 1$, and then
+    $$T = \frac{mB_0}{1-q} = \frac{mB_0}{m - i(1-m)}.$$
+    The condition $q < 1$ is $(1-m)(1+i) < 1$, that is, $m > \dfrac{i}{1+i}$. If the minimum is at most $i/(1+i)$ of the balance, the debt never shrinks and the payments go on growing or stay level for ever. Note also $T/B_0 = \dfrac{m}{m - i(1-m)} > 1$ whenever $i > 0$: the closer $m$ is to the threshold, the larger the multiple.
+
+    **(b)** $q = 0.95 \times 1.03 = 0.9785$, so
+    $$T = \frac{0.05 \times 30000}{1 - 0.9785} = \frac{1500}{0.0215} \approx ₹69{,}767.44.$$
+    The cardholder repays about 2.33 times the debt. The balance falls by only 2.15% a month, so it takes $\ln 30/(-\ln 0.9785) \approx 156$ months (13 years) just to fall below ₹1,000.
+
+    **Contrast.** Paying a **fixed** ₹1,500 each month (the first minimum, never reduced) clears the debt in $\ln 2.5/\ln 1.03 \approx 31$ months for about ₹46,500. The minimum-payment rule is gentle precisely because it shrinks with the balance, and that is what makes it so expensive. (All rates here are made up; real cards also set a rupee floor on the minimum. [Inference])
+  check: both
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: |-
+    Model a loan continuously. A borrower owes $B(t)$ rupees at time $t$ years. Interest accrues continuously at rate $R$ per year on the balance, and the borrower repays continuously at a constant rate of $p$ rupees per year, so that $\dfrac{dB}{dt} = RB - p$ with $B(0) = P$.
+
+    (a) Show that the loan is cleared at time $T$ exactly when $p = \dfrac{RP}{1-e^{-RT}}$, and hence that the total repaid divided by $P$ depends only on the product $x = RT$.
+
+    (b) Suppose $P = ₹20$ lakh, $R = 0.08$ per year and $T = 25$ years. Find the total repaid, to the nearest hundred rupees. (Original problem.)
+  ask: Total repaid in (b)
+  unit: ₹
+  ans: 4626070.57
+  tol: 100
+  verify: 2e6*2/(1-Math.exp(-2))
+  sol: |
+    **(a)** The equation has the constant solution $B^* = p/R$ (interest equals payment). Let $u = B - p/R$. Then $du/dt = dB/dt = RB - p = Ru$, so $u = u(0)e^{Rt}$ and
+    $$B(t) = \frac pR + \left(P - \frac pR\right)e^{Rt}.$$
+    Setting $B(T) = 0$: $\left(\dfrac pR - P\right)e^{RT} = \dfrac pR$, so $\dfrac pR\left(1 - e^{-RT}\right) = P$, that is
+    $$p = \frac{RP}{1 - e^{-RT}}.$$
+    The total repaid is $pT$, so
+    $$\frac{pT}{P} = \frac{RT}{1 - e^{-RT}} = \frac{x}{1-e^{-x}}, \qquad x = RT.$$
+    Only the dimensionless product $RT$ appears. (This had to happen: $R$ has units of 1/year, so $RT$ is the only pure number that can be built from $R$ and $T$.) Note $p > RP$ always, matching the discrete fact that an EMI must beat one period's interest.
+
+    **(b)** $x = 0.08 \times 25 = 2$, $e^{-2} \approx 0.135335$, so
+    $$\frac{pT}{P} = \frac{2}{0.864665} \approx 2.31304, \qquad pT \approx 20{,}00{,}000 \times 2.31304 \approx ₹46{,}26{,}071.$$
+    To the nearest hundred, **about ₹46,26,100**. The payment rate is $p \approx ₹1{,}85{,}043$ a year, about ₹15,420 a month. A monthly EMI loan at $0.08/12$ per month for 300 months would give nearly the same total, because monthly steps are fine compared with the 12.5-year time scale $1/R$.
+
+    **Limits as a check.** For small $x$, $\dfrac{x}{1-e^{-x}} \approx 1 + \dfrac x2$: on average you owe half the loan over the term. For large $x$ it tends to $x$: you pay interest on almost the whole loan for the whole term, so $p \to RP$, the perpetuity.
+  check: both
