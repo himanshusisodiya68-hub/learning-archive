@@ -226,3 +226,187 @@
 
     The shortcut route: $10^5 \text{ beats/day} \times 3 \times 10^4 \text{ days} \approx 3 \times 10^9$. Rounding in Fermi problems is not cheating. Keeping 3 digits would be false precision when "70 beats a minute" is itself only a rough figure.
   check: both
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |-
+    You are asked how many shops there are in a large wholesale market. You are certain there are more than 2,000 and fewer than 50,000. Using the geometric mean of your bounds, give your single best estimate. (Original problem.)
+  ask: Best estimate
+  unit: shops
+  ans: 10000
+  tol: 100
+  verify: Math.sqrt(2000*50000)
+  sol: |
+    The fair middle between two bounds, when you think in factors, is the number that is the same factor away from each: $E/L = U/E$, so
+
+    $$E = \sqrt{L\,U} = \sqrt{2000 \times 50{,}000} = \sqrt{10^8} = 10^4.$$
+
+    So about **10,000 shops**. It is ×5 above the lower bound and ×5 below the upper bound, so your worst possible error (if the bounds are right) is a factor of 5.
+
+    Compare the ordinary average, $(2000 + 50{,}000)/2 = 26{,}000$. It is only about ×1.9 below the upper bound but ×13 above the lower bound, so if the truth were near 2,000 you would be off by ×13. The geometric mean makes the worst case as small as possible.
+  check: both
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |-
+    A Fermi estimate is the product of 6 independent factors. Each factor is equally likely to be twice the true value or half the true value. What is the probability that the final estimate is within a factor of 4 of the truth (that is, between one quarter and four times the true value, inclusive)? Give a decimal. (Original problem.)
+  ask: Probability
+  ans: 0.78125
+  tol: 0.005
+  verify: (15+20+15)/64
+  sol: |
+    Work in base-2 logs. Each factor contributes a step of $+1$ (×2) or $-1$ (÷2), with probability $\tfrac12$ each, independently. The product's error, in steps, is $S = (\text{number of up-steps}) - (\text{number of down-steps})$.
+
+    With $u$ up-steps out of 6, $S = u - (6 - u) = 2u - 6$. "Within a factor of 4" means $|S| \le 2$, so $2 \le u \le 4$.
+
+    The number of ways to choose $u$ up-steps is $\binom{6}{u}$:
+
+    $$\binom62 + \binom63 + \binom64 = 15 + 20 + 15 = 50 \text{ of } 2^6 = 64.$$
+
+    Probability $= 50/64 = 0.78125$, about 78%.
+
+    Compare: the worst case (all six steps the same way, error ×64) has probability $2/64 \approx 3\%$. The typical error is $2^{\sqrt6} \approx 2^{2.45} \approx 5.5$, which sits just outside the ×4 band, consistent with roughly a fifth of cases falling outside it.
+  check: both
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |-
+    The time T for a planet to go once round the Sun in a circular orbit can depend only on the orbit's radius r, the Sun's mass M and the gravitational constant G (unit m³ kg⁻¹ s⁻²). Use dimensional analysis to find how T depends on r. If one orbit has 4 times the radius of another, how many times longer is its period? (Original problem.)
+  ask: Ratio of periods
+  ans: 8
+  tol: 0.01
+  verify: 4**1.5
+  sol: |
+    Try $T = r^a M^b G^c$ and match units on both sides.
+
+    - Right side: $\text{m}^a\,\text{kg}^b\,(\text{m}^3\,\text{kg}^{-1}\,\text{s}^{-2})^c = \text{m}^{a+3c}\,\text{kg}^{b-c}\,\text{s}^{-2c}$.
+    - Left side: $\text{s}^1$.
+
+    Seconds: $-2c = 1$, so $c = -\tfrac12$. Kilograms: $b - c = 0$, so $b = -\tfrac12$. Metres: $a + 3c = 0$, so $a = \tfrac32$. Hence
+
+    $$T \propto \sqrt{\frac{r^3}{GM}}.$$
+
+    This is Kepler's third law ($T^2 \propto r^3$), found without any mechanics. The full theory supplies the missing number: $T = 2\pi\sqrt{r^3/(GM)}$.
+
+    For 4 times the radius, $T$ grows by $4^{3/2} = 8$.
+  check: both
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: |-
+    A caterer has two handis of biryani of exactly the same shape, one 4 times as wide (and 4 times as tall) as the other. Both start at the same temperature in the same room. Assume heat is lost at a rate proportional to the outer surface area, and the heat stored is proportional to the volume. Find the ratio (large handi ÷ small handi) of the rates at which their temperatures begin to fall. (Original problem.)
+  ask: Ratio of initial cooling rates
+  ans: 0.25
+  tol: 0.01
+  verify: 4**2/4**3
+  sol: |
+    Let every length of the large handi be $s = 4$ times that of the small one.
+
+    - Heat lost per second $\propto$ surface area $\propto s^2$, so the large one loses heat $16$ times as fast.
+    - Heat needed to lower the temperature by one degree $\propto$ volume (mass of biryani) $\propto s^3$, so the large one needs $64$ times as much.
+
+    Rate of temperature fall $\propto \dfrac{\text{heat lost per second}}{\text{heat per degree}} \propto \dfrac{s^2}{s^3} = \dfrac1s = \dfrac14.$
+
+    So the large handi's temperature falls at **one quarter** of the rate: it stays hot about 4 times as long. This is the square-cube law, and it is why big gatherings can be served from big vessels long after cooking.
+
+    [Inference] The model ignores the metal of the handi, the lid and convection inside; it gives the scaling, not exact times.
+  check: both
+
+- id: o1
+  lvl: oly
+  kind: proof
+  q: |-
+    (a) You know only that a positive quantity x satisfies L ≤ x ≤ U, where 0 < L < U. You must give one estimate E > 0, and your error is measured as a factor, max(E/x, x/E). Prove that the choice of E that makes the worst-case error as small as possible is E = √(LU), and find that worst-case error.
+
+    (b) An estimate is a product of n factors. The log-errors ε₁, …, εₙ of the factors are independent, each with mean 0 and standard deviation σ. Prove that the log-error of the product has standard deviation σ√n, and deduce that if each factor is "typically off by ×k" (σ = ln k), the product is typically off by about k^√n. (Original problem.)
+  hints: ["In (a), the worst case for a given E is at x = L or x = U. Compare E/L and U/E.", "One of E/L and U/E increases with E and the other decreases; the larger of the two is smallest where they are equal.", "In (b), expand the square of the sum and use E[εᵢεⱼ] = E[εᵢ]E[εⱼ] = 0 for i ≠ j."]
+  sol: |
+    **(a)** For a fixed $E$, the error $\max(E/x,\,x/E)$ is largest at an end of the interval: $E/x$ is largest at $x = L$ and $x/E$ is largest at $x = U$. So the worst-case error is
+
+    $$W(E) = \max\!\left(\frac{E}{L},\ \frac{U}{E}\right).$$
+
+    The first term increases with $E$ and the second decreases. If $E/L < U/E$ we can increase $E$ and lower the maximum; if $E/L > U/E$ we can decrease $E$ and lower it. So the minimum is where they are equal: $E/L = U/E$, that is $E^2 = LU$, $E = \sqrt{LU}$. There the worst-case error is
+
+    $$W = \frac{\sqrt{LU}}{L} = \sqrt{\frac{U}{L}}.$$
+
+    For example, bounds 10 and 1000 give $E = 100$ with worst-case error ×10. (Taking logs makes this obvious: $\ln E$ should be the midpoint of $\ln L$ and $\ln U$.)
+
+    **(b)** The product's log-error is $\varepsilon = \sum_i \varepsilon_i$, because the log of a product is the sum of the logs. Its mean is $\sum \mathbb{E}[\varepsilon_i] = 0$. Its variance is
+
+    $$\mathbb{E}[\varepsilon^2] = \sum_i \mathbb{E}[\varepsilon_i^2] + \sum_{i \ne j} \mathbb{E}[\varepsilon_i \varepsilon_j] = n\sigma^2 + 0,$$
+
+    since independence gives $\mathbb{E}[\varepsilon_i\varepsilon_j] = \mathbb{E}[\varepsilon_i]\,\mathbb{E}[\varepsilon_j] = 0$ for $i \ne j$. So the standard deviation is $\sigma\sqrt n$.
+
+    With $\sigma = \ln k$, a typical log-error of the product is $\sqrt n \ln k$, which corresponds to the factor $e^{\sqrt n \ln k} = k^{\sqrt n}$. The proof uses only independence and zero mean, not the shape of each error's distribution; if the errors share a bias, the cross terms do not vanish and the rule fails.
+  check: none
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |-
+    An estimate is the product of three independent, unbiased factors whose uncertainties, measured as standard deviations of their base-10 logarithms, are 0.1, 0.2 and 0.5. You can afford to halve the uncertainty of exactly one factor. Choose the best one, and give the resulting typical error of the whole estimate as a multiplying factor (10 raised to the combined standard deviation). (Original problem.)
+  ask: Typical error factor after the improvement
+  unit: "×"
+  ans: 2.16
+  tol: 0.03
+  verify: 10**Math.sqrt(0.1**2+0.2**2+0.25**2)
+  sol: |
+    Independent log-errors add as squares: $\sigma^2 = \sigma_1^2 + \sigma_2^2 + \sigma_3^2$.
+
+    **Before:** $\sigma = \sqrt{0.01 + 0.04 + 0.25} = \sqrt{0.30} \approx 0.548$ decades, a typical error of $10^{0.548} \approx \times 3.5$.
+
+    **Halving each in turn:**
+    - halve 0.1 → 0.05: $\sqrt{0.0025 + 0.04 + 0.25} \approx 0.541$, error $\approx \times 3.5$;
+    - halve 0.2 → 0.1: $\sqrt{0.01 + 0.01 + 0.25} \approx 0.520$, error $\approx \times 3.3$;
+    - halve 0.5 → 0.25: $\sqrt{0.01 + 0.04 + 0.0625} = \sqrt{0.1125} \approx 0.335$, error $10^{0.335} \approx \times 2.16$.
+
+    Halving the largest uncertainty is by far the best: the error drops from about ×3.5 to about **×2.2**, while the other choices barely help. Because the squares are added, the biggest uncertainty dominates; this is the "fix the worst factor first" rule.
+  check: both
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: |-
+    In a 12-factor Fermi estimate, each factor's error is equally likely to be anything between ÷3 and ×3 on a logarithmic scale; that is, each log-error (natural log) is uniformly distributed on [−ln 3, ln 3], independently. Find the typical error of the product, defined as e raised to the standard deviation of the total log-error. (Original problem.)
+  ask: Typical error factor
+  unit: "×"
+  ans: 9
+  tol: 0.05
+  verify: Math.exp(Math.sqrt(12)*Math.log(3)/Math.sqrt(3))
+  sol: |
+    **One factor.** A quantity uniform on $[-a, a]$ has mean 0 and variance
+
+    $$\frac{1}{2a}\int_{-a}^{a} t^2\,dt = \frac{1}{2a}\cdot\frac{2a^3}{3} = \frac{a^2}{3},$$
+
+    so its standard deviation is $a/\sqrt3$. Here $a = \ln 3$.
+
+    **Twelve factors.** Independent variances add: the total log-error has variance $12 \cdot a^2/3 = 4a^2$, so standard deviation $2a = 2\ln 3$.
+
+    **Typical error:** $e^{2\ln 3} = 3^2 = 9$.
+
+    So twelve factors, each somewhere within ×3 either way, give a typical error of about **×9**, against a worst case of $3^{12} \approx 5 \times 10^5$. Notice that each factor's typical error is only $e^{\ln 3/\sqrt3} \approx \times 1.9$, because a uniform spread is mostly well inside its extremes; then $1.9^{\sqrt{12}} \approx 9$, the $k^{\sqrt n}$ rule again.
+  check: both
+
+- id: o4
+  lvl: oly
+  kind: mcq
+  q: |-
+    Model an animal as a scaled copy of another: every length multiplied by s. Assume the energy its leg muscles can release in one jump is proportional to muscle mass, and muscle is a fixed fraction of body mass. Ignoring air resistance, how does the height h to which the animal can raise its body in a jump depend on s? (Original problem.)
+  opts: ["h ∝ s (bigger animals jump proportionally higher)", "h is independent of s", "h ∝ 1/s (smaller animals jump higher)", "h ∝ s³"]
+  ans: 1
+  sol: |
+    Body mass and muscle mass both scale as volume, $s^3$.
+
+    - Energy available for the jump $\propto$ muscle mass $\propto s^3$.
+    - Energy needed to raise the body by $h$ is $mgh \propto s^3 h$.
+
+    Setting them equal, $s^3 \propto s^3 h$, so $h$ does not depend on $s$: option 2.
+
+    That is why a grasshopper, a person and a kangaroo all raise their centres of mass by heights of the same rough order (tens of centimetres to about a metre), even though their sizes differ by factors of a hundred or more. The "flea could jump over a skyscraper if it were human-sized" claim confuses jump height with jump height per body length; per body length the small animal wins, as $h/s \propto 1/s$.
+
+    [Inference] Real animals differ in muscle fraction, leg design and (for very small insects) air drag, which reduces the jump of the tiniest ones; the model gives the leading scaling, not exact heights.
+  check: none
