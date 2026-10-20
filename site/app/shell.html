@@ -4,6 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="gfonts" media="print" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <style>/*CSS*/</style>
+<script>try { var t = localStorage.getItem("pm-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}</script>
 
 <div class="app">
   <nav class="rail" aria-label="Main">
@@ -15,11 +16,11 @@
     <a class="nav" href="#review" data-nav="review"><span data-icon="navReview"></span>Review<span class="badge" id="rev-badge" hidden>0</span></a>
     <a class="nav desk-only" href="#notebook" data-nav="notebook"><span data-icon="navNotebook"></span>Notebook</a>
     <a class="nav" href="#progress" data-nav="progress"><span data-icon="navProgress" class="desk-only"></span><span data-icon="navYou" class="phone-only"></span><span class="desk-only">Progress</span><span class="phone-only">You</span></a>
-    <div class="rail-foot"><div id="sync-state">Progress saved in this browser.</div></div>
+    <div class="rail-foot"><button class="theme-btn" data-theme-toggle aria-label="Switch between light and dark mode"><span data-icon="moon"></span><span class="tb-l">Dark mode</span></button><div id="sync-state">Progress saved in this browser.</div></div>
   </nav>
 
   <main>
-    <header class="m-top"><a class="brand" href="#home"><span class="brand-mark" data-icon="logo"></span>Polymath</a><button class="m-search" data-search aria-label="Search"><span data-icon="search"></span>Search</button></header>
+    <header class="m-top"><a class="brand" href="#home"><span class="brand-mark" data-icon="logo"></span>Polymath</a><span class="m-actions"><button class="theme-btn" data-theme-toggle aria-label="Switch between light and dark mode"><span data-icon="moon"></span><span class="tb-l">Dark mode</span></button><button class="m-search" data-search aria-label="Search"><span data-icon="search"></span>Search</button></span></header>
     <div class="inner">
     <div id="boot"><div class="loading bl"><svg class="bl-orb" viewBox="-50 -50 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><ellipse rx="42" ry="14"/><ellipse rx="42" ry="14" transform="rotate(60)"/><ellipse rx="42" ry="14" transform="rotate(-60)"/></g><circle class="bl-core" r="7" fill="currentColor"/><g><circle r="4.5" fill="var(--eng)"><animateMotion dur="1.4s" repeatCount="indefinite" path="M42,0 A42,14 0 1,1 -42,0 A42,14 0 1,1 42,0"/></circle></g><g transform="rotate(60)"><circle r="4.5" fill="var(--mat)"><animateMotion dur="1.9s" repeatCount="indefinite" path="M42,0 A42,14 0 1,1 -42,0 A42,14 0 1,1 42,0"/></circle></g><g transform="rotate(-60)"><circle r="4.5" fill="var(--chem)"><animateMotion dur="2.4s" repeatCount="indefinite" path="M42,0 A42,14 0 1,1 -42,0 A42,14 0 1,1 42,0"/></circle></g></svg><div class="bl-l">Opening Polymath…</div></div></div>
 

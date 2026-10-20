@@ -6,6 +6,8 @@
 
   /* ================= ICONS ================= */
   const ICONS = {
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    moon: '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
     search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
     home: '<path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/>',
     tree: '<circle cx="12" cy="5" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 7v4M6 16v-2.5h12V16M12 11v5"/>',
@@ -241,6 +243,15 @@
   // A long wait gets a new fact every 9 seconds.
   setInterval(() => document.querySelectorAll('.bl-slot').forEach(sl => { sl.innerHTML = brainyCard(); }), 9000);
   { const boot = document.getElementById('boot'); if (boot) boot.innerHTML = loaderHTML('Opening Polymath…'); }
+  // Light/dark toggle: follows the device until the reader picks one; the choice is remembered in this browser.
+  const darkNow = () => (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+  function paintThemeBtns() { const d = darkNow();
+    document.querySelectorAll('[data-theme-toggle]').forEach(b => { b.innerHTML = `${ico(d ? 'sun' : 'moon')}<span class="tb-l">${d ? 'Light mode' : 'Dark mode'}</span>`; b.setAttribute('aria-pressed', d); });
+    const m = document.querySelector('meta[name="theme-color"]:not([media])'); if (m) m.content = d ? '#0E1124' : '#F7F7FB'; }
+  document.addEventListener('click', e => { if (!e.target.closest('[data-theme-toggle]')) return; const t = darkNow() ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t; try { localStorage.setItem('pm-theme', t); } catch (err) {} paintThemeBtns(); });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', paintThemeBtns);
+  paintThemeBtns();
   // Google Fonts load without blocking the first paint (the link starts as media=print); system fonts show until they arrive.
   { const gf = document.getElementById('gfonts'); if (gf) { if (gf.sheet) gf.media = 'all'; else gf.addEventListener('load', () => { gf.media = 'all'; }); } }
 
