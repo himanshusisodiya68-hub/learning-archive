@@ -33,7 +33,15 @@ Scope (owner's choice): **Biology is NCERT only**, Classes 9–12, with NEET-sty
 ```
 cd /Users/Himanshu/Developer/learning-archive/site && node lint-lesson.mjs content/lessons/bio/<leaf>.md && python3 fix-yaml.py content/problems/bio/<leaf>.yaml && node check-answers.mjs
 ```
-Fix everything the linter reports and every checker message naming your file. Do not commit, and do not take screenshots.
+Then check your figures, building into your own folder (never plain `node build.mjs`):
+```
+DIST_DIR=/tmp/<leaf>-dist node build.mjs >/dev/null && DIST_DIR=/tmp/<leaf>-dist node check-figures.mjs bio/<leaf>
+```
+Fix every label it reports (spilling out of a box, past the edge, overlapping, or crossed by a line). Figure labels render at 11 px mono, about 6.6 viewBox units per character, whatever `font-size` you set, so leave room. A label that starts inside an ellipse's bounding box counts as inside it.
+
+Fix everything the linter and the checkers report for your files. Do not commit, and do not take screenshots.
+
+**In real life icons:** `content/life-icons.yaml` needs one icon per `life` item, in order, as `bio/<leaf>: [icon, icon, ...]`, using names from `LIFE_ICONS` in `site/app/app.js` (e.g. food, sprout, sun, leaf, tree, drop, heart, pulse, pill, dna, flask, person, people, school, rain, factory). Other writers edit that file at the same time, so do not edit it: give the line in your reply (or wherever your prompt says).
 
 ## Reply
 At most 4 lines: files written, section and figure counts, problem counts (NCERT by class / original), anything unverified.
