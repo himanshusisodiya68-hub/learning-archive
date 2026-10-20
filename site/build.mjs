@@ -19,11 +19,18 @@ const LEVEL_LABEL = { 1: 'Class 10', 2: 'Class 12', 3: 'JEE Advanced', 4: 'Olymp
 
 marked.use({ gfm: true, breaks: false });
 
-/* ---------- maths: protect $..$ and $$..$$ from markdown, render with KaTeX ---------- */
+/* ---------- maths: protect $..$ and $$..$$ from markdown; the app renders them with KaTeX ----------
+   The data carries only the TeX source (<span class="tx">), about 100 times smaller than pre-rendered KaTeX HTML.
+   The build still renders each formula once to catch errors (class tx-err fails the lint). */
+function tex(src, display = false) {
+  src = String(src).trim();
+  const bad = katex.renderToString(src, { displayMode: display, throwOnError: false, strict: 'ignore' }).includes('katex-error');
+  return `<span class="tx${display ? ' dm' : ''}${bad ? ' tx-err' : ''}">${escHtml(src)}</span>`;
+}
 function renderMath(src, store) {
   const put = html => { store.push(html); return `@@M${store.length - 1}@@`; };
-  src = src.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => put(`<div class="eq">${katex.renderToString(tex.trim(), { displayMode: true, throwOnError: false, strict: 'ignore' })}</div>`));
-  src = src.replace(/(^|[^\\$])\$([^\s$](?:[^$\n]*?[^\s$])?)\$/g, (_, pre, tex) => pre + put(katex.renderToString(tex, { throwOnError: false, strict: 'ignore' })));
+  src = src.replace(/\$\$([\s\S]+?)\$\$/g, (_, t) => put(`<div class="eq">${tex(t, true)}</div>`));
+  src = src.replace(/(^|[^\\$])\$([^\s$](?:[^$\n]*?[^\s$])?)\$/g, (_, pre, t) => pre + put(tex(t)));
   return src.replace(/\\\$/g, '$');
 }
 function md(src, { inline = false } = {}) {
@@ -87,20 +94,6 @@ function renderBody(src) {
 }
 
 /* ---------- lessons ---------- */
-// Plain text for search: each rendered KaTeX span becomes its TeX source (otherwise the text holds the formula three times).
-function texOnly(html) {
-  let out = '', i = 0;
-  for (;;) {
-    const j = html.indexOf('<span class="katex', i); if (j < 0) return out + html.slice(i);
-    out += html.slice(i, j);
-    let depth = 0, k = j;
-    const re = /<span\b|<\/span>/g; re.lastIndex = j;
-    for (let m; (m = re.exec(html));) { depth += m[0] === '</span>' ? -1 : 1; if (!depth) { k = re.lastIndex; break; } }
-    if (k === j) return out + html.slice(j);
-    const tex = (html.slice(j, k).match(/<annotation encoding="application\/x-tex">([\s\S]*?)<\/annotation>/) || [, ''])[1];
-    out += ' ' + tex.replace(/&amp;/g, '&') + ' '; i = k;
-  }
-}
 function parseLesson(file) {
   const raw = fs.readFileSync(file, 'utf8');
   const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
@@ -117,12 +110,12 @@ function parseLesson(file) {
     const id = a.id || 's-' + head.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const lvl = +(a.lvl || 1);
     const html = renderBody(text);
-    return { id, lvl, title: head, titleHtml: mdi(head), label: a.label || LEVEL_LABEL[lvl], html, text: stripTags(texOnly(html)).slice(0, 4000) };
+    return { id, lvl, title: head, titleHtml: mdi(head), label: a.label || LEVEL_LABEL[lvl], html, text: stripTags(html).slice(0, 4000) };
   });
   const co = meta.core;
   const core = co ? {
     ideaHtml: mdi(co.idea || ''),
-    formulas: (co.formulas || []).map(f => ({ html: katex.renderToString(String(f.tex), { displayMode: true, throwOnError: false, strict: 'ignore' }), label: f.label ? mdi(f.label) : '' })),
+    formulas: (co.formulas || []).map(f => ({ html: tex(f.tex, true), label: f.label ? mdi(f.label) : '' })),
     patterns: (co.patterns || []).map(x => ({ text: escHtml(String(x.text)), label: x.label ? mdi(x.label) : '' })),
     conditions: (co.conditions || []).map(c => mdi(c)),
     signHtml: co.sign ? mdi(co.sign) : ''
@@ -133,7 +126,7 @@ function parseLesson(file) {
   const next = meta.next ? { q: mdi(meta.next.q || ''), leaf: meta.next.leaf || '', name: meta.next.name || '' } : null;
   const hm = body.match(/^:::hook[^\n]*\n([\s\S]*?)\n:::/m), hookQ = hm ? mdi(parseChoice(hm[1]).q || '') : '';
   const opener = meta.opener ? { story: md(meta.opener.story || ''), art: meta.opener.art || '' } : null;
-  const symbols = (meta.symbols || []).map(x => ({ s: katex.renderToString(String(x.s), { throwOnError: false, strict: 'ignore' }), m: mdi(String(x.means || '')) }));
+  const symbols = (meta.symbols || []).map(x => ({ s: tex(x.s), m: mdi(String(x.means || '')) }));
   return { ...meta, symbols, hookQ, opener, life, models, links, next, core, outcomes: (meta.outcomes || []).map(o => mdi(o)), introHtml: intro, sections, margin: (meta.margin || []).map(n => ({ ...n, html: mdi(n.text) })),
     cards: (meta.cards || []).map(c => ({ front: mdi(c.front), back: md(c.back) })) };
 }
@@ -188,7 +181,7 @@ for (const s of tree.subjects) {
           lesson.lifeIcons = lifeIcons[key] || [];
           if (lesson.life.length && lesson.lifeIcons.length !== lesson.life.length) console.warn(`life-icons.yaml: ${key} has ${lesson.lifeIcons.length} icons for ${lesson.life.length} items`);
           write(`data/lessons/${s.id}--${l.id}.json`, lesson);
-          l.live = true; liveCount++; l.summary = lesson.summary || ''; l.sections = lesson.sections.length; l.ask = lesson.hookQ || ''; l.can = (lesson.outcomes || []).slice(0, 2); l.nextq = lesson.next && lesson.next.leaf ? { q: lesson.next.q, leaf: lesson.next.leaf } : null;
+          l.live = true; liveCount++; l.top = Math.max(1, ...lesson.sections.filter(x => !['s-keys', 's-traps'].includes(x.id)).map(x => x.lvl)); // deepest level the lesson reaches l.summary = lesson.summary || ''; l.sections = lesson.sections.length; l.ask = lesson.hookQ || ''; l.can = (lesson.outcomes || []).slice(0, 2); l.nextq = lesson.next && lesson.next.leaf ? { q: lesson.next.q, leaf: lesson.next.leaf } : null;
           l.sparks = [...(lesson.margin || []).filter(m => m.kind !== 'tip').map(m => ({ t: m.title || m.kind, h: m.html })), ...(lesson.models || []).map(m => ({ t: 'Mental model: ' + stripTags(m.name), h: m.html }))];
           search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: l.name, path: `${s.name} › ${p.name} › ${b.name}`, text: lesson.summary || '', go: { lesson: key } });
           lesson.sections.forEach(sec => search.push({ g: 'Lessons', c: s.id, icon: 'lesson', title: sec.title, path: `${l.name} · section`, text: sec.text, go: { lesson: key, section: sec.id } }));
@@ -229,6 +222,7 @@ kcss = kcss.replace(/@font-face\{[^}]*\}/g, face => {
   fs.copyFileSync(path.join(kdir, m[1]), path.join(DIST, m[1]));
   return face.replace(/src:[^;}]+/, `src:url(${m[1]}) format("woff2")`);
 });
+fs.copyFileSync(path.join(kdir, 'katex.min.js'), path.join(DIST, 'katex.min.js')); // loaded by the app on first use
 const shell = fs.readFileSync(path.join(ROOT, 'app/shell.html'), 'utf8');
 const css = fs.readFileSync(path.join(ROOT, 'app/app.css'), 'utf8');
 const js = fs.readFileSync(path.join(ROOT, 'app/app.js'), 'utf8');
@@ -251,8 +245,8 @@ console.log(`built: ${liveCount} lessons, ${problemCount} problems, ${search.len
   const issues = [];
   for (const dir of ['lessons']) for (const f of fs.readdirSync(path.join(DIST, 'data', dir))) { // problems live inside each lesson file
     const txt = fs.readFileSync(path.join(DIST, 'data', dir, f), 'utf8');
-    const kerr = (txt.match(/katex-error/g) || []).length;
-    if (kerr) issues.push(`${dir}/${f}: ${kerr} KaTeX error(s), e.g. ${(txt.match(/katex-error[^>]*title=\\"([^\\]*)/) || [])[1] || ''}`);
+    const kerr = (txt.match(/tx-err/g) || []).length;
+    if (kerr) issues.push(`${dir}/${f}: ${kerr} KaTeX error(s), e.g. ${(txt.match(/tx-err\\">([^<]*)/) || [])[1] || ''}`);
     for (const m of txt.matchAll(/data-widget=\\"([^\\]+)\\"/g)) if (!widgets.has(m[1])) issues.push(`${dir}/${f}: unknown widget "${m[1]}"`);
     if (dir === 'lessons' && (/"core":null/.test(txt) || /"outcomes":\[\]/.test(txt))) issues.push(`${dir}/${f}: missing core idea or outcomes in front matter`);
     if (/(^|[^\w]):::/.test(txt.replace(/<code>[^<]*<\/code>/g, ''))) issues.push(`${dir}/${f}: stray ":::" (unclosed or misspelt block)`);
