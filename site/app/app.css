@@ -623,8 +623,8 @@ details.method .principles { margin-top: 4px; }
 .pil-card:hover { transform: translateY(-2px); border-color: var(--c); box-shadow: 0 6px 18px -10px color-mix(in srgb, var(--c) 60%, transparent); }
 .pil-card.soon { background: color-mix(in srgb, var(--sunk) 55%, var(--surface)); }
 .pil-card.soon .tile { filter: grayscale(1); opacity: .6; }
-.pc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-.pc-n { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.pc-top { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.pc-n { margin-left: auto; min-width: 0; text-align: right; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
 .pc-name { font-size: 17px; font-weight: 800; }
 .pc-tag { font-size: 13px; color: var(--muted); line-height: 1.45; }
 .pc-br { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 4px; }
