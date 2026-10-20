@@ -10,7 +10,7 @@
   --accent: #5B3DF5;
   --accent-ink: #FFFFFF;
   --accent-soft: rgba(91, 61, 245, .09);
-  --phy: #6D4AFF; --mat: #0B8A78; --chem: #B86200; --bio: #23843F; --eng: #D6336C; --cs: #2F6FEB;
+  --phy: #6D4AFF; --mat: #0B7C9E; --chem: #B86200; --bio: #23843F; --eng: #D6336C; --cs: #2F6FEB;
   --good: #1F7A3B; --warn: #B86200; --bad: #C62E2E;
   --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0l6 6M6 0L0 6' stroke='%2314142B' stroke-opacity='.035' stroke-width='.7'/%3E%3C/svg%3E");
   --shadow: 0 1px 2px rgba(20, 20, 43, .04);
@@ -23,7 +23,7 @@
   :root:not([data-theme="light"]) {
     --paper: #0B0D1A; --surface: #151829; --sunk: #1D2136;
     --ink: #ECEEF8; --muted: #A3A8C3; --rule: #272B44; --accent: #8B7CFF; --accent-ink: #0B0D1A; --accent-soft: rgba(139, 124, 255, .14);
-    --phy: #A08EFF; --mat: #2ED3B7; --chem: #FFB547; --bio: #5FD38A; --eng: #FF7AA2; --cs: #6AA5FF; --good: #5FD38A; --warn: #FFB547; --bad: #FF8A80;
+    --phy: #A08EFF; --mat: #4FD6F0; --chem: #FFB547; --bio: #5FD38A; --eng: #FF7AA2; --cs: #6AA5FF; --good: #5FD38A; --warn: #FFB547; --bad: #FF8A80;
     --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0l6 6M6 0L0 6' stroke='%23ECEEF8' stroke-opacity='.045' stroke-width='.7'/%3E%3C/svg%3E"); --shadow: 0 1px 0 rgba(0,0,0,.2);
     color-scheme: dark;
   }
@@ -31,7 +31,7 @@
 :root[data-theme="dark"] {
   --paper: #0B0D1A; --surface: #151829; --sunk: #1D2136;
     --ink: #ECEEF8; --muted: #A3A8C3; --rule: #272B44; --accent: #8B7CFF; --accent-ink: #0B0D1A; --accent-soft: rgba(139, 124, 255, .14);
-    --phy: #A08EFF; --mat: #2ED3B7; --chem: #FFB547; --bio: #5FD38A; --eng: #FF7AA2; --cs: #6AA5FF; --good: #5FD38A; --warn: #FFB547; --bad: #FF8A80;
+    --phy: #A08EFF; --mat: #4FD6F0; --chem: #FFB547; --bio: #5FD38A; --eng: #FF7AA2; --cs: #6AA5FF; --good: #5FD38A; --warn: #FFB547; --bad: #FF8A80;
     --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0l6 6M6 0L0 6' stroke='%23ECEEF8' stroke-opacity='.045' stroke-width='.7'/%3E%3C/svg%3E"); --shadow: 0 1px 0 rgba(0,0,0,.2);
     color-scheme: dark;
 }
@@ -939,7 +939,7 @@ main { overflow-x: clip; }
 .pg-tn > div > span { font-size: 12.5px; color: var(--muted); }
 .pg-tn small { font-size: 12px; color: var(--muted); }
 .pg-tn b { font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
-.pg-sky { background: #0B0D1A; color: #ECEEF8; border-radius: 22px; padding: 20px; --phy: #8A74F5; --mat: #16A38C; --chem: #C98219; --eng: #E2557F; --cs: #4D86E8; --bio: #38A562; }
+.pg-sky { background: #0B0D1A; color: #ECEEF8; border-radius: 22px; padding: 20px; --phy: #8A74F5; --mat: #3BB8DB; --chem: #C98219; --eng: #E2557F; --cs: #4D86E8; --bio: #38A562; }
 .pg-sky .pg-h span { color: #A3A8C3; }
 .pg-skies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .pg-skies figure { margin: 0; display: grid; gap: 6px; }
