@@ -220,3 +220,192 @@
 
     So a player who cares about **not going bankrupt** should refuse this game, even though its expected value is huge. Expected value is the right guide when you play many independent rounds and can survive the bad ones. It is the wrong guide when one bad outcome ends the game (ruin), or when you can play only once.
   check: both
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |-
+    A fair die is rolled again and again until every face from 1 to 6 has appeared at least once. What is the expected number of rolls? (Original problem.)
+  ask: Expected number of rolls
+  unit: rolls
+  ans: 14.7
+  tol: 0.01
+  verify: 6*(1+1/2+1/3+1/4+1/5+1/6)
+  sol: |
+    **Split the wait into stages** and add the stages by linearity of expectation.
+
+    Stage $j$ (for $j = 0, 1, \dots, 5$) starts when you have seen $j$ different faces and ends when a new face appears. During stage $j$, each roll shows a new face with probability $\dfrac{6-j}{6}$, independently of the past, so the length of the stage is geometric with mean $\dfrac{6}{6-j}$.
+
+    $$E[\text{rolls}] = \frac66 + \frac65 + \frac64 + \frac63 + \frac62 + \frac61 = 6\left(1 + \tfrac12 + \tfrac13 + \tfrac14 + \tfrac15 + \tfrac16\right) = 6 \times \frac{49}{20} = 14.7.$$
+
+    The stages are not all equal: the first face costs 1 roll, the last one costs 6 rolls on average. This is the coupon-collector problem; for $n$ faces the answer is $nH_n \approx n\ln n$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |-
+    Ten boys and ten girls stand in a row in a random order (all arrangements equally likely). A "mixed pair" is two neighbours in the row of whom one is a boy and one is a girl. What is the expected number of mixed pairs? (Original problem.)
+  ask: Expected number of mixed pairs
+  ans: 10
+  tol: 0.001
+  verify: 19*2*(10/20)*(10/19)
+  sol: |
+    **Indicators.** The row of 20 has 19 neighbouring pairs of positions. Let $I_k$ be 1 if positions $k$ and $k+1$ hold a boy and a girl (in either order), and 0 otherwise. The number of mixed pairs is $I_1 + \dots + I_{19}$.
+
+    **One pair.** By symmetry each position is equally likely to hold any of the 20 children. Position $k$ holds a boy with probability $\tfrac{10}{20}$; given that, position $k+1$ holds a girl with probability $\tfrac{10}{19}$. The order girl–boy is equally likely, so
+    $$P(I_k = 1) = 2 \times \frac{10}{20} \times \frac{10}{19} = \frac{10}{19}.$$
+
+    **Add.** $E = 19 \times \dfrac{10}{19} = 10.$
+
+    The indicators are dependent (neighbouring pairs share a child), but linearity of expectation needs no independence. Counting arrangements directly would be far harder.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |-
+    Suppose a shopkeeper has total wealth ₹2,00,000 and measures satisfaction by the natural logarithm of wealth. In the coming year there is a 10% chance of a loss of ₹1,00,000. What is the largest premium, in ₹, that the shopkeeper should be willing to pay for full insurance against this loss? Give the answer to the nearest rupee. (Original problem; all figures are made up.)
+  ask: Largest acceptable premium
+  unit: ₹
+  ans: 13393
+  tol: 1
+  verify: 200000-200000*Math.pow(0.5,0.1)
+  sol: |
+    **Without insurance**, expected utility is
+    $$0.9\ln 200000 + 0.1\ln 100000 = \ln 200000 + 0.1\ln\tfrac12.$$
+
+    **With full insurance at premium $c$**, wealth is $200000 - c$ for certain, with utility $\ln(200000 - c)$.
+
+    The largest acceptable premium makes the two equal:
+    $$\ln(200000 - c) = \ln 200000 + 0.1\ln 0.5 \;\Longrightarrow\; 200000 - c = 200000 \times 0.5^{0.1} \approx 186607.$$
+
+    So $c \approx 200000 - 186607 = 13393$ rupees.
+
+    **Compare** with the expected loss, $0.1 \times 100000 = 10000$ rupees. The shopkeeper would pay up to ₹3,393 above the expected loss to remove the risk. An insurer that charges anything between ₹10,000 (plus its costs) and ₹13,393 leaves both sides better off: the insurer gains on average, and the shopkeeper gains in expected utility.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 2.1.27(c)
+  q: |-
+    At least how many times must you flip a fair coin before there is at least a 50% probability that you will get at least three heads?
+  ask: Smallest number of flips
+  unit: flips
+  ans: 5
+  tol: 0
+  verify: (()=>{const C=(n,k)=>{let r=1;for(let i=0;i<k;i++)r=r*(n-i)/(i+1);return r};for(let n=3;n<50;n++){if(1-(C(n,0)+C(n,1)+C(n,2))/pow(2,n)>=0.5)return n}})()
+  sol: |
+    **Orientation.** "At least three heads" means 3 or more; "at least 50%" includes exactly 50%. It is easier to count the complement, at most two heads.
+
+    With $n$ flips there are $2^n$ equally likely sequences, of which $\binom n0 + \binom n1 + \binom n2$ have at most two heads. So
+    $$P(\text{at least 3 heads}) = 1 - \frac{1 + n + \binom n2}{2^n}.$$
+
+    **Get your hands dirty** and tabulate:
+
+    | $n$ | at most 2 heads | $P(\ge 3 \text{ heads})$ |
+    |---|---|---|
+    | 3 | $1 + 3 + 3 = 7$ of 8 | $1/8$ |
+    | 4 | $1 + 4 + 6 = 11$ of 16 | $5/16 \approx 0.31$ |
+    | 5 | $1 + 5 + 10 = 16$ of 32 | $16/32 = 0.5$ |
+
+    At $n = 5$ the probability is exactly $\tfrac12$, which meets "at least 50%"; at $n = 4$ it falls short. **Answer: 5 flips.**
+
+    Symmetry gives a check: with 5 flips, "3 or more heads" and "3 or more tails" are equally likely and cannot both happen, and one of them must happen, so each has probability exactly $\tfrac12$.
+
+    Note the trap: the expected number of heads reaches 3 only at $n = 6$. Reaching an average and reaching a 50% chance are different questions.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: |-
+    A fair coin is tossed repeatedly until the pattern HTH (head, tail, head on three consecutive tosses) first appears. What is the expected number of tosses? (Original problem.)
+  ask: Expected number of tosses
+  unit: tosses
+  ans: 10
+  tol: 0.001
+  verify: pow(2,1)+pow(2,3)
+  sol: |
+    **First-step analysis with states.** Track only the useful ending of the tosses so far. Let
+    - $a$ = expected tosses still needed from scratch (or after a useless ending);
+    - $b$ = expected tosses still needed when the last toss was H;
+    - $c$ = expected tosses still needed when the last two tosses were HT.
+
+    From scratch, one toss: H moves to state $b$, T leaves you at scratch: $a = 1 + \tfrac12 b + \tfrac12 a$, so $a = 2 + b$.
+
+    From H: another H leaves the useful ending as H; T moves to HT: $b = 1 + \tfrac12 b + \tfrac12 c$, so $b = 2 + c$.
+
+    From HT: H finishes; T gives HTT, whose ending has no useful part, so you are back to scratch: $c = 1 + \tfrac12 \cdot 0 + \tfrac12 a$.
+
+    Substituting: $a = 2 + b = 4 + c = 5 + \tfrac12 a$, so $a = 10$.
+
+    **The surprise.** For HHT the same method gives 8, though every three-toss pattern has probability $1/8$ at any given place. The difference is how failures waste progress. For HHT, once you have HH you can never lose it: a T finishes, and another H still leaves HH at the end. For HTH, a failure at the last step (HTT) throws everything away and sends you back to scratch. A known shortcut: add $2^k$ for every $k$ such that the first $k$ letters of the pattern equal its last $k$ letters. For HTH, $k = 1$ and $k = 3$ work, giving $2 + 8 = 10$; for HHT only $k = 3$ works, giving 8.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |-
+    The numbers 1, 2, ..., 8 are arranged in a random order (all 8! orders equally likely). Reading from left to right, a number is a "record" if it is larger than every number before it (the first number is always a record). What is the expected number of records, to three decimals? (Original problem.)
+  ask: Expected number of records
+  ans: 2.718
+  tol: 0.001
+  verify: 1+1/2+1/3+1/4+1/5+1/6+1/7+1/8
+  sol: |
+    **Indicators.** Let $I_k = 1$ if the number in position $k$ is a record. The number of records is $I_1 + \dots + I_8$.
+
+    **One position.** The number in position $k$ is a record exactly when it is the largest of the first $k$ numbers. Those $k$ numbers are a random set in a random order, so each of them is equally likely to be the largest: $P(I_k = 1) = \dfrac1k$.
+
+    **Add.**
+    $$E = 1 + \frac12 + \frac13 + \dots + \frac18 = H_8 = \frac{761}{280} \approx 2.718.$$
+
+    (The closeness to $e \approx 2.71828$ is a coincidence of this $n$.) In general the expected number of records among $n$ is $H_n \approx \ln n$: in 1,000 years of random, independent yearly rainfall totals, you would expect only about 7.5 record-wet years.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: |-
+    Twenty points are given, and 100 triples are chosen from them (each triple is a set of three of the points; triples may share points). Prove that the points can be coloured red and blue so that at least 75 of the triples contain both colours. (Original problem.)
+  hints:
+    - Colour each point red or blue at random, by independent fair coin tosses.
+    - For one fixed triple, find the probability that it is not all one colour.
+    - Use linearity to find the expected number of two-coloured triples, then ask what an average says about the largest value.
+  sol: |
+    **Colour at random.** Colour each of the 20 points red or blue by an independent fair coin toss.
+
+    **One triple.** Its three points are all red with probability $\tfrac18$ and all blue with probability $\tfrac18$, so it contains both colours with probability $1 - \tfrac14 = \tfrac34$.
+
+    **Linearity.** Let $I_t$ be the indicator that triple $t$ is two-coloured, and $N = \sum_t I_t$ the number of two-coloured triples. Linearity holds even though triples sharing points give dependent indicators:
+    $$E[N] = 100 \times \tfrac34 = 75.$$
+
+    **From average to existence.** $N$ takes a value for each of the $2^{20}$ equally likely colourings, and $E[N]$ is the plain average of those values. If every colouring gave $N < 75$, their average would be below 75. Hence at least one colouring has $N \ge 75$. $\blacksquare$
+
+    This is the **probabilistic method**: to show that something exists, show that a random choice has it on average. Note that the argument proves existence without telling you which colouring works.
+  check: none
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: |-
+    A game tosses a fair coin until the first head. If the first head comes on toss k, the player receives 3^k rupees. Show that the expected payout is infinite. Then find the certainty equivalent (the sure sum with the same expected utility) for a player whose utility is the natural logarithm of the payout. (Original problem.)
+  ask: Certainty equivalent
+  unit: ₹
+  ans: 9
+  tol: 0.001
+  verify: exp(2*log(3))
+  sol: |
+    **Expected payout.** The first head comes on toss $k$ with probability $2^{-k}$, so
+    $$E = \sum_{k \ge 1} \frac{3^k}{2^k} = \sum_{k\ge1}\left(\tfrac32\right)^k,$$
+    a geometric series with ratio $\tfrac32 > 1$, which diverges. The expected payout is infinite.
+
+    **Expected log payout.**
+    $$E[\ln(\text{payout})] = \sum_{k\ge1} \frac{1}{2^k}\, k\ln 3 = \ln 3 \sum_{k\ge1}\frac{k}{2^k}.$$
+    From $\sum_{k\ge1} k q^{k} = \dfrac{q}{(1-q)^2}$ (differentiate the geometric series and multiply by $q$), at $q = \tfrac12$ the sum is $\dfrac{1/2}{1/4} = 2$. So $E[\ln(\text{payout})] = 2\ln 3 = \ln 9$.
+
+    **Certainty equivalent.** The sure sum $c$ with $\ln c = \ln 9$ is $c = 9$ rupees.
+
+    So a game with an infinite expected payout is worth only ₹9 to a log-utility player. In general, if the prize on toss $k$ is $m^k$, the certainty equivalent is $m^2$, finite for every $m$; log utility tames any prize that grows exponentially in $k$ (though not prizes that grow faster still, such as $e^{2^k}$).
+  check: code

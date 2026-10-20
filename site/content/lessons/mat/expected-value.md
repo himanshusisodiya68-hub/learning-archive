@@ -262,8 +262,8 @@ Read it as: the average squared distance from the average. Its unit is rupees sq
 For the three offers:
 
 - **A:** never misses, so variance 0.
-- **B:** always misses by ₹100, so variance $100^2 = 10000$ and $\sigma = ₹100$.
-- **C:** misses by ₹9,900 with probability 0.01 and by ₹100 with probability 0.99: variance $0.01 \times 9900^2 + 0.99 \times 100^2 = 980100 + 9900 = 990000$, so $\sigma \approx ₹995$.
+- **B:** always misses by ₹100, so variance $100^2 = 10000$ and $\sigma = 100$ rupees.
+- **C:** misses by ₹9,900 with probability 0.01 and by ₹100 with probability 0.99: variance $0.01 \times 9900^2 + 0.99 \times 100^2 = 980100 + 9900 = 990000$, so $\sigma \approx 995$ rupees.
 
 There is a quicker route. Expanding the square gives
 
@@ -271,7 +271,7 @@ $$\mathrm{Var}(X) = E[X^2] - \mu^2.$$
 
 Read it as: the average of the squares minus the square of the average. For C: $E[X^2] = 0.01 \times 10000^2 = 1000000$, minus $100^2$, gives $990000$ again.
 
-**The insurer's secret.** Return to the scooter. The loss is ₹60,000 with probability 0.02, so $\mu = 1200$ and $E[X^2] = 0.02 \times 60000^2 = 72000000$. Then $\mathrm{Var} = 72000000 - 1440000 = 70560000$, and $\sigma = ₹8{,}400$. For one owner the loss is wild: a typical miss seven times the average.
+**The insurer's secret.** Return to the scooter. The loss is ₹60,000 with probability 0.02, so $\mu = 1200$ and $E[X^2] = 0.02 \times 60000^2 = 72000000$. Then $\mathrm{Var} = 72000000 - 1440000 = 70560000$, and $\sigma = 8400$ rupees. For one owner the loss is wild: a typical miss seven times the average.
 
 Now take an insurer with 10,000 such customers. When independent amounts are added, their variances add, so the total of $n$ of them has variance $n\sigma^2$ and standard deviation $\sqrt n\,\sigma$. Dividing by $n$ to get the average per customer leaves
 
@@ -442,7 +442,7 @@ A bank of ₹107 crore makes the game worth ₹31, and doubling the bank adds ju
 
 $$\sum_{k \ge 1} \frac{1}{2^k} \ln 2^k = \ln 2 \sum_{k\ge1} \frac{k}{2^k} = 2\ln 2 = \ln 4,$$
 
-using $\sum k/2^k = 2$ (put $q = \frac12$ in $\sum k q^{k} = q/(1-q)^2$). The sure amount with the same utility, the **certainty equivalent**, is $e^{\ln 4} = ₹4$. That treats the prize as the player's whole wealth. A log-utility player who already has ₹1,00,000 would pay about ₹18, and one with ₹1 crore about ₹24 (found numerically): finite, modest prices, close to what people actually offer.
+using $\sum k/2^k = 2$ (put $q = \frac12$ in $\sum k q^{k} = q/(1-q)^2$). The sure amount with the same utility, the **certainty equivalent**, is $e^{\ln 4} = 4$ rupees. That treats the prize as the player's whole wealth. A log-utility player who already has ₹1,00,000 would pay about ₹18, and one with ₹1 crore about ₹24 (found numerically): finite, modest prices, close to what people actually offer.
 
 **Honest limits.** Log utility does not close every door: make the prizes grow fast enough (say $e^{2^k}$ rupees) and the expected log is infinite again. Only a utility with a ceiling, or a finite bank, ends the paradox for good, and economists still argue about which fix is the "right" one. Real people also simply struggle to weigh tiny probabilities.
 
@@ -492,7 +492,7 @@ Read it as: a gamble is worth less to you than its average paid for sure. This i
 
 $$100000 \times 0.4^{0.05} \approx 95522 \text{ rupees}.$$
 
-So you would pay up to $100000 - 95522 = ₹4{,}478$ for full cover against an expected loss of ₹3,000. The insurer, large and diversified (section 4), is almost indifferent to risk and is happy with any premium above ₹3,000 plus its costs. Any premium between those two numbers leaves **both** sides better off. Insurance is not a trick played on the customer; it is a trade.
+So you would pay up to $100000 - 95522 = 4478$ rupees for full cover against an expected loss of ₹3,000. The insurer, large and diversified (section 4), is almost indifferent to risk and is happy with any premium above ₹3,000 plus its costs. Any premium between those two numbers leaves **both** sides better off. Insurance is not a trick played on the customer; it is a trade.
 
 Lotteries are harder for this theory: a concave utility rejects every fair or unfair gamble. Real buyers seem to overweight tiny probabilities, a pattern that Kahneman and Tversky's prospect theory (1979) builds in [Unverified: date from memory]. Risk aversion explains insurance; lottery buying needs a taste for the dream, or a misreading of tiny odds.
 
