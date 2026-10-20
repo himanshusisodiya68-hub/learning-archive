@@ -12,7 +12,7 @@
     home: '<path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/>',
     tree: '<circle cx="12" cy="5" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M12 7v4M6 16v-2.5h12V16M12 11v5"/>',
     atom: '<path class="fl" d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/><path d="M12 2c4 0 6 4.5 6 10s-2 10-6 10-6-4.5-6-10 2-10 6-10z"/><path d="M3.3 7c2-3.5 6.8-3 11.6-.3s7.8 6.8 5.8 10.3-6.8 3-11.6.3S1.3 10.5 3.3 7z"/>',
-    pi: '<path class="fl" d="M4 4h16v16H4z"/><path d="M17 5H7l6 7-6 7h10"/>',
+    pi: '<circle cx="12" cy="12" r="9.2"/><path d="M7.4 9.2h9.2M10.2 9.2v7.2M14 9.2v5.6c0 .9.6 1.6 1.6 1.6"/>',
     flask: '<path class="fl" d="M7.5 15h9l2.4 4.2a.8.8 0 0 1-.7 1.3H5.8a.8.8 0 0 1-.7-1.3z"/><path d="M9 3h6M10 3v6l-5.5 9.5A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3"/><path d="M7.5 15h9"/>',
     leaf: '<path class="fl" d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15z"/><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l8-8"/>',
     book: '<path class="fl" d="M12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5z"/><path d="M3 5.5C5.5 4 8.5 4 12 6c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 6v13.5"/>',
@@ -50,7 +50,7 @@
     chapter: '<path d="M5 3h12a2 2 0 0 1 2 2v16l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2z"/>',
     bulb: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
     alert: '<path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5v.01"/>',
-    code: '<path class="fl" d="M2 4h20v16H2z"/><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/>',
+    code: '<path class="fl" d="M5 4h14a2 2 0 0 1 2 2v2.5H3V6a2 2 0 0 1 2-2z"/><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8.5h18M9.5 12l-2.5 2.5 2.5 2.5M14.5 12l2.5 2.5-2.5 2.5"/>',
     chev: '<path d="M9 5l7 7-7 7"/>'
   };
   const ico = (name, cls = '') => `<svg viewBox="0 0 24 24" class="ic ${cls}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.lesson}</svg>`;
