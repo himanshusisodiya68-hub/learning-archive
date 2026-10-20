@@ -6,8 +6,8 @@ name: Science (Exploration)
 code: iesc1
 chapters:
   - { n: 1, title: "Exploration: Entering the World of Secondary Science", pdf: iesc101 }
-  - { n: 2, title: "Cell: The Building Block of Life", pdf: iesc102 }
-  - { n: 3, title: Tissues in Action, pdf: iesc103 }
+  - { n: 2, title: "Cell: The Building Block of Life", pdf: iesc102, leaves: [bio/cell-the-unit-of-life] }
+  - { n: 3, title: Tissues in Action, pdf: iesc103, leaves: [bio/tissues] }
   - n: 4
     title: Describing Motion Around Us
     pdf: iesc104
@@ -24,6 +24,6 @@ chapters:
   - { n: 8, title: Journey Inside the Atom, pdf: iesc108 }
   - { n: 9, title: Atomic Foundations of Matter, pdf: iesc109 }
   - { n: 10, title: "Sound Waves: Characteristics and Applications", pdf: iesc110 }
-  - { n: 11, title: "Reproduction: How Life Continues", pdf: iesc111 }
-  - { n: 12, title: "Patterns in Life: Diversity and Classification", pdf: iesc112 }
+  - { n: 11, title: "Reproduction: How Life Continues", pdf: iesc111, leaves: [bio/reproduction-in-plants, bio/human-reproduction] }
+  - { n: 12, title: "Patterns in Life: Diversity and Classification", pdf: iesc112, leaves: [bio/the-living-world, bio/biological-classification] }
   - { n: 13, title: "Earth as a System: Energy, Matter, and Life", pdf: iesc113 }
