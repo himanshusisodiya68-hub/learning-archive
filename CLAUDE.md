@@ -266,11 +266,17 @@ Scope for now: NCERT Class 10 (First Flight and Footprints Without Feet, prose c
 - **Reality filter:** there is no NCERT answer key for English, so every answer is a model answer. Author biographies, etymologies and the CBSE paper format and marks are labelled [Unverified].
 - **Known gaps:** the PDF text layer has no section headings, so labels in `num` (OC, TT, TL, SP, WR, RF, TA) are inferred. Some printed NCERT slips are copied as printed and flagged in the answer: Glimpses OC2 Q1 mismatched pairs, Midnight Visitor "Ausable" for Max. The italics that some Thinking about language items depend on (Mijbil TL II/III) are missing from the text layer. The 17 older lessons (16 grammar leaves and A Letter to God) still lack the opener, symbols and life fields and need the cheap retrofit pass (`docs/retrofit.md`).
 
+**Done: Maths › Class 10 Ch 1 Real Numbers and Ch 2 Polynomials (3 leaves, issue #5).** Not yet republished to the site artifact.
+- **Leaves:** `fundamental-theorem-of-arithmetic` and `irrational-numbers` (Ch 1), `polynomials` (Ch 2); each has a lesson from Class 10 to Olympiad and 25–28 problems.
+- **NCERT covered:** every example and exercise question of the 2026-27 reprint of Ch 1 (Ex 1.1–1.2, Examples 1–7, Theorems 1.2–1.3) and Ch 2 (Ex 2.1–2.2, Examples 1–5). The reprint has no Euclid's division algorithm or polynomial division sections (both promised in its introductions); the lessons teach them at depth 2–3.
+- **Olympiad material:** Paul Zeitz, *The Art and Craft of Problem Solving* (owner's Drive copy), §7.1, §2.3 and §5.4. Notes and the problems copied word for word are in `docs/refs/maths/`; adv/oly problems quote them with `source: Zeitz … Problem N.N.N`, with our own solutions.
+- **Known gaps:** the answer key has no entries for Ex 1.1 Q5–6 and Ex 1.2, so those solutions are ours; Ex 2.1 graph descriptions are ours (labelled); history dates and the Hardy & Wright reference are [Unverified].
+
 **Owner's direction (Oct 2026):** build Physics and Maths fully first (see `docs/content-principles.md` §0); CS gains Competitive programming and Interviews pillars as pattern catalogues.
 
 **Next, in order:**
 1. The owner chooses what comes next (Computer Science and English are done). Candidates: candidates are Thermal physics, Modern physics (photoelectric effect, atoms, nuclei, semiconductors; the EM-waves lesson points forward to it) or Mechanics revision. Class 10 Science Ch 13 and the restored Sources of Energy chapter still need the owner's PDF.
-2. Class 10 Maths, chapter by chapter (Constructions is restored after Circles).
+2. Class 10 Maths, chapter by chapter, from Ch 3 Pair of Linear Equations (Ch 1–2 done; Constructions is restored after Circles).
 3. Class 10 Chemistry and Biology chapters.
 4. Lower classes (6–9) fill in under the same leaves as their topics come up.
 
