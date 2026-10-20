@@ -1,0 +1,416 @@
+# Maths in life · Exponential growth: original problems (no NCERT chapter is mapped to this leaf).
+# Rates, populations and amounts are made up for practice ("suppose ..."); none is a claim about real data.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: Suppose a colony starts with 5,000 bacteria and the number doubles every 20 minutes. How many bacteria are there after 2 hours? (Original problem.)
+  ask: Number of bacteria
+  ans: 320000
+  tol: 0.5
+  verify: 5000*Math.pow(2,6)
+  sol: |
+    **Count the doublings.** 2 hours is 120 minutes, and $120/20 = 6$ doublings.
+
+    **Each doubling multiplies by 2**, so after 6 of them the number is multiplied by $2^6 = 64$:
+    $$5000 \times 64 = 3{,}20{,}000.$$
+
+    Step by step: $5000 \to 10000 \to 20000 \to 40000 \to 80000 \to 160000 \to 320000$.
+
+    Compare with linear growth: if the colony added 5,000 every 20 minutes, it would have only $5000 + 6 \times 5000 = 35000$. The doubling colony is nine times bigger after just two hours.
+  check: both
+
+- id: f2
+  lvl: found
+  kind: num
+  q: Suppose money grows at 8% per year, compounded yearly. Using the rule of 72, the doubling time is about 72/8 = 9 years. Find the exact doubling time, in years, to three decimals. (Original problem.)
+  ask: Exact doubling time
+  unit: years
+  ans: 9.006
+  tol: 0.001
+  verify: Math.log(2)/Math.log(1.08)
+  sol: |
+    We need $t$ with $1.08^t = 2$. Take logarithms of both sides: $t \ln 1.08 = \ln 2$, so
+    $$t = \frac{\ln 2}{\ln 1.08} = \frac{0.693147}{0.076961} \approx 9.006 \text{ years}.$$
+
+    The rule of 72 says $t \approx 72/r$ with $r$ in percent. It gives 9, which is excellent. Why 72? For small $r$, $\ln(1+r) \approx r$, so $t \approx \ln 2 / r = 69.3/r_\%$. People use 72 instead of 69.3 because it divides evenly by 2, 3, 4, 6, 8, 9, 12, and it corrects a little for the fact that $\ln(1+r)$ is slightly smaller than $r$ at rates of 6–10%.
+  check: both
+
+- id: f3
+  lvl: found
+  kind: num
+  q: A sample of 80 g of a radioactive substance has a half-life of 5 days. How much of it is left after 20 days? (Original problem.)
+  ask: Mass left
+  unit: g
+  ans: 5
+  tol: 0.001
+  verify: 80/Math.pow(2,4)
+  sol: |
+    **Half-life** is the time for half of the substance to decay, and it is the same no matter how much is left. 20 days is $20/5 = 4$ half-lives.
+
+    $80 \to 40 \to 20 \to 10 \to 5$ g, or $80 \times \left(\tfrac12\right)^4 = 5$ g.
+
+    This is **exponential decay**: growth with a factor below 1. The amount lost in each period gets smaller (40 g, then 20, 10, 5), because each time it is a fixed *fraction* of what remains. It never reaches exactly zero in this model.
+  check: both
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: |-
+    Offer A pays you ₹10,000 every day for 30 days. Offer B pays 1 paisa on day 1, 2 paise on day 2, 4 paise on day 3, and keeps doubling each day for 30 days. After 30 days, which gives more in total? (Original problem.)
+  opts: ["Offer A, because ₹10,000 a day is much more than a paisa a day", "Offer B, by a wide margin", "Both give almost the same", "Offer B only if the offer lasts more than 40 days"]
+  ans: 1
+  sol: |
+    Offer A gives $30 \times 10{,}000 = \text{₹}3{,}00{,}000$.
+
+    Offer B pays $2^{k-1}$ paise on day $k$, so the total over 30 days is the geometric sum $1 + 2 + 4 + \cdots + 2^{29} = 2^{30} - 1 = 1{,}07{,}37{,}41{,}823$ paise, which is about ₹1.07 crore.
+
+    So B wins by a factor of more than 30. Look at the early days to see why people choose A: for the first 2 weeks B pays under ₹82 in total ($2^{14}-1 = 16383$ paise = ₹163.83 through day 14). B's last-day payout alone is $2^{29}$ paise, about ₹53.7 lakh. This is "slow, then sudden": nearly all of the growth is crammed into the last few steps. Option 2.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A rumour spreads in a colony. Suppose the person who starts it tells 3 new people in the first hour. In every later hour, each person who heard it in the previous hour tells 3 people who have not heard it.
+
+    How many people (not counting the first person) have heard the rumour by the end of the 6th hour? (Original problem.)
+  ask: People who have heard it
+  ans: 1092
+  tol: 0.5
+  verify: (Math.pow(3,7)-3)/2
+  sol: |
+    New listeners in each hour: $3, 9, 27, 81, 243, 729$. Each hour's new hearers are three times the last hour's.
+
+    This is a geometric series with first term $3$ and ratio $3$. Its sum for 6 terms is
+    $$S = \frac{3(3^6 - 1)}{3 - 1} = \frac{3 \times 728}{2} = 1092.$$
+
+    Notice that the last hour alone (729) is more than the total of the first five hours (363). That pattern holds for any ratio above 2: the latest step is bigger than everything before it combined. It is why a rumour (or an infection, or a viral video) looks harmless for the first few hours and then seems to explode.
+
+    The model is idealised: in reality the colony runs out of people who have not heard it, and growth slows down.
+  check: both
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** Suppose a dose of 500 mg of a medicine is taken. The amount in the blood halves every 4 hours (the half-life is 4 hours). Find the amount left in the blood 10 hours after the dose, in mg, to two decimals. (Original problem.)
+  ask: Amount left
+  unit: mg
+  ans: 88.39
+  tol: 0.01
+  verify: 500*Math.pow(0.5,2.5)
+  sol: |
+    10 hours is $10/4 = 2.5$ half-lives. The amount is
+    $$A = 500 \times \left(\tfrac12\right)^{2.5}.$$
+
+    Two half-lives bring it to $500/4 = 125$ mg. The extra half half-life multiplies by $\left(\tfrac12\right)^{0.5} = \dfrac{1}{\sqrt 2} \approx 0.7071$, so $125 \times 0.7071 \approx 88.39$ mg.
+
+    Check it sits between the two whole-number answers: after 8 hours 125 mg, after 12 hours 62.5 mg, and 88.39 is between them, closer to 125 as it should be.
+
+    [Inference] Real drugs do not always follow a single half-life; this is the simplified exponential-decay model.
+  check: both
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A town had a population of 40,000 in 2010 and 52,000 in 2020. Suppose it grew by the same percentage each year. Find that yearly growth rate, in percent, to two decimals. (Original problem.)
+  ask: Yearly growth rate
+  unit: "%"
+  ans: 2.66
+  tol: 0.01
+  verify: (Math.pow(52000/40000,0.1)-1)*100
+  sol: |
+    Over 10 years the population was multiplied by $\dfrac{52000}{40000} = 1.3$. If each year multiplies by the same factor $g$, then $g^{10} = 1.3$.
+
+    Take the 10th root: $g = 1.3^{0.1} = e^{\ln(1.3)/10} = e^{0.026236} \approx 1.02658$.
+
+    So the growth is about $2.66\%$ a year.
+
+    **A trap:** $30\%$ over 10 years is **not** $3\%$ a year. At $3\%$ a year the town would reach $40000 \times 1.03^{10} \approx 53{,}757$, which is more than 52,000, because growth compounds: each year's growth is on a larger population than the year before.
+  check: both
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: |-
+    **Assertion (A):** In exponential growth, the amount added in each step gets larger and larger.
+    **Reason (R):** In exponential growth, each step adds a fixed percentage of the amount present at that time.
+
+    Choose the correct option. (Original problem.)
+  opts: ["Both A and R are true, and R is the correct explanation of A.", "Both A and R are true, but R is not the correct explanation of A.", "A is true but R is false.", "A is false but R is true."]
+  ans: 0
+  sol: |
+    In exponential growth, $x_{n+1} = (1+r)\,x_n$, so the amount added in step $n$ is $r\,x_n$, a fixed percentage $r$ of the current amount (R is true).
+
+    Because $x_n$ itself keeps rising, $r\,x_n$ rises too. So the additions grow (A is true) and this is *because of* R. Compare linear growth, where the same amount is added every step.
+
+    Option 1.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: A lily patch on a pond doubles in area every day and covers the whole pond on day 30. If the pond starts with 4 patches of the same size (instead of 1), on which day does the pond get fully covered? (Original problem.)
+  ask: Day on which the pond is covered
+  ans: 28
+  tol: 0.001
+  verify: 30-Math.log2(4)
+  sol: |
+    Four patches are the same as one patch that has already doubled twice ($1 \to 2 \to 4$). Those two doublings take two days off the clock, so the pond is covered 2 days earlier: day $30 - 2 = 28$.
+
+    Using the formula: area on day $d$ is $4 \times 2^{d}$ units (in units of one patch), and the pond area is $2^{30}$. So $4 \cdot 2^d = 2^{30}$, i.e. $2^{d+2} = 2^{30}$, so $d = 28$.
+
+    **Related question:** on which day was the pond half covered? Day 29. On day 25 it was only $1/32$ covered, about $3\%$: it looked like almost nothing, yet 5 days later it was full. That is "slow, then sudden".
+  check: both
+
+- id: m2
+  lvl: main
+  kind: num
+  q: At what rate of compound interest per year (compounded yearly) will a sum of money triple in 10 years? Give the rate in percent, to two decimals. (Original problem.)
+  ask: Rate
+  unit: "%"
+  ans: 11.61
+  tol: 0.01
+  verify: (Math.pow(3,0.1)-1)*100
+  sol: |
+    We need $(1+r)^{10} = 3$. Take the 10th root: $1 + r = 3^{1/10} = e^{\ln 3 / 10} = e^{0.109861} \approx 1.11612$.
+
+    So $r \approx 11.61\%$.
+
+    **Quick check with the rule of 72.** Tripling takes about $\ln 3 / \ln 2 \approx 1.585$ doublings. If one doubling takes $72/r$ years, tripling takes about $1.585 \times 72/r = 114/r$ years. Setting $114/r = 10$ gives $r \approx 11.4\%$, close to the exact $11.61\%$.
+  check: both
+
+- id: m3
+  lvl: main
+  kind: num
+  q: |-
+    The amount of radioactive carbon-14 in a dead sample halves every 5,730 years (take this as the half-life). A sample has 12.5% of the carbon-14 it had when it died. How old is the sample, in years? (Original problem.)
+  ask: Age of the sample
+  unit: years
+  ans: 17190
+  tol: 1
+  verify: 5730*Math.log(1/0.125)/Math.log(2)
+  sol: |
+    $12.5\% = \tfrac18 = \left(\tfrac12\right)^3$, so exactly 3 half-lives have passed.
+
+    Age $= 3 \times 5730 = 17190$ years.
+
+    If the remaining fraction were not a neat power of $\tfrac12$ (say $30\%$), you would solve $\left(\tfrac12\right)^{t/5730} = 0.30$, giving $t = 5730 \times \dfrac{\ln(1/0.30)}{\ln 2} \approx 9{,}950$ years. The same logarithm formula gives 3 half-lives when the fraction is $\tfrac18$.
+
+    [Inference] In practice radiocarbon dates are calibrated against other records, so this is the textbook model only.
+  check: both
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |-
+    A sheet of paper 0.1 mm thick is folded in half, then in half again, and so on, 42 times. In an ideal world where the paper could be folded that often, how thick is the pile? Give the thickness in km. (Original problem.)
+  ask: Thickness
+  unit: km
+  ans: 439805
+  tol: 5
+  verify: 0.1e-3*Math.pow(2,42)/1000
+  sol: |
+    Each fold doubles the number of layers, so after 42 folds there are $2^{42}$ layers, each 0.1 mm $= 10^{-4}$ m thick.
+
+    $2^{42} = 4{,}398{,}046{,}511{,}104 \approx 4.4 \times 10^{12}$. So the thickness is $4.4 \times 10^{12} \times 10^{-4} = 4.4 \times 10^8$ m, which is $4.4 \times 10^5$ km, about 4,40,000 km.
+
+    The Earth-to-Moon distance is about $3.8 \times 10^5$ km [Unverified: round figure], so 42 folds would reach slightly past the Moon. Meanwhile after 7 folds the pile is only $2^7 \times 0.1 = 12.8$ mm thick, hardly more than a finger. The first half of the folds give almost nothing; the last few do all the work.
+
+    (Real paper cannot be folded anywhere near this many times, because the fold itself uses up length. This is a thought experiment about powers of 2.)
+  check: both
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |-
+    Suppose ₹1,00,000 is invested for 10 years at a nominal rate of 12% a year. Bank P compounds yearly; Bank Q compounds continuously. How many rupees more does Bank Q pay at the end? Give the answer to the nearest rupee. (Original problem.)
+  ask: Extra amount from continuous compounding
+  unit: ₹
+  ans: 21427
+  tol: 1
+  verify: 1e5*exp(1.2)-1e5*pow(1.12,10)
+  sol: |
+    **Yearly.** $A_P = 100000 \times 1.12^{10}$. Since $1.12^{10} = 3.10585$, $A_P \approx$ ₹3,10,585.
+
+    **Continuously.** Compounding $n$ times a year gives $(1 + 0.12/n)^{10n}$, which tends to $e^{0.12 \times 10} = e^{1.2}$ as $n \to \infty$. So $A_Q = 100000\,e^{1.2} \approx 100000 \times 3.32012$ = ₹3,32,012.
+
+    **Difference:** $332012 - 310585 \approx$ ₹21,427.
+
+    Another way to see it: continuous 12% equals a yearly factor $e^{0.12} = 1.12750$, that is 12.75% compounded yearly. The extra 0.75% a year, compounded over 10 years, is worth about ₹21,000. Doubling-time check: at 12% continuous, $T_2 = 0.693/0.12 = 5.78$ years, so 10 years is $1.73$ doublings, a factor $2^{1.73} \approx 3.32$, as found.
+  check: both
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |-
+    For yearly compounding at rate $r$ (a decimal), the exact doubling time is $T = \dfrac{\ln 2}{\ln(1+r)}$ years, while the rule of 72 gives $\dfrac{0.72}{r}$ years. At exactly one rate between 1% and 20% the two agree. Find that rate in per cent, to two decimals. (Original problem.)
+  ask: Rate at which the rule of 72 is exact
+  unit: "%"
+  ans: 7.85
+  tol: 0.01
+  verify: (()=>{let lo=0.01,hi=0.08;for(let i=0;i<60;i++){const m=(lo+hi)/2;if(log(2)/log(1+m)>0.72/m)hi=m;else lo=m;}return lo*100})()
+  sol: |
+    We need $0.72\,\ln(1+r) = r\ln 2$. Call the difference $f(r) = 0.72\ln(1+r) - r\ln 2$.
+
+    **A first estimate.** The lesson's approximation $T \approx \dfrac{0.693}{r} + 0.347$ (from $\ln(1+r) \approx r - r^2/2$) agrees with $0.72/r$ when $\dfrac{0.72 - 0.6931}{r} = 0.3466$, i.e. $r \approx 0.0775$. The neglected higher terms shift the root slightly, so check nearby values exactly.
+
+    **Pin it down by trial.**
+    - $r = 0.078$: $0.72\ln 1.078 = 0.054077$ and $0.078\ln 2 = 0.054065$, so $f = +0.000012$.
+    - $r = 0.079$: $0.72\ln 1.079 = 0.054745$ and $0.079\ln 2 = 0.054759$, so $f = -0.000014$.
+
+    Interpolating, $r \approx 0.078 + 0.001 \times \dfrac{12}{12 + 14} \approx 0.07846$.
+
+    So the rule of 72 is exact at about $7.85\%$. Below that rate it slightly overestimates the doubling time (at 2%: 36 against 35.0 years); above it, it underestimates (at 18%: 4 against 4.19). This is why 72 suits everyday rates of about 6–10% so well.
+  check: both
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |-
+    In a town of 10,000 people, 10 people know a piece of news at time $t = 0$. Suppose the number $N$ who know it grows logistically, $\dfrac{dN}{dt} = kN\left(1 - \dfrac{N}{10000}\right)$ with $k = 1$ per day. After how many days does half the town know the news? Give the answer to two decimals. (Original problem.)
+  ask: Time until half the town knows
+  unit: days
+  ans: 6.91
+  tol: 0.01
+  verify: log(999)/1
+  sol: |
+    The logistic equation has the solution
+    $$N(t) = \frac{K}{1 + A e^{-kt}}, \qquad A = \frac{K - N_0}{N_0}.$$
+    (Check: at $t = 0$, $N = K/(1 + A) = K N_0 / K = N_0$.)
+
+    Here $K = 10000$, $N_0 = 10$, so $A = 9990/10 = 999$.
+
+    $N = K/2$ when $1 + A e^{-kt} = 2$, i.e. $e^{-kt} = 1/A$, so
+    $$t = \frac{\ln A}{k} = \ln 999 \approx 6.91 \text{ days}.$$
+
+    **Why this moment matters.** The spreading rate $kN(1 - N/K)$ is largest at $N = K/2$, where it equals $kK/4 = 2500$ people a day. So day 6.9 is both the halfway point and the busiest day; after it, each day brings fewer new hearers.
+
+    **Comparison.** Pure exponential growth $10e^{t}$ would reach 5,000 at $t = \ln 500 \approx 6.21$ days, a little earlier, because it ignores that half the people already reached cannot be told again. Early on the two models are almost the same; they part ways as the town fills up.
+  check: both
+
+- id: a4
+  lvl: adv
+  kind: num
+  q: |-
+    A patient takes a 200 mg tablet every 6 hours for many days. Suppose the medicine leaves the blood exponentially with a half-life of 8 hours, and each tablet enters the blood at once. In the long run, how much medicine (in mg) is in the blood just after a tablet is taken? Give the answer to one decimal. (Original problem.)
+  ask: Long-run amount just after a dose
+  unit: mg
+  ans: 493.3
+  tol: 0.1
+  verify: 200/(1-pow(0.5,0.75))
+  sol: |
+    **Decay factor between doses.** 6 hours is $6/8 = 0.75$ half-lives, so each 6-hour gap multiplies the amount by
+    $$f = \left(\tfrac12\right)^{0.75} \approx 0.5946.$$
+
+    **Build the long-run level.** Just after the $n$-th tablet the blood holds the new 200 mg plus what is left of the earlier ones:
+    $$200 + 200f + 200f^2 + \cdots + 200f^{\,n-1}.$$
+    This is a geometric series. As $n$ grows it approaches
+    $$\frac{200}{1 - f} = \frac{200}{0.4054} \approx 493.3 \text{ mg}.$$
+
+    **Check with a steady-state argument.** In the long run the level after a dose, $P$, must repeat: $P = fP + 200$, so $P = 200/(1-f)$, the same answer. Just before the next tablet the level is $fP \approx 293.3$ mg.
+
+    The level climbs towards this ceiling, closing a fixed fraction of the remaining gap each dose, which is itself an exponential approach. [Inference] Real drugs need not follow a single half-life; this is the simple textbook model, and dosing decisions belong to a doctor.
+  check: both
+
+- id: o1
+  lvl: oly
+  kind: proof
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 2.2.35(b)
+  q: |-
+    Let t(n) be the maximum number of different areas that you can divide a circle into when you place n points on the circumference and draw all the possible line segments connecting the points. It is easy to check (verify!) that t(1) = 1, t(2) = 2, t(3) = 4, t(4) = 8, t(5) = 16. The conjecture that t(n) = 2^(n−1) is practically inescapable. Yet t(6) is equal to 31, not 32 (again, verify!), so something else is going on. Anyway, can you deduce the correct formula for t(n)?
+  hints: ["Draw the chords one at a time. If a new chord crosses k chords already drawn, at k different points, how many new regions does it make?", "Two chords cross inside the circle exactly when their four endpoints alternate around the circle. How many crossing pairs do four points on a circle give?", "Write the answer as a sum of binomial coefficients and compare it with the expansion of 2^(n−1) by Pascal's rule."]
+  sol: |
+    **Answer:** $t(n) = 1 + \dbinom{n}{2} + \dbinom{n}{4}$.
+
+    **Step 1: each chord adds one more region than it has crossings.** Start with the empty disc: 1 region. Draw the chords one by one. Suppose a new chord crosses $k$ chords already drawn, at $k$ different interior points. These points cut it into $k + 1$ pieces, and each piece runs through one existing region and splits it in two. So the count rises by exactly $k + 1$.
+
+    Adding over all chords, the number of regions is
+    $$1 + (\text{number of chords}) + (\text{number of crossing points}),$$
+    because each crossing point is counted once, when the second of its two chords is drawn.
+
+    **Step 2: count chords and crossings.** There are $\binom{n}{2}$ chords. Two chords cross inside the circle exactly when their four endpoints alternate around the circle. Any 4 of the points form a convex quadrilateral, whose two diagonals cross once and whose other pairs of sides do not. So each set of 4 points gives exactly one crossing, and if no three chords pass through one point, all these crossings are different: $\binom{n}{4}$ crossing points.
+
+    If three or more chords did meet at one point, crossings would merge and Step 1 would give fewer regions. So the maximum is reached when no three chords are concurrent (which a slight shift of the points always achieves), and
+    $$t(n) = 1 + \binom n2 + \binom n4.$$
+
+    **Check:** $t(5) = 1 + 10 + 5 = 16$, $t(6) = 1 + 15 + 15 = 31$, $t(10) = 1 + 45 + 210 = 256$.
+
+    **Why the doubling pattern fooled everyone.** By Pascal's rule $\binom{n}{2} = \binom{n-1}{1} + \binom{n-1}{2}$ and $\binom n4 = \binom{n-1}{3} + \binom{n-1}{4}$, so
+    $$t(n) = \binom{n-1}{0} + \binom{n-1}{1} + \binom{n-1}{2} + \binom{n-1}{3} + \binom{n-1}{4}.$$
+    Meanwhile $2^{n-1}$ is the sum of *all* the $\binom{n-1}{j}$. For $n \le 5$ the five terms above are all of them, so $t(n) = 2^{n-1}$ exactly; from $n = 6$ on the terms $j \ge 5$ are missing. So $t(n)$ is really a polynomial of degree 4 (about $n^4/24$), and like every polynomial it falls far behind the exponential $2^{n-1}$. The lesson: five cases of doubling were not evidence of a doubling mechanism.
+  check: none
+
+- id: o2
+  lvl: oly
+  kind: proof
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 2.3.33
+  q: |-
+    Prove Bernoulli's Inequality, which states that if x > −1, x ≠ 0 and n is a positive integer greater than 1, then (1 + x)^n > 1 + nx.
+  hints: ["Use induction on n, starting at n = 2.", "In the inductive step multiply both sides of (1 + x)^n > 1 + nx by 1 + x. Why is that allowed?", "Expand (1 + nx)(1 + x) and look at the leftover term."]
+  sol: |
+    **Induction on $n \ge 2$.**
+
+    **Base case $n = 2$.** $(1+x)^2 = 1 + 2x + x^2 > 1 + 2x$, because $x \ne 0$ makes $x^2 > 0$.
+
+    **Inductive step.** Suppose $(1+x)^n > 1 + nx$ for some $n \ge 2$. Since $x > -1$, the number $1 + x$ is positive, so multiplying both sides by it keeps the inequality the same way round:
+    $$(1+x)^{n+1} > (1 + nx)(1 + x) = 1 + (n+1)x + nx^2.$$
+    As $n \ge 2$ and $x \ne 0$, $nx^2 > 0$, so $(1+x)^{n+1} > 1 + (n+1)x$. This is the statement for $n + 1$, and by induction it holds for every integer $n \ge 2$.
+
+    **Where each condition is used.** $x > -1$ is needed so that $1 + x > 0$ in the multiplication. Without it the result can fail: $x = -3$, $n = 3$ gives $(1+x)^3 = (-2)^3 = -8$, which is not greater than $1 + 3x = -8$. $x \ne 0$ is needed for strict inequality (at $x = 0$ both sides equal 1).
+
+    **Meaning in money terms.** With $x = r > 0$ the interest rate, $(1 + r)^n$ is the compound-interest factor and $1 + nr$ the simple-interest factor: compounding always pays strictly more after two or more periods. With $x = -d$ (a loss of $d$ per period, $0 < d < 1$), $(1 - d)^n > 1 - nd$: repeated percentage losses always leave more than the same losses taken off the original amount each time.
+  check: none
+
+- id: o3
+  lvl: oly
+  kind: num
+  q: |-
+    Find the least integer $n \ge 2$ for which $2^n > n^{10}$, and prove that $2^n > n^{10}$ for every larger integer as well. (Original problem.)
+  ask: Least n
+  ans: 59
+  tol: 0.001
+  verify: (()=>{let n=2;while(pow(2,n)<=pow(n,10))n++;return n})()
+  sol: |
+    Take logarithms to base 2: $2^n > n^{10}$ exactly when $g(n) = n - 10\log_2 n > 0$.
+
+    **Shape of $g$.** Treat $g(x) = x - 10\log_2 x$ as a function of a real $x > 0$. Its derivative $1 - \dfrac{10}{x\ln 2}$ is negative for $x < 10/\ln 2 \approx 14.43$ and positive after, so $g$ falls to a minimum near 14.4 and then rises for ever. Also $-10\log_2 x$ is convex, so $g$ is convex.
+
+    **Values at the ends.**
+    - $g(2) = 2 - 10 = -8 < 0$.
+    - $g(58) = 58 - 10\log_2 58 = 58 - 58.58 < 0$, since $\log_2 58 \approx 5.8580$.
+    - $g(59) = 59 - 10\log_2 59 = 59 - 58.83 > 0$, since $\log_2 59 \approx 5.8826$.
+
+    A convex function on an interval is never above the larger of its two end values, so $g < 0$ on all of $[2, 58]$: no $n$ from 2 to 58 works. At $n = 59$ it does: $2^{59} \approx 5.76 \times 10^{17}$ against $59^{10} \approx 5.11 \times 10^{17}$. For $n > 59$, $g$ is increasing (we are past 14.4), so $g(n) > g(59) > 0$.
+
+    **The same proof by step ratios.** For $n \ge 59$, going to $n + 1$ multiplies $n^{10}$ by $(1 + 1/n)^{10} \le (60/59)^{10} \approx 1.18$, but multiplies $2^n$ by 2. So once $2^n$ is ahead at $n = 59$, it gains at least a factor $2/1.18$ every step and stays ahead for ever.
+
+    **Answer:** $n = 59$. (At $n = 1$ the inequality $2 > 1$ also holds, which is why the problem starts at 2.)
+  check: both
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: |-
+    Find the least positive integer $n$ such that $n! > 100^n$. You may use Stirling's formula with its error bound: $\ln n! = n\ln n - n + \tfrac12\ln(2\pi n) + \dfrac{\theta}{12n}$ for some $0 < \theta < 1$. (Original problem.)
+  ask: Least n
+  ans: 269
+  tol: 0.001
+  verify: (()=>{let s=0,n=0;do{n++;s+=log(n);}while(s<=n*log(100));return n})()
+  sol: |
+    Let $f(n) = \ln n! - n\ln 100$. We want the first $n$ with $f(n) > 0$.
+
+    **How $f$ moves.** $f(n+1) - f(n) = \ln(n+1) - \ln 100$. So $f$ decreases while $n + 1 < 100$ and increases once $n + 1 > 100$. Since $f(1) = -\ln 100 < 0$, $f$ stays negative all the way down to $n = 99$, and then climbs. The answer is the first $n > 99$ where the climb crosses zero; after that $f$ keeps rising, because each step multiplies $n!$ by $n + 1 > 100$.
+
+    **Locate the crossing.** Ignoring the small terms, $n\ln n - n \approx n\ln 100$ gives $\ln n \approx 1 + \ln 100 = 5.605$, so $n \approx e^{5.605} \approx 272$. The term $\tfrac12\ln(2\pi n) \approx 3.7$ pulls the crossing a little earlier, so test $n = 268$ and $269$ carefully.
+
+    **$n = 268$.** $268\ln 268 = 1498.3845$; subtract 268 to get $1230.3845$; add $\tfrac12\ln(2\pi \cdot 268) = 3.7144$ to get $1234.0989$. The error term is less than $1/(12 \cdot 268) < 0.0004$, so $\ln 268! < 1234.0993$. But $268\ln 100 = 1234.1856$. So $f(268) < -0.086 < 0$.
+
+    **$n = 269$.** $269\ln 269 = 1504.9774$; subtract 269 and add $\tfrac12\ln(2\pi\cdot 269) = 3.7163$ to get $\ln 269! > 1239.6937$, against $269\ln 100 = 1238.7908$. So $f(269) > 0.90 > 0$.
+
+    In base 10: $268! \approx 10^{535.96} < 10^{536} = 100^{268}$, while $269! \approx 10^{538.39} > 10^{538} = 100^{269}$.
+
+    **Answer:** $n = 269$. Even against base 100, the factorial wins, and from then on it wins by more every step: the factorial's step factor $n + 1$ grows without limit while the exponential's stays at 100.
+  check: both

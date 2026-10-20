@@ -1,0 +1,411 @@
+# Maths in life · Expected value: original problems (no NCERT chapter is mapped to this leaf).
+# Prizes, premiums and probabilities are made up for practice ("suppose ..."); none is a claim about any real lottery, insurer or product.
+
+- id: f1
+  lvl: found
+  kind: num
+  q: A fair six-faced die is rolled once and you win as many rupees as the number that shows. What is the expected winning in ₹? (Original problem.)
+  ask: Expected winning
+  unit: ₹
+  ans: 3.5
+  tol: 0.001
+  verify: (1+2+3+4+5+6)/6
+  sol: |
+    **Expected value** is the average per play over a very large number of plays: multiply each outcome by its probability, then add.
+
+    $$E = 1 \cdot \tfrac16 + 2 \cdot \tfrac16 + \cdots + 6 \cdot \tfrac16 = \frac{21}{6} = 3.5.$$
+
+    Notice that you can never win exactly ₹3.5 on one roll. Expected value is not a value you will see, it is a long-run average: after 1,000 rolls you would have won about ₹3,500.
+  check: both
+
+- id: f2
+  lvl: found
+  kind: num
+  q: A game costs ₹10 to play. You roll a fair die and win ₹30 if a 6 shows, and nothing otherwise. What is your expected profit per game, in ₹? (Original problem.)
+  ask: Expected profit
+  unit: ₹
+  ans: -5
+  tol: 0.001
+  verify: 30/6-10
+  sol: |
+    **Expected prize:** $30 \times \tfrac16 + 0 \times \tfrac56 = \text{₹}5$.
+
+    **Expected profit** = expected prize $-$ price $= 5 - 10 = -\text{₹}5$.
+
+    On average you lose ₹5 every time you play. The **fair price** of this game (the price at which the expected profit is zero) is ₹5. At ₹10, the person running the game keeps ₹5 per play on average.
+  check: both
+
+- id: f3
+  lvl: found
+  kind: num
+  q: |-
+    A lottery sells 10,000 tickets. There is one first prize of ₹20,000 and ten second prizes of ₹1,000 each. What is the fair price of one ticket, in ₹? (Original problem.)
+  ask: Fair price of a ticket
+  unit: ₹
+  ans: 3
+  tol: 0.001
+  verify: (20000+10*1000)/10000
+  sol: |
+    Total prize money $= 20000 + 10 \times 1000 = \text{₹}30{,}000$, shared over 10,000 tickets.
+
+    A single ticket wins ₹20,000 with probability $\dfrac{1}{10000}$, ₹1,000 with probability $\dfrac{10}{10000}$, and nothing otherwise:
+    $$E = 20000 \cdot \frac{1}{10000} + 1000 \cdot \frac{10}{10000} = 2 + 1 = ₹3.$$
+
+    So the fair price is ₹3. If the lottery charges ₹10 a ticket, the organisers collect ₹1,00,000 and pay out ₹30,000, keeping ₹70,000. A ticket at ₹10 has an expected loss of ₹7. People still buy tickets because the chance of a big prize is exciting, not because the average favours them.
+  check: both
+
+- id: f4
+  lvl: found
+  kind: mcq
+  q: |-
+    A fair coin is tossed once. If heads, you win ₹2. If tails, you lose ₹1. What is your expected gain per toss? (Original problem.)
+  opts: ["-₹0.50", "₹0", "₹0.50", "₹1"]
+  ans: 2
+  sol: |
+    $E = 2 \times \tfrac12 + (-1) \times \tfrac12 = 1 - 0.5 = \text{₹}0.50$. Option 3.
+
+    Losses count as negative values. A common slip is to treat "lose ₹1" as $+1$ or to forget the loss altogether (giving ₹1, the last option). Option 2 would be right only if the game were fair, which would need heads to pay ₹1.
+  check: none
+
+- id: b1
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** Suppose a phone insurance plan costs ₹1,200 a year. Suppose there is a 5% chance in a year that the phone is damaged and needs a repair costing ₹15,000 (the insurer pays the full repair). Find the expected repair cost for a person with no insurance, in ₹. (Original problem.)
+  ask: Expected repair cost per year
+  unit: ₹
+  ans: 750
+  tol: 0.5
+  verify: 0.05*15000
+  sol: |
+    With probability $0.05$ you pay ₹15,000, otherwise ₹0:
+    $$E = 0.05 \times 15000 + 0.95 \times 0 = ₹750.$$
+
+    The plan costs ₹1,200, so on average the buyer pays ₹450 more than the expected repair cost: that ₹450 pays for the insurer's costs and profit. By expected value alone, the insurance is a bad deal.
+
+    **Why insure anyway?** If the phone breaks, a ₹15,000 bill might hurt badly; the plan swaps an unpredictable cost (₹0 or ₹15,000) for a fixed ₹1,200. You accept a small loss on average in return for removing a risk you cannot afford. Expected value tells you the average, but it does not tell you how much a bad year would hurt.
+  check: both
+
+- id: b2
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** A Diwali scratch card costs ₹50. Suppose the prizes are: ₹500 with probability 0.05, ₹100 with probability 0.10, ₹10 with probability 0.30, and nothing otherwise. Find the expected net gain per card (prize minus price), in ₹. (Original problem.)
+  ask: Expected net gain
+  unit: ₹
+  ans: -12
+  tol: 0.001
+  verify: 500*0.05+100*0.10+10*0.30-50
+  sol: |
+    **Expected prize:** $500 \times 0.05 + 100 \times 0.10 + 10 \times 0.30 + 0 \times 0.55 = 25 + 10 + 3 = \text{₹}38$.
+
+    **Expected net gain:** $38 - 50 = -\text{₹}12$.
+
+    So the card is worth ₹38 on average and costs ₹50. The "chance of winning something" is $0.05 + 0.10 + 0.30 = 45\%$, which sounds good, but it includes the ₹10 prize, which is less than the price of the card. Always compare the prize with the price, not just count the winning cards.
+  check: both
+
+- id: b3
+  lvl: board
+  kind: num
+  q: |-
+    **Case study.** Game A: you win ₹100 with probability 1/2 and ₹0 otherwise. Game B: you get ₹50 for sure. Both have the same expected value, ₹50. Find the variance of the winnings in Game A, in ₹². (Original problem.)
+  ask: Variance of Game A
+  unit: ₹²
+  ans: 2500
+  tol: 0.001
+  verify: 0.5*Math.pow(100-50,2)+0.5*Math.pow(0-50,2)
+  sol: |
+    **Variance** measures how far the outcomes typically sit from the expected value: $\text{Var} = E\left[(X - \mu)^2\right]$, where $\mu$ is the expected value.
+
+    For Game A, $\mu = 50$. The two outcomes are $50$ above and $50$ below, each with probability $\tfrac12$:
+    $$\text{Var} = \tfrac12 (100 - 50)^2 + \tfrac12 (0 - 50)^2 = \tfrac12(2500) + \tfrac12(2500) = 2500.$$
+
+    The standard deviation is $\sqrt{2500} = \text{₹}50$. For Game B, the variance is $0$.
+
+    **Reading it:** same average, different **risk**. Someone who needs ₹50 for sure (a bus fare home) prefers B; someone who enjoys a gamble may like A. Variance is the number that captures this difference.
+  check: both
+
+- id: b4
+  lvl: board
+  kind: mcq
+  q: |-
+    **Assertion (A):** Buying an extended warranty whose price is more than the expected repair cost can still be a sensible decision.
+    **Reason (R):** The warranty removes the risk of one very large, unplanned expense, and some people value that certainty above the small average loss.
+
+    Choose the correct option. (Original problem.)
+  opts: ["Both A and R are true, and R is the correct explanation of A.", "Both A and R are true, but R is not the correct explanation of A.", "A is true but R is false.", "A is false but R is true."]
+  ans: 0
+  sol: |
+    Expected value compares averages. A warranty priced above the expected repair cost loses a little on average, but it turns an uncertain big cost into a small fixed one: it reduces variance. If a large repair would seriously hurt your budget, paying a small premium for peace of mind can be the right choice (A is true), and R states precisely why. Option 1.
+
+    The counter-case: if you could comfortably pay for a repair from savings, and you buy many such policies over the years, you would on average lose money. Then declining is better.
+  check: none
+
+- id: m1
+  lvl: main
+  kind: num
+  q: Two fair dice are rolled and you win, in rupees, the larger of the two numbers shown (if both are equal, that number). What is the expected winning, in ₹, to two decimals? (Original problem.)
+  ask: Expected winning
+  unit: ₹
+  ans: 4.47
+  tol: 0.01
+  verify: (1*1+2*3+3*5+4*7+5*9+6*11)/36
+  sol: |
+    There are 36 equally likely pairs. Count the pairs whose maximum is $k$. Both dice are at most $k$ in $k^2$ pairs, and both are at most $k-1$ in $(k-1)^2$ pairs, so the maximum equals $k$ in $k^2 - (k-1)^2 = 2k - 1$ pairs:
+
+    | max | 1 | 2 | 3 | 4 | 5 | 6 |
+    |---|---|---|---|---|---|---|
+    | pairs | 1 | 3 | 5 | 7 | 9 | 11 |
+
+    The counts add to $36$. Then
+    $$E = \frac{1 \cdot 1 + 2 \cdot 3 + 3 \cdot 5 + 4 \cdot 7 + 5 \cdot 9 + 6 \cdot 11}{36} = \frac{161}{36} \approx 4.47.$$
+
+    Sanity check: one die averages 3.5, and the larger of two dice must average more than that. 4.47 does.
+  check: both
+
+- id: m2
+  lvl: main
+  kind: num
+  q: |-
+    A bag holds 3 red and 2 blue balls. Two balls are drawn at random without replacement. You win ₹10 for each red ball drawn. What is the expected winning, in ₹? (Original problem.)
+  ask: Expected winning
+  unit: ₹
+  ans: 12
+  tol: 0.001
+  verify: 10*2*3/5
+  sol: |
+    **Use linearity of expectation.** Let $X_1$ be 1 if the first ball is red and 0 otherwise, and $X_2$ the same for the second ball. The number of red balls is $X_1 + X_2$, and expectations add, even when the two draws depend on each other.
+
+    $P(\text{first is red}) = \tfrac35$. For the second ball, by symmetry, $P(\text{second is red}) = \tfrac35$ also (before the first ball is seen, every position in the sequence is equally likely to hold a red ball).
+
+    Expected reds $= \tfrac35 + \tfrac35 = 1.2$, so expected winning $= 10 \times 1.2 = \text{₹}12$.
+
+    **Check by the long way.** $P(0 \text{ red}) = \tfrac{2}{5}\cdot\tfrac14 = 0.1$, $P(2 \text{ red}) = \tfrac35\cdot\tfrac24 = 0.3$, so $P(1 \text{ red}) = 0.6$. Then $E = 10(0.6) + 20(0.3) = 6 + 6 = \text{₹}12$.
+  check: both
+
+- id: m3
+  lvl: main
+  kind: num
+  q: A fair die is rolled once. Let X be the number that shows. Find the variance of X, to three decimals. (Original problem.)
+  ask: Variance of X
+  ans: 2.917
+  tol: 0.001
+  verify: (1+4+9+16+25+36)/6-Math.pow(3.5,2)
+  sol: |
+    Use $\text{Var}(X) = E[X^2] - (E[X])^2$.
+
+    $E[X] = 3.5$. $E[X^2] = \dfrac{1 + 4 + 9 + 16 + 25 + 36}{6} = \dfrac{91}{6} \approx 15.1667$.
+
+    $\text{Var}(X) = \dfrac{91}{6} - \dfrac{49}{4} = \dfrac{182 - 147}{12} = \dfrac{35}{12} \approx 2.917.$
+
+    The standard deviation is about $1.71$. A typical roll is about 1.7 away from the average of 3.5, which matches the picture: outcomes spread evenly from 1 to 6.
+  check: both
+
+- id: m4
+  lvl: main
+  kind: num
+  q: |-
+    Suppose a game has you stake all your money in each round. With probability 1/2 your money triples, and with probability 1/2 you lose everything. You play 10 rounds in a row, staking everything each time (if you lose everything, you stay at zero). By what factor does your starting money grow in expectation after 10 rounds? Give the factor to two decimals. (Original problem.)
+  ask: Expected multiple of starting money
+  unit: times
+  ans: 57.67
+  tol: 0.01
+  verify: Math.pow(1.5,10)
+  sol: |
+    **One round.** Expected multiple $= \tfrac12 \times 3 + \tfrac12 \times 0 = 1.5$.
+
+    **Ten rounds.** Each round multiplies your expected money by $1.5$, and the rounds are independent, so the expected multiple is $1.5^{10} \approx 57.67$. On paper, the game looks wonderful: your money grows 58-fold on average.
+
+    **Why expected value misleads here.** To have *any* money left after 10 rounds you must win all 10, which has probability $\left(\tfrac12\right)^{10} = \tfrac{1}{1024}$, about $0.1\%$. With that tiny chance you end with $3^{10} = 59049$ times your start; the other $1023$ times out of $1024$ you have nothing. The average of 57.67 is entirely made up of that one very rare, very large win.
+
+    So a player who cares about **not going bankrupt** should refuse this game, even though its expected value is huge. Expected value is the right guide when you play many independent rounds and can survive the bad ones. It is the wrong guide when one bad outcome ends the game (ruin), or when you can play only once.
+  check: both
+
+- id: a1
+  lvl: adv
+  kind: num
+  q: |-
+    A fair die is rolled again and again until every face from 1 to 6 has appeared at least once. What is the expected number of rolls? (Original problem.)
+  ask: Expected number of rolls
+  unit: rolls
+  ans: 14.7
+  tol: 0.01
+  verify: 6*(1+1/2+1/3+1/4+1/5+1/6)
+  sol: |
+    **Split the wait into stages** and add the stages by linearity of expectation.
+
+    Stage $j$ (for $j = 0, 1, \dots, 5$) starts when you have seen $j$ different faces and ends when a new face appears. During stage $j$, each roll shows a new face with probability $\dfrac{6-j}{6}$, independently of the past, so the length of the stage is geometric with mean $\dfrac{6}{6-j}$.
+
+    $$E[\text{rolls}] = \frac66 + \frac65 + \frac64 + \frac63 + \frac62 + \frac61 = 6\left(1 + \tfrac12 + \tfrac13 + \tfrac14 + \tfrac15 + \tfrac16\right) = 6 \times \frac{49}{20} = 14.7.$$
+
+    The stages are not all equal: the first face costs 1 roll, the last one costs 6 rolls on average. This is the coupon-collector problem; for $n$ faces the answer is $nH_n \approx n\ln n$.
+  check: code
+
+- id: a2
+  lvl: adv
+  kind: num
+  q: |-
+    Ten boys and ten girls stand in a row in a random order (all arrangements equally likely). A "mixed pair" is two neighbours in the row of whom one is a boy and one is a girl. What is the expected number of mixed pairs? (Original problem.)
+  ask: Expected number of mixed pairs
+  ans: 10
+  tol: 0.001
+  verify: 19*2*(10/20)*(10/19)
+  sol: |
+    **Indicators.** The row of 20 has 19 neighbouring pairs of positions. Let $I_k$ be 1 if positions $k$ and $k+1$ hold a boy and a girl (in either order), and 0 otherwise. The number of mixed pairs is $I_1 + \dots + I_{19}$.
+
+    **One pair.** By symmetry each position is equally likely to hold any of the 20 children. Position $k$ holds a boy with probability $\tfrac{10}{20}$; given that, position $k+1$ holds a girl with probability $\tfrac{10}{19}$. The order girl–boy is equally likely, so
+    $$P(I_k = 1) = 2 \times \frac{10}{20} \times \frac{10}{19} = \frac{10}{19}.$$
+
+    **Add.** $E = 19 \times \dfrac{10}{19} = 10.$
+
+    The indicators are dependent (neighbouring pairs share a child), but linearity of expectation needs no independence. Counting arrangements directly would be far harder.
+  check: code
+
+- id: a3
+  lvl: adv
+  kind: num
+  q: |-
+    Suppose a shopkeeper has total wealth ₹2,00,000 and measures satisfaction by the natural logarithm of wealth. In the coming year there is a 10% chance of a loss of ₹1,00,000. What is the largest premium, in ₹, that the shopkeeper should be willing to pay for full insurance against this loss? Give the answer to the nearest rupee. (Original problem; all figures are made up.)
+  ask: Largest acceptable premium
+  unit: ₹
+  ans: 13393
+  tol: 1
+  verify: 200000-200000*Math.pow(0.5,0.1)
+  sol: |
+    **Without insurance**, expected utility is
+    $$0.9\ln 200000 + 0.1\ln 100000 = \ln 200000 + 0.1\ln\tfrac12.$$
+
+    **With full insurance at premium $c$**, wealth is $200000 - c$ for certain, with utility $\ln(200000 - c)$.
+
+    The largest acceptable premium makes the two equal:
+    $$\ln(200000 - c) = \ln 200000 + 0.1\ln 0.5 \;\Longrightarrow\; 200000 - c = 200000 \times 0.5^{0.1} \approx 186607.$$
+
+    So $c \approx 200000 - 186607 = 13393$ rupees.
+
+    **Compare** with the expected loss, $0.1 \times 100000 = 10000$ rupees. The shopkeeper would pay up to ₹3,393 above the expected loss to remove the risk. An insurer that charges anything between ₹10,000 (plus its costs) and ₹13,393 leaves both sides better off: the insurer gains on average, and the shopkeeper gains in expected utility.
+  check: code
+
+- id: a4
+  lvl: adv
+  kind: num
+  source: Zeitz, The Art and Craft of Problem Solving · Problem 2.1.27(c)
+  q: |-
+    At least how many times must you flip a fair coin before there is at least a 50% probability that you will get at least three heads?
+  ask: Smallest number of flips
+  unit: flips
+  ans: 5
+  tol: 0
+  verify: (()=>{const C=(n,k)=>{let r=1;for(let i=0;i<k;i++)r=r*(n-i)/(i+1);return r};for(let n=3;n<50;n++){if(1-(C(n,0)+C(n,1)+C(n,2))/pow(2,n)>=0.5)return n}})()
+  sol: |
+    **Orientation.** "At least three heads" means 3 or more; "at least 50%" includes exactly 50%. It is easier to count the complement, at most two heads.
+
+    With $n$ flips there are $2^n$ equally likely sequences, of which $\binom n0 + \binom n1 + \binom n2$ have at most two heads. So
+    $$P(\text{at least 3 heads}) = 1 - \frac{1 + n + \binom n2}{2^n}.$$
+
+    **Get your hands dirty** and tabulate:
+
+    | $n$ | at most 2 heads | $P(\ge 3 \text{ heads})$ |
+    |---|---|---|
+    | 3 | $1 + 3 + 3 = 7$ of 8 | $1/8$ |
+    | 4 | $1 + 4 + 6 = 11$ of 16 | $5/16 \approx 0.31$ |
+    | 5 | $1 + 5 + 10 = 16$ of 32 | $16/32 = 0.5$ |
+
+    At $n = 5$ the probability is exactly $\tfrac12$, which meets "at least 50%"; at $n = 4$ it falls short. **Answer: 5 flips.**
+
+    Symmetry gives a check: with 5 flips, "3 or more heads" and "3 or more tails" are equally likely and cannot both happen, and one of them must happen, so each has probability exactly $\tfrac12$.
+
+    Note the trap: the expected number of heads reaches 3 only at $n = 6$. Reaching an average and reaching a 50% chance are different questions.
+  check: code
+
+- id: o1
+  lvl: oly
+  kind: num
+  q: |-
+    A fair coin is tossed repeatedly until the pattern HTH (head, tail, head on three consecutive tosses) first appears. What is the expected number of tosses? (Original problem.)
+  ask: Expected number of tosses
+  unit: tosses
+  ans: 10
+  tol: 0.001
+  verify: pow(2,1)+pow(2,3)
+  sol: |
+    **First-step analysis with states.** Track only the useful ending of the tosses so far. Let
+    - $a$ = expected tosses still needed from scratch (or after a useless ending);
+    - $b$ = expected tosses still needed when the last toss was H;
+    - $c$ = expected tosses still needed when the last two tosses were HT.
+
+    From scratch, one toss: H moves to state $b$, T leaves you at scratch: $a = 1 + \tfrac12 b + \tfrac12 a$, so $a = 2 + b$.
+
+    From H: another H leaves the useful ending as H; T moves to HT: $b = 1 + \tfrac12 b + \tfrac12 c$, so $b = 2 + c$.
+
+    From HT: H finishes; T gives HTT, whose ending has no useful part, so you are back to scratch: $c = 1 + \tfrac12 \cdot 0 + \tfrac12 a$.
+
+    Substituting: $a = 2 + b = 4 + c = 5 + \tfrac12 a$, so $a = 10$.
+
+    **The surprise.** For HHT the same method gives 8, though every three-toss pattern has probability $1/8$ at any given place. The difference is how failures waste progress. For HHT, once you have HH you can never lose it: a T finishes, and another H still leaves HH at the end. For HTH, a failure at the last step (HTT) throws everything away and sends you back to scratch. A known shortcut: add $2^k$ for every $k$ such that the first $k$ letters of the pattern equal its last $k$ letters. For HTH, $k = 1$ and $k = 3$ work, giving $2 + 8 = 10$; for HHT only $k = 3$ works, giving 8.
+  check: code
+
+- id: o2
+  lvl: oly
+  kind: num
+  q: |-
+    The numbers 1, 2, ..., 8 are arranged in a random order (all 8! orders equally likely). Reading from left to right, a number is a "record" if it is larger than every number before it (the first number is always a record). What is the expected number of records, to three decimals? (Original problem.)
+  ask: Expected number of records
+  ans: 2.718
+  tol: 0.001
+  verify: 1+1/2+1/3+1/4+1/5+1/6+1/7+1/8
+  sol: |
+    **Indicators.** Let $I_k = 1$ if the number in position $k$ is a record. The number of records is $I_1 + \dots + I_8$.
+
+    **One position.** The number in position $k$ is a record exactly when it is the largest of the first $k$ numbers. Those $k$ numbers are a random set in a random order, so each of them is equally likely to be the largest: $P(I_k = 1) = \dfrac1k$.
+
+    **Add.**
+    $$E = 1 + \frac12 + \frac13 + \dots + \frac18 = H_8 = \frac{761}{280} \approx 2.718.$$
+
+    (The closeness to $e \approx 2.71828$ is a coincidence of this $n$.) In general the expected number of records among $n$ is $H_n \approx \ln n$: in 1,000 years of random, independent yearly rainfall totals, you would expect only about 7.5 record-wet years.
+  check: code
+
+- id: o3
+  lvl: oly
+  kind: proof
+  q: |-
+    Twenty points are given, and 100 triples are chosen from them (each triple is a set of three of the points; triples may share points). Prove that the points can be coloured red and blue so that at least 75 of the triples contain both colours. (Original problem.)
+  hints:
+    - Colour each point red or blue at random, by independent fair coin tosses.
+    - For one fixed triple, find the probability that it is not all one colour.
+    - Use linearity to find the expected number of two-coloured triples, then ask what an average says about the largest value.
+  sol: |
+    **Colour at random.** Colour each of the 20 points red or blue by an independent fair coin toss.
+
+    **One triple.** Its three points are all red with probability $\tfrac18$ and all blue with probability $\tfrac18$, so it contains both colours with probability $1 - \tfrac14 = \tfrac34$.
+
+    **Linearity.** Let $I_t$ be the indicator that triple $t$ is two-coloured, and $N = \sum_t I_t$ the number of two-coloured triples. Linearity holds even though triples sharing points give dependent indicators:
+    $$E[N] = 100 \times \tfrac34 = 75.$$
+
+    **From average to existence.** $N$ takes a value for each of the $2^{20}$ equally likely colourings, and $E[N]$ is the plain average of those values. If every colouring gave $N < 75$, their average would be below 75. Hence at least one colouring has $N \ge 75$. $\blacksquare$
+
+    This is the **probabilistic method**: to show that something exists, show that a random choice has it on average. Note that the argument proves existence without telling you which colouring works.
+  check: none
+
+- id: o4
+  lvl: oly
+  kind: num
+  q: |-
+    A game tosses a fair coin until the first head. If the first head comes on toss k, the player receives 3^k rupees. Show that the expected payout is infinite. Then find the certainty equivalent (the sure sum with the same expected utility) for a player whose utility is the natural logarithm of the payout. (Original problem.)
+  ask: Certainty equivalent
+  unit: ₹
+  ans: 9
+  tol: 0.001
+  verify: exp(2*log(3))
+  sol: |
+    **Expected payout.** The first head comes on toss $k$ with probability $2^{-k}$, so
+    $$E = \sum_{k \ge 1} \frac{3^k}{2^k} = \sum_{k\ge1}\left(\tfrac32\right)^k,$$
+    a geometric series with ratio $\tfrac32 > 1$, which diverges. The expected payout is infinite.
+
+    **Expected log payout.**
+    $$E[\ln(\text{payout})] = \sum_{k\ge1} \frac{1}{2^k}\, k\ln 3 = \ln 3 \sum_{k\ge1}\frac{k}{2^k}.$$
+    From $\sum_{k\ge1} k q^{k} = \dfrac{q}{(1-q)^2}$ (differentiate the geometric series and multiply by $q$), at $q = \tfrac12$ the sum is $\dfrac{1/2}{1/4} = 2$. So $E[\ln(\text{payout})] = 2\ln 3 = \ln 9$.
+
+    **Certainty equivalent.** The sure sum $c$ with $\ln c = \ln 9$ is $c = 9$ rupees.
+
+    So a game with an infinite expected payout is worth only ₹9 to a log-utility player. In general, if the prize on toss $k$ is $m^k$, the certainty equivalent is $m^2$, finite for every $m$; log utility tames any prize that grows exponentially in $k$ (though not prizes that grow faster still, such as $e^{2^k}$).
+  check: code

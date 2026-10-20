@@ -896,20 +896,38 @@ subjects:
     - id: money
       name: Money maths
       tag: Percentages, interest, EMIs and inflation.
+      what: 'Money grows or shrinks by a percentage of itself, not by a fixed amount, so every money question is a question about repeated multiplication.'
+      split: 'Percentages first (one step), then compound interest and loans (many steps).'
       leaves:
       - {id: percentages-in-life, name: 'Percentages in life', from: C8}
-      - {id: compound-interest-and-emis, name: 'Compound interest, EMIs and inflation', from: LIFE}
+      - id: compound-interest-and-emis
+        name: 'Compound interest, EMIs and inflation'
+        from: LIFE
+        what: 'Interest that is added to the balance earns interest itself, so money grows by the same factor each period, not the same amount. A loan repaid in equal instalments (an EMI) is the same idea run backwards: each payment first covers that month''s interest, and only the rest cuts the debt.'
     - id: estimation
       name: Estimation and growth
       tag: Fermi problems and exponential growth.
+      what: 'Most real numbers you need are never given: you build them from rough pieces you do know, and you need a feel for how fast things multiply.'
+      split: 'Fermi estimation first (multiplying rough pieces), then exponential growth (multiplying the same factor again and again).'
       leaves:
-      - {id: fermi-estimation, name: 'Fermi estimation', from: LIFE}
-      - {id: exponential-growth, name: 'Exponential growth and doubling', from: LIFE}
+      - id: fermi-estimation
+        name: 'Fermi estimation'
+        from: LIFE
+        what: 'You can estimate almost any quantity by breaking it into factors you can guess within a factor of a few, then multiplying. The errors partly cancel, so the answer usually lands within the right power of ten, which is often all a decision needs.'
+      - id: exponential-growth
+        name: 'Exponential growth and doubling'
+        from: LIFE
+        what: 'When something grows by a fixed percentage each step, its size multiplies by the same factor each time, so it doubles at a steady interval. That is why such growth looks slow for a long time and then sudden, and why halving the rate more than doubles the waiting time.'
     - id: decisions
       name: Chance and decisions
       tag: Expected value, risk and misleading statistics.
+      what: 'Real choices are made under uncertainty, so you need a way to weigh outcomes by how likely they are, and a defence against numbers presented to mislead.'
+      split: 'Expected value first (weighing outcomes), then misleading statistics (spotting bad numbers).'
       leaves:
-      - {id: expected-value, name: 'Expected value and decisions', from: LIFE}
+      - id: expected-value
+        name: 'Expected value and decisions'
+        from: LIFE
+        what: 'If you could repeat a chancy choice many times, the average result is each outcome times its probability, added up. Comparing these long-run averages turns gut feelings about risk into a number, and also shows when a single big loss matters more than the average.'
       - {id: misleading-statistics, name: 'How statistics mislead', from: LIFE}
   - id: olympiad-toolkit
     name: Olympiad toolkit
